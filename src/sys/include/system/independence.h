@@ -1,7 +1,7 @@
 /** \file
  * System (platform/compiler) independence.
  *
- * Copyright (C) 2005,2008 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
