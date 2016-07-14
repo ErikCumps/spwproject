@@ -33,7 +33,7 @@ typedef enum {
 	arc_RGB,	/*!< RGB color triplet			*/
 	arc_RGBA,	/*!< RGBA color quadlet			*/
 	arc_XPM,	/*!< XPM resource			*/
-	arc_TYPE_LIMIT = arc_XPM	/*!< \internal final code /*/
+	arc_TYPE_LIMIT = arc_XPM	/*!< \internal final code */
 } arc_type_t;
 
 /*! Archive item type lookup function
@@ -73,7 +73,8 @@ extern arc_t *		arc_new		(char *filename, arc_sig_t *sig);
  * \param arc	pointer to archive object
  * \param type	new item type
  * \param id	new item id
- * \param name	new item filename
+ * \param name	new item name
+ * \param file  name of file containing new item data
  * \return	operation result code
  * \retval 0	failure
  * \retval 1	success
@@ -86,8 +87,9 @@ extern int		arc_add_file	(arc_t *arc, arc_type_t type, unsigned long id, char *n
  * \param arc	pointer to archive object
  * \param type	new item type
  * \param id	new item id
- * \param data	new item data
- * \param len	new item data length
+ * \param name	new item name
+ * \param data	data for new item
+ * \param len	length of data for new item
  * \return	operation result code
  * \retval 0	failure
  * \retval 1	success
@@ -100,6 +102,7 @@ extern int		arc_add_data	(arc_t *arc, arc_type_t type, unsigned long id, char *n
  * \param arc	pointer to archive object
  * \param type	new item type
  * \param id	new item id
+ * \param name	new item name
  * \param link	new item link id
  * \return	operation result code
  * \retval 0	failure
