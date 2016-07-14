@@ -1,0 +1,19 @@
+[title title.txt] Initialization codes
+
+[enum SL_INIT] SL_init error code
+OK	"no error"
+SLOPTS	"failed to initialize library options"
+SLMSG	"failed to initialize message handling"
+SLBO	"failed to initialize basic output message intercept"
+STDBG	"failed to initialize state debug reporting"
+THREAD	"failed to initialize thread handling"
+APP	"failed to initialize application information handling"
+EXIT	"failed to initialize application exit handling"
+ERROR	"failed to initialize error handling"
+
+[enum SL_SINIT] Subsystem initialization error code
+OK	"no error"
+FAIL	"failed"
+REINIT	"subsystem already initialized"
+
+

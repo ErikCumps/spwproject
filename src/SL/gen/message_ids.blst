@@ -1,0 +1,62 @@
+[title title.txt] Message handling codes
+
+[enum SLMSG_TYPE] Message types
+STATE		"state info"				"STATE"
+EXIT		"application exit info"			"EXIT"
+ERRSTR		"streamed error info"			"ERRSTR"
+UI_INFO		"UI: informational message"		"UI_INFO"
+#LOG		"log message"				"LOG"
+#UI		"UI message"				"UI"
+ANY		"*ANY*"					"*ANY*"
+
+[enum SLMSG_FROM] Message senders
+SLMSG		"message subsystem"			"SLMSG"
+STDBG		"state debug subsystem"			"SL_STDBG"
+SLBO		"basic output subsystem"		"SLBO"
+EXIT		"application exit handling subsystem"	"SL_EXIT"
+ERROR		"error handling subsystem"		"SL_ERROR"
+#LOG		"logging subsystem"			"LOG"
+ANY		"*ANY*"					"*ANY*"
+
+[enum SLMSG_PRIO] Message priorities
+DEFAULT		"*default priority*"			"  "
+PANIC		"system panic"				"!!"
+CRITICAL	"critical message"			"! "
+ERROR		"error message"				"**"
+WARNING		"warning message"			"* "
+NOTICE		"notification"				"+ "
+INFO		"informational message"			"+ "
+DEBUG		"debug message"				"  "
+TRACE		"trace message"				"  "
+DEEPTRACE	"deeptrace message"			"  "
+
+[enum SLMSG_DATA_CODE_DT] Messages: deeptrace data codes
+NORMAL		"simple event"				""
+ENTRY		"scope entry event"			"[ENTRY]"
+EXIT		"scope exit event"			"[EXIT-]"
+
+[enum SLMSG_DATA_TYPE] Messages: data types
+STRING		"simple string data"
+PRINTF		"printf data"
+CMD		"command"
+
+[enum SLMSG_CMD] Messages: commands
+FLUSH		"flush buffers"
+
+[enum SLMSG_RC] Messages: handler return codes
+OK		"message handled ok"			"OK"
+FAIL		"failed to handle message"		"FAIL"
+PASS		"pass message on to next handler"	"PASS"
+
+[enum SLMSG_MODE] Messages: handler modes
+NONE		"*none*"
+NORMAL		"normal"
+EXCLUSIVE	"exclusive"
+
+[enum SLMSG_ATTR_ID] Messages: handler attributes (ID)
+NONE		"*none*"
+ERR		"output to error stream"
+FILE		"output to file"
+
+[enumflag SLMSG_ATTR:SLMSG_ATTR_ID] Messages: handler attributes (flag)
+
