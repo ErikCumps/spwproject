@@ -33,6 +33,11 @@ cd mkxpm
 call prepare.bat
 cd ..
 
+echo --^> tilesplit
+cd tilesplit
+call prepare.bat
+cd ..
+
 goto DONE
 
 rem ----------------------------------------------------------------------
