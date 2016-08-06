@@ -25,7 +25,7 @@ It offers the following facilities to C and C++ applications:
 NOTE
 ----
 
-the following files are generated from blst defintion files in the gen directory:
+the following files are generated from blst definition files in the gen directory:
 
 * include\SL\init_ids.h
 * include\SL\message_ids.h
