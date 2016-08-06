@@ -23,7 +23,7 @@ extern "C" {
 typedef int SL_ERROR;
 
 /*! System error codes */
-typedef enum {
+typedef enum e_SL_ERROR_SYSTEM {
 	SL_ERR_NO_ERROR = 0,		/*!< No Error							*/
 	SL_ERR_SHOULD_NOT_SEE_THIS,	/*!< you should NEVER see this error!				*/
 	SL_ERR_BAD_USERSTART,		/*!< System error codes go beyond start of user error codes	*/
@@ -73,7 +73,7 @@ typedef enum {
 #define SL_ERR_USER_START	100
 
 /*! Error fatality types (unsigned enum) */
-typedef enum {
+typedef enum e_SL_ERROR_FATAL {
 	SL_ERR_FATAL_UNSET = 0,		/*!< \internal indicates unset fatality code			*/
 	SL_ERR_FATAL_IGNORE,		/*!< Ignore fatality						*/
 	SL_ERR_FATAL_WARN,		/*!< Warning							*/
@@ -86,14 +86,14 @@ typedef enum {
 } SL_ERROR_FATAL;
 
 /*! Error resolution user request codes */
-typedef enum {
+typedef enum e_SL_ERROR_REQUEST {
 	SL_ERR_REQUEST_ACCEPT,		/*!< User requested to accept error				*/
 	SL_ERR_REQUEST_IGNORE,		/*!< User requested to ignore error				*/
 	SL_ERR_REQUEST_RETRY,		/*!< User requested to retry operation				*/
 } SL_ERROR_REQUEST;
 
 /*! Error stack locations */
-typedef enum {
+typedef enum e_SL_ERROR_STACKLOC {
 	SL_ERR_STACK_UNSET = 0,		/*!< \internal indicates unset stack location			*/
 	SL_ERR_STACK_BOTTOM,		/*!< Bottom of stack						*/
 	SL_ERR_STACK_MIDDLE,		/*!< Middle of stack						*/

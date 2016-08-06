@@ -24,7 +24,7 @@ extern "C" {
 /* --- structures and types --- */
 
 /*! Message payload data structure */
-typedef struct {
+typedef struct s_SLMSG_DATA {
 	union {
 		SLMSG_DATA_CODE_DT	dt;	/*!< optional DeepTrace data code	*/
 	} code;
@@ -49,7 +49,7 @@ typedef time_t SLMSG_TIME;
 typedef DWORD SLMSG_THID;
 
 /*! Message data structure */
-typedef struct {
+typedef struct s_SLMSG {
 	SLMSG_TYPE	type;	/*!< message type			*/
 	SLMSG_FROM	from;	/*!< message source			*/
 	SLMSG_PRIO	prio;	/*!< message priority			*/
@@ -62,7 +62,7 @@ typedef struct {
 typedef SLMSG_RC (*SLMSG_HDLR_FUNC)(SLMSG *msg);
 
 /*! Message handler */
-typedef struct {
+typedef struct s_SLMSG_HDLR {
 	const char	*name;	/*!< handler name	*/
 	SLMSG_HDLR_FUNC	func;	/*!< handler function	*/
 	SLMSG_MODE	mode;	/*!< handler mode	*/

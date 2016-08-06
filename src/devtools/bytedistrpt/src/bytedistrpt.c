@@ -26,7 +26,7 @@ usage (char *name)
 	exit (1);
 }
 
-typedef enum {
+typedef enum e_CNT {
 	cnt_alf = 0,
 	cnt_num,
 	cnt_pnc,
@@ -36,12 +36,12 @@ typedef enum {
 	cnt_LAST
 } CNT;
 
-typedef struct {
+typedef struct s_FREQ {
 	int		idx;
 	unsigned long	cnt;
 } FREQ;
 
-typedef struct {
+typedef struct s_BI {
 	unsigned long	index;		/* block index */
 	unsigned long	offset;		/* block physical offset */
 	int		size;		/* block physical size */

@@ -21,7 +21,7 @@ typedef struct s_SL_ERROR_CODE {
 } SL_ERROR_CODE;
 
 /*! Error code collection */
-typedef struct {
+typedef struct s_SL_ERROR_SET {
 	int			 max;				/*!< Biggest error code in this collection	*/
 	SL_ERROR_CODE		*head;				/*!< Pointer to first error code info		*/
 	SL_ERROR_CODE		*tail;				/*!< Pointer to last error code info		*/

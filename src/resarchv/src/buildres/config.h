@@ -9,7 +9,7 @@
 #ifndef	CONFIG_H
 #define	CONFIG_H	1
 
-typedef struct {
+typedef struct s_CONFIG {
 	char	*cfg;
 	char	*outlib;
 	char	*outhdr;

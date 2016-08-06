@@ -15,7 +15,7 @@ extern "C" {
 #define	SL_CODELOC_STRSIZE	256
 
 /*! Code location structure */
-typedef struct {
+typedef struct s_SL_CODELOC {
 	char		file[SL_CODELOC_STRSIZE+1];	/*!< Source file name				*/
 	unsigned long	line;				/*!< Line in file				*/
 	char		func[SL_CODELOC_STRSIZE+1];	/*!< Name of function				*/

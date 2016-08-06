@@ -20,7 +20,7 @@ extern "C" {
 /* --- structures and types --- */
 
 /*! Application info structure (callerside) */
-typedef struct {
+typedef struct s_SL_APP_INFO {
 	struct {
 		char	*name;		/*!< application name			*/
 		char	*desc;		/*!< application description		*/

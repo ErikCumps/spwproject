@@ -30,7 +30,7 @@ extern void *		ADhash_del		(ADhash_t hash, void *key);
 extern void *		ADhash_get		(ADhash_t hash, void *key);
 extern AD_size_t	ADhash_keys		(ADhash_t hash, void **dst, AD_size_t len);
 
-typedef struct {
+typedef struct s_ADhash_stats_t {
 	unsigned int	total;
 	unsigned int	used;
 	unsigned int	min_fill;

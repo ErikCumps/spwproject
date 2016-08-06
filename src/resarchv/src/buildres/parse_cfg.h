@@ -22,20 +22,20 @@ struct s_SUBRESOURCE {
 	RESOURCE	*parent;
 };
 
-typedef struct {
+typedef struct s_RESDATA_FILE {
 	char		*fname;
 	char		*fpath;
 } RESDATA_FILE;
 
-typedef struct {
+typedef struct s_RESDATA_RGB {
 	unsigned long	rgb[3];
 } RESDATA_RGB;
 
-typedef struct {
+typedef struct s_RESDATA_RGBA {
 	unsigned long	rgba[4];
 } RESDATA_RGBA;
 
-typedef struct {
+typedef struct s_RESDATA_XPM {
 	char		*fname;
 	unsigned long	cnt;
 	char		**data;

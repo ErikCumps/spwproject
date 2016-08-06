@@ -35,7 +35,7 @@ static void	SL_ERROR_reset	(void);
 /* --- private data types --- */
 
 /*! Error state TLS */
-typedef struct {
+typedef struct s_SL_ERROR_TLS {
 	char		dynerr[SL_ERROR_STRSIZE];	/*!< dynamic error message		*/
 	SL_ERROR_DATA	*error;				/*!< pointer to current error stack	*/
 	SL_ERROR_DATA	oom;				/*!< current OOM error information	*/

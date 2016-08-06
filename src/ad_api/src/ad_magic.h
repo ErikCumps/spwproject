@@ -19,13 +19,13 @@ extern "C" {
 #define	ADMAGIC_HASH	0x534c4201
 #define	ADMAGIC_LIST	0x534c4202
 
-typedef struct {
+typedef struct s_AD_magic_t {
 	unsigned int	magic;
 } AD_magic_t;
 
 extern void *check_magic (void *ptr, unsigned int magic);
 
-typedef struct {
+typedef struct s_AD_node_magic_t {
 	void		*data;
 	unsigned int	magic;
 } AD_node_magic_t;

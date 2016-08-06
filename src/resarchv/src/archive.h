@@ -47,7 +47,7 @@ struct arc_ps {
 #pragma pack(push, 1)
 #endif  /* SYS_CC_MSC */
 
-typedef struct {
+typedef struct s_header_t {
 	unsigned char	magic[8];	/* magic string 			*/
 	unsigned long	version;	/* version 				*/
 	unsigned long	size;		/* header size 				*/
@@ -62,7 +62,7 @@ typedef struct {
 	unsigned char	sig[8];		/* signature 				*/
 } header_t PACKED;
 
-typedef struct {
+typedef struct s_item_t {
 	unsigned long	type;		/* item type 				*/
 	unsigned long	id;		/* item ID 				*/
 	unsigned long	name;		/* name pointer (from start of file) 	*/
@@ -70,7 +70,7 @@ typedef struct {
 	unsigned long	size;		/* item size 				*/
 } item_t PACKED;
 
-typedef struct {
+typedef struct s_name_t {
 	unsigned long	size;		/* name length 				*/
 	char		name[1];	/* name (zero-length names not allowed)	*/
 } name_t PACKED;

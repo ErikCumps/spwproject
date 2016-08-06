@@ -27,7 +27,7 @@ static void	statereport	(SL_STDBG_INFO_LEVEL level);
 /* --- private data types --- */
 
 /*! Internal application info structure */
-typedef struct {
+typedef struct s_slapp_info {
 	struct {
 		char	*name;				/*!< application name			*/
 		char	*desc;				/*!< application description		*/

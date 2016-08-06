@@ -18,7 +18,7 @@ extern "C" {
 typedef unsigned char arc_sig_t[8];
 
 /*! Archive object */
-typedef struct {
+typedef struct s_arc_t {
 	char		*name;		/*!< archive filename			*/
 	unsigned long	count;		/*!< archive item count			*/
 	unsigned char	sigused;	/*!< archive signature enabled flag	*/
@@ -26,7 +26,7 @@ typedef struct {
 } arc_t;
 
 /*! Archive item type */
-typedef enum {
+typedef enum e_arc_type_t {
 	arc_BIN = 0,	/*!< binary data of unspecified type	*/
 	arc_IMG,	/*!< image				*/
 	arc_IMGCOL,	/*!< image collection			*/
@@ -51,7 +51,7 @@ extern const char *	arc_type_name	(arc_type_t type);
 extern const char *	arc_type_lookup	(arc_type_t type);
 
 /*! Archive item object */
-typedef struct {
+typedef struct s_arc_item_t {
 	unsigned long	id;	/*!< item ID */
 	char		*name;	/*!< item name */
 	arc_type_t	type;	/*!< item type */

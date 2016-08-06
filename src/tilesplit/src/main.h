@@ -13,7 +13,7 @@
 
 #define	snprintf	_snprintf
 
-typedef struct {
+typedef struct s_CONFIG {
 	char	src[MAX_PATH+1];
 	char	stm[MAX_PATH+1];
 	char	ext[MAX_PATH+1];

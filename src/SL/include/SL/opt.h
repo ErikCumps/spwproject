@@ -16,7 +16,7 @@
 extern "C" {
 #endif	/* __cplusplus */
 
-typedef struct {
+typedef struct s_SLOPT {
 	struct {
 		SL_EVT_ABORT		abort;
 		SL_EVT_ERROR		error;

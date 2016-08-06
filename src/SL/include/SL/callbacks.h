@@ -24,7 +24,7 @@ extern "C" {
 /*** Event handlers ***/
 
 /*! Callback result */
-typedef enum {
+typedef enum e_SL_EVT_RC {
 	SL_EVT_HANDLE = 0,	/*!< SL must handle event	*/
 	SL_EVT_CONTINUE,	/*!< SL may continue execution	*/
 	SL_EVT_RETRY,		/*!< SL may retry execution	*/

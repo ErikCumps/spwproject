@@ -17,7 +17,7 @@ extern "C" {
 /* --- structures and types --- */
 
 /*! Info levels used for state debug reporting */
-typedef enum {
+typedef enum e_SL_STDBG_INFO_LEVEL {
 	SL_STDBG_LEVEL_BAS,	/*!< Basic state information		*/
 	SL_STDBG_LEVEL_EXT,	/*!< Extended state information		*/
 	SL_STDBG_LEVEL_DEEP	/*!< Deep probed state information	*/

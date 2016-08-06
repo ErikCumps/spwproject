@@ -32,7 +32,7 @@ typedef struct s_THREADTLS{
 	struct s_THREADTLS	*next;	/*!< pointer to next TLS structure	*/
 } THREADTLS;
 
-typedef struct {
+typedef struct s_THREADINFO {
 	LPTHREAD_START_ROUTINE	func;
 	void			*arg;
 } THREADINFO;

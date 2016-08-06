@@ -48,7 +48,7 @@ fix_name (char **name)
 
 #define	MAXSPLITCNT	8
 
-typedef struct {
+typedef struct s_SPLIT {
 	unsigned long	lc;
 	char		*line;
 	int		cnt;
@@ -101,7 +101,7 @@ prep_line (char *line, char **ptr)
 	return (1);
 }
 
-typedef struct {
+typedef struct s_TYPEMAP {
 	char		*name;
 	arc_type_t	type;
 } TYPEMAP;
@@ -360,7 +360,7 @@ parse_xpm_filename (char *str, RESDATA_XPM *dst)
 	return (1);
 }
 
-typedef struct {
+typedef struct s_STRINGLIST {
 	unsigned long	len;
 	unsigned long	cnt;
 	unsigned long	*ssize;

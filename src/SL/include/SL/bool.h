@@ -17,7 +17,7 @@ extern "C" {
 /* --- Data types --- */
 
 /*! Basic boolean data */
-typedef enum {
+typedef enum e_SL_BOOL {
 	SL_false = 0,	/*!< FALSE value	*/
 	SL_true  = 1	/*!< TRUE value		*/
 } SL_BOOL;
