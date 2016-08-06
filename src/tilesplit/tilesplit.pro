@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2008-2016 Erik Cumps <erik.cumps@gmail.com>
 #
-# License: GPL v2 
+# License: GPL v2
 
 TARGET	= tilesplit
 TEMPLATE= app
@@ -24,7 +24,7 @@ PRECOMPILED_HEADER	= stdafx.h
 !debug_and_release|build_pass {
 	CONFIG(debug, debug|release) {
 		DEFINES	+= DEBUG _DEBUG
-		CONFIG	+= warn_on sl_debug
+		CONFIG	+= sl_debug warn_on
 	}
 	CONFIG(release, debug|release) {
 		CONFIG	+= sl_release
