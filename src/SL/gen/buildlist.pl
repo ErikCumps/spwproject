@@ -417,7 +417,7 @@ sub RenderEnums
 			if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
 
 			print $Hfh "/*! ".$INFO->{"desc"}." */\n";
-			print $Hfh "typedef enum {\n";
+			print $Hfh "typedef enum e_$enum {\n";
 
 			@maxlen = (); $l = "";
 			foreach $item (@{$INFO->{"list"}}) { $l = $item; }
@@ -632,7 +632,7 @@ sub RenderRawEnums
 			if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
 
 			print $Hfh "/*! ".$INFO->{"desc"}." */\n";
-			print $Hfh "typedef enum {\n";
+			print $Hfh "typedef enum e_$enum {\n";
 
 			@maxlen = (); $l = "";
 			foreach $item (@{$INFO->{"list"}}) { $l = $item; }
