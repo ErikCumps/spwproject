@@ -1,0 +1,209 @@
+%
+#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+// Windows Header Files:
+#include <windows.h>
+%
+
+[title title.txt] SPWaW OOB codes
+
+[rawenum SPWOOB_WCLASS:BYTE] SPWAW OOB weapon class
+0	UNKNOWN
+1	INF_PRM
+2	INF_SEC
+3	TEAM
+4	AA
+5	SML_GUN
+6	MDM_GUN
+7	LRG_GUN
+8	FLAME_INF
+9	FLAME_VHC
+10	NAVAL
+11	AIRCRAFT
+12	SAM
+13	AT
+14	LRG_CLSTR
+15	SML_CLSTR
+16	ARM
+17	ASM
+18	NAPALM
+
+[rawenum SPWOOB_UTYPE:BYTE] SPWAW OOB unit type
+	### INFANTRY ###
+51	LT_INF		"light infantry"
+1	INF		"infantry"
+108	MD_INF		"medium infantry"
+40	HV_INF		"heavy infantry"
+101	MOT_INF		"motorized infantry"
+99	ARM_INF		"armored infantry"
+20	ENG		"engineers"
+102	MOT_ENG		"motorized engineers"
+100	ARM_ENG		"armored engineers"
+4	MG		"machine gun"
+81	HV_MG		"heavy machine gun"
+29	SKI		"ski troops"
+72	AIR_INF		"airborne infantry"
+74	BCYCLE		"bicycle infantry"
+73	ELITE		"elite infantry"
+45	SNIPER		"sniper"
+70	SPECOP		"special forces"
+71	GUERILLA	"guerilla forces"
+103	CONSCR		"conscripts"
+107	SLINF		"second line infantry"
+	### cavalry ###
+3	CAV		"cavalry"
+	### armor ###
+96	AHT		"armed halftrack"
+12	LT_TNK		"light tank"
+91	MD_TNK		"medium tank"
+14	HV_TNK		"heavy tank"
+92	VHV_TNK		"very heavy tank"
+13	MB_TNK		"main battle tank"
+64	CR_TNK		"cruiser tank"
+15	CS_TNK		"close support tank"
+63	INF_TNK		"infantry tank"
+36	MINECLR_TNK	"mineclear tank"
+37	ENG_TNK		"engineer tank"
+17	FLM_TNK		"flame tank"
+98	SPEC_TNK	"special tank"
+105	LL_TNK		"lend lease tank"
+93	CAPT_TNK	"captured tank"
+18	ASSAULT		"assault gun"
+	### APC ###
+24	HT		"halftrack"
+23	WH_APC		"wheeled APC"
+25	TR_APC		"tracked APC"
+90	HV_TR_APC	"heavy tracked APC"
+	### artillery ###
+80	LT_MORT		"light mortar"
+5	MORT		"mortar"
+82	HV_MORT		"heavy mortar"
+38	SP_MORT		"SP mortar"
+39	SP_GUN		"SP gun"
+62	INF_GUN		"infantry gun"
+9	HWTZR		"howitzer"
+21	SP_ART		"SP artillery"
+10	OB_ART		"offboard artillery"
+109	RKT		"rocket launcher"
+110	SP_RKT		"SP rocket launcher"
+31	OB_RKT		"offboard rocket launcher"
+94	CAPT_SPG	"captured SP gun"
+	### anti-tank ###
+2	INF_AT		"AT infantry"
+6	AT		"AT gun"
+52	WH_AT		"wheeled AT gun"
+19	SP_AT		"SP AT gun"
+60	TD		"tank destroyer"
+61	HV_TD		"heavy tank destroyer"
+79	TTD		"turreted tank destroyer"
+	### anti-air ###
+8	FLAK		"flak"
+16	HV_FLAK		"heavy flak"
+30	WH_FLAK		"wheeled flak"
+22	SP_FLAK		"SP flak"
+	### marine unit ###
+33	AMPHIB		"amphibian unit"
+34	HV_AMPHIB	"heavy amphibian unit"
+35	AMPHIB_TNK	"amphibian tank"
+106	MRNS		"marines"
+	### recon ###
+58	SCOUT		"scout"
+32	VEH_SCOUT	"scout vehicle"
+59	APC_SCOUT	"scout APC"
+69	FO		"forward observer"
+57	VEH_FO		"FO vehicle"
+85	TR_FO		"tracked FO"
+49	MCYCLE		"motorcycle"
+104	RHT		"recon halftrack"
+88	LT_ARMCAR	"light armored car"
+11	ARMCAR		"armored car"
+89	HV_ARMCAR	"heavy armored car"
+95	RE_TNK		"recon tank"
+	### C&C ###
+55	HQ		"force HQ"
+7	PLT_HQ		"platoon HQ"
+65	CC_TNK		"command tank"
+	### transport ###
+97	PRMV		"prime mover"
+27	MD_TRK		"medium truck"
+28	HV_TRK		"heavy truck"
+48	BCARR		"barge carrier"
+75	WAGON		"wagon"
+76	TEAM		"team"
+83	GTEAM		"gun team"
+84	PACK		"pack animal"
+	### air force ###
+44	AIR		"aircraft"
+112	AIRB		"level bomber"
+78	CRG_AIR		"cargo aircraft"
+77	GLIDER		"glider"
+47	HELI		"helicopter"
+50	AHELI		"attack helicopter"
+53	OHELI		"observer helicopter"
+	### navy ###
+41	BARGE		"landing barge"
+42	ABOAT		"assault boat"
+43	LCS		"landing craft support"
+46	LCG		"landing craft gunboat"
+67	SHIP		"ship"
+111	NAVB		"naval bombardment"
+	### fortification ###
+0	FORT		"fort"
+68	EMP_FORT	"gun emplacement"
+86	NAV_FORT	"naval fortification"
+	### other ###
+26	UTIL		"utility vehicle"
+54	CREW		"crew"
+56	AMMOC		"ammo carrier"
+66	AMMOD		"ammo dump"
+87	CAVE		"cave"
+
+[enum SPWOOB_UCLASS] SPWAW OOB unit class
+INF	"infantry"	"INF"
+CAV	"cavalry"	"CAV"
+ARM	"armor"		"ARM"
+APC	"APC"		"APC"
+ART	"artillery"	"ART"
+AT	"anti-tank"	"AT"
+AA	"anti-air"	"AA"
+MAR	"marine unit"	"MAR"
+REC	"recon"		"REC"
+CC	"C&C"		"CC"
+TRN	"transport"	"TRN"
+AIR	"air force"	"AIR"
+NVY	"navy"		"NVY"
+FRT	"fortification"	"FRT"
+OTH	"other"		"OTH"
+
+[rawenum SPWOOB_FSTAT:BYTE] SPWAW OOB formation status
+0	D	"average"				"D"
+1	R	"recon"					"R"
+2	A	"dedicated artillery"			"A"
+10	E	"elite"					"E"
+11	ER	"elite recon"				"ER"
+12	EA	"elite dedicated artillery"		"EA"
+20	S	"second line"				"S"
+21	SR	"second line recon"			"SR"
+22	SA	"second line dedicated artillery"	"SA"
+
+[rawenum SPWOOB_FTYPE:BYTE] SPWAW OOB formation type
+0	UNKNOWN
+1	PLT	"platoon"
+2	COM	"company"
+4	NAV	"naval"
+5	FHQ	"force HQ"
+
+[rawenum SPWOOB_FPSCR:BYTE] SPWAW OOB formation purchase screen type
+0	DEF	"default"
+1	ARM	"armor"
+2	ART	"artillery"
+3	INF	"infantry"
+4	MISC	"miscellaneous"
+5	AI	"*AI*"
+10	FHQ	"force HQ"
+
+[rawenum SPWOOB_MOVCL:BYTE] SPWAW OOB movement class
+0	DEF	"default"
+2	WHL	"wheel"
+3	WAT	"wheel (AT)"
+4	TRK	"track"
+7	NAV	"ship"

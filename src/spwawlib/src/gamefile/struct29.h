@@ -1,0 +1,19 @@
+#ifndef	INTERNAL_STRUCT29_H
+#define	INTERNAL_STRUCT29_H	1
+
+#include "gamefile/struct_common.h"
+
+typedef struct s_MAP_DATA2 {
+	BYTE	vis;	/* Visibility?	*/
+} MAP_DATA2;
+
+typedef struct s_STRUCT29 {
+	union {
+		char	raw[SIZESEC29];
+		struct {
+			MAP_DATA2	data[MAPWIDTH][MAPHEIGHT];
+		} d;
+	} u;
+} STRUCT29;
+
+#endif	/* INTERNAL_STRUCT29_H */
