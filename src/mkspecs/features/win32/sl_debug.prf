@@ -1,0 +1,6 @@
+CONFIG -= incremental
+QMAKE_CFLAGS += /GF /RTCc /RTC1 /FR
+QMAKE_CXXFLAGS += /GF /RTCc /RTC1 /FR
+QMAKE_LFLAGS += /PDB:"$$TARGET".pdb /incremental:no
+
+
