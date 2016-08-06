@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - gamefile handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "gamefile/gamefile.h"
@@ -100,7 +108,7 @@ unitcount_oldmethod (UNIT *data, SPWAW_SNAP_OOB_FRAW *fp1, UNIT_LIST &ul1, SPWAW
 		snprintf (name, sizeof (name) - 1, "%s", data[i].name); name[16] = '\0';
 
 		// Unit or crew?
-		if ((data[i].crew == SPWAW_BADIDX) || (data[i].crew > i)) 
+		if ((data[i].crew == SPWAW_BADIDX) || (data[i].crew > i))
 		{
 			log ("unitcount_oldmethod: [%3.3u] UNIT: F<%3.3u,%3.3u> C<%5.5u> (%16.16s) ", i, data[i].formID, data[i].minform, data[i].crew, name);
 
@@ -127,7 +135,7 @@ unitcount_oldmethod (UNIT *data, SPWAW_SNAP_OOB_FRAW *fp1, UNIT_LIST &ul1, SPWAW
 					lf1 = data[i].formID;
 				//}
 				continue;
-			}	
+			}
 			if (check_formationid (data[i].formID, fp2, NULL)) {
 				s = busyf2;
 				//if (!checkformation (data[i].formID, data[i].minform, lf2, lsf2)) {
@@ -151,7 +159,7 @@ unitcount_oldmethod (UNIT *data, SPWAW_SNAP_OOB_FRAW *fp1, UNIT_LIST &ul1, SPWAW
 				log_nots ("SKIPPED: invalid crew parent unit\n");
 				continue;
 			}
-			
+
 			c = data[u].crew;
 			if (c != i) {
 				log_nots ("SKIPPED: invalid crew <> parent unit linkage\n");
@@ -192,7 +200,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 		snprintf (name, sizeof (name) - 1, "%s", data[i].name); name[16] = '\0';
 
 		// Unit or crew?
-		if ((data[i].crew == SPWAW_BADIDX) || (data[i].crew > i)) 
+		if ((data[i].crew == SPWAW_BADIDX) || (data[i].crew > i))
 		{
 			log ("unitcount: [%3.3u] UNIT: F<%3.3u,%3.3u> C<%5.5u> L<%5.5u> (%16.16s) ", i, data[i].formID, data[i].minform, data[i].crew, data[i].leader, name);
 
@@ -219,7 +227,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 					lf = data[i].formID;
 				//}
 				continue;
-			}	
+			}
 		} else {
 			log ("unitcount: [%3.3u] CREW: F<%3.3u,%3.3u> C<%5.5u> L<%5.5u> (%16.16s) ", i, data[i].formID, data[i].minform, data[i].crew, data[i].leader, name);
 
@@ -231,7 +239,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 				log_nots ("SKIPPED: invalid crew parent unit\n");
 				break;
 			}
-			
+
 			c = data[u].crew;
 			if (c != i) {
 				log_nots ("SKIPPED: invalid crew <> parent unit linkage\n");

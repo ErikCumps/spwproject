@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - internal runtime configuration handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "common/internal.h"
 
@@ -8,7 +16,7 @@ cfg_set (const char *oobdir, bool withUD)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	char		path[MAX_PATH+1];
-	
+
 	CNULLARG (oobdir);
 
 	cfg_free ();

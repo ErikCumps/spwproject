@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - snapshot handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	SNAPSHOT_H
 #define	SNAPSHOT_H	1
 

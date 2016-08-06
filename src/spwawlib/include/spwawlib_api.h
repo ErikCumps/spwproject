@@ -1,10 +1,18 @@
+/** \file
+ * The SPWaW Library - API error codes.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	SPWAW_LIB_API_H
 #define	SPWAW_LIB_API_H	1
 
-// The following ifdef block is the standard way of creating macros which make exporting 
+// The following ifdef block is the standard way of creating macros which make exporting
 // from a DLL simpler. All files within this DLL are compiled with the SPWAWLIB_EXPORTS
 // symbol defined on the command line. this symbol should not be defined on any project
-// that uses this DLL. This way any other project whose source files include this file see 
+// that uses this DLL. This way any other project whose source files include this file see
 // SPWAWLIB_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
 #ifdef SPWAWLIB_EXPORTS

@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - SPWaw OOB handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_spwoob.h>
 #include "common/internal.h"
@@ -6,7 +14,7 @@ void
 spwoob_free (SPWOOB *oob)
 {
 	int	i;
-	
+
 	if (!oob) return;
 
 	for (i=0; i<SPWOOB_DCNT; i++) {
@@ -66,7 +74,7 @@ SPWOOB_copy (SPWOOB *dst, SPWOOB *src)
 	return (SPWERR_OK);
 
 handle_error:
-	spwoob_free (dst);	
+	spwoob_free (dst);
 	return (rc);
 }
 
@@ -74,7 +82,7 @@ void
 SPWOOB_free (SPWOOB **oob)
 {
 	SPWOOB	*p;
-	
+
 	if (!oob || !*oob) return;
 
 	p = *oob; *oob = NULL;

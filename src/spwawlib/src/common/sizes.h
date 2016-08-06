@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - savegame size definitions.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	INTERNAL_SIZES_H
 #define	INTERNAL_SIZES_H	1
 

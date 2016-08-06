@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code: file content verification.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "common/internal.h"
@@ -31,7 +39,7 @@ fcheck_make (int fd)
 	SPWAW_ERROR	rc;
 
 	memset (&info, 0, sizeof (info));
-	
+
 	info.fsize = _filelength(fd) + sizeof (info) + sizeof (hdr);
 
 	memset (&hdr, 0, sizeof (hdr));
@@ -47,7 +55,7 @@ fcheck_make (int fd)
 
 	if (!bwrite (fd, (char *)&hdr, sizeof (hdr)))
 		RWE (SPWERR_FWFAILED, "bwrite(FCHK_HEADER header) failed");
-	
+
 	return (SPWERR_OK);
 }
 

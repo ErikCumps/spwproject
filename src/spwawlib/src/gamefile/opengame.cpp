@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - gamefile handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "gamefile/gamefile.h"
 #include "utils/log.h"
@@ -110,7 +118,7 @@ open_gamefiles (const char *dir, int id, GAMEFILE *game)
 	memset (name, 0, sizeof (name));
 	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.cmt", dir, id);
 	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
-	
+
 	memset (name, 0, sizeof (name));
 	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.dat", dir, id);
 	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);

@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - string buffer handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	INTERNAL_STRBUF_H
 #define	INTERNAL_STRBUF_H	1
 

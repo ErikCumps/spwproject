@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - gamefile handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	INTERNAL_STRUCT_COMMON_H
 #define	INTERNAL_STRUCT_COMMON_H	1
 

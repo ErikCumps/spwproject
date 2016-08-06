@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - string buffer handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "strbuf.h"
 #include "fileio/fileio.h"
@@ -40,7 +48,7 @@ block_alloc (STRBUF *buf, ULONG len)
 		tsize = bsize + sizeof (STRBUF_BLOCK);
 		nb = safe_smalloc (STRBUF_BLOCK, tsize); COOMRET (nb, "STRBUF_BLOCK", NULL);
 		memset (nb, 0, tsize);
-		
+
 		nb->size = bsize;
 		nb->used = len;
 		nb->left = bsize - len;
@@ -68,7 +76,7 @@ add_hole (STRBUF_BLOCK *block, char *ptr)
 
 	p->ptr = ptr;
 	p->len = strlen (ptr) + 1;
-	
+
 	pb = pa = block->hole;
 	if (block->hole) {
 		if (p->ptr > pb->ptr) {
@@ -361,7 +369,7 @@ skip_core (STRBUF_BLOCK **bp, char **ptr)
 	p = *ptr;
 
 	if (*p != (unsigned char)0xFF) return (false);
-	
+
 	p++;
 	if (*p == (unsigned char)0xFF) {
 		len = (ULONG)++p; p += len;
@@ -426,7 +434,7 @@ STRBUF_export (int src, FILE *dst)
 	if (hdr.size) {
 		if ((p = (char *)malloc (hdr.size)) == NULL) rc = SPWERR_FRFAILED;
 		ERRORGOTO ("malloc(data)", handle_error);
-			
+
 		if (!bread (src, p, hdr.size, false)) rc = SPWERR_FRFAILED;
 		ERRORGOTO ("bread(data)", handle_error);
 

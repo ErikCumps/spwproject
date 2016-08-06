@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - snapshot API implementation.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_snapshot.h>
 #include "common/internal.h"

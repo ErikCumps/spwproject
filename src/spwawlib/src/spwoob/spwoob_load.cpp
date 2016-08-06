@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - SPWaw OOB handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "spwoob/spwoob.h"
@@ -330,7 +338,7 @@ load_oob_file (SPWOOB *oob, BYTE id, const char *file)
 
 	dst = safe_malloc (SPWOOB_DATA); COOMGOTO (dst, "SPWOOB_DATA", handle_error);
 	dst->id = id;
-	
+
 	dst->rdata = safe_malloc (RAWOOB); COOMGOTO (dst, "RAWOOB", handle_error);
 	dst->rsize = sizeof (RAWOOB);
 

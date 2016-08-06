@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - dossier handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
@@ -182,7 +190,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	STRTAB		*stab = NULL;
 
 	CNULLARG (dst);
-	
+
 	pos = bseekget (fd);
 
 	memset (&hdr, 0, sizeof (hdr));

@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - snapshot handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	INTERNAL_SNAPFILE_H
 #define	INTERNAL_SNAPFILE_H	1
 
@@ -23,7 +31,7 @@ typedef struct s_SNAP_HEADER {
 		ULONG	data;			/* data offset, relative to start of header				*/
 		ULONG	size;			/* data size								*/
 		ULONG	comp;			/* compressed data size (0 if no compression)				*/
-	}	snap;			
+	}	snap;
 	ULONG		map;			/* Snapshot map data offset, relative to start of header		*/
 	ULONG		oobp1;			/* Player1 OOB data offset, relative to start of header			*/
 	ULONG		oobp2;			/* Player2 OOB data offset, relative to start of header			*/

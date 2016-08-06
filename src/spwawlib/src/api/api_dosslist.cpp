@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - dossier list API implementation.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_dosslist.h>
 #include "common/internal.h"

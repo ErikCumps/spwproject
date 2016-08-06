@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - snapshot handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include <spwawlib_snapshot.h>
@@ -63,7 +71,7 @@ load_map (int fd, SPWAW_SNAP_MAP_RAW *map)
 	map->size = maphdr.size;
 	map->data = safe_smalloc (SPWAW_SNAP_MAP_DRAW, map->size);
 	COOMGOTO (map->data, "SPWAW_SNAP_MAP_DRAW map", handle_error);
-	
+
 	bseekset (fd, pos + maphdr.data);
 
 	cbio.data = (char *)map->data; cbio.size = map->size; cbio.comp = &(maphdr.comp);
@@ -159,7 +167,7 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 	size = oobhdr.fsize;
 	data = safe_smalloc (char, size);
 	COOMGOTO (data, "SPWAW_SNAP_OOB_FEL data", handle_error);
-	
+
 	bseekset (fd, pos + oobhdr.fpos);
 	cbio.data = data; cbio.size = size; cbio.comp = &(oobhdr.fcomp);
 	if (!cbread (fd, cbio, "formation data")) FAILGOTO (SPWERR_FRFAILED, "cbread(formation data) failed", handle_error);
@@ -217,7 +225,7 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 
 	sbr = sbread_init (data, size);
 	if (!sbr) FAILGOTO (SPWERR_FRFAILED, "sbread_init() failed", handle_error);
-	
+
 	oob->leaders.raw = safe_nmalloc (SPWAW_SNAP_OOB_LELRAW, oobhdr.lcnt);
 	COOMGOTO (oob->leaders.raw, "SPWAW_SNAP_OOB_LELRAW list", handle_error);
 

@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - dossier handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
@@ -10,7 +18,7 @@ dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 	DWORD			i, j;
 	SPWAW_BATTLE		*b = NULL;
 	SPWAW_SAVELIST_NODE	*n = NULL;
-	
+
 	CNULLARG (dossier); CNULLARG (list);
 
 	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");

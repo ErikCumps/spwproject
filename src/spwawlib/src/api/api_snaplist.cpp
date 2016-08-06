@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - snapshot list API implementation.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_snaplist.h>
 #include "gamefile/gamefile.h"
@@ -109,7 +117,7 @@ SPWAW_snaplist (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list)
 	*list = NULL;
 
 	p = safe_malloc (SPWAW_SNAPLIST); COOM (p, "SPWAW_SNAPLIST");
-	
+
 	list_files (dir, ignore, p);
 
 	*list = p;
@@ -175,7 +183,7 @@ SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node)
 	}
 	idx = list->cnt++;
 	list->list[idx] = node;
-	
+
 	return (SPWERR_OK);
 }
 

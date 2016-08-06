@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - common private header files.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	INTERNAL_H
 #define	INTERNAL_H	1
 

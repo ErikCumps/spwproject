@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - file I/O handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
@@ -11,7 +19,7 @@ bbread_init (int fd, long len)
 
 	bb->file.fd   = fd;
 	bb->file.left = len;
-	
+
 	bb->bsize = sizeof (bb->buffer);
 	memset (bb->buffer, 0, bb->bsize);
 	bb->left = 0;

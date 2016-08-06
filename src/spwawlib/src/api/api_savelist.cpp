@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - savegame list API implementation.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_savelist.h>
 #include "gamefile/gamefile.h"
@@ -129,7 +137,7 @@ SPWAW_savelist (const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
 	*list = NULL;
 
 	p = safe_malloc (SPWAW_SAVELIST); COOM (p, "SPWAW_SAVELIST");
-	
+
 	list_files (dir, ignore, p);
 
 	*list = p;
@@ -195,7 +203,7 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node)
 	}
 	idx = list->cnt++;
 	list->list[idx] = node;
-	
+
 	return (SPWERR_OK);
 }
 

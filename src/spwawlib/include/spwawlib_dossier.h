@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - dossier API.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	SPWAW_LIB_DOSSIER_H
 #define	SPWAW_LIB_DOSSIER_H	1
 

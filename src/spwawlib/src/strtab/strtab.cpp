@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - string table handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "strtab.h"
 #include "fileio/fileio.h"
@@ -112,7 +120,7 @@ STRTAB_new (STRTAB **tab)
 		ERROR0 ("failed to create new STRBUF for STRTAB");
 		goto handle_error;
 	}
-	
+
 	p->hash = ADhash_setup (HASHBUCKETS, hash_func, hash_match, NULL);
 	if (!p->hash) {
 		ERROR0 ("failed to create new hash for STRTAB");
@@ -137,7 +145,7 @@ STRTAB_free (STRTAB **tab)
 	STRTAB	*p;
 
 	if (!tab || !*tab) return;
-	
+
 	p = *tab; *tab = NULL;
 
 	STRBUF_free (&(p->buf));
@@ -177,7 +185,7 @@ STRTAB_init (STRTAB *tab, char *buffer, ULONG size)
 			FAILGOTO (SPWERR_FAILED, "STRBUF_add()", handle_error);
 
 		if (tab->icnt >= tab->ilen) {
-			rc = grow_idx (tab); 
+			rc = grow_idx (tab);
 			ERRORGOTO ("grow_idx()", handle_error);
 		}
 
@@ -559,9 +567,9 @@ SPWAW_ERROR
 STRTAB_getstr (STRTAB *tab, STRINFO *inf)
 {
 	CNULLARG (tab); CNULLARG (inf);
-	
+
 	inf->str = BADSTR;
-	
+
 	if ((inf->idx < tab->ilen) && (tab->idx[inf->idx].ref))
 		inf->str = tab->idx[inf->idx].ptr;
 
@@ -588,7 +596,7 @@ STRTAB_getidx (STRTAB *tab, STRINFO *inf)
 	ULONG	idx = 0;
 
 	CNULLARG (tab); CNULLARG (inf);
-	
+
 	inf->idx = BADSTRIDX;
 
 	if (inf->str) idx = (ULONG)ADhash_get (tab->hash, inf->str);
@@ -619,7 +627,7 @@ STRTAB_merge (STRTAB *tab, STRTAB *ptr)
 	STRINFO		si;
 
 	CNULLARG (tab);
-	
+
 	if (!ptr) return (SPWERR_OK);
 
 	cnt = 0;
@@ -648,7 +656,7 @@ STRTAB_remove (STRTAB *tab, STRTAB *ptr)
 
 	CNULLARG (tab);
 	if (!ptr) return (SPWERR_OK);
-	
+
 	for (i=0; i<ptr->icnt; i++) {
 		if (!ptr->idx[i].ref) continue;
 		si.str = ptr->idx[i].ptr;

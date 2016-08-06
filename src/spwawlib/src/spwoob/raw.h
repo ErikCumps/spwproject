@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - SPWaw OOB handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	RAW_H
 #define	RAW_H	1
 

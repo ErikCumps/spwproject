@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code: handling compression with zlib.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	COMPRESSION_H
 #define	COMPRESSION_H	1
 

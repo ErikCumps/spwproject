@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code: error handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	ERROR_H
 #define	ERROR_H	1
 

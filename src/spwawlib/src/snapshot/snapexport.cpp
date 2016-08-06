@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - snapshot handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "snapshot/snapfile.h"
 #include "fileio/fileio.h"
@@ -45,7 +53,7 @@ snapexport_hdrs (int src, FILE *dst, SNAP_HEADER &mhdr, SNAP_SOURCE &shdr, SNAP_
 	CdumpH (oobp1,	TC_DATA_ULONG);
 	CdumpH (oobp2,	TC_DATA_ULONG);
 	CdumpH (stab,	TC_DATA_ULONG);
-		
+
 	bseekset (src, mhdr.src + p0);
 	if (!bread (src, (char *)&shdr, sizeof (shdr), false)) rc = SPWERR_FRFAILED;
 	ERRORGOTO ("bread(source)", handle_error);
@@ -83,7 +91,7 @@ snapexport_snap (int src, FILE *dst, long pos)
 
 	dumpCMT (title,		TC_DATA_ULONG);
 	dumpCMT (mapsrc,	TC_DATA_ULONG);
-	
+
 	dumpB (year,		TC_DATA_BYTE);
 	dumpB (month,		TC_DATA_BYTE);
 	dumpB (day,		TC_DATA_BYTE);

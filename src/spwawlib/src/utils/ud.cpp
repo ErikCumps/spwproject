@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code: unknown data handling.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include <spwawlib_ud.h>

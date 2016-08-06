@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code: data to/from text conversion.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	TEXTCONV_H
 #define	TEXTCONV_H	1
 

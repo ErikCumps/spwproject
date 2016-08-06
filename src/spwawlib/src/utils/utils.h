@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #ifndef	UTILS_H
 #define	UTILS_H	1
 

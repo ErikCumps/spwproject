@@ -1,3 +1,11 @@
+/** \file
+ * The SPWaW Library - utility code: logging.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
 #include "stdafx.h"
 #include "common/internal.h"
 #include <spwawlib_api.h>
@@ -58,7 +66,7 @@ log (char *fmt, ...)
 
 		memset (&now, 0, sizeof (now));
 		GetSystemTime (&now);
-	
+
 		snprintf (hdr, sizeof (hdr) - 1, "%10I64d %02.2u:%02.2u:%02.2u.%03.3u ",
 			pc_dlt.QuadPart, now.wHour, now.wMinute, now.wSecond, now.wMilliseconds);
 	}
