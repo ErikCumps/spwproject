@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_TYPES_H
@@ -224,3 +227,5 @@ typedef enum e_SPWAW_VHSTATUS {
 extern SPWAWLIB_API const char *SPWAW_vhstatus2str (SPWAW_VHSTATUS id);
 
 #endif	/* SPWAW_LIB_TYPES_H */
+
+/** @} */

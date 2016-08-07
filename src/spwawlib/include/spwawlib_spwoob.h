@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_OOB_H
@@ -133,3 +136,5 @@ extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base);
 extern SPWAWLIB_API const char *	SPWAW_oob_uclass	(SPWOOB_UCLASS e);
 
 #endif	/* SPWAW_LIB_OOB_H */
+
+/** @} */

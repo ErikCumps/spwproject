@@ -1,7 +1,17 @@
-/* SPWaW OOB library */
+/** \file
+ * The SPWaW Library - SPWaw OOB type codes.
+ *
+ * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
 
 #ifndef	protection__________INCLUDE_SPWAWLIB_SPWOOB_TYPES_H
 #define	protection__________INCLUDE_SPWAWLIB_SPWOOB_TYPES_H	1
+
+/** \addtogroup API
+ * @{
+ */
 
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 // Windows Header Files:
@@ -366,3 +376,6 @@ extern SPWOOB_MOVCL SPWOOB_MOVCL_xlt (BYTE r);
 }
 #endif	/* __cplusplus */
 #endif	/* protection__________INCLUDE_SPWAWLIB_SPWOOB_TYPES_H */
+
+/** @} */
+

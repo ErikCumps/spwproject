@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_DOSSLIST_H
@@ -44,3 +47,5 @@ extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_clear	(SPWAW_DOSSLIST *list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_copy	(SPWAW_DOSSLIST *list, SPWAW_DOSSLIST *src);
 
 #endif	/* SPWAW_LIB_DOSSLIST_H */
+
+/** @} */

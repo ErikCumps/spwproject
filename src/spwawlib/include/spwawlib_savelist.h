@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_SAVELIST_H
@@ -51,3 +54,5 @@ extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_clear	(SPWAW_SAVELIST *list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_copy	(SPWAW_SAVELIST *list, SPWAW_SAVELIST *src);
 
 #endif	/* SPWAW_LIB_SAVELIST_H */
+
+/** @} */

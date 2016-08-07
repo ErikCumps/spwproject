@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_SNAPSHOT_H
@@ -727,3 +730,5 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_free (SPWAW_SNAPSHOT **snap);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_copy (SPWAW_SNAPSHOT **src, SPWAW_SNAPSHOT **dst);
 
 #endif	/* SPWAW_LIB_SNAPSHOT_H */
+
+/** @} */

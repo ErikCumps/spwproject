@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_DOSSIER_H
@@ -140,3 +143,5 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist	(SPWAW_DOSSIER *dossier, 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist	(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
 
 #endif	/* SPWAW_LIB_DOSSIER_H */
+
+/** @} */

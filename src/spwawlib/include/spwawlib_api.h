@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_API_H
@@ -54,3 +57,5 @@ extern SPWAWLIB_API const char *	SPWAW_errstr		(SPWAW_ERROR e);
 #define	SPWAW_HAS_ERROR(_rc)	(_rc != SPWERR_OK)
 
 #endif	/* SPWAW_LIB_API_H */
+
+/** @} */

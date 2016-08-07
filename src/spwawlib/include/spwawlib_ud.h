@@ -4,6 +4,9 @@
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
+ *
+ * \addtogroup API
+ * @{
  */
 
 #ifndef	SPWAW_LIB_UD_H
@@ -28,3 +31,5 @@ typedef struct s_SPWAW_UD {
 } SPWAW_UD;
 
 #endif	/* SPWAW_LIB_API_H */
+
+/** @} */

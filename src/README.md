@@ -18,6 +18,7 @@ These are the spwproject source projects:
 * [resarchv](resarchv/README.md)
 * [SL](SL/README.md)
 * [mkxpm](mkxpm/README.md)
+* [spwawlib](spwawlib/README.md)
 
 And also:
 * [devtools](devtools/README.md)
