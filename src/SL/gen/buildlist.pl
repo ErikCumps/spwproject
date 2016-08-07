@@ -120,9 +120,9 @@ sub HandleParserError
 }
 
 #
-# Parse userSection data
+# Parse UserSection (Header data)
 #
-sub ParseUserSection
+sub ParseUserSectionHeader
 {
 	my ($fh, $rDATA) = @_;
 
@@ -133,7 +133,26 @@ sub ParseUserSection
 		if (/^%$/) { return; }
 
 		# Store data
-		push @{$rDATA->{"UserSection"}}, $::line;
+		push @{$rDATA->{"UserSectionHeader"}}, $::line;
+	}
+
+}
+
+#
+# Parse UserSection (Footer data)
+#
+sub ParseUserSectionFooter
+{
+	my ($fh, $rDATA) = @_;
+
+	while (<$fh>) {
+		chop; $::line = $_; $::lc++;
+
+		# Detect end of UserSection
+		if (/^%$/) { return; }
+
+		# Store data
+		push @{$rDATA->{"UserSectionFooter"}}, $::line;
 	}
 
 }
@@ -274,7 +293,11 @@ sub Parse
 
 		# Detect start of UserSection
 		if (/^%$/) {
-			&ParseUserSection ($fh, $rDATA);
+			if (! $rDATA->{"UserSectionHeader"}) {
+				&ParseUserSectionHeader ($fh, $rDATA);
+			} else {
+				&ParseUserSectionFooter ($fh, $rDATA);
+			}
 			next;
 		}
 
@@ -812,10 +835,10 @@ sub Render
 	if (!$NOI) {
 		print $Hfh "#ifndef\t$HN\n#define\t$HN\t1\n";
 
-		if ($rDATA->{"UserSection"} && @{$rDATA->{"UserSection"}}) {
+		if ($rDATA->{"UserSectionHeader"} && @{$rDATA->{"UserSectionHeader"}}) {
 			my $line;
 			print $Hfh "\n";
-			foreach $line (@{$rDATA->{"UserSection"}}) { print $Hfh $line,"\n"; }
+			foreach $line (@{$rDATA->{"UserSectionHeader"}}) { print $Hfh $line,"\n"; }
 			print $Hfh "\n";
 			print $Hfh "\n\n\n";
 		}
@@ -836,6 +859,14 @@ sub Render
 	if (!$NOI) {
 		print $Hfh "#ifdef\t__cplusplus\n}\n#endif\t/* __cplusplus */\n";
 		print $Hfh "#endif\t/* $HN */\n";
+		
+		if ($rDATA->{"UserSectionFooter"} && @{$rDATA->{"UserSectionFooter"}}) {
+			my $line;
+			print $Hfh "\n";
+			foreach $line (@{$rDATA->{"UserSectionFooter"}}) { print $Hfh $line,"\n"; }
+			print $Hfh "\n";
+		}
+		
 		$Hfh->close;
 	}
 
