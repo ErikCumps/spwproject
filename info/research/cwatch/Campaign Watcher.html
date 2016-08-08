@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+<title>Campaign Watcher Manual</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link target="mainFrame" rel="stylesheet" href="cw-1.css" type="text/css">
+<link target="mainFrame" rel="stylesheet" href="cw_backmain.css" type="text/css">
+</head><body linkifytime="13" linkified="0" linkifying="false" bgcolor="#ffffff" text="#000000">
+<div class="innerbackground">
+<p class="page_header">Campaign Watcher v0.65</p>
+<p class="section">Required</p>
+<ul>
+  <li>Steel Panters: World at War version 5.0 or higher<br>
+  </li>
+  <li>Windows 98, 98SE, 2000, XP (possibly NT, Linux/WINE)</li>
+  <li>Desktop resolution of 800x600 or more</li>
+  <li>Browser with support for CSS and frames</li>
+  <li>2 MB of free hard disk space</li>
+</ul>
+<p class="section">Recommended</p>
+<ul>
+  <li>Desktop resolution of 1024x768 or more</li>
+</ul>
+
+
+
+<p class="section">Installation</p>
+<p class="subsection">Installer</p>
+<p>After running the setup program, you will be able to run Campaign Watcher from the start menu.</p>
+
+
+
+<p class="section">Overview</p>
+<p class="subsection">Definitions</p>
+<ul>
+  <li>All information for a single campaign is stored in a <span class="definition">record.</span></li>
+  <li>Data extracted from SPWaW saves is stored in a <span class="definition">snapshot</span>.
+    Together snapshots form a record.<br>
+    <span class="hint">Note:</span> After the snapshot has been taken, you don't need the savefile anymore for the operation of CW. </li>
+    <li>The <span class="definition">core force</span> are the troops you keep throughout the campaign</li>
+    <li>An <span class="definition">element</span> is a single unit of the core force.</li>
+    <li><span class="definition">Unit</span> is used synonymously to either element or core force.</li>
+</ul>
+<p class="subsection">Layout</p>
+<p>The user interface of Campaign Watcher is organized into the following tabs:</p>
+<ul>
+  <li><span class="prg_caption">Records</span> - Here you can manage your records, add new snapshots and set default folders. </li>
+  <li><span class="prg_caption">Roster</span> - This tab shows a list of the core units in a snapshot and all changes compared to the last snapshot.</li>
+  <li><span class="prg_caption">Pers. Files</span>This displays the changes for a single element across all snapshots.</li>
+  <li><span class="prg_caption">Report</span> - This are various status informations compiled from a single snapshot. </li>
+  <li><span class="prg_caption">Graphs</span> - Graphical representations for a number of statistics.</li>
+  <li><span class="prg_caption">Options</span> - This tab offers settings for default window size and printing.</li>
+</ul>
+<p class="subsection">Configuration</p>
+<p>When you start <span class="prg_name">Campaign Watcher for the first time,
+  you should set some default paths.</span> You can define up to five folders where <span class="prg_name">Campaign Watcher</span> will look for new saves.
+  Additionaly, you can set one folder where information in CSV format can be exported to.</p>
+<p>To set the paths:</p>
+<ol>
+  <li>select the folder you want to set from the list</li>
+  <li>use the drive/directory boxes to change the path</li>
+  <li>click Set Folder</li>
+</ol>
+<p>From now on, you can change to these folders directly by clicking on them. The
+  path to the selected folder is shown below the list of folders.</p>
+<p><span class="hint">Note</span>: An invalid path is shown in red.</p>
+
+
+
+<p class="section">Tab: Records</p>
+<p class="subsection">Creating a record</p>
+<p>Click on <span class="prg_caption">New record. </span>You will be prompted
+  for a filename and a title for the record. The filename appears in the listbox
+  to the left and becomes the current record. The filename and the title are displayed
+  at the top of the window. This title will also be the header for all printouts. </p>
+<p>To change the title later, doubleclick the titlebar at the top of the window.</p>
+<p>The listbox to the right on the <i>Records </i>tab will show saves of which snapshots have already been taken and added to the current record grayed
+    out. </p>
+
+<p class="subsection">Taking snapshots</p>
+<p>
+</p><ol>
+<li>Select the save(s) you want to include in
+  the record from the list to the right. For best results, saves from the very
+  start of each battle are recommended. (See also <span class="docu_caption"><a target="mainFrame" href="http://campaignwatcher.abross.de/manual.html#additional_info_hints">Additional
+  Information</a></span> below.)<br>
+  You can select multiple saves by using the standard Windows mouse/key combinations
+  (SHIFT/CTRL).<br>
+  For each save, the filename and the date in MM/DD/YY, HH (Turn) format are shown.</li>
+<li>Click on <span class="prg_caption">Add Snapshot(s)</span>.</li>
+</ol>
+<p>  You need to add at least one snapshot to be able to use the Roster
+  tab and at least two to be able to use the Graphs tab.</p>
+<p><span class="hint">Note:</span> As far as I know, saving is handled automatically for Mega Campaigns. So to take a snapshot at the start of a battle
+you probably have to exit the game, take the snapshot and return.</p>
+
+
+
+<p class="section">Tab: Roster</p>
+<p>The roster tab
+  displays information on all units in a snapshot. In the box to the right you
+  see a list of snapshots sorted by date/turn. The format of the dates is MM/DD/YY, HH (Turn).<br>
+  The buttons <span class="prg_caption">Prev</span> and <span style="">1st</span> toggle between different display modes:
+  </p><ul><li><span class="prg_caption">Prev</span> pressed: compare to previous snapshot</li>
+  <li><span class="prg_caption">1st</span> pressed: compare to first snapshot</li>
+  <li>both depressed: don't compare</li>
+</ul>
+<p>
+The meanings of the colors used are: <font color="#006600">good</font>,
+    <font color="#000099">neutra</font><font color="#000099">l,</font> <font color="#cc0000">bad</font>. An asterisk denotes a bailed crew.
+</p>
+
+<p><span class="hint">
+Note: To sort the table by different columns, click on the table headers.</span></p>
+
+<p class="subsection">Exporting the roster</p>
+<p>Above the snapshot list are two buttons, which both will export the roster
+  in CSV format (the tabulator character will be the delimiter).</p>
+<ul>
+  <li><span class="prg_caption">C</span> - Export to clipboard.</li>
+  <li><span class="prg_caption">E</span> - Export to file. You can choose the
+    path were the files will be created by setting the <span class="prg_caption">CSV
+    export</span> folder on the <span class="prg_caption">Records</span> tab.</li>
+</ul>
+<p class="subsection">Printing the roster</p>
+<p>Click on the <span class="prg_caption">Printer Setup</span> button to configure
+  your printer. See also tab <span class="prg_caption">Options</span>. Click
+  on <span class="prg_caption">Print</span> to send the currently displayed snapshot
+  to the printer.</p>
+
+<p class="section">Tab: Element history</p>
+
+<p>This tab works like the Roster tab, but instead of comparing two snapshots for all elements it compares all snapshot for a single element.</p>
+
+<p class="section">Tab: Report</p>
+<p>The Report tells you at a glance which units are the most experienced, have
+  the most kills etc. You could gather the same data by looking at the Roster, but using the Report should be more convenient.</p>
+
+<p class="section">Tab: Graphs</p>
+<p>Click on the <i>Graphs</i> tab for a number of graphs that visualize the development
+  of your forces over the timeframe covered by all snapshots.</p>
+<p>If you select <span class="prg_caption">Show turns</span>, multiple turns for
+  a given date (i.e. a single battle) will be spread out along the x-axis. Otherwise the first and last
+  turn (if available) for a single date are displayed. In neither case will the
+  graphs show values for more than one snapshot from the same date <b>and</b> turn.</p>
+<p>The <span class="prg_caption">Kills/Losses</span> graph is not affected by
+  the <span class="prg_caption">Show turns</span> button.</p>
+<p>You can select a unit class from the second dropdown box to filter the graphs by unit class. The filter is ignored by the
+<span class="prg_caption">Force Composition</span> and <span class="prg_caption">Kills/Losses</span> graphs.</p>
+
+
+<p class="subsection">Printing the graphs</p>
+<p>Click on the <span class="prg_caption">Printer Setup</span> button to configure
+  your printer. See also tab Options. Click on <span class="prg_caption">Print</span>
+  to send the currently displayed graph to the printer.</p>
+
+  <p class="section">Tab: Options</p>
+<p>Here you can set window behaviour and printing options. Changes will come in
+  effect once you hit <span class="prg_caption">Apply</span>.</p>
+<p class="subsection">Window size</p>
+<p>You can choose from <span class="prg_caption">800 x 600</span>,
+<span class="prg_caption">1024 x 768</span>,
+<span class="prg_caption">Custom</span>
+  and <span class="prg_caption">Maximized</span> window sizes.<br> Note that custom mode acts differently from the other options.
+  If custom is selected, pressing apply will cause the program to remember its current position and size.
+  In all other modes, hitting apply changes the window size to the selected value.
+</p>
+<p class="subsection">Roster printing</p>
+<ul>
+  <li><span class="prg_caption">Color</span> - As seen on the screen.</li>
+  <li><span class="prg_caption">Font styles</span> - Different font styles are
+    used to mark the changes.</li>
+  <li><span class="prg_caption">None</span> - Changes are not marked.</li>
+</ul>
+<p class="subsection">Graph printing</p>
+<ul>
+  <li><span class="prg_caption">Color</span> - As seen on the screen.</li>
+  <li><span class="prg_caption">Greyscales</span> - Optimized greyscale palette
+    instead of colors.</li>
+</ul>
+<p class="section">Additional information<a target="mainFrame" name="additional_info_hints"></a></p>
+<ul>
+  <li>The recommended turns for taking snapshots are either turn 0, before you click on "Quit Deploy" or turn 1, before you've done anything else.<br>
+    To also record KIAs and to improve accuracy for the <span class="prg_caption">Kills/Losses</span> graph, additionaly take one  snapshot from the last turn of each
+    battle.
+  </li>
+  <li>More snapshots won't hurt; not taking snapshots from the recommended turns will lessen accuracy of results.</li>
+  <li>Don't worry about taking snapshots in the correct order, as they will be sorted
+    automatically.</li>
+  <li>Duplicate snapshots will be filtered out.</li>
+
+</ul>
+<p class="section">Known issues &amp; limitations</p>
+<ul>
+  <li>The values for the <span class="prg_caption">Kills/Losses</span> graph and
+    the <span class="prg_caption">Kills since last battle</span> figure on the
+    Report tab may be slightly off.</li>
+  <li>Sometimes a formation leader gets killed and one of his subordinates takes
+    control. <br>
+    e.g. B0,B1,B2; B0 killed; B1 becomes new B0<br>
+    In these cases, CW will compare the new B0 to the old B0.<br>
+    <span class="hint">Note:</span> CW should handle manually reattached
+    units without any problems.</li>
+</ul>
+<p class="section">Homepage</p>
+<p>The homepage for Campaignwatcher is <a target="mainFrame" href="http://www.campaignwatcher.go.dyndns.org/">campaignwatcher.go.dyndns.org</a>. You can always get the newest version there.</p>
+<p class="section">Additional resources</p>
+<p></p><ul>
+<li><a target="mainFrame" href="http://campaignwatcher.abross.de/history.html">Change log</a></li>
+<li><a target="mainFrame" href="http://campaignwatcher.abross.de/disclaimer.html">Legal information</a></li>
+</ul><p></p>
+<p class="section">Contact</p>
+<p>If you have suggestions, questions, bug reports, comments etc. please feel free to 
+contact me at <a target="mainFrame" href="mailto:campaignwatcher_@abross.de">
+campaignwatcher_@abross.de</a> (remove the underscore for the adress to work).</p>
+</div>
+<!-- Woopra Code Start -->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<!-- Woopra Code End -->
+</body></html>

@@ -1,0 +1,119 @@
+--- LOGIC ---
+
+<unit has crew?>
+	NO : <unit has no leader?>
+		NO : leader found
+		YES: use unit #id as leader #id
+	YES: <crew has unit?>
+		NO : INVALID UNIT
+		YES: <crew unit == unit?>
+			NO : [GOTO <unit has no leader?>]
+			YES: <crew has no leader?>
+				NO : leader found
+				YES: [GOTO <unit has no leader?>]
+				
+
+--- FROM RAW DATA! ---
+
+***Good linkage:
+
+...
+oob=70 i=0x00000076 leader=0xffffffff crew=0x0000007c
+oob=70 i=0x00000077 leader=0xffffffff crew=0x0000007b
+...
+oob=70 i=0x0000007b leader=0x0000007b crew=0x00000077
+oob=70 i=0x0000007c leader=0x0000007c crew=0x00000076
+...
+
+unit 076, ldr fff, crew 07c:
+	hascrew: 07c, ldr 07c, crew 076
+		hasunit: 076 == 076
+			iscrew, leader = 07c
+
+unit 077, ldr fff, crew 07b:
+	hascrew: 07b, ldr 07b, crew 077
+		hasunit: 077 == 077
+			iscrew, leader = 07b
+
+unit 07b, ldr 07b, crew 077
+	hascrew: 077, ldr fff, crew 07b
+		hasunit: 07b == 07b
+			iscrew, leader = 07b
+
+unit 07c, ldr 07c, crew 076
+	hascrew: 076, ldr fff, crew 07c
+		hasunit: 07c == 07c
+			iscrew, leader = 07c
+
+
+***Bad linkage:
+
+...
+oob=80 i=0x000001c0 leader=0x000001c0 crew=0x0000ffff
+...
+oob=80 i=0x000001bf leader=0xffffffff crew=0x0000021f
+...
+oob=80 i=0x000001c2 leader=0xffffffff crew=0x0000021e
+...
+oob=80 i=0x000001c5 leader=0xffffffff crew=0x00000220
+...
+oob=80 i=0x000001e5 leader=0xffffffff crew=0x0000021e
+...
+oob=80 i=0x000001f6 leader=0xffffffff crew=0x0000021e
+...
+oob=80 i=0x000001fc leader=0xffffffff crew=0x0000021e
+oob=80 i=0x000001fd leader=0xffffffff crew=0x00000220
+...
+oob=80 i=0x0000021e leader=0x0000021e crew=0x000001fc
+oob=80 i=0x0000021f leader=0xffffffff crew=0x000001c0
+oob=80 i=0x00000220 leader=0x00000220 crew=0x000001fd
+...
+
+unit 1bf, ldr fff, crew 21f
+	hascrew: 21f, ldr fff, crew 1c0
+		hasunit: 1c0 != 1bf
+			isnocrew, hasnoldr: leader = 1bf
+
+unit 1c2, ldr fff, crew 21e
+	hascrew: 21e, ldr 21e, crew 1fc
+		hasunit: 1fc != 1c2
+			isnocrew, hasnoldr: leader = 1c2
+
+unit 1c5, ldr fff, crew 220
+	hascrew: 220, ldr 220, crew 1fd
+		hasunit: 1fd != 1c5
+			isnocrew, hasnoldr: leader = 1c5
+
+unit 1e5, ldr fff, crew 21e
+	hascrew: 21e, ldr 21e, crew 1fc
+		hasunit: 1fc != 1e5
+			isnocrew, hasnoldr: leader = 1e5
+
+unit 1f6, ldr fff, crew 21e
+	hascrew: 21e, ldr 21e, crew 1fc
+		hasunit: 1fc != 1f6
+			isnocrew, hasnoldr: leader = 1f6
+
+unit 1fc, ldr fff, crew 21e
+	hascrew: 21e, ldr 21e, crew 1fc
+		hasunit: 1fc == 1fc
+			iscrew, leader = 21e
+
+unit 1fd, ldr fff, crew 220
+	hascrew: 220, ldr 220, crew 1fd
+		hasunit: 1fd == 1fd
+			iscrew, leader = 220
+
+unit 21e, ldr 21e, crew 1fc
+	hascrew: 1fc, ldr fff, crew 21e
+		hasunit: 21e == 21e
+			iscrew, leader 21e
+
+unit 21f, ldr fff, crew 1c0
+	hascrew: 1c0, ldr 1c0, crew fff
+		INVALID UNIT
+
+unit 220, ldr 220, crew 1fd
+	hascrew: 1fd, ldr fff, crew 220
+		hasunit: 220 == 220
+			iscrew, leader 220

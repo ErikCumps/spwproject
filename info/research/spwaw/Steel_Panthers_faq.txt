@@ -1,0 +1,2582 @@
+=========================================
+STEEL PANTHERS FREQUENTLY ASKED QUESTIONS
+=========================================
+
+Maintained by Hong Ooi <hong@magna.com.au>
+
+Revision: 1.1, 24 September, 1996
+
+Contents:
+
+Introduction
+ Copyright
+ Disclaimer
+ Credits
+
+Before the battle
+ How do I get mines and dragons teeth?
+ How do I get my troops to dig in?
+ How do I upgrade my units?
+ Why can't I upgrade to Jagdpanthers?
+ When can I buy artillery?
+ When can I buy aircraft?
+ When can I buy mines and fortifications?
+ How do I do a preliminary bombardment?
+ How do I load my infantry on to vehicles?
+ How do I buy elite units (SS, rangers, paratroopers etc)?
+ Why do my support units get new equipment before my core?
+ In long campaigns, why does it sometimes seem to skip an entire year between
+  battles?
+ Why do I get non-historical battles (e.g., Polish Assault) in long campaigns?
+ Why can't I upgrade my (motorized) infantry's trucks to halftracks?
+ How do I stack units during deployment?
+
+Experience, morale and suppression
+ How do experience and morale work?
+ What is suppression, and what does it do?
+ How do pinning and retreating work?
+ How do I get rid of suppression?
+ How do I unbutton my tanks?
+ How do I get my crew back in their abandoned tank?
+ How does a leader's rating affect accuracy?
+
+Armour and infantry
+ How is accuracy calculated?
+ How do I stack units during a battle?
+ Does gun caliber affect armour penetration?
+ What do the armour thickness numbers mean?
+ How do I fire only my machineguns, or main gun?
+ Why do I lose main gun shots when I only fire machineguns?
+ What different sorts of ammo are there?
+ How do I force my tank to use HVAP ammo?
+ How are turreted and non-turreted vehicles vehicles different?
+ How do I destroy an abandoned tank/pillbox?
+ What is "OP" fire?
+ Is 0 range useful for anything?
+ Why can't I do overruns?
+ Why does the AI like tanks so much?
+ Sometimes I'm told my squad is "assaulting" a tank. What's this mean?
+ How can I make sure they always assault?
+ How do I stop the other side from assaulting my tanks?
+ How do I detect mines?
+ How do I clear a mined hex?
+ How do I use barges and barge-carriers?
+ How do I get my engineers to use their flamethrowers?
+ How do I lay smoke screens?
+ What effect do smoke screens have?
+ What effect do shell craters have?
+ How can I start fires?
+ What effect do fires have?
+ How do I destroy bridges?
+ What happens to a unit on a destroyed bridge?
+ What benefits are there to being on a higher elevation?
+
+Artillery and aircraft
+ What's a spotter for?
+ How do I call in fire support?
+ Why doesn't my Inf-Gun show up on the Bombardment menu?
+ Why can't I target certain hexes for indirect fire?
+ Does the computer artillery cheat?
+ Does on-board artillery have any use in this game?
+ Can I direct fire on-board mortars and artillery?
+ What's the difference between Panzer Artillery, Infantry Artillery, VG
+  Artillery, Corps Artillery, etc?
+ How do I use aircraft?
+ Why can I use some aircraft lots of times but not others?
+ Why does the AI take so many aircraft?
+ Why doesn't my AA shoot at planes?
+ Why don't they ever seem to shoot anything down?
+ Why did my plane attack my own unit?
+
+The Scenario Editor
+ How do I edit Victory Hexes?
+ Can I delete Victory Hexes?
+ How do I build straight north-south roads?
+ How do I create a startup description for my scenario?
+ How do I set the length of a scenario?
+ What are reaction points for?
+ What are waypoints for?
+ Can I tell the AI whether to stay put or be aggressive?
+ Why do my units retreat in the wrong direction?
+ Is there a limit to the number of unit types in an OB file?
+ Can I design my own mini-campaigns?
+ Can I use the doubler?
+ Side effects of the doubler
+ Why do my infantry units have passengers?
+ How do I avoid entrenching?
+ How do I entrench only Player 1 or 2?
+ How do I entrench only part of one player's units?
+ How do I get rid of entrenchments?
+ Can I get a running number for doubled formations?
+
+Patches and bugs
+ What patches are available?
+ Where can I download them?
+ What changes are implemented in each patch?
+ Which patches do I definitely need?
+ Do I need to install the patches in a set order?
+ Why doesn't the sound work?
+ Why does the game crash instantly when I start it?
+ When I load a saved game, all the smoke is gone.  Is this a bug?
+ What other bugs are there?
+ I've found a new bug. Who should I tell?
+
+Miscellaneous
+ How do I read the gun descriptions?
+ So what's this thing called SPEDIT?
+ Can my battle results affect the course of a long campaign? I.e., can I make
+  Germany win the war?
+ How do I play an email game?
+ Can I play a campaign game by email?
+ Will there be a modern-era version of Steel Panthers?
+ Are there any problems running SP on Windows 95 or OS/2?
+ Other resources
+
+
+
+Introduction
+============
+
+This is a list of frequently asked questions (FAQ) about Steel Panthers, the
+WWII tactical wargame from SSI. This list concentrates mostly on technical
+issues, as opposed to tactics; that is, getting the program to do what you want,
+rather than ways to beat your opponent. There are a number of places you can go
+to for tactical tips:
+
+- If you have Usenet access, point your browser at the newsgroup
+  comp.sys.ibm.pc.games.strategic.
+
+- The Tankers' Homepage maintains a SP discussion page on the World Wide Web:
+  <http://www.annurev.org/scripts/boards/tanker/spboard/spboard.htm>.
+
+- The major online services, eg AOL and Compuserve, have discussion forums on
+  wargames in general and SP in particular.
+
+- Pascal Ode offers a shareware strategy guide to SP. You can visit his
+  dedicated web site at <http://ourworld.compuserve.com/homepages/POde/> or mail
+  him at <100257.1375@compuserve.com> for more details.
+
+[Update: the Tankers Homepage has now closed down! It was good while it lasted,
+guys, I'm sorry to see it go.]
+
+
+
+Copyright
+---------
+
+This document is copyright (c) Hong Ooi, 1996 [or whoever I pass it on to].
+Unauthorised modification or publication for profit is prohibited. Basically,
+you can post this document WITHOUT MODIFICATION on public echos, discussion
+forums and newsgroups; if you want to put it in a magazine or magazine
+supplement which is to be sold for the purposes of making money, you should ask
+me first.
+
+The material contributed by Pascal Ode (and attributed to him) was collected
+from a number of sources, including discussions on Compuserve forums and an
+article by Peter Smith in Strategy Plus magazine.
+
+
+
+Disclaimer
+----------
+
+Information in this document is not guaranteed to be correct. I've made every
+effort to ensure it _is_ correct, but by Murphy's Law something always slips
+through. Similarly, I take no responsibility for any horrible things that might
+happen to your computer/house/life/neighbourhood/continent if you use the advice
+contained herein. You uses it, you takes your chances!
+
+
+
+Credits
+-------
+
+This document was put together with the help of a lot of people, including:
+John Waters <jwaters722@aol.com>
+Arnaud Bouis <abouis@easynet.fr>
+Paul Calvi <TankerM60@aol.com>
+Mikkel <mikkel@community.net>
+Tuomas Seijavuori <tseijavu@cc.hut.fi>
+Martin Rapier <m.rapier@shef.ac.uk>
+Bill Thacker <wbt@cbemg.cb.att.com>
+Pascal Ode <100257.1375@compuserve.com>
+sstale@sn.no (Staale Sannerud)
+Tim (whoever you are :) )
+...as well as many others.
+
+Responsibility for any errors in this document is taken by the maintainer. If
+you find a mistake, or you think something should be included but isn't, or if
+you think something is included that should be deleted, send me an email at
+hong@magna.com.au and I'll fix it.
+
+
+
+Before the battle
+=================
+
+How do I tell which version of SP I have?
+-----------------------------------------
+
+Move the mouse cursor over the leftmost button in the lower row on the SP main
+menu screen ("Design your own battle", or whatever the button reads.)  The
+version number will then appear in the title bar at the top of the screen.
+
+                                               -- sstale@sn.no (Staale Sannerud)
+
+
+
+How do I get mines and dragons teeth?
+-------------------------------------
+
+Mines and/or dragons teeth are only available if you're playing a "defend"
+scenario.
+
+First, you have to buy them from the Misc menu, when you're selecting your
+forces. What you buy is a "pool" of points, which you can allocate to either
+mines or dragons teeth (1 point=1 mined/obstructed hex). In the deployment
+screen, press X; this will let you select which hexes to mine. You can place
+multiple mines/dragons teeth per hex; this just makes it more difficult to clear
+and (for mines) more likely to inflict damage on anyone passing through.
+
+
+
+How do I get my troops to dig in?
+---------------------------------
+
+If you're playing an "assault" or "defend" scenario, your infantry and on-board
+artillery automatically starts the battle entrenched. You cannot entrench DURING
+the battle (although infantry can re-occupy abandoned trenches).
+
+Your vehicles will only start the game entrenched if you're the defender in a
+"defend" scenario.
+
+Neither artillery nor vehicles can re-occupy abandoned positions.
+
+
+
+How do I upgrade my units?
+--------------------------
+
+In the campaign battles, a player can upgrade his/her units between battles.
+After each battle, you'll see the repair/upgrade units screen. Click on the
+"Change" button, then click on the unit you wish to upgrade. You will be
+presented with a list of units you can upgrade to. Just click on the desired
+unit.
+
+You can only upgrade within each "type", ie armour/artillery/infantry. So for
+example, you can change a Pz-IIIj (armour) to a Panther, or a rifle squad
+(infantry) to an engineer squad, but you can't change a Pz-IIIj to an engineer
+squad. The only exception is the A0 unit, which can be switched between armour
+and infantry as desired.
+
+Note that upgrading units results in loss of experience! You will lose about 5
+experience points every time you upgrade.
+
+
+
+Why can't I upgrade to Jagdpanthers?
+------------------------------------
+
+This is a bug in versions 1.1 to 1.17x. Basically if you're playing the Germans,
+there are "too many" types of units late in the war to fit on the menu. This has
+been fixed in 1.18x. (On the other hand, the menu now lists all sorts of
+"garbage" items -- Russian infantry squads, British planes, mines, etc. I
+haven't tried choosing one of these garbage items yet. Anyone been game to find
+out the effect of this new bug?)
+
+--
+This is a bug in the upgrade screen.  If there are more upgrade options than fit
+on one screen, the extra options cannot be selected.  There is a very short (one
+month) time window, immediately after the Jagdpanther is introduced, where it
+will appear for selection; after that, the appearance of new tanks forces it off
+the screen.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+When can I buy artillery?
+-------------------------
+
+In the canned scenarios, you sometimes have it and you sometimes don't. In the
+campaign battles, you have to buy artillery, just like tanks, halftracks or
+infantry. If you don't buy any arty, you can't use it.
+
+There is a difference between off-board artillery and on-board artillery. Off-
+board artillery can only be purchased if you are playing an "assault" or
+"defend" battle. On-board artillery, like mortars or self-propelled guns like
+the US Priest or German Hummel, can always be purchased (if you have enough
+points).
+
+
+
+When can I buy aircraft?
+------------------------
+
+Aircraft availability depends on the year and the weather. Basically, the
+Germans and Japanese can count on air superiority for the first half of the war.
+This means they have a greater chance of having air support available. The
+opposite goes for the Allies -- they can count on having air support in the
+latter part of the war. Also, summer months generally have better chances of
+aircraft being available.
+
+As far as I know, it's not possible for both sides to buy aircraft in the one
+battle. On the other hand, it's quite possible for both sides to NOT be able to
+buy aircraft -- so just because it's 1939 and your Germans are invading Poland,
+that doesn't mean you'll definitely be able to buy Stukas for support.
+
+
+
+When can I buy mines and fortifications?
+----------------------------------------
+
+Only when you're fighting a "defend" battle. Mines and forts appear on the Misc
+menu when you're making your selections.
+
+
+
+How do I do a preliminary bombardment?
+--------------------------------------
+
+On the deployment screen, make sure you have your chosen spotter unit selected,
+then click on the bombard icon or press B on the keyboard. You will see a list
+of the artillery available to you. Click on a hex where you want your
+bombardment to land, then click on the Bombard icon for the unit you want to
+fire at that hex. Repeat for all arty/aircraft units. The bombardment will
+arrive just before the first game turn.
+
+If you want to lay down a smoke screen, follow the same procedure, except that
+instead of clicking on the Bombard icon, click on the Smoke icon.
+
+
+
+How do I load my infantry on to vehicles?
+-----------------------------------------
+
+Select the infantry unit, then press L or click on the Load button. Click on the
+vehicle on which you want to load the infantry.
+
+
+
+How do I buy elite units (SS, rangers, paratroopers etc)?
+---------------------------------------------------------
+
+If you're playing a campaign game or a generated battle, you can't. SP doesn't
+provide any units with special morale or experience. There are units like SS
+panzer platoons, commando squads, or fallschirmjager (paratroop) platoons, but
+this is a bit misleading: commando squads have extra weapons compared to normal
+infantry, and SS panzer platoons have five tanks compared to the normal four,
+but otherwise these units are of average quality.
+
+If you're creating your own scenario, of course, there's nothing to stop you
+from making "elite" units of your own.
+
+
+
+Why do my support units get new equipment before my core?
+---------------------------------------------------------
+
+That's just a quirk of the way the long campaign works. You get to upgrade your
+units AFTER each battle, rather than BEFORE. Say your first battle is in
+December 1941. After the battle, you get a chance to upgrade to whatever
+equipment is available in December 1941. But the next battle might be in June
+1942, so when you go to buy support units, they'll have equipment relating to
+June 1942. If you survive this battle, you can then upgrade to June 1942
+equipment as well.
+
+--
+It's a matter of timing.  Say you start a campaign in 1/41.  You buy your core
+units, buy support, and fight a battle.  You can then repair/upgrade your core
+units; all of this happens in 1/41.  Next, the calendar advances to your next
+battle, in 3/41.  You buy support units, and they include everything available
+in 3/41: but your core units are still from 1/41. After you finish the battle,
+they can be upgraded to 3/41 equipment.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+In long campaigns, why does it sometimes seem to skip an entire year between
+battles?
+----------------------------------------------------------------------------
+
+The game skips over periods when, historically, there was little or no ground
+action on the part of your nationality. For example, historically the German
+Army didn't take part in much fighting between June 1940 (when France fell) and
+April 1941 (when Germany invaded Yugoslavia). So if you're playing the Germans,
+you won't see much action in this period either. The same goes for the other
+nationalities, eg the Russo-Finnish war concluded in March 1940, and the
+Russians were then mostly idle until the Germans invaded in June 1941.
+
+
+
+Why do I get non-historical battles (e.g., Polish Assault) in long campaigns?
+-----------------------------------------------------------------------------
+
+The battles are generated more-or-less randomly in long campaigns (as opposed to
+short campaigns, which are designed with a realistic "script.") You will get
+accurate theaters and locales (i.e., no combat in Western Europe in 1942, and no
+battles at Stalingrad in 1944), but the type of engagement is apparently random.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+Why can't I upgrade my (motorized) infantry's trucks to halftracks?
+-------------------------------------------------------------------
+
+The type of infantry you get (foot, motorized or mechanized) is fixed when you
+start a campaign. At the moment there is no way to change this once the campaign
+is underway.
+
+--
+Choosing motorized or mechanized infantry increases the infantry's cost, but as
+a bonus their transport is provided "free", without counting against your 48-
+unit limit. This "organic" transport cannot be accessed for upgrades.  You will
+end the war with whatever sort of transport you choose at the beginning of the
+campaign.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+How do I stack units during deployment?
+---------------------------------------
+
+Normally you're not supposed to stack units during deployment, but there is a
+workaround that will let you stack as many _infantry_ units (not vehicles) in a
+hex as you like. Put a vehicle in the hex where you want your men. Load the
+first infantry squad on the vehicle and unload it again. It will appear in the
+hex. Repeat with every squad.
+
+--
+I've found two ways, both by accident (sort of). They're kind of kludgy, but
+they work.
+
+First, you can load, then unload a carrier vehicle. The passengers dismount into
+the same hex as the carrier. This is how you may put tanks (or HT's) and
+infantry in the same hex. Placing a vehicle first, then loading/unloading
+successive squads of an infantry platoon on it could conceivably place the
+entire platoon in one hex.
+
+Second, you can deploy two formations so that they overlap one another. This
+will tend to put more than one unit in a hex. (This uses the "formation deploy"
+button.)
+
+By combining the two techniques, you might conceivably place several vehicles
+*and* several squads in a hex. We might consider this a bug, since we cannot
+*move* more than two units into a hex under normal conditions ... but I've seen
+two loaded vehicles in the same hex "drop their loads," as it were [g] when
+taking fire, resulting in four units in the hex.
+
+If you try this ... expect airstrikes and artillery [g}. You've created a
+*really* nice target.
+
+                                      -- Mitch Cobb <Mitch.Cobb@mail.utexas.edu>
+
+
+
+Experience, morale and suppression
+==================================
+
+How do experience and morale work?
+----------------------------------
+
+The quality of your troops is governed by two statistics, experience and morale.
+In general, green troops have low values for both of these, while highly
+experienced troops have high values. Highly experienced units have better
+chances to spot enemy units and to hit when they fire their weapons. Units with
+high morale are less likely to suffer suppression effects (see below) and are
+less likely to break and run when taking severe casualties.
+
+Different nationalities have different base experience and morale values. These
+values are also affected by the year. In general, the Germans and Japanese have
+the highest experience and morale early in the war, but their troop quality
+slowly declines after 1942. The Allies have low experience and morale early on,
+but gradually improve.
+
+Here are the morale and experience tables of Steel Panthers for each nationality
+and year of the war. Courtesy of Jim Wirth.
+
+--
+This is the _base_ experience/morale. To this base is added a random number
+between 0 and 20 for each unit. 10 is then added if the force is elite, and
+substracted if green. This yields your final experience and morale.
+
+EXPERIENCE TABLE
+
+NATIONALITY     1939   1940   1941   1942   1943   1944   1945
+
+GERMAN            65     70     75     70     65     60     50
+FINNISH           70     70     70     65     65     60     55
+ITALIAN           35     35     40     40     30     30     30
+RUMANIAN          35     35     35     35     30     25     25
+HUNGARIAN         35     35     35     35     30     30     30
+JAPANESE          70     70     70     70     65     65     60
+FRENCH            45     45     50     55     50     55     55
+BRITISH           50     50     50     55     55     55     55
+GREEK             45     45     45     50     55     55     55
+BELGIAN           45     45     45     45     45     45     45
+DUTCH             45     45     45     45     45     45     45
+NORWEGIAN         45     45     45     45     45     45     45
+POLISH            45     45     50     55     55     55     55
+YUGO-SLAV         45     45     45     40     45     50     55
+SOVIET            35     40     45     50     55     60     55
+US ARMY           40     40     45     45     50     55     60
+US MARINE         55     55     55     60     65     70     70
+CHINESE           30     30     30     35     40     40     40
+
+
+MORALE TABLE
+
+NATIONALITY     1939   1940   1941   1942   1943   1944   1945
+
+GERMAN            70     70     70     70     70     65     55
+FINNISH           70     70     70     65     65     60     55
+ITALIAN           30     30     30     30     25     25     25
+RUMANIAN          25     25     25     25     25     25     25
+HUNGARIAN         30     30     30     30     25     25     25
+JAPANESE          70     70     70     70     70     70     70
+FRENCH            45     45     55     60     55     60     55
+BRITISH           60     60     60     60     60     60     55
+GREEK             60     60     60     60     60     60     60
+BELGIAN           45     45     45     45     45     45     45
+DUTCH             45     45     45     45     45     45     45
+NORWEGIAN         45     45     45     45     45     45     45
+POLISH            60     55     60     60     60     65     60
+YUGO-SLAV         45     45     45     50     55     60     65
+SOVIET            35     40     45     50     55     60     65
+US ARMY           40     40     45     50     55     55     60
+US MARINE         65     65     65     70     70     70     70
+CHINESE           35     35     35     40     40     40     40
+
+                                                                    -- Jim Wirth
+
+
+
+What is suppression, and what does it do?
+-----------------------------------------
+
+Suppression is a general term for stress suffered by troops in combat. It's
+basically what happens when a unit comes under fire, forcing the men to take
+cover, button down hatches, etc. A unit can be suppressed even if it doesn't
+take actual casualties.
+
+Some things that can cause suppression:
+
+- Being fired upon (shots that hit will cause more suppression than those that
+  don't, but all will cause suppression).
+
+- Coming under artillery bombardment or being strafed by an aircraft.
+
+- Being "out of contact", ie more than 5 hexes away from their HQ unit or the
+  overall HQ unit. Units with radios are never out of contact.
+
+- If there are more enemy units sighted than friendly ones.
+
+- Destruction of a friendly unit.
+
+- Being in a burning hex.
+
+- For infantry, unsuccessfully assaulting on a vehicle (successful assaults
+  don't cause suppression).
+
+- Infantry units reduced to below half strength will start each turn on 10
+  suppression points minimum.
+
+Some effects of suppression:
+
+- Reduced accuracy (the more highly suppressed, the worse it gets).
+
+- Reduced chance to spot enemy units.
+
+- Reduced number of shots per turn.
+
+- Enough suppression can cause the unit to be pinned or buttoned, or even rout.
+  See below for more on this.
+
+- Infantry units with more than 5 suppression points cannot assault vehicles.
+
+
+
+How do pinning and retreating work?
+-----------------------------------
+
+--
+Unit get supression points because of enemy fire and all other kind of combat
+stress. When a unit's supression level reaches its morale divided by 10 (rounded
+down) the unit is pinned [or buttoned, for vehicles -- HO]. When it reaches the
+double it retreats, when it reaches the triple it routs.
+
+                                      -- Pascal Ode <100257.1375@compuserve.com>
+
+--
+Pinned units lose all their movement points, but can still fire (at reduced
+accuracy). Buttoned vehicles have normal movement points, but severely reduced
+shots. Retreating and routed units lose all movement points (their movement is
+controlled by the computer), and usually lose all their shots as well. Sometimes
+retreating/routed units will have shots left, but you can't use them -- they're
+solely for opportunity fire.
+
+If a vehicle is immobilised, its crew are still subject to suppression effects.
+If the crew get enough suppression points to "retreat", they will abandon their
+vehicle.
+
+
+
+How do I get rid of suppression?
+--------------------------------
+
+You have to "rally" your unit. Select the unit, and press R or click the Rally
+button. The chance for success depends on your unit leader's Rally skill. If the
+rally is successful, the suppression of the unit is halved (round down). If the
+unit's own leader (usually a Sergeant or equivalent) is unsuccessful, the unit's
+platoon/section leader, if within 5 hexes, then has a chance to rally. If that
+leader is unsuccessful, the overall formation leader (again, must be within 5
+hexes) has a go. However, once any leader fails a rally check, they CANNOT rally
+again that turn.
+
+Also, if you have auto-rally turned on, all your units will attempt to rally at
+the end of the turn. Auto-rally is turned on by default.
+
+--
+I'm playing version 2.0. There the order is inverted: First the overall
+formation leader (A0) tries to rally, then the section leader, and only if this
+is unsuccessful, the own leader tries to rally.
+
+                              -- "Vojtech V. Terber" <100111.306@CompuServe.COM>
+
+
+
+How do I unbutton my tanks?
+---------------------------
+
+Tanks and other vehicles are assumed to be always unbuttoned. The only exception
+is when they get enough suppression points to rate as buttoned. If you rally
+your units, they'll be unbuttoned the next turn (provided they don't get shot at
+again).
+
+
+
+How do I get my crew back in their abandoned tank?
+--------------------------------------------------
+
+Rally them so they're not retreating any more; then move them back into the hex
+where their vehicle is. Next turn, they'll climb back in. Of course, re-crewing
+a tank that's been targeted by the other side may not be conducive to the crew's
+health...
+
+
+
+How does a leader's rating affect accuracy?
+-------------------------------------------
+
+The following applies to 1.1, and probably to later patches as well, although
+the rules are said to have been tweaked a bit.
+
+--
+When firing at a target there is a base chance to hit that target depending on
+weapon accuracy and range.
+
+There is 50 % chance this base chance will be modified by the unit's experience
+level , a 25 % chance that it will be modified by the unit's leader's skill
+level and a 25 % chance that it will be modified by the unit's formation skill
+level.
+
+Once this basic accuracy has been determined , there is an accuracy check
+against the apropriate skill, if it fails the unit fires at 1/4 its base
+accuracy. If the units succed the check it attempts a second one, if it succeds
+the base accuracy is multiplied by 1.5 if it fails the second check there is
+simply no modifier to the base accuracy.
+
+                                      -- Pascal Ode <100257.1375@compuserve.com>
+
+
+
+Armour and infantry
+===================
+
+How is accuracy calculated?
+---------------------------
+
+-- Effect of terrain and status on poor little grunts and soft targets:
+
+The progam calculates an attack stength based on some sophisticated algorythm
+including HE rating , size of shell and so on. If the target is hit then the
+attack strength is modified according to the following factors:
+
+-Hard cover:
+divide by 8 if unit is dug in
+divide by 4 (or 8 if small arms fire) if unit is positioned or pinned
+
+-Soft cover:
+divide by 6 if dug in infantry
+divide by 3 if target unit is positioned or pinned
+divide by 4 if target is a dug in gun
+
+-Clear:
+divide by 4 if target is dug in infantry
+divide by 3 if target is dug in gun
+divide by 2 if target is pinned or positioned
+multiply by 2 if target is moving
+
+In addition to all the above mentioned modifiers divide by 6 if the unit is dug
+in and didn't fire for one turn.
+
+exemple infantry moving in the open should be 2x8 = 16 times more vulnerable
+than their collegues dug in hard cover.
+
+What is hard cover , what is soft cover ? I don't know exacly but my
+"guestimate" is hard building and bunkers are hard cover , wooden buildings ,
+trees , jungle and so on are soft cover. And clear terrain is clear.
+
+                                      -- Pascal Ode <100257.1375@compuserve.com>
+
+--
+        ACCURACY MODIFIERS IN STEEL PANTHERS
+        -------------------------------------
+
+HE shells
+---------
+if (range > 10 + 2 * fire control)                                   Acc = 2
+
+non-HE shells                                       Acc = Acc + fire control
+-------------
+Player level is HARD                                         Acc = Acc * 2/3
+Player level is EASY                                         Acc = Acc * 4/3
+firer experience                                 Acc = Acc * experience / 65
+If player level is EASY                      fire control = fire control + 3
+
+fire at  HARD TARGET
+--------------------
+target size                                      Acc = Acc * target size / 4
+first shot at target                                           Acc = Acc / 4
+second shot at target                                          Acc = Acc / 2
+Target is aircraft                                             Acc = Acc / 2
+target is retreating and player level is not EASY              Acc = Acc / 2
+target speed         Acc = Acc * (40 + fire control - 2 * target speed) / 40
+
+Experience
+(there is a 50% chance that leader skill is used instead
+of firer's experience)
+if random(100) > experience                                    Acc = Acc / 4
+else if random(100) > experience - 60                      Acc = Acc * 3 / 2
+
+SUPPRESSION
+No suppression                                             Acc = Acc * 3 / 2
+Firer is aircraft                                              Acc = Acc * 2
+Firer is pinned or buttoned                                    Acc = Acc / 2
+firer speed                                Acc =  Acc * (40 - 4 * move) / 40
+or if firer's move > 10                                        Acc = Acc / 8
+
+HULL DOWN PROTECTION
+Target is considered hull down if :
+- the target is not a fortification
+- the firing weapon is not a mortar (lobbed fire)
+- firer is not adjacent
+- target is dug-in OR in trees OR in buildings OR in rough OR the firer
+  is at least one elevation level below the target
+
+if target is hull down                                         Acc = Acc / 3
+
+fire at SOFT TARGET
+-------------------
+Experience
+(there is a 50% chance that leader skill is used instead
+of firer's experience)
+if random(100) > experience                                    Acc = Acc / 4
+else if random(100) > experience - 60                      Acc = Acc * 3 / 2
+
+firer is aircraft                                              Acc = Acc * 4
+firer is pinned or buttoned                                    Acc = Acc / 2
+firer is moving                                                Acc = Acc / 2
+target is artillery                                            Acc = Acc * 2
+Second or later shot at same target                            Acc = Acc * 2
+
+Minimum and maximum modified accuracy
+-------------------------------------
+Minimum accuracy for short range
+if range < 6 and Acc < (exp / range)                       Acc = exp / range
+
+Final minimum and maximum modified accuracy cannot be lower than 2 nor greater
+than 99.
+
+                                             -- Arnaud Bouis <abouis@easynet.fr>
+
+
+
+How do I stack units during a battle?
+-------------------------------------
+
+Select the unit you wish to move into the stack hex, then hold the SHIFT key
+while clicking on the hex.  Only two units may be stacked this way. You can
+overstack past the two-unit limit by moving infantry/gun units adjacent to a
+stack containing a transport unit, loading them onto that transport, then
+unloading them into the stack hex.  Barges can be used to overstack tanks on
+shore hexes in this same way.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+Does gun caliber affect armour penetration?
+-------------------------------------------
+
+Yes. For example, a German 88mm/L56 gun has a nominal AP value of 17, which is
+the same as that of the British 17pdr firing normal AP ammo. The 17pdr has a
+caliber of 76mm, so the German gun will actually have BETTER penetration than
+the British gun.
+
+
+
+What do the armour thickness numbers mean?
+------------------------------------------
+
+It seems to be a _rough_ analogy between the armour number and the thickness in
+cm of the armour plate in real life. An armoured car would have 1-2 cms of
+armour, and this agreen with the SP numbers. A Panther tank had an 8-cm frontal
+armour plate while the frontal armour rating is 11(?) in SP - but the frontal
+armour was sloped, increasing the effective armour. 5 cm (or was it 6?) of side
+and rear armour.The Tiger 1 had 10 cm of frontal armour, 8 cm at the sides, at a
+90 degree angle. Seems to tally well with the SP value.
+
+                                               -- sstale@sn.no (Staale Sannerud)
+
+
+
+How do I fire only my machineguns, or main gun?
+-----------------------------------------------
+
+In version 1.12x and later you can select your weapons by clicking on the firing
+unit and pressing the S key.  (This requires that your unit already has a
+target.)  A pop-up menu will let you choose a particular weapon or ammo type.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+Why do I lose main gun shots when I only fire machineguns?
+----------------------------------------------------------
+
+You can think of "shots" as units of time.  If you choose to fire only your
+machineguns at a target, that time is also lost for your main gun.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+What different sorts of ammo are there?
+---------------------------------------
+
+AP = armour piercing ammo.
+HE = high explosive ammo (not good against armour).
+HEAT = high explosive anti-tank.
+HVAP = some other kind of anti-tank armour, high-velocity armour
+piercing?
+
+                                           -- d89-tgl@nada.kth.se (Tobias Gladh)
+
+--
+HVAP (High Velocity AP) and HEAT (High Explosive AT) are special types of AP
+ammo. They are more effective than ordinary AP rounds for that gun (greater
+penetration) but are in short supply.
+
+>If gun 1 has a HEAT=10 AP=0 and gun 2 has HEAT=0 and AP=10, which is
+>better? Why?
+
+Gun 1 is obvously an anti-infantry gun that has some special AP shells available
+just in case. Gun 2 is an anti-tank gun, and doesn't need HEAT. HEAT is just a
+way of giving a non-AT gun an anti-tank capability. Look at the StuH, it has a
+105mm main gun for anti-infantry purposes. It is useless at firing ordinary AP
+shells (the shell will simply be traveling too slow to slam through an armour
+plate), so they developed a special AP round that does its damage by exploding
+outside the armour plate rather than penetrating through it.
+
+                                               -- sstale@sn.no (Staale Sannerud)
+
+--
+In SP, "HVAP" ammo is really a catch-all for the many types of special anti-tank
+rounds available in WWII: APC (armour-piercing capped), APCBC (armour-piercing
+capped, ballistic capped), APDS (armour-piercing discarding sabot -- still used
+today, in fin-stabilised form), APCR (AP composite rigid). In game terms, these
+rounds all do much the same thing as HVAP, so they're treated the same. The only
+exception is HEAT, which is treated separately.
+
+
+
+How do I force my tank to use HVAP ammo?
+----------------------------------------
+
+There is no way to choose which type of _ammo_ you want to fire for your main
+gun, as opposed to choosing which _weapons_ you want to fire. The program makes
+the decision to fire AP, HE, HEAT or HVAP ammo itself. In general, it will fire
+HE rounds at "soft" targets (infantry and artillery) and AP rounds at "hard"
+targets (tanks, bunkers and pillboxes). If the target is a tank that has too
+much armour for AP rounds to penetrate easily, there is a chance for using HVAP
+instead.
+
+
+
+How are turreted and non-turreted vehicles vehicles different?
+--------------------------------------------------------------
+
+Turreted vehicles (tanks and armoured cars) get more shots per turn, and they
+recover their shots faster each turn. Also, non-turreted vehicles are limited to
+a one hexside facing change when using OP fire, and they spot enemies less
+easily when buttoned.
+
+
+
+How do I destroy an abandoned tank/pillbox?
+-------------------------------------------
+
+Move a unit adjacent to the abandoned tank or pillbox.  Next turn, the tank
+or pillbox will be destroyed.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+What is "OP" fire?
+------------------
+
+Short for opportunity fire. That's when your unit spots an enemy unit moving or
+shooting during the other side's turn, and shoots back on its own initiative.
+You can set the maximum range at which your unit will use OP fire, so they won't
+shoot at anything further away.
+
+
+
+Is 0 range useful for anything?
+-------------------------------
+
+No. Setting the range to 0 means your unit will never do OP fire. If you want to
+setup an ambush, set your OP fire range to 1 (or better still, hide your unit
+behind a hill or behind smoke).
+
+--
+Setting the range to 0 will prevent your squads from firing at all.  Range
+should be set to one hex, so they will shoot when an enemy moves adjacent to
+them.  Some people like to use snipers or infantry AT teams as "observers", and
+set their range to zero.  If your opponent is poor at spotting (e.g., early-war
+Russians), they often cannot spot these units even at one-hex range, because the
+sniper never fires.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+--
+The set range button is useful for a couple of things:
+
+1) If you want to set an ambush with Engineers for advancing enemy armor, place
+them in a wooded area with range 1.  That way they won't blow their cover until
+the tanks have reached them.
+
+2) If you're worried about air attacks, set your 88's or whatever to a medium
+range to avoid them taking low percentage pop shots at distant enemy armor.
+
+                                          -- David Pollock <pollockd@beloit.edu>
+
+
+
+Why can't I do overruns?
+------------------------
+
+If you fire at an adjacent infantry unit, and force them to retreat, and you
+still have movement points left, you can move your unit into the vacated hex.
+This is considered an overrun.
+
+
+
+Why does the AI like tanks so much?
+-----------------------------------
+
+It appears that the only thing that affects what units the AI takes is the cost.
+In other words, there are no adjustments for theatre (Europe vs Pacific), date
+(Panthers always cost the same whether it's mid-1943 or late 1944), or
+reliability. The end result is that the AI almost always takes _some_ tanks in
+its force, and depending on the scenario, it may have a _lot_ of tanks.
+
+In some cases, eg an assault on the Russian front, this is reasonable. If you're
+playing in the Pacific, however, facing hordes of tanks is totally unrealistic.
+One solution to this problem is to use Nick Bell's SPEDIT program to increase
+the costs of all tanks in the game. See below for more on SPEDIT.
+
+
+
+Sometimes I'm told my squad is "assaulting" a tank. What's this mean?
+---------------------------------------------------------------------
+
+Normally, an infantry squad is assumed to fire at a tank from a distance with
+their rifles and MGs. Assaulting is when they jump up on the tank itself and try
+to stick anti-tank mines on its sides, blow it up with satchel charges, etc.
+
+Bottom line: infantry have a much better chance of killing a tank if they
+assault it. In turn, infantry with special AT weapons are much better at
+assaulting tanks than those without. This includes satchel charges, AT mines,
+flamethrowers, bazookas, PIATs, panzerfausts, molotovs, and pole mines. It does
+NOT include grenades or rifle-grenades. Also, infantry AT-sections armed with AT
+rifles and panzerschrecks don't seem to assault no matter what.
+
+
+
+How can I make sure they always assault?
+----------------------------------------
+
+Infantry can only assault a tank when it's adjacent. Also, they have to have 5
+or less suppression points and not be pinned. (That is, if a squad starts a turn
+pinned, but you rally it until its suppression is 5 points or less, you still
+can't assault.)
+
+
+
+How do I stop the other side from assaulting my tanks?
+------------------------------------------------------
+
+Load infantry on to your vehicles. They will absorb the assault, leaving the
+vehicle unharmed. On the other hand, there is a chance the infantry will take
+casualties.
+
+--
+mserafin@chinook.halcyon.com (Mark A. Serafin) wrote:
+
+>    Also, is it now a feature that infantry loaded on a tank that is
+>close-assaulted are automatically wiped out, even when the assault
+>fails?  IF this is a feature (or ven just a bug, I suppose) it changes
+>one's tactics drastically, and makes attacks much slower.
+
+Yeah. That started with 1.16, I'm pretty sure (I've turned chicken over 1.18 and
+haven't tried it yet, so it's not that one). I think it's a feature and it makes
+a bit of sense if you think about it. Troops hugging a tank turret with a couple
+up fromt to keep an eye out are just not as alert as if they were walking. They
+may keeop the tank from being blown in an ambush, but the cost to themselves
+would be standing (or catching :O) in fromt of the path of  a satvhel charge or
+getting roasted by a flame thrower. Not too many men would be left in that
+confusion.
+
+                                          -- Cha_Cha@ix.netcom.com (Clay Cahill)
+
+--
+Yes it does make sense, EXCEPT in 1.18x & 1.19x in a majority of the assaults
+are getting through to the tank destroying it w/o the Tank riders absorbing the
+attack. Ex, Sov, Rifle Sqd assaults PIVH with grenadiers on board, Soviets
+destroy the tank in assault, the grenadiers magicaly appear in the burning hex
+with a morale loss.
+
+                                             -- John Waters <JWaters722@aol.com>
+
+
+
+How do I detect mines?
+----------------------
+
+In versions older than 1.13x, mines are only detected by stepping on them.  In
+later versions, mines can be detected at fairly long range, after you click the
+"End Turn" button.  If engineers or mine-clearing vehicles move into a mined
+hex, they usually detect the mines (and halt) without detonating them.  (I have
+seen low-experience engineer units fail to detect mines and suffer casualties
+trying this.)
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+How do I clear a mined hex?
+---------------------------
+
+You'll need engineers and/or an engineer tank, eg the Sherman Crab. If they're
+not already in the mined hex, move them adjacent to the hex and face them
+towards it. At the end of the turn, you'll see messages like "Engineer squad
+clears X mines" or "Engineer squad clears a path through mines". When you see
+the second message, the hex is safe to move through.
+
+There is also currently a bug/feature where any infantry unit, not just
+engineers, will clear mines in the hex it's in. This may (or may not) be changed
+in future patches.
+
+--
+Try positioning two engineer units in the same hex, adjacent to the minefield,
+and they will clear it twice as fast. If you put engineers in several hexes
+adjacent to the same minefield, it will be cleared even faster.
+
+                                               -- sstale@sn.no (Staale Sannerud)
+
+
+
+How do I use barges and barge-carriers?
+---------------------------------------
+
+Barge carriers are only useful in river crossing scenarios.
+
+First, drive the barge carrier into a shore hex. Click on an adjacent water hex;
+this will automatically unload the barge into the water. Next, drive your tank
+adjacent to the barge, and load it on to the barge (press L, just like loading
+any other unit). You can then move the barge to the other bank.
+
+When you get to the other bank, move the barge on to a shore hex, and the tank
+will disembark automatically.
+
+
+
+How do I get my engineers to use their flamethrowers?
+-----------------------------------------------------
+
+You'll have to use the "direct fire at hex" function. Select the engineer squad,
+press Z, and click on an adjacent hex.
+
+(Note: in patches 1.15x and above, engineers will now use their flamethrowers on
+any target that's adjacent -- provided they don't retreat when hit by the
+engineers' rifle and grenade fire.)
+
+
+
+How do I lay smoke screens?
+---------------------------
+
+Smoke screens can be laid either using artillery, or with infantry. To lay smoke
+screens using artillery, see below on "How do I call in fire support?"
+
+To lay smoke with infantry, select the infantry squad, click on the hex you want
+to smoke, then press the X key. The hex must be in LOS to the infantry unit, and
+it must have smoke ammo available.
+
+
+
+What effect do smoke screens have?
+----------------------------------
+
+Smoke blocks line of sight. Simple, isn't it? :)
+
+(Well, it would be except that smoke is less effective when there is very high
+visibility. My experience is that visibility of 45+ hexes makes smoke
+ineffective for blocking LOS. In this situation, try laying TWO lots of smoke in
+a hex, rather than just one. This will block LOS at the cost of using an extra
+smoke round.)
+
+
+
+What effect do shell craters have?
+----------------------------------
+
+Artillery barrages (and some of the heavier tank guns) often leave craters
+behind. These increase the movement point cost to enter the hex they're in. The
+larger the crater, and the more craters there are, the greater the movement
+penalty.
+
+
+
+How can I start fires?
+----------------------
+
+Some possibilities:
+
+- Shooting enough weapons into a woods or building hex will eventually set it on
+  fire.
+
+- Same goes for artillery: the bigger the guns, the better the chance.
+
+- Use an engineer squad or flame tank to do direct fire on the hex; it doesn't
+  have to be woods or buildings.
+
+- If you use an engineer squad to assault a vehicle, the hex is automatically
+  set on fire regardless of whether the assault succeeds.
+
+
+
+What effect do fires have?
+--------------------------
+
+Fires cause smoke, which is just like a smoke screen that you lay yourself. See
+above. The only exception seems to be that smoke from fires ALWAYS blocks LOS,
+regardless of visibility.
+
+Patch 1.13x added a feature whereby infantry units in a fire take casualties. In
+1.13x to 1.16x, they also took suppression points, which often pinned them down.
+This meant they couldn't escape from the fire that was killing them! This has
+been fixed as of 1.18x; infantry that are in a burning hex automatically retreat
+out the next turn.
+
+
+
+How do I destroy bridges?
+-------------------------
+
+Target it with heavy artillery (150mm or higher should do the trick) or bombers.
+Or use your engineers to do direct fire on the bridge hex (Z key).
+
+
+
+What happens to a unit on a destroyed bridge?
+---------------------------------------------
+
+It depends on the terrain "under" the bridge. If it's water, the unit falls in
+and drowns. If it's something else, eg swamp or stream, it survives.
+
+
+
+What benefits are there to being on a higher elevation?
+-------------------------------------------------------
+
+First, you can see over other hills and obstructions on the map -- important for
+calling in artillery or sighting enemy units.
+
+Also, being higher than a target brings a chance of getting a "top" hit, which
+can be useful for taking out tanks with lots of armour. The roll is made to hit
+normally, and if it hits, there is a chance that the hit will be on the vehicle
+top. This chance is 10% for every 5 levels difference between the firer and the
+target.
+
+
+
+Artillery and aircraft
+======================
+
+What's a spotter for?
+---------------------
+
+Before using artillery, you should be aware that each arty mission has a
+spotting unit: the guy who sees where the target is, then calls in the big guns.
+In general, '0' units (your overall leader and any platoon leader) make better
+observers: if you use them, the bombardment is more likely to be on target
+rather than scattering all over the place. You can check how good each unit is
+by right-clicking on them and noting their "Artillery" attribute (on the right;
+next to the "Rally", "Infantry" and "Armor" attributes).
+
+
+
+How do I call in fire support?
+------------------------------
+
+To call in a bombardment during the battle: select your observer unit, then
+click on the bombard icon or press B. Click on the hex you want to plaster, then
+click on the Bombard icon to call in high explosive, or the Smoke icon to lay a
+smoke screen. The barrage will arrive after a delay of 1-2 turns, depending on
+circumstances. (I _think_ using your A0 unit as the observer reduces the delay
+to 1 turn, while everyone else causes it to be 2 turns. Can anyone confirm?)
+
+
+
+Why doesn't my Inf-Gun show up on the Bombardment menu?
+-------------------------------------------------------
+
+Not all the units listed under "Artillery" in the purchase menu can be used for
+indirect fire. Inf-Guns are _direct-fire_ units; that is, they have to have LOS
+to a target before they can fire. Think of them as close support for the
+infantry: bunker-busting, etc. Much the same goes for AT-Guns and 88's (although
+they are usually meant to take on tanks).
+
+
+
+Why can't I target certain hexes for indirect fire?
+---------------------------------------------------
+
+On-board artillery often has a limited range (both minimum and maximum). If your
+mortars don't seem to be working, it may be that the target hex is too close or
+too far away. Choose a different hex or move your unit.
+
+Also, it's quite possible to run out of ammo during a long battle (20+ turns).
+
+
+
+Does the computer artillery cheat?
+----------------------------------
+
+Yes; more so in earlier versions, as this cheat was toned down in 1.15x. The
+computer sees certain of your units, especially on-board artillery and 88's, and
+will target them for artillery as soon as they fire.  Even if they subsequently
+move and do not fire, the artillery will continue to home in on them.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+Does on-board artillery have any use in this game?
+--------------------------------------------------
+
+Mortars have poor accuracy and don't do a lot of damage, but they're a cheap way
+to lay smoke and get fire support. Also, they have the ability to fire during
+the movement phase, rather than in the bombardment phase.
+
+Self-propelled guns can be used for direct fire support. Those shells REALLY
+make an impact on bunkers, infantry, buildings, etc.
+
+--
+: Well i really dont think mortars are artillery like
+: howitzers. So my suggestion is this. How about making
+: it so that mortars will fire as soon as target is set
+: like tanks and infantry.
+
+Mika, that's the way they do work. Select a target for them as usual but then go
+to the mortar, select it and press (F)ire. It will fire right away.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+--
+: I hope in any future Steel Panther games or senerios, that
+: artillery will be more effective. Mortors is useless
+: and artillery is ineffective in Steel and does not reflect
+: the importance of artillery.
+
+IMO, it's more a question of scenario/campaign design. When every other tank
+type is a Panther, artillery doesn't seem very effective any more. The solution
+is not to increase HE values but to design more realistic scnearios and
+campaigns, where the player really has to use artillery and, yes, even the
+pitiful mortars. I have had very positive experiences this way. Artillery and
+mortar fire works quite realistically in SP. No, I wasn't there myself, so I
+can't say how many men a mortar hit in the same 'hexagon' should kill, but
+mortar fire sure pins men down, just like it did in real life. Killing a squad
+takes a lot more, but that's the way it's supposed to be.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Can I direct fire on-board mortars and artillery?
+-------------------------------------------------
+
+Yes.  If the mortar or arty has line-of-sight to the target, they can
+direct-fire at it.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+What's the difference between Panzer Artillery, Infantry Artillery, VG
+Artillery, Corps Artillery, etc?
+----------------------------------------------------------------------
+
+Only the number of guns varies.  Panzer artillery, for instance, has three 4-gun
+batteries, while Infantry artillery has four 4-gun batteries.  But with either
+you can select any caliber of gun.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+How do I use aircraft?
+----------------------
+
+Aircraft are treated just like artillery in the game. Choose a hex to bomb or
+strafe, choose a spotter, and call in the airstrike. See above regarding how to
+use artillery.
+
+
+
+Why can I use some aircraft lots of times but not others?
+---------------------------------------------------------
+
+It depends on the weapons they have. Planes that mount cannon, rockets or MGs
+can be re-used until they 1) run out of ammo; or 2) get damaged. On the other
+hand, planes whose main armament is bombs (eg Ju-87b, Blenheim, Marauder, He-
+111) can be used only once because they drop all their bombs on the first attack
+run. Some planes, eg Mitchells, carry bombs, rockets _and_ cannon; these can be
+re-used, but their bombs are only available on the first attack run.
+
+
+
+Why does the AI take so many aircraft?
+--------------------------------------
+
+In long campaign battles in patch 1.13x and above, the AI often takes seemingly
+endless swarms of aircraft. There are three main reasons for this:
+
+- First off, it appears that in random battles, the AI _always_ gets 2.5 times
+  the total point value of your force. So if you have lots of expensive units
+  (eg Panthers, Tigers), expect to get a pounding.
+
+- Second, don't forget that some aircraft can be used many times, until they get
+  damaged or run out of ammo (see above).
+
+- Third, there's a feature called the "doubler" that was introduced as of 1.13x.
+  Basically, the AI gets two units for the price of one when it uses this
+  feature. This is on top of the 2.5x points it's got.
+
+What can you do about this?
+
+- Don't be too greedy. Upgrading all your tanks to King Tigers just gives the AI
+  more points to play with.
+
+- Don't spend all your support points. Same principle.
+
+- Buy lots of AA guns.
+
+- Hassle SSI. :)
+
+
+
+Why doesn't my AA shoot at planes?
+----------------------------------
+
+A common complaint is that AA guns often sit idle while enemy planes carry out
+their attacks. Sometimes this is because they have exhausted their shots --
+quite easy to do if the enemy throws six or eight air strikes at you in one
+turn. On the other hand, it's also been reported when there were only one or two
+strikes. There isn't much you can do about this, unfortunately. It doesn't seem
+to happen _that_ often, and anyway, given the ineffectiveness of AA in the game,
+it shouldnt affect the battle outcome that much.
+
+On a slightly different note, in versions of SP prior to 1.18x, vehicles with
+MGs for AA defense never fired at planes -- even though this was the purpose of
+having AAMGs! This has been fixed in 1.18x (but don't expect them to achieve
+very much).
+
+
+
+Why don't they ever seem to shoot anything down?
+------------------------------------------------
+
+AA guns are very ineffective unless crewed by veteran or elite soldiers. This
+means that AA weapons bought as support units are very poor.  If you put the AA
+guns in your core, they will eventually gain experience and become elite, and
+will start to score kills.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+Historical note: The main purpose of AA fire was to force aircraft to break off
+their attacks, as opposed to actually shooting them down. If they shot down a
+plane, that was a bonus, but as long as the attack run was aborted, the AA had
+achieved its objective. Now, as to whether even _this_ is modelled accurately in
+SP, is a matter for debate...
+
+
+
+Why did my plane attack my own unit?
+------------------------------------
+
+If the target hex is within ten hexes or so of a friendly unit, and/or is
+obscured by smoke, the plane may mistakenly attack your forces.  Don't forget
+that aircraft, like artillery, can deviate from the intended target hex,
+especially if the rating of the observer is poor or if the observer can't see
+the target hex.  Bottom line:  keep well clear of hexes you've targeted for air
+attack, or else cancel the attack.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+The Scenario Editor
+===================
+
+How do I edit Victory Hexes?
+----------------------------
+
+This is a very poorly documented area. Fire up the editor and load a scenario
+into it. Click on "Deploy-Human" Now you are in the main editing screen. Click
+on the "Edit Victory Hexes" button. Now comes the tricky part; look in the lower
+left corner of the screen...there is a line that says "Objective n" (where n = a
+number between 1 and 21). If you press "N" (goto Next Objective) that number
+will change to the next highest Objective number. (Press "P" and it goes to the
+next lowest Objective.) Now mouse click on the upper right control button "Move
+Cursor to Objective" the screen will move to the location of that objective. If
+the screen doesn't change, that means there is more than one objective stacked
+on the same hex. (I suppose its possible for all 21 objectives to be stacked in
+one hex..but I've never tried it). This allows you to set different values for
+different hexes.
+
+For example: if you set the value of each Objective at 10 and stack 5 of them in
+one hex, you have made that hex worth 50 points. Stack ten of them in another
+hex and it is worth 100 points. (There really should be some way of letting the
+player know the TOTAL value of each Victory Hex in a scenario, but I haven't
+figured out how...except in written notes.)
+
+                                                -- Mikkel <mikkel@community.net>
+
+
+
+Can I delete Victory Hexes?
+-----------------------------
+
+It would appear that there is no way to delete a Victory Hex once its created.
+Also the numbers run from 0-20.
+
+                                                -- Mikkel <mikkel@community.net>
+
+
+
+How do I build straight north-south roads?
+------------------------------------------
+
+: I was just trying it out and noticed one thing. I made
+: roads from left to right and they were straight and
+: ok. But when i tried to make straight road going up
+: and down I couldnt. Every time it made annoying curves
+: and most strangest loops. So how an earth I can make
+: straight roads going up and down without them making
+: those god damn curves and stuff?
+
+There is a way, but it's very difficult to explain without showing in person.
+You need to click first a little to the left from where you'd like the straight
+part to begin, then down to where it should end. It works about 5% of the times
+you try it. Takes approximately 5 - 15 minutes to make one stretch of road.
+here's another thing to know about this too: if there's just ONE piece of road
+missing from a straight line, double click it and the result should always be
+straight. It can be utilized by making roads hex by hex but it takes some
+practising. Maybe I'll make a drawing out of this some day and post it here.
+Definitely one for the Editor FAQ. One of the *many*, unfortunately!
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+How do I create a startup description for my scenario?
+------------------------------------------------------
+
+By chance I just discovered that if you create an introductory text file that is
+longer than will fit in the box displayed at the beginning of a scenario, you
+get a "scroll down" button. This means you can add significanlty more
+information to the scenario lead-ins. How nice.
+
+                                                -- Mikkel <mikkel@community.net>
+
+--
+Just use Note Pad or the DOS Edit and save as a text file. Depending what your
+scenario number is the text file should look like this: scen0xx.txt. Make sure
+you save it in the scen directory under the Steel directory. Do not make it
+bigger than about two paragraphs. Good luck!
+
+                                       -- Chuck Woodfield <cwood@netexpress.net>
+
+
+
+How do I set the length of a scenario?
+--------------------------------------
+
+Load your scenario into the editor; goto deploy (human) and hit the "." (period)
+key. You'll get a dialog box at the bottom of the screen asking for the number
+of turns.
+
+                                                -- Mikkel <mikkel@community.net>
+
+
+
+What are reaction points for?
+-----------------------------
+
+you can use this option to simulate reinforcements- if you put units in the rear
+area and set the reaction to 6 then on turn 6 they will begin to move
+
+                                                                          -- Tim
+
+
+
+What are waypoints for?
+-----------------------
+
+When setting up the attack route that the computer will use. if the units are
+under human control then way points are ignored. If the computer is controlling
+the units on a defend scenario then most of the time the computer will not begin
+to move until a near victory hex is taken or then again the units may just sit
+there.
+
+                                                                          -- Tim
+
+
+
+Can I tell the AI whether to stay put or be aggressive?
+-------------------------------------------------------
+
+Depends on the scenario - defend it will stay put, advance/assault or meeting it
+will advance.
+
+good luck- if the computer is the attacker and you want some of the units to
+stay put- I whish you could have a more control like this. One way is to set the
+movement speed to 0 or giving the units a reaction time so they will stay put
+until that turn. However both of the above options are still inplace if the
+units are controlled by a human.
+
+                                                                          -- Tim
+
+
+
+Why do my units retreat in the wrong direction?
+-----------------------------------------------
+
+If your trying to create a historical engagment make sure you figure out whcih
+side of the map each side is going to start on before you input an entire map.
+The reason being that if the units start on the wrong side and you move the
+units to the correct side then during the game the units will retreat towards
+the side that the computer initally placed them on. Which means they will
+retreate towards the enemy's rear area.
+
+                                                                          -- Tim
+
+
+
+Is there a limit to the number of unit types in an OB file?
+-----------------------------------------------------------
+
+: I'm just wondering if there's a limit to the # of units you can have in an ob
+: data file...I was thinking of using the program formerly known as SPedit to
+: add a bunch of units, but I don't want to run into the problem of running
+: out of "room" Thanks!.
+
+Yes there is. If my memory serves me, e.g. PZOB -file is quite full already,
+with only a few empty slots. You can always replace existing units, of course.
+New unit data is supposed to get saved to SCENxxx.DAT files automatically
+(though I used to have starnge problems with this) so you don't have to deliver
+your modified PZOB (or whatever file you modify) with your custom scenarios if
+you'll make one. I hope this helps.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Can I design my own mini-campaigns?
+-----------------------------------
+
+>Anyone know how I can design my own scenarios and link them
+>together to have something like the mini campaigns
+>that came with the game?
+
+The linking is coded in the .exe file. SSI does the programming to Novastar who
+makes add-on campaigns. I guess there's no way to do it yourself without the
+source code to SP.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Can I use the doubler?
+----------------------
+
+While creating custom scenarios - yes you can. Select 'motorized' troops while
+buying units. For this example, buy nothing but rifle platoons, as much as you
+can. Exit 'Buy'-menu and buy the opposing force. Choose human deploy and you
+should have 49 infantry squads and 49 trucks for a Player.
+
+Select a truck and use (R) key to to convert it to a different type of unit: a
+tank, another infantry unit, anything that's on-board. Off-board units can only
+be converted to on-board, not vice versa. Repeat for all 49 trucks and you have
+effectively doubled the amount of your fighting troops. Sounds easy, but there
+are a couple of pitfalls to avoid (which took me days to climb up from, before I
+realized what caused each problem).
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Side effects of the doubler
+---------------------------
+
+This is the worst: _converted trucks TURN BACK to trucks if you Buy and deploy
+the opposing force_. Imagine the frustration after converting, extensive
+modifying, fine tuning, checking, giving new names. All of a sudden you notice
+every modification is gone and you hand't saved it. What you should do is plan
+the troops on paper before buying anything, if you are going to use the doubler
+trick.
+
+This is another annoying one: you have entrenched a truck (surrounded it with
+sandbags). You convert the truck to a infantry squad. The sandbags stay,
+however. You'll get a new entrenchment for your infantry squad, but after a
+while, you'll have annoying sandbags everywhere and there's no way to make them
+go away, you can't even move them. This can be used to 'decorate' a scenario of
+course (I've done that on purpose too). If my memory serves me it was possible
+to move sandbags by finding exactly the same unit again, converting it back to a
+truck, moving it and entranching again. See also "How to avoid entrenchment".
+
+A third effect to be aware of is the passenger status. The converted trucks
+still think they're trucks and carry their infantry squad. There's nothing a
+scenario author can do to help it, but it doesn't really affect the game much.
+The only annoying thing is that it allows minor cheating, because units can be
+'beamed up'.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Why do my infantry units have passengers?
+-----------------------------------------
+
+> One oddity I found was that Soviets units B4, F0-F4 and F6-F9 (all
+> infantry units) had passengers!?! After unloading I had 10 additional
+> platoons.  Are they supposed to be in this scenario?  Some of the
+> Soviet armor was also carrying infantry.
+
+A side effect of using the doubler trick. Almost all units seemingly carry
+another. The units you received by 'unloading' were on the map already. You just
+'beamed them up' to the carrying unit. There are several ways of getting rid of
+the passenger status without 'beaming them up': for example, load it to a tank
+and then unload it. It doesn't matter which one you load & unload, the carrier
+or the one being carried.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+How do I avoid entrenching?
+---------------------------
+
+Digging in is possible only in Attack/Defend scenarios. Entrenchment is received
+by either pressing the respective button in the editor, or by saving directly
+from the editor screen. Saving from the main Editor menu, however, does NOT
+force entrenchment.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+How do I entrench only Player 1 or 2?
+-------------------------------------
+
+If you want to entrench the defender only, and you don't have to worry about
+losing 'doubled' units (see above), buy, deploy and entrench the defender. Then
+buy and deploy the attacker, exit editor screen and save from Editor main menu.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+How do I entrench only part of one player's units?
+--------------------------------------------------
+
+As above, but place the units which you intend not to entrench into a 'non-
+entrenchable' (no, English is not my mother tongue) hex. These include 1) Water
+- use the Deploy All key to get them there. Just place the red cursor on water
+and hit the key. 2) Buildings. Newer patches don't allow tanks in intact
+buildings, though. Perhaps the Deploy All key can help there too. Or you can
+always create water for this purpose and then remove it.
+
+After everyone is placed correctly, hit entrench-button. Only units in
+entrenchable hexes will receive entrenchment. Move the others out of the water
+before they get all wet.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+How do I get rid of entrenchments?
+----------------------------------
+
+If you have used the doubler and don't want to buy anything anymore, things get
+tricky but it can still be done. This kind of situation occurs for example when
+you edit an existing scenario (in order to remove those silly foxholes from
+underneath the attacking units in the middle of a paved road).
+
+Once entrenched there's no way of really removing them without buying everything
+again (I think). What you can do, is you can dump the foxholes/sandbags or some
+of them on a distant corner of the map. Stack all units to the dumping area. You
+can stack awful lot of units by using Deploy All. Then entrench them there. Move
+them back to their original places, exit editor screen and save from Editor main
+menu.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Can I get a running number for doubled formations?
+--------------------------------------------------
+
+Yes you can. After using the doubler trick explained above, the numbering of B
+platoon looks like this: B0,B1,B2,B3,B4,B50,B51,B52,B53,B54. Simply assign A1
+(yes, A1 not B1) to any other formation and the numbers become running in all
+formations. You can assign it back if you like and the number will still be
+running.
+
+                                            -- Tuomas Seijavuori <tuoppi@hut.fi>
+
+
+
+Patches and bugs
+================
+
+What patches are available?
+---------------------------
+
+From earliest to latest, the patch history is: 1.1; 1.11x; 1.12x/1.13x; 1.14x;
+1.15x; 1.16x; 1.17x (available from Novastar); 1.18x; 1.2.
+
+1.15x to 1.17x are UNOFFICIAL patches released by Novastar. If you encounter
+problems with these, don't go to SSI because they won't provide tech support for
+unofficial patches. 1.1, 1.12x/1.13x and 1.18x are the only OFFICIAL SSI
+patches, ie the only ones they'll provide tech support for.
+
+Having said that, I've used most of these patches, and they seem fairly stable.
+The only crash I've had so far has been with the original version on the CD,
+version 1.01!
+
+
+
+Where can I download them?
+--------------------------
+
+You can get patches from AOL, Compuserve and Genie. On the Internet, the
+following sites should have the most recent patch.
+
+Web:
+
+http://www.vfr.net/~novastar/steel.htm
+http://www.annurev.org/~tanker/games/patches/patches.htm
+
+FTP:
+
+ftp://ftp.gamesdomain.co.uk/pub/patches
+ftp://www.gamesdomain.com/pub/patches
+ftp://ftp.cdrom.com/pub/dresden/games/patches
+ftp://ftp.inf.tu-dresden.de/pub/ms-dos/games/patches
+ftp://ftp.midnight.com.au/pub/patches
+ftp://ftp.cis.nctu.edu.tw/Games/dresden/patches
+
+
+
+What changes are implemented in each patch?
+-------------------------------------------
+
+For version 1.18x:
+
+--
+Steel Panthers Readme notes for version 1.18X BETA update.  Released 3/8/96
+
+1)  Attempted to duplicate and correct all bugs relating to vehicle crews.
+
+2)  Fixed: AA MG's mounted on Tanks do not fire at aircraft.
+
+Note: AA MG's on tanks only fire at aircraft a small percentage of the time
+
+3)  Attempted to track down and correct the alternate ways of loading men onto
+    vehicles, thus reducing their suppression.
+
+4)  Mines should now only be detectable by adjacent units.  Detection chances
+    are determined during morale phase;  Only base terrain blocks mine LOS.
+
+5)  Motorcycles can no longer carry passengers.
+
+6)  Infantry units should no longer sit in a burning hex, gaining suppression
+    until all are dead.
+
+7)  You should no longer be able to tell where an opponents hidden units are by
+    right-clicking on all open hexes on a side.  There should be no difference
+    between what it seen when a blank hex is hit, from when a hex containing a
+    hidden unit is hit.
+
+8)  US LCA Carriers will no longer unload German PzIb's.
+
+9)  AA guns should no longer hit ground targets in the same hex as their current
+    air targets.
+
+10)  Mods have been made to sighting rules.  This should stop comments about
+     invisible infantry/crews.
+
+11)  The 'S' key should now allow flamethrowers to be fired, at 1 range only.
+     Vehicles with a greater FT range, will still have to use area fire to use
+     these weapons at greater than 1 range.
+
+12)  TONS o' AI aircraft bug should be fixed.  The AI should no longer have 'too
+     many' aircraft.
+
+13)  Katyusha rocket ammo should now run out as normal.
+
+14)  Infantry should no longer dismount from open-topped vehicles.
+
+15)  'L' Key should no longer be able to workaround infantry loading
+     restrictions.
+
+16)  Airplanes will no longer arrive 1 turn later than expected.
+
+17)  Player 2 in a 2-player Battle (assault) should no longer get as many free
+     mines as Player 1 purchased.
+
+18)  The Map Editor has been fixed in various ways.  There should no longer be
+     crashes in the map editor.
+
+19)  'Germans cannot upgrade some units' bug corrected.  There should now be
+     enough room for all upgrade options during campaign game. Units will no
+     longer be missing from the list due to list length.
+
+20)  'US upgrade bug' corrected.  Same as above.
+
+New sound driver files have been added.  This should correct the sound problems
+which have been reported. (These are the same .dig files found in versions 1.16
+and 1.17.
+
+New OB files included (same as 1.13x).  These reflect Jim Wirth's changes to the
+database.
+
+Clarifications:
+
+1)  Due to new implementation of movement taking shots away from vehicles,
+    you'll notice that your units cannot fire more than 2/1 (Opportunity return
+    fire) if they moved (max) last turn. You can only fire 1/1 if you moved and
+    fired most/all shots last turn.
+
+2)  When starting a US campaign, the game automatically catapults you close to
+    the historical starting date for the Americans.  Earlier starting dates are
+    not possible.
+
+3)  If smoke was present on the map, but does not appear when loading a game,
+    use the 'c' option (clear smoke) to set smoke back to visible status.
+
+The following modifications may have been made:
+
+1)  AI tweaked in the following ways:
+
+a)  More aggressive in attack
+b)  More aggressive in defense
+c)  Airstrike lethality has been toned down. Accuracy against point
+    targets from bombers lowered by 66%, fighter/bombers lowered by 33%.
+
+2)  The smoke bug may have been fixed.
+
+3)  The smoke bug may be a result of the 'C' (clear) feature of Steel Panthers
+    being automatically toggled for the user at some point during
+    play/loading/saving of the game.  Possible workaround for smoke bug is to
+    hit the 'c' key after loading each game.
+
+4)  Fire now kills men in hexes on fire.
+
+                                                         -- SP 1.18x README file
+
+From the unofficial readme maintained by Arnaud Bouis:
+
+--
+Steel Panthers v1.12x/1.13x Changes and bug fixes. (v1.12x was a limited release
+beta, and was not available to most of  the public)
+
+1. The 'v' button on the Options menu indicates that it sets the
+   'message level'. It should say that it sets the animation level. It
+   has no effect on messages.
+2. FIXED- passengers on vehicles go OFF MAP when they try to unload.
+3. FIXED- Molotovs should now work.
+4. FIXED(?)- fire at rear of tank and hit front armor.
+5. FIXED- immobilized tanks change facing.
+6. FIXED- damaged weapons repaired when save is reloaded.
+7. FIXED- HVAP ammo fired beyond it's maximum range.
+8. FIXED(?) AI never uses flamethrowers.
+9. FIXED- no armor diagram for pillboxes and bunkers.
+10.ADDED- may toggle between large and small buildings in map editor.
+11.FIXED(?)- play by E-mail system.
+12.FIXED(?)- campaign game has beach landings in inappropiate areas.
+13.FIXED- HVAP and HEAT ammo goes to zero after first campaign battle.
+14.FIXED- vehicles set up in undamaged buildings.
+15.ADDED- units may fire a specific weapon by pressing the 's' key. Unit
+          must already have a target. This reduces the shots available
+          by one.
+16.ADDED- the length of a game may be randomly extended. This is to
+          prevent last turn suicide tactics.
+
+[17: Many units have different costs and abilities; many German tanks in
+particular now cost more to reflect their better abilities.
+
+ 18. Infantry that stay in a hex that is on fire will now take casualties.
+
+                                                                         -- HO ]
+
+Steel Panthers 1.11X Fixes
+
+1) Display for mech/motorized unit cost has been corrected, will now
+   show correct points.
+2) Japanese short and long campaign fixed, both should work now.
+3) Pillboxes should now be easier to destroy.
+4) Immobilized tanks will no longer change facing.
+5) Problems with barge carriers losing units now fixed.
+6) Units firing ability now improved, skill checks have been taken out.
+7) Engineers will not kill themselves while dropping smoke.
+8) Excessive mine points in battle builder fixed.
+9) Corrected AI failure to use HVAP or HEAT ammo in the game.
+10) User can still purchase an airstrike even if he has deleted a
+    previous purchase.
+11) LOS corrected when going through or near large buildings.
+12) Artillery cheat has been toned down.
+13) Amphibious assaults in long campaign has been corrected.
+14) AI improved to deal with mines, will attempt to go around.
+
+                                             -- Arnaud Bouis <abouis@easynet.fr>
+
+
+
+Which patches do I definitely need?
+-----------------------------------
+
+1.18x incorporates all the changes made so far. If you don't have this release
+(or can't get it for some reason), 1.12x will get you the updated OB files and
+1.15x will get you the shot penalty for moving and the sound fixes.
+
+
+
+Do I need to install the patches in a set order?
+------------------------------------------------
+
+As far as I know, you can install the patches in any order you want. Each patch
+is basically a complete new version of the STEEL.EXE file, so you don't need
+previous patches to install a more recent one. Of course, the most logical way
+to install is in chronological order -- it wouldn't usually make sense to
+overwrite a LATER version with an EARLIER one!
+
+
+
+Why doesn't the sound work?
+---------------------------
+
+There are a number of problems with the sound effects (MG sounds not playing,
+music not playing, especially). You can try upgrading to the 1.15x patch, which
+fixes most of these problems.
+
+
+
+Why does the game crash instantly when I start it?
+--------------------------------------------------
+
+Your video card may need a VESA driver to be loaded first. SP comes with the
+UNIVBE.EXE universal VESA driver, for cards that don't have VESA support built
+in. Try running that first, then running STEEL.EXE.
+
+
+
+When I load a saved game, all the smoke is gone.  Is this a bug?
+----------------------------------------------------------------
+
+No.  Smoke is not shown so that you can more easily locate all the units on
+the map.  Smoke will return in the combat phase, or you can click the "Hide
+Smoke" icon to bring it back immediately.
+
+                                          -- Bill Thacker <wbt@cbemg.cb.att.com>
+
+
+
+What other bugs are there?
+--------------------------
+
+Arnaud Bouis <abouis@easynet.fr> maintains a Steel Panthers bug list which is
+regularly posted to the newsgroup comp.sys.ibm.pc.games.strategic. The most
+recent update that I've seen is for 1.16x, 2 Mar 1996. You can email him for it,
+or if you have web access the list is also available on the Tankers' Homepage at
+<http://www.annurev.org/~tanker/games/ssi/sp/spbug.htm>.
+
+
+
+I've found a new bug. Who should I tell?
+----------------------------------------
+
+First, check the bug list mentioned above. You should post a message about the
+bug on the Tankers' SP Discussion Board, or on the newsgroup (or both). It may
+be that the bug you've found is something that is already known.
+
+John Waters <jwaters722@aol.com> is accepting bug reports from users on behalf
+of SSI. These reports are then forwarded to the relevant people. If you're going
+to report a bug, make sure you follow these guidelines:
+
+[This was accurate as of May 1996; I don't know if John is still doing this.
+Might be best to ask on Usenet before mailing him... -- HO]
+
+--
+Before reporting bugs & or sending game saves please check The Tankers'
+Homepage's current bug list to see if the problem you are experiencing is
+already listed. Please do not send duplicates of a bug already listed.
+
+To send a bug you are experiencing in 1.15x or 1.16x, include the following:
+
+   1.They need to be in a uncoded .zip file
+   2.Any .txt files should be kept seperate from the saved game or .dat
+     files you send (i.e. in a 2nd zip file if need be)
+   3.Version being used
+   4.Version scen was cut in (if known)
+   5.Units and countries involved
+   6.Type of battle
+   7.Physical description of bug
+   8.Any unusual circumstances experienced before bug sprung up
+   9.Was the scenario made by humans or the computer (if known)
+  10.Computer system specs
+  11.Is bug repeatable (very important) -- if repeatable what must be
+     done to get it
+
+                                             -- John Waters <jwaters722@aol.com>
+
+
+
+Miscellaneous
+=============
+
+How do I read the gun descriptions?
+-----------------------------------
+
+(AKA what's the L stand for)
+
+Most tank and artillery guns in SP are described as xxLyy, where xx and yy are
+numbers. The first number is the gun bore. The second number is the length of
+the barrel, in multiples of the first number. So 75L48, for example, means a gun
+that fires a shot 75mm in diameter, with a barrel 75*48 = 3600mm = 3.6 meters
+long.
+
+In general, the larger the first number, the more powerful the gun. The second
+number gives an idea of what the gun is meant for: low numbers mean short-
+barrelled, fire support weapons, while high numbers usually indicate anti-tank
+weapons.
+
+Some British guns like the 2lb, 6lb, etc use a different naming scheme where the
+number is just the _weight_ of the shot, in pounds. Here is a list of these guns
+and their uses:
+
+2lb -- 40mm AT gun (no HE ability!)
+6lb -- 57mm AT gun with secondary HE ability
+17lb -- 76mm AT gun, very powerful
+25lb -- 88mm light artillery piece
+
+
+
+So what's this thing called SPEDIT?
+-----------------------------------
+
+Nick Bell has written a utility that lets you fiddle with just about any sort of
+unit in the game. You want 88mm-armed Panthers (weenie that you are)? Just load
+up SPEDIT, pick the "Panther" entry in the game's database, and change the 75L70
+gun to an 88L71/kwk. Or you think MGs are too wimpy? Just bump up their HE
+values. Or maybe tanks should be twice as expensive as they normally are (stops
+the British from using a dozen Matildas in Singapore, for instance)? You can
+change that too.
+
+The latest version (1.5) also allows you to modify formation settings.
+
+
+
+Can my battle results affect the course of a long campaign? I.e., can I make
+Germany win the war?
+----------------------------------------------------------------------------
+
+No. Remember, you command a force of maybe 400-500 men, out of armies numbering
+in the millions. Even if you win every battle, strategically it's not going to
+make a great deal of difference. If you want to try your hand at changing the
+course of history, you should try an operational/strategic level game like
+Panzer General or Allied General.
+
+
+
+How are victory points calculated?
+----------------------------------
+
+Each victory hex (the ones marked with flags on the map) is worth a set number
+of points. In addition, you get points based on how much damage you dealt the
+enemy. Each vehicle is worth the number of points it cost to purchase.
+
+--
+In addition, after John Waters cited me an example in which a damaged Panther
+resulted in points awarded, I did some more experiments and found that Victory
+Points are awarded equal to the Damage rating on the injured vehicle, up to the
+maximum purchase point value when the vehicle is destroyed. For infantry, each
+man killed is equal to 1 Victory Point, up to the value of the unit. (For
+ex., a Rifle Sqd which costs 4 points: 1 man = 1 pt; 2 men = 2 pts.; 5 men = 4
+pts.; 7 men = 4 pts., etc.)
+
+So anyway, it seems pretty simple. I guess it wasn't as much of a challenge
+figuring out the scoring sytem as I had hoped.... Oh well, time to find
+something else to occupy my time.....
+
+                                               -- Philip Lentz <fear@pwc.mv.com>
+
+
+
+How do I play an email game?
+----------------------------
+
+Note that SP has some of its own oddities so those experienced in pbem but not
+in SP pbem may want to read on.
+
+After finding an opponent you must decide together if you will be playing a pre-
+made scenario or using the battle builder. The fastest method to get going is
+playing a pre-made scenario as all you have to do is pick sides and the first
+player starts the game. If you are going to generate a battle then, after
+picking sides, the following needs to be agreed upon: force quality, a bug in
+the program requires that autoselect for force composition be selected; map size
+(I think the patch didn't correct either the force composition bug or the bug
+which forces the program to use a large size map); type of engagement;
+month/year of the battle; and difficulty level (see page 34-36 of the manual for
+more information).
+
+If you are playing an existing scenario then player one starts the game by
+picking Scenario from the main menu. After selecting the predetermined scenario,
+set both players as human controlled then select Continue. The first player
+inputs his move then ends the turn. A screen will come up for Player two to
+start their turn, at this point save the game in one of the email slots and
+follow the directions for transferring the files. Note that it is currently
+possible to look at your opponents forces at this point; SSI is supposed to fix
+this by adding password protection.[*]
+
+If you will be generating a battle then player one picks Battle from the main
+screen. After selecting all of the above mentioned settings select Continue and
+deploy your forces. Note that both players must be human and that Autoselect for
+the force composition selected. After you have deployed your forces quit the
+deployment phase both times (once while viewing the map and then on the next
+screen). The following menu will be for player two to start their deployment.
+Save the game in one of the email slots and follow the directions for
+transferring the files.
+
+To transfer the files you will have to first pkzip the email#.dat and email#.cmt
+files into 1 file (where # is the slot which the game was saved in, these files
+are located in the game's subdirectory email). If your Internet providers email
+program cannot encode/decode attached files then you will have to use another
+program to do this. I use Wincode which uuencodes/ uudecodes files. This process
+converts the binary file to ASCII. Then the file is attached to a email message
+and sent to your opponent.
+
+Upon receiving a turn the above must be performed in reverse order and placing
+the email#.dat and email#.cmt files back in the email subdirectory. After
+starting the game select saved game and load the appropriate saved game. There
+is another bug in the program which forces you to reselect your opponents forces
+as human controlled. After entering your turn the process is repeated.
+
+                                                                -- Tim Maushardt
+
+[*] Password protection for email games has been added as of patch 1.12x. Before
+    saving the game, player 1 should enter a password, and similarly for player
+    2.
+                                                                           -- HO
+
+The following is a step-by-step procedure (an unofficial "tutorial") for the
+setting up of two-player E-mail games for Steel Panthers where each player gets
+to select his own forces. This is currently only possible using Steel Panthers
+beta test version 1.13x (available in SSI software library on AOL), utilizing
+the "Battle" Generator. (It may also be possible with the Novastar 1.14x patch,
+but I haven't tested it.) This procedure may at first seem long and complicated
+but is easily mastered and basically intuitive ( with a few exceptions.) If done
+right, it is well worth the effort, adding an extra dimension to the "fog of
+war". I strongly recommend printing this out and following it precisely the
+first few times this feature is used. This tutorial assumes the new (SSI
+official version 1.13x) E-mail security "password" feature will be used, (which
+by the way does NOT function for Scenario Play). It also is based on running the
+game in DOS, as recommended by SSI, and not in a Windows window. It also assumes
+that your Steel Panthers CD is in your CD drive (why ever take it out??) when
+playing. This is necessary unless you like your troops riding to shore mounted
+on 4.2" mortars!! ( If your CD isn't in, the game does some weird stuff!! Copy
+protection perhaps??) This "tutorial" was developed using trial and error and is
+in no way associated with SSI or anyone else.
+
+First, some General observations, ( for SSI's/Novastar's attention) regarding
+this feature for Steel Panthers version 1.2 (future release):
+
+1. Steps 21 through 23 (see below) are NOT intuitive and could (and
+should) be eliminated with an adjustment of the program default from
+Computer to Human for Battle Generator games. Without these steps, the
+computer takes over for Player 2. ( I'm guessing this was an oversight
+on the Programmer's part.)
+
+2. E-mail security does not work for " scenario play." It needs to be
+added in a future update (Novastar, are you listening??)
+
+Some additional observations:
+
+Date of engagement goes along way towards determining type of
+engagement, map features, etc. A battle with Yugoslavian partisians for
+instance will always generate a map that looks like Bosnia, very rough
+terrain, woods, lots of places for nasty partisans to hide and ambush
+from. U.S. Marine assaults in 1944 will often result in an amphibious
+invasion. Winter combat in Russia will often result in urban warfare
+(looking for that warm place to sleep?.) When selecting forces one
+should always check the mission for help. Note that amphib units/ barge
+units are provided automatically when needed for the type of engagement
+at hand and therefore do not ever have to be purchased. Availibility and
+quantity of aircraft "strike" forces is random, although again dependent
+on likely availability of such forces. Therefore, remember, you'll never
+know what you'll be up against!! So consider buying AA when facing a
+major power or you'll likely get real tired of enemy airstrikes spotting
+and blowing up your forces turn after turn!!! Note only two E-mail slots
+are available for use at a time. I suggest filling both of them and
+playing two games at a time with any one opponent. (Makes for less
+zipping, loading, Emailing etc. per game!!!).
+
+Step-by-Step Tutorial for 2 player Select Forces E-mail Play:
+First Player (Player 1):
+1. Load Steel Panthers
+2. Click on "Battle" in opening Main Menu screen.
+3. Click on Player 2 head, activating second human player.
+4. Select nationalities. (Note: you will be nationality of the "first
+   player".)
+5. Select Time Period,  month and year.
+6. Select "Quality" for both Player 1 and Player 2. (Green, Average,
+   Veteran and Foot,  Motor or Mechanized)
+7. Select "Type of Battle". (default "Meeting engagement" is best for
+   balanced two-player games but any option may be used).
+8. Select "Difficulty" Level for each player. (The default, "Hard" is
+   recommended.)
+9. Leave all else at default setting: "Select"  - ("Auto-select" has the
+   computer pick forces, "Manual" is for 1 player against the Computer
+   where you pick the computer's forces,) and "Random Map"  ("Load Map"
+   should work but I have not tested it.) Change "Map Size" if desired
+   for smaller engagements.
+10. Click on "Continue". (Selection screen for Player 1 should come up
+    now.)
+11. Select forces. (Note: 995 points or so should be available for force
+    selection for Player 1 in a meeting engagement.  It is strongly
+    recommended that Player 1 spend no more than about 400 points or so
+    or an unbalanced game will likely result. The point total available
+    for the Player 2 is dependent on the point total selected by Player
+    1.  If the Player 1 spends an excessive amount, Player 2 may not be
+    able to use all the points he is alotted due to the types and cost
+    of units he has available.  Thus, as an extreme example, if you
+    spend 975 points as first player buying 39 Panthers at 25 points a
+    pop, your opponent will likely be grossly overmatched.))
+12. When done selecting forces, click "Done".  ("Security Menu" screen
+    should now come up.)
+13. Click on "Password".
+14. Type in a password.  Hit return key when done typing. Your password
+    should appear near the bottom of the window.  Check it for typos and
+    make note of it. (Suggest using same for all games and something
+    you'll never forget.)
+15. Click on "Save" and save to E-mail slot 1 or 2. (For keeping track
+    of files, I suggest erasing the default" E-mail 1" text in the save
+    slot and typing in a new name using battle date, nationalities and
+    current turn, something like "6/44, US v Ger,T0".  The turn number
+    if last number in line is the only thing that ever need be changed
+    again, updated after Player 2 moves each turn.)
+16. Click on "Continue" (You'll now be back at the Main Menu screen.)
+17. Exit Steel Panthers, zip (download Winzip (recommended for Windows)
+    or Pkunzip from AOL software library)  E-mail Save.Data and .Comment
+    files which will be located in your Steel Panthers E-mail directory
+    (usually C:\Steel\E-mail),  attach to E-mail, and send to opponent
+    (Player 2).  (Saved  data and comment files can be moved about
+    within Windows like you would any other file.   If playing more
+    than 2 E-mail games at a time, you'll need to become familiar with
+    your file management system if you're not already in order to juggle
+    all those E-mail-1 and E-mail-2 files around.)
+
+Second Player (Player 2):
+18. Download attached file from E-mail to E-mail directory (folder) in
+    Steel Panthers directory.  (With current version  AOL,  It should
+    unzip automatically.)
+19. Remove Email_.dat and Email_.comment file from their folder and
+    place directly into E-mail directory.
+20. Load Steel Panthers.
+21. Select "Battle" icon in main menu.
+22. Click on Player 2 head, activating second human player.
+23. Click on "Exit" button.  (This returns you to main menu screen.)
+24. Click on "Load Save" icon. (Saved games list comes up)
+25. Click on E-mail slot 1 or 2 as applicable for game you wish to load.
+    (Game should now load to a force selection screen for Player 2. If
+    it doesn't, click "Done" and try again from step 21.)
+26. Check number of points available to you.  If it says 994 (or close
+    to that,) the first player default number, click "Done" and try
+    again from step 21.  (Sorry, but it's a little quirky.)  If a
+    lesser, more reasonable number than 994 appears, continue to step 27.
+27. Select Forces.  When finished,  click "Done".  (You'll now be in the
+    "Security Menu" screen.)
+28. Click on "Password".
+29. Enter a password and hit return (enter) key. (See comments - Step
+    14).
+30. Select "Continue". (You will now be in the deployment menu. You will
+    again be prompted for your password.)
+31. Type your password and hit the return (enter) key.
+32. Select "Human Deploy". (Or Auto-deploy if you wish.)
+33. Deploy forces,  set-up bombardments,  etc.
+34. Select "Quit" on game screen when done deploying.  (This takes you
+    back to Deployment Menu.)
+35. Click on "Quit Deploy" when done. (Save games list should come-up)
+36. Save game to E-mail slot 1 or 2.  (This should then take you back to
+    the main menu.)
+37. Exit Steel Panthers, zip (see comments Step 17) E-mail Save Data and
+    Comment files, and return to Player 1.
+
+First Player (Player 1):
+38. Follow steps 18 through 25. This should leave you in your Deployment
+    Menu with the game prompting you for your password.)
+39. Enter your password and hit return (enter) key.  (If your password
+    doesn't work,  somebody has messed up steps 1-37 or you've forgotten
+    your password!!  Reload your saved game and try again or return to
+    step 1 if nothing else works!  Sorry,  but some degree of care is
+    required!)
+40. Follow steps 32 through 35.  It is now YOUR turn!! The game will
+    again prompt you for your password. Enter your password and hit
+    return.  Click on "Start Turn".  Play your turn.  When done, hit
+    "End Turn" which takes you to the saved games list.  Click on your
+    Saved Game slot, enter, exit, zip and return to Player 2, who just
+    loads the saved game, enters his password and plays!  (There will be
+    no need to return to the "Battle" generator again this game.)
+
+Hopefully, this will be helpful to someone out there.  Happy Hunting!
+
+                                                                     -- Kevin M.
+
+
+
+Can I play a campaign game by email?
+------------------------------------
+
+It is possible to play a campaign game where two players share command of one
+force.
+
+--
+Well It seems that I was indeed able to play and continue a Campaign scenerio
+with my friend via E-mail. The computer actually remembers the time frame and
+all information pertaining to the game in the E-mail 1 (E-mail Slot). Basically,
+we split up the four squads into two Panzer Gruppes, consisting of my Gruppes
+A+C and his B+D, supporting with troops that we both discuss after each
+scenerio. It won't allow us to password after the first round, but will continue
+normally as if one player was executing the entire game. Because of the fact
+that Timmy and I keep a record of which gruppe is which, and discuss the battle
+plan via the phone or attached letter before we play, a smooth continuation
+results.
+
+1.We discuss via the phone or Letter the available points for fixing or buying
+new troops or material after each round.(Giving half points to Gruppe 1, and the
+other half to Gruppe 2)
+
+2.Then Saving the game in the deployment stage, the player allows both Gruppes
+to correctly set their positions for attack.
+
+3.At this point, the player holding the final part of the deployment round, gets
+to go first. Basically, he just ends the deployment round and proceeds through
+1/2 of turn one, saving just as he's finished, but not ending the turn.
+
+4.Lastly, he THEN E-mails back the turn in movement to the other, having the
+person recieving the conclusion of the turn to finish, and then the person
+starts the next turn and so on until the particular scenerio is over.
+
+Not only will the computer continue the Campaign, but now two players can play
+against the COMPUTER!!!
+
+It works!
+
+                               -- James L Perkowski Jr <Tiger1@usa.pipeline.com>
+
+
+
+Will there be a modern-era version of Steel Panthers?
+-----------------------------------------------------
+
+Yes. The sequel to SP, Steel Panthers 2 (oh, the originality), is supposed to
+cover everything from the Korean War to the 1990s. Don't expect it too soon,
+though.
+
+
+
+Are there any problems running SP on Windows 95 or OS/2?
+--------------------------------------------------------
+
+Not that I've heard of. There seem to be various bugs to do with mouse drivers
+and sound effects, but these don't seem to depend on your operating system (ie,
+they hit people running the game under vanilla DOS as well). A lot of the
+problems reported so far are probably incorrect setups, out-of-date hardware
+drivers, etc.
+
+(If you're using Win95 or OS/2, I'd like your input on how you got your system
+to run SP -- or if it WON'T run SP, what seems to be the problem.)
+
+--
+STB Trio64V+ owners,
+
+I finally found the solution to running SP under Win95 on my system. My system
+is a standard issue Gateway 2000 which came with a STB Trio64V+ video card.
+Since the system was purchased, new video drivers have been released. The
+drivers are dated 1/96 - I highly recommend people having problems running games
+with this video card obtain the new driveres if there system was purchased
+before this date. They also fixed my problems with Fantasy General. The drivers
+can be obtained at:
+
+ftp://ftp.gw2k.com/pub/hardware_support/drivers/win_95/video/STB/stbt6495.exe
+
+through Gateway 2000. STB also has their own web pages at http://www.stb.com
+which I presume also has the drivers, although I don't have the direct address
+readily available.
+
+                                          -- David Pollock <pollockd@beloit.edu>
+
+--
+Windows 95 functions just like an operating system. It is better if you pop a
+DOS 6.22 Io.sys command.com diskette in your bootable floppy drive.
+
+You should always have soundblaster sound files lines in your autoexec and
+config.sys files. You will never achieve sound without these lines. Call
+Creative Labs and get your basic system files in order. The files are important
+no matter which game you play.
+
+That's why I asked you if you Steel detected your card. Steel won't detect your
+card and you won't be able to manual select options in the game installation
+phase if you don't have your sound blaster files in your config and autoexec
+files. The lines I'm refering to is should read something like:
+
+Autoexec.bat
+SET SOUND=C:\SB16
+SET BLASTER=A220 I5 D1 P330 T6
+SET MIDI=SYNTH:1 MAP:E
+C:\SB16\DIAGNOSE /S
+C:\SB16\SB16SET /P /Q
+
+Config.sys
+DEVICE=C:\SB16\DRV\CTSB16.SYS /UNIT=0 /BLASTER=A:220 I:5 D:1 H:5
+DEVICE=C:\SB16\DRV\CTMMSYS.SYS
+
+I don't (and will not) boot my Pentium with Win95 or Windows 3.1 if playing this
+game, Panzer General XCOM etc.. I pop in a boot disk in my floppy drive. Then
+play the game.
+
+                                             -- Craig Brown <412467@mcimail.com>
+
+--
+Just a note about the boot disk with the DOS startup files on it. In Win95, you
+have no need for a boot disk -- just create a shortcut on your desktop to
+START.BAT, and in the Properties, go to the PROGRAM tab, and click Advanced.
+Check RUN IN MS-DOS MODE, and type the Autoexec and Config you want to use in
+the panel provided. Then when you click on your SP shortcut, your computer will
+reboot with the new configuration, start MS-DOS, the restart Windows
+automatically on exit.
+
+                                               -- Philip Lentz <fear@pwc.mv.com>
+
+--
+I installed and run the game under Windows 95. I have not had any problems with
+my sound (SB16, really want the AWE card though!)
+
+I have NO "drivers," as such in either my autoexec.bat or config.sys. This is
+because Windows 95 has its own drivers for all my devices. I do, however, have
+the soundblaster "environmental" statements as listed in the other responses.
+The environmental statements are preceded with "Set" and the drivers are
+preceded with "device" or "devicehigh"...As I said earlier, I have omitted ALL
+driver lines (of ANY type) because Windows 95 has its own drivers already
+configured for all of my devices (Sound Blaster, Mouse, CD-ROM, etc.)...check
+the device manager and make sure you have NO conflicts there. In addition,
+Creative Labs recently released a set of Beta drivers for the SB16 & AWE sound
+cards that function perfectly for me and I play lots of games under Windows 95.
+Check out creative labs web site for the beta Windows 95 drivers if you're
+interested.
+
+After I installed the game, I went to the "steel" directory and right-clicked
+over the SP executable (I think it's called steel.exe) and selected "create
+shortcut." This creates a shortcut, usually located at the bottom of the folder
+where you created it. If you have run SP before, you may already have the
+shortcut in the directory. It will probably have an MS-DOS icon with the small
+shortcut arrow on it.
+
+If you right-click over the shortcut you just created and select properties, you
+can then change the environment that you with to play the game in, as well as
+choose a different icon. For properties, I made sure to enable the amount & type
+of memory that the game requires, maximized/full-screen mode, and disabled all
+the Windows hot-keys. I then moved the shortcut to the desktop and I use it to
+run the program.
+
+Before you run the game you might check to make sure that no other programs are
+running (ctrl+alt+del) other than explorer (i.e. the shell, not the "file
+manager"). I've heard that Windows 95 screen saver can cause problems, too.
+There is an option under the shortcut properties to disable the screen saver,
+but I always turn mine "off" manually.
+
+                                                -- Lee Small <lsmall@arcada.com>
+
+
+
+Other resources
+---------------
+
+The Tankers' Homepage is an excellent web site for wargaming and military
+history material, including Steel Panthers. Point your web browser to
+<http://www.webspace.com/~tanker>.
+
+Pascal Ode maintains an Independent Player's Page, at
+<http://ourworld.compuserve.com/homepages/POde/>. Pascal has some good hints on
+tactics in SP (these are actually snippets from his shareware strategy guide),
+as well as info on several other games.
+
+The Wargamers Page has lots of SP-related stuff, including user-designed
+scenarios, at <http://www.kiss.de/~kroll/wargamer.htm>. This site is moving;
+from April 1 use <http://www.bunt.com/~wargamer>.
+
+Novastar sells a range of additional scenarios and short campaigns for SP. Their
+Web homepage is <http://www.vfr.net/~novastar/novastar.htm>, and you can email
+to <novastar@vfr.net>.
+
+The Stalag 13 BBS web page has a number of scenarios for SP, as well as an
+impressive primer on tactics. The web address is
+<http://users.aol.com/dheitm8612/page1.htm>.
+
+
+
+
+______________________________________________________________________
+Hong Ooi              hong@magna.com.au              Sydney, Australia
+"I think the fall of Berlin was somehow tied with the decline of 80's
+ pop music." -- Nikolai Kingsley
+

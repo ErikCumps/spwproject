@@ -1,0 +1,195 @@
+            SP23Ed
+   Steel Panthers 2 & 3 Editor
+         Version 0.20
+          Copyright by
+          Fred Chlanda
+            May 1999
+
+Introduction:
+
+SP23Ed is a 32-bit MS Windows(tm) program which is intended to be a more convenient way to edit scenario files than the editors built into SSI's Steel Panthers 2 and 3. It also can be used to edit saved game files. Some of the things that can be edited include leader stats, weapon types, ammo, unit position, and most other unit values that are stored in the scenario file. Some game parameters can also be edited which should be of particular interest to players of long campaigns. A battle summary lists all of the units (starting and current) of a particular type together. Finally, unit data can be exported to and imported from a spreadsheet so that fields not directly accessible from SP23Ed can be easily changed. 
+
+This is a beta copy of the program. As such, it may have a few rough edges and some bugs. I would appreciate hearing about these so that they can be fixed in future versions. USE OF THIS PROGRAM IS COMPLETELY AT YOU OWN RISK. I WILL NOT BE RESPONSIBLE FOR ANY DAMAGE THAT IT MAY CAUSE, INCLUDING LOSS OF DATA, TO YOUR COMPUTER. IT IS HIGHLY RECOMMENDED THAT ALL FILES OPERATED ON BE BACKED UP. This Help file explains how to use SP23Ed, but is not intended to be a tutorial in what various parameters mean or how to write a good scenario.  SP23Ed is completely free. 
+
+Installation:
+
+23Ed will best be appreciated when running with a screen resolution of 1024x768 although 800x600 will be adequate. The easiest place to install SP23Ed is in the main Steel Panthers directory. The best place to install it is in its own subdirectory of Steel Panthers into which you copy the MOB (or SP3 KOB) files. As an alternative to placing the MOB files in the SP23Ed directory, the path to them can be set, but you must do this each time you load the program. Although SP23Ed will run without access to the MOB files, weapons editing will be limited. If installation was in a separated directory uninstallation is as simple as removing the directory. 
+
+Loading and Saving Files:
+
+To get started you will need to load a file. Either Scenario or Saved Game files can be loaded via the Files menu. Steel Panthers 2 uses two different types of file formats. You probably have upgraded to Version 1.1 and so all of your scenarios can be loaded and saved using the Load SP2 V1.1 Scen/Save File option. However, the original scenarios that shipped with SP2 are in the Version 1.0 format. When you chose to load a file, the SP23Ed file load dialog will try to identify files of the correct type. In the Open File dialog,  names of files having a "dat" extension are displayed followed by an arrow (->). If the arrow is preceded by a * then the file is of the correct type as far as SP23Ed can tell.  Once the file is loaded, its name is displayed just above the Leader Information box. To help you remember, the file name is preceded by the file type. 
+
+In the Open File dialog, the description of the file contained in the "cmt" file will be shown if the cmt file is present. Loading the data file automatically loads the cmt file, but saving the file does NOT automatically save the comment file. Saving the comment file  must be done using the Save Comment File option. If for some reason the Comment file is not loaded with the scenario or if you wish to load a different one, this can be done with the Load Comment File function.
+
+When saving a data file, it is important to pick the save option which corresponds to the type of file being edited. For example, if  Load SP2 V1.0 Scen/Save File was used to load the file, Save SP2 V1.0 Scen/Save File should be used to save it. (SP23Ed does not convert file types!). There is an important difference between saving SP2 V1.0 files and the others. For V1.0 files, the original file is overwritten. THERE IS NO OPTION TO RENAME THE FILE. When saving an SP2 V1.1 or SP3 file, you will be given the option of saving the file with a new name to avoid overwriting the original file.
+
+Setting the MOB Path:
+
+If you do not place the MOB(KOB) files in the SP23Ed directory, can still access them. Just use Files|Set MOB Path before loading your scenario. Use the dialog box to navigate to the MOB file location select one of the MOB files and click Open. This will set the path. 
+
+Leader Information Display:
+
+When you load a scenario/save file, the title will disappear and be replaced by a list box which will show important information about units and their leaders. The first column shows the Side (one side is 0, the other 1). The Side Radio Group box (top left corner) should give the country names which correspond to 0 and 1. Next is the unit designation (which may not correspond exactly to what is displayed by SP). The third column shows the unit name and the fourth the leader(s) name. Following this are six columns which give the Unit/Leader ratings for Experience, Morale, Rally, Infantry, Artillery and Armor skills. These last six columns can be edited and will be saved when the scenario is saved. (Unit and leader names can be changed via the Unit Data screen.)
+
+One important function of SP23Ed is to override the default values used by SP and quickly assign a distribution of Experience etc to reflect the wishes of the scenario designer. To do this  dice are rolled. Separate statistics can be used for  Experience, Morale, Rally and the  Primary skill of a leader (Sk1). The secondary skills (e.g. Artillery and Infantry for a tank commander) are set using Sk2. A random rating is arrived at for each Unit/Leader by taking the value in the Base column, adding the result of a die roll of d dice with s sides, subtracting another die roll of d1 dice of s1 sides. The result is constrained to fall into the range given by the Min and Max values. The values of these statistical parameters can be typed in or loaded from a country configuration file as described later. 
+
+After setting the statistical parameters, a side for which the parameters are to be applied should be chosen (DON'T FORGET!). Each of the skills can be rolled individually by using the button at the right of the parameters. For example, if you wish to reflect a battle in which units of one side all have a morale boost because of a recent victory, the parameters in the "Mor" line can be adjusted and the Mor Roll button pressed. If you want to change the values for all of the Unit/Leader ratings, press the Roll All button on the left. To polish up the scenario, individual values can be changed directly in the Leader Information Display. 
+
+If you are a frequent scenario designer you may wish to prepare a country configuration file with the necessary statistical parameters so that they don't need to be typed in all of the time. An example file is Std_stat.txt which is included by way of example. The file structure is quite simple. It is a standard text file. The first non-comment line holds a number which is the number of entries in the file (5 for Std_stat.txt). Each entry consists of a text description e.g. Standard Average Troops. The first word of this description is interpreted as the country (or main category) of the entry. The description is followed by five lines of data with 7 numbers in each which are the statistical parameters just as they appear in SP23Ed. A large country configuration file, WW2_Stat.txt, prepared by Nick Papp to be used in conjunction with the SP2 adaptation to World War II  (SP2WW2), is also included. 
+
+To load a set of parameters from a country configuration file, first use Tools|Load Country Data. Then use Tools|Select Country Data. Click on one of the countries in the left column and then chose the specific data set from the list on the right. Click the Set button to transfer the parameters.
+
+Unit Data Window
+
+Pressing the Unit Data button or selecting this option in Tools will bring up a new window with a lot of information about the unit that is currently selected (clicked on) in the Leader Information display. Some of the items are in red. These can, but probably should not, be changed. Everything else is fair game. Changes made in any of the edit boxes are only saved (to memory) after the Retain button is clicked. Selecting a new unit or closing the Unit Data window will erase any changes you have made. Of course, changes are only made to your scenario file when it is saved.
+
+Near the top of the Unit Data window you will see the name of the unit. You can change this to whatever you like as long as it is not longer than 15 characters. SP23Ed will truncate any longer name automatically. Below the name field is a table containing the armor values for armored units. These can be changed to any values you wish. (Note. There are 4 values in the scenario file for each armor position. The last of these is for HEAT and the other three always seem to be the same. SP23Ed will use this convention until more information is available.)
+
+Toward the bottom of the form are sixteen editable fields for what seem to be the most important unit parameters. See Andrew Gailey's MOB Hack for an explanation of any of the fields. Going across the fields are:
+1) Fire Control  
+2) Rate of Fire 
+3) Speed 
+4) Swim (water movement points)
+5) Rounds of Smoke Ammo
+6) Size of Unit
+7) Vision
+8) Stabilizer
+9) Number of Smoke Dischargers
+10) Range Finder
+11) Radio
+12) Cost
+13) Lift (Carrying capacity)
+14) Lift Cost (Weight of the unit)
+15) Number of Men
+16) Survivability
+
+Some explanation is necessary for a few of these. 
+
+The Radio field is a flag indicating whether the unit has a radio (1) or not (0). The values used in the MOB file are evidently interpreted before the scenario file is generated.
+
+For Steel Panthers 3 the cost field is per unit, but the Men field is the total for all units. 
+
+Below the Line:
+
+As explain below, items below the line are not included in cut and paste operations.
+
+Below the line across the window there is an edit box for the unit's leaders names. These must conform to the general format shown. There must be a forward slash separating the two names that must have no more than 14 characters total (excluding the /). If an invalid format is used, then the new names will not be saved.
+
+At the bottom of the window are some miscellaneous properties. The number of Kills for the leader, the amount of Damage to the unit and the Suppression. When setting the Suppression for a unit in a scenario, please note that there is a Rally phase before the start of the first turn so that the suppression may be randomly lower than what is entered here when the first turn begins.
+
+Weapons: 
+
+In the middle of the window is a table that lists weapons and rounds of ammo for each weapon. These are High Explosive, Armor Piercing, HVAP/Sabot (S1) and HEAT (S2). Although only the first weapon appears to utilize special ammo, the scenario files have values for special ammo for the 3 secondary weapons.
+
+If the MOB file for the side (country) being edited is available, you will be able to change, add or remove weapons. Click on the weapon name (or empty space). (At least temporarily, because of the way the table component works, if you wish to select the primary weapon, click on one of the others first, then on the primary weapon. Sorry.) When you select a weapon, a list of all the available weapons will appear. Scroll through the list until you find the weapon that you want appears. Then select it and click the Set button. The new weapon will replace the current weapon. (You will need to adjust ammo to amounts appropriate for the weapon.)
+
+
+Editing Unit Positions:
+
+This feature is meant to help in simulating the confusion in unit positions following an air drop or when making a rapid retreat. To open the position window, choose Position under Tools. When you do, you will see a window with a gray area with yellow (side 0) and red (side 1) rectangles scattered across it. The gray rectangle represents the map and the spots are the positions of the various units. (Only Large maps are supported). 
+
+Below the map is a list of units and their positions (X,Y). A unit's position can be changed directly in the table. (Changes made in the Position window do not become effective until the Retain button is pressed. If the window is closed before this, the changes will be lost.) A group of units can be selected by clicking on the unit designation (e.g. B1). An asterisk will appear next to the designation to indicate that the unit is selected. Click on it again and it will be unselected. Units can also be selected by dragging a box around them on the map and pressing the Select button
+
+After selecting units, they can be dropped into an area on the map. The area can be entered by hand as coordinates, Drop At for the center and Scatter for the maximum distance from the center in the X and Y directions. An easier way to pick the area is to press down on the mouse button at the top left corner of the rectangular area that you want to be the drop zone on the map and then drag (keep the mouse button down) to the lower right corner. This will show a box on the screen. Pressing the Drop button will then randomly distribute the selected units in the box and unselect them.
+
+The remaining control on the window is the Density. This controls the distribution of the units within the box. If set to 0 or 1, the positions are completely random. Set to higher numbers, the units will tend to progressively cluster near the center of the box. (Please note, there is no checking for stacking and the effect of having many units in the same hex might be undesirable.)
+
+Another feature that can be changed via the Position window is the spotted status of a unit. The last column of the table is labeled Hid. This is a flag that indicates whether a unit is hidden (1) or visible (0) to the enemy. Just type in 0 or 1 and click Retain to set the status of any unit.
+
+
+Editing Game Data:
+
+Note: There follow some features new to SP23Ed. These are not very well tested, but I have at least given most of them a try to see that they work as advertised.
+
+To open the Game Data window, select Tools|Edit Game Data. Some of the values on this screen are only applicable to campaigns. General properties the current Turn Number, the maximum number of turns, the visibility and Description of the scenario terrain/local. As always, after a field is changed, remember to click the Retain button before closing the window to save your changes. 
+
+Some of the other fields are of interest to players of long campaigns. You can see a summary of victories and battles. It seems pointless to change these, but you might want to change the total number of battles to be fought in the campaign. The countries refer to the human player (first field) and up to 3 computer opponents. The numbers are referenced to the appropriate MOB(KOB) files. For SP3, KOBs 70 and above refer to WW II. Use Andrew Gailey's MOB and KOB Hack to see a list of these. The terrain field describes the kind of terrain that is used for map generation. If you started with Plains and want to switch to Desert just change the terrain to 4 (desert) and the next map will be a desert map. The Terrain types are 0-Plains, 1-Forest, 2- Mountains, 3-Jungle, 4-Desert. You can adjust your points available for unit purchase ($$$) but remember, some people would consider that cheating. In theory (I haven't tried it), it would be possible to start a WW II German campaign against the British in the Desert, switch to some Eastern front battles on the Plains of Eastern Europe then go back to the desert and fight Americans in 1943 then in Italy's Mountains, the Plains of Normandy and finally the Forest of the Ardennes.
+
+Battle Summary:
+
+To open the Battle Summary screen chose Tools|View Battle Summary. If you are viewing an SP3 save file the window will display a list of all different unit types (according to the unit number stored in the save file). If you have changed the name of units of that type, then whatever name is found first will be found for all those units. For example if you changed the name of the first Bradley M2A3 (Type #65) to "Big Brad" then all o the units will be named Big Brad. The number of Formations (i.e. groups that you control) of each type are shown current/starting. This if you started with 3 Bradley formations and one was destroyed you would see 2/3. In a similar way the current number of units making up formations of that type and the current and original number of men in each formation is shown. A total of all men and units, starting and destroyed is given at the bottom of the table. To view the other side, click on it in the Side Radio Group in the main window and reselect the Battle Summary. 
+
+For SP2, there is no difference between units and formations. There are also some problems with getting the number of starting men and kills because some crews survive. The number killed is not kept (as far as I can tell in the save file) so the MOB file must be available to get the starting numbers.
+
+Edit Comment File:
+
+The comment file contains the information that appears in the menu when selecting a save or scenario in the SP menu. Although the file has room for 200 characters, there is some limit less than this that will be tolerated by SP. To be safe keep it down to a minimum. Remember, the comment file is not saved when you save you scenario file so you need to use Files|Save Comment File.
+
+Save and Paste CSV File:
+
+This feature is intended only for the brave, advanced user or the curious. Choosing File|Save CSV Unit File will write a file containing all of the fields for each unit (including those not editable with SP23Ed) in the Comma Separated Variable format that is compatible with many spreadsheets. A header is written which numbers the columns with their offset in hexadecimal, then data for each unit is written on a new line. Each unit's data consists of 220 (SP2) or  243 (SP3) bytes of data starting with 16 bytes which are the name of the unit. The name field is saved as a string and the rest of the fields are saved as numeric single bytes even though some of these (e.g. image number) are two byte fields. You can load this data file into Excel (or other spreadsheet?). This lets you view and change the data. Save the data to a new CSV file. You can use the Files|Paste CSV Unit File to bring altered data back into SP23Ed and save it to a SP save/scenario file. Make sure that the same scenario that was used to generate the CSV file is loaded before pasting the CSV.
+
+This is a portion of the header file from SP23Ed. The names are pretty descriptive of each of the offsets. The 0x prefix means that the number is in hexadecimal notation. This should help identify many of the fields in the CSV file. Note that the offsets are included as headings for the columns exported in the CSV file. Values that are only given for SP2 are probably the same for SP3.
+//unit data
+#define SP2_UNIT_RECORD_SIZE 0xDC
+#define SP3_UNIT_RECORD_SIZE 0xF3
+#define SP2_UNITS_START 0
+#define SP2_UNIT_LETTER 0x14
+#define SP2_UNIT_SUBSCRIPT 0x15
+#define SP2_SIZE_OFFS 0x18
+#define SP2_AMMO_OFFS 0x2D
+#define SP2_ARMOR_OFFS 0x3D
+#define SP2_MEN_OFFS 0x73
+#define SP2_SPEED_OFFS 0x74
+#define SP3_SPEED_OFFS 0x74  
+#define SP2_SUPRESS_OFFS 0x75
+#define SP2_EXP     0x76
+#define SP2_MORALE  0x77
+#define SP2_DAMAGE_OFFS 0x79
+#define SP2_VISION_OFFS 0x7E
+#define SP3_VISION_OFFS 0x7F
+#define SP2_FC_OFFS   0x83
+#define SP3_FC_OFFS   0x84
+#define SP2_COST_OFFS 0x84
+#define SP3_COST_OFFS 0x85
+#define SP2_LEADER_NUMBER 0x85
+#define SP3_LEADER_NUMBER 0x87
+#define SP2_SIDE_OFFS 0xB2
+#define SP3_SIDE_OFFS 0xB5
+#define SP2_ROF_OFFS 0xB3
+#define SP3_ROF_OFFS 0xB6
+#define SP2_LIFT_OFFS 0xB7
+#define SP3_LIFT_OFFS 0xBA
+#define SP2_LCOST_OFFS 0xB9
+#define SP3_LCOST_OFFS 0xBC
+#define SP2_SMOKE_OFFS 0x8D    //this is ammo
+#define SP3_SMOKE_OFFS 0x8F
+#define SP2_WEAPONS_OFFS 0xCC
+#define SP3_WEAPONS_OFFS 0xCF
+#define SP2_COUNTRY 0x9F  
+#define SP3_COUNTRY 0xA1
+#define SP2_SURVIVE_OFFS 0xBF
+#define SP3_SURVIVE_OFFS 0xC2
+#define SP2_STABLE_OFFS 0xB4
+#define SP3_STABLE_OFFS 0xB7
+#define SP2_RFINDER_OFFS 0xB5
+#define SP3_RFINDER_OFFS 0xB8
+#define SP2_RADIO_OFFS 0x82   // this is on off flag
+#define SP3_RADIO_OFFS 0x83
+#define SP2_UNUMBER_OFFS 0xA0
+#define SP3_UNUMBER_OFFS 0xA2
+#define SP2_IMGNUMBER_OFFS 0x12  //2 bytes
+#define SP2_UTYPE_OFFS 0x10  //i.e the class
+#define SP2_SWIM_OFFS  0xBC
+#define SP3_SWIM_OFFS  0xBF
+#define SP2_SMOKED_OFFS 0xD0  //smoke discharge, not ammo
+#define SP3_SMOKED_OFFS 0xD3
+#define SP2_MOB_OFFS 0xC8     
+#define SP3_KOB_OFFS 0xCB
+#define SP3_ORIGINAL_UNITS_OFFS 0xDA
+#define SP3_ORIGINAL_MEN_OFFS   0xDB
+#define SP3_CURRENT_UNITS_OFFS  0xD8
+
+
+Acknowledgments:
+The two people who have been most helpful in getting this project started are Nick Papp and Don Goodbrand who got me involved in the SP2WWII project. Having Andrew Gailey's Mobhack and KOBhack  available also made it a lot easier for me to find things in the scenario/save files. I also want to give credit to Borland (now know as Inprise or is it Borland.com?) for making a fine tool like Cbuilder that enables amateur programmers to quickly and easily write decent programs. Finally, I would like to thank SSI for making Steel Panthers and a lot of other interesting games.
+
+A Note from the Author:
+I enjoy playing strategy and role playing games. Even more, I enjoy writing programs to enhance the player's enjoyment of these games. I spent quite a bit of time playing SP 1 several years ago but did not own SP2 until recently because I prefer WW II battle settings. SP2WWII convinced me that I should spend a little time looking at SP 2.  I finally bought a copy of SP3 while waiting 8 months for SP3 to come free on an SSI special offer.  Now SP23Ed includes the promised SP3 editing features, finally. In addition to this program, my major efforts have been directed toward PacMap, a map editor for Pacific General, and ShpEd, a program for manipulating images stored in the shp files used by many SSI games. You can find the latest version of SP23Ed on my web page, pages.prodigy.net/chlanda, along with a lot of other stuff that I have written.
+
+Please send comments, suggestions and bug reports to me at 
+chlanda@hotmail.com
+
+Fred Chlanda
+May 1999
+pages.prodigy.net/chlanda

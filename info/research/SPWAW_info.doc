@@ -1,0 +1,41 @@
+* Max amount of units in hex: 16
+
+* .rec file:
+
+	header = 0x50 bytes
+	data   = 0x50 ... (size = header[4..7])
+	
+* Higher experience numbers indicate a unit that will shoot better, be
+tougher on defense, and degrade in status more slowly under enemy fire.
+Experienced units are less susceptible to suppression, have a better chance
+to hit enemy units, spot enemy units better, are harder to spot themselves,
+and close assault tanks better. There are four basic experience levels:
+Green (30- 49), Average (50-79), Veteran (80-99), and Elite (100+). Units
+gain experience at the end of each mission if you are playing a campaign
+game. Unit experience does not change during a game. The range is 30 to 140
+experience points. Elite units, for example, are units that have over 100
+experience points.
+
+* If 2/3 of your units are dead, routed, or reduced to 50% strength or less,
+their force morale can be “broken”. This also requires the AO to fail a
+morale check (Die(120> morale). Any turn in which theses conditions apply
+and the AO fails this check, and one side has the preponderance of victory
+hexes, the game can end before the allotted time.
+
+Scenario designers can mitigate this by giving the A0 120 morale and the
+player protecting it. In addition to the possible early end of the game, the
+effect of Force Morale breaking is to add suppression to every unit in the
+force at the end of each turn.
+
+* Units: moveclass variable:
+	0	default
+	1	unknown
+	2	wheel
+	3	wheel AT
+	4	track
+	5	unknown
+	6	unknown
+	7	ship
+	8	unknown
+	9	unknown
+	10	unknown
