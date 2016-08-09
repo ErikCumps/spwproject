@@ -26,7 +26,7 @@ SPWaW 2016 release. These are under investigation.
 NOTE
 ----
 
-the following files are generated from blst defintion files in the gen directory:
+the following files are generated from blst definition files in the gen directory:
 
 * include\spwawlib_spwoob_types.h
 * src\spwoob\spwawlib_spwoob_types.c
