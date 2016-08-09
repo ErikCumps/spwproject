@@ -127,6 +127,8 @@ typedef struct s_SPWOOB {
 
 
 /*** API ***/
+extern SPWAWLIB_API SPWOOB *		SPWAW_SPWOOB		(void);
+
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_data		(SPWOOB *oob, BYTE id, SPWOOB_DATA **data);
 extern SPWAWLIB_API const char *	SPWAW_oob_nation	(BYTE id);
 extern SPWAWLIB_API const char *	SPWAW_oob_people	(BYTE id);
