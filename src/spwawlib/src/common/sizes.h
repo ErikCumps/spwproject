@@ -9,9 +9,6 @@
 #ifndef	INTERNAL_SIZES_H
 #define	INTERNAL_SIZES_H	1
 
-#define	SECCOUNT		50
-#define	SECMAXID		51
-
 #define	SIZESEC00		20
 #define	SIZESEC01		206400
 #define	SIZESEC02		48000

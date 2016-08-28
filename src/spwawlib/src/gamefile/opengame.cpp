@@ -13,59 +13,57 @@
 
 #define	PATHMAX	256
 
-static SECMAP	MAP[SECMAXID+1] = {
-	{  0,	(void *)offsetof (GAMEDATA, sec00),	SIZESEC00	},
-	{  1,	(void *)offsetof (GAMEDATA, sec01),	SIZESEC01	},
-	{  2,	(void *)offsetof (GAMEDATA, sec02),	SIZESEC02	},
-	{  3,	(void *)offsetof (GAMEDATA, sec03),	SIZESEC03	},
-	{  4,	(void *)offsetof (GAMEDATA, sec04),	SIZESEC04	},
-	{  5,	(void *)offsetof (GAMEDATA, sec05),	SIZESEC05	},
-	{  6,	(void *)offsetof (GAMEDATA, sec06),	SIZESEC06	},
-	{  7,	(void *)offsetof (GAMEDATA, sec07),	SIZESEC07	},
-	{  8,	(void *)offsetof (GAMEDATA, sec08),	SIZESEC08	},
-	{  9,	(void *)offsetof (GAMEDATA, sec09),	SIZESEC09	},
-	{ 10,	(void *)offsetof (GAMEDATA, sec10),	SIZESEC10	},
-	{ 11,	(void *)offsetof (GAMEDATA, sec11),	SIZESEC11	},
-	{ 12,	(void *)offsetof (GAMEDATA, sec12),	SIZESEC12	},
-	{ 13,	(void *)offsetof (GAMEDATA, sec13),	SIZESEC13	},
-	{ 14,	(void *)offsetof (GAMEDATA, sec14),	SIZESEC14	},
-	{ 15,	(void *)offsetof (GAMEDATA, sec15),	SIZESEC15	},
-	{ 16,	(void *)offsetof (GAMEDATA, sec16),	SIZESEC16	},
-	{ 17,	(void *)offsetof (GAMEDATA, sec17),	SIZESEC17	},
-	{ 18,	(void *)offsetof (GAMEDATA, sec18),	SIZESEC18	},
-	{ 19,	(void *)offsetof (GAMEDATA, sec19),	SIZESEC19	},
-	{ 20,	(void *)offsetof (GAMEDATA, sec20),	SIZESEC20	},
-	{ 21,	(void *)offsetof (GAMEDATA, sec21),	SIZESEC21	},
-	{ 22,	(void *)offsetof (GAMEDATA, sec22),	SIZESEC22	},
-	{ 23,	(void *)offsetof (GAMEDATA, sec23),	SIZESEC23	},
-	{ 24,	(void *)offsetof (GAMEDATA, sec24),	SIZESEC24	},
-	{ 25,	(void *)offsetof (GAMEDATA, sec25),	SIZESEC25	},
-	{ 26,	(void *)offsetof (GAMEDATA, sec26),	SIZESEC26	},
-	{ 27,	(void *)offsetof (GAMEDATA, sec27),	SIZESEC27	},
-	{ 28,	(void *)offsetof (GAMEDATA, sec28),	SIZESEC28	},
-	{ 29,	(void *)offsetof (GAMEDATA, sec29),	SIZESEC29	},
-	{ 30,	(void *)offsetof (GAMEDATA, sec30),	SIZESEC30	},
-	{ 31,	(void *)offsetof (GAMEDATA, sec31),	SIZESEC31	},
-	{ 32,	(void *)offsetof (GAMEDATA, sec32),	SIZESEC32	},
-	{ 33,	(void *)offsetof (GAMEDATA, sec33),	SIZESEC33	},
-	{ 34,	(void *)offsetof (GAMEDATA, sec34),	SIZESEC34	},
-	{ 35,	(void *)offsetof (GAMEDATA, sec35),	SIZESEC35	},
-	{ 36,	(void *)offsetof (GAMEDATA, sec36),	SIZESEC36	},
-	{ 37,	(void *)offsetof (GAMEDATA, sec37),	SIZESEC37	},
-	{ 38,	(void *)offsetof (GAMEDATA, sec38),	SIZESEC38	},
-	{ 39,	(void *)offsetof (GAMEDATA, sec39),	SIZESEC39	},
-	{ 40,	(void *)offsetof (GAMEDATA, sec40),	SIZESEC40	},
-	{ 41,	(void *)offsetof (GAMEDATA, sec41),	SIZESEC41	},
-	{ 42,	(void *)offsetof (GAMEDATA, sec42),	SIZESEC42	},
-	{ 43,	(void *)offsetof (GAMEDATA, sec43),	SIZESEC43	},
-	{ 44,	(void *)offsetof (GAMEDATA, sec44),	SIZESEC44	},
-	{ 45,	(void *)offsetof (GAMEDATA, sec45),	SIZESEC45	},
-	{ 46,	(void *)offsetof (GAMEDATA, sec46),	SIZESEC46	},
-	{ 47,	(void *)offsetof (GAMEDATA, sec47),	SIZESEC47	},
-	{ 48,	(void *)offsetof (GAMEDATA, sec48),	SIZESEC48	},
-	{ 49,	NULL,					0		},
-	{ 50,	NULL,					0		},
-	{ 51,	(void *)offsetof (GAMEDATA, sec51),	SIZESEC51	},
+static SECMAP	MAP[SPWAW_SECTION_COUNT] = {
+	{  0,	(void *)offsetof (GAMEDATA, sec00),	SIZESEC00,	false	},
+	{  1,	(void *)offsetof (GAMEDATA, sec01),	SIZESEC01,	true	},
+	{  2,	(void *)offsetof (GAMEDATA, sec02),	SIZESEC02,	false	},
+	{  3,	(void *)offsetof (GAMEDATA, sec03),	SIZESEC03,	true	},
+	{  4,	(void *)offsetof (GAMEDATA, sec04),	SIZESEC04,	true	},
+	{  5,	(void *)offsetof (GAMEDATA, sec05),	SIZESEC05,	true	},
+	{  6,	(void *)offsetof (GAMEDATA, sec06),	SIZESEC06,	true	},
+	{  7,	(void *)offsetof (GAMEDATA, sec07),	SIZESEC07,	true	},
+	{  8,	(void *)offsetof (GAMEDATA, sec08),	SIZESEC08,	true	},
+	{  9,	(void *)offsetof (GAMEDATA, sec09),	SIZESEC09,	true	},
+	{ 10,	(void *)offsetof (GAMEDATA, sec10),	SIZESEC10,	false	},
+	{ 11,	(void *)offsetof (GAMEDATA, sec11),	SIZESEC11,	true	},
+	{ 12,	(void *)offsetof (GAMEDATA, sec12),	SIZESEC12,	false	},
+	{ 13,	(void *)offsetof (GAMEDATA, sec13),	SIZESEC13,	false	},
+	{ 14,	(void *)offsetof (GAMEDATA, sec14),	SIZESEC14,	false	},
+	{ 15,	(void *)offsetof (GAMEDATA, sec15),	SIZESEC15,	false	},
+	{ 16,	(void *)offsetof (GAMEDATA, sec16),	SIZESEC16,	false	},
+	{ 17,	(void *)offsetof (GAMEDATA, sec17),	SIZESEC17,	true	},
+	{ 18,	(void *)offsetof (GAMEDATA, sec18),	SIZESEC18,	true	},
+	{ 19,	(void *)offsetof (GAMEDATA, sec19),	SIZESEC19,	true	},
+	{ 20,	(void *)offsetof (GAMEDATA, sec20),	SIZESEC20,	false	},
+	{ 21,	(void *)offsetof (GAMEDATA, sec21),	SIZESEC21,	false	},
+	{ 22,	(void *)offsetof (GAMEDATA, sec22),	SIZESEC22,	false	},
+	{ 23,	(void *)offsetof (GAMEDATA, sec23),	SIZESEC23,	true	},
+	{ 24,	(void *)offsetof (GAMEDATA, sec24),	SIZESEC24,	true	},
+	{ 25,	(void *)offsetof (GAMEDATA, sec25),	SIZESEC25,	true	},
+	{ 26,	(void *)offsetof (GAMEDATA, sec26),	SIZESEC26,	true	},
+	{ 27,	(void *)offsetof (GAMEDATA, sec27),	SIZESEC27,	false	},
+	{ 28,	(void *)offsetof (GAMEDATA, sec28),	SIZESEC28,	true	},
+	{ 29,	(void *)offsetof (GAMEDATA, sec29),	SIZESEC29,	true	},
+	{ 30,	(void *)offsetof (GAMEDATA, sec30),	SIZESEC30,	true	},
+	{ 31,	(void *)offsetof (GAMEDATA, sec31),	SIZESEC31,	true	},
+	{ 32,	(void *)offsetof (GAMEDATA, sec32),	SIZESEC32,	true	},
+	{ 33,	(void *)offsetof (GAMEDATA, sec33),	SIZESEC33,	true	},
+	{ 34,	(void *)offsetof (GAMEDATA, sec34),	SIZESEC34,	true	},
+	{ 35,	(void *)offsetof (GAMEDATA, sec35),	SIZESEC35,	true	},
+	{ 36,	(void *)offsetof (GAMEDATA, sec36),	SIZESEC36,	true	},
+	{ 37,	(void *)offsetof (GAMEDATA, sec37),	SIZESEC37,	true	},
+	{ 38,	(void *)offsetof (GAMEDATA, sec38),	SIZESEC38,	false	},
+	{ 39,	(void *)offsetof (GAMEDATA, sec39),	SIZESEC39,	false	},
+	{ 40,	(void *)offsetof (GAMEDATA, sec40),	SIZESEC40,	true	},
+	{ 41,	(void *)offsetof (GAMEDATA, sec41),	SIZESEC41,	true	},
+	{ 42,	(void *)offsetof (GAMEDATA, sec42),	SIZESEC42,	false	},
+	{ 43,	(void *)offsetof (GAMEDATA, sec43),	SIZESEC43,	false	},
+	{ 44,	(void *)offsetof (GAMEDATA, sec44),	SIZESEC44,	true	},
+	{ 45,	(void *)offsetof (GAMEDATA, sec45),	SIZESEC45,	false	},
+	{ 46,	(void *)offsetof (GAMEDATA, sec46),	SIZESEC46,	true	},
+	{ 47,	(void *)offsetof (GAMEDATA, sec47),	SIZESEC47,	true	},
+	{ 51,	(void *)offsetof (GAMEDATA, sec51),	SIZESEC51,	false	},
+	{ 48,	(void *)offsetof (GAMEDATA, sec48),	SIZESEC48,	true	},
 };
 
 SECMAP *
@@ -74,33 +72,51 @@ gamedata_secmap (void)
 	return (MAP);
 }
 
-static void
-newgame (GAMEDATA **ptr)
+GAMEDATA *
+game_new (void)
 {
-	int	i;
-	DWORD	p;
+	GAMEDATA	*ptr;
+	int		i;
+	DWORD		p;
 
-	if (!ptr) return;
+	ptr = safe_malloc (GAMEDATA);
+	if (!ptr) return (NULL);
 
-	*ptr = safe_malloc (GAMEDATA);
-	if (!*ptr) return;
+	clear_ptr (ptr);
+	memcpy (ptr->MAP, &MAP, sizeof (MAP));
 
-	clear_ptr (*ptr);
-	memcpy ((*ptr)->MAP, &MAP, sizeof (MAP));
-	for (i=0; i<=SECMAXID; i++) {
-		if ((*ptr)->MAP[i].size == 0) continue;
-
-		p = (DWORD)(*ptr)->MAP[i].ptr;
-		p += (DWORD)(*ptr);
-		(*ptr)->MAP[i].ptr = (void *)p;
+	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+		p = (DWORD)ptr->MAP[i].ptr;
+		p += (DWORD)ptr;
+		ptr->MAP[i].ptr = (void *)p;
 	}
+
+
+	return (ptr);
+}
+
+SECMAP *
+gamedata_section (SECMAP *map, int idx)
+{
+	SECMAP	*sp = NULL;
+	int	i;
+
+	CWVNULL (map, NULL);
+
+	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+		if (map[i].idx == idx) {
+			sp = &(map[i]);
+			break;
+		}
+	}
+	return (sp);
 }
 
 static void
 freegame (GAMEDATA **ptr)
 {
 	if (!ptr) return;
-	if (*ptr) { free (*ptr); *ptr = NULL; }
+	if (*ptr) safe_free (*ptr);
 }
 
 static bool
@@ -128,7 +144,7 @@ open_gamefiles (const char *dir, int id, GAMEFILE *game)
 		ERROR1 ("failed to open game cmt file \"%s\" for reading", game->cmt_name);
 		goto error;
 	}
-	log ("open_gamefile: comment: name=\"%s\", fd=%d\n", game->cmt_name, game->cmt_fd);
+	log ("open_gamefiles: comment: name=\"%s\", fd=%d\n", game->cmt_name, game->cmt_fd);
 
 	hfd = (void *)_get_osfhandle (game->cmt_fd);
 	if (hfd != INVALID_HANDLE_VALUE) GetFileTime (hfd, NULL, NULL, &(game->cmt_date));
@@ -138,7 +154,7 @@ open_gamefiles (const char *dir, int id, GAMEFILE *game)
 		ERROR1 ("failed to open game dat file \"%s\" for reading", game->dat_name);
 		goto error;
 	}
-	log ("open_gamefile: data: name=\"%s\", fd=%d\n", game->dat_name, game->dat_fd);
+	log ("open_gamefiles: data: name=\"%s\", fd=%d\n", game->dat_name, game->dat_fd);
 
 	hfd = (void *)_get_osfhandle (game->dat_fd);
 	if (hfd != INVALID_HANDLE_VALUE)
@@ -156,7 +172,59 @@ error:
 }
 
 static bool
-close_gamefile (GAMEFILE *game)
+create_gamefiles (const char *dir, int id, GAMEFILE *game)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	char		name[PATHMAX+1];
+	HANDLE		hfd;
+
+	if (!dir || !game) return (false);
+
+	clear_ptr (game);
+	game->cmt_fd = game->dat_fd = -1;
+
+	memset (name, 0, sizeof (name));
+	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.cmt", dir, id);
+	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
+
+	memset (name, 0, sizeof (name));
+	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.dat", dir, id);
+	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
+
+	game->cmt_fd = open (game->cmt_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
+	if (game->cmt_fd == -1) {
+		ERROR1 ("failed to open game cmt file \"%s\" for writing", game->cmt_name);
+		goto error;
+	}
+	log ("create_gamefiles: comment: name=\"%s\", fd=%d\n", game->cmt_name, game->cmt_fd);
+
+	hfd = (void *)_get_osfhandle (game->cmt_fd);
+	if (hfd != INVALID_HANDLE_VALUE) GetFileTime (hfd, NULL, NULL, &(game->cmt_date));
+
+	game->dat_fd = open (game->dat_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
+	if (game->dat_fd == -1) {
+		ERROR1 ("failed to open game dat file \"%s\" for writing", game->dat_name);
+		goto error;
+	}
+	log ("open_gamefiles: data: name=\"%s\", fd=%d\n", game->dat_name, game->dat_fd);
+
+	hfd = (void *)_get_osfhandle (game->dat_fd);
+	if (hfd != INVALID_HANDLE_VALUE)
+		GetFileTime (hfd, NULL, NULL, &(game->dat_date));
+
+	return (true);
+
+error:
+	if (game->dat_fd != -1) close (game->dat_fd);
+	if (game->cmt_fd != -1) close (game->cmt_fd);
+	if (game->dat_name) free (game->dat_name);
+	if (game->cmt_name) free (game->cmt_name);
+	clear_ptr (game);
+	return (false);
+}
+
+static bool
+close_gamefiles (GAMEFILE *game)
 {
 	if (!game) return (false);
 
@@ -214,13 +282,13 @@ game_load_full (const char *dir, unsigned int id, GAMEINFO *info)
 	GAMEDATA	*data = NULL;
 	bool		cmt_rc, dat_rc;
 
-	log ("opengame (dir=\"%s\", id=%u, info=0x%8.8x)\n", dir, id, info);
+	log ("game_load_full (dir=\"%s\", id=%u, info=0x%8.8x)\n", dir, id, info);
 
 	if (info) clear_ptr (info);
 
 	if (!open_gamefiles (dir, id, &game)) return (NULL);
 
-	newgame (&data); COOMRET (data, "GAMEDATA", NULL);
+	data = game_new(); COOMRET (data, "GAMEDATA", NULL);
 
 	cmt_rc = gamedata_load_cmt (&game, &(data->cmt));
 	dat_rc = gamedata_load_all (&game, data);
@@ -234,9 +302,35 @@ game_load_full (const char *dir, unsigned int id, GAMEINFO *info)
 	}
 
 	if (data) setup_info (info, game.dat_name, game.dat_date, &(data->sec37), &(data->cmt));
-	close_gamefile (&game);
+	close_gamefiles (&game);
 
 	return (data);
+}
+
+bool
+game_save_full (GAMEDATA *src, const char *dir, unsigned int id)
+{
+	GAMEFILE	game;
+	bool		cmt_rc, dat_rc;
+
+	log ("game_save_full (src=0x%8.8x, dir=\"%s\", id=%u)\n", src, dir, id);
+
+	if (!create_gamefiles (dir, id, &game)) return false;
+
+	cmt_rc = gamedata_save_cmt (&(src->cmt), &game);
+	dat_rc = gamedata_save_all (src, &game);
+
+	close_gamefiles (&game);
+
+	if (!cmt_rc) {
+		ERROR0 ("failed to write game comment data");
+		return (false);
+	} else if (!dat_rc) {
+		ERROR0 ("failed to write game data");
+		return (false);
+	}
+
+	return (true);
 }
 
 void
@@ -255,7 +349,7 @@ game_load_cmt (const char *dir, unsigned int id, CMTDATA *dst)
 	if (!open_gamefiles (dir, id, &game)) return (false);
 
 	rc = gamedata_load_cmt (&game, dst);
-	close_gamefile (&game);
+	close_gamefiles (&game);
 	if (!rc) ERROR0 ("failed to load game comment");
 
 	return (rc);
@@ -270,7 +364,7 @@ game_load_section (const char *dir, unsigned int id, int sec, void *dst, unsigne
 	if (!open_gamefiles (dir, id, &game)) return (false);
 
 	rc = gamedata_load_section (&game, sec, dst, len);
-	close_gamefile (&game);
+	close_gamefiles (&game);
 
 	if (!rc) ERROR0 ("failed to load game section");
 
@@ -307,7 +401,7 @@ game_load_info (const char *dir, unsigned int id, GAMEINFO *info)
 
 	setup_info (info, game.dat_name, game.dat_date, &struct37, &cmt);
 
-	close_gamefile (&game);
+	close_gamefiles (&game);
 
 	if (!grc) ERROR0 ("failed to load all game info");
 

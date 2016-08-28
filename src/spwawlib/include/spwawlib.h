@@ -29,6 +29,7 @@
 #include <spwawlib_snaplist.h>
 #include <spwawlib_dossier.h>
 #include <spwawlib_dosslist.h>
+#include <spwawlib_savegame.h>
 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_init	(const char *oobdir, bool withUD);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_recfg	(const char *oobdir, bool withUD);

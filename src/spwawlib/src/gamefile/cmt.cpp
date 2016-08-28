@@ -20,3 +20,11 @@ gamedata_load_cmt (GAMEFILE *file, CMTDATA *dst)
 
 	return (bread (file->cmt_fd, (char *)dst, sizeof (*dst), false));
 }
+
+bool
+gamedata_save_cmt (CMTDATA *src, GAMEFILE *file)
+{
+	if (!src || !file) return (false);
+
+	return (bwrite (file->cmt_fd, (char *)src, sizeof (*src)));
+}

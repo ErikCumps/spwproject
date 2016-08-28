@@ -75,14 +75,15 @@ typedef struct s_CMTDATA {
 } CMTDATA;
 
 typedef struct s_SECMAP {
-	int	idx;	/* index	*/
-	void	*ptr;	/* offset	*/
-	DWORD	size;	/* size		*/
+	int	idx;		/* index				*/
+	void	*ptr;		/* offset				*/
+	DWORD	size;		/* size					*/
+	bool	compress;	/* section likes to be compressed	*/
 } SECMAP;
 
 typedef struct s_GAMEDATA {
 	CMTDATA		cmt;
-	SECMAP		MAP[SECMAXID+1];
+	SECMAP		MAP[SPWAW_SECTION_COUNT];
 	STRUCT00	sec00;	/* start		*/
 	STRUCT01	sec01;	/* units		*/
 	STRUCT02	sec02;	/* map_icon_main	*/
@@ -153,17 +154,26 @@ typedef struct s_GAMEINFO {
 	char		comment[SPWAW_AZSCMTTITLE+1];
 } GAMEINFO;
 
-extern SECMAP	*gamedata_secmap		(void);
+extern SECMAP *		gamedata_secmap		(void);
+extern SECMAP *		gamedata_section	(SECMAP *map, int idx);
 
-extern bool	gamedata_load_cmt	(GAMEFILE *file, CMTDATA *dst);
-extern bool	gamedata_load_all	(GAMEFILE *file, GAMEDATA *data);
-extern bool	gamedata_load_section	(GAMEFILE *file, DWORD sec, void *dst, unsigned long len);
+extern bool		gamedata_load_cmt	(GAMEFILE *file, CMTDATA *dst);
+extern bool		gamedata_load_all	(GAMEFILE *file, GAMEDATA *dst);
+extern bool		gamedata_load_section	(GAMEFILE *file, DWORD sec, void *dst, unsigned long len);
 
-extern GAMEDATA	*game_load_full		(const char *dir, unsigned int id, GAMEINFO *info);
-extern bool	game_load_cmt		(const char *dir, unsigned int id, CMTDATA *dst);
-extern bool	game_load_section	(const char *dir, unsigned int id, int sec, void *dst, unsigned long len);
-extern bool	game_load_info		(const char *dir, unsigned int id, GAMEINFO *info);
-extern void	game_free		(GAMEDATA *game);
+extern bool		gamedata_save_cmt	(CMTDATA *src, GAMEFILE *file);
+extern bool		gamedata_save_all	(GAMEDATA *src, GAMEFILE *file);
+
+extern GAMEDATA *	game_new		(void);
+
+extern GAMEDATA *	game_load_full		(const char *dir, unsigned int id, GAMEINFO *info);
+extern bool		game_load_cmt		(const char *dir, unsigned int id, CMTDATA *dst);
+extern bool		game_load_section	(const char *dir, unsigned int id, int sec, void *dst, unsigned long len);
+extern bool		game_load_info		(const char *dir, unsigned int id, GAMEINFO *info);
+
+extern bool		game_save_full		(GAMEDATA *src, const char *dir, unsigned int id);
+
+extern void		game_free		(GAMEDATA *game);
 
 
 
