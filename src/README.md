@@ -20,6 +20,8 @@ These are the spwproject source projects:
 * [mkxpm](mkxpm/README.md)
 * [spwawlib](spwawlib/README.md)
 * [spwreport](spwreport/README.md)
+* [spwdecompose](spwdecompose/README.md)
+* [spwreconstruct](spwreconstruct/README.md)
 
 And also:
 * [devtools](devtools/README.md)
