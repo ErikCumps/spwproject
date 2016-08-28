@@ -82,7 +82,7 @@ do {									\
 #define CWRNULL(a_)							\
 do {									\
 	if (a_ == NULL) {						\
-	ERROR0 ("unexpected NULL value for " #a_ " argument");		\
+		ERROR0 ("unexpected NULL value for " #a_ " argument");	\
 		return;							\
 	}								\
 } while (0)
