@@ -258,7 +258,9 @@ main (int argc, char** argv)
 			error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 		}
 
-		oob = SPWAW_SPWOOB();
+		if ((rc = SPWAW_SPWOOB(&oob)) != SPWERR_OK) {
+			error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
+		}
 
 		if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
 			error ("failed to generate oob dump: %s", SPWAW_errstr (rc));

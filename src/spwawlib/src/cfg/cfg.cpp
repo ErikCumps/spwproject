@@ -17,20 +17,20 @@ cfg_set (const char *oobdir, bool withUD)
 	SPWAW_ERROR	rc = SPWERR_OK;
 	char		path[MAX_PATH+1];
 
-	CNULLARG (oobdir);
-
 	cfg_free ();
 
-	memset (path, 0, sizeof (path));
-	_fullpath (path, oobdir, sizeof (path)-1);
-	cfg.oobdir = strdup (path);
-	COOMGOTO (cfg.oobdir, "CFG.oobdir", handle_error);
+	if (oobdir) {
+		memset (path, 0, sizeof (path));
+		_fullpath (path, oobdir, sizeof (path)-1);
+		cfg.oobdir = strdup (path);
+		COOMGOTO (cfg.oobdir, "CFG.oobdir", handle_error);
 
-	rc = SPWOOB_new (&(cfg.oobptr));
-	ERRORGOTO ("spwoob_new()", handle_error);
+		rc = SPWOOB_new (&(cfg.oobptr));
+		ERRORGOTO ("spwoob_new()", handle_error);
 
-	rc = SPWOOB_load (cfg.oobptr, cfg.oobdir);
-	ERRORGOTO ("spwoob_load()", handle_error);
+		rc = SPWOOB_load (cfg.oobptr, cfg.oobdir);
+		ERRORGOTO ("spwoob_load()", handle_error);
+	}
 
 	cfg.withUD = withUD;
 

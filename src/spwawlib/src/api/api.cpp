@@ -48,8 +48,6 @@ SPWAW_errstr (SPWAW_ERROR e)
 static SPWAW_ERROR
 spwaw_recfg (const char *oobdir, bool withUD)
 {
-	CNULLARG (oobdir);
-
 	return cfg_set (oobdir, withUD);
 }
 
@@ -61,8 +59,6 @@ SPWAW_init (const char *oobdir, bool withUD)
 	log_init ("SPWAWLIB.log");
 
 	if (spwaw_initialized) FAILGOTO (SPWERR_FAILED, "library already initialized", handle_error);
-
-	CWVNULL (oobdir, SPWERR_NOOOBFILES);
 
 	rc = spwaw_recfg (oobdir, withUD);
 	ERRORGOTO ("spwaw_recfg()", handle_error);
@@ -94,10 +90,15 @@ SPWAW_shutdown (void)
 	log_shutdown ();
 }
 
-SPWAWLIB_API SPWOOB *
-SPWAW_SPWOOB (void)
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_SPWOOB (SPWOOB **oob)
 {
-	if (!spwaw_initialized) return (NULL);
+	CSPWINIT;
+	CNULLARG (oob);
+	*oob = NULL;
 
-	return (cfg.oobptr);
+	if (!cfg.oobptr) RWE (SPWERR_NOOOBFILES, "no OOB directory configured");
+
+	*oob = cfg.oobptr;
+	return (SPWERR_OK);
 }
