@@ -1,0 +1,9 @@
+# Qwt Widget Library - debug build #
+
+# set the QwtBase variable to your Qwt installation directory when running qmake! #
+
+DEFINES		+= QWT_DLL
+INCLUDEPATH	+= $${QwtBase}/include
+LIBS		+= $${QwtBase}/lib/qwtd5.lib
+
+

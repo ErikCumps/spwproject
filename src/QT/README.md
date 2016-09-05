@@ -11,9 +11,9 @@ Use the following steps to build Qt:
 
   >for the sake of this example, let's assume you choose C:\QT
 
-* extract the qt_patch_4.3.3.zip archive in the C:\QT directory (confirm file overwrites)
+* extract the qt_patch_4.3.3.zip archive in the C:\QT\qt-win-opensource-src-4.3.3 directory (confirm file overwrites)
 
-* edit the C:\QT\bin\qtvars.bat file to:
+* edit the C:\QT\qt-win-opensource-src-4.3.3\bin\qtvars.bat file to:
 
   >set the QTDIR variable to the Qt source directory
 
@@ -25,6 +25,6 @@ Use the following steps to build Qt:
 
 * run the install.bat batchfile
 
-* if all went well, your C:\QT directory will now contain a Qt ready for building the spwproject
+* if all went well, your C:\QT\qt-win-opensource-src-4.3.3 directory will now contain a Qt ready for building the spwproject
 
 * if something went wrong, you can find config and build logs in the QTLOG_*.TXT logfiles
