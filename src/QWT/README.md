@@ -22,6 +22,8 @@ Use the following steps to build Qwt:
 
 * run the build.bat batch file
 
+* run the install.bat batch file
+
 * if all went well, your C:\QWT\qwt-5.2.1 directory will now contain a Qwt ready for building the spwproject
 
-* if something went wrong, you can find build logs in the QWTBUILD.LOG logfile
+* if something went wrong, you can find build logs in the QWT*.LOG logfiles
