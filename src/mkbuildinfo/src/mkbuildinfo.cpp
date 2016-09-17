@@ -31,9 +31,6 @@ parse_args (int argc, char **argv, char **dfile, char **cfile)
 	*cfile = strdup (argv[2]);
 
 	if (!*dfile || !*cfile) usage (argv[0]);
-
-	if ((f = fopen (*cfile, "r")) == NULL) usage (argv[0]);
-	fclose (f);
 }
 
 static int
@@ -89,6 +86,37 @@ update_bid (char *dbf, unsigned long *bid)
 	}
 
 	*bid = data;
+}
+
+static void
+prepare_src (char *cfile)
+{
+	char	ftpl[MAX_PATH+1], fsrc[MAX_PATH+1];
+	FILE	*fi, *fo;
+	char	buf[4096];
+
+	memset (ftpl, 0, sizeof (ftpl));
+	snprintf (ftpl, sizeof (ftpl) - 1, "%s.template", cfile);
+
+	memset (fsrc, 0, sizeof (fsrc));
+	snprintf (fsrc, sizeof (fsrc) - 1, "%s", cfile);
+
+	fo = fopen (fsrc, "r");
+	if (fo) {
+		fclose (fo);
+		return;
+	}
+
+	fo = fopen (fsrc, "w");
+	fi = fopen (ftpl, "r");
+
+	if (!fi || !fo) exit (1);
+
+	while (fgets (buf, sizeof (buf), fi)) {
+		fprintf (fo, "%s", buf);
+	}
+	fclose (fi);
+	fclose (fo);
 }
 
 static void
@@ -161,5 +189,6 @@ main (int argc, char *argv[])
 
 	parse_args (argc, argv, &dfile, &cfile);
 	update_bid (dfile, &bid);
+	prepare_src (cfile);
 	update_src (cfile, bid);
 }
