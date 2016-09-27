@@ -258,6 +258,10 @@ SPWAW_dossier_add (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **b
 	CNULLARG (dossier); CNULLARG (snap);
 	if (bturn) *bturn = NULL;
 
+	if ((snap->OOBp1.core.formations.cnt == 0) || (snap->OOBp1.core.units.cnt == 0)) {
+		RWE (SPWERR_NOCORECNT, "no core battle force detected in snapshot");
+	}
+
 	rc = SPWOOB_compare (snap->oobdat, dossier->oobdat);
 	ROE ("SPWOOB_compare(snapshot, dossier)");
 

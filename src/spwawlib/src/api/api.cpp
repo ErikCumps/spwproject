@@ -33,6 +33,7 @@ static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_BADDATE: invalid date",
 	"SPWERR_BADSTAMP: invalid timestamp",
 	"SPWERR_BADPERIOD: invalid period",
+	"SPWERR_NOCORECNT: no core formations and/or units",
 	"SPWERR_NOMATCH_OOBDATA: OOB data files do not match",
 	"SPWERR_NOMATCH_OOB: player OOB ID does not match",
 	"SPWERR_NOMATCH_CORECNT: formation or unit core count does not match",
