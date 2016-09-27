@@ -21,8 +21,6 @@ usage (char *app)
 static void
 parse_args (int argc, char **argv, char **dfile, char **cfile)
 {
-	FILE	*f;
-
 	*dfile = *cfile = NULL;
 
 	if (argc < 3) usage (argv[0]);
