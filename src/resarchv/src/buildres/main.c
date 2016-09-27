@@ -37,6 +37,7 @@ app_shutdown (void)
 	ih_shutdown ();
 	nh_shutdown ();
 }
+
 int
 mkhdr (RESLIST *list, unsigned long count)
 {
@@ -193,6 +194,16 @@ mksrc (RESLIST *list, unsigned long count)
 
 	src = fopen (cfg.outsrc, "w");
 	if (!src) return (0);
+
+	fprintf (src,
+		"/* *** CAUTION: GENERATED FILE! ***\n"
+		" *\n"
+		" * ResArchv source file for %s\n"
+		" *\n"
+		" */\n"
+		"\n",
+		cfg.cfg);
+
 
 	fprintf (src, "#include \"%s\"\n\n", cfg.outhdr);
 	fprintf (src, "#include <stdlib.h>\n\n");
