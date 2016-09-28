@@ -25,17 +25,17 @@ extern "C" {
 
 /*! Message payload data structure */
 typedef struct s_SLMSG_DATA {
-	union {
+	union u_code {
 		SLMSG_DATA_CODE_DT	dt;	/*!< optional DeepTrace data code	*/
 	} code;
 	const char	*source;		/*!< optional extra source name		*/
 	SLMSG_DATA_TYPE	type;			/*!< payload data type			*/
-	union {
+	union u_u {
 		SLMSG_CMD	cmd;		/*!< command				*/
-		struct {
+		struct s_string {
 			char	*str;		/*!< string data: string value		*/
 		} string;			/*!< string data			*/
-		struct {
+		struct s_printf {
 			char	*fmt;		/*!< printf data: format string		*/
 			va_list	args;		/*!< printf data: arguments		*/
 		} printf;			/*!< printf data			*/

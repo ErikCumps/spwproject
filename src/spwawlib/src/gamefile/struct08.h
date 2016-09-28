@@ -23,8 +23,8 @@ typedef struct s_CONNMAP {
 } CONNMAP;
 
 typedef struct s_MAP_TERRAIN {
-	union {
-		struct {
+	union u_uT1 {
+		struct s_bits {
 			BYTE	has_field:1;		/* Terrain contains field			*/
 			BYTE	has_slope:1;		/* Terrain contains slope			*/
 			BYTE	has_trees:1;		/* Terrain contains trees			*/
@@ -36,8 +36,8 @@ typedef struct s_MAP_TERRAIN {
 		} bits;
 		BYTE		has_T1;			/* Terrain features from set #1			*/
 	} uT1;
-	union {
-		struct {
+	union u_uT2 {
+		struct s_bits {
 			BYTE	has_brg_wood:1;		/* Terrain contains wooden bridge		*/
 			BYTE	has_brg_stone:1;	/* Terrain contains stone bridge		*/
 			BYTE	has_swamp:1;		/* Terrain contains swamp			*/
@@ -49,8 +49,8 @@ typedef struct s_MAP_TERRAIN {
 		} bits;
 		BYTE		has_T2;			/* Terrain features from set #2			*/
 	} uT2;
-	union {
-		struct {
+	union u_uT3 {
+		struct s_bits {
 			BYTE	has_railroad:1;		/* Terrain contains railroad			*/
 			BYTE	has_T3F1:1;		/* Terrain contains feature 0x02 from set #3	*/
 			BYTE	has_T3F2:1;		/* Terrain contains feature 0x04 from set #3	*/
@@ -62,8 +62,8 @@ typedef struct s_MAP_TERRAIN {
 		} bits;
 		BYTE		has_T3;			/* Terrain features from set #3			*/
 	} uT3;
-	union {
-		struct {
+	union u_uT4 {
+		struct s_bits {
 			BYTE	has_wall:1;		/* Terrain contains wall/hedge			*/
 			BYTE	has_path:1;		/* Terrain contains path			*/
 			BYTE	has_bocage:1;		/* Terrain contains bocage			*/
@@ -77,15 +77,15 @@ typedef struct s_MAP_TERRAIN {
 	} uT4;
 	SHORT	height;					/* Height					*/
 	char	__data00[6];
-	union {
+	union u_uR2 {
 		CONNMAP	cmap_road2;
 		BYTE	conn_road2;			/* Secondary road connections			*/
 	} uR2;
-	union {
+	union u_uR1 {
 		CONNMAP	cmap_road1;
 		BYTE	conn_road1;			/* Primary road connections			*/
 	} uR1;
-	union {
+	union u_uRR {
 		CONNMAP	cmap_rail;
                 BYTE	conn_rail;			/* Railroad connections				*/
 	} uRR;
@@ -93,9 +93,9 @@ typedef struct s_MAP_TERRAIN {
 } MAP_TERRAIN;
 
 typedef struct s_STRUCT08 {
-	union {
+	union u_u {
 		char	raw[SIZESEC08];
-		struct {
+		struct s_d {
 			MAP_TERRAIN	terrain[MAPWIDTH][MAPHEIGHT];
 		} d;
 	} u;

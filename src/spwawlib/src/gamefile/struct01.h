@@ -137,9 +137,9 @@ typedef struct s_UNIT {
 } UNIT;
 
 typedef struct s_STRUCT01 {
-	union {
+	union u_u {
 		char	raw[SIZESEC01];
-		struct {
+		struct s_d {
 			UNIT	units[UNITCOUNT];
 		} d;
 	} u;

@@ -22,7 +22,7 @@ extern bool	bwrite		(int fd, char *b, int len);
 
 /* Buffered file IO: reading */
 typedef struct s_BBR {
-	struct {
+	struct s_file {
 		int	fd;
 		long	left;
 	} file;

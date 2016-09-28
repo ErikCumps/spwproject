@@ -16,9 +16,9 @@ typedef struct s_MAP_HEIGHT {
 } MAP_HEIGHT;
 
 typedef struct s_STRUCT39 {
-	union {
+	union u_u {
 		char	raw[SIZESEC39];
-		struct {
+		struct s_d {
 			MAP_HEIGHT	data;
 		} d;
 	} u;

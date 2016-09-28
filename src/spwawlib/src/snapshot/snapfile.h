@@ -27,7 +27,7 @@ typedef struct s_SNAP_HEADER {
 	ULONG		src;			/* Snapshot source data offset, relative to start of header		*/
 	ULONG		oobdat;			/* SPWOOB data offset, relative to start of header, 0 if not present	*/
 	ULONG		info;			/* Snapshot info data offset, relative to start of header		*/
-	struct {				/* Snapshot game data:							*/
+	struct s_snap {				/* Snapshot game data:							*/
 		ULONG	data;			/* data offset, relative to start of header				*/
 		ULONG	size;			/* data size								*/
 		ULONG	comp;			/* compressed data size (0 if no compression)				*/

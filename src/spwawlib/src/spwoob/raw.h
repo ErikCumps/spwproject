@@ -19,13 +19,13 @@ typedef struct s_NAME {
 } NAME;
 
 typedef struct s_RAWOOB {
-        struct {
+        struct s_w {
 		NAME	name		[SPWOOB_WCNT];
 		BYTE	wclass		[SPWOOB_WCNT];
 		BYTE	__data0		[SPWOOB_WCNT];		/* Sym.			*/
 		BYTE	size		[SPWOOB_WCNT];
 		BYTE	warhead		[SPWOOB_WCNT];
-		struct {
+		struct s_pen {
 			BYTE	HE;
 			BYTE	AP;
 		}	pen		[SPWOOB_WCNT];
@@ -38,20 +38,20 @@ typedef struct s_RAWOOB {
 		USHORT	sound		[SPWOOB_WCNT];
 		BYTE	__data2		[7*SPWOOB_WCNT];	/* x1 ... x7		*/
 	} w;
-	struct {
+	struct s_u {
 		NAME	name		[SPWOOB_UCNT];
 		BYTE	uclass		[SPWOOB_UCNT];
 		BYTE	arm_SK		[SPWOOB_UCNT];
 		BYTE	size		[SPWOOB_UCNT];
 		BYTE	crew		[SPWOOB_UCNT];
-		struct	{
+		struct	s_wpn {
 			BYTE	w1;
 			BYTE	w2;
 			BYTE	w3;
 			BYTE	w4;
 
 		}	wpn		[SPWOOB_UCNT];
-		struct {
+		struct s_wpn_ammo {
 			BYTE	HE1;
 			BYTE	AP1;
 			BYTE	HE2;
@@ -62,7 +62,7 @@ typedef struct s_RAWOOB {
 			BYTE	AP4;
 		}	wpn_ammo	[SPWOOB_UCNT];
 		BYTE	speed		[SPWOOB_UCNT];
-		struct {
+		struct s_arm {
 			BYTE	FH;
 			BYTE	SH;
 			BYTE	RH;
@@ -73,7 +73,7 @@ typedef struct s_RAWOOB {
 			BYTE	__data0	[7];
 		}	arm		[SPWOOB_UCNT];
 		BYTE	__data1		[7*SPWOOB_UCNT];	/* rct1 ... rct7	*/
-		struct {
+		struct s_slp {
 			BYTE	FH;
 			BYTE	SH;
 			BYTE	RH;
@@ -112,7 +112,7 @@ typedef struct s_RAWOOB {
 		BYTE	__data3		[2*SPWOOB_UCNT];	/* x1 ... x2		*/
 		USHORT	msound		[SPWOOB_UCNT];
 	} u;
-	struct {
+	struct s_f {
 		NAME	name		[SPWOOB_FCNT];
 		BYTE	nation		[SPWOOB_FCNT];
 		BYTE	start_mo	[SPWOOB_FCNT];
@@ -122,10 +122,10 @@ typedef struct s_RAWOOB {
 		BYTE	end_yr		[SPWOOB_FCNT];
 		BYTE	purchscrn	[SPWOOB_FCNT];
 		BYTE	type		[SPWOOB_FCNT];
-		struct {
+		struct s_urid {
 			USHORT	dat[SPWOOB_FMUCNT];
 		}	urid		[SPWOOB_FCNT];
-		struct {
+		struct s_ucnt {
 			BYTE	dat[SPWOOB_FMUCNT];
 		}	ucnt		[SPWOOB_FCNT];
 	} f;

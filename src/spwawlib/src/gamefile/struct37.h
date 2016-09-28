@@ -86,9 +86,9 @@ typedef struct s_GAME_DATA {
 } GAME_DATA;
 
 typedef struct s_STRUCT37 {
-	union {
+	union u_u {
 		char	raw[SIZESEC37];
-		struct {
+		struct s_d {
 			GAME_DATA	data;
 		} d;
 	} u;

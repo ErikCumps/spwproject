@@ -16,9 +16,9 @@ typedef struct s_STARTSEC {
 } STARTSEC;
 
 typedef struct s_STRUCT00 {
-	union {
+	union u_u {
 		char	raw[SIZESEC00];
-		struct {
+		struct s_d {
 			STARTSEC	info;
 		} d;
 	} u;

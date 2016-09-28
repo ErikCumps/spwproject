@@ -28,9 +28,9 @@ typedef struct s_FORMATION {
 } FORMATION;
 
 typedef struct s_STRUCT35 {
-	union {
+	union u_u {
 		char	raw[SIZESEC35];
-		struct {
+		struct s_d {
 			FORMATION	formations[FORMCOUNT];
 		} d;
 	} u;

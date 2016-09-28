@@ -18,9 +18,9 @@ typedef struct s_RECHEAD {
 } RECHEAD;
 
 typedef struct s_STRUCT48 {
-	union {
+	union u_u {
 		char	raw[SIZESEC48];
-		struct {
+		struct s_d {
 			RECHEAD	data;
 		} d;
 	} u;

@@ -28,7 +28,7 @@ static void	statereport	(SL_STDBG_INFO_LEVEL level);
 
 /*! Internal application info structure */
 typedef struct s_slapp_info {
-	struct {
+	struct s_info_internal {
 		char	*name;				/*!< application name			*/
 		char	*desc;				/*!< application description		*/
 		char	*vers;				/*!< application version		*/
@@ -36,12 +36,12 @@ typedef struct s_slapp_info {
 		char	*auth;				/*!< main author name			*/
 		char	*mail;				/*!< main author email			*/
 	} info;		/*!< general information	*/
-	struct {
+	struct s_build_internal {
 		char	*build;				/*!< build number			*/
 		char	*date;				/*!< build datestamp			*/
 		char	*time;				/*!< build timestamp			*/
 	} build;	/*!< build information		*/
-	struct {
+	struct s_context_internal {
 		int	argc;				/*!< number of argument strings		*/
 		char	**argv;				/*!< copy of argument strings		*/
 		char	*cwd;				/*!< initial cwd			*/
@@ -50,7 +50,7 @@ typedef struct s_slapp_info {
 		char	*exe_path;			/*!< executable path			*/
 		char	*data_path;			/*!< user data storage path		*/
 	} context;	/*!< context information	*/
-	struct {
+	struct s_extra_internal {
 		char	*longvers;			/*!< extended version string		*/
 		char	*info;				/*!< info string			*/
 		char	*longinfo;			/*!< extended info string		*/

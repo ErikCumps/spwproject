@@ -47,7 +47,7 @@ struct s_RESOURCE {
 	arc_type_t		type;
 	unsigned long		id;
 	char			*name;
-	union {
+	union u_data {
 		RESDATA_FILE	file;
 		RESDATA_RGB	rgb;
 		RESDATA_RGBA	rgba;

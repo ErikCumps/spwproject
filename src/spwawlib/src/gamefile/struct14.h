@@ -16,9 +16,9 @@ typedef struct s_CREDIT {
 } CREDIT;
 
 typedef struct s_STRUCT14 {
-	union {
+	union u_u {
 		char	raw[SIZESEC14];
-		struct {
+		struct s_d {
 			CREDIT	data;
 		} d;
 	} u;

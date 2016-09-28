@@ -17,11 +17,11 @@ extern "C" {
 #endif	/* __cplusplus */
 
 typedef struct s_SLOPT {
-	struct {
+	struct s_ecb {
 		SL_EVT_ABORT		abort;
 		SL_EVT_ERROR		error;
 	} ecb;
-	struct {
+	struct s_hook {
 		SL_HOOK_OOM		oom;
 		SL_HOOK_PANIC		panic;
 		SL_HOOK_ERROR		error;

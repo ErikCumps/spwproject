@@ -43,7 +43,7 @@ typedef struct s_DOS_BHEADER {
 	BYTE		meeting;		/* Meeting engagement flag							*/
 	USHORT		tcnt;			/* Battle turn list count							*/
 	ULONG		tlist;			/* Battle turn list offset, relative to start of DOS_BHEADER table		*/
-	struct {				/* Battle unit reassignment list:						*/
+	struct s_ra {				/* Battle unit reassignment list:						*/
 		ULONG	data;			/* data offset, relative to start of DOS_BHEADER table				*/
 		ULONG	size;			/* data size									*/
 		ULONG	comp;			/* compressed data size (0 if no compression)					*/

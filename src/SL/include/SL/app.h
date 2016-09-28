@@ -21,7 +21,7 @@ extern "C" {
 
 /*! Application info structure (callerside) */
 typedef struct s_SL_APP_INFO {
-	struct {
+	struct s_info {
 		char	*name;		/*!< application name			*/
 		char	*desc;		/*!< application description		*/
 		char	*vers;		/*!< application version		*/
@@ -29,12 +29,12 @@ typedef struct s_SL_APP_INFO {
 		char	*auth;		/*!< main author name			*/
 		char	*mail;		/*!< main author email			*/
 	} info;		/*!< general information	*/
-	struct {
+	struct s_build {
 		char	*build;		/*!< build number			*/
 		char	*date;		/*!< build datestamp			*/
 		char	*time;		/*!< build timestamp			*/
 	} build;	/*!< build information		*/
-	struct {
+	struct s_context {
 		int	argc;		/*!< argument count, from argc		*/
 		char	**argv;		/*!< arguments, from argv		*/
 	} context;	/*!< context information	*/

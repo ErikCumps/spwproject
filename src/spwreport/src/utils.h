@@ -11,23 +11,23 @@
 
 #include "stdafx.h"
 
-typedef struct {
+typedef struct s_MKSTR_SRC {
 	BYTE		*ptr;
 	DWORD		len;
 	DWORD		addr;
 } MKSTR_SRC;
 
-typedef struct {
+typedef struct s_MKSTR_DST {
 	char		*ptr;
 	unsigned long	len;
 } MKSTR_DST;
 
-typedef enum {
+typedef enum e_MKSTR_TYPE {
 	MKSTR_LIST = 0,
 	MKSTR_ARRAY,
 } MKSTR_TYPE;
 
-typedef struct {
+typedef struct s_MKSTR_OPT {
 	MKSTR_TYPE	type;
 	int		width;
 } MKSTR_OPT;

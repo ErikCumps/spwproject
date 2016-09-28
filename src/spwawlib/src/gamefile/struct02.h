@@ -12,9 +12,9 @@
 #include "gamefile/struct_common.h"
 
 typedef struct s_STRUCT02 {
-	union {
+	union u_u {
 		char	raw[SIZESEC02];
-		struct {
+		struct s_d {
 			MAP_ICON	icon[MAPWIDTH][MAPHEIGHT];
 		} d;
 	} u;

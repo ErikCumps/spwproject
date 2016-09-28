@@ -12,9 +12,9 @@
 #include "gamefile/struct_common.h"
 
 typedef struct s_STRUCT33 {
-	union {
+	union u_u {
 		char	raw[SIZESEC33];
-		struct {
+		struct s_d {
 			char	data[SIZESEC33];
 		} d;
 	} u;

@@ -28,9 +28,9 @@ typedef struct s_LEADER {
 } LEADER;
 
 typedef struct s_STRUCT34 {
-	union {
+	union u_u {
 		char	raw[SIZESEC34];
-		struct {
+		struct s_d {
 			LEADER	leaders[LEADERCOUNT];
 		} d;
 	} u;

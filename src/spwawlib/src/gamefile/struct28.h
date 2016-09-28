@@ -19,9 +19,9 @@ typedef struct s_MAP_DATA1 {
 } MAP_DATA1;
 
 typedef struct s_STRUCT28 {
-	union {
+	union u_u {
 		char	raw[SIZESEC28];
-		struct {
+		struct s_d {
 			MAP_DATA1	data[MAPWIDTH][MAPHEIGHT];
 		} d;
 	} u;

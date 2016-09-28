@@ -20,9 +20,9 @@ typedef struct s_UNIT_POS {
 } UNIT_POS;
 
 typedef struct s_STRUCT17 {
-	union {
+	union u_u {
 		char	raw[SIZESEC17];
-		struct {
+		struct s_d {
 			UNIT_POS	pos[UNITPOSCOUNT];
 		} d;
 	} u;
