@@ -118,7 +118,7 @@ mkhdr (RESLIST *list, unsigned long count)
 
 	fprintf (hdr,
 		"/* Subresource Identifier */\n"
-		"typedef struct {\n"
+		"typedef struct s_SUBRESOURCE {\n"
 		"\tunsigned long\t\tsid;\t\t/* subresource ID */\n"
 		"\tconst char\t\t*name;\t\t/* subresource ID name */\n"
 		"\tunsigned long\t\trow;\t\t/* optional subresource row ID */\n"
@@ -129,7 +129,7 @@ mkhdr (RESLIST *list, unsigned long count)
 
 	fprintf (hdr,
 		"/* Resource list element */\n"
-                "typedef struct {\n"
+                "typedef struct s_RESOURCE_LIST_ELEMENT {\n"
 		"\tunsigned long\t\tid;\t\t/* resource ID */\n"
 		"\tconst char\t\t*name;\t\t/* resource ID name */\n"
 		"\tarc_type_t\t\ttype;\t\t/* resource type */\n"
