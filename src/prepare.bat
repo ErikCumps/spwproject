@@ -43,6 +43,11 @@ cd tilesplit
 call prepare.bat
 cd ..
 
+echo --^> warcab
+cd warcab
+call prepare.bat
+cd ..
+
 goto DONE
 
 rem ----------------------------------------------------------------------

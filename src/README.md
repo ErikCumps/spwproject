@@ -29,6 +29,7 @@ These are the spwproject source projects:
 * [spwreport](spwreport/README.md)
 * [spwdecompose](spwdecompose/README.md)
 * [spwreconstruct](spwreconstruct/README.md)
+* [warcab](warcab/README.md)
 
 And also:
 * [devtools](devtools/README.md)
