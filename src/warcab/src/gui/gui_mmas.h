@@ -20,7 +20,7 @@ class GuiMMAS	: public QFrame
 friend class GuiMMASView;
 
 public:
-	GuiMMAS	(QWidget *P = 0);
+	GuiMMAS		(QWidget *P = 0);
 	~GuiMMAS	(void);
 
 	SL_ERROR	error_code;

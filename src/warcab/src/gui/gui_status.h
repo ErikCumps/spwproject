@@ -26,7 +26,7 @@ public slots:
 	void infodone (void);
 
 private:
-	struct prvt {
+	struct s_data {
 		QStatusBar	*status;
 		QFrame		*infoFrame;
 		QLabel		*info;

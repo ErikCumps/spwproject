@@ -38,10 +38,10 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	d.plot_type->addItem (QString ("Plot type: BAR"));
 	d.plot_type->setEditable (false);
 
-	GUINEW (d.plot_stacked, QCheckBox ("stacked plot", this), ERR_GUI_REPORTS_INIT_FAILED, "plot_stacked");
+	GUINEW (d.plot_stacked, QCheckBox ("Stacked plot?", this), ERR_GUI_REPORTS_INIT_FAILED, "plot_stacked");
 	d.plot_stacked->setCheckState (Qt::Unchecked);
 
-	GUINEW (d.axis_timeline, QCheckBox ("timeline", this), ERR_GUI_REPORTS_INIT_FAILED, "axis_timeline");
+	GUINEW (d.axis_timeline, QCheckBox ("Time-based axis?", this), ERR_GUI_REPORTS_INIT_FAILED, "axis_timeline");
 	d.axis_timeline->setCheckState (Qt::Checked);
 
 	GUINEW (d.plot, PlotTable (d.model, d.frame), ERR_GUI_REPORTS_INIT_FAILED, "plot");
@@ -58,12 +58,12 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	GUINEW (d.bdy_table, GuiTableView (false, d.model, d.split), ERR_GUI_REPORTS_INIT_FAILED, "bdy_table");
 	GUIERR (d.bdy_table, ERR_GUI_REPORTS_INIT_FAILED);
 
-	d.layout->addWidget (d.graph_type, 0, 0, 1, 3);
-	d.layout->addWidget (d.plot_type, 1, 0, 1, 1);
-	d.layout->addWidget (d.plot_stacked, 1, 1, 1, 1);
-	d.layout->addWidget (d.axis_timeline, 1, 2, 1, 1);
-	d.layout->addWidget (d.plot, 2, 0, 1, 3);
-	d.layout->addWidget (d.split, 3, 0, 1, 3);
+	d.layout->addWidget (d.graph_type,	0, 0, 1, 3);
+	d.layout->addWidget (d.axis_timeline,	1, 0, 1, 1);
+	d.layout->addWidget (d.plot_type,	1, 1, 1, 1);
+	d.layout->addWidget (d.plot_stacked,	1, 2, 1, 1);
+	d.layout->addWidget (d.plot,		2, 0, 1, 3);
+	d.layout->addWidget (d.split,		3, 0, 1, 3);
 
 	setWidget (d.frame);
 	setWidgetResizable (true);

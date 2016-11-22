@@ -51,6 +51,7 @@ private:
 		QGridLayout		*layout;
 		QComboBox		*highlight;
 		QCheckBox		*prevcmp;
+		QSpacerItem		*spacer;
 		QSplitter		*split;
 		GuiUnitlistView		*unitlist;
 		GuiHistoryView		*hdr_history;

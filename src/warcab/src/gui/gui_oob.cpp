@@ -41,13 +41,13 @@ GuiOob::GuiOob (QWidget *P)
 		d.highlight->addItem (QString ("Highlight: ") + QString (MDLO_HILITE_lookup ((MDLO_HILITE)h)));
 	d.highlight->setEditable (false);
 
-	GUINEW (d.dltsort, QCheckBox ("dltsort?", this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "dltsort");
+	GUINEW (d.dltsort, QCheckBox ("Sort on difference?", this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "dltsort");
 	d.dltsort->setCheckState (Qt::Unchecked);
 
 	GUINEW (d.prevcmp, QCheckBox ("prevcmp?", this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "prevcmp");
 	d.prevcmp->setCheckState (Qt::Unchecked);
 
-	GUINEW (d.autosort, QCheckBox ("autosort?", this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "autosort");
+	GUINEW (d.autosort, QCheckBox ("Automatically resort?", this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "autosort");
 	d.autosort->setCheckState (Qt::Checked);
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "split");
@@ -59,9 +59,11 @@ GuiOob::GuiOob (QWidget *P)
 	GUINEW (d.bdy_oob, GuiOobView (false, this, d.split), ERR_GUI_REPORTS_OOB_INIT_FAILED, "bdy_oob");
 	GUIERR (d.bdy_oob, ERR_GUI_REPORTS_OOB_INIT_FAILED);
 
-	d.layout->addWidget (d.highlight, 0, 0);	d.layout->addWidget (d.prevcmp, 0, 1);
-	d.layout->addWidget (d.dltsort, 1, 0);		d.layout->addWidget (d.autosort, 1, 1);
-	d.layout->addWidget (d.split, 2, 0, 1, 2);
+	d.layout->addWidget (d.highlight,	0, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		0, 1, 1, 1);
+	d.layout->addWidget (d.dltsort,		0, 2, 1, 1);
+	d.layout->addWidget (d.autosort,	0, 3, 1, 1);
+	d.layout->addWidget (d.split,		2, 0, 1, 4);
 
 	if (!connect (d.dltsort, SIGNAL(stateChanged(int)), SLOT (dltsort_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_OOB_INIT_FAILED, "failed to connect <dltsort:stateChanged> to <dltsort_change>");

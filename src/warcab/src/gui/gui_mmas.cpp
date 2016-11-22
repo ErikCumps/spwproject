@@ -48,7 +48,7 @@ GuiMMAS::GuiMMAS (QWidget *P)
 	GUINEW (d.target, QComboBox (this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "target");
 	d.target->setEditable (false);
 
-	GUINEW (d.timeline, QCheckBox ("timeline?", this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "timeline");
+	GUINEW (d.timeline, QCheckBox ("Time-based axis?", this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "timeline");
 	d.timeline->setCheckState (Qt::Checked);
 	d.Vtimeline = true;
 
@@ -68,13 +68,13 @@ GuiMMAS::GuiMMAS (QWidget *P)
 	GUINEW (d.bdy_mmas, GuiMMASView (false, this, d.split), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "bdy_mmas");
 	GUIERR (d.bdy_mmas, ERR_GUI_REPORTS_MMAS_INIT_FAILED);
 
-	d.layout->addWidget (d.type, 0, 0, 1, 2);
-	d.layout->addWidget (d.filter, 0, 2, 1, 1);
-	d.layout->addWidget (d.timeline, 1, 0);
-	d.layout->addWidget (d.prevcmp, 1, 1);
-	d.layout->addWidget (d.target, 1, 2);
-	d.layout->addWidget (d.plot, 2, 0, 1, 3);
-	d.layout->addWidget (d.split, 3, 0, 1, 3);
+	d.layout->addWidget (d.type,		0, 0, 1, 2);
+	d.layout->addWidget (d.filter,		0, 2, 1, 1);
+	d.layout->addWidget (d.timeline,	1, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		1, 1, 1, 1);
+	d.layout->addWidget (d.target,		1, 2, 1, 1);
+	d.layout->addWidget (d.plot,		2, 0, 1, 3);
+	d.layout->addWidget (d.split,		3, 0, 1, 3);
 
 	if (!connect (d.type, SIGNAL (activated(int)), SLOT (set_type(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_MMAS_INIT_FAILED, "failed to connect <type:activated> to <set_type>");
@@ -145,6 +145,9 @@ GuiMMAS::set_parent (GuiRptDsr *parent, bool player)
 	d.pflag	 = player;
 	d.cflag	 = true;
 
+	d.prevcmp->setText ("Compare with previous battle?");
+	d.prevcmp->setHidden (false);
+
 	d.type->clear();
 
 	d.typemap.map = typemap_dossier;
@@ -164,6 +167,9 @@ GuiMMAS::set_parent (GuiRptBtl *parent, bool player, bool core)
 	d.pptr.b = parent;
 	d.pflag	 = player;
 	d.cflag	 = core;
+
+	d.prevcmp->setText ("Compare with previous turn?");
+	d.prevcmp->setHidden (false);
 
 	d.type->clear();
 
@@ -185,6 +191,9 @@ GuiMMAS::set_parent (GuiRptTrn *parent, bool player)
 	d.pptr.t = parent;
 	d.pflag	 = player;
 	d.cflag	 = false;
+
+	d.prevcmp->setText ("-unused-");
+	d.prevcmp->setHidden (true);
 
 	d.type->clear();
 

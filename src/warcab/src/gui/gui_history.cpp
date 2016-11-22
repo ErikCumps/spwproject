@@ -14,9 +14,6 @@
 #include "gui_reports_dossier.h"
 #include "gui_reports_battle.h"
 
-/*! Simple macro to calculate the length of a (statically initialized) array */
-#define	ARRAYCOUNT(arr_) (sizeof(arr_)/sizeof(arr_[0]))
-
 /*! These highlights are available for dossier views */
 static MDLH_HILITE	hilite_dossier[] = {
 	MDLH_HILITE_NONE, MDLH_HILITE_RANK, MDLH_HILITE_EXP
@@ -49,6 +46,8 @@ GuiHistory::GuiHistory (QWidget *P)
 	GUINEW (d.prevcmp, QCheckBox ("prevcmp?", this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "prevcmp");
 	d.prevcmp->setCheckState (Qt::Unchecked);
 
+	GUINEW (d.spacer, QSpacerItem (1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), ERR_GUI_SMAP_INIT_FAILED, "spacer");
+
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
 
@@ -61,8 +60,10 @@ GuiHistory::GuiHistory (QWidget *P)
 	GUINEW (d.bdy_history, GuiHistoryView (false, this, d.split), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "bdy_history");
 	GUIERR (d.bdy_history, ERR_GUI_REPORTS_HISTORY_INIT_FAILED);
 
-	d.layout->addWidget (d.highlight, 0, 0);	d.layout->addWidget (d.prevcmp, 0, 1);
-	d.layout->addWidget (d.split, 1, 0, 1, 2);
+	d.layout->addWidget (d.highlight,	0, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		0, 1, 1, 1);
+	d.layout->addItem   (d.spacer,		0, 1, 1, 2);
+	d.layout->addWidget (d.split,		1, 0, 1, 4);
 
 	if (!connect (d.prevcmp, SIGNAL(stateChanged(int)), SLOT (prevcmp_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "failed to connect <prevcmp:stateChanged> to <prevcmp_change>");
@@ -117,6 +118,9 @@ GuiHistory::set_parent (GuiRptDsr *parent, bool player)
 	d.pflag	 = player;
 	d.cflag	 = true;
 
+	d.prevcmp->setText ("Last battle only?");
+	d.prevcmp->setHidden (false);
+
 	d.hl_array = hilite_dossier;
 	d.hl_count = ARRAYCOUNT(hilite_dossier);
 	setup_highlight();
@@ -130,6 +134,9 @@ GuiHistory::set_parent (GuiRptBtl *parent, bool player, bool core)
 	d.pflag	 = player;
 	d.cflag	 = core;
 
+	d.prevcmp->setText ("Compare with previous turn?");
+	d.prevcmp->setHidden (false);
+
 	d.hl_array = hilite_battle;
 	d.hl_count = ARRAYCOUNT(hilite_battle);
 	setup_highlight();
@@ -142,6 +149,9 @@ GuiHistory::set_parent (GuiRptTrn *parent, bool player)
 	d.pptr.t = parent;
 	d.pflag	 = player;
 	d.cflag	 = false;
+
+	d.prevcmp->setText ("This turn only?");
+	d.prevcmp->setHidden (false);
 
 	d.hl_array = hilite_battle;
 	d.hl_count = ARRAYCOUNT(hilite_battle);

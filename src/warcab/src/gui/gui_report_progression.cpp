@@ -70,14 +70,14 @@ GuiRptPrg::GuiRptPrg (QWidget *P)
 
 	GUINEW (d.spacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "spacer");
 
-	d.layout->addWidget (d.label_nodata, 0, 0, 1, 3);
-	d.layout->addWidget (d.label_exp, 1, 0, 1, 1);
-	d.layout->addWidget (d.label_mor, 1, 1, 1, 1);
-	d.layout->addWidget (d.label_ral, 1, 2, 1, 1);
-	d.layout->addWidget (d.label_inf, 2, 0, 1, 1);
-	d.layout->addWidget (d.label_arm, 2, 1, 1, 1);
-	d.layout->addWidget (d.label_art, 2, 2, 1, 1);
-	d.layout->addItem (d.spacer, 3, 0, 1, 3);
+	d.layout->addWidget (d.label_nodata,	0, 0, 1, 3);
+	d.layout->addWidget (d.label_exp,	1, 0, 1, 1);
+	d.layout->addWidget (d.label_mor,	1, 1, 1, 1);
+	d.layout->addWidget (d.label_ral,	1, 2, 1, 1);
+	d.layout->addWidget (d.label_inf,	2, 0, 1, 1);
+	d.layout->addWidget (d.label_arm,	2, 1, 1, 1);
+	d.layout->addWidget (d.label_art,	2, 2, 1, 1);
+	d.layout->addItem   (d.spacer,		3, 0, 1, 3);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);

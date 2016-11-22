@@ -39,10 +39,10 @@ GuiRptTrnOvr::GuiRptTrnOvr (QWidget *P)
 	d.player2->setAlignment (Qt::AlignLeft);
 	d.player2->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-	d.layout->addWidget (d.player1, 0, 0);
-	d.layout->addWidget (d.mission, 0, 1);
-	d.layout->addWidget (d.player2, 0, 2);
-	d.layout->addItem (d.spacer, 0, 3);
+	d.layout->addWidget (d.player1,	0, 0, 1, 1);
+	d.layout->addWidget (d.mission,	0, 1, 1, 1);
+	d.layout->addWidget (d.player2,	0, 2, 1, 1);
+	d.layout->addItem   (d.spacer,	0, 3, 1, 1);
 
 	GUINEW (d.label, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label");
 	d.label->setAlignment (Qt::AlignLeft|Qt::AlignTop);

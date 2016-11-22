@@ -44,10 +44,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.player2->setAlignment (Qt::AlignLeft);
 	d.player2->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-	d.layout->addWidget (d.player1, 0, 0);
-	d.layout->addWidget (d.mission, 0, 1);
-	d.layout->addWidget (d.player2, 0, 2);
-	d.layout->addItem (d.rspacer, 0, 3);
+	d.layout->addWidget (d.player1,	0, 0, 1, 1);
+	d.layout->addWidget (d.mission,	0, 1, 1, 1);
+	d.layout->addWidget (d.player2,	0, 2, 1, 1);
+	d.layout->addItem   (d.rspacer,	0, 3, 1, 1);
 
 	GUINEW (d.overview, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "overview");
 	d.overview->setAlignment (Qt::AlignLeft|Qt::AlignTop);
@@ -75,13 +75,14 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 
 	GUINEW (d.bspacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "bspacer");
 
-	d.layout->addWidget (d.overview, 1, 0, 1, 4);
-	d.layout->addLayout (d.losses.layout, 2, 0, 1, 4);
-	d.losses.layout->addWidget (d.losses.plr, 0, 0);
-	d.losses.layout->addWidget (d.losses.opp, 0, 1);
-	d.losses.layout->addItem (d.losses.spacer, 0, 2);
-	d.layout->addWidget (d.changes, 3, 0, 1, 4);
-	d.layout->addItem (d.bspacer, 4, 0, 1, 4);
+	d.losses.layout->addWidget (d.losses.plr,	0, 0, 1, 1);
+	d.losses.layout->addWidget (d.losses.opp,	0, 1, 1, 1);
+	d.losses.layout->addItem   (d.losses.spacer,	0, 2, 1, 1);
+
+	d.layout->addWidget (d.overview,	1, 0, 1, 4);
+	d.layout->addLayout (d.losses.layout,	2, 0, 1, 4);
+	d.layout->addWidget (d.changes,		3, 0, 1, 4);
+	d.layout->addItem   (d.bspacer,		4, 0, 1, 4);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
