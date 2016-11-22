@@ -414,6 +414,14 @@ debug_memtrace_deletefree (void *p)
 	log_deletefree (p);
 }
 
+void
+debug_memtrace_deletefreearray (void *p)
+{
+	// Take into account the initial array count, otherwise the address logged here
+	// will not match up with the allocation address. (the return value of new[])
+	log_deletefree ((void *)((char *)p + sizeof(std::size_t)));
+}
+
 debug_memtrace_new::debug_memtrace_new (const char* file, unsigned long line, const char *func)
 {
 	this->file = file;

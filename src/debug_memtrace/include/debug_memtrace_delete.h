@@ -31,13 +31,13 @@ operator delete (void *p, const std::nothrow_t&) throw()
 void
 operator delete[] (void *p) throw()
 {
-	debug_memtrace_deletefree (p);
+	debug_memtrace_deletefreearray (p);
 }
 
 void
 operator delete[] (void *p, const std::nothrow_t&) throw()
 {
-	debug_memtrace_deletefree (p);
+	debug_memtrace_deletefreearray (p);
 }
 
 #endif	/* DEBUG_MEMTRACE_CPP */

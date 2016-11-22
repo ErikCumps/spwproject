@@ -84,6 +84,7 @@ DEBUG_MEMTRACE_API void *	debug_memtrace_CoTaskMemAlloc	(const char *file, unsig
 DEBUG_MEMTRACE_API void		debug_memtrace_CoTaskMemFree	(const char *file, unsigned long line, const char *func, void *p);
 DEBUG_MEMTRACE_API void *	debug_memtrace_CoTaskMemRealloc	(const char *file, unsigned long line, const char *func, void *p, unsigned long s);
 DEBUG_MEMTRACE_API void		debug_memtrace_deletefree	(void *p);
+DEBUG_MEMTRACE_API void		debug_memtrace_deletefreearray	(void *p);
 
 #ifdef __cplusplus
 }
