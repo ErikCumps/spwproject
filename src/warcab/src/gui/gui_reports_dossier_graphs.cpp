@@ -8,7 +8,7 @@
 
 #include "gui_reports_dossier_graphs.h"
 #include "gui_reports_dossier.h"
-#include "gui_table_view.h"
+#include "gui_plot_table_view.h"
 #include "../plot/plot_table.h"
 
 GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
@@ -19,7 +19,7 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	GUINEW (d.model, ModelTable (), ERR_GUI_REPORTS_INIT_FAILED, "data model");
+	GUINEW (d.model, ModelPlotTable (), ERR_GUI_REPORTS_INIT_FAILED, "data model");
 
 	graphs_setup();
 
@@ -52,10 +52,10 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
 
-	GUINEW (d.hdr_table, GuiTableView (true, d.model, d.split), ERR_GUI_REPORTS_INIT_FAILED, "hdr_table");
+	GUINEW (d.hdr_table, GuiPlotTableView (true, d.model, d.split), ERR_GUI_REPORTS_INIT_FAILED, "hdr_table");
 	GUIERR (d.hdr_table, ERR_GUI_REPORTS_INIT_FAILED);
 
-	GUINEW (d.bdy_table, GuiTableView (false, d.model, d.split), ERR_GUI_REPORTS_INIT_FAILED, "bdy_table");
+	GUINEW (d.bdy_table, GuiPlotTableView (false, d.model, d.split), ERR_GUI_REPORTS_INIT_FAILED, "bdy_table");
 	GUIERR (d.bdy_table, ERR_GUI_REPORTS_INIT_FAILED);
 
 	d.layout->addWidget (d.graph_type,	0, 0, 1, 3);
@@ -98,10 +98,10 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	if (!connect (d.hdr_table, SIGNAL (wheeled(QWheelEvent*)), d.bdy_table, SLOT (wheel(QWheelEvent*))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <hdr_table:wheeled> to <bdy_table:wheel>");
 
-	if (!connect (d.bdy_table, SIGNAL (selected(GuiTableView*,const QModelIndex&)), this, SLOT (selected(GuiTableView*,const QModelIndex&))))
+	if (!connect (d.bdy_table, SIGNAL (selected(GuiPlotTableView*,const QModelIndex&)), this, SLOT (selected(GuiPlotTableView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <bdy_table:selected> to <selected>");
 
-	if (!connect (d.hdr_table, SIGNAL (selected(GuiTableView*,const QModelIndex&)), this, SLOT (selected(GuiTableView*,const QModelIndex&))))
+	if (!connect (d.hdr_table, SIGNAL (selected(GuiPlotTableView*,const QModelIndex&)), this, SLOT (selected(GuiPlotTableView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <hdr_table:selected> to <selected>");
 
 	if (!connect (d.graph_type, SIGNAL (activated (int)), this, SLOT(select_graph (int))))
@@ -167,7 +167,7 @@ GuiRptDsrPlt::refresh (void)
 	SPWAW_DOSSIER	*ptr = NULL;
 	bool		skip;
 	int		cnt;
-	MDLT_DATA	data;
+	MDLPT_DATA	data;
 	int		i, j;
 
 	item = (d.parent != NULL) ? d.parent->current() : NULL;
@@ -189,19 +189,19 @@ GuiRptDsrPlt::refresh (void)
 	if (cnt) {
 		memset (&data, 0, sizeof (data));
 
-		MDLT_alloc_data (data, ptr->bcnt, cnt);
+		MDLPT_alloc_data (data, ptr->bcnt, cnt);
 
 		for (i=0; i<data.row_cnt; i++) {
-			data.row[i].data[0].type = MDLT_DATA_DATE;
+			data.row[i].data[0].type = MDLPT_DATA_DATE;
 			data.row[i].data[0].u.date = ptr->blist[i]->snap->game.battle.data.start;
 
 			for (j=0; j<(data.col_cnt-1); j++) {
-				data.row[i].data[j+1].type = MDLT_DATA_INT;
+				data.row[i].data[j+1].type = MDLPT_DATA_INT;
 				data.row[i].data[j+1].u.i = d.ptr->battle_value (ptr->blist[i], j);
 			}
 		}
 		d.model->load (&data);
-		MDLT_free_data (data);
+		MDLPT_free_data (data);
 	}
 
 	d.model->commit();
@@ -225,7 +225,7 @@ GuiRptDsrPlt::select_graph (int idx)
 }
 
 void
-GuiRptDsrPlt::selected (GuiTableView *who, const QModelIndex &index)
+GuiRptDsrPlt::selected (GuiPlotTableView *who, const QModelIndex &index)
 {
 	if (who != d.hdr_table) d.hdr_table->select (index);
 	if (who != d.bdy_table) d.bdy_table->select (index);

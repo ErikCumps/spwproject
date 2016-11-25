@@ -37,7 +37,7 @@
 /* Convenience macro */
 #define	DOUBLEPREC	1.0e-6
 
-PlotTable::PlotTable (ModelTable *model, QWidget *P)
+PlotTable::PlotTable (ModelPlotTable *model, QWidget *P)
 	: QwtPlot (P)
 {
 	QwtScaleWidget	*sw = NULL;
@@ -152,7 +152,7 @@ PlotTable::setup_def (void)
 	PlotCurve	*C = NULL;
 	PlotBar		*B = NULL;
 	PlotSymbol	*S = NULL;
-	MDLT_COLDEF	*col = NULL;
+	MDLPT_COLDEF	*col = NULL;
 	bool		error = false;
 
 	if (!d.model || !(d.cfg = d.model->def_info())) return;

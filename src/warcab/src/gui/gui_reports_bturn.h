@@ -14,6 +14,7 @@
 #include "gui_reports_bturn_overview.h"
 #include "gui_reports_bturn_force.h"
 #include "gui_reports_bturn_compare.h"
+#include "gui_reports_bturn_stratmap.h"
 
 class GuiRptTrn	: public QTabWidget
 {
@@ -49,6 +50,7 @@ private:
 #if	EXPERIMENTAL
 		GuiRptTrnCmp	*compare;
 #endif	/* EXPERIMENTAL */
+		GuiRptTrnSMap	*stratmap;
 
 		int		last_index;
 	} d;

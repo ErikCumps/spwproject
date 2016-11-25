@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - table view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,7 +10,7 @@
 
 #define	BASE_SIZE	40
 
-GuiTableView::GuiTableView (bool hdr, ModelTable *model, QWidget *P)
+GuiTableView::GuiTableView (bool hdr, ModelTable *model, int hdrcols, QWidget *P)
 	: QTableView (P)
 {
 	QPalette	pal;
@@ -22,7 +22,7 @@ GuiTableView::GuiTableView (bool hdr, ModelTable *model, QWidget *P)
 
 	if (!model) SET_GUICLS_ERROR (ERR_GUI_VIEW_INIT_FAILED, "no model provided");
 
-	d.hdr = hdr; d.model = model;
+	d.hdr = hdr; d.model = model; d.hdrcols = hdrcols;
 	setModel (d.model);
 
 	GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_VIEW_INIT_FAILED, "font");
@@ -114,27 +114,33 @@ void
 GuiTableView::setup (void)
 {
 	MDLT_COLDEF	*p = NULL;
-	int		w = 0;
+	int		w = 0, totalw = 0;
 
 	if (d.hdr) {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 
-		for (int i=1; i<d.model->columnCount(); i++) setColumnHidden (i, true);
-		setColumnHidden (0, false);
+		for (int i=d.hdrcols; i<d.model->columnCount(); i++) setColumnHidden (i, true);
 
-		if (p = d.model->col_info (0)) w = p->width;
-		setColumnWidth (0, w);
+		for (int i=0; i<d.hdrcols; i++) {
+			setColumnHidden (i, false);
+			if (p = d.model->col_info (i)){
+				w = p->width;
+				setColumnWidth (i, w);
+				totalw += w;
+			}
+		}
 
-		setMinimumWidth (w + 5);
-		setMaximumWidth (w + 5);
+		setMinimumWidth (totalw + 5);
+		setMaximumWidth (totalw + 5);
 	} else {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
 
-		for (int i=1; i<d.model->columnCount(); i++) {
+		for (int i=0; i<d.hdrcols; i++) setColumnHidden (i, true);
+
+		for (int i=d.hdrcols; i<d.model->columnCount(); i++) {
 			setColumnHidden (i, false);
 			if (p = d.model->col_info (i)) setColumnWidth (i, p->width);
 		}
-		setColumnHidden (0, true);
 	}
 }
 

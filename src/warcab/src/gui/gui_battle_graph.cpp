@@ -35,15 +35,15 @@ GuiBattleGraphExp::GuiBattleGraphExp()
 
 	setup (PLOT_AREA, true, AXIS_TIME);
 
-	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLT_COLDEF));
+	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_DATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	for (i=SPWAW_ESTARTCODE; i<SPWAW_ELASTCODE; i++) {
 		d.coldefs[i+1].name = (char *)SPWAW_exp2str ((SPWAW_EXP)i);
-		d.coldefs[i+1].type = MDLT_DATA_INT;
+		d.coldefs[i+1].type = MDLPT_DATA_INT;
 		d.coldefs[i+1].width = BASE_SIZE * 2;
 		d.coldefs[i+1].plot_color = RES_PLOT_color ((SPWAW_EXP)i);
 	}
@@ -84,15 +84,15 @@ GuiBattleGraphRnk::GuiBattleGraphRnk()
 
 	setup (PLOT_BAR, true, AXIS_TIME);
 
-	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLT_COLDEF));
+	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_DATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	for (i=SPWAW_RSTARTCODE; i<(SPWAW_RLASTCODE-2); i++) {
 		d.coldefs[i+1].name = (char *)SPWAW_rank2str ((SPWAW_RANK)(i+1));
-		d.coldefs[i+1].type = MDLT_DATA_INT;
+		d.coldefs[i+1].type = MDLPT_DATA_INT;
 		d.coldefs[i+1].width = BASE_SIZE * 2;
 		d.coldefs[i+1].plot_color = RES_PLOT_color ((SPWAW_RANK)(i+1));
 	}
@@ -134,15 +134,15 @@ GuiBattleGraphCls::GuiBattleGraphCls()
 
 	setup (PLOT_BAR, true, AXIS_INDEX);
 
-	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLT_COLDEF));
+	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_DATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	for (i=SPWOOB_UCLASS_START; i<SPWOOB_UCLASS_LIMIT; i++) {
 		d.coldefs[i+1].name = (char *)SPWAW_oob_uclass ((SPWOOB_UCLASS)i);
-		d.coldefs[i+1].type = MDLT_DATA_INT;
+		d.coldefs[i+1].type = MDLPT_DATA_INT;
 		d.coldefs[i+1].width = BASE_SIZE * 2;
 		d.coldefs[i+1].plot_color = RES_PLOT_color ((SPWOOB_UCLASS)i);
 	}
@@ -183,21 +183,21 @@ GuiBattleGraphKal::GuiBattleGraphKal()
 
 	setup (PLOT_LINE, false, AXIS_INDEX);
 
-	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLT_COLDEF));
+	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_DATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	d.coldefs[1].name = "Kills";
-	d.coldefs[1].type = MDLT_DATA_INT;
+	d.coldefs[1].type = MDLPT_DATA_INT;
 	d.coldefs[1].width = BASE_SIZE * 2;
-	d.coldefs[1].plot_color = RES_color (RID_RGB_PLAYER);
+	d.coldefs[1].plot_color = RES_color (RID_RGB_PLAYER_FG);
 
 	d.coldefs[2].name = "Losses";
-	d.coldefs[2].type = MDLT_DATA_INT;
+	d.coldefs[2].type = MDLPT_DATA_INT;
 	d.coldefs[2].width = BASE_SIZE * 2;
-	d.coldefs[2].plot_color = RES_color (RID_RGB_OPPONENT);
+	d.coldefs[2].plot_color = RES_color (RID_RGB_OPPONENT_FG);
 
 	definition.col_cnt = cnt;
 	definition.col_lst = d.coldefs;

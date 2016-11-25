@@ -10,7 +10,7 @@
 #define PLOT_TABLE_H	1
 
 #include "plot.h"
-#include "model/model_table.h"
+#include "model/model_plot_table.h"
 
 typedef enum e_PLOTTABLE_TYPE {
 	PLOTTABLE_CURVE = 0,
@@ -48,7 +48,7 @@ class PlotTable	: public QwtPlot
 	Q_OBJECT
 
 public:
-	PlotTable	(ModelTable *model, QWidget *P);
+	PlotTable	(ModelPlotTable *model, QWidget *P);
 	~PlotTable	(void);
 
 	SL_ERROR	error_code;
@@ -63,7 +63,7 @@ public slots:
 
 private:
 	struct s_data {
-		ModelTable	*model;
+		ModelPlotTable	*model;
 		PlotBG		*p_bg;
 		PlotTimeline	*p_timeline;
 		PlotIdxline	*p_idxline;
@@ -71,7 +71,7 @@ private:
 		PlotLegend	*p_legend;
 		PlotMark	*mark;
 		PlotTableSet	set;
-		MDLT_DEF	*cfg;
+		MDLPT_DEF	*cfg;
 		AXIS_TYPE	axis_type;
 	} d;
 

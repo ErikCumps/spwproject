@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - table view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -17,7 +17,7 @@ class GuiTableView	: public QTableView
 	Q_OBJECT
 
 public:
-	GuiTableView	(bool hdr, ModelTable *model, QWidget *P = 0);
+	GuiTableView	(bool hdr, ModelTable *model, int hdrcols = 1, QWidget *P = 0);
 	~GuiTableView	(void);
 
 	SL_ERROR	error_code;
@@ -50,6 +50,7 @@ private:
 	struct s_data {
 		bool			hdr;
 		ModelTable		*model;
+		int			hdrcols;
 		QFont			*font;
 	} d;
 };

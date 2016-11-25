@@ -30,6 +30,7 @@ static const char *errormsgs[LAST_ERR_CODE-SL_ERR_USER_START+1] = {
 	"failed to initialize GUI reports view",
 	"failed to initialize GUI plot view",
 	"failed to initialize GUI view widget",
+	"failed to initialize GUI strategic map widget",
 	"failed to initialize GUI dossier reports view",
 	"failed to initialize GUI battle reports view",
 	"failed to initialize GUI turn reports view",

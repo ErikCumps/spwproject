@@ -41,6 +41,9 @@ GuiRptTrn::GuiRptTrn (QWidget *P)
 	GUIERR (d.compare, ERR_GUI_REPORTS_INIT_FAILED);
 #endif	/* EXPERIMENTAL */
 
+	GUINEW (d.stratmap, GuiRptTrnSMap (), ERR_GUI_REPORTS_INIT_FAILED, "strategic map page");
+	GUIERR (d.stratmap, ERR_GUI_REPORTS_INIT_FAILED);
+
 	if (!connect (this, SIGNAL (currentChanged(int)), SLOT (selectedCurrentIndex(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <currentChanged> to <selectedCurrentIndex>");
 
@@ -53,6 +56,7 @@ GuiRptTrn::GuiRptTrn (QWidget *P)
 #if	EXPERIMENTAL
 	d.compare->set_parent (this);
 #endif	/* EXPERIMENTAL */
+	d.stratmap->set_parent (this);
 
 	d.last_index = currentIndex();
 	tabBar()->setTabTextColor (currentIndex(), *RES_color (RID_TAB_FG_SEL));
@@ -72,6 +76,7 @@ GuiRptTrn::~GuiRptTrn (void)
 #if	EXPERIMENTAL
 	delete d.compare;
 #endif	/* EXPERIMENTAL */
+	delete d.stratmap;
 }
 
 void
@@ -96,6 +101,7 @@ GuiRptTrn::set_enabled (bool flag)
 		memset (buf, 0, sizeof (buf));
 
 		removeTab (indexOf (d.disabled_label));
+
 		addTab (d.overview, "Overview");
 		addTab (d.force_core, *RES_flag (d.item->data.t->battle->dossier->OOB), "Core force");
 		addTab (d.force_spt, *RES_flag (d.item->data.t->battle->dossier->OOB), "Support force");
@@ -104,6 +110,7 @@ GuiRptTrn::set_enabled (bool flag)
 #if	EXPERIMENTAL
 		addTab (d.compare, "Comparisons");
 #endif	/* EXPERIMENTAL */
+		addTab (d.stratmap, "Strategic map");
 
 		setCurrentIndex (d.last_index);
 		tabBar()->setTabTextColor (currentIndex(), *RES_color (RID_TAB_FG_SEL));
@@ -115,6 +122,8 @@ GuiRptTrn::set_enabled (bool flag)
 #if	EXPERIMENTAL
 		removeTab (indexOf (d.compare));
 #endif	/* EXPERIMENTAL */
+		removeTab (indexOf (d.stratmap));
+
 		addTab (d.disabled_label, "Overview");
 	}
 	if (!hidden) show();
@@ -154,6 +163,7 @@ GuiRptTrn::refresh (void)
 #if	EXPERIMENTAL
 	d.compare->refresh();
 #endif	/* EXPERIMENTAL */
+	d.stratmap->refresh();
 
 	DBG_TRACE_FLEAVE;
 }

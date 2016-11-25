@@ -69,6 +69,7 @@ HEADERS +=					\
 	model/model_mmas_data.h			\
 	model/model_mmas.h			\
 	model/model_table.h			\
+	model/model_plot_table.h		\
 	plot/plot_qwt.h				\
 	plot/plot.h				\
 	plot/plot_private.h			\
@@ -84,6 +85,13 @@ HEADERS +=					\
 	plot/plot_bar.h				\
 	plot/plot_mmas.h			\
 	plot/plot_table.h			\
+	smap/smap_hexdata.h			\
+	smap/smap_hexpos.h			\
+	smap/smap_hex.h				\
+	smap/smap_hexgrid.h			\
+	smap/smap_renderdata.h			\
+	smap/smap_renderer.h			\
+	smap/smap_widget.h			\
 	gui/gui_qt.h				\
 	gui/gui_state.h				\
 	gui/gui.h				\
@@ -106,6 +114,7 @@ HEADERS +=					\
 	gui/gui_mmas_view.h			\
 	gui/gui_mmas.h				\
 	gui/gui_table_view.h			\
+	gui/gui_plot_table_view.h		\
 	gui/gui_battle_graph.h			\
 	gui/gui_report_kills.h			\
 	gui/gui_report_losses.h			\
@@ -125,6 +134,7 @@ HEADERS +=					\
 	gui/gui_reports_bturn_overview.h	\
 	gui/gui_reports_bturn_force.h		\
 	gui/gui_reports_bturn_compare.h		\
+	gui/gui_reports_bturn_stratmap.h	\
 	gui/gui_reports_bturn.h			\
 	gui/gui_mainreport.h			\
 	gui/gui_actions.h			\
@@ -182,6 +192,7 @@ SOURCES +=					\
 	model/model_mmas_data.cpp		\
 	model/model_mmas.cpp			\
 	model/model_table.cpp			\
+	model/model_plot_table.cpp		\
 	plot/plot_background.cpp		\
 	plot/plot_timeline.cpp			\
 	plot/plot_idxline.cpp			\
@@ -194,6 +205,14 @@ SOURCES +=					\
 	plot/plot_bar.cpp			\
 	plot/plot_mmas.cpp			\
 	plot/plot_table.cpp			\
+	smap/smap_hexdata.cpp			\
+	smap/smap_hexpos.cpp			\
+	smap/smap_hex.cpp			\
+	smap/smap_hexgrid.cpp			\
+	smap/smap_renderdata_11x11.cpp		\
+	smap/smap_renderdata_21x21.cpp		\
+	smap/smap_renderer.cpp			\
+	smap/smap_widget.cpp			\
 	gui/gui.cpp				\
 	gui/gui_errorbox.cpp			\
 	gui/gui_progress.cpp			\
@@ -213,6 +232,7 @@ SOURCES +=					\
 	gui/gui_mmas_view.cpp			\
 	gui/gui_mmas.cpp			\
 	gui/gui_table_view.cpp			\
+	gui/gui_plot_table_view.cpp		\
 	gui/gui_battle_graph.cpp		\
 	gui/gui_report_kills.cpp		\
 	gui/gui_report_losses.cpp		\
@@ -232,6 +252,7 @@ SOURCES +=					\
 	gui/gui_reports_bturn_overview.cpp	\
 	gui/gui_reports_bturn_force.cpp		\
 	gui/gui_reports_bturn_compare.cpp	\
+	gui/gui_reports_bturn_stratmap.cpp	\
 	gui/gui_reports_bturn.cpp		\
 	gui/gui_mainreport.cpp			\
 	gui/gui_actions.cpp			\

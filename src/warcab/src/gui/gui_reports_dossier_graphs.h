@@ -14,6 +14,7 @@
 #include "util/util_mdltree_reftrack.h"
 #include "util/util_valtrack.h"
 #include "gui_battle_graph.h"
+#include "gui_plot_table_view.h"
 
 class GuiRptDsrPlt	: public QScrollArea
 {
@@ -30,14 +31,14 @@ public:
 	void	refresh		(void);
 
 public slots:
-	void	selected	(GuiTableView *who, const QModelIndex &index);
+	void	selected	(GuiPlotTableView *who, const QModelIndex &index);
 	void	set_type	(int idx);
 	void	stacked_change	(int state);
 	void	timeline_change	(int state);
 
 private:
 	struct s_data {
-		ModelTable		*model;
+		ModelPlotTable		*model;
 		
 		QFrame			*frame;
 		QGridLayout		*layout;
@@ -47,8 +48,8 @@ private:
 		QCheckBox		*axis_timeline;
 		PlotTable		*plot;
 		QSplitter		*split;
-		GuiTableView		*hdr_table;
-		GuiTableView		*bdy_table;
+		GuiPlotTableView	*hdr_table;
+		GuiPlotTableView	*bdy_table;
 
 		GuiRptDsr		*parent;
 

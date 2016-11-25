@@ -10,7 +10,7 @@
 #define	GUI_BATTLE_GRAPH_H	1
 
 #include "gui_private.h"
-#include "model/model_table.h"
+#include "model/model_plot_table.h"
 
 typedef enum e_GUI_BATTLE_GRAPH_TYPE {
 	GUI_BATTLE_GRAPH_TYPE_EXP = 0,
@@ -26,7 +26,7 @@ public:
 	virtual	~GuiBattleGraph();
 
 	char		*name;
-	MDLT_DEF	definition;
+	MDLPT_DEF	definition;
 
 	void		set_plot_type		(PLOT_TYPE type);
 	void		set_plot_stacked	(bool stacked);
@@ -39,7 +39,7 @@ public:
 protected:
 	struct s_data {
 		GUI_BATTLE_GRAPH_TYPE	type;
-		MDLT_COLDEF		*coldefs;
+		MDLPT_COLDEF		*coldefs;
 		bool			changed;
 	} d;
 

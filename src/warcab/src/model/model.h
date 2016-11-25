@@ -21,6 +21,7 @@ class	ModelHistory;
 class	ModelUnitlist;
 class	ModelMMAS;
 class	ModelTable;
+class	ModelPlotTable;
 
 #endif	/* MODEL_COMMON_H */
 
