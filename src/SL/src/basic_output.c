@@ -134,12 +134,12 @@ out_core (FILE *stream, SLMSG *msg)
 
 	switch (msg->data.type) {
 		case SLMSG_DATA_TYPE_STRING:
-			fprintf (stream, "%s %s [0x%8.8x] %s: %s", stamp, prio, msg->thid, from, msg->data.u.string.str);
+			fprintf (stream, "%s %s [0x%8.8lx] %s: %s", stamp, prio, msg->thid, from, msg->data.u.string.str);
 			break;
 		case SLMSG_DATA_TYPE_PRINTF:
 			memset (buffer, 0, sizeof (buffer));
 			vsnprintf (buffer, sizeof (buffer) - 1, msg->data.u.printf.fmt, msg->data.u.printf.args);
-			fprintf (stream, "%s %s [0x%8.8x] %s: %s", stamp, prio, msg->thid, from, buffer);
+			fprintf (stream, "%s %s [0x%8.8lx] %s: %s", stamp, prio, msg->thid, from, buffer);
 			break;
 		case SLMSG_DATA_TYPE_CMD:
 			switch (msg->data.u.cmd) {

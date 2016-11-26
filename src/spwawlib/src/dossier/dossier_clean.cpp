@@ -14,14 +14,13 @@
 SPWAW_ERROR
 dossier_clean (SPWAW_DOSSIER *ptr)
 {
-	DWORD		i, j;
-	SPWAW_BATTLE	*b;
+	DWORD	i, j;
 
 	CNULLARG (ptr);
 
 	if (ptr->blist) {
 		for (i=0; i<ptr->bcnt; i++) {
-			b = ptr->blist[i]; if (!b) continue;
+			SPWAW_BATTLE *b = ptr->blist[i]; if (!b) continue;
 
 			if (b->tlist) {
 				for (j=0; j<b->tcnt; j++) {

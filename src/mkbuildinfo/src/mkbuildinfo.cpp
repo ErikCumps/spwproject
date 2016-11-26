@@ -60,17 +60,20 @@ static void
 update_bid (char *dbf, unsigned long *bid)
 {
 	FILE		*f;
-	char		buff[64], *p;
 	unsigned long	data;
 
 	*bid = data = 0;
 
 	if ((f = fopen (dbf, "r")) != NULL) {
+		char	buff[64];
+
 		memset (buff, 0, sizeof (buff));
 		fgets (buff, sizeof (buff), f);
 		fclose (f);
 
 		if (buff[0] != '\0') {
+			char	*p;
+
 			if ((p = strchr (buff, '\n')) !=NULL ) *p = '\0';
 			safe_strtoul (buff, &data);
 		}

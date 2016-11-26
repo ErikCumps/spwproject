@@ -40,7 +40,6 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_savegame_free (SPWAW_SAVEGAME **game)
 {
 	SPWAW_SAVEGAME	*p;
-	int		i;
 
 	CSPWINIT;
 	CNULLARG (game);
@@ -48,7 +47,7 @@ SPWAW_savegame_free (SPWAW_SAVEGAME **game)
 	p = *game; *game = NULL;
 	if (p) {
 		if (p->comment.data) safe_free (p->comment.data);
-		for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+		for (int i=0; i<SPWAW_SECTION_COUNT; i++) {
 			if (p->sections[i].data) safe_free (p->sections[i].data);
 		}
 
@@ -92,7 +91,7 @@ SPWAW_savegame_load (const char *dir, int id, SPWAW_SAVEGAME **game)
 		memcpy (p->sections[i].data, data->MAP[i].ptr, p->sections[i].size);
 	}
 
-	game_free (data);
+	game_free (&data);
 
 	*game = p;
 	return (SPWERR_OK);
@@ -106,11 +105,10 @@ handle_error:
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 {
-	SPWAW_ERROR		rc = SPWERR_OK;
-	SPWAW_SAVEGAME		*p;
-	GAMEDATA		*data;
-	int			i, j;
-	SPWAW_SAVEGAME_SECTION	*sp;
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SPWAW_SAVEGAME	*p;
+	GAMEDATA	*data;
+	int		i, j;
 
 	CSPWINIT;
 	CNULLARG (game); CNULLARG (*game);  CNULLARG (dir);
@@ -126,7 +124,7 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 	memcpy (&(data->cmt), p->comment.data, p->comment.size);
 
 	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
-		sp = NULL;
+		SPWAW_SAVEGAME_SECTION *sp = NULL;
 		for (j=0; j<SPWAW_SECTION_COUNT; j++) {
 			if (p->sections[j].idx == data->MAP[i].idx) {
 				sp = &(p->sections[j]);
@@ -146,11 +144,11 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 	if (!game_save_full (data, dir, id))
 		FAILGOTO (SPWERR_FAILED, "failed to create savegame", handle_error);
 
-	game_free (data);
+	game_free (&data);
 	return (SPWERR_OK);
 
 handle_error:
-	game_free (data);
+	game_free (&data);
 	return (rc);
 }
 

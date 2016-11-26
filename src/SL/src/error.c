@@ -287,7 +287,7 @@ SL_ERROR_init (void)
 void
 SL_ERROR_shutdown (void)
 {
-	SL_ERROR_CODE	*p, *q;
+	SL_ERROR_CODE	*p;
 
 	IDBGLOG0 ("start");
 
@@ -301,7 +301,7 @@ SL_ERROR_shutdown (void)
 
 	p = error_set.head;
 	while (p) {
-		q = p; p = p->next;
+		SL_ERROR_CODE *q = p; p = p->next;
 		SL_SAFE_FREE (q);
 	}
 
@@ -322,7 +322,7 @@ SL_ERROR_strerror (SL_ERROR ec)
 	str = SL_ERROR_code_lookup (ec);
 	if (str == NULL) {
 		memset (SL_ERROR_DYNERRSTR, 0, sizeof(SL_ERROR_DYNERRSTR));
-		snprintf (SL_ERROR_DYNERRSTR, SL_ERROR_STRSIZE, "illegal error code [%u]", ec);
+		snprintf (SL_ERROR_DYNERRSTR, SL_ERROR_STRSIZE, "illegal error code [%d]", ec);
 		return SL_ERROR_DYNERRSTR;
 	} else {
 		return (char *)str;
@@ -558,7 +558,7 @@ SL_ERROR_system_alt (SL_ERROR rc, SL_CODELOC *where, char *fmt, ...)
 static void
 SL_ERROR_reset (void)
 {
-	SL_ERROR_DATA	*p, *e;
+	SL_ERROR_DATA	*p;
 
 	if (SL_ERROR_OOM.func_err != 0) {
 		memset (&SL_ERROR_OOM, 0, sizeof (SL_ERROR_OOM));
@@ -567,8 +567,7 @@ SL_ERROR_reset (void)
 	if (SL_ERROR_ERROR == NULL) return;
 	p = SL_ERROR_ERROR;
 	while (p != NULL) {
-		e = p;
-		p = p->prev;
+		SL_ERROR_DATA *e = p; p = p->prev;
 		SL_SAFE_FREE (e);
 	}
 	SL_ERROR_ERROR = NULL;

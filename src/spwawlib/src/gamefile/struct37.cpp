@@ -18,7 +18,6 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	GAME_DATA		*data;
 	SPWAW_SNAP_BATTLE_RAW	*bp;
 	SPWAW_SNAP_CAMPAIGN_RAW	*cp;
-	SPWAW_UD		*UD;
 	int			i;
 
 	CNULLARG (src); CNULLARG (dst);
@@ -101,7 +100,7 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	}
 
 	if (cfg.withUD) {
-		UD = &(dst->raw.game.UD);
+		SPWAW_UD *UD = &(dst->raw.game.UD);
 		UD_init (UD, sizeof (*data));
 		UD_ADD (UD, data, __data00);
 		UD_ADD (UD, data, __data01);

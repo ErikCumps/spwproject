@@ -71,7 +71,7 @@ main(int argc, char** argv)
 	
 	/* Write savegame sections data */
 	for (int i = 0; i < SPWAW_SECTION_COUNT; i++) {
-		snprintf (fn, sizeof (fn) - 1, "section%2.2lu.sect", game->sections[i].idx);
+		snprintf (fn, sizeof (fn) - 1, "section%2.2d.sect", game->sections[i].idx);
 		write_data (fn, game->sections[i].data, game->sections[i].size);
 	}
 

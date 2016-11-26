@@ -197,7 +197,6 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 	SPWAW_SNAP_OOB_U	*ptr;
 	DWORD			i;
 	SPWAW_SNAP_OOB_UEL	*p;
-	SPWAW_SNAP_OOB_FEL	*fp;
 
 	if (!f) return; ptr = &(f->units);
 	if (!ptr->cnt || !ptr->list) return;
@@ -208,6 +207,8 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
+		SPWAW_SNAP_OOB_FEL	*fp;
+
 		p = &(ptr->list[i]);
 
 		fprintf (rf, "#%4.4u (%2.2u:%2.2u,%2.2u) %-4s %s\n",
@@ -288,7 +289,6 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 	SPWAW_SNAP_OOB_U	*ptr;
 	DWORD			i;
 	SPWAW_SNAP_OOB_UEL	*p;
-	SPWAW_SNAP_OOB_FEL	*fp;
 
 	if (!f) return; ptr = &(f->crews);
 	if (!ptr->cnt || !ptr->list) return;
@@ -299,6 +299,8 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
+		SPWAW_SNAP_OOB_FEL	*fp;
+
 		p = &(ptr->list[i]);
 
 		fprintf (rf, "#%4.4u (%2.2u:%2.2u,%2.2u) %-4s %s\n",

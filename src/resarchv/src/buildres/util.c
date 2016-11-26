@@ -22,12 +22,19 @@
 
 #endif	/* DEBUG_MEMTRACE */
 
+#define	UNREFERENCED_PARAMETER(P)	(P)
+
 void *
 SAFE_malloc (const char *file, unsigned long line, const char *func, size_t size)
 {
 	void	*p;
 
-	/* prevent compiler warnings */ file = file; line = line; func = func;
+#ifndef	DEBUG_MEMTRACE
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (file);
+	UNREFERENCED_PARAMETER (line);
+	UNREFERENCED_PARAMETER (func);
+#endif	/* !DEBUG_MEMTRACE */
 
 	p = safe_malloc (file, line, func, size); if (p == NULL) abort();
 	memset (p, 0, size);
@@ -39,7 +46,12 @@ SAFE_strdup (const char *file, unsigned long line, const char *func, char *src, 
 {
 	char	*p;
 
-	/* prevent compiler warnings */ file = file; line = line; func = func;
+#ifndef	DEBUG_MEMTRACE
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (file);
+	UNREFERENCED_PARAMETER (line);
+	UNREFERENCED_PARAMETER (func);
+#endif	/* !DEBUG_MEMTRACE */
 
 	if (dst == NULL) abort();
 

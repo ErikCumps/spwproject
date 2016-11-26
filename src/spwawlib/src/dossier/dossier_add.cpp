@@ -90,7 +90,7 @@ dossier_add_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	USHORT		idx;
-	SPWAW_BATTLE	*p, *pp;
+	SPWAW_BATTLE	*pp;
 
 	CNULLARG (ptr); CNULLARG (b);
 
@@ -104,7 +104,6 @@ dossier_add_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b)
 
 	pp=NULL;
 	for (idx=0; idx<ptr->bcnt; idx++) {
-		p = ptr->blist[idx];
 		pp = link_battle (ptr->blist[idx], pp);
 	}
 	ptr->bfirst = ptr->blist[0];
@@ -163,7 +162,7 @@ battle_add_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab, SPWAW_B
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_BTURN	*bt = NULL;
 	USHORT		idx;
-	SPWAW_BTURN	*p, *pp;
+	SPWAW_BTURN	*pp;
 
 	CNULLARG (ptr); CNULLARG (snap); CNULLARG (bturn);
 	*bturn = NULL;
@@ -198,7 +197,6 @@ battle_add_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab, SPWAW_B
 
 	pp=NULL;
 	for (idx=0; idx<ptr->tcnt; idx++) {
-		p = ptr->tlist[idx];
 		pp = link_bturn (ptr->tlist[idx], pp);
 	}
 	ptr->tfirst = ptr->tlist[0];

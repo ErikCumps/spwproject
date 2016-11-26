@@ -104,12 +104,10 @@ DllMain (HANDLE /*hModule*/, DWORD  ul_reason_for_call, LPVOID /*lpReserved*/)
 void
 debug_memtrace_init (const char *logf)
 {
-	long	logp;
-
 	if (initialised) {
 		if (log) {
 			// flush log and obtain current file position
-			fflush (log); logp = ftell (log);
+			fflush (log); long logp = ftell (log);
 			// close logfile and clean up if no data was written to it
 			fclose (log); if (logp == 0) unlink (logfile);
 			log = NULL;
@@ -126,9 +124,9 @@ debug_memtrace_init (const char *logf)
 void
 debug_memtrace_mark (const char *mark)
 {
-	char	buffer[512];
-
 	if (log) {
+		char	buffer[512];
+
 		memset (buffer, 0, sizeof (buffer));
 		_snprintf (buffer, sizeof (buffer) - 1, "### MARK (%s)\n", mark);
 
@@ -158,19 +156,19 @@ pc_dlt (LARGE_INTEGER &base, LARGE_INTEGER &dlt)
 static void
 log_alloc (const char *file, unsigned long line, const char *func, unsigned long size, void *ptr, LARGE_INTEGER &base, const char *caller)
 {
-	char	header[64];
-	char	buffer[512];
-
-#if	LOG_TIMING
-	LARGE_INTEGER	dlt;
-	pc_dlt (base, dlt);
-#else
-	UNREFERENCED_PARAMETER (base);
-#endif /* !LOG_TIMING */
 
 	if (log) {
+		char	header[64];
+		char	buffer[512];
+#if	LOG_TIMING
+		LARGE_INTEGER	dlt;
+		pc_dlt (base, dlt);
+#else
+		UNREFERENCED_PARAMETER (base);
+#endif /* !LOG_TIMING */
+
 		memset (header, 0, sizeof (header));
-		_snprintf (header, sizeof (header) - 1, "+++ ptr=0x%8.8x size=0x%8.8x", ptr, size);
+		_snprintf (header, sizeof (header) - 1, "+++ ptr=0x%8.8x size=0x%8.8lx", (unsigned int)ptr, size);
 
 		memset (buffer, 0, sizeof (buffer));
 #if	LOG_TIMING
@@ -203,19 +201,19 @@ log_alloc (const char *file, unsigned long line, const char *func, unsigned long
 static void
 log_free (const char *file, unsigned long line, const char *func, void *ptr, LARGE_INTEGER &base, const char *caller)
 {
-	char	header[64];
-	char	buffer[512];
+	if (log) {
+		char	header[64];
+		char	buffer[512];
 
 #if	LOG_TIMING
-	LARGE_INTEGER	dlt;
-	pc_dlt (base, dlt);
+		LARGE_INTEGER	dlt;
+		pc_dlt (base, dlt);
 #else
-	UNREFERENCED_PARAMETER (base);
+		UNREFERENCED_PARAMETER (base);
 #endif /* !LOG_TIMING */
 
-	if (log) {
 		memset (header, 0, sizeof (header));
-		_snprintf (header, sizeof (header) - 1, "--- ptr=0x%8.8x", ptr);
+		_snprintf (header, sizeof (header) - 1, "--- ptr=0x%8.8x", (unsigned int)ptr);
 
 		memset (buffer, 0, sizeof (buffer));
 #if	LOG_TIMING
@@ -248,12 +246,12 @@ log_free (const char *file, unsigned long line, const char *func, void *ptr, LAR
 static void
 log_new (const char *file, unsigned long line, const char *func, void *ptr, unsigned long size)
 {
-	char	header[64];
-	char	buffer[512];
-
 	if (log) {
+		char	header[64];
+		char	buffer[512];
+
 		memset (header, 0, sizeof (header));
-		_snprintf (header, sizeof (header) - 1, "NEW ptr=0x%8.8x size=0x%8.8x", ptr, size);
+		_snprintf (header, sizeof (header) - 1, "NEW ptr=0x%8.8x size=0x%8.8lx", (unsigned int)ptr, size);
 
 		memset (buffer, 0, sizeof (buffer));
 		_snprintf (buffer, sizeof (buffer) - 1, "%-40s [0x%8.8x] (%s:%lu, %s, %lu bytes)\n",
@@ -269,12 +267,12 @@ log_new (const char *file, unsigned long line, const char *func, void *ptr, unsi
 static void
 log_delete (const char *file, unsigned long line, const char *func, void *ptr)
 {
-	char	header[64];
-	char	buffer[512];
-
 	if (log) {
+		char	header[64];
+		char	buffer[512];
+
 		memset (header, 0, sizeof (header));
-		_snprintf (header, sizeof (header) - 1, "DEL ptr=0x%8.8x", ptr);
+		_snprintf (header, sizeof (header) - 1, "DEL ptr=0x%8.8x", (unsigned int)ptr);
 
 		memset (buffer, 0, sizeof (buffer));
 		_snprintf (buffer, sizeof (buffer) - 1, "%-40s [0x%8.8x] (%s:%lu, %s)\n",
@@ -290,12 +288,12 @@ log_delete (const char *file, unsigned long line, const char *func, void *ptr)
 static void
 log_deletefree (void *ptr)
 {
-	char	header[64];
-	char	buffer[512];
-
 	if (log) {
+		char	header[64];
+		char	buffer[512];
+
 		memset (header, 0, sizeof (header));
-		_snprintf (header, sizeof (header) - 1, "D-- ptr=0x%8.8x", ptr);
+		_snprintf (header, sizeof (header) - 1, "D-- ptr=0x%8.8x", (unsigned int)ptr);
 
 		memset (buffer, 0, sizeof (buffer));
 		_snprintf (buffer, sizeof (buffer) - 1, "%-40s [0x%8.8x]\n",

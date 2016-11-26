@@ -30,7 +30,6 @@ static SPWAW_ERROR
 add_leader (LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STRTAB *stab)
 {
 	SPWAW_SNAP_OOB_LELRAW	*ptr;
-	SPWAW_UD		*UD;
 
 	ptr = &(dst[*idx]);
 
@@ -46,7 +45,7 @@ add_leader (LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STR
 	ptr->status	= src->status;
 
 	if (cfg.withUD) {
-		UD = &(ptr->UD);
+		SPWAW_UD *UD = &(ptr->UD);
 		UD_init (UD, sizeof (*src));
 		UD_ADD (UD, src, __data00);
 		UD_ADD (UD, src, __data01);

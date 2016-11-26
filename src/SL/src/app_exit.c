@@ -114,7 +114,6 @@ exit_report (unsigned int ec, char *msg, SL_BOOL dump)
 	char	*fmt1 = "\n***** %s terminated: %s, exit code %d%s *****\n";
 	char	*fmt2 = "\n***** Application terminated: %s, exit code %d%s *****\n";
 
-
 	if (SL_OPTIONS.hook.exit) SL_OPTIONS.hook.exit (ec, msg, dump);
 
 	name = SL_APP_exe_name ();

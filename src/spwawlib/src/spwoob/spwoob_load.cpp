@@ -380,7 +380,6 @@ load_oob_files (SPWOOB *oob)
 	intptr_t		f_hndl = -1;
 	int			f_stat;
 	struct _finddata_t	f_data;
-	BYTE			id;
 
 	CNULLARG (oob);
 
@@ -394,7 +393,7 @@ load_oob_files (SPWOOB *oob)
 
 	f_stat = 0;
 	while (f_stat != -1) {
-		id = name2id (f_data.name);
+		BYTE id = name2id (f_data.name);
 		if ((id != BADOOBID) && (oob->data[id] == NULL)) {
 			rc = load_oob_file (oob, id, f_data.name);
 			ERRORGOTO ("load_oob_data()", handle_error);

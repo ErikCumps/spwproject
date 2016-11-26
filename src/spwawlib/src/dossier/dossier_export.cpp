@@ -51,7 +51,6 @@ dossier_export_tlist (int src, FILE *dst, long pos, USHORT cnt)
 	SPWAW_ERROR	rc = SPWERR_OK;
 	DOS_THEADER	*hdrs = NULL;
 	USHORT		i;
-	bool		b;
 
 	bseekset (src, pos);
 
@@ -61,6 +60,8 @@ dossier_export_tlist (int src, FILE *dst, long pos, USHORT cnt)
 	ERRORGOTO ("bread(turn headers)", handle_error);
 
 	for (i=0; i<cnt; i++) {
+		bool	b;
+
 		b = TC_v2t (dst, "dossier.turn.header.date",	TC_DATA_IDX_TIMESTAMP, &(hdrs[i].date), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.turn.header.turn",	TC_DATA_IDX_BYTE, &(hdrs[i].turn), 0, i);	ROF(b);
 		b = TC_v2t (dst, "//dossier.turn.header.snap",	TC_DATA_IDX_ULONG, &(hdrs[i].snap), 0, i);	ROF(b);
@@ -82,7 +83,6 @@ dossier_export_blist (int src, FILE *dst, long pos, USHORT cnt, USHORT ucnt)
 	DOS_BHEADER		*hdrs = NULL;
 	SPWAW_DOSSIER_BURA	*ra = NULL;
 	USHORT			i, j;
-	bool			b;
 
 	bseekset (src, pos);
 
@@ -92,6 +92,8 @@ dossier_export_blist (int src, FILE *dst, long pos, USHORT cnt, USHORT ucnt)
 	ERRORGOTO ("bread(battle headers)", handle_error);
 
 	for (i=0; i<cnt; i++) {
+		bool	b;
+
 		b = TC_v2t (dst, "dossier.battle.header.date",		TC_DATA_IDX_TIMESTAMP, &(hdrs[i].date), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.location",	TC_DATA_IDX_ULONG, &(hdrs[i].location), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.OOB",		TC_DATA_IDX_BYTE, &(hdrs[i].OOB), 0, i);	ROF(b);

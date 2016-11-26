@@ -98,7 +98,7 @@ int main (int argc, char *argv[])
 	}
 
 	count = parse_cfg (argv[1], arc);
-	printf ("Config file \"%s\" contains %u items.\n", argv[1], count);
+	printf ("Config file \"%s\" contains %d items.\n", argv[1], count);
 
 	arc_store (arc);
 

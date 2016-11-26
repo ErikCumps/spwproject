@@ -144,8 +144,7 @@ SPWAW_snaplist_new (SPWAW_SNAPLIST **list)
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_snaplist_free (SPWAW_SNAPLIST **list)
 {
-	unsigned int		i;
-	SPWAW_SNAPLIST		*l;
+	SPWAW_SNAPLIST	*l;
 
 	CSPWINIT;
 	CNULLARG (list);
@@ -153,7 +152,7 @@ SPWAW_snaplist_free (SPWAW_SNAPLIST **list)
 	l = *list; *list = NULL;
 	if (l) {
 		if (l->list) {
-			for (i=0; i<l->cnt; i++) if (l->list[i]) free (l->list[i]);
+			for (unsigned int i=0; i<l->cnt; i++) if (l->list[i]) free (l->list[i]);
 			free (l->list);
 		}
 		free (l);

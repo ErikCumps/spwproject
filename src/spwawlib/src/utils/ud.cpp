@@ -76,13 +76,13 @@ UD_add (SPWAW_UD *ud, DWORD addr, DWORD size, BYTE *data)
 void
 UD_free (SPWAW_UD *ud)
 {
-	SPWAW_UDEL	*p, *q;
+	SPWAW_UDEL	*p;
 
 	if (!ud) return;
 
 	p = ud->head;
 	while (p) {
-		q = p; p = p->next; safe_free (q);
+		SPWAW_UDEL *q = p; p = p->next; safe_free (q);
 	}
 	if (ud->freeme) safe_free (ud);
 }

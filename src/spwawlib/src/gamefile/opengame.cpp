@@ -77,7 +77,6 @@ game_new (void)
 {
 	GAMEDATA	*ptr;
 	int		i;
-	DWORD		p;
 
 	ptr = safe_malloc (GAMEDATA);
 	if (!ptr) return (NULL);
@@ -86,7 +85,7 @@ game_new (void)
 	memcpy (ptr->MAP, &MAP, sizeof (MAP));
 
 	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
-		p = (DWORD)ptr->MAP[i].ptr;
+		DWORD p = (DWORD)ptr->MAP[i].ptr;
 		p += (DWORD)ptr;
 		ptr->MAP[i].ptr = (void *)p;
 	}
@@ -132,11 +131,11 @@ open_gamefiles (const char *dir, int id, GAMEFILE *game)
 	game->cmt_fd = game->dat_fd = -1;
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.cmt", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.cmt", dir, id);
 	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.dat", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.dat", dir, id);
 	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
 
 	game->cmt_fd = open (game->cmt_name, O_RDONLY|O_BINARY);
@@ -184,11 +183,11 @@ create_gamefiles (const char *dir, int id, GAMEFILE *game)
 	game->cmt_fd = game->dat_fd = -1;
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.cmt", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.cmt", dir, id);
 	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3u.dat", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.dat", dir, id);
 	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
 
 	game->cmt_fd = open (game->cmt_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
@@ -334,10 +333,10 @@ game_save_full (GAMEDATA *src, const char *dir, unsigned int id)
 }
 
 void
-game_free (GAMEDATA *game)
+game_free (GAMEDATA **game)
 {
-	if (!game) return;
-	free (game); game = NULL;
+	if (!game || !*game) return;
+	free (*game); *game = NULL;
 }
 
 bool

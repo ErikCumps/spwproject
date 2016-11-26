@@ -79,13 +79,13 @@ SL_init (SL_APP_INFO *info, SLOPT *opt)
 SL_INIT
 SL_lib_init (void)
 {
-	int		rc;
-
 	/* Register our shutdown routine */
 	atexit (SL_lib_shutdown);
 
 	if (InterlockedIncrement (&refcnt) == 1)
 	{
+		int	rc;
+
 		/* Initialize internal debugging */
 		IDBG_init ();
 

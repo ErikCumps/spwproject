@@ -12,9 +12,7 @@
 static void
 report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_FELRAW	*p;
-	SPWAW_RINDEX		*r;
+	DWORD	i;
 
 	if (!ptr) return;
 
@@ -27,14 +25,14 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 	if (!ptr->cnt || !ptr->raw || !ptr->ridx) return;
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
-		fprintf (rf, "{%4u} RID=%4.4x, FID=%2.2x, leader=%4.4x <%s>\n", i, p->RID, p->FID, p->leader, p->name);
+		SPWAW_SNAP_OOB_FELRAW *p = &(ptr->raw[i]);
+		fprintf (rf, "{%4lu} RID=%4.4x, FID=%2.2x, leader=%4.4x <%s>\n", i, p->RID, p->FID, p->leader, p->name);
 	}
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }
@@ -42,9 +40,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 static void
 report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_UELRAW	*p;
-	SPWAW_RINDEX		*r;
+	DWORD	i;
 
 	if (!ptr) return;
 
@@ -54,15 +50,15 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
-		fprintf (rf, "{%4u} RID=%4.4x, FRID=%2.2x, FMID=%2.2x, FSID=%2.2x, leader=%4.4x, crew=%4.4x, loader=%4.4x, target=%4.4x <%s>\n",
+		SPWAW_SNAP_OOB_UELRAW *p = &(ptr->raw[i]);
+		fprintf (rf, "{%4lu} RID=%4.4x, FRID=%2.2x, FMID=%2.2x, FSID=%2.2x, leader=%4.4x, crew=%4.4x, loader=%4.4x, target=%4.4x <%s>\n",
 			i, p->RID, p->FRID, p->FMID, p->FSID, p->leader, p->crew, p->loader, p->target, p->name);
 	}
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }
@@ -70,9 +66,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 static void
 report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_LELRAW	*p;
-	SPWAW_RINDEX		*r;
+	DWORD	i;
 
 	if (!ptr) return;
 
@@ -82,14 +76,14 @@ report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
-		fprintf (rf, "{%4u} RID=%4.4x, URID=%4.4x <%s>\n", i, p->RID, p->URID, p->name);
+		SPWAW_SNAP_OOB_LELRAW *p = &(ptr->raw[i]);
+		fprintf (rf, "{%4lu} RID=%4.4x, URID=%4.4x <%s>\n", i, p->RID, p->URID, p->name);
 	}
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }
@@ -97,9 +91,7 @@ report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 static void
 report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_PELRAW	*p;
-	SPWAW_RINDEX		*r;
+	DWORD	i;
 
 	if (!ptr) return;
 
@@ -109,14 +101,14 @@ report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
-		fprintf (rf, "{%4u} RID=%4.4x, URID=%4.4x\n", i, p->RID, p->URID);
+		SPWAW_SNAP_OOB_PELRAW *p = &(ptr->raw[i]);
+		fprintf (rf, "{%4lu} RID=%4.4x, URID=%4.4x\n", i, p->RID, p->URID);
 	}
 	fprintf (rf, "\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }

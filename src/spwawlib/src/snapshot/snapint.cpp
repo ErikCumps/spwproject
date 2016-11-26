@@ -216,9 +216,6 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 	SPWAW_ERROR			rc = SPWERR_OK;
 	SPWAW_SNAP_OOB_F		*p;
 	USHORT				i;
-	SPWAW_SNAP_OOB_FELRAW		*src;
-	SPWAW_SNAP_OOB_FEL_DATA		*dat;
-	SPWAW_SNAP_OOB_FEL_STRINGS	*str;
 	char				buf[256];
 
 	CNULLARG (raw); CNULLARG (ptr); CNULLARG (oob);
@@ -229,9 +226,9 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 	COOMGOTO (p->list, "SPWAW_SNAP_OOB_FEL list", handle_error);
 
 	for (i=0; i<p->cnt; i++) {
-		src = &(raw->formations.raw[i]);
-		dat = &(p->list[i].data);
-		str = &(p->list[i].strings);
+		SPWAW_SNAP_OOB_FELRAW		*src = &(raw->formations.raw[i]);
+		SPWAW_SNAP_OOB_FEL_DATA		*dat = &(p->list[i].data);
+		SPWAW_SNAP_OOB_FEL_STRINGS	*str = &(p->list[i].strings);
 
 		if (src->name == NULL) {
 			if (src->FID == 0) {
@@ -354,9 +351,6 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 	USHORT				i, uidx, cidx;
 	USHORT				ldridx, crwidx;
 	bool				iscrew;
-	SPWAW_SNAP_OOB_UELRAW		*src;
-	SPWAW_SNAP_OOB_UEL_DATA		*dat;
-	SPWAW_SNAP_OOB_UEL_STRINGS	*str;
 	USHORT				ulidx, elidx;
 	SPWAW_SNAP_OOB_LELRAW		*ulsrc, *elsrc;
 	USHORT				pidx;
@@ -380,7 +374,10 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 
 	uidx = cidx = 0;
 	for (i=0; i<(int)raw->units.cnt; i++) {
-		src = &(raw->units.raw[i]);
+		SPWAW_SNAP_OOB_UEL_STRINGS	*str;
+		SPWAW_SNAP_OOB_UEL_DATA		*dat;
+
+		SPWAW_SNAP_OOB_UELRAW *src = &(raw->units.raw[i]);
 		if (!determine_ldrcrw (&(raw->units), i, ldridx, crwidx, iscrew)) continue;
 		if (iscrew) {
 			dat = &(p->crews.list[cidx].data);
@@ -917,15 +914,13 @@ find_formation_oobid (SPWAW_SNAP_OOB_FEL *ptr, SPWOOB_DATA *oob, SPWAW_DATE *dat
 static SPWAW_ERROR
 snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, SPWOOB_DATA *oob, STRTAB * /*stab*/, SPWAW_DATE *date)
 {
-	DWORD				i;
-	SPWAW_SNAP_OOB_FEL_DATA		*dat;
-	SPWAW_SNAP_OOB_FEL_STRINGS	*str;
+	DWORD	i;
 
 	CNULLARG (ptr);
 
 	for (i=0; i<ptr->formations.cnt; i++) {
-		dat = &(ptr->formations.list[i].data);
-		str = &(ptr->formations.list[i].strings);
+		SPWAW_SNAP_OOB_FEL_DATA		*dat = &(ptr->formations.list[i].data);
+		SPWAW_SNAP_OOB_FEL_STRINGS	*str = &(ptr->formations.list[i].strings);
 
 		if (!dat->OOBrid) dat->OOBrid = find_formation_oobid (&(ptr->formations.list[i]), oob, date);
 
@@ -1202,9 +1197,7 @@ static SPWAW_ERROR
 snapint_oob_stats (SPWAW_SNAP_OOB_FORCE *ptr)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
-	DWORD			i, j, c;
-	SPWAW_SNAP_OOB_UEL	*up;
-	SPWAW_SNAP_OOB_FEL	*fp;
+	DWORD			i, j;
 
 	CNULLARG (ptr);
 
@@ -1213,7 +1206,7 @@ snapint_oob_stats (SPWAW_SNAP_OOB_FORCE *ptr)
 	/* Calculate statistics for entire force */
 	ptr->stats.ustats.cnt = ptr->units.cnt;
 	for (i=0; i<ptr->units.cnt; i++) {
-		up = &(ptr->units.list[i]);
+		SPWAW_SNAP_OOB_UEL *up = &(ptr->units.list[i]);
 
 		//if (!up->data.lost) ptr->stats.ustats.cnt_left++;
 		if (up->data.alive) ptr->stats.ustats.cnt_left++;
@@ -1238,9 +1231,9 @@ snapint_oob_stats (SPWAW_SNAP_OOB_FORCE *ptr)
 
 	ptr->stats.fstats.cnt = ptr->formations.cnt;
 	for (i=0; i<ptr->formations.cnt; i++) {
-		fp = &(ptr->formations.list[i]);
+		SPWAW_SNAP_OOB_FEL *fp = &(ptr->formations.list[i]);
 
-		c = 0;
+		DWORD c = 0;
 		for (j=0; j<fp->data.ucnt; j++) {
 			//if (!fp->data.ulist[j]->data.lost) c++;
 			if (fp->data.ulist[j]->data.alive) c++;

@@ -46,13 +46,13 @@ SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
 	ERRORGOTO ("snapint()", handle_error);
 
 	/* Cleanup and return */
-	game_free (data);
+	game_free (&data);
 
 	*snap = ptr;
 	return (SPWERR_OK);
 
 handle_error:
-	if (data) game_free (data);
+	if (data) game_free (&data);
 	SPWAW_snap_free (&ptr);
 	return (rc);
 }
@@ -81,7 +81,7 @@ SPWAW_snap_info (const char *file, SPWAW_SNAPSHOT_INFO *info)
 	ROE ("snaploadinfo()");
 
 	/* Cleanup and return */
-	close (fd); fd = -1;
+	close (fd);
 
 	return (SPWERR_OK);
 }

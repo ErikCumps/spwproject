@@ -273,7 +273,6 @@ static SPWAW_ERROR
 add_unit (UNIT *src, USHORT id, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_SNAP_OOB_FRAW *fp, STRTAB *stab)
 {
 	SPWAW_SNAP_OOB_UELRAW	*ptr;
-	SPWAW_UD		*UD;
 
 	ptr = &(dst[*idx]);
 
@@ -329,7 +328,7 @@ add_unit (UNIT *src, USHORT id, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_S
 	ptr->SPECIAL[4]	= src->SPECIAL5;
 
 	if (cfg.withUD) {
-		UD = &(ptr->UD);
+		SPWAW_UD *UD = &(ptr->UD);
 		UD_init (UD, sizeof (*src));
 		UD_ADD (UD, src, __data000);
 		UD_ADD (UD, src, __data001);

@@ -126,10 +126,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 {
 	char	name[MAX_PATH+1];
 	FILE	*file;
-	int	i, j;
-	SPWOOB_WDATA	*wp;
-	SPWOOB_UDATA	*up;
-	SPWOOB_FDATA	*fp;
+	int	i;
 
 	if (!data || !base) return;
 
@@ -146,8 +143,8 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 		for (i=0; i<SPWOOB_WCNT; i++) {
 			if (!data->wdata[i].valid) continue;
 
-			wp = &(data->wdata[i]);
-			fprintf (file, "%u,%s,%u,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u\n",
+			SPWOOB_WDATA *wp = &(data->wdata[i]);
+			fprintf (file, "%d,%s,%d,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u\n",
 				i, wp->name, wp->wclass, SPWOOB_WCLASS_lookup (wp->wclass),
 				wp->size, wp->warhead, wp->kill,
 				wp->pen_AP, wp->pen_HE, wp->pen_HEAT, wp->pen_APCR,
@@ -173,9 +170,9 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 		for (i=0; i<SPWOOB_UCNT; i++) {
 			if (!data->udata[i].valid) continue;
 
-			up = &(data->udata[i]);
+			SPWOOB_UDATA *up = &(data->udata[i]);
 			fprintf (file,
-				"%u,%u,%s,%u,%s,%u,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
+				"%d,%u,%s,%d,%s,%d,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%d,"
 				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,%u,%u,%u,%u,"
@@ -198,20 +195,20 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file, "id,nation,name,stat,stat,type,type,pscr,pscr,start_yr,start_mo,end_yr");
-		for (j=0; j<10; j++) fprintf (file, ",unit_ids[%d],unit_cnt[%d]", j, j);
+		for (int j=0; j<10; j++) fprintf (file, ",unit_ids[%d],unit_cnt[%d]", j, j);
 		fprintf (file, "\n");
 
 		for (i=0; i<SPWOOB_FCNT; i++) {
 			if (!data->fdata[i].valid) continue;
 
-			fp = &(data->fdata[i]);
-			fprintf (file, "%u,%u,%s,%u,%s,%u,%s,%u,%s,%u,%u,%u",
+			SPWOOB_FDATA *fp = &(data->fdata[i]);
+			fprintf (file, "%d,%u,%s,%d,%s,%d,%s,%d,%s,%u,%u,%u",
 				i, fp->nation, fp->name,
 				fp->stat, SPWOOB_FSTAT_lookup (fp->stat),
 				fp->type, SPWOOB_FTYPE_lookup (fp->type),
 				fp->pscr, SPWOOB_FPSCR_lookup (fp->pscr),
 				fp->start_yr, fp->start_mo, fp->end_yr);
-			for (j=0; j<10; j++) fprintf (file, ",%u,%u", fp->unit_ids[j], fp->unit_cnt[j]);
+			for (int j=0; j<10; j++) fprintf (file, ",%u,%u", fp->unit_ids[j], fp->unit_cnt[j]);
 			fprintf (file, "\n");
 		}
 		fclose (file);

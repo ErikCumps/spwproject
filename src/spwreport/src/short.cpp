@@ -128,8 +128,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 static void
 report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 {
-	DWORD			i, j;
-	SPWAW_SNAP_OOB_FEL	*p;
+	DWORD	i, j;
 
 	if (!ptr) return;
 	if (!ptr->cnt || !ptr->list) return;
@@ -137,7 +136,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 	smart_title (rf, '-', "Short formations report:\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->list[i]);
+		SPWAW_SNAP_OOB_FEL *p = &(ptr->list[i]);
 
 		fprintf (rf, "%-2s: %s %s %s\n", p->strings.name, p->strings.status, p->strings.fstatus, p->strings.type);
 		fprintf (rf, "\tleader    : %s %s (%s %s)\n",
@@ -170,9 +169,8 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 static void
 report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_UEL	*p;
-	char			posb[11];
+	DWORD	i;
+	char	posb[11];
 
 	if (!ptr) return;
 	if (!ptr->cnt || !ptr->list) return;
@@ -180,7 +178,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 	smart_title (rf, '-', "Short units report:\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->list[i]);
+		SPWAW_SNAP_OOB_UEL *p = &(ptr->list[i]);
 
 		memset (posb, 0, sizeof (posb));
 		if (p->data.posx < 0) {
@@ -209,9 +207,8 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 static void
 report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_UEL	*p;
-	char			posb[11];
+	DWORD	i;
+	char	posb[11];
 
 	if (!ptr) return;
 	if (!ptr->cnt || !ptr->list) return;
@@ -219,7 +216,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 	smart_title (rf, '-', "Short crews report:\n");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->list[i]);
+		SPWAW_SNAP_OOB_UEL *p = &(ptr->list[i]);
 
 		memset (posb, 0, sizeof (posb));
 		if (p->data.posx < 0) {

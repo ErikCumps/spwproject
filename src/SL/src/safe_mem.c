@@ -97,7 +97,12 @@ SL_SAFE_free (const char *file, unsigned long line, const char *func, void **p)
 {
 	CAPNULLARG (p);
 
-	/* prevent compiler warnings */ file = file; line = line; func = func;
+#ifndef	DEBUG_MEMTRACE
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (file);
+	UNREFERENCED_PARAMETER (line);
+	UNREFERENCED_PARAMETER (func);
+#endif	/* !DEBUG_MEMTRACE */
 
 	if (*p != NULL) {
 		safe_free (file, line, func, *p);

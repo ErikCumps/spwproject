@@ -93,7 +93,7 @@ tilesplit (CONFIG *cfg)
 	QPixmap	*src = NULL;
 	QPixmap	*tile = NULL;
 	QPixmap	*subtile = NULL;
-	int	Sx, Sy, x, y;
+	int	x, y, Sx;
 	int	R, C;
 
 	memset (out, 0, sizeof (out));
@@ -101,13 +101,13 @@ tilesplit (CONFIG *cfg)
 	src = new QPixmap (cfg->src, cfg->ext);
 	if (!src) error ("failed to open input file");
 
-	Sx = x = cfg->x; Sy = y = cfg->y;
+	Sx = x = cfg->x; y = cfg->y;
 	R = C = 0;
 	while (y < src->height()) {
 		while (x < src->width()) {
 			memset (out, 0, sizeof (out));
-			snprintf (out, sizeof (out) - 1, "%s_R%03u_C%03u.%s", cfg->stm, R, C, cfg->ext);
-			printf ("TILE[R%03u, C%03u] (x=%04u, y=%04u)%s\n", R, C, x, y, out);
+			snprintf (out, sizeof (out) - 1, "%s_R%03d_C%03d.%s", cfg->stm, R, C, cfg->ext);
+			printf ("TILE[R%03d, C%03d] (x=%04d, y=%04d)%s\n", R, C, x, y, out);
 
 			tile = new QPixmap (src->copy (x, y, cfg->w, cfg->h));
 			if (!tile) error ("failed to extract tile");
@@ -132,10 +132,9 @@ tilesplit (CONFIG *cfg)
 int
 main (int argc, char **argv)
 {
-	QApplication	*App = NULL;
-	int		rc;
+	int	rc;
 
-	App = new QApplication (argc, argv);
+	QApplication App (argc, argv);
 
 	arguments (argc, argv, &cfg);
 	rc = tilesplit (&cfg);

@@ -173,7 +173,7 @@ extern bool		game_load_info		(const char *dir, unsigned int id, GAMEINFO *info);
 
 extern bool		game_save_full		(GAMEDATA *src, const char *dir, unsigned int id);
 
-extern void		game_free		(GAMEDATA *game);
+extern void		game_free		(GAMEDATA **game);
 
 
 

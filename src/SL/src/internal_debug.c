@@ -69,7 +69,7 @@ IDBG_log (const char *file, unsigned long line, const char *func, const char *fm
 	memset (buffer, 0, sizeof (buffer));
 
 	/* make sure line contains trailing linefeed */
-	snprintf (buffer, sizeof (buffer) - 1, "%s [0x%8.8x] %s: %s%s", stamp, SL_system_threadid(), func, fmt,
+	snprintf (buffer, sizeof (buffer) - 1, "%s [0x%8.8lx] %s: %s%s", stamp, SL_system_threadid(), func, fmt,
 		(fmt[strlen(fmt)-1] == '\n') ? "" : "\n");
 
 	va_start (AP, fmt);

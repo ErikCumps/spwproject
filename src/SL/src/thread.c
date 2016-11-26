@@ -96,7 +96,7 @@ SL_THREAD_init (void)
 void
 SL_THREAD_shutdown (void)
 {
-	THREADTLS	*p, *q;
+	THREADTLS	*p;
 
 	IDBGLOG0 ("start");
 
@@ -110,7 +110,7 @@ SL_THREAD_shutdown (void)
 
 	p = tls_head;
 	while (p) {
-		q = p; p = p->next;
+		THREADTLS *q = p; p = p->next;
 		TlsFree (q->tls);
 		SL_SAFE_FREE (q);
 	}

@@ -51,7 +51,6 @@ snapbfix_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr, SPWAW_SNAP_OOB_FORCE *ref)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
 	DWORD			i;
-	SPWAW_SNAP_OOB_UEL	*up;
 
 	CNULLARG (ptr); CNULLARG (ref);
 
@@ -69,7 +68,7 @@ snapbfix_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr, SPWAW_SNAP_OOB_FORCE *ref)
 	memset (ptr->attr.mmas_uspeed.rnk, 0, sizeof (ptr->attr.mmas_uspeed.rnk));
 
 	for (i=0; i<ptr->units.cnt; i++) {
-		up = &(ptr->units.list[i]);
+		SPWAW_SNAP_OOB_UEL *up = &(ptr->units.list[i]);
 
 		snapint_addmmas (&(ptr->attr.mmas_uexp.rnk[up->data.brank]), up->data.exp, up->data.idx);
 		snapint_addmmas (&(ptr->attr.mmas_umor.rnk[up->data.brank]), up->data.mor, up->data.idx);
@@ -92,7 +91,6 @@ snapbfix_oob_stats (SPWAW_SNAP_OOB_FORCE *ptr, SPWAW_SNAP_OOB_FORCE *ref)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
 	DWORD			i;
-	SPWAW_SNAP_OOB_UEL	*up;
 
 	CNULLARG (ptr); CNULLARG (ref);
 
@@ -101,7 +99,7 @@ snapbfix_oob_stats (SPWAW_SNAP_OOB_FORCE *ptr, SPWAW_SNAP_OOB_FORCE *ref)
 	memset (ptr->stats.ustats.rnk_loss, 0, sizeof (ptr->stats.ustats.rnk_loss));
 
 	for (i=0; i<ptr->units.cnt; i++) {
-		up = &(ptr->units.list[i]);
+		SPWAW_SNAP_OOB_UEL *up = &(ptr->units.list[i]);
 
 		ptr->stats.ustats.rnk_cnt[up->data.brank]++;
 		ptr->stats.ustats.rnk_loss[up->data.brank] += up->attr.gen.losses;

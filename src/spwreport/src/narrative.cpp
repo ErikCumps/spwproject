@@ -106,7 +106,7 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 			}
 			omor = p->formations.list[i].data.ulist[j]->data.mor;
 			emor = omor - p->formations.list[i].data.ulist[j]->data.sup; if (emor < 0) emor = 0;
-			fprintf (rf, "\t\tIt is %s and %s, with %u suppression and effective morale %u (%6.2f %%)\n",
+			fprintf (rf, "\t\tIt is %s and %s, with %u suppression and effective morale %d (%6.2f %%)\n",
 				p->formations.list[i].data.ulist[j]->strings.status,
 				p->formations.list[i].data.ulist[j]->strings.entr,
 				p->formations.list[i].data.ulist[j]->data.sup,

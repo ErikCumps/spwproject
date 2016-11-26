@@ -93,9 +93,6 @@ SL_STDBG_init (void)
 void
 SL_STDBG_shutdown (void)
 {
-	unsigned int	i;
-	ReportersList	*q;
-
 	IDBGLOG0 ("start");
 
 	if (!initialized) {
@@ -107,7 +104,8 @@ SL_STDBG_shutdown (void)
 	SL_LOCK_free (&lock);
 
 	if (reporters != NULL) {
-		i = 1; q = reporters;
+		unsigned int i = 1;
+		ReportersList *q = reporters;
 		/* Limited to MAX_REPORT handlers to prevent runaway loop in case of memory corruption */
 		while ((q != NULL) && (i <= MAX_REPORT)) {
 			IDBGLOG3 ("[%02u] p=0x%8.8x, func=0x%8.8x\n", i, q, q->func);

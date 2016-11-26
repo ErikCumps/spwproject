@@ -43,15 +43,15 @@ TC_v2t (FILE *f, char *name, TC_DATA type, void *data, unsigned int len, int idx
 			fprintf (f, "%s: %u\n", name, *((USHORT *)data));
 			break;
 		case TC_DATA_ULONG:
-			fprintf (f, "%s: %u\n", name, *((ULONG *)data));
+			fprintf (f, "%s: %lu\n", name, *((ULONG *)data));
 			break;
 		case TC_DATA_DWORD:
-			fprintf (f, "%s: %u\n", name, *((DWORD *)data));
+			fprintf (f, "%s: %lu\n", name, *((DWORD *)data));
 			break;
 		case TC_DATA_ASCIIZ:
 			if (len >= sizeof (buf)) return (false);
 			memcpy (buf, data, len); buf[len] = '\0';
-			fprintf (f, "%s: (%d) <%s>\n", name, len, buf);
+			fprintf (f, "%s: (%u) <%s>\n", name, len, buf);
 			break;
 		case TC_DATA_TIMESTAMP:
 			fprintf (f, "%s: 0x%16.16I64x\n", name, *((LONGLONG *)data));
@@ -66,15 +66,15 @@ TC_v2t (FILE *f, char *name, TC_DATA type, void *data, unsigned int len, int idx
 			fprintf (f, "%s: [%d] %u\n", name, idx, *((USHORT *)data));
 			break;
 		case TC_DATA_IDX_ULONG:
-			fprintf (f, "%s: [%d] %u\n", name, idx, *((ULONG *)data));
+			fprintf (f, "%s: [%d] %lu\n", name, idx, *((ULONG *)data));
 			break;
 		case TC_DATA_IDX_DWORD:
-			fprintf (f, "%s: [%d] %u\n", name, idx, *((DWORD *)data));
+			fprintf (f, "%s: [%d] %lu\n", name, idx, *((DWORD *)data));
 			break;
 		case TC_DATA_IDX_ASCIIZ:
 			if (len >= sizeof (buf)) return (false);
 			memcpy (buf, data, len); buf[len] = '\0';
-			fprintf (f, "%s: [%d] (%d) <%s>\n", name, idx, len, buf);
+			fprintf (f, "%s: [%d] (%u) <%s>\n", name, idx, len, buf);
 			break;
 		case TC_DATA_IDX_TIMESTAMP:
 			fprintf (f, "%s: [%d] 0x%16.16I64x\n", name, idx, *((LONGLONG *)data));

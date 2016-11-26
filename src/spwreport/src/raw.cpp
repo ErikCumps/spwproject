@@ -49,10 +49,10 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE_RAW *ptr)
 
 	fprintf (rf, "victory hexes: %u\n", SPWAW_VHEXCNT);
 	for (i=0; i<SPWAW_VHEXCNT; i++) {
-		fprintf (rf, "\t{%4u} x    : %d\n", i, ptr->vhex[i].x);
-		fprintf (rf, "\t{%4u} y    : %d\n", i, ptr->vhex[i].y);
-		fprintf (rf, "\t{%4u} value: %d\n", i, ptr->vhex[i].value);
-		fprintf (rf, "\t{%4u} owner: %d\n", i, ptr->vhex[i].owner);
+		fprintf (rf, "\t{%4d} x    : %d\n", i, ptr->vhex[i].x);
+		fprintf (rf, "\t{%4d} y    : %d\n", i, ptr->vhex[i].y);
+		fprintf (rf, "\t{%4d} value: %d\n", i, ptr->vhex[i].value);
+		fprintf (rf, "\t{%4d} owner: %d\n", i, ptr->vhex[i].owner);
 		fprintf (rf, "\n");
 	}
 
@@ -102,9 +102,9 @@ report_map (FILE *rf, SPWAW_SNAP_MAP_RAW *ptr)
 
 	fprintf (rf, "map info:\n");
 	for (y=0; y<ptr->height; y++) {
-		fprintf (rf, "\trow: %u\n", y);
+		fprintf (rf, "\trow: %lu\n", y);
 		for (x=0; x<ptr->width; x++) {
-			fprintf (rf, "\t\t(%4u,%4u} height=%2.2d"
+			fprintf (rf, "\t\t(%4lu,%4lu} height=%2.2d"
 				" has_T1=0x%2.2x has_T2=0x%2.2x has_T3=0x%2.2x has_T4=0x%2.2x"
 				" conn_road1=0x%2.2x conn_road2=0x%2.2x conn_rail=0x%2.2x"
 				"\n",
@@ -137,10 +137,8 @@ report_game (FILE *rf, SPWAW_SNAP_GAME_RAW *ptr)
 static void
 report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr, SPWAW_SNAP_OOB_F *iptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_FELRAW	*p;
-	SPWAW_RINDEX		*r;
-	char			pf[16];
+	DWORD	i;
+	char	pf[16];
 
 	if (!ptr) return;
 
@@ -154,32 +152,32 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr, SPWAW_SNAP_OOB_F *iptr)
 	memset (pf, 0, sizeof (pf));
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
+		SPWAW_SNAP_OOB_FELRAW *p = &(ptr->raw[i]);
 
-		fprintf (rf, "{%4u} RID       : %4.4x\n", i, p->RID);
-		fprintf (rf, "{%4u} ID        : %4.4x\n", i, p->RID);
-		fprintf (rf, "{%4u} FID       : %2.2x\n", i, p->FID);
-		fprintf (rf, "{%4u} name      : %s\n", i, p->name);
-		fprintf (rf, "{%4u} leader    : %4.4x\n", i, p->leader);
-		fprintf (rf, "{%4u} higher cmd: %4.4x\n", i, p->hcmd);
+		fprintf (rf, "{%4lu} RID       : %4.4x\n", i, p->RID);
+		fprintf (rf, "{%4lu} ID        : %4.4x\n", i, p->RID);
+		fprintf (rf, "{%4lu} FID       : %2.2x\n", i, p->FID);
+		fprintf (rf, "{%4lu} name      : %s\n", i, p->name);
+		fprintf (rf, "{%4lu} leader    : %4.4x\n", i, p->leader);
+		fprintf (rf, "{%4lu} higher cmd: %4.4x\n", i, p->hcmd);
 		if (p->OOBrid) {
-			fprintf (rf, "{%4u} OOBrid    : %u\n", i, p->OOBrid);
+			fprintf (rf, "{%4lu} OOBrid    : %u\n", i, p->OOBrid);
 		} else {
-			fprintf (rf, "{%4u} OOBrid    : %u (via higher cmd link)\n", i, iptr->list[i].data.OOBrid);
+			fprintf (rf, "{%4lu} OOBrid    : %u (via higher cmd link)\n", i, iptr->list[i].data.OOBrid);
 		}
-		fprintf (rf, "{%4u} status    : %u\n", i, p->status);
-		fprintf (rf, "{%4u} player    : %u\n", i, p->player);
+		fprintf (rf, "{%4lu} status    : %u\n", i, p->status);
+		fprintf (rf, "{%4lu} player    : %u\n", i, p->player);
 
-		snprintf (pf, sizeof (pf) - 1, "{%4u} ", i);
+		snprintf (pf, sizeof (pf) - 1, "{%4lu} ", i);
 		fprintf (rf, "%s\n", pf);
 		UD_block_report (&(p->UD), 16, rf, pf);
 		fprintf (rf, "\n");
 	}
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
 
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }
@@ -187,10 +185,8 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr, SPWAW_SNAP_OOB_F *iptr)
 static void
 report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 {
-	DWORD			i, j;
-	SPWAW_SNAP_OOB_UELRAW	*p;
-	SPWAW_RINDEX		*r;
-	char			pf[16];
+	DWORD	i, j;
+	char	pf[16];
 
 	if (!ptr) return;
 
@@ -203,65 +199,65 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 	memset (pf, 0, sizeof (pf));
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
+		SPWAW_SNAP_OOB_UELRAW *p = &(ptr->raw[i]);
 
-		fprintf (rf, "{%4u} RID       : %4.4x\n", i, p->RID);
-		fprintf (rf, "{%4u} FRID      : %2.2x\n", i, p->FRID);
-		fprintf (rf, "{%4u} FMID      : %2.2x\n", i, p->FMID);
-		fprintf (rf, "{%4u} FSID      : %2.2x\n", i, p->FSID);
-		fprintf (rf, "{%4u} name      : %s\n", i, p->name);
-		fprintf (rf, "{%4u} classID   : %u\n", i, p->classID);
-		fprintf (rf, "{%4u} OOB       : %u\n", i, p->OOB);
-		fprintf (rf, "{%4u} OOBrid    : %u\n", i, p->OOBrid);
-		fprintf (rf, "{%4u} size      : %u\n", i, p->size);
-		fprintf (rf, "{%4u} cost      : %u\n", i, p->cost);
-		fprintf (rf, "{%4u} survive   : %u\n", i, p->survive);
-		fprintf (rf, "{%4u} leader    : %4.4x\n", i, p->leader);
-		fprintf (rf, "{%4u} exp       : %u\n", i, p->exp);
-		fprintf (rf, "{%4u} mor       : %u\n", i, p->mor);
-		fprintf (rf, "{%4u} sup       : %u\n", i, p->sup);
-		fprintf (rf, "{%4u} status    : %u\n", i, p->status);
-		fprintf (rf, "{%4u} smkdev    : %u\n", i, p->smkdev);
-		fprintf (rf, "{%4u} smkammo   : %u\n", i, p->smkammo);
-		fprintf (rf, "{%4u} crew      : %4.4x\n", i, p->crew);
-		fprintf (rf, "{%4u} range     : %u\n", i, p->range);
-		fprintf (rf, "{%4u} stance_x  : %u\n", i, p->stance_x);
-		fprintf (rf, "{%4u} stance_y  : %u\n", i, p->stance_y);
-		fprintf (rf, "{%4u} loader    : %4.4x\n", i, p->loader);
-		fprintf (rf, "{%4u} load_cap  : %u\n", i, p->load_cap);
-		fprintf (rf, "{%4u} load_cost : %u\n", i, p->load_cost);
-		fprintf (rf, "{%4u} radio     : %u\n", i, p->radio);
-		fprintf (rf, "{%4u} rof       : %u\n", i, p->rof);
-		fprintf (rf, "{%4u} tgt       : %u\n", i, p->tgt);
-		fprintf (rf, "{%4u} rf        : %u\n", i, p->rf);
-		fprintf (rf, "{%4u} fc        : %u\n", i, p->fc);
-		fprintf (rf, "{%4u} iv        : %u\n", i, p->iv);
-		fprintf (rf, "{%4u} swim      : %u\n", i, p->swim);
-		fprintf (rf, "{%4u} men       : %u\n", i, p->men);
-		fprintf (rf, "{%4u} men_ori   : %u\n", i, p->men_ori);
-		fprintf (rf, "{%4u} speed     : %u\n", i, p->speed);
-		fprintf (rf, "{%4u} moves     : %u\n", i, p->moves);
-		fprintf (rf, "{%4u} damage    : %u\n", i, p->damage);
-		fprintf (rf, "{%4u} movdir    : %u\n", i, p->movdir);
-		fprintf (rf, "{%4u} shtdir    : %u\n", i, p->shtdir);
-		fprintf (rf, "{%4u} target    : %u\n", i, p->target);
-		fprintf (rf, "{%4u} UTGidx    : %u\n", i, p->UTGidx);
-		fprintf (rf, "{%4u} SPECIAL_OU: %4.4x\n", i, p->SPECIAL_OU);
-		fprintf (rf, "{%4u} SPECIAL   :", i);
-		for (j=0; j<5; j++) fprintf (rf, " [%u]=%4.4x", j, p->SPECIAL[j]);
+		fprintf (rf, "{%4lu} RID       : %4.4x\n", i, p->RID);
+		fprintf (rf, "{%4lu} FRID      : %2.2x\n", i, p->FRID);
+		fprintf (rf, "{%4lu} FMID      : %2.2x\n", i, p->FMID);
+		fprintf (rf, "{%4lu} FSID      : %2.2x\n", i, p->FSID);
+		fprintf (rf, "{%4lu} name      : %s\n", i, p->name);
+		fprintf (rf, "{%4lu} classID   : %u\n", i, p->classID);
+		fprintf (rf, "{%4lu} OOB       : %u\n", i, p->OOB);
+		fprintf (rf, "{%4lu} OOBrid    : %u\n", i, p->OOBrid);
+		fprintf (rf, "{%4lu} size      : %u\n", i, p->size);
+		fprintf (rf, "{%4lu} cost      : %u\n", i, p->cost);
+		fprintf (rf, "{%4lu} survive   : %u\n", i, p->survive);
+		fprintf (rf, "{%4lu} leader    : %4.4x\n", i, p->leader);
+		fprintf (rf, "{%4lu} exp       : %u\n", i, p->exp);
+		fprintf (rf, "{%4lu} mor       : %u\n", i, p->mor);
+		fprintf (rf, "{%4lu} sup       : %u\n", i, p->sup);
+		fprintf (rf, "{%4lu} status    : %u\n", i, p->status);
+		fprintf (rf, "{%4lu} smkdev    : %u\n", i, p->smkdev);
+		fprintf (rf, "{%4lu} smkammo   : %u\n", i, p->smkammo);
+		fprintf (rf, "{%4lu} crew      : %4.4x\n", i, p->crew);
+		fprintf (rf, "{%4lu} range     : %u\n", i, p->range);
+		fprintf (rf, "{%4lu} stance_x  : %u\n", i, p->stance_x);
+		fprintf (rf, "{%4lu} stance_y  : %u\n", i, p->stance_y);
+		fprintf (rf, "{%4lu} loader    : %4.4x\n", i, p->loader);
+		fprintf (rf, "{%4lu} load_cap  : %u\n", i, p->load_cap);
+		fprintf (rf, "{%4lu} load_cost : %u\n", i, p->load_cost);
+		fprintf (rf, "{%4lu} radio     : %u\n", i, p->radio);
+		fprintf (rf, "{%4lu} rof       : %u\n", i, p->rof);
+		fprintf (rf, "{%4lu} tgt       : %u\n", i, p->tgt);
+		fprintf (rf, "{%4lu} rf        : %u\n", i, p->rf);
+		fprintf (rf, "{%4lu} fc        : %u\n", i, p->fc);
+		fprintf (rf, "{%4lu} iv        : %u\n", i, p->iv);
+		fprintf (rf, "{%4lu} swim      : %u\n", i, p->swim);
+		fprintf (rf, "{%4lu} men       : %u\n", i, p->men);
+		fprintf (rf, "{%4lu} men_ori   : %u\n", i, p->men_ori);
+		fprintf (rf, "{%4lu} speed     : %u\n", i, p->speed);
+		fprintf (rf, "{%4lu} moves     : %u\n", i, p->moves);
+		fprintf (rf, "{%4lu} damage    : %u\n", i, p->damage);
+		fprintf (rf, "{%4lu} movdir    : %u\n", i, p->movdir);
+		fprintf (rf, "{%4lu} shtdir    : %u\n", i, p->shtdir);
+		fprintf (rf, "{%4lu} target    : %u\n", i, p->target);
+		fprintf (rf, "{%4lu} UTGidx    : %u\n", i, p->UTGidx);
+		fprintf (rf, "{%4lu} SPECIAL_OU: %4.4x\n", i, p->SPECIAL_OU);
+		fprintf (rf, "{%4lu} SPECIAL   :", i);
+		for (j=0; j<5; j++) fprintf (rf, " [%lu]=%4.4x", j, p->SPECIAL[j]);
 		fprintf (rf, "\n");
 
 		memset (pf, 0, sizeof (pf));
-		snprintf (pf, sizeof (pf) - 1, "{%4u} ", i);
+		snprintf (pf, sizeof (pf) - 1, "{%4lu} ", i);
 		fprintf (rf, "%s\n", pf);
 		UD_block_report (&(p->UD), 16, rf, pf);
 		fprintf (rf, "\n");
 	}
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
 
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }
@@ -269,10 +265,8 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 static void
 report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_LELRAW	*p;
-	SPWAW_RINDEX		*r;
-	char			pf[16];
+	DWORD	i;
+	char	pf[16];
 
 	if (!ptr) return;
 
@@ -285,30 +279,30 @@ report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 	memset (pf, 0, sizeof (pf));
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
+		SPWAW_SNAP_OOB_LELRAW *p = &(ptr->raw[i]);
 
-		fprintf (rf, "{%4u} RID   : %4.4x\n", i, p->RID);
-		fprintf (rf, "{%4u} URID  : %4.4x\n", i, p->URID);
-		fprintf (rf, "{%4u} name  : %s\n", i, p->name);
-		fprintf (rf, "{%4u} rank  : %u\n", i, p->rank);
-		fprintf (rf, "{%4u} ral   : %u\n", i, p->ral);
-		fprintf (rf, "{%4u} inf   : %u\n", i, p->inf);
-		fprintf (rf, "{%4u} art   : %u\n", i, p->art);
-		fprintf (rf, "{%4u} arm   : %u\n", i, p->arm);
-		fprintf (rf, "{%4u} kills : %u\n", i, p->kills);
-		fprintf (rf, "{%4u} status: %u\n", i, p->status);
+		fprintf (rf, "{%4lu} RID   : %4.4x\n", i, p->RID);
+		fprintf (rf, "{%4lu} URID  : %4.4x\n", i, p->URID);
+		fprintf (rf, "{%4lu} name  : %s\n", i, p->name);
+		fprintf (rf, "{%4lu} rank  : %u\n", i, p->rank);
+		fprintf (rf, "{%4lu} ral   : %u\n", i, p->ral);
+		fprintf (rf, "{%4lu} inf   : %u\n", i, p->inf);
+		fprintf (rf, "{%4lu} art   : %u\n", i, p->art);
+		fprintf (rf, "{%4lu} arm   : %u\n", i, p->arm);
+		fprintf (rf, "{%4lu} kills : %u\n", i, p->kills);
+		fprintf (rf, "{%4lu} status: %u\n", i, p->status);
 
 		memset (pf, 0, sizeof (pf));
-		snprintf (pf, sizeof (pf) - 1, "{%4u} ", i);
+		snprintf (pf, sizeof (pf) - 1, "{%4lu} ", i);
 		fprintf (rf, "%s\n", pf);
 		UD_block_report (&(p->UD), 16, rf, pf);
 		fprintf (rf, "\n");
 	}
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
 
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }
@@ -316,10 +310,8 @@ report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 static void
 report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_PELRAW	*p;
-	SPWAW_RINDEX		*r;
-	char			pf[16];
+	DWORD	i;
+	char	pf[16];
 
 	if (!ptr) return;
 
@@ -332,24 +324,24 @@ report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
 	memset (pf, 0, sizeof (pf));
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->raw[i]);
+		SPWAW_SNAP_OOB_PELRAW *p = &(ptr->raw[i]);
 
-		fprintf (rf, "{%4u} RID : %4.4x\n", i, p->RID);
-		fprintf (rf, "{%4u} URID: %4.4x\n", i, p->URID);
-		fprintf (rf, "{%4u} x   : %u\n", i, p->x);
-		fprintf (rf, "{%4u} y   : %u\n", i, p->y);
-		fprintf (rf, "{%4u} seen: %u\n", i, p->seen);
+		fprintf (rf, "{%4lu} RID : %4.4x\n", i, p->RID);
+		fprintf (rf, "{%4lu} URID: %4.4x\n", i, p->URID);
+		fprintf (rf, "{%4lu} x   : %u\n", i, p->x);
+		fprintf (rf, "{%4lu} y   : %u\n", i, p->y);
+		fprintf (rf, "{%4lu} seen: %u\n", i, p->seen);
 
-		snprintf (pf, sizeof (pf) - 1, "{%4u} ", i);
+		snprintf (pf, sizeof (pf) - 1, "{%4lu} ", i);
 		fprintf (rf, "%s\n", pf);
 		UD_block_report (&(p->UD), 16, rf, pf);
 		fprintf (rf, "\n");
 	}
 
 	for (i=0; i<ptr->cnt; i++) {
-		r = &(ptr->ridx[i]);
+		SPWAW_RINDEX *r = &(ptr->ridx[i]);
 
-		fprintf (rf, "ridx[%4u] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
+		fprintf (rf, "ridx[%4lu] rid=%4.4x, idx=%4.4x\n", i, r->rid, r->idx);
 	}
 	fprintf (rf, "\n");
 }

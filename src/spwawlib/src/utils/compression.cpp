@@ -111,9 +111,6 @@ zbuildcrc (int fd, unsigned long spos, unsigned long fpos, unsigned long *crc)
 	uLong		crcv;
 	unsigned long	p0 = 0;
 	char		buf[BLOCK];
-	unsigned long	left;
-	unsigned int	todo;
-	int		done;
 
 	CNULLARG (crc);
 	*crc = 0;
@@ -124,10 +121,10 @@ zbuildcrc (int fd, unsigned long spos, unsigned long fpos, unsigned long *crc)
 	if ((fd > -1) && (spos < fpos)) {
 		bseekset (fd, spos);
 
-		left = fpos - spos;
+		unsigned long left = fpos - spos;
 		while (left) {
-			todo = BLOCK; if (todo > left) todo = left;
-			done = read (fd, buf, todo);
+			unsigned int todo = BLOCK; if (todo > left) todo = left;
+			int done = read (fd, buf, todo);
 			if (done != (int)todo) FAILGOTO (SPWERR_FRFAILED, "read() failed", handle_error);
 			crcv = crc32 (crcv, (const Bytef *)buf, done);
 			left -= done;

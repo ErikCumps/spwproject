@@ -176,7 +176,7 @@ process (int in, BIfunc func)
 static void
 analyzer (BI *info, unsigned long *gccnt, FREQ *gbcnt)
 {
-	int		idx, c;
+	int		idx;
 	unsigned int	ccnt[cnt_LAST];
 	unsigned int	bcnt[256];
 
@@ -184,7 +184,7 @@ analyzer (BI *info, unsigned long *gccnt, FREQ *gbcnt)
 	memset (bcnt, 0, sizeof (bcnt));
 
 	for (idx = 0; idx < info->size; idx++) {
-		c = info->buffer[idx];
+		int c = info->buffer[idx];
 		bcnt[c]++;
 
 		if (	(('A' <= c) && (c <= 'Z'))	||

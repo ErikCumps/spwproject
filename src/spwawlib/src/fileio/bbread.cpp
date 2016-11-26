@@ -31,8 +31,6 @@ bbread_init (int fd, long len)
 bool
 bbread (BBR *bb, char *b)
 {
-	int	todo, done;
-
 	if (!bb || !b) {
 		ERROR0 ("unexpected NULL argument");
 		return (false);
@@ -43,9 +41,10 @@ bbread (BBR *bb, char *b)
 			ERROR0 ("attempt to read beyond end of file block");
 			return (false);
 		}
-		todo = bb->bsize; if (bb->file.left < todo) todo = bb->file.left;
 
-		done = read (bb->file.fd, bb->buffer, todo);
+		int todo = bb->bsize; if (bb->file.left < todo) todo = bb->file.left;
+
+		int done = read (bb->file.fd, bb->buffer, todo);
 
 #if	IOLOGGING
 		log ("read(fd=%d, len=%d) = %d\n", bb->file.fd, todo, done);

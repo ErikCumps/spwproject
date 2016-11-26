@@ -30,7 +30,6 @@ static SPWAW_ERROR
 add_unitpos (UNIT_POS *src, USHORT id, SPWAW_SNAP_OOB_PELRAW *dst, USHORT *idx)
 {
 	SPWAW_SNAP_OOB_PELRAW	*ptr;
-	SPWAW_UD		*UD;
 
 	ptr = &(dst[*idx]);
 
@@ -41,7 +40,7 @@ add_unitpos (UNIT_POS *src, USHORT id, SPWAW_SNAP_OOB_PELRAW *dst, USHORT *idx)
 	ptr->seen	= src->seen;
 
 	if (cfg.withUD) {
-		UD = &(ptr->UD);
+		SPWAW_UD *UD = &(ptr->UD);
 		UD_init (UD, sizeof (*src));
 		UD_ADD (UD, src, __data00);
 		UD_ADD (UD, src, __data01);

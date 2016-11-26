@@ -14,10 +14,9 @@
 SPWAW_ERROR
 dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 {
-	SPWAW_ERROR		rc = SPWERR_OK;
-	DWORD			i, j;
-	SPWAW_BATTLE		*b = NULL;
-	SPWAW_SAVELIST_NODE	*n = NULL;
+	SPWAW_ERROR	rc = SPWERR_OK;
+	DWORD		i, j;
+	SPWAW_BATTLE	*b = NULL;
 
 	CNULLARG (dossier); CNULLARG (list);
 
@@ -31,7 +30,8 @@ dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 				for (j=0; j<b->tcnt; j++) {
 					if (!(b->tlist[j])) continue;
 
-					n = safe_malloc (SPWAW_SAVELIST_NODE); COOM (n, "SPWAW_SAVELIST_NODE element");
+					SPWAW_SAVELIST_NODE *n = safe_malloc (SPWAW_SAVELIST_NODE);
+					COOM (n, "SPWAW_SAVELIST_NODE element");
 
 					snprintf (n->dir, sizeof (n->dir) - 1, "%s", b->tlist[j]->snap->src.path);
 					snprintf (n->filename, sizeof (n->filename) - 1, "%s", b->tlist[j]->snap->src.file);
@@ -55,10 +55,9 @@ dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 SPWAW_ERROR
 dossier_snaplist (SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list)
 {
-	SPWAW_ERROR		rc = SPWERR_OK;
-	DWORD			i, j;
-	SPWAW_BATTLE		*b = NULL;
-	SPWAW_SNAPLIST_NODE	*n = NULL;
+	SPWAW_ERROR	rc = SPWERR_OK;
+	DWORD		i, j;
+	SPWAW_BATTLE	*b = NULL;
 
 	CNULLARG (dossier); CNULLARG (list);
 
@@ -72,7 +71,8 @@ dossier_snaplist (SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list)
 				for (j=0; j<b->tcnt; j++) {
 					if (!(b->tlist[j])) continue;
 
-					n = safe_malloc (SPWAW_SNAPLIST_NODE); COOM (n, "SPWAW_SNAPLIST_NODE element");
+					SPWAW_SNAPLIST_NODE *n = safe_malloc (SPWAW_SNAPLIST_NODE);
+					COOM (n, "SPWAW_SNAPLIST_NODE element");
 
 					snprintf (n->dir, sizeof (n->dir) - 1, "%s", b->tlist[j]->snap->src.path);
 					snprintf (n->filename, sizeof (n->filename) - 1, "%s", b->tlist[j]->snap->src.file);

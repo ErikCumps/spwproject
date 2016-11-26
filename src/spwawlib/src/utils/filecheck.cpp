@@ -12,7 +12,7 @@
 #include "fileio/fileio.h"
 #include "utils/compression.h"
 
-#define	FCHK_MAGIC	"SPWAWLIB_FILECHECK"
+#define	FCHK_MAGIC	"SPWAWLIB_FILECHECK\0\0"
 #define	FCHK_MGCLEN	20
 #define	FCHK_VERSION	1
 

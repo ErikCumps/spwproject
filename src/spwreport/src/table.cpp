@@ -153,9 +153,8 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 static void
 report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_UEL	*p;
-	char			posb[11];
+	DWORD	i;
+	char	posb[11];
 
 	if (!ptr) return;
 	if (!ptr->cnt || !ptr->list) return;
@@ -168,7 +167,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 		"-", "-", "-", "-", "-", "----", "----", "----", "------", "--", "---", "---", "---", "---", "---", "---", "---", "---", "----", "----", "---", "---", "---", "-----", "----------");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->list[i]);
+		SPWAW_SNAP_OOB_UEL *p = &(ptr->list[i]);
 
 		memset (posb, 0, sizeof (posb));
 		if (p->data.posx < 0) {
@@ -198,9 +197,8 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 static void
 report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 {
-	DWORD			i;
-	SPWAW_SNAP_OOB_UEL	*p;
-	char			posb[11];
+	DWORD	i;
+	char	posb[11];
 
 	if (!ptr) return;
 	if (!ptr->cnt || !ptr->list) return;
@@ -213,7 +211,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 		"-", "-", "-", "-", "-", "----", "----", "----", "------", "--", "---", "---", "---", "---", "---", "---", "---", "---", "----", "---", "---", "---", "-----", "----------");
 
 	for (i=0; i<ptr->cnt; i++) {
-		p = &(ptr->list[i]);
+		SPWAW_SNAP_OOB_UEL *p = &(ptr->list[i]);
 
 		memset (posb, 0, sizeof (posb));
 		if (p->data.posx < 0) {

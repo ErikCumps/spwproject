@@ -156,10 +156,10 @@ info_cleanup (void)
 static void
 build_context (SL_APP_INFO *src)
 {
-	unsigned int	i;
-
 	info.context.argc = src->context.argc;
 	if (src->context.argv != NULL) {
+		unsigned int	i;
+
 		SL_SAFE_CALLOC (info.context.argv, (info.context.argc + 1), sizeof (char *));
 		for (i = 0; i < (unsigned int)info.context.argc; i++) {
 			SL_SAFE_STRDUP (info.context.argv[i], src->context.argv[i]);
@@ -177,19 +177,22 @@ build_version (SL_APP_INFO *src)
 
 #if (DEBUG || DEEPTRACE)
 	vpre   = " (";
-	vdebug = "";
-	vtrace = "";
 	vpost  = ")";
-	vsplit = "";
-#	if DEBUG
+#	if DEBUG		/* DEBUG extra info */
 	vdebug = "debug";
-#	endif	/* DEBUG extra info */
-#	if DEEPTRACE
+#	else
+	vdebug = "";
+#	endif
+#	if DEEPTRACE		/* DEEPTRACE EXTRA INFO */
 	vtrace = "deeptrace";
-#	endif	/* DEEPTRACE EXTRA INFO */
-#	if (DEBUG && TRACE)
+#	else
+	vtrace = "";
+#	endif
+#	if (DEBUG && TRACE)	/* DEBUG and DEEPTRACE both have info */
 	vsplit = "/";
-#	endif	/* DEBUG and DEEPTRACE both have info */
+# else
+	vsplit = "";
+#	endif
 #else	/* no DEBUG or DEEPTRACE */
 	vpre   = "";
 	vdebug = "";

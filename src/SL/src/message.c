@@ -401,13 +401,13 @@ SLMSG_hdlr_query (SLMSG_TYPE type, SLMSG_FROM from, SLMSG_HQL **list)
 void
 SLMSG_hdlr_query_free (SLMSG_HQL **list)
 {
-	SLMSG_HQL	*p, *q;
+	SLMSG_HQL	*p;
 
 	if (!list || !*list) return;
 
 	p = *list; *list = NULL;
 	while (p) {
-		q = p; p = p->next;
+		SLMSG_HQL *q = p; p = p->next;
                 SL_SAFE_FREE (q->hdlr.name);
 		SL_SAFE_FREE (q);
 	}

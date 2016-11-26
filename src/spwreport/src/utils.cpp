@@ -14,7 +14,6 @@ byte_list (BYTE *src, DWORD slen, char *dst, DWORD dlen)
 	DWORD	todo, left;
 	BYTE	*s;
 	char	*d;
-	int	done;
 
 	if (!src || !dst || !dlen) return;
 	memset (dst, 0, dlen);
@@ -24,7 +23,7 @@ byte_list (BYTE *src, DWORD slen, char *dst, DWORD dlen)
 	s = src; todo = slen;
 	d = dst; left = dlen - 1;
 	while (todo && (left >= 5)) {
-		done = snprintf (d, 6, "0x%2.2x ", *s);
+		int done = snprintf (d, 6, "0x%2.2x ", *s);
 		if (done < 0) break;
 		s++; todo--;
 		d += done; left -= done;
@@ -51,7 +50,6 @@ void
 UD_report (SPWAW_UD *ud, char *title, FILE *file)
 {
 	char		head[64], buf[256];
-	int		len;
 	MKSTR_SRC	mksrc;
 	MKSTR_DST	mkdst;
 	MKSTR_OPT	mkopt;
@@ -72,10 +70,11 @@ UD_report (SPWAW_UD *ud, char *title, FILE *file)
 		mkopt.type = MKSTR_LIST;
 		mkstr_bytedata (&mkdst, &mksrc, &mkopt);
 
-		fprintf (file, "    %s#%02.2u (%3.3u) 0x%8.8x: %s\n", head, 0, ud->head->size, ud->head->addr, buf);
+		fprintf (file, "    %s#%02.2u (%3.3u) 0x%8.8x: %s\n", head, 0U, ud->head->size, ud->head->addr, buf);
 	} else {
 		SPWAW_UDEL	*u = ud->head;
 		DWORD		i = 0;
+		int		len;
 
 		if (title)	len = snprintf (head, sizeof (head) - 1, "Unknown %s data report:\n", title);
 		else		len = snprintf (head, sizeof (head) - 1, "Unknown data report:\n");
@@ -91,7 +90,7 @@ UD_report (SPWAW_UD *ud, char *title, FILE *file)
 			mkopt.type = MKSTR_LIST;
 			mkstr_bytedata (&mkdst, &mksrc, &mkopt);
 
-			fprintf (file, "\t#%02.2u (%3.3u) 0x%8.8x: %s\n", i, u->size, u->addr, buf);
+			fprintf (file, "\t#%02.2lu (%3.3u) 0x%8.8x: %s\n", i, u->size, u->addr, buf);
 			i++; u = u->next;
 		}
 	}
@@ -144,7 +143,7 @@ UD_block_report (SPWAW_UD *ud, int width, FILE *file, char *prefix)
 	endaddr = ud->size - 1;	addr = 0;
 	p = ud->head; uidx = -1;
 	while (addr <= endaddr) {
-		fprintf (file, "%s  %8.8X: ", pf, addr);
+		fprintf (file, "%s  %8.8lX: ", pf, addr);
 		for (i=0; i<width; i++) {
 			if ((addr+i) > endaddr) break;
 			if (!p) {

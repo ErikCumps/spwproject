@@ -306,17 +306,14 @@ pack (void *src, DWORD len, char **dst, long *size)
 bool
 gamedata_load_all (GAMEFILE *file, GAMEDATA *dst)
 {
-	int		i;
 	BLOCKHEAD	block;
 	SECMAP		*sp;
-	void		*dptr;
-	DWORD		size;
 
 	if (!file || !dst) return (false);
 
 	if (bread (file->dat_fd, (char *)&(dst->sec00), sizeof (dst->sec00), false)) {
 		log ("# gamedata_load_all: START<");
-		for (i=0; i<sizeof (dst->sec00); i++) log_nots ("%c", dst->sec00.u.raw[i]);
+		for (int i=0; i<sizeof (dst->sec00); i++) log_nots ("%c", dst->sec00.u.raw[i]);
 		log_nots (">\n");
 
 		while (bread (file->dat_fd, (char *)&block, sizeof (block), true)) {
@@ -326,8 +323,8 @@ gamedata_load_all (GAMEFILE *file, GAMEDATA *dst)
 			if (!sp) {
 				ERROR1 ("unknown gamedata section %d", block.section);
 			}
-			dptr = sp->ptr;
-			size = sp->size;
+			void *dptr = sp->ptr;
+			DWORD size = sp->size;
 			if (block.flag & FLAG_COMPRESSED) {
 				if (unpack (file->dat_fd, block.size, dptr, size) != size) {
 					ERROR2 ("failed to unpack section %d (%lu bytes)", block.section, block.size);
@@ -351,7 +348,6 @@ gamedata_load_section (GAMEFILE *file, DWORD sec, void *dst, unsigned long len)
 	STRUCT00	head;
 	SECMAP		*map, *sp;
 	BLOCKHEAD	block;
-	DWORD		size;
 
 	if (!file || !dst || !len) return (false);
 	memset (dst, 0, len);
@@ -374,7 +370,7 @@ gamedata_load_section (GAMEFILE *file, DWORD sec, void *dst, unsigned long len)
 		} else {
 			while (bread (file->dat_fd, (char *)&block, sizeof (block), true)) {
 				if (sec == block.section) {
-					size = sp->size;
+					DWORD size = sp->size;
 					if (len < size) {
 						ERROR2 ("not enough room in caller buffer for section %d (%lu bytes)", sec, size);
 						return (false);

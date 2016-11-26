@@ -15,11 +15,12 @@ SPWAW_ERROR
 cfg_set (const char *oobdir, bool withUD)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
-	char		path[MAX_PATH+1];
 
 	cfg_free ();
 
 	if (oobdir) {
+		char	path[MAX_PATH+1];
+
 		memset (path, 0, sizeof (path));
 		_fullpath (path, oobdir, sizeof (path)-1);
 		cfg.oobdir = strdup (path);

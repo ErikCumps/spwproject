@@ -42,7 +42,7 @@ dump (char *file, int argc, char **argv)
 	unsigned int	src, len;
 	char		*outfile;
 	int		fdi, fdo;
-	unsigned int	left, todo, done;
+	unsigned int	left;
 	unsigned char	block[BLKSZ];
 
 	printf ("DUMP \"%s\"\r\n", file);
@@ -51,7 +51,7 @@ dump (char *file, int argc, char **argv)
 	len = strtoul (argv[1], NULL, 0);
 	outfile = argv[2];
 
-	printf ("(%lu :%lu) -> \"%s\"\r\n", src, len, outfile);
+	printf ("(%u :%u) -> \"%s\"\r\n", src, len, outfile);
 
 	fdi = open (file, O_RDONLY|O_BINARY);
 	if (fdi == -1) error ("failed to open \"%s\" for reading!", file);
@@ -64,6 +64,8 @@ dump (char *file, int argc, char **argv)
 
 	left = len;
 	while (left) {
+		unsigned int	todo, done;
+
 		todo = (left >=  BLKSZ) ? BLKSZ : left;
 		done = read (fdi, block, todo);
 		if (done != todo) error ("failed to read data from input file!");

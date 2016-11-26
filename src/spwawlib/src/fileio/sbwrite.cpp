@@ -65,7 +65,7 @@ sbw_grow (SBW *sb)
 int
 sbwrite (SBW *sb, char *b, int len)
 {
-	int	done, left, todo;
+	int	done, left;
 
 	if (!sb || !b) {
 		ERROR0 ("unexpected NULL argument(s)");
@@ -84,7 +84,7 @@ sbwrite (SBW *sb, char *b, int len)
 			}
 		}
 
-		todo = left; if (todo > sb->lft) todo = sb->lft;
+		int todo = left; if (todo > sb->lft) todo = sb->lft;
 		if (todo) memcpy (sb->buf + sb->idx, b, todo);
 		b += todo; left -= todo; sb->idx += todo; sb->lft -= todo; done += todo;
 	}

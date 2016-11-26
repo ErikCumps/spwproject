@@ -35,7 +35,6 @@ block_alloc (STRBUF *buf, ULONG len)
 {
 	STRBUF_BLOCK	*cb, *nb;
 	char		*p;
-	ULONG		bsize, tsize;
 
 	if (!len) return (NULL);
 
@@ -44,8 +43,8 @@ block_alloc (STRBUF *buf, ULONG len)
 		p = cb->last;
 		cb->used += len; cb->left -= len; cb->last += len;
 	} else {
-		bsize = (len / BLOCKSIZE) * BLOCKSIZE; if (len > bsize) bsize += BLOCKSIZE;
-		tsize = bsize + sizeof (STRBUF_BLOCK);
+		ULONG bsize = (len / BLOCKSIZE) * BLOCKSIZE; if (len > bsize) bsize += BLOCKSIZE;
+		ULONG tsize = bsize + sizeof (STRBUF_BLOCK);
 		nb = safe_smalloc (STRBUF_BLOCK, tsize); COOMRET (nb, "STRBUF_BLOCK", NULL);
 		memset (nb, 0, tsize);
 
@@ -364,7 +363,6 @@ static bool
 skip_core (STRBUF_BLOCK **bp, char **ptr)
 {
 	char	*p;
-	ULONG	len;
 
 	p = *ptr;
 
@@ -372,7 +370,7 @@ skip_core (STRBUF_BLOCK **bp, char **ptr)
 
 	p++;
 	if (*p == (unsigned char)0xFF) {
-		len = (ULONG)++p; p += len;
+		ULONG len = (ULONG)++p; p += len;
 	} else {
 		while (!*++p && (p < (*bp)->last));
 	}
@@ -461,29 +459,29 @@ STRBUF_report (FILE *rf, STRBUF *buf)
 	STRBUF_HOLE	*hp;
 
 	if (buf) {
-		fprintf (rf, "STRBUF = 0x%8.8x\n", buf);
+		fprintf (rf, "STRBUF = 0x%8.8x\n", (unsigned int)buf);
 	} else {
 		fprintf (rf, "STRBUF NULL pointer!\n");
 		fprintf (rf, "\n\n");
 		return;
 	}
 
-	fprintf (rf, "  list = 0x%8.8x\n", buf->list);
-	fprintf (rf, "  last = 0x%8.8x\n", buf->last);
+	fprintf (rf, "  list = 0x%8.8x\n", (unsigned int)buf->list);
+	fprintf (rf, "  last = 0x%8.8x\n", (unsigned int)buf->last);
 	bp = buf->list;
 	while (bp) {
-		fprintf (rf, "    : block 0x%8.8x\n", bp);
-		fprintf (rf, "    :    next=0x%8.8x\n", bp->next);
+		fprintf (rf, "    : block 0x%8.8x\n", (unsigned int)bp);
+		fprintf (rf, "    :    next=0x%8.8x\n", (unsigned int)bp->next);
 		fprintf (rf, "    :    size=%lu\n", bp->size);
 		fprintf (rf, "    :    used=%lu\n", bp->used);
 		fprintf (rf, "    :    left=%lu\n", bp->left);
-		fprintf (rf, "    :    data=0x%8.8x\n", bp->data);
-		fprintf (rf, "    :    last=0x%8.8x\n", bp->last);
-		fprintf (rf, "    :    hole=0x%8.8x\n", bp->hole);
+		fprintf (rf, "    :    data=0x%8.8x\n", (unsigned int)bp->data);
+		fprintf (rf, "    :    last=0x%8.8x\n", (unsigned int)bp->last);
+		fprintf (rf, "    :    hole=0x%8.8x\n", (unsigned int)bp->hole);
 		if ((hp = bp->hole) != NULL) {
 			while (hp) {
-				fprintf (rf, "    :    : next=0x%8.8x\n", hp->next);
-				fprintf (rf, "    :    :    ptr=0x%8.8x\n", hp->ptr);
+				fprintf (rf, "    :    : next=0x%8.8x\n", (unsigned int)hp->next);
+				fprintf (rf, "    :    :    ptr=0x%8.8x\n", (unsigned int)hp->ptr);
 				fprintf (rf, "    :    :    len=%lu\n", hp->len);
 
 				hp = hp->next;

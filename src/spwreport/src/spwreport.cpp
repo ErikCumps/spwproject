@@ -244,8 +244,6 @@ main (int argc, char** argv)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_SNAPSHOT	*snap;
-	char		savename[MAX_PATH+1];
-	char		rprtbase[MAX_PATH+1];
 
 	if (argc < 3) usage (argv[0]);
 
@@ -267,6 +265,9 @@ main (int argc, char** argv)
 		}
 
 	} else {
+		char	savename[MAX_PATH+1];
+		char	rprtbase[MAX_PATH+1];
+
 		if (argc < 5) usage (argv[0]);
 
 		// Generate report
