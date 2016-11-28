@@ -86,7 +86,7 @@ config_load (void)
 	data = storage->value ("SnapshotsPath");
 	if (data.isNull ()) {
 		memset (buffer, 0, sizeof (buffer));
-		snprintf (buffer, sizeof (buffer) - 1, DEFAULT_SNAPPATH, cfg.usr_path);
+		snprintf (buffer, sizeof (buffer) - 1, DEFAULT_SNAPPATH, cfg.app_path);
 		SL_SAFE_STRDUP (cfg.snp_path, buffer);
 	} else {
 		SL_SAFE_STRDUP (cfg.snp_path, qPrintable(data.toString()));
