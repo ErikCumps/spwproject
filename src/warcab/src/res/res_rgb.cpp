@@ -52,10 +52,9 @@ QString
 RES_RGB_gethtml (RESITEM *item)
 {
 	QString	c = QString();
-	unsigned long	*d;
 
 	if (item) {
-		d = (unsigned long *)item->item->data;
+		unsigned long *d = (unsigned long *)item->item->data;
 		c.sprintf ("#%02.2X%02.2X%02.2X", d[0] & 0xFF, d[1] & 0xFF, d[2] & 0xFF);
 	}
 	return (c);

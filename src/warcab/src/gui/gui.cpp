@@ -257,8 +257,8 @@ GUI_EVT_abort (const char *file, unsigned long line, const char *func, const cha
 void
 GUI_HOOK_exit (unsigned int ec, char *msg, SL_BOOL dump)
 {
-	const char	*rfmt = "%s\n\nExit code: %d";
-	const char	*efmt = "%s\n\nExit code: %d\n\n[application dumped core]";
+	const char	*rfmt = "%s\n\nExit code: %u";
+	const char	*efmt = "%s\n\nExit code: %u\n\n[application dumped core]";
 	char		buffer[1024];
 
 	if (!GUI_isGUIthread()) return;

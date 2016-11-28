@@ -240,11 +240,10 @@ GUI_errorbox (SL_ERROR_FATAL fc, char *msg, char *extra_type, char *extra_data)
 {
 	GuiErrorbox		*box;
 	SL_ERROR_REQUEST	rq = SL_ERR_REQUEST_ACCEPT;
-	int			rc;
 
 	// TODO: handle out of memory case?
 	box = new GuiErrorbox (&rq, fc, msg, extra_type, extra_data);
-	rc = box->exec (); delete (box);
+	(void)box->exec (); delete (box);
 
 	return (rq);
 }

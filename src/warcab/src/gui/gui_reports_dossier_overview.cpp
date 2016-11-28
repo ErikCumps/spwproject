@@ -107,13 +107,14 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 	UtilStrbuf		str(buf, size, true, true);
 	SPWAW_BATTLE		*b;
 	int			i;
-	USHORT			idx, nidx;
-	bool			skip, report;
 	SPWAW_SNAP_OOB_UEL	*fup, *lup, *up;
 
 	icnt = 0;
 
 	for (i=0; i<d->ucnt; i++) {
+		USHORT	idx, nidx;
+		bool	skip, report;
+
 		idx = nidx = i; b = d->bfirst; skip = false; report = false;
 		up = fup = b->info_sob->pbir.uir[idx].snap;
 		while (b->next) {
@@ -165,14 +166,15 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 {
 	UtilStrbuf		str(buf, size, true, true);
 	int			i;
-	USHORT			idx, nidx;
 	SPWAW_BATTLE		*b;
-	bool			skip, report;
 	SPWAW_SNAP_OOB_UEL	*fup, *lup, *up;
 
 	icnt = 0;
 
 	for (i=0; i<d->ucnt; i++) {
+		USHORT	idx, nidx;
+		bool	skip, report;
+
 		idx = nidx = i; b = d->bfirst; skip = false; report = false;
 		up = fup = b->info_sob->pbir.uir[idx].snap;
 		while (b->next) {

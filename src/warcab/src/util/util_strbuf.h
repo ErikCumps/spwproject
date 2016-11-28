@@ -31,9 +31,6 @@ private:
 		unsigned long	left;
 		bool		eot_nl;
 	} d;
-
-private:
-	void	update	(void);
 };
 
 #endif	/* UTIL_STRBUF_H */

@@ -272,7 +272,7 @@ WARCABState::add (SPWAW_SAVELIST *list)
 	SPWAW_BTURN	*t = NULL;
 	SPWAW_ERROR	arc = SPWERR_OK;
 	SL_ERROR	rc;
-	MDLD_TREE_ITEM	*item;
+
 	GuiProgress	gp ("Adding savegame(s)...", 0);
 
 	if (!list) {
@@ -313,7 +313,7 @@ WARCABState::add (SPWAW_SAVELIST *list)
 	} else {
 		refresh_tree();
 		// FIXME: this will only work for the last savegame in the list. Is this intentional?
-		item = item_from_turn (t); DEVASSERT (item != NULL);
+		MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
 		emit was_added (item);
 	}
 
@@ -329,7 +329,7 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 	SPWAW_BTURN	*t = NULL;
 	SPWAW_ERROR	arc = SPWERR_OK;
 	SL_ERROR	rc;
-	MDLD_TREE_ITEM	*item;
+
 	GuiProgress	gp ("Adding snapshot(s)...", 0);
 
 	if (!list) {
@@ -369,7 +369,7 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SNAP_FAILED, "failed to add a snapshot");
 	} else {
 		refresh_tree();
-		item = item_from_turn (t); DEVASSERT (item != NULL);
+		MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
 		emit was_added (item);
 	}
 

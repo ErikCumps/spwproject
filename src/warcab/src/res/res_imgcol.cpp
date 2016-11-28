@@ -109,8 +109,6 @@ void
 RES_IMGCOL_statereport (RESITEM *item)
 {
 	IMGCOL_DATA	*dp;
-	unsigned long	r, c;
-	QPixmap		*pm;
 
 	DEVASSERT (item);
 	DEVASSERT (item->info);
@@ -119,9 +117,9 @@ RES_IMGCOL_statereport (RESITEM *item)
 	dp = (IMGCOL_DATA *)item->data;
 	if (dp) {
 		SAYSTATE4 ("\t\t\t\t%lu rows x %lu cols (%lu x %lu)\n", dp->rows, dp->cols, dp->iw, dp->ih);
-		for (r=0; r<dp->rows; r++) {
-			for (c=0; c<dp->cols; c++) {
-				pm = dp->res[r*dp->cols+c];
+		for (unsigned long r=0; r<dp->rows; r++) {
+			for (unsigned long c=0; c<dp->cols; c++) {
+				QPixmap *pm = dp->res[r*dp->cols+c];
 				SAYSTATE6 ("\t\t\t\t\t[%3lu,%3lu] 0x%8.8x %lu x %lu, %lu bpp\n",
 					r, c, pm, pm->width(), pm->height(), pm->depth());
 			}

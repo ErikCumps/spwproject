@@ -88,6 +88,9 @@ private:
 
 	QwtData		*d_xy;
 	PrivateData	*d_data;
+
+//private:
+//	PlotBarItem(const PlotBarItem&); // non-copyable
 };
 
 

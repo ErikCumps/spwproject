@@ -173,14 +173,13 @@ QModelIndex
 ModelOob::index (int row, int column, const QModelIndex &parent) const
 {
 	QModelIndex	idx = QModelIndex();
-	MDLO_DATA	*p;
 
 	if (!hasIndex (row, column, parent)) return (QModelIndex());
 
 	if (!parent.isValid()) {
 		if (row < d.row_cnt) idx = createIndex (row, column, d.smap[row].data);
 	} else {
-		p = (MDLO_DATA *)parent.internalPointer();
+		MDLO_DATA *p = (MDLO_DATA *)parent.internalPointer();
 		if (row < p->ccnt) idx = createIndex (row, column, &(p->clst[row]));
 	}
 	return (idx);
@@ -203,7 +202,7 @@ ModelOob::parent (const QModelIndex &index) const
 {
 	QModelIndex	idx = QModelIndex();
 	MDLO_DATA	*p;
-	unsigned long	r;
+	int		r;
 
 	if (!index.isValid()) return (QModelIndex());
 
@@ -533,10 +532,10 @@ ModelOob::highlight (MDLO_HILITE h)
 int
 ModelOob::max_width (int column)
 {
-	int	max = 0, w;
+	int	max = 0;
 
 	for (int i=0; i<d.row_cnt; i++) {
-		w = (MDLO_data (Qt::DisplayRole, column, &(d.tree[i]))).toString().length();
+		int w = (MDLO_data (Qt::DisplayRole, column, &(d.tree[i]))).toString().length();
 		if (w > max) max = w;
 	}
 	return (max);

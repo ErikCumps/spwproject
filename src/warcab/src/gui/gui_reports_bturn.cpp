@@ -90,7 +90,6 @@ GuiRptTrn::enable (bool flag)
 void
 GuiRptTrn::set_enabled (bool flag)
 {
-	char	buf[256];
 	bool	hidden = isHidden();
 
 	if (!d.item) flag = false;
@@ -98,6 +97,8 @@ GuiRptTrn::set_enabled (bool flag)
 
 	if (!hidden) hide();
 	if (flag) {
+		char	buf[256];
+
 		memset (buf, 0, sizeof (buf));
 
 		removeTab (indexOf (d.disabled_label));
@@ -142,11 +143,11 @@ GuiRptTrn::select (MDLD_TREE_ITEM *item)
 void
 GuiRptTrn::refresh (void)
 {
-	char	buf[256];
-
 	DBG_TRACE_FENTER;
 
 	if (d.enabled) {
+		char	buf[256];
+
 		memset (buf, 0, sizeof (buf));
 
 		setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.t->battle->dossier->OOB));

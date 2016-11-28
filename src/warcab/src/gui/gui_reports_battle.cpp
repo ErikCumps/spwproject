@@ -85,12 +85,13 @@ GuiRptBtl::enable (bool flag)
 void
 GuiRptBtl::set_enabled (bool flag)
 {
-	char	buf[256];
 	bool	hidden = isHidden();
 
 	d.enabled = flag;
 	if (!hidden) hide();
 	if (flag) {
+		char	buf[256];
+
 		memset (buf, 0, sizeof (buf));
 
 		removeTab (indexOf (d.disabled_label));
@@ -131,11 +132,11 @@ GuiRptBtl::select (MDLD_TREE_ITEM *item)
 void
 GuiRptBtl::refresh (void)
 {
-	char	buf[256];
-
 	DBG_TRACE_FENTER;
 
 	if (d.enabled) {
+		char	buf[256];
+
 		memset (buf, 0, sizeof (buf));
 
 		setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.b->dossier->OOB));

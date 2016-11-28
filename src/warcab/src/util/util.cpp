@@ -35,7 +35,7 @@ UTIL_fmt_longspan (SPWAW_PERIOD *span, UtilStrbuf *buf)
 	}
 	if (span->weeks) {
 		buf->printf ("%s%u week%s", f ? "" : ", ", span->weeks, (span->weeks == 1) ? "" : "s");
-		f = false;
+		//f = false;
 	}
 }
 
@@ -65,6 +65,6 @@ UTIL_fmt_shortspan (SPWAW_PERIOD *span, UtilStrbuf *buf)
 	}
 	if (span->minutes) {
 		buf->printf ("%s%u minute%s", f ? "" : ", ", span->minutes, (span->minutes == 1) ? "" : "s");
-		f = false;
+		//f = false;
 	}
 }

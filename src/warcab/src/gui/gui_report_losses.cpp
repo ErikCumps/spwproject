@@ -216,7 +216,6 @@ GuiRptLoss::list_killed_dossier (char *buf, unsigned int size, int &icnt)
 	UtilStrbuf		str(buf, size, true, true);
 	SPWAW_DOSSIER		*p;
 	SPWAW_BATTLE		*b;
-	USHORT			idx, nidx;
 	SPWAW_SNAP_OOB_UEL	*up;
 
 	icnt = 0;
@@ -225,6 +224,8 @@ GuiRptLoss::list_killed_dossier (char *buf, unsigned int size, int &icnt)
 	str.clear();
 
 	for (int i=0; i<p->ucnt; i++) {
+		USHORT	idx, nidx;
+
 		idx = nidx = i; b = p->bfirst;
 		while (b) {
 			up = b->info_eob->pbir.uir[idx].snap;
@@ -248,7 +249,7 @@ GuiRptLoss::list_killed (char *buf, unsigned int size, int &icnt)
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
 	ModelRosterRawData	data[LISTMAX];
-	int			idx, i, cnt;
+	int			idx, i;
 	bool			stop;
 	bool			lostunit, lostcrew;
 
@@ -265,7 +266,7 @@ GuiRptLoss::list_killed (char *buf, unsigned int size, int &icnt)
 
 	idx = 0; stop = false;
 	while (1) {
-		cnt = d.model->rawdata (idx, MDLR_COLUMN_STATUS, data, LISTMAX);
+		int cnt = d.model->rawdata (idx, MDLR_COLUMN_STATUS, data, LISTMAX);
 		if (!cnt) break;
 
 		tstr.clear();
@@ -307,7 +308,6 @@ GuiRptLoss::list_abandoned_dossier (char *buf, unsigned int size, int &icnt)
 	UtilStrbuf		str(buf, size, true, true);
 	SPWAW_DOSSIER		*p;
 	SPWAW_BATTLE		*b;
-	USHORT			idx, nidx;
 	SPWAW_SNAP_OOB_UEL	*up;
 
 	icnt = 0;
@@ -316,6 +316,8 @@ GuiRptLoss::list_abandoned_dossier (char *buf, unsigned int size, int &icnt)
 	str.clear();
 
 	for (int i=0; i<p->ucnt; i++) {
+		USHORT	idx, nidx;
+
 		idx = nidx = i; b = p->bfirst;
 		while (b) {
 			up = b->info_eob->pbir.uir[idx].snap;
@@ -338,7 +340,7 @@ GuiRptLoss::list_abandoned (char *buf, unsigned int size, int &icnt)
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
 	ModelRosterRawData	data[LISTMAX];
-	int			idx, i, cnt;
+	int			idx, i;
 	bool			stop;
 
 	if (d.ptype == MDLD_TREE_DOSSIER) return (list_abandoned_dossier (buf, size, icnt));
@@ -352,7 +354,7 @@ GuiRptLoss::list_abandoned (char *buf, unsigned int size, int &icnt)
 
 	idx = 0; stop = false;
 	while (1) {
-		cnt = d.model->rawdata (idx, MDLR_COLUMN_ABAND, data, LISTMAX);
+		int cnt = d.model->rawdata (idx, MDLR_COLUMN_ABAND, data, LISTMAX);
 		if (!cnt) break;
 
 		tstr.clear();
@@ -387,20 +389,20 @@ typedef struct s_DMGRPT {
 static int
 dmgrpt_cmp (const void *a, const void *b)
 {
-	DMGRPT	*va = (DMGRPT *)a;
-	DMGRPT	*vb = (DMGRPT *)b;
+	DMGRPT	*va;
+	DMGRPT	*vb;
 	int	cmp;
-	USHORT	usa, usb;
 
 	DEVASSERT (a != NULL); DEVASSERT (b != NULL);
+	va = (DMGRPT *)a; vb = (DMGRPT *)b;
 
 	if ((va->ptr == NULL) || (vb->ptr == NULL)) return (-1);
 
 	cmp = ((va->dmg > vb->dmg) ? -1 : ((va->dmg < vb->dmg) ? 1 : 0));
 
 	if (cmp == 0) {
-		usa = va->ptr->info_sob->pbir.uir[va->idx].snap->data.uidx;
-		usb = vb->ptr->info_sob->pbir.uir[vb->idx].snap->data.uidx;
+		USHORT usa = va->ptr->info_sob->pbir.uir[va->idx].snap->data.uidx;
+		USHORT usb = vb->ptr->info_sob->pbir.uir[vb->idx].snap->data.uidx;
 		cmp = ((usa < usb) ? -1 : ((usa > usb) ? 1 : 0));
 	}
 
@@ -414,9 +416,7 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 	SPWAW_DOSSIER		*p;
 	DMGRPT			*rpt;
 	SPWAW_BATTLE		*b;
-	USHORT			idx, nidx;
 	SPWAW_SNAP_OOB_UEL	*up;
-	unsigned long		dmg;
 
 	icnt = 0;
 	if ((d.pdata == NULL) || ((p = d.pdata->data.d) == NULL)) return;
@@ -425,6 +425,9 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 
 	SL_SAFE_CALLOC (rpt, p->ucnt, sizeof (DMGRPT));
 	for (int i=0; i<p->ucnt; i++) {
+		USHORT		idx, nidx;
+		unsigned long	dmg;
+
 		idx = nidx = i; b = p->bfirst; dmg = 0;
 		while (b) {
 			up = b->info_eob->pbir.uir[idx].snap;
@@ -466,7 +469,7 @@ GuiRptLoss::list_damaged (char *buf, unsigned int size, int &icnt)
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
 	ModelRosterRawData	data[LISTMAX];
-	int			idx, i, cnt;
+	int			idx, i;
 	bool			stop;
 
 	if (d.ptype == MDLD_TREE_DOSSIER) return (list_damaged_dossier (buf, size, icnt));
@@ -480,7 +483,7 @@ GuiRptLoss::list_damaged (char *buf, unsigned int size, int &icnt)
 
 	idx = 0; stop = false;
 	while (1) {
-		cnt = d.model->rawdata (idx, MDLR_COLUMN_DMG, data, LISTMAX);
+		int cnt = d.model->rawdata (idx, MDLR_COLUMN_DMG, data, LISTMAX);
 		if (!cnt) break;
 
 		tstr.clear();

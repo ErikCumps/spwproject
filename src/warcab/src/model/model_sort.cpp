@@ -83,7 +83,6 @@ inline int
 MDL_stdcmp_GMO (const void *a, const void *b, MDL_CMPDEF *def)
 {
 	MDLO_SMAP	*pa = NULL, *pb = NULL;
-	int		i, col;
 	MDL_CMPDATA	va, vb;
 	int		c = 0;
 
@@ -92,8 +91,8 @@ MDL_stdcmp_GMO (const void *a, const void *b, MDL_CMPDEF *def)
 	DEVASSERT (a != NULL); DEVASSERT (b != NULL);
 	pa = (MDLO_SMAP *)a; pb = (MDLO_SMAP *)b;
 
-	for (i=0; i<def->cnt; i++) {
-		col = def->def[i].col;
+	for (int i=0; i<def->cnt; i++) {
+		int col = def->def[i].col;
 		if (*(pa->data->dltsort)) {
 			c = MDL_stdcmp_dlt (&(pa->data->dlt[col]), &(pb->data->dlt[col]), def->def[i].rev);
 		}
@@ -113,7 +112,6 @@ inline int
 MDL_stdcmp_GMR (const void *a, const void *b, MDL_CMPDEF *def)
 {
 	MDLR_SMAP	*pa = NULL, *pb = NULL;
-	int		i, col;
 	MDL_CMPDATA	va, vb;
 	int		c = 0;
 
@@ -122,8 +120,8 @@ MDL_stdcmp_GMR (const void *a, const void *b, MDL_CMPDEF *def)
 	DEVASSERT (a != NULL); DEVASSERT (b != NULL);
 	pa = (MDLR_SMAP *)a; pb = (MDLR_SMAP *)b;
 
-	for (i=0; i<def->cnt; i++) {
-		col = def->def[i].col;
+	for (int i=0; i<def->cnt; i++) {
+		int col = def->def[i].col;
 		if (*(pa->data->dltsort)) {
 			c = MDL_stdcmp_dlt (&(pa->data->dlt[col]), &(pb->data->dlt[col]), def->def[i].rev);
 		}

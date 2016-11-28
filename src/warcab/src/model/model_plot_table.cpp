@@ -68,8 +68,6 @@ ModelPlotTable::columnCount (const QModelIndex &/*parent*/) const
 void
 ModelPlotTable::setup (MDLPT_DEF *def)
 {
-	int	i;
-
 	free_dat();
 	free_def();
 
@@ -82,7 +80,7 @@ ModelPlotTable::setup (MDLPT_DEF *def)
 			SL_SAFE_CALLOC (d.def.col_lst, d.def.col_cnt, sizeof (MDLPT_COLDEF));
 			memcpy (d.def.col_lst, def->col_lst, d.def.col_cnt * sizeof (MDLPT_COLDEF));
 
-			for (i=0; i<d.def.col_cnt; i++) {
+			for (int i=0; i<d.def.col_cnt; i++) {
 				SL_SAFE_STRDUP (d.def.col_lst[i].name, def->col_lst[i].name);
 				header << d.def.col_lst[i].name;
 			}
@@ -96,17 +94,14 @@ ModelPlotTable::setup (MDLPT_DEF *def)
 void
 ModelPlotTable::load (MDLPT_DATA *data)
 {
-	int		todo;
-	int		i, j;
-
 	free_dat();
 
 	if (data) {
-		MDLPT_alloc_data	(d.dat, data->row_cnt, d.def.col_cnt);
-		todo = data->col_cnt; if (todo > d.def.col_cnt) todo = d.def.col_cnt;
+		MDLPT_alloc_data (d.dat, data->row_cnt, d.def.col_cnt);
+		int todo = data->col_cnt; if (todo > d.def.col_cnt) todo = d.def.col_cnt;
 
-		for (i=0; i<d.dat.row_cnt; i++) {
-			for (j=0; j<todo; j++) {
+		for (int i=0; i<d.dat.row_cnt; i++) {
+			for (int j=0; j<todo; j++) {
 				d.dat.row[i].data[j] = data->row[i].data[j];
 				if (!j) continue;
 

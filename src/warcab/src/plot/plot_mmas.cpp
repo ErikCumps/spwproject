@@ -272,7 +272,7 @@ PlotMMAS::clear (void)
 void
 PlotMMAS::update (void)
 {
-	int	i, m;
+	int	i;
 	double	xmin = 0.0, xmax = 0.0, ymax = 0.0;
 	double	xadd, sdiv;
 
@@ -299,7 +299,8 @@ PlotMMAS::update (void)
 	}
 
 	if (fabs(ymax) > DOUBLEPREC) {
-		ymax = ceil (ymax * 1.1); m = (int) ymax % Y_ALIGN;
+		ymax = ceil (ymax * 1.1);
+		int m = (int) ymax % Y_ALIGN;
 		if (m) ymax += (Y_ALIGN - m);
 	} else {
 		ymax = Y_ALIGN;
@@ -325,7 +326,6 @@ PlotMMAS::track (const QPoint &pos)
 	PlotMMASCurve		*cc, *curve = NULL;
 	int			index = -1;
 	double			dist = 10e10;
-	double			vx, vy;
 	SPWAW_SNAP_OOB_PTR	p;
 
 	for (it = itemList().begin(); it != itemList().end(); ++it)
@@ -336,8 +336,10 @@ PlotMMAS::track (const QPoint &pos)
 		if (!c->isVisible()) continue;
 
 		i = c->closestPoint (pos, &dv);
+		// cppcheck-suppress cstyleCast
 		cc = (PlotMMASCurve *)(((PlotCurve *)c)->parent());
 		if ((dv < dist) || ((dv == dist) && (cc->col != MDLMMAS_COLUMN_NONE))) {
+			// cppcheck-suppress cstyleCast
 			curve = (PlotMMASCurve *)(((PlotCurve *)c)->parent());
 			index = i;
 			dist = dv;
@@ -348,7 +350,8 @@ PlotMMAS::track (const QPoint &pos)
 
 	if (curve && (i >= 0) && dist <= M_TOL)
 	{
-		vx = curve->curve->x(index); vy = curve->curve->y(index);
+		double vx = curve->curve->x(index);
+		double vy = curve->curve->y(index);
 
 		QRect r = plotLayout()->canvasRect();
 		Qt::Alignment a = 0;

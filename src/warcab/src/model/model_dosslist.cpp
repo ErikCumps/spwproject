@@ -99,7 +99,6 @@ ModelDossList::setupModelData (char *path, SPWAW_DOSSLIST *ignore)
 	unsigned long		i;
 	SPWAW_DOSSLIST_NODE	*p = NULL;
 	QString			cmt;
-	int			nl;
 
 	DBG_TRACE_FENTER;
 
@@ -118,7 +117,7 @@ ModelDossList::setupModelData (char *path, SPWAW_DOSSLIST *ignore)
 		p = d.doss_list->list[i];
 
 		cmt = QString (p->info.comment);
-		if ((nl = cmt.indexOf('\n')) != -1) cmt.truncate(nl);
+		int nl = cmt.indexOf('\n'); if (nl != -1) cmt.truncate(nl);
 		node.data << p->filename << p->info.name << cmt << SPWAW_oob_nation (p->info.OOB) << p->info.bcnt;
 		node.node = p;
 

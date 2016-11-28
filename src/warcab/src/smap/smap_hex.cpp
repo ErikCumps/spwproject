@@ -12,6 +12,7 @@ SmapHex::SmapHex (void)
 {
 	pos.set (-1, -1);
 	height = SMAP_HH_000;
+	actheight = 0;
 	water = false;
 	bridge = false;
 	conn_road1 = conn_road2 = conn_railr = conn_bridge = 0;

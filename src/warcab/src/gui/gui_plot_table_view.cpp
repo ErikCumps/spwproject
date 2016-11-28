@@ -114,9 +114,10 @@ void
 GuiPlotTableView::setup (void)
 {
 	MDLPT_COLDEF	*p = NULL;
-	int		w = 0;
 
 	if (d.hdr) {
+		int	w = 0;
+
 		setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 
 		for (int i=1; i<d.model->columnCount(); i++) setColumnHidden (i, true);

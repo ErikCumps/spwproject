@@ -120,7 +120,7 @@ DBG_logbuf (char *buf, int len)
 static void
 log_core (SL_BOOL cons, SL_BOOL file, char *stamp, char *head, char *fmt, va_list AP)
 {
-	char		*p = fmt;
+	char		*p;
 	va_list		AP_copy;
 	char		buffer[MAXOUTLEN+1];
 	unsigned int	size;
@@ -128,6 +128,7 @@ log_core (SL_BOOL cons, SL_BOOL file, char *stamp, char *head, char *fmt, va_lis
 
 	/* Do not use DEVASSERT here, we will end up in a recursive loop! */
 	ASSERT (stamp != NULL); ASSERT (head != NULL); ASSERT (fmt != NULL);
+	p = fmt;
 
 	while (*p == '\n') {
 		DBG_CONS_log (cons, file, "%s\n", stamp);
@@ -163,11 +164,9 @@ log_core (SL_BOOL cons, SL_BOOL file, char *stamp, char *head, char *fmt, va_lis
 static SLMSG_RC
 out_core (SLMSG *msg, SL_BOOL cons, SL_BOOL file)
 {
-	char		stamp[64];
-	char		head[64];
-	const char	*from;
-	const char	*prio;
-	char		buffer[MAXOUTLEN+1];
+	char	stamp[64];
+	char	head[64];
+	char	buffer[MAXOUTLEN+1];
 
 	/* Handle commands first */
 	if (msg->data.type == SLMSG_DATA_TYPE_CMD) {
@@ -193,6 +192,9 @@ out_core (SLMSG *msg, SL_BOOL cons, SL_BOOL file)
 	/* Format header */
 	memset (head, 0, sizeof (head));
 	if (msg->type != SLMSG_TYPE_STATE) {
+		const char	*from;
+		const char	*prio;
+
 		from = msg->data.source;
 		if (!from) from = SLMSG_FROM_lookup_code (msg->from);
 

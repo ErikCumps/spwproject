@@ -40,19 +40,6 @@ UtilStrbuf::full (void)
 }
 
 void
-UtilStrbuf::update (void)
-{
-	unsigned long	min = (d.eot_nl)?2:1;
-	if (!d.buf) return;
-
-	d.ptr = strchr (d.buf, 0);
-	if (d.ptr) {
-		d.left = d.size - (d.ptr - d.buf);
-	}
-	if (d.left <= min) d.left = 0;
-}
-
-void
 UtilStrbuf::add (char *string)
 {
 	unsigned long	min = (d.eot_nl)?2:1;

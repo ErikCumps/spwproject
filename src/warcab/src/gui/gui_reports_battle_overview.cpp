@@ -120,17 +120,16 @@ GuiRptBtlOvr::set_parent (GuiRptBtl *p)
 void
 GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_BATTLE		*nb;
-	SPWAW_SNAP_OOB_UEL	*up, *nup;
+	UtilStrbuf	str(buf, size, true, true);
+	SPWAW_BATTLE	*nb;
 
 	nb = b->next ? b->next : b;
 
 	icnt = 0;
 	for (int i=0; i<b->dossier->ucnt; i++) {
-		up = &(b->snap->OOBp1.core.units.list[i]);
+		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
 		if (b->ra[i].rpl) {
-			nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
+			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
 			str.printf ("\t%s %s: %s %s -> %s %s\n",
 				up->strings.uid, up->data.type,
 				up->strings.rank, up->data.name,
@@ -143,17 +142,16 @@ GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, char *buf, unsigned int size, 
 void
 GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_BATTLE		*nb;
-	SPWAW_SNAP_OOB_UEL	*up, *nup;
+	UtilStrbuf	str(buf, size, true, true);
+	SPWAW_BATTLE	*nb;
 
 	nb = b->next ? b->next : b;
 
 	icnt = 0;
 	for (int i=0; i<b->dossier->ucnt; i++) {
-		up = &(b->snap->OOBp1.core.units.list[i]);
+		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
 		if ((b->ra[i].dst != i) && !b->ra[i].rpl &&(b->ra[i].src != SPWAW_BADIDX) && (b->ra[i].dst != SPWAW_BADIDX)) {
-			nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
+			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
 			str.printf ("\t%s %s: %s -> %s\n",
 				up->data.type, up->data.name,
 				up->strings.uid,
@@ -203,7 +201,7 @@ GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int 
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
 	ModelRosterRawData	data[LISTMAX];
-	int			idx, cnt;
+	int			idx;
 	bool			stop;
 	SPWAW_BATTLE		*nb;
 	SPWAW_SNAP_OOB_UEL	*up, *nup;
@@ -217,7 +215,7 @@ GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int 
 
 	idx = 0; stop = false;
 	while (1) {
-		cnt = d.model->rawdata (idx, MDLR_COLUMN_UNIT, data, LISTMAX);
+		int cnt = d.model->rawdata (idx, MDLR_COLUMN_UNIT, data, LISTMAX);
 		if (!cnt) break;
 
 		tstr.clear();

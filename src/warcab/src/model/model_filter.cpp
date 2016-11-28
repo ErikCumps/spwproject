@@ -24,12 +24,10 @@ filter_alloc_list (MDL_MF_TGTLST *list, int size)
 static void
 filter_free_list (MDL_MF_TGTLST *list)
 {
-	int	i;
-
 	if (!list) return;
 
 	if (list->list) {
-		for (i=0; i<list->cnt; i++) {
+		for (int i=0; i<list->cnt; i++) {
 			SL_SAFE_FREE (list->list[i].name);
 		}
 		SL_SAFE_FREE (list->list);
@@ -117,12 +115,10 @@ filter_alloc_list (xMDL_FILTER_LIST *list, int size)
 static void
 filter_free_list (xMDL_FILTER_LIST *list)
 {
-	unsigned int	i;
-
 	if (!list) return;
 
 	if (list->size) {
-		for (i=0; i<list->used; i++) {
+		for (unsigned int i=0; i<list->used; i++) {
 			SL_SAFE_FREE (list->data[i].name);
 			delete list->data[i].value;
 		}

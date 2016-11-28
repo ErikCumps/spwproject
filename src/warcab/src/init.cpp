@@ -32,13 +32,14 @@ init_SL (int *argc, char **argv, SL_APP_INFO *info)
 {
 	SL_INIT		rc;
 	SL_ERROR	ec;
-	char		buffer[512];
-
+	
 	info->context.argc = *argc;
 	info->context.argv = argv;
 
 	rc = SL_init (info, &SL_options);
 	if (rc != SL_INIT_OK) {
+		char	buffer[512];
+
 		memset (buffer, 0, sizeof (buffer));
 		snprintf (buffer, sizeof (buffer) - 1, "SL_init() failed: %s!", SL_INIT_lookup (rc));
 		QMessageBox::critical (0, "Initialization error", buffer, QMessageBox::Ok, 0, 0);

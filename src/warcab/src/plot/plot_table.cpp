@@ -152,15 +152,9 @@ PlotTable::setup_def (void)
 	PlotCurve	*C = NULL;
 	PlotBar		*B = NULL;
 	PlotSymbol	*S = NULL;
-	MDLPT_COLDEF	*col = NULL;
 	bool		error = false;
 
 	if (!d.model || !(d.cfg = d.model->def_info())) return;
-	//if (d.cfg->col_cnt != (d.set.curve_cnt+1)) {
-	//	clear();
-	//} else {
-	//	clear_def();
-	//}
 	clear();
 
 	d.set.stacked = d.cfg->plot_stacked;
@@ -176,7 +170,7 @@ PlotTable::setup_def (void)
 		d.set.curve[i].set = &(d.set);
 		d.set.curve[i].idx = i;
 
-		col = &(d.cfg->col_lst[i+1]);
+		MDLPT_COLDEF *col = &(d.cfg->col_lst[i+1]);
 
 		switch (d.cfg->plot_type) {
 			case PLOT_LINE:
@@ -408,6 +402,7 @@ PlotTable::track (const QPoint &pos)
 		if ((*it)->rtti() == QwtPlotItem::Rtti_PlotCurve) {
 			c = (QwtPlotCurve *)(*it);
 			if (!c->dataSize()) continue;
+			// cppcheck-suppress cstyleCast
 			p = (PlotTableCurve *)(((PlotCurve *)c)->parent());
 			i = c->closestPoint (pos, &dv);
 			zv = c->z();
@@ -415,6 +410,7 @@ PlotTable::track (const QPoint &pos)
 		if ((*it)->rtti() == QwtPlotItem::Rtti_PlotUserItem) {
 			b = (PlotBarItem *)(*it);
 			if (!b->dataSize()) continue;
+			// cppcheck-suppress cstyleCast
 			p = (PlotTableCurve *)(((PlotBar *)b)->parent());
 			i = b->closestPoint (pos, &dv);
 			zv = b->z();

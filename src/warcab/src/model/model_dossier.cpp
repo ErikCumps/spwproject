@@ -195,8 +195,6 @@ ModelDossier::headerData (int section, Qt::Orientation orientation, int role) co
 QModelIndex
 ModelDossier::index (int row, int column, const QModelIndex &parent) const
 {
-	MDLD_TREE_ITEM	*p;
-
 	if (!hasIndex (row, column, parent)) return (QModelIndex());
 	if (!parent.isValid()) {
 		if (row < 1)
@@ -204,7 +202,7 @@ ModelDossier::index (int row, int column, const QModelIndex &parent) const
 		else
 			return (QModelIndex());
 	} else {
-		p = (MDLD_TREE_ITEM *)parent.internalPointer();
+		MDLD_TREE_ITEM *p = (MDLD_TREE_ITEM *)parent.internalPointer();
 		if (!p) return (QModelIndex());
 		if (row < p->children.size()) {
 			return (createIndex (row, column, p->children[row]));

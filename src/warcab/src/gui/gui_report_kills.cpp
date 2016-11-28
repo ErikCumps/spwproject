@@ -190,7 +190,7 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
 	ModelRosterRawData	data[LISTMAX];
-	int			idx, i, cnt;
+	int			idx, i;
 	bool			stop;
 
 	icnt = kcnt = 0;
@@ -202,7 +202,7 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 
 	idx = 0; stop = false;
 	while (1) {
-		cnt = d.model->rawdata (idx, MDLR_COLUMN_KILL, data, LISTMAX);
+		int cnt = d.model->rawdata (idx, MDLR_COLUMN_KILL, data, LISTMAX);
 		if (!cnt) break;
 
 		tstr.clear();

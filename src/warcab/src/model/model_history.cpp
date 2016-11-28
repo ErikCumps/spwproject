@@ -370,10 +370,10 @@ ModelHistory::highlight (MDLH_HILITE h)
 int
 ModelHistory::max_width (int column)
 {
-	int	max = 0, w;
+	int	max = 0;
 
 	for (int i=0; i<d.row_cnt; i++) {
-		w = (MDLH_data (Qt::DisplayRole, i, column)).toString().length();
+		int w = (MDLH_data (Qt::DisplayRole, i, column)).toString().length();
 		if (w > max) max = w;
 	}
 	return (max);

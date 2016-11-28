@@ -114,9 +114,10 @@ void
 GuiTableView::setup (void)
 {
 	MDLT_COLDEF	*p = NULL;
-	int		w = 0, totalw = 0;
 
 	if (d.hdr) {
+		int	w = 0, totalw = 0;
+
 		setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 
 		for (int i=d.hdrcols; i<d.model->columnCount(); i++) setColumnHidden (i, true);

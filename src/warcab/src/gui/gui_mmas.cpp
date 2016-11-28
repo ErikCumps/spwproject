@@ -26,8 +26,6 @@ static MDLMMAS_TYPE typemap_battle[] = {
 GuiMMAS::GuiMMAS (QWidget *P)
 	: QFrame (P)
 {
-	int	i;
-
 	DBG_TRACE_CONSTRUCT;
 
 	/* Initialize */
@@ -115,7 +113,7 @@ GuiMMAS::GuiMMAS (QWidget *P)
 	d.filters = d.model->filters();
 	if (d.filters) {
 		SL_SAFE_CALLOC (d.Vtargets, d.filters->cnt, sizeof (GUI_FILTER_TARGET));
-		for (i=0; i<d.filters->cnt; i++) d.filter->addItem (QString ("Filter: ") + QString (d.filters->list[i].name));
+		for (int i=0; i<d.filters->cnt; i++) d.filter->addItem (QString ("Filter: ") + QString (d.filters->list[i].name));
 	} else {
 		d.Vtargets = NULL;
 		d.filter->addItem (QString ("Show all"));
@@ -291,7 +289,6 @@ void
 GuiMMAS::set_filter (int idx)
 {
 	MDL_MF_TGTLST	*list;
-	int		i;
 
 	if (!d.filters) return;
 
@@ -300,7 +297,7 @@ GuiMMAS::set_filter (int idx)
 
 	list = d.Vtargets[d.Vfilter].list = d.model->targets (d.filters->list[d.Vfilter].id);
 	if (list) {
-		for (i=0; i<list->cnt; i++) {
+		for (int i=0; i<list->cnt; i++) {
 			d.target->addItem (QString ("Target: ") + QString (list->list[i].name));
 		}
 		if (d.Vtargets[d.Vfilter].curr >= list->cnt) d.Vtargets[d.Vfilter].curr = 0;

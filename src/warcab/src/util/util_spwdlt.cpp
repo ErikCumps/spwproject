@@ -18,6 +18,7 @@ SPWDLT_prep (SPWDLT *dlt, SPWDLT_TYPE type, void *curr, void *base, unsigned int
 {
 	if (!dlt) return;
 
+	// cppcheck-suppress memsetClassFloat
 	memset (dlt, 0, sizeof (*dlt));
 
 	dlt->type = type;

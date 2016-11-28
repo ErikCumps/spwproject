@@ -116,6 +116,10 @@ public:
 	double			width;
 	PBIGP			gp;
 	QRect			crect;
+
+private:
+	PrivateData(const PrivateData&); // these objects are non-copyable
+
 };
 
 PlotBarItem::PrivateData::PrivateData (void)
@@ -407,7 +411,6 @@ void
 PlotBarItem::draw (int r0, int r1) const
 {
 	QwtPlotCanvas	*cnv = NULL;
-	bool		old_nsb;
 	QwtScaleMap	xm, ym;
 
 	if (!plot() || !(cnv = plot()->canvas())) return;
@@ -420,7 +423,7 @@ PlotBarItem::draw (int r0, int r1) const
 		PBIPH	helper (this, r0, r1);
 		cnv->installEventFilter (&helper);
 
-		old_nsb = cnv->testAttribute (Qt::WA_NoSystemBackground);
+		bool old_nsb = cnv->testAttribute (Qt::WA_NoSystemBackground);
 		cnv->setAttribute (Qt::WA_NoSystemBackground, true);
 		cnv->repaint ();
 		cnv->setAttribute (Qt::WA_NoSystemBackground, old_nsb);
@@ -518,9 +521,9 @@ PlotBarItem::updateLegend (QwtLegend *l) const
 int
 PlotBarItem::closestPoint (const QPoint &pos, double *dist) const
 {
-	int		index = -1, i;
+	int		index, i;
 	QwtScaleMap	xm, ym;
-	double		rx, ry, wx, wy, cx, cy, dx, dy;
+	double		rx, ry, wx, wy, dx, dy;
 	double		min;
 
 	index = -1;
@@ -543,7 +546,8 @@ PlotBarItem::closestPoint (const QPoint &pos, double *dist) const
 
 	for (i=0; i<dataSize(); i++)
 	{
-		cx = xm.xTransform (x(i)); cy = ym.xTransform (y(i));
+		double cx = xm.xTransform (x(i));
+		double cy = ym.xTransform (y(i));
 
 		if (d_data->type == Xfy) {
 			if ((pos.x() < ry) || (cy < pos.y())) continue;
@@ -591,7 +595,7 @@ void
 PlotBarItem::drawBars (QPainter *p, const QwtScaleMap &xm, const QwtScaleMap &ym, int r0, int r1) const
 {
 	QColor	c, lc, dc;
-	int	i, x0, y0, xd, yd, xi, yi, xw, yw;
+	int	i, x0, y0, xd, yd, xw, yw;
 	QPoint	tl, tr, bl, br;
 	QRect	bar;
 
@@ -610,7 +614,8 @@ PlotBarItem::drawBars (QPainter *p, const QwtScaleMap &xm, const QwtScaleMap &ym
 	yw = ym.transform (d_data->width) - y0;
 
 	for (i=r0; i<=r1; i++) {
-		xi = xm.transform (x(i)); yi = ym.transform (y(i));
+		int xi = xm.transform (x(i));
+		int yi = ym.transform (y(i));
 
 		if (d_data->type == Xfy) {
 			yi += yd;

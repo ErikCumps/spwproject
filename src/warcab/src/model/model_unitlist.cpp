@@ -83,12 +83,12 @@ ModelUnitlist::clear (void)
 int
 ModelUnitlist::max_width (void)
 {
-	int	max = 0, w;
+	int	max = 0;
 
 	if (!d.data_bir) return (0);
 
 	for (int i=0; i<d.data_cnt; i++) {
-		w = (MDLUL_data (Qt::DisplayRole, i, MDLUL_COLUMN_ID)).toString().length();
+		int w = (MDLUL_data (Qt::DisplayRole, i, MDLUL_COLUMN_ID)).toString().length();
 		if (w > max) max = w;
 	}
 	return (max);

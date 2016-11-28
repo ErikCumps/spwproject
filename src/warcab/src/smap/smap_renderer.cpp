@@ -535,7 +535,7 @@ SmapRenderer::hex2pos (SmapHexPos &pos, int &px, int &py)
 bool
 SmapRenderer::pos2hex (const QPoint &pos, int &px, int &py, int &hx, int &hy)
 {
-	int	x, y, c;
+	int	x, y;
 	bool	complex;
 	int	tx, ty, ta;
 
@@ -555,8 +555,9 @@ SmapRenderer::pos2hex (const QPoint &pos, int &px, int &py, int &hx, int &hy)
 		if (y % 2) { px -= d.vmove_x; }
 		x = px / d.hmove_x;
 	} else {
+		int	c = 0, tx, ty, ta;
+
 		x = px / d.vmove_x;
-		c = 0;
 		c |= ((x % 2) ? 1 : 0);
 		c |= ((y % 2) ? 2 : 0);
 		tx = (px % d.vmove_x) * d.hex_top;

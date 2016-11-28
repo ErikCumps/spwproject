@@ -375,10 +375,10 @@ ModelMMAS::load (SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool isco
 int
 ModelMMAS::max_width (int column)
 {
-	int	max = 0, w;
+	int	max = 0;
 
 	for (int i=0; i<d.row_cnt; i++) {
-		w = (MDLMMAS_data (Qt::DisplayRole, i, column)).toString().length();
+		int w = (MDLMMAS_data (Qt::DisplayRole, i, column)).toString().length();
 		if (w > max) max = w;
 	}
 	return (max);

@@ -139,13 +139,14 @@ RES_shutdown (void)
 static RESITEM *
 find_res_item (unsigned long id)
 {
-	RESITEM		*p = NULL;
-	unsigned long	i;
+	RESITEM	*p = NULL;
 
 	/* Try a smart guess first */
 	if ((id >= 1) && (id <= res_count) && (res_list[id-1].info->id == id)) {
 		p = &(res_list[id-1]);
 	} else {
+		unsigned long	i;
+
 		for (i=0; i<res_count; i++) {
 			if (res_list[i].info->id == id) break;
 		}

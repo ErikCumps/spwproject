@@ -117,7 +117,6 @@ GuiDlgLoadSavegame::accept (void)
 {
 	QDialog::DialogCode	rc;
 	QItemSelectionModel	*selection;
-	int			cnt, i;
 	QModelIndex		index;
 	QVariant		data;
 	QByteArray		file;
@@ -129,9 +128,9 @@ GuiDlgLoadSavegame::accept (void)
 
 	selection = d.view->selectionModel();
 	if (selection->hasSelection ()) {
-		cnt = selection->selectedRows(0).size();
+		int cnt = selection->selectedRows(0).size();
 
-		for (i=0; i<cnt; i++) {
+		for (int i=0; i<cnt; i++) {
 			index = selection->selectedRows(0)[i];
 			DEVASSERT (index.isValid());
 
