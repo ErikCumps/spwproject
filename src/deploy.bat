@@ -52,12 +52,16 @@ echo     DST    : %DST%
 echo.
 
 rem Prepare the target directory
+if exist %DST% rmdir /S /Q %DST% >nul 2>nul
 mkdir %DST% >nul 2>nul
 
 rem Prepare the Qt plugins directory
-set PLUGINS=%DST%\plugins\imageformats
+set PLUGINS=%DST%\qtplugins\imageformats
 mkdir %PLUGINS% >nul 2>nul
 
+rem Prepare the Save directory
+set SAVE=%DST%\save
+mkdir %SAVE% >nul 2>nul
 
 rem A test install is a bit special
 if "%TYPE%" == "test" goto TESTINSTALL
@@ -84,7 +88,7 @@ xcopy /Y spwdecompose\%TYPE%\spwdecompose.exe		%DST%
 xcopy /Y spwreconstruct\%TYPE%\spwreconstruct.exe	%DST%
 xcopy /Y warcab\%TYPE%\warcab.exe			%DST%
 xcopy /Y warcab\resource\warcab.res			%DST%
-rem xcopy /Y drawhexes\%TYPE%\drawhexes.exe		%DST%
+xcopy /Y DATA\demo.warcab				%SAVE%
 
 if "%TYPE%" == "release" goto DONE
 
@@ -95,7 +99,6 @@ xcopy /Y spwreport\%TYPE%\spwreport.pdb			%DST%
 xcopy /Y spwreport\%TYPE%\spwreport.pdb			%DST%
 xcopy /Y spwdecompose\%TYPE%\spwdecompose.pdb		%DST%
 xcopy /Y warcab\warcab.pdb				%DST%
-rem xcopy /Y drawhexes\drawhexes.pdb			%DST%
 
 goto DONE
 
@@ -130,9 +133,8 @@ xcopy /Y spwreconstruct\Debug\spwreconstruct.exe	%DST%
 xcopy /Y warcab\Debug\warcab.exe			%DST%
 xcopy /Y warcab\warcab.pdb				%DST%
 xcopy /Y warcab\resource\warcab.res			%DST%
-rem xcopy /Y drawhexes\Debug\drawhexes.exe		%DST%
 copy /Y warcab\Release\warcab.exe			%DST%\warcab_release.exe
-rem xcopy /Y drawhexes\Release\drawhexes.exe		%DST%\drawhexes_release.exe
+xcopy /Y DATA\demo.warcab				%SAVE%
 
 goto DONE
 
