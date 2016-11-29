@@ -537,7 +537,6 @@ SmapRenderer::pos2hex (const QPoint &pos, int &px, int &py, int &hx, int &hy)
 {
 	int	x, y;
 	bool	complex;
-	int	tx, ty, ta;
 
 	hx = hy = -1;
 	if (!d.hgrid) return (false);
