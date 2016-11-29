@@ -14,7 +14,7 @@
 
 #define	DEFAULT_REVISION	-1
 
-#define	DEFAULT_SNAPPATH	"%s"
+#define	DEFAULT_SNAPPATH	"%s\\save"
 #define	DEFAULT_COMPRESSION	true
 #define	DEFAULT_AUTOLOAD	true
 
