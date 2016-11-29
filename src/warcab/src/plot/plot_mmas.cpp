@@ -238,7 +238,7 @@ PlotMMAS::refresh (void)
 	d.model->column (MDLMMAS_COLUMN_SPR, d.set.spr.data, d.set.count);
 	d.model->column (MDLMMAS_COLUMN_COUNT, d.set.cnt.data, d.set.count);
 
-	enable_curve (d.set.cnt.curve, d.model->filtered());
+	//enable_curve (d.set.cnt.curve, d.model->filtered());
 
 	update();
 	replot();
