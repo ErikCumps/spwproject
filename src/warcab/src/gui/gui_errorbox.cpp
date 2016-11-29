@@ -28,7 +28,7 @@
 
 #else	/* _DEBUG */
 
-#define	BOX_WIDTH	400
+#define	BOX_WIDTH	700
 #define	BOX_HEIGHT	300
 
 #endif	/* !_DEBUG */

@@ -76,7 +76,7 @@ GuiActions::GuiActions (void)
 
 	/* Help actions */
 	ACTION (help_reset_gui, "Reset GUI", 0, RID_XPM_TEST, true);
-	ACTION (help_about, "About Warcab...", 0, RID_XPM_TEST, true);
+	ACTION (help_about, "About Warcab...", 0, RID_GUI_ICON_INFO, true);
 
 	/* Set initial enabled/disabled states */
 	enable_dossier_actions (false);

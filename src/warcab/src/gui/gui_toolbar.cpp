@@ -32,7 +32,7 @@ GuiToolbar::GuiToolbar (void)
 	d.dossier->addAction (GUI_ACTIONS->p.dossier_close);
 	d.dossier->addAction (GUI_ACTIONS->p.dossier_save);
 	d.dossier->addAction (GUI_ACTIONS->p.dossier_saveAs);
-	d.dossier->addAction (GUI_ACTIONS->p.app_prefs);
+	d.dossier->addAction (GUI_ACTIONS->p.dossier_edit);
 
 	/* Create file tool bar */
 	TOOLBAR (file, "File Toolbar");
@@ -41,6 +41,7 @@ GuiToolbar::GuiToolbar (void)
 #if	ALLOW_SNAPSHOTS_LOAD
 	d.file->addAction (GUI_ACTIONS->p.file_add_snap);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
+	d.file->addAction (GUI_ACTIONS->p.app_prefs);
 
 	/* Create navigation tool bar */
 	TOOLBAR (nav, "Navigation Toolbar");

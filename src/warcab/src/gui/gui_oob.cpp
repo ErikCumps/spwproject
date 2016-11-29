@@ -163,8 +163,8 @@ GuiOob::set_parent (GuiRptTrn *parent, bool player, bool core)
 	d.pflag	 = player;
 	d.cflag	 = core;
 
-	d.prevcmp->setText ("This turn only?");
-	d.prevcmp->setHidden (false);
+	d.prevcmp->setText ("-unused-");
+	d.prevcmp->setHidden (true);
 
 	d.hdr_oob->reparented();
 	d.bdy_oob->reparented();
