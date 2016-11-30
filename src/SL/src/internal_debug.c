@@ -16,6 +16,8 @@
 static SL_LOCK	*lock = NULL;
 static FILE	*logf = NULL;
 
+#if	_DEBUG
+
 void
 IDBG_init (void)
 {
@@ -49,8 +51,6 @@ IDBG_shutdown (void)
 	SL_LOCK_free (&lock);
 	lock = NULL;
 }
-
-#if	_DEBUG
 
 void
 IDBG_log (const char *file, unsigned long line, const char *func, const char *fmt, ...)

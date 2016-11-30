@@ -11,11 +11,11 @@
 
 #include "stdafx.h"
 
-extern void	IDBG_init	(void);
-extern void	IDBG_shutdown	(void);
 
 #if	_DEBUG
 
+extern void	IDBG_init	(void);
+extern void	IDBG_shutdown	(void);
 extern void	IDBG_log	(const char *file, unsigned long line, const char *func, const char *fmt, ...);
 
 #define	IDBGLOG0(_fmt)					IDBG_log (__FILE__, __LINE__, __FUNCTION__, _fmt)
@@ -27,7 +27,10 @@ extern void	IDBG_log	(const char *file, unsigned long line, const char *func, co
 #define	IDBGLOG6(_fmt,_a1,_a2,_a3,_a4,_a5,_a6)		IDBG_log (__FILE__, __LINE__, __FUNCTION__, _fmt, _a1, _a2, _a3, _a4, _a5, _a6)
 #define	IDBGLOG7(_fmt,_a1,_a2,_a3,_a4,_a5,_a6,_a7)	IDBG_log (__FILE__, __LINE__, __FUNCTION__, _fmt, _a1, _a2, _a3, _a4, _a5, _a6, _a7)
 
-#else	/* _DEBUG */
+#else	/* !_DEBUG */
+
+#define	IDBG_init()
+#define	IDBG_shutdown()
 
 #define	IDBGLOG0(_fmt)
 #define	IDBGLOG1(_fmt,_a1)
