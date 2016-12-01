@@ -6,6 +6,7 @@
  * License: GPL v2
  */
 
+#include "resource.h"
 #include "../common.h"
 #include "gui_errorbox.h"
 
@@ -59,7 +60,7 @@ GuiErrorbox::GuiErrorbox (SL_ERROR_REQUEST *rc, SL_ERROR_FATAL fc,  char *msg, c
 	snprintf (d.extra_label, sizeof (d.extra_label) - 1, "%s information:", d.extra_type);
 
 	/* Create dialog resources */
-	d.dlg_icon = new QPixmap (windows_icon_genappl_xpm);
+	d.dlg_icon = RES_pixmap (RID_MAIN_ICON);
 	switch (fc) {
 		case SL_ERR_FATAL_WARN:
 			d.fc_icon = new QPixmap (windows_icon_warning_xpm);
@@ -200,7 +201,6 @@ GuiErrorbox::~GuiErrorbox (void)
 	if (!d.but_ok->parentWidget()) delete (d.but_ok);
 	if (!d.but_retry->parentWidget()) delete (d.but_retry);
 	if (!d.but_ignore->parentWidget()) delete (d.but_ignore);
-	if (d.dlg_icon) delete (d.dlg_icon);
 	if (d.fc_icon) delete (d.fc_icon);
 	if (d.dlg_font) delete (d.dlg_font);
 	if (d.msg_font) delete (d.msg_font);

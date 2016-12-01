@@ -6,6 +6,7 @@
  * License: GPL v2
  */
 
+#include "resource.h"
 #include "gui_dlg_load_savegame.h"
 
 #define	BOX_WIDTH	600
@@ -33,7 +34,7 @@ GuiDlgLoadSavegame::GuiDlgLoadSavegame (char *path, SPWAW_SAVELIST *ignore)
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Load Savegame");
-	setWindowIcon (*RES_PIXMAP_NONE);
+	setWindowIcon (*(RES_pixmap (RID_MAIN_ICON)));
 
 	/* Set dialog font */
 	GUINEW (d.dlgf, QFont (font()), ERR_GUI_DLG_LOAD_SAVEGAME_INIT_FAILED, "font");

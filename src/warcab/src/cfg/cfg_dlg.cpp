@@ -6,6 +6,7 @@
  * License: GPL v2
  */
 
+#include "resource.h"
 #include "../common.h"
 #include "res/res.h"
 #include "cfg_dlg.h"
@@ -48,7 +49,7 @@ CfgDlg::CfgDlg (void)
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Warcab preferences");
-	d.dlgi = RES_PIXMAP_NONE;
+	d.dlgi = RES_pixmap (RID_MAIN_ICON);
 	setWindowIcon (*d.dlgi);
 
 	/* Set dialog font */
