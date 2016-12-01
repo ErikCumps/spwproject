@@ -234,7 +234,7 @@ GuiRoster::update (void)
 			break;
 	}
 
-	skip =  !d.reftrack.changed (d.pdata);
+	skip =  !d.reftrack.changed (item);
 	skip &= !GUIVALCHANGED (Vdltsort);
 	skip &= !GUIVALCHANGED (Vprevcmp);
 	skip &= !GUIVALCHANGED (Vautosort);
