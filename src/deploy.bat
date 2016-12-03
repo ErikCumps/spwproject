@@ -44,8 +44,8 @@ if "%TYPE%" == "debug"		set QWTDLL=d5
 
 rem Determine the deployment directory
 if "%TYPE%" == "test"		set DST=..\_TEST_\bin
-if "%TYPE%" == "debug"		set DST=..\deploy\Debug
-if "%TYPE%" == "release"	set DST=..\deploy\Release
+if "%TYPE%" == "debug"		set DST=..\deploy\Debug\warcab
+if "%TYPE%" == "release"	set DST=..\deploy\Release\warcab
 
 echo     TYPE   : %TYPE%
 echo     DST    : %DST%
