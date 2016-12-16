@@ -318,16 +318,34 @@ isValidDate (SPWAW_DATE *date)
 
 	if (!date) return (false);
 
+	// Early exit when year/month/day/hour/minute are not set
 	if ((date->year == 1900) && (date->month == 0) && (date->day == 0) && (date->hour == 0) && (date->minute == 0)) return (true);
 
+	// The year is set: determine the leap days
 	isleap = (((date->year % 4) == 0) && (((date->year % 100) != 0) || ((date->year % 400) == 0)));
 	if (isleap) feb_days = 29;
 
+	// Early exit if year is correct and month/day/hour/minute are not set
+	if ((date->month == 0) && (date->day == 0) && (date->hour == 0) && (date->minute == 0)) return (true);
+
+	// Check validity of month
 	if ((unsigned int)(date->month - 1) > 11) return (false);
+
+	// Early exit if year/month are correct and day/hour/minute are not set
+	if ((date->day == 0) && (date->hour == 0) && (date->minute == 0)) return (true);
+
+	// Check validity of day
 	if ((unsigned int)(date->day - 1) > dec_month_days[date->month-1]) return (false);
 	if ((date->month == 2) && (date->day > feb_days)) return (false);
+
+	// Early exit if year/month/day are correct and hour/minute are not set
+	if ((date->hour == 0) && (date->minute == 0)) return (true);
+
+	// Check validity of hour and minute
 	if ((unsigned int)date->hour > 23) return (false);
 	if ((unsigned int)date->minute > 59) return (false);
+
+	// if we get here, the date is valid
 	return (true);
 }
 
