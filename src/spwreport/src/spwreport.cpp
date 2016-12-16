@@ -19,7 +19,7 @@ usage (char *app)
 	printf ("       DIR     path to savegame dir\n");
 	printf ("       INDEX   index of savegame to generate report for\n");
 	printf ("       BASE    basename for report files\n");
-	printf ("       TYPE    optional type of report to generate (defaultd to ALL reports)\n");
+	printf ("       TYPE    optional type of report to generate (defaults to ALL reports)\n");
 	printf ("\n");
 	printf ("Supported report types:\n");
 	printf ("    raw         raw savegame content reports\n");
