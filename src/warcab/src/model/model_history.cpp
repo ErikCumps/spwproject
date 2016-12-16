@@ -311,9 +311,6 @@ ModelHistory::clear (void)
 void
 ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int unit)
 {
-	/* Early bailout if attempting to reload same data */
-	if ((d.dptr.d == dossier) && (d.pvcmp == prevcmp) && (d.uidx == unit)) return;
-
 	d.dptr.d	= dossier;
 	d.campaign	= true;
 	d.pflag		= true;
@@ -328,9 +325,6 @@ ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int unit)
 void
 ModelHistory::load (SPWAW_BATTLE *battle, bool player, bool iscore, bool prevcmp, int unit)
 {
-	/* Early bailout if attempting to reload same data */
-	if ((d.dptr.b == battle) && (d.pflag == player) && (d.cflag == iscore) && (d.pvcmp == prevcmp) && (d.uidx == unit)) return;
-
 	d.dptr.b	= battle;
 	d.campaign	= false;
 	d.pflag		= player;

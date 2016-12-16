@@ -341,9 +341,6 @@ ModelMMAS::clear (void)
 void
 ModelMMAS::load (SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool prevcmp)
 {
-	/* Early bailout if attempting to reload same data */
-	if ((d.dptr.d == dossier) && (d.tflag == type) && (d.pflag == player) && (d.pvcmp == prevcmp)) return;
-
 	d.dptr.d	= dossier;
 	d.tflag		= type;
 	d.campaign	= true;
@@ -358,9 +355,6 @@ ModelMMAS::load (SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool pr
 void
 ModelMMAS::load (SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool iscore, bool prevcmp)
 {
-	/* Early bailout if attempting to reload same data */
-	if ((d.dptr.b == battle) && (d.tflag == type) && (d.pflag == player) && (d.cflag == iscore) && (d.pvcmp == prevcmp)) return;
-
 	d.dptr.b	= battle;
 	d.tflag		= type;
 	d.campaign	= false;
