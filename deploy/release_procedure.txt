@@ -1,0 +1,34 @@
+RELEASE PROCEDURE
+-----------------
+
+* determine release number
+	ex: 0.6.1
+	
+* update src/warcab/src/main.cpp
+* update src/warcab/doc/Doxyfile
+* update src/data/README.txt
+* update src/data/CHANGES
+
+* perform full clean build
+
+* create deploy\releasearchive\{VERSION}
+
+* run deploy release
+* create deploy\releasearchive\{VERSION}\warcab_{VERSION}.zip
+	from deploy\release
+
+* run deploy debug
+* create deploy\releasearchive\{VERSION}\warcab_{VERSION}_debug.zip
+	from deploy\debug
+
+* create deploy\releasereports\{VERSION}
+
+* run filealyzer on deploy\releasearchive\{VERSION}\warcab_{VERSION}.zip
+	Report -> Save report to file -> HTML page
+	as releasereport_warcab_{VERSION}.zip.html
+* Clean up and copy to deploy\releasereports\{VERSION}
+
+* run filealyzer on deploy\releasearchive\{VERSION}\warcab_{VERSION}_debug.zip
+	Report -> Save report to file -> HTML page
+	as releasereport_warcab_{VERSION}_debug.zip.html
+* Clean up and copy to deploy\releasereports\{VERSION}

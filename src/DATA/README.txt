@@ -1,4 +1,4 @@
-Welcome to the SPWaW war cabinet, release 0.6.
+Welcome to the SPWaW war cabinet, release 0.6.1.
 
 Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
 
