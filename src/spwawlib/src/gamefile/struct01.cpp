@@ -187,6 +187,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 	USHORT	u, c;
 	USHORT	lf, lsf;
 	char	name[17];
+	bool	crew_seen = false;
 
 	ul.cnt = 0;
 
@@ -203,6 +204,12 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 		if ((data[i].crew == SPWAW_BADIDX) || (data[i].crew > i))
 		{
 			log ("unitcount: [%3.3u] UNIT: F<%3.3u,%3.3u> C<%5.5u> L<%5.5u> (%16.16s) ", i, data[i].formID, data[i].minform, data[i].crew, data[i].leader, name);
+
+			// There can be no valid units after a block of valid crews?
+			if (crew_seen) {
+				log_nots ("SKIPPED: UNIT_AFTER_CREW\n");
+				break;
+			}
 
 			// A unit must have a valid formation ID,
 			// the formation ID must be the same or higher than the last formation ID,
@@ -248,6 +255,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 
 			log_nots ("OK: #%u\n", player);
 			ul.list[ul.cnt++] = i;
+			crew_seen = true;
 			continue;
 		}
 		log_nots ("SKIPPED!\n");
