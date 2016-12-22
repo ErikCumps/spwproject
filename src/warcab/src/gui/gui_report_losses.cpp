@@ -257,8 +257,6 @@ GuiRptLoss::list_killed (char *buf, unsigned int size, int &icnt)
 
 	icnt = 0;
 
-	if (!d.pcurr) return;
-
 	str.clear();
 
 	d.model->set_dltsort (false);
@@ -272,20 +270,12 @@ GuiRptLoss::list_killed (char *buf, unsigned int size, int &icnt)
 		tstr.clear();
 		for (i=0; i<cnt; i++) {
 			if (SPWDLT_int (data[i].dlt) == SPWAW_UREADY) { stop = true; break; }
-//FIXME			if (!SPWDLT_check (data[i].dlt)) continue;
-			//if (!data[i].uir->snap->data.lost) continue;
 			if (!data[i].uir->snap->attr.gen.losses) continue;
 
 			lostunit = !data[i].uir->snap->data.alive;
 			lostcrew = data[i].uir->snap->data.crew
 				   && (!data[i].uir->snap->data.aunit.up || !data[i].uir->snap->data.aunit.up->data.alive);
 
-			//tstr.printf ("%3.3s %s %s %s (%s%s%s)<br>",
-			//	data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
-			//	data[i].uir->snap->strings.rank, data[i].uir->snap->data.name,
-			//	lostunit?"unit":"",
-			//	(lostunit && lostcrew) ? " and " : "",
-			//	lostcrew?"crew":"");
 			tstr.printf ("%3.3s %s, %s (%s%s%s)<br>",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
 				data[i].uir->snap->strings.rank,

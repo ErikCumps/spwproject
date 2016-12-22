@@ -1117,7 +1117,6 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 
 		up->attr.gen.ready = calc_act_readiness (up);
 		up->attr.gen.kills = up->data.kills;
-		//if (up->data.lost) up->attr.gen.losses = 1;
 		if (!up->data.alive) up->attr.gen.losses = 1;
 
 		/* Also allocate losses for crew members that were not recorded!
@@ -1131,7 +1130,6 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 		up = &(ptr->crews.list[i]);
 
 		//up->data.aunit.up->attr.gen.kills += up->data.kills;
-		//if (up->data.lost) up->data.aunit.up->attr.gen.losses += 1;
 		if (!up->data.alive) up->data.aunit.up->attr.gen.losses++;
 	}
 
@@ -1208,16 +1206,12 @@ snapint_oob_stats (SPWAW_SNAP_OOB_FORCE *ptr)
 	for (i=0; i<ptr->units.cnt; i++) {
 		SPWAW_SNAP_OOB_UEL *up = &(ptr->units.list[i]);
 
-		//if (!up->data.lost) ptr->stats.ustats.cnt_left++;
 		if (up->data.alive) ptr->stats.ustats.cnt_left++;
 
 		ptr->stats.ustats.rnk_cnt[up->data.rank]++;
 		ptr->stats.ustats.exp_cnt[up->data.eclass]++;
 		ptr->stats.ustats.cls_cnt[up->data.uclass]++;
 
-		//if (up->data.lost) ptr->stats.ustats.rnk_loss[up->data.rank]++;
-		//if (up->data.lost) ptr->stats.ustats.exp_loss[up->data.eclass]++;
-		//if (up->data.lost) ptr->stats.ustats.cls_loss[up->data.uclass]++;
 		if (up->attr.gen.losses) {
 			if (!up->data.alive) ptr->stats.ustats.rnk_loss[up->data.rank]   += up->attr.gen.losses;
 			if (!up->data.alive) ptr->stats.ustats.exp_loss[up->data.eclass] += up->attr.gen.losses;
