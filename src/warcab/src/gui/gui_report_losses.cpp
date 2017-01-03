@@ -350,13 +350,7 @@ GuiRptLoss::list_abandoned (char *buf, unsigned int size, int &icnt)
 		tstr.clear();
 		for (i=0; i<cnt; i++) {
 			if (SPWDLT_int (data[i].dlt) == SPWAW_ANONE) { stop = true; break; }
-//FIXME			if (!SPWDLT_check (data[i].dlt)) continue;
-			//if (data[i].uir->snap->data.lost) continue;
-			//if (!data[i].uir->snap->data.alive) continue;
 
-			//tstr.printf ("%3.3s %s %s %s<br>",
-			//	data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
-			//	data[i].uir->snap->strings.rank, data[i].uir->snap->data.name);
 			tstr.printf ("%3.3s %s, %s<br>",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
 				data[i].uir->snap->strings.rank);
@@ -482,10 +476,6 @@ GuiRptLoss::list_damaged (char *buf, unsigned int size, int &icnt)
 			if (data[i].uir->snap->data.aband != SPWAW_ANONE) continue;
 			if (!data[i].uir->snap->data.alive) continue;
 
-			//tstr.printf ("%3.3s %s %s %s (%d)<br>",
-			//	data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
-			//	data[i].uir->snap->strings.rank, data[i].uir->snap->data.name,
-			//	SPWDLT_int (data[i].dlt));
 			tstr.printf ("%3.3s %s, %s (%d)<br>",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
 				data[i].uir->snap->strings.rank,
