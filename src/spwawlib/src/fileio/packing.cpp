@@ -313,8 +313,8 @@ gamedata_load_all (GAMEFILE *file, GAMEDATA *dst)
 
 	if (bread (file->dat_fd, (char *)&(dst->sec00), sizeof (dst->sec00), false)) {
 		log ("# gamedata_load_all: START<");
-		for (int i=0; i<sizeof (dst->sec00); i++) log_nots ("%c", dst->sec00.u.raw[i]);
-		log_nots (">\n");
+		for (int i=0; i<sizeof (dst->sec00); i++) log ("%c", dst->sec00.u.raw[i]);
+		log (">\n");
 
 		while (bread (file->dat_fd, (char *)&block, sizeof (block), true)) {
 			log ("### gamedata_load_all: BLOCK #%lu <size=%lu, flag=0x%8.8x>\n", block.section, block.size, block.flag);

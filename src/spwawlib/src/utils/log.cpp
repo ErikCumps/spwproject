@@ -18,29 +18,17 @@ static bool		logtime = true;
 static LARGE_INTEGER	lastPF = {0, 0};
 static LARGE_INTEGER	lastPC = {0, 0};
 
+#define        SEPARATOR       "----------------------------------------------------------------------"
+
 void
 log_init (char *log, bool append)
 {
 	log_shutdown ();
 	logfile = fopen (log, append?"a":"w");
 
+	if (logfile) fprintf (logfile, "%s\n", SEPARATOR);
+
 	if (getenv ("SPWAWLIB_DISABLE_LOGTIME") != NULL) logtime = false;
-}
-
-static void
-log_core (char *hdr, char *fmt, va_list AP)
-{
-	char	buf[1024];
-
-	memset (buf, 0, sizeof (buf));
-	vsnprintf (buf, sizeof (buf) - 1, fmt, AP);
-
-	if (hdr)
-		fprintf (logfile, "%s%s", hdr, buf);
-	else
-		fprintf (logfile, "%s", buf);
-
-	fflush (logfile);
 }
 
 void
@@ -49,12 +37,16 @@ log (char *fmt, ...)
 	LARGE_INTEGER	pc_now, pc_dlt;
 	SYSTEMTIME	now;
 	char		hdr[64];
+	char		buf[4096];
 	va_list		AP;
+	char		*p, *q;
+	static bool	nots = false;
 
 	if (!logfile) return;
-
-	memset (hdr, 0, sizeof (hdr));
+	
 	if (logtime) {
+		memset (hdr, 0, sizeof (hdr));
+
 		QueryPerformanceCounter (&pc_now);
 		if (!lastPF.QuadPart) {
 			QueryPerformanceFrequency (&lastPF);
@@ -72,20 +64,30 @@ log (char *fmt, ...)
 	}
 
 	va_start (AP, fmt);
-	log_core (hdr, fmt, AP);
+	memset (buf, 0, sizeof(buf));
+	vsnprintf (buf, sizeof(buf) - 1, fmt, AP);
 	va_end (AP);
-}
 
-void
-log_nots (char *fmt, ...)
-{
-	va_list		AP;
+	if (logtime) {
+		p = buf;
 
-	if (!logfile) return;
+		while (p) {
+			q = strchr (p, '\n');
+			if (q) *q++ = '\0';
+			if (nots) {
+				fprintf (logfile, "%s%s", p, q ? "\n" : "");
+			} else {
+				fprintf (logfile, "%s%s%s", hdr, p, q ? "\n" : "");
+			}
+			nots = !q;
+			if (q && *q == '\0') q = NULL;
+			p = q;
+		}
+	} else {
+		fprintf (logfile, "%s", buf);
+	}
 
-	va_start (AP, fmt);
-	log_core (NULL, fmt, AP);
-	va_end (AP);
+	fflush (logfile);
 }
 
 void
@@ -106,10 +108,6 @@ log_init (char *log, bool append)
 
 void
 log (char *fmt, ...)
-{ UNREFERENCED_PARAMETER(fmt); }
-
-void
-log_nots (char *fmt, ...)
 { UNREFERENCED_PARAMETER(fmt); }
 
 void

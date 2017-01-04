@@ -130,7 +130,7 @@ unitcount_oldmethod (UNIT *data, SPWAW_SNAP_OOB_FRAW *fp1, UNIT_LIST &ul1, SPWAW
 				//if (!checkformation (data[i].formID, data[i].minform, lf1, lsf1)) {
 				//	log ("SKIPPED: invalid formation IDs\n");
 				//} else {
-					log_nots ("OK: #1\n");
+					log ("OK: #1\n");
 					ul1.list[ul1.cnt++] = i;
 					lf1 = data[i].formID;
 				//}
@@ -141,7 +141,7 @@ unitcount_oldmethod (UNIT *data, SPWAW_SNAP_OOB_FRAW *fp1, UNIT_LIST &ul1, SPWAW
 				//if (!checkformation (data[i].formID, data[i].minform, lf2, lsf2)) {
 				//	log ("SKIPPED: invalid formation IDs\n");
 				//} else {
-					log_nots ("OK: #2\n");
+					log ("OK: #2\n");
 					ul2.list[ul2.cnt++] = i;
 					lf2 = data[i].formID;
 				//}
@@ -156,26 +156,26 @@ unitcount_oldmethod (UNIT *data, SPWAW_SNAP_OOB_FRAW *fp1, UNIT_LIST &ul1, SPWAW
 
 			u = data[i].crew;
 			if (((isp1 = checkunit (u, ul1)) == 0) && !checkunit (u, ul2)) {
-				log_nots ("SKIPPED: invalid crew parent unit\n");
+				log ("SKIPPED: invalid crew parent unit\n");
 				continue;
 			}
 
 			c = data[u].crew;
 			if (c != i) {
-				log_nots ("SKIPPED: invalid crew <> parent unit linkage\n");
+				log ("SKIPPED: invalid crew <> parent unit linkage\n");
 				continue;
 			}
 
 			if (isp1) {
-				log_nots ("OK: #1\n");
+				log ("OK: #1\n");
 				ul1.list[ul1.cnt++] = i;
 			} else {
-				log_nots ("OK: #2\n");
+				log ("OK: #2\n");
 				ul2.list[ul2.cnt++] = i;
 			}
 			continue;
 		}
-		log_nots ("SKIPPED!\n");
+		log ("SKIPPED!\n");
 	}
 	log ("unitcount_oldmethod: ul1.cnt=%3.3u, ul2.cnt=%3.3u\n", ul1.cnt, ul2.cnt);
 }
@@ -207,7 +207,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 
 			// There can be no valid units after a block of valid crews?
 			if (crew_seen) {
-				log_nots ("SKIPPED: UNIT_AFTER_CREW\n");
+				log ("SKIPPED: UNIT_AFTER_CREW\n");
 				break;
 			}
 
@@ -229,7 +229,7 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 				//	log ("SKIPPED: invalid formation IDs\n");
 				//	break;
 				//} else {
-					log_nots ("OK: #%u\n", player);
+					log ("OK: #%u\n", player);
 					ul.list[ul.cnt++] = i;
 					lf = data[i].formID;
 				//}
@@ -243,22 +243,22 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, SPWAW_SNAP_OOB_FR
 
 			u = data[i].crew;
 			if (!checkunit (u, ul)) {
-				log_nots ("SKIPPED: invalid crew parent unit\n");
+				log ("SKIPPED: invalid crew parent unit\n");
 				break;
 			}
 
 			c = data[u].crew;
 			if (c != i) {
-				log_nots ("SKIPPED: invalid crew <> parent unit linkage\n");
+				log ("SKIPPED: invalid crew <> parent unit linkage\n");
 				break;
 			}
 
-			log_nots ("OK: #%u\n", player);
+			log ("OK: #%u\n", player);
 			ul.list[ul.cnt++] = i;
 			crew_seen = true;
 			continue;
 		}
-		log_nots ("SKIPPED!\n");
+		log ("SKIPPED!\n");
 		//break;
 	}
 	log ("unitcount: ul.cnt=%3.3u\n", ul.cnt);
