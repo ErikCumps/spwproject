@@ -13,31 +13,42 @@
 
 // Checks unit record ID
 bool
-check_unitid (DWORD urid, SPWAW_SNAP_OOB_URAW *ptr)
+check_unitid (DWORD urid, SPWAW_SNAP_OOB_URAW *ptr, SPWAW_SNAP_OOB_UELRAW **udata)
 {
 	DWORD	i;
+
+	if (udata) *udata = NULL;
 
 	if (!ptr) return (false);
 
 	for (i=0; i<ptr->cnt; i++)
-		if (urid == ptr->raw[i].RID) return (true);
+		if (urid == ptr->raw[i].RID) {
+			if (udata) *udata = &(ptr->raw[i]);
+			return (true);
+		}
 
 	return (false);
 }
 
 // Checks formation record ID
 bool
-check_formationid (DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, BYTE *fid)
+check_formationid (DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, BYTE *fid, SPWAW_SNAP_OOB_FELRAW **fdata)
 {
 	DWORD	i;
+
+	if (fid) *fid = 0;
+	if (fdata) *fdata = NULL;
 
 	if (!ptr) return (false);
 
 	for (i=0; i<ptr->cnt; i++)
+	{
 		if (frid == ptr->raw[i].RID) {
 			if (fid) *fid = ptr->raw[i].FID;
+			if (fdata) *fdata = &(ptr->raw[i]);
 			return (true);
 		}
+	}
 
 	return (false);
 }
