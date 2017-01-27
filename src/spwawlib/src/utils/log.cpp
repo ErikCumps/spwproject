@@ -18,7 +18,7 @@ static bool		logtime = true;
 static LARGE_INTEGER	lastPF = {0, 0};
 static LARGE_INTEGER	lastPC = {0, 0};
 
-#define        SEPARATOR       "----------------------------------------------------------------------"
+#define	SEPARATOR	"----------------------------------------------------------------------"
 
 void
 log_init (char *log, bool append)
@@ -43,7 +43,7 @@ log (char *fmt, ...)
 	static bool	nots = false;
 
 	if (!logfile) return;
-	
+
 	if (logtime) {
 		memset (hdr, 0, sizeof (hdr));
 
