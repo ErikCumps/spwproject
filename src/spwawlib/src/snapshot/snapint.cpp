@@ -29,7 +29,7 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	dst = &(ptr->game.battle.data);
 	str = &(ptr->game.battle.strings);
 
-	dst->start.year  = raw->year + 1900;
+	dst->start.year  = raw->year + SPWAW_STARTYEAR;
 	dst->start.month = raw->month;
 	dst->start.day   = raw->day;
 	dst->start.hour  = raw->hour;
@@ -104,11 +104,11 @@ snapint_game_campaign (SPWAW_SNAPSHOT *ptr)
 	str = &(ptr->game.campaign.strings);
 
 	dst->campaign    = raw->campaign;
-	dst->start.year  = raw->start_year + 1900;
+	dst->start.year  = raw->start_year + SPWAW_STARTYEAR;
 	dst->start.month = (char)(raw->start_month);
 	dst->start.day   = 0;
 	dst->start.hour  = dst->start.minute = 0;
-	dst->end.year    = raw->end_year + 1900;
+	dst->end.year    = raw->end_year + SPWAW_STARTYEAR;
 	dst->end.month   = (char)(raw->end_month);
 	dst->end.day     = 0;
 	dst->end.hour    = dst->end.minute = 0;

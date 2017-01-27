@@ -15,6 +15,8 @@
 #define	SPWAW_MINSPERTURN	5	/* 5 minutes */	//TODO: move somewhere else?
 #define	SPWAW_HEXSIZE		50	/* 50 meters */	//TODO: move somewhere else?
 
+#define	SPWAW_STARTYEAR		1900
+
 #define	SPWAW_AZSCMTTITLE	200
 #define	SPWAW_AZSCMTMAPSRC	50
 #define	SPWAW_AZSLOCATION	112

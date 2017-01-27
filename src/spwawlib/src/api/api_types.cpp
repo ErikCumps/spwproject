@@ -20,6 +20,16 @@ static bool	isValidDate	(SPWAW_DATE *date);
 static bool	isValidStamp	(SPWAW_TIMESTAMP *stamp);
 static bool	isValidPeriod	(SPWAW_PERIOD *period);
 
+SPWAWLIB_API void
+SPWAW_set_date (SPWAW_DATE &date, short year, char month, char day, char hour, char minute)
+{
+	memset (&date, 0, sizeof(date));
+	date.year   = year;
+	date.month  = month;
+	date.day    = day;
+	date.hour   = hour;
+	date.minute = minute;
+}
 
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_date2stamp (SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp)
@@ -319,7 +329,7 @@ isValidDate (SPWAW_DATE *date)
 	if (!date) return (false);
 
 	// Early exit when year/month/day/hour/minute are not set
-	if ((date->year == 1900) && (date->month == 0) && (date->day == 0) && (date->hour == 0) && (date->minute == 0)) return (true);
+	if ((date->year == SPWAW_STARTYEAR) && (date->month == 0) && (date->day == 0) && (date->hour == 0) && (date->minute == 0)) return (true);
 
 	// The year is set: determine the leap days
 	isleap = (((date->year % 4) == 0) && (((date->year % 100) != 0) || ((date->year % 400) == 0)));

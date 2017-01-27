@@ -260,11 +260,12 @@ setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedat
 	snprintf (info->file, sizeof (info->file) - 1, "%s", q);
 	info->date = filedate;
 
-	memset (&base, 0, sizeof (base));
-	base.year  = gamedata->u.d.data.Ygame + 1900;
-	base.month = gamedata->u.d.data.Mgame;
-	base.day   = gamedata->u.d.data.Dgame;
-	base.hour  = gamedata->u.d.data.Hgame;
+	SPWAW_set_date (base,
+		gamedata->u.d.data.Ygame + SPWAW_STARTYEAR,
+		gamedata->u.d.data.Mgame,
+		gamedata->u.d.data.Dgame,
+		gamedata->u.d.data.Hgame
+	);
 	add.stamp  = gamedata->u.d.data.turn * SPWAW_MINSPERTURN;
 	SPWAW_date_add (&base, &add, &date);
 	snprintf (info->stamp, sizeof (info->stamp) - 1, "%4.4u/%02.2u/%02.2u %02.2u:%02.2u, turn %u",

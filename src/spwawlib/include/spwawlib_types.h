@@ -37,6 +37,8 @@ typedef struct s_SPWAW_PERIOD {
 	char		minutes;
 } SPWAW_PERIOD;
 
+extern SPWAWLIB_API void	SPWAW_set_date		(SPWAW_DATE &date, short year, char month=0, char day=0, char hour=0, char minute=0);
+
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2stamp	(SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_stamp2date	(SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2str		(SPWAW_DATE *date, char *buf, int len);

@@ -233,9 +233,9 @@ load_oob_data (SPWOOB_DATA *dst)
 			dst->udata[i].nation		= raw->u.nation[i];
 			dst->udata[i].type		= SPWOOB_UTYPE_xlt (raw->u.uclass[i]);
 			dst->udata[i].uclass		= utype2class (dst->udata[i].type);
-			dst->udata[i].start_yr		= raw->u.start_yr[i] + 1900;
+			dst->udata[i].start_yr		= raw->u.start_yr[i] + SPWAW_STARTYEAR;
 			dst->udata[i].start_mo		= raw->u.start_mo[i];
-			dst->udata[i].end_yr		= raw->u.end_yr[i] + 1900;
+			dst->udata[i].end_yr		= raw->u.end_yr[i] + SPWAW_STARTYEAR;
 			dst->udata[i].end_mo		= raw->u.end_mo[i];
 			dst->udata[i].size		= raw->u.size[i];
 			dst->udata[i].crew		= raw->u.crew[i];
@@ -293,9 +293,9 @@ load_oob_data (SPWOOB_DATA *dst)
 			dst->fdata[i].stat		= SPWOOB_FSTAT_xlt (raw->f.special[i]);
 			dst->fdata[i].type		= SPWOOB_FTYPE_xlt (raw->f.type[i]);
 			dst->fdata[i].pscr		= SPWOOB_FPSCR_xlt (raw->f.purchscrn[i]);
-			dst->fdata[i].start_yr		= raw->f.start_yr[i] + 1900;
+			dst->fdata[i].start_yr		= raw->f.start_yr[i] + SPWAW_STARTYEAR;
 			dst->fdata[i].start_mo		= raw->f.start_mo[i];
-			dst->fdata[i].end_yr		= raw->f.end_yr[i] + 1900;
+			dst->fdata[i].end_yr		= raw->f.end_yr[i] + SPWAW_STARTYEAR;
 			dst->fdata[i].unit_ids[0]	= raw->f.urid[i].dat[0];
 			dst->fdata[i].unit_ids[1]	= raw->f.urid[i].dat[1];
 			dst->fdata[i].unit_ids[2]	= raw->f.urid[i].dat[2];
