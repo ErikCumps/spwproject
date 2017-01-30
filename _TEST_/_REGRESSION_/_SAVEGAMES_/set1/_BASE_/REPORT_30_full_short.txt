@@ -51,47 +51,47 @@ Short German forces order of battle report:
 
 Leader    : A0 GE Kommandant (Col Reichmann)
 Formations: 32
-Units     : 121
-Crews     : 4
+Units     : 112
+Crews     : 2
 
-Total kills        : 346
-Total losses       : 8
-Total readiness    :  93.51 %
+Total kills        : 333
+Total losses       : 4
+Total readiness    :  94.83 %
 Unit experience    : max: 97 (105: Z0: SdKfz 250 Beob (1Lt Bachman))
 Unit experience    : min: 55 ( 73: P2: sIG33 auf Pz-I (Sgt Tost))
-Unit experience    : avg: 74.20
+Unit experience    : avg: 74.80
 Unit experience    : spr: 42
-Unit experience    : tot: 8978
-Unit experience    : cnt: 121
+Unit experience    : tot: 8378
+Unit experience    : cnt: 112
 Unit readiness     : max: 100.00 (  0: A0: GE Kommandant (Col Reichmann))
 Unit readiness     : min: 0.00 ( 27: G3: PzKpfw IV D (KIA Porsch))
-Unit readiness     : avg: 93.51
+Unit readiness     : avg: 94.83
 Unit readiness     : spr: 100.00
-Unit readiness     : tot: 11314.50
-Unit readiness     : cnt: 121
+Unit readiness     : tot: 10620.56
+Unit readiness     : cnt: 112
 Unit kills         : max: 16 ( 17: E2: PzKpfw III E (Sgt Schirmer))
 Unit kills         : min: 0 (  0: A0: GE Kommandant (Col Reichmann))
-Unit kills         : avg: 2.86
+Unit kills         : avg: 2.97
 Unit kills         : spr: 16
-Unit kills         : tot: 346
-Unit kills         : cnt: 121
+Unit kills         : tot: 333
+Unit kills         : cnt: 112
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
 Formation readiness: min: 0.00 ( 25: Z: elite recon platoon)
-Formation readiness: avg: 92.35
+Formation readiness: avg: 93.64
 Formation readiness: spr: 100.00
-Formation readiness: tot: 2955.35
+Formation readiness: tot: 2996.57
 Formation readiness: cnt: 32
 Formation kills    : max: 47 (  6: G: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
-Formation kills    : avg: 10.81
+Formation kills    : avg: 10.41
 Formation kills    : spr: 47
-Formation kills    : tot: 346
+Formation kills    : tot: 333
 Formation kills    : cnt: 32
-Formation losses   : max: 2 ( 28: AC: average platoon)
+Formation losses   : max: 1 (  6: G: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
-Formation losses   : avg: 0.25
-Formation losses   : spr: 2
-Formation losses   : tot: 8
+Formation losses   : avg: 0.13
+Formation losses   : spr: 1
+Formation losses   : tot: 4
 Formation losses   : cnt: 32
 
 Short formations report:
@@ -453,38 +453,29 @@ AB: support elite recon platoon
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 2
+	unit count: 1
 	unit list :
 		AB0 SdKfz 250 Beob
-		AB1 SS MMG Truppe
 
 AC: support average platoon
 	leader    : AC0 150mm FH Bty (1Lt Wagner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
-	kills     : 13
-	losses    : 2
-	readiness :  78.79 %
-	unit count: 5
+	kills     : 0
+	losses    : 0
+	readiness : 100.00 %
+	unit count: 1
 	unit list :
-		AC0 SdKfz 231 6 Rad
 		AC0 150mm FH Bty
-		AC1 SdKfz 231 6 Rad
-		AC2 SdKfz 231 6 Rad
-		AC3 SdKfz 231 6 Rad abandoned by AC53 Crewmen
 
 AD: support average platoon
 	leader    : AD0 150mm FH Bty (1Lt Wagner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 0
-	losses    : 2
-	readiness :  80.00 %
-	unit count: 5
+	losses    : 0
+	readiness : 100.00 %
+	unit count: 1
 	unit list :
 		AD0 150mm FH Bty
-		AD0 SdKfz 231 6 Rad abandoned by AD50 Crewmen
-		AD1 SdKfz 231 6 Rad
-		AD2 SdKfz 231 6 Rad
-		AD3 SdKfz 231 6 Rad
 
 AE: support average platoon
 	leader    : AE0 150mm FH Bty (1Lt Funck)
@@ -618,17 +609,8 @@ Short units report:
 + -A Z0  : SdKfz 250 Beob   (1Lt Bachman         ) RID 0105 UTG 018 EXP 097 MOR 084 SUP 003 RAL 078 INF 037 ART 079 ARM 033 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 032 RDY   0.00 POS (  none  )
      AA0 : SdKfz 250 Beob   (1Lt Achtzehn        ) RID 0106 UTG 018 EXP 087 MOR 078 SUP 000 RAL 075 INF 034 ART 082 ARM 039 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 17,  24)
  #   AB0 : SdKfz 250 Beob   (1Lt Kleemann        ) RID 0107 UTG 018 EXP 083 MOR 078 SUP 000 RAL 071 INF 036 ART 079 ARM 042 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 21,  29)
- #   AB1 : SS MMG Truppe    (KIA Klein           ) RID 0114 UTG 012 EXP 064 MOR 073 SUP 000 RAL 066 INF 075 ART 031 ARM 043 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #-  AC0 : SdKfz 231 6 Rad  (KIA Petereit        ) RID 0115 UTG 022 EXP 062 MOR 083 SUP 000 RAL 065 INF 039 ART 039 ARM 077 KILL 003 LOSS 000 MEN 004 KIA 000 DMG 002 RDY  93.94 POS (  none  )
  #   AC0 : 150mm FH Bty     (1Lt Wagner          ) RID 0108 UTG 019 EXP 083 MOR 074 SUP 000 RAL 073 INF 042 ART 078 ARM 045 KILL 000 LOSS 000 MEN 040 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-     AC1 : SdKfz 231 6 Rad  (KIA Schurz          ) RID 0116 UTG 022 EXP 063 MOR 085 SUP 000 RAL 071 INF 036 ART 036 ARM 068 KILL 008 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-     AC2 : SdKfz 231 6 Rad  (KIA Eberbach        ) RID 0117 UTG 022 EXP 066 MOR 092 SUP 000 RAL 069 INF 042 ART 041 ARM 074 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-+ -A AC3 : SdKfz 231 6 Rad  (KIA Schurz          ) RID 0118 UTG 022 EXP 061 MOR 075 SUP 000 RAL 078 INF 035 ART 043 ARM 074 KILL 001 LOSS 002 MEN 004 KIA 004 DMG 033 RDY   0.00 POS (  none  )
  #   AD0 : 150mm FH Bty     (1Lt Wagner          ) RID 0109 UTG 019 EXP 071 MOR 068 SUP 000 RAL 068 INF 044 ART 077 ARM 045 KILL 000 LOSS 000 MEN 040 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-+ -A AD0 : SdKfz 231 6 Rad  (KIA Schwartz        ) RID 0119 UTG 022 EXP 068 MOR 090 SUP 000 RAL 060 INF 040 ART 048 ARM 067 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 033 RDY   0.00 POS (  none  )
- #   AD1 : SdKfz 231 6 Rad  (KIA Schirmer        ) RID 0120 UTG 022 EXP 068 MOR 080 SUP 000 RAL 073 INF 043 ART 032 ARM 066 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #   AD2 : SdKfz 231 6 Rad  (KIA Hummel          ) RID 0121 UTG 022 EXP 074 MOR 078 SUP 000 RAL 064 INF 037 ART 038 ARM 076 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #   AD3 : SdKfz 231 6 Rad  (KIA Mittelberg      ) RID 0122 UTG 022 EXP 074 MOR 091 SUP 000 RAL 067 INF 035 ART 043 ARM 073 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
  #   AE0 : 150mm FH Bty     (1Lt Funck           ) RID 0110 UTG 019 EXP 086 MOR 070 SUP 000 RAL 076 INF 043 ART 083 ARM 035 KILL 000 LOSS 000 MEN 040 KIA 000 DMG 000 RDY 100.00 POS (  none  )
  #   AF0 : 150mm FH Bty     (1Lt Schmidt         ) RID 0111 UTG 019 EXP 075 MOR 080 SUP 000 RAL 070 INF 035 ART 077 ARM 047 KILL 000 LOSS 000 MEN 040 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 
@@ -637,8 +619,6 @@ Short crews report:
 
    A P50 : Crewmen          (2Lt Eberbach        ) RID 0113 UTG 038 EXP 074 MOR 088 SUP 001 RAL 078 INF 048 ART 076 ARM 045 KILL 000 MEN 004 KIA 002 DMG 000 RDY   0.00 POS ( 26,  17)
    A Z50 : Crewmen          (1Lt Bachman         ) RID 0112 UTG 038 EXP 097 MOR 084 SUP 001 RAL 078 INF 037 ART 079 ARM 033 KILL 000 MEN 004 KIA 002 DMG 000 RDY   0.00 POS ( 26,  17)
-+ -A AC53: Crewmen          (KIA Schurz          ) RID 0124 UTG 044 EXP 061 MOR 075 SUP 031 RAL 078 INF 035 ART 043 ARM 074 KILL 000 MEN 004 KIA 004 DMG 002 RDY   0.00 POS (  none  )
-+ -A AD50: Crewmen          (KIA Schwartz        ) RID 0123 UTG 044 EXP 068 MOR 090 SUP 026 RAL 060 INF 040 ART 048 ARM 067 KILL 000 MEN 004 KIA 004 DMG 002 RDY   0.00 POS (  none  )
 
 
 
@@ -648,35 +628,35 @@ Short Soviet forces order of battle report:
 
 Leader    : A0 SO Komander (Col Lavrenev)
 Formations: 48
-Units     : 139
+Units     : 120
 Crews     : 2
 
 Total kills        : 4
-Total losses       : 89
-Total readiness    :  35.50 %
+Total losses       : 69
+Total readiness    :  41.12 %
 Unit experience    : max: 69 ( 40: P0: Rifle Bunker (Cpt Nemov))
 Unit experience    : min: 35 ( 36: O1: Pehota Vintovka (KIA Larionov))
-Unit experience    : avg: 50.22
+Unit experience    : avg: 50.77
 Unit experience    : spr: 34
-Unit experience    : tot: 6980
-Unit experience    : cnt: 139
+Unit experience    : tot: 6092
+Unit experience    : cnt: 120
 Unit readiness     : max: 100.00 (  0: A0: SO Komander (Col Lavrenev))
 Unit readiness     : min: 0.00 (  1: B0: Lider Vzvoda (KIA Dubrovin))
-Unit readiness     : avg: 35.50
+Unit readiness     : avg: 41.12
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 4934.89
-Unit readiness     : cnt: 139
+Unit readiness     : cnt: 120
 Unit kills         : max: 1 ( 28: L1: Komanda PTRD (KIA Tebyakin))
 Unit kills         : min: 0 (  0: A0: SO Komander (Col Lavrenev))
 Unit kills         : avg: 0.03
 Unit kills         : spr: 1
 Unit kills         : tot: 4
-Unit kills         : cnt: 139
+Unit kills         : cnt: 120
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
 Formation readiness: min: 0.00 (  1: B: average platoon)
-Formation readiness: avg: 41.81
+Formation readiness: avg: 45.56
 Formation readiness: spr: 100.00
-Formation readiness: tot: 2007.06
+Formation readiness: tot: 2186.92
 Formation readiness: cnt: 48
 Formation kills    : max: 1 ( 11: L: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
@@ -684,11 +664,11 @@ Formation kills    : avg: 0.08
 Formation kills    : spr: 1
 Formation kills    : tot: 4
 Formation kills    : cnt: 48
-Formation losses   : max: 7 ( 41: AP: average platoon)
+Formation losses   : max: 5 (  1: B: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
-Formation losses   : avg: 1.85
-Formation losses   : spr: 7
-Formation losses   : tot: 89
+Formation losses   : avg: 1.44
+Formation losses   : spr: 5
+Formation losses   : tot: 69
 Formation losses   : cnt: 48
 
 Short formations report:
@@ -764,7 +744,7 @@ F : support average platoon
 		F1 Log MG Bunker
 		F2 Log Rifle Pit
 
-G : support elite platoon
+G : support average platoon
 	leader    : G0 Komanda PTRD (KIA Petrenko)
 	higher cmd: C0 Rifle Bunker (Cpt Danilevsky)
 	kills     : 0
@@ -916,7 +896,7 @@ S : support average platoon
 		S1 Komanda PTRD
 		S2 Komanda PTRD
 
-T : support elite platoon
+T : support average platoon
 	leader    : T0 Komanda PTRD (KIA Karelin)
 	higher cmd: P0 Rifle Bunker (Cpt Nemov)
 	kills     : 0
@@ -1074,7 +1054,7 @@ AG: support average platoon
 		AG1 Komanda PTRD
 		AG2 Komanda PTRD
 
-AH: support elite platoon
+AH: support average platoon
 	leader    : AH2 Komanda PTRD (KIA Petrov)
 	higher cmd: AD0 Rifle Bunker (Cpt Ivanovich)
 	kills     : 0
@@ -1156,26 +1136,23 @@ AO: core average platoon
 	leader    : AO0 T-34 M41 (1Lt Ramazanov)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 1
-	losses    : 3
-	readiness :   9.58 %
-	unit count: 4
+	losses    : 1
+	readiness :  12.77 %
+	unit count: 3
 	unit list :
 		AO0 T-34 M41 abandoned by AO50 Crewmen
 		AO1 T-34 M41
-		AO2 Renault B1bis
 		AO2 T-34 M41 abandoned by AO52 Crewmen
 
 AP: support average platoon
 	leader    : AP1 Pehota Vintovka (KIA Vorobiev)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
-	losses    : 7
+	losses    : 5
 	readiness :   0.00 %
-	unit count: 7
+	unit count: 5
 	unit list :
-		AP0 FF Patrouille
 		AP0 Lider Vzvoda
-		AP1 FF Patrouille
 		AP1 Pehota Vintovka
 		AP2 Pehota Vintovka
 		AP3 Pehota Vintovka
@@ -1185,84 +1162,68 @@ AQ: support elite recon company
 	leader    : AQ0 Obs Post (Cpt Samoilov)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
-	losses    : 2
-	readiness :  33.33 %
-	unit count: 3
+	losses    : 0
+	readiness : 100.00 %
+	unit count: 1
 	unit list :
 		AQ0 Obs Post
-		AQ0 Section Fusil
-		AQ1 Section Mortier
 
 AR: support average platoon
 	leader    : AR0 Rifle Bunker (2Lt Moskvin)
 	higher cmd: AQ0 Obs Post (Cpt Samoilov)
 	kills     : 0
-	losses    : 3
-	readiness :  50.00 %
-	unit count: 6
+	losses    : 0
+	readiness : 100.00 %
+	unit count: 3
 	unit list :
-		AR0 Section Fusil
 		AR0 Rifle Bunker
 		AR1 Rifle Bunker
-		AR1 Section Fusil
 		AR2 76.2mm AA M38
-		AR2 Section Fusil
 
 AS: support average platoon
 	leader    : AS0 Log Rifle Pit (2Lt Pugovkin)
 	higher cmd: AQ0 Obs Post (Cpt Samoilov)
 	kills     : 0
-	losses    : 3
-	readiness :  40.00 %
-	unit count: 5
+	losses    : 0
+	readiness : 100.00 %
+	unit count: 2
 	unit list :
-		AS0 Section Fusil
 		AS0 Log Rifle Pit
-		AS1 Section Fusil
 		AS1 Log Rifle Pit
-		AS2 Section Fusil
 
 AT: support average platoon
 	leader    : AT0 Komanda PTRD (KIA Pashkov)
 	higher cmd: AQ0 Obs Post (Cpt Samoilov)
 	kills     : 0
-	losses    : 6
+	losses    : 3
 	readiness :   0.00 %
-	unit count: 6
+	unit count: 3
 	unit list :
-		AT0 Section Fusil
 		AT0 Komanda PTRD
 		AT1 Komanda PTRD
-		AT1 Section Fusil
 		AT2 Komanda PTRD
-		AT2 Section Fusil
 
-AU: support elite platoon
+AU: support average platoon
 	leader    : AU2 Komanda PTRD (KIA Tatlin)
 	higher cmd: AQ0 Obs Post (Cpt Samoilov)
 	kills     : 0
-	losses    : 6
+	losses    : 3
 	readiness :   0.00 %
-	unit count: 6
+	unit count: 3
 	unit list :
 		AU0 Komanda PTRD
-		AU0 Section Fusil
 		AU1 Komanda PTRD
-		AU1 Section Fusil
 		AU2 Komanda PTRD
-		AU2 Section Fusil
 
 AV: support average platoon
 	leader    : AV1 Komanda HMG (KIA Oistrakh)
 	higher cmd: AQ0 Obs Post (Cpt Samoilov)
 	kills     : 0
-	losses    : 4
+	losses    : 2
 	readiness :   0.00 %
-	unit count: 4
+	unit count: 2
 	unit list :
 		AV0 Komanda HMG
-		AV0 Section Mortier
-		AV1 Equipe Fusil AC
 		AV1 Komanda HMG
 
 
@@ -1369,44 +1330,25 @@ Short units report:
  #   AN1 : 45mm ATG M38+    (Sgt Kuvaev          ) RID 0497 UTG 037 EXP 049 MOR 046 SUP 000 RAL 051 INF 024 ART 047 ARM 028 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 41,   2)
 + -A AO0 : T-34 M41         (1Lt Ramazanov       ) RID 0498 UTG 033 EXP 044 MOR 045 SUP 026 RAL 050 INF 021 ART 026 ARM 044 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 100 RDY   0.00 POS (  none  )
      AO1 : T-34 M41         (Sgt Nemov           ) RID 0499 UTG 033 EXP 051 MOR 053 SUP 024 RAL 050 INF 023 ART 023 ARM 046 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  38.30 POS ( 31,  19)
-+ -  AO2 : Renault B1bis    (KIA Bonnet          ) RID 0522 UTG 050 EXP 049 MOR 037 SUP 025 RAL 045 INF 020 ART 019 ARM 037 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 113 RDY   0.00 POS (  none  )
   -A AO2 : T-34 M41         (Sgt Herzen          ) RID 0500 UTG 033 EXP 041 MOR 058 SUP 004 RAL 047 INF 025 ART 027 ARM 040 KILL 000 LOSS 000 MEN 004 KIA 004 DMG 004 RDY   0.00 POS ( 32,  18)
-+ -  AP0 : FF Patrouille    (KIA Dumas           ) RID 0523 UTG 048 EXP 039 MOR 045 SUP 013 RAL 038 INF 045 ART 021 ARM 023 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 012 RDY   0.00 POS (  none  )
 + -  AP0 : Lider Vzvoda     (KIA Plotnikov       ) RID 0501 UTG 021 EXP 047 MOR 055 SUP 072 RAL 050 INF 049 ART 018 ARM 024 KILL 000 LOSS 001 MEN 010 KIA 010 DMG 016 RDY   0.00 POS (  none  )
-+ -  AP1 : FF Patrouille    (KIA Dupre           ) RID 0524 UTG 048 EXP 046 MOR 051 SUP 038 RAL 042 INF 041 ART 028 ARM 022 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 012 RDY   0.00 POS (  none  )
 + -  AP1 : Pehota Vintovka  (KIA Vorobiev        ) RID 0502 UTG 022 EXP 053 MOR 049 SUP 093 RAL 054 INF 041 ART 018 ARM 022 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
 + -  AP2 : Pehota Vintovka  (KIA Nemov           ) RID 0503 UTG 022 EXP 048 MOR 047 SUP 047 RAL 052 INF 051 ART 022 ARM 028 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
 + -  AP3 : Pehota Vintovka  (KIA Sorokin         ) RID 0504 UTG 022 EXP 052 MOR 054 SUP 099 RAL 043 INF 045 ART 025 ARM 022 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
 + -  AP4 : Pehota Vintovka  (KIA Blinov          ) RID 0505 UTG 022 EXP 043 MOR 046 SUP 038 RAL 045 INF 042 ART 020 ARM 018 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
  #   AQ0 : Obs Post         (Cpt Samoilov        ) RID 0506 UTG 026 EXP 069 MOR 095 SUP 000 RAL 078 INF 020 ART 030 ARM 043 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 45,   5)
-+ -  AQ0 : Section Fusil    (KIA De Leusse       ) RID 0525 UTG 024 EXP 040 MOR 046 SUP 055 RAL 044 INF 045 ART 020 ARM 020 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
-+ -  AQ1 : Section Mortier  (KIA Durand          ) RID 0526 UTG 025 EXP 045 MOR 040 SUP 038 RAL 042 INF 024 ART 039 ARM 022 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 019 RDY   0.00 POS (  none  )
-+ -  AR0 : Section Fusil    (KIA Sevigny         ) RID 0527 UTG 024 EXP 048 MOR 042 SUP 055 RAL 047 INF 046 ART 025 ARM 023 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
  #   AR0 : Rifle Bunker     (2Lt Moskvin         ) RID 0507 UTG 023 EXP 060 MOR 090 SUP 000 RAL 079 INF 020 ART 023 ARM 043 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 46,  34)
  #   AR1 : Rifle Bunker     (Sgt Kondrashov      ) RID 0508 UTG 023 EXP 055 MOR 092 SUP 000 RAL 079 INF 021 ART 017 ARM 040 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 46,  33)
-+ -  AR1 : Section Fusil    (KIA Comeaux         ) RID 0528 UTG 024 EXP 056 MOR 038 SUP 077 RAL 041 INF 037 ART 023 ARM 021 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
  #   AR2 : 76.2mm AA M38    (Sgt Vyazemsky       ) RID 0509 UTG 027 EXP 051 MOR 045 SUP 000 RAL 050 INF 025 ART 045 ARM 027 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 48,  35)
-+ -  AR2 : Section Fusil    (KIA Donati          ) RID 0529 UTG 024 EXP 041 MOR 043 SUP 049 RAL 046 INF 045 ART 028 ARM 022 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
-+ -  AS0 : Section Fusil    (KIA Argeneau        ) RID 0530 UTG 024 EXP 049 MOR 045 SUP 090 RAL 042 INF 038 ART 024 ARM 024 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
  #   AS0 : Log Rifle Pit    (2Lt Pugovkin        ) RID 0510 UTG 024 EXP 054 MOR 090 SUP 000 RAL 075 INF 033 ART 024 ARM 042 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 39,  20)
-+ -  AS1 : Section Fusil    (KIA Fauvelle        ) RID 0531 UTG 024 EXP 046 MOR 042 SUP 054 RAL 040 INF 046 ART 024 ARM 023 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
  #   AS1 : Log Rifle Pit    (Sgt Kuvaev          ) RID 0511 UTG 024 EXP 049 MOR 093 SUP 000 RAL 078 INF 019 ART 016 ARM 052 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 41,  19)
-+ -  AS2 : Section Fusil    (KIA Bonnet          ) RID 0532 UTG 024 EXP 050 MOR 044 SUP 088 RAL 040 INF 041 ART 020 ARM 025 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
-+ -  AT0 : Section Fusil    (KIA Beaufre         ) RID 0533 UTG 024 EXP 056 MOR 055 SUP 027 RAL 046 INF 041 ART 026 ARM 030 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
 + -  AT0 : Komanda PTRD     (KIA Pashkov         ) RID 0512 UTG 029 EXP 045 MOR 050 SUP 034 RAL 040 INF 039 ART 023 ARM 016 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
 + -  AT1 : Komanda PTRD     (KIA Pugachov        ) RID 0513 UTG 029 EXP 040 MOR 053 SUP 055 RAL 050 INF 046 ART 021 ARM 024 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
-+ -  AT1 : Section Fusil    (KIA Boudinot        ) RID 0534 UTG 024 EXP 049 MOR 045 SUP 066 RAL 046 INF 043 ART 025 ARM 024 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
 + -  AT2 : Komanda PTRD     (KIA Danilevsky      ) RID 0514 UTG 029 EXP 058 MOR 048 SUP 014 RAL 052 INF 038 ART 032 ARM 029 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
-+ -  AT2 : Section Fusil    (KIA Sevigny         ) RID 0535 UTG 024 EXP 042 MOR 037 SUP 034 RAL 040 INF 041 ART 018 ARM 018 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
 + -  AU0 : Komanda PTRD     (KIA Doubice         ) RID 0515 UTG 029 EXP 042 MOR 047 SUP 030 RAL 051 INF 049 ART 027 ARM 028 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
-+ -  AU0 : Section Fusil    (KIA Marquette       ) RID 0536 UTG 024 EXP 047 MOR 038 SUP 036 RAL 035 INF 050 ART 024 ARM 025 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
 + -  AU1 : Komanda PTRD     (KIA Mogilny         ) RID 0516 UTG 029 EXP 046 MOR 050 SUP 027 RAL 050 INF 039 ART 025 ARM 026 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
-+ -  AU1 : Section Fusil    (KIA Argeneau        ) RID 0537 UTG 024 EXP 042 MOR 042 SUP 074 RAL 044 INF 048 ART 025 ARM 028 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
 + -  AU2 : Komanda PTRD     (KIA Tatlin          ) RID 0517 UTG 029 EXP 049 MOR 041 SUP 099 RAL 054 INF 042 ART 020 ARM 024 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
-+ -  AU2 : Section Fusil    (KIA Archambault     ) RID 0538 UTG 024 EXP 056 MOR 043 SUP 073 RAL 044 INF 043 ART 020 ARM 030 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 022 RDY   0.00 POS (  none  )
 + -  AV0 : Komanda HMG      (KIA Samoilov        ) RID 0518 UTG 030 EXP 060 MOR 044 SUP 073 RAL 050 INF 039 ART 024 ARM 026 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 024 RDY   0.00 POS (  none  )
-+ -  AV0 : Section Mortier  (KIA Broussard       ) RID 0539 UTG 025 EXP 044 MOR 044 SUP 046 RAL 042 INF 027 ART 043 ARM 017 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 019 RDY   0.00 POS (  none  )
-+ -  AV1 : Equipe Fusil AC  (KIA Faneuil         ) RID 0540 UTG 051 EXP 043 MOR 053 SUP 013 RAL 051 INF 039 ART 024 ARM 026 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 007 RDY   0.00 POS (  none  )
 + -  AV1 : Komanda HMG      (KIA Oistrakh        ) RID 0519 UTG 030 EXP 049 MOR 048 SUP 030 RAL 042 INF 041 ART 033 ARM 027 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 024 RDY   0.00 POS (  none  )
 
 Short crews report:

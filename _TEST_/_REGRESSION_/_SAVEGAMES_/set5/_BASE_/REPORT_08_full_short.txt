@@ -76,12 +76,12 @@ Unit kills         : spr: 19
 Unit kills         : tot: 358
 Unit kills         : cnt: 89
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 86.67 ( 19: T: elite recon platoon)
+Formation readiness: min: 86.67 ( 19: T: recon platoon)
 Formation readiness: avg: 98.55
 Formation readiness: spr: 13.33
 Formation readiness: tot: 1971.05
 Formation readiness: cnt: 20
-Formation kills    : max: 51 (  3: D: recon platoon)
+Formation kills    : max: 51 (  3: D: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 17.90
 Formation kills    : spr: 51
@@ -107,7 +107,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 GE Kommandant
 
-B : core recon platoon
+B : core average platoon
 	leader    : B0 Sturmpionieres (2Lt Telner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 10
@@ -134,7 +134,7 @@ C : core average platoon
 		C3 SdKfz 251/1 HT
 		C4 SdKfz 251/1 HT
 
-D : core recon platoon
+D : core average platoon
 	leader    : D0 PzKpfw III G (1Lt Kronz)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 51
@@ -148,7 +148,7 @@ D : core recon platoon
 		D3 PzKpfw III E
 		D4 PzKpfw III E
 
-E : core recon platoon
+E : core average platoon
 	leader    : E0 PzKpfw III G (1Lt Metzger)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 48
@@ -199,7 +199,7 @@ H : core average platoon
 		H0 PzKpfw IV D
 		H1 PzKpfw IV D
 
-I : core elite company
+I : core elite recon company
 	leader    : I0 Kompanie HQ (Cpt Abt)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 0
@@ -267,7 +267,7 @@ L : core elite platoon
 		L8 SdKfz 251/1 HT
 		L9 SdKfz 251/1 HT
 
-M : core dedicated artillery platoon
+M : core average platoon
 	leader    : M0 88mm auf Zgkw (2Lt Stiegel)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 10
@@ -280,7 +280,7 @@ M : core dedicated artillery platoon
 		M2 88mm auf Zgkw
 		M3 88mm auf Zgkw
 
-N : core dedicated artillery platoon
+N : core elite platoon
 	leader    : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -291,7 +291,7 @@ N : core dedicated artillery platoon
 		N0 SS MMG Truppe
 		N1 SS MMG Truppe
 
-O : core average platoon
+O : core dedicated artillery platoon
 	leader    : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -342,7 +342,7 @@ R : core average platoon
 		R2 SdKfz 6/2
 		R3 SdKfz 6/2
 
-S : core elite recon platoon
+S : core recon platoon
 	leader    : S0 Motorradfahrer (2Lt Schneider)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 39
@@ -354,7 +354,7 @@ S : core elite recon platoon
 		S1 Motorradfahrer
 		S2 Motorradfahrer
 
-T : core elite recon platoon
+T : core recon platoon
 	leader    : T0 Motorradfahrer (2Lt Brunner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 17
@@ -468,47 +468,47 @@ Short Soviet forces order of battle report:
 
 Leader    : A0 SO Komander (Col Gladkov)
 Formations: 45
-Units     : 111
+Units     : 106
 Crews     : 1
 
-Total kills        : 2
-Total losses       : 21
-Total readiness    :  71.23 %
+Total kills        : 0
+Total losses       : 14
+Total readiness    :  74.59 %
 Unit experience    : max: 66 ( 23: J0: Snajper (2Lt Bakunin))
 Unit experience    : min: 36 ( 12: E1: SU-45 (Sgt Ivanovich))
-Unit experience    : avg: 49.43
+Unit experience    : avg: 49.23
 Unit experience    : spr: 30
-Unit experience    : tot: 5487
-Unit experience    : cnt: 111
+Unit experience    : tot: 5218
+Unit experience    : cnt: 106
 Unit readiness     : max: 100.00 (  0: A0: SO Komander (Col Gladkov))
 Unit readiness     : min: 0.00 (  3: B2: Pehota Vintovka (Sgt Sorokin))
-Unit readiness     : avg: 71.23
+Unit readiness     : avg: 74.59
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 7906.42
-Unit readiness     : cnt: 111
-Unit kills         : max: 1 (108: AS0: Log Rifle Pit (KIA Pugovkin))
+Unit readiness     : cnt: 106
+Unit kills         : max: 0 (  0: A0: SO Komander (Col Gladkov))
 Unit kills         : min: 0 (  0: A0: SO Komander (Col Gladkov))
-Unit kills         : avg: 0.02
-Unit kills         : spr: 1
-Unit kills         : tot: 2
-Unit kills         : cnt: 111
+Unit kills         : avg: 0.00
+Unit kills         : spr: 0
+Unit kills         : tot: 0
+Unit kills         : cnt: 106
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
 Formation readiness: min: 0.00 (  7: H: average platoon)
-Formation readiness: avg: 76.68
+Formation readiness: avg: 78.22
 Formation readiness: spr: 100.00
-Formation readiness: tot: 3450.56
+Formation readiness: tot: 3519.86
 Formation readiness: cnt: 45
-Formation kills    : max: 1 ( 43: AR: recon company)
+Formation kills    : max: 0 (  0: A: elite recon force HQ)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
-Formation kills    : avg: 0.04
-Formation kills    : spr: 1
-Formation kills    : tot: 2
+Formation kills    : avg: 0.00
+Formation kills    : spr: 0
+Formation kills    : tot: 0
 Formation kills    : cnt: 45
-Formation losses   : max: 7 ( 43: AR: recon company)
+Formation losses   : max: 3 (  7: H: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
-Formation losses   : avg: 0.47
-Formation losses   : spr: 7
-Formation losses   : tot: 21
+Formation losses   : avg: 0.31
+Formation losses   : spr: 3
+Formation losses   : tot: 14
 Formation losses   : cnt: 45
 
 Short formations report:
@@ -524,7 +524,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 SO Komander
 
-B : support recon company
+B : support average platoon
 	leader    : B0 Lider Vzvoda (2Lt Lyutiy)
 	higher cmd: A0 SO Komander (Col Gladkov)
 	kills     : 0
@@ -550,7 +550,7 @@ C : support average platoon
 		C1 Log Rifle Pit
 		C2 85mm AA M39
 
-D : support average SPWOOB_FTYPE_UNKNOWN
+D : support average platoon
 	leader    : D0 37mm ATG M30 (2Lt Schevchuk)
 	higher cmd: C0 Log Rifle Pit (2Lt Lavrenev)
 	kills     : 0
@@ -561,7 +561,7 @@ D : support average SPWOOB_FTYPE_UNKNOWN
 		D0 37mm ATG M30
 		D1 37mm ATG M30
 
-E : support average SPWOOB_FTYPE_UNKNOWN
+E : support average platoon
 	leader    : E0 SU-45 (1Lt Tebyakin)
 	higher cmd: C0 Log Rifle Pit (2Lt Lavrenev)
 	kills     : 0
@@ -704,7 +704,7 @@ Q : core average platoon
 		Q1 T-28 M34
 		Q2 T-28 M34
 
-R : support recon company
+R : support average platoon
 	leader    : R0 Lider Vzvoda (2Lt Pugovkin)
 	higher cmd: A0 SO Komander (Col Gladkov)
 	kills     : 0
@@ -718,7 +718,7 @@ R : support recon company
 		R3 Pehota Vintovka
 		R4 Pehota Vintovka
 
-S : support average company
+S : support elite recon company
 	leader    : S0 Log Rifle Pit (Cpt Bakunin)
 	higher cmd: A0 SO Komander (Col Gladkov)
 	kills     : 0
@@ -874,7 +874,7 @@ AF: core average platoon
 		AF1 T-28 M38 abandoned by AF51 Crewmen
 		AF2 T-28 M38
 
-AG: support recon company
+AG: support average platoon
 	leader    : AG0 Lider Vzvoda (2Lt Kulik)
 	higher cmd: A0 SO Komander (Col Gladkov)
 	kills     : 0
@@ -899,7 +899,7 @@ AH: support average platoon
 		AH0 Log MG Bunker
 		AH1 Komanda AAMG 
 
-AI: support average SPWOOB_FTYPE_UNKNOWN
+AI: support average platoon
 	leader    : AI0 37mm ATG M30 (2Lt Tatarenko)
 	higher cmd: AH0 Log MG Bunker (2Lt Kazimirovich)
 	kills     : 0
@@ -1000,19 +1000,16 @@ AQ: core average platoon
 		AQ0 T-34 M41
 		AQ1 T-34 M41
 
-AR: support recon company
+AR: support average platoon
 	leader    : AR0 Lider Vzvoda (2Lt Plotnikov)
 	higher cmd: A0 SO Komander (Col Gladkov)
-	kills     : 1
-	losses    : 7
-	readiness :  32.16 %
-	unit count: 8
+	kills     : 0
+	losses    : 2
+	readiness :  51.45 %
+	unit count: 5
 	unit list :
-		AR0 Rifle Bunker
 		AR0 Lider Vzvoda
-		AR1 Rifle Bunker
 		AR1 Pehota Vintovka
-		AR2 76.2mm AA M38
 		AR2 Pehota Vintovka
 		AR3 Pehota Vintovka
 		AR4 Pehota Vintovka
@@ -1020,14 +1017,12 @@ AR: support recon company
 AS: support average platoon
 	leader    : AS0 Log Rifle Pit (2Lt Schevchuk)
 	higher cmd: AS0 Log Rifle Pit (2Lt Schevchuk)
-	kills     : 1
-	losses    : 2
-	readiness :  50.00 %
-	unit count: 4
+	kills     : 0
+	losses    : 0
+	readiness : 100.00 %
+	unit count: 2
 	unit list :
 		AS0 Log Rifle Pit
-		AS0 Log Rifle Pit
-		AS1 Log Rifle Pit
 		AS1 76.2mm AA M38
 
 
@@ -1133,17 +1128,12 @@ Short units report:
  #   AP1 : 37mm ATG M30     (Sgt Antonov         ) RID 0496 UTG 022 EXP 044 MOR 053 SUP 000 RAL 054 INF 029 ART 037 ARM 025 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 36,  26)
  #   AQ0 : T-34 M41         (1Lt Ivanov          ) RID 0497 UTG 036 EXP 053 MOR 054 SUP 000 RAL 048 INF 020 ART 029 ARM 042 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 33,   5)
  #   AQ1 : T-34 M41         (Sgt Yelayev         ) RID 0498 UTG 036 EXP 041 MOR 044 SUP 000 RAL 049 INF 025 ART 025 ARM 041 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 33,   6)
-+ -  AR0 : Rifle Bunker     (KIA Moskvin         ) RID 0507 UTG 024 EXP 060 MOR 090 SUP 025 RAL 079 INF 020 ART 023 ARM 043 KILL 000 LOSS 002 MEN 010 KIA 010 DMG 055 RDY   0.00 POS (  none  )
      AR0 : Lider Vzvoda     (2Lt Plotnikov       ) RID 0499 UTG 018 EXP 041 MOR 055 SUP 010 RAL 042 INF 043 ART 022 ARM 031 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY  57.27 POS ( 19,  31)
-+ -  AR1 : Rifle Bunker     (KIA Kondrashov      ) RID 0508 UTG 024 EXP 055 MOR 092 SUP 031 RAL 079 INF 021 ART 017 ARM 040 KILL 000 LOSS 002 MEN 010 KIA 010 DMG 055 RDY   0.00 POS (  none  )
 + -  AR1 : Pehota Vintovka  (KIA Pugachev        ) RID 0500 UTG 035 EXP 054 MOR 052 SUP 014 RAL 057 INF 050 ART 018 ARM 025 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
-+ -  AR2 : 76.2mm AA M38    (KIA Vyazemsky       ) RID 0509 UTG 028 EXP 051 MOR 045 SUP 078 RAL 050 INF 025 ART 045 ARM 027 KILL 001 LOSS 001 MEN 008 KIA 008 DMG 034 RDY   0.00 POS (  none  )
  #   AR2 : Pehota Vintovka  (Sgt Ilyin           ) RID 0501 UTG 035 EXP 058 MOR 052 SUP 000 RAL 052 INF 048 ART 030 ARM 021 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 19,  32)
 + -  AR3 : Pehota Vintovka  (KIA Nemov           ) RID 0502 UTG 035 EXP 057 MOR 048 SUP 039 RAL 044 INF 048 ART 020 ARM 022 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
  #   AR4 : Pehota Vintovka  (Sgt Vasiliev        ) RID 0503 UTG 035 EXP 049 MOR 056 SUP 000 RAL 050 INF 046 ART 025 ARM 025 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 19,  33)
  #   AS0 : Log Rifle Pit    (2Lt Schevchuk       ) RID 0504 UTG 020 EXP 049 MOR 091 SUP 000 RAL 077 INF 030 ART 018 ARM 041 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 45,  12)
-+ -  AS0 : Log Rifle Pit    (KIA Pugovkin        ) RID 0510 UTG 025 EXP 054 MOR 090 SUP 031 RAL 075 INF 033 ART 024 ARM 042 KILL 001 LOSS 001 MEN 005 KIA 005 DMG 046 RDY   0.00 POS (  none  )
-+ -  AS1 : Log Rifle Pit    (KIA Kuvaev          ) RID 0511 UTG 025 EXP 049 MOR 093 SUP 099 RAL 078 INF 019 ART 016 ARM 052 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 046 RDY   0.00 POS (  none  )
  #   AS1 : 76.2mm AA M38    (Sgt Chaadayev       ) RID 0505 UTG 032 EXP 049 MOR 043 SUP 000 RAL 054 INF 031 ART 048 ARM 022 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 43,  11)
 
 Short crews report:

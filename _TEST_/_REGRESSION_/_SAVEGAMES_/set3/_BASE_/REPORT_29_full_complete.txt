@@ -58,48 +58,48 @@ Nation: Germany
 People: German
 
 Formations: 32
-Units     : 122
-Crews     : 3
+Units     : 112
+Crews     : 1
 Leader    : A0 GE Kommandant (Col Reichmann)
 
-Total kills        : 340
-Total losses       : 7
-Total readiness    :  94.41 %
+Total kills        : 327
+Total losses       : 3
+Total readiness    :  95.75 %
 Unit experience    : max: 97 (105: Z0: SdKfz 250 Beob (1Lt Bachman))
 Unit experience    : min: 55 ( 73: P2: sIG33 auf Pz-I (Sgt Tost))
-Unit experience    : avg: 74.17
+Unit experience    : avg: 74.80
 Unit experience    : spr: 42
-Unit experience    : tot: 9049
-Unit experience    : cnt: 122
+Unit experience    : tot: 8378
+Unit experience    : cnt: 112
 Unit readiness     : max: 100.00 (  0: A0: GE Kommandant (Col Reichmann))
 Unit readiness     : min: 0.00 ( 27: G3: PzKpfw IV D (KIA Porsch))
-Unit readiness     : avg: 94.41
+Unit readiness     : avg: 95.75
 Unit readiness     : spr: 100.00
-Unit readiness     : tot: 11518.22
-Unit readiness     : cnt: 122
+Unit readiness     : tot: 10724.28
+Unit readiness     : cnt: 112
 Unit kills         : max: 16 ( 17: E2: PzKpfw III E (Sgt Schirmer))
 Unit kills         : min: 0 (  0: A0: GE Kommandant (Col Reichmann))
-Unit kills         : avg: 2.79
+Unit kills         : avg: 2.92
 Unit kills         : spr: 16
-Unit kills         : tot: 340
-Unit kills         : cnt: 122
+Unit kills         : tot: 327
+Unit kills         : cnt: 112
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
 Formation readiness: min: 0.00 ( 25: Z: elite recon platoon)
-Formation readiness: avg: 93.15
+Formation readiness: avg: 94.44
 Formation readiness: spr: 100.00
-Formation readiness: tot: 2980.94
+Formation readiness: tot: 3022.15
 Formation readiness: cnt: 32
-Formation kills    : max: 44 (  3: D: recon platoon)
+Formation kills    : max: 44 (  3: D: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
-Formation kills    : avg: 10.63
+Formation kills    : avg: 10.22
 Formation kills    : spr: 44
-Formation kills    : tot: 340
+Formation kills    : tot: 327
 Formation kills    : cnt: 32
-Formation losses   : max: 2 ( 28: AC: average platoon)
+Formation losses   : max: 1 (  6: G: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
-Formation losses   : avg: 0.22
-Formation losses   : spr: 2
-Formation losses   : tot: 7
+Formation losses   : avg: 0.09
+Formation losses   : spr: 1
+Formation losses   : tot: 3
 Formation losses   : cnt: 32
 
 Complete formations report:
@@ -144,7 +144,7 @@ Formation count: 32
 	leader      : B0 Sturmpionieres (2Lt Telner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : Engineer Plt
 	unit count  : 4
@@ -217,7 +217,7 @@ Formation count: 32
 	leader      : D0 PzKpfw III E (1Lt Kronz)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : Panzer Plt
 	unit count  : 5
@@ -254,7 +254,7 @@ Formation count: 32
 	leader      : E0 PzKpfw III E (1Lt Metzger)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : Panzer Plt
 	unit count  : 5
@@ -397,7 +397,7 @@ Formation count: 32
 	leader      : I0 Kompanie HQ (Cpt Abt)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 3 (elite)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : SS Mot Kp
 	unit count  : 2
@@ -593,7 +593,7 @@ Formation count: 32
 	leader      : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
 	status      : 1 (core)
-	force status: 2 (dedicated artillery)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : SS MMG Sec
 	unit count  : 2
@@ -627,7 +627,7 @@ Formation count: 32
 	leader      : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
 	status      : 1 (core)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : Mot Mortar Sec
 	unit count  : 3
@@ -662,7 +662,7 @@ Formation count: 32
 	leader      : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
 	status      : 1 (core)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : Mot Inf Gun Sec
 	unit count  : 4
@@ -840,7 +840,7 @@ Formation count: 32
 	leader      : U0 sIG33 auf Pz-I (1Lt Stiegel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : SP Gun Plt
 	unit count  : 4
@@ -876,7 +876,7 @@ Formation count: 32
 	leader      : V0 sIG33 auf Pz-I (1Lt Rauch)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : SP Gun Plt
 	unit count  : 4
@@ -912,7 +912,7 @@ Formation count: 32
 	leader      : W0 Wurfrahmen 40 (1Lt Krogel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 5 (elite dedicated artillery)
 	type        : platoon
 	unit type   : SP Rocket Sec
 	unit count  : 2
@@ -946,7 +946,7 @@ Formation count: 32
 	leader      : X0 Wurfrahmen 40 (1Lt Kramer)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 5 (elite dedicated artillery)
 	type        : platoon
 	unit type   : SP Rocket Sec
 	unit count  : 2
@@ -1085,33 +1085,31 @@ Formation count: 32
 	force status: 4 (elite recon)
 	type        : platoon
 	unit type   : Tracked FO
-	unit count  : 3
+	unit count  : 1
 	unit list   :
 		AB0 SdKfz 250 Beob (1Lt Kleemann)
-		AB0 SS MMG Truppe (KIA Stiegel)
-		AB1 SS MMG Truppe (KIA Klein)
 
 	kills      : 0
 	losses     : 0
 	readiness  : 100.00 %
 	unit experience: max: 83 (107: AB0: SdKfz 250 Beob (1Lt Kleemann))
-	unit experience: min: 64 (113: AC2: SdKfz 231 6 Rad (KIA Eberbach))
-	unit experience: avg: 72.67
-	unit experience: spr: 19
-	unit experience: tot: 218
-	unit experience: cnt: 3
+	unit experience: min: 83 (107: AB0: SdKfz 250 Beob (1Lt Kleemann))
+	unit experience: avg: 83.00
+	unit experience: spr: 0
+	unit experience: tot: 83
+	unit experience: cnt: 1
 	unit readiness : max: 100.00 (107: AB0: SdKfz 250 Beob (1Lt Kleemann))
 	unit readiness : min: 100.00 (107: AB0: SdKfz 250 Beob (1Lt Kleemann))
 	unit readiness : avg: 100.00
 	unit readiness : spr: 0.00
-	unit readiness : tot: 300.00
-	unit readiness : cnt: 3
+	unit readiness : tot: 100.00
+	unit readiness : cnt: 1
 	unit kills     : max: 0 (107: AB0: SdKfz 250 Beob (1Lt Kleemann))
 	unit kills     : min: 0 (107: AB0: SdKfz 250 Beob (1Lt Kleemann))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 3
+	unit kills     : cnt: 1
 
 #0028 AC (FID 28)
 	leader      : AC0 150mm FH Bty (1Lt Wagner)
@@ -1120,35 +1118,31 @@ Formation count: 32
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Artillery Bty
-	unit count  : 5
+	unit count  : 1
 	unit list   :
-		AC0 SdKfz 231 6 Rad (KIA Petereit)
 		AC0 150mm FH Bty (1Lt Wagner)
-		AC1 SdKfz 231 6 Rad (KIA Schurz)
-		AC2 SdKfz 231 6 Rad (KIA Eberbach)
-		AC3 SdKfz 231 6 Rad (KIA Schurz) abandoned by AC53 Crewmen (KIA Schurz)
 
-	kills      : 13
-	losses     : 2
-	readiness  :  78.79 %
-	unit experience: max: 83 (108: AB0: SS MMG Truppe (KIA Stiegel))
-	unit experience: min: 61 (117: AD1: SdKfz 231 6 Rad (KIA Schirmer))
-	unit experience: avg: 67.00
-	unit experience: spr: 22
-	unit experience: tot: 335
-	unit experience: cnt: 5
-	unit readiness : max: 100.00 (108: AB0: SS MMG Truppe (KIA Stiegel))
-	unit readiness : min: 0.00 (117: AD1: SdKfz 231 6 Rad (KIA Schirmer))
-	unit readiness : avg: 78.79
-	unit readiness : spr: 100.00
-	unit readiness : tot: 393.94
-	unit readiness : cnt: 5
-	unit kills     : max: 8 (115: AD0: 150mm FH Bty (1Lt Wagner))
-	unit kills     : min: 0 (108: AB0: SS MMG Truppe (KIA Stiegel))
-	unit kills     : avg: 2.60
-	unit kills     : spr: 8
-	unit kills     : tot: 13
-	unit kills     : cnt: 5
+	kills      : 0
+	losses     : 0
+	readiness  : 100.00 %
+	unit experience: max: 83 (108: AC0: 150mm FH Bty (1Lt Wagner))
+	unit experience: min: 83 (108: AC0: 150mm FH Bty (1Lt Wagner))
+	unit experience: avg: 83.00
+	unit experience: spr: 0
+	unit experience: tot: 83
+	unit experience: cnt: 1
+	unit readiness : max: 100.00 (108: AC0: 150mm FH Bty (1Lt Wagner))
+	unit readiness : min: 100.00 (108: AC0: 150mm FH Bty (1Lt Wagner))
+	unit readiness : avg: 100.00
+	unit readiness : spr: 0.00
+	unit readiness : tot: 100.00
+	unit readiness : cnt: 1
+	unit kills     : max: 0 (108: AC0: 150mm FH Bty (1Lt Wagner))
+	unit kills     : min: 0 (108: AC0: 150mm FH Bty (1Lt Wagner))
+	unit kills     : avg: 0.00
+	unit kills     : spr: 0
+	unit kills     : tot: 0
+	unit kills     : cnt: 1
 
 #0029 AD (FID 29)
 	leader      : AD0 150mm FH Bty (1Lt Wagner)
@@ -1157,35 +1151,31 @@ Formation count: 32
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Artillery Bty
-	unit count  : 5
+	unit count  : 1
 	unit list   :
 		AD0 150mm FH Bty (1Lt Wagner)
-		AD0 SdKfz 231 6 Rad (KIA Schwartz) abandoned by AD50 Crewmen (KIA Schwartz)
-		AD1 SdKfz 231 6 Rad (KIA Schirmer)
-		AD2 SdKfz 231 6 Rad (KIA Hummel)
-		AD3 SdKfz 231 6 Rad (KIA Mittelberg)
 
 	kills      : 0
-	losses     : 2
-	readiness  :  80.00 %
-	unit experience: max: 74 (120: AE0: 150mm FH Bty (1Lt Funck))
-	unit experience: min: 68 (118: AD2: SdKfz 231 6 Rad (KIA Hummel))
+	losses     : 0
+	readiness  : 100.00 %
+	unit experience: max: 71 (109: AD0: 150mm FH Bty (1Lt Wagner))
+	unit experience: min: 71 (109: AD0: 150mm FH Bty (1Lt Wagner))
 	unit experience: avg: 71.00
-	unit experience: spr: 6
-	unit experience: tot: 355
-	unit experience: cnt: 5
-	unit readiness : max: 100.00 (109: AB1: SS MMG Truppe (KIA Klein))
-	unit readiness : min: 0.00 (118: AD2: SdKfz 231 6 Rad (KIA Hummel))
-	unit readiness : avg: 80.00
-	unit readiness : spr: 100.00
-	unit readiness : tot: 400.00
-	unit readiness : cnt: 5
-	unit kills     : max: 0 (109: AB1: SS MMG Truppe (KIA Klein))
-	unit kills     : min: 0 (109: AB1: SS MMG Truppe (KIA Klein))
+	unit experience: spr: 0
+	unit experience: tot: 71
+	unit experience: cnt: 1
+	unit readiness : max: 100.00 (109: AD0: 150mm FH Bty (1Lt Wagner))
+	unit readiness : min: 100.00 (109: AD0: 150mm FH Bty (1Lt Wagner))
+	unit readiness : avg: 100.00
+	unit readiness : spr: 0.00
+	unit readiness : tot: 100.00
+	unit readiness : cnt: 1
+	unit kills     : max: 0 (109: AD0: 150mm FH Bty (1Lt Wagner))
+	unit kills     : min: 0 (109: AD0: 150mm FH Bty (1Lt Wagner))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 5
+	unit kills     : cnt: 1
 
 #0030 AE (FID 30)
 	leader      : AE0 150mm FH Bty (1Lt Funck)
@@ -1201,20 +1191,20 @@ Formation count: 32
 	kills      : 0
 	losses     : 0
 	readiness  : 100.00 %
-	unit experience: max: 86 (110: AC0: SdKfz 231 6 Rad (KIA Petereit))
-	unit experience: min: 86 (110: AC0: SdKfz 231 6 Rad (KIA Petereit))
+	unit experience: max: 86 (110: AE0: 150mm FH Bty (1Lt Funck))
+	unit experience: min: 86 (110: AE0: 150mm FH Bty (1Lt Funck))
 	unit experience: avg: 86.00
 	unit experience: spr: 0
 	unit experience: tot: 86
 	unit experience: cnt: 1
-	unit readiness : max: 100.00 (110: AC0: SdKfz 231 6 Rad (KIA Petereit))
-	unit readiness : min: 100.00 (110: AC0: SdKfz 231 6 Rad (KIA Petereit))
+	unit readiness : max: 100.00 (110: AE0: 150mm FH Bty (1Lt Funck))
+	unit readiness : min: 100.00 (110: AE0: 150mm FH Bty (1Lt Funck))
 	unit readiness : avg: 100.00
 	unit readiness : spr: 0.00
 	unit readiness : tot: 100.00
 	unit readiness : cnt: 1
-	unit kills     : max: 0 (110: AC0: SdKfz 231 6 Rad (KIA Petereit))
-	unit kills     : min: 0 (110: AC0: SdKfz 231 6 Rad (KIA Petereit))
+	unit kills     : max: 0 (110: AE0: 150mm FH Bty (1Lt Funck))
+	unit kills     : min: 0 (110: AE0: 150mm FH Bty (1Lt Funck))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
@@ -1234,20 +1224,20 @@ Formation count: 32
 	kills      : 0
 	losses     : 0
 	readiness  : 100.00 %
-	unit experience: max: 75 (111: AC0: 150mm FH Bty (1Lt Wagner))
-	unit experience: min: 75 (111: AC0: 150mm FH Bty (1Lt Wagner))
+	unit experience: max: 75 (111: AF0: 150mm FH Bty (1Lt Schmidt))
+	unit experience: min: 75 (111: AF0: 150mm FH Bty (1Lt Schmidt))
 	unit experience: avg: 75.00
 	unit experience: spr: 0
 	unit experience: tot: 75
 	unit experience: cnt: 1
-	unit readiness : max: 100.00 (111: AC0: 150mm FH Bty (1Lt Wagner))
-	unit readiness : min: 100.00 (111: AC0: 150mm FH Bty (1Lt Wagner))
+	unit readiness : max: 100.00 (111: AF0: 150mm FH Bty (1Lt Schmidt))
+	unit readiness : min: 100.00 (111: AF0: 150mm FH Bty (1Lt Schmidt))
 	unit readiness : avg: 100.00
 	unit readiness : spr: 0.00
 	unit readiness : tot: 100.00
 	unit readiness : cnt: 1
-	unit kills     : max: 0 (111: AC0: 150mm FH Bty (1Lt Wagner))
-	unit kills     : min: 0 (111: AC0: 150mm FH Bty (1Lt Wagner))
+	unit kills     : max: 0 (111: AF0: 150mm FH Bty (1Lt Schmidt))
+	unit kills     : min: 0 (111: AF0: 150mm FH Bty (1Lt Schmidt))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
@@ -1257,7 +1247,7 @@ Formation count: 32
 Complete units report:
 ----------------------
 
-Unit count: 122
+Unit count: 112
 
 #0000 (00:00,00) A0   GE Kommandant
 	leader      : Reichmann, rank 9 (Col)
@@ -1297,7 +1287,7 @@ Unit count: 122
 
 #0001 (01:01,00) B0   Sturmpionieres
 	leader      : Telner, rank 4 (2Lt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1333,7 +1323,7 @@ Unit count: 122
 
 #0002 (01:01,01) B1   Sturmpionieres
 	leader      : Kramer, rank 3 (Sgt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1370,7 +1360,7 @@ Unit count: 122
 
 #0003 (01:01,02) B2   Sturmpionieres
 	leader      : Zimmerman, rank 3 (Sgt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1407,7 +1397,7 @@ Unit count: 122
 
 #0004 (01:01,03) B3   Sturmpionieres
 	leader      : Hudel, rank 3 (Sgt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1623,9 +1613,9 @@ Unit count: 122
 
 #0010 (03:03,00) D0   PzKpfw III E
 	leader      : Kronz, rank 5 (1Lt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1659,9 +1649,9 @@ Unit count: 122
 
 #0011 (03:03,01) D1   PzKpfw III E
 	leader      : Kramer, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1695,9 +1685,9 @@ Unit count: 122
 
 #0012 (03:03,02) D2   PzKpfw III E
 	leader      : Oertzen, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1731,9 +1721,9 @@ Unit count: 122
 
 #0013 (03:03,03) D3   PzKpfw III E
 	leader      : Hummel, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1767,9 +1757,9 @@ Unit count: 122
 
 #0014 (03:03,04) D4   PzKpfw III E
 	leader      : Strauch, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 14
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1803,9 +1793,9 @@ Unit count: 122
 
 #0015 (04:04,00) E0   PzKpfw III E
 	leader      : Metzger, rank 5 (1Lt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1839,9 +1829,9 @@ Unit count: 122
 
 #0016 (04:04,01) E1   PzKpfw III E
 	leader      : Hitzelberger, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 7
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
@@ -1875,9 +1865,9 @@ Unit count: 122
 
 #0017 (04:04,02) E2   PzKpfw III E
 	leader      : Schirmer, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 16
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1911,9 +1901,9 @@ Unit count: 122
 
 #0018 (04:04,03) E3   PzKpfw III E
 	leader      : Eberhart, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1947,9 +1937,9 @@ Unit count: 122
 
 #0019 (04:04,04) E4   PzKpfw III E
 	leader      : Kortenhaus, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -2343,10 +2333,10 @@ Unit count: 122
 
 #0030 (08:08,00) I0   Kompanie HQ
 	leader      : Abt, rank 6 (Cpt)
-	formation   : I: core elite company
+	formation   : I: core elite recon company
 	OOB         : 70 (    German)
-	unit type   : 25 (very heavy tank)
-	unit class  : 2 (armor)
+	unit type   : 4 (motorized infantry)
+	unit class  : 0 (infantry)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2380,7 +2370,7 @@ Unit count: 122
 
 #0031 (08:08,01) I1   SdKfz 251/1 HT
 	leader      : Lang, rank 3 (Sgt)
-	formation   : I: core elite company
+	formation   : I: core elite recon company
 	OOB         : 70 (    German)
 	unit type   : 37 (halftrack)
 	unit class  : 3 (APC)
@@ -2418,8 +2408,8 @@ Unit count: 122
 	leader      : Spengler, rank 4 (2Lt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 35 (captured tank)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2455,8 +2445,8 @@ Unit count: 122
 	leader      : Schurz, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2492,8 +2482,8 @@ Unit count: 122
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 8
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2528,8 +2518,8 @@ Unit count: 122
 	leader      : Weiss, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 5
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2564,8 +2554,8 @@ Unit count: 122
 	leader      : Krogel, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2781,8 +2771,8 @@ Unit count: 122
 	leader      : Funck, rank 4 (2Lt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 35 (captured tank)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2818,8 +2808,8 @@ Unit count: 122
 	leader      : Wiedemann, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 6
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2855,8 +2845,8 @@ Unit count: 122
 	leader      : Conkling, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 5
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -2891,8 +2881,8 @@ Unit count: 122
 	leader      : Petereit, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 4
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2928,8 +2918,8 @@ Unit count: 122
 	leader      : Schoen, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3145,8 +3135,8 @@ Unit count: 122
 	leader      : Vebber, rank 4 (2Lt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 35 (captured tank)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3182,8 +3172,8 @@ Unit count: 122
 	leader      : Steinke, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 4
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3219,8 +3209,8 @@ Unit count: 122
 	leader      : Schumacher, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 6
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -3255,8 +3245,8 @@ Unit count: 122
 	leader      : Muller, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -3291,8 +3281,8 @@ Unit count: 122
 	leader      : Becker, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3508,8 +3498,8 @@ Unit count: 122
 	leader      : Stiegel, rank 4 (2Lt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -3544,8 +3534,8 @@ Unit count: 122
 	leader      : Boettcher, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3580,8 +3570,8 @@ Unit count: 122
 	leader      : Hoernlein, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3616,8 +3606,8 @@ Unit count: 122
 	leader      : Schmidt, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 3
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3650,7 +3640,7 @@ Unit count: 122
 
 #0066 (13:13,00) N0   SS MMG Truppe
 	leader      : Schultz, rank 4 (2Lt)
-	formation   : N: core dedicated artillery platoon
+	formation   : N: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 10 (heavy machine gun)
 	unit class  : 0 (infantry)
@@ -3686,7 +3676,7 @@ Unit count: 122
 
 #0067 (13:13,01) N1   SS MMG Truppe
 	leader      : Rosenberg, rank 3 (Sgt)
-	formation   : N: core dedicated artillery platoon
+	formation   : N: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 10 (heavy machine gun)
 	unit class  : 0 (infantry)
@@ -3722,7 +3712,7 @@ Unit count: 122
 
 #0068 (14:14,00) O0   Moerser Grp
 	leader      : Falkenberg, rank 4 (2Lt)
-	formation   : O: core average platoon
+	formation   : O: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 42 (mortar)
 	unit class  : 4 (artillery)
@@ -3758,7 +3748,7 @@ Unit count: 122
 
 #0069 (14:14,01) O1   Moerser Grp
 	leader      : Letzelder, rank 3 (Sgt)
-	formation   : O: core average platoon
+	formation   : O: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 42 (mortar)
 	unit class  : 4 (artillery)
@@ -3794,7 +3784,7 @@ Unit count: 122
 
 #0070 (14:14,02) O2   Krupp Kfz 69
 	leader      : Briel, rank 3 (Sgt)
-	formation   : O: core average platoon
+	formation   : O: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 85 (medium truck)
 	unit class  : 10 (transport)
@@ -3830,7 +3820,7 @@ Unit count: 122
 
 #0071 (15:15,00) P0   sIG33 auf Pz-I
 	leader      : Eberbach, rank 4 (2Lt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -3866,7 +3856,7 @@ Unit count: 122
 
 #0072 (15:15,01) P1   sIG33 auf Pz-I
 	leader      : Ziegler, rank 3 (Sgt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -3902,7 +3892,7 @@ Unit count: 122
 
 #0073 (15:15,02) P2   sIG33 auf Pz-I
 	leader      : Tost, rank 3 (Sgt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -3938,7 +3928,7 @@ Unit count: 122
 
 #0074 (15:15,03) P3   sIG33 auf Pz-I
 	leader      : Heidrich, rank 3 (Sgt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4478,7 +4468,7 @@ Unit count: 122
 
 #0089 (20:20,00) U0   sIG33 auf Pz-I
 	leader      : Stiegel, rank 5 (1Lt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4514,7 +4504,7 @@ Unit count: 122
 
 #0090 (20:20,01) U1   sIG33 auf Pz-I
 	leader      : Brunner, rank 3 (Sgt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4550,7 +4540,7 @@ Unit count: 122
 
 #0091 (20:20,02) U2   sIG33 auf Pz-I
 	leader      : Tost, rank 3 (Sgt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4586,7 +4576,7 @@ Unit count: 122
 
 #0092 (20:20,03) U3   sIG33 auf Pz-I
 	leader      : Spengler, rank 3 (Sgt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4622,7 +4612,7 @@ Unit count: 122
 
 #0093 (21:21,00) V0   sIG33 auf Pz-I
 	leader      : Rauch, rank 5 (1Lt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4658,7 +4648,7 @@ Unit count: 122
 
 #0094 (21:21,01) V1   sIG33 auf Pz-I
 	leader      : Hoffman, rank 3 (Sgt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4694,7 +4684,7 @@ Unit count: 122
 
 #0095 (21:21,02) V2   sIG33 auf Pz-I
 	leader      : Hoernlein, rank 3 (Sgt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4730,7 +4720,7 @@ Unit count: 122
 
 #0096 (21:21,03) V3   sIG33 auf Pz-I
 	leader      : Schmidt, rank 3 (Sgt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4766,7 +4756,7 @@ Unit count: 122
 
 #0097 (22:22,00) W0   Wurfrahmen 40
 	leader      : Krogel, rank 5 (1Lt)
-	formation   : W: support average platoon
+	formation   : W: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -4802,7 +4792,7 @@ Unit count: 122
 
 #0098 (22:22,01) W1   Wurfrahmen 40
 	leader      : Funck, rank 3 (Sgt)
-	formation   : W: support average platoon
+	formation   : W: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -4838,7 +4828,7 @@ Unit count: 122
 
 #0099 (23:23,00) X0   Wurfrahmen 40
 	leader      : Kramer, rank 5 (1Lt)
-	formation   : X: support average platoon
+	formation   : X: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -4874,7 +4864,7 @@ Unit count: 122
 
 #0100 (23:23,01) X1   Wurfrahmen 40
 	leader      : Vosse, rank 3 (Sgt)
-	formation   : X: support average platoon
+	formation   : X: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -5161,114 +5151,6 @@ Unit count: 122
 	losses      : 0
 	readiness   : 100.00 %
 
-#0113 (27:27,00) AB0  SS MMG Truppe
-	leader      : Stiegel, rank 0 (KIA)
-	formation   : AB: support elite recon platoon
-	OOB         : 70 (    German)
-	unit type   : 10 (heavy machine gun)
-	unit class  : 0 (infantry)
-	kills       : 0
-	status      : 0 (ready) [1:alive] [0:hidden]
-	entrenchment: 1 (in cover)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 71, class 2 (average)
-	morale      : 83
-	suppression : 0
-	rally       : 67
-	inf skills  : 70
-	art skills  : 32
-	arm skills  : 37
-	speed       : 8 (4.800 km/h)
-	smokedevice : 0
-	radio       : 2
-	rate of fire: 9
-	targetting  : 0
-	range finder: 3
-	fire control: 3
-	infrared    : 0
-	swim        : 0
-	type group  : 12
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 0
-	readiness   : 100.00 %
-
-#0114 (27:27,01) AB1  SS MMG Truppe
-	leader      : Klein, rank 0 (KIA)
-	formation   : AB: support elite recon platoon
-	OOB         : 70 (    German)
-	unit type   : 10 (heavy machine gun)
-	unit class  : 0 (infantry)
-	kills       : 0
-	status      : 0 (ready) [1:alive] [0:hidden]
-	entrenchment: 1 (in cover)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 64, class 2 (average)
-	morale      : 73
-	suppression : 0
-	rally       : 66
-	inf skills  : 75
-	art skills  : 31
-	arm skills  : 43
-	speed       : 8 (4.800 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 3
-	fire control: 3
-	infrared    : 0
-	swim        : 0
-	type group  : 12
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 0
-	readiness   : 100.00 %
-
-#0115 (28:28,00) AC0  SdKfz 231 6 Rad
-	leader      : Petereit, rank 0 (KIA)
-	formation   : AC: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 3
-	status      : 0 (ready) [1:alive] [0:hidden]
-	entrenchment: 1 (in cover)
-	head count  : 4 (4 left)
-	damage      : 2
-	abandoned   : 0
-	loaded      : 0
-	experience  : 62, class 2 (average)
-	morale      : 83
-	suppression : 0
-	rally       : 65
-	inf skills  : 39
-	art skills  : 39
-	arm skills  : 77
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 2
-	rate of fire: 8
-	targetting  : 0
-	range finder: 2
-	fire control: 4
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 3
-	losses      : 0
-	readiness   :  93.94 %
-
 #0108 (28:28,00) AC0  150mm FH Bty
 	leader      : Wagner, rank 5 (1Lt)
 	formation   : AC: support average platoon
@@ -5305,115 +5187,6 @@ Unit count: 122
 	losses      : 0
 	readiness   : 100.00 %
 
-#0116 (28:28,01) AC1  SdKfz 231 6 Rad
-	leader      : Schurz, rank 0 (KIA)
-	formation   : AC: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 8
-	status      : 0 (ready) [1:alive] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 63, class 2 (average)
-	morale      : 85
-	suppression : 0
-	rally       : 71
-	inf skills  : 36
-	art skills  : 36
-	arm skills  : 68
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 8
-	targetting  : 0
-	range finder: 2
-	fire control: 4
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 8
-	losses      : 0
-	readiness   : 100.00 %
-
-#0117 (28:28,02) AC2  SdKfz 231 6 Rad
-	leader      : Eberbach, rank 0 (KIA)
-	formation   : AC: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 1
-	status      : 0 (ready) [1:alive] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 66, class 2 (average)
-	morale      : 92
-	suppression : 0
-	rally       : 69
-	inf skills  : 42
-	art skills  : 41
-	arm skills  : 74
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 8
-	targetting  : 0
-	range finder: 2
-	fire control: 4
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 1
-	losses      : 0
-	readiness   : 100.00 %
-
-#0118 (28:28,03) AC3  SdKfz 231 6 Rad
-	leader      : Schurz, rank 0 (KIA)
-	formation   : AC: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 1
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (0 left)
-	damage      : 33
-	abandoned   : 1
-	abandoned   : unit left by crew AC53 Crewmen (KIA Schurz)
-	loaded      : 0
-	experience  : 61, class 2 (average)
-	morale      : 75
-	suppression : 0
-	rally       : 78
-	inf skills  : 35
-	art skills  : 43
-	arm skills  : 74
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 8
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 1
-	losses      : 2
-	readiness   :   0.00 %
-
 #0109 (29:29,00) AD0  150mm FH Bty
 	leader      : Wagner, rank 5 (1Lt)
 	formation   : AD: support average platoon
@@ -5444,151 +5217,6 @@ Unit count: 122
 	infrared    : 0
 	swim        : 0
 	type group  : 19
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 0
-	readiness   : 100.00 %
-
-#0119 (29:29,00) AD0  SdKfz 231 6 Rad
-	leader      : Schwartz, rank 0 (KIA)
-	formation   : AD: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (0 left)
-	damage      : 33
-	abandoned   : 1
-	abandoned   : unit left by crew AD50 Crewmen (KIA Schwartz)
-	loaded      : 0
-	experience  : 68, class 2 (average)
-	morale      : 90
-	suppression : 0
-	rally       : 60
-	inf skills  : 40
-	art skills  : 48
-	arm skills  : 67
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 8
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 2
-	readiness   :   0.00 %
-
-#0120 (29:29,01) AD1  SdKfz 231 6 Rad
-	leader      : Schirmer, rank 0 (KIA)
-	formation   : AD: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 0
-	status      : 0 (ready) [1:alive] [0:hidden]
-	entrenchment: 0 (positioned)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 68, class 2 (average)
-	morale      : 80
-	suppression : 0
-	rally       : 73
-	inf skills  : 43
-	art skills  : 32
-	arm skills  : 66
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 2
-	rate of fire: 8
-	targetting  : 0
-	range finder: 2
-	fire control: 4
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 0
-	readiness   : 100.00 %
-
-#0121 (29:29,02) AD2  SdKfz 231 6 Rad
-	leader      : Hummel, rank 0 (KIA)
-	formation   : AD: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 0
-	status      : 0 (ready) [1:alive] [0:hidden]
-	entrenchment: 1 (in cover)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 74, class 2 (average)
-	morale      : 78
-	suppression : 0
-	rally       : 64
-	inf skills  : 37
-	art skills  : 38
-	arm skills  : 76
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 8
-	targetting  : 0
-	range finder: 2
-	fire control: 4
-	infrared    : 0
-	swim        : 0
-	type group  : 22
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 0
-	readiness   : 100.00 %
-
-#0122 (29:29,03) AD3  SdKfz 231 6 Rad
-	leader      : Mittelberg, rank 0 (KIA)
-	formation   : AD: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 77 (light armored car)
-	unit class  : 8 (recon)
-	kills       : 0
-	status      : 0 (ready) [1:alive] [0:hidden]
-	entrenchment: 1 (in cover)
-	head count  : 4 (4 left)
-	damage      : 0
-	abandoned   : 0
-	loaded      : 0
-	experience  : 74, class 2 (average)
-	morale      : 91
-	suppression : 0
-	rally       : 67
-	inf skills  : 35
-	art skills  : 43
-	arm skills  : 73
-	speed       : 38 (22.800 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 8
-	targetting  : 0
-	range finder: 2
-	fire control: 4
-	infrared    : 0
-	swim        : 0
-	type group  : 22
 	position    : (-1, -1)
 
 	kills       : 0
@@ -5671,7 +5299,7 @@ Unit count: 122
 Complete crews report:
 ----------------------
 
-Unit count: 3
+Unit count: 1
 
 #0112 (25:25,50) Z50  Crewmen
 	leader      : Bachman, rank 5 (1Lt)
@@ -5704,74 +5332,12 @@ Unit count: 3
 	swim        : 0
 	type group  : 38
 
-#0124 (28:28,53) AC53 Crewmen
-	leader      : Schurz, rank 0 (KIA)
-	formation   : AC: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 109 (crew)
-	unit class  : 14 (other)
-	kills       : 1
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit AC3 SdKfz 231 6 Rad (KIA Schurz)
-	loaded      : 0
-	experience  : 61, class 2 (average)
-	morale      : 75
-	suppression : 31
-	rally       : 78
-	inf skills  : 35
-	art skills  : 43
-	arm skills  : 74
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 44
-
-#0123 (29:29,50) AD50 Crewmen
-	leader      : Schwartz, rank 0 (KIA)
-	formation   : AD: support average platoon
-	OOB         : 70 (    German)
-	unit type   : 109 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit AD0 SdKfz 231 6 Rad (KIA Schwartz)
-	loaded      : 0
-	experience  : 68, class 2 (average)
-	morale      : 90
-	suppression : 26
-	rally       : 60
-	inf skills  : 40
-	art skills  : 48
-	arm skills  : 67
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 44
-
 
 Complete unit statistics report:
 --------------------------------
 
-Unit count: 122
-Units left: 117
+Unit count: 112
+Units left: 109
 
 Complete formation statistics report:
 -------------------------------------
@@ -5792,36 +5358,36 @@ Nation: Soviet Union
 People: Soviet
 
 Formations: 48
-Units     : 140
+Units     : 120
 Crews     : 1
 Leader    : A0 SO Komander (Col Lavrenev)
 
 Total kills        : 3
-Total losses       : 85
-Total readiness    :  37.52 %
+Total losses       : 64
+Total readiness    :  43.77 %
 Unit experience    : max: 69 ( 40: P0: Rifle Bunker (Cpt Nemov))
 Unit experience    : min: 35 ( 36: O1: Pehota Vintovka (Sgt Larionov))
-Unit experience    : avg: 50.25
+Unit experience    : avg: 50.77
 Unit experience    : spr: 34
-Unit experience    : tot: 7035
-Unit experience    : cnt: 140
+Unit experience    : tot: 6092
+Unit experience    : cnt: 120
 Unit readiness     : max: 100.00 (  0: A0: SO Komander (Col Lavrenev))
 Unit readiness     : min: 0.00 (  1: B0: Lider Vzvoda (KIA Dubrovin))
-Unit readiness     : avg: 37.52
+Unit readiness     : avg: 43.77
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 5252.45
-Unit readiness     : cnt: 140
+Unit readiness     : cnt: 120
 Unit kills         : max: 1 ( 28: L1: Komanda PTRD (KIA Tebyakin))
 Unit kills         : min: 0 (  0: A0: SO Komander (Col Lavrenev))
-Unit kills         : avg: 0.02
+Unit kills         : avg: 0.03
 Unit kills         : spr: 1
 Unit kills         : tot: 3
-Unit kills         : cnt: 140
+Unit kills         : cnt: 120
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 0.00 (  1: B: recon company)
-Formation readiness: avg: 44.88
+Formation readiness: min: 0.00 (  1: B: average platoon)
+Formation readiness: avg: 48.97
 Formation readiness: spr: 100.00
-Formation readiness: tot: 2154.20
+Formation readiness: tot: 2350.75
 Formation readiness: cnt: 48
 Formation kills    : max: 1 ( 11: L: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
@@ -5829,11 +5395,11 @@ Formation kills    : avg: 0.06
 Formation kills    : spr: 1
 Formation kills    : tot: 3
 Formation kills    : cnt: 48
-Formation losses   : max: 7 ( 41: AP: recon company)
+Formation losses   : max: 5 (  1: B: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
-Formation losses   : avg: 1.77
-Formation losses   : spr: 7
-Formation losses   : tot: 85
+Formation losses   : avg: 1.33
+Formation losses   : spr: 5
+Formation losses   : tot: 64
 Formation losses   : cnt: 48
 
 Complete formations report:
@@ -5878,8 +5444,8 @@ Formation count: 48
 	leader      : B3 Pehota Vintovka (KIA Sidorov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -5915,7 +5481,7 @@ Formation count: 48
 	leader      : C0 Rifle Bunker (Cpt Danilevsky)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -6328,8 +5894,8 @@ Formation count: 48
 	leader      : O1 Pehota Vintovka (Sgt Larionov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -6365,7 +5931,7 @@ Formation count: 48
 	leader      : P0 Rifle Bunker (Cpt Nemov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -6809,8 +6375,8 @@ Formation count: 48
 	leader      : AC2 Pehota Vintovka (KIA Potapov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -6846,7 +6412,7 @@ Formation count: 48
 	leader      : AD0 Rifle Bunker (Cpt Ivanovich)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -7226,109 +6792,103 @@ Formation count: 48
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Med Tank Plt
-	unit count  : 5
+	unit count  : 3
 	unit list   :
 		AO0 T-34 M41 (1Lt Ramazanov) abandoned by AO50 Crewmen (1Lt Ramazanov)
 		AO1 T-34 M41 (Sgt Nemov)
-		AO1 Renault B1bis (KIA Langlade)
-		AO2 Renault B1bis (KIA Bonnet)
 		AO2 T-34 M41 (Sgt Herzen)
 
 	kills      : 1
-	losses     : 4
-	readiness  :  29.82 %
-	unit experience: max: 55 (120: AS0: Section Fusil (KIA Argeneau))
-	unit experience: min: 41 (100: AO1: Renault B1bis (KIA Langlade))
-	unit experience: avg: 48.00
-	unit experience: spr: 14
-	unit experience: tot: 240
-	unit experience: cnt: 5
-	unit readiness : max: 89.66 (100: AO1: Renault B1bis (KIA Langlade))
+	losses     : 1
+	readiness  :  49.70 %
+	unit experience: max: 51 ( 99: AO1: T-34 M41 (Sgt Nemov))
+	unit experience: min: 41 (100: AO2: T-34 M41 (Sgt Herzen))
+	unit experience: avg: 45.33
+	unit experience: spr: 10
+	unit experience: tot: 136
+	unit experience: cnt: 3
+	unit readiness : max: 89.66 (100: AO2: T-34 M41 (Sgt Herzen))
 	unit readiness : min: 0.00 ( 98: AO0: T-34 M41 (1Lt Ramazanov))
-	unit readiness : avg: 29.82
+	unit readiness : avg: 49.70
 	unit readiness : spr: 89.66
 	unit readiness : tot: 149.09
-	unit readiness : cnt: 5
+	unit readiness : cnt: 3
 	unit kills     : max: 1 ( 99: AO1: T-34 M41 (Sgt Nemov))
 	unit kills     : min: 0 ( 98: AO0: T-34 M41 (1Lt Ramazanov))
-	unit kills     : avg: 0.20
+	unit kills     : avg: 0.33
 	unit kills     : spr: 1
 	unit kills     : tot: 1
-	unit kills     : cnt: 5
+	unit kills     : cnt: 3
 
 #0141 AP (FID 41)
 	leader      : AP1 Pehota Vintovka (KIA Vorobiev)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
-	unit count  : 7
+	unit count  : 5
 	unit list   :
-		AP0 FF Patrouille (KIA Dumas)
 		AP0 Lider Vzvoda (KIA Plotnikov)
-		AP1 FF Patrouille (KIA Dupre)
 		AP1 Pehota Vintovka (KIA Vorobiev)
 		AP2 Pehota Vintovka (KIA Nemov)
 		AP3 Pehota Vintovka (KIA Sorokin)
 		AP4 Pehota Vintovka (KIA Blinov)
 
 	kills      : 0
-	losses     : 7
+	losses     : 5
 	readiness  :   0.00 %
-	unit experience: max: 53 (102: AO2: T-34 M41 (Sgt Herzen))
-	unit experience: min: 39 (122: AS1: Log Rifle Pit (Sgt Kuvaev))
-	unit experience: avg: 46.86
-	unit experience: spr: 14
-	unit experience: tot: 328
-	unit experience: cnt: 7
-	unit readiness : max: 0.00 (122: AS1: Log Rifle Pit (Sgt Kuvaev))
-	unit readiness : min: 0.00 (122: AS1: Log Rifle Pit (Sgt Kuvaev))
+	unit experience: max: 53 (102: AP1: Pehota Vintovka (KIA Vorobiev))
+	unit experience: min: 43 (105: AP4: Pehota Vintovka (KIA Blinov))
+	unit experience: avg: 48.60
+	unit experience: spr: 10
+	unit experience: tot: 243
+	unit experience: cnt: 5
+	unit readiness : max: 0.00 (101: AP0: Lider Vzvoda (KIA Plotnikov))
+	unit readiness : min: 0.00 (101: AP0: Lider Vzvoda (KIA Plotnikov))
 	unit readiness : avg: 0.00
 	unit readiness : spr: 0.00
 	unit readiness : tot: 0.00
-	unit readiness : cnt: 7
-	unit kills     : max: 0 (122: AS1: Log Rifle Pit (Sgt Kuvaev))
-	unit kills     : min: 0 (122: AS1: Log Rifle Pit (Sgt Kuvaev))
+	unit readiness : cnt: 5
+	unit kills     : max: 0 (101: AP0: Lider Vzvoda (KIA Plotnikov))
+	unit kills     : min: 0 (101: AP0: Lider Vzvoda (KIA Plotnikov))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 7
+	unit kills     : cnt: 5
 
 #0142 AQ (FID 42)
 	leader      : AQ0 Obs Post (Cpt Samoilov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
-	unit count  : 3
+	unit count  : 1
 	unit list   :
 		AQ0 Obs Post (Cpt Samoilov)
-		AQ0 Section Fusil (KIA De Leusse)
-		AQ1 Section Mortier (KIA Durand)
 
 	kills      : 0
-	losses     : 2
-	readiness  :  33.33 %
-	unit experience: max: 69 (106: AP1: Pehota Vintovka (KIA Vorobiev))
-	unit experience: min: 40 (124: AT0: Section Fusil (KIA Beaufre))
-	unit experience: avg: 51.33
-	unit experience: spr: 29
-	unit experience: tot: 154
-	unit experience: cnt: 3
-	unit readiness : max: 100.00 (106: AP1: Pehota Vintovka (KIA Vorobiev))
-	unit readiness : min: 0.00 (124: AT0: Section Fusil (KIA Beaufre))
-	unit readiness : avg: 33.33
-	unit readiness : spr: 100.00
+	losses     : 0
+	readiness  : 100.00 %
+	unit experience: max: 69 (106: AQ0: Obs Post (Cpt Samoilov))
+	unit experience: min: 69 (106: AQ0: Obs Post (Cpt Samoilov))
+	unit experience: avg: 69.00
+	unit experience: spr: 0
+	unit experience: tot: 69
+	unit experience: cnt: 1
+	unit readiness : max: 100.00 (106: AQ0: Obs Post (Cpt Samoilov))
+	unit readiness : min: 100.00 (106: AQ0: Obs Post (Cpt Samoilov))
+	unit readiness : avg: 100.00
+	unit readiness : spr: 0.00
 	unit readiness : tot: 100.00
-	unit readiness : cnt: 3
-	unit kills     : max: 0 (106: AP1: Pehota Vintovka (KIA Vorobiev))
-	unit kills     : min: 0 (106: AP1: Pehota Vintovka (KIA Vorobiev))
+	unit readiness : cnt: 1
+	unit kills     : max: 0 (106: AQ0: Obs Post (Cpt Samoilov))
+	unit kills     : min: 0 (106: AQ0: Obs Post (Cpt Samoilov))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 3
+	unit kills     : cnt: 1
 
 #0143 AR (FID 43)
 	leader      : AR0 Rifle Bunker (2Lt Moskvin)
@@ -7337,36 +6897,33 @@ Formation count: 48
 	force status: 0 (average)
 	type        : platoon
 	unit type   : ++AI Forts++++
-	unit count  : 6
+	unit count  : 3
 	unit list   :
-		AR0 Section Fusil (KIA Sevigny)
 		AR0 Rifle Bunker (2Lt Moskvin)
 		AR1 Rifle Bunker (Sgt Kondrashov)
-		AR1 Section Fusil (KIA Comeaux)
-		AR2 Section Fusil (KIA Donati)
 		AR2 76.2mm AA M38 (Sgt Vyazemsky)
 
 	kills      : 0
-	losses     : 3
-	readiness  :  50.00 %
-	unit experience: max: 60 (107: AP2: Pehota Vintovka (KIA Nemov))
-	unit experience: min: 41 (128: AT2: Section Fusil (KIA Sevigny))
-	unit experience: avg: 51.83
-	unit experience: spr: 19
-	unit experience: tot: 311
-	unit experience: cnt: 6
-	unit readiness : max: 100.00 (107: AP2: Pehota Vintovka (KIA Nemov))
-	unit readiness : min: 0.00 (126: AT1: Section Fusil (KIA Boudinot))
-	unit readiness : avg: 50.00
-	unit readiness : spr: 100.00
+	losses     : 0
+	readiness  : 100.00 %
+	unit experience: max: 60 (107: AR0: Rifle Bunker (2Lt Moskvin))
+	unit experience: min: 51 (109: AR2: 76.2mm AA M38 (Sgt Vyazemsky))
+	unit experience: avg: 55.33
+	unit experience: spr: 9
+	unit experience: tot: 166
+	unit experience: cnt: 3
+	unit readiness : max: 100.00 (107: AR0: Rifle Bunker (2Lt Moskvin))
+	unit readiness : min: 100.00 (107: AR0: Rifle Bunker (2Lt Moskvin))
+	unit readiness : avg: 100.00
+	unit readiness : spr: 0.00
 	unit readiness : tot: 300.00
-	unit readiness : cnt: 6
-	unit kills     : max: 0 (126: AT1: Section Fusil (KIA Boudinot))
-	unit kills     : min: 0 (126: AT1: Section Fusil (KIA Boudinot))
+	unit readiness : cnt: 3
+	unit kills     : max: 0 (107: AR0: Rifle Bunker (2Lt Moskvin))
+	unit kills     : min: 0 (107: AR0: Rifle Bunker (2Lt Moskvin))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 6
+	unit kills     : cnt: 3
 
 #0144 AS (FID 44)
 	leader      : AS0 Log Rifle Pit (2Lt Pugovkin)
@@ -7375,35 +6932,32 @@ Formation count: 48
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Fortifications
-	unit count  : 5
+	unit count  : 2
 	unit list   :
 		AS0 Log Rifle Pit (2Lt Pugovkin)
-		AS0 Section Fusil (KIA Argeneau)
-		AS1 Section Fusil (KIA Fauvelle)
 		AS1 Log Rifle Pit (Sgt Kuvaev)
-		AS2 Section Fusil (KIA Bonnet)
 
 	kills      : 0
-	losses     : 3
-	readiness  :  40.00 %
-	unit experience: max: 54 (110: AQ0: Obs Post (Cpt Samoilov))
-	unit experience: min: 46 (130: AU0: Komanda PTRD (KIA Doubice))
-	unit experience: avg: 49.60
-	unit experience: spr: 8
-	unit experience: tot: 248
-	unit experience: cnt: 5
-	unit readiness : max: 100.00 (110: AQ0: Obs Post (Cpt Samoilov))
-	unit readiness : min: 0.00 (129: AT2: Komanda PTRD (KIA Danilevsky))
-	unit readiness : avg: 40.00
-	unit readiness : spr: 100.00
+	losses     : 0
+	readiness  : 100.00 %
+	unit experience: max: 54 (110: AS0: Log Rifle Pit (2Lt Pugovkin))
+	unit experience: min: 49 (111: AS1: Log Rifle Pit (Sgt Kuvaev))
+	unit experience: avg: 51.50
+	unit experience: spr: 5
+	unit experience: tot: 103
+	unit experience: cnt: 2
+	unit readiness : max: 100.00 (110: AS0: Log Rifle Pit (2Lt Pugovkin))
+	unit readiness : min: 100.00 (110: AS0: Log Rifle Pit (2Lt Pugovkin))
+	unit readiness : avg: 100.00
+	unit readiness : spr: 0.00
 	unit readiness : tot: 200.00
-	unit readiness : cnt: 5
-	unit kills     : max: 0 (110: AQ0: Obs Post (Cpt Samoilov))
-	unit kills     : min: 0 (110: AQ0: Obs Post (Cpt Samoilov))
+	unit readiness : cnt: 2
+	unit kills     : max: 0 (110: AS0: Log Rifle Pit (2Lt Pugovkin))
+	unit kills     : min: 0 (110: AS0: Log Rifle Pit (2Lt Pugovkin))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 5
+	unit kills     : cnt: 2
 
 #0145 AT (FID 45)
 	leader      : AT0 Komanda PTRD (KIA Pashkov)
@@ -7412,36 +6966,33 @@ Formation count: 48
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Inf-AT Sec
-	unit count  : 6
+	unit count  : 3
 	unit list   :
-		AT0 Section Fusil (KIA Beaufre)
 		AT0 Komanda PTRD (KIA Pashkov)
-		AT1 Section Fusil (KIA Boudinot)
 		AT1 Komanda PTRD (KIA Pugachov)
-		AT2 Section Fusil (KIA Sevigny)
 		AT2 Komanda PTRD (KIA Danilevsky)
 
 	kills      : 0
-	losses     : 6
+	losses     : 3
 	readiness  :   0.00 %
-	unit experience: max: 58 (114: AR0: Rifle Bunker (2Lt Moskvin))
-	unit experience: min: 40 (113: AR0: Section Fusil (KIA Sevigny))
-	unit experience: avg: 48.33
+	unit experience: max: 58 (114: AT2: Komanda PTRD (KIA Danilevsky))
+	unit experience: min: 40 (113: AT1: Komanda PTRD (KIA Pugachov))
+	unit experience: avg: 47.67
 	unit experience: spr: 18
-	unit experience: tot: 290
-	unit experience: cnt: 6
-	unit readiness : max: 0.00 (132: AU1: Komanda PTRD (KIA Mogilny))
-	unit readiness : min: 0.00 (132: AU1: Komanda PTRD (KIA Mogilny))
+	unit experience: tot: 143
+	unit experience: cnt: 3
+	unit readiness : max: 0.00 (112: AT0: Komanda PTRD (KIA Pashkov))
+	unit readiness : min: 0.00 (112: AT0: Komanda PTRD (KIA Pashkov))
 	unit readiness : avg: 0.00
 	unit readiness : spr: 0.00
 	unit readiness : tot: 0.00
-	unit readiness : cnt: 6
-	unit kills     : max: 0 (132: AU1: Komanda PTRD (KIA Mogilny))
-	unit kills     : min: 0 (132: AU1: Komanda PTRD (KIA Mogilny))
+	unit readiness : cnt: 3
+	unit kills     : max: 0 (112: AT0: Komanda PTRD (KIA Pashkov))
+	unit kills     : min: 0 (112: AT0: Komanda PTRD (KIA Pashkov))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 6
+	unit kills     : cnt: 3
 
 #0146 AU (FID 46)
 	leader      : AU2 Komanda PTRD (KIA Tatlin)
@@ -7450,36 +7001,33 @@ Formation count: 48
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Inf-AT Sec
-	unit count  : 6
+	unit count  : 3
 	unit list   :
 		AU0 Komanda PTRD (KIA Doubice)
-		AU0 Section Fusil (KIA Marquette)
 		AU1 Komanda PTRD (KIA Mogilny)
-		AU1 Section Fusil (KIA Argeneau)
 		AU2 Komanda PTRD (KIA Tatlin)
-		AU2 Section Fusil (KIA Archambault)
 
 	kills      : 0
-	losses     : 6
+	losses     : 3
 	readiness  :   0.00 %
-	unit experience: max: 56 (137: AV0: Komanda HMG (KIA Samoilov))
-	unit experience: min: 42 (115: AR1: Rifle Bunker (Sgt Kondrashov))
-	unit experience: avg: 47.00
-	unit experience: spr: 14
-	unit experience: tot: 282
-	unit experience: cnt: 6
-	unit readiness : max: 0.00 (115: AR1: Rifle Bunker (Sgt Kondrashov))
-	unit readiness : min: 0.00 (115: AR1: Rifle Bunker (Sgt Kondrashov))
+	unit experience: max: 49 (117: AU2: Komanda PTRD (KIA Tatlin))
+	unit experience: min: 42 (115: AU0: Komanda PTRD (KIA Doubice))
+	unit experience: avg: 45.67
+	unit experience: spr: 7
+	unit experience: tot: 137
+	unit experience: cnt: 3
+	unit readiness : max: 0.00 (115: AU0: Komanda PTRD (KIA Doubice))
+	unit readiness : min: 0.00 (115: AU0: Komanda PTRD (KIA Doubice))
 	unit readiness : avg: 0.00
 	unit readiness : spr: 0.00
 	unit readiness : tot: 0.00
-	unit readiness : cnt: 6
-	unit kills     : max: 0 (115: AR1: Rifle Bunker (Sgt Kondrashov))
-	unit kills     : min: 0 (115: AR1: Rifle Bunker (Sgt Kondrashov))
+	unit readiness : cnt: 3
+	unit kills     : max: 0 (115: AU0: Komanda PTRD (KIA Doubice))
+	unit kills     : min: 0 (115: AU0: Komanda PTRD (KIA Doubice))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 6
+	unit kills     : cnt: 3
 
 #0147 AV (FID 47)
 	leader      : AV1 Komanda HMG (KIA Oistrakh)
@@ -7488,40 +7036,38 @@ Formation count: 48
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Hvy MG Sec
-	unit count  : 4
+	unit count  : 2
 	unit list   :
-		AV0 Section Mortier (KIA Broussard)
 		AV0 Komanda HMG (KIA Samoilov)
 		AV1 Komanda HMG (KIA Oistrakh)
-		AV1 Equipe Fusil AC (KIA Faneuil)
 
 	kills      : 0
-	losses     : 4
+	losses     : 2
 	readiness  :   0.00 %
-	unit experience: max: 60 (118: AR2: 76.2mm AA M38 (Sgt Vyazemsky))
-	unit experience: min: 43 (139: AV1: Equipe Fusil AC (KIA Faneuil))
-	unit experience: avg: 49.00
-	unit experience: spr: 17
-	unit experience: tot: 196
-	unit experience: cnt: 4
-	unit readiness : max: 0.00 (138: AV1: Komanda HMG (KIA Oistrakh))
-	unit readiness : min: 0.00 (138: AV1: Komanda HMG (KIA Oistrakh))
+	unit experience: max: 60 (118: AV0: Komanda HMG (KIA Samoilov))
+	unit experience: min: 49 (119: AV1: Komanda HMG (KIA Oistrakh))
+	unit experience: avg: 54.50
+	unit experience: spr: 11
+	unit experience: tot: 109
+	unit experience: cnt: 2
+	unit readiness : max: 0.00 (118: AV0: Komanda HMG (KIA Samoilov))
+	unit readiness : min: 0.00 (118: AV0: Komanda HMG (KIA Samoilov))
 	unit readiness : avg: 0.00
 	unit readiness : spr: 0.00
 	unit readiness : tot: 0.00
-	unit readiness : cnt: 4
-	unit kills     : max: 0 (138: AV1: Komanda HMG (KIA Oistrakh))
-	unit kills     : min: 0 (138: AV1: Komanda HMG (KIA Oistrakh))
+	unit readiness : cnt: 2
+	unit kills     : max: 0 (118: AV0: Komanda HMG (KIA Samoilov))
+	unit kills     : min: 0 (118: AV0: Komanda HMG (KIA Samoilov))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 4
+	unit kills     : cnt: 2
 
 
 Complete units report:
 ----------------------
 
-Unit count: 140
+Unit count: 120
 
 #0400 (100:00,00) A0   SO Komander
 	leader      : Lavrenev, rank 9 (Col)
@@ -7561,10 +7107,10 @@ Unit count: 140
 
 #0401 (101:01,00) B0   Lider Vzvoda
 	leader      : Dubrovin, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -7597,7 +7143,7 @@ Unit count: 140
 
 #0402 (101:01,01) B1   Pehota Vintovka
 	leader      : Ilyuchin, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7633,7 +7179,7 @@ Unit count: 140
 
 #0403 (101:01,02) B2   Pehota Vintovka
 	leader      : Bogolyubov, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7669,7 +7215,7 @@ Unit count: 140
 
 #0404 (101:01,03) B3   Pehota Vintovka
 	leader      : Sidorov, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7705,7 +7251,7 @@ Unit count: 140
 
 #0405 (101:01,04) B4   Pehota Vintovka
 	leader      : Kuropatkin, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7741,7 +7287,7 @@ Unit count: 140
 
 #0406 (102:02,00) C0   Rifle Bunker
 	leader      : Danilevsky, rank 6 (Cpt)
-	formation   : C: support average company
+	formation   : C: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -8785,10 +8331,10 @@ Unit count: 140
 
 #0435 (114:14,00) O0   Lider Vzvoda
 	leader      : Slyusarj, rank 0 (KIA)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -8821,7 +8367,7 @@ Unit count: 140
 
 #0436 (114:14,01) O1   Pehota Vintovka
 	leader      : Larionov, rank 3 (Sgt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8857,7 +8403,7 @@ Unit count: 140
 
 #0437 (114:14,02) O2   Pehota Vintovka
 	leader      : Kuznetzov, rank 0 (KIA)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8893,7 +8439,7 @@ Unit count: 140
 
 #0438 (114:14,03) O3   Pehota Vintovka
 	leader      : Tatlin, rank 3 (Sgt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8929,7 +8475,7 @@ Unit count: 140
 
 #0439 (114:14,04) O4   Pehota Vintovka
 	leader      : Kulebyaka, rank 0 (KIA)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8965,7 +8511,7 @@ Unit count: 140
 
 #0440 (115:15,00) P0   Rifle Bunker
 	leader      : Nemov, rank 6 (Cpt)
-	formation   : P: support average company
+	formation   : P: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -9973,10 +9519,10 @@ Unit count: 140
 
 #0468 (128:28,00) AC0  Lider Vzvoda
 	leader      : Zhdanov, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -10009,7 +9555,7 @@ Unit count: 140
 
 #0469 (128:28,01) AC1  Pehota Vintovka
 	leader      : Gumilev, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10045,7 +9591,7 @@ Unit count: 140
 
 #0470 (128:28,02) AC2  Pehota Vintovka
 	leader      : Potapov, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10081,7 +9627,7 @@ Unit count: 140
 
 #0471 (128:28,03) AC3  Pehota Vintovka
 	leader      : Pugachov, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10117,7 +9663,7 @@ Unit count: 140
 
 #0472 (128:28,04) AC4  Pehota Vintovka
 	leader      : Pashkov, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10153,7 +9699,7 @@ Unit count: 140
 
 #0473 (129:29,00) AD0  Rifle Bunker
 	leader      : Ivanovich, rank 6 (Cpt)
-	formation   : AD: support average company
+	formation   : AD: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -11124,78 +10670,6 @@ Unit count: 140
 	losses      : 0
 	readiness   :  59.43 %
 
-#0521 (140:40,01) AO1  Renault B1bis
-	leader      : Langlade, rank 0 (KIA)
-	formation   : AO: core average platoon
-	OOB         : 76 (    French)
-	unit type   : 29 (infantry tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (0 left)
-	damage      : 113
-	abandoned   : 0
-	loaded      : 0
-	experience  : 55, class 2 (average)
-	morale      : 45
-	suppression : 22
-	rally       : 49
-	inf skills  : 23
-	art skills  : 25
-	arm skills  : 39
-	speed       : 16 (9.600 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 50
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0522 (140:40,02) AO2  Renault B1bis
-	leader      : Bonnet, rank 0 (KIA)
-	formation   : AO: core average platoon
-	OOB         : 76 (    French)
-	unit type   : 29 (infantry tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (0 left)
-	damage      : 113
-	abandoned   : 0
-	loaded      : 0
-	experience  : 49, class 1 (green)
-	morale      : 37
-	suppression : 25
-	rally       : 45
-	inf skills  : 20
-	art skills  : 19
-	arm skills  : 37
-	speed       : 16 (9.600 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 50
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 2
-	readiness   :   0.00 %
-
 #0500 (140:40,02) AO2  T-34 M41
 	leader      : Herzen, rank 3 (Sgt)
 	formation   : AO: core average platoon
@@ -11232,48 +10706,12 @@ Unit count: 140
 	losses      : 0
 	readiness   :  89.66 %
 
-#0523 (141:41,00) AP0  FF Patrouille
-	leader      : Dumas, rank 0 (KIA)
-	formation   : AP: support recon company
-	OOB         : 76 (    French)
-	unit type   : 81 (force HQ)
-	unit class  : 9 (C&C)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (0 left)
-	damage      : 12
-	abandoned   : 0
-	loaded      : 0
-	experience  : 39, class 1 (green)
-	morale      : 45
-	suppression : 13
-	rally       : 38
-	inf skills  : 45
-	art skills  : 21
-	arm skills  : 23
-	speed       : 11 (6.600 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 48
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0501 (141:41,00) AP0  Lider Vzvoda
 	leader      : Plotnikov, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -11304,45 +10742,9 @@ Unit count: 140
 	losses      : 1
 	readiness   :   0.00 %
 
-#0524 (141:41,01) AP1  FF Patrouille
-	leader      : Dupre, rank 0 (KIA)
-	formation   : AP: support recon company
-	OOB         : 76 (    French)
-	unit type   : 81 (force HQ)
-	unit class  : 9 (C&C)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 4 (0 left)
-	damage      : 12
-	abandoned   : 0
-	loaded      : 0
-	experience  : 46, class 1 (green)
-	morale      : 51
-	suppression : 38
-	rally       : 42
-	inf skills  : 41
-	art skills  : 28
-	arm skills  : 22
-	speed       : 11 (6.600 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 48
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0502 (141:41,01) AP1  Pehota Vintovka
 	leader      : Vorobiev, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -11378,7 +10780,7 @@ Unit count: 140
 
 #0503 (141:41,02) AP2  Pehota Vintovka
 	leader      : Nemov, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -11414,7 +10816,7 @@ Unit count: 140
 
 #0504 (141:41,03) AP3  Pehota Vintovka
 	leader      : Sorokin, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -11450,7 +10852,7 @@ Unit count: 140
 
 #0505 (141:41,04) AP4  Pehota Vintovka
 	leader      : Blinov, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -11486,7 +10888,7 @@ Unit count: 140
 
 #0506 (142:42,00) AQ0  Obs Post
 	leader      : Samoilov, rank 6 (Cpt)
-	formation   : AQ: support average company
+	formation   : AQ: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -11519,114 +10921,6 @@ Unit count: 140
 	kills       : 0
 	losses      : 0
 	readiness   : 100.00 %
-
-#0525 (142:42,00) AQ0  Section Fusil
-	leader      : De Leusse, rank 0 (KIA)
-	formation   : AQ: support average company
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 40, class 1 (green)
-	morale      : 46
-	suppression : 55
-	rally       : 44
-	inf skills  : 45
-	art skills  : 20
-	arm skills  : 20
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0526 (142:42,01) AQ1  Section Mortier
-	leader      : Durand, rank 0 (KIA)
-	formation   : AQ: support average company
-	OOB         : 76 (    French)
-	unit type   : 22 (light tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 5 (0 left)
-	damage      : 19
-	abandoned   : 0
-	loaded      : 0
-	experience  : 45, class 1 (green)
-	morale      : 40
-	suppression : 38
-	rally       : 42
-	inf skills  : 24
-	art skills  : 39
-	arm skills  : 22
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 2
-	infrared    : 0
-	swim        : 0
-	type group  : 25
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0527 (143:43,00) AR0  Section Fusil
-	leader      : Sevigny, rank 0 (KIA)
-	formation   : AR: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 48, class 1 (green)
-	morale      : 42
-	suppression : 55
-	rally       : 47
-	inf skills  : 46
-	art skills  : 25
-	arm skills  : 23
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
 
 #0507 (143:43,00) AR0  Rifle Bunker
 	leader      : Moskvin, rank 4 (2Lt)
@@ -11700,78 +10994,6 @@ Unit count: 140
 	losses      : 0
 	readiness   : 100.00 %
 
-#0528 (143:43,01) AR1  Section Fusil
-	leader      : Comeaux, rank 0 (KIA)
-	formation   : AR: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 56, class 2 (average)
-	morale      : 38
-	suppression : 77
-	rally       : 41
-	inf skills  : 37
-	art skills  : 23
-	arm skills  : 21
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0529 (143:43,02) AR2  Section Fusil
-	leader      : Donati, rank 0 (KIA)
-	formation   : AR: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 41, class 1 (green)
-	morale      : 43
-	suppression : 49
-	rally       : 46
-	inf skills  : 45
-	art skills  : 28
-	arm skills  : 22
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0509 (143:43,02) AR2  76.2mm AA M38
 	leader      : Vyazemsky, rank 3 (Sgt)
 	formation   : AR: support average platoon
@@ -11844,78 +11066,6 @@ Unit count: 140
 	losses      : 0
 	readiness   : 100.00 %
 
-#0530 (144:44,00) AS0  Section Fusil
-	leader      : Argeneau, rank 0 (KIA)
-	formation   : AS: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 49, class 1 (green)
-	morale      : 45
-	suppression : 90
-	rally       : 42
-	inf skills  : 38
-	art skills  : 24
-	arm skills  : 24
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0531 (144:44,01) AS1  Section Fusil
-	leader      : Fauvelle, rank 0 (KIA)
-	formation   : AS: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 46, class 1 (green)
-	morale      : 42
-	suppression : 54
-	rally       : 40
-	inf skills  : 46
-	art skills  : 24
-	arm skills  : 23
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0511 (144:44,01) AS1  Log Rifle Pit
 	leader      : Kuvaev, rank 3 (Sgt)
 	formation   : AS: support average platoon
@@ -11951,78 +11101,6 @@ Unit count: 140
 	kills       : 0
 	losses      : 0
 	readiness   : 100.00 %
-
-#0532 (144:44,02) AS2  Section Fusil
-	leader      : Bonnet, rank 0 (KIA)
-	formation   : AS: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 50, class 2 (average)
-	morale      : 44
-	suppression : 88
-	rally       : 40
-	inf skills  : 41
-	art skills  : 20
-	arm skills  : 25
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0533 (145:45,00) AT0  Section Fusil
-	leader      : Beaufre, rank 0 (KIA)
-	formation   : AT: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 56, class 2 (average)
-	morale      : 55
-	suppression : 27
-	rally       : 46
-	inf skills  : 41
-	art skills  : 26
-	arm skills  : 30
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
 
 #0512 (145:45,00) AT0  Komanda PTRD
 	leader      : Pashkov, rank 0 (KIA)
@@ -12060,42 +11138,6 @@ Unit count: 140
 	losses      : 1
 	readiness   :   0.00 %
 
-#0534 (145:45,01) AT1  Section Fusil
-	leader      : Boudinot, rank 0 (KIA)
-	formation   : AT: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 49, class 1 (green)
-	morale      : 45
-	suppression : 66
-	rally       : 46
-	inf skills  : 43
-	art skills  : 25
-	arm skills  : 24
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0513 (145:45,01) AT1  Komanda PTRD
 	leader      : Pugachov, rank 0 (KIA)
 	formation   : AT: support average platoon
@@ -12126,42 +11168,6 @@ Unit count: 140
 	infrared    : 0
 	swim        : 0
 	type group  : 29
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0535 (145:45,02) AT2  Section Fusil
-	leader      : Sevigny, rank 0 (KIA)
-	formation   : AT: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 42, class 1 (green)
-	morale      : 37
-	suppression : 34
-	rally       : 40
-	inf skills  : 41
-	art skills  : 18
-	arm skills  : 18
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
 	position    : (-1, -1)
 
 	kills       : 0
@@ -12240,42 +11246,6 @@ Unit count: 140
 	losses      : 1
 	readiness   :   0.00 %
 
-#0536 (146:46,00) AU0  Section Fusil
-	leader      : Marquette, rank 0 (KIA)
-	formation   : AU: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 47, class 1 (green)
-	morale      : 38
-	suppression : 36
-	rally       : 35
-	inf skills  : 50
-	art skills  : 24
-	arm skills  : 25
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0516 (146:46,01) AU1  Komanda PTRD
 	leader      : Mogilny, rank 0 (KIA)
 	formation   : AU: support average platoon
@@ -12312,42 +11282,6 @@ Unit count: 140
 	losses      : 1
 	readiness   :   0.00 %
 
-#0537 (146:46,01) AU1  Section Fusil
-	leader      : Argeneau, rank 0 (KIA)
-	formation   : AU: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 42, class 1 (green)
-	morale      : 42
-	suppression : 74
-	rally       : 44
-	inf skills  : 48
-	art skills  : 25
-	arm skills  : 28
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 #0517 (146:46,02) AU2  Komanda PTRD
 	leader      : Tatlin, rank 0 (KIA)
 	formation   : AU: support average platoon
@@ -12378,78 +11312,6 @@ Unit count: 140
 	infrared    : 0
 	swim        : 0
 	type group  : 29
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0538 (146:46,02) AU2  Section Fusil
-	leader      : Archambault, rank 0 (KIA)
-	formation   : AU: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 23 (medium tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 12 (0 left)
-	damage      : 22
-	abandoned   : 0
-	loaded      : 0
-	experience  : 56, class 2 (average)
-	morale      : 43
-	suppression : 73
-	rally       : 44
-	inf skills  : 43
-	art skills  : 20
-	arm skills  : 30
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 24
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
-#0539 (147:47,00) AV0  Section Mortier
-	leader      : Broussard, rank 0 (KIA)
-	formation   : AV: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 22 (light tank)
-	unit class  : 2 (armor)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 5 (0 left)
-	damage      : 19
-	abandoned   : 0
-	loaded      : 0
-	experience  : 44, class 1 (green)
-	morale      : 44
-	suppression : 46
-	rally       : 42
-	inf skills  : 27
-	art skills  : 43
-	arm skills  : 17
-	speed       : 9 (5.400 km/h)
-	smokedevice : 0
-	radio       : 1
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 2
-	infrared    : 0
-	swim        : 0
-	type group  : 25
 	position    : (-1, -1)
 
 	kills       : 0
@@ -12528,42 +11390,6 @@ Unit count: 140
 	losses      : 1
 	readiness   :   0.00 %
 
-#0540 (147:47,01) AV1  Equipe Fusil AC
-	leader      : Faneuil, rank 0 (KIA)
-	formation   : AV: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 69 (scout)
-	unit class  : 8 (recon)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	entrenchment: 0 (positioned)
-	head count  : 2 (0 left)
-	damage      : 7
-	abandoned   : 0
-	loaded      : 0
-	experience  : 43, class 1 (green)
-	morale      : 53
-	suppression : 13
-	rally       : 51
-	inf skills  : 39
-	art skills  : 24
-	arm skills  : 26
-	speed       : 8 (4.800 km/h)
-	smokedevice : 0
-	radio       : 0
-	rate of fire: 9
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 51
-	position    : (-1, -1)
-
-	kills       : 0
-	losses      : 1
-	readiness   :   0.00 %
-
 
 Complete crews report:
 ----------------------
@@ -12605,7 +11431,7 @@ Unit count: 1
 Complete unit statistics report:
 --------------------------------
 
-Unit count: 140
+Unit count: 120
 Units left: 56
 
 Complete formation statistics report:

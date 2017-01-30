@@ -4883,7 +4883,7 @@ Formation kills    : avg: 0.05
 Formation kills    : spr: 1
 Formation kills    : tot: 3
 Formation kills    : cnt: 57
-Formation losses   : max: 8 ( 15: P: recon platoon)
+Formation losses   : max: 8 ( 15: P: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
 Formation losses   : avg: 1.77
 Formation losses   : spr: 8
@@ -5181,7 +5181,7 @@ Formation count: 57
 	leader      : I0 Camion DCA 25mm (1Lt Jacquot)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : SPAA Sec
 	unit count  : 2
@@ -5392,7 +5392,7 @@ Formation count: 57
 	leader      : O2 Peugeot 202+ (Sgt Toussaint)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 1 (recon)
 	type        : platoon
 	unit type   : Motor Recon
 	unit count  : 4
@@ -5428,7 +5428,7 @@ Formation count: 57
 	leader      : P1 Section Dragons (KIA Benoit)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
 	status      : 2 (support)
-	force status: 1 (recon)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : Dragons S20 Plt
 	unit count  : 8
@@ -5638,7 +5638,7 @@ Formation count: 57
 	leader      : V3 Section Sapeurs (KIA Bernhardt)
 	higher cmd  : R0 75mm Obusier (Cpt Mouton)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : <<AI ENGINEERS>
 	unit count  : 4
@@ -7828,7 +7828,7 @@ Unit count: 165
 
 #0426 (108:08,00) I0   Camion DCA 25mm
 	leader      : Jacquot, rank 5 (1Lt)
-	formation   : I: core recon platoon
+	formation   : I: core average platoon
 	OOB         : 76 (    French)
 	unit type   : 63 (wheeled flak)
 	unit class  : 6 (anti-air)
@@ -7865,7 +7865,7 @@ Unit count: 165
 
 #0427 (108:08,01) I1   Camion DCA 25mm
 	leader      : La Rue, rank 3 (Sgt)
-	formation   : I: core recon platoon
+	formation   : I: core average platoon
 	OOB         : 76 (    French)
 	unit type   : 63 (wheeled flak)
 	unit class  : 6 (anti-air)
@@ -8515,7 +8515,7 @@ Unit count: 165
 
 #0445 (114:14,00) O0   Patrouille Recn
 	leader      : Argeneau, rank 0 (KIA)
-	formation   : O: support average platoon
+	formation   : O: support recon platoon
 	OOB         : 76 (    French)
 	unit type   : 69 (scout)
 	unit class  : 8 (recon)
@@ -8551,7 +8551,7 @@ Unit count: 165
 
 #0446 (114:14,01) O1   Patrouille Recn
 	leader      : Boussaquet, rank 0 (KIA)
-	formation   : O: support average platoon
+	formation   : O: support recon platoon
 	OOB         : 76 (    French)
 	unit type   : 69 (scout)
 	unit class  : 8 (recon)
@@ -8587,7 +8587,7 @@ Unit count: 165
 
 #0447 (114:14,02) O2   Peugeot 202+
 	leader      : Toussaint, rank 3 (Sgt)
-	formation   : O: support average platoon
+	formation   : O: support recon platoon
 	OOB         : 76 (    French)
 	unit type   : 108 (utility vehicle)
 	unit class  : 14 (other)
@@ -8623,7 +8623,7 @@ Unit count: 165
 
 #0448 (114:14,03) O3   Peugeot 202+
 	leader      : De Pasquale, rank 3 (Sgt)
-	formation   : O: support average platoon
+	formation   : O: support recon platoon
 	OOB         : 76 (    French)
 	unit type   : 108 (utility vehicle)
 	unit class  : 14 (other)
@@ -8659,7 +8659,7 @@ Unit count: 165
 
 #0449 (115:15,00) P0   Dragons Scouts
 	leader      : La Roche, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 75 (motorcycle)
 	unit class  : 8 (recon)
@@ -8695,7 +8695,7 @@ Unit count: 165
 
 #0450 (115:15,01) P1   Section Dragons
 	leader      : Benoit, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 4 (motorized infantry)
 	unit class  : 0 (infantry)
@@ -8731,7 +8731,7 @@ Unit count: 165
 
 #0451 (115:15,02) P2   Section Dragons
 	leader      : Catroux, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 4 (motorized infantry)
 	unit class  : 0 (infantry)
@@ -8767,7 +8767,7 @@ Unit count: 165
 
 #0452 (115:15,03) P3   Section Dragons
 	leader      : Boudreau, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 4 (motorized infantry)
 	unit class  : 0 (infantry)
@@ -8803,7 +8803,7 @@ Unit count: 165
 
 #0453 (115:15,04) P4   Laffly S20TL
 	leader      : Dampierre, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 38 (wheeled APC)
 	unit class  : 3 (APC)
@@ -8839,7 +8839,7 @@ Unit count: 165
 
 #0454 (115:15,05) P5   Laffly S20TL
 	leader      : Corbin, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 38 (wheeled APC)
 	unit class  : 3 (APC)
@@ -8875,7 +8875,7 @@ Unit count: 165
 
 #0455 (115:15,06) P6   Laffly S20TL
 	leader      : Guillot, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 38 (wheeled APC)
 	unit class  : 3 (APC)
@@ -8911,7 +8911,7 @@ Unit count: 165
 
 #0456 (115:15,07) P7   Laffly S20TL
 	leader      : Bineau, rank 0 (KIA)
-	formation   : P: support recon platoon
+	formation   : P: support average platoon
 	OOB         : 76 (    French)
 	unit type   : 38 (wheeled APC)
 	unit class  : 3 (APC)
@@ -9307,7 +9307,7 @@ Unit count: 165
 
 #0467 (121:21,00) V0   Section Sapeurs
 	leader      : Deveraux, rank 0 (KIA)
-	formation   : V: support average platoon
+	formation   : V: support elite platoon
 	OOB         : 76 (    French)
 	unit type   : 6 (engineers)
 	unit class  : 0 (infantry)
@@ -9343,7 +9343,7 @@ Unit count: 165
 
 #0468 (121:21,01) V1   Section Sapeurs
 	leader      : Beaurain, rank 0 (KIA)
-	formation   : V: support average platoon
+	formation   : V: support elite platoon
 	OOB         : 76 (    French)
 	unit type   : 6 (engineers)
 	unit class  : 0 (infantry)
@@ -9379,7 +9379,7 @@ Unit count: 165
 
 #0469 (121:21,02) V2   Section Sapeurs
 	leader      : Baudouin, rank 0 (KIA)
-	formation   : V: support average platoon
+	formation   : V: support elite platoon
 	OOB         : 76 (    French)
 	unit type   : 6 (engineers)
 	unit class  : 0 (infantry)
@@ -9415,7 +9415,7 @@ Unit count: 165
 
 #0470 (121:21,03) V3   Section Sapeurs
 	leader      : Bernhardt, rank 0 (KIA)
-	formation   : V: support average platoon
+	formation   : V: support elite platoon
 	OOB         : 76 (    French)
 	unit type   : 6 (engineers)
 	unit class  : 0 (infantry)
@@ -12843,7 +12843,7 @@ Unit count: 5
 
 #0566 (108:08,50) I50  Crewmen
 	leader      : Jacquot, rank 5 (1Lt)
-	formation   : I: core recon platoon
+	formation   : I: core average platoon
 	OOB         : 76 (    French)
 	unit type   : 109 (crew)
 	unit class  : 14 (other)

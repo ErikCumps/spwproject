@@ -76,12 +76,12 @@ Unit kills         : spr: 19
 Unit kills         : tot: 359
 Unit kills         : cnt: 89
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 86.67 ( 19: T: elite recon platoon)
+Formation readiness: min: 86.67 ( 19: T: recon platoon)
 Formation readiness: avg: 99.16
 Formation readiness: spr: 13.33
 Formation readiness: tot: 1983.11
 Formation readiness: cnt: 20
-Formation kills    : max: 51 (  3: D: recon platoon)
+Formation kills    : max: 51 (  3: D: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 17.95
 Formation kills    : spr: 51
@@ -107,7 +107,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 GE Kommandant
 
-B : core recon platoon
+B : core average platoon
 	leader    : B0 Sturmpionieres (2Lt Telner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 10
@@ -134,7 +134,7 @@ C : core average platoon
 		C3 SdKfz 251/1 HT
 		C4 SdKfz 251/1 HT
 
-D : core recon platoon
+D : core average platoon
 	leader    : D0 PzKpfw III G (1Lt Kronz)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 51
@@ -148,7 +148,7 @@ D : core recon platoon
 		D3 PzKpfw III E
 		D4 PzKpfw III E
 
-E : core recon platoon
+E : core average platoon
 	leader    : E0 PzKpfw III G (1Lt Metzger)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 48
@@ -199,7 +199,7 @@ H : core average platoon
 		H0 PzKpfw IV D
 		H1 PzKpfw IV D
 
-I : core elite company
+I : core elite recon company
 	leader    : I0 Kompanie HQ (Cpt Abt)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 0
@@ -267,7 +267,7 @@ L : core elite platoon
 		L8 SdKfz 251/1 HT
 		L9 SdKfz 251/1 HT
 
-M : core dedicated artillery platoon
+M : core average platoon
 	leader    : M0 88mm auf Zgkw (2Lt Stiegel)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 10
@@ -280,7 +280,7 @@ M : core dedicated artillery platoon
 		M2 88mm auf Zgkw
 		M3 88mm auf Zgkw
 
-N : core dedicated artillery platoon
+N : core elite platoon
 	leader    : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -291,7 +291,7 @@ N : core dedicated artillery platoon
 		N0 SS MMG Truppe
 		N1 SS MMG Truppe
 
-O : core average platoon
+O : core dedicated artillery platoon
 	leader    : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -342,7 +342,7 @@ R : core average platoon
 		R2 SdKfz 6/2
 		R3 SdKfz 6/2
 
-S : core elite recon platoon
+S : core recon platoon
 	leader    : S0 Motorradfahrer (2Lt Schneider)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 39
@@ -354,7 +354,7 @@ S : core elite recon platoon
 		S1 Motorradfahrer
 		S2 Motorradfahrer
 
-T : core elite recon platoon
+T : core recon platoon
 	leader    : T0 Motorradfahrer (2Lt Brunner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 17

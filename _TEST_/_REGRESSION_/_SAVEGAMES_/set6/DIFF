@@ -1,0 +1,1069 @@
+diff -U3 -r _BASE_/SPWAWLIB_18.log _RPT_/SPWAWLIB_18.log
+--- _BASE_/SPWAWLIB_18.log	2017-01-27 22:45:12.203125000 +0100
++++ _RPT_/SPWAWLIB_18.log	2017-01-31 00:07:23.000000000 +0100
+@@ -942,36 +942,28 @@
+ find_candidate_units: [052] INVALID
+ find_candidate_units: 52 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<098> (   Infantry Co E)
+-### 098/098/098/098
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00007> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00012> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00017> O<000> (   Weapons Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<   Weapons Plt E>, D<1943/11>
+     OOB #126 <   Weapons Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=126
+-### 000/126/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00025> O<000> (   Lt Mortar Plt)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Plt>, D<1943/11>
+     OOB #121 <   Lt Mortar Plt> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=121
+-### 000/121/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00028> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1047,26 +1039,20 @@
+ find_candidate_units: [419] INVALID
+ find_candidate_units: 19 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00402> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00412> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00416> O<110> (      Inf AT Sec)
+-### 110/110/110/110
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED
+diff -U3 -r _BASE_/SPWAWLIB_19.log _RPT_/SPWAWLIB_19.log
+--- _BASE_/SPWAWLIB_19.log	2017-01-27 22:45:12.421875000 +0100
++++ _RPT_/SPWAWLIB_19.log	2017-01-31 00:07:23.296875000 +0100
+@@ -942,36 +942,28 @@
+ find_candidate_units: [052] INVALID
+ find_candidate_units: 52 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<098> (   Infantry Co E)
+-### 098/098/098/098
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00007> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00012> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00017> O<000> (   Weapons Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<   Weapons Plt E>, D<1943/11>
+     OOB #126 <   Weapons Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=126
+-### 000/126/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00025> O<000> (   Lt Mortar Plt)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Plt>, D<1943/11>
+     OOB #121 <   Lt Mortar Plt> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=121
+-### 000/121/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00028> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1047,26 +1039,20 @@
+ find_candidate_units: [419] INVALID
+ find_candidate_units: 19 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00402> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00412> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00416> O<110> (      Inf AT Sec)
+-### 110/110/110/110
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED
+diff -U3 -r _BASE_/SPWAWLIB_20.log _RPT_/SPWAWLIB_20.log
+--- _BASE_/SPWAWLIB_20.log	2017-01-27 22:45:12.625000000 +0100
++++ _RPT_/SPWAWLIB_20.log	2017-01-31 00:07:23.578125000 +0100
+@@ -942,36 +942,28 @@
+ find_candidate_units: [052] INVALID
+ find_candidate_units: 51 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<098> (   Infantry Co E)
+-### 098/098/098/098
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00007> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00012> O<000> (  Infantry Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt E>, D<1943/11>
+     OOB #096 <  Infantry Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=96
+-### 000/096/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00017> O<000> (   Weapons Plt E)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<   Weapons Plt E>, D<1943/11>
+     OOB #126 <   Weapons Plt E> from=1943/01 to=1943/12 - MATCH: name and date
+   <<< rv=126
+-### 000/126/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00025> O<000> (   Lt Mortar Plt)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Plt>, D<1943/11>
+     OOB #121 <   Lt Mortar Plt> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=121
+-### 000/121/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00028> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1046,26 +1038,20 @@
+ find_candidate_units: [419] INVALID
+ find_candidate_units: 19 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00403> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00412> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1943/11>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00416> O<110> (      Inf AT Sec)
+-### 110/110/110/110
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED
+diff -U3 -r _BASE_/SPWAWLIB_50.log _RPT_/SPWAWLIB_50.log
+--- _BASE_/SPWAWLIB_50.log	2017-01-27 22:45:12.937500000 +0100
++++ _RPT_/SPWAWLIB_50.log	2017-01-31 00:07:23.937500000 +0100
+@@ -927,58 +927,45 @@
+ find_candidate_units: [037] INVALID
+ find_candidate_units: 37 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<092> (    Infantry Co )
+-### 092/092/092/092
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00006> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00010> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00014> O<000> (      MG Platoon)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<      MG Platoon>, D<1941/12>
+     OOB #116 <      MG Platoon> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=116
+-### 000/116/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00017> O<000> (   Lt Mortar Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Sec>, D<1941/12>
+     OOB #120 <   Lt Mortar Sec> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=120
+-### 000/120/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00019> O<086> (     Engineer Co)
+-### 086/086/086/086
+ find_formation_oobrids: FORMATION: P<0> ID<008> L<00020> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<009> L<00023> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<010> L<00026> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<011> L<00029> O<000> (     HMG Section)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<     HMG Section>, D<1941/12>
+     OOB #114 <     HMG Section> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=114
+-### 000/114/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<012> L<00032> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1107,39 +1094,31 @@
+ find_candidate_units: [487] INVALID
+ find_candidate_units: 87 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00402> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00412> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00417> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<006> L<00419> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<007> L<00421> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<007>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<008> L<00426> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1148,70 +1127,51 @@
+   F<008>, T<                >, D<1941/12>
+   U<426> F<108,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<009> L<00427> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<010> L<00429> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<011> L<00431> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<012> L<00433> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<013> L<00434> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<014> L<00435> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<015> L<00436> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<016> L<00437> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<017> L<00438> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<018> L<00441> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<019> L<00442> O<154> (  Artillery Btry)
+-### 154/154/154/154
+ find_formation_oobrids: FORMATION: P<1> ID<020> L<00443> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<021> L<00444> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<021>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<022> L<00449> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<022>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<023> L<00454> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<023>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<024> L<00459> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<024>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<025> L<00461> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<025>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<026> L<00463> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<026>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<027> L<00468> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<027>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1220,42 +1180,28 @@
+   F<027>, T<                >, D<1941/12>
+   U<468> F<127,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<028> L<00469> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<028>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<029> L<00471> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<029>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<030> L<00473> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<030>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<031> L<00475> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<032> L<00476> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<033> L<00477> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<034> L<00478> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<035> L<00479> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<036> L<00480> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<037> L<00483> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<038> L<00484> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<039> L<00485> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ find_formation_oobrids: FORMATION: P<1> ID<040> L<00486> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED
+diff -U3 -r _BASE_/SPWAWLIB_55.log _RPT_/SPWAWLIB_55.log
+--- _BASE_/SPWAWLIB_55.log	2017-01-27 22:45:13.250000000 +0100
++++ _RPT_/SPWAWLIB_55.log	2017-01-31 00:07:24.296875000 +0100
+@@ -927,58 +927,45 @@
+ find_candidate_units: [037] INVALID
+ find_candidate_units: 37 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<092> (    Infantry Co )
+-### 092/092/092/092
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00006> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00010> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00014> O<000> (      MG Platoon)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<      MG Platoon>, D<1941/12>
+     OOB #116 <      MG Platoon> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=116
+-### 000/116/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00017> O<000> (   Lt Mortar Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Sec>, D<1941/12>
+     OOB #120 <   Lt Mortar Sec> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=120
+-### 000/120/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00019> O<086> (     Engineer Co)
+-### 086/086/086/086
+ find_formation_oobrids: FORMATION: P<0> ID<008> L<00020> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<009> L<00023> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<010> L<00026> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<011> L<00029> O<000> (     HMG Section)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<     HMG Section>, D<1941/12>
+     OOB #114 <     HMG Section> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=114
+-### 000/114/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<012> L<00032> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1107,39 +1094,31 @@
+ find_candidate_units: [487] INVALID
+ find_candidate_units: 87 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00402> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00412> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00417> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<006> L<00420> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<007> L<00422> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<007>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<008> L<00426> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1148,70 +1127,51 @@
+   F<008>, T<                >, D<1941/12>
+   U<426> F<108,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<009> L<00428> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<010> L<00429> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<011> L<00432> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<012> L<00433> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<013> L<00434> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<014> L<00435> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<015> L<00436> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<016> L<00437> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<017> L<00438> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<018> L<00441> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<019> L<00442> O<154> (  Artillery Btry)
+-### 154/154/154/154
+ find_formation_oobrids: FORMATION: P<1> ID<020> L<00443> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<021> L<00444> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<021>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<022> L<00450> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<022>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<023> L<00454> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<023>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<024> L<00459> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<024>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<025> L<00461> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<025>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<026> L<00463> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<026>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<027> L<00468> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<027>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1220,42 +1180,28 @@
+   F<027>, T<                >, D<1941/12>
+   U<468> F<127,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<028> L<00469> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<028>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<029> L<00471> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<029>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<030> L<00473> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<030>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<031> L<00475> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<032> L<00476> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<033> L<00477> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<034> L<00478> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<035> L<00479> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<036> L<00480> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<037> L<00483> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<038> L<00484> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<039> L<00485> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ find_formation_oobrids: FORMATION: P<1> ID<040> L<00486> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED
+diff -U3 -r _BASE_/SPWAWLIB_60.log _RPT_/SPWAWLIB_60.log
+--- _BASE_/SPWAWLIB_60.log	2017-01-27 22:45:13.578125000 +0100
++++ _RPT_/SPWAWLIB_60.log	2017-01-31 00:07:24.656250000 +0100
+@@ -934,60 +934,46 @@
+ find_candidate_units: [043] INVALID
+ find_candidate_units: 43 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<092> (    Infantry Co )
+-### 092/092/092/092
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00006> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00010> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00014> O<000> (      MG Platoon)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<      MG Platoon>, D<1941/12>
+     OOB #116 <      MG Platoon> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=116
+-### 000/116/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00017> O<000> (   Lt Mortar Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Sec>, D<1941/12>
+     OOB #120 <   Lt Mortar Sec> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=120
+-### 000/120/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00019> O<086> (     Engineer Co)
+-### 086/086/086/086
+ find_formation_oobrids: FORMATION: P<0> ID<008> L<00020> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<009> L<00023> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<010> L<00026> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<011> L<00030> O<000> (     HMG Section)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<     HMG Section>, D<1941/12>
+     OOB #114 <     HMG Section> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=114
+-### 000/114/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<012> L<00037> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ find_formation_oobrids: FORMATION: P<0> ID<013> L<00038> O<007> (     Lt Tank Plt)
+-### 007/007/007/007
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1122,39 +1108,31 @@
+ find_candidate_units: [487] INVALID
+ find_candidate_units: 87 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00402> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00413> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00418> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<006> L<00420> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<007> L<00422> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<007>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<008> L<00426> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1163,70 +1141,51 @@
+   F<008>, T<                >, D<1941/12>
+   U<426> F<108,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<009> L<00428> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<010> L<00429> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<011> L<00432> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<012> L<00433> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<013> L<00434> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<014> L<00435> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<015> L<00436> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<016> L<00437> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<017> L<00438> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<018> L<00441> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<019> L<00442> O<154> (  Artillery Btry)
+-### 154/154/154/154
+ find_formation_oobrids: FORMATION: P<1> ID<020> L<00443> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<021> L<00444> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<021>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<022> L<00450> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<022>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<023> L<00454> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<023>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<024> L<00459> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<024>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<025> L<00461> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<025>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<026> L<00463> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<026>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<027> L<00468> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<027>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1235,42 +1194,28 @@
+   F<027>, T<                >, D<1941/12>
+   U<468> F<127,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<028> L<00470> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<028>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<029> L<00471> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<029>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<030> L<00473> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<030>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<031> L<00475> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<032> L<00476> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<033> L<00477> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<034> L<00478> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<035> L<00479> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<036> L<00480> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<037> L<00483> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<038> L<00484> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<039> L<00485> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ find_formation_oobrids: FORMATION: P<1> ID<040> L<00486> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED
+diff -U3 -r _BASE_/SPWAWLIB_61.log _RPT_/SPWAWLIB_61.log
+--- _BASE_/SPWAWLIB_61.log	2017-01-27 22:45:13.890625000 +0100
++++ _RPT_/SPWAWLIB_61.log	2017-01-31 00:07:25.062500000 +0100
+@@ -934,60 +934,46 @@
+ find_candidate_units: [043] INVALID
+ find_candidate_units: 43 candidates
+ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<092> (    Infantry Co )
+-### 092/092/092/092
+ find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<003> L<00006> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<004> L<00010> O<000> (   Infantry Plt )
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<   Infantry Plt >, D<1941/12>
+     OOB #091 <   Infantry Plt > from=1930/01 to=1941/12 - MATCH: name and date
+   <<< rv=91
+-### 000/091/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<005> L<00014> O<000> (      MG Platoon)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<      MG Platoon>, D<1941/12>
+     OOB #116 <      MG Platoon> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=116
+-### 000/116/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<006> L<00017> O<000> (   Lt Mortar Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Sec>, D<1941/12>
+     OOB #120 <   Lt Mortar Sec> from=1940/01 to=1949/12 - MATCH: name and date
+   <<< rv=120
+-### 000/120/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<007> L<00019> O<086> (     Engineer Co)
+-### 086/086/086/086
+ find_formation_oobrids: FORMATION: P<0> ID<008> L<00020> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<009> L<00023> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<010> L<00026> O<000> (    Engineer Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<    Engineer Plt>, D<1941/12>
+     OOB #088 <    Engineer Plt> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=88
+-### 000/088/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<011> L<00031> O<000> (     HMG Section)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<     HMG Section>, D<1941/12>
+     OOB #114 <     HMG Section> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=114
+-### 000/114/000/000
+ find_formation_oobrids: FORMATION: P<0> ID<012> L<00037> O<011> (    Med Tank Plt)
+-### 011/011/011/011
+ find_formation_oobrids: FORMATION: P<0> ID<013> L<00038> O<007> (     Lt Tank Plt)
+-### 007/007/007/007
+ verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED
+ verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED
+ verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED
+@@ -1122,39 +1108,31 @@
+ find_candidate_units: [487] INVALID
+ find_candidate_units: 87 candidates
+ find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
+-### 001/001/001/001
+ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<002> L<00402> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<002>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<003>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<004> L<00413> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<004>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<005> L<00418> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<005>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<006> L<00420> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<006>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<007> L<00422> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<007>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<008> L<00426> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<008>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1163,70 +1141,51 @@
+   F<008>, T<                >, D<1941/12>
+   U<426> F<108,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<009> L<00428> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<009>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<010> L<00429> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<010>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<011> L<00432> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<011>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<012> L<00433> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<013> L<00434> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<014> L<00435> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<015> L<00436> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<016> L<00437> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<017> L<00438> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<018> L<00441> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<019> L<00442> O<154> (  Artillery Btry)
+-### 154/154/154/154
+ find_formation_oobrids: FORMATION: P<1> ID<020> L<00443> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<021> L<00444> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<021>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<022> L<00450> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<022>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<023> L<00454> O<000> (  Infantry Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<023>, T<  Infantry Plt A>, D<1941/12>
+     OOB #099 <  Infantry Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=99
+-### 000/099/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<024> L<00459> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<024>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<025> L<00461> O<000> (      Inf AT Sec)
+   >>> SEARCH OOBRID - BY NAME: F<025>, T<      Inf AT Sec>, D<1941/12>
+     OOB #110 <      Inf AT Sec> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=110
+-### 000/110/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<026> L<00463> O<000> (    AI Infantry+)
+   >>> SEARCH OOBRID - BY NAME: F<026>, T<    AI Infantry+>, D<1941/12>
+     OOB #161 <    AI Infantry+> from=1900/01 to=1949/12 - MATCH: name and date
+   <<< rv=161
+-### 000/161/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<027> L<00468> O<000> (                )
+   >>> SEARCH OOBRID - BY NAME: F<027>, T<                >, D<1941/12>
+   NO MATCH FOUND!
+@@ -1235,42 +1194,28 @@
+   F<027>, T<                >, D<1941/12>
+   U<468> F<127,000> O<176> UT<041> <   Knee Mort Sec>
+   <<< rv=0
+-### 000/000/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<028> L<00470> O<000> (       HMG Plt A)
+   >>> SEARCH OOBRID - BY NAME: F<028>, T<       HMG Plt A>, D<1941/12>
+     OOB #143 <       HMG Plt A> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=143
+-### 000/143/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<029> L<00471> O<000> (      AT-Gun Plt)
+   >>> SEARCH OOBRID - BY NAME: F<029>, T<      AT-Gun Plt>, D<1941/12>
+     OOB #172 <      AT-Gun Plt> from=1935/01 to=1949/12 - MATCH: name and date
+   <<< rv=172
+-### 000/172/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<030> L<00473> O<000> (          Scouts)
+   >>> SEARCH OOBRID - BY NAME: F<030>, T<          Scouts>, D<1941/12>
+     OOB #139 <          Scouts> from=1930/01 to=1949/12 - MATCH: name and date
+   <<< rv=139
+-### 000/139/000/000
+ find_formation_oobrids: FORMATION: P<1> ID<031> L<00475> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<032> L<00476> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<033> L<00477> O<140> (          Sniper)
+-### 140/140/140/140
+ find_formation_oobrids: FORMATION: P<1> ID<034> L<00478> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<035> L<00479> O<173> (    Howitzer Sec)
+-### 173/173/173/173
+ find_formation_oobrids: FORMATION: P<1> ID<036> L<00480> O<120> (    Engineer Plt)
+-### 120/120/120/120
+ find_formation_oobrids: FORMATION: P<1> ID<037> L<00483> O<148> (      Mortar Sec)
+-### 148/148/148/148
+ find_formation_oobrids: FORMATION: P<1> ID<038> L<00484> O<102> (   Infantry Co A)
+-### 102/102/102/102
+ find_formation_oobrids: FORMATION: P<1> ID<039> L<00485> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ find_formation_oobrids: FORMATION: P<1> ID<040> L<00486> O<099> (  Infantry Plt A)
+-### 099/099/099/099
+ verify_candidate_units: [400] UNIT: F<100,000> (           JA HQ) ACCEPTED
+ verify_candidate_units: [401] UNIT: F<101,000> (    JA Inf A Sqd) ACCEPTED
+ verify_candidate_units: [402] UNIT: F<102,000> (       A Plt HQ*) ACCEPTED

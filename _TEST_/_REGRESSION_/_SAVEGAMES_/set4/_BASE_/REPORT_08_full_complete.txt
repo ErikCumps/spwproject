@@ -73,7 +73,7 @@ Formation readiness: avg: 100.00
 Formation readiness: spr: 0.00
 Formation readiness: tot: 400.00
 Formation readiness: cnt: 4
-Formation kills    : max: 5 (  2: C: recon platoon)
+Formation kills    : max: 5 (  2: C: elite platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 1.25
 Formation kills    : spr: 5
@@ -162,7 +162,7 @@ Formation count: 4
 	leader      : C0 PzKpfw IV J (1Lt Lang)
 	higher cmd  : A0 GE Kommandant (Col Stemberger)
 	status      : 0 (regular)
-	force status: 1 (recon)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : SS Panzer Plt
 	unit count  : 4
@@ -198,7 +198,7 @@ Formation count: 4
 	leader      : D0 Panther G (1Lt Remer)
 	higher cmd  : A0 GE Kommandant (Col Stemberger)
 	status      : 0 (regular)
-	force status: 1 (recon)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : SS Panzer Plt
 	unit count  : 4
@@ -346,9 +346,9 @@ Unit count: 11
 
 #0003 (02:02,00) C0   PzKpfw IV J
 	leader      : Lang, rank 5 (1Lt)
-	formation   : C: regular recon platoon
+	formation   : C: regular elite platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 5
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
@@ -382,9 +382,9 @@ Unit count: 11
 
 #0004 (02:02,01) C1   PzKpfw IV J
 	leader      : Rauch, rank 3 (Sgt)
-	formation   : C: regular recon platoon
+	formation   : C: regular elite platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -418,9 +418,9 @@ Unit count: 11
 
 #0005 (02:02,02) C2   PzKpfw IV J
 	leader      : Weiss, rank 3 (Sgt)
-	formation   : C: regular recon platoon
+	formation   : C: regular elite platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -454,9 +454,9 @@ Unit count: 11
 
 #0006 (02:02,03) C3   PzKpfw IV J
 	leader      : Bachman, rank 3 (Sgt)
-	formation   : C: regular recon platoon
+	formation   : C: regular elite platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -490,7 +490,7 @@ Unit count: 11
 
 #0007 (03:03,00) D0   Panther G
 	leader      : Remer, rank 5 (1Lt)
-	formation   : D: regular recon platoon
+	formation   : D: regular elite platoon
 	OOB         : 70 (    German)
 	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
@@ -526,7 +526,7 @@ Unit count: 11
 
 #0008 (03:03,01) D1   Panther G
 	leader      : Brandt, rank 3 (Sgt)
-	formation   : D: regular recon platoon
+	formation   : D: regular elite platoon
 	OOB         : 70 (    German)
 	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
@@ -562,7 +562,7 @@ Unit count: 11
 
 #0009 (03:03,02) D2   Panther G
 	leader      : Dittrich, rank 3 (Sgt)
-	formation   : D: regular recon platoon
+	formation   : D: regular elite platoon
 	OOB         : 70 (    German)
 	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
@@ -598,7 +598,7 @@ Unit count: 11
 
 #0010 (03:03,03) D3   Panther G
 	leader      : Gebhart, rank 3 (Sgt)
-	formation   : D: regular recon platoon
+	formation   : D: regular elite platoon
 	OOB         : 70 (    German)
 	unit type   : 26 (main battle tank)
 	unit class  : 2 (armor)
@@ -915,7 +915,7 @@ Formation count: 16
 	higher cmd  : A0 SO Komander (Col Kashin)
 	status      : 0 (regular)
 	force status: 0 (average)
-	type        : SPWOOB_FTYPE_UNKNOWN
+	type        : platoon
 	unit type   : SPAA Sec
 	unit count  : 2
 	unit list   :
@@ -982,7 +982,7 @@ Formation count: 16
 	leader      : I0 152mm FH (2Lt Ilyin)
 	higher cmd  : A0 SO Komander (Col Kashin)
 	status      : 1 (core)
-	force status: 2 (dedicated artillery)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : Howitzer Sec
 	unit count  : 2
@@ -1154,7 +1154,7 @@ Formation count: 16
 	leader      : N0 Motorcylisty (2Lt Karelin)
 	higher cmd  : A0 SO Komander (Col Kashin)
 	status      : 0 (regular)
-	force status: 4 (elite recon)
+	force status: 1 (recon)
 	type        : platoon
 	unit type   : Mtcycle Plt
 	unit count  : 3
@@ -1223,7 +1223,7 @@ Formation count: 16
 	leader      : P0 Command Post (1Lt Shevchenko)
 	higher cmd  : A0 SO Komander (Col Kashin)
 	status      : 0 (regular)
-	force status: 4 (elite recon)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : Command Post HQ
 	unit count  : 1
@@ -1658,7 +1658,7 @@ Unit count: 33
 
 #0411 (106:06,00) G0   ZSU-37
 	leader      : Oistrakh, rank 5 (1Lt)
-	formation   : G: regular average SPWOOB_FTYPE_UNKNOWN
+	formation   : G: regular average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 64 (SP flak)
 	unit class  : 6 (anti-air)
@@ -1694,7 +1694,7 @@ Unit count: 33
 
 #0412 (106:06,01) G1   ZSU-37
 	leader      : Plotnikov, rank 3 (Sgt)
-	formation   : G: regular average SPWOOB_FTYPE_UNKNOWN
+	formation   : G: regular average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 64 (SP flak)
 	unit class  : 6 (anti-air)
@@ -1802,7 +1802,7 @@ Unit count: 33
 
 #0415 (108:08,00) I0   152mm FH
 	leader      : Ilyin, rank 4 (2Lt)
-	formation   : I: core dedicated artillery platoon
+	formation   : I: core average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 47 (howitzer)
 	unit class  : 4 (artillery)
@@ -1838,7 +1838,7 @@ Unit count: 33
 
 #0416 (108:08,01) I1   152mm FH
 	leader      : Pashkov, rank 3 (Sgt)
-	formation   : I: core dedicated artillery platoon
+	formation   : I: core average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 47 (howitzer)
 	unit class  : 4 (artillery)
@@ -1876,8 +1876,8 @@ Unit count: 33
 	leader      : Belinsky, rank 5 (1Lt)
 	formation   : J: regular average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 84 (prime mover)
-	unit class  : 10 (transport)
+	unit type   : 39 (tracked APC)
+	unit class  : 3 (APC)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -1912,8 +1912,8 @@ Unit count: 33
 	leader      : Budeny, rank 3 (Sgt)
 	formation   : J: regular average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 84 (prime mover)
-	unit class  : 10 (transport)
+	unit type   : 39 (tracked APC)
+	unit class  : 3 (APC)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -2234,7 +2234,7 @@ Unit count: 33
 
 #0427 (113:13,00) N0   Motorcylisty
 	leader      : Karelin, rank 4 (2Lt)
-	formation   : N: regular elite recon platoon
+	formation   : N: regular recon platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 75 (motorcycle)
 	unit class  : 8 (recon)
@@ -2270,7 +2270,7 @@ Unit count: 33
 
 #0428 (113:13,01) N1   Motorcylisty
 	leader      : Yelayev, rank 3 (Sgt)
-	formation   : N: regular elite recon platoon
+	formation   : N: regular recon platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 75 (motorcycle)
 	unit class  : 8 (recon)
@@ -2306,7 +2306,7 @@ Unit count: 33
 
 #0429 (113:13,02) N2   Motorcylisty
 	leader      : Petrenko, rank 3 (Sgt)
-	formation   : N: regular elite recon platoon
+	formation   : N: regular recon platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 75 (motorcycle)
 	unit class  : 8 (recon)
@@ -2414,7 +2414,7 @@ Unit count: 33
 
 #0432 (115:15,00) P0   Command Post
 	leader      : Shevchenko, rank 5 (1Lt)
-	formation   : P: regular elite recon platoon
+	formation   : P: regular elite platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 106 (gun emplacement)
 	unit class  : 13 (fortification)

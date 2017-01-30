@@ -60,12 +60,12 @@ Unit kills         : spr: 5
 Unit kills         : tot: 11
 Unit kills         : cnt: 11
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 99.71 (  2: C: recon platoon)
+Formation readiness: min: 99.71 (  2: C: elite platoon)
 Formation readiness: avg: 99.93
 Formation readiness: spr: 0.29
 Formation readiness: tot: 399.71
 Formation readiness: cnt: 4
-Formation kills    : max: 9 (  2: C: recon platoon)
+Formation kills    : max: 9 (  2: C: elite platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 2.75
 Formation kills    : spr: 9
@@ -102,7 +102,7 @@ B : regular average platoon
 		B0 SdKfz 251/1 HT
 		B1 SdKfz 251/1 HT
 
-C : regular recon platoon
+C : regular elite platoon
 	leader    : C0 PzKpfw IV J (1Lt Lang)
 	higher cmd: A0 GE Kommandant (Col Stemberger)
 	kills     : 9
@@ -115,7 +115,7 @@ C : regular recon platoon
 		C2 PzKpfw IV J
 		C3 PzKpfw IV J
 
-D : regular recon platoon
+D : regular elite platoon
 	leader    : D0 Panther G (1Lt Remer)
 	higher cmd: A0 GE Kommandant (Col Stemberger)
 	kills     : 2
@@ -263,7 +263,7 @@ F : regular average platoon
 		F0 KV-1s abandoned by F50 Crewmen
 		F1 KV-1s abandoned by F51 Crewmen
 
-G : regular average SPWOOB_FTYPE_UNKNOWN
+G : regular average platoon
 	leader    : G0 ZSU-37 (1Lt Oistrakh)
 	higher cmd: A0 SO Komander (Col Kashin)
 	kills     : 0
@@ -285,7 +285,7 @@ H : regular average platoon
 		H0 57mm ATG M43 
 		H1 57mm ATG M43 
 
-I : core dedicated artillery platoon
+I : core average platoon
 	leader    : I1 152mm FH (Sgt Pashkov)
 	higher cmd: A0 SO Komander (Col Kashin)
 	kills     : 0
@@ -342,7 +342,7 @@ M : regular average platoon
 		M1 Log Rifle Pit
 		M2 Log Rifle Pit
 
-N : regular elite recon platoon
+N : regular recon platoon
 	leader    : N0 Motorcylisty (2Lt Karelin)
 	higher cmd: A0 SO Komander (Col Kashin)
 	kills     : 0
@@ -365,7 +365,7 @@ O : regular average platoon
 		O0 GAZ-2A
 		O1 GAZ-2A
 
-P : regular elite recon platoon
+P : regular elite platoon
 	leader    : P0 Command Post (1Lt Shevchenko)
 	higher cmd: A0 SO Komander (Col Kashin)
 	kills     : 0

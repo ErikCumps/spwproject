@@ -81,7 +81,7 @@ Formation readiness: avg: 96.82
 Formation readiness: spr: 34.22
 Formation readiness: tot: 1936.38
 Formation readiness: cnt: 20
-Formation kills    : max: 43 (  3: D: recon platoon)
+Formation kills    : max: 43 (  3: D: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 14.45
 Formation kills    : spr: 43
@@ -107,7 +107,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 GE Kommandant
 
-B : core recon platoon
+B : core elite platoon
 	leader    : B0 Sturmpionieres (2Lt Telner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 7
@@ -134,7 +134,7 @@ C : core average platoon
 		C3 SdKfz 251/1 HT
 		C4 SdKfz 251/1 HT
 
-D : core recon platoon
+D : core average platoon
 	leader    : D0 PzKpfw III E (1Lt Kronz)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 43
@@ -148,7 +148,7 @@ D : core recon platoon
 		D3 PzKpfw III E
 		D4 PzKpfw III E
 
-E : core recon platoon
+E : core average platoon
 	leader    : E0 PzKpfw III E (1Lt Metzger)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 41
@@ -199,7 +199,7 @@ H : core average platoon
 		H0 PzKpfw IV D
 		H1 PzKpfw IV D
 
-I : core elite company
+I : core elite recon company
 	leader    : I0 Kompanie HQ (Cpt Abt)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 0
@@ -280,7 +280,7 @@ M : core dedicated artillery platoon
 		M2 88mm auf Zgkw
 		M3 88mm auf Zgkw
 
-N : core dedicated artillery platoon
+N : core elite platoon
 	leader    : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -291,7 +291,7 @@ N : core dedicated artillery platoon
 		N0 SS MMG Truppe
 		N1 SS MMG Truppe
 
-O : core average platoon
+O : core dedicated artillery platoon
 	leader    : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -303,7 +303,7 @@ O : core average platoon
 		O1 Moerser Grp
 		O2 Krupp Kfz 69
 
-P : core average platoon
+P : core dedicated artillery platoon
 	leader    : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 2

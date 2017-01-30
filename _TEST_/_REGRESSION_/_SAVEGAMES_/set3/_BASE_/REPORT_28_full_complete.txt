@@ -89,7 +89,7 @@ Formation readiness: avg: 97.94
 Formation readiness: spr: 34.22
 Formation readiness: tot: 3134.14
 Formation readiness: cnt: 32
-Formation kills    : max: 43 (  3: D: recon platoon)
+Formation kills    : max: 43 (  3: D: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 9.66
 Formation kills    : spr: 43
@@ -144,7 +144,7 @@ Formation count: 32
 	leader      : B0 Sturmpionieres (2Lt Telner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : Engineer Plt
 	unit count  : 4
@@ -217,7 +217,7 @@ Formation count: 32
 	leader      : D0 PzKpfw III E (1Lt Kronz)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : Panzer Plt
 	unit count  : 5
@@ -254,7 +254,7 @@ Formation count: 32
 	leader      : E0 PzKpfw III E (1Lt Metzger)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 1 (recon)
+	force status: 0 (average)
 	type        : platoon
 	unit type   : Panzer Plt
 	unit count  : 5
@@ -397,7 +397,7 @@ Formation count: 32
 	leader      : I0 Kompanie HQ (Cpt Abt)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 1 (core)
-	force status: 3 (elite)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : SS Mot Kp
 	unit count  : 2
@@ -593,7 +593,7 @@ Formation count: 32
 	leader      : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
 	status      : 1 (core)
-	force status: 2 (dedicated artillery)
+	force status: 3 (elite)
 	type        : platoon
 	unit type   : SS MMG Sec
 	unit count  : 2
@@ -627,7 +627,7 @@ Formation count: 32
 	leader      : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
 	status      : 1 (core)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : Mot Mortar Sec
 	unit count  : 3
@@ -662,7 +662,7 @@ Formation count: 32
 	leader      : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
 	status      : 1 (core)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : Mot Inf Gun Sec
 	unit count  : 4
@@ -840,7 +840,7 @@ Formation count: 32
 	leader      : U0 sIG33 auf Pz-I (1Lt Stiegel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : SP Gun Plt
 	unit count  : 4
@@ -876,7 +876,7 @@ Formation count: 32
 	leader      : V0 sIG33 auf Pz-I (1Lt Rauch)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 2 (dedicated artillery)
 	type        : platoon
 	unit type   : SP Gun Plt
 	unit count  : 4
@@ -912,7 +912,7 @@ Formation count: 32
 	leader      : W0 Wurfrahmen 40 (1Lt Krogel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 5 (elite dedicated artillery)
 	type        : platoon
 	unit type   : SP Rocket Sec
 	unit count  : 2
@@ -946,7 +946,7 @@ Formation count: 32
 	leader      : X0 Wurfrahmen 40 (1Lt Kramer)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 5 (elite dedicated artillery)
 	type        : platoon
 	unit type   : SP Rocket Sec
 	unit count  : 2
@@ -1287,7 +1287,7 @@ Unit count: 112
 
 #0001 (01:01,00) B0   Sturmpionieres
 	leader      : Telner, rank 4 (2Lt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1323,7 +1323,7 @@ Unit count: 112
 
 #0002 (01:01,01) B1   Sturmpionieres
 	leader      : Kramer, rank 3 (Sgt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1360,7 +1360,7 @@ Unit count: 112
 
 #0003 (01:01,02) B2   Sturmpionieres
 	leader      : Zimmerman, rank 3 (Sgt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1397,7 +1397,7 @@ Unit count: 112
 
 #0004 (01:01,03) B3   Sturmpionieres
 	leader      : Hudel, rank 3 (Sgt)
-	formation   : B: core recon platoon
+	formation   : B: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 7 (motorized engineers)
 	unit class  : 0 (infantry)
@@ -1614,9 +1614,9 @@ Unit count: 112
 
 #0010 (03:03,00) D0   PzKpfw III E
 	leader      : Kronz, rank 5 (1Lt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1650,9 +1650,9 @@ Unit count: 112
 
 #0011 (03:03,01) D1   PzKpfw III E
 	leader      : Kramer, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1686,9 +1686,9 @@ Unit count: 112
 
 #0012 (03:03,02) D2   PzKpfw III E
 	leader      : Oertzen, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1722,9 +1722,9 @@ Unit count: 112
 
 #0013 (03:03,03) D3   PzKpfw III E
 	leader      : Hummel, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1758,9 +1758,9 @@ Unit count: 112
 
 #0014 (03:03,04) D4   PzKpfw III E
 	leader      : Strauch, rank 3 (Sgt)
-	formation   : D: core recon platoon
+	formation   : D: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 14
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
@@ -1794,9 +1794,9 @@ Unit count: 112
 
 #0015 (04:04,00) E0   PzKpfw III E
 	leader      : Metzger, rank 5 (1Lt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1830,9 +1830,9 @@ Unit count: 112
 
 #0016 (04:04,01) E1   PzKpfw III E
 	leader      : Hitzelberger, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 6
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1866,9 +1866,9 @@ Unit count: 112
 
 #0017 (04:04,02) E2   PzKpfw III E
 	leader      : Schirmer, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 16
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -1902,9 +1902,9 @@ Unit count: 112
 
 #0018 (04:04,03) E3   PzKpfw III E
 	leader      : Eberhart, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
@@ -1938,9 +1938,9 @@ Unit count: 112
 
 #0019 (04:04,04) E4   PzKpfw III E
 	leader      : Kortenhaus, rank 3 (Sgt)
-	formation   : E: core recon platoon
+	formation   : E: core average platoon
 	OOB         : 70 (    German)
-	unit type   : 23 (medium tank)
+	unit type   : 22 (light tank)
 	unit class  : 2 (armor)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
@@ -2334,10 +2334,10 @@ Unit count: 112
 
 #0030 (08:08,00) I0   Kompanie HQ
 	leader      : Abt, rank 6 (Cpt)
-	formation   : I: core elite company
+	formation   : I: core elite recon company
 	OOB         : 70 (    German)
-	unit type   : 25 (very heavy tank)
-	unit class  : 2 (armor)
+	unit type   : 4 (motorized infantry)
+	unit class  : 0 (infantry)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2371,7 +2371,7 @@ Unit count: 112
 
 #0031 (08:08,01) I1   SdKfz 251/1 HT
 	leader      : Lang, rank 3 (Sgt)
-	formation   : I: core elite company
+	formation   : I: core elite recon company
 	OOB         : 70 (    German)
 	unit type   : 37 (halftrack)
 	unit class  : 3 (APC)
@@ -2409,8 +2409,8 @@ Unit count: 112
 	leader      : Spengler, rank 4 (2Lt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 35 (captured tank)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2446,8 +2446,8 @@ Unit count: 112
 	leader      : Schurz, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 9
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -2482,8 +2482,8 @@ Unit count: 112
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 8
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -2518,8 +2518,8 @@ Unit count: 112
 	leader      : Weiss, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 3
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -2554,8 +2554,8 @@ Unit count: 112
 	leader      : Krogel, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2771,8 +2771,8 @@ Unit count: 112
 	leader      : Funck, rank 4 (2Lt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 35 (captured tank)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2808,8 +2808,8 @@ Unit count: 112
 	leader      : Wiedemann, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 6
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2845,8 +2845,8 @@ Unit count: 112
 	leader      : Conkling, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 4
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2882,8 +2882,8 @@ Unit count: 112
 	leader      : Petereit, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 4
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -2919,8 +2919,8 @@ Unit count: 112
 	leader      : Schoen, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3136,8 +3136,8 @@ Unit count: 112
 	leader      : Vebber, rank 4 (2Lt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 35 (captured tank)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3173,8 +3173,8 @@ Unit count: 112
 	leader      : Steinke, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 3
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3210,8 +3210,8 @@ Unit count: 112
 	leader      : Schumacher, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 6
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3247,8 +3247,8 @@ Unit count: 112
 	leader      : Muller, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3284,8 +3284,8 @@ Unit count: 112
 	leader      : Becker, rank 3 (Sgt)
 	formation   : L: core elite platoon
 	OOB         : 70 (    German)
-	unit type   : 54 (AT infantry)
-	unit class  : 5 (anti-tank)
+	unit type   : 14 (elite infantry)
+	unit class  : 0 (infantry)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3501,8 +3501,8 @@ Unit count: 112
 	leader      : Stiegel, rank 4 (2Lt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 2
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3537,8 +3537,8 @@ Unit count: 112
 	leader      : Boettcher, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 1
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3573,8 +3573,8 @@ Unit count: 112
 	leader      : Hoernlein, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3609,8 +3609,8 @@ Unit count: 112
 	leader      : Schmidt, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
 	OOB         : 70 (    German)
-	unit type   : 102 (landing craft gunboat)
-	unit class  : 12 (navy)
+	unit type   : 57 (SP AT gun)
+	unit class  : 5 (anti-tank)
 	kills       : 3
 	status      : 0 (ready) [1:alive] [0:hidden]
 	entrenchment: 0 (positioned)
@@ -3643,7 +3643,7 @@ Unit count: 112
 
 #0066 (13:13,00) N0   SS MMG Truppe
 	leader      : Schultz, rank 4 (2Lt)
-	formation   : N: core dedicated artillery platoon
+	formation   : N: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 10 (heavy machine gun)
 	unit class  : 0 (infantry)
@@ -3679,7 +3679,7 @@ Unit count: 112
 
 #0067 (13:13,01) N1   SS MMG Truppe
 	leader      : Rosenberg, rank 3 (Sgt)
-	formation   : N: core dedicated artillery platoon
+	formation   : N: core elite platoon
 	OOB         : 70 (    German)
 	unit type   : 10 (heavy machine gun)
 	unit class  : 0 (infantry)
@@ -3715,7 +3715,7 @@ Unit count: 112
 
 #0068 (14:14,00) O0   Moerser Grp
 	leader      : Falkenberg, rank 4 (2Lt)
-	formation   : O: core average platoon
+	formation   : O: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 42 (mortar)
 	unit class  : 4 (artillery)
@@ -3751,7 +3751,7 @@ Unit count: 112
 
 #0069 (14:14,01) O1   Moerser Grp
 	leader      : Letzelder, rank 3 (Sgt)
-	formation   : O: core average platoon
+	formation   : O: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 42 (mortar)
 	unit class  : 4 (artillery)
@@ -3787,7 +3787,7 @@ Unit count: 112
 
 #0070 (14:14,02) O2   Krupp Kfz 69
 	leader      : Briel, rank 3 (Sgt)
-	formation   : O: core average platoon
+	formation   : O: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 85 (medium truck)
 	unit class  : 10 (transport)
@@ -3823,7 +3823,7 @@ Unit count: 112
 
 #0071 (15:15,00) P0   sIG33 auf Pz-I
 	leader      : Eberbach, rank 4 (2Lt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -3859,7 +3859,7 @@ Unit count: 112
 
 #0072 (15:15,01) P1   sIG33 auf Pz-I
 	leader      : Ziegler, rank 3 (Sgt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -3895,7 +3895,7 @@ Unit count: 112
 
 #0073 (15:15,02) P2   sIG33 auf Pz-I
 	leader      : Tost, rank 3 (Sgt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -3931,7 +3931,7 @@ Unit count: 112
 
 #0074 (15:15,03) P3   sIG33 auf Pz-I
 	leader      : Heidrich, rank 3 (Sgt)
-	formation   : P: core average platoon
+	formation   : P: core dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4471,7 +4471,7 @@ Unit count: 112
 
 #0089 (20:20,00) U0   sIG33 auf Pz-I
 	leader      : Stiegel, rank 5 (1Lt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4507,7 +4507,7 @@ Unit count: 112
 
 #0090 (20:20,01) U1   sIG33 auf Pz-I
 	leader      : Brunner, rank 3 (Sgt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4543,7 +4543,7 @@ Unit count: 112
 
 #0091 (20:20,02) U2   sIG33 auf Pz-I
 	leader      : Tost, rank 3 (Sgt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4579,7 +4579,7 @@ Unit count: 112
 
 #0092 (20:20,03) U3   sIG33 auf Pz-I
 	leader      : Spengler, rank 3 (Sgt)
-	formation   : U: support average platoon
+	formation   : U: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4615,7 +4615,7 @@ Unit count: 112
 
 #0093 (21:21,00) V0   sIG33 auf Pz-I
 	leader      : Rauch, rank 5 (1Lt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4651,7 +4651,7 @@ Unit count: 112
 
 #0094 (21:21,01) V1   sIG33 auf Pz-I
 	leader      : Hoffman, rank 3 (Sgt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4687,7 +4687,7 @@ Unit count: 112
 
 #0095 (21:21,02) V2   sIG33 auf Pz-I
 	leader      : Hoernlein, rank 3 (Sgt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4723,7 +4723,7 @@ Unit count: 112
 
 #0096 (21:21,03) V3   sIG33 auf Pz-I
 	leader      : Schmidt, rank 3 (Sgt)
-	formation   : V: support average platoon
+	formation   : V: support dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 45 (SP gun)
 	unit class  : 4 (artillery)
@@ -4759,7 +4759,7 @@ Unit count: 112
 
 #0097 (22:22,00) W0   Wurfrahmen 40
 	leader      : Krogel, rank 5 (1Lt)
-	formation   : W: support average platoon
+	formation   : W: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -4795,7 +4795,7 @@ Unit count: 112
 
 #0098 (22:22,01) W1   Wurfrahmen 40
 	leader      : Funck, rank 3 (Sgt)
-	formation   : W: support average platoon
+	formation   : W: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -4831,7 +4831,7 @@ Unit count: 112
 
 #0099 (23:23,00) X0   Wurfrahmen 40
 	leader      : Kramer, rank 5 (1Lt)
-	formation   : X: support average platoon
+	formation   : X: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -4867,7 +4867,7 @@ Unit count: 112
 
 #0100 (23:23,01) X1   Wurfrahmen 40
 	leader      : Vosse, rank 3 (Sgt)
-	formation   : X: support average platoon
+	formation   : X: support elite dedicated artillery platoon
 	OOB         : 70 (    German)
 	unit type   : 51 (SP rocket launcher)
 	unit class  : 4 (artillery)
@@ -5349,7 +5349,7 @@ Unit kills         : spr: 1
 Unit kills         : tot: 1
 Unit kills         : cnt: 120
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 0.00 (  1: B: recon company)
+Formation readiness: min: 0.00 (  1: B: average platoon)
 Formation readiness: avg: 61.60
 Formation readiness: spr: 100.00
 Formation readiness: tot: 2956.82
@@ -5360,7 +5360,7 @@ Formation kills    : avg: 0.02
 Formation kills    : spr: 1
 Formation kills    : tot: 1
 Formation kills    : cnt: 48
-Formation losses   : max: 5 (  1: B: recon company)
+Formation losses   : max: 5 (  1: B: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
 Formation losses   : avg: 0.96
 Formation losses   : spr: 5
@@ -5409,8 +5409,8 @@ Formation count: 48
 	leader      : B3 Pehota Vintovka (KIA Sidorov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -5446,7 +5446,7 @@ Formation count: 48
 	leader      : C0 Rifle Bunker (Cpt Danilevsky)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -5859,8 +5859,8 @@ Formation count: 48
 	leader      : O0 Lider Vzvoda (2Lt Slyusarj)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -5896,7 +5896,7 @@ Formation count: 48
 	leader      : P0 Rifle Bunker (Cpt Nemov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -6340,8 +6340,8 @@ Formation count: 48
 	leader      : AC2 Pehota Vintovka (Sgt Potapov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -6377,7 +6377,7 @@ Formation count: 48
 	leader      : AD0 Rifle Bunker (Cpt Ivanovich)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -6789,8 +6789,8 @@ Formation count: 48
 	leader      : AP1 Pehota Vintovka (KIA Vorobiev)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 1 (recon)
-	type        : company
+	force status: 0 (average)
+	type        : platoon
 	unit type   : Rifle Plt
 	unit count  : 5
 	unit list   :
@@ -6826,7 +6826,7 @@ Formation count: 48
 	leader      : AQ0 Obs Post (Cpt Samoilov)
 	higher cmd  : A0 SO Komander (Col Lavrenev)
 	status      : 2 (support)
-	force status: 0 (average)
+	force status: 4 (elite recon)
 	type        : company
 	unit type   : ++AI Defence+++
 	unit count  : 1
@@ -7072,10 +7072,10 @@ Unit count: 120
 
 #0401 (101:01,00) B0   Lider Vzvoda
 	leader      : Dubrovin, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -7108,7 +7108,7 @@ Unit count: 120
 
 #0402 (101:01,01) B1   Pehota Vintovka
 	leader      : Ilyuchin, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7144,7 +7144,7 @@ Unit count: 120
 
 #0403 (101:01,02) B2   Pehota Vintovka
 	leader      : Bogolyubov, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7180,7 +7180,7 @@ Unit count: 120
 
 #0404 (101:01,03) B3   Pehota Vintovka
 	leader      : Sidorov, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7216,7 +7216,7 @@ Unit count: 120
 
 #0405 (101:01,04) B4   Pehota Vintovka
 	leader      : Kuropatkin, rank 0 (KIA)
-	formation   : B: support recon company
+	formation   : B: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -7252,7 +7252,7 @@ Unit count: 120
 
 #0406 (102:02,00) C0   Rifle Bunker
 	leader      : Danilevsky, rank 6 (Cpt)
-	formation   : C: support average company
+	formation   : C: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -8296,10 +8296,10 @@ Unit count: 120
 
 #0435 (114:14,00) O0   Lider Vzvoda
 	leader      : Slyusarj, rank 4 (2Lt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 2 (retreating) [1:alive] [1:SPOTTED]
 	entrenchment: 2 (dug in)
@@ -8332,7 +8332,7 @@ Unit count: 120
 
 #0436 (114:14,01) O1   Pehota Vintovka
 	leader      : Larionov, rank 3 (Sgt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8368,7 +8368,7 @@ Unit count: 120
 
 #0437 (114:14,02) O2   Pehota Vintovka
 	leader      : Kuznetzov, rank 3 (Sgt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8404,7 +8404,7 @@ Unit count: 120
 
 #0438 (114:14,03) O3   Pehota Vintovka
 	leader      : Tatlin, rank 3 (Sgt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8440,7 +8440,7 @@ Unit count: 120
 
 #0439 (114:14,04) O4   Pehota Vintovka
 	leader      : Kulebyaka, rank 3 (Sgt)
-	formation   : O: support recon company
+	formation   : O: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -8476,7 +8476,7 @@ Unit count: 120
 
 #0440 (115:15,00) P0   Rifle Bunker
 	leader      : Nemov, rank 6 (Cpt)
-	formation   : P: support average company
+	formation   : P: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -9484,10 +9484,10 @@ Unit count: 120
 
 #0468 (128:28,00) AC0  Lider Vzvoda
 	leader      : Zhdanov, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -9520,7 +9520,7 @@ Unit count: 120
 
 #0469 (128:28,01) AC1  Pehota Vintovka
 	leader      : Gumilev, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -9556,7 +9556,7 @@ Unit count: 120
 
 #0470 (128:28,02) AC2  Pehota Vintovka
 	leader      : Potapov, rank 3 (Sgt)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -9592,7 +9592,7 @@ Unit count: 120
 
 #0471 (128:28,03) AC3  Pehota Vintovka
 	leader      : Pugachov, rank 3 (Sgt)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -9628,7 +9628,7 @@ Unit count: 120
 
 #0472 (128:28,04) AC4  Pehota Vintovka
 	leader      : Pashkov, rank 0 (KIA)
-	formation   : AC: support recon company
+	formation   : AC: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -9664,7 +9664,7 @@ Unit count: 120
 
 #0473 (129:29,00) AD0  Rifle Bunker
 	leader      : Ivanovich, rank 6 (Cpt)
-	formation   : AD: support average company
+	formation   : AD: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)
@@ -10672,10 +10672,10 @@ Unit count: 120
 
 #0501 (141:41,00) AP0  Lider Vzvoda
 	leader      : Plotnikov, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
-	unit type   : 36 (assault gun)
-	unit class  : 2 (armor)
+	unit type   : 82 (platoon HQ)
+	unit class  : 9 (C&C)
 	kills       : 0
 	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
 	entrenchment: 0 (positioned)
@@ -10708,7 +10708,7 @@ Unit count: 120
 
 #0502 (141:41,01) AP1  Pehota Vintovka
 	leader      : Vorobiev, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10744,7 +10744,7 @@ Unit count: 120
 
 #0503 (141:41,02) AP2  Pehota Vintovka
 	leader      : Nemov, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10780,7 +10780,7 @@ Unit count: 120
 
 #0504 (141:41,03) AP3  Pehota Vintovka
 	leader      : Sorokin, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10816,7 +10816,7 @@ Unit count: 120
 
 #0505 (141:41,04) AP4  Pehota Vintovka
 	leader      : Blinov, rank 0 (KIA)
-	formation   : AP: support recon company
+	formation   : AP: support average platoon
 	OOB         : 81 (    Soviet)
 	unit type   : 1 (infantry)
 	unit class  : 0 (infantry)
@@ -10852,7 +10852,7 @@ Unit count: 120
 
 #0506 (142:42,00) AQ0  Obs Post
 	leader      : Samoilov, rank 6 (Cpt)
-	formation   : AQ: support average company
+	formation   : AQ: support elite recon company
 	OOB         : 81 (    Soviet)
 	unit type   : 105 (fort)
 	unit class  : 13 (fortification)

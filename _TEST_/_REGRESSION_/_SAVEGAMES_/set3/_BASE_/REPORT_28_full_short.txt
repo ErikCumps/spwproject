@@ -81,7 +81,7 @@ Formation readiness: avg: 97.94
 Formation readiness: spr: 34.22
 Formation readiness: tot: 3134.14
 Formation readiness: cnt: 32
-Formation kills    : max: 43 (  3: D: recon platoon)
+Formation kills    : max: 43 (  3: D: average platoon)
 Formation kills    : min: 0 (  0: A: elite recon force HQ)
 Formation kills    : avg: 9.66
 Formation kills    : spr: 43
@@ -107,7 +107,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 GE Kommandant
 
-B : core recon platoon
+B : core elite platoon
 	leader    : B0 Sturmpionieres (2Lt Telner)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 7
@@ -134,7 +134,7 @@ C : core average platoon
 		C3 SdKfz 251/1 HT
 		C4 SdKfz 251/1 HT
 
-D : core recon platoon
+D : core average platoon
 	leader    : D0 PzKpfw III E (1Lt Kronz)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 43
@@ -148,7 +148,7 @@ D : core recon platoon
 		D3 PzKpfw III E
 		D4 PzKpfw III E
 
-E : core recon platoon
+E : core average platoon
 	leader    : E0 PzKpfw III E (1Lt Metzger)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 41
@@ -199,7 +199,7 @@ H : core average platoon
 		H0 PzKpfw IV D
 		H1 PzKpfw IV D
 
-I : core elite company
+I : core elite recon company
 	leader    : I0 Kompanie HQ (Cpt Abt)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 0
@@ -280,7 +280,7 @@ M : core dedicated artillery platoon
 		M2 88mm auf Zgkw
 		M3 88mm auf Zgkw
 
-N : core dedicated artillery platoon
+N : core elite platoon
 	leader    : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -291,7 +291,7 @@ N : core dedicated artillery platoon
 		N0 SS MMG Truppe
 		N1 SS MMG Truppe
 
-O : core average platoon
+O : core dedicated artillery platoon
 	leader    : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 1
@@ -303,7 +303,7 @@ O : core average platoon
 		O1 Moerser Grp
 		O2 Krupp Kfz 69
 
-P : core average platoon
+P : core dedicated artillery platoon
 	leader    : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd: I0 Kompanie HQ (Cpt Abt)
 	kills     : 2
@@ -366,7 +366,7 @@ T : core elite recon platoon
 		T1 Motorradfahrer
 		T2 Motorradfahrer
 
-U : support average platoon
+U : support dedicated artillery platoon
 	leader    : U0 sIG33 auf Pz-I (1Lt Stiegel)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 0
@@ -379,7 +379,7 @@ U : support average platoon
 		U2 sIG33 auf Pz-I
 		U3 sIG33 auf Pz-I
 
-V : support average platoon
+V : support dedicated artillery platoon
 	leader    : V0 sIG33 auf Pz-I (1Lt Rauch)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 1
@@ -392,7 +392,7 @@ V : support average platoon
 		V2 sIG33 auf Pz-I
 		V3 sIG33 auf Pz-I
 
-W : support average platoon
+W : support elite dedicated artillery platoon
 	leader    : W0 Wurfrahmen 40 (1Lt Krogel)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 16
@@ -403,7 +403,7 @@ W : support average platoon
 		W0 Wurfrahmen 40
 		W1 Wurfrahmen 40
 
-X : support average platoon
+X : support elite dedicated artillery platoon
 	leader    : X0 Wurfrahmen 40 (1Lt Kramer)
 	higher cmd: A0 GE Kommandant (Col Reichmann)
 	kills     : 3
@@ -647,7 +647,7 @@ Unit kills         : spr: 1
 Unit kills         : tot: 1
 Unit kills         : cnt: 120
 Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 0.00 (  1: B: recon company)
+Formation readiness: min: 0.00 (  1: B: average platoon)
 Formation readiness: avg: 61.60
 Formation readiness: spr: 100.00
 Formation readiness: tot: 2956.82
@@ -658,7 +658,7 @@ Formation kills    : avg: 0.02
 Formation kills    : spr: 1
 Formation kills    : tot: 1
 Formation kills    : cnt: 48
-Formation losses   : max: 5 (  1: B: recon company)
+Formation losses   : max: 5 (  1: B: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
 Formation losses   : avg: 0.96
 Formation losses   : spr: 5
@@ -678,7 +678,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 SO Komander
 
-B : support recon company
+B : support average platoon
 	leader    : B3 Pehota Vintovka (KIA Sidorov)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -692,7 +692,7 @@ B : support recon company
 		B3 Pehota Vintovka
 		B4 Pehota Vintovka
 
-C : support average company
+C : support elite recon company
 	leader    : C0 Rifle Bunker (Cpt Danilevsky)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -829,7 +829,7 @@ N : core average platoon
 		N1 T-34 M41
 		N2 T-34 M41
 
-O : support recon company
+O : support average platoon
 	leader    : O0 Lider Vzvoda (2Lt Slyusarj)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -843,7 +843,7 @@ O : support recon company
 		O3 Pehota Vintovka
 		O4 Pehota Vintovka
 
-P : support average company
+P : support elite recon company
 	leader    : P0 Rifle Bunker (Cpt Nemov)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -988,7 +988,7 @@ AB: core average platoon
 		AB1 T-28 M34
 		AB2 T-28 M34
 
-AC: support recon company
+AC: support average platoon
 	leader    : AC2 Pehota Vintovka (Sgt Potapov)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -1002,7 +1002,7 @@ AC: support recon company
 		AC3 Pehota Vintovka
 		AC4 Pehota Vintovka
 
-AD: support average company
+AD: support elite recon company
 	leader    : AD0 Rifle Bunker (Cpt Ivanovich)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -1138,7 +1138,7 @@ AO: core average platoon
 		AO1 T-34 M41
 		AO2 T-34 M41
 
-AP: support recon company
+AP: support average platoon
 	leader    : AP1 Pehota Vintovka (KIA Vorobiev)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0
@@ -1152,7 +1152,7 @@ AP: support recon company
 		AP3 Pehota Vintovka
 		AP4 Pehota Vintovka
 
-AQ: support average company
+AQ: support elite recon company
 	leader    : AQ0 Obs Post (Cpt Samoilov)
 	higher cmd: A0 SO Komander (Col Lavrenev)
 	kills     : 0

@@ -577,7 +577,7 @@ Formation kills    : avg: 0.05
 Formation kills    : spr: 1
 Formation kills    : tot: 3
 Formation kills    : cnt: 57
-Formation losses   : max: 8 ( 15: P: recon platoon)
+Formation losses   : max: 8 ( 15: P: average platoon)
 Formation losses   : min: 0 (  0: A: elite recon force HQ)
 Formation losses   : avg: 1.77
 Formation losses   : spr: 8
@@ -685,7 +685,7 @@ H : support elite company
 	unit list :
 		H0 Panhard 165 TOE
 
-I : core recon platoon
+I : core average platoon
 	leader    : I0 Camion DCA 25mm (1Lt Jacquot)
 	higher cmd: H0 Panhard 165 TOE (KIA De Clouet)
 	kills     : 0
@@ -758,7 +758,7 @@ N : support average platoon
 		N1 Renault D1 
 		N2 Renault D1 
 
-O : support average platoon
+O : support recon platoon
 	leader    : O2 Peugeot 202+ (Sgt Toussaint)
 	higher cmd: H0 Panhard 165 TOE (KIA De Clouet)
 	kills     : 0
@@ -771,7 +771,7 @@ O : support average platoon
 		O2 Peugeot 202+
 		O3 Peugeot 202+
 
-P : support recon platoon
+P : support average platoon
 	leader    : P1 Section Dragons (KIA Benoit)
 	higher cmd: H0 Panhard 165 TOE (KIA De Clouet)
 	kills     : 0
@@ -843,7 +843,7 @@ U : support dedicated artillery platoon
 		U0 Section Mortier
 		U1 Section Mortier
 
-V : support average platoon
+V : support elite platoon
 	leader    : V3 Section Sapeurs (KIA Bernhardt)
 	higher cmd: R0 75mm Obusier (Cpt Mouton)
 	kills     : 0
