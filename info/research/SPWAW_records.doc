@@ -693,7 +693,7 @@ Record count:	400	(0x0190)
 offset	size	type	description
 
 0x0000	16	ASCIIZ	Name
-0x0010	1	INT1	Formation OOB record ID?
+0x0010	1	INT1	Formation OOB record ID?	// this can be 0!
 0x0011	1	???	???
 0x0012	2	INT2	Higher command leader unit ID
 0x0014	2	INT2	Formation leader unit ID

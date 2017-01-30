@@ -13,7 +13,7 @@
 
 typedef struct s_FORMATION {
 	char	name[SPWAW_AZSNAME];	/* Formation name (ASCIIZ)	*/
-	BYTE	OOBid;			/* Formation OOB record ID?	*/
+	BYTE	OOBrid;			/* Formation OOB record ID?	*/
 	char	__data000[1];
 	USHORT	hcmd;			/* Higher command leader ID	*/
 	USHORT	leader;			/* Formation leader unit ID	*/
@@ -36,6 +36,6 @@ typedef struct s_STRUCT35 {
 	} u;
 } STRUCT35;
 
-extern SPWAW_ERROR	sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab);
+extern SPWAW_ERROR	sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
 #endif	/* INTERNAL_STRUCT35_H */

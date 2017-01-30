@@ -15,77 +15,77 @@
 #include <ad_list.h>
 
 static SPWAW_ERROR
-build_formations_list (FORMATION *src, BYTE player, USHORT start, FORMATION_LIST &list, char *loghdr)
+build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FLIST &fl)
 {
-	USHORT		i;
-	int		seen[FORMCOUNT];
-	char		name[17];
+	int	seen[FORMCOUNT];
+	USHORT	i;
 
 	memset (seen, 0, sizeof(seen));
 
-	//log ("%s: start=%u\n", loghdr, start);
-
-	// First skip all non-player formations
-	i = start;
-	while ((i < FORMCOUNT) && (src[i].player != player)) i++;
-
-	// Now add all valid player formations
-	while (i < FORMCOUNT) {
-
+	// Add all valid player formations
+	for (i=start; i<end; i++)
+	{
 		if (src[i].leader == SPWAW_BADIDX) {
 			// skipped: no leader
-			log ("%s: [%3.3u] SKIPPED (no leader)\n", loghdr, i);
-		} else 	if (src[i].player != player) {
-			// skipped: wrong player
-			log ("%s: [%3.3u] SKIPPED (wrong player ID %u)\n", loghdr, i, src[i].player);
-		} else if (seen[src[i].ID] != 0) {
-			// skipped: duplicate formation ID
-			log ("%s: [%3.3u] SKIPPED (duplicate formation ID %u)\n", loghdr, i, src[i].ID);
-		} else {
-			snprintf (name, sizeof (name) - 1, "%s", src[i].name); name[16] = '\0';
-			log ("%s: [%3.3u] FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> (%16.16s)\n",
-				loghdr, i, src[i].player, src[i].ID, src[i].leader, src[i].name);
-
-			list.list[list.cnt++] = i;
-
-			seen[src[i].ID] = 1;
+			log ("find_formations: [%3.3u] SKIPPED (no leader)\n", i);
+			continue;
 		}
 
-		i++;
+		if (src[i].player != player) {
+			// skipped: wrong player
+			log ("find_formations: [%3.3u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
+			continue;
+		}
+
+
+		if (seen[src[i].ID] != 0) {
+			// skipped: duplicate formation ID
+			log ("find_formations: [%3.3u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
+			continue;
+		}
+
+		FEL *fel = reserve_FEL (fl);
+		if (!fel) RWE (SPWERR_FAILED, "reserve_FEL() failed");
+
+		fel->d.RID = i;
+		fel->d.FID = src[i].ID;
+		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
+
+		log ("find_formations: [%3.3u] FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> (%16.16s)\n",
+			i, src[i].player, src[i].ID, src[i].leader, src[i].name);
+
+		if (!commit_FEL (fl, fel)) {
+			RWE (SPWERR_FAILED, "commit_fel() failed");
+		}
+
+		seen[src[i].ID] = 1;
 	}
-	log ("%s: cnt=%u\n", loghdr, list.cnt);
+	log ("find_formations: cnt=%u\n", fl.cnt);
 
 	return (SPWERR_OK);
 }
 
 static SPWAW_ERROR
-build_formations (FORMATION *src, BYTE player, USHORT start, USHORT alt_start, FORMATION_LIST &list)
+build_formations (FORMATION *src, BYTE player, FLIST &fl)
 {
 	SPWAW_ERROR	rc;
 
-	memset (&list, 0, sizeof(list));
+	init_FLIST (fl);
 
-	rc = build_formations_list (src, player, start, list, "formationcount");
+	rc = build_formations_list (src, player, FORMP1START, FORMCOUNT, fl);
 	ROE ("build_formations_list()");
 
-	if ((list.cnt == 0) && (alt_start != start)) {
-		rc = build_formations_list (src, player, alt_start, list, "ALT~formationcount");
-		ROE ("build_formations_list(alt)");
-	}
-
-	if (list.cnt == 0) RWE (SPWERR_BADSAVEDATA, "no formations found");
-
-	// TODO: CHECK: the list of formations is not sorted?
+	if (fl.cnt == 0) RWE (SPWERR_BADSAVEDATA, "no formations found");
 
 	return (SPWERR_OK);
 }
 
 static SPWAW_ERROR
-add_formation (USHORT idx, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab)
+add_formation (USHORT rid, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab)
 {
 	SPWAW_UD		*UD;
 
-	dst->RID	= idx;
+	dst->RID	= rid;
 	dst->FID	= src->ID - (BYTE)start;
 
 	if ((dst->FID != 0) && (src->name[0] != '\0')) {
@@ -96,7 +96,7 @@ add_formation (USHORT idx, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *
 
 	dst->leader	= src->leader;
 	dst->hcmd	= src->hcmd;
-	dst->OOBrid	= src->OOBid;
+	dst->OOBrid	= src->OOBrid;
 	dst->status	= src->status;
 	dst->player	= src->player;
 
@@ -114,26 +114,29 @@ add_formation (USHORT idx, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *
 }
 
 static SPWAW_ERROR
-add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FORMATION_LIST &list, STRTAB *stab)
+add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab)
 {
 	SPWAW_ERROR		rc;
-	USHORT			cnt;
-	USHORT			start;
-	SPWAW_SNAP_OOB_FELRAW	*p;
-	USHORT			i;
+	FEL			*p;
+	USHORT			idx;
+	USHORT			rid;
+	SPWAW_SNAP_OOB_FELRAW	*praw;
 
-	if ((cnt = list.cnt) == 0) RWE (SPWERR_FAILED, "internal error: unexpected empty formations list");
+	if (fl.cnt == 0) RWE (SPWERR_FAILED, "unexpected empty formations list");
 
-	start = src[list.list[0]].ID;
+	dst->raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, fl.cnt); COOM (dst->raw, "SPWAW_SNAP_OOB_FELRAW list");
+	dst->cnt   = fl.cnt;
+	dst->start = src[fl.head->d.RID].ID;
 
-	dst->raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, cnt); COOM (dst->raw, "SPWAW_SNAP_OOB_FELRAW list");
-	dst->cnt   = (USHORT)cnt;
-	dst->start = start;
-
-	for (i=0; i<cnt; i++) {
-		p = &(dst->raw[i]);
-		rc = add_formation (list.list[i], &src[list.list[i]], dst->start, p, stab);
+	p = fl.head; idx = 0;
+	while (p) {
+		rid = p->d.RID;
+		praw = &(dst->raw[idx]);
+		p->d.data = praw;
+		rc = add_formation (rid, &src[rid], dst->start, praw, stab);
 		ERRORGOTO ("add_formation()", handle_error);
+
+		p = p->l.next; idx++;
 	}
 
 	return (SPWERR_OK);
@@ -144,28 +147,11 @@ handle_error:
 }
 
 static SPWAW_ERROR
-sec35_save_formations (FORMATION *src, BYTE player, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab)
+sec35_save_formations (FORMATION *src, BYTE player, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, FLIST &fl)
 {
 	SPWAW_ERROR	rc;
-	USHORT		start, alt_start;
-	FORMATION_LIST	fl;
 
-	switch (player) {
-		case PLAYER1:
-			start = alt_start = FORMP1START;
-			break;
-		case PLAYER2:
-			start = FORMP2START;
-			alt_start = FORMP1START;
-			break;
-		default:
-			// TODO: replace with some smarter RWE macro?
-			ERROR1 ("internal error: unknown player ID %u", player);
-			return (SPWERR_FAILED);
-			break;
-	}
-
-	rc = build_formations (src, player, start, alt_start, fl);
+	rc = build_formations (src, player, fl);
 	ROE ("build_formations_list()");
 
 	rc = add_formations (src, dst, fl, stab);
@@ -178,16 +164,16 @@ sec35_save_formations (FORMATION *src, BYTE player, SPWAW_SNAP_OOB_FRAW *dst, ST
 }
 
 SPWAW_ERROR
-sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
+sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 
 	CNULLARG (src); CNULLARG (dst); CNULLARG (stab);
 
-	rc = sec35_save_formations (src->sec35.u.d.formations, PLAYER1, &(dst->raw.OOBp1.formations), stab);
+	rc = sec35_save_formations (src->sec35.u.d.formations, PLAYER1, &(dst->raw.OOBp1.formations), stab, ful1.fl);
 	ROE ("sec35_save_formations(OOBp1)");
 
-	rc = sec35_save_formations (src->sec35.u.d.formations, PLAYER2, &(dst->raw.OOBp2.formations), stab);
+	rc = sec35_save_formations (src->sec35.u.d.formations, PLAYER2, &(dst->raw.OOBp2.formations), stab, ful2.fl);
 	ROE ("sec35_save_formations(OOBp2)");
 
 	return (SPWERR_OK);

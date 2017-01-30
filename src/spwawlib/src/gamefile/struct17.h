@@ -28,6 +28,6 @@ typedef struct s_STRUCT17 {
 	} u;
 } STRUCT17;
 
-extern SPWAW_ERROR	sec17_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, UNIT_LIST &ul1, UNIT_LIST &ul2);
+extern SPWAW_ERROR	sec17_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
 #endif	/* INTERNAL_STRUCT17_H */

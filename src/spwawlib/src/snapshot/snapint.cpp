@@ -216,6 +216,7 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 	SPWAW_ERROR			rc = SPWERR_OK;
 	SPWAW_SNAP_OOB_F		*p;
 	USHORT				i;
+	BYTE				form_oobrid, unit_oobrid;
 	char				buf[256];
 
 	CNULLARG (raw); CNULLARG (ptr); CNULLARG (oob);
@@ -230,24 +231,50 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 		SPWAW_SNAP_OOB_FEL_DATA		*dat = &(p->list[i].data);
 		SPWAW_SNAP_OOB_FEL_STRINGS	*str = &(p->list[i].strings);
 
+		dat->OOBrid = src->OOBrid;
+
+		form_oobrid = unit_oobrid = 0;
+
+		if ((form_oobrid = dat->OOBrid) == 0) {
+			// If there is no OOB record ID for this formation then it's a
+			// special formation and we need to look up the OOB record ID
+			// of its leader unit...
+			SPWAW_SNAP_OOB_UELRAW	*u = NULL;
+
+			if (check_unitid (src->leader, &(raw->units), &u)) {
+				unit_oobrid = u->OOBrid;
+			} else {
+				RWE (SPWERR_BADSAVEDATA, "missing leader unit for formation");
+			}
+		}
+
+		if (form_oobrid != 0) {
+			dat->fstatus	= oob->fdata[form_oobrid].stat;
+			dat->type	= oob->fdata[form_oobrid].type;
+		} else {
+			// For special formations we assume it's an average platoon:
+			dat->fstatus	= SPWOOB_FSTAT_D;	// average
+			dat->type	= SPWOOB_FTYPE_PLT;	// platoon
+		}
+
 		if (src->name == NULL) {
 			if (src->FID == 0) {
 				memset (buf, 0, sizeof (buf));
 				snprintf (buf, sizeof (buf) - 1, "%s HQ", ptr->people);
 				src->name = STRTAB_add (stab, buf);
 			} else {
-				//DEBUG
-				src->name = azstrstab (oob->fdata[src->OOBrid].name, stab);
-				//ERROR2 ("unexpected NULL value for raw formation name (side=%d, FID=%u)\n", ptr->side, src->FID);
-				//RWE (SPWERR_BADSAVEDATA, "invalid raw formation name");
-				//DEBUG
+				if (form_oobrid != 0) {
+					src->name = azstrstab (oob->fdata[form_oobrid].name, stab);
+				} else {
+					// For special formations we use the type name of its leader unit
+					src->name = azstrstab (oob->udata[unit_oobrid].name, stab);
+				}
 			}
 		}
 
 		dat->idx	= i;
 		dat->RID	= src->RID;
 		dat->FID	= src->FID;
-		dat->OOBrid	= src->OOBrid;
 		dat->status	= raw2fstatus (src->status);
 		dat->leader.rid	= src->leader;
 		dat->hcmd.rid	= src->hcmd;
@@ -300,9 +327,9 @@ determine_ldrcrw (SPWAW_SNAP_OOB_URAW *ptr, int i, USHORT &ldr, USHORT &crw, boo
 	}
 	//log ("ldrcrw[%u] lidx=%4.4x", i, lidx);
 	if (lidx == SPWAW_BADIDX) lidx = uptr->leader;
-	//log_nots (", %4.4x", lidx);
+	//log (", %4.4x", lidx);
 	if (lidx == SPWAW_BADIDX) lidx = uptr->RID;
-	//log_nots (", %4.4x\n", lidx);
+	//log (", %4.4x\n", lidx);
 
 	ldr = lidx;
 	crw = (cptr?cptr->RID:SPWAW_BADIDX);
@@ -780,139 +807,8 @@ handle_error:
 	return (rc);
 }
 
-static BYTE
-find_oobid_by_name (SPWAW_SNAP_OOB_FEL *ptr, SPWOOB_DATA *oob, SPWAW_DATE *date)
-{
-	BYTE			rv = 0, i;
-	int			score = -100;
-	int			s, j, k, c, l;
-
-	//log ("\t[NAME] OOBID SEARCH FOR: F#%d, utype <%s>, oob %d, date %d/%d\n",
-	//	ptr->data.ID, ptr->strings.utype, oob->id, date->year, date->month);
-	//for (i=0; i<ptr->data.ucnt; i++) {
-	//	log ("\tunit[%d] #%d (%d_%d) OOBid %d <%s>\n", i, ptr->data.ulist[i]->data.ID,
-	//		ptr->data.ulist[i]->data.FID, ptr->data.ulist[i]->data.FSID,
-	//		ptr->data.ulist[i]->data.OOBid, oob->udata[ptr->data.ulist[i]->data.OOBid].name);
-	//}
-
-	for (i=0; i<SPWOOB_FCNT; i++) {
-		if (!oob->fdata[i].valid) continue;
-
-		if (strcmp (ptr->strings.utype, oob->fdata[i].name) == 0) {
-			/* formation type name match is 1 point */
-			s = 1;
-
-			//log ("\tOOB f[%d] <%s> from=%d/%d to=%d\n", i,
-			//	oob->fdata[i].name, oob->fdata[i].start_yr, oob->fdata[i].start_mo, oob->fdata[i].end_yr);
-
-			/* formation availability period match is 2 extra points */
-			if (	(oob->fdata[i].start_yr <= date->year)	&&
-				(oob->fdata[i].start_mo <= date->month)	&&
-				(date->year <= oob->fdata[i].end_yr)	)
-			{
-				s += 2;
-			}
-
-			j = k = 0; while ((k<ptr->data.ucnt) && (j<SPWOOB_FMUCNT)) {
-				c = oob->fdata[i].unit_cnt[j];
-				l = oob->fdata[i].unit_ids[j];
-				if (!c) { j++; continue; }
-
-				if (l<1000) {
-					//log ("\t\tOOB f[%d].unit[%d] {UNIT} id=%d cnt=%d <%s> from=%d/%d to=%d\n",
-					//	i, j, l, c, oob->udata[l].name,
-					//	oob->udata[l].start_yr, oob->udata[l].start_mo, oob->udata[l].end_yr);
-
-					while (c--) {
-						if (strcmp (oob->udata[ptr->data.ulist[k]->data.OOBrid].name, oob->udata[l].name) == 0) {
-							/* Formation unit name match is 1 extra point */
-							s += 1; k++;
-							/* Formation unit availability period match is 1 extra point */
-							if (	(oob->udata[l].start_yr <= date->year)	&&
-								(oob->udata[l].start_mo <= date->month)	&&
-								(date->year <= oob->udata[l].end_yr)	)
-							{
-								s += 1;
-							}
-						}
-					}
-				} else {
-					//log ("\t\tOOB f[%d].unit[%d] {FORM} id=%d cnt=%d <%s> from=%d/%d to=%d\n",
-					//	i, j, l, c, oob->fdata[l-1000].name,
-					//	oob->fdata[l-1000].start_yr, oob->fdata[l-1000].start_mo, oob->fdata[l-1000].end_yr);
-
-					/* Formation formation availability period match failure deducts 1 extra point */
-					if (!(	(oob->fdata[l-1000].start_yr <= date->year)	&&
-						(oob->fdata[l-1000].start_mo <= date->month)	&&
-						(date->year <= oob->fdata[l-1000].end_yr)	))
-					{
-						s -= 1;
-					}
-				}
-				j++;
-			}
-			//log ("\t\t---\n");
-			//log ("\tSuggested match: %d <%s>, score: %d\n", i, oob->fdata[i].name, s);
-			if (s > score) {
-				//log ("\tSelected match: current best score %d (previous %d)\n", s, score);
-				rv = i;
-				score = s;
-			}
-		}
-	}
-	return (rv);
-}
-
-static BYTE
-find_formation_oobid (SPWAW_SNAP_OOB_FEL *ptr, SPWOOB_DATA *oob, SPWAW_DATE *date)
-{
-	BYTE			rv = 0;
-	SPWAW_SNAP_OOB_FEL	*fp;
-	int			sfpos, i, cnt, id;
-
-//	log (">>> OOBID LOOKUP: F#%d, utype <%s>, oob %d, date %d/%d\n",
-//		ptr->data.ID, ptr->strings.utype, oob->id, date->year, date->month);
-
-	fp = ptr->data.hcmd.up->data.formation;
-//	log ("  Higher command formation: F#%d, OOBid %d, utype <%s>\n", fp->data.FID, fp->data.OOBid, fp->strings.utype);
-
-	sfpos = ptr->data.RID - fp->data.RID;
-//	log ("  Position in higher formation: %d\n", sfpos);
-
-	i = 0; id = 1000;
-	while (i < SPWOOB_FMUCNT) {
-		cnt = oob->fdata[fp->data.OOBrid].unit_cnt[i];
-		id  = oob->fdata[fp->data.OOBrid].unit_ids[i];
-		//if (id<1000) {
-		//	log ("\tsfpos=%d | OOB f[%d].unit[%d] {UNIT} id=%d cnt=%d <%s> from=%d/%d to=%d\n",
-		//		sfpos, fp->data.OOBrid, i, id, cnt, oob->udata[id].name,
-		//		oob->udata[id].start_yr, oob->udata[id].start_mo, oob->udata[id].end_yr);
-		//} else {
-		//	log ("\tsfpos=%d | OOB f[%d].unit[%d] {FORM} id=%d cnt=%d <%s> from=%d/%d to=%d\n",
-		//		sfpos, fp->data.OOBrid, i, id, cnt, oob->fdata[id-1000].name,
-		//		oob->fdata[id-1000].start_yr, oob->fdata[id-1000].start_mo, oob->fdata[id-1000].end_yr);
-		//}
-
-		if (id > 1000) {
-			while (cnt && (sfpos > 1)) { sfpos--; cnt--; }
-			if (cnt && (sfpos == 1)) {
-				//log ("\tFOUND formation at index %d!\n", i);
-				break;
-			}
-		}
-		i++;
-	}
-	// Prevent warning C4244
-	if (i < 10) rv = (BYTE)((id - 1000) & 0xFF);
-	if (!rv) rv = find_oobid_by_name (ptr, oob, date);
-
-	//log ("<<< rv=%d\n\n", rv);
-
-	return (rv);
-}
-
 static SPWAW_ERROR
-snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, SPWOOB_DATA *oob, STRTAB * /*stab*/, SPWAW_DATE *date)
+snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr)
 {
 	DWORD	i;
 
@@ -922,37 +818,12 @@ snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, SPWOOB_DATA *oob, STRT
 		SPWAW_SNAP_OOB_FEL_DATA		*dat = &(ptr->formations.list[i].data);
 		SPWAW_SNAP_OOB_FEL_STRINGS	*str = &(ptr->formations.list[i].strings);
 
-		if (!dat->OOBrid) dat->OOBrid = find_formation_oobid (&(ptr->formations.list[i]), oob, date);
-
-		dat->fstatus	= oob->fdata[dat->OOBrid].stat;
-		dat->type	= oob->fdata[dat->OOBrid].type;
-
 		// Prevent warning C4244
 		FID2str ((BYTE)(dat->FID & 0xFF), str->name, sizeof (str->name));
 		str->status	= fstatus2str (dat->status);
 		str->fstatus	= (char*)SPWOOB_FSTAT_lookup (dat->fstatus);
 		str->type	= (char*)SPWOOB_FTYPE_lookup (dat->type);
-
 	}
-
-	////DEBUG
-	//log ("### checking OOB record ID lookup system\n");
-	//BYTE	t;
-	//for (i=0; i<ptr->formations.cnt; i++) {
-	//	dat = &(ptr->formations.list[i].data);
-	//	str = &(ptr->formations.list[i].strings);
-
-	//	log ("record #%d/formation #%d/OOBid %d\n", dat->ID, dat->FID, dat->OOBid);
-	//	log ("name <%s> type <%s> utype <%s>\n", str->name, str->type, str->utype);
-	//	t = find_oobid_by_name (&(ptr->formations.list[i]), oob, date);
-	//	if (t == dat->OOBid) {
-	//		log ("+++ OK: OOBid [%d] == %d\n", dat->OOBid, t);
-	//	} else {
-	//		log ("+++ FAILED: OOBid [%d] != %d\n", dat->OOBid, t);
-	//	}
-	//}
-	//log ("### check finished\n\n");
-	////DEBUG
 
 	return (SPWERR_OK);
 }
@@ -960,7 +831,7 @@ snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, SPWOOB_DATA *oob, STRT
 static inline void
 snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, STRTAB * /*stab*/)
 {
-	SPWAW_SNAP_OOB_UEL_DATA	*dat;
+	SPWAW_SNAP_OOB_UEL_DATA		*dat;
 	SPWAW_SNAP_OOB_UEL_STRINGS	*str;
 
 	if (!ptr) return;
@@ -999,20 +870,20 @@ snapint_oob_units_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-snapint_oob_core_stage2 (SPWAW_SNAP_OOB *ptr, SPWOOB_DATA *oob, STRTAB *stab, SPWAW_DATE *date)
+snapint_oob_core_stage2 (SPWAW_SNAP_OOB *ptr, STRTAB *stab)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
 	CNULLARG (ptr);
 
-	rc = snapint_oob_formations_stage2 (&(ptr->battle), oob, stab, date);	ROE ("snapint_oob_formations_stage2(battle)");
-	rc = snapint_oob_units_stage2 (&(ptr->battle), stab);			ROE ("snapint_oob_units_stage2(battle)");
+	rc = snapint_oob_formations_stage2 (&(ptr->battle));	ROE ("snapint_oob_formations_stage2(battle)");
+	rc = snapint_oob_units_stage2 (&(ptr->battle), stab);	ROE ("snapint_oob_units_stage2(battle)");
 
-	rc = snapint_oob_formations_stage2 (&(ptr->core), oob, stab, date);	ROE ("snapint_oob_formations_stage2(core)");
-	rc = snapint_oob_units_stage2 (&(ptr->core), stab);			ROE ("snapint_oob_units_stage2(core)");
+	rc = snapint_oob_formations_stage2 (&(ptr->core));	ROE ("snapint_oob_formations_stage2(core)");
+	rc = snapint_oob_units_stage2 (&(ptr->core), stab);	ROE ("snapint_oob_units_stage2(core)");
 
-	rc = snapint_oob_formations_stage2 (&(ptr->support), oob, stab, date);	ROE ("snapint_oob_formations_stage2(support)");
-	rc = snapint_oob_units_stage2 (&(ptr->support), stab);			ROE ("snapint_oob_units_stage2(support)");
+	rc = snapint_oob_formations_stage2 (&(ptr->support));	ROE ("snapint_oob_formations_stage2(support)");
+	rc = snapint_oob_units_stage2 (&(ptr->support), stab);	ROE ("snapint_oob_units_stage2(support)");
 
 	return (SPWERR_OK);
 }
@@ -1122,6 +993,8 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 		/* Also allocate losses for crew members that were not recorded!
 		 * (crew member killed and slot reused before save) */
 		if (up->data.crew && !up->data.aunit.up) up->attr.gen.losses++;
+		//FIXME?
+		//if (up->data.crew && (up->data.aband == SPWAW_ASTAY) && !up->data.aunit.up) up->attr.gen.losses++;
 	}
 
 	/* No attributes for crewmen!
@@ -1268,7 +1141,7 @@ snapint_oobp1 (SPWAW_SNAPSHOT *ptr)
 	rc = OOB_build_subforce (&(ptr->OOBp1.battle), &(ptr->OOBp1.core), true);	ROE ("OOB_build_subforce(OOBp1, core)");
 	rc = OOB_build_subforce (&(ptr->OOBp1.battle), &(ptr->OOBp1.support), false);	ROE ("OOB_build_subforce(OOBp1, support)");
 
-	rc = snapint_oob_core_stage2 (&(ptr->OOBp1), oobdata, stab, &(ptr->game.battle.data.date));
+	rc = snapint_oob_core_stage2 (&(ptr->OOBp1), stab);
 	ROE ("snapint_oob_core_stage2(OOBp1)");
 
 	rc = snapint_oob_attrs (&(ptr->OOBp1.battle));	ROE ("snapint_oob_attrs(OOBp1.battle)");
@@ -1310,7 +1183,7 @@ snapint_oobp2 (SPWAW_SNAPSHOT *ptr)
 
 	rc = OOB_link (&(ptr->OOBp2), false);		ROE ("OOB_link(OOBp2)");
 
-	rc = snapint_oob_core_stage2 (&(ptr->OOBp2), oobdata, stab, &(ptr->game.battle.data.date));
+	rc = snapint_oob_core_stage2 (&(ptr->OOBp2),stab);
 	ROE ("snapint_oob_core_stage2(OOBp2)");
 
 	rc = snapint_oob_attrs (&(ptr->OOBp2.battle));	ROE ("snapint_oob_attrs(OOBp2.battle)");

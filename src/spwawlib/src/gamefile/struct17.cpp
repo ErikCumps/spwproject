@@ -15,7 +15,7 @@
 #include "common/internal.h"
 
 static SPWAW_ERROR
-setup (SPWAW_SNAP_OOB_PRAW *dst, UNIT_LIST &up)
+setup (SPWAW_SNAP_OOB_PRAW *dst, ULIST &up)
 {
 	SPWAW_SNAP_OOB_PELRAW	*p;
 
@@ -51,27 +51,32 @@ add_unitpos (UNIT_POS *src, USHORT id, SPWAW_SNAP_OOB_PELRAW *dst, USHORT *idx)
 }
 
 SPWAW_ERROR
-sec17_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*stab*/, UNIT_LIST &ul1, UNIT_LIST &ul2)
+sec17_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*stab*/, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 	UNIT_POS	*data;
-	USHORT		i, idx;
+	USHORT		idx;
+	UEL		*p;
 
 	CNULLARG (src); CNULLARG (dst);
 
 	data = src->sec17.u.d.pos;
 
-	rc = setup (&(dst->raw.OOBp1.positions), ul1); ROE ("setup(struct17/OOBp1)");
-	for (idx = i = 0; i<ul1.cnt; i++) {
-		rc = add_unitpos (&(data[ul1.list[i]]), ul1.list[i], dst->raw.OOBp1.positions.raw, &idx);
+	rc = setup (&(dst->raw.OOBp1.positions), ful1.ul); ROE ("setup(struct17/OOBp1)");
+	p = ful1.ul.head; idx = 0;
+	while (p) {
+		rc = add_unitpos (&(data[p->d.RID]), p->d.RID, dst->raw.OOBp1.positions.raw, &idx);
 		ROE ("add_unitpos(OOBp1)");
+		p = p->l.next;
 	}
 	rc = build_pridx (&(dst->raw.OOBp1.positions)); ROE ("build_pridx(OOBp1)");
 
-	rc = setup (&(dst->raw.OOBp2.positions), ul2); ROE ("setup(struct17/OOBp2)");
-	for (idx = i = 0; i<ul2.cnt; i++) {
-		rc = add_unitpos (&(data[ul2.list[i]]), ul2.list[i], dst->raw.OOBp2.positions.raw, &idx);
+	rc = setup (&(dst->raw.OOBp2.positions), ful2.ul); ROE ("setup(struct17/OOBp2)");
+	p = ful2.ul.head; idx = 0;
+	while (p) {
+		rc = add_unitpos (&(data[p->d.RID]), p->d.RID, dst->raw.OOBp2.positions.raw, &idx);
 		ROE ("add_unitpos(OOBp2)");
+		p = p->l.next;
 	}
 	rc = build_pridx (&(dst->raw.OOBp2.positions)); ROE ("build_pridx(OOBp2)");
 

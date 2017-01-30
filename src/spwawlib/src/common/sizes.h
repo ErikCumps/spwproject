@@ -113,4 +113,11 @@
 
 #define	MAXWEATHERTYPE		6
 
+/* Maximum supported number of units in a single formation.
+ * Note: this is an arbitrary number - it could be anything... */
+#define	MAXFORMATIONUNITS	16
+
+/* Starting minor formation number for crews and special attached units */
+#define	SPECIALUNITFSID		50
+
 #endif	/* INTERNAL_SIZES_H */

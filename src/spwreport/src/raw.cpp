@@ -135,7 +135,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME_RAW *ptr)
 }
 
 static void
-report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr, SPWAW_SNAP_OOB_F *iptr)
+report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 {
 	DWORD	i;
 	char	pf[16];
@@ -163,7 +163,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr, SPWAW_SNAP_OOB_F *iptr)
 		if (p->OOBrid) {
 			fprintf (rf, "{%4lu} OOBrid    : %u\n", i, p->OOBrid);
 		} else {
-			fprintf (rf, "{%4lu} OOBrid    : %u (via higher cmd link)\n", i, iptr->list[i].data.OOBrid);
+			fprintf (rf, "{%4lu} OOBrid    : 0 (special formation)\n", i, p->OOBrid);
 		}
 		fprintf (rf, "{%4lu} status    : %u\n", i, p->status);
 		fprintf (rf, "{%4lu} player    : %u\n", i, p->player);
@@ -347,13 +347,13 @@ report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
 }
 
 static void
-report_oob (FILE *rf, SPWAW_SNAP_OOB_RAW *ptr, SPWAW_SNAP_OOB_FORCE *iptr, int player)
+report_oob (FILE *rf, SPWAW_SNAP_OOB_RAW *ptr, int player)
 {
 	if (!ptr) return;
 
 	smart_title (rf, '=', "RAW player %u OOB report:\n", player);
 
-	report_formations (rf, &(ptr->formations), &(iptr->formations));
+	report_formations (rf, &(ptr->formations));
 	report_units (rf, &(ptr->units));
 	report_leaders (rf, &(ptr->leaders));
 	report_positions (rf, &(ptr->positions));
@@ -367,8 +367,8 @@ raw_report (SPWAW_SNAPSHOT *ptr, FILE *rf)
 	if (!ptr || !rf) return;
 
 	report_game	(rf, &(ptr->raw.game));
-	report_oob	(rf, &(ptr->raw.OOBp1), &(ptr->OOBp1.battle), 1);
-	report_oob	(rf, &(ptr->raw.OOBp2), &(ptr->OOBp2.battle), 2);
+	report_oob	(rf, &(ptr->raw.OOBp1), 1);
+	report_oob	(rf, &(ptr->raw.OOBp2), 2);
 
 	return;
 }

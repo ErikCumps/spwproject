@@ -15,7 +15,7 @@
 #include "common/internal.h"
 
 static SPWAW_ERROR
-setup (SPWAW_SNAP_OOB_LRAW *dst, UNIT_LIST &up)
+setup (SPWAW_SNAP_OOB_LRAW *dst, ULIST &up)
 {
 	SPWAW_SNAP_OOB_LELRAW	*p;
 
@@ -58,27 +58,32 @@ add_leader (LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STR
 }
 
 SPWAW_ERROR
-sec34_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, UNIT_LIST &ul1, UNIT_LIST &ul2)
+sec34_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 	LEADER		*data;
-	USHORT		i, idx;
+	USHORT		idx;
+	UEL		*p;
 
 	CNULLARG (src); CNULLARG (dst);
 
 	data = src->sec34.u.d.leaders;
 
-	rc = setup (&(dst->raw.OOBp1.leaders), ul1); ROE ("setup(struct34/OOBp1)");
-	for (idx = i = 0; i<ul1.cnt; i++) {
-		rc = add_leader (&(data[ul1.list[i]]), ul1.list[i], dst->raw.OOBp1.leaders.raw, &idx, stab);
+	rc = setup (&(dst->raw.OOBp1.leaders), ful1.ul); ROE ("setup(struct34/OOBp1)");
+	p = ful1.ul.head; idx = 0;
+	while (p) {
+		rc = add_leader (&(data[p->d.RID]), p->d.RID, dst->raw.OOBp1.leaders.raw, &idx, stab);
 		ROE ("add_leader(OOBp1)");
+		p = p->l.next;
 	}
 	rc = build_lridx (&(dst->raw.OOBp1.leaders)); ROE ("build_lridx(OOBp1)");
 
-	rc = setup (&(dst->raw.OOBp2.leaders), ul2); ROE ("setup(struct34/OOBp2)");
-	for (idx = i = 0; i<ul2.cnt; i++) {
-		rc = add_leader (&(data[ul2.list[i]]), ul2.list[i], dst->raw.OOBp2.leaders.raw, &idx, stab);
+	rc = setup (&(dst->raw.OOBp2.leaders), ful2.ul); ROE ("setup(struct34/OOBp2)");
+	p = ful2.ul.head; idx = 0;
+	while (p) {
+		rc = add_leader (&(data[p->d.RID]), p->d.RID, dst->raw.OOBp2.leaders.raw, &idx, stab);
 		ROE ("add_leader(OOBp2)");
+		p = p->l.next;
 	}
 	rc = build_lridx (&(dst->raw.OOBp2.leaders)); ROE ("build_lridx(OOBp2)");
 

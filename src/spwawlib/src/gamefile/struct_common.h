@@ -13,19 +13,110 @@
 #include "common/sizes.h"
 #include "strtab/strtab.h"
 
+/* Common savegame map icon data */
 typedef struct s_MAP_ICON {
 	BYTE	file;	/* File ID (TerIIIzJ.shp)	*/
 	BYTE	icon;	/* Icon ID in SHP file		*/
 } MAP_ICON;
 
-typedef	struct s_UNIT_LIST {
-	USHORT	cnt;
-	USHORT	list[UNITCOUNT];
-} UNIT_LIST;
+/* forward declarations */
+typedef struct s_UEL UEL;
+typedef struct s_FEL FEL;
 
-typedef	struct s_FORMATION_LIST {
-	USHORT	cnt;
-	USHORT	list[FORMCOUNT];
-} FORMATION_LIST;
+
+
+/* Supported unit types */
+typedef enum e_UTYPE {
+	UTYPE_UNIT = 0,		/* Unit				*/
+	UTYPE_CREW,		/* Crew				*/
+	UTYPE_SPAU		/* Special Attached Unit	*/
+} UTYPE;
+
+typedef struct s_UEL {
+	struct s_list {
+		UEL	*prev;					/* Unit list: previous unit			*/
+		UEL	*next;					/* Unit list: next unit				*/
+	}	l;
+	struct s_data {
+		USHORT		RID;				/* Unit record ID				*/
+		char		name[SPWAW_AZSNAME];		/* Unit name					*/
+		USHORT		FMID;				/* Formation record ID				*/
+		USHORT		FSID;				/* Minor formation number			*/
+		BYTE		OOB;				/* OOB country ID				*/
+		BYTE		OOBrid;				/* OOB record ID				*/
+		SPWOOB_UTYPE	OOBtype;			/* OOB unit type				*/
+		FEL		*formation;			/* Associated formation				*/
+		UTYPE		type;				/* Unit type: unit/crew/spau			*/
+		union u_link {
+			UEL	*crew;				/* Crew unit (if unit has a crew)		*/
+			UEL	*parent;			/* Parent unit (if unit is a crew)		*/
+		}		link;
+	}	d;
+} UEL;
+
+/* Intermediate unit list - used during formation/unit detection */
+typedef	struct s_ULIST {
+	struct s_storage {
+		UEL	list[UNITCOUNT];			/* Unit data array				*/
+		USHORT	nidx;					/* Next available index in the array		*/
+	}	s;
+	UEL	*head;						/* Pointer to the start of the list		*/
+	USHORT	cnt;						/* Number of units in the list			*/
+} ULIST;
+
+void	init_ULIST	(ULIST &ul);
+UEL *	reserve_UEL	(ULIST &ul);
+bool	commit_UEL	(ULIST &ul, UEL *uel);
+void	drop_UEL	(ULIST &ul, UEL *uel);
+UEL *	lookup_ULIST	(ULIST &ul, USHORT urid);
+
+
+
+/* Intermediate formation element - used during formation/unit detection */
+typedef struct s_FEL {
+	struct s_list {
+		FEL	*prev;					/* Formation list: previous formation		*/
+		FEL	*next;					/* Formation list: next formation		*/
+	}	l;
+	struct s_data {
+		USHORT		RID;				/* Formation record ID				*/
+		USHORT		FID;				/* Formation ID					*/
+		char		name[SPWAW_AZSNAME];		/* Formation name				*/
+		void		*data;				/* Pointer to SPWAW_SNAP_OOB_FELRAW data	*/
+		BYTE		OOB;				/* OOB country ID				*/
+		BYTE		unit_cnt;			/* Number of associated units			*/
+		UEL		*unit_lst[MAXFORMATIONUNITS];	/* List of associated units			*/
+	}	d;
+} FEL;
+
+/* Intermediate formation list - used during formation/unit detection */
+typedef	struct s_FLIST {
+	struct s_storage {
+		FEL	list[FORMCOUNT];			/* Formation data array				*/
+		USHORT	nidx;					/* Next available index in the array		*/
+	}	s;
+	FEL	*head;						/* Pointer to the start of the list		*/
+	USHORT	cnt;						/* Number of formations in the list		*/
+} FLIST;
+
+void	init_FLIST	(FLIST &fl);
+FEL *	reserve_FEL	(FLIST &fl);
+bool	commit_FEL	(FLIST &fl, FEL *fel);
+void	drop_FEL	(FLIST &fl, FEL *fel);
+FEL *	lookup_FLIST	(FLIST &fl, USHORT frid);
+
+
+
+bool	add_crew_to_unit	(UEL *cel, UEL *uel);
+bool	add_unit_to_formation	(FEL *fel, UEL *uel);
+
+
+/* Intermediate combined formation/unit list - used during formation/unit detection */
+typedef struct s_FULIST {
+	FLIST	fl;						/* Formation list				*/
+	ULIST	ul;						/* Unit list					*/
+} FULIST;
+
+void	init_FULIST	(FULIST &l);
 
 #endif	/* INTERNAL_STRUCT_COMMON_H */
