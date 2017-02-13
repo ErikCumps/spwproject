@@ -40,8 +40,9 @@ typedef struct s_UEL {
 	struct s_data {
 		USHORT		RID;				/* Unit record ID				*/
 		char		name[SPWAW_AZSNAME];		/* Unit name					*/
-		USHORT		FMID;				/* Formation record ID				*/
-		USHORT		FSID;				/* Minor formation number			*/
+		USHORT		FRID;				/* Formation record ID				*/
+		USHORT		FMID;				/* Formation ID					*/
+		USHORT		FSID;				/* Formation sub-ID				*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		OOBrid;				/* OOB record ID				*/
 		SPWOOB_UTYPE	OOBtype;			/* OOB unit type				*/
@@ -80,7 +81,9 @@ typedef struct s_FEL {
 	}	l;
 	struct s_data {
 		USHORT		RID;				/* Formation record ID				*/
-		USHORT		FID;				/* Formation ID					*/
+		USHORT		rawFID;				/* Raw formation ID				*/
+		USHORT		leader;				/* Leader unit ID				*/
+		USHORT		FID;				/* Adjusted formation ID			*/
 		char		name[SPWAW_AZSNAME];		/* Formation name				*/
 		void		*data;				/* Pointer to SPWAW_SNAP_OOB_FELRAW data	*/
 		BYTE		OOB;				/* OOB country ID				*/

@@ -173,6 +173,8 @@ commit_FEL (FLIST &fl, FEL *fel)
 
 	if (!fl.head) fl.head = fel;
 
+	fel->d.FID = fel->d.rawFID - fl.head->d.rawFID;
+
 	fl.s.nidx++;
 	fl.cnt++;
 
@@ -233,18 +235,16 @@ add_unit_to_formation (FEL *fel, UEL *uel)
 {
 	if (!fel || !uel) return (false);
 
-	if (fel->d.unit_cnt >= MAXFORMATIONUNITS) {
-		log ("failed to add unit to formation: max unit count (%u) reached\n",
-			MAXFORMATIONUNITS);
+	if (uel->d.FSID >= MAXFORMATIONUNITS) {
+		log ("failed to add unit to formation: max unit count (%u) reached\n", MAXFORMATIONUNITS);
 		return (false);
 	}
-	if (uel->d.FSID != fel->d.unit_cnt) {
-		log ("failed to add unit to formation: invalid unit FSID (%u) != unit_cnt (%u)\n",
-			uel->d.FSID, fel->d.unit_cnt);
+	if (fel->d.unit_lst[uel->d.FSID]) {
+		log ("failed to add unit to formation: duplicate unit FSID (%u) detected\n", uel->d.FSID);
 		return (false);
 	}
 
-	fel->d.unit_lst[fel->d.unit_cnt] = uel;
+	fel->d.unit_lst[uel->d.FSID] = uel;
 	fel->d.unit_cnt++;
 
 	uel->d.formation = fel;
