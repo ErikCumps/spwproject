@@ -43,18 +43,18 @@ Table German forces order of battle report:
 
 Leader    : A0 GE Kommandeur (Col Bachman)
 Formations: 46
-Units     : 154
+Units     : 157
 Crews     : 0
 
                 item kills losses readiness
                 ---- ----- ------ ---------
-               Total   450      0  99.89 %
+               Total   468      0  99.89 %
       Formations max    79      0 100.00 %
       Formations min     0      0  96.67 %
-      Formations avg  9.78   0.00  99.93 %
+      Formations avg 10.17   0.00  99.93 %
            Units max    32      - 100.00 %
            Units min     0      -  83.33 %
-           Units avg  2.92      -  99.89 %
+           Units avg  2.98      -  99.89 %
 
 Table formations report:
 ------------------------
@@ -178,9 +178,10 @@ R   : cor average                          platoon          R0               A0 
 R0  :     ready                            PzKpfw IV C      Bauer            *       24      0 100.00 %   5
 R1  :     ready                            PzKpfw IV C      Klein                    27      0 100.00 %   5
 
-S   : cor elite recon                      platoon          S1               A0      11      0 100.00 %   2
+S   : cor elite recon                      platoon          S1               A0      29      0 100.00 %   3
 S0  :     ready                            Grenadiergruppe  Bauman                    0      0 100.00 %  10
 S1  :     ready                            Grenadiergruppe  Zimmerman        *       11      0 100.00 %  10
+S2  :     ready                            Grenadiergruppe  Schweitzer               18      0 100.00 %   9
 
 T   : sup recon                            platoon          T0               A0       0      0 100.00 %   3
 T0  :     ready                            Motorrad Grp     Schwartz         *        0      0 100.00 %   9
@@ -291,9 +292,11 @@ AP  : reg dedicated artillery              platoon          AP0              A0 
 AP0 :     ready                            81mm Moerser     Tost             *        0      0 100.00 %   5
 AP1 :     ready                            81mm Moerser     Boettcher                 0      0 100.00 %   5
 
-AQ  : reg average                          platoon          AQ0              A0       0      0 100.00 %   2
+AQ  : reg average                          platoon          AQ0              A0       0      0 100.00 %   4
 AQ0 :     ready                            Zugfuehrer       Kessler          *        0      0 100.00 %   4
 AQ1 :     ready                            150mm sIG33      Brandt                    0      0 100.00 %   7
+AQ2 :     ready                            150mm sIG33      Albrecht                  0      0 100.00 %   7
+AQ3 :     ready                            LMG Gruppe       Briel                     0      0 100.00 %   3
 
 AR  : reg average                          platoon          AR0              A0       0      0 100.00 %   2
 AR0 :     ready                            Gespann          Bauer            *        0      0 100.00 %   4
@@ -355,28 +358,28 @@ Table units report:
  #   J8   Opel Blitz       Sgt  Eberhart           39  11  65  85   0  82  46  39  76    0    0   2   0   0 100.00 % ( 91,  15)
  #   J9   Opel Blitz       Sgt  Brors              40  11  69  87   0  74  51  49  87    0    0   2   0   0 100.00 % ( 90,  15)
  #  LK0   Zugfuehrer       2Lt  Naumann            41   6  70  88   0  83  77  54  56    1    0   6   0   0 100.00 % (  none  )
- #  LK1   LMG Gruppe       Sgt  Kleemann           42  13  82  97   0  76  76  46  46    0    0   3   0   0 100.00 % ( 47,  10)
+ #  LK1   LMG Gruppe       Sgt  Kleemann           42  13  82  97   0  76  76  46  46    0    0   3   0   0 100.00 % ( 47,  11)
  #  LK2   LMG Gruppe       Sgt  Eberhart           43  13  87  97   0  85  93  53  53   11    0   3   0   0 100.00 % (  none  )
  #  LK3   Lt Moerser Trp   Sgt  Musser             44  14  72  89   0  77  53  79  49    1    0   2   0   0 100.00 % (  none  )
  #  LK4   Lt Moerser Trp   Sgt  Reichmann          45  14  73  93   0  71  60  78  50    0    0   2   0   0 100.00 % (  none  )
- #  LK5   Lt Moerser Trp   Sgt  Muller             46  14  78  95   0  80  53  86  53    3    0   2   0   0 100.00 % (  none  )
+ #  LK5   Lt Moerser Trp   Sgt  Muller             46  14  78  95   0  80  53  86  53    3    0   2   0   0 100.00 % ( 47,  10)
  #   K8   SPW 251/1 HT     Sgt  Kaptain            49   4  64  62   0  76  40  45  80    0    0   2   0   0 100.00 % ( 47,  11)
  #   K9   SPW 251/1 HT     Sgt  Remer              50   4  65  83   0  84  52  48  89    1    0   2   0   0 100.00 % ( 47,  10)
- #  LL0   Zugfuehrer       2Lt  Eberbach           51   6  70  90   0  76  85  57  60    2    0   6   0   0 100.00 % ( 49,  12)
- #  LL1   Panzerpionieres  Sgt  Steiner            52  16  97  95   0  87  90  63  56   25    0   9   0   0 100.00 % ( 48,  11)
- #  LL2   Panzerpionieres  Sgt  Conkling           53  16  93  94   0  80  78  47  55    8    0   9   0   0 100.00 % ( 49,  11)
- #  LL3   Panzerpionieres  Sgt  Metzger            54  16  83  99   0  73  90  48  50    5    0  10   0   0 100.00 % (  none  )
+ #  LL0   Zugfuehrer       2Lt  Eberbach           51   6  70  90   0  76  85  57  60    2    0   6   0   0 100.00 % ( 50,  12)
+ #  LL1   Panzerpionieres  Sgt  Steiner            52  16  97  95   0  87  90  63  56   25    0   9   0   0 100.00 % ( 49,  12)
+ #  LL2   Panzerpionieres  Sgt  Conkling           53  16  93  94   0  80  78  47  55    8    0   9   0   0 100.00 % ( 48,  11)
+ #  LL3   Panzerpionieres  Sgt  Metzger            54  16  83  99   0  73  90  48  50    5    0  10   0   0 100.00 % ( 49,  11)
  #  LL4   LMG Gruppe       Sgt  Bruck              55  13  80  95   0  79  75  48  50    1    0   3   0   0 100.00 % (  none  )
  #   L5   SPW 251/1 HT     Sgt  Funck              56   4  77  98   0  80  53  60  80    4    0   2   0   0 100.00 % ( 50,  12)
  #   L6   SPW 251/1 HT     Sgt  Kessler            57   4  82  95   0  76  63  51  86    3    0   2   0   0 100.00 % ( 49,  12)
  #   L7   SPW 251/1 HT     Sgt  Krause             58   4  72  87   0  80  49  42  84    0    0   2   0   0 100.00 % ( 48,  11)
  #   L8   SPW 251/1 HT     Sgt  Stumpf             59   4  78  90   0  82  42  44  76    0    0   2   0   0 100.00 % ( 49,  11)
- #  LM0   Spaehgruppe      2Lt  Wirth              60  17  66  85   0  79  83  57  58    0    0   4   0   0 100.00 % ( 48,  13)
- #  LM1   Spaehgruppe      Sgt  Wagner             61  17  63  81   0  73  76  41  41    0    0   4   0   0 100.00 % ( 80,  12)
- #  LM2   Spaehgruppe      Sgt  Spengler           62  17  78  99   0  69  74  36  34    0    0   4   0   0 100.00 % ( 49,  13)
- #  LN0   Spaehgruppe      2Lt  Stumpf             63  17  69  89   0  82  84  51  48    0    0   4   0   0 100.00 % ( 95,  16)
- #  LN1   Spaehgruppe      Sgt  Brors              64  17  64  83   0  67  77  51  48    0    0   4   0   0 100.00 % ( 89,  17)
- #  LN2   Spaehgruppe      Sgt  Eberhart           65  17  67  91   0  78  86  53  48    0    0   4   0   0 100.00 % (  none  )
+ #  LM0   Spaehgruppe      2Lt  Wirth              60  17  66  85   0  79  83  57  58    0    0   4   0   0 100.00 % ( 49,  13)
+ #  LM1   Spaehgruppe      Sgt  Wagner             61  17  63  81   0  73  76  41  41    0    0   4   0   0 100.00 % ( 47,  12)
+ #  LM2   Spaehgruppe      Sgt  Spengler           62  17  78  99   0  69  74  36  34    0    0   4   0   0 100.00 % ( 46,  13)
+ #  LN0   Spaehgruppe      2Lt  Stumpf             63  17  69  89   0  82  84  51  48    0    0   4   0   0 100.00 % ( 80,  16)
+ #  LN1   Spaehgruppe      Sgt  Brors              64  17  64  83   0  67  77  51  48    0    0   4   0   0 100.00 % ( 91,  17)
+ #  LN2   Spaehgruppe      Sgt  Eberhart           65  17  67  91   0  78  86  53  48    0    0   4   0   0 100.00 % ( 93,  15)
  #   O0   PzKpfw II C      2Lt  Kortenhaus         66  18  93  94   0  78  56  56  84   21    0   3   0   0 100.00 % ( 75,  14)
  #   O1   PzKpfw II C      Sgt  Rauch              67  18 100  98   0  80  51  40  87   10    0   3   0   0 100.00 % ( 74,  16)
  #   O2   PzKpfw II C      Sgt  Kramer             68  18  99  94   0  78  57  57  88   32    0   3   0   0 100.00 % ( 75,  16)
@@ -394,8 +397,9 @@ Table units report:
  #   Q4   PzKpfw III E     Sgt  Telner             80  19  95  99   0  81  58  60  86   27    0   5   0   0 100.00 % ( 47,  12)
  #   R0   PzKpfw IV C      1Lt  Bauer              81  21  91  95   0  75  62  51  91   24    0   5   0   0 100.00 % ( 80,  12)
  #   R1   PzKpfw IV C      Sgt  Klein              82  21  90  99   0  89  61  54  90   27    0   5   0   0 100.00 % ( 93,  15)
- #  LS0   Grenadiergruppe  Sgt  Bauman             83  15  76  98   0  67  80  33  39    0    0  10   0   0 100.00 % ( 45,  12)
- #  LS1   Grenadiergruppe  2Lt  Zimmerman          47  15  91  94   0  81  84  54  59   11    0  10   0   0 100.00 % ( 46,  11)
+ #  LS0   Grenadiergruppe  Sgt  Bauman             83  15  76  98   0  67  80  33  39    0    0  10   0   0 100.00 % ( 46,  12)
+ #  LS1   Grenadiergruppe  2Lt  Zimmerman          47  15  91  94   0  81  84  54  59   11    0  10   0   0 100.00 % ( 45,  12)
+ #  LS2   Grenadiergruppe  Sgt  Schweitzer         48  15  91  96   0  71  75  60  54   18    0   9   0   0 100.00 % ( 46,  11)
  #   T0   Motorrad Grp     2Lt  Schwartz           84  22  55  77   0  72  78  45  36    0    0   9   0   0 100.00 % ( 90,  16)
  #   T1   Motorrad Grp     Sgt  Conkling           85  22  70  85   0  74  83  46  45    0    0   8   0   0 100.00 % ( 93,  17)
  #   T2   Motorrad Grp     Sgt  Krause             86  22  73  89   0  80  82  42  46    0    0   8   0   0 100.00 % ( 88,  17)
@@ -459,8 +463,10 @@ Table units report:
  #   AO1  81mm Moerser     Sgt  Abt               144   2  69  72   0  72  37  74  37    0    0   5   0   0 100.00 % ( 20,  91)
  #   AP0  81mm Moerser     2Lt  Tost              145   2  70  70   0  80  38  76  46    0    0   5   0   0 100.00 % ( 19,  95)
  #   AP1  81mm Moerser     Sgt  Boettcher         146   2  76  72   0  74  38  77  41    0    0   5   0   0 100.00 % ( 20,  94)
- #  LAQ0  Zugfuehrer       2Lt  Kessler           147   6  70  72   0  72  73  46  38    0    0   4   0   0 100.00 % ( 39,  93)
+ #  LAQ0  Zugfuehrer       2Lt  Kessler           147   6  70  72   0  72  73  46  38    0    0   4   0   0 100.00 % ( 27,  94)
  #  LAQ1  150mm sIG33      Sgt  Brandt            148  26  82  71   0  72  50  80  34    0    0   7 4294967295   0 100.00 % (  none  )
+ #  LAQ2  150mm sIG33      Sgt  Albrecht          149  26  82  67   0  74  47  74  40    0    0   7 4294967295   0 100.00 % (  none  )
+ #  LAQ3  LMG Gruppe       Sgt  Briel             150  13  67  67   0  76  82  40  38    0    0   3   0   0 100.00 % ( 25,  94)
  #   AR0  Gespann          1Lt  Bauer             151  27  75  69   0  73  39  43  73    0    0   4   0   0 100.00 % ( 27,  94)
  #   AR1  Gespann          Sgt  Tychsen           152  27  73  73   0  78  36  39  76    0    0   4   0   0 100.00 % ( 25,  94)
  #   AS0  Vorg Beobachter  2Lt  Letzelder         153   1  81  93   0  74  40  73  36    0    0   2   0   0 100.00 % ( 31,  95)
@@ -476,7 +482,7 @@ Table French forces order of battle report:
 
 Leader    : A0 FR HQ (Col Dumas)
 Formations: 24
-Units     : 61
+Units     : 71
 Crews     : 0
 
                 item kills losses readiness
@@ -571,17 +577,27 @@ P   : reg average                          platoon          P0               A0 
 P0  :     ready                            Hotchkiss HMG    Catroux          *        0      0 100.00 %   3
 P1  :     ready                            Hotchkiss HMG    Dampierre                 0      0 100.00 %   3
 
-Q   : reg average                          company          Q0               A0       0      0 100.00 %   1
+Q   : reg average                          company          Q0               A0       0      0 100.00 %   4
 Q0  :     ready                            Platoon HQ       De Ville         *        0      0 100.00 %   7
+Q1  :     ready                            Voltigeurs Sqd   Le Moyne                  0      0 100.00 %  11
+Q2  :     ready                            Voltigeurs Sqd   Toussaint                 0      0 100.00 %  12
+Q3  :     ready                            Voltigeurs Sqd   Dubois                    0      0 100.00 %  10
 
-R   : reg average                          company          R0               A0       0      0 100.00 %   1
+R   : reg average                          company          R0               A0       0      0 100.00 %   4
 R0  :     ready                            Platoon HQ       Delacroix        *        0      0 100.00 %   7
+R1  :     ready                            Voltigeurs Sqd   Babeaux                   0      0 100.00 %  12
+R2  :     ready                            Voltigeurs Sqd   Moreau                    0      0 100.00 %  11
+R3  :     ready                            Voltigeurs Sqd   Bernhardt                 0      0 100.00 %  12
 
-S   : reg average                          company          S0               A0       0      0 100.00 %   1
+S   : reg average                          company          S0               A0       0      0 100.00 %   4
 S0  :     ready                            Platoon HQ       Lavoie           *        0      0 100.00 %   7
+S1  :     ready                            Voltigeurs Sqd   Archambault               0      0 100.00 %  11
+S2  :     ready                            Voltigeurs Sqd   Guillot                   0      0 100.00 %  12
+S3  :     ready                            Voltigeurs Sqd   Bugeaud                   0      0 100.00 %  10
 
-T   : reg elite                            company          T0               A0       0      0 100.00 %   1
+T   : reg elite                            company          T0               A0       0      0 100.00 %   2
 T0  :     ready                            25mm DCA mle39   Requa            *        0      0 100.00 %   4
+T1  :     ready                            25mm DCA mle39   Berhelot                  0      0 100.00 %   4
 
 U   : reg dedicated artillery              platoon          U0               A0       0      0 100.00 %   2
 U0  :     ready                            37mm mle 16 TR   Tessier          *        0      0 100.00 %   4
@@ -655,9 +671,19 @@ Table units report:
  #   P0   Hotchkiss HMG    2Lt  Catroux           200  34  67  62   0  43  42  27  30    0    0   3 4294967294   0 100.00 % ( 77,  71)
  #   P1   Hotchkiss HMG    Sgt  Dampierre         201  34  62  58   0  42  41  26  27    0    0   3 4294967294   0 100.00 % ( 63,  63)
  #   Q0   Platoon HQ       2Lt  De Ville          202  31  57  64   0  39  51  27  29    0    0   7   0   0 100.00 % ( 78,  88)
+ #   Q1   Voltigeurs Sqd   Sgt  Le Moyne          203  35  71  67   0  44  54  33  29    0    0  11   0   0 100.00 % ( 82,  90)
+ #   Q2   Voltigeurs Sqd   Sgt  Toussaint         204  35  69  66   0  42  53  33  26    0    0  12   0   0 100.00 % ( 74,  85)
+ #   Q3   Voltigeurs Sqd   Sgt  Dubois            205  35  67  62   0  50  45  20  21    0    0  10   0   0 100.00 % ( 76,  88)
  #   R0   Platoon HQ       2Lt  Delacroix         206  31  66  54   0  42  46  21  26    0    0   7   0   0 100.00 % ( 57,  67)
+ #   R1   Voltigeurs Sqd   Sgt  Babeaux           207  35  69  66   0  41  46  26  23    0    0  12   0   0 100.00 % ( 54,  69)
+ #   R2   Voltigeurs Sqd   Sgt  Moreau            208  35  68  70   0  51  53  34  21    0    0  11   0   0 100.00 % ( 58,  63)
+ #   R3   Voltigeurs Sqd   Sgt  Bernhardt         209  35  63  66   0  44  47  22  29    0    0  12   0   0 100.00 % ( 58,  59)
  #   S0   Platoon HQ       2Lt  Lavoie            210  31  58  59   0  47  53  23  34    0    0   7   0   0 100.00 % ( 60,  83)
+ #   S1   Voltigeurs Sqd   Sgt  Archambault       211  35  62  67   0  47  56  31  32    0    0  11   0   0 100.00 % ( 59,  85)
+ #   S2   Voltigeurs Sqd   Sgt  Guillot           212  35  70  67   0  42  48  30  25    0    0  12   0   0 100.00 % ( 59,  87)
+ #   S3   Voltigeurs Sqd   Sgt  Bugeaud           213  35  65  57   0  41  53  30  26    0    0  10   0   0 100.00 % ( 55,  85)
  #   T0   25mm DCA mle39   2Lt  Requa             214  36  68  61   0  41  28  48  21    0    0   4   0   0 100.00 % ( 64,  78)
+ #   T1   25mm DCA mle39   Sgt  Berhelot          215  36  66  65   0  45  22  50  31    0    0   4   0   0 100.00 % ( 79,  64)
  #   U0   37mm mle 16 TR   2Lt  Tessier           216  37  55  64   0  53  34  47  32    0    0   4   0   0 100.00 % ( 66,  46)
  #   U1   37mm mle 16 TR   Sgt  Girard            217  37  74  52   0  44  26  53  29    0    0   4   0   0 100.00 % ( 58,  43)
  #   V0   25mm mle 34 ATG  2Lt  Descartes         218  38  57  64   0  43  23  50  27    0    0   4   0   0 100.00 % ( 77,  64)

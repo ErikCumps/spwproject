@@ -84,6 +84,7 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=37, flag=0x00000001>
 unpacked section 48: 37 bytes -> 80 bytes
+find_formations: player #0
 find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(    SP ENH FR-NL)
 find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<109>(       PzGren Kp)
 find_formations: [002] FORMATION: P<0> ID<002> L<00003> O<000>(      PzGren Zug)
@@ -393,6 +394,7 @@ find_formations: [397] SKIPPED (no leader)
 find_formations: [398] SKIPPED (no leader)
 find_formations: [399] SKIPPED (no leader)
 find_formations: cnt=64
+find_formations: player #1
 find_formations: [064] SKIPPED (no leader)
 find_formations: [065] SKIPPED (no leader)
 find_formations: [066] SKIPPED (no leader)
@@ -730,6 +732,7 @@ find_formations: [397] SKIPPED (no leader)
 find_formations: [398] SKIPPED (no leader)
 find_formations: [399] SKIPPED (no leader)
 find_formations: cnt=92
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) UNIT #1 F<000,000> CANDIDATE
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( Kompanie GefStd) UNIT #1 F<001,000> CANDIDATE
 find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (       SPW 251/1) UNIT #1 F<001,001> CANDIDATE
@@ -1737,6 +1740,7 @@ verify_candidate_units: [222] CREW: F<039,051> (       Besatzung) ACCEPTED
 verify_candidate_units: [223] CREW: F<040,055> (       Besatzung) ACCEPTED
 verify_candidate_units: [224] CREW: F<035,050> (       Besatzung) ACCEPTED
 unitcount: ul.cnt=225
+find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( Kompanie GefStd) SKIPPED: invalid formation reference
 find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (       SPW 251/1) SKIPPED: invalid formation reference

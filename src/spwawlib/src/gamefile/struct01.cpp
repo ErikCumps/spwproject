@@ -23,7 +23,6 @@
 //
 // What is known with some degree of certainty:
 //	+ saved units for player #1 and player #2 can be mixed together
-//	+ the first valid unit for a player must be part of the first formation
 //	+ valid units and crews must have a valid name
 //	+ valid units must reference a valid formation
 //	+ the unit's OOB ID must match the formation leader unit's OOB ID
@@ -79,20 +78,16 @@ is_this_a_unit (UNIT *data, USHORT idx)
 
 /* Builds a list of all te candidate units */
 static SPWAW_ERROR
-find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWAW_SNAP_OOB_FRAW *fp)
+find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful)
 {
-	USHORT			i;
-	bool			first;
-	char			name[SPWAW_AZSNAME+1];
-	SPWAW_SNAP_OOB_FELRAW	*fdata;
-	UEL			*uel;
-	FEL			*fel;
+	USHORT	i;
+	char	name[SPWAW_AZSNAME+1];
+	UEL	*uel;
+	FEL	*fel;
 
 	log ("find_candidate_units: player #%u\n", player);
 
 	init_ULIST (ful.ul);
-
-	first = true;
 
 	for (i=start; i<=stop; i++)
 	{
@@ -126,14 +121,8 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 			continue;
 		}
 
-		// The formation seems to be valid, verify with the complete formation data
-		if (!check_formationid (fel->d.RID, fp, NULL, &fdata)) {
-			log ("SKIPPED: invalid formation reference\n");
-			continue;
-		}
-		uel->d.FMID = fel->d.FID;
-
 		// This unit references a valid formation.
+		uel->d.FMID = fel->d.FID;
 
 		// Is this a unit or crew/special attached unit?
 		if ((uel->d.FSID < SPECIALUNITFSID) && is_this_a_unit (data, i))
@@ -146,17 +135,6 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 				log ("SKIPPED: duplicate formation/subformation ID\n");
 				continue;
 			}
-
-			// If this is the first valid unit, it must be a member of the first formation
-			if (first) {
-				if (fel != ful.fl.head) {
-					log ("INVALID: formation F<%3.3u> is not first\n",
-						uel->d.FMID);
-					break;
-				}
-				first = false;
-			}
-
 
 			// This is a candidate unit.
 			log ("CANDIDATE\n");
@@ -216,19 +194,16 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 static inline BYTE
 search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 {
-	SPWAW_SNAP_OOB_FELRAW	*fdata;
-	SPWAW_TIMESTAMP		stamp;
-	SPWOOB_DATA		*oobdata;
-	BYTE			rv = 0;
-	int			score=0, cnt = 0;
-	SPWAW_DATE		s_date, e_date;
-	SPWAW_TIMESTAMP		s_stmp, e_stmp;
-	bool			mnad;
-
-	fdata = (SPWAW_SNAP_OOB_FELRAW *)fel->d.data;
+	SPWAW_TIMESTAMP	stamp;
+	SPWOOB_DATA	*oobdata;
+	BYTE		rv = 0;
+	int		score=0, cnt = 0;
+	SPWAW_DATE	s_date, e_date;
+	SPWAW_TIMESTAMP	s_stmp, e_stmp;
+	bool		mnad;
 
 	log ("  >>> SEARCH OOBRID - BY NAME: F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
-		fdata->FID, fel->d.name, date.year, date.month);
+		fel->d.FID, fel->d.name, date.year, date.month);
 
 	stamp = SIMPLE_STAMP (date.year, date.month);
 
@@ -286,19 +261,16 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 static inline BYTE
 search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 {
-	SPWAW_SNAP_OOB_FELRAW	*fdata;
-	SPWAW_TIMESTAMP		stamp;
-	SPWOOB_DATA		*oobdata;
-	BYTE			rv = 0;
-	int			score = -100;
-	int			s, ds, j, k;
-	BYTE			cnt;
-	USHORT			ids, uid, fid;
-	SPWAW_DATE		s_date, e_date;
-	SPWAW_TIMESTAMP		s_stmp, e_stmp;
-	UEL			*uel;
-
-	fdata = (SPWAW_SNAP_OOB_FELRAW *)fel->d.data;
+	SPWAW_TIMESTAMP	stamp;
+	SPWOOB_DATA	*oobdata;
+	BYTE		rv = 0;
+	int		score = -100;
+	int		s, ds, j, k;
+	BYTE		cnt;
+	USHORT		ids, uid, fid;
+	SPWAW_DATE	s_date, e_date;
+	SPWAW_TIMESTAMP	s_stmp, e_stmp;
+	UEL		*uel;
 
 	log ("  >>> SEARCH OOBRID - EXTENSIVE\n");
 
@@ -311,7 +283,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	}
 
 	log ("  F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
-		fdata->FID, fel->d.name, date.year, date.month);
+		fel->d.FID, fel->d.name, date.year, date.month);
 	for (BYTE i=0; i<MAXFORMATIONUNITS; i++) {
 		if ((uel = fel->d.unit_lst[i]) == NULL) continue;
 		uel->d.OOBtype = oobdata->udata[uel->d.OOBrid].type;
@@ -469,42 +441,49 @@ formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid)
 static SPWAW_ERROR
 find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 {
-	FEL			*fel;
-	SPWAW_SNAP_OOB_FELRAW	*fdata;
-	UEL			*ldru;
+	FEL	*p;
+	FEL	*fel;
+	UEL	*ldru;
 
-	fel = ful.fl.head;
-	while (fel)
+	p = ful.fl.head;
+	while (p)
 	{
-		fdata = (SPWAW_SNAP_OOB_FELRAW *)(fel->d.data);
-		if (!fdata) RWE (SPWERR_FAILED, "no fdata recorded for fel");
+		fel = p; p = p->l.next;
 
-		ldru = lookup_ULIST (ful.ul, fdata->leader);
+		if (!fel->d.unit_cnt) {
+			log ("no units recorded for formation - dropping formation!\n");
+			drop_FEL (ful.fl, fel);
+			continue;
+		}
+
+		ldru = lookup_ULIST (ful.ul, fel->d.leader);
 		if (ldru && (ldru->d.type == UTYPE_CREW)) {
 			ldru = ldru->d.link.parent;
 		}
 		if (!ldru) {
-			RWE (SPWERR_FAILED, "no leader unit recorded for fdata->leader");
+			log ("no leader unit recorded for formation - dropping formation!\n");
+			drop_FEL (ful.fl, fel);
+			continue;
 		}
 
 		fel->d.OOB = ldru->d.OOB;
 
 		log ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u> (%16.16s)\n",
-			fdata->player, fdata->FID, fdata->leader, fdata->OOBrid, fel->d.name);
+			fel->d.player, fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
 
-		if (fdata->OOBrid == 0) {
+		if (fel->d.OOBrid == 0) {
 			// If there is no recorded OOB record ID,
 			// try a direct formation name/date match search:
-			fdata->OOBrid = search_oobrid_by_name (fel, OOB, date);
+			fel->d.OOBrid = search_oobrid_by_name (fel, OOB, date);
 		}
 
-		if (fdata->OOBrid == 0) {
+		if (fel->d.OOBrid == 0) {
 			// If there is still no OOB record ID,
 			// try an extensive search:
-			fdata->OOBrid = search_oobrid_extensive (fel, OOB, date);
+			fel->d.OOBrid = search_oobrid_extensive (fel, OOB, date);
 		}
 
-		fel->d.unit_cnt = formation_unitcount(OOB, fel->d.OOB, fdata->OOBrid);
+		fel->d.unit_cnt = formation_unitcount(OOB, fel->d.OOB, fel->d.OOBrid);
 
 		fel = fel->l.next;
 	}
@@ -530,7 +509,7 @@ verify_candidate_units (FULIST &ful)
 		// Skip CREWs and SPAUs
 		if (uel->d.type != UTYPE_UNIT) continue;
 		// Skip units without a formation reference
-		if (!(fel = uel->d.formation)) continue;
+		fel = uel->d.formation; if (!fel) continue;
 		// Skip units with an invalid OOB ID
 		if (uel->d.OOB != fel->d.OOB) continue;
 		// Skip units that don't seem to belong to the formation (unless they're the leader)
@@ -622,12 +601,12 @@ verify_candidate_units (FULIST &ful)
 
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWAW_SNAP_OOB_FRAW *fp, SPWOOB *OOB, SPWAW_DATE &date)
+unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 {
 	SPWAW_ERROR	rc;
 
 	// Step 1: find all candidate units
-	rc = find_candidate_units (data, start, stop, player, ful, fp);
+	rc = find_candidate_units (data, start, stop, player, ful);
 	ROE ("find_candidate_units()");
 
 	// Early exit if no units are found at all
@@ -756,6 +735,34 @@ add_unit (UNIT *src, USHORT id, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_S
 }
 
 SPWAW_ERROR
+sec01_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FULIST &ful2)
+{
+	SPWAW_ERROR	rc;
+	UNIT		*data;
+	SPWAW_DATE	date;
+
+	CNULLARG (src); CNULLARG (dst);
+
+	data = src->sec01.u.d.units;
+
+	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
+
+	// Count the available units for player #1
+	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 1, ful1, dst->oobdat, date);
+	ROE ("unitcount(OOBp1)");
+
+	// Count the available units for player #2
+	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 2, ful2, dst->oobdat, date);
+	ROE ("unitcount(OOBp2)");
+
+	// Verify unit detection
+	if ((ful1.ul.cnt == 0) || (ful2.ul.cnt == 0))
+		RWE (SPWERR_BADSAVEDATA, "failed to detect units");
+
+	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
 sec01_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
@@ -769,22 +776,6 @@ sec01_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 	data = src->sec01.u.d.units;
 
 	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
-
-	// Count the available units for player #1
-	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 1,
-		ful1, &(dst->raw.OOBp1.formations),
-		dst->oobdat, date);
-	ROE ("unitcount(OOBp1)");
-
-	// Count the available units for player #2
-	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 2,
-		ful2, &(dst->raw.OOBp2.formations),
-		dst->oobdat, date);
-	ROE ("unitcount(OOBp2)");
-
-	// Verify unit detection
-	if ((ful1.ul.cnt == 0) || (ful2.ul.cnt == 0))
-		RWE (SPWERR_BADSAVEDATA, "failed to detect units");
 
 	// Setup and load the unit data for player #1
 	rc = setup (&(dst->raw.OOBp1.units), ful1.ul); ROE ("setup(OOBp1)");

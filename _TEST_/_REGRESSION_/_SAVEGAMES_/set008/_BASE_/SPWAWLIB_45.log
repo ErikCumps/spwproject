@@ -85,6 +85,7 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=37, flag=0x00000001>
 unpacked section 48: 37 bytes -> 80 bytes
+find_formations: player #0
 find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(    SP ENH FR-NL)
 find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<109>(       PzGren Kp)
 find_formations: [002] FORMATION: P<0> ID<002> L<00005> O<000>(      PzGren Zug)
@@ -159,6 +160,7 @@ find_formations: [070] FORMATION: P<0> ID<070> L<00251> O<185>(       lePSW Zug)
 find_formations: [071] FORMATION: P<0> ID<071> L<00258> O<185>(       lePSW Zug)
 find_formations: [072] SKIPPED (no leader)
 find_formations: cnt=72
+find_formations: player #1
 find_formations: [072] SKIPPED (no leader)
 find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(    SP ENH FR-NL)
 find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<037>(      Bat Haubic)
@@ -261,6 +263,7 @@ find_formations: [197] FORMATION: P<1> ID<197> L<00744> O<000>(    Plt Motocykl)
 find_formations: [198] FORMATION: P<1> ID<198> L<00747> O<025>(       Sek Mozdz)
 find_formations: [199] FORMATION: P<1> ID<199> L<00749> O<052>( +AI Inf 30-39++)
 find_formations: cnt=100
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) UNIT #1 F<000,000> CANDIDATE
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( Kompanie GefStd) UNIT #1 F<001,000> CANDIDATE
 find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (       SPW 251/1) UNIT #1 F<001,001> CANDIDATE
@@ -1333,6 +1336,7 @@ verify_candidate_units: [263] CREW: F<050,051> (       Besatzung) ACCEPTED
 verify_candidate_units: [264] CREW: F<039,053> (       Besatzung) ACCEPTED
 verify_candidate_units: [265] CREW: F<071,055> (       Besatzung) ACCEPTED
 unitcount: ul.cnt=266
+find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( Kompanie GefStd) SKIPPED: invalid formation reference
 find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (       SPW 251/1) SKIPPED: invalid formation reference

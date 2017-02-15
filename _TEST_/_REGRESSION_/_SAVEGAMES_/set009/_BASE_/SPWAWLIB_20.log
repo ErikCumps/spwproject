@@ -85,6 +85,7 @@ unpacked section 47: 210 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=16, flag=0x00000001>
 unpacked section 48: 16 bytes -> 80 bytes
+find_formations: player #0
 find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(  SP ENH FR v1.1)
 find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<187>(     Forward Obs)
 find_formations: [002] FORMATION: P<0> ID<002> L<00002> O<148>( Moerser Section)
@@ -132,6 +133,7 @@ find_formations: [043] FORMATION: P<0> ID<043> L<00151> O<066>(         Gespann)
 find_formations: [044] FORMATION: P<0> ID<044> L<00153> O<187>( Vorg Beobachter)
 find_formations: [045] FORMATION: P<0> ID<045> L<00154> O<139>(         Spaeher)
 find_formations: cnt=46
+find_formations: player #1
 find_formations: [046] FORMATION: P<1> ID<100> L<00157> O<001>(    SPWAW H2H ce)
 find_formations: [047] FORMATION: P<1> ID<101> L<00158> O<102>(   Voltigeurs Co)
 find_formations: [048] FORMATION: P<1> ID<102> L<00159> O<000>(  Voltigeurs Plt)
@@ -157,6 +159,7 @@ find_formations: [067] FORMATION: P<1> ID<121> L<00218> O<011>(      AT-Gun Sec)
 find_formations: [068] FORMATION: P<1> ID<124> L<00220> O<183>(   DCA Ammo Cars)
 find_formations: [069] FORMATION: P<1> ID<128> L<00224> O<005>(  Light Tank Trp)
 find_formations: cnt=24
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) UNIT #1 F<000,000> CANDIDATE
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (        Obs Team) UNIT #1 F<001,000> CANDIDATE
 find_candidate_units: [002] F[002]<000> C<65535> L<00002> O<070> (     Moerser Grp) UNIT #1 F<002,000> CANDIDATE
@@ -580,7 +583,7 @@ verify_candidate_units: [044] UNIT: F<010,003> (  Lt Moerser Trp) ACCEPTED
 verify_candidate_units: [045] UNIT: F<010,004> (  Lt Moerser Trp) ACCEPTED
 verify_candidate_units: [046] UNIT: F<010,005> (  Lt Moerser Trp) ACCEPTED
 verify_candidate_units: [047] UNIT: F<018,001> ( Grenadiergruppe) ACCEPTED - LEADER
-verify_candidate_units: [048] UNIT: F<018,002> ( Grenadiergruppe) DROPPED: invalid subformation ID
+verify_candidate_units: [048] UNIT: F<018,002> ( Grenadiergruppe) ACCEPTED - WILDCARD
 verify_candidate_units: [049] UNIT: F<010,008> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [050] UNIT: F<010,009> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [051] UNIT: F<011,000> (      Zugfuehrer) ACCEPTED - LEADER
@@ -681,15 +684,16 @@ verify_candidate_units: [145] UNIT: F<041,000> (    81mm Moerser) ACCEPTED - LEA
 verify_candidate_units: [146] UNIT: F<041,001> (    81mm Moerser) ACCEPTED
 verify_candidate_units: [147] UNIT: F<042,000> (      Zugfuehrer) ACCEPTED - LEADER
 verify_candidate_units: [148] UNIT: F<042,001> (     150mm sIG33) ACCEPTED
-verify_candidate_units: [149] UNIT: F<042,002> (     150mm sIG33) DROPPED: invalid subformation ID
-verify_candidate_units: [150] UNIT: F<042,003> (      LMG Gruppe) DROPPED: invalid subformation ID
+verify_candidate_units: [149] UNIT: F<042,002> (     150mm sIG33) ACCEPTED - WILDCARD
+verify_candidate_units: [150] UNIT: F<042,003> (      LMG Gruppe) ACCEPTED - WILDCARD
 verify_candidate_units: [151] UNIT: F<043,000> (         Gespann) ACCEPTED - LEADER
 verify_candidate_units: [152] UNIT: F<043,001> (         Gespann) ACCEPTED
 verify_candidate_units: [153] UNIT: F<044,000> ( Vorg Beobachter) ACCEPTED - LEADER
 verify_candidate_units: [154] UNIT: F<045,000> (     Spaehtruppe) ACCEPTED - LEADER
 verify_candidate_units: [155] UNIT: F<045,001> (     Spaehtruppe) ACCEPTED
 verify_candidate_units: [156] UNIT: F<045,002> (     Spaehtruppe) ACCEPTED
-unitcount: ul.cnt=154
+unitcount: ul.cnt=157
+find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (        Obs Team) SKIPPED: invalid formation reference
 find_candidate_units: [002] F[002]<000> C<65535> L<00002> O<070> (     Moerser Grp) SKIPPED: invalid formation reference
@@ -1030,19 +1034,19 @@ verify_candidate_units: [199] UNIT: F<014,001> (   Hotchkiss HMG) ACCEPTED
 verify_candidate_units: [200] UNIT: F<015,000> (   Hotchkiss HMG) ACCEPTED - LEADER
 verify_candidate_units: [201] UNIT: F<015,001> (   Hotchkiss HMG) ACCEPTED
 verify_candidate_units: [202] UNIT: F<016,000> (      Platoon HQ) ACCEPTED - LEADER
-verify_candidate_units: [203] UNIT: F<016,001> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [204] UNIT: F<016,002> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [205] UNIT: F<016,003> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
+verify_candidate_units: [203] UNIT: F<016,001> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [204] UNIT: F<016,002> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [205] UNIT: F<016,003> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
 verify_candidate_units: [206] UNIT: F<017,000> (      Platoon HQ) ACCEPTED - LEADER
-verify_candidate_units: [207] UNIT: F<017,001> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [208] UNIT: F<017,002> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [209] UNIT: F<017,003> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
+verify_candidate_units: [207] UNIT: F<017,001> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [208] UNIT: F<017,002> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [209] UNIT: F<017,003> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
 verify_candidate_units: [210] UNIT: F<018,000> (      Platoon HQ) ACCEPTED - LEADER
-verify_candidate_units: [211] UNIT: F<018,001> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [212] UNIT: F<018,002> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [213] UNIT: F<018,003> (  Voltigeurs Sqd) DROPPED: invalid subformation ID
+verify_candidate_units: [211] UNIT: F<018,001> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [212] UNIT: F<018,002> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [213] UNIT: F<018,003> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
 verify_candidate_units: [214] UNIT: F<019,000> (  25mm DCA mle39) ACCEPTED - LEADER
-verify_candidate_units: [215] UNIT: F<019,001> (  25mm DCA mle39) DROPPED: invalid subformation ID
+verify_candidate_units: [215] UNIT: F<019,001> (  25mm DCA mle39) ACCEPTED - WILDCARD
 verify_candidate_units: [216] UNIT: F<020,000> (  37mm mle 16 TR) ACCEPTED - LEADER
 verify_candidate_units: [217] UNIT: F<020,001> (  37mm mle 16 TR) ACCEPTED
 verify_candidate_units: [218] UNIT: F<021,000> ( 25mm mle 34 ATG) ACCEPTED - LEADER
@@ -1056,7 +1060,7 @@ verify_candidate_units: [225] UNIT: F<028,001> (            H-39) ACCEPTED
 verify_candidate_units: [226] UNIT: F<028,002> (            H-39) ACCEPTED
 verify_candidate_units: [227] UNIT: F<028,003> (            H-39) ACCEPTED
 verify_candidate_units: [228] UNIT: F<028,004> (            H-39) DROPPED: invalid subformation ID
-unitcount: ul.cnt=61
+unitcount: ul.cnt=71
 add_unit: idx=0, RID=0
 add_unit: idx=1, RID=1
 add_unit: idx=2, RID=2
@@ -1105,112 +1109,115 @@ add_unit: idx=44, RID=44
 add_unit: idx=45, RID=45
 add_unit: idx=46, RID=46
 add_unit: idx=47, RID=47
-add_unit: idx=48, RID=49
-add_unit: idx=49, RID=50
-add_unit: idx=50, RID=51
-add_unit: idx=51, RID=52
-add_unit: idx=52, RID=53
-add_unit: idx=53, RID=54
-add_unit: idx=54, RID=55
-add_unit: idx=55, RID=56
-add_unit: idx=56, RID=57
-add_unit: idx=57, RID=58
-add_unit: idx=58, RID=59
-add_unit: idx=59, RID=60
-add_unit: idx=60, RID=61
-add_unit: idx=61, RID=62
-add_unit: idx=62, RID=63
-add_unit: idx=63, RID=64
-add_unit: idx=64, RID=65
-add_unit: idx=65, RID=66
-add_unit: idx=66, RID=67
-add_unit: idx=67, RID=68
-add_unit: idx=68, RID=69
-add_unit: idx=69, RID=70
-add_unit: idx=70, RID=71
-add_unit: idx=71, RID=72
-add_unit: idx=72, RID=73
-add_unit: idx=73, RID=74
-add_unit: idx=74, RID=75
-add_unit: idx=75, RID=76
-add_unit: idx=76, RID=77
-add_unit: idx=77, RID=78
-add_unit: idx=78, RID=79
-add_unit: idx=79, RID=80
-add_unit: idx=80, RID=81
-add_unit: idx=81, RID=82
-add_unit: idx=82, RID=83
-add_unit: idx=83, RID=84
-add_unit: idx=84, RID=85
-add_unit: idx=85, RID=86
-add_unit: idx=86, RID=87
-add_unit: idx=87, RID=88
-add_unit: idx=88, RID=89
-add_unit: idx=89, RID=90
-add_unit: idx=90, RID=91
-add_unit: idx=91, RID=92
-add_unit: idx=92, RID=93
-add_unit: idx=93, RID=94
-add_unit: idx=94, RID=95
-add_unit: idx=95, RID=96
-add_unit: idx=96, RID=97
-add_unit: idx=97, RID=98
-add_unit: idx=98, RID=99
-add_unit: idx=99, RID=100
-add_unit: idx=100, RID=101
-add_unit: idx=101, RID=102
-add_unit: idx=102, RID=103
-add_unit: idx=103, RID=104
-add_unit: idx=104, RID=105
-add_unit: idx=105, RID=106
-add_unit: idx=106, RID=107
-add_unit: idx=107, RID=108
-add_unit: idx=108, RID=109
-add_unit: idx=109, RID=110
-add_unit: idx=110, RID=111
-add_unit: idx=111, RID=112
-add_unit: idx=112, RID=113
-add_unit: idx=113, RID=114
-add_unit: idx=114, RID=115
-add_unit: idx=115, RID=116
-add_unit: idx=116, RID=117
-add_unit: idx=117, RID=118
-add_unit: idx=118, RID=119
-add_unit: idx=119, RID=120
-add_unit: idx=120, RID=121
-add_unit: idx=121, RID=122
-add_unit: idx=122, RID=123
-add_unit: idx=123, RID=124
-add_unit: idx=124, RID=125
-add_unit: idx=125, RID=126
-add_unit: idx=126, RID=127
-add_unit: idx=127, RID=128
-add_unit: idx=128, RID=129
-add_unit: idx=129, RID=130
-add_unit: idx=130, RID=131
-add_unit: idx=131, RID=132
-add_unit: idx=132, RID=133
-add_unit: idx=133, RID=134
-add_unit: idx=134, RID=135
-add_unit: idx=135, RID=136
-add_unit: idx=136, RID=137
-add_unit: idx=137, RID=138
-add_unit: idx=138, RID=139
-add_unit: idx=139, RID=140
-add_unit: idx=140, RID=141
-add_unit: idx=141, RID=142
-add_unit: idx=142, RID=143
-add_unit: idx=143, RID=144
-add_unit: idx=144, RID=145
-add_unit: idx=145, RID=146
-add_unit: idx=146, RID=147
-add_unit: idx=147, RID=148
-add_unit: idx=148, RID=151
-add_unit: idx=149, RID=152
-add_unit: idx=150, RID=153
-add_unit: idx=151, RID=154
-add_unit: idx=152, RID=155
-add_unit: idx=153, RID=156
+add_unit: idx=48, RID=48
+add_unit: idx=49, RID=49
+add_unit: idx=50, RID=50
+add_unit: idx=51, RID=51
+add_unit: idx=52, RID=52
+add_unit: idx=53, RID=53
+add_unit: idx=54, RID=54
+add_unit: idx=55, RID=55
+add_unit: idx=56, RID=56
+add_unit: idx=57, RID=57
+add_unit: idx=58, RID=58
+add_unit: idx=59, RID=59
+add_unit: idx=60, RID=60
+add_unit: idx=61, RID=61
+add_unit: idx=62, RID=62
+add_unit: idx=63, RID=63
+add_unit: idx=64, RID=64
+add_unit: idx=65, RID=65
+add_unit: idx=66, RID=66
+add_unit: idx=67, RID=67
+add_unit: idx=68, RID=68
+add_unit: idx=69, RID=69
+add_unit: idx=70, RID=70
+add_unit: idx=71, RID=71
+add_unit: idx=72, RID=72
+add_unit: idx=73, RID=73
+add_unit: idx=74, RID=74
+add_unit: idx=75, RID=75
+add_unit: idx=76, RID=76
+add_unit: idx=77, RID=77
+add_unit: idx=78, RID=78
+add_unit: idx=79, RID=79
+add_unit: idx=80, RID=80
+add_unit: idx=81, RID=81
+add_unit: idx=82, RID=82
+add_unit: idx=83, RID=83
+add_unit: idx=84, RID=84
+add_unit: idx=85, RID=85
+add_unit: idx=86, RID=86
+add_unit: idx=87, RID=87
+add_unit: idx=88, RID=88
+add_unit: idx=89, RID=89
+add_unit: idx=90, RID=90
+add_unit: idx=91, RID=91
+add_unit: idx=92, RID=92
+add_unit: idx=93, RID=93
+add_unit: idx=94, RID=94
+add_unit: idx=95, RID=95
+add_unit: idx=96, RID=96
+add_unit: idx=97, RID=97
+add_unit: idx=98, RID=98
+add_unit: idx=99, RID=99
+add_unit: idx=100, RID=100
+add_unit: idx=101, RID=101
+add_unit: idx=102, RID=102
+add_unit: idx=103, RID=103
+add_unit: idx=104, RID=104
+add_unit: idx=105, RID=105
+add_unit: idx=106, RID=106
+add_unit: idx=107, RID=107
+add_unit: idx=108, RID=108
+add_unit: idx=109, RID=109
+add_unit: idx=110, RID=110
+add_unit: idx=111, RID=111
+add_unit: idx=112, RID=112
+add_unit: idx=113, RID=113
+add_unit: idx=114, RID=114
+add_unit: idx=115, RID=115
+add_unit: idx=116, RID=116
+add_unit: idx=117, RID=117
+add_unit: idx=118, RID=118
+add_unit: idx=119, RID=119
+add_unit: idx=120, RID=120
+add_unit: idx=121, RID=121
+add_unit: idx=122, RID=122
+add_unit: idx=123, RID=123
+add_unit: idx=124, RID=124
+add_unit: idx=125, RID=125
+add_unit: idx=126, RID=126
+add_unit: idx=127, RID=127
+add_unit: idx=128, RID=128
+add_unit: idx=129, RID=129
+add_unit: idx=130, RID=130
+add_unit: idx=131, RID=131
+add_unit: idx=132, RID=132
+add_unit: idx=133, RID=133
+add_unit: idx=134, RID=134
+add_unit: idx=135, RID=135
+add_unit: idx=136, RID=136
+add_unit: idx=137, RID=137
+add_unit: idx=138, RID=138
+add_unit: idx=139, RID=139
+add_unit: idx=140, RID=140
+add_unit: idx=141, RID=141
+add_unit: idx=142, RID=142
+add_unit: idx=143, RID=143
+add_unit: idx=144, RID=144
+add_unit: idx=145, RID=145
+add_unit: idx=146, RID=146
+add_unit: idx=147, RID=147
+add_unit: idx=148, RID=148
+add_unit: idx=149, RID=149
+add_unit: idx=150, RID=150
+add_unit: idx=151, RID=151
+add_unit: idx=152, RID=152
+add_unit: idx=153, RID=153
+add_unit: idx=154, RID=154
+add_unit: idx=155, RID=155
+add_unit: idx=156, RID=156
 add_unit: idx=0, RID=157
 add_unit: idx=1, RID=158
 add_unit: idx=2, RID=159
@@ -1257,18 +1264,28 @@ add_unit: idx=42, RID=199
 add_unit: idx=43, RID=200
 add_unit: idx=44, RID=201
 add_unit: idx=45, RID=202
-add_unit: idx=46, RID=206
-add_unit: idx=47, RID=210
-add_unit: idx=48, RID=214
-add_unit: idx=49, RID=216
-add_unit: idx=50, RID=217
-add_unit: idx=51, RID=218
-add_unit: idx=52, RID=219
-add_unit: idx=53, RID=220
-add_unit: idx=54, RID=221
-add_unit: idx=55, RID=222
-add_unit: idx=56, RID=223
-add_unit: idx=57, RID=224
-add_unit: idx=58, RID=225
-add_unit: idx=59, RID=226
-add_unit: idx=60, RID=227
+add_unit: idx=46, RID=203
+add_unit: idx=47, RID=204
+add_unit: idx=48, RID=205
+add_unit: idx=49, RID=206
+add_unit: idx=50, RID=207
+add_unit: idx=51, RID=208
+add_unit: idx=52, RID=209
+add_unit: idx=53, RID=210
+add_unit: idx=54, RID=211
+add_unit: idx=55, RID=212
+add_unit: idx=56, RID=213
+add_unit: idx=57, RID=214
+add_unit: idx=58, RID=215
+add_unit: idx=59, RID=216
+add_unit: idx=60, RID=217
+add_unit: idx=61, RID=218
+add_unit: idx=62, RID=219
+add_unit: idx=63, RID=220
+add_unit: idx=64, RID=221
+add_unit: idx=65, RID=222
+add_unit: idx=66, RID=223
+add_unit: idx=67, RID=224
+add_unit: idx=68, RID=225
+add_unit: idx=69, RID=226
+add_unit: idx=70, RID=227

@@ -82,10 +82,11 @@ typedef struct s_FEL {
 	struct s_data {
 		USHORT		RID;				/* Formation record ID				*/
 		USHORT		rawFID;				/* Raw formation ID				*/
+		BYTE		player;				/* Player ID					*/
 		USHORT		leader;				/* Leader unit ID				*/
-		USHORT		FID;				/* Adjusted formation ID			*/
+		BYTE		OOBrid;				/* Formation OOB record ID			*/
 		char		name[SPWAW_AZSNAME];		/* Formation name				*/
-		void		*data;				/* Pointer to SPWAW_SNAP_OOB_FELRAW data	*/
+		USHORT		FID;				/* Adjusted formation ID			*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		unit_cnt;			/* Number of associated units			*/
 		UEL		*unit_lst[MAXFORMATIONUNITS];	/* List of associated units			*/

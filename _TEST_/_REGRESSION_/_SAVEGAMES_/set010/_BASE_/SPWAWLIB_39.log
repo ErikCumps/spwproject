@@ -86,6 +86,7 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=16, flag=0x00000001>
 unpacked section 48: 16 bytes -> 80 bytes
+find_formations: player #0
 find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(       SPWAW 8.3)
 find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<106>(       SS Mot Co)
 find_formations: [002] FORMATION: P<0> ID<002> L<00002> O<000>(      SS Mot Plt)
@@ -110,6 +111,7 @@ find_formations: [020] FORMATION: P<0> ID<020> L<00089> O<000>( Prime Mover Plt)
 find_formations: [021] SKIPPED (no leader)
 find_formations: [116] SKIPPED (no leader)
 find_formations: cnt=21
+find_formations: player #1
 find_formations: [021] SKIPPED (no leader)
 find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(       SPWAW 8.3)
 find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<074>( **AI Rifle Co**)
@@ -129,6 +131,7 @@ find_formations: [114] FORMATION: P<1> ID<114> L<00430> O<074>( **AI Rifle Co**)
 find_formations: [115] FORMATION: P<1> ID<115> L<00431> O<000>(       Rifle Plt)
 find_formations: [116] SKIPPED (no leader)
 find_formations: cnt=16
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (           GE HQ) UNIT #1 F<000,000> CANDIDATE
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (    SS Rifle Sqd) UNIT #1 F<001,000> CANDIDATE
 find_candidate_units: [002] F[002]<000> C<65535> L<00002> O<070> (    SS Rifle Sqd) UNIT #1 F<002,000> CANDIDATE
@@ -431,6 +434,7 @@ verify_candidate_units: [090] UNIT: F<020,001> (        Sdkfz 11) ACCEPTED
 verify_candidate_units: [091] UNIT: F<020,002> (        Sdkfz 11) ACCEPTED
 verify_candidate_units: [092] UNIT: F<020,003> (        Sdkfz 11) ACCEPTED
 unitcount: ul.cnt=93
+find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (           GE HQ) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (    SS Rifle Sqd) SKIPPED: invalid formation reference
 find_candidate_units: [002] F[002]<000> C<65535> L<00002> O<070> (    SS Rifle Sqd) SKIPPED: invalid formation reference

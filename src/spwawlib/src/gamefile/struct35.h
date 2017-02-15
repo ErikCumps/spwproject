@@ -36,6 +36,8 @@ typedef struct s_STRUCT35 {
 	} u;
 } STRUCT35;
 
-extern SPWAW_ERROR	sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	sec35_detection		(GAMEDATA *src, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	sec35_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
+
 
 #endif	/* INTERNAL_STRUCT35_H */

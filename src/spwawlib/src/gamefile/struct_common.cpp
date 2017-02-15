@@ -35,6 +35,8 @@ load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	init_FULIST (ful1);
 	init_FULIST (ful2);
 
+	rc = sec35_detection (src, ful1, ful2);			ROE ("sec35_detection()");
+	rc = sec01_detection (src, dst, ful1, ful2);		ROE ("sec01_detection()");
 	rc = sec35_save_snapshot (src, dst, stab, ful1, ful2);	ROE ("sec35_save_snapshot()");
 	rc = sec01_save_snapshot (src, dst, stab, ful1, ful2);	ROE ("sec01_save_snapshot()");
 	rc = sec34_save_snapshot (src, dst, stab, ful1, ful2);	ROE ("sec34_save_snapshot()");

@@ -51,7 +51,9 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 
 		fel->d.RID    = i;
 		fel->d.rawFID = src[i].ID;
+		fel->d.player = src[i].player;
 		fel->d.leader = src[i].leader;
+		fel->d.OOBrid = src[i].OOBrid;
 		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
 
 		log ("find_formations: [%3.3u] FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u>(%16.16s)\n",
@@ -119,11 +121,10 @@ add_formation (USHORT rid, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *
 static SPWAW_ERROR
 add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab)
 {
-	SPWAW_ERROR		rc;
-	FEL			*p;
-	USHORT			idx;
-	USHORT			rid;
-	SPWAW_SNAP_OOB_FELRAW	*praw;
+	SPWAW_ERROR	rc;
+	FEL		*p;
+	USHORT		idx;
+	USHORT		rid;
 
 	if (fl.cnt == 0) RWE (SPWERR_FAILED, "unexpected empty formations list");
 
@@ -134,9 +135,8 @@ add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *sta
 	p = fl.head; idx = 0;
 	while (p) {
 		rid = p->d.RID;
-		praw = &(dst->raw[idx]);
-		p->d.data = praw;
-		rc = add_formation (rid, &src[rid], dst->start, praw, stab);
+		src[rid].OOBrid = p->d.OOBrid;
+		rc = add_formation (rid, &src[rid], dst->start, &(dst->raw[idx]), stab);
 		ERRORGOTO ("add_formation()", handle_error);
 
 		p = p->l.next; idx++;
@@ -149,13 +149,26 @@ handle_error:
 	return (rc);
 }
 
-static SPWAW_ERROR
-sec35_save_formations (FORMATION *src, BYTE player, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, FLIST &fl)
+SPWAW_ERROR
+sec35_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 
-	rc = build_formations (src, player, fl);
-	ROE ("build_formations_list()");
+	CNULLARG (src);
+
+	rc = build_formations (src->sec35.u.d.formations, PLAYER1, ful1.fl);
+	ROE ("build_formations_list(OOBp1)");
+
+	rc = build_formations (src->sec35.u.d.formations, PLAYER2, ful2.fl);
+	ROE ("build_formations_list(OOBp1)");
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+sec35_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, FLIST &fl)
+{
+	SPWAW_ERROR	rc;
 
 	rc = add_formations (src, dst, fl, stab);
 	ROE ("add_formations()");
@@ -173,10 +186,10 @@ sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 
 	CNULLARG (src); CNULLARG (dst); CNULLARG (stab);
 
-	rc = sec35_save_formations (src->sec35.u.d.formations, PLAYER1, &(dst->raw.OOBp1.formations), stab, ful1.fl);
+	rc = sec35_save_formations (src->sec35.u.d.formations, &(dst->raw.OOBp1.formations), stab, ful1.fl);
 	ROE ("sec35_save_formations(OOBp1)");
 
-	rc = sec35_save_formations (src->sec35.u.d.formations, PLAYER2, &(dst->raw.OOBp2.formations), stab, ful2.fl);
+	rc = sec35_save_formations (src->sec35.u.d.formations, &(dst->raw.OOBp2.formations), stab, ful2.fl);
 	ROE ("sec35_save_formations(OOBp2)");
 
 	return (SPWERR_OK);
