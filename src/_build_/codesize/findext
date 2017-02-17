@@ -1,0 +1,41 @@
+#!/bin/bash
+
+Usage ()
+{
+	echo "Usage: $0 [-h] [-r root] [ext [ext...]]"
+	echo
+	exit 0
+}
+
+ROOT="."
+EXT=""
+while [ $# -ne 0 ]; do
+	case "$1" in
+	-h)
+		Usage
+		;;
+	-r)
+		ROOT="$2"; shift
+		;;
+	*)
+		if [ ! -z "${EXT}" ]; then EXT="${EXT}|$1"; else EXT="$1"; fi
+		;;
+	esac
+	shift
+done
+
+if [ -z "${ROOT}" ]; then Usage; fi
+
+if [ -z "${EXT}" ]; then
+	find "${ROOT}" -type f -printf "%f\n"	|
+		grep -v '^\.'			|
+		grep '\.'			|
+		sed -e 's/^.*\.\([^.]*\)$/\1/'	|
+		sort -u				|
+		grep -v "^$"
+else
+	EXT="(${EXT})$"
+	find "${ROOT}" -type f			|
+		egrep "\.${EXT}"
+fi
+

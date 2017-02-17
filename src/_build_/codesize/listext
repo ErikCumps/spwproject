@@ -1,0 +1,26 @@
+#!/bin/bash
+
+LOG="$1"; ROOT="$2"
+if [ -z "${LOG}" ]; then
+	echo "Usage: $0 logfile [root]"
+	echo "Where: logfile   name of file to log info in"
+	echo "       root      optional root of tree to examine (default=\".\")"
+	echo
+	exit 1
+fi
+if [ ! -z "${ROOT}" ]; then ROOT="-r ${ROOT}"; fi
+
+>"${LOG}"
+
+echo "===== EXTENSION LISTING ==========="	>>"${LOG}"
+./findext ${ROOT}				>>"${LOG}"
+echo -en "\n\n\n"				>>"${LOG}"
+
+for ext in $(./findext ${ROOT}); do
+	echo "*.$ext..."
+	echo "===== *.${ext} ===================="	>>"${LOG}"
+	./findext ${ROOT} ${ext}			>>"${LOG}"
+	echo						>>"${LOG}"
+done
+echo "--- DONE ---"
+
