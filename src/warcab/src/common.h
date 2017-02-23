@@ -10,6 +10,7 @@
 #define COMMON_H	1
 
 #include "stdafx.h"
+#include "build_options.h"
 #include "warcab.h"
 #include "defaults.h"
 #include "error.h"
