@@ -16,6 +16,8 @@ extern SPWAW_ERROR	dossier_save			(SPWAW_DOSSIER *src, int fd, bool compress);
 extern SPWAW_ERROR	dossier_loadinfo		(int fd, SPWAW_DOSSIER_INFO *dst);
 extern SPWAW_ERROR	dossier_load			(int fd, SPWAW_DOSSIER *dst);
 extern SPWAW_ERROR	dossier_clean			(SPWAW_DOSSIER *ptr);
+extern void		dossier_clean_battle		(SPWAW_BATTLE *b);
+extern void		dossier_clean_turn		(SPWAW_BTURN *t);
 extern SPWAW_ERROR	dossier_add			(SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
 extern SPWAW_ERROR	dossier_del			(SPWAW_DOSSIER *ptr, SPWAW_BTURN *bturn);
 extern SPWAW_ERROR	dossier_del			(SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle);

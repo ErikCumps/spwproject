@@ -11,30 +11,40 @@
 #include "dossier/dossier.h"
 #include "common/internal.h"
 
+void
+dossier_clean_turn (SPWAW_BTURN *t)
+{
+	if (!t) return;
+
+	dossier_free_bturn_info	(&(t->info));
+	t->snap->stab = NULL;
+	SPWAW_snap_free (&(t->snap));
+	safe_free (t);
+}
+
+void
+dossier_clean_battle (SPWAW_BATTLE *b)
+{
+	if (!b) return;
+
+	if (b->tlist) {
+		for (DWORD j=0; j<b->tcnt; j++) {
+			dossier_clean_turn (b->tlist[j]);
+		}
+		safe_free (b->tlist);
+	}
+	if (b->ra) safe_free (b->ra);
+	safe_free (b);
+}
+
 SPWAW_ERROR
 dossier_clean (SPWAW_DOSSIER *ptr)
 {
-	DWORD	i, j;
-
 	CNULLARG (ptr);
 
 	if (ptr->blist) {
-		for (i=0; i<ptr->bcnt; i++) {
-			SPWAW_BATTLE *b = ptr->blist[i]; if (!b) continue;
-
-			if (b->tlist) {
-				for (j=0; j<b->tcnt; j++) {
-					if (!(b->tlist[j])) continue;
-
-					dossier_free_bturn_info	(&(b->tlist[j]->info));
-					b->tlist[j]->snap->stab = NULL;
-					SPWAW_snap_free (&(b->tlist[j]->snap));
-					free (b->tlist[j]);
-				}
-				free (b->tlist);
-			}
-			if (b->ra) safe_free (b->ra);
-			free (b);
+		for (DWORD i=0; i<ptr->bcnt; i++) {
+			dossier_clean_battle (ptr->blist[i]);
 		}
 		safe_free (ptr->blist);
 	}

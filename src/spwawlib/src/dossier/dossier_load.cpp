@@ -33,7 +33,8 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
 	DOS_THEADER	*hdrs;
-	SPWAW_BTURN	*p, *pp;
+	SPWAW_BTURN	*p = NULL;
+	SPWAW_BTURN	*pp;
 	USHORT		i;
 
 	pos = bseekget (fd);
@@ -76,8 +77,9 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 		ERRORGOTO ("dossier_prep_bturn_info()", handle_error);
 
 		dst->tlist[dst->tcnt++] = pp = link_bturn (p, pp);
+		p = NULL;
 
-		rc = dossier_fix_battle_info (p, dst->tlist[0]);
+		rc = dossier_fix_battle_info (pp, dst->tlist[0]);
 		ERRORGOTO ("dossier_fix_battle_info()", handle_error);
 	}
 	dst->tfirst = dst->tlist[0];
@@ -85,9 +87,9 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 
 handle_error:
 	// dossier cleanup done by caller
-	if (hdrs) free (hdrs);
+	if (p) dossier_clean_turn (p);
+	if (hdrs) safe_free (hdrs);
 	return (rc);
-
 }
 
 static SPWAW_BATTLE *
@@ -107,7 +109,8 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab)
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
 	DOS_BHEADER	*hdrs;
-	SPWAW_BATTLE	*p, *pp;
+	SPWAW_BATTLE	*p = NULL;
+	SPWAW_BATTLE	*pp;
 	USHORT		i;
 	CBIO		cbio;
 
@@ -156,13 +159,15 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab)
 		ERRORGOTO ("dossier_update_battle_info()", handle_error);
 
 		dst->blist[dst->bcnt++] = pp = link_battle (p, pp);
+		p = NULL;
 	}
 	dst->bfirst = dst->blist[0];
 	dst->blast  = dst->blist[dst->bcnt-1];
 
 handle_error:
 	// dossier cleanup done by caller
-	if (hdrs) free (hdrs);
+	if (p) dossier_clean_battle (p);
+	if (hdrs) safe_free (hdrs);
 	return (rc);
 }
 
