@@ -13,8 +13,8 @@
 	do {													\
 		GUINEW (p.a, QAction (t, GUI_WIN), ERR_GUI_ACTION_INIT_FAILED, "<" #a "> action");		\
 		p.a->setShortcut (k);										\
-		if (g) p.a->setShortcutContext (Qt::ApplicationShortcut);						\
-		if (i) p.a->setIcon (QIcon (*(RES_pixmap (i))));							\
+		if (g) p.a->setShortcutContext (Qt::ApplicationShortcut);					\
+		if (i) p.a->setIcon (QIcon (*(RES_pixmap (i))));						\
 		if (!connect (p.a, SIGNAL (triggered()), GUI_WIN, SLOT (action_##a())))				\
 		SET_GUICLS_ERROR (ERR_GUI_ACTION_INIT_FAILED, "failed to create <" #a "> action connection");	\
 	} while (0)
