@@ -16,7 +16,7 @@
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20
-#define	SNAP_VERSION	9
+#define	SNAP_VERSION	10
 #define	SNAP_VHEXCNT	SPWAW_VHEXCNT
 
 #pragma pack(push, r1, 1)
