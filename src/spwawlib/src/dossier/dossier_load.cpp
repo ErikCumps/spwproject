@@ -174,8 +174,11 @@ handle_error:
 static SPWAW_ERROR
 dossier_check_header (DOS_HEADER &hdr)
 {
-	if ((memcmp (hdr.magic, DOSS_MAGIC, DOSS_MGCLEN) != 0) || (hdr.version != DOSS_VERSION))
+	if (memcmp (hdr.magic, DOSS_MAGIC, DOSS_MGCLEN) != 0)
 		RWE (SPWERR_BADSAVEDATA, "dossier header check failed");
+
+	if (hdr.version != DOSS_VERSION)
+		RWE (SPWERR_INCOMPATIBLE, "dossier header version check failed");
 
 	if (hdr.oobdat == 0)
 		RWE (SPWERR_BADSAVEDATA, "dossier contains no OOB data");

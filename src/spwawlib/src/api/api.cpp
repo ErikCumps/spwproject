@@ -30,6 +30,7 @@ static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_FRFAILED: file read failed",
 	"SPWERR_FWFAILED: file write failed",
 	"SPWERR_CORRUPT: file corruption detected",
+	"SPWERR_INCOMPATIBLE: incompatible snapshot or dossier",
 	"SPWERR_BADDATE: invalid date",
 	"SPWERR_BADSTAMP: invalid timestamp",
 	"SPWERR_BADPERIOD: invalid period",

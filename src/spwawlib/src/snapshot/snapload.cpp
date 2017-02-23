@@ -288,8 +288,12 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr)
 	p0 = bseekget (fd);
 
 	if (!bread (fd, (char *)mhdr, sizeof (*mhdr), false)) RWE (SPWERR_FRFAILED, "bread(mhdr) failed");
-	if ((memcmp (mhdr->magic, SNAP_MAGIC, SNAP_MGCLEN) != 0) || (mhdr->version != SNAP_VERSION))
+
+	if (memcmp (mhdr->magic, SNAP_MAGIC, SNAP_MGCLEN) != 0)
 		RWE (SPWERR_BADSAVEDATA, "snapshot header check failed");
+
+	if (mhdr->version != SNAP_VERSION)
+		RWE (SPWERR_INCOMPATIBLE, "snapshot header version check failed");
 
 	bseekset (fd, mhdr->src + p0);
 	if (!bread (fd, (char *)shdr, sizeof (*shdr), false)) RWE (SPWERR_FRFAILED, "bread(shdr) failed");
