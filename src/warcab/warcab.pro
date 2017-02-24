@@ -1,6 +1,6 @@
 # The SPWaW war cabinet.
 #
-# Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL V2.
 

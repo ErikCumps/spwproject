@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - file I/O handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -20,7 +20,7 @@
  * This is a fixed-size data block containing the savegame marker. (currently "SPWAW_SAVE_V101")
  *
  * The other data blocks contain the savegame section data.
- * 
+ *
  * Each data block consists of:
  *	 a data block header
  *	 the section data.
