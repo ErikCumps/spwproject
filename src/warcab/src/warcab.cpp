@@ -156,6 +156,9 @@ WARCABState::load (SPWAW_DOSSLIST *list)
 	arc = SPWAW_dossier_load (list->list[0]->filepath, &d.dossier);
 	if (SPWAW_HAS_ERROR (arc)) {
 		switch (arc) {
+			case SPWERR_INCOMPATIBLE:
+				rc = ERR_DOSSIER_INCOMPATIBLE;
+				break;
 			case SPWERR_CORRUPT:
 				rc = ERR_DOSSIER_CORRUPT;
 				break;

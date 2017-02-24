@@ -54,6 +54,7 @@ static const char *errormsgs[LAST_ERR_CODE-SL_ERR_USER_START+1] = {
 	"failed to find dossier file",
 	"failed to load dossier",
 	"unable to load corrupt dossier",
+	"unable to load incompatible dossier",
 	"failed to save dossier",
 	"unable to save dossier: no filename specified",
 	"failed to edit dossier",
