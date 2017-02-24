@@ -9,6 +9,7 @@
 #ifndef	GUI_COMMON_H
 #define	GUI_COMMON_H	1
 
+#include "gui/gui_msgbox.h"
 #include "gui/gui_errorbox.h"
 #include "gui/gui_progress.h"
 

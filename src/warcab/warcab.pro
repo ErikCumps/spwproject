@@ -95,6 +95,8 @@ HEADERS +=					\
 	gui/gui_qt.h				\
 	gui/gui_state.h				\
 	gui/gui.h				\
+	gui/gui_msgbox.h			\
+	gui/gui_simple_errors.h			\
 	gui/gui_errorbox.h			\
 	gui/gui_progress.h			\
 	gui/gui_private.h			\
@@ -214,6 +216,8 @@ SOURCES +=					\
 	smap/smap_renderer.cpp			\
 	smap/smap_widget.cpp			\
 	gui/gui.cpp				\
+	gui/gui_msgbox.cpp			\
+	gui/gui_simple_errors.cpp		\
 	gui/gui_errorbox.cpp			\
 	gui/gui_progress.cpp			\
 	gui/gui_dlg_about.cpp			\

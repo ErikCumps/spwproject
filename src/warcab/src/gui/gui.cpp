@@ -9,6 +9,7 @@
 #include "resource.h"
 #include "../common.h"
 #include "gui_private.h"
+#include "gui_simple_errors.h"
 
 
 
@@ -347,6 +348,11 @@ GUI_error (SL_ERROR_DATA *stack)
 	ASSERT (stack != NULL);
 
 	if (!GUI_isGUIthread()) return (req);
+
+	/* If this is a simple error, show the simple error message box */
+	if (GUI_handle_simple_error (stack->func_err)) return (SL_ERR_REQUEST_ACCEPT);
+
+	/* This isn't a simple error, so show the full error dialog box */
 
 	if (stack->msg[0] == '\0') {
 		sb1.printf (fmt1, stack->extra);
