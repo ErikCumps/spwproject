@@ -36,8 +36,8 @@ static SIMPLE_ERROR simple_errors[] = {
 		"Failed to load incompatible dossier!",
 		"This dossier was created by another version of warcab.\n"
 		"\n"
-		"Because its file format version is not compatible, it\n"
-		"cannot be reliably loaded by this version of warcab.\n"
+		"Because its file format is not compatible, it cannot\n"
+		"be reliably loaded by this version of warcab.\n"
 	},
 	{ SL_ERR_NO_ERROR, MSGBOX_ERROR, NULL, NULL }
 };
