@@ -13,6 +13,7 @@
 #ifdef	_DEBUG
 
 static FILE		*logfile = NULL;
+static bool		logging = true;
 static bool		logtime = true;
 
 static LARGE_INTEGER	lastPF = {0, 0};
@@ -28,6 +29,7 @@ log_init (char *log, bool append)
 
 	if (logfile) fprintf (logfile, "%s\n", SEPARATOR);
 
+	if (getenv ("SPWAWLIB_DISABLE_LOGGING") != NULL) logging = false;
 	if (getenv ("SPWAWLIB_DISABLE_LOGTIME") != NULL) logtime = false;
 }
 
@@ -41,6 +43,8 @@ log (char *fmt, ...)
 	va_list		AP;
 	char		*p, *q;
 	static bool	nots = false;
+
+	if (!logging) return;
 
 	if (!logfile) return;
 
