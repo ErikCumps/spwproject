@@ -312,7 +312,7 @@ typedef struct s_SPWAW_SNAP_BATTLE_DATA {
 
 /* SPWAW battle info: strings */
 typedef struct s_SPWAW_SNAP_BATTLE_STRINGS {
-	char			date[64];		/* Battle date string					*/
+	char			date[SPWAW_AZSDATE];	/* Battle date string					*/
 	char			*terrain;		/* Battle terrain string				*/
 	char			*weather;		/* Battle weather string				*/
 	char			*status;		/* Battle turn status					*/
@@ -369,8 +369,8 @@ typedef struct s_SPWAW_SNAP_CAMPAIGN_DATA {
 
 /* SPWAW campaign info: strings */
 typedef struct s_SPWAW_SNAP_CAMPAIGN_STRINGS {
-	char			start[64];		/* Campaign start date string				*/
-	char			end[64];		/* Campaign end date string				*/
+	char			start[SPWAW_AZSDATE];	/* Campaign start date string				*/
+	char			end[SPWAW_AZSDATE];	/* Campaign end date string				*/
 } SPWAW_SNAP_CAMPAIGN_STRINGS;
 
 /* SPWAW campaign info */

@@ -24,6 +24,7 @@
 #define	SPWAW_AZSOOBNAME	15
 #define	SPWAW_AZSDNAME		256	// TODO: integrate with dossier code
 #define	SPWAW_AZSDCMT		1024	// TODO: integrate with dossier code
+#define	SPWAW_AZSDATE		64
 
 #define	SPWAW_VHEXCNT		21	/* 21 victory hexes */
 
