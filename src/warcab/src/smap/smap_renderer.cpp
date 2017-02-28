@@ -24,6 +24,8 @@ SmapRenderer::SmapRenderer (SMAP_RENDERDATA &renderdata)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
+	d.desc = renderdata.desc;
+
 	d.pm_width = renderdata.width; d.pm_height = renderdata.height;
 	
 	d.hex_side = renderdata.side;
@@ -176,6 +178,12 @@ SmapRenderer::~SmapRenderer (void)
 	DBG_TRACE_DESTRUCT;
 
 	cleanup();
+}
+
+const char *
+SmapRenderer::description (void)
+{
+	return (d.desc);
 }
 
 void

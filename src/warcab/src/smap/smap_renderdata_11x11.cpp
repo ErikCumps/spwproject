@@ -156,4 +156,4 @@ static SMAP_RENDERDATA_XPMS xpms = {
 	FRONTLINE_NE_11X11,
 };
 
-SMAP_RENDERDATA renderdata_11x11 = { 11, 11, 5, xpms };
+SMAP_RENDERDATA renderdata_11x11 = { "zoomX1", 11, 11, 5, xpms };

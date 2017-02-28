@@ -105,6 +105,7 @@ typedef struct s_SMAP_RENDERDATA_XPMS {
 
 /*! Render data descriptor */
 typedef struct s_SMAP_RENDERDATA {
+	const char		*desc;	/*!< render data description						*/
 	int			width;	/*!< hex width, in pixels						*/
 	int			height;	/*!< hex height, in pixels						*/
 	int			side;	/*!< hex side, in pixels						*/

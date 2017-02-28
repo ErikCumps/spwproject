@@ -34,6 +34,9 @@ public:
 	~SmapRenderer	(void);
 
 public:
+	/*! Returns the render data description string */
+	const char	*description (void);
+
 	/*! Prepares the renderer for rendering the specified strategic map hex grid */
 	void		forGrid	(int marginx, int marginy, SmapHexGrid &smap);
 
@@ -70,6 +73,8 @@ public:
 
 private:
 	struct s_data {
+		const char	*desc;	/*!< The description string of the render data				*/
+
 		int	pm_width;	/*!< The width (in pixels) of the QPixmaps used for rendering		*/
 		int	pm_height;	/*!< The height (in pixels) of the QPixmaps used for rendering		*/
 

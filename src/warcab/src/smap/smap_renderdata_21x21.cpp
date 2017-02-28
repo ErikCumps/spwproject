@@ -182,4 +182,4 @@ static SMAP_RENDERDATA_XPMS xpms = {
 	FRONTLINE_NE_21X21,
 };
 
-SMAP_RENDERDATA renderdata_21x21 = { 21, 21, 10, xpms };
+SMAP_RENDERDATA renderdata_21x21 = { "zoomX2", 21, 21, 10, xpms };
