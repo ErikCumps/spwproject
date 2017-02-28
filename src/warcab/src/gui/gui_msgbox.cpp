@@ -57,7 +57,7 @@ GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg)
 
 	/* Set message font */
 	d.msg_font = new QFont (font());
-	d.msg_font->setWeight (QFont::Bold);
+	//d.msg_font->setWeight (QFont::Bold);
 
 	/* Create body layout */
 	d.body_layout = new QGridLayout (this);
