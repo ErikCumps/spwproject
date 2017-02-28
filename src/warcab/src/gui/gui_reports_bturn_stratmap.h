@@ -43,6 +43,7 @@ public slots:
 	void	influence_change	(int state);
 	void	frontline_change	(int state);
 	void	zoom2x_change		(int state);
+	void	save_clicked		(bool checked);
 	void	scrollsmap		(int x, int y);
 	void	selected		(GuiTableView *who, const QModelIndex &index);
 
@@ -58,6 +59,7 @@ private:
 		QCheckBox		*influence;
 		QCheckBox		*frontline;
 		QCheckBox		*zoom2x;
+		QPushButton		*save;
 		QSpacerItem		*spacer1;
 		QScrollArea		*scroller;
 		SmapWidget		*smap;

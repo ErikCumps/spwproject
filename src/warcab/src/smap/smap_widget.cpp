@@ -117,10 +117,10 @@ SmapWidget::SmapWidget (ModelTable *model, QWidget *P)
 	RENDERNEW (d.renderlist[ZOOM_1X], SmapRenderer (renderdata_11x11), ERR_GUI_SMAP_INIT_FAILED, "zoom1x");
 	RENDERNEW (d.renderlist[ZOOM_2X], SmapRenderer (renderdata_21x21), ERR_GUI_SMAP_INIT_FAILED, "zoom2x");
 
-	d.o_grid = false; 
-	d.o_influence = false;
-	d.o_vhex = false;
-	d.o_frontline = false;
+	d.comp_cfg.grid		= false;
+	d.comp_cfg.influence	= false;
+	d.comp_cfg.vhex		= false;
+	d.comp_cfg.frontline	= false;
 
 	reset_cursor();
 	
@@ -133,11 +133,11 @@ SmapWidget::~SmapWidget (void)
 {
 	DBG_TRACE_DESTRUCT;
 
+	clear();
+
 	// QT deletes child widgets
 	delete d.renderlist[ZOOM_1X];
 	delete d.renderlist[ZOOM_2X];
-	delete[] d.b_info;
-	delete[] d.r_info;
 
 	free_MDLT_DEF (d.model_def);
 }
@@ -161,6 +161,10 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 	int			i;
 
 	clear();
+
+	SL_SAFE_STRDUP (d.battle.location, snap->game.battle.data.location);
+	d.battle.date = snap->game.battle.data.date;
+	d.battle.turn = snap->game.battle.data.turn;
 
 	d.grid.setup (snap->game.map.width, snap->game.map.height);
 
@@ -248,6 +252,8 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 void
 SmapWidget::clear()
 {
+	SL_SAFE_FREE (d.battle.location);
+
 	if (d.b_cnt) {
 		delete[] d.b_info; d.b_info = NULL;
 		d.b_cnt = 0;
@@ -273,8 +279,8 @@ SmapWidget::reset_cursor (void)
 void
 SmapWidget::enable_grid (bool enable)
 {
-	if (d.o_grid != enable) {
-		d.o_grid = enable;
+	if (d.comp_cfg.grid != enable) {
+		d.comp_cfg.grid = enable;
 		repaint();
 	}
 }
@@ -282,8 +288,8 @@ SmapWidget::enable_grid (bool enable)
 void
 SmapWidget::enable_victoryhexes (bool enable)
 {
-	if (d.o_vhex != enable) {
-		d.o_vhex = enable;
+	if (d.comp_cfg.vhex != enable) {
+		d.comp_cfg.vhex = enable;
 		repaint();
 	}
 }
@@ -291,8 +297,8 @@ SmapWidget::enable_victoryhexes (bool enable)
 void
 SmapWidget::enable_influence (bool enable)
 {
-	if (d.o_influence != enable) {
-		d.o_influence = enable;
+	if (d.comp_cfg.influence != enable) {
+		d.comp_cfg.influence = enable;
 		repaint();
 	}
 }
@@ -300,8 +306,8 @@ SmapWidget::enable_influence (bool enable)
 void
 SmapWidget::enable_frontline (bool enable)
 {
-	if (d.o_frontline != enable) {
-		d.o_frontline = enable;
+	if (d.comp_cfg.frontline != enable) {
+		d.comp_cfg.frontline = enable;
 		repaint();
 	}
 }
@@ -331,54 +337,13 @@ SmapWidget::askscroll(void)
 void
 SmapWidget::paintEvent (QPaintEvent *)
 {
-	QBrush		bb;
-	QPen		bp;
-		
-	QPainter paint (this);
+	QPainter	paint (this);
+	COMPOSITOR_CFG	cfg = d.comp_cfg;
 
-	paint.setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
+	/* Composite the image */
+	composite (paint, cfg);
 
-	/* paint frame */
-	bb.setColor (Qt::darkGreen);
-	bb.setStyle (Qt::SolidPattern);
-	bp.setColor (bb.color().darker(200));
-	bp.setWidth (1);
-
-	paint.setBrush (bb);
-	paint.setPen (bp);
-
-	paint.drawRect (d.rptr->frame);
-
-	/* paint hexes */
-	paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.hmap));
-
-	/* paint features */
-	paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.features));
-
-	/* paint victory hexes, if enabled */
-	if (d.o_vhex) {
-		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.vhex));
-	}
-
-	/* paint influence, if enabled */
-	if (d.o_influence) {
-		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.influence));
-	}
-
-	/* paint grid, if enabled */
-	if (d.o_grid) {
-		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.grid));
-	}
-
-	/* paint frontline, if enabled */
-	if (d.o_frontline) {
-		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.frontline));
-	}
-
-	/* paint dots */
-	paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.dots));
-
-	/* render cursor */
+	/* Render the cursor */
 	d.rptr->render_cursor (paint, d.cursor);
 }
 
@@ -443,7 +408,7 @@ SmapWidget::contextMenuEvent (QContextMenuEvent *event)
 	menu->addAction (QString(s));
 	s.sprintf ("Influence counts: %d/%d", d.grid.map[idx].influence_blue_cnt, d.grid.map[idx].influence_red_cnt);
 	menu->addAction (QString(s));
-			
+
 	menu->exec(event->globalPos());
 
 	delete menu;
@@ -740,4 +705,155 @@ SmapWidget::setrender (ZOOMLEVEL zoom)
 
 	setMinimumSize (sizeHint());
 	setMaximumSize (sizeHint());
+}
+
+void
+SmapWidget::composite (QPainter &paint, COMPOSITOR_CFG &cfg)
+{
+	QBrush		bb;
+	QPen		bp;
+
+	/* Try to use anti-aliasing */
+	paint.setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
+
+	/* Paint the frame first */
+	bb.setColor (Qt::darkGreen);
+	bb.setStyle (Qt::SolidPattern);
+	bp.setColor (bb.color().darker(200));
+	bp.setWidth (1);
+
+	paint.setBrush (bb);
+	paint.setPen (bp);
+
+	paint.drawRect (d.rptr->frame);
+
+	/* Next, paint the hexes */
+	paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.hmap));
+
+	/* And paint the features */
+	paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.features));
+
+	/* Paint the victory hexes, if enabled */
+	if (cfg.vhex) {
+		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.vhex));
+	}
+
+	/* Paint the influence, if enabled */
+	if (cfg.influence) {
+		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.influence));
+	}
+
+	/* Paint the grid, if enabled */
+	if (cfg.grid) {
+		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.grid));
+	}
+
+	/* Paint the frontline, if enabled */
+	if (cfg.frontline) {
+		paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.frontline));
+	}
+
+	/* Finally, paint the dots */
+	paint.drawPixmap (d.rptr->map.x(), d.rptr->map.y(), *(d.rptr->layer.dots));
+}
+
+/* Constructs a base filename for a stratmap image to be saved */
+static void
+smap_save_basename (SmapWidget::BATTLE_INFO &info, SmapRenderer *rptr, SmapWidget::COMPOSITOR_CFG &cfg, char *dst, unsigned int len)
+{
+	const char	fmt[] = "stratmap_%04d-%02d-%02d_%s_%02dh%02d_turn%02d_%s_g%d_i%d_v%d_f%d";
+
+	if (!rptr || !dst || !len) return;
+	memset (dst, len, 0);
+
+	QString location (info.location);
+	location.remove (QRegExp("[\\/:\"*?<>|]+"));
+
+	/* Determine the filename of the image to be saved */
+	snprintf (dst, len - 1, fmt,
+		info.date.year, info.date.month, info.date.day,
+		qPrintable(location),
+		info.date.hour, info.date.minute,
+		info.turn,
+		rptr->description(),
+		cfg.grid, cfg.influence, cfg.vhex, cfg.frontline);
+}
+
+/*! Saves the stratmap pixmap as an image in the right location.
+ * Returns the filename if the save succeeded.
+ */
+static QString
+smap_save_image (QPixmap &pixmap, char *basename, const char *ext)
+{
+	QString		filename;
+	QString		pathname;
+
+	/* Save the pixmap in the snapshots directory */
+	filename.sprintf ("%s.%s", basename, ext);
+	pathname.sprintf ("%s/%s", CFG_snap_path(), qPrintable(filename));
+
+	if (!pixmap.save (pathname, ext)) filename.clear();
+	return (filename);
+}
+
+/*! Reports the save result */
+static void
+smap_save_report_result (QString filename)
+{
+	MSGBOX_TYPE	type;
+	char		msg[256];
+
+	/* Report success or failure */
+	memset (msg, sizeof(msg), 0);
+	if (!filename.isEmpty()) {
+		type = MSGBOX_INFO;
+		snprintf (msg, sizeof(msg) - 1,
+			"Stratmap image saved as:\n%s", qPrintable(filename));
+	} else {
+		type = MSGBOX_WARNING;
+		snprintf (msg, sizeof(msg) - 1,
+			"Failed to save stratmap image!");
+	}
+	GUI_msgbox (type, "Stratmap image", msg);
+}
+
+void
+SmapWidget::save_smap (void)
+{
+	static const char *ext = "png";
+
+	BATTLE_INFO	info = d.battle;
+	SmapRenderer	*rptr = d.rptr;
+	COMPOSITOR_CFG	cfg = d.comp_cfg;
+	char		base[MAX_PATH+1];
+
+	GuiProgress	progress ("Saving stratmap image...", 0);
+	progress.setRange (0, 4);
+
+	/* Determine the base filenames of the stratmap image */
+	smap_save_basename (info, rptr, cfg, base, sizeof(base));
+
+	progress.inc();
+
+	/* Create an empty pixmap to receive the stratmap image */
+	QPixmap	*pm = new QPixmap (rptr->canvas.size());
+
+	progress.inc();
+
+	/* Composite the stratmap image */
+	QPainter *paint = new QPainter (pm);
+	composite (*paint, cfg);
+	delete paint;
+
+	progress.inc();
+
+	/* Now, save the image */
+	QString filename = smap_save_image (*pm, base, "png");
+	delete pm;
+
+	progress.inc();
+	progress.done();
+
+	/* Finally, report the result */
+	smap_save_report_result (filename);
 }

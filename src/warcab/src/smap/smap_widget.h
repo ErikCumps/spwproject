@@ -37,6 +37,7 @@ public:
 	void	enable_victoryhexes	(bool enable);
 	void	enable_influence	(bool enable);
 	void	enable_frontline	(bool enable);
+	void	save_smap		(void);
 
 public:
 	typedef enum e_ZOOMLEVEL {
@@ -61,6 +62,20 @@ protected:
 	void	contextMenuEvent(QContextMenuEvent *event);
 	//TEST
 
+public:
+	typedef struct s_COMPOSITOR_CFG {
+		bool		grid;
+		bool		influence;
+		bool		vhex;
+		bool		frontline;
+	} COMPOSITOR_CFG;
+
+	typedef struct s_BATTLE_INFO {
+		char		*location;
+		SPWAW_DATE	date;
+		int		turn;
+	} BATTLE_INFO;
+
 private:
 	typedef struct s_UNIT_INFO {
 		SmapHexPos	pos;
@@ -84,10 +99,9 @@ private:
 		ZOOMLEVEL	zoom;
 		SmapRenderer	*rptr;
 
-		bool		o_grid;
-		bool		o_influence;
-		bool		o_vhex;
-		bool		o_frontline;
+		COMPOSITOR_CFG	comp_cfg;
+
+		BATTLE_INFO	battle;
 
 		SmapHexGrid	grid;
 
@@ -110,6 +124,7 @@ private:
 	void	calc_bridgecon	(void);
 	void	calc_influence	(void);
 	void	calc_frontline	(void);
+	void	composite	(QPainter &paint,  COMPOSITOR_CFG &cfg);
 };
 
 #endif /* STRATMAP_WIDGET_H */

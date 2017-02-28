@@ -40,6 +40,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	GUINEW (d.zoom2x, QCheckBox ("Zoom 2X", d.frame), ERR_GUI_SMAP_INIT_FAILED, "zoom2x");
 	d.zoom2x->setCheckState (Qt::Unchecked);
 
+	GUINEW (d.save, QPushButton ("Save image", d.frame), ERR_GUI_SMAP_INIT_FAILED, "save");
+	d.save->setAutoDefault (false);
+
 	GUINEW (d.spacer1, QSpacerItem (1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), ERR_GUI_SMAP_INIT_FAILED, "spacer1");
 	
 	d.layout->addWidget (d.grid,		0, 0, 1, 1);
@@ -48,21 +51,17 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	d.layout->addWidget (d.frontline,	0, 3, 1, 1);
 	d.layout->addWidget (d.zoom2x,		0, 4, 1, 1);
 	d.layout->addItem   (d.spacer1,		0, 5, 1, 1);
+	d.layout->addWidget (d.save,		0, 6, 1, 1);
 
 	GUINEW (d.smap, SmapWidget (d.model, d.frame), ERR_GUI_SMAP_INIT_FAILED, "strategic map");
 	d.smap->setSizePolicy (QSizePolicy::Fixed, QSizePolicy::Fixed);
 
 	GUINEW (d.scroller, QScrollArea (d.frame), ERR_GUI_SMAP_INIT_FAILED, "scroller");
 	d.scroller->setWidget (d.smap);
-	//d.scroller->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Minimum);
-	//d.scroller->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Minimum);
-	//d.scroller->setWidgetResizable (true);
-	//d.scroller->setWidgetResizable (false);
 	d.scroller->setPalette (*RES_color(RID_SMAP_BG));
 	d.scroller->setAutoFillBackground (true);
-	//d.scroller->setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 
-	d.layout->addWidget (d.scroller,	1, 0, 1, 6);
+	d.layout->addWidget (d.scroller,	1, 0, 1, 7);
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, d.frame), ERR_GUI_SMAP_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
@@ -73,7 +72,7 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	GUINEW (d.bdy_table, GuiTableView (false, d.model, 2, d.split), ERR_GUI_SMAP_INIT_FAILED, "bdy_table");
 	GUIERR (d.bdy_table, ERR_GUI_SMAP_INIT_FAILED);
 
-	d.layout->addWidget (d.split,		2, 0, 1, 6);
+	d.layout->addWidget (d.split,		2, 0, 1, 7);
 	
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -92,6 +91,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 
 	if (!connect (d.zoom2x, SIGNAL(stateChanged(int)), SLOT (zoom2x_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_SMAP_INIT_FAILED, "failed to connect <zoom2x:stateChanged> to <zoom2x_change>");
+
+	if (!connect (d.save, SIGNAL(clicked(bool)), SLOT (save_clicked(bool))))
+		SET_GUICLS_ERROR (ERR_GUI_SMAP_INIT_FAILED, "failed to connect <save:clicked> to <save_clicked>");
 
 	if (!connect (this, SIGNAL (cmpcurr(MDLD_TREE_ITEM*)), GUI_WIN->get_dossier(), SLOT (set_cmpcurr(MDLD_TREE_ITEM*))))
 		SET_GUICLS_ERROR (ERR_GUI_SMAP_INIT_FAILED, "failed to connect <cmpcurr> to <dossier:set_cmpcurr>");
@@ -184,6 +186,12 @@ GuiRptTrnSMap::zoom2x_change (int state)
 {
 	d.Vzoom2x = (state != Qt::Unchecked);
 	refresh();
+}
+
+void
+GuiRptTrnSMap::save_clicked (bool /*checked*/)
+{
+	d.smap->save_smap();
 }
 
 void
