@@ -9,6 +9,12 @@ ChangeLog
 
 2016-03-04, Version 0.6.2
 
+    * IMPORTANT NOTE: with the improved unit detection fix for issue #4, the
+    list of units detected by Warcab version 0.6.1 and older can be different
+    from the list of units detected by this version of Warcab. This means in
+    fact that the dossier files created by version 0.6.1 and older are no longer
+    compatible with and they cannot be loaded by this release.
+
     * Fixed issue #3:
     A regression caused battle and turn losses to not be reported.
 
