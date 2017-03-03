@@ -25,16 +25,16 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	GUINEW (d.frame, QFrame (this), ERR_GUI_SMAP_INIT_FAILED, "frame");
 	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_SMAP_INIT_FAILED, "layout");
 
-	GUINEW (d.grid, QCheckBox ("Show grid?", d.frame), ERR_GUI_SMAP_INIT_FAILED, "grid");
+	GUINEW (d.grid, QCheckBox ("show Grid", d.frame), ERR_GUI_SMAP_INIT_FAILED, "grid");
 	d.grid->setCheckState (Qt::Unchecked);
 
-	GUINEW (d.vichexes, QCheckBox ("Show victory hexes?", d.frame), ERR_GUI_SMAP_INIT_FAILED, "vichexes");
+	GUINEW (d.vichexes, QCheckBox ("show Victory hexes", d.frame), ERR_GUI_SMAP_INIT_FAILED, "vichexes");
 	d.vichexes->setCheckState (Qt::Unchecked);
 
-	GUINEW (d.influence, QCheckBox ("Show influence?", d.frame), ERR_GUI_SMAP_INIT_FAILED, "influence");
+	GUINEW (d.influence, QCheckBox ("show Influence", d.frame), ERR_GUI_SMAP_INIT_FAILED, "influence");
 	d.influence->setCheckState (Qt::Unchecked);
 
-	GUINEW (d.frontline, QCheckBox ("Show frontline?", d.frame), ERR_GUI_SMAP_INIT_FAILED, "frontline");
+	GUINEW (d.frontline, QCheckBox ("show Frontline", d.frame), ERR_GUI_SMAP_INIT_FAILED, "frontline");
 	d.frontline->setCheckState (Qt::Unchecked);
 
 	GUINEW (d.zoom2x, QCheckBox ("Zoom 2X", d.frame), ERR_GUI_SMAP_INIT_FAILED, "zoom2x");
