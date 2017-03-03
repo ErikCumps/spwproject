@@ -1,18 +1,41 @@
-Welcome to the SPWaW war cabinet, release 0.6.1.
+Welcome to the SPWaW war cabinet, release 0.6.2.
 
-Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
 ChangeLog
 ---------
 
+2016-03-04, Version 0.6.2
+
+    * Fixed issue #3:
+    A regression caused battle and turn losses to not be reported.
+
+    * Fixed issue #4:
+    The unit detection was not completely accurate.
+
+    * Fixed issue #5:
+    The SPWAW2016 solitaire autosave savegame could not be processed
+
+    * New feature - saving stratmap images:
+    In recognition of the support by Major Mess in fixing issues #4 and #5, I've
+    decided to add a new stratmap image saving feature. This adds a button to
+    the stratmap GUI that allows saving an image of the current stratmap. The
+    PNG image is saved in the Warcab saves folder. Thanks to this feature it is
+    no longer necessary for the Major to perform an elaborate screenshot-cut-
+    paste dance just to get the stratmap in a single image file :)
+
+
 2016-12-17, Version 0.6.1
 
-    * Fixed issue #1 - MMAS graphs not updated after snapshot load in dossier
+    * Fixed issue #1:
+    MMAS graphs not updated after snapshot load in dossier.
 	
-    * Improved date validity checking. This fixes issue #2 - the SPWaW Campaign
-    Generator triggers save games with start month '0'.
+    * Fixed issue #2:
+    Improved date validity checking. The SPWaW Campaign Generator triggers save
+    games with start month '0'.
+
 
 2016-12-03, Version 0.6
 

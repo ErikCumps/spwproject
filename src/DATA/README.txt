@@ -1,6 +1,6 @@
-Welcome to the SPWaW war cabinet, release 0.6.1.
+Welcome to the SPWaW war cabinet, release 0.6.2.
 
-Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
