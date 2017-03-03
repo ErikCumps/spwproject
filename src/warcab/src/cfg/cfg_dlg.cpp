@@ -20,7 +20,7 @@
 #define	STR_SVE_WHATSTHIS2	"Press this button to browse to the SPWaW SAVE folder."
 
 #define	STR_SNP_TOOLTIP		"Configure the Warcab saves folder."
-#define	STR_SNP_WHATSTHIS1	"This should be the folder where warcab writes saved dossiers."
+#define	STR_SNP_WHATSTHIS1	"This is the folder where warcab saves dossiers and stratmap images."
 #define	STR_SNP_WHATSTHIS2	"Press this button to browse to the Warcab save folder."
 
 #define	STR_COMPRESS_TOOLTIP	"Configure dossier compression."
