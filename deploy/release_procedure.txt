@@ -1,34 +1,105 @@
 RELEASE PROCEDURE
 -----------------
 
-* determine release number
-	ex: 0.6.1
+=== CREATE FINAL SOURCE CODE ===
+
+* Determine the release number: for example: 0.6.2
+	this is {VERSION} in the rest of this document
 	
-* update src/warcab/src/main.cpp
-* update src/warcab/doc/Doxyfile
-* update src/data/README.txt
-* update src/data/CHANGES
+* Reset the build number (when the major.minor release number is bumped)
 
-* perform full clean build
+* Update README.md
+* Update src/warcab/src/main.cpp
+* Update src/warcab/doc/Doxyfile
+* Update src/data/README.txt
+* Update src/data/CHANGES
 
-* create deploy\releasearchive\{VERSION}
+* Make sure copyright statements are up to date
 
-* run deploy release
-* create deploy\releasearchive\{VERSION}\warcab_{VERSION}.zip
+* Commit
+
+=== CREATE RELEASE BUILD ===
+
+* Perform full clean build
+
+* Perform final regression test. No issues should be found!
+
+* Create updated src/data/demo.warcab dossier (if required)
+	and commit
+
+* Create new or updated screenshots in info/screenshots (if useful/required)
+	and commit
+
+=== CREATE RELEASE ARCHIVES AND REPORTS ===
+
+* Create deploy\releasearchive\{VERSION}
+
+* Run deploy release
+* Create deploy\releasearchive\{VERSION}\warcab_{VERSION}.zip
 	from deploy\release
 
-* run deploy debug
-* create deploy\releasearchive\{VERSION}\warcab_{VERSION}_debug.zip
+* Run deploy debug
+* Create deploy\releasearchive\{VERSION}\warcab_{VERSION}_debug.zip
 	from deploy\debug
 
 * create deploy\releasereports\{VERSION}
 
 * run filealyzer on deploy\releasearchive\{VERSION}\warcab_{VERSION}.zip
 	Report -> Save report to file -> HTML page
+	in the deploy\releasearchive\{VERSION} directory
 	as releasereport_warcab_{VERSION}.zip.html
+	with the CRC-32, MD5, SHA-1 and SHA-256 hashes (the default selection)
+
 * Clean up and copy to deploy\releasereports\{VERSION}
+	remove the "OpenSPI" table rows (from the "OpenSPI" table)
+	remove the "Advanced file parameters" table row (from the "OpenSPI" table)
+	remove the second and third "attribs" table rows (from the "OpenSPI" table)
+	remove the "crc32[file]", "md5[file]" and "sha1[file]" table rows (from the "OpenSPI" table)
+	remove the "Streams" table
+	remove the "Security" table
+	remove the last, empty, hashes rows (from the "Hashes" table)
+	remove the "Classification Sources" table
+	add and commit
 
 * run filealyzer on deploy\releasearchive\{VERSION}\warcab_{VERSION}_debug.zip
 	Report -> Save report to file -> HTML page
+	in the deploy\releasearchive\{VERSION} directory
 	as releasereport_warcab_{VERSION}_debug.zip.html
+	with the CRC-32, MD5, SHA-1 and SHA-256 hashes (the default selection)
+
 * Clean up and copy to deploy\releasereports\{VERSION}
+	remove the "OpenSPI" table rows (from the "OpenSPI" table)
+	remove the "Advanced file parameters" table row (from the "OpenSPI" table)
+	remove the second and third "attribs" table rows (from the "OpenSPI" table)
+	remove the "crc32[file]", "md5[file]" and "sha1[file]" table rows (from the "OpenSPI" table)
+	remove the "Streams" table
+	remove the "Security" table
+	remove the last, empty, hashes rows (from the "Hashes" table)
+	remove the "Classification Sources" table
+	add and commit
+
+=== CREATE RELEASE ON GITHUB ===
+
+* Log in on github, go to https://github.com/ErikCumps/spwproject
+
+* Click on "Releases"
+
+* Click on "Draft a new release"
+
+* Tag version:
+	v{VERSION} @ master
+
+* Release title:
+	Release {VERSION}
+
+* Release description:
+	Based on description of previous release.
+	Commit as deploy\releasereports\{VERSION}\github_release_description_{VERSION}.md
+
+* Attach the released binaries:
+	deploy\releasearchive\{VERSION}\warcab_{VERSION}.zip
+	deploy\releasearchive\{VERSION}\warcab_{VERSION}_debug.zip
+	deploy\releasereports\{VERSION}\releasereport_warcab_{VERSION}.zip.html
+	deploy\releasereports\{VERSION}\releasereport_warcab_{VERSION}_debug.zip.html
+
+* Click on "Publish release"
