@@ -16,7 +16,7 @@ static SL_APP_INFO	app_info = {
 	{
 		"Warcab",
 		"The SPWaW war cabinet",
-		"0.6.2",
+		"0.6.3",
 		"2005-2017",
 		"Erik Cumps",
 		"erik.cumps@gmail.com"
