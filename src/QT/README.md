@@ -22,6 +22,9 @@ Use the following steps to build Qt:
 * run the config.bat batch file
 
 * run the build.bat batch file
+  Note: the build has been known to encounter "LINK : fatal error LNK1000: Internal error during BuildImage"
+  for the "plugins\designer\customwidgetplugin.dll" and "plugins\designer\worldtimeclockplugin.dll" files.
+  These errors can be safely ignored. Just run the build.bat batch file again to continue the build.
 
 * run the install.bat batchfile
 
