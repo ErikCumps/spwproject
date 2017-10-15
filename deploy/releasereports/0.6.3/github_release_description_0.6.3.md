@@ -11,7 +11,7 @@ License: GPL V2.
 With the improved unit detection fix for issue #4, the list of units detected by
 Warcab version 0.6.1 and older can be different from the list of units detected
 by this version of Warcab. This means in fact that the dossier files created by
-version 0.6.1 and older are no longer compatible with and they cannot be loaded
+version 0.6.1 and older are no longer compatible with and cannot be loaded
 by this release.
 
 ## This release fixes the following issues:
