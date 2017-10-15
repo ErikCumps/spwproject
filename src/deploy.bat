@@ -19,6 +19,9 @@ call qwtdir.bat
 rem The zlib location is fixed
 set ZLIBDIR=ZLIB
 
+rem The MSVC location is fixed
+set MSVCDIR=MSVC
+
 echo ^+-------------------------------------^+
 echo ^|   Deploying the spwproject builds   ^|
 echo ^+-------------------------------------^+
@@ -26,6 +29,7 @@ echo.
 echo     QTDIR  : %QTDIR%
 echo     QWTDIR : %QWTDIR%
 echo     ZLIBDIR: %ZLIBDIR%
+echo     MSVCDIR: %MSVCDIR%
 echo     CWD    : %CWD%
 echo.
 
@@ -80,6 +84,8 @@ xcopy /Y %QTDIR%\plugins\imageformats\qsvg%QTDLL%.dll	%PLUGINS%
 xcopy /Y %QTDIR%\plugins\imageformats\qtiff%QTDLL%.dll	%PLUGINS%
 xcopy /Y %QWTDIR%\lib\qwt%QWTDLL%.dll			%DST%
 xcopy /Y %ZLIBDIR%\lib\zlib1.dll			%DST%
+xcopy /Y %MSVCDIR%\msvcr71.dll				%DST%
+xcopy /Y %MSVCDIR%\msvcp71.dll				%DST%
 xcopy /Y debug_memtrace\%TYPE%\debug_memtrace.dll	%DST%
 xcopy /Y spwawlib\%TYPE%\spwawlib.dll			%DST%
 xcopy /Y spwreport\%TYPE%\spwreport.exe			%DST%
@@ -95,6 +101,8 @@ xcopy /Y ..\LICENSE					%DST%
 if "%TYPE%" == "release" goto DONE
 
 rem For a Debug deployment some additional files must be deployed
+xcopy /Y %MSVCDIR%\msvcr71d.dll				%DST%
+xcopy /Y %MSVCDIR%\msvcp71d.dll				%DST%
 xcopy /Y debug_memtrace\%TYPE%\debug_memtrace.pdb	%DST%
 xcopy /Y spwawlib\%TYPE%\spwawlib.pdb			%DST%
 xcopy /Y spwreport\%TYPE%\spwreport.pdb			%DST%
@@ -120,6 +128,10 @@ xcopy /Y %QTDIR%\plugins\imageformats\qtiff*.dll	%PLUGINS%
 xcopy /Y %QWTDIR%\lib\qwt5.dll				%DST%
 xcopy /Y %QWTDIR%\lib\qwtd5.dll				%DST%
 xcopy /Y %ZLIBDIR%\lib\zlib1.dll			%DST%
+xcopy /Y %MSVCDIR%\msvcr71d.dll				%DST%
+xcopy /Y %MSVCDIR%\msvcp71d.dll				%DST%
+xcopy /Y %MSVCDIR%\msvcr71.dll				%DST%
+xcopy /Y %MSVCDIR%\msvcp71.dll				%DST%
 xcopy /Y devtools\bindump\Debug\bindump.exe		%DST%
 xcopy /Y devtools\bytedistrpt\Debug\bytedistrpt.exe	%DST%
 xcopy /Y ..\bin\resrpt.exe				%DST%
