@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=45, info=0x0012f8e4)
+game_load_full (dir="_SAVE_", id=45, info=0x0018f8ac)
 open_gamefiles: comment: name="_SAVE_\save045.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save045.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -2666,15 +2666,22 @@ verify_candidate_units: [746] UNIT: F<097,002> (  Motorcyklistow) ACCEPTED
 verify_candidate_units: [747] UNIT: F<098,000> (       Mozdzierz) ACCEPTED - LEADER
 verify_candidate_units: [748] UNIT: F<098,001> (       Mozdzierz) ACCEPTED
 verify_candidate_units: [749] UNIT: F<099,000> (  Sztab Kompanii) ACCEPTED - LEADER
-verify_candidate_units: [753] UNIT: F<098,002> (  Motorcyklistow) DROPPED: invalid subformation ID
-verify_candidate_units: [755] UNIT: F<099,001> (         Bunkier) DROPPED: invalid subformation ID
-verify_candidate_units: [756] UNIT: F<099,002> (         Bunkier) DROPPED: invalid subformation ID
-verify_candidate_units: [758] UNIT: F<098,003> (   Druz Piechoty) DROPPED: invalid subformation ID
-verify_candidate_units: [759] UNIT: F<098,004> ( Lekki Mozdzierz) DROPPED: invalid subformation ID
-verify_candidate_units: [763] UNIT: F<099,003> (        7-TP dw.) DROPPED: invalid subformation ID
-verify_candidate_units: [764] UNIT: F<099,004> (        7-TP dw.) DROPPED: invalid subformation ID
+verify_candidate_units: [753] UNIT: F<098,002> (  Motorcyklistow) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [755] UNIT: F<099,001> (         Bunkier) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [756] UNIT: F<099,002> (         Bunkier) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [758] UNIT: F<098,003> (   Druz Piechoty) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [759] UNIT: F<098,004> ( Lekki Mozdzierz) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [763] UNIT: F<099,003> (        7-TP dw.) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [764] UNIT: F<099,004> (        7-TP dw.) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [750] CREW: F<029,051> (          Zaloga) ACCEPTED
 verify_candidate_units: [751] CREW: F<054,051> (          Zaloga) ACCEPTED
+verify_candidate_units: [753] VLAT: F<098,002> (  Motorcyklistow) DROPPED: not a verified loader unit
+verify_candidate_units: [755] VLAT: F<099,001> (         Bunkier) DROPPED: not a verified loader unit
+verify_candidate_units: [756] VLAT: F<099,002> (         Bunkier) DROPPED: not a verified loader unit
+verify_candidate_units: [758] VLAT: F<098,003> (   Druz Piechoty) DROPPED: not a verified loader unit
+verify_candidate_units: [759] VLAT: F<098,004> ( Lekki Mozdzierz) DROPPED: not a verified loader unit
+verify_candidate_units: [763] VLAT: F<099,003> (        7-TP dw.) DROPPED: not a verified loader unit
+verify_candidate_units: [764] VLAT: F<099,004> (        7-TP dw.) DROPPED: not a verified loader unit
 unitcount: ul.cnt=352
 add_unit: idx=0, RID=0
 add_unit: idx=1, RID=1

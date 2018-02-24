@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=28, info=0x0012f8e4)
+game_load_full (dir="_SAVE_", id=28, info=0x0018f8ac)
 open_gamefiles: comment: name="_SAVE_\save028.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save028.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1064,8 +1064,9 @@ verify_candidate_units: [224] UNIT: F<028,000> (            H-39) ACCEPTED - LEA
 verify_candidate_units: [225] UNIT: F<028,001> (            H-39) ACCEPTED
 verify_candidate_units: [226] UNIT: F<028,002> (            H-39) ACCEPTED
 verify_candidate_units: [227] UNIT: F<028,003> (            H-39) ACCEPTED
-verify_candidate_units: [228] UNIT: F<028,004> (            H-39) DROPPED: invalid subformation ID
+verify_candidate_units: [228] UNIT: F<028,004> (            H-39) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [400] CREW: F<020,051> (         Crewmen) ACCEPTED
+verify_candidate_units: [228] VLAT: F<028,004> (            H-39) DROPPED: not a verified loader unit
 unitcount: ul.cnt=72
 add_unit: idx=0, RID=0
 add_unit: idx=1, RID=1

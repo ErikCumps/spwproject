@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=80, info=0x0012f8e4)
+game_load_full (dir="_SAVE_", id=80, info=0x0018f8ac)
 open_gamefiles: comment: name="_SAVE_\save080.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save080.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -342,8 +342,10 @@ verify_candidate_units: [408] UNIT: F<003,002> (           T-28E) ACCEPTED
 verify_candidate_units: [409] UNIT: F<004,000> (       T-34 m.43) ACCEPTED - LEADER
 verify_candidate_units: [410] UNIT: F<004,001> (       T-34 m.43) ACCEPTED
 verify_candidate_units: [411] UNIT: F<004,002> (       T-34 m.43) ACCEPTED
-verify_candidate_units: [415] UNIT: F<004,003> (    SO Rifle Sqd) DROPPED: invalid subformation ID
-verify_candidate_units: [416] UNIT: F<004,004> ( 7.62mm SG43 MMG) DROPPED: invalid subformation ID
+verify_candidate_units: [415] UNIT: F<004,003> (    SO Rifle Sqd) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [416] UNIT: F<004,004> ( 7.62mm SG43 MMG) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [415] VLAT: F<004,003> (    SO Rifle Sqd) DROPPED: not a verified loader unit
+verify_candidate_units: [416] VLAT: F<004,004> ( 7.62mm SG43 MMG) DROPPED: not a verified loader unit
 unitcount: ul.cnt=12
 add_unit: idx=0, RID=0
 add_unit: idx=1, RID=1

@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=29, info=0x0012f8e4)
+game_load_full (dir="_SAVE_", id=29, info=0x0018f8ac)
 open_gamefiles: comment: name="_SAVE_\save029.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save029.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1293,14 +1293,22 @@ verify_candidate_units: [108] UNIT: F<028,000> (    150mm FH Bty) ACCEPTED - LEA
 verify_candidate_units: [109] UNIT: F<029,000> (    150mm FH Bty) ACCEPTED - LEADER
 verify_candidate_units: [110] UNIT: F<030,000> (    150mm FH Bty) ACCEPTED - LEADER
 verify_candidate_units: [111] UNIT: F<031,000> (    150mm FH Bty) ACCEPTED - LEADER
-verify_candidate_units: [114] UNIT: F<027,001> (   SS MMG Truppe) DROPPED: invalid subformation ID
-verify_candidate_units: [116] UNIT: F<028,001> ( SdKfz 231 6 Rad) DROPPED: invalid subformation ID
-verify_candidate_units: [117] UNIT: F<028,002> ( SdKfz 231 6 Rad) DROPPED: invalid subformation ID
-verify_candidate_units: [118] UNIT: F<028,003> ( SdKfz 231 6 Rad) DROPPED: invalid subformation ID
-verify_candidate_units: [120] UNIT: F<029,001> ( SdKfz 231 6 Rad) DROPPED: invalid subformation ID
-verify_candidate_units: [121] UNIT: F<029,002> ( SdKfz 231 6 Rad) DROPPED: invalid subformation ID
-verify_candidate_units: [122] UNIT: F<029,003> ( SdKfz 231 6 Rad) DROPPED: invalid subformation ID
+verify_candidate_units: [114] UNIT: F<027,001> (   SS MMG Truppe) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [116] UNIT: F<028,001> ( SdKfz 231 6 Rad) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [117] UNIT: F<028,002> ( SdKfz 231 6 Rad) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [118] UNIT: F<028,003> ( SdKfz 231 6 Rad) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [120] UNIT: F<029,001> ( SdKfz 231 6 Rad) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [121] UNIT: F<029,002> ( SdKfz 231 6 Rad) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [122] UNIT: F<029,003> ( SdKfz 231 6 Rad) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [112] CREW: F<025,050> (         Crewmen) ACCEPTED
+verify_candidate_units: [124] CREW: F<028,053> (         Crewmen) ACCEPTED
+verify_candidate_units: [114] VLAT: F<027,001> (   SS MMG Truppe) DROPPED: not a verified loader unit
+verify_candidate_units: [116] VLAT: F<028,001> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
+verify_candidate_units: [117] VLAT: F<028,002> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
+verify_candidate_units: [118] VLAT: F<028,003> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
+verify_candidate_units: [120] VLAT: F<029,001> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
+verify_candidate_units: [121] VLAT: F<029,002> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
+verify_candidate_units: [122] VLAT: F<029,003> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
 unitcount: ul.cnt=113
 find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) SKIPPED: invalid formation reference

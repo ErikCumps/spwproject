@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=7, info=0x0012f8e4)
+game_load_full (dir="_SAVE_", id=7, info=0x0018f8ac)
 open_gamefiles: comment: name="_SAVE_\save007.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save007.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -241,8 +241,10 @@ verify_candidate_units: [031] UNIT: F<011,000> (  M3A1 Halftrack) ACCEPTED - LEA
 verify_candidate_units: [032] UNIT: F<011,001> (  M3A1 Halftrack) ACCEPTED
 verify_candidate_units: [033] UNIT: F<011,002> (  M3A1 Halftrack) ACCEPTED
 verify_candidate_units: [034] UNIT: F<011,003> (  M3A1 Halftrack) ACCEPTED
-verify_candidate_units: [037] UNIT: F<011,004> (    M3 Halftrack) DROPPED: invalid subformation ID
-verify_candidate_units: [043] UNIT: F<011,005> (    M3 Halftrack) DROPPED: invalid subformation ID
+verify_candidate_units: [037] UNIT: F<011,004> (    M3 Halftrack) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [043] UNIT: F<011,005> (    M3 Halftrack) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [037] VLAT: F<011,004> (    M3 Halftrack) DROPPED: not a verified loader unit
+verify_candidate_units: [043] VLAT: F<011,005> (    M3 Halftrack) DROPPED: not a verified loader unit
 unitcount: ul.cnt=27
 find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<082> (    US Commander) SKIPPED: invalid formation reference

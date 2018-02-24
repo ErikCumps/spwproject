@@ -48,6 +48,9 @@ typedef struct s_UEL {
 		SPWOOB_UTYPE	OOBtype;			/* OOB unit type				*/
 		FEL		*formation;			/* Associated formation				*/
 		UTYPE		type;				/* Unit type: unit/crew/spau			*/
+		USHORT		LRID;				/* Loader unit record ID			*/
+		bool		vrfloader;			/* Verified loader				*/
+		bool		needvrfldrtst;			/* Requires loader verification acceptance test	*/
 		union u_link {
 			UEL	*crew;				/* Crew unit (if unit has a crew)		*/
 			UEL	*parent;			/* Parent unit (if unit is a crew)		*/

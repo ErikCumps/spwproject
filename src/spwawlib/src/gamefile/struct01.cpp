@@ -124,6 +124,9 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		// This unit references a valid formation.
 		uel->d.FMID = fel->d.FID;
 
+		// Record the unit's loader
+		uel->d.LRID = data[i].loader;
+
 		// Is this a unit or crew/special attached unit?
 		if ((uel->d.FSID < SPECIALUNITFSID) && is_this_a_unit (data, i))
 		{
@@ -532,35 +535,52 @@ verify_candidate_units (FULIST &ful)
 		fel = uel->d.formation;
 		if (!fel) {
 			log ("DROPPED: invalid formation reference\n");
-			drop_UEL (ful.ul, uel);
-			continue;
+			goto drop_unit;
 		}
 
 		// Drop all units with an invalid OOB ID
 		if (uel->d.OOB != fel->d.OOB) {
 			log ("DROPPED: invalid OOB ID\n");
-			drop_UEL (ful.ul, uel);
-			continue;
+			goto drop_unit;
 		}
 
 		// Never drop units that are leaders of their formation
 		if (uel->d.RID == fel->d.leader) {
 			log ("ACCEPTED - LEADER\n");
-		} else {
-			// Drop all units that don't seem to belong to the formation (according to the OOB info).
-			// However, if the unit is not beyond the last valid unit, it gets a wildcard to stay.
-			if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
-				if (uel->d.RID <= max_urid) {
-					log ("ACCEPTED - WILDCARD\n");
-				} else {
-					log ("DROPPED: invalid subformation ID\n");
-					drop_UEL (ful.ul, uel);
-					continue;
-				}
+			goto accept_unit;
+		}
+
+		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
+		// But units can be given a wildcard to stay if:
+		// * the unit is not beyond the last valid unit
+		// * the unit is a verified loader (if it has loaded an accepted unit or crew)
+		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
+			if (uel->d.RID <= max_urid) {
+				log ("ACCEPTED - WILDCARD\n");
+				goto accept_unit;
 			} else {
-				log ("ACCEPTED\n");
+				log ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
+				goto postpone_unit;
 			}
 		}
+
+		log ("ACCEPTED\n");
+
+accept_unit:
+		// Mark the indicated loader unit as verified
+		if (uel->d.LRID != SPWAW_BADIDX) {
+			UEL *l = lookup_ULIST (ful.ul, uel->d.LRID);
+			if (l) l->d.vrfloader = true;
+		}
+		continue;
+
+drop_unit:
+		drop_UEL (ful.ul, uel);
+		continue;
+
+postpone_unit:
+		uel->d.needvrfldrtst = true;
+		continue;
 	}
 
 	// Verify all CREWs
@@ -576,14 +596,25 @@ verify_candidate_units (FULIST &ful)
 		// Drop all crews without a parent unit
 		if (!uel->d.link.parent) {
 			log ("DROPPED: invalid unit reference\n");
-			drop_UEL (ful.ul, uel);
-			continue;
+			goto drop_crew;
 		}
 
 		log ("ACCEPTED\n");
+
+accept_crew:
+		// Mark the indicated loader unit as verified
+		if (uel->d.LRID != SPWAW_BADIDX) {
+			UEL *l = lookup_ULIST (ful.ul, uel->d.LRID);
+			if (l) l->d.vrfloader = true;
+		}
+		continue;
+
+drop_crew:
+		drop_UEL (ful.ul, uel);
+		continue;
 	}
 
-	// Finally verify all SPAUs
+	// Verify all SPAUs
 	p = ful.ul.head;
 	while (p)
 	{
@@ -594,6 +625,24 @@ verify_candidate_units (FULIST &ful)
 			uel->d.RID, "SPAU", uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		log ("ACCEPTED\n");
+	}
+
+	// Finally perform a verified loader acceptance test for those units that require it
+	p = ful.ul.head;
+	while (p)
+	{
+		uel = p; p = p->l.next;
+		if (!uel->d.needvrfldrtst) continue;
+
+		log ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
+			uel->d.RID, "VLAT", uel->d.FMID, uel->d.FSID, uel->d.name);
+
+		if (uel->d.vrfloader) {
+			log ("ACCEPTED\n");
+		} else {
+			log ("DROPPED: not a verified loader unit\n");
+			drop_UEL (ful.ul, uel);
+		}
 	}
 
 	return (SPWERR_OK);
