@@ -608,11 +608,12 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		if (p.up->data.loader.rid != SPWAW_BADIDX) {
 			p.up->data.loader.up = unitorcrewbyid (p.up->data.loader.rid, bp);
+			// Safety fix for loader references to non-existing units
+			if (!p.up->data.loader.up) p.up->data.loaded = false;
 		} else {
 			p.up->data.loader.up = NULL;
 			p.up->data.loaded = false;
 		}
-
 	}
 
 	/* Unit/Formation linkage */
