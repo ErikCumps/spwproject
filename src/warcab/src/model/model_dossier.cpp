@@ -105,11 +105,11 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 	switch (role) {
 		case Qt::DisplayRole:
 			snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
-				p->data.b->location, p->data.b->miss_p1, SPWAW_oob_people (p->data.b->OOB), p->data.b->miss_p2);
+				p->data.b->location, p->data.b->miss_p1, SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
-			v = QVariant (QIcon (*RES_flag (p->data.b->OOB)));
+			v = QVariant (QIcon (*RES_flag (p->data.b->OOB_p2)));
 			break;
 		case Qt::ForegroundRole:
 		case Qt::BackgroundRole:

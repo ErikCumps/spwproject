@@ -111,7 +111,7 @@ GuiRptTrnOvr::refresh (void)
 		d.player1->setPixmap (*RES_flag (p->battle->dossier->OOB));
 		d.mission->setPixmap (*RES_mission (p->battle->snap->game.battle.data.miss_p1, p->battle->meeting));
 		d.mission->setToolTip (QString (p->battle->miss_p1) + QString(" against ") + QString(p->battle->miss_p2));
-		d.player2->setPixmap (*RES_flag (p->battle->OOB));
+		d.player2->setPixmap (*RES_flag (p->battle->OOB_p2));
 
 		str.printf ("<pre>");
 
@@ -120,7 +120,7 @@ GuiRptTrnOvr::refresh (void)
 
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->battle->dossier->OOB),
 			p->info.pbir.ucnt, p->info.pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->battle->OOB),
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->battle->OOB_p2),
 			p->info.obir.ucnt, p->info.obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("\n");
 
@@ -158,7 +158,7 @@ GuiRptTrnOvr::refresh (void)
 					p->snap->OOBp1.battle.crews.cnt
 					);
 
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->OOB));
+				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->OOB_p2));
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->snap->OOBp2.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",

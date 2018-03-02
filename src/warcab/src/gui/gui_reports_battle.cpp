@@ -98,8 +98,8 @@ GuiRptBtl::set_enabled (bool flag)
 		addTab (d.overview, "Overview");
 		addTab (d.force_core, *RES_flag (d.item->data.b->dossier->OOB), "Core force");
 		addTab (d.force_spt, *RES_flag (d.item->data.b->dossier->OOB), "Support force");
-		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB));
-		addTab (d.force_opp, *RES_flag (d.item->data.b->OOB), buf);
+		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB_p2));
+		addTab (d.force_opp, *RES_flag (d.item->data.b->OOB_p2), buf);
 #if	EXPERIMENTAL
 		addTab (d.compare, "Comparisons");
 #endif	/* EXPERIMENTAL */
@@ -141,9 +141,9 @@ GuiRptBtl::refresh (void)
 
 		setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.b->dossier->OOB));
 		setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.b->dossier->OOB));
-		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB));
+		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB_p2));
 		setTabText (indexOf (d.force_opp), buf);
-		setTabIcon (indexOf (d.force_opp), *RES_flag (d.item->data.b->OOB));
+		setTabIcon (indexOf (d.force_opp), *RES_flag (d.item->data.b->OOB_p2));
 	}
 
 	d.overview->refresh();

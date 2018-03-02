@@ -275,12 +275,12 @@ GuiRptBtlOvr::refresh (void)
 		d.player1->setPixmap (*RES_flag (p->dossier->OOB));
 		d.mission->setPixmap (*RES_mission (p->snap->game.battle.data.miss_p1, p->meeting));
 		d.mission->setToolTip (QString (p->miss_p1) + QString(" against ") + QString(p->miss_p2));
-		d.player2->setPixmap (*RES_flag (p->OOB));
+		d.player2->setPixmap (*RES_flag (p->OOB_p2));
 
 		str.printf ("<pre>");
 		str.printf ("<h2>Battle at %s,\n%s %s against %s %s.</h2>", p->location,
 			SPWAW_oob_people (p->dossier->OOB), p->miss_p1,
-			SPWAW_oob_people (p->OOB), p->miss_p2);
+			SPWAW_oob_people (p->OOB_p2), p->miss_p2);
 
 		SPWAW_date2str (&(p->date), date, sizeof (date));
 		str.printf ("%s, %u turns.\n", date, p->snap->game.battle.data.turn_max);
@@ -295,7 +295,7 @@ GuiRptBtlOvr::refresh (void)
 
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->dossier->OOB),
 			p->info_sob->pbir.ucnt, p->info_sob->pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB),
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB_p2),
 			p->info_sob->obir.ucnt, p->info_sob->obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("\n");
 
@@ -340,7 +340,7 @@ GuiRptBtlOvr::refresh (void)
 					p->tlast->snap->OOBp1.battle.crews.cnt
 					);
 
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB));
+				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB_p2));
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->tlast->snap->OOBp2.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -381,7 +381,7 @@ GuiRptBtlOvr::refresh (void)
 		str.clear();
 
 		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB));
+		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB_p2));
 		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.men, "men");
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.art, "artillery");

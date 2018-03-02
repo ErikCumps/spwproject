@@ -182,7 +182,8 @@ report_GMD (MDLD_TREE_ITEM *p)
 				SPWAW_date2str (&(p->data.b->date), &s);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] date     = %s\n", s); free (s);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] location = %s\n", p->data.b->location);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB      = %d\n", p->data.b->OOB);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p1   = %d\n", p->data.b->OOB_p1);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p2   = %d\n", p->data.b->OOB_p2);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p1  = %s\n", p->data.b->miss_p1);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p2  = %s\n", p->data.b->miss_p2);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] turns    = %d\n", p->data.b->tcnt);
