@@ -95,7 +95,8 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		ERRORGOTO ("SPWAW_date2stamp(battle hdr date)", handle_error);
 
 		hdrs[idx].location = STRTAB_getidx (stab, p->location);
-		hdrs[idx].OOB      = p->OOB;
+		hdrs[idx].OOB_p1   = p->OOB_p1;
+		hdrs[idx].OOB_p2   = p->OOB_p2;
 		hdrs[idx].miss_p1  = STRTAB_getidx (stab, p->miss_p1);
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;

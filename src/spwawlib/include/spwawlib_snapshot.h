@@ -299,10 +299,10 @@ typedef struct s_SPWAW_SNAP_BATTLE_DATA {
 	int			turn;			/* Battle turn						*/
 	int			turn_max;		/* Battle max turn					*/
 	SPWAW_BTSTATUS		status;			/* Battle turn status					*/
-	int			OOB_p1;			/* Player1 OOB ID					*/
-	int			OOB_p2;			/* Player2 OOB ID					*/
-	int			OOB_p3;			/* Player3 OOB ID					*/
-	int			OOB_p4;			/* Player4 OOB ID					*/
+	BYTE			OOB_p1;			/* Player1 OOB ID					*/
+	BYTE			OOB_p2;			/* Player2 OOB ID					*/
+	BYTE			OOB_p3;			/* Player3 OOB ID					*/
+	BYTE			OOB_p4;			/* Player4 OOB ID					*/
 	SPWAW_MISSION		miss_p1;		/* Mission type player1					*/
 	SPWAW_MISSION		miss_p2;		/* Mission type player2					*/
 	bool			meeting;		/* Meeting engagement flag				*/
@@ -559,7 +559,7 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	int			FMID;			/* Formation major ID	*/
 	int			FSID;			/* Formation sub ID	*/
 	SPWAW_SNAP_OOB_FEL	*formation;
-	int			OOB;
+	BYTE			OOB;			/* Unit OOB country ID					*/
 	BYTE			OOBrid;			/* Unit OOB record ID					*/
 	char			*type;
 	char			*name;
@@ -669,7 +669,7 @@ typedef struct s_SPWAW_SNAP_OOB_FORCE {
 /* SPWAW OOB info */
 typedef struct s_SPWAW_SNAP_OOB {
 	int			side;			/* side ID (0=player1, 1=player2)			*/
-	int			OOB;			/* OOB ID number					*/
+	BYTE			OOB;			/* OOB ID number					*/
 	char			*nation;		/* nationality name string				*/
 	char			*people;		/* nationality possessive string			*/
 	SPWAW_SNAP_OOB_FORCE	core;			/* Core force information				*/

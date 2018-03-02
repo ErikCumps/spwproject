@@ -52,7 +52,8 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab)
 
 	p->date		= p->snap->game.battle.data.start;
 	p->location	= STRTAB_add (stab, p->snap->game.battle.data.location);
-	p->OOB		= p->snap->game.battle.data.OOB_p2;
+	p->OOB_p1	= p->snap->game.battle.data.OOB_p1;
+	p->OOB_p2	= p->snap->game.battle.data.OOB_p2;
 	p->miss_p1	= STRTAB_add (stab, p->snap->game.battle.strings.miss_p1);
 	p->miss_p2	= STRTAB_add (stab, p->snap->game.battle.strings.miss_p2);
 	p->meeting	= p->snap->game.battle.data.meeting;

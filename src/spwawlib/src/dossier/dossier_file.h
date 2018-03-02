@@ -15,7 +15,7 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	10
+#define	DOSS_VERSION	11
 
 #pragma pack(push, r1, 1)
 
@@ -37,7 +37,8 @@ typedef struct s_DOS_HEADER {
 typedef struct s_DOS_BHEADER {
 	SPWAW_TIMESTAMP	date;			/* Battle date timestamp							*/
 	ULONG		location;		/* Battle location symbol							*/
-	ULONG		OOB;			/* Opponent OOB ID								*/
+	USHORT		OOB_p1;			/* Player OOB ID								*/
+	USHORT		OOB_p2;			/* Opponent OOB ID								*/
 	ULONG		miss_p1;		/* Player mission symbol							*/
 	ULONG		miss_p2;		/* Opponent mission symbol							*/
 	BYTE		meeting;		/* Meeting engagement flag							*/

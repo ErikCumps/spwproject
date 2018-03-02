@@ -601,7 +601,6 @@ postpone_unit:
 
 		log ("ACCEPTED\n");
 
-accept_crew:
 		// Mark the indicated loader unit as verified
 		if (uel->d.LRID != SPWAW_BADIDX) {
 			UEL *l = lookup_ULIST (ful.ul, uel->d.LRID);

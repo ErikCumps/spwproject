@@ -258,24 +258,40 @@ SPWAW_dossier_add (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **b
 	CNULLARG (dossier); CNULLARG (snap);
 	if (bturn) *bturn = NULL;
 
-	if ((snap->OOBp1.core.formations.cnt == 0) || (snap->OOBp1.core.units.cnt == 0)) {
-		RWE (SPWERR_NOCORECNT, "no core battle force detected in snapshot");
+	/* Determine dossier type (if not already determined) */
+	if (dossier->type == SPWAW_EMPTY_DOSSIER) {
+		if (snap->OOBp1.core.formations.cnt != 0) {
+			dossier->type = SPWAW_CAMPAIGN_DOSSIER;
+		} else {
+			dossier->type = SPWAW_BATTLE_DOSSIER;
+		}
 	}
 
+	/* Apply dossier type eligibility rules */
+	if (dossier->type == SPWAW_CAMPAIGN_DOSSIER) {
+		if ((snap->OOBp1.core.formations.cnt == 0) || (snap->OOBp1.core.units.cnt == 0)) {
+			RWE (SPWERR_NOCORECNT, "no core battle force detected in snapshot");
+		}
+	}
+
+	/* Verify dossier and snapshot OOB match */
 	rc = SPWOOB_compare (snap->oobdat, dossier->oobdat);
 	ROE ("SPWOOB_compare(snapshot, dossier)");
 
-	if ((dossier->bcnt != 0) && (rc == SPWERR_OK)) {
-		if (snap->game.battle.data.OOB_p1 != dossier->OOB) {
-			ERROR2 ("dossier OOB (%d) != snapshot OOB (%d)", dossier->OOB, snap->game.battle.data.OOB_p1);
-			rc = SPWERR_NOMATCH_OOB;
-		}
-		if (snap->OOBp1.core.formations.cnt != dossier->fcnt) {
-			ERROR2 ("dossier formation count (%d) != snapshot core formations count (%d)", dossier->fcnt, snap->OOBp1.core.formations.cnt);
-			rc = SPWERR_NOMATCH_CORECNT;
-		} else if (snap->OOBp1.core.units.cnt != dossier->ucnt) {
-			ERROR2 ("dossier unit count (%d) != snapshot core units count (%d)", dossier->ucnt, snap->OOBp1.core.units.cnt);
-			rc = SPWERR_NOMATCH_CORECNT;
+	/* Apply dossier type compatibility rules */
+	if (dossier->type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (dossier->bcnt != 0) {
+			if (snap->game.battle.data.OOB_p1 != dossier->OOB) {
+				ERROR2 ("dossier OOB (%d) != snapshot OOB (%d)", dossier->OOB, snap->game.battle.data.OOB_p1);
+				rc = SPWERR_NOMATCH_OOB;
+			}
+			if (snap->OOBp1.core.formations.cnt != dossier->fcnt) {
+				ERROR2 ("dossier formation count (%d) != snapshot core formations count (%d)", dossier->fcnt, snap->OOBp1.core.formations.cnt);
+				rc = SPWERR_NOMATCH_CORECNT;
+			} else if (snap->OOBp1.core.units.cnt != dossier->ucnt) {
+				ERROR2 ("dossier unit count (%d) != snapshot core units count (%d)", dossier->ucnt, snap->OOBp1.core.units.cnt);
+				rc = SPWERR_NOMATCH_CORECNT;
+			}
 		}
 	}
 	ROE ("snapshot compatibility verification");

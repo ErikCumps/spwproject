@@ -96,7 +96,8 @@ dossier_export_blist (int src, FILE *dst, long pos, USHORT cnt, USHORT ucnt)
 
 		b = TC_v2t (dst, "dossier.battle.header.date",		TC_DATA_IDX_TIMESTAMP, &(hdrs[i].date), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.location",	TC_DATA_IDX_ULONG, &(hdrs[i].location), 0, i);	ROF(b);
-		b = TC_v2t (dst, "dossier.battle.header.OOB",		TC_DATA_IDX_BYTE, &(hdrs[i].OOB), 0, i);	ROF(b);
+		b = TC_v2t (dst, "dossier.battle.header.OOB_p1",	TC_DATA_IDX_BYTE, &(hdrs[i].OOB_p1), 0, i);	ROF(b);
+		b = TC_v2t (dst, "dossier.battle.header.OOB_p2",	TC_DATA_IDX_BYTE, &(hdrs[i].OOB_p2), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.miss_p1",	TC_DATA_IDX_ULONG, &(hdrs[i].miss_p1), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.miss_p2",	TC_DATA_IDX_ULONG, &(hdrs[i].miss_p2), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.meeting",	TC_DATA_IDX_BYTE, &(hdrs[i].meeting), 0, i);	ROF(b);
