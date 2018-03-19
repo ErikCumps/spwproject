@@ -276,7 +276,7 @@ handle_error:
 }
 
 SPWAW_ERROR
-snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr)
+snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNAP_OOBHDR *ohdr)
 {
 	long		p0;
 
@@ -284,6 +284,10 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr)
 	clear_ptr (mhdr);
 	clear_ptr (shdr);
 	clear_ptr (ihdr);
+
+	if (ohdr) {
+		clear_ptr (ohdr);
+	}
 
 	p0 = bseekget (fd);
 
@@ -301,6 +305,11 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr)
 	bseekset (fd, mhdr->info + p0);
 	if (!bread (fd, (char *)ihdr, sizeof (*ihdr), false)) RWE (SPWERR_FRFAILED, "bread(ihdr) failed");
 
+	if (ohdr) {
+		bseekset (fd, mhdr->oobp1 + p0);
+		if (!bread (fd, (char *)ohdr, sizeof (*ohdr), false)) RWE (SPWERR_FRFAILED, "bread(ohdr) failed");
+	}
+
 	return (SPWERR_OK);
 }
 
@@ -311,6 +320,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	SNAP_HEADER	mhdr;
 	SNAP_SOURCE	shdr;
 	SNAP_INFO	ihdr;
+	SNAP_OOBHDR	ohdr;
 	STRTAB		*stab = NULL;
 	char		*date = NULL;
 
@@ -321,7 +331,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	rc = STRTAB_new (&stab);
 	ERRORGOTO ("STRTAB_new()", handle_error);
 
-	rc = snaploadhdrs (fd, &mhdr, &shdr, &ihdr);
+	rc = snaploadhdrs (fd, &mhdr, &shdr, &ihdr, &ohdr);
 	ERRORGOTO ("snaploadhdrs()", handle_error);
 
 	bseekset (fd, mhdr.stab);
@@ -346,6 +356,9 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 
 	snprintf (info->filename, sizeof (info->filename) - 1, "%s\\%s", STRTAB_getstr (stab, shdr.path), STRTAB_getstr (stab, shdr.file));
 	info->filedate = *((FILETIME *)&(shdr.date));
+
+	/* Determine snapshot type */
+	info->type = (ohdr.fcnt != 0) ? SPWAW_CAMPAIGN_SNAPSHOT : SPWAW_STDALONE_SNAPSHOT;
 
 	STRTAB_free (&stab);
 
@@ -413,6 +426,9 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	bseekset (fd, pos + mhdr.oobp2);
 	rc = load_oob (fd, &(dst->raw.OOBp2), stab);
 	ERRORGOTO ("load_oob(OOBp2)", handle_error);
+
+	/* Determine snapshot type */
+	dst->type = (dst->raw.OOBp1.formations.cnt != 0) ? SPWAW_CAMPAIGN_SNAPSHOT : SPWAW_STDALONE_SNAPSHOT;
 
 	return (SPWERR_OK);
 

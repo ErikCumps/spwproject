@@ -102,13 +102,6 @@ struct s_SPWAW_BATTLE {
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
 };
 
-/* SPWAW dossier: type */
-typedef enum e_SPWAW_DOSSIER_TYPE {
-	SPWAW_EMPTY_DOSSIER = 0,				/* The dossier is empty and typeless		*/
-	SPWAW_CAMPAIGN_DOSSIER,					/* A campaign dossier (tracks a campaign)	*/
-	SPWAW_BATTLE_DOSSIER,					/* A battle dossier (no campaign tracking)	*/
-} SPWAW_DOSSIER_TYPE;
-
 /* SPWAW dossier: data */
 struct s_SPWAW_DOSSIER {
 	char			*name;				/* Dossier name					*/

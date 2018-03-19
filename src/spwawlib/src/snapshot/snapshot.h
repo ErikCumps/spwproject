@@ -19,7 +19,7 @@ extern SPWAW_ERROR		load_from_game		(GAMEDATA *src, SPWAW_SNAPSHOT *dst);
 extern SPWAW_ERROR		snapnew			(SPWAW_SNAPSHOT **dst, SPWOOB *oobptr, STRTAB *stabptr);
 extern SPWAW_ERROR		snapsave		(SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress);
 extern SPWAW_ERROR		snaploadinfo		(int fd, SPWAW_SNAPSHOT_INFO *info);
-extern SPWAW_ERROR		snaploadhdrs		(int fd, SNAP_HEADER *mhdr, SNAP_INFO *ihdr);
+extern SPWAW_ERROR		snaploadhdrs		(int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNAP_OOBHDR *ohdr=NULL);
 extern SPWAW_ERROR		snapload		(int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr);
 extern SPWAW_ERROR		snapclean		(SPWAW_SNAPSHOT *ptr, STRTAB *stabptr);
 extern SPWAW_ERROR		snapcopy		(SPWAW_SNAPSHOT *src, SPWAW_SNAPSHOT *dst);

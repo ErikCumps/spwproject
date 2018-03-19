@@ -231,7 +231,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 
 	snprintf (dst->name, sizeof (dst->name) - 1, "%s", STRTAB_getstr (stab, hdr.name));
 	snprintf (dst->comment, sizeof (dst->comment) - 1, "%s", STRTAB_getstr (stab, hdr.comment));
-	dst->type = (hdr.fcnt != 0) ? SPWAW_CAMPAIGN_DOSSIER : SPWAW_BATTLE_DOSSIER;
+	dst->type = (hdr.fcnt != 0) ? SPWAW_CAMPAIGN_DOSSIER : SPWAW_STDALONE_DOSSIER;
 
 	dst->OOB = (BYTE)(hdr.OOB & 0xFF);
 	dst->bcnt = hdr.bcnt;
@@ -276,7 +276,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	dst->name = STRTAB_getstr (stab, hdr.name);
 	dst->comment = STRTAB_getstr (stab, hdr.comment);
-	dst->type = (hdr.fcnt != 0) ? SPWAW_CAMPAIGN_DOSSIER : SPWAW_BATTLE_DOSSIER;
+	dst->type = (hdr.fcnt != 0) ? SPWAW_CAMPAIGN_DOSSIER : SPWAW_STDALONE_DOSSIER;
 
 	dst->oobdir = STRTAB_getstr (stab, hdr.oobdir);
 	dst->OOB  = (BYTE)(hdr.OOB & 0xFF);

@@ -228,6 +228,23 @@ typedef enum e_SPWAW_VHSTATUS {
 
 extern SPWAWLIB_API const char *SPWAW_vhstatus2str (SPWAW_VHSTATUS id);
 
+/* SPWAW snapshot type */
+typedef enum e_SPWAW_SNAPSHOT_TYPE {
+	SPWAW_CAMPAIGN_SNAPSHOT = 0,	/* A campaign snapshot (allows campaign tracking)	*/
+	SPWAW_STDALONE_SNAPSHOT		/* A standalone snapshot (no campaign tracking)		*/
+} SPWAW_SNAPSHOT_TYPE;
+
+extern SPWAWLIB_API const char *SPWAW_snapshottype2str	(SPWAW_SNAPSHOT_TYPE type);
+
+/* SPWAW dossier type */
+typedef enum e_SPWAW_DOSSIER_TYPE {
+	SPWAW_EMPTY_DOSSIER = 0,	/* An empty dossier (type not yet determined)		*/
+	SPWAW_CAMPAIGN_DOSSIER,		/* A campaign dossier (tracks a campaign)		*/
+	SPWAW_STDALONE_DOSSIER		/* A standalone dossier (no campaign tracking)		*/
+} SPWAW_DOSSIER_TYPE;
+
+extern SPWAWLIB_API const char *SPWAW_dossiertype2str	(SPWAW_DOSSIER_TYPE type);
+
 #endif	/* SPWAW_LIB_TYPES_H */
 
 /** @} */

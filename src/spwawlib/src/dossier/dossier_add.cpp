@@ -251,7 +251,7 @@ dossier_add (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
 	rc = battle_add_bturn (b, snap, stab, &t);
 	ROE ("battle_add_bturn()");
 
-	if (empty) {
+	if (empty && (ptr->type == SPWAW_CAMPAIGN_DOSSIER))	{
 		ptr->OOB = snap->OOBp1.OOB;
 		ptr->fcnt = snap->OOBp1.core.formations.cnt;
 		ptr->ucnt = snap->OOBp1.core.units.cnt;

@@ -30,7 +30,7 @@ SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
 	ERRORGOTO ("snapnew()", handle_error);
 	stab = (STRTAB *)ptr->stab;
 
-	/* Open savegame, load and interprete data */
+	/* Open savegame, load and decompress data */
 	data = game_load_full (dir, id, &info);
 	if (!data) FAILGOTO (SPWERR_BADSAVEGAME, "game_load_full()", handle_error);
 
@@ -39,11 +39,15 @@ SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
 	ptr->src.file = STRTAB_add (stab, info.file);
 	ptr->src.date = info.date;
 
+	/* Extract and interprete data from savegame data */
 	rc = load_from_game (data, ptr);
 	ERRORGOTO ("load_from_game()", handle_error);
 
 	rc = snapint (ptr);
 	ERRORGOTO ("snapint()", handle_error);
+
+	/* Determine snapshot type */
+	ptr->type = (ptr->OOBp1.core.formations.cnt != 0) ? SPWAW_CAMPAIGN_SNAPSHOT : SPWAW_STDALONE_SNAPSHOT;
 
 	/* Cleanup and return */
 	game_free (&data);

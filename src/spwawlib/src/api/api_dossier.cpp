@@ -260,16 +260,16 @@ SPWAW_dossier_add (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **b
 
 	/* Determine dossier type (if not already determined) */
 	if (dossier->type == SPWAW_EMPTY_DOSSIER) {
-		if (snap->OOBp1.core.formations.cnt != 0) {
+		if (snap->type == SPWAW_CAMPAIGN_SNAPSHOT) {
 			dossier->type = SPWAW_CAMPAIGN_DOSSIER;
 		} else {
-			dossier->type = SPWAW_BATTLE_DOSSIER;
+			dossier->type = SPWAW_STDALONE_DOSSIER;
 		}
 	}
 
 	/* Apply dossier type eligibility rules */
 	if (dossier->type == SPWAW_CAMPAIGN_DOSSIER) {
-		if ((snap->OOBp1.core.formations.cnt == 0) || (snap->OOBp1.core.units.cnt == 0)) {
+		if (snap->type != SPWAW_CAMPAIGN_SNAPSHOT) {
 			RWE (SPWERR_NOCORECNT, "no core battle force detected in snapshot");
 		}
 	}

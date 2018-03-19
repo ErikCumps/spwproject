@@ -448,3 +448,44 @@ SPWAW_vhstatus2str (SPWAW_VHSTATUS id)
 	if ((id < SPWAW_VHSTARTCODE) || (id > SPWAW_VHLASTCODE)) return ("???");
 	return ((const char *)vhstatus2str (id));
 }
+
+SPWAWLIB_API const char *
+SPWAW_snapshottype2str (SPWAW_SNAPSHOT_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SPWAW_CAMPAIGN_SNAPSHOT:
+			p = "campaign";
+			break;
+		case SPWAW_STDALONE_SNAPSHOT:
+			p = "standalone";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
+
+SPWAWLIB_API const char *
+SPWAW_dossiertype2str (SPWAW_DOSSIER_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SPWAW_EMPTY_DOSSIER:
+			p = "empty";
+			break;
+		case SPWAW_CAMPAIGN_DOSSIER:
+			p = "campaign";
+			break;
+		case SPWAW_STDALONE_DOSSIER:
+			p = "standalone";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
