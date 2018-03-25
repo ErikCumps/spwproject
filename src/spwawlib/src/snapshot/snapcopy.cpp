@@ -387,5 +387,7 @@ snapcopy (SPWAW_SNAPSHOT *src, SPWAW_SNAPSHOT *dst)
 	rc = snapcopy_oob	(&(src->OOBp1),	&(dst->OOBp1),	stab, true);	ROE ("snapcopy_oob(OOBp1)");
 	rc = snapcopy_oob	(&(src->OOBp2),	&(dst->OOBp2),	stab, false);	ROE ("snapcopy_oob(OOBp2)");
 
+	dst->type = src->type;
+
 	return (SPWERR_OK);
 }

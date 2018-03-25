@@ -11,6 +11,7 @@
 #include <spwawlib_snapshot.h>
 #include "snapshot/snapshot.h"
 #include "snapshot/snapfile.h"
+#include "snapshot/snapfile_v10.h"
 #include "snapshot/index.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -278,6 +279,7 @@ handle_error:
 SPWAW_ERROR
 snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNAP_OOBHDR *ohdr)
 {
+	SPWAW_ERROR	rc;
 	long		p0;
 
 	CNULLARG (mhdr); CNULLARG (shdr); CNULLARG (ihdr);
@@ -296,14 +298,22 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNA
 	if (memcmp (mhdr->magic, SNAP_MAGIC, SNAP_MGCLEN) != 0)
 		RWE (SPWERR_BADSAVEDATA, "snapshot header check failed");
 
-	if (mhdr->version != SNAP_VERSION)
+	/* We are now backwards compatible with version 10 */
+	if ((mhdr->version != SNAP_VERSION) && (mhdr->version != SNAP_VERSION_V10))
 		RWE (SPWERR_INCOMPATIBLE, "snapshot header version check failed");
 
 	bseekset (fd, mhdr->src + p0);
 	if (!bread (fd, (char *)shdr, sizeof (*shdr), false)) RWE (SPWERR_FRFAILED, "bread(shdr) failed");
 
 	bseekset (fd, mhdr->info + p0);
-	if (!bread (fd, (char *)ihdr, sizeof (*ihdr), false)) RWE (SPWERR_FRFAILED, "bread(ihdr) failed");
+	/* We are now backwards compatible with version 10 */
+	if (mhdr->version == SNAP_VERSION_V10) {
+		rc = snapshot_load_v10_info_header (fd, ihdr);
+		ROE ("snapshot_load_v10_info_header(snapshot info hdr)");
+	} else {
+		if (!bread (fd, (char *)ihdr, sizeof (*ihdr), false))
+			RWE (SPWERR_FRFAILED, "bread(ihdr) failed");
+	}
 
 	if (ohdr) {
 		bseekset (fd, mhdr->oobp1 + p0);
@@ -357,8 +367,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	snprintf (info->filename, sizeof (info->filename) - 1, "%s\\%s", STRTAB_getstr (stab, shdr.path), STRTAB_getstr (stab, shdr.file));
 	info->filedate = *((FILETIME *)&(shdr.date));
 
-	/* Determine snapshot type */
-	info->type = (ohdr.fcnt != 0) ? SPWAW_CAMPAIGN_SNAPSHOT : SPWAW_STDALONE_SNAPSHOT;
+	info->type = (SPWAW_BATTLE_TYPE)ihdr.type;
 
 	STRTAB_free (&stab);
 
@@ -428,7 +437,7 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	ERRORGOTO ("load_oob(OOBp2)", handle_error);
 
 	/* Determine snapshot type */
-	dst->type = (dst->raw.OOBp1.formations.cnt != 0) ? SPWAW_CAMPAIGN_SNAPSHOT : SPWAW_STDALONE_SNAPSHOT;
+	dst->type = (dst->raw.OOBp1.formations.cnt != 0) ? SPWAW_CAMPAIGN_BATTLE : SPWAW_STDALONE_BATTLE;
 
 	return (SPWERR_OK);
 

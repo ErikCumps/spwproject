@@ -16,7 +16,7 @@
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20
-#define	SNAP_VERSION	10
+#define	SNAP_VERSION	11
 #define	SNAP_VHEXCNT	SPWAW_VHEXCNT
 
 #pragma pack(push, r1, 1)
@@ -50,6 +50,7 @@ typedef struct s_SNAP_INFO {
 	SPWAW_TIMESTAMP	date;			/* Battle turn date/time stamp						*/
 	BYTE		turn;			/* Battle turn number							*/
 	ULONG		location;		/* Battle location symbol						*/
+	ULONG		type;			/* Snapshot battle type							*/
 } SNAP_INFO;
 
 typedef struct s_SNAP_CMT {

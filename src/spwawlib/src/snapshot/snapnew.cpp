@@ -38,6 +38,8 @@ snapnew (SPWAW_SNAPSHOT **ptr, SPWOOB *oobptr, STRTAB *stabptr)
 	}
 	p->stab = stab;
 
+	p->type = SPWAW_UNKNOWN_BATTLE;
+
 	*ptr = p;
 	return (SPWERR_OK);
 

@@ -699,7 +699,7 @@ typedef struct s_SPWAW_SNAPSHOT {
 	SPWAW_SNAP_OOB		OOBp2;				/* Player2 OOB info					*/
 	SPWOOB			*oobdat;			/* OOB data						*/
 	void			*stab;				/* \internal string table				*/
-	SPWAW_SNAPSHOT_TYPE	type;				/* Snapshot type					*/
+	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 } SPWAW_SNAPSHOT;
 
 /* SPWAW game snapshot file info */
@@ -712,7 +712,7 @@ typedef struct s_SPWAW_SNAPSHOT_INFO {
 	char			location[SPWAW_AZSLOCATION+1];	/* Snapshot battle location				*/
 	char			filename[MAX_PATH+1];		/* Snapshot source game filename			*/
 	FILETIME		filedate;			/* Snapshot source game filedate			*/
-	SPWAW_SNAPSHOT_TYPE	type;				/* Snapshot type					*/
+	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 } SPWAW_SNAPSHOT_INFO;
 
 

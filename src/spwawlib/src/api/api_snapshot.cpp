@@ -46,8 +46,8 @@ SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
 	rc = snapint (ptr);
 	ERRORGOTO ("snapint()", handle_error);
 
-	/* Determine snapshot type */
-	ptr->type = (ptr->OOBp1.core.formations.cnt != 0) ? SPWAW_CAMPAIGN_SNAPSHOT : SPWAW_STDALONE_SNAPSHOT;
+	/* Set snapshot battle type */
+	ptr->type = data->type;
 
 	/* Cleanup and return */
 	game_free (&data);
