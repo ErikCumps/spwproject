@@ -88,6 +88,7 @@ handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_S
 		memcpy (ptr->info.stamp, info.stamp, sizeof (info.stamp));
 		memcpy (ptr->info.location, info.location, sizeof (info.location));
 		memcpy (ptr->info.comment, info.comment, sizeof (info.comment));
+		ptr->info.type = info.type;
 	}
 
 	/* skip file if on ignore list */

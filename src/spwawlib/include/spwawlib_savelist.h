@@ -14,12 +14,14 @@
 
 #include <spwawlib_api.h>
 #include <spwawlib_defines.h>
+#include <spwawlib_types.h>
 
 /* SPWAW savegame info struct */
 typedef struct s_SPWAW_SAVEGAME_INFO {
 	char			stamp[32];			/*!< game turn and date info		*/
 	char			location[SPWAW_AZSLOCATION+1];	/*!< game location			*/
 	char			comment[SPWAW_AZSCMTTITLE+1];	/*!< game comment			*/
+	SPWAW_BATTLE_TYPE	type;				/*!< game battle type			*/
 } SPWAW_SAVEGAME_INFO;
 
 /* SPWAW savegame list element */

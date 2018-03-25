@@ -82,58 +82,59 @@ typedef struct s_SECMAP {
 } SECMAP;
 
 typedef struct s_GAMEDATA {
-	CMTDATA		cmt;
-	SECMAP		MAP[SPWAW_SECTION_COUNT];
-	STRUCT00	sec00;	/* start		*/
-	STRUCT01	sec01;	/* units		*/
-	STRUCT02	sec02;	/* map_icon_main	*/
-	STRUCT03	sec03;	/* map_icon_sec3	*/
-	STRUCT04	sec04;	/* map_icon_sec4	*/
-	STRUCT05	sec05;	/* map_icon_sec5	*/
-	STRUCT06	sec06;	/* map_icon_sec6	*/
-	STRUCT07	sec07;	/* map_icon_sec7	*/
-	STRUCT08	sec08;	/* map_terrain		*/
-	STRUCT09	sec09;	/* map_data0		*/
-	STRUCT10	sec10;
-	STRUCT11	sec11;
-	STRUCT12	sec12;
-	STRUCT13	sec13;
-	STRUCT14	sec14;
-	STRUCT15	sec15;
-	STRUCT16	sec16;
-	STRUCT17	sec17;	/* units_pos		*/
-	STRUCT18	sec18;
-	STRUCT19	sec19;
-	STRUCT20	sec20;
-	STRUCT21	sec21;
-	STRUCT22	sec22;
-	STRUCT23	sec23;
-	STRUCT24	sec24;
-	STRUCT25	sec25;
-	STRUCT26	sec26;	/* credits		*/
-	STRUCT27	sec27;
-	STRUCT28	sec28;	/* map_data1		*/
-	STRUCT29	sec29;	/* map_data2		*/
-	STRUCT30	sec30;
-	STRUCT31	sec31;
-	STRUCT32	sec32;
-	STRUCT33	sec33;
-	STRUCT34	sec34;	/* leaders		*/
-	STRUCT35	sec35;	/* formations		*/
-	STRUCT36	sec36;
-	STRUCT37	sec37;	/* game			*/
-	STRUCT38	sec38;	/* map_width		*/
-	STRUCT39	sec39;	/* map_height		*/
-	STRUCT40	sec40;
-	STRUCT41	sec41;
-	STRUCT42	sec42;
-	STRUCT43	sec43;
-	STRUCT44	sec44;
-	STRUCT45	sec45;
-	STRUCT46	sec46;
-	STRUCT47	sec47;
-	STRUCT48	sec48;	/* rec_header		*/
-	STRUCT51	sec51;
+	SPWAW_BATTLE_TYPE	type;	/* battle type		*/
+	CMTDATA			cmt;
+	SECMAP			MAP[SPWAW_SECTION_COUNT];
+	STRUCT00		sec00;	/* start		*/
+	STRUCT01		sec01;	/* units		*/
+	STRUCT02		sec02;	/* map_icon_main	*/
+	STRUCT03		sec03;	/* map_icon_sec3	*/
+	STRUCT04		sec04;	/* map_icon_sec4	*/
+	STRUCT05		sec05;	/* map_icon_sec5	*/
+	STRUCT06		sec06;	/* map_icon_sec6	*/
+	STRUCT07		sec07;	/* map_icon_sec7	*/
+	STRUCT08		sec08;	/* map_terrain		*/
+	STRUCT09		sec09;	/* map_data0		*/
+	STRUCT10		sec10;
+	STRUCT11		sec11;
+	STRUCT12		sec12;
+	STRUCT13		sec13;
+	STRUCT14		sec14;
+	STRUCT15		sec15;
+	STRUCT16		sec16;
+	STRUCT17		sec17;	/* units_pos		*/
+	STRUCT18		sec18;
+	STRUCT19		sec19;
+	STRUCT20		sec20;
+	STRUCT21		sec21;
+	STRUCT22		sec22;
+	STRUCT23		sec23;
+	STRUCT24		sec24;
+	STRUCT25		sec25;
+	STRUCT26		sec26;	/* credits		*/
+	STRUCT27		sec27;
+	STRUCT28		sec28;	/* map_data1		*/
+	STRUCT29		sec29;	/* map_data2		*/
+	STRUCT30		sec30;
+	STRUCT31		sec31;
+	STRUCT32		sec32;
+	STRUCT33		sec33;
+	STRUCT34		sec34;	/* leaders		*/
+	STRUCT35		sec35;	/* formations		*/
+	STRUCT36		sec36;
+	STRUCT37		sec37;	/* game			*/
+	STRUCT38		sec38;	/* map_width		*/
+	STRUCT39		sec39;	/* map_height		*/
+	STRUCT40		sec40;
+	STRUCT41		sec41;
+	STRUCT42		sec42;
+	STRUCT43		sec43;
+	STRUCT44		sec44;
+	STRUCT45		sec45;
+	STRUCT46		sec46;
+	STRUCT47		sec47;
+	STRUCT48		sec48;	/* rec_header		*/
+	STRUCT51		sec51;
 };
 
 typedef struct s_GAMEFILE {
@@ -146,12 +147,13 @@ typedef struct s_GAMEFILE {
 } GAMEFILE;
 
 typedef struct s_GAMEINFO {
-	char		path[MAX_PATH+1];
-	char		file[MAX_PATH+1];
-	FILETIME	date;
-	char		stamp[32];
-	char		location[SPWAW_AZSLOCATION+1];
-	char		comment[SPWAW_AZSCMTTITLE+1];
+	char			path[MAX_PATH+1];
+	char			file[MAX_PATH+1];
+	FILETIME		date;
+	char			stamp[32];
+	char			location[SPWAW_AZSLOCATION+1];
+	char			comment[SPWAW_AZSCMTTITLE+1];
+	SPWAW_BATTLE_TYPE	type;
 } GAMEINFO;
 
 extern SECMAP *		gamedata_secmap		(void);

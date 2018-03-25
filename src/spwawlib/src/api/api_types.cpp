@@ -15,7 +15,7 @@
 
 static unsigned int dec_month_days[12] = { 30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30 };
 
-static void	eval_period	(SPWAW_PERIOD *period);
+static void	eval_period(SPWAW_PERIOD *period);
 static bool	isValidDate	(SPWAW_DATE *date);
 static bool	isValidStamp	(SPWAW_TIMESTAMP *stamp);
 static bool	isValidPeriod	(SPWAW_PERIOD *period);
@@ -450,15 +450,18 @@ SPWAW_vhstatus2str (SPWAW_VHSTATUS id)
 }
 
 SPWAWLIB_API const char *
-SPWAW_snapshottype2str (SPWAW_SNAPSHOT_TYPE type)
+SPWAW_battletype2str (SPWAW_BATTLE_TYPE type)
 {
 	const char	*p;
 
 	switch (type) {
-		case SPWAW_CAMPAIGN_SNAPSHOT:
+		case SPWAW_UNKNOWN_BATTLE:
+			p = "unknown";
+			break;
+		case SPWAW_CAMPAIGN_BATTLE:
 			p = "campaign";
 			break;
-		case SPWAW_STDALONE_SNAPSHOT:
+		case SPWAW_STDALONE_BATTLE:
 			p = "standalone";
 			break;
 		default:

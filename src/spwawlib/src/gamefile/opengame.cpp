@@ -10,6 +10,7 @@
 #include "gamefile/gamefile.h"
 #include "utils/log.h"
 #include "common/internal.h"
+#include "common/types.h"
 
 #define	PATHMAX	256
 
@@ -238,11 +239,14 @@ close_gamefiles (GAMEFILE *game)
 }
 
 static void
-setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedata, CMTDATA *gamecmt)
+setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedata, CMTDATA *gamecmt, STRUCT35 *formdata)
 {
 	char		*p, *q;
 	SPWAW_DATE	base, date;
 	SPWAW_PERIOD	add;
+	SPWAW_ERROR	rc;
+	FULIST		ful1, ful2;
+	USHORT		cfcnt;
 
 	if (!info) return;
 	clear_ptr (info);
@@ -273,6 +277,26 @@ setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedat
 
 	memcpy (info->location, gamedata->u.d.data.location, sizeof (gamedata->u.d.data.location));
 	memcpy (info->comment, gamecmt->title, sizeof (gamecmt->title));
+
+	log_disable();
+	rc = sec35_detection (formdata, ful1, ful2);
+	log_enable();
+	if (SPWAW_HAS_ERROR(rc)) {
+		ERROR1 ("failed to detect formations: %s", SPWAW_errstr(rc));
+		init_FLIST (ful1.fl); init_FLIST (ful2.fl);
+	}
+
+	cfcnt=0;
+	if (ful1.fl.cnt) {
+		FEL *p = ful1.fl.head;
+		while (p) {
+			if (p->d.status == F_CORE) cfcnt++;
+			p = p->l.next;
+		}
+	}
+	info->type = (cfcnt != 0) ? SPWAW_CAMPAIGN_BATTLE : SPWAW_STDALONE_BATTLE;
+
+	log ("setup_info: fcnt=%u, cfcnt=%u\n", ful1.fl.cnt, cfcnt);
 }
 
 GAMEDATA *
@@ -301,7 +325,11 @@ game_load_full (const char *dir, unsigned int id, GAMEINFO *info)
 		freegame (&data);
 	}
 
-	if (data) setup_info (info, game.dat_name, game.dat_date, &(data->sec37), &(data->cmt));
+	if (data) {
+		setup_info (info, game.dat_name, game.dat_date, &(data->sec37), &(data->cmt), &(data->sec35));
+		data->type = info->type;
+	}
+
 	close_gamefiles (&game);
 
 	return (data);
@@ -377,6 +405,7 @@ game_load_info (const char *dir, unsigned int id, GAMEINFO *info)
 	GAMEFILE	game;
 	bool		grc = true, rc;
 	STRUCT37	struct37;
+	STRUCT35	struct35;
 	CMTDATA		cmt;
 
 	if (!info) return (false);
@@ -389,8 +418,14 @@ game_load_info (const char *dir, unsigned int id, GAMEINFO *info)
 
 	rc = game_load_section (dir, id, 37, &struct37, sizeof (struct37)); grc = grc && rc;
 	if (!rc) {
-		ERROR0 ("failed to load game data");
+		ERROR0 ("failed to load section #37 game data");
 		memset (&struct37, 0, sizeof (struct37));
+	}
+
+	rc = game_load_section (dir, id, 35, &struct35, sizeof (struct35)); grc = grc && rc;
+	if (!rc) {
+		ERROR0 ("failed to load section #35 game data");
+		memset (&struct35, 0, sizeof (struct35));
 	}
 
 	rc = gamedata_load_cmt (&game, &cmt); grc = grc && rc;
@@ -399,7 +434,7 @@ game_load_info (const char *dir, unsigned int id, GAMEINFO *info)
 		memset (&cmt, 0, sizeof (cmt));
 	}
 
-	setup_info (info, game.dat_name, game.dat_date, &struct37, &cmt);
+	setup_info (info, game.dat_name, game.dat_date, &struct37, &cmt, &struct35);
 
 	close_gamefiles (&game);
 
