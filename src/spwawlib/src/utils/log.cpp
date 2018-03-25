@@ -95,6 +95,19 @@ log (char *fmt, ...)
 }
 
 void
+log_disable (void)
+{
+	logging = false;
+}
+
+void
+log_enable (void)
+{
+	logging = true;
+}
+
+
+void
 log_shutdown (void)
 {
 	if (logfile) {
@@ -113,6 +126,14 @@ log_init (char *log, bool append)
 void
 log (char *fmt, ...)
 { UNREFERENCED_PARAMETER(fmt); }
+
+void
+log_disable (void)
+{ }
+
+void
+log_enable (void)
+{ }
 
 void
 log_shutdown (void)

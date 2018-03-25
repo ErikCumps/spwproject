@@ -11,6 +11,8 @@
 
 extern void	log_init	(char *log, bool append=false);
 extern void	log		(char *fmt, ...);
+extern void	log_disable	(void);
+extern void	log_enable	(void);
 extern void	log_shutdown	(void);
 
 #endif	/* LOG_H */
