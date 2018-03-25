@@ -54,6 +54,7 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 		fel->d.player = src[i].player;
 		fel->d.leader = src[i].leader;
 		fel->d.OOBrid = src[i].OOBrid;
+		fel->d.status = src[i].status;
 		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
 
 		log ("find_formations: [%3.3u] FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u>(%16.16s)\n",
@@ -150,19 +151,25 @@ handle_error:
 }
 
 SPWAW_ERROR
-sec35_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
+sec35_detection (STRUCT35 *src, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 
 	CNULLARG (src);
 
-	rc = build_formations (src->sec35.u.d.formations, PLAYER1, ful1.fl);
+	rc = build_formations (src->u.d.formations, PLAYER1, ful1.fl);
 	ROE ("build_formations_list(OOBp1)");
 
-	rc = build_formations (src->sec35.u.d.formations, PLAYER2, ful2.fl);
-	ROE ("build_formations_list(OOBp1)");
+	rc = build_formations (src->u.d.formations, PLAYER2, ful2.fl);
+	ROE ("build_formations_list(OOBp2)");
 
 	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
+sec35_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
+{
+	return (sec35_detection (&(src->sec35), ful1, ful2));
 }
 
 static SPWAW_ERROR

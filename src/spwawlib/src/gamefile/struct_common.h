@@ -89,6 +89,7 @@ typedef struct s_FEL {
 		USHORT		leader;				/* Leader unit ID				*/
 		BYTE		OOBrid;				/* Formation OOB record ID			*/
 		char		name[SPWAW_AZSNAME];		/* Formation name				*/
+		BYTE		status;				/* Formation status				*/
 		USHORT		FID;				/* Adjusted formation ID			*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		unit_cnt;			/* Number of associated units			*/
