@@ -8,6 +8,8 @@
 
 #include "stdafx.h"
 #include "dossier/dossier.h"
+
+#if	0
 #include "dossier/dossier_file.h"
 #include "snapshot/snapshot.h"
 #include "fileio/fileio.h"
@@ -141,10 +143,14 @@ dossier_export_stab (int src, FILE *dst, long pos)
 handle_error:
 	return (rc);
 }
+#endif	/* 0 */
 
 SPWAW_ERROR
-dossier_export (int src, FILE *dst)
+dossier_export (int /*src*/, FILE * /*dst*/)
 {
+	// This is basically broken
+	return (SPWERR_FAILED);
+#if	0
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
 	DOS_HEADER	hdr;
@@ -164,4 +170,5 @@ dossier_export (int src, FILE *dst)
 
 handle_error:
 	return (rc);
+#endif	/* 0 */
 }

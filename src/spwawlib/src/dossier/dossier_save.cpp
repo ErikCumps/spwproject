@@ -145,6 +145,7 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		p0, p1;
+	DOS_MV_HEADER	mvhdr;
 	DOS_HEADER	hdr;
 	STRTAB		*stab = NULL;
 
@@ -155,10 +156,14 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 
 	p0 = bseekget (fd);
 
-	memset (&hdr, 0, sizeof (hdr));
+	memset (&mvhdr, 0, sizeof (mvhdr));
 
-	memcpy (hdr.magic, DOSS_MAGIC, strlen (DOSS_MAGIC));
-	hdr.version = DOSS_VERSION;
+	memcpy (mvhdr.magic, DOSS_MAGIC, strlen (DOSS_MAGIC));
+	mvhdr.version = DOSS_VERSION;
+
+	bseekmove (fd, sizeof (mvhdr));
+
+	memset (&hdr, 0, sizeof (hdr));
 
 	hdr.name = STRTAB_getidx (stab, src->name);
 	hdr.comment = STRTAB_getidx (stab, src->comment);
@@ -166,6 +171,7 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	hdr.OOB = src->OOB;
 	hdr.fcnt = src->fcnt;
 	hdr.ucnt = src->ucnt;
+	hdr.type = src->type;
 
 	bseekmove (fd, sizeof (hdr));
 
@@ -181,6 +187,8 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	ROE ("STRTAB_fdsave()");
 
 	p1 = bseekget (fd); bseekset (fd, p0);
+	if (!bwrite (fd, (char *)&mvhdr, sizeof (mvhdr)))
+		RWE (SPWERR_FWFAILED, "bwrite(mvhdr) failed");
 	if (!bwrite (fd, (char *)&hdr, sizeof (hdr)))
 		RWE (SPWERR_FWFAILED, "bwrite(hdr) failed");
 	bseekset (fd, p1);

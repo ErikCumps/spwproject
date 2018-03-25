@@ -19,9 +19,12 @@
 
 #pragma pack(push, r1, 1)
 
-typedef struct s_DOS_HEADER {
+typedef struct s_DOS_MV_HEADER {
 	char		magic[DOSS_MGCLEN];	/* Dossier magic string								*/
 	ULONG		version;		/* Dossier file format version							*/
+} DOS_MV_HEADER;
+
+typedef struct s_DOS_HEADER {
 	ULONG		name;			/* Dossier name	symbol								*/
 	ULONG		comment;		/* Dossier comment symbol							*/
 	ULONG		oobdir;			/* Original OOB data directory symbol						*/
@@ -32,6 +35,7 @@ typedef struct s_DOS_HEADER {
 	USHORT		bcnt;			/* Battle list count								*/
 	ULONG		blist;			/* Battle list offset, relative to start of header				*/
 	ULONG		stab;			/* String table offset, relative to start of header				*/
+	ULONG		type;			/* Dossier type									*/
 } DOS_HEADER;
 
 typedef struct s_DOS_BHEADER {

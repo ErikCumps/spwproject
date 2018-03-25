@@ -8,10 +8,34 @@
 
 #include "stdafx.h"
 #include <spwawlib_api.h>
-#include "dossier/dossier_file.h"
 #include "dossier/dossier_file_v10.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
+
+SPWAW_ERROR
+dossier_load_v10_header (int fd, DOS_HEADER *hdr)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	DOS_HEADER_V10	*hdr_v10;
+
+	if (!hdr) return (SPWERR_NULLARG);
+
+	hdr_v10 = safe_malloc (DOS_HEADER_V10); COOMGOTO (hdr_v10, "DOS_HEADER_V10", handle_error);
+
+	if (!bread (fd, (char *)hdr_v10, sizeof (DOS_HEADER_V10), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(dossier hdr v10)", handle_error);
+
+	/* A V10 dossier header only lacks the dossier type at the end.
+	 * The only supported dossier type for V10 snapshots is the SPWAW_CAMPAIGN_DOSSIER,
+	 * so a quick copy and fix up is all we need :)
+	 */
+	memcpy (hdr, hdr_v10, sizeof (DOS_HEADER_V10));
+	hdr->type = SPWAW_CAMPAIGN_DOSSIER;
+
+handle_error:
+	if (hdr_v10) safe_free (hdr_v10);
+	return (rc);
+}
 
 SPWAW_ERROR
 dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
@@ -20,7 +44,7 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 	DOS_BHEADER_V10	*hdrs_v10;
 	USHORT		i;
 
-	if (!cnt) return (SPWERR_OK);
+	if (!hdrs || !cnt) return (SPWERR_NULLARG);
 
 	hdrs_v10 = safe_nmalloc (DOS_BHEADER_V10, cnt); COOMGOTO (hdrs_v10, "DOS_BHEADER_V10 list", handle_error);
 

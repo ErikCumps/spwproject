@@ -17,6 +17,19 @@
 
 #pragma pack(push, r1, 1)
 
+typedef struct s_DOS_HEADER_V10 {
+	ULONG		name;			/* Dossier name	symbol								*/
+	ULONG		comment;		/* Dossier comment symbol							*/
+	ULONG		oobdir;			/* Original OOB data directory symbol						*/
+	ULONG		oobdat;			/* OOB data offset, relative to start of header					*/
+	ULONG		OOB;			/* OOB ID									*/
+	USHORT		fcnt;			/* Core formations count							*/
+	USHORT		ucnt;			/* Core units count								*/
+	USHORT		bcnt;			/* Battle list count								*/
+	ULONG		blist;			/* Battle list offset, relative to start of header				*/
+	ULONG		stab;			/* String table offset, relative to start of header				*/
+} DOS_HEADER_V10;
+
 typedef struct s_DOS_BHEADER_V10 {
 	SPWAW_TIMESTAMP	date;			/* Battle date timestamp							*/
 	ULONG		location;		/* Battle location symbol							*/
@@ -35,6 +48,7 @@ typedef struct s_DOS_BHEADER_V10 {
 
 #pragma pack(pop, r1)
 
+extern SPWAW_ERROR	dossier_load_v10_header		(int fd, DOS_HEADER *hdr);
 extern SPWAW_ERROR	dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt);
 
 #endif	/* INTERNAL_DOSSIER_FILE_V10_H */

@@ -260,7 +260,7 @@ SPWAW_dossier_add (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **b
 
 	/* Determine dossier type (if not already determined) */
 	if (dossier->type == SPWAW_EMPTY_DOSSIER) {
-		if (snap->type == SPWAW_CAMPAIGN_SNAPSHOT) {
+		if (snap->type == SPWAW_CAMPAIGN_BATTLE) {
 			dossier->type = SPWAW_CAMPAIGN_DOSSIER;
 		} else {
 			dossier->type = SPWAW_STDALONE_DOSSIER;
@@ -269,8 +269,8 @@ SPWAW_dossier_add (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **b
 
 	/* Apply dossier type eligibility rules */
 	if (dossier->type == SPWAW_CAMPAIGN_DOSSIER) {
-		if (snap->type != SPWAW_CAMPAIGN_SNAPSHOT) {
-			RWE (SPWERR_NOCORECNT, "no core battle force detected in snapshot");
+		if (snap->type != SPWAW_CAMPAIGN_BATTLE) {
+			RWE (SPWERR_BADBTYPE, "this snapshot does not allow campaign tracking");
 		}
 	}
 
