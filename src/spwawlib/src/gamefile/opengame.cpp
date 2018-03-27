@@ -276,7 +276,9 @@ setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedat
 		date.year, date.month, date.day, date.hour, date.minute, gamedata->u.d.data.turn);
 
 	memcpy (info->location, gamedata->u.d.data.location, sizeof (gamedata->u.d.data.location));
+
 	memcpy (info->comment, gamecmt->title, sizeof (gamecmt->title));
+	for (unsigned int i = 0; i < strlen (info->comment); i++) if (!isalnum(info->comment[i])) info->comment[i] = ' ';
 
 	log_disable();
 	rc = sec35_detection (formdata, ful1, ful2);
