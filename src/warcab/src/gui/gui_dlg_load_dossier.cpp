@@ -30,7 +30,7 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	setModal (true);
 
 	/* Set dialog size */
-	resize (BOX_WIDTH, BOX_HEIGHT);
+	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Load Dossier");
@@ -53,7 +53,7 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "body widget");
-	d.body->setGeometry(QRect(10, 10, 581, 221));
+	d.body->setGeometry(QRect(BOX_MARGIN, BOX_MARGIN, BOX_WIDTH - 2*BOX_MARGIN, BOX_HEIGHT - 3*BOX_MARGIN - but_height));
 
 	/* Create data model */
 	GUINEW (d.model, ModelDossList (path, ignore), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "dosslist data model");
@@ -72,9 +72,10 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	d.view->sortByColumn (1, Qt::AscendingOrder);
 	d.view->resizeColumnToContents (0);
 	d.view->resizeColumnToContents (1);
-	//d.view->resizeColumnToContents (2);
+	d.view->resizeColumnToContents (2);
 	d.view->resizeColumnToContents (3);
 	d.view->resizeColumnToContents (4);
+	d.view->resizeColumnToContents (5);
 
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "body layout");

@@ -25,7 +25,7 @@ GuiDlgEditDossier::GuiDlgEditDossier (void)
 	setModal (true);
 
 	/* Set dialog size */
-	resize (BOX_WIDTH, BOX_HEIGHT);
+	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Edit Dossier");
@@ -48,7 +48,7 @@ GuiDlgEditDossier::GuiDlgEditDossier (void)
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_EDIT_DOSSIER_INIT_FAILED, "body widget");
-	d.body->setGeometry(QRect(10, 10, 581, 221));
+	d.body->setGeometry(QRect(BOX_MARGIN, BOX_MARGIN, BOX_WIDTH - 2*BOX_MARGIN, BOX_HEIGHT - 3*BOX_MARGIN - but_height));
 
 	/* Create "name" ui */
 	GUINEW (d.name_label, QLabel (d.body), ERR_GUI_DLG_EDIT_DOSSIER_INIT_FAILED, "name label");

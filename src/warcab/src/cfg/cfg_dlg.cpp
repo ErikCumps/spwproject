@@ -11,6 +11,10 @@
 #include "res/res.h"
 #include "cfg_dlg.h"
 
+#define	BOX_WIDTH	600
+#define	BOX_HEIGHT	300
+#define	BOX_MARGIN	 10
+
 #define	STR_OOB_TOOLTIP		"Configure the folder containing the SPWaW OOB files."
 #define	STR_OOB_WHATSTHIS1	"This should be the folder containing the SPWaW OOB files."
 #define	STR_OOB_WHATSTHIS2	"Press this button to browse to the folder containg the SPWaW OOB files."
@@ -38,6 +42,8 @@
 CfgDlg::CfgDlg (void)
 	: QDialog (0, Qt::Dialog)
 {
+	int	but_height = 0;
+
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
@@ -45,7 +51,7 @@ CfgDlg::CfgDlg (void)
 	setModal (true);
 
 	/* Set dialog size */
-	resize(400, 300);
+	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Warcab preferences");
@@ -67,13 +73,14 @@ CfgDlg::CfgDlg (void)
 
 	/* Create button box */
 	d.buttons = new QDialogButtonBox (this);
-	d.buttons->setGeometry(QRect(30, 240, 341, 32));
+	but_height = d.buttons->height();
+	d.buttons->setGeometry(QRect(BOX_MARGIN, BOX_HEIGHT - BOX_MARGIN - but_height, BOX_WIDTH - 2*BOX_MARGIN, but_height));
 	d.buttons->setOrientation(Qt::Horizontal);
 	d.buttons->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok);
 
 	/* Create body widget */
 	d.body = new QWidget (this);
-	d.body->setGeometry(QRect(10, 10, 381, 221));
+	d.body->setGeometry(QRect(BOX_MARGIN, BOX_MARGIN, BOX_WIDTH - 2*BOX_MARGIN, BOX_HEIGHT - 3*BOX_MARGIN - but_height));
 
 	/* Create body layout */
 	d.layout = new QGridLayout (d.body);

@@ -30,7 +30,7 @@ GuiDlgLoadSavegame::GuiDlgLoadSavegame (char *path, SPWAW_SAVELIST *ignore)
 	setModal (true);
 
 	/* Set dialog size */
-	resize (BOX_WIDTH, BOX_HEIGHT);
+	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Load Savegame");
@@ -53,7 +53,7 @@ GuiDlgLoadSavegame::GuiDlgLoadSavegame (char *path, SPWAW_SAVELIST *ignore)
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_LOAD_SAVEGAME_INIT_FAILED, "body widget");
-	d.body->setGeometry(QRect(10, 10, 581, 221));
+	d.body->setGeometry(QRect(BOX_MARGIN, BOX_MARGIN, BOX_WIDTH - 2*BOX_MARGIN, BOX_HEIGHT - 3*BOX_MARGIN - but_height));
 
 	/* Create data model */
 	GUINEW (d.model, ModelSaveList (path, ignore), ERR_GUI_DLG_LOAD_SAVEGAME_INIT_FAILED, "savelist data model");
@@ -73,6 +73,8 @@ GuiDlgLoadSavegame::GuiDlgLoadSavegame (char *path, SPWAW_SAVELIST *ignore)
 	d.view->resizeColumnToContents (0);
 	d.view->resizeColumnToContents (1);
 	d.view->resizeColumnToContents (2);
+	d.view->resizeColumnToContents (3);
+	d.view->resizeColumnToContents (4);
 
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_LOAD_SAVEGAME_INIT_FAILED, "body layout");
