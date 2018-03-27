@@ -70,12 +70,8 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	d.view->setSelectionBehavior (QAbstractItemView::SelectRows);
 	d.view->setSelectionMode (QAbstractItemView::SingleSelection);
 	d.view->sortByColumn (1, Qt::AscendingOrder);
-	d.view->resizeColumnToContents (0);
-	d.view->resizeColumnToContents (1);
-	d.view->resizeColumnToContents (2);
-	d.view->resizeColumnToContents (3);
-	d.view->resizeColumnToContents (4);
-	d.view->resizeColumnToContents (5);
+	d.view->header()->setResizeMode(QHeaderView::ResizeToContents);
+	d.view->header()->setStretchLastSection(false);
 
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "body layout");
