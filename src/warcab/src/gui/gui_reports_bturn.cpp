@@ -104,10 +104,13 @@ GuiRptTrn::set_enabled (bool flag)
 		removeTab (indexOf (d.disabled_label));
 
 		addTab (d.overview, "Overview");
-		addTab (d.force_core, *RES_flag (d.item->data.t->battle->dossier->OOB), "Core force");
-		addTab (d.force_spt, *RES_flag (d.item->data.t->battle->dossier->OOB), "Support force");
-		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->OOB_p2));
-		addTab (d.force_opp, *RES_flag (d.item->data.t->battle->OOB_p2), buf);
+		if (d.item->campaign) {
+			addTab (d.force_core, "Core force");
+			addTab (d.force_spt, "Support force");
+		} else {
+			addTab (d.force_spt, "Support force");
+		}
+		addTab (d.force_opp, "Opponent force");
 #if	EXPERIMENTAL
 		addTab (d.compare, "Comparisons");
 #endif	/* EXPERIMENTAL */
@@ -150,8 +153,14 @@ GuiRptTrn::refresh (void)
 
 		memset (buf, 0, sizeof (buf));
 
-		setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.t->battle->dossier->OOB));
-		setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.t->battle->dossier->OOB));
+		if (d.item->campaign) {
+			setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.t->battle->dossier->OOB));
+			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.t->battle->dossier->OOB));
+		} else {
+			snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->OOB_p1));
+			setTabText (indexOf (d.force_spt), buf);
+			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.t->battle->OOB_p1));
+		}
 		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->OOB_p2));
 		setTabText (indexOf (d.force_opp), buf);
 		setTabIcon (indexOf (d.force_opp), *RES_flag (d.item->data.t->battle->OOB_p2));

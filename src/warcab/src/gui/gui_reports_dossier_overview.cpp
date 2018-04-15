@@ -248,7 +248,12 @@ GuiRptDsrOvr::refresh (bool forced)
 		d.losses.opp->clear();
 		d.changes->clear();
 	} else {
-		d.flag->setPixmap (*RES_flag (p->OOB));
+		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
+			d.flag->setPixmap (*RES_flag (p->OOB));
+			d.flag->setHidden(false);
+		} else {
+			d.flag->setHidden(true);
+		}
 
 		str.printf ("<pre>");
 
@@ -293,58 +298,64 @@ GuiRptDsrOvr::refresh (bool forced)
 		}
 		str.printf ("\n");
 
-		str.printf ("%s core force consists of %u units in %u formations.", SPWAW_oob_people (p->OOB), p->ucnt, p->fcnt);
+		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
+			str.printf ("%s core force consists of %u units in %u formations.", SPWAW_oob_people (p->OOB), p->ucnt, p->fcnt);
+		} else {
+			str.printf ("Campaign tracking is not available for this dossier.");
+		}
 
 		d.overview->setText (buf);
 		str.clear();
 
-		if (p->bcnt) {
-			str.printf ("<pre>");
-			str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->OOB));
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.men, "men");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.art, "artillery");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.soft, "soft vehicles");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.apc, "armoured personnel carriers");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.afv, "armoured fighting vehicles");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.gliders, "gliders");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.air, "aircraft");
-			str.printf ("</pre>");
-			d.losses.plr->setText (buf);
-			str.clear();
-
-			str.printf ("<pre>");
-			str.printf ("<h3>Opponent campaign losses:</h3>");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.men, "men");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.art, "artillery");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.soft, "soft vehicles");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.apc, "armoured personnel carriers");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.afv, "armoured fighting vehicles");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.gliders, "gliders");
-			str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.air, "aircraft");
-			str.printf ("</pre>");
-			d.losses.opp->setText (buf);
-			str.clear();
-		}
-
-		if (p->bcnt) {
-			int	cnt = 0;
-
-			list_promotions (p, false, buf2, sizeof (buf2), cnt);
-			if (cnt) {
-				str.printf ("<pre><h3>Promotions:</h3>");
-				str.add (buf2);
+		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
+			if (p->bcnt) {
+				str.printf ("<pre>");
+				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->OOB));
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.men, "men");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.art, "artillery");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.soft, "soft vehicles");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.apc, "armoured personnel carriers");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.afv, "armoured fighting vehicles");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.gliders, "gliders");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.air, "aircraft");
 				str.printf ("</pre>");
+				d.losses.plr->setText (buf);
+				str.clear();
+
+				str.printf ("<pre>");
+				str.printf ("<h3>Opponent campaign losses:</h3>");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.men, "men");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.art, "artillery");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.soft, "soft vehicles");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.apc, "armoured personnel carriers");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.afv, "armoured fighting vehicles");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.gliders, "gliders");
+				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.air, "aircraft");
+				str.printf ("</pre>");
+				d.losses.opp->setText (buf);
+				str.clear();
 			}
 
-			list_upgrades (p, true, buf2, sizeof (buf2), cnt);
-			if (cnt) {
-				str.printf ("<pre><h3>Upgrades:</h3>");
-				str.add (buf2);
-				str.printf ("</pre>");
-			}
-		}
+			if (p->bcnt) {
+				int	cnt = 0;
 
-		d.changes->setText (buf);
+				list_promotions (p, false, buf2, sizeof (buf2), cnt);
+				if (cnt) {
+					str.printf ("<pre><h3>Promotions:</h3>");
+					str.add (buf2);
+					str.printf ("</pre>");
+				}
+
+				list_upgrades (p, true, buf2, sizeof (buf2), cnt);
+				if (cnt) {
+					str.printf ("<pre><h3>Upgrades:</h3>");
+					str.add (buf2);
+					str.printf ("</pre>");
+				}
+			}
+
+			d.changes->setText (buf);
+		}
 	}
 
 skip_data_update:

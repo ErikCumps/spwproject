@@ -16,6 +16,7 @@
 typedef enum e_MDLD_TREE_TYPE {
 	MDLD_TREE_NONE = 0,
 	MDLD_TREE_DOSSIER,
+	MDLD_TREE_STDALONE,
 	MDLD_TREE_BATTLE,
 	MDLD_TREE_BTURN
 } MDLD_TREE_TYPE;
@@ -36,7 +37,36 @@ struct s_MDLD_TREE_ITEM {
 	MDLD_TREE_ITEM		*cfirst;
 	MDLD_TREE_ITEM		*clast;
 	UtilSeqnum		seqnum;
+	bool			campaign;	/*!< Campaign mode flag	*/
 };
+
+static inline MDLD_TREE_ITEM *
+MDLD_TREE_raise_to (MDLD_TREE_ITEM *item, MDLD_TREE_TYPE target)
+{
+	MDLD_TREE_ITEM *p = item;
+
+	while (p && (p->type != target)) p = p->parent;
+
+	return (p);
+}
+
+static inline MDLD_TREE_ITEM *
+MDLD_TREE_lower_to (MDLD_TREE_ITEM *item, MDLD_TREE_TYPE target)
+{
+	MDLD_TREE_ITEM *p = item;
+
+	while (p && (p->type != target)) p = p->cfirst;
+
+	return (p);
+}
+
+static inline void
+MDLD_TREE_extract_children (MDLD_TREE_ITEM *item, QList<MDLD_TREE_ITEM *> &list)
+{
+	list = item->children;
+
+	item->children.clear();	item->cfirst = item->clast = NULL;
+}
 
 /* application state: options */
 typedef struct s_WARCABOptions {
@@ -99,8 +129,11 @@ private:
 	void		set_name		(char *name);
 	SL_ERROR	refresh_savelists	(void);
 	void		setup_tree		(void);
+	void		setup_tree_data		(MDLD_TREE_ITEM *tree, bool campaign);
 	void		refresh_tree		(void);
+	void		refresh_tree_data	(MDLD_TREE_ITEM *tree, bool campaign);
 	void		free_tree		(void);
+	void		free_tree_children	(MDLD_TREE_ITEM *tree);
 	MDLD_TREE_ITEM *item_from_turn		(SPWAW_BTURN *turn);
 	MDLD_TREE_ITEM *next_safe_item		(MDLD_TREE_ITEM *item);
 };

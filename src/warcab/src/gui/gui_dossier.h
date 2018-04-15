@@ -37,10 +37,12 @@ public slots:
 
 	void	delete_item		(void);
 
+	void	select_parent_item	(void);
 	void	select_first_item	(void);
 	void	select_prev_item	(void);
 	void	select_next_item	(void);
 	void	select_last_item	(void);
+	void	select_child_item	(void);
 
 	virtual void	currentChanged	(const QModelIndex &current, const QModelIndex &previous);
 

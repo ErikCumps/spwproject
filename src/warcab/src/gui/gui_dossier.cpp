@@ -161,6 +161,7 @@ report_GMD (MDLD_TREE_ITEM *p)
 	if (!p) return;
 
 	DBG_log ("[MDLD_TREE_ITEM] type=%d, parent=0x%8.8x, children=%d\n", p->type, p->parent, p->children.size());
+	DBG_log ("[MDLD_TREE_ITEM] seqnum=%d, campaign=%s\n", p->seqnum.value(), p->campaign ? "true" : "false");
 
 	switch (p->type) {
 		case MDLD_TREE_DOSSIER:
@@ -175,6 +176,9 @@ report_GMD (MDLD_TREE_ITEM *p)
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] ucnt    = %d\n", p->data.d->ucnt);
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] battles = %d\n", p->data.d->bcnt);
 			}
+			break;
+		case MDLD_TREE_STDALONE:
+			DBG_log ("[MDLD_TREE_ITEM] STANDALONE BATTLE 0x%8.8x:\n", p->data.b);
 			break;
 		case MDLD_TREE_BATTLE:
 			DBG_log ("[MDLD_TREE_ITEM] BATTLE 0x%8.8x:\n", p->data.b);
@@ -302,55 +306,107 @@ GuiDossier::delete_item (void)
 }
 
 void
-GuiDossier::select_first_item (void)
+GuiDossier::select_parent_item (void)
 {
 	MDLD_TREE_ITEM	*p;
 
 	p = selected();
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
-	if (!p->prev) return;
 
-	setCurrentItem (p->parent->cfirst);
+	setCurrentItem (p->parent);
+}
+
+void
+GuiDossier::select_first_item (void)
+{
+	MDLD_TREE_ITEM	*p, *q;
+
+	p = selected();
+	if (p == NULL) return;
+	if (p->type == MDLD_TREE_DOSSIER) return;
+
+	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+		q = p->parent->prev ? p->parent->parent->cfirst->cfirst : NULL;
+	} else {
+		q = p->prev ? p->parent->cfirst : NULL;
+	}
+
+	if (!q) return;
+
+	setCurrentItem (q);
+
 }
 
 void
 GuiDossier::select_prev_item (void)
 {
-	MDLD_TREE_ITEM	*p;
+	MDLD_TREE_ITEM	*p, *q;
 
 	p = selected();
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
-	if (!p->prev) return;
 
-	setCurrentItem (p->prev);
+	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+		q = p->parent->prev ? p->parent->prev->cfirst : NULL;
+	} else {
+		q = p->prev;
+	}
+	if (!q) return;
+
+	setCurrentItem (q);
 }
 
 void
 GuiDossier::select_next_item (void)
 {
-	MDLD_TREE_ITEM	*p;
+	MDLD_TREE_ITEM	*p, *q;
 
 	p = selected();
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
-	if (!p->next) return;
 
-	setCurrentItem (p->next);
+	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+		q = p->parent->next ? p->parent->next->cfirst : NULL;
+	} else {
+		q = p->next;
+	}
+	if (!q) return;
+
+	setCurrentItem (q);
 }
 
 void
 GuiDossier::select_last_item (void)
 {
-	MDLD_TREE_ITEM	*p;
+	MDLD_TREE_ITEM	*p, *q;
 
 	p = selected();
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
-	if (!p->next) return;
 
-	setCurrentItem (p->parent->clast);
+	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+		q = p->parent->next ? p->parent->parent->clast->cfirst : NULL;
+	} else {
+		q = p->next ? p->parent->clast : NULL;
+	}
+
+	if (!q) return;
+
+	setCurrentItem (q);
+}
+
+void
+GuiDossier::select_child_item (void)
+{
+	MDLD_TREE_ITEM	*p;
+
+	p = selected();
+	if (p == NULL) return;
+	if (p->type == MDLD_TREE_BTURN) return;
+	if (p->cfirst == NULL) return;
+
+	setCurrentItem (p->cfirst);
 }
 
 void

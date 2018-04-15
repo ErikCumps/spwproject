@@ -18,8 +18,10 @@ ModelDossier::ModelDossier (QObject *parent)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "Campaign dossier";
+	header << "";
 	d.col_cnt = 1;
+
+	update_header();
 }
 
 ModelDossier::~ModelDossier (void)
@@ -27,6 +29,20 @@ ModelDossier::~ModelDossier (void)
 	DBG_TRACE_DESTRUCT;
 
 	d.tree = NULL;
+}
+
+void
+ModelDossier::update_header (void)
+{
+	if (d.tree) {
+		if (d.tree->campaign) {
+			header[0] = "Campaign dossier";
+		} else {
+			header[0] = "Battle dossier";
+		}
+	} else {
+		header[0] = "Empty dossier";
+	}
 }
 
 QBrush
@@ -76,12 +92,47 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			snprintf (buf, sizeof (buf) - 1, "%s (%s forces)",
-				p->data.d->name, SPWAW_oob_people (p->data.d->OOB));
+			if (p->campaign) {
+				snprintf (buf, sizeof (buf) - 1, "%s (%s forces)",
+					p->data.d->name, SPWAW_oob_people (p->data.d->OOB));
+			} else {
+				snprintf (buf, sizeof (buf) - 1, "%s",
+					p->data.d->name);
+			}
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
-			v = QVariant (QIcon (*RES_flag (p->data.d->OOB)));
+			if (p->campaign) {
+				v = QVariant (QIcon (*RES_flag (p->data.d->OOB)));
+			}
+			break;
+		case Qt::ForegroundRole:
+		case Qt::BackgroundRole:
+			v = item_brush (role, p);
+			break;
+		default:
+			break;
+	}
+	return (v);
+}
+
+QVariant
+ModelDossier::data_standalone (int role, MDLD_TREE_ITEM *p) const
+{
+	QVariant	v = QVariant();
+	char		buf[256];
+
+	if (!p || (p->type != MDLD_TREE_STDALONE) || (!p->data.b)) return (v);
+	memset (buf, 0, sizeof (buf));
+
+	switch (role) {
+		case Qt::DisplayRole:
+			snprintf (buf, sizeof (buf) - 1, "%s %s against %s %s",
+				SPWAW_oob_people (p->data.b->OOB_p1), p->data.b->miss_p1, SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
+			v = QVariant (buf);
+			break;
+		case Qt::DecorationRole:
+			v = QVariant (QIcon (*RES_flag (p->data.b->OOB_p1)));
 			break;
 		case Qt::ForegroundRole:
 		case Qt::BackgroundRole:
@@ -104,8 +155,14 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
-				p->data.b->location, p->data.b->miss_p1, SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
+			if (p->campaign) {
+				snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
+					p->data.b->location, p->data.b->miss_p1,
+					SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
+			} else {
+				snprintf (buf, sizeof (buf) - 1, "%s",
+					p->data.b->location);
+			}
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
@@ -163,6 +220,9 @@ ModelDossier::data (const QModelIndex &index, int role) const
 	switch (p->type) {
 		case MDLD_TREE_DOSSIER:
 			v = data_dossier (role, p);
+			break;
+		case MDLD_TREE_STDALONE:
+			v = data_standalone (role, p);
 			break;
 		case MDLD_TREE_BATTLE:
 			v = data_battle (role, p);
@@ -329,6 +389,7 @@ void
 ModelDossier::clear (void)
 {
 	d.tree = NULL;
+	update_header();
 	reset();
 }
 
@@ -336,6 +397,7 @@ void
 ModelDossier::load (MDLD_TREE_ITEM *tree)
 {
 	d.tree = tree;
+	update_header();
 	reset();
 }
 

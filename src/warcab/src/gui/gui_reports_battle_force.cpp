@@ -85,7 +85,9 @@ GuiRptBtlFrc::set_enabled (bool flag)
 	if (flag) {
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.cnd, "Status");
-		addTab (d.prg, "Progress");
+		if (d.parent && d.parent->current() && d.parent->current()->campaign) {
+			addTab (d.prg, "Progress");
+		}
 		addTab (d.kill, "Kills");
 		addTab (d.loss, "Losses");
 		addTab (d.oob, "OOB");
@@ -145,7 +147,9 @@ GuiRptBtlFrc::refresh (void)
 
 	if (enable) {
 		d.cnd->refresh();
-		d.prg->refresh();
+		if (d.parent && d.parent->current() && d.parent->current()->campaign) {
+			d.prg->refresh();
+		}
 		d.kill->refresh();
 		d.loss->refresh();
 		d.oob->refresh();
