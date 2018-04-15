@@ -46,10 +46,12 @@ GuiToolbar::GuiToolbar (void)
 	/* Create navigation tool bar */
 	TOOLBAR (nav, "Navigation Toolbar");
 
+	d.nav->addAction (GUI_ACTIONS->p.nav_raise);
 	d.nav->addAction (GUI_ACTIONS->p.nav_first);
 	d.nav->addAction (GUI_ACTIONS->p.nav_previous);
 	d.nav->addAction (GUI_ACTIONS->p.nav_next);
 	d.nav->addAction (GUI_ACTIONS->p.nav_last);
+	d.nav->addAction (GUI_ACTIONS->p.nav_lower);
 
 	SET_GUICLS_NOERR;
 }

@@ -475,6 +475,14 @@ GuiMainWindow::action_delete_dossier (void)
 }
 
 void
+GuiMainWindow::action_nav_raise (void)
+{
+	if (!WARCAB->is_loaded()) return;
+
+	d.dossier->select_parent_item();
+}
+
+void
 GuiMainWindow::action_nav_first (void)
 {
 	if (!WARCAB->is_loaded()) return;
@@ -504,6 +512,14 @@ GuiMainWindow::action_nav_last (void)
 	if (!WARCAB->is_loaded()) return;
 
 	d.dossier->select_last_item();
+}
+
+void
+GuiMainWindow::action_nav_lower (void)
+{
+	if (!WARCAB->is_loaded()) return;
+
+	d.dossier->select_child_item();
 }
 
 void

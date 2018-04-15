@@ -49,10 +49,12 @@ public slots:
 	void	action_delete_battle	(void);
 	void	action_delete_dossier	(void);
 
+	void	action_nav_raise	(void);
 	void	action_nav_first	(void);
 	void	action_nav_previous	(void);
 	void	action_nav_next		(void);
 	void	action_nav_last		(void);
+	void	action_nav_lower	(void);
 
 	void	action_help_reset_gui	(void);
 	void	action_help_about	(void);

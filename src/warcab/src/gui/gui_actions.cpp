@@ -69,10 +69,12 @@ GuiActions::GuiActions (void)
 	ACTION (delete_dossier, "Delete dossier", 0, RID_GUI_ICONS_1_Delete, false);
 
 	/* Navigation actions */
-	ACTION (nav_first, "First record", Qt::CTRL+Qt::Key_Home, RID_GUI_ICONS_1_Undo, true);
-	ACTION (nav_previous, "Previous record", Qt::CTRL+Qt::Key_PageUp, RID_GUI_ICONS_1_Back, true);
-	ACTION (nav_next, "Next record", Qt::CTRL+Qt::Key_PageDown, RID_GUI_ICONS_1_Forward, true);
-	ACTION (nav_last, "Last record", Qt::CTRL+Qt::Key_End, RID_GUI_ICONS_1_Redo, true);
+	ACTION (nav_raise, "Parent record", Qt::CTRL+Qt::SHIFT+Qt::Key_PageUp, RID_GUI_ICON_RAISE, true);
+	ACTION (nav_first, "First record", Qt::CTRL+Qt::Key_Home, RID_GUI_ICON_FIRST, true);
+	ACTION (nav_previous, "Previous record", Qt::CTRL+Qt::Key_PageUp, RID_GUI_ICON_LEFT, true);
+	ACTION (nav_next, "Next record", Qt::CTRL+Qt::Key_PageDown, RID_GUI_ICON_RIGHT, true);
+	ACTION (nav_last, "Last record", Qt::CTRL+Qt::Key_End, RID_GUI_ICON_LAST, true);
+	ACTION (nav_lower, "Child record", Qt::CTRL+Qt::SHIFT+Qt::Key_PageDown, RID_GUI_ICON_LOWER, true);
 
 	/* Help actions */
 	ACTION (help_reset_gui, "Reset GUI", 0, RID_XPM_TEST, true);
@@ -130,9 +132,11 @@ GuiActions::enable_dossier_actions (bool b)
 	p.delete_battle->setEnabled (b);
 	p.delete_dossier->setEnabled (b);
 
+	p.nav_raise->setEnabled (b);
 	p.nav_first->setEnabled (b);
 	p.nav_previous->setEnabled (b);
 	p.nav_next->setEnabled (b);
 	p.nav_last->setEnabled (b);
+	p.nav_lower->setEnabled (b);
 
 }

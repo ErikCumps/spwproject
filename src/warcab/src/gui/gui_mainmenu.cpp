@@ -50,10 +50,12 @@ GuiMainMenu::GuiMainMenu (void)
 	/* Create and hook navigation menu */
 	GUINEW (d.nav, QMenu ("Navigation", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<nav> menu");
 
+	d.nav->addAction (GUI_ACTIONS->p.nav_raise);
 	d.nav->addAction (GUI_ACTIONS->p.nav_first);
 	d.nav->addAction (GUI_ACTIONS->p.nav_previous);
 	d.nav->addAction (GUI_ACTIONS->p.nav_next);
 	d.nav->addAction (GUI_ACTIONS->p.nav_last);
+	d.nav->addAction (GUI_ACTIONS->p.nav_lower);
 
 	d.menu->addMenu (d.nav);
 

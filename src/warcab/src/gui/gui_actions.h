@@ -45,10 +45,12 @@ public:
 		QAction		*delete_battle;
 		QAction		*delete_dossier;
 
+		QAction		*nav_raise;
 		QAction		*nav_first;
 		QAction		*nav_previous;
 		QAction		*nav_next;
 		QAction		*nav_last;
+		QAction		*nav_lower;
 
 		QAction		*help_reset_gui;
 		QAction		*help_about;
