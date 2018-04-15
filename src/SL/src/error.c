@@ -783,6 +783,8 @@ SL_ERROR_devpanic (const char *file, unsigned long line, const char *func, char 
 	vsnprintf (buffer, sizeof (buffer) - 1, newfmt, AP);
 	va_end (AP);
 	here = SL_HERE_I_AM_core (file, line, func);
+
+	SetLastError(0);
 	SET_ERR_SYSTEM_ALT0 (SL_ERR_PANIC, here, buffer);
 
 	/* does not return */
