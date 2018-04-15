@@ -272,7 +272,7 @@ WARCABState::add (SPWAW_SAVELIST *list)
 {
 	unsigned long	i, done;
 	SPWAW_SNAPSHOT	*snap;
-	SPWAW_BTURN	*t = NULL;
+	SPWAW_BTURN	*last = NULL;
 	SPWAW_ERROR	arc = SPWERR_OK;
 	SL_ERROR	rc;
 
@@ -285,6 +285,8 @@ WARCABState::add (SPWAW_SAVELIST *list)
 	gp.setRange (0, (2*list->cnt) + 1);
 
 	for (i=done=0; i<list->cnt; i++) {
+		SPWAW_BTURN *t;
+
 		arc = SPWAW_snap_make (list->list[i]->dir, list->list[i]->id, &snap);
 		if (SPWAW_HAS_ERROR (arc)) {
 			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SAVE_FAILED, "SPWAW_snap_make() failed: %s", SPWAW_errstr (arc));
@@ -297,6 +299,8 @@ WARCABState::add (SPWAW_SAVELIST *list)
 			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SAVE_FAILED, "SPWAW_dossier_add() failed: %s", SPWAW_errstr (arc));
 			SPWAW_snap_free (&snap);
 			break;
+		} else {
+			last = t;
 		}
 		gp.inc ();
 
@@ -305,6 +309,12 @@ WARCABState::add (SPWAW_SAVELIST *list)
 
 	if (done) {
 		set_dirty (true);
+
+		refresh_tree();
+		// FIXME: this will only work for the last savegame in the list. Is this intentional?
+		MDLD_TREE_ITEM *item = item_from_turn (last); DEVASSERT (item != NULL);
+		emit was_added (item);
+
 		rc = refresh_savelists ();
 		if (SL_HAS_ERROR (rc)) {
 			RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "WARCAB_refresh_savelists() failed!");
@@ -313,11 +323,6 @@ WARCABState::add (SPWAW_SAVELIST *list)
 
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "failed to add a savegame");
-	} else {
-		refresh_tree();
-		// FIXME: this will only work for the last savegame in the list. Is this intentional?
-		MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
-		emit was_added (item);
 	}
 
 	gp.done ();
@@ -329,7 +334,7 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 {
 	unsigned long	i, done;
 	SPWAW_SNAPSHOT	*snap;
-	SPWAW_BTURN	*t = NULL;
+	SPWAW_BTURN	*last = NULL;
 	SPWAW_ERROR	arc = SPWERR_OK;
 	SL_ERROR	rc;
 
@@ -342,6 +347,8 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 	gp.setRange (0, (2*list->cnt) + 1);
 
 	for (i=done=0; i<list->cnt; i++) {
+		SPWAW_BTURN *t;
+
 		arc = SPWAW_snap_load (list->list[i]->filepath, &snap);
 		if (SPWAW_HAS_ERROR (arc)) {
 			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SNAP_FAILED, "SPWAW_snap_load() failed: %s", SPWAW_errstr (arc));
@@ -354,6 +361,8 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SNAP_FAILED, "SPWAW_dossier_add() failed: %s", SPWAW_errstr (arc));
 			SPWAW_snap_free (&snap);
 			break;
+		} else {
+			last = t;
 		}
 		gp.inc ();
 
@@ -362,6 +371,12 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 
 	if (done) {
 		set_dirty (true);
+
+		refresh_tree();
+		// FIXME: this will only work for the last savegame in the list. Is this intentional?
+		MDLD_TREE_ITEM *item = item_from_turn (last); DEVASSERT (item != NULL);
+		emit was_added (item);
+
 		rc = refresh_savelists ();
 		if (SL_HAS_ERROR (rc)) {
 			RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "WARCAB_refresh_savelists() failed!");
@@ -370,10 +385,6 @@ WARCABState::add (SPWAW_SNAPLIST *list)
 
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SNAP_FAILED, "failed to add a snapshot");
-	} else {
-		refresh_tree();
-		MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
-		emit was_added (item);
 	}
 
 	gp.done ();
