@@ -10,7 +10,7 @@
 #include "gui_dlg_load_savegame.h"
 
 #define	BOX_WIDTH	600
-#define	BOX_HEIGHT	300
+#define	BOX_HEIGHT	400
 #define	BOX_MARGIN	 10
 
 GuiDlgLoadSavegame::GuiDlgLoadSavegame (char *path, SPWAW_SAVELIST *ignore)
@@ -49,7 +49,7 @@ GuiDlgLoadSavegame::GuiDlgLoadSavegame (char *path, SPWAW_SAVELIST *ignore)
 	but_height = d.buttons->height();
 	d.buttons->setGeometry(QRect(BOX_MARGIN, BOX_HEIGHT - BOX_MARGIN - but_height, BOX_WIDTH - 2*BOX_MARGIN, but_height));
 	d.buttons->setOrientation(Qt::Horizontal);
-	d.buttons->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok);
+	d.buttons->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_LOAD_SAVEGAME_INIT_FAILED, "body widget");

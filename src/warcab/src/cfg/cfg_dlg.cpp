@@ -76,7 +76,7 @@ CfgDlg::CfgDlg (void)
 	but_height = d.buttons->height();
 	d.buttons->setGeometry(QRect(BOX_MARGIN, BOX_HEIGHT - BOX_MARGIN - but_height, BOX_WIDTH - 2*BOX_MARGIN, but_height));
 	d.buttons->setOrientation(Qt::Horizontal);
-	d.buttons->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok);
+	d.buttons->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
 
 	/* Create body widget */
 	d.body = new QWidget (this);
