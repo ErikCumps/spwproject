@@ -12,6 +12,17 @@
 #include "utils/ud.h"
 #include "common/internal.h"
 
+void
+sec37_prepare (STRUCT37 *src)
+{
+	GAME_DATA	*data;
+
+	if (!src) return;
+
+	data = &(src->u.d.data);
+	if (sazslen(data->location) == 0) sazsset (data->location, "???");
+}
+
 SPWAW_ERROR
 sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 {
@@ -22,6 +33,8 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 
 	CNULLARG (src); CNULLARG (dst);
 
+	sec37_prepare (&(src->sec37));
+
 	data = &(src->sec37.u.d.data);
 	bp   = &(dst->raw.game.battle);
 	cp   = &(dst->raw.game.campaign);
@@ -30,11 +43,7 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	bp->month = data->Mgame;
 	bp->day   = data->Dgame;
 	bp->hour  = data->Hgame;
-	if (data->location[0] == '\0') {
-		bp->location = STRTAB_add (stab, "???");
-	} else {
-		bp->location = azstrstab (data->location, stab);
-	}
+	bp->location   = azstrstab (data->location, stab);
 	bp->terrain    = data->terrain;
 	bp->weather    = data->weather;
 	bp->visibility = data->vis;

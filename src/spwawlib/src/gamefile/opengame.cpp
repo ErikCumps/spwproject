@@ -251,6 +251,8 @@ setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedat
 	if (!info) return;
 	clear_ptr (info);
 
+	sec37_prepare (gamedata);
+
 	p = strrchr (filename, '\\');
 	if (p) {
 		*p = '\0';
