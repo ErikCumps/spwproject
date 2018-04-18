@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - data definitions.
  *
- * Copyright (C) 2012-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
