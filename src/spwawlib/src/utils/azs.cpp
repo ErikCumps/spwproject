@@ -11,23 +11,45 @@
 #include <spwawlib_api.h>
 #include "common/internal.h"
 
-char *
-azsdup (char *string, DWORD len)
+DWORD
+azslen (char *azs, DWORD size)
 {
 	DWORD	i;
+
+	for (i=0; i<size; i++) if (azs[i] == '\0') break;
+	return (i);
+}
+
+void
+azsclr (char *azs, DWORD size)
+{
+	fill_ptr_core (azs, size, 0);
+}
+
+void
+azsset (char *azs, DWORD size, char *string)
+{
+	azsclr (azs, size);
+
+	if (size <= 1) return;
+
+	snprintf (azs, size - 1, "%s", string);
+}
+
+char *
+azsdup (char *azs, DWORD size)
+{
 	char	*dup;
 
-	if (!string || !len) return (NULL);
+	if (!azs || !size) return (NULL);
 
-	for (i=0; i<len; i++) if (string[i] == '\0') break;
-
-	if (string[i] == '\0')
-		dup = strdup ((const char *)string);
-	else {
-		dup = safe_nmalloc (char, len+1);
+	if (azslen (azs, size) < size) {
+		dup = strdup ((const char *)azs);
+	} else {
+		dup = safe_nmalloc (char, size+1);
 		if (dup) {
-			memcpy (dup, string, len);
-			dup[len] = '\0';
+			memcpy (dup, azs, size);
+			dup[size] = '\0';
 		}
 	}
 
@@ -35,9 +57,9 @@ azsdup (char *string, DWORD len)
 }
 
 void
-azscpy (char *src, char *dst, unsigned int size)
+azscpy (char *src, char *dst, DWORD size)
 {
-	fill_ptr_core (dst, size, 0);
+	azsclr (dst, size);
 
 	if (size <= 1) return;
 

@@ -13,6 +13,7 @@
 #include "utils/error.h"
 #include "utils/log.h"
 #include "utils/utils.h"
+#include "utils/azs.h"
 
 extern bool spwaw_initialized;
 

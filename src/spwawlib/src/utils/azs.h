@@ -10,7 +10,16 @@
 #ifndef	AZS_H
 #define	AZS_H	1
 
-extern char *	azsdup	(char *string, DWORD len);
-extern void	azscpy	(char *src, char *dst, unsigned int size);
+#define sazslen(azs_)		azslen (azs_, sizeof(azs_))
+#define	sazsclr(azs_)		azsclr (azs_, sizeof(azs_))
+#define	sazsset(azs_, string_)	azsset (azs_, sizeof(azs_), string_)
+#define	sazsdup(azs_)		azsdup (azs_, sizeof(azs_))
+#define	sazscpy(src_, dst_)	azscpy (src_, dst_, sizeof(dst_))
+
+extern DWORD	azslen	(char *azs, DWORD size);
+extern void	azsclr	(char *azs, DWORD size);
+extern void	azsset	(char *azs, DWORD size, char *string);
+extern char *	azsdup	(char *azs, DWORD size);
+extern void	azscpy	(char *src, char *dst, DWORD size);
 
 #endif	/* AZS_H */
