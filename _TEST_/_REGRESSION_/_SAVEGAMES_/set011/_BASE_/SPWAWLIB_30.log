@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=30, info=0x0018f8ac)
+game_load_full (dir="_SAVE_", id=30, info=0x0018f8a8)
 open_gamefiles: comment: name="_SAVE_\save030.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save030.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -85,6 +85,7 @@ unpacked section 47: 389 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=26, flag=0x00000001>
 unpacked section 48: 26 bytes -> 80 bytes
+setup_info: fcnt=12, cfcnt=0
 find_formations: player #0
 find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>( TGN's SPWAW 1.0)
 find_formations: [002] FORMATION: P<0> ID<001> L<00001> O<011>(    Med Tank Plt)
