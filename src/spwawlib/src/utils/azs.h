@@ -10,6 +10,7 @@
 #ifndef	AZS_H
 #define	AZS_H	1
 
-extern char *	dupazs	(char *string, DWORD len);
+extern char *	azsdup	(char *string, DWORD len);
+extern void	azscpy	(char *src, char *dst, unsigned int size);
 
 #endif	/* AZS_H */

@@ -60,27 +60,17 @@ fill_ptr_core (void *ptr, unsigned int size, int val)
 	memset ((char *)ptr, val, size);
 }
 
-void
-aszstrcpy_core (char *src, char *dst, unsigned int size)
-{
-	fill_ptr_core (dst, size, 0);
-
-	if (size <= 1) return;
-
-	memcpy (dst, src, size - 1);
-}
-
 char *
-aszstrstab_core (char *src, unsigned int size, STRTAB *stab)
+azstrstab_core (char *src, unsigned int size, STRTAB *stab)
 {
-	char	*buf = NULL, *p;
+	char	*buf, *p;
 
 	if (!src || !size || !stab) return (NULL);
 
-	buf = safe_nmalloc (char, size+1);
+	buf = azsdup (src, size);
 	if (!buf) return (NULL);
 
-	memcpy (buf, src, size); p = STRTAB_add (stab, buf); free (buf);
+	p = STRTAB_add (stab, buf); free (buf);
 
 	return (p);
 }

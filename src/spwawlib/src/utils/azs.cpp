@@ -12,7 +12,7 @@
 #include "common/internal.h"
 
 char *
-dupazs (char *string, DWORD len)
+azsdup (char *string, DWORD len)
 {
 	DWORD	i;
 	char	*dup;
@@ -32,4 +32,14 @@ dupazs (char *string, DWORD len)
 	}
 
 	return (dup);
+}
+
+void
+azscpy (char *src, char *dst, unsigned int size)
+{
+	fill_ptr_core (dst, size, 0);
+
+	if (size <= 1) return;
+
+	memcpy (dst, src, size - 1);
 }
