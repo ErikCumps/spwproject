@@ -213,6 +213,7 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	oobdata = spwoob_data (oob, fel->d.OOB);
 	if (!oobdata) {
 		// This shouldn't happen!
+		log ("INTERNAL ERROR: NO OOB DATA AVAILABLE! (fel->d.OOB = %u)\n", fel->d.OOB);
 		return (0);
 	}
 
@@ -282,6 +283,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	oobdata = spwoob_data (oob, fel->d.OOB);
 	if (!oobdata) {
 		// This shouldn't happen!
+		log ("INTERNAL ERROR: NO OOB DATA AVAILABLE! (fel->d.OOB = %u)\n", fel->d.OOB);
 		return (0);
 	}
 

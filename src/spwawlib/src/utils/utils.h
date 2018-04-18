@@ -19,7 +19,7 @@
 #define	safe_realloc(ptr_, size_)	safe_realloc_core (__FILE__, __LINE__, __FUNCTION__, (void *)ptr_, size_);
 #define	clear_ptr(ptr_)			fill_ptr_core (ptr_, sizeof (*ptr_), 0)
 #define	fill_ptr(ptr_, val_)		fill_ptr_core (ptr_, sizeof (*ptr_), val_)
-#define	azstrcpy(src_, dst_)		sazscpy ((char *)src_, (char *)dst_)
+#define	azstrcpy(src_, dst_)		sazscpy (src_,dst_)
 #define	azstrstab(src_, stab_)		azstrstab_core ((char *)src_, sizeof (src_), stab_)
 
 
