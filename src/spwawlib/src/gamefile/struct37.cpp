@@ -20,7 +20,7 @@ sec37_prepare (STRUCT37 *src)
 	if (!src) return;
 
 	data = &(src->u.d.data);
-	if (sazslen(data->location) == 0) sazsset (data->location, "???");
+	if (sazslen(data->location) == 0) sazsset (data->location, "unknown location");
 }
 
 SPWAW_ERROR
