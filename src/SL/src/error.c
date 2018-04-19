@@ -1,7 +1,7 @@
 /** \file
  * Slay's Library - error handling.
  *
- * Copyright (C) 2001-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2001-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
