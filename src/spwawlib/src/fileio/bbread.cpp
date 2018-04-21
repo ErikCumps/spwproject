@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - file I/O handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -46,9 +46,7 @@ bbread (BBR *bb, char *b)
 
 		int done = read (bb->file.fd, bb->buffer, todo);
 
-#if	IOLOGGING
-		log ("read(fd=%d, len=%d) = %d\n", bb->file.fd, todo, done);
-#endif	/* IOLOGGING */
+		IOLOG3 ("read(fd=%d, len=%d) = %d\n", bb->file.fd, todo, done);
 
 		if (done == -1) {
 			ERROR2 ("failed to read from file (errno=%lu)", bb->file.fd, errno);
@@ -92,9 +90,7 @@ bbread (BBR *bb, char *b, int len, bool noerr)
 
 			done = read (bb->file.fd, bb->buffer, todo);
 
-#if	IOLOGGING
-			log ("read(fd=%d, len=%d) = %d\n", bb->file.fd, todo, done);
-#endif	/* IOLOGGING */
+			IOLOG3 ("read(fd=%d, len=%d) = %d\n", bb->file.fd, todo, done);
 
 			if (done == -1) {
 				if (noerr) {
