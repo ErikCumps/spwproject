@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - file I/O handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -165,6 +165,11 @@ unpack (int fd, DWORD len, void *dst, DWORD size)
 			left -= rl;
 		}
 		done += rl;
+
+		if (!rl) {
+			ERROR0 ("failed to unpack data");
+			break;
+		}
 	}
 
 	sbwrite_stop (sbw);
