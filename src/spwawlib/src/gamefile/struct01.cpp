@@ -349,7 +349,9 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 				ds = 0;
 				while (cnt--) {
-					while ((uel = fel->d.unit_lst[k]) == NULL) k++;
+					while (((uel = fel->d.unit_lst[k]) == NULL) && (k < MAXFORMATIONUNITS)) k++;
+					if (k >= MAXFORMATIONUNITS) break;
+
 
 					/* Unit name match is 1 extra point */
 					if (strncmp (oobdata->udata[uid].name, uel->d.name, SPWAW_AZSNAME) == 0)
