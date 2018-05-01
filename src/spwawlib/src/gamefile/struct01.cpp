@@ -419,8 +419,8 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 }
 
 /* Determines the maximum number of units for the formation identified by the OOB record ID */
-static inline BYTE
-formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid)
+static inline bool
+formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid, BYTE &cnt)
 {
 	SPWOOB_DATA	*oobdata;
 	SPWOOB_FDATA	*data;
@@ -428,10 +428,10 @@ formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid)
 
 	/* If the formation OOB record ID is unknown we cannot make any guesses
 	 * about the maximum number of units the formation may contain! */
-	if (!OOBrid) return (0xFF);
+	if (!OOBrid) return (false);
 
 	oobdata = spwoob_data (OOB, (BYTE)(OOBid & 0xFF));
-	if (!oobdata) return (0);
+	if (!oobdata) return (false);
 
 	data = &(oobdata->fdata[OOBrid]);
 
@@ -441,7 +441,10 @@ formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid)
 		if ((data->unit_ids[i] == 0) || (data->unit_ids[i] >= 1000)) continue;
 		max += data->unit_cnt[i];
 	}
-	return ((BYTE)(max & 0xFF));
+	if (max > MAXFORMATIONUNITS) max = MAXFORMATIONUNITS;
+
+	cnt = (BYTE)(max & 0xFF);
+	return (true);
 }
 
 /* Determines the OOB record ID for all the formations in the formation list */
@@ -490,7 +493,7 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			fel->d.OOBrid = search_oobrid_extensive (fel, OOB, date);
 		}
 
-		fel->d.unit_cnt = formation_unitcount(OOB, fel->d.OOB, fel->d.OOBrid);
+		formation_unitcount (OOB, fel->d.OOB, fel->d.OOBrid, fel->d.unit_cnt);
 
 		fel = fel->l.next;
 	}
