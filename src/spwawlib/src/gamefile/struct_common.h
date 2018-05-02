@@ -29,9 +29,13 @@ typedef struct s_FEL FEL;
 typedef enum e_UTYPE {
 	UTYPE_UNIT = 0,		/* Unit				*/
 	UTYPE_CREW,		/* Crew				*/
-	UTYPE_SPAU		/* Special Attached Unit	*/
+	UTYPE_SPAU,		/* Special Attached Unit	*/
+	UTYPE_STARTCODE = UTYPE_UNIT,
+	UTYPE_LASTCODE = UTYPE_SPAU
 } UTYPE;
+extern const char *UTYPE2str (UTYPE type);
 
+/* Intermediate unit element - used during formation/unit detection */
 typedef struct s_UEL {
 	struct s_list {
 		UEL	*prev;					/* Unit list: previous unit			*/
@@ -69,6 +73,8 @@ typedef	struct s_ULIST {
 } ULIST;
 
 void	init_ULIST	(ULIST &ul);
+void	dump_ULIST	(ULIST &ul);
+void	dump_UEL	(UEL *uel, char *prefix);
 UEL *	reserve_UEL	(ULIST &ul);
 bool	commit_UEL	(ULIST &ul, UEL *uel);
 void	drop_UEL	(ULIST &ul, UEL *uel);
@@ -108,6 +114,8 @@ typedef	struct s_FLIST {
 } FLIST;
 
 void	init_FLIST	(FLIST &fl);
+void	dump_FLIST	(FLIST &fl);
+void	dump_FEL	(FEL *fel, char *prefix);
 FEL *	reserve_FEL	(FLIST &fl);
 bool	commit_FEL	(FLIST &fl, FEL *fel);
 void	drop_FEL	(FLIST &fl, FEL *fel);
@@ -126,5 +134,6 @@ typedef struct s_FULIST {
 } FULIST;
 
 void	init_FULIST	(FULIST &l);
+void	dump_FULIST	(FULIST &l);
 
 #endif	/* INTERNAL_STRUCT_COMMON_H */

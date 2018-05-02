@@ -30,7 +30,7 @@
 //	+ the number of units in a formation must match its OOB data
 //	+ however, in some cases the OOB record ID for the formation is 0
 //	+ there can be no units with duplicate formation/subformation IDs
-//	+ crews come after their associated units
+//	+ crews may be saved before or after their associated units
 //	+ crews must have a valid associated unit
 //	+ units must have either no crew or a valid associated crew
 //	+ units are saved in any order
@@ -41,6 +41,7 @@
 //
 // What seem to be valid assumptions:
 //	+ units with a formation sub-ID >= 60 seem to be special attached units
+//	+ units with a formation sub-ID >= 110 seem to be crews of special attached units
 //
 // With the OOB record ID of the formation, units can be verified with their
 // unit class ID - it should match the corresponding unit class ID recorded in
@@ -69,14 +70,21 @@
 /* Convenience macro to build a simple comparable timestamp from a year/month date */
 #define	SIMPLE_STAMP(yr_,mo_) ((yr_)*12+((mo_)-1))
 
-/* Determines if a unit is a unit (or a crew) */
+/* Determines if a unit is a unit (or a crew/special attached unit) */
 static inline bool
-is_this_a_unit (UNIT *data, USHORT idx)
+is_this_a_UNIT (UNIT *data, USHORT idx)
 {
-	return ((data[idx].crew == SPWAW_BADIDX) || (data[idx].crew > idx));
+	return (data[idx].minform < CREWFSID);
 }
 
-/* Builds a list of all te candidate units */
+/* Determines if a unit is a special attached unit (or a crew/regular unit) */
+static inline bool
+is_this_a_SPAU (UNIT *data, USHORT idx)
+{
+	return ((data[idx].minform >= SPAUFSID) && (data[idx].minform < SPAUCREWFSID));
+}
+
+/* Builds a list of all the candidate units */
 static SPWAW_ERROR
 find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful)
 {
@@ -85,7 +93,7 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 	UEL	*uel;
 	FEL	*fel;
 
-	log ("find_candidate_units: player #%u\n", player);
+	UFDLOG1 ("find_candidate_units: player #%u\n", player);
 
 	init_ULIST (ful.ul);
 
@@ -107,7 +115,7 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		uel->d.OOB    = data[i].OOBid;
 		uel->d.OOBrid = data[i].OOBnum;
 
-		log ("find_candidate_units: [%3.3u] F[%3.3u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> (%16.16s) ",
+		UFDLOG7 ("find_candidate_units: [%3.3u] F[%3.3u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FRID, uel->d.FSID,
 			data[i].crew, data[i].leader, data[i].OOBid,
 			name);
@@ -117,7 +125,7 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 
 		// Is the formation valid?
 		if (!fel) {
-			log ("SKIPPED: invalid formation reference\n");
+			UFDLOG0 ("SKIPPED: invalid formation reference\n");
 			continue;
 		}
 
@@ -128,19 +136,19 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		uel->d.LRID = data[i].loader;
 
 		// Is this a unit or crew/special attached unit?
-		if ((uel->d.FSID < SPECIALUNITFSID) && is_this_a_unit (data, i))
+		if (is_this_a_UNIT (data, i))
 		{
 			// This is a unit.
-			log ("UNIT #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
+			UFDLOG3 ("UNIT #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
 
 			// There can be no units with duplicate formation/subformation IDs
 			if (fel->d.unit_lst[uel->d.FSID]) {
-				log ("SKIPPED: duplicate formation/subformation ID\n");
+				UFDLOG0 ("SKIPPED: duplicate formation/subformation ID\n");
 				continue;
 			}
 
 			// This is a candidate unit.
-			log ("CANDIDATE\n");
+			UFDLOG0 ("CANDIDATE\n");
 
 			// Keep track of its subformation ID for duplicate detection
 			if (!add_unit_to_formation (fel, uel)) {
@@ -148,37 +156,18 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 			}
 		} else {
 			// Is this a crew or a special attached unit?
-			if (!is_this_a_unit (data, i))
+			if (!is_this_a_SPAU (data, i))
 			{
-				// This is a crew.
-				log ("CREW #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
-
-				// A crew member must point to a valid unit
-				USHORT unit = data[i].crew;
-				UEL *parent = lookup_ULIST (ful.ul, unit);
-				if (!parent) {
-					log ("SKIPPED: invalid crew parent unit\n");
-					continue;
-				}
-
-				// The parent unit must have a crew record ID pointing back to the crew member
-				USHORT crew = data[unit].crew;
-				if (crew != i) {
-					log ("SKIPPED: invalid crew parent unit linkage\n");
-					continue;
-				}
-
 				// This is a candidate crew.
-				log ("CANDIDATE\n");
+				UFDLOG3 ("CREW #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
 
-				if (!add_crew_to_unit (uel, parent)) {
-					RWE (SPWERR_BADSAVEDATA, "add_crew_to_unit() failed");
-				}
+				UFDLOG0 ("CANDIDATE\n");
+				uel->d.type = UTYPE_CREW;
 			} else {
 				// This is a candidate special attached unit.
-				log ("SPAU #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
+				UFDLOG3 ("SPAU #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
 
-				log ("CANDIDATE\n");
+				UFDLOG0 ("CANDIDATE\n");
 				uel->d.type = UTYPE_SPAU;
 			}
 		}
@@ -186,7 +175,55 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 			RWE (SPWERR_BADSAVEDATA, "commit_UEL() failed");
 		}
 	}
-	log ("find_candidate_units: %u candidates\n", ful.ul.cnt);
+	UFDLOG1 ("find_candidate_units: %u candidates\n", ful.ul.cnt);
+
+	return (SPWERR_OK);
+}
+
+/* Links up all candidate crews */
+static SPWAW_ERROR
+link_candidate_crews (FULIST &ful, UNIT *data)
+{
+	UEL	*p;
+	UEL	*uel;
+
+	// Link all CREWs
+	p = ful.ul.head;
+	while (p)
+	{
+		uel = p; p = p->l.next;
+		if (uel->d.type != UTYPE_CREW) continue;
+
+		UFDLOG5 ("link_candidate_crews: [%3.3u] CREW<%5.5u> F<%3.3u,%3.3u> (%16.16s) ",
+			uel->d.RID, data[uel->d.RID].crew, uel->d.FMID, uel->d.FSID, uel->d.name);
+
+		// A crew member must point to a valid unit
+		USHORT unit = data[uel->d.RID].crew;
+		UEL *parent = lookup_ULIST (ful.ul, unit);
+		if (!parent) {
+			UFDLOG0 ("DROPPED: invalid crew parent unit\n");
+			goto drop_crew;
+		}
+
+		// The parent unit must have a crew record ID pointing back to the crew member
+		USHORT crew = data[unit].crew;
+		if (crew != uel->d.RID) {
+			UFDLOG0 ("DROPPED: invalid crew parent unit linkage\n");
+			goto drop_crew;
+		}
+
+		if (!add_crew_to_unit (uel, parent)) {
+			RWE (SPWERR_BADSAVEDATA, "add_crew_to_unit() failed");
+		}
+
+		log ("LINKED\n");
+
+		continue;
+
+drop_crew:
+		drop_UEL (ful.ul, uel);
+		continue;
+	}
 
 	return (SPWERR_OK);
 }
@@ -205,7 +242,7 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	SPWAW_TIMESTAMP	s_stmp, e_stmp;
 	bool		mnad;
 
-	log ("  >>> SEARCH OOBRID - BY NAME: F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
+	UFDLOG4 ("  >>> SEARCH OOBRID - BY NAME: F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
 		fel->d.FID, fel->d.name, date.year, date.month);
 
 	stamp = SIMPLE_STAMP (date.year, date.month);
@@ -213,7 +250,7 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	oobdata = spwoob_data (oob, fel->d.OOB);
 	if (!oobdata) {
 		// This shouldn't happen!
-		log ("INTERNAL ERROR: NO OOB DATA AVAILABLE! (fel->d.OOB = %u)\n", fel->d.OOB);
+		log ("search_oobrid_by_name: INTERNAL ERROR: NO OOB DATA AVAILABLE! (fel->d.OOB = %u)\n", fel->d.OOB);
 		return (0);
 	}
 
@@ -238,24 +275,24 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			if (score < 2) { cnt++; }
 		}
 
-		log ("    OOB #%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - ",
+		UFDTRACE6 ("    OOB #%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - ",
 			i, oobdata->fdata[i].name,
 			s_date.year, s_date.month,
 			e_date.year, e_date.month);
 		if (mnad) {
-			log ("MATCH: name and date\n");
+			UFDTRACE0 ("MATCH: name and date\n");
 		} else {
-			log ("MATCH: name only\n");
+			UFDTRACE0 ("MATCH: name only\n");
 		}
 	}
 
 	if (cnt == 0) {
-		log ("  NO MATCH FOUND!\n");
+		UFDTRACE0 ("  NO MATCH FOUND!\n");
 	} else if (cnt > 1) {
-		log ("  TOO MANY MATCHES FOUND!\n");
+		UFDTRACE0 ("  TOO MANY MATCHES FOUND!\n");
 	}
 
-	log ("  <<< rv=%u\n", rv);
+	UFDLOG1 ("  <<< rv=%u\n", rv);
 	return (rv);
 }
 
@@ -276,23 +313,22 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	SPWAW_TIMESTAMP	s_stmp, e_stmp;
 	UEL		*uel;
 
-	log ("  >>> SEARCH OOBRID - EXTENSIVE\n");
+	UFDLOG4 ("  >>> SEARCH OOBRID - EXTENSIVE: F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
+		fel->d.FID, fel->d.name, date.year, date.month);
 
 	stamp = SIMPLE_STAMP (date.year, date.month);
 
 	oobdata = spwoob_data (oob, fel->d.OOB);
 	if (!oobdata) {
 		// This shouldn't happen!
-		log ("INTERNAL ERROR: NO OOB DATA AVAILABLE! (fel->d.OOB = %u)\n", fel->d.OOB);
+		log ("search_oobrid_extensive: INTERNAL ERROR: NO OOB DATA AVAILABLE! (fel->d.OOB = %u)\n", fel->d.OOB);
 		return (0);
 	}
 
-	log ("  F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
-		fel->d.FID, fel->d.name, date.year, date.month);
 	for (BYTE i=0; i<MAXFORMATIONUNITS; i++) {
 		if ((uel = fel->d.unit_lst[i]) == NULL) continue;
 		uel->d.OOBtype = oobdata->udata[uel->d.OOBrid].type;
-		log ("  U<%3.3u> F<%3.3u,%3.3u> O<%3.3u> UT<%3.3u> <%16.16s>\n",
+		UFDTRACE6 ("  U<%3.3u> F<%3.3u,%3.3u> O<%3.3u> UT<%3.3u> <%16.16s>\n",
 			uel->d.RID, uel->d.FMID, uel->d.FSID,
 			uel->d.OOBrid, uel->d.OOBtype, uel->d.name);
 	}
@@ -300,7 +336,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	for (BYTE i=0; i<SPWOOB_FCNT; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
-
+		
 		s = 0;
 
 		/* Formation type name match is 1 point */
@@ -317,7 +353,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			ds += 2;
 		}
 
-		log ("  > OOB #%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - DS=%d\n",
+		UFDTRACE7 ("  > OOB #%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - DS=%d\n",
 			i, oobdata->fdata[i].name,
 			s_date.year, s_date.month,
 			e_date.year, e_date.month,
@@ -340,10 +376,11 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 				SPWAW_set_date (e_date, oobdata->udata[uid].end_yr, 12);
 				e_stmp = SIMPLE_STAMP (e_date.year, e_date.month);
 
-				log ("  > + UNIT #%2.2u id=%4.4u cnt=%2.2u class=%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u",
+				UFDTRACE5 ("  > + UNIT #%2.2u id=%4.4u cnt=%2.2u class=%3.3u <%16.16s>",
 					j, uid, cnt,
 					oobdata->udata[uid].type,
-					oobdata->udata[uid].name,
+					oobdata->udata[uid].name);
+				UFDTRACE4 (" from=%4.4u/%2.2u to=%4.4u/%2.2u",
 					s_date.year, s_date.month,
 					e_date.year, e_date.month);
 
@@ -351,7 +388,6 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 				while (cnt--) {
 					while (((uel = fel->d.unit_lst[k]) == NULL) && (k < MAXFORMATIONUNITS)) k++;
 					if (k >= MAXFORMATIONUNITS) break;
-
 
 					/* Unit name match is 1 extra point */
 					if (strncmp (oobdata->udata[uid].name, uel->d.name, SPWAW_AZSNAME) == 0)
@@ -374,7 +410,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 					k++;
 				}
 
-				log (" - DS=%d, k=%u\n", ds, k);
+				UFDTRACE2 (" - DS=%d, k=%u\n", ds, k);
 
 				s += ds;
 			} else {
@@ -393,27 +429,31 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 					ds -= 1;
 				}
 
-				log ("  > + FORM #%2.2u id=%4.4u cnt=%2.2u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - DS=%d\n",
-					i, fid, cnt, oobdata->fdata[fid].name,
+				UFDTRACE4 ("  > + FORM #%2.2u id=%4.4u cnt=%2.2u <%16.16s>",
+					i, fid, cnt, oobdata->fdata[fid].name);
+				UFDTRACE4 (" from=%4.4u/%2.2u to=%4.4u/%2.2u",
 					s_date.year, s_date.month,
-					e_date.year, e_date.month,
+					e_date.year, e_date.month);
+				UFDTRACE1 (" - DS=%d\n",
 					ds);
 
 				s += ds;
 			}
 			j++;
 		}
-		log ("    SUGGESTED: #%3.3u <%16.16s>, score: %d, uc: %u\n", i, oobdata->fdata[i].name, s, k);
+		UFDTRACE4 ("    SUGGESTED: #%3.3u <%16.16s>, score: %d, uc: %u\n",
+			i, oobdata->fdata[i].name, s, k);
 
 		if (s > score) {
-			log ("  ++SELECTED: current best score %d (previous %d)\n", s, score);
+			UFDTRACE2 ("  ++SELECTED: current best score %d (previous %d)\n",
+				s, score);
 			rv = i;
 			score = s;
 		}
 
 	}
 
-	log ("  <<< rv=%u\n", rv);
+	UFDLOG1 ("  <<< rv=%u\n", rv);
 	return (rv);
 
 }
@@ -460,8 +500,11 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 	{
 		fel = p; p = p->l.next;
 
+		UFDLOG5 ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u> (%16.16s)\n",
+			fel->d.player, fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
+
 		if (!fel->d.unit_cnt) {
-			log ("no units recorded for formation - dropping formation!\n");
+			UFDTRACE0 ("no units recorded for formation - dropping formation!\n");
 			drop_FEL (ful.fl, fel);
 			continue;
 		}
@@ -471,15 +514,12 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			ldru = ldru->d.link.parent;
 		}
 		if (!ldru) {
-			log ("no leader unit recorded for formation - dropping formation!\n");
+			UFDTRACE0 ("no leader unit recorded for formation - dropping formation!\n");
 			drop_FEL (ful.fl, fel);
 			continue;
 		}
 
 		fel->d.OOB = ldru->d.OOB;
-
-		log ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u> (%16.16s)\n",
-			fel->d.player, fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
 
 		if (fel->d.OOBrid == 0) {
 			// If there is no recorded OOB record ID,
@@ -535,25 +575,25 @@ verify_candidate_units (FULIST &ful)
 		uel = p; p = p->l.next;
 		if (uel->d.type != UTYPE_UNIT) continue;
 
-		log ("verify_candidate_units: [%3.3u] UNIT: F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG4 ("verify_candidate_units: [%3.3u] UNIT: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		// Drop all units without a formation reference
 		fel = uel->d.formation;
 		if (!fel) {
-			log ("DROPPED: invalid formation reference\n");
+			UFDLOG0 ("DROPPED: invalid formation reference\n");
 			goto drop_unit;
 		}
 
 		// Drop all units with an invalid OOB ID
 		if (uel->d.OOB != fel->d.OOB) {
-			log ("DROPPED: invalid OOB ID\n");
+			UFDLOG0 ("DROPPED: invalid OOB ID\n");
 			goto drop_unit;
 		}
 
 		// Never drop units that are leaders of their formation
 		if (uel->d.RID == fel->d.leader) {
-			log ("ACCEPTED - LEADER\n");
+			UFDLOG0 ("ACCEPTED - LEADER\n");
 			goto accept_unit;
 		}
 
@@ -563,15 +603,15 @@ verify_candidate_units (FULIST &ful)
 		// * the unit is a verified loader (if it has loaded an accepted unit or crew)
 		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
 			if (uel->d.RID <= max_urid) {
-				log ("ACCEPTED - WILDCARD\n");
+				UFDLOG0 ("ACCEPTED - WILDCARD\n");
 				goto accept_unit;
 			} else {
-				log ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
+				UFDLOG0 ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
 				goto postpone_unit;
 			}
 		}
 
-		log ("ACCEPTED\n");
+		UFDLOG0 ("ACCEPTED\n");
 
 accept_unit:
 		// Mark the indicated loader unit as verified
@@ -597,12 +637,12 @@ postpone_unit:
 		uel = p; p = p->l.next;
 		if (uel->d.type != UTYPE_CREW) continue;
 
-		log ("verify_candidate_units: [%3.3u] CREW: F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG4 ("verify_candidate_units: [%3.3u] CREW: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		// Drop all crews without a parent unit
 		if (!uel->d.link.parent) {
-			log ("DROPPED: invalid unit reference\n");
+			UFDLOG0 ("DROPPED: invalid unit reference\n");
 			goto drop_crew;
 		}
 
@@ -627,10 +667,10 @@ drop_crew:
 		uel = p; p = p->l.next;
 		if (uel->d.type != UTYPE_SPAU) continue;
 
-		log ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG5 ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, "SPAU", uel->d.FMID, uel->d.FSID, uel->d.name);
 
-		log ("ACCEPTED\n");
+		UFDLOG0 ("ACCEPTED\n");
 	}
 
 	// Finally perform a verified loader acceptance test for those units that require it
@@ -640,13 +680,13 @@ drop_crew:
 		uel = p; p = p->l.next;
 		if (!uel->d.needvrfldrtst) continue;
 
-		log ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG5 ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, "VLAT", uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		if (uel->d.vrfloader) {
-			log ("ACCEPTED\n");
+			UFDLOG0 ("ACCEPTED\n");
 		} else {
-			log ("DROPPED: not a verified loader unit\n");
+			UFDLOG0 ("DROPPED: not a verified loader unit\n");
 			drop_UEL (ful.ul, uel);
 		}
 	}
@@ -660,9 +700,13 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWO
 {
 	SPWAW_ERROR	rc;
 
-	// Step 1: find all candidate units
+	// Step 1.a: find all candidate units
 	rc = find_candidate_units (data, start, stop, player, ful);
 	ROE ("find_candidate_units()");
+
+	// Step 1.b: link up all candidate crews
+	rc = link_candidate_crews (ful, data);
+	ROE ("verify_candidate_crews()");
 
 	// Early exit if no units are found at all
 	if (ful.ul.cnt == 0) return (SPWERR_OK);
@@ -675,7 +719,9 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWO
 	rc = verify_candidate_units (ful);
 	ROE ("verify_candidate_units()");
 
-	log ("unitcount: ul.cnt=%u\n", ful.ul.cnt);
+	// Report the results
+	UFDLOG1 ("unitcount: ul.cnt=%u\n", ful.ul.cnt);
+	dump_FULIST (ful);
 
 	return (SPWERR_OK);
 }

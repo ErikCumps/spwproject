@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -47,13 +47,64 @@ load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	return (SPWERR_OK);
 }
 
+/* Unit type names */
+static const char *UTYPE_strings[UTYPE_LASTCODE+1] = {
+	"UNIT",
+	"CREW",
+	"SPAU"
+};
 
+/* Returns unit type name */
+const char *
+UTYPE2str (UTYPE type)
+{
+	if ((type < UTYPE_STARTCODE) || (type > UTYPE_LASTCODE)) return ("???");
+	return (UTYPE_strings[type]);
+}
 
 /* Initializes a unit list */
 void
 init_ULIST (ULIST &ul)
 {
 	memset (&ul, 0, sizeof(ul));
+}
+
+/* Dumps a unit list */
+void
+dump_ULIST (ULIST &ul)
+{
+	UEL	*p, *uel;
+
+	UFDTRACE5 ("ULIST 0x%8.8x: { { s.list=0x%8.8x, s.nidx=%hu }, cnt=%hu, head=0x%8.8x }\n",
+		&ul, &(ul.s.list), ul.s.nidx, ul.cnt, ul.head);
+
+	p = ul.head;
+	while (p)
+	{
+		uel = p; p = p->l.next;
+
+		dump_UEL (uel, uel->d.formation ? "    " : "!!! ");
+	}
+}
+
+/* Dumps a unit element */
+void
+dump_UEL (UEL *uel, char *prefix)
+{
+	UFDTRACE1 ("%s", prefix ? prefix : "    ");
+
+	UFDTRACE3 ("[%5.5u] (%16.16s) %4.4s",
+		uel->d.RID, uel->d.name, UTYPE2str(uel->d.type));
+	UFDTRACE3 (" loader<%5.5u> vrf=%s vrfneed=%s ",
+		uel->d.LRID, uel->d.vrfloader ? "Y" : "N", uel->d.needvrfldrtst ? "Y" : "N");
+	UFDTRACE2 (" OOB %3.3u: [%3.3u]",
+		uel->d.OOB, uel->d.OOBrid);
+	UFDTRACE5 (" F[%5.5u]<%5.5u,%5.5u> %s[%5.5u]",
+		uel->d.FRID, uel->d.FMID, uel->d.FSID,
+		uel->d.formation ? "ptr" : "nil", uel->d.formation ? uel->d.formation->d.RID : 0xFFFF);
+	UFDTRACE4 (" link crew=%s[%5.5u], parent=%s[%5.5u]\n",
+		uel->d.link.crew ? "ptr" : "nil", uel->d.link.crew ? uel->d.link.crew->d.RID : 0xFFFF,
+		uel->d.link.parent ? "ptr" : "nil", uel->d.link.parent ? uel->d.link.parent->d.RID : 0xFFFF);
 }
 
 /* Reserves the next available element for the unit list */
@@ -142,6 +193,41 @@ init_FLIST (FLIST &fl)
 	memset (&fl, 0, sizeof(fl));
 }
 
+/* Dumps a formation list */
+void
+dump_FLIST (FLIST &fl)
+{
+	FEL	*p, *fel;
+
+	UFDTRACE5 ("FLIST 0x%8.8x: { { s.list=0x%8.8x, s.nidx=%hu }, cnt=%hu, head=0x%8.8x }\n",
+		&fl, &(fl.s.list), fl.s.nidx, fl.cnt, fl.head);
+
+	p = fl.head;
+	while (p)
+	{
+		fel = p; p = fel->l.next;
+
+		dump_FEL (fel, "    ");
+	}
+}
+
+void
+dump_FEL (FEL *fel, char *prefix)
+{
+	UFDTRACE1 ("%s", prefix ? prefix : "    ");
+
+	UFDTRACE6 ("[%5.5u] (%16.16s) P<%3.3u> L<%5.5u> status=%3.3u units=%3.3u",
+		fel->d.RID, fel->d.name, fel->d.player, fel->d.leader, fel->d.status, fel->d.unit_cnt);
+	UFDTRACE4 (" OOB %3.3u: [%3.3u] FID<%5.5u> RAW<%5.5u>\n",
+		fel->d.OOB, fel->d.OOBrid, fel->d.FID, fel->d.rawFID);
+	for (BYTE i=0; i<fel->d.unit_cnt; i++) {
+		UFDTRACE4 ("    %s [%3.3u] %s[%5.5u]\n",
+			fel->d.unit_lst[i] ? "   " : "---",
+			i,
+			fel->d.unit_lst[i] ? "ptr" : "nil",
+			fel->d.unit_lst[i] ? fel->d.unit_lst[i]->d.RID : 0xFFFF);
+	}
+}
 /* Reserves the next available element for the formation list */
 FEL *
 reserve_FEL (FLIST &fl)
@@ -248,7 +334,6 @@ add_unit_to_formation (FEL *fel, UEL *uel)
 
 	fel->d.unit_lst[uel->d.FSID] = uel;
 	fel->d.unit_cnt++;
-
 	uel->d.formation = fel;
 
 	return (true);
@@ -261,4 +346,12 @@ init_FULIST (FULIST &l)
 {
 	init_FLIST (l.fl);
 	init_ULIST (l.ul);
+}
+
+/* Dumps a combined formation/unit list */
+void
+dump_FULIST (FULIST &l)
+{
+	dump_FLIST (l.fl);
+	dump_ULIST (l.ul);
 }

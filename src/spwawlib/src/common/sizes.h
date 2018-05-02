@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame size definitions.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -115,9 +115,15 @@
 
 /* Maximum supported number of units in a single formation.
  * Note: this is an arbitrary number - it could be anything... */
-#define	MAXFORMATIONUNITS	16
+#define	MAXFORMATIONUNITS	64
 
-/* Starting minor formation number for crews and special attached units */
-#define	SPECIALUNITFSID		50
+/* Starting minor formation number for crews */
+#define	CREWFSID		50
+
+/* Starting minor formation number for special attached units */
+#define	SPAUFSID		60
+
+/* Starting minor formation number for crews of special attached units */
+#define	SPAUCREWFSID		110
 
 #endif	/* INTERNAL_SIZES_H */

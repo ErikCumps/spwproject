@@ -20,7 +20,7 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 	int	seen[FORMCOUNT];
 	USHORT	i;
 
-	log ("find_formations: player #%u\n", player);
+	UFDLOG1 ("find_formations: player #%u\n", player);
 
 	memset (seen, 0, sizeof(seen));
 
@@ -29,20 +29,20 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 	{
 		if (src[i].leader == SPWAW_BADIDX) {
 			// skipped: no leader
-			log ("find_formations: [%3.3u] SKIPPED (no leader)\n", i);
+			UFDTRACE1 ("find_formations: [%3.3u] SKIPPED (no leader)\n", i);
 			continue;
 		}
 
 		if (src[i].player != player) {
 			// skipped: wrong player
-			//log ("find_formations: [%3.3u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
+			UFDTRACE2 ("find_formations: [%3.3u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
 			continue;
 		}
 
 
 		if (seen[src[i].ID] != 0) {
 			// skipped: duplicate formation ID
-			//log ("find_formations: [%3.3u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
+			UFDTRACE2 ("find_formations: [%3.3u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
 			continue;
 		}
 
@@ -57,7 +57,7 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 		fel->d.status = src[i].status;
 		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
 
-		log ("find_formations: [%3.3u] FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u>(%16.16s)\n",
+		UFDLOG6 ("find_formations: [%3.3u] FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u>(%16.16s)\n",
 			i, src[i].player, src[i].ID, src[i].leader, src[i].OOBrid, src[i].name);
 
 		if (!commit_FEL (fl, fel)) {
@@ -66,7 +66,7 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 
 		seen[src[i].ID] = 1;
 	}
-	log ("find_formations: cnt=%u\n", fl.cnt);
+	UFDLOG1 ("find_formations: cnt=%u\n", fl.cnt);
 
 	return (SPWERR_OK);
 }
