@@ -327,7 +327,7 @@ game_load_full (const char *dir, unsigned int id, GAMEINFO *info)
 		freegame (&data);
 	}
 
-	if (data) {
+	if (data && info) {
 		setup_info (info, game.dat_name, game.dat_date, &(data->sec37), &(data->cmt), &(data->sec35));
 		data->type = info->type;
 	}
