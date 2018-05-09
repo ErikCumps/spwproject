@@ -258,7 +258,7 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 		}
 
 		if (src->name == NULL) {
-			if (src->FID == 0) {
+			if (dat->type == SPWOOB_FTYPE_FHQ) {
 				memset (buf, 0, sizeof (buf));
 				snprintf (buf, sizeof (buf) - 1, "%s HQ", ptr->people);
 				src->name = STRTAB_add (stab, buf);

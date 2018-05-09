@@ -87,14 +87,15 @@ build_formations (FORMATION *src, BYTE player, FLIST &fl)
 }
 
 static SPWAW_ERROR
-add_formation (USHORT rid, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab)
+add_formation (USHORT rid, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab, SPWOOB_FDATA *oob)
 {
 	SPWAW_UD		*UD;
 
 	dst->RID	= rid;
 	dst->FID	= src->ID - (BYTE)start;
 
-	if ((dst->FID != 0) && (src->name[0] != '\0')) {
+	// Do not copy the names of force HQ formations, these names will be generated later
+	if ((oob && (oob[src->OOBrid].type != SPWOOB_FTYPE_FHQ)) && (src->name[0] != '\0')) {
 		dst->name = azstrstab (src->name, stab);
 	} else {
 		dst->name = NULL;
@@ -120,7 +121,7 @@ add_formation (USHORT rid, FORMATION *src, USHORT start, SPWAW_SNAP_OOB_FELRAW *
 }
 
 static SPWAW_ERROR
-add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab, USHORT start)
+add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab, SPWOOB *oob, USHORT start)
 {
 	SPWAW_ERROR	rc;
 	FEL		*p;
@@ -137,7 +138,7 @@ add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *sta
 	while (p) {
 		rid = p->d.RID;
 		src[rid].OOBrid = p->d.OOBrid;
-		rc = add_formation (rid, &src[rid], dst->start, &(dst->raw[idx]), stab);
+		rc = add_formation (rid, &src[rid], dst->start, &(dst->raw[idx]), stab, oob ? oob->data[p->d.OOB]->fdata : NULL);
 		ERRORGOTO ("add_formation()", handle_error);
 
 		p = p->l.next; idx++;
@@ -173,11 +174,11 @@ sec35_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
 }
 
 static SPWAW_ERROR
-sec35_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, FLIST &fl, bool player)
+sec35_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, SPWOOB *oob, FLIST &fl, bool player)
 {
 	SPWAW_ERROR	rc;
 
-	rc = add_formations (src, dst, fl, stab, player ? FORMP1START : FORMP2START);
+	rc = add_formations (src, dst, fl, stab, oob, player ? FORMP1START : FORMP2START);
 	ROE ("add_formations()");
 
 	rc = build_fridx (dst);
@@ -193,10 +194,10 @@ sec35_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 
 	CNULLARG (src); CNULLARG (dst); CNULLARG (stab);
 
-	rc = sec35_save_formations (src->sec35.u.d.formations, &(dst->raw.OOBp1.formations), stab, ful1.fl, true);
+	rc = sec35_save_formations (src->sec35.u.d.formations, &(dst->raw.OOBp1.formations), stab, dst->oobdat, ful1.fl, true);
 	ROE ("sec35_save_formations(OOBp1)");
 
-	rc = sec35_save_formations (src->sec35.u.d.formations, &(dst->raw.OOBp2.formations), stab, ful2.fl, false);
+	rc = sec35_save_formations (src->sec35.u.d.formations, &(dst->raw.OOBp2.formations), stab, dst->oobdat, ful2.fl, false);
 	ROE ("sec35_save_formations(OOBp2)");
 
 	return (SPWERR_OK);
