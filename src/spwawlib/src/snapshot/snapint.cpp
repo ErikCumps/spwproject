@@ -541,9 +541,6 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 	cp = &(oob->core); clear_ptr (cp);
 	sp = &(oob->support); clear_ptr (sp);
 
-	/* OOB force leader */
-	bp->leader = &(bp->units.list[0]);
-
 	/* Reset formation unit counts and core status */
 	for (i=0; i<bp->formations.cnt; i++) {
 		p.fp = &(bp->formations.list[i]);
@@ -703,6 +700,17 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		while (q.up->data.loaded == true) q.up = q.up->data.loader.up;
 		p.up->data.loader.up = q.up;
 	}
+
+	/* Determine OOB force leader: it is the first unit of the (first) force HQ formation */
+	for (i=0; i<bp->formations.cnt; i++) {
+		p.fp = &(bp->formations.list[i]);
+		if (p.fp->data.type != SPWOOB_FTYPE_FHQ) continue;
+		bp->leader = p.fp->data.ulist[0];
+		break;
+	}
+
+	/* Fall back to first force unit if force leader not found */
+	if (!bp->leader) bp->leader = &(bp->units.list[0]);
 
 	return (SPWERR_OK);
 }
