@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=25, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=25)
 open_gamefiles: comment: name="_SAVE_\save025.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save025.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1390,7 +1390,7 @@ verify_candidate_units: [120] VLAT: F<029,001> ( SdKfz 231 6 Rad) DROPPED: not a
 verify_candidate_units: [121] VLAT: F<029,002> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
 verify_candidate_units: [122] VLAT: F<029,003> ( SdKfz 231 6 Rad) DROPPED: not a verified loader unit
 unitcount: ul.cnt=112
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=32 }, cnt=32, head=0x001685e0 }
+FLIST: { { s.nidx=32 }, cnt=32 }
     [00000] (    SPWAW ENH-DV) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (    Engineer Plt) P<000> L<00001> status=001 units=004 OOB 070: [122] FID<00001> RAW<00001>
@@ -1535,7 +1535,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=32 }, cnt=32, head=0x001685e0 }
         [000] ptr[00110]
     [00031] (   Artillery Bty) P<000> L<00111> status=002 units=001 OOB 070: [155] FID<00031> RAW<00031>
         [000] ptr[00111]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=121 }, cnt=112, head=0x00184fb8 }
+ULIST: { { s.nidx=121 }, cnt=112 }
     [00000] (   GE Kommandant) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (  Sturmpionieres) UNIT loader<00006> vrf=N vrfneed=N  OOB 070: [163] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (  Sturmpionieres) UNIT loader<00007> vrf=N vrfneed=N  OOB 070: [163] F[00001]<00001,00001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -2199,7 +2199,7 @@ verify_candidate_units: [519] UNIT: F<047,001> (     Komanda HMG) ACCEPTED
 verify_candidate_units: [526] UNIT: F<042,001> ( Section Mortier) DROPPED: invalid OOB ID
 verify_candidate_units: [532] UNIT: F<044,002> (   Section Fusil) DROPPED: invalid OOB ID
 unitcount: ul.cnt=120
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=48 }, cnt=48, head=0x00141338 }
+FLIST: { { s.nidx=48 }, cnt=48 }
     [00100] (    SPWAW FV HTH) P<001> L<00400> status=002 units=001 OOB 081: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (       Rifle Plt) P<001> L<00401> status=002 units=006 OOB 081: [072] FID<00001> RAW<00101>
@@ -2375,7 +2375,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=48 }, cnt=48, head=0x00141338 }
     [00147] (      Hvy MG Sec) P<001> L<00518> status=002 units=002 OOB 081: [112] FID<00047> RAW<00147>
         [000] ptr[00518]
         [001] ptr[00519]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=127 }, cnt=120, head=0x0015dd10 }
+ULIST: { { s.nidx=127 }, cnt=120 }
     [00400] (     SO Komander) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    Lider Vzvoda) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [154] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] ( Pehota Vintovka) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [159] F[00101]<00001,00001> ptr[00101] link crew=nil[65535], parent=nil[65535]

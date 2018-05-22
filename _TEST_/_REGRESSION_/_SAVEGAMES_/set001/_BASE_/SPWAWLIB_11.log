@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=11, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=11)
 open_gamefiles: comment: name="_SAVE_\save011.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save011.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1341,7 +1341,7 @@ verify_candidate_units: [101] UNIT: F<023,003> (      StuG III B) ACCEPTED
 verify_candidate_units: [104] UNIT: F<023,004> (    SS-VT Gruppe) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [104] VLAT: F<023,004> (    SS-VT Gruppe) DROPPED: not a verified loader unit
 unitcount: ul.cnt=102
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=24 }, cnt=24, head=0x001685e0 }
+FLIST: { { s.nidx=24 }, cnt=24 }
     [00000] (    SPWAW ENH-DV) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (    Engineer Plt) P<000> L<00001> status=001 units=004 OOB 070: [122] FID<00001> RAW<00001>
@@ -1468,7 +1468,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=24 }, cnt=24, head=0x001685e0 }
         [001] ptr[00099]
         [002] ptr[00100]
         [003] ptr[00101]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=103 }, cnt=102, head=0x00184fb8 }
+ULIST: { { s.nidx=103 }, cnt=102 }
     [00000] (   GE Kommandant) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (  Sturmpionieres) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [163] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (  Sturmpionieres) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [163] F[00001]<00001,00001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -2085,7 +2085,7 @@ verify_candidate_units: [509] UNIT: F<034,002> (         7-TP jw) DROPPED: inval
 verify_candidate_units: [510] UNIT: F<034,003> (         7-TP jw) DROPPED: invalid OOB ID
 verify_candidate_units: [511] UNIT: F<034,004> (         7-TP jw) DROPPED: invalid OOB ID
 unitcount: ul.cnt=108
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=35 }, cnt=35, head=0x00141338 }
+FLIST: { { s.nidx=35 }, cnt=35 }
     [00100] (    SPWAW ENH-DV) P<001> L<00400> status=002 units=001 OOB 077: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (     Infantry Co) P<001> L<00401> status=002 units=001 OOB 077: [131] FID<00001> RAW<00101>
@@ -2245,7 +2245,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=35 }, cnt=35, head=0x00141338 }
         [003] ptr[00510]
         [004] ptr[00511]
     --- [005] nil[65535]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=114 }, cnt=108, head=0x0015dd10 }
+ULIST: { { s.nidx=114 }, cnt=108 }
     [00400] (    BR Commander) UNIT loader<65535> vrf=N vrfneed=N  OOB 077: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (      Company HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 077: [089] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (  Platoon Leader) UNIT loader<65535> vrf=N vrfneed=N  OOB 077: [078] F[00102]<00002,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]

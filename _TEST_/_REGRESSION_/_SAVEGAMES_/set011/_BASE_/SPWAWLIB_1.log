@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=1, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=1)
 open_gamefiles: comment: name="_SAVE_\save001.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save001.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1172,7 +1172,7 @@ verify_candidate_units: [081] UNIT: F<023,000> (  Bedfd 15cwt <T) ACCEPTED - LEA
 verify_candidate_units: [082] UNIT: F<023,001> (  Bedfd 15cwt <T) ACCEPTED
 verify_candidate_units: [075] CREW: F<014,052> (         Crewmen) ACCEPTED
 unitcount: ul.cnt=80
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=24 }, cnt=22, head=0x001685e0 }
+FLIST: { { s.nidx=24 }, cnt=22 }
     [00000] (       SPWAW 4.1) P<000> L<00000> status=000 units=001 OOB 077: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (     Infantry Co) P<000> L<00001> status=000 units=001 OOB 077: [131] FID<00001> RAW<00001>
@@ -1255,7 +1255,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=24 }, cnt=22, head=0x001685e0 }
     [00023] (   Truck Section) P<000> L<00081> status=000 units=002 OOB 077: [121] FID<00023> RAW<00023>
         [000] ptr[00081]
         [001] ptr[00082]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=80 }, cnt=80, head=0x00184fb8 }
+ULIST: { { s.nidx=80 }, cnt=80 }
     [00000] (    29th Brgd HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 077: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] ( 2nd Welsh Fslrs) UNIT loader<65535> vrf=N vrfneed=N  OOB 077: [089] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (  1 Plt HQ/Welsh) UNIT loader<65535> vrf=N vrfneed=N  OOB 077: [078] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -1528,7 +1528,7 @@ verify_candidate_units: [425] UNIT: F<004,004> ( Lt Mortier Team) ACCEPTED
 verify_candidate_units: [426] UNIT: F<011,000> (    Peugeot DKJ5) ACCEPTED - LEADER
 verify_candidate_units: [428] UNIT: F<011,001> (      Citroen 45) ACCEPTED
 unitcount: ul.cnt=26
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=12 }, cnt=10, head=0x00141338 }
+FLIST: { { s.nidx=12 }, cnt=10 }
     [00100] (       SPWAW 4.1) P<001> L<00400> status=000 units=001 OOB 076: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (  VF Infantry Co) P<001> L<00401> status=000 units=004 OOB 076: [050] FID<00001> RAW<00101>
@@ -1569,7 +1569,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=12 }, cnt=10, head=0x00141338 }
     [00111] (   Truck Section) P<001> L<00426> status=000 units=002 OOB 076: [155] FID<00011> RAW<00111>
         [000] ptr[00426]
         [001] ptr[00428]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=26 }, cnt=26, head=0x0015dd10 }
+ULIST: { { s.nidx=26 }, cnt=26 }
     [00400] (   VF Commandant) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [238] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] ( VF Officer Cdre) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [124] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] ( Tir. Senegalese) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [150] F[00102]<00002,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]

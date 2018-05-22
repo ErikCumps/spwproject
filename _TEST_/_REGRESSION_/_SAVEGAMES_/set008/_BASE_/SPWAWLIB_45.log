@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=45, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=45)
 open_gamefiles: comment: name="_SAVE_\save045.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save045.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1967,7 +1967,7 @@ verify_candidate_units: [263] CREW: F<050,051> (       Besatzung) ACCEPTED
 verify_candidate_units: [264] CREW: F<039,053> (       Besatzung) ACCEPTED
 verify_candidate_units: [265] CREW: F<071,055> (       Besatzung) ACCEPTED
 unitcount: ul.cnt=266
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=72 }, cnt=72, head=0x001685e0 }
+FLIST: { { s.nidx=72 }, cnt=72 }
     [00000] (    SP ENH FR-NL) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (       PzGren Kp) P<000> L<00001> status=001 units=002 OOB 070: [109] FID<00001> RAW<00001>
@@ -2338,7 +2338,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=72 }, cnt=72, head=0x001685e0 }
         [003] ptr[00259]
         [004] ptr[00260]
         [005] ptr[00261]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=266 }, cnt=266, head=0x00184fb8 }
+ULIST: { { s.nidx=266 }, cnt=266 }
     [00000] (   GE Kommandeur) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] ( Kompanie GefStd) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [038] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (       SPW 251/1) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [102] F[00001]<00001,00001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -3954,7 +3954,7 @@ verify_candidate_units: [759] VLAT: F<098,004> ( Lekki Mozdzierz) DROPPED: not a
 verify_candidate_units: [763] VLAT: F<099,003> (        7-TP dw.) DROPPED: not a verified loader unit
 verify_candidate_units: [764] VLAT: F<099,004> (        7-TP dw.) DROPPED: not a verified loader unit
 unitcount: ul.cnt=352
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=100 }, cnt=100, head=0x00141338 }
+FLIST: { { s.nidx=100 }, cnt=100 }
     [00100] (    SP ENH FR-NL) P<001> L<00400> status=001 units=001 OOB 080: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (      Bat Haubic) P<001> L<00401> status=002 units=001 OOB 080: [037] FID<00001> RAW<00101>
@@ -4423,7 +4423,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=100 }, cnt=100, head=0x00141338 
         [001] ptr[00748]
     [00199] ( +AI Inf 30-39++) P<001> L<00749> status=002 units=001 OOB 080: [052] FID<00099> RAW<00199>
         [000] ptr[00749]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=359 }, cnt=352, head=0x0015dd10 }
+ULIST: { { s.nidx=359 }, cnt=352 }
     [00400] (      PO Dowodca) UNIT loader<65535> vrf=N vrfneed=N  OOB 080: [244] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (  Bat Haub 100mm) UNIT loader<65535> vrf=N vrfneed=N  OOB 080: [101] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (  Sztab Kompanii) UNIT loader<65535> vrf=N vrfneed=N  OOB 080: [070] F[00102]<00002,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]

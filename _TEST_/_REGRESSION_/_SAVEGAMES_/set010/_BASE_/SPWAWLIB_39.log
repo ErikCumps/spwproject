@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=39, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=39)
 open_gamefiles: comment: name="_SAVE_\save039.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save039.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1194,7 +1194,7 @@ verify_candidate_units: [090] UNIT: F<020,001> (        Sdkfz 11) ACCEPTED
 verify_candidate_units: [091] UNIT: F<020,002> (        Sdkfz 11) ACCEPTED
 verify_candidate_units: [092] UNIT: F<020,003> (        Sdkfz 11) ACCEPTED
 unitcount: ul.cnt=93
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=21 }, cnt=21, head=0x001685e0 }
+FLIST: { { s.nidx=21 }, cnt=21 }
     [00000] (       SPWAW 8.3) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (       SS Mot Co) P<000> L<00001> status=000 units=001 OOB 070: [106] FID<00001> RAW<00001>
@@ -1309,7 +1309,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=21 }, cnt=21, head=0x001685e0 }
         [001] ptr[00090]
         [002] ptr[00091]
         [003] ptr[00092]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=93 }, cnt=93, head=0x00184fb8 }
+ULIST: { { s.nidx=93 }, cnt=93 }
     [00000] (           GE HQ) UNIT loader<00037> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (    SS Rifle Sqd) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [154] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (    SS Rifle Sqd) UNIT loader<00007> vrf=N vrfneed=N  OOB 070: [154] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -1606,7 +1606,7 @@ verify_candidate_units: [430] UNIT: F<014,000> (    SO Rifle Sqd) ACCEPTED - LEA
 verify_candidate_units: [431] UNIT: F<015,000> (    SO Rifle Sqd) ACCEPTED - LEADER
 verify_candidate_units: [432] UNIT: F<015,001> (    SO Rifle Sqd) ACCEPTED
 unitcount: ul.cnt=33
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=16 }, cnt=16, head=0x00141338 }
+FLIST: { { s.nidx=16 }, cnt=16 }
     [00100] (       SPWAW 8.3) P<001> L<00400> status=001 units=001 OOB 081: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] ( **AI Rifle Co**) P<001> L<00401> status=000 units=001 OOB 081: [074] FID<00001> RAW<00101>
@@ -1663,7 +1663,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=16 }, cnt=16, head=0x00141338 }
     --- [002] nil[65535]
     --- [003] nil[65535]
     --- [004] nil[65535]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=33 }, cnt=33, head=0x0015dd10 }
+ULIST: { { s.nidx=33 }, cnt=33 }
     [00400] (           SO HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    SO Rifle Sqd) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [118] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (    SO Rifle Sqd) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [118] F[00102]<00002,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]

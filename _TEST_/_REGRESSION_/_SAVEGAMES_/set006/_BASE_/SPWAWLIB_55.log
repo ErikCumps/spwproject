@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=55, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=55)
 open_gamefiles: comment: name="_SAVE_\save055.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save055.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1094,7 +1094,7 @@ verify_candidate_units: [034] UNIT: F<012,002> (       M2 Medium) ACCEPTED
 verify_candidate_units: [035] UNIT: F<012,003> (       M2 Medium) ACCEPTED
 verify_candidate_units: [036] UNIT: F<012,004> (       M2 Medium) ACCEPTED
 unitcount: ul.cnt=37
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=13 }, cnt=13, head=0x001685e0 }
+FLIST: { { s.nidx=13 }, cnt=13 }
     [00000] (       SPWAW 8.3) P<000> L<00000> status=001 units=001 OOB 083: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (    Infantry Co ) P<000> L<00001> status=001 units=001 OOB 083: [092] FID<00001> RAW<00001>
@@ -1145,7 +1145,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=13 }, cnt=13, head=0x001685e0 }
         [002] ptr[00034]
         [003] ptr[00035]
         [004] ptr[00036]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=37 }, cnt=37, head=0x00184fb8 }
+ULIST: { { s.nidx=37 }, cnt=37 }
     [00000] (         USMC HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 083: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (      USMC Co HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 083: [175] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (     USMC Plt HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 083: [172] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -1504,7 +1504,7 @@ verify_candidate_units: [484] UNIT: F<038,000> (    JA Inf A Sqd) ACCEPTED - LEA
 verify_candidate_units: [485] UNIT: F<039,000> (       A Plt HQ*) ACCEPTED - LEADER
 verify_candidate_units: [486] UNIT: F<040,000> (         SNLF HQ) ACCEPTED - LEADER
 unitcount: ul.cnt=87
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=41 }, cnt=41, head=0x00141338 }
+FLIST: { { s.nidx=41 }, cnt=41 }
     [00100] (       SPWAW 8.3) P<001> L<00400> status=001 units=001 OOB 075: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (   Infantry Co A) P<001> L<00401> status=002 units=001 OOB 075: [102] FID<00001> RAW<00101>
@@ -1643,7 +1643,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=41 }, cnt=41, head=0x00141338 }
     --- [002] nil[65535]
     --- [003] nil[65535]
     --- [004] nil[65535]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=87 }, cnt=87, head=0x0015dd10 }
+ULIST: { { s.nidx=87 }, cnt=87 }
     [00400] (           JA HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 075: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    JA Inf A Sqd) UNIT loader<65535> vrf=N vrfneed=N  OOB 075: [057] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (       A Plt HQ*) UNIT loader<65535> vrf=N vrfneed=N  OOB 075: [134] F[00102]<00002,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]

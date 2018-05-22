@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=21, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=21)
 open_gamefiles: comment: name="_SAVE_\save021.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save021.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1362,7 +1362,7 @@ verify_candidate_units: [103] UNIT: F<023,004> (  Sturmpionieres) ACCEPTED
 verify_candidate_units: [104] UNIT: F<023,005> (  Sturmpionieres) ACCEPTED
 verify_candidate_units: [105] CREW: F<004,052> (         Crewmen) ACCEPTED
 unitcount: ul.cnt=106
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=24 }, cnt=24, head=0x001685e0 }
+FLIST: { { s.nidx=24 }, cnt=24 }
     [00000] (    SPWAW ENH-DV) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (    Engineer Plt) P<000> L<00001> status=001 units=004 OOB 070: [122] FID<00001> RAW<00001>
@@ -1492,7 +1492,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=24 }, cnt=24, head=0x001685e0 }
         [003] ptr[00102]
         [004] ptr[00103]
         [005] ptr[00104]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=106 }, cnt=106, head=0x00184fb8 }
+ULIST: { { s.nidx=106 }, cnt=106 }
     [00000] (   GE Kommandant) UNIT loader<00005> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (  Sturmpionieres) UNIT loader<00006> vrf=N vrfneed=N  OOB 070: [163] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (  Sturmpionieres) UNIT loader<00007> vrf=N vrfneed=N  OOB 070: [163] F[00001]<00001,00001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -2299,7 +2299,7 @@ verify_candidate_units: [567] CREW: F<012,050> (         Crewmen) ACCEPTED
 verify_candidate_units: [568] CREW: F<033,050> (         Crewmen) ACCEPTED
 verify_candidate_units: [569] CREW: F<011,051> (         Crewmen) ACCEPTED
 unitcount: ul.cnt=170
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=57 }, cnt=57, head=0x00141338 }
+FLIST: { { s.nidx=57 }, cnt=57 }
     [00100] (    SPWAW ENH-DV) P<001> L<00400> status=001 units=001 OOB 076: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] ( Inf Command Plt) P<001> L<00401> status=002 units=003 OOB 076: [012] FID<00001> RAW<00101>
@@ -2585,7 +2585,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=57 }, cnt=57, head=0x00141338 }
         [001] ptr[00563]
         [002] ptr[00564]
     --- [003] nil[65535]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=170 }, cnt=170, head=0x0015dd10 }
+ULIST: { { s.nidx=170 }, cnt=170 }
     [00400] (   FR Commandant) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [238] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    Chef Peloton) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (   Section Fusil) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [024] F[00101]<00001,00001> ptr[00101] link crew=nil[65535], parent=nil[65535]

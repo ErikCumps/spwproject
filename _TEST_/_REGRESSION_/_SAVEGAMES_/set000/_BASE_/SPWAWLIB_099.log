@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=99, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=99)
 open_gamefiles: comment: name="_SAVE_\save099.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save099.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -901,12 +901,12 @@ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<140> (          Snipe
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandant) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (   Scharfschutze) ACCEPTED - LEADER
 unitcount: ul.cnt=2
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=2 }, cnt=2, head=0x001685e0 }
+FLIST: { { s.nidx=2 }, cnt=2 }
     [00000] (    SPWAW ENH-DV) P<000> L<00000> status=000 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (          Sniper) P<000> L<00001> status=000 units=001 OOB 070: [140] FID<00001> RAW<00001>
         [000] ptr[00001]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=2 }, cnt=2, head=0x00184fb8 }
+ULIST: { { s.nidx=2 }, cnt=2 }
     [00000] (   GE Kommandant) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (   Scharfschutze) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [171] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
 find_candidate_units: player #2
@@ -920,12 +920,12 @@ find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<108> (          Snipe
 verify_candidate_units: [400] UNIT: F<000,000> (     SO Komander) ACCEPTED - LEADER
 verify_candidate_units: [401] UNIT: F<001,000> (         Snajper) ACCEPTED - LEADER
 unitcount: ul.cnt=2
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=2 }, cnt=2, head=0x00141338 }
+FLIST: { { s.nidx=2 }, cnt=2 }
     [00100] (    SPWAW FV HTH) P<001> L<00400> status=001 units=001 OOB 081: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (          Sniper) P<001> L<00401> status=000 units=001 OOB 081: [108] FID<00001> RAW<00101>
         [000] ptr[00401]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=2 }, cnt=2, head=0x0015dd10 }
+ULIST: { { s.nidx=2 }, cnt=2 }
     [00400] (     SO Komander) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (         Snajper) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [133] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
 add_unit: idx=0, RID=0

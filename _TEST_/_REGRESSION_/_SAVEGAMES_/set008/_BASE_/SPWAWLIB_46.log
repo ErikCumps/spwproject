@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=46, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=46)
 open_gamefiles: comment: name="_SAVE_\save046.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save046.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1898,7 +1898,7 @@ verify_candidate_units: [221] UNIT: F<063,003> (  sIG33 auf Pz-I) ACCEPTED
 verify_candidate_units: [224] UNIT: F<063,004> ( Schuetzengruppe) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [224] VLAT: F<063,004> ( Schuetzengruppe) DROPPED: not a verified loader unit
 unitcount: ul.cnt=222
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=64 }, cnt=64, head=0x001685e0 }
+FLIST: { { s.nidx=64 }, cnt=64 }
     [00000] (    SP ENH FR-NL) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (       PzGren Kp) P<000> L<00001> status=001 units=002 OOB 070: [109] FID<00001> RAW<00001>
@@ -2221,7 +2221,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=64 }, cnt=64, head=0x001685e0 }
         [001] ptr[00219]
         [002] ptr[00220]
         [003] ptr[00221]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=226 }, cnt=222, head=0x00184fb8 }
+ULIST: { { s.nidx=226 }, cnt=222 }
     [00000] (   GE Kommandeur) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] ( Kompanie GefStd) UNIT loader<00002> vrf=N vrfneed=N  OOB 070: [038] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (       SPW 251/1) UNIT loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00001]<00001,00001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -3669,7 +3669,7 @@ verify_candidate_units: [721] UNIT: F<090,005> ( Lekki Mozdzierz) DROPPED: inval
 verify_candidate_units: [722] UNIT: F<090,006> (        Druz ckm) DROPPED: invalid OOB ID
 verify_candidate_units: [727] UNIT: F<091,004> ( Lekki Mozdzierz) DROPPED: invalid OOB ID
 unitcount: ul.cnt=282
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=92 }, cnt=92, head=0x00141338 }
+FLIST: { { s.nidx=92 }, cnt=92 }
     [00100] (    SP ENH FR-NL) P<001> L<00400> status=002 units=001 OOB 086: [001] FID<00000> RAW<00100>
         [000] ptr[00400]
     [00101] (    Haubits Bttr) P<001> L<00401> status=002 units=003 OOB 086: [026] FID<00001> RAW<00101>
@@ -4044,7 +4044,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=92 }, cnt=92, head=0x00141338 }
         [001] ptr[00679]
         [002] ptr[00680]
         [003] ptr[00681]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=298 }, cnt=282, head=0x0015dd10 }
+ULIST: { { s.nidx=298 }, cnt=282 }
     [00400] (   NOR Kommander) UNIT loader<65535> vrf=N vrfneed=N  OOB 086: [244] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    12cm Haubits) UNIT loader<65535> vrf=N vrfneed=N  OOB 086: [158] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (    12cm Haubits) UNIT loader<65535> vrf=N vrfneed=N  OOB 086: [158] F[00101]<00001,00001> ptr[00101] link crew=nil[65535], parent=nil[65535]

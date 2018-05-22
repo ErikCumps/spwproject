@@ -308,7 +308,7 @@ game_load_full (const char *dir, unsigned int id, GAMEINFO *info)
 	GAMEDATA	*data = NULL;
 	bool		cmt_rc, dat_rc;
 
-	log ("game_load_full (dir=\"%s\", id=%u, info=0x%8.8x)\n", dir, id, info);
+	log ("game_load_full (dir=\"%s\", id=%u)\n", dir, id);
 
 	if (info) clear_ptr (info);
 

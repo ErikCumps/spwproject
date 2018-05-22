@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=20, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=20)
 open_gamefiles: comment: name="_SAVE_\save020.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save020.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1416,7 +1416,7 @@ verify_candidate_units: [154] UNIT: F<045,000> (     Spaehtruppe) ACCEPTED - LEA
 verify_candidate_units: [155] UNIT: F<045,001> (     Spaehtruppe) ACCEPTED
 verify_candidate_units: [156] UNIT: F<045,002> (     Spaehtruppe) ACCEPTED
 unitcount: ul.cnt=157
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=46 }, cnt=46, head=0x001685e0 }
+FLIST: { { s.nidx=46 }, cnt=46 }
     [00000] (  SP ENH FR v1.1) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (     Forward Obs) P<000> L<00001> status=001 units=001 OOB 070: [187] FID<00001> RAW<00001>
@@ -1622,7 +1622,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=46 }, cnt=46, head=0x001685e0 }
         [000] ptr[00154]
         [001] ptr[00155]
         [002] ptr[00156]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=157 }, cnt=157, head=0x00184fb8 }
+ULIST: { { s.nidx=157 }, cnt=157 }
     [00000] (   GE Kommandeur) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (        Obs Team) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [241] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (     Moerser Grp) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -2147,7 +2147,7 @@ verify_candidate_units: [227] UNIT: F<028,003> (            H-39) ACCEPTED
 verify_candidate_units: [228] UNIT: F<028,004> (            H-39) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [228] VLAT: F<028,004> (            H-39) DROPPED: not a verified loader unit
 unitcount: ul.cnt=71
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=24 }, cnt=24, head=0x00141338 }
+FLIST: { { s.nidx=24 }, cnt=24 }
     [00046] (    SPWAW H2H ce) P<001> L<00157> status=000 units=001 OOB 076: [001] FID<00000> RAW<00100>
         [000] ptr[00157]
     [00047] (   Voltigeurs Co) P<001> L<00158> status=000 units=003 OOB 076: [102] FID<00001> RAW<00101>
@@ -2243,7 +2243,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=24 }, cnt=24, head=0x00141338 }
         [001] ptr[00225]
         [002] ptr[00226]
         [003] ptr[00227]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=72 }, cnt=71, head=0x0015dd10 }
+ULIST: { { s.nidx=72 }, cnt=71 }
     [00157] (           FR HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [244] F[00046]<00000,00000> ptr[00046] link crew=nil[65535], parent=nil[65535]
     [00158] (    Compagnie HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [071] F[00047]<00001,00000> ptr[00047] link crew=nil[65535], parent=nil[65535]
     [00159] (      Platoon HQ) UNIT loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00048]<00002,00000> ptr[00048] link crew=nil[65535], parent=nil[65535]

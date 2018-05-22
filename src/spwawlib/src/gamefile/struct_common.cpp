@@ -75,8 +75,7 @@ dump_ULIST (ULIST &ul)
 {
 	UEL	*p, *uel;
 
-	UFDTRACE5 ("ULIST 0x%8.8x: { { s.list=0x%8.8x, s.nidx=%hu }, cnt=%hu, head=0x%8.8x }\n",
-		&ul, &(ul.s.list), ul.s.nidx, ul.cnt, ul.head);
+	UFDTRACE2 ("ULIST: { { s.nidx=%hu }, cnt=%hu }\n", ul.s.nidx, ul.cnt);
 
 	p = ul.head;
 	while (p)
@@ -199,8 +198,7 @@ dump_FLIST (FLIST &fl)
 {
 	FEL	*p, *fel;
 
-	UFDTRACE5 ("FLIST 0x%8.8x: { { s.list=0x%8.8x, s.nidx=%hu }, cnt=%hu, head=0x%8.8x }\n",
-		&fl, &(fl.s.list), fl.s.nidx, fl.cnt, fl.head);
+	UFDTRACE2 ("FLIST: { { s.nidx=%hu }, cnt=%hu }\n", fl.s.nidx, fl.cnt);
 
 	p = fl.head;
 	while (p)

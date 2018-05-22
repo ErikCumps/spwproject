@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=3, info=0x0018f8a8)
+game_load_full (dir="_SAVE_", id=3)
 open_gamefiles: comment: name="_SAVE_\save003.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save003.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -1011,7 +1011,7 @@ verify_candidate_units: [043] UNIT: F<011,005> (    M3 Halftrack) POSTPONED: inv
 verify_candidate_units: [037] VLAT: F<011,004> (    M3 Halftrack) DROPPED: not a verified loader unit
 verify_candidate_units: [043] VLAT: F<011,005> (    M3 Halftrack) DROPPED: not a verified loader unit
 unitcount: ul.cnt=29
-FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=12 }, cnt=10, head=0x001685e0 }
+FLIST: { { s.nidx=12 }, cnt=10 }
     [00000] ( TGN's SPWAW 1.0) P<000> L<00000> status=000 units=001 OOB 082: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00002] (    Med Tank Plt) P<000> L<00001> status=000 units=005 OOB 082: [011] FID<00001> RAW<00001>
@@ -1054,7 +1054,7 @@ FLIST 0x001685e0: { { s.list=0x001685e0, s.nidx=12 }, cnt=10, head=0x001685e0 }
         [001] ptr[00032]
         [002] ptr[00033]
         [003] ptr[00034]
-ULIST 0x00184fb8: { { s.list=0x00184fb8, s.nidx=31 }, cnt=29, head=0x00184fb8 }
+ULIST: { { s.nidx=31 }, cnt=29 }
     [00000] (    US Commander) UNIT loader<65535> vrf=N vrfneed=N  OOB 082: [243] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (    M4A3 Sherman) UNIT loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
     [00002] (    M4A3 Sherman) UNIT loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00001> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -1206,7 +1206,7 @@ verify_candidate_units: [422] UNIT: F<109,001> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [423] UNIT: F<109,002> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [426] UNIT: F<109,003> (      SPW 251/10) ACCEPTED
 unitcount: ul.cnt=21
-FLIST 0x00141338: { { s.list=0x00141338, s.nidx=18 }, cnt=9, head=0x00141c60 }
+FLIST: { { s.nidx=18 }, cnt=9 }
     [00100] ( TGN's SPWAW 1.0) P<001> L<00400> status=000 units=001 OOB 070: [001] FID<00108> RAW<00108>
         [000] ptr[00400]
     [00102] (   Halftrack Plt) P<001> L<00421> status=000 units=004 OOB 070: [052] FID<00109> RAW<00109>
@@ -1250,7 +1250,7 @@ FLIST 0x00141338: { { s.list=0x00141338, s.nidx=18 }, cnt=9, head=0x00141c60 }
         [001] ptr[00419]
     [00118] (          Sniper) P<001> L<00420> status=000 units=001 OOB 070: [140] FID<00107> RAW<00107>
         [000] ptr[00420]
-ULIST 0x0015dd10: { { s.list=0x0015dd10, s.nidx=21 }, cnt=21, head=0x0015dd10 }
+ULIST: { { s.nidx=21 }, cnt=21 }
     [00400] (   GE Kommandant) UNIT loader<00417> vrf=N vrfneed=N  OOB 070: [245] F[00100]<00108,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (     PzKpfw IV H) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00101,00000> ptr[00108] link crew=nil[65535], parent=nil[65535]
     [00402] (     PzKpfw IV H) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00101,00001> ptr[00108] link crew=nil[65535], parent=nil[65535]
