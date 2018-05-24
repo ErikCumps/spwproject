@@ -1,0 +1,918 @@
+RAWLINK player 1 OOB report:
+============================
+
+RAWLINK formations report:
+--------------------------
+
+count: 13
+start: 0
+
+{   0} RID=0000, FID=00, leader=0000 <US marine HQ>
+{   1} RID=0001, FID=01, leader=0001 <Infantry Co >
+{   2} RID=0002, FID=02, leader=0002 <Infantry Plt >
+{   3} RID=0003, FID=03, leader=0006 <Infantry Plt >
+{   4} RID=0004, FID=04, leader=000a <Infantry Plt >
+{   5} RID=0005, FID=05, leader=000e <MG Platoon>
+{   6} RID=0006, FID=06, leader=0011 <Lt Mortar Sec>
+{   7} RID=0007, FID=07, leader=0013 <Engineer Co>
+{   8} RID=0008, FID=08, leader=0014 <Engineer Plt>
+{   9} RID=0009, FID=09, leader=0017 <Engineer Plt>
+{  10} RID=000a, FID=0a, leader=001a <Engineer Plt>
+{  11} RID=000b, FID=0b, leader=001d <HMG Section>
+{  12} RID=000c, FID=0c, leader=0020 <Med Tank Plt>
+
+ridx[   0] rid=0000, idx=0000
+ridx[   1] rid=0001, idx=0001
+ridx[   2] rid=0002, idx=0002
+ridx[   3] rid=0003, idx=0003
+ridx[   4] rid=0004, idx=0004
+ridx[   5] rid=0005, idx=0005
+ridx[   6] rid=0006, idx=0006
+ridx[   7] rid=0007, idx=0007
+ridx[   8] rid=0008, idx=0008
+ridx[   9] rid=0009, idx=0009
+ridx[  10] rid=000a, idx=000a
+ridx[  11] rid=000b, idx=000b
+ridx[  12] rid=000c, idx=000c
+
+RAWLINK units report:
+---------------------
+
+count: 37
+
+{   0} RID=0000, FRID=00, FMID=00, FSID=00, leader=0000, crew=ffff, loader=ffff, target=ffff <USMC HQ>
+{   1} RID=0001, FRID=01, FMID=01, FSID=00, leader=0001, crew=ffff, loader=ffff, target=ffff <USMC Co HQ>
+{   2} RID=0002, FRID=02, FMID=02, FSID=00, leader=0002, crew=ffff, loader=ffff, target=01a5 <USMC Plt HQ>
+{   3} RID=0003, FRID=02, FMID=02, FSID=01, leader=0003, crew=ffff, loader=ffff, target=ffff <USMC Inf Sqd >
+{   4} RID=0004, FRID=02, FMID=02, FSID=02, leader=0004, crew=ffff, loader=ffff, target=ffff <USMC Inf Sqd >
+{   5} RID=0005, FRID=02, FMID=02, FSID=03, leader=0005, crew=ffff, loader=ffff, target=ffff <USMC Inf Sqd >
+{   6} RID=0006, FRID=03, FMID=03, FSID=00, leader=0006, crew=ffff, loader=ffff, target=ffff <USMC Plt HQ>
+{   7} RID=0007, FRID=03, FMID=03, FSID=01, leader=0007, crew=ffff, loader=ffff, target=ffff <USMC Inf Sqd >
+{   8} RID=0008, FRID=03, FMID=03, FSID=02, leader=0008, crew=ffff, loader=ffff, target=01b7 <USMC Inf Sqd >
+{   9} RID=0009, FRID=03, FMID=03, FSID=03, leader=0009, crew=ffff, loader=ffff, target=01b6 <USMC Inf Sqd >
+{  10} RID=000a, FRID=04, FMID=04, FSID=00, leader=000a, crew=ffff, loader=ffff, target=ffff <USMC Plt HQ>
+{  11} RID=000b, FRID=04, FMID=04, FSID=01, leader=000b, crew=ffff, loader=ffff, target=ffff <USMC Inf Sqd >
+{  12} RID=000c, FRID=04, FMID=04, FSID=02, leader=000c, crew=ffff, loader=ffff, target=01bb <USMC Inf Sqd >
+{  13} RID=000d, FRID=04, FMID=04, FSID=03, leader=000d, crew=ffff, loader=ffff, target=ffff <USMC Inf Sqd >
+{  14} RID=000e, FRID=05, FMID=05, FSID=00, leader=000e, crew=ffff, loader=ffff, target=ffff <.30 Cal MMG>
+{  15} RID=000f, FRID=05, FMID=05, FSID=01, leader=000f, crew=ffff, loader=ffff, target=01a1 <.30 Cal MMG>
+{  16} RID=0010, FRID=05, FMID=05, FSID=02, leader=0010, crew=ffff, loader=ffff, target=ffff <.30 Cal MMG>
+{  17} RID=0011, FRID=06, FMID=06, FSID=00, leader=0011, crew=ffff, loader=ffff, target=ffff <M2 60mm Mortar>
+{  18} RID=0012, FRID=06, FMID=06, FSID=01, leader=0012, crew=ffff, loader=ffff, target=ffff <M2 60mm Mortar>
+{  19} RID=0013, FRID=07, FMID=07, FSID=00, leader=0013, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec FT>
+{  20} RID=0014, FRID=08, FMID=08, FSID=00, leader=0014, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec DC>
+{  21} RID=0015, FRID=08, FMID=08, FSID=01, leader=0015, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec DC>
+{  22} RID=0016, FRID=08, FMID=08, FSID=02, leader=0016, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec FT>
+{  23} RID=0017, FRID=09, FMID=09, FSID=00, leader=0017, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec DC>
+{  24} RID=0018, FRID=09, FMID=09, FSID=01, leader=0018, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec DC>
+{  25} RID=0019, FRID=09, FMID=09, FSID=02, leader=0019, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec FT>
+{  26} RID=001a, FRID=0a, FMID=0a, FSID=00, leader=001a, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec DC>
+{  27} RID=001b, FRID=0a, FMID=0a, FSID=01, leader=001b, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec DC>
+{  28} RID=001c, FRID=0a, FMID=0a, FSID=02, leader=001c, crew=ffff, loader=ffff, target=ffff <USMC Eng Sec FT>
+{  29} RID=001d, FRID=0b, FMID=0b, FSID=00, leader=001d, crew=ffff, loader=ffff, target=01b7 <.50 Cal HMG>
+{  30} RID=001e, FRID=0b, FMID=0b, FSID=01, leader=001e, crew=ffff, loader=ffff, target=ffff <.30 Cal HMG>
+{  31} RID=001f, FRID=0b, FMID=0b, FSID=02, leader=001f, crew=ffff, loader=ffff, target=ffff <.30 Cal HMG>
+{  32} RID=0020, FRID=0c, FMID=0c, FSID=00, leader=0020, crew=ffff, loader=ffff, target=019a <M2 Medium>
+{  33} RID=0021, FRID=0c, FMID=0c, FSID=01, leader=0021, crew=ffff, loader=ffff, target=ffff <M2 Medium>
+{  34} RID=0022, FRID=0c, FMID=0c, FSID=02, leader=0022, crew=ffff, loader=ffff, target=ffff <M2 Medium>
+{  35} RID=0023, FRID=0c, FMID=0c, FSID=03, leader=0023, crew=ffff, loader=ffff, target=019a <M2 Medium>
+{  36} RID=0024, FRID=0c, FMID=0c, FSID=04, leader=0024, crew=ffff, loader=ffff, target=019a <M2 Medium>
+
+ridx[   0] rid=0000, idx=0000
+ridx[   1] rid=0001, idx=0001
+ridx[   2] rid=0002, idx=0002
+ridx[   3] rid=0003, idx=0003
+ridx[   4] rid=0004, idx=0004
+ridx[   5] rid=0005, idx=0005
+ridx[   6] rid=0006, idx=0006
+ridx[   7] rid=0007, idx=0007
+ridx[   8] rid=0008, idx=0008
+ridx[   9] rid=0009, idx=0009
+ridx[  10] rid=000a, idx=000a
+ridx[  11] rid=000b, idx=000b
+ridx[  12] rid=000c, idx=000c
+ridx[  13] rid=000d, idx=000d
+ridx[  14] rid=000e, idx=000e
+ridx[  15] rid=000f, idx=000f
+ridx[  16] rid=0010, idx=0010
+ridx[  17] rid=0011, idx=0011
+ridx[  18] rid=0012, idx=0012
+ridx[  19] rid=0013, idx=0013
+ridx[  20] rid=0014, idx=0014
+ridx[  21] rid=0015, idx=0015
+ridx[  22] rid=0016, idx=0016
+ridx[  23] rid=0017, idx=0017
+ridx[  24] rid=0018, idx=0018
+ridx[  25] rid=0019, idx=0019
+ridx[  26] rid=001a, idx=001a
+ridx[  27] rid=001b, idx=001b
+ridx[  28] rid=001c, idx=001c
+ridx[  29] rid=001d, idx=001d
+ridx[  30] rid=001e, idx=001e
+ridx[  31] rid=001f, idx=001f
+ridx[  32] rid=0020, idx=0020
+ridx[  33] rid=0021, idx=0021
+ridx[  34] rid=0022, idx=0022
+ridx[  35] rid=0023, idx=0023
+ridx[  36] rid=0024, idx=0024
+
+RAWLINK leaders report:
+-----------------------
+
+count: 37
+
+{   0} RID=0000, URID=0000 <Diaz>
+{   1} RID=0001, URID=0001 <Perez>
+{   2} RID=0002, URID=0002 <Reynolds>
+{   3} RID=0003, URID=0003 <Emerson>
+{   4} RID=0004, URID=0004 <Patton>
+{   5} RID=0005, URID=0005 <Hunter>
+{   6} RID=0006, URID=0006 <Necaise>
+{   7} RID=0007, URID=0007 <Owens>
+{   8} RID=0008, URID=0008 <Lopez>
+{   9} RID=0009, URID=0009 <Palmer>
+{  10} RID=000a, URID=000a <Kirby>
+{  11} RID=000b, URID=000b <Glussich>
+{  12} RID=000c, URID=000c <Radford>
+{  13} RID=000d, URID=000d <Smith>
+{  14} RID=000e, URID=000e <Isaac>
+{  15} RID=000f, URID=000f <Henderson>
+{  16} RID=0010, URID=0010 <O'hern>
+{  17} RID=0011, URID=0011 <Kramer>
+{  18} RID=0012, URID=0012 <Ferguson>
+{  19} RID=0013, URID=0013 <Jacobs>
+{  20} RID=0014, URID=0014 <McKelvey>
+{  21} RID=0015, URID=0015 <Collins>
+{  22} RID=0016, URID=0016 <Amos>
+{  23} RID=0017, URID=0017 <Nino>
+{  24} RID=0018, URID=0018 <Reeves>
+{  25} RID=0019, URID=0019 <Davie>
+{  26} RID=001a, URID=001a <Gallegos>
+{  27} RID=001b, URID=001b <Ellis>
+{  28} RID=001c, URID=001c <Udell>
+{  29} RID=001d, URID=001d <Guitierez>
+{  30} RID=001e, URID=001e <Jackson>
+{  31} RID=001f, URID=001f <Mizerak>
+{  32} RID=0020, URID=0020 <Taylor>
+{  33} RID=0021, URID=0021 <Reynolds>
+{  34} RID=0022, URID=0022 <Kempe>
+{  35} RID=0023, URID=0023 <Nicholson>
+{  36} RID=0024, URID=0024 <Kramer>
+
+ridx[   0] rid=0000, idx=0000
+ridx[   1] rid=0001, idx=0001
+ridx[   2] rid=0002, idx=0002
+ridx[   3] rid=0003, idx=0003
+ridx[   4] rid=0004, idx=0004
+ridx[   5] rid=0005, idx=0005
+ridx[   6] rid=0006, idx=0006
+ridx[   7] rid=0007, idx=0007
+ridx[   8] rid=0008, idx=0008
+ridx[   9] rid=0009, idx=0009
+ridx[  10] rid=000a, idx=000a
+ridx[  11] rid=000b, idx=000b
+ridx[  12] rid=000c, idx=000c
+ridx[  13] rid=000d, idx=000d
+ridx[  14] rid=000e, idx=000e
+ridx[  15] rid=000f, idx=000f
+ridx[  16] rid=0010, idx=0010
+ridx[  17] rid=0011, idx=0011
+ridx[  18] rid=0012, idx=0012
+ridx[  19] rid=0013, idx=0013
+ridx[  20] rid=0014, idx=0014
+ridx[  21] rid=0015, idx=0015
+ridx[  22] rid=0016, idx=0016
+ridx[  23] rid=0017, idx=0017
+ridx[  24] rid=0018, idx=0018
+ridx[  25] rid=0019, idx=0019
+ridx[  26] rid=001a, idx=001a
+ridx[  27] rid=001b, idx=001b
+ridx[  28] rid=001c, idx=001c
+ridx[  29] rid=001d, idx=001d
+ridx[  30] rid=001e, idx=001e
+ridx[  31] rid=001f, idx=001f
+ridx[  32] rid=0020, idx=0020
+ridx[  33] rid=0021, idx=0021
+ridx[  34] rid=0022, idx=0022
+ridx[  35] rid=0023, idx=0023
+ridx[  36] rid=0024, idx=0024
+
+RAWLINK unit positions report:
+------------------------------
+
+count: 37
+
+{   0} RID=0000, URID=0000
+{   1} RID=0001, URID=0001
+{   2} RID=0002, URID=0002
+{   3} RID=0003, URID=0003
+{   4} RID=0004, URID=0004
+{   5} RID=0005, URID=0005
+{   6} RID=0006, URID=0006
+{   7} RID=0007, URID=0007
+{   8} RID=0008, URID=0008
+{   9} RID=0009, URID=0009
+{  10} RID=000a, URID=000a
+{  11} RID=000b, URID=000b
+{  12} RID=000c, URID=000c
+{  13} RID=000d, URID=000d
+{  14} RID=000e, URID=000e
+{  15} RID=000f, URID=000f
+{  16} RID=0010, URID=0010
+{  17} RID=0011, URID=0011
+{  18} RID=0012, URID=0012
+{  19} RID=0013, URID=0013
+{  20} RID=0014, URID=0014
+{  21} RID=0015, URID=0015
+{  22} RID=0016, URID=0016
+{  23} RID=0017, URID=0017
+{  24} RID=0018, URID=0018
+{  25} RID=0019, URID=0019
+{  26} RID=001a, URID=001a
+{  27} RID=001b, URID=001b
+{  28} RID=001c, URID=001c
+{  29} RID=001d, URID=001d
+{  30} RID=001e, URID=001e
+{  31} RID=001f, URID=001f
+{  32} RID=0020, URID=0020
+{  33} RID=0021, URID=0021
+{  34} RID=0022, URID=0022
+{  35} RID=0023, URID=0023
+{  36} RID=0024, URID=0024
+
+ridx[   0] rid=0000, idx=0000
+ridx[   1] rid=0001, idx=0001
+ridx[   2] rid=0002, idx=0002
+ridx[   3] rid=0003, idx=0003
+ridx[   4] rid=0004, idx=0004
+ridx[   5] rid=0005, idx=0005
+ridx[   6] rid=0006, idx=0006
+ridx[   7] rid=0007, idx=0007
+ridx[   8] rid=0008, idx=0008
+ridx[   9] rid=0009, idx=0009
+ridx[  10] rid=000a, idx=000a
+ridx[  11] rid=000b, idx=000b
+ridx[  12] rid=000c, idx=000c
+ridx[  13] rid=000d, idx=000d
+ridx[  14] rid=000e, idx=000e
+ridx[  15] rid=000f, idx=000f
+ridx[  16] rid=0010, idx=0010
+ridx[  17] rid=0011, idx=0011
+ridx[  18] rid=0012, idx=0012
+ridx[  19] rid=0013, idx=0013
+ridx[  20] rid=0014, idx=0014
+ridx[  21] rid=0015, idx=0015
+ridx[  22] rid=0016, idx=0016
+ridx[  23] rid=0017, idx=0017
+ridx[  24] rid=0018, idx=0018
+ridx[  25] rid=0019, idx=0019
+ridx[  26] rid=001a, idx=001a
+ridx[  27] rid=001b, idx=001b
+ridx[  28] rid=001c, idx=001c
+ridx[  29] rid=001d, idx=001d
+ridx[  30] rid=001e, idx=001e
+ridx[  31] rid=001f, idx=001f
+ridx[  32] rid=0020, idx=0020
+ridx[  33] rid=0021, idx=0021
+ridx[  34] rid=0022, idx=0022
+ridx[  35] rid=0023, idx=0023
+ridx[  36] rid=0024, idx=0024
+
+
+RAWLINK player 2 OOB report:
+============================
+
+RAWLINK formations report:
+--------------------------
+
+count: 41
+start: 100
+
+{   0} RID=0064, FID=00, leader=0190 <Japanese HQ>
+{   1} RID=0065, FID=01, leader=0191 <Infantry Co A>
+{   2} RID=0066, FID=02, leader=0192 <Infantry Plt A>
+{   3} RID=0067, FID=03, leader=0197 <Infantry Plt A>
+{   4} RID=0068, FID=04, leader=019c <Infantry Plt A>
+{   5} RID=0069, FID=05, leader=01a1 <HMG Plt A>
+{   6} RID=006a, FID=06, leader=01a4 <Inf AT Sec>
+{   7} RID=006b, FID=07, leader=01a6 <AI Infantry+>
+{   8} RID=006c, FID=08, leader=01aa <Knee Mort Sec>
+{   9} RID=006d, FID=09, leader=01ac <HMG Plt A>
+{  10} RID=006e, FID=0a, leader=01ad <AT-Gun Plt>
+{  11} RID=006f, FID=0b, leader=01b0 <Scouts>
+{  12} RID=0070, FID=0c, leader=01b1 <Sniper>
+{  13} RID=0071, FID=0d, leader=01b2 <Sniper>
+{  14} RID=0072, FID=0e, leader=01b3 <Sniper>
+{  15} RID=0073, FID=0f, leader=01b4 <Mortar Sec>
+{  16} RID=0074, FID=10, leader=01b5 <Howitzer Sec>
+{  17} RID=0075, FID=11, leader=01b6 <Engineer Plt>
+{  18} RID=0076, FID=12, leader=01b9 <Mortar Sec>
+{  19} RID=0077, FID=13, leader=01ba <Artillery Btry>
+{  20} RID=0078, FID=14, leader=01bb <Infantry Co A>
+{  21} RID=0079, FID=15, leader=01bc <Infantry Plt A>
+{  22} RID=007a, FID=16, leader=01c2 <Infantry Plt A>
+{  23} RID=007b, FID=17, leader=01c6 <Infantry Plt A>
+{  24} RID=007c, FID=18, leader=01cb <HMG Plt A>
+{  25} RID=007d, FID=19, leader=01cd <Inf AT Sec>
+{  26} RID=007e, FID=1a, leader=01cf <AI Infantry+>
+{  27} RID=007f, FID=1b, leader=01d4 <Knee Mort Sec>
+{  28} RID=0080, FID=1c, leader=01d5 <HMG Plt A>
+{  29} RID=0081, FID=1d, leader=01d7 <AT-Gun Plt>
+{  30} RID=0082, FID=1e, leader=01d9 <Scouts>
+{  31} RID=0083, FID=1f, leader=01db <Sniper>
+{  32} RID=0084, FID=20, leader=01dc <Sniper>
+{  33} RID=0085, FID=21, leader=01dd <Sniper>
+{  34} RID=0086, FID=22, leader=01de <Mortar Sec>
+{  35} RID=0087, FID=23, leader=01df <Howitzer Sec>
+{  36} RID=0088, FID=24, leader=01e0 <Engineer Plt>
+{  37} RID=0089, FID=25, leader=01e3 <Mortar Sec>
+{  38} RID=008a, FID=26, leader=01e4 <Infantry Co A>
+{  39} RID=008b, FID=27, leader=01e5 <Infantry Plt A>
+{  40} RID=008c, FID=28, leader=01e6 <Infantry Plt A>
+
+ridx[   0] rid=0064, idx=0000
+ridx[   1] rid=0065, idx=0001
+ridx[   2] rid=0066, idx=0002
+ridx[   3] rid=0067, idx=0003
+ridx[   4] rid=0068, idx=0004
+ridx[   5] rid=0069, idx=0005
+ridx[   6] rid=006a, idx=0006
+ridx[   7] rid=006b, idx=0007
+ridx[   8] rid=006c, idx=0008
+ridx[   9] rid=006d, idx=0009
+ridx[  10] rid=006e, idx=000a
+ridx[  11] rid=006f, idx=000b
+ridx[  12] rid=0070, idx=000c
+ridx[  13] rid=0071, idx=000d
+ridx[  14] rid=0072, idx=000e
+ridx[  15] rid=0073, idx=000f
+ridx[  16] rid=0074, idx=0010
+ridx[  17] rid=0075, idx=0011
+ridx[  18] rid=0076, idx=0012
+ridx[  19] rid=0077, idx=0013
+ridx[  20] rid=0078, idx=0014
+ridx[  21] rid=0079, idx=0015
+ridx[  22] rid=007a, idx=0016
+ridx[  23] rid=007b, idx=0017
+ridx[  24] rid=007c, idx=0018
+ridx[  25] rid=007d, idx=0019
+ridx[  26] rid=007e, idx=001a
+ridx[  27] rid=007f, idx=001b
+ridx[  28] rid=0080, idx=001c
+ridx[  29] rid=0081, idx=001d
+ridx[  30] rid=0082, idx=001e
+ridx[  31] rid=0083, idx=001f
+ridx[  32] rid=0084, idx=0020
+ridx[  33] rid=0085, idx=0021
+ridx[  34] rid=0086, idx=0022
+ridx[  35] rid=0087, idx=0023
+ridx[  36] rid=0088, idx=0024
+ridx[  37] rid=0089, idx=0025
+ridx[  38] rid=008a, idx=0026
+ridx[  39] rid=008b, idx=0027
+ridx[  40] rid=008c, idx=0028
+
+RAWLINK units report:
+---------------------
+
+count: 87
+
+{   0} RID=0190, FRID=64, FMID=00, FSID=00, leader=0190, crew=ffff, loader=ffff, target=ffff <JA HQ>
+{   1} RID=0191, FRID=65, FMID=01, FSID=00, leader=0191, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{   2} RID=0192, FRID=66, FMID=02, FSID=00, leader=0192, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{   3} RID=0193, FRID=66, FMID=02, FSID=01, leader=0193, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{   4} RID=0194, FRID=66, FMID=02, FSID=02, leader=0194, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{   5} RID=0195, FRID=66, FMID=02, FSID=03, leader=0195, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{   6} RID=0196, FRID=66, FMID=02, FSID=04, leader=0196, crew=ffff, loader=ffff, target=0321 <Knee Mortar Plt>
+{   7} RID=0197, FRID=67, FMID=03, FSID=00, leader=0197, crew=ffff, loader=ffff, target=ffff <SNLF HQ>
+{   8} RID=0198, FRID=67, FMID=03, FSID=01, leader=0198, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{   9} RID=0199, FRID=67, FMID=03, FSID=02, leader=0199, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  10} RID=019a, FRID=67, FMID=03, FSID=03, leader=019a, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  11} RID=019b, FRID=67, FMID=03, FSID=04, leader=019b, crew=ffff, loader=ffff, target=ffff <Knee Mort Sec>
+{  12} RID=019c, FRID=68, FMID=04, FSID=00, leader=019c, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{  13} RID=019d, FRID=68, FMID=04, FSID=01, leader=019d, crew=ffff, loader=ffff, target=000d <JA Inf A Sqd>
+{  14} RID=019e, FRID=68, FMID=04, FSID=02, leader=019e, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  15} RID=019f, FRID=68, FMID=04, FSID=03, leader=019f, crew=ffff, loader=ffff, target=000d <JA Inf A Sqd>
+{  16} RID=01a0, FRID=68, FMID=04, FSID=04, leader=01a0, crew=ffff, loader=ffff, target=ffff <Knee Mortar Plt>
+{  17} RID=01a1, FRID=69, FMID=05, FSID=00, leader=01a1, crew=ffff, loader=ffff, target=000f <Type 92 HMG>
+{  18} RID=01a2, FRID=69, FMID=05, FSID=01, leader=01a2, crew=ffff, loader=ffff, target=000e <Type 92 HMG>
+{  19} RID=01a3, FRID=6a, FMID=06, FSID=00, leader=01a3, crew=ffff, loader=ffff, target=ffff <JA Tank Hunters>
+{  20} RID=01a4, FRID=6a, FMID=06, FSID=01, leader=01a4, crew=ffff, loader=ffff, target=ffff <JA Tank Hunters>
+{  21} RID=01a5, FRID=6b, FMID=07, FSID=00, leader=01a5, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{  22} RID=01a6, FRID=6b, FMID=07, FSID=01, leader=01a6, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  23} RID=01a7, FRID=6b, FMID=07, FSID=02, leader=01a7, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd*>
+{  24} RID=01a8, FRID=6b, FMID=07, FSID=03, leader=01a8, crew=ffff, loader=ffff, target=ffff <JA Inf B Sqd>
+{  25} RID=01a9, FRID=6b, FMID=07, FSID=04, leader=01a9, crew=ffff, loader=ffff, target=ffff <JA Inf B Sqd*>
+{  26} RID=01aa, FRID=6c, FMID=08, FSID=00, leader=01aa, crew=ffff, loader=ffff, target=ffff <Knee Mort Sec>
+{  27} RID=01ab, FRID=6d, FMID=09, FSID=00, leader=01ab, crew=ffff, loader=ffff, target=ffff <Type 92 HMG>
+{  28} RID=01ac, FRID=6d, FMID=09, FSID=01, leader=01ac, crew=ffff, loader=ffff, target=ffff <Type 92 HMG>
+{  29} RID=01ad, FRID=6e, FMID=0a, FSID=00, leader=01ad, crew=ffff, loader=ffff, target=ffff <37mm Type 94 AT>
+{  30} RID=01ae, FRID=6e, FMID=0a, FSID=01, leader=01ae, crew=ffff, loader=ffff, target=ffff <37mm Type 94 AT>
+{  31} RID=01af, FRID=6f, FMID=0b, FSID=00, leader=01af, crew=ffff, loader=ffff, target=ffff <JA Scout Team>
+{  32} RID=01b0, FRID=6f, FMID=0b, FSID=01, leader=01b0, crew=ffff, loader=ffff, target=ffff <JA Scout Team>
+{  33} RID=01b1, FRID=70, FMID=0c, FSID=00, leader=01b1, crew=ffff, loader=ffff, target=ffff <JA Sniper>
+{  34} RID=01b2, FRID=71, FMID=0d, FSID=00, leader=01b2, crew=ffff, loader=ffff, target=ffff <JA Sniper>
+{  35} RID=01b3, FRID=72, FMID=0e, FSID=00, leader=01b3, crew=ffff, loader=ffff, target=ffff <JA Sniper>
+{  36} RID=01b4, FRID=73, FMID=0f, FSID=00, leader=01b4, crew=ffff, loader=ffff, target=0321 <JA 81mm Mortar>
+{  37} RID=01b5, FRID=74, FMID=10, FSID=00, leader=01b5, crew=ffff, loader=ffff, target=0321 <70mm Type 92 FG>
+{  38} RID=01b6, FRID=75, FMID=11, FSID=00, leader=01b6, crew=ffff, loader=ffff, target=ffff <JA Engineer Sqd>
+{  39} RID=01b7, FRID=75, FMID=11, FSID=01, leader=01b7, crew=ffff, loader=ffff, target=ffff <JA Engineer Sqd>
+{  40} RID=01b8, FRID=75, FMID=11, FSID=02, leader=01b8, crew=ffff, loader=ffff, target=ffff <JA Engineer Sqd>
+{  41} RID=01b9, FRID=76, FMID=12, FSID=00, leader=01b9, crew=ffff, loader=ffff, target=0321 <JA 81mm Mortar>
+{  42} RID=01ba, FRID=77, FMID=13, FSID=00, leader=01ba, crew=ffff, loader=ffff, target=0321 <90mm Mort Bty>
+{  43} RID=01bb, FRID=78, FMID=14, FSID=00, leader=01bb, crew=ffff, loader=ffff, target=000c <JA Inf A Sqd>
+{  44} RID=01bc, FRID=79, FMID=15, FSID=00, leader=01bc, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{  45} RID=01bd, FRID=79, FMID=15, FSID=01, leader=01bd, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  46} RID=01be, FRID=79, FMID=15, FSID=02, leader=01be, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  47} RID=01bf, FRID=79, FMID=15, FSID=03, leader=01bf, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  48} RID=01c0, FRID=79, FMID=15, FSID=04, leader=01c0, crew=ffff, loader=ffff, target=0321 <Knee Mortar Plt>
+{  49} RID=01c1, FRID=7a, FMID=16, FSID=00, leader=01c1, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{  50} RID=01c2, FRID=7a, FMID=16, FSID=01, leader=01c2, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  51} RID=01c3, FRID=7a, FMID=16, FSID=02, leader=01c3, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  52} RID=01c4, FRID=7a, FMID=16, FSID=03, leader=01c4, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  53} RID=01c5, FRID=7a, FMID=16, FSID=04, leader=01c5, crew=ffff, loader=ffff, target=ffff <Knee Mortar Plt>
+{  54} RID=01c6, FRID=7b, FMID=17, FSID=00, leader=01c6, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{  55} RID=01c7, FRID=7b, FMID=17, FSID=01, leader=01c7, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  56} RID=01c8, FRID=7b, FMID=17, FSID=02, leader=01c8, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  57} RID=01c9, FRID=7b, FMID=17, FSID=03, leader=01c9, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  58} RID=01ca, FRID=7b, FMID=17, FSID=04, leader=01ca, crew=ffff, loader=ffff, target=ffff <Knee Mort Sec>
+{  59} RID=01cb, FRID=7c, FMID=18, FSID=00, leader=01cb, crew=ffff, loader=ffff, target=ffff <Type 92 HMG>
+{  60} RID=01cc, FRID=7c, FMID=18, FSID=01, leader=01cc, crew=ffff, loader=ffff, target=ffff <Type 92 HMG>
+{  61} RID=01cd, FRID=7d, FMID=19, FSID=00, leader=01cd, crew=ffff, loader=ffff, target=ffff <JA Tank Hunters>
+{  62} RID=01ce, FRID=7d, FMID=19, FSID=01, leader=01ce, crew=ffff, loader=ffff, target=ffff <JA Tank Hunters>
+{  63} RID=01cf, FRID=7e, FMID=1a, FSID=00, leader=01cf, crew=ffff, loader=ffff, target=ffff <SNLF HQ>
+{  64} RID=01d0, FRID=7e, FMID=1a, FSID=01, leader=01d0, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  65} RID=01d1, FRID=7e, FMID=1a, FSID=02, leader=01d1, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd*>
+{  66} RID=01d2, FRID=7e, FMID=1a, FSID=03, leader=01d2, crew=ffff, loader=ffff, target=ffff <JA Inf B Sqd>
+{  67} RID=01d3, FRID=7e, FMID=1a, FSID=04, leader=01d3, crew=ffff, loader=ffff, target=ffff <JA Inf B Sqd*>
+{  68} RID=01d4, FRID=7f, FMID=1b, FSID=00, leader=01d4, crew=ffff, loader=ffff, target=ffff <Knee Mort Sec>
+{  69} RID=01d5, FRID=80, FMID=1c, FSID=00, leader=01d5, crew=ffff, loader=ffff, target=ffff <Type 92 HMG>
+{  70} RID=01d6, FRID=80, FMID=1c, FSID=01, leader=01d6, crew=ffff, loader=ffff, target=ffff <Type 92 HMG>
+{  71} RID=01d7, FRID=81, FMID=1d, FSID=00, leader=01d7, crew=ffff, loader=ffff, target=ffff <37mm Type 94 AT>
+{  72} RID=01d8, FRID=81, FMID=1d, FSID=01, leader=01d8, crew=ffff, loader=ffff, target=ffff <37mm Type 94 AT>
+{  73} RID=01d9, FRID=82, FMID=1e, FSID=00, leader=01d9, crew=ffff, loader=ffff, target=ffff <JA Scout Team>
+{  74} RID=01da, FRID=82, FMID=1e, FSID=01, leader=01da, crew=ffff, loader=ffff, target=ffff <JA Scout Team>
+{  75} RID=01db, FRID=83, FMID=1f, FSID=00, leader=01db, crew=ffff, loader=ffff, target=ffff <JA Sniper>
+{  76} RID=01dc, FRID=84, FMID=20, FSID=00, leader=01dc, crew=ffff, loader=ffff, target=ffff <JA Sniper>
+{  77} RID=01dd, FRID=85, FMID=21, FSID=00, leader=01dd, crew=ffff, loader=ffff, target=ffff <JA Sniper>
+{  78} RID=01de, FRID=86, FMID=22, FSID=00, leader=01de, crew=ffff, loader=ffff, target=0321 <JA 81mm Mortar>
+{  79} RID=01df, FRID=87, FMID=23, FSID=00, leader=01df, crew=ffff, loader=ffff, target=0321 <75mm Type 38 FG>
+{  80} RID=01e0, FRID=88, FMID=24, FSID=00, leader=01e0, crew=ffff, loader=ffff, target=ffff <JA Engineer Sqd>
+{  81} RID=01e1, FRID=88, FMID=24, FSID=01, leader=01e1, crew=ffff, loader=ffff, target=ffff <JA Engineer Sqd>
+{  82} RID=01e2, FRID=88, FMID=24, FSID=02, leader=01e2, crew=ffff, loader=ffff, target=ffff <JA Engineer Sqd>
+{  83} RID=01e3, FRID=89, FMID=25, FSID=00, leader=01e3, crew=ffff, loader=ffff, target=0321 <JA 81mm Mortar>
+{  84} RID=01e4, FRID=8a, FMID=26, FSID=00, leader=01e4, crew=ffff, loader=ffff, target=ffff <JA Inf A Sqd>
+{  85} RID=01e5, FRID=8b, FMID=27, FSID=00, leader=01e5, crew=ffff, loader=ffff, target=ffff <A Plt HQ*>
+{  86} RID=01e6, FRID=8c, FMID=28, FSID=00, leader=01e6, crew=ffff, loader=ffff, target=ffff <SNLF HQ>
+
+ridx[   0] rid=0190, idx=0000
+ridx[   1] rid=0191, idx=0001
+ridx[   2] rid=0192, idx=0002
+ridx[   3] rid=0193, idx=0003
+ridx[   4] rid=0194, idx=0004
+ridx[   5] rid=0195, idx=0005
+ridx[   6] rid=0196, idx=0006
+ridx[   7] rid=0197, idx=0007
+ridx[   8] rid=0198, idx=0008
+ridx[   9] rid=0199, idx=0009
+ridx[  10] rid=019a, idx=000a
+ridx[  11] rid=019b, idx=000b
+ridx[  12] rid=019c, idx=000c
+ridx[  13] rid=019d, idx=000d
+ridx[  14] rid=019e, idx=000e
+ridx[  15] rid=019f, idx=000f
+ridx[  16] rid=01a0, idx=0010
+ridx[  17] rid=01a1, idx=0011
+ridx[  18] rid=01a2, idx=0012
+ridx[  19] rid=01a3, idx=0013
+ridx[  20] rid=01a4, idx=0014
+ridx[  21] rid=01a5, idx=0015
+ridx[  22] rid=01a6, idx=0016
+ridx[  23] rid=01a7, idx=0017
+ridx[  24] rid=01a8, idx=0018
+ridx[  25] rid=01a9, idx=0019
+ridx[  26] rid=01aa, idx=001a
+ridx[  27] rid=01ab, idx=001b
+ridx[  28] rid=01ac, idx=001c
+ridx[  29] rid=01ad, idx=001d
+ridx[  30] rid=01ae, idx=001e
+ridx[  31] rid=01af, idx=001f
+ridx[  32] rid=01b0, idx=0020
+ridx[  33] rid=01b1, idx=0021
+ridx[  34] rid=01b2, idx=0022
+ridx[  35] rid=01b3, idx=0023
+ridx[  36] rid=01b4, idx=0024
+ridx[  37] rid=01b5, idx=0025
+ridx[  38] rid=01b6, idx=0026
+ridx[  39] rid=01b7, idx=0027
+ridx[  40] rid=01b8, idx=0028
+ridx[  41] rid=01b9, idx=0029
+ridx[  42] rid=01ba, idx=002a
+ridx[  43] rid=01bb, idx=002b
+ridx[  44] rid=01bc, idx=002c
+ridx[  45] rid=01bd, idx=002d
+ridx[  46] rid=01be, idx=002e
+ridx[  47] rid=01bf, idx=002f
+ridx[  48] rid=01c0, idx=0030
+ridx[  49] rid=01c1, idx=0031
+ridx[  50] rid=01c2, idx=0032
+ridx[  51] rid=01c3, idx=0033
+ridx[  52] rid=01c4, idx=0034
+ridx[  53] rid=01c5, idx=0035
+ridx[  54] rid=01c6, idx=0036
+ridx[  55] rid=01c7, idx=0037
+ridx[  56] rid=01c8, idx=0038
+ridx[  57] rid=01c9, idx=0039
+ridx[  58] rid=01ca, idx=003a
+ridx[  59] rid=01cb, idx=003b
+ridx[  60] rid=01cc, idx=003c
+ridx[  61] rid=01cd, idx=003d
+ridx[  62] rid=01ce, idx=003e
+ridx[  63] rid=01cf, idx=003f
+ridx[  64] rid=01d0, idx=0040
+ridx[  65] rid=01d1, idx=0041
+ridx[  66] rid=01d2, idx=0042
+ridx[  67] rid=01d3, idx=0043
+ridx[  68] rid=01d4, idx=0044
+ridx[  69] rid=01d5, idx=0045
+ridx[  70] rid=01d6, idx=0046
+ridx[  71] rid=01d7, idx=0047
+ridx[  72] rid=01d8, idx=0048
+ridx[  73] rid=01d9, idx=0049
+ridx[  74] rid=01da, idx=004a
+ridx[  75] rid=01db, idx=004b
+ridx[  76] rid=01dc, idx=004c
+ridx[  77] rid=01dd, idx=004d
+ridx[  78] rid=01de, idx=004e
+ridx[  79] rid=01df, idx=004f
+ridx[  80] rid=01e0, idx=0050
+ridx[  81] rid=01e1, idx=0051
+ridx[  82] rid=01e2, idx=0052
+ridx[  83] rid=01e3, idx=0053
+ridx[  84] rid=01e4, idx=0054
+ridx[  85] rid=01e5, idx=0055
+ridx[  86] rid=01e6, idx=0056
+
+RAWLINK leaders report:
+-----------------------
+
+count: 87
+
+{   0} RID=0190, URID=0190 <Sone>
+{   1} RID=0191, URID=0191 <Arai>
+{   2} RID=0192, URID=0192 <Miwa>
+{   3} RID=0193, URID=0193 <Egawa>
+{   4} RID=0194, URID=0194 <Otuka>
+{   5} RID=0195, URID=0195 <Kawai>
+{   6} RID=0196, URID=0196 <Hashimoto>
+{   7} RID=0197, URID=0197 <Nagao>
+{   8} RID=0198, URID=0198 <Iida>
+{   9} RID=0199, URID=0199 <Maeda>
+{  10} RID=019a, URID=019a <Motoyama>
+{  11} RID=019b, URID=019b <Nakata>
+{  12} RID=019c, URID=019c <Motoki>
+{  13} RID=019d, URID=019d <Nagata>
+{  14} RID=019e, URID=019e <Namiki>
+{  15} RID=019f, URID=019f <Moriyama>
+{  16} RID=01a0, URID=01a0 <Matushita>
+{  17} RID=01a1, URID=01a1 <Sato>
+{  18} RID=01a2, URID=01a2 <Seki>
+{  19} RID=01a3, URID=01a3 <Ogawa>
+{  20} RID=01a4, URID=01a4 <Nakajima>
+{  21} RID=01a5, URID=01a5 <Miyata>
+{  22} RID=01a6, URID=01a6 <Akune>
+{  23} RID=01a7, URID=01a7 <Aoyama>
+{  24} RID=01a8, URID=01a8 <Ueno>
+{  25} RID=01a9, URID=01a9 <Matumoto>
+{  26} RID=01aa, URID=01aa <Ito>
+{  27} RID=01ab, URID=01ab <Shimada>
+{  28} RID=01ac, URID=01ac <Noda>
+{  29} RID=01ad, URID=01ad <Mikami>
+{  30} RID=01ae, URID=01ae <Kotani>
+{  31} RID=01af, URID=01af <Kaneda>
+{  32} RID=01b0, URID=01b0 <Noguchi>
+{  33} RID=01b1, URID=01b1 <Koyama>
+{  34} RID=01b2, URID=01b2 <Takizawa>
+{  35} RID=01b3, URID=01b3 <Saeki>
+{  36} RID=01b4, URID=01b4 <Tanaka>
+{  37} RID=01b5, URID=01b5 <Nishida>
+{  38} RID=01b6, URID=01b6 <Nakayama>
+{  39} RID=01b7, URID=01b7 <Ogata>
+{  40} RID=01b8, URID=01b8 <Hirai>
+{  41} RID=01b9, URID=01b9 <Miyamoto>
+{  42} RID=01ba, URID=01ba <Aida>
+{  43} RID=01bb, URID=01bb <Matuda>
+{  44} RID=01bc, URID=01bc <Aoki>
+{  45} RID=01bd, URID=01bd <Kakiuchi>
+{  46} RID=01be, URID=01be <Hasegawa>
+{  47} RID=01bf, URID=01bf <Nishi>
+{  48} RID=01c0, URID=01c0 <Morishita>
+{  49} RID=01c1, URID=01c1 <Nishiyama>
+{  50} RID=01c2, URID=01c2 <Hirata>
+{  51} RID=01c3, URID=01c3 <Aota>
+{  52} RID=01c4, URID=01c4 <Saito>
+{  53} RID=01c5, URID=01c5 <Sekine>
+{  54} RID=01c6, URID=01c6 <Ota>
+{  55} RID=01c7, URID=01c7 <Kawaguchi>
+{  56} RID=01c8, URID=01c8 <Etoh>
+{  57} RID=01c9, URID=01c9 <Kawasaki>
+{  58} RID=01ca, URID=01ca <Numata>
+{  59} RID=01cb, URID=01cb <Suzuki>
+{  60} RID=01cc, URID=01cc <Ueda>
+{  61} RID=01cd, URID=01cd <Takeda>
+{  62} RID=01ce, URID=01ce <Nomura>
+{  63} RID=01cf, URID=01cf <Naito>
+{  64} RID=01d0, URID=01d0 <Nagano>
+{  65} RID=01d1, URID=01d1 <Kida>
+{  66} RID=01d2, URID=01d2 <Oyama>
+{  67} RID=01d3, URID=01d3 <Inoue>
+{  68} RID=01d4, URID=01d4 <Tamura>
+{  69} RID=01d5, URID=01d5 <Kaneko>
+{  70} RID=01d6, URID=01d6 <Mikawa>
+{  71} RID=01d7, URID=01d7 <Kobayashi>
+{  72} RID=01d8, URID=01d8 <Nemoto>
+{  73} RID=01d9, URID=01d9 <Ikeyama>
+{  74} RID=01da, URID=01da <Matui>
+{  75} RID=01db, URID=01db <Ishii>
+{  76} RID=01dc, URID=01dc <Kudo>
+{  77} RID=01dd, URID=01dd <Hamaguchi>
+{  78} RID=01de, URID=01de <Oki>
+{  79} RID=01df, URID=01df <Mori>
+{  80} RID=01e0, URID=01e0 <Koike>
+{  81} RID=01e1, URID=01e1 <Nagashima>
+{  82} RID=01e2, URID=01e2 <Shimizu>
+{  83} RID=01e3, URID=01e3 <Endo>
+{  84} RID=01e4, URID=01e4 <Morita>
+{  85} RID=01e5, URID=01e5 <Negishi>
+{  86} RID=01e6, URID=01e6 <Shiozaki>
+
+ridx[   0] rid=0190, idx=0000
+ridx[   1] rid=0191, idx=0001
+ridx[   2] rid=0192, idx=0002
+ridx[   3] rid=0193, idx=0003
+ridx[   4] rid=0194, idx=0004
+ridx[   5] rid=0195, idx=0005
+ridx[   6] rid=0196, idx=0006
+ridx[   7] rid=0197, idx=0007
+ridx[   8] rid=0198, idx=0008
+ridx[   9] rid=0199, idx=0009
+ridx[  10] rid=019a, idx=000a
+ridx[  11] rid=019b, idx=000b
+ridx[  12] rid=019c, idx=000c
+ridx[  13] rid=019d, idx=000d
+ridx[  14] rid=019e, idx=000e
+ridx[  15] rid=019f, idx=000f
+ridx[  16] rid=01a0, idx=0010
+ridx[  17] rid=01a1, idx=0011
+ridx[  18] rid=01a2, idx=0012
+ridx[  19] rid=01a3, idx=0013
+ridx[  20] rid=01a4, idx=0014
+ridx[  21] rid=01a5, idx=0015
+ridx[  22] rid=01a6, idx=0016
+ridx[  23] rid=01a7, idx=0017
+ridx[  24] rid=01a8, idx=0018
+ridx[  25] rid=01a9, idx=0019
+ridx[  26] rid=01aa, idx=001a
+ridx[  27] rid=01ab, idx=001b
+ridx[  28] rid=01ac, idx=001c
+ridx[  29] rid=01ad, idx=001d
+ridx[  30] rid=01ae, idx=001e
+ridx[  31] rid=01af, idx=001f
+ridx[  32] rid=01b0, idx=0020
+ridx[  33] rid=01b1, idx=0021
+ridx[  34] rid=01b2, idx=0022
+ridx[  35] rid=01b3, idx=0023
+ridx[  36] rid=01b4, idx=0024
+ridx[  37] rid=01b5, idx=0025
+ridx[  38] rid=01b6, idx=0026
+ridx[  39] rid=01b7, idx=0027
+ridx[  40] rid=01b8, idx=0028
+ridx[  41] rid=01b9, idx=0029
+ridx[  42] rid=01ba, idx=002a
+ridx[  43] rid=01bb, idx=002b
+ridx[  44] rid=01bc, idx=002c
+ridx[  45] rid=01bd, idx=002d
+ridx[  46] rid=01be, idx=002e
+ridx[  47] rid=01bf, idx=002f
+ridx[  48] rid=01c0, idx=0030
+ridx[  49] rid=01c1, idx=0031
+ridx[  50] rid=01c2, idx=0032
+ridx[  51] rid=01c3, idx=0033
+ridx[  52] rid=01c4, idx=0034
+ridx[  53] rid=01c5, idx=0035
+ridx[  54] rid=01c6, idx=0036
+ridx[  55] rid=01c7, idx=0037
+ridx[  56] rid=01c8, idx=0038
+ridx[  57] rid=01c9, idx=0039
+ridx[  58] rid=01ca, idx=003a
+ridx[  59] rid=01cb, idx=003b
+ridx[  60] rid=01cc, idx=003c
+ridx[  61] rid=01cd, idx=003d
+ridx[  62] rid=01ce, idx=003e
+ridx[  63] rid=01cf, idx=003f
+ridx[  64] rid=01d0, idx=0040
+ridx[  65] rid=01d1, idx=0041
+ridx[  66] rid=01d2, idx=0042
+ridx[  67] rid=01d3, idx=0043
+ridx[  68] rid=01d4, idx=0044
+ridx[  69] rid=01d5, idx=0045
+ridx[  70] rid=01d6, idx=0046
+ridx[  71] rid=01d7, idx=0047
+ridx[  72] rid=01d8, idx=0048
+ridx[  73] rid=01d9, idx=0049
+ridx[  74] rid=01da, idx=004a
+ridx[  75] rid=01db, idx=004b
+ridx[  76] rid=01dc, idx=004c
+ridx[  77] rid=01dd, idx=004d
+ridx[  78] rid=01de, idx=004e
+ridx[  79] rid=01df, idx=004f
+ridx[  80] rid=01e0, idx=0050
+ridx[  81] rid=01e1, idx=0051
+ridx[  82] rid=01e2, idx=0052
+ridx[  83] rid=01e3, idx=0053
+ridx[  84] rid=01e4, idx=0054
+ridx[  85] rid=01e5, idx=0055
+ridx[  86] rid=01e6, idx=0056
+
+RAWLINK unit positions report:
+------------------------------
+
+count: 87
+
+{   0} RID=0190, URID=0190
+{   1} RID=0191, URID=0191
+{   2} RID=0192, URID=0192
+{   3} RID=0193, URID=0193
+{   4} RID=0194, URID=0194
+{   5} RID=0195, URID=0195
+{   6} RID=0196, URID=0196
+{   7} RID=0197, URID=0197
+{   8} RID=0198, URID=0198
+{   9} RID=0199, URID=0199
+{  10} RID=019a, URID=019a
+{  11} RID=019b, URID=019b
+{  12} RID=019c, URID=019c
+{  13} RID=019d, URID=019d
+{  14} RID=019e, URID=019e
+{  15} RID=019f, URID=019f
+{  16} RID=01a0, URID=01a0
+{  17} RID=01a1, URID=01a1
+{  18} RID=01a2, URID=01a2
+{  19} RID=01a3, URID=01a3
+{  20} RID=01a4, URID=01a4
+{  21} RID=01a5, URID=01a5
+{  22} RID=01a6, URID=01a6
+{  23} RID=01a7, URID=01a7
+{  24} RID=01a8, URID=01a8
+{  25} RID=01a9, URID=01a9
+{  26} RID=01aa, URID=01aa
+{  27} RID=01ab, URID=01ab
+{  28} RID=01ac, URID=01ac
+{  29} RID=01ad, URID=01ad
+{  30} RID=01ae, URID=01ae
+{  31} RID=01af, URID=01af
+{  32} RID=01b0, URID=01b0
+{  33} RID=01b1, URID=01b1
+{  34} RID=01b2, URID=01b2
+{  35} RID=01b3, URID=01b3
+{  36} RID=01b4, URID=01b4
+{  37} RID=01b5, URID=01b5
+{  38} RID=01b6, URID=01b6
+{  39} RID=01b7, URID=01b7
+{  40} RID=01b8, URID=01b8
+{  41} RID=01b9, URID=01b9
+{  42} RID=01ba, URID=01ba
+{  43} RID=01bb, URID=01bb
+{  44} RID=01bc, URID=01bc
+{  45} RID=01bd, URID=01bd
+{  46} RID=01be, URID=01be
+{  47} RID=01bf, URID=01bf
+{  48} RID=01c0, URID=01c0
+{  49} RID=01c1, URID=01c1
+{  50} RID=01c2, URID=01c2
+{  51} RID=01c3, URID=01c3
+{  52} RID=01c4, URID=01c4
+{  53} RID=01c5, URID=01c5
+{  54} RID=01c6, URID=01c6
+{  55} RID=01c7, URID=01c7
+{  56} RID=01c8, URID=01c8
+{  57} RID=01c9, URID=01c9
+{  58} RID=01ca, URID=01ca
+{  59} RID=01cb, URID=01cb
+{  60} RID=01cc, URID=01cc
+{  61} RID=01cd, URID=01cd
+{  62} RID=01ce, URID=01ce
+{  63} RID=01cf, URID=01cf
+{  64} RID=01d0, URID=01d0
+{  65} RID=01d1, URID=01d1
+{  66} RID=01d2, URID=01d2
+{  67} RID=01d3, URID=01d3
+{  68} RID=01d4, URID=01d4
+{  69} RID=01d5, URID=01d5
+{  70} RID=01d6, URID=01d6
+{  71} RID=01d7, URID=01d7
+{  72} RID=01d8, URID=01d8
+{  73} RID=01d9, URID=01d9
+{  74} RID=01da, URID=01da
+{  75} RID=01db, URID=01db
+{  76} RID=01dc, URID=01dc
+{  77} RID=01dd, URID=01dd
+{  78} RID=01de, URID=01de
+{  79} RID=01df, URID=01df
+{  80} RID=01e0, URID=01e0
+{  81} RID=01e1, URID=01e1
+{  82} RID=01e2, URID=01e2
+{  83} RID=01e3, URID=01e3
+{  84} RID=01e4, URID=01e4
+{  85} RID=01e5, URID=01e5
+{  86} RID=01e6, URID=01e6
+
+ridx[   0] rid=0190, idx=0000
+ridx[   1] rid=0191, idx=0001
+ridx[   2] rid=0192, idx=0002
+ridx[   3] rid=0193, idx=0003
+ridx[   4] rid=0194, idx=0004
+ridx[   5] rid=0195, idx=0005
+ridx[   6] rid=0196, idx=0006
+ridx[   7] rid=0197, idx=0007
+ridx[   8] rid=0198, idx=0008
+ridx[   9] rid=0199, idx=0009
+ridx[  10] rid=019a, idx=000a
+ridx[  11] rid=019b, idx=000b
+ridx[  12] rid=019c, idx=000c
+ridx[  13] rid=019d, idx=000d
+ridx[  14] rid=019e, idx=000e
+ridx[  15] rid=019f, idx=000f
+ridx[  16] rid=01a0, idx=0010
+ridx[  17] rid=01a1, idx=0011
+ridx[  18] rid=01a2, idx=0012
+ridx[  19] rid=01a3, idx=0013
+ridx[  20] rid=01a4, idx=0014
+ridx[  21] rid=01a5, idx=0015
+ridx[  22] rid=01a6, idx=0016
+ridx[  23] rid=01a7, idx=0017
+ridx[  24] rid=01a8, idx=0018
+ridx[  25] rid=01a9, idx=0019
+ridx[  26] rid=01aa, idx=001a
+ridx[  27] rid=01ab, idx=001b
+ridx[  28] rid=01ac, idx=001c
+ridx[  29] rid=01ad, idx=001d
+ridx[  30] rid=01ae, idx=001e
+ridx[  31] rid=01af, idx=001f
+ridx[  32] rid=01b0, idx=0020
+ridx[  33] rid=01b1, idx=0021
+ridx[  34] rid=01b2, idx=0022
+ridx[  35] rid=01b3, idx=0023
+ridx[  36] rid=01b4, idx=0024
+ridx[  37] rid=01b5, idx=0025
+ridx[  38] rid=01b6, idx=0026
+ridx[  39] rid=01b7, idx=0027
+ridx[  40] rid=01b8, idx=0028
+ridx[  41] rid=01b9, idx=0029
+ridx[  42] rid=01ba, idx=002a
+ridx[  43] rid=01bb, idx=002b
+ridx[  44] rid=01bc, idx=002c
+ridx[  45] rid=01bd, idx=002d
+ridx[  46] rid=01be, idx=002e
+ridx[  47] rid=01bf, idx=002f
+ridx[  48] rid=01c0, idx=0030
+ridx[  49] rid=01c1, idx=0031
+ridx[  50] rid=01c2, idx=0032
+ridx[  51] rid=01c3, idx=0033
+ridx[  52] rid=01c4, idx=0034
+ridx[  53] rid=01c5, idx=0035
+ridx[  54] rid=01c6, idx=0036
+ridx[  55] rid=01c7, idx=0037
+ridx[  56] rid=01c8, idx=0038
+ridx[  57] rid=01c9, idx=0039
+ridx[  58] rid=01ca, idx=003a
+ridx[  59] rid=01cb, idx=003b
+ridx[  60] rid=01cc, idx=003c
+ridx[  61] rid=01cd, idx=003d
+ridx[  62] rid=01ce, idx=003e
+ridx[  63] rid=01cf, idx=003f
+ridx[  64] rid=01d0, idx=0040
+ridx[  65] rid=01d1, idx=0041
+ridx[  66] rid=01d2, idx=0042
+ridx[  67] rid=01d3, idx=0043
+ridx[  68] rid=01d4, idx=0044
+ridx[  69] rid=01d5, idx=0045
+ridx[  70] rid=01d6, idx=0046
+ridx[  71] rid=01d7, idx=0047
+ridx[  72] rid=01d8, idx=0048
+ridx[  73] rid=01d9, idx=0049
+ridx[  74] rid=01da, idx=004a
+ridx[  75] rid=01db, idx=004b
+ridx[  76] rid=01dc, idx=004c
+ridx[  77] rid=01dd, idx=004d
+ridx[  78] rid=01de, idx=004e
+ridx[  79] rid=01df, idx=004f
+ridx[  80] rid=01e0, idx=0050
+ridx[  81] rid=01e1, idx=0051
+ridx[  82] rid=01e2, idx=0052
+ridx[  83] rid=01e3, idx=0053
+ridx[  84] rid=01e4, idx=0054
+ridx[  85] rid=01e5, idx=0055
+ridx[  86] rid=01e6, idx=0056
+
+
