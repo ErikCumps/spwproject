@@ -492,3 +492,28 @@ SPWAW_dossiertype2str (SPWAW_DOSSIER_TYPE type)
 	}
 	return (p);
 }
+
+SPWAWLIB_API const char *
+SPWAW_unittype2str (SPWAW_UNIT_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SPWAW_UNIT_TYPE_UNKNOWN:
+			p = "unknown";
+			break;
+		case SPWAW_UNIT_TYPE_UNIT:
+			p = "UNIT";
+			break;
+		case SPWAW_UNIT_TYPE_CREW:
+			p = "CREW";
+			break;
+		case SPWAW_UNIT_TYPE_SPAU:
+			p = "SPAU";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}

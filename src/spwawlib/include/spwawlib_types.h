@@ -246,6 +246,16 @@ typedef enum e_SPWAW_DOSSIER_TYPE {
 
 extern SPWAWLIB_API const char *SPWAW_dossiertype2str	(SPWAW_DOSSIER_TYPE type);
 
+/* SPWAW unit type */
+typedef enum e_SPWAW_UNIT_TYPE {
+	SPWAW_UNIT_TYPE_UNKNOWN = 0,	/* Unknown unit type		*/
+	SPWAW_UNIT_TYPE_UNIT,		/* Unit				*/
+	SPWAW_UNIT_TYPE_CREW,		/* Crew				*/
+	SPWAW_UNIT_TYPE_SPAU		/* Special Attached Unit	*/
+} SPWAW_UNIT_TYPE;
+
+extern SPWAWLIB_API const char *SPWAW_unittype2str (SPWAW_UNIT_TYPE type);
+
 #endif	/* SPWAW_LIB_TYPES_H */
 
 /** @} */

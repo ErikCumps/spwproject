@@ -25,16 +25,6 @@ typedef struct s_FEL FEL;
 
 
 
-/* Supported unit types */
-typedef enum e_UTYPE {
-	UTYPE_UNIT = 0,		/* Unit				*/
-	UTYPE_CREW,		/* Crew				*/
-	UTYPE_SPAU,		/* Special Attached Unit	*/
-	UTYPE_STARTCODE = UTYPE_UNIT,
-	UTYPE_LASTCODE = UTYPE_SPAU
-} UTYPE;
-extern const char *UTYPE2str (UTYPE type);
-
 /* Intermediate unit element - used during formation/unit detection */
 typedef struct s_UEL {
 	struct s_list {
@@ -51,7 +41,7 @@ typedef struct s_UEL {
 		BYTE		OOBrid;				/* OOB record ID				*/
 		SPWOOB_UTYPE	OOBtype;			/* OOB unit type				*/
 		FEL		*formation;			/* Associated formation				*/
-		UTYPE		type;				/* Unit type: unit/crew/spau			*/
+		SPWAW_UNIT_TYPE	type;				/* Unit type: unit/crew/spau			*/
 		USHORT		LRID;				/* Loader unit record ID			*/
 		bool		vrfloader;			/* Verified loader				*/
 		bool		needvrfldrtst;			/* Requires loader verification acceptance test	*/

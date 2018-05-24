@@ -162,13 +162,13 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 				UFDLOG3 ("CREW #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
 
 				UFDLOG0 ("CANDIDATE\n");
-				uel->d.type = UTYPE_CREW;
+				uel->d.type = SPWAW_UNIT_TYPE_CREW;
 			} else {
 				// This is a candidate special attached unit.
 				UFDLOG3 ("SPAU #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
 
 				UFDLOG0 ("CANDIDATE\n");
-				uel->d.type = UTYPE_SPAU;
+				uel->d.type = SPWAW_UNIT_TYPE_SPAU;
 			}
 		}
 		if (!commit_UEL (ful.ul, uel)) {
@@ -192,7 +192,7 @@ link_candidate_crews (FULIST &ful, UNIT *data)
 	while (p)
 	{
 		uel = p; p = p->l.next;
-		if (uel->d.type != UTYPE_CREW) continue;
+		if (uel->d.type != SPWAW_UNIT_TYPE_CREW) continue;
 
 		UFDLOG5 ("link_candidate_crews: [%3.3u] CREW<%5.5u> F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, data[uel->d.RID].crew, uel->d.FMID, uel->d.FSID, uel->d.name);
@@ -510,7 +510,7 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 		}
 
 		ldru = lookup_ULIST (ful.ul, fel->d.leader);
-		if (ldru && (ldru->d.type == UTYPE_CREW)) {
+		if (ldru && (ldru->d.type == SPWAW_UNIT_TYPE_CREW)) {
 			ldru = ldru->d.link.parent;
 		}
 		if (!ldru) {
@@ -557,7 +557,7 @@ verify_candidate_units (FULIST &ful)
 	{
 		uel = p; p = p->l.next;
 		// Skip CREWs and SPAUs
-		if (uel->d.type != UTYPE_UNIT) continue;
+		if (uel->d.type != SPWAW_UNIT_TYPE_UNIT) continue;
 		// Skip units without a formation reference
 		fel = uel->d.formation; if (!fel) continue;
 		// Skip units with an invalid OOB ID
@@ -573,7 +573,7 @@ verify_candidate_units (FULIST &ful)
 	while (p)
 	{
 		uel = p; p = p->l.next;
-		if (uel->d.type != UTYPE_UNIT) continue;
+		if (uel->d.type != SPWAW_UNIT_TYPE_UNIT) continue;
 
 		UFDLOG4 ("verify_candidate_units: [%3.3u] UNIT: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FMID, uel->d.FSID, uel->d.name);
@@ -635,7 +635,7 @@ postpone_unit:
 	while (p)
 	{
 		uel = p; p = p->l.next;
-		if (uel->d.type != UTYPE_CREW) continue;
+		if (uel->d.type != SPWAW_UNIT_TYPE_CREW) continue;
 
 		UFDLOG4 ("verify_candidate_units: [%3.3u] CREW: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FMID, uel->d.FSID, uel->d.name);
@@ -665,7 +665,7 @@ drop_crew:
 	while (p)
 	{
 		uel = p; p = p->l.next;
-		if (uel->d.type != UTYPE_SPAU) continue;
+		if (uel->d.type != SPWAW_UNIT_TYPE_SPAU) continue;
 
 		UFDLOG5 ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
 			uel->d.RID, "SPAU", uel->d.FMID, uel->d.FSID, uel->d.name);

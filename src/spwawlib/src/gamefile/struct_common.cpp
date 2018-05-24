@@ -47,20 +47,7 @@ load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	return (SPWERR_OK);
 }
 
-/* Unit type names */
-static const char *UTYPE_strings[UTYPE_LASTCODE+1] = {
-	"UNIT",
-	"CREW",
-	"SPAU"
-};
 
-/* Returns unit type name */
-const char *
-UTYPE2str (UTYPE type)
-{
-	if ((type < UTYPE_STARTCODE) || (type > UTYPE_LASTCODE)) return ("???");
-	return (UTYPE_strings[type]);
-}
 
 /* Initializes a unit list */
 void
@@ -93,7 +80,7 @@ dump_UEL (UEL *uel, char *prefix)
 	UFDTRACE1 ("%s", prefix ? prefix : "    ");
 
 	UFDTRACE3 ("[%5.5u] (%16.16s) %4.4s",
-		uel->d.RID, uel->d.name, UTYPE2str(uel->d.type));
+		uel->d.RID, uel->d.name, SPWAW_unittype2str(uel->d.type));
 	UFDTRACE3 (" loader<%5.5u> vrf=%s vrfneed=%s ",
 		uel->d.LRID, uel->d.vrfloader ? "Y" : "N", uel->d.needvrfldrtst ? "Y" : "N");
 	UFDTRACE2 (" OOB %3.3u: [%3.3u]",
@@ -120,7 +107,7 @@ reserve_UEL (ULIST &ul)
 		memset (&(uel->d), 0, sizeof (uel->d));
 
 		uel->d.OOBtype = SPWOOB_UTYPE__NONE;
-		uel->d.type = UTYPE_UNIT;
+		uel->d.type = SPWAW_UNIT_TYPE_UNIT;
 	}
 
 	return (uel);
@@ -164,7 +151,7 @@ drop_UEL (ULIST &ul, UEL *uel)
 	}
 	ul.cnt--;
 
-	if ((uel->d.type == UTYPE_UNIT) && uel->d.link.crew) {
+	if ((uel->d.type == SPWAW_UNIT_TYPE_UNIT) && uel->d.link.crew) {
 		drop_UEL (ul, uel->d.link.crew);
 	}
 }
@@ -305,11 +292,11 @@ add_crew_to_unit (UEL *cel, UEL *uel)
 {
 	if (!cel || !uel) return (false);
 
-	if (uel->d.type == UTYPE_CREW) return (false);
+	if (uel->d.type == SPWAW_UNIT_TYPE_CREW) return (false);
 
 	uel->d.link.crew = cel;
 
-	cel->d.type = UTYPE_CREW;
+	cel->d.type = SPWAW_UNIT_TYPE_CREW;
 	cel->d.link.parent = uel;
 
 	return (true);
