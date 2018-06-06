@@ -160,6 +160,7 @@ typedef struct s_SPWAW_SNAP_OOB_FRAW {
 
 /* SPWAW: raw unit element */
 typedef struct s_SPWAW_SNAP_OOB_UELRAW {
+	SPWAW_UNIT_TYPE		type;				/* Detected unit type					*/
 	USHORT			RID;				/* Unit record ID					*/
 	USHORT			FRID;				/* Unit formation record ID				*/
 	BYTE			FMID;				/* Unit formation major ID				*/
@@ -171,7 +172,7 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			size;				/* Unit size						*/
 	BYTE			cost;				/* Unit cost						*/
 	BYTE			survive;			/* Unit survivability					*/
-	USHORT			leader;				/* Unit leader number					*/
+	USHORT			leader;				/* Detected unit leader record ID			*/
 	BYTE			exp;				/* Unit experience					*/
 	BYTE			mor;				/* Unit morale						*/
 	BYTE			sup;				/* Unit suppression					*/

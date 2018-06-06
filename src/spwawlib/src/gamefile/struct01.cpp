@@ -110,14 +110,15 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		// Record the basic unit info
 		uel->d.RID    = i;
 		memcpy (uel->d.name, data[i].name, SPWAW_AZSNAME);
-		uel->d.FRID   = data[i].formID;
-		uel->d.FSID   = data[i].minform;
-		uel->d.OOB    = data[i].OOBid;
-		uel->d.OOBrid = data[i].OOBnum;
+		uel->d.FRID	= data[i].formID;
+		uel->d.FSID	= data[i].minform;
+		uel->d.OOB	= data[i].OOBid;
+		uel->d.OOBrid	= data[i].OOBnum;
+		uel->d.LRID	= data[i].leader;
 
 		UFDLOG7 ("find_candidate_units: [%3.3u] F[%3.3u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FRID, uel->d.FSID,
-			data[i].crew, data[i].leader, data[i].OOBid,
+			data[i].crew, uel->d.LRID, data[i].OOBid,
 			name);
 
 		// The unit must reference a valid formation, so try to look it up in the FORMATION list
@@ -133,7 +134,7 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		uel->d.FMID = fel->d.FID;
 
 		// Record the unit's loader
-		uel->d.LRID = data[i].loader;
+		uel->d.loader = data[i].loader;
 
 		// Is this a unit or crew/special attached unit?
 		if (is_this_a_UNIT (data, i))
@@ -615,9 +616,17 @@ verify_candidate_units (FULIST &ful)
 
 accept_unit:
 		// Mark the indicated loader unit as verified
-		if (uel->d.LRID != SPWAW_BADIDX) {
-			UEL *l = lookup_ULIST (ful.ul, uel->d.LRID);
+		if (uel->d.loader != SPWAW_BADIDX) {
+			UEL *l = lookup_ULIST (ful.ul, uel->d.loader);
 			if (l) l->d.vrfloader = true;
+		}
+
+		// Fix up the unit's leader record ID
+		if (uel->d.LRID == SPWAW_BADIDX) {
+			if (uel->d.link.crew) uel->d.LRID = uel->d.link.crew->d.LRID;
+		}
+		if (uel->d.LRID == SPWAW_BADIDX) {
+			uel->d.LRID = uel->d.RID;
 		}
 		continue;
 
@@ -649,10 +658,19 @@ postpone_unit:
 		log ("ACCEPTED\n");
 
 		// Mark the indicated loader unit as verified
-		if (uel->d.LRID != SPWAW_BADIDX) {
-			UEL *l = lookup_ULIST (ful.ul, uel->d.LRID);
+		if (uel->d.loader != SPWAW_BADIDX) {
+			UEL *l = lookup_ULIST (ful.ul, uel->d.loader);
 			if (l) l->d.vrfloader = true;
 		}
+
+		// Fix up the crew's leader record ID
+		if (uel->d.LRID == SPWAW_BADIDX) {
+			if (uel->d.link.parent) uel->d.LRID = uel->d.link.parent->d.LRID;
+		}
+		if (uel->d.LRID == SPWAW_BADIDX) {
+			uel->d.LRID = uel->d.RID;
+		}
+
 		continue;
 
 drop_crew:
@@ -661,6 +679,7 @@ drop_crew:
 	}
 
 	// Verify all SPAUs
+	// FIXME: why not verify all SPAUs as UNITs?
 	p = ful.ul.head;
 	while (p)
 	{
@@ -671,6 +690,14 @@ drop_crew:
 			uel->d.RID, "SPAU", uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		UFDLOG0 ("ACCEPTED\n");
+
+		// Fix up the unit's leader record ID
+		if (uel->d.LRID == SPWAW_BADIDX) {
+			if (uel->d.link.crew) uel->d.LRID = uel->d.link.crew->d.LRID;
+		}
+		if (uel->d.LRID == SPWAW_BADIDX) {
+			uel->d.LRID = uel->d.RID;
+		}
 	}
 
 	// Finally perform a verified loader acceptance test for those units that require it
@@ -740,15 +767,16 @@ setup (SPWAW_SNAP_OOB_URAW *dst, ULIST &up)
 }
 
 static SPWAW_ERROR
-add_unit (UNIT *src, USHORT id, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_SNAP_OOB_FRAW *fp, STRTAB *stab)
+add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_SNAP_OOB_FRAW *fp, STRTAB *stab)
 {
 	SPWAW_SNAP_OOB_UELRAW	*ptr;
 
 	ptr = &(dst[*idx]);
 
-	log ("add_unit: idx=%u, RID=%u\n", *idx, id);
+	log ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
 
-	ptr->RID	= id;
+	ptr->RID	= p->d.RID;
+	ptr->type	= p->d.type;
 	ptr->FRID	= src->formID;
 	check_formationid (ptr->FRID, fp, &(ptr->FMID), NULL);
 	ptr->FSID	= src->minform;
@@ -759,7 +787,7 @@ add_unit (UNIT *src, USHORT id, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_S
 	ptr->size	= src->size;
 	ptr->cost	= src->cost;
 	ptr->survive	= src->survive;
-	ptr->leader	= src->leader;
+	ptr->leader	= p->d.LRID;
 	ptr->exp	= src->exp;
 	ptr->mor	= src->morale;
 	ptr->sup	= src->supp;
@@ -882,7 +910,7 @@ sec01_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 	rc = setup (&(dst->raw.OOBp1.units), ful1.ul); ROE ("setup(OOBp1)");
 	p = ful1.ul.head; idx = 0;
 	while (p) {
-		rc = add_unit (&(data[p->d.RID]), p->d.RID, dst->raw.OOBp1.units.raw, &idx, &(dst->raw.OOBp1.formations), stab);
+		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp1.units.raw, &idx, &(dst->raw.OOBp1.formations), stab);
 		ROE ("add_unit(OOBp1)");
 		p = p->l.next;
 	}
@@ -892,7 +920,7 @@ sec01_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 	rc = setup (&(dst->raw.OOBp2.units), ful2.ul); ROE ("setup(OOBp2)");
 	p = ful2.ul.head; idx = 0;
 	while (p) {
-		rc = add_unit (&(data[p->d.RID]), p->d.RID, dst->raw.OOBp2.units.raw, &idx, &(dst->raw.OOBp2.formations), stab);
+		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp2.units.raw, &idx, &(dst->raw.OOBp2.formations), stab);
 		ROE ("add_unit(OOBp2)");
 		p = p->l.next;
 	}

@@ -11,6 +11,7 @@
 #include <spwawlib_snapshot.h>
 #include "snapshot/snapshot.h"
 #include "snapshot/snapfile.h"
+#include "snapshot/translate.h"
 #include "snapshot/snapfile_v10.h"
 #include "snapshot/index.h"
 #include "strtab/strtab.h"
@@ -101,67 +102,29 @@ load_oobf (SNAP_OOB_FEL *src, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab)
 	getOF (leader); getOF (hcmd); getOF (OOBrid); getOF (status);
 }
 
-static void
-load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
+static SPWAW_ERROR
+load_oobf_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 {
-	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_UELRAW));
+	ULONG		i;
+	SNAP_OOB_FEL	f;
 
-	getOU (RID); getOU (FRID); getOU (FMID); getOU (FSID);
-	dst->name = STRTAB_getstr (stab, src->name);
-	getOU (classID); getOU (OOB); getOU (OOBrid);
-	getOU (size); getOU (cost); getOU (survive); getOU (leader);
-	getOU (exp); getOU (mor); getOU (sup); getOU (status); getOU (entr);
-	getOU (smkdev); getOU (smkammo); getOU (crew);
-	getOU (range); getOU (stance_x); getOU (stance_y);
-        getOU (loader); getOU (load_cap); getOU (load_cost);
-	getOU (radio); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
-	getOU (swim); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
-	getOU (damage); getOU (movdir); getOU (shtdir); getOU (target); getOU (UTGidx);
-//	getOU (SPECIAL_OU); getOU (SPECIAL[0]); getOU (SPECIAL[1]);
-//	getOU (SPECIAL[2]); getOU (SPECIAL[3]); getOU (SPECIAL[4]);
-}
+	for (i=0; i<cnt; i++) {
+		if (sbread (sbr, (char *)&f, sizeof (f)) != sizeof (f))
+			RWE (SPWERR_FRFAILED, "sbread(formation data)");
+		load_oobf (&f, &(oob->formations.raw[i]), stab);
+	}
 
-static void
-load_oobl (SNAP_OOB_LEL *src, SPWAW_SNAP_OOB_LELRAW *dst, STRTAB *stab)
-{
-	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_LELRAW));
-
-	getOL (RID); getOL (URID);
-	dst->name = STRTAB_getstr (stab, src->name);
-	getOL (rank); getOL (ral); getOL (inf); getOL (art); getOL (arm);
-	getOL (kills); getOL (status);
-}
-
-static void
-load_oobp (SNAP_OOB_PEL *src, SPWAW_SNAP_OOB_PELRAW *dst, STRTAB * /*stab*/)
-{
-	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_PELRAW));
-
-	getOP (RID); getOP (URID); getOP (x); getOP (y); getOP (seen);
+	return (SPWERR_OK);
 }
 
 static SPWAW_ERROR
-load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+load_oob_formations (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
-	long		pos;
-	SNAP_OOBHDR	oobhdr;
-	ULONG		i;
-	SNAP_OOB_FEL	f;
-	SNAP_OOB_UEL	u;
-	SNAP_OOB_LEL	l;
-	SNAP_OOB_PEL	p;
-	char		*data = NULL;
 	long		size;
+	char		*data = NULL;
 	CBIO		cbio;
 	SBR		*sbr = NULL;
-
-	pos = bseekget (fd);
-
-	memset (&oobhdr, 0, sizeof (oobhdr));
-	if (!bread (fd, (char *)&oobhdr, sizeof (oobhdr), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(oobhdr)", handle_error);
-
 
 	oob->formations.cnt = oobhdr.fcnt;
 	oob->formations.start = oobhdr.fstart;
@@ -179,16 +142,66 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 	oob->formations.raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, oobhdr.fcnt);
 	COOMGOTO (oob->formations.raw, "SPWAW_SNAP_OOB_FELRAW list", handle_error);
 
-	for (i=0; i<oobhdr.fcnt; i++) {
-		if (sbread (sbr, (char *)&f, sizeof (f)) != sizeof (f))
-			FAILGOTO (SPWERR_FRFAILED, "sbread(formation data)", handle_error);
-		load_oobf (&f, &(oob->formations.raw[i]), stab);
-	}
+	rc = load_oobf_list (sbr, oobhdr.fcnt, oob, stab);
+	ERRORGOTO ("load_oobf_list()", handle_error);
+
 	rc = build_fridx (&(oob->formations)); ROE ("build_fridx()");
 
 	sbread_stop (sbr); sbr = NULL;
 	safe_free (data);
 
+	return (SPWERR_OK);
+
+handle_error:
+	if (sbr) sbread_stop (sbr);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+static void
+load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
+{
+	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_UELRAW));
+
+	dst->type = raw2unittype (src->type);
+	getOU (RID); getOU (FRID); getOU (FMID); getOU (FSID);
+	dst->name = STRTAB_getstr (stab, src->name);
+	getOU (classID); getOU (OOB); getOU (OOBrid);
+	getOU (size); getOU (cost); getOU (survive); getOU (leader);
+	getOU (exp); getOU (mor); getOU (sup); getOU (status); getOU (entr);
+	getOU (smkdev); getOU (smkammo); getOU (crew);
+	getOU (range); getOU (stance_x); getOU (stance_y);
+	getOU (loader); getOU (load_cap); getOU (load_cost);
+	getOU (radio); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
+	getOU (swim); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
+	getOU (damage); getOU (movdir); getOU (shtdir); getOU (target); getOU (UTGidx);
+//	getOU (SPECIAL_OU); getOU (SPECIAL[0]); getOU (SPECIAL[1]);
+//	getOU (SPECIAL[2]); getOU (SPECIAL[3]); getOU (SPECIAL[4]);
+}
+
+static SPWAW_ERROR
+load_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+{
+	ULONG		i;
+	SNAP_OOB_UEL	u;
+
+	for (i=0; i<cnt; i++) {
+		if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
+			RWE (SPWERR_FRFAILED, "sbread(unit data)");
+		load_oobu (&u, &(oob->units.raw[i]), stab);
+	}
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+load_oob_units (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	long		size;
+	char		*data = NULL;
+	CBIO		cbio;
+	SBR		*sbr = NULL;
 
 	oob->units.cnt = oobhdr.ucnt;
 	size = oobhdr.usize;
@@ -205,15 +218,68 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 	oob->units.raw = safe_nmalloc (SPWAW_SNAP_OOB_UELRAW, oobhdr.ucnt);
 	COOMGOTO (oob->units.raw, "SPWAW_SNAP_OOB_UELRAW list", handle_error);
 
-	for (i=0; i<oobhdr.ucnt; i++) {
-		if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
-			FAILGOTO (SPWERR_FRFAILED, "sbread(unit data)", handle_error);
-		load_oobu (&u, &(oob->units.raw[i]), stab);
+	/* We are now backwards compatible with version 10 */
+	if (version == SNAP_VERSION_V10) {
+		rc = snapshot_load_v10_oobu_list (sbr, oobhdr.ucnt, oob, stab);
+		ERRORGOTO ("snapshot_load_v10_oobu_list()", handle_error);
+	} else {
+		rc = load_oobu_list (sbr, oobhdr.ucnt, oob, stab);
+		ERRORGOTO ("load_oobu_list()", handle_error);
 	}
+
 	rc = build_uridx (&(oob->units)); ROE ("build_uridx()");
 
 	sbread_stop (sbr); sbr = NULL;
 	safe_free (data);
+
+	/* For version 10, we also need to perform the legacy detection of units and crews */
+	if (version == SNAP_VERSION_V10) {
+		rc = snapshot_legacy_ldrcrw_detect (oobhdr.ucnt, oob);
+		ERRORGOTO ("snapshot_legacy_ldrcrw_detect()", handle_error);
+	}
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (sbr) sbread_stop (sbr);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+static void
+load_oobl (SNAP_OOB_LEL *src, SPWAW_SNAP_OOB_LELRAW *dst, STRTAB *stab)
+{
+	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_LELRAW));
+
+	getOL (RID); getOL (URID);
+	dst->name = STRTAB_getstr (stab, src->name);
+	getOL (rank); getOL (ral); getOL (inf); getOL (art); getOL (arm);
+	getOL (kills); getOL (status);
+}
+
+static SPWAW_ERROR
+load_oobl_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+{
+	ULONG		i;
+	SNAP_OOB_LEL	l;
+
+	for (i=0; i<cnt; i++) {
+		if (sbread (sbr, (char *)&l, sizeof (l)) != sizeof (l))
+			RWE (SPWERR_FRFAILED, "sbread(leader data)");
+		load_oobl (&l, &(oob->leaders.raw[i]), stab);
+	}
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+load_oob_leaders (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	long		size;
+	char		*data = NULL;
+	CBIO		cbio;
+	SBR		*sbr = NULL;
 
 	oob->leaders.cnt = oobhdr.lcnt;
 	size = oobhdr.lsize;
@@ -230,15 +296,53 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 	oob->leaders.raw = safe_nmalloc (SPWAW_SNAP_OOB_LELRAW, oobhdr.lcnt);
 	COOMGOTO (oob->leaders.raw, "SPWAW_SNAP_OOB_LELRAW list", handle_error);
 
-	for (i=0; i<oobhdr.lcnt; i++) {
-		if (sbread (sbr, (char *)&l, sizeof (l)) != sizeof (l))
-			FAILGOTO (SPWERR_FRFAILED, "sbread(leader data)", handle_error);
-		load_oobl (&l, &(oob->leaders.raw[i]), stab);
-	}
+	rc = load_oobl_list (sbr, oobhdr.lcnt, oob, stab);
+	ERRORGOTO ("load_oobl_list()", handle_error);
+
 	rc = build_lridx (&(oob->leaders)); ROE ("build_lridx()");
 
 	sbread_stop (sbr); sbr = NULL;
 	safe_free (data);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (sbr) sbread_stop (sbr);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+static void
+load_oobp (SNAP_OOB_PEL *src, SPWAW_SNAP_OOB_PELRAW *dst, STRTAB * /*stab*/)
+{
+	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_PELRAW));
+
+	getOP (RID); getOP (URID); getOP (x); getOP (y); getOP (seen);
+}
+
+static SPWAW_ERROR
+load_oobp_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+{
+	ULONG		i;
+	SNAP_OOB_PEL	p;
+
+	for (i=0; i<cnt; i++) {
+		if (sbread (sbr, (char *)&p, sizeof (p)) != sizeof (p))
+			RWE (SPWERR_FRFAILED, "sbread(position data)");
+		load_oobp (&p, &(oob->positions.raw[i]), stab);
+	}
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+load_oob_positions (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	long		size;
+	char		*data = NULL;
+	CBIO		cbio;
+	SBR		*sbr = NULL;
 
 	oob->positions.cnt = oobhdr.pcnt;
 	size = oobhdr.psize;
@@ -254,11 +358,9 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 	oob->positions.raw = safe_nmalloc (SPWAW_SNAP_OOB_PELRAW, oobhdr.pcnt);
 	COOMGOTO (oob->positions.raw, "SPWAW_SNAP_OOB_PELRAW list", handle_error);
 
-	for (i=0; i<oobhdr.pcnt; i++) {
-		if (sbread (sbr, (char *)&p, sizeof (p)) != sizeof (p))
-			FAILGOTO (SPWERR_FRFAILED, "sbread(position data)", handle_error);
-		load_oobp (&p, &(oob->positions.raw[i]), stab);
-	}
+	rc = load_oobp_list (sbr, oobhdr.pcnt, oob, stab);
+	ERRORGOTO ("load_oobp_list()", handle_error);
+
 	rc = build_pridx (&(oob->positions)); ROE ("build_pridx()");
 
 	sbread_stop (sbr); sbr = NULL;
@@ -269,6 +371,37 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 handle_error:
 	if (sbr) sbread_stop (sbr);
 	if (data) safe_free (data);
+	return (rc);
+}
+
+static SPWAW_ERROR
+load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	long		pos;
+	SNAP_OOBHDR	oobhdr;
+
+	pos = bseekget (fd);
+
+	memset (&oobhdr, 0, sizeof (oobhdr));
+	if (!bread (fd, (char *)&oobhdr, sizeof (oobhdr), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(oobhdr)", handle_error);
+
+	rc = load_oob_formations (fd, pos, oobhdr, oob, stab);
+	ERRORGOTO ("load_oob_formations()", handle_error);
+
+	rc = load_oob_units (fd, pos, oobhdr, oob, stab, version);
+	ERRORGOTO ("load_oob_units()", handle_error);
+
+	rc = load_oob_leaders (fd, pos, oobhdr, oob, stab);
+	ERRORGOTO ("load_oob_leaders()", handle_error);
+
+	rc = load_oob_positions (fd, pos, oobhdr, oob, stab);
+	ERRORGOTO ("load_oob_positions()", handle_error);
+
+	return (SPWERR_OK);
+
+handle_error:
 	if (oob->positions.raw) safe_free (oob->positions.raw);
 	if (oob->leaders.raw) safe_free (oob->leaders.raw);
 	if (oob->units.raw) safe_free (oob->units.raw);
@@ -429,11 +562,11 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	ERRORGOTO ("load_map(map)", handle_error);
 
 	bseekset (fd, pos + mhdr.oobp1);
-	rc = load_oob (fd, &(dst->raw.OOBp1), stab);
+	rc = load_oob (fd, &(dst->raw.OOBp1), stab, mhdr.version);
 	ERRORGOTO ("load_oob(oobP1)", handle_error);
 
 	bseekset (fd, pos + mhdr.oobp2);
-	rc = load_oob (fd, &(dst->raw.OOBp2), stab);
+	rc = load_oob (fd, &(dst->raw.OOBp2), stab, mhdr.version);
 	ERRORGOTO ("load_oob(OOBp2)", handle_error);
 
 	/* Determine snapshot type */

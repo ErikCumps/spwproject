@@ -10,6 +10,7 @@
 #include <spwawlib_api.h>
 #include <spwawlib_snapshot.h>
 #include "snapshot/snapfile.h"
+#include "snapshot/translate.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
@@ -97,69 +98,21 @@ prep_oobf (SPWAW_SNAP_OOB_FELRAW *src, SNAP_OOB_FEL *dst, STRTAB *stab)
 	setOF (leader); setOF (hcmd); setOF (OOBrid); setOF (status);
 }
 
-static void
-prep_oobu (SPWAW_SNAP_OOB_UELRAW *src, SNAP_OOB_UEL *dst, STRTAB *stab)
-{
-	memset (dst, 0, sizeof (SNAP_OOB_UEL));
-
-	setOU (RID); setOU (FRID); setOU (FMID); setOU (FSID);
-	dst->name = STRTAB_getidx (stab, src->name);
-	setOU (classID); setOU (OOB); setOU (OOBrid);
-	setOU (size); setOU (cost); setOU (survive); setOU (leader);
-	setOU (exp); setOU (mor); setOU (sup); setOU (status); setOU (entr);
-	setOU (smkdev); setOU (smkammo); setOU (crew);
-	setOU (range); setOU (stance_x); setOU (stance_y);
-        setOU (loader); setOU (load_cap); setOU (load_cost);
-	setOU (radio); setOU (rof); setOU (tgt); setOU (rf); setOU (fc); setOU (iv);
-	setOU (swim); setOU (men); setOU (men_ori); setOU (speed); setOU (moves);
-	setOU (damage); setOU (movdir); setOU (shtdir); setOU (target); setOU (UTGidx);
-//	setOU (SPECIAL_OU); setOU (SPECIAL[0]); setOU (SPECIAL[1]);
-//	setOU (SPECIAL[2]); setOU (SPECIAL[3]); setOU (SPECIAL[4]);
-}
-
-static void
-prep_oobl (SPWAW_SNAP_OOB_LELRAW *src, SNAP_OOB_LEL *dst, STRTAB *stab)
-{
-	memset (dst, 0, sizeof (SNAP_OOB_LEL));
-
-	setOL (RID); setOL (URID);
-	dst->name = STRTAB_getidx (stab, src->name);
-	setOL (rank); setOL (ral); setOL (inf); setOL (art); setOL (arm);
-	setOL (kills); setOL (status);
-}
-
-static void
-prep_oobp (SPWAW_SNAP_OOB_PELRAW *src, SNAP_OOB_PEL *dst, STRTAB * /*stab*/)
-{
-	memset (dst, 0, sizeof (SNAP_OOB_PEL));
-
-	setOP (RID); setOP (URID); setOP (x); setOP (y); setOP (seen);
-}
-
 static SPWAW_ERROR
-save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
+save_oob_formations (int fd, ULONG pos, SNAP_OOBHDR &oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
-	SNAP_OOBHDR	oobhdr;
-	ULONG		p0, p1, i;
-	SNAP_OOB_FEL	f;
-	SNAP_OOB_UEL	u;
-	SNAP_OOB_LEL	l;
-	SNAP_OOB_PEL	p;
 	SBW		*sbw = NULL;
+	ULONG		i;
+	SNAP_OOB_FEL	f;
 	char		*data = NULL;
 	long		size;
 	CBIO		cbio;
 
-	memset (&oobhdr, 0, sizeof (oobhdr));
-
-	p0 = bseekget (fd);
-	bseekmove (fd, sizeof (oobhdr));
-
 	sbw = sbwrite_init (NULL, 0);
 	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
 
-	oobhdr.fpos = bseekget (fd) - p0;
+	oobhdr.fpos = bseekget (fd) - pos;
 	oobhdr.fcnt = oob->formations.cnt;
 	oobhdr.fstart = oob->formations.start;
 	for (i=0; i<oobhdr.fcnt; i++) {
@@ -175,10 +128,48 @@ save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
 	if (!cbwrite (fd, cbio, "formation data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(formation data)", handle_error);
 	safe_free (data);
 
+handle_error:
+	if (data) safe_free (data);
+	if (sbw) sbwrite_stop (sbw);
+	return (rc);
+}
+
+static void
+prep_oobu (SPWAW_SNAP_OOB_UELRAW *src, SNAP_OOB_UEL *dst, STRTAB *stab)
+{
+	memset (dst, 0, sizeof (SNAP_OOB_UEL));
+
+	dst->type = unittype2raw (src->type);
+	setOU (RID); setOU (FRID); setOU (FMID); setOU (FSID);
+	dst->name = STRTAB_getidx (stab, src->name);
+	setOU (classID); setOU (OOB); setOU (OOBrid);
+	setOU (size); setOU (cost); setOU (survive); setOU (leader);
+	setOU (exp); setOU (mor); setOU (sup); setOU (status); setOU (entr);
+	setOU (smkdev); setOU (smkammo); setOU (crew);
+	setOU (range); setOU (stance_x); setOU (stance_y);
+	setOU (loader); setOU (load_cap); setOU (load_cost);
+	setOU (radio); setOU (rof); setOU (tgt); setOU (rf); setOU (fc); setOU (iv);
+	setOU (swim); setOU (men); setOU (men_ori); setOU (speed); setOU (moves);
+	setOU (damage); setOU (movdir); setOU (shtdir); setOU (target); setOU (UTGidx);
+//	setOU (SPECIAL_OU); setOU (SPECIAL[0]); setOU (SPECIAL[1]);
+//	setOU (SPECIAL[2]); setOU (SPECIAL[3]); setOU (SPECIAL[4]);
+}
+
+static SPWAW_ERROR
+save_oob_units (int fd, ULONG pos, SNAP_OOBHDR &oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SBW		*sbw = NULL;
+	ULONG		i;
+	SNAP_OOB_UEL	u;
+	char		*data = NULL;
+	long		size;
+	CBIO		cbio;
+
 	sbw = sbwrite_init (NULL, 0);
 	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
 
-	oobhdr.upos = bseekget (fd) - p0;
+	oobhdr.upos = bseekget (fd) - pos;
 	oobhdr.ucnt = oob->units.cnt;
 	for (i=0; i<oobhdr.ucnt; i++) {
 		prep_oobu (&(oob->units.raw[i]), &u, stab);
@@ -193,10 +184,38 @@ save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
 	if (!cbwrite (fd, cbio, "unit data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(unit data)", handle_error);
 	safe_free (data);
 
+handle_error:
+	if (data) safe_free (data);
+	if (sbw) sbwrite_stop (sbw);
+	return (rc);
+}
+
+static void
+prep_oobl (SPWAW_SNAP_OOB_LELRAW *src, SNAP_OOB_LEL *dst, STRTAB *stab)
+{
+	memset (dst, 0, sizeof (SNAP_OOB_LEL));
+
+	setOL (RID); setOL (URID);
+	dst->name = STRTAB_getidx (stab, src->name);
+	setOL (rank); setOL (ral); setOL (inf); setOL (art); setOL (arm);
+	setOL (kills); setOL (status);
+}
+
+static SPWAW_ERROR
+save_oob_leaders (int fd, ULONG pos, SNAP_OOBHDR &oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SBW		*sbw = NULL;
+	ULONG		i;
+	SNAP_OOB_LEL	l;
+	char		*data = NULL;
+	long		size;
+	CBIO		cbio;
+
 	sbw = sbwrite_init (NULL, 0);
 	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
 
-	oobhdr.lpos = bseekget (fd) - p0;
+	oobhdr.lpos = bseekget (fd) - pos;
 	oobhdr.lcnt = oob->leaders.cnt;
 	for (i=0; i<oobhdr.lcnt; i++) {
 		prep_oobl (&(oob->leaders.raw[i]), &l, stab);
@@ -211,10 +230,35 @@ save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
 	if (!cbwrite (fd, cbio, "leader data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(leader data)", handle_error);
 	safe_free (data);
 
+handle_error:
+	if (data) safe_free (data);
+	if (sbw) sbwrite_stop (sbw);
+	return (rc);
+}
+
+static void
+prep_oobp (SPWAW_SNAP_OOB_PELRAW *src, SNAP_OOB_PEL *dst, STRTAB * /*stab*/)
+{
+	memset (dst, 0, sizeof (SNAP_OOB_PEL));
+
+	setOP (RID); setOP (URID); setOP (x); setOP (y); setOP (seen);
+}
+
+static SPWAW_ERROR
+save_oob_positions (int fd, ULONG pos, SNAP_OOBHDR &oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SBW		*sbw = NULL;
+	ULONG		i;
+	SNAP_OOB_PEL	p;
+	char		*data = NULL;
+	long		size;
+	CBIO		cbio;
+
 	sbw = sbwrite_init (NULL, 0);
 	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
 
-	oobhdr.ppos = bseekget (fd) - p0;
+	oobhdr.ppos = bseekget (fd) - pos;
 	oobhdr.pcnt = oob->positions.cnt;
 	for (i=0; i<oobhdr.pcnt; i++) {
 		prep_oobp (&(oob->positions.raw[i]), &p, stab);
@@ -229,6 +273,37 @@ save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
 	if (!cbwrite (fd, cbio, "position data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(position data)", handle_error);
 	safe_free (data);
 
+handle_error:
+	if (data) safe_free (data);
+	if (sbw) sbwrite_stop (sbw);
+	return (rc);
+}
+
+
+static SPWAW_ERROR
+save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SNAP_OOBHDR	oobhdr;
+	ULONG		p0, p1;
+
+	memset (&oobhdr, 0, sizeof (oobhdr));
+
+	p0 = bseekget (fd);
+	bseekmove (fd, sizeof (oobhdr));
+
+	rc = save_oob_formations (fd, p0, oobhdr, oob, stab, compress);
+	ERRORGOTO ("save_oob_formations()", handle_error);
+
+	rc = save_oob_units (fd, p0, oobhdr, oob, stab, compress);
+	ERRORGOTO ("save_oob_units()", handle_error);
+
+	rc = save_oob_leaders (fd, p0, oobhdr, oob, stab, compress);
+	ERRORGOTO ("save_oob_leaders()", handle_error);
+
+	rc = save_oob_positions (fd, p0, oobhdr, oob, stab, compress);
+	ERRORGOTO ("save_oob_positions()", handle_error);
+
 	p1 = bseekget (fd); bseekset (fd, p0);
 	if (!bwrite (fd, (char *)&oobhdr, sizeof (oobhdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(oobhdr) failed", handle_error);
 	bseekset (fd, p1);
@@ -236,8 +311,6 @@ save_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, bool compress)
 	return (SPWERR_OK);
 
 handle_error:
-	if (data) safe_free (data);
-	if (sbw) sbwrite_stop (sbw);
 	bseekset (fd, p0);
 	return (rc);
 }
