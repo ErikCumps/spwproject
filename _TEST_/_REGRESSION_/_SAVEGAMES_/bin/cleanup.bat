@@ -15,5 +15,8 @@ del /Q DIFF_*			1>nul 2>nul
 del /Q DIFFSTAT.txt		1>nul 2>nul
 del /Q DIFFSTAT_*.txt		1>nul 2>nul
 
+echo Performing snapshot cleanup...
+del /Q snapshot_*.snap		1>nul 2>nul
+
 :DONE
 rem done

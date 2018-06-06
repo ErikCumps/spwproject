@@ -907,8 +907,8 @@ FLIST: { { s.nidx=2 }, cnt=2 }
     [00001] (          Sniper) P<000> L<00001> status=000 units=001 OOB 070: [140] FID<00001> RAW<00001>
         [000] ptr[00001]
 ULIST: { { s.nidx=2 }, cnt=2 }
-    [00000] (   GE Kommandant) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
-    [00001] (   Scharfschutze) UNIT loader<65535> vrf=N vrfneed=N  OOB 070: [171] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
+    [00000] (   GE Kommandant) UNIT leader=[00000] loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00001] (   Scharfschutze) UNIT leader=[00001] loader<65535> vrf=N vrfneed=N  OOB 070: [171] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
 find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (   Scharfschutze) SKIPPED: invalid formation reference
@@ -926,9 +926,9 @@ FLIST: { { s.nidx=2 }, cnt=2 }
     [00101] (          Sniper) P<001> L<00401> status=000 units=001 OOB 081: [108] FID<00001> RAW<00101>
         [000] ptr[00401]
 ULIST: { { s.nidx=2 }, cnt=2 }
-    [00400] (     SO Komander) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
-    [00401] (         Snajper) UNIT loader<65535> vrf=N vrfneed=N  OOB 081: [133] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
-add_unit: idx=0, RID=0
-add_unit: idx=1, RID=1
-add_unit: idx=0, RID=400
-add_unit: idx=1, RID=401
+    [00400] (     SO Komander) UNIT leader=[00400] loader<65535> vrf=N vrfneed=N  OOB 081: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
+    [00401] (         Snajper) UNIT leader=[00401] loader<65535> vrf=N vrfneed=N  OOB 081: [133] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
+add_unit: idx=0, RID=0, type=UNIT
+add_unit: idx=1, RID=1, type=UNIT
+add_unit: idx=0, RID=400, type=UNIT
+add_unit: idx=1, RID=401, type=UNIT

@@ -27,6 +27,7 @@ del *.log				1>nul 2>nul
 del %REPORT%_RAW.txt			1>nul 2>nul
 move %REPORT%*.txt _SNP_\		1>nul 2>nul
 move %REPORT%*.dump _SNP_\		1>nul 2>nul
+rem move SPWAWLIB.log _SNP_\SPWAWLIB_%1.log	1>nul 2>nul
 del *.log				1>nul 2>nul
 
 del *.snap				1>nul 2>nul
