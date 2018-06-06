@@ -550,3 +550,52 @@ rawtfs2road (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
 {
 	return (((tfs1 & TFS1_ROAD) | (tfs2 & TFS2_ROAD) | (tfs3 & TFS3_ROAD) | (tfs4 & TFS4_ROAD)) != 0);
 }
+
+SPWAW_UNIT_TYPE
+raw2unittype (BYTE type)
+{
+	SPWAW_UNIT_TYPE	t;
+
+	switch (type) {
+		case 1:
+			t = SPWAW_UNIT_TYPE_UNIT;
+			break;
+		case 2:
+			t = SPWAW_UNIT_TYPE_CREW;
+			break;
+		case 3:
+			t = SPWAW_UNIT_TYPE_SPAU;
+			break;
+		case 0:
+		case 0xFF:
+		default:
+			t = SPWAW_UNIT_TYPE_UNKNOWN;
+			break;
+	}
+	return (t);
+}
+
+BYTE
+unittype2raw (SPWAW_UNIT_TYPE type)
+{
+	BYTE	b;
+
+	switch (type) {
+		case SPWAW_UNIT_TYPE_UNKNOWN:
+			b = 0;
+			break;
+		case SPWAW_UNIT_TYPE_UNIT:
+			b = 1;
+			break;
+		case SPWAW_UNIT_TYPE_CREW:
+			b = 2;
+			break;
+		case SPWAW_UNIT_TYPE_SPAU:
+			b = 3;
+			break;
+		default:
+			b = 0xFF;
+			break;
+	}
+	return (b);
+}

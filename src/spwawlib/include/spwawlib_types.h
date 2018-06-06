@@ -254,7 +254,7 @@ typedef enum e_SPWAW_UNIT_TYPE {
 	SPWAW_UNIT_TYPE_SPAU		/* Special Attached Unit	*/
 } SPWAW_UNIT_TYPE;
 
-extern SPWAWLIB_API const char *SPWAW_unittype2str (SPWAW_UNIT_TYPE type);
+extern SPWAWLIB_API const char *SPWAW_unittype2str	(SPWAW_UNIT_TYPE type);
 
 #endif	/* SPWAW_LIB_TYPES_H */
 

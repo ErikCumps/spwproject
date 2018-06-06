@@ -41,4 +41,8 @@ extern char *			UID2str		(BYTE id, BYTE subid);
 extern char *			exp2str		(SPWAW_EXP id);
 extern char *			aband2str	(SPWAW_ABAND id);
 
+extern SPWAW_UNIT_TYPE		raw2unittype	(BYTE type);
+extern BYTE			unittype2raw	(SPWAW_UNIT_TYPE type);
+
+
 #endif	/* TRANSLATE_H */
