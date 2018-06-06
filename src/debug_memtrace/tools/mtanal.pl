@@ -447,8 +447,8 @@ sub Report
 	print "Memory allocation report:\n";
 	print "=========================\n";
 	print "\n";
-	printf "Current   : %lu\n", ($rMINF->[0]);
-	printf "Peak      : %lu\n", ($rMINF->[1]);
+	printf "Current   : %lu bytes (about %lu KB or %lu MB)\n", ($rMINF->[0], $rMINF->[0]/1024, $rMINF->[0]/1024/1024);
+	printf "Peak      : %lu bytes (about %lu KB or %lu MB)\n", ($rMINF->[1], $rMINF->[1]/1024, $rMINF->[1]/1024/1024);
 	printf "Totals    : %d = %lu - %lu (saldo = allocs - frees)\n", @{$rINFO->{stats}->{cnt}};
 	printf "Peak block: %lu bytes (%u times)\n", @{$rINFO->{stats}->{max}};
 	
