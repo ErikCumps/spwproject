@@ -10,7 +10,6 @@
 #include "snapshot/index.h"
 #include "snapshot/translate.h"
 #include "snapshot/snapshot.h"
-//#include "utils/log.h"
 #include "common/internal.h"
 
 static SPWAW_ERROR
@@ -288,67 +287,15 @@ handle_error:
 	return (rc);
 }
 
-/* Unit leader and crew linkage determination:
- *
- * <unit has crew?>
- * 	NO : <unit has leader?>
- * 		YES: leader found
- * 		NO : use unit #id as leader #id
- * 	YES: <crew has unit?>
- * 		NO : INVALID UNIT!
- * 		YES: <crew unit == unit?>
- * 			YES: <crew has no leader?>
- * 				NO : leader found
- * 				YES: [GOTO <unit has no leader?>]
- * 			NO : [GOTO <unit has no leader?>]
- */
-static inline bool
-determine_ldrcrw (SPWAW_SNAP_OOB_URAW *ptr, int i, USHORT &ldr, USHORT &crw, bool &iscrew)
-{
-	SPWAW_SNAP_OOB_UELRAW	*uptr, *cptr = NULL;
-	DWORD			idx;
-	USHORT			lidx = SPWAW_BADIDX;
-
-	ldr = SPWAW_BADIDX;
-	crw = SPWAW_BADIDX;
-	iscrew = false;
-
-	if (!ptr) return (false);
-
-	uptr = &(ptr->raw[i]);
-	if ((uptr->crew != SPWAW_BADIDX) && ((idx = uridx (ptr, uptr->crew)) != SPWAW_BADIDX)) {
-		//log ("ldrcrw[%u] ID=%4.4x, crew=%4.4x\n", i, uptr->ID, uptr->crew);
-		cptr = &(ptr->raw[idx]);
-		//log ("ldrcrw[%u] crew=%4.4x, unit=%4.4x\n", i, cptr->ID, cptr->crew);
-		if (cptr->crew == SPWAW_BADIDX) return (false);
-		if (cptr->crew == uptr->RID) {
-			lidx = cptr->leader;
-		}
-	}
-	//log ("ldrcrw[%u] lidx=%4.4x", i, lidx);
-	if (lidx == SPWAW_BADIDX) lidx = uptr->leader;
-	//log (", %4.4x", lidx);
-	if (lidx == SPWAW_BADIDX) lidx = uptr->RID;
-	//log (", %4.4x\n", lidx);
-
-	ldr = lidx;
-	crw = (cptr?cptr->RID:SPWAW_BADIDX);
-	iscrew = (cptr && (cptr->RID < uptr->RID));
-
-	//if (iscrew) log ("ldrcrw[%u] ldr=%4.4x, crw=%4.4x, iscrew=%u\n", i, ldr, crw, iscrew);
-
-	return (true);
-}
-
 static inline void
-abandoned (SPWAW_SNAP_OOB_UELRAW *ptr, USHORT cidx, SPWAW_ABAND *flag, SPWAW_SNAP_OOB_PTR *id)
+abandoned (USHORT cidx, bool iscrew, SPWAW_ABAND *flag, SPWAW_SNAP_OOB_PTR *id)
 {
 	if (flag) *flag = SPWAW_ANONE;
 	if (id) id->rid = SPWAW_BADIDX;
 	if (!flag || !id) return;
 
 	if (cidx != SPWAW_BADIDX) {
-		if ((DWORD)cidx > ptr->RID) {
+		if (!iscrew) {
 			*flag = SPWAW_ASTAY;
 		} else {
 			*flag = SPWAW_ALEFT;
@@ -389,8 +336,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 
 	// Detect unit and crew counts
 	for (i=0; i<(int)raw->units.cnt; i++) {
-		if (!determine_ldrcrw (&(raw->units), i, ldridx, crwidx, iscrew)) continue;
-		if (iscrew) p->crews.cnt++; else p->units.cnt++;
+		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_UNKNOWN) continue;
+		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW) p->crews.cnt++; else p->units.cnt++;
 	}
 
 	p->units.list = safe_nmalloc(SPWAW_SNAP_OOB_UEL, p->units.cnt);
@@ -404,8 +351,13 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		SPWAW_SNAP_OOB_UEL_STRINGS	*str;
 		SPWAW_SNAP_OOB_UEL_DATA		*dat;
 
-		SPWAW_SNAP_OOB_UELRAW *src = &(raw->units.raw[i]);
-		if (!determine_ldrcrw (&(raw->units), i, ldridx, crwidx, iscrew)) continue;
+		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_UNKNOWN) continue;
+
+		iscrew = (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW);
+		ldridx = raw->units.raw[i].leader;
+		crwidx = raw->units.raw[i].crew;
+		//log ("snapint_oob_units_stage1[%u] type=%s ldridx=%5.5u, crwidx=%5.5u, iscrew=%d\n", i, SPWAW_unittype2str(raw->units.raw[i].type), raw->units.raw[i].leader, raw->units.raw[i].crew, iscrew);
+
 		if (iscrew) {
 			dat = &(p->crews.list[cidx].data);
 			str = &(p->crews.list[cidx].strings);
@@ -417,6 +369,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 			dat->idx = uidx;
 			uidx++;
 		}
+
+		SPWAW_SNAP_OOB_UELRAW *src = &(raw->units.raw[i]);
 
 		ulidx = lridx (&(raw->leaders), (src->leader!=SPWAW_BADIDX) ? src->leader : src->RID);
 		ulsrc = (ulidx < raw->leaders.cnt) ? &(raw->leaders.raw[ulidx]) : NULL;
@@ -449,8 +403,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->hcnt_left	= src->men;
 		dat->cost	= src->cost;
 		dat->damage	= src->damage;
-		dat->crew	= (src->crew != SPWAW_BADIDX);
-		abandoned (src, crwidx, &(dat->aband), &(dat->aunit));
+		dat->crew	= crwidx != SPWAW_BADIDX;
+		abandoned (crwidx, iscrew, &(dat->aband), &(dat->aunit));
 		loaded (src, &(dat->loaded), &(dat->loader));
 		dat->exp	= src->exp;
 		dat->eclass	= raw2exp (src->exp);
