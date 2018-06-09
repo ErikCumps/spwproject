@@ -84,33 +84,33 @@ unpacked section 47: 389 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=25, flag=0x00000001>
 unpacked section 48: 25 bytes -> 80 bytes
-setup_info: fcnt=11, cfcnt=0
+setup_info: fcnt=12, cfcnt=0
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>( TGN's SPWAW 1.0)
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>( TGN's SPWAW 1.0)
 find_formations: [001] SKIPPED (wrong player ID 1)
-find_formations: [002] FORMATION: P<0> ID<001> L<00001> O<011>(    Med Tank Plt)
-find_formations: [003] FORMATION: P<0> ID<002> L<00006> O<018>(          TD Plt)
-find_formations: [004] FORMATION: P<0> ID<003> L<00011> O<044>( Strike Aircraft)
+find_formations: [002] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<011>(    Med Tank Plt)
+find_formations: [003] FORMATION: P<0> rawFID<002> FID<002> L<00006> O<018>(          TD Plt)
+find_formations: [004] FORMATION: P<0> rawFID<003> FID<003> L<00011> O<044>( Strike Aircraft)
 find_formations: [005] SKIPPED (no leader)
-find_formations: [006] FORMATION: P<0> ID<005> L<00015> O<098>(    Mech Inf Plt)
-find_formations: [007] FORMATION: P<0> ID<006> L<00025> O<131>(        How Btry)
+find_formations: [006] FORMATION: P<0> rawFID<005> FID<005> L<00015> O<098>(    Mech Inf Plt)
+find_formations: [007] FORMATION: P<0> rawFID<006> FID<006> L<00025> O<131>(        How Btry)
 find_formations: [008] SKIPPED (wrong player ID 1)
 find_formations: [009] SKIPPED (wrong player ID 1)
 find_formations: [010] SKIPPED (wrong player ID 1)
 find_formations: [011] SKIPPED (wrong player ID 1)
-find_formations: [012] FORMATION: P<0> ID<007> L<00026> O<058>(   Halftrack Sec)
-find_formations: [013] FORMATION: P<0> ID<008> L<00027> O<048>( Utility Vehicle)
-find_formations: [014] FORMATION: P<0> ID<009> L<00028> O<048>( Utility Vehicle)
+find_formations: [012] FORMATION: P<0> rawFID<007> FID<007> L<00026> O<058>(   Halftrack Sec)
+find_formations: [013] FORMATION: P<0> rawFID<008> FID<008> L<00027> O<048>( Utility Vehicle)
+find_formations: [014] FORMATION: P<0> rawFID<009> FID<009> L<00028> O<048>( Utility Vehicle)
 find_formations: [015] SKIPPED (wrong player ID 1)
 find_formations: [016] SKIPPED (wrong player ID 1)
-find_formations: [017] FORMATION: P<0> ID<010> L<00029> O<044>( Strike Aircraft)
+find_formations: [017] FORMATION: P<0> rawFID<010> FID<010> L<00029> O<044>( Strike Aircraft)
 find_formations: [018] SKIPPED (wrong player ID 1)
-find_formations: [019] FORMATION: P<0> ID<011> L<00031> O<059>(   Halftrack Plt)
+find_formations: [019] FORMATION: P<0> rawFID<011> FID<011> L<00031> O<059>(   Halftrack Plt)
 find_formations: [020] SKIPPED (no leader)
 find_formations: [021] SKIPPED (no leader)
 find_formations: [022] SKIPPED (no leader)
 find_formations: [023] SKIPPED (no leader)
-find_formations: [024] SKIPPED (duplicate formation ID 0)
+find_formations: [024] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
 find_formations: [025] SKIPPED (duplicate formation ID 0)
 find_formations: [026] SKIPPED (duplicate formation ID 0)
 find_formations: [027] SKIPPED (duplicate formation ID 0)
@@ -486,27 +486,27 @@ find_formations: [396] SKIPPED (duplicate formation ID 0)
 find_formations: [397] SKIPPED (duplicate formation ID 0)
 find_formations: [398] SKIPPED (duplicate formation ID 0)
 find_formations: [399] SKIPPED (duplicate formation ID 0)
-find_formations: cnt=11
+find_formations: cnt=12
 find_formations: player #1
 find_formations: [000] SKIPPED (wrong player ID 0)
-find_formations: [001] FORMATION: P<1> ID<000> L<00400> O<001>( TGN's SPWAW 1.0)
+find_formations: [001] FORMATION: P<1> rawFID<000> FID<000> L<00400> O<001>( TGN's SPWAW 1.0)
 find_formations: [002] SKIPPED (wrong player ID 0)
 find_formations: [003] SKIPPED (wrong player ID 0)
 find_formations: [004] SKIPPED (wrong player ID 0)
 find_formations: [005] SKIPPED (no leader)
 find_formations: [006] SKIPPED (wrong player ID 0)
 find_formations: [007] SKIPPED (wrong player ID 0)
-find_formations: [008] FORMATION: P<1> ID<001> L<00401> O<015>(  Med Panzer Plt)
-find_formations: [009] FORMATION: P<1> ID<002> L<00405> O<014>(  Med Panzer Sec)
-find_formations: [010] FORMATION: P<1> ID<003> L<00407> O<088>(     PzG Mot Plt)
-find_formations: [011] FORMATION: P<1> ID<004> L<00415> O<072>(   SP Mortar Sec)
+find_formations: [008] FORMATION: P<1> rawFID<001> FID<001> L<00401> O<015>(  Med Panzer Plt)
+find_formations: [009] FORMATION: P<1> rawFID<002> FID<002> L<00405> O<014>(  Med Panzer Sec)
+find_formations: [010] FORMATION: P<1> rawFID<003> FID<003> L<00407> O<088>(     PzG Mot Plt)
+find_formations: [011] FORMATION: P<1> rawFID<004> FID<004> L<00415> O<072>(   SP Mortar Sec)
 find_formations: [012] SKIPPED (wrong player ID 0)
 find_formations: [013] SKIPPED (wrong player ID 0)
 find_formations: [014] SKIPPED (wrong player ID 0)
-find_formations: [015] FORMATION: P<1> ID<005> L<00417> O<053>( Utility Vehicle)
-find_formations: [016] FORMATION: P<1> ID<006> L<00418> O<068>(     Flak Pz Sec)
+find_formations: [015] FORMATION: P<1> rawFID<005> FID<005> L<00417> O<053>( Utility Vehicle)
+find_formations: [016] FORMATION: P<1> rawFID<006> FID<006> L<00418> O<068>(     Flak Pz Sec)
 find_formations: [017] SKIPPED (wrong player ID 0)
-find_formations: [018] FORMATION: P<1> ID<007> L<00420> O<140>(          Sniper)
+find_formations: [018] FORMATION: P<1> rawFID<007> FID<007> L<00420> O<140>(          Sniper)
 find_formations: [019] SKIPPED (wrong player ID 0)
 find_formations: [020] SKIPPED (no leader)
 find_formations: [021] SKIPPED (no leader)
@@ -588,25 +588,25 @@ find_formations: [096] SKIPPED (wrong player ID 0)
 find_formations: [097] SKIPPED (wrong player ID 0)
 find_formations: [098] SKIPPED (wrong player ID 0)
 find_formations: [099] SKIPPED (wrong player ID 0)
-find_formations: [100] FORMATION: P<1> ID<108> L<00400> O<001>( TGN's SPWAW 1.0)
-find_formations: [101] FORMATION: P<1> ID<100> L<00400> O<001>( TGN's SPWAW 1.0)
-find_formations: [102] FORMATION: P<1> ID<109> L<00421> O<052>(   Halftrack Plt)
+find_formations: [100] FORMATION: P<1> rawFID<108> FID<008> L<00400> O<001>( TGN's SPWAW 1.0)
+find_formations: [101] FORMATION: P<1> rawFID<100> FID<000> L<00400> O<001>( TGN's SPWAW 1.0)
+find_formations: [102] FORMATION: P<1> rawFID<109> FID<009> L<00421> O<052>(   Halftrack Plt)
 find_formations: [103] SKIPPED (no leader)
 find_formations: [104] SKIPPED (no leader)
 find_formations: [105] SKIPPED (wrong player ID 0)
 find_formations: [106] SKIPPED (wrong player ID 0)
 find_formations: [107] SKIPPED (wrong player ID 0)
-find_formations: [108] FORMATION: P<1> ID<101> L<00401> O<015>(  Med Panzer Plt)
-find_formations: [109] FORMATION: P<1> ID<102> L<00405> O<014>(  Med Panzer Sec)
-find_formations: [110] FORMATION: P<1> ID<103> L<00407> O<088>(     PzG Mot Plt)
-find_formations: [111] FORMATION: P<1> ID<104> L<00415> O<072>(   SP Mortar Sec)
+find_formations: [108] FORMATION: P<1> rawFID<101> FID<001> L<00401> O<015>(  Med Panzer Plt)
+find_formations: [109] FORMATION: P<1> rawFID<102> FID<002> L<00405> O<014>(  Med Panzer Sec)
+find_formations: [110] FORMATION: P<1> rawFID<103> FID<003> L<00407> O<088>(     PzG Mot Plt)
+find_formations: [111] FORMATION: P<1> rawFID<104> FID<004> L<00415> O<072>(   SP Mortar Sec)
 find_formations: [112] SKIPPED (wrong player ID 0)
 find_formations: [113] SKIPPED (wrong player ID 0)
 find_formations: [114] SKIPPED (wrong player ID 0)
-find_formations: [115] FORMATION: P<1> ID<105> L<00417> O<053>( Utility Vehicle)
-find_formations: [116] FORMATION: P<1> ID<106> L<00418> O<068>(     Flak Pz Sec)
+find_formations: [115] FORMATION: P<1> rawFID<105> FID<005> L<00417> O<053>( Utility Vehicle)
+find_formations: [116] FORMATION: P<1> rawFID<106> FID<006> L<00418> O<068>(     Flak Pz Sec)
 find_formations: [117] SKIPPED (wrong player ID 0)
-find_formations: [118] FORMATION: P<1> ID<107> L<00420> O<140>(          Sniper)
+find_formations: [118] FORMATION: P<1> rawFID<107> FID<007> L<00420> O<140>(          Sniper)
 find_formations: [119] SKIPPED (wrong player ID 0)
 find_formations: [120] SKIPPED (wrong player ID 0)
 find_formations: [121] SKIPPED (wrong player ID 0)
@@ -974,6 +974,8 @@ no units recorded for formation - dropping formation!
 find_formation_oobrids: FORMATION: P<0> ID<009> L<00028> O<048> ( Utility Vehicle)
 find_formation_oobrids: FORMATION: P<0> ID<010> L<00029> O<044> ( Strike Aircraft)
 find_formation_oobrids: FORMATION: P<0> ID<011> L<00031> O<059> (   Halftrack Plt)
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (    US Commander) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (    M4A3 Sherman) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<001,001> (    M4A3 Sherman) ACCEPTED
@@ -1006,7 +1008,7 @@ verify_candidate_units: [043] UNIT: F<011,005> (    M3 Halftrack) POSTPONED: inv
 verify_candidate_units: [037] VLAT: F<011,004> (    M3 Halftrack) DROPPED: not a verified loader unit
 verify_candidate_units: [043] VLAT: F<011,005> (    M3 Halftrack) DROPPED: not a verified loader unit
 unitcount: ul.cnt=27
-FLIST: { { s.nidx=11 }, cnt=9 }
+FLIST: { { s.nidx=12 }, cnt=9 }
     [00000] ( TGN's SPWAW 1.0) P<000> L<00000> status=000 units=001 OOB 082: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00002] (    Med Tank Plt) P<000> L<00001> status=000 units=005 OOB 082: [011] FID<00001> RAW<00001>
@@ -1118,33 +1120,33 @@ find_candidate_units: [040] F[022]<000> C<65535> L<00040> O<082> (    M3 Halftra
 find_candidate_units: [041] F[022]<001> C<65535> L<00041> O<082> (    M3 Halftrack) SKIPPED: invalid formation reference
 find_candidate_units: [042] F[022]<002> C<65535> L<00042> O<082> (    M3 Halftrack) SKIPPED: invalid formation reference
 find_candidate_units: [043] F[019]<005> C<65535> L<00043> O<082> (    M3 Halftrack) SKIPPED: invalid formation reference
-find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<070> (   GE Kommandant) UNIT #2 F<108,000> CANDIDATE
-find_candidate_units: [401] F[108]<000> C<65535> L<00401> O<070> (     PzKpfw IV H) UNIT #2 F<101,000> CANDIDATE
-find_candidate_units: [402] F[108]<001> C<65535> L<00402> O<070> (     PzKpfw IV H) UNIT #2 F<101,001> CANDIDATE
-find_candidate_units: [403] F[108]<002> C<65535> L<00403> O<070> (     PzKpfw IV H) UNIT #2 F<101,002> CANDIDATE
-find_candidate_units: [404] F[108]<003> C<65535> L<00404> O<070> (     PzKpfw IV H) UNIT #2 F<101,003> CANDIDATE
-find_candidate_units: [405] F[109]<000> C<65535> L<00405> O<070> (       Panther A) UNIT #2 F<102,000> CANDIDATE
-find_candidate_units: [406] F[109]<001> C<65535> L<00406> O<070> (       Panther A) UNIT #2 F<102,001> CANDIDATE
-find_candidate_units: [407] F[110]<000> C<65535> L<00407> O<070> (   Grenadier Grp) UNIT #2 F<103,000> CANDIDATE
-find_candidate_units: [408] F[110]<001> C<65535> L<00408> O<070> (   Grenadier Grp) UNIT #2 F<103,001> CANDIDATE
-find_candidate_units: [409] F[110]<002> C<65535> L<00409> O<070> (   Grenadier Grp) UNIT #2 F<103,002> CANDIDATE
-find_candidate_units: [410] F[110]<003> C<65535> L<00410> O<070> (      MMG Truppe) UNIT #2 F<103,003> CANDIDATE
+find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<070> (   GE Kommandant) UNIT #2 F<008,000> CANDIDATE
+find_candidate_units: [401] F[108]<000> C<65535> L<00401> O<070> (     PzKpfw IV H) UNIT #2 F<001,000> CANDIDATE
+find_candidate_units: [402] F[108]<001> C<65535> L<00402> O<070> (     PzKpfw IV H) UNIT #2 F<001,001> CANDIDATE
+find_candidate_units: [403] F[108]<002> C<65535> L<00403> O<070> (     PzKpfw IV H) UNIT #2 F<001,002> CANDIDATE
+find_candidate_units: [404] F[108]<003> C<65535> L<00404> O<070> (     PzKpfw IV H) UNIT #2 F<001,003> CANDIDATE
+find_candidate_units: [405] F[109]<000> C<65535> L<00405> O<070> (       Panther A) UNIT #2 F<002,000> CANDIDATE
+find_candidate_units: [406] F[109]<001> C<65535> L<00406> O<070> (       Panther A) UNIT #2 F<002,001> CANDIDATE
+find_candidate_units: [407] F[110]<000> C<65535> L<00407> O<070> (   Grenadier Grp) UNIT #2 F<003,000> CANDIDATE
+find_candidate_units: [408] F[110]<001> C<65535> L<00408> O<070> (   Grenadier Grp) UNIT #2 F<003,001> CANDIDATE
+find_candidate_units: [409] F[110]<002> C<65535> L<00409> O<070> (   Grenadier Grp) UNIT #2 F<003,002> CANDIDATE
+find_candidate_units: [410] F[110]<003> C<65535> L<00410> O<070> (      MMG Truppe) UNIT #2 F<003,003> CANDIDATE
 find_candidate_units: [411] F[103]<001> C<65535> L<00411> O<070> (  SdKfz 251/1 HT) SKIPPED: invalid formation reference
 find_candidate_units: [412] F[103]<003> C<65535> L<00412> O<070> (  SdKfz 251/1 HT) SKIPPED: invalid formation reference
 find_candidate_units: [413] F[103]<004> C<65535> L<00413> O<070> (  SdKfz 251/1 HT) SKIPPED: invalid formation reference
 find_candidate_units: [414] F[103]<005> C<65535> L<00414> O<070> (    SdKfz 251/10) SKIPPED: invalid formation reference
-find_candidate_units: [415] F[111]<000> C<65535> L<00415> O<070> (     SdKfz 250/7) UNIT #2 F<104,000> CANDIDATE
-find_candidate_units: [416] F[111]<001> C<65535> L<00416> O<070> (     SdKfz 250/7) UNIT #2 F<104,001> CANDIDATE
-find_candidate_units: [417] F[115]<000> C<65535> L<00417> O<070> (     SdKfz 251/9) UNIT #2 F<105,000> CANDIDATE
-find_candidate_units: [418] F[116]<000> C<65535> L<00418> O<070> (    FlakPz 38(t)) UNIT #2 F<106,000> CANDIDATE
-find_candidate_units: [419] F[116]<001> C<65535> L<00419> O<070> (    FlakPz 38(t)) UNIT #2 F<106,001> CANDIDATE
-find_candidate_units: [420] F[118]<000> C<65535> L<00420> O<070> (    PzrSchrk Trp) UNIT #2 F<107,000> CANDIDATE
-find_candidate_units: [421] F[102]<000> C<65535> L<00421> O<070> (    SPW 251/1 HT) UNIT #2 F<109,000> CANDIDATE
-find_candidate_units: [422] F[102]<001> C<65535> L<00422> O<070> (    SPW 251/1 HT) UNIT #2 F<109,001> CANDIDATE
-find_candidate_units: [423] F[102]<002> C<65535> L<00423> O<070> (    SPW 251/1 HT) UNIT #2 F<109,002> CANDIDATE
+find_candidate_units: [415] F[111]<000> C<65535> L<00415> O<070> (     SdKfz 250/7) UNIT #2 F<004,000> CANDIDATE
+find_candidate_units: [416] F[111]<001> C<65535> L<00416> O<070> (     SdKfz 250/7) UNIT #2 F<004,001> CANDIDATE
+find_candidate_units: [417] F[115]<000> C<65535> L<00417> O<070> (     SdKfz 251/9) UNIT #2 F<005,000> CANDIDATE
+find_candidate_units: [418] F[116]<000> C<65535> L<00418> O<070> (    FlakPz 38(t)) UNIT #2 F<006,000> CANDIDATE
+find_candidate_units: [419] F[116]<001> C<65535> L<00419> O<070> (    FlakPz 38(t)) UNIT #2 F<006,001> CANDIDATE
+find_candidate_units: [420] F[118]<000> C<65535> L<00420> O<070> (    PzrSchrk Trp) UNIT #2 F<007,000> CANDIDATE
+find_candidate_units: [421] F[102]<000> C<65535> L<00421> O<070> (    SPW 251/1 HT) UNIT #2 F<009,000> CANDIDATE
+find_candidate_units: [422] F[102]<001> C<65535> L<00422> O<070> (    SPW 251/1 HT) UNIT #2 F<009,001> CANDIDATE
+find_candidate_units: [423] F[102]<002> C<65535> L<00423> O<070> (    SPW 251/1 HT) UNIT #2 F<009,002> CANDIDATE
 find_candidate_units: [424] F[103]<002> C<65535> L<00424> O<070> (    SPW 251/1 HT) SKIPPED: invalid formation reference
 find_candidate_units: [425] F[103]<000> C<65535> L<00425> O<070> (      SPW 251/10) SKIPPED: invalid formation reference
-find_candidate_units: [426] F[102]<003> C<65535> L<00426> O<070> (      SPW 251/10) UNIT #2 F<109,003> CANDIDATE
+find_candidate_units: [426] F[102]<003> C<65535> L<00426> O<070> (      SPW 251/10) UNIT #2 F<009,003> CANDIDATE
 find_candidate_units: 21 candidates
 find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> ( TGN's SPWAW 1.0)
 no units recorded for formation - dropping formation!
@@ -1162,57 +1164,57 @@ find_formation_oobrids: FORMATION: P<1> ID<006> L<00418> O<068> (     Flak Pz Se
 no units recorded for formation - dropping formation!
 find_formation_oobrids: FORMATION: P<1> ID<007> L<00420> O<140> (          Sniper)
 no units recorded for formation - dropping formation!
-find_formation_oobrids: FORMATION: P<1> ID<108> L<00400> O<001> ( TGN's SPWAW 1.0)
-find_formation_oobrids: FORMATION: P<1> ID<100> L<00400> O<001> ( TGN's SPWAW 1.0)
+find_formation_oobrids: FORMATION: P<1> ID<008> L<00400> O<001> ( TGN's SPWAW 1.0)
+find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> ( TGN's SPWAW 1.0)
 no units recorded for formation - dropping formation!
-find_formation_oobrids: FORMATION: P<1> ID<109> L<00421> O<052> (   Halftrack Plt)
-find_formation_oobrids: FORMATION: P<1> ID<101> L<00401> O<015> (  Med Panzer Plt)
-find_formation_oobrids: FORMATION: P<1> ID<102> L<00405> O<014> (  Med Panzer Sec)
-find_formation_oobrids: FORMATION: P<1> ID<103> L<00407> O<088> (     PzG Mot Plt)
-find_formation_oobrids: FORMATION: P<1> ID<104> L<00415> O<072> (   SP Mortar Sec)
-find_formation_oobrids: FORMATION: P<1> ID<105> L<00417> O<053> ( Utility Vehicle)
-find_formation_oobrids: FORMATION: P<1> ID<106> L<00418> O<068> (     Flak Pz Sec)
-find_formation_oobrids: FORMATION: P<1> ID<107> L<00420> O<140> (          Sniper)
-verify_candidate_units: [400] UNIT: F<108,000> (   GE Kommandant) ACCEPTED - LEADER
-verify_candidate_units: [401] UNIT: F<101,000> (     PzKpfw IV H) ACCEPTED - LEADER
-verify_candidate_units: [402] UNIT: F<101,001> (     PzKpfw IV H) ACCEPTED
-verify_candidate_units: [403] UNIT: F<101,002> (     PzKpfw IV H) ACCEPTED
-verify_candidate_units: [404] UNIT: F<101,003> (     PzKpfw IV H) ACCEPTED
-verify_candidate_units: [405] UNIT: F<102,000> (       Panther A) ACCEPTED - LEADER
-verify_candidate_units: [406] UNIT: F<102,001> (       Panther A) ACCEPTED
-verify_candidate_units: [407] UNIT: F<103,000> (   Grenadier Grp) ACCEPTED - LEADER
-verify_candidate_units: [408] UNIT: F<103,001> (   Grenadier Grp) ACCEPTED
-verify_candidate_units: [409] UNIT: F<103,002> (   Grenadier Grp) ACCEPTED
-verify_candidate_units: [410] UNIT: F<103,003> (      MMG Truppe) ACCEPTED
-verify_candidate_units: [415] UNIT: F<104,000> (     SdKfz 250/7) ACCEPTED - LEADER
-verify_candidate_units: [416] UNIT: F<104,001> (     SdKfz 250/7) ACCEPTED
-verify_candidate_units: [417] UNIT: F<105,000> (     SdKfz 251/9) ACCEPTED - LEADER
-verify_candidate_units: [418] UNIT: F<106,000> (    FlakPz 38(t)) ACCEPTED - LEADER
-verify_candidate_units: [419] UNIT: F<106,001> (    FlakPz 38(t)) ACCEPTED
-verify_candidate_units: [420] UNIT: F<107,000> (    PzrSchrk Trp) ACCEPTED - LEADER
-verify_candidate_units: [421] UNIT: F<109,000> (    SPW 251/1 HT) ACCEPTED - LEADER
-verify_candidate_units: [422] UNIT: F<109,001> (    SPW 251/1 HT) ACCEPTED
-verify_candidate_units: [423] UNIT: F<109,002> (    SPW 251/1 HT) ACCEPTED
-verify_candidate_units: [426] UNIT: F<109,003> (      SPW 251/10) ACCEPTED
+find_formation_oobrids: FORMATION: P<1> ID<009> L<00421> O<052> (   Halftrack Plt)
+find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<015> (  Med Panzer Plt)
+find_formation_oobrids: FORMATION: P<1> ID<002> L<00405> O<014> (  Med Panzer Sec)
+find_formation_oobrids: FORMATION: P<1> ID<003> L<00407> O<088> (     PzG Mot Plt)
+find_formation_oobrids: FORMATION: P<1> ID<004> L<00415> O<072> (   SP Mortar Sec)
+find_formation_oobrids: FORMATION: P<1> ID<005> L<00417> O<053> ( Utility Vehicle)
+find_formation_oobrids: FORMATION: P<1> ID<006> L<00418> O<068> (     Flak Pz Sec)
+find_formation_oobrids: FORMATION: P<1> ID<007> L<00420> O<140> (          Sniper)
+verify_candidate_units: [400] UNIT: F<008,000> (   GE Kommandant) ACCEPTED - LEADER
+verify_candidate_units: [401] UNIT: F<001,000> (     PzKpfw IV H) ACCEPTED - LEADER
+verify_candidate_units: [402] UNIT: F<001,001> (     PzKpfw IV H) ACCEPTED
+verify_candidate_units: [403] UNIT: F<001,002> (     PzKpfw IV H) ACCEPTED
+verify_candidate_units: [404] UNIT: F<001,003> (     PzKpfw IV H) ACCEPTED
+verify_candidate_units: [405] UNIT: F<002,000> (       Panther A) ACCEPTED - LEADER
+verify_candidate_units: [406] UNIT: F<002,001> (       Panther A) ACCEPTED
+verify_candidate_units: [407] UNIT: F<003,000> (   Grenadier Grp) ACCEPTED - LEADER
+verify_candidate_units: [408] UNIT: F<003,001> (   Grenadier Grp) ACCEPTED
+verify_candidate_units: [409] UNIT: F<003,002> (   Grenadier Grp) ACCEPTED
+verify_candidate_units: [410] UNIT: F<003,003> (      MMG Truppe) ACCEPTED
+verify_candidate_units: [415] UNIT: F<004,000> (     SdKfz 250/7) ACCEPTED - LEADER
+verify_candidate_units: [416] UNIT: F<004,001> (     SdKfz 250/7) ACCEPTED
+verify_candidate_units: [417] UNIT: F<005,000> (     SdKfz 251/9) ACCEPTED - LEADER
+verify_candidate_units: [418] UNIT: F<006,000> (    FlakPz 38(t)) ACCEPTED - LEADER
+verify_candidate_units: [419] UNIT: F<006,001> (    FlakPz 38(t)) ACCEPTED
+verify_candidate_units: [420] UNIT: F<007,000> (    PzrSchrk Trp) ACCEPTED - LEADER
+verify_candidate_units: [421] UNIT: F<009,000> (    SPW 251/1 HT) ACCEPTED - LEADER
+verify_candidate_units: [422] UNIT: F<009,001> (    SPW 251/1 HT) ACCEPTED
+verify_candidate_units: [423] UNIT: F<009,002> (    SPW 251/1 HT) ACCEPTED
+verify_candidate_units: [426] UNIT: F<009,003> (      SPW 251/10) ACCEPTED
 unitcount: ul.cnt=21
 FLIST: { { s.nidx=18 }, cnt=9 }
-    [00100] ( TGN's SPWAW 1.0) P<001> L<00400> status=000 units=001 OOB 070: [001] FID<00108> RAW<00108>
+    [00100] ( TGN's SPWAW 1.0) P<001> L<00400> status=000 units=001 OOB 070: [001] FID<00008> RAW<00108>
         [000] ptr[00400]
-    [00102] (   Halftrack Plt) P<001> L<00421> status=000 units=004 OOB 070: [052] FID<00109> RAW<00109>
+    [00102] (   Halftrack Plt) P<001> L<00421> status=000 units=004 OOB 070: [052] FID<00009> RAW<00109>
         [000] ptr[00421]
         [001] ptr[00422]
         [002] ptr[00423]
         [003] ptr[00426]
-    [00108] (  Med Panzer Plt) P<001> L<00401> status=000 units=005 OOB 070: [015] FID<00101> RAW<00101>
+    [00108] (  Med Panzer Plt) P<001> L<00401> status=000 units=005 OOB 070: [015] FID<00001> RAW<00101>
         [000] ptr[00401]
         [001] ptr[00402]
         [002] ptr[00403]
         [003] ptr[00404]
     --- [004] nil[65535]
-    [00109] (  Med Panzer Sec) P<001> L<00405> status=000 units=002 OOB 070: [014] FID<00102> RAW<00102>
+    [00109] (  Med Panzer Sec) P<001> L<00405> status=000 units=002 OOB 070: [014] FID<00002> RAW<00102>
         [000] ptr[00405]
         [001] ptr[00406]
-    [00110] (     PzG Mot Plt) P<001> L<00407> status=000 units=008 OOB 070: [088] FID<00103> RAW<00103>
+    [00110] (     PzG Mot Plt) P<001> L<00407> status=000 units=008 OOB 070: [088] FID<00003> RAW<00103>
         [000] ptr[00407]
         [001] ptr[00408]
         [002] ptr[00409]
@@ -1221,10 +1223,10 @@ FLIST: { { s.nidx=18 }, cnt=9 }
     --- [005] nil[65535]
     --- [006] nil[65535]
     --- [007] nil[65535]
-    [00111] (   SP Mortar Sec) P<001> L<00415> status=000 units=002 OOB 070: [072] FID<00104> RAW<00104>
+    [00111] (   SP Mortar Sec) P<001> L<00415> status=000 units=002 OOB 070: [072] FID<00004> RAW<00104>
         [000] ptr[00415]
         [001] ptr[00416]
-    [00115] ( Utility Vehicle) P<001> L<00417> status=000 units=009 OOB 070: [053] FID<00105> RAW<00105>
+    [00115] ( Utility Vehicle) P<001> L<00417> status=000 units=009 OOB 070: [053] FID<00005> RAW<00105>
         [000] ptr[00417]
     --- [001] nil[65535]
     --- [002] nil[65535]
@@ -1234,33 +1236,33 @@ FLIST: { { s.nidx=18 }, cnt=9 }
     --- [006] nil[65535]
     --- [007] nil[65535]
     --- [008] nil[65535]
-    [00116] (     Flak Pz Sec) P<001> L<00418> status=000 units=002 OOB 070: [068] FID<00106> RAW<00106>
+    [00116] (     Flak Pz Sec) P<001> L<00418> status=000 units=002 OOB 070: [068] FID<00006> RAW<00106>
         [000] ptr[00418]
         [001] ptr[00419]
-    [00118] (          Sniper) P<001> L<00420> status=000 units=001 OOB 070: [140] FID<00107> RAW<00107>
+    [00118] (          Sniper) P<001> L<00420> status=000 units=001 OOB 070: [140] FID<00007> RAW<00107>
         [000] ptr[00420]
 ULIST: { { s.nidx=21 }, cnt=21 }
-    [00400] (   GE Kommandant) UNIT leader=[00400] loader<00417> vrf=N vrfneed=N  OOB 070: [245] F[00100]<00108,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
-    [00401] (     PzKpfw IV H) UNIT leader=[00401] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00101,00000> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00402] (     PzKpfw IV H) UNIT leader=[00402] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00101,00001> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00403] (     PzKpfw IV H) UNIT leader=[00403] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00101,00002> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00404] (     PzKpfw IV H) UNIT leader=[00404] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00101,00003> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00405] (       Panther A) UNIT leader=[00405] loader<65535> vrf=N vrfneed=N  OOB 070: [032] F[00109]<00102,00000> ptr[00109] link crew=nil[65535], parent=nil[65535]
-    [00406] (       Panther A) UNIT leader=[00406] loader<65535> vrf=N vrfneed=N  OOB 070: [032] F[00109]<00102,00001> ptr[00109] link crew=nil[65535], parent=nil[65535]
-    [00407] (   Grenadier Grp) UNIT leader=[00407] loader<00421> vrf=N vrfneed=N  OOB 070: [152] F[00110]<00103,00000> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00408] (   Grenadier Grp) UNIT leader=[00408] loader<00422> vrf=N vrfneed=N  OOB 070: [227] F[00110]<00103,00001> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00409] (   Grenadier Grp) UNIT leader=[00409] loader<00423> vrf=N vrfneed=N  OOB 070: [227] F[00110]<00103,00002> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00410] (      MMG Truppe) UNIT leader=[00410] loader<00426> vrf=N vrfneed=N  OOB 070: [173] F[00110]<00103,00003> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00415] (     SdKfz 250/7) UNIT leader=[00415] loader<65535> vrf=N vrfneed=N  OOB 070: [113] F[00111]<00104,00000> ptr[00111] link crew=nil[65535], parent=nil[65535]
-    [00416] (     SdKfz 250/7) UNIT leader=[00416] loader<65535> vrf=N vrfneed=N  OOB 070: [113] F[00111]<00104,00001> ptr[00111] link crew=nil[65535], parent=nil[65535]
-    [00417] (     SdKfz 251/9) UNIT leader=[00417] loader<65535> vrf=Y vrfneed=N  OOB 070: [109] F[00115]<00105,00000> ptr[00115] link crew=nil[65535], parent=nil[65535]
-    [00418] (    FlakPz 38(t)) UNIT leader=[00418] loader<65535> vrf=N vrfneed=N  OOB 070: [083] F[00116]<00106,00000> ptr[00116] link crew=nil[65535], parent=nil[65535]
-    [00419] (    FlakPz 38(t)) UNIT leader=[00419] loader<65535> vrf=N vrfneed=N  OOB 070: [083] F[00116]<00106,00001> ptr[00116] link crew=nil[65535], parent=nil[65535]
-    [00420] (    PzrSchrk Trp) UNIT leader=[00420] loader<65535> vrf=N vrfneed=N  OOB 070: [177] F[00118]<00107,00000> ptr[00118] link crew=nil[65535], parent=nil[65535]
-    [00421] (    SPW 251/1 HT) UNIT leader=[00421] loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00109,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00422] (    SPW 251/1 HT) UNIT leader=[00422] loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00109,00001> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00423] (    SPW 251/1 HT) UNIT leader=[00423] loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00109,00002> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00426] (      SPW 251/10) UNIT leader=[00426] loader<65535> vrf=Y vrfneed=N  OOB 070: [182] F[00102]<00109,00003> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00400] (   GE Kommandant) UNIT leader=[00400] loader<00417> vrf=N vrfneed=N  OOB 070: [245] F[00100]<00008,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
+    [00401] (     PzKpfw IV H) UNIT leader=[00401] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00000> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00402] (     PzKpfw IV H) UNIT leader=[00402] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00001> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00403] (     PzKpfw IV H) UNIT leader=[00403] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00002> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00404] (     PzKpfw IV H) UNIT leader=[00404] loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00003> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00405] (       Panther A) UNIT leader=[00405] loader<65535> vrf=N vrfneed=N  OOB 070: [032] F[00109]<00002,00000> ptr[00109] link crew=nil[65535], parent=nil[65535]
+    [00406] (       Panther A) UNIT leader=[00406] loader<65535> vrf=N vrfneed=N  OOB 070: [032] F[00109]<00002,00001> ptr[00109] link crew=nil[65535], parent=nil[65535]
+    [00407] (   Grenadier Grp) UNIT leader=[00407] loader<00421> vrf=N vrfneed=N  OOB 070: [152] F[00110]<00003,00000> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00408] (   Grenadier Grp) UNIT leader=[00408] loader<00422> vrf=N vrfneed=N  OOB 070: [227] F[00110]<00003,00001> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00409] (   Grenadier Grp) UNIT leader=[00409] loader<00423> vrf=N vrfneed=N  OOB 070: [227] F[00110]<00003,00002> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00410] (      MMG Truppe) UNIT leader=[00410] loader<00426> vrf=N vrfneed=N  OOB 070: [173] F[00110]<00003,00003> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00415] (     SdKfz 250/7) UNIT leader=[00415] loader<65535> vrf=N vrfneed=N  OOB 070: [113] F[00111]<00004,00000> ptr[00111] link crew=nil[65535], parent=nil[65535]
+    [00416] (     SdKfz 250/7) UNIT leader=[00416] loader<65535> vrf=N vrfneed=N  OOB 070: [113] F[00111]<00004,00001> ptr[00111] link crew=nil[65535], parent=nil[65535]
+    [00417] (     SdKfz 251/9) UNIT leader=[00417] loader<65535> vrf=Y vrfneed=N  OOB 070: [109] F[00115]<00005,00000> ptr[00115] link crew=nil[65535], parent=nil[65535]
+    [00418] (    FlakPz 38(t)) UNIT leader=[00418] loader<65535> vrf=N vrfneed=N  OOB 070: [083] F[00116]<00006,00000> ptr[00116] link crew=nil[65535], parent=nil[65535]
+    [00419] (    FlakPz 38(t)) UNIT leader=[00419] loader<65535> vrf=N vrfneed=N  OOB 070: [083] F[00116]<00006,00001> ptr[00116] link crew=nil[65535], parent=nil[65535]
+    [00420] (    PzrSchrk Trp) UNIT leader=[00420] loader<65535> vrf=N vrfneed=N  OOB 070: [177] F[00118]<00007,00000> ptr[00118] link crew=nil[65535], parent=nil[65535]
+    [00421] (    SPW 251/1 HT) UNIT leader=[00421] loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00009,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00422] (    SPW 251/1 HT) UNIT leader=[00422] loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00009,00001> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00423] (    SPW 251/1 HT) UNIT leader=[00423] loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00009,00002> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00426] (      SPW 251/10) UNIT leader=[00426] loader<65535> vrf=Y vrfneed=N  OOB 070: [182] F[00102]<00009,00003> ptr[00102] link crew=nil[65535], parent=nil[65535]
 add_unit: idx=0, RID=0, type=UNIT
 add_unit: idx=1, RID=1, type=UNIT
 add_unit: idx=2, RID=2, type=UNIT

@@ -84,16 +84,16 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=19, flag=0x00000001>
 unpacked section 48: 19 bytes -> 80 bytes
-setup_info: fcnt=4, cfcnt=0
+setup_info: fcnt=5, cfcnt=0
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(       SPWAW 8.3)
-find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<062>(   Halftrack Sec)
-find_formations: [002] FORMATION: P<0> ID<002> L<00003> O<007>(   Lt Panzer Plt)
-find_formations: [003] FORMATION: P<0> ID<003> L<00008> O<007>(   Lt Panzer Plt)
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>(       SPWAW 8.3)
+find_formations: [001] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<062>(   Halftrack Sec)
+find_formations: [002] FORMATION: P<0> rawFID<002> FID<002> L<00003> O<007>(   Lt Panzer Plt)
+find_formations: [003] FORMATION: P<0> rawFID<003> FID<003> L<00008> O<007>(   Lt Panzer Plt)
 find_formations: [004] SKIPPED (no leader)
 find_formations: [005] SKIPPED (no leader)
 find_formations: [006] SKIPPED (no leader)
-find_formations: [007] SKIPPED (duplicate formation ID 0)
+find_formations: [007] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
 find_formations: [008] SKIPPED (duplicate formation ID 0)
 find_formations: [009] SKIPPED (duplicate formation ID 0)
 find_formations: [010] SKIPPED (duplicate formation ID 0)
@@ -486,7 +486,7 @@ find_formations: [396] SKIPPED (duplicate formation ID 0)
 find_formations: [397] SKIPPED (duplicate formation ID 0)
 find_formations: [398] SKIPPED (duplicate formation ID 0)
 find_formations: [399] SKIPPED (duplicate formation ID 0)
-find_formations: cnt=4
+find_formations: cnt=5
 find_formations: player #1
 find_formations: [000] SKIPPED (wrong player ID 0)
 find_formations: [001] SKIPPED (wrong player ID 0)
@@ -588,11 +588,11 @@ find_formations: [096] SKIPPED (wrong player ID 0)
 find_formations: [097] SKIPPED (wrong player ID 0)
 find_formations: [098] SKIPPED (wrong player ID 0)
 find_formations: [099] SKIPPED (wrong player ID 0)
-find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(       SPWAW 8.3)
-find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<163>(   Halftrack Sec)
-find_formations: [102] FORMATION: P<1> ID<102> L<00403> O<016>(    Med Tank Plt)
-find_formations: [103] FORMATION: P<1> ID<103> L<00406> O<016>(    Med Tank Plt)
-find_formations: [104] FORMATION: P<1> ID<104> L<00409> O<016>(    Med Tank Plt)
+find_formations: [100] FORMATION: P<1> rawFID<100> FID<000> L<00400> O<001>(       SPWAW 8.3)
+find_formations: [101] FORMATION: P<1> rawFID<101> FID<001> L<00401> O<163>(   Halftrack Sec)
+find_formations: [102] FORMATION: P<1> rawFID<102> FID<002> L<00403> O<016>(    Med Tank Plt)
+find_formations: [103] FORMATION: P<1> rawFID<103> FID<003> L<00406> O<016>(    Med Tank Plt)
+find_formations: [104] FORMATION: P<1> rawFID<104> FID<004> L<00409> O<016>(    Med Tank Plt)
 find_formations: [105] SKIPPED (no leader)
 find_formations: [106] SKIPPED (no leader)
 find_formations: [107] SKIPPED (no leader)
@@ -970,6 +970,8 @@ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.
 find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<062> (   Halftrack Sec)
 find_formation_oobrids: FORMATION: P<0> ID<002> L<00003> O<007> (   Lt Panzer Plt)
 find_formation_oobrids: FORMATION: P<0> ID<003> L<00008> O<007> (   Lt Panzer Plt)
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (           GE HQ) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (  SdKfz 251/1 HT) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<001,001> (  SdKfz 251/1 HT) ACCEPTED
@@ -984,7 +986,7 @@ verify_candidate_units: [010] UNIT: F<003,002> (      PzKpfw-IIf) ACCEPTED
 verify_candidate_units: [011] UNIT: F<003,003> (      PzKpfw-IIf) ACCEPTED
 verify_candidate_units: [012] UNIT: F<003,004> (      PzKpfw-IIf) ACCEPTED
 unitcount: ul.cnt=13
-FLIST: { { s.nidx=4 }, cnt=4 }
+FLIST: { { s.nidx=5 }, cnt=4 }
     [00000] (       SPWAW 8.3) P<000> L<00000> status=000 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (   Halftrack Sec) P<000> L<00001> status=000 units=002 OOB 070: [062] FID<00001> RAW<00001>

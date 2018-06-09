@@ -248,7 +248,8 @@ commit_FEL (FLIST &fl, FEL *fel)
 
 	if (!fl.head) fl.head = fel;
 
-	fel->d.FID = fel->d.rawFID - fl.head->d.rawFID;
+	// Compensate for raw formation IDs that are offset by a multiple of 100
+	fel->d.FID = (fel->d.rawFID % 100) - (fl.head->d.rawFID % 100);
 
 	fl.s.nidx++;
 	fl.cnt++;

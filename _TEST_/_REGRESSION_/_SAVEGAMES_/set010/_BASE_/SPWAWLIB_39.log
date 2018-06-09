@@ -86,31 +86,31 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=16, flag=0x00000001>
 unpacked section 48: 16 bytes -> 80 bytes
-setup_info: fcnt=21, cfcnt=1
+setup_info: fcnt=22, cfcnt=1
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(       SPWAW 8.3)
-find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<106>(       SS Mot Co)
-find_formations: [002] FORMATION: P<0> ID<002> L<00002> O<000>(      SS Mot Plt)
-find_formations: [003] FORMATION: P<0> ID<003> L<00012> O<000>(      SS Mot Plt)
-find_formations: [004] FORMATION: P<0> ID<004> L<00022> O<000>(      SS Mot Plt)
-find_formations: [005] FORMATION: P<0> ID<005> L<00032> O<000>(   Lt Mortar Sec)
-find_formations: [006] FORMATION: P<0> ID<006> L<00035> O<000>(      Mortar Sec)
-find_formations: [007] FORMATION: P<0> ID<007> L<00037> O<000>(   Med Truck Sec)
-find_formations: [008] FORMATION: P<0> ID<008> L<00039> O<000>(      AT-Gun Sec)
-find_formations: [009] FORMATION: P<0> ID<009> L<00041> O<000>(     Inf-Gun Sec)
-find_formations: [010] FORMATION: P<0> ID<010> L<00043> O<000>( Prime Mover Plt)
-find_formations: [011] FORMATION: P<0> ID<011> L<00047> O<106>(       SS Mot Co)
-find_formations: [012] FORMATION: P<0> ID<012> L<00048> O<000>(      SS Mot Plt)
-find_formations: [013] FORMATION: P<0> ID<013> L<00058> O<000>(      SS Mot Plt)
-find_formations: [014] FORMATION: P<0> ID<014> L<00068> O<000>(      SS Mot Plt)
-find_formations: [015] FORMATION: P<0> ID<015> L<00078> O<000>(   Lt Mortar Sec)
-find_formations: [016] FORMATION: P<0> ID<016> L<00081> O<000>(      Mortar Sec)
-find_formations: [017] FORMATION: P<0> ID<017> L<00083> O<000>(   Med Truck Sec)
-find_formations: [018] FORMATION: P<0> ID<018> L<00085> O<000>(      AT-Gun Sec)
-find_formations: [019] FORMATION: P<0> ID<019> L<00087> O<000>(     Inf-Gun Sec)
-find_formations: [020] FORMATION: P<0> ID<020> L<00089> O<000>( Prime Mover Plt)
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>(       SPWAW 8.3)
+find_formations: [001] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<106>(       SS Mot Co)
+find_formations: [002] FORMATION: P<0> rawFID<002> FID<002> L<00002> O<000>(      SS Mot Plt)
+find_formations: [003] FORMATION: P<0> rawFID<003> FID<003> L<00012> O<000>(      SS Mot Plt)
+find_formations: [004] FORMATION: P<0> rawFID<004> FID<004> L<00022> O<000>(      SS Mot Plt)
+find_formations: [005] FORMATION: P<0> rawFID<005> FID<005> L<00032> O<000>(   Lt Mortar Sec)
+find_formations: [006] FORMATION: P<0> rawFID<006> FID<006> L<00035> O<000>(      Mortar Sec)
+find_formations: [007] FORMATION: P<0> rawFID<007> FID<007> L<00037> O<000>(   Med Truck Sec)
+find_formations: [008] FORMATION: P<0> rawFID<008> FID<008> L<00039> O<000>(      AT-Gun Sec)
+find_formations: [009] FORMATION: P<0> rawFID<009> FID<009> L<00041> O<000>(     Inf-Gun Sec)
+find_formations: [010] FORMATION: P<0> rawFID<010> FID<010> L<00043> O<000>( Prime Mover Plt)
+find_formations: [011] FORMATION: P<0> rawFID<011> FID<011> L<00047> O<106>(       SS Mot Co)
+find_formations: [012] FORMATION: P<0> rawFID<012> FID<012> L<00048> O<000>(      SS Mot Plt)
+find_formations: [013] FORMATION: P<0> rawFID<013> FID<013> L<00058> O<000>(      SS Mot Plt)
+find_formations: [014] FORMATION: P<0> rawFID<014> FID<014> L<00068> O<000>(      SS Mot Plt)
+find_formations: [015] FORMATION: P<0> rawFID<015> FID<015> L<00078> O<000>(   Lt Mortar Sec)
+find_formations: [016] FORMATION: P<0> rawFID<016> FID<016> L<00081> O<000>(      Mortar Sec)
+find_formations: [017] FORMATION: P<0> rawFID<017> FID<017> L<00083> O<000>(   Med Truck Sec)
+find_formations: [018] FORMATION: P<0> rawFID<018> FID<018> L<00085> O<000>(      AT-Gun Sec)
+find_formations: [019] FORMATION: P<0> rawFID<019> FID<019> L<00087> O<000>(     Inf-Gun Sec)
+find_formations: [020] FORMATION: P<0> rawFID<020> FID<020> L<00089> O<000>( Prime Mover Plt)
 find_formations: [021] SKIPPED (no leader)
-find_formations: [022] SKIPPED (duplicate formation ID 0)
+find_formations: [022] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
 find_formations: [023] SKIPPED (duplicate formation ID 0)
 find_formations: [024] SKIPPED (duplicate formation ID 0)
 find_formations: [025] SKIPPED (duplicate formation ID 0)
@@ -488,7 +488,7 @@ find_formations: [396] SKIPPED (duplicate formation ID 0)
 find_formations: [397] SKIPPED (duplicate formation ID 0)
 find_formations: [398] SKIPPED (duplicate formation ID 0)
 find_formations: [399] SKIPPED (duplicate formation ID 0)
-find_formations: cnt=21
+find_formations: cnt=22
 find_formations: player #1
 find_formations: [000] SKIPPED (wrong player ID 0)
 find_formations: [001] SKIPPED (wrong player ID 0)
@@ -590,22 +590,22 @@ find_formations: [096] SKIPPED (wrong player ID 0)
 find_formations: [097] SKIPPED (wrong player ID 0)
 find_formations: [098] SKIPPED (wrong player ID 0)
 find_formations: [099] SKIPPED (wrong player ID 0)
-find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(       SPWAW 8.3)
-find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<074>( **AI Rifle Co**)
-find_formations: [102] FORMATION: P<1> ID<102> L<00402> O<000>(       Rifle Plt)
-find_formations: [103] FORMATION: P<1> ID<103> L<00406> O<000>(       Rifle Plt)
-find_formations: [104] FORMATION: P<1> ID<104> L<00410> O<000>(       Rifle Plt)
-find_formations: [105] FORMATION: P<1> ID<105> L<00414> O<000>(      Inf-AT Sec)
-find_formations: [106] FORMATION: P<1> ID<106> L<00417> O<000>( AI Med Mortar++)
-find_formations: [107] FORMATION: P<1> ID<107> L<00419> O<136>( AI Hvy Mortar++)
-find_formations: [108] FORMATION: P<1> ID<108> L<00420> O<177>(    Light AA Sec)
-find_formations: [109] FORMATION: P<1> ID<109> L<00422> O<123>(  Artillery Btry)
-find_formations: [110] FORMATION: P<1> ID<110> L<00423> O<025>(       Lt TD Bty)
-find_formations: [111] FORMATION: P<1> ID<111> L<00426> O<023>(     Hvy Tank Co)
-find_formations: [112] FORMATION: P<1> ID<112> L<00427> O<000>(    Hvy Tank Plt)
-find_formations: [113] FORMATION: P<1> ID<113> L<00429> O<021>(    Hvy Tank Plt)
-find_formations: [114] FORMATION: P<1> ID<114> L<00430> O<074>( **AI Rifle Co**)
-find_formations: [115] FORMATION: P<1> ID<115> L<00431> O<000>(       Rifle Plt)
+find_formations: [100] FORMATION: P<1> rawFID<100> FID<000> L<00400> O<001>(       SPWAW 8.3)
+find_formations: [101] FORMATION: P<1> rawFID<101> FID<001> L<00401> O<074>( **AI Rifle Co**)
+find_formations: [102] FORMATION: P<1> rawFID<102> FID<002> L<00402> O<000>(       Rifle Plt)
+find_formations: [103] FORMATION: P<1> rawFID<103> FID<003> L<00406> O<000>(       Rifle Plt)
+find_formations: [104] FORMATION: P<1> rawFID<104> FID<004> L<00410> O<000>(       Rifle Plt)
+find_formations: [105] FORMATION: P<1> rawFID<105> FID<005> L<00414> O<000>(      Inf-AT Sec)
+find_formations: [106] FORMATION: P<1> rawFID<106> FID<006> L<00417> O<000>( AI Med Mortar++)
+find_formations: [107] FORMATION: P<1> rawFID<107> FID<007> L<00419> O<136>( AI Hvy Mortar++)
+find_formations: [108] FORMATION: P<1> rawFID<108> FID<008> L<00420> O<177>(    Light AA Sec)
+find_formations: [109] FORMATION: P<1> rawFID<109> FID<009> L<00422> O<123>(  Artillery Btry)
+find_formations: [110] FORMATION: P<1> rawFID<110> FID<010> L<00423> O<025>(       Lt TD Bty)
+find_formations: [111] FORMATION: P<1> rawFID<111> FID<011> L<00426> O<023>(     Hvy Tank Co)
+find_formations: [112] FORMATION: P<1> rawFID<112> FID<012> L<00427> O<000>(    Hvy Tank Plt)
+find_formations: [113] FORMATION: P<1> rawFID<113> FID<013> L<00429> O<021>(    Hvy Tank Plt)
+find_formations: [114] FORMATION: P<1> rawFID<114> FID<014> L<00430> O<074>( **AI Rifle Co**)
+find_formations: [115] FORMATION: P<1> rawFID<115> FID<015> L<00431> O<000>(       Rifle Plt)
 find_formations: [116] SKIPPED (no leader)
 find_formations: [117] SKIPPED (wrong player ID 0)
 find_formations: [118] SKIPPED (wrong player ID 0)
@@ -1100,6 +1100,8 @@ find_formation_oobrids: FORMATION: P<0> ID<020> L<00089> O<000> ( Prime Mover Pl
   >>> SEARCH OOBRID - BY NAME: F<020>, T< Prime Mover Plt>, D<1942/06>
     OOB #061 < Prime Mover Plt> from=1935/01 to=1949/12 - MATCH: name and date
   <<< rv=61
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (           GE HQ) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (    SS Rifle Sqd) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<002,000> (    SS Rifle Sqd) ACCEPTED - LEADER
@@ -1194,7 +1196,7 @@ verify_candidate_units: [090] UNIT: F<020,001> (        Sdkfz 11) ACCEPTED
 verify_candidate_units: [091] UNIT: F<020,002> (        Sdkfz 11) ACCEPTED
 verify_candidate_units: [092] UNIT: F<020,003> (        Sdkfz 11) ACCEPTED
 unitcount: ul.cnt=93
-FLIST: { { s.nidx=21 }, cnt=21 }
+FLIST: { { s.nidx=22 }, cnt=21 }
     [00000] (       SPWAW 8.3) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (       SS Mot Co) P<000> L<00001> status=000 units=001 OOB 070: [106] FID<00001> RAW<00001>

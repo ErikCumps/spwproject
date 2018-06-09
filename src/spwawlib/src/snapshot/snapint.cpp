@@ -593,6 +593,10 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		p.fp->data.leader.up = unitorcrewbyid (p.fp->data.leader.rid, bp);
 		p.fp->data.hcmd.up = unitorcrewbyid (p.fp->data.hcmd.rid, bp);
+		if (!p.fp->data.hcmd.up) {
+			// TODO: more of these checks to prevent NULL pointer propagation
+			RWE (SPWERR_BADSAVEDATA, "missing leader unit for formation");
+		}
 
 		/* Do not link crewmen to formation leader, use abandoned unit instead! */
 		if (p.fp->data.leader.up->data.aband == SPWAW_ALEFT) {

@@ -85,12 +85,12 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=16, flag=0x00000001>
 unpacked section 48: 16 bytes -> 80 bytes
-setup_info: fcnt=2, cfcnt=0
+setup_info: fcnt=3, cfcnt=0
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(    SPWAW ENH-DV)
-find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<140>(          Sniper)
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>(    SPWAW ENH-DV)
+find_formations: [001] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<140>(          Sniper)
 find_formations: [002] SKIPPED (no leader)
-find_formations: [003] SKIPPED (duplicate formation ID 0)
+find_formations: [003] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
 find_formations: [004] SKIPPED (duplicate formation ID 0)
 find_formations: [005] SKIPPED (duplicate formation ID 0)
 find_formations: [006] SKIPPED (duplicate formation ID 0)
@@ -487,7 +487,7 @@ find_formations: [396] SKIPPED (duplicate formation ID 0)
 find_formations: [397] SKIPPED (duplicate formation ID 0)
 find_formations: [398] SKIPPED (duplicate formation ID 0)
 find_formations: [399] SKIPPED (duplicate formation ID 0)
-find_formations: cnt=2
+find_formations: cnt=3
 find_formations: player #1
 find_formations: [000] SKIPPED (wrong player ID 0)
 find_formations: [001] SKIPPED (wrong player ID 0)
@@ -589,8 +589,8 @@ find_formations: [096] SKIPPED (wrong player ID 0)
 find_formations: [097] SKIPPED (wrong player ID 0)
 find_formations: [098] SKIPPED (wrong player ID 0)
 find_formations: [099] SKIPPED (wrong player ID 0)
-find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(    SPWAW FV HTH)
-find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<108>(          Sniper)
+find_formations: [100] FORMATION: P<1> rawFID<100> FID<000> L<00400> O<001>(    SPWAW FV HTH)
+find_formations: [101] FORMATION: P<1> rawFID<101> FID<001> L<00401> O<108>(          Sniper)
 find_formations: [102] SKIPPED (no leader)
 find_formations: [103] SKIPPED (wrong player ID 0)
 find_formations: [104] SKIPPED (wrong player ID 0)
@@ -898,10 +898,12 @@ find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (         Snajp
 find_candidate_units: 2 candidates
 find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (    SPWAW ENH-DV)
 find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<140> (          Sniper)
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandant) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (   Scharfschutze) ACCEPTED - LEADER
 unitcount: ul.cnt=2
-FLIST: { { s.nidx=2 }, cnt=2 }
+FLIST: { { s.nidx=3 }, cnt=2 }
     [00000] (    SPWAW ENH-DV) P<000> L<00000> status=000 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (          Sniper) P<000> L<00001> status=000 units=001 OOB 070: [140] FID<00001> RAW<00001>

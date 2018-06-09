@@ -767,7 +767,7 @@ setup (SPWAW_SNAP_OOB_URAW *dst, ULIST &up)
 }
 
 static SPWAW_ERROR
-add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_SNAP_OOB_FRAW *fp, STRTAB *stab)
+add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *stab)
 {
 	SPWAW_SNAP_OOB_UELRAW	*ptr;
 
@@ -777,13 +777,13 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_SNAP
 
 	ptr->RID	= p->d.RID;
 	ptr->type	= p->d.type;
-	ptr->FRID	= src->formID;
-	check_formationid (ptr->FRID, fp, &(ptr->FMID), NULL);
-	ptr->FSID	= src->minform;
+	ptr->FRID       = p->d.FRID;
+	ptr->FMID       = p->d.FMID;
+	ptr->FSID       = p->d.FSID;
 	ptr->name = azstrstab (src->name, stab);
 	ptr->classID	= src->classID;
-	ptr->OOB	= src->OOBid;
-	ptr->OOBrid	= src->OOBnum;
+	ptr->OOB        = p->d.OOB;
+	ptr->OOBrid     = p->d.OOBrid;
 	ptr->size	= src->size;
 	ptr->cost	= src->cost;
 	ptr->survive	= src->survive;
@@ -799,7 +799,7 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, SPWAW_SNAP
 	ptr->range	= src->range;
 	ptr->stance_x	= src->stance_x;
 	ptr->stance_y	= src->stance_y;
-	ptr->loader	= src->loader;
+	ptr->loader	= p->d.loader;
 	ptr->load_cap	= src->load_cap;
 	ptr->load_cost	= src->load_cost;
 	ptr->radio	= src->radio;
@@ -910,7 +910,7 @@ sec01_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 	rc = setup (&(dst->raw.OOBp1.units), ful1.ul); ROE ("setup(OOBp1)");
 	p = ful1.ul.head; idx = 0;
 	while (p) {
-		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp1.units.raw, &idx, &(dst->raw.OOBp1.formations), stab);
+		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp1.units.raw, &idx, stab);
 		ROE ("add_unit(OOBp1)");
 		p = p->l.next;
 	}
@@ -920,7 +920,7 @@ sec01_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &f
 	rc = setup (&(dst->raw.OOBp2.units), ful2.ul); ROE ("setup(OOBp2)");
 	p = ful2.ul.head; idx = 0;
 	while (p) {
-		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp2.units.raw, &idx, &(dst->raw.OOBp2.formations), stab);
+		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp2.units.raw, &idx, stab);
 		ROE ("add_unit(OOBp2)");
 		p = p->l.next;
 	}

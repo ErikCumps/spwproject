@@ -84,14 +84,14 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=26, flag=0x00000001>
 unpacked section 48: 26 bytes -> 80 bytes
-setup_info: fcnt=4, cfcnt=0
+setup_info: fcnt=5, cfcnt=0
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(    SPWAW ENH-DV)
-find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<062>(   Halftrack Sec)
-find_formations: [002] FORMATION: P<0> ID<002> L<00003> O<018>(   SS Panzer Plt)
-find_formations: [003] FORMATION: P<0> ID<003> L<00007> O<018>(   SS Panzer Plt)
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>(    SPWAW ENH-DV)
+find_formations: [001] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<062>(   Halftrack Sec)
+find_formations: [002] FORMATION: P<0> rawFID<002> FID<002> L<00003> O<018>(   SS Panzer Plt)
+find_formations: [003] FORMATION: P<0> rawFID<003> FID<003> L<00007> O<018>(   SS Panzer Plt)
 find_formations: [004] SKIPPED (no leader)
-find_formations: [005] SKIPPED (duplicate formation ID 0)
+find_formations: [005] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
 find_formations: [006] SKIPPED (duplicate formation ID 0)
 find_formations: [007] SKIPPED (duplicate formation ID 0)
 find_formations: [008] SKIPPED (duplicate formation ID 0)
@@ -486,7 +486,7 @@ find_formations: [396] SKIPPED (duplicate formation ID 0)
 find_formations: [397] SKIPPED (duplicate formation ID 0)
 find_formations: [398] SKIPPED (duplicate formation ID 0)
 find_formations: [399] SKIPPED (duplicate formation ID 0)
-find_formations: cnt=4
+find_formations: cnt=5
 find_formations: player #1
 find_formations: [000] SKIPPED (wrong player ID 0)
 find_formations: [001] SKIPPED (wrong player ID 0)
@@ -588,22 +588,22 @@ find_formations: [096] SKIPPED (wrong player ID 0)
 find_formations: [097] SKIPPED (wrong player ID 0)
 find_formations: [098] SKIPPED (wrong player ID 0)
 find_formations: [099] SKIPPED (wrong player ID 0)
-find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(    SPWAW FV HTH)
-find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<003>( Armored Car Sec)
-find_formations: [102] FORMATION: P<1> ID<102> L<00433> O<024>(          TD Sec)
-find_formations: [103] FORMATION: P<1> ID<103> L<00405> O<015>(    Med Tank Sec)
-find_formations: [104] FORMATION: P<1> ID<104> L<00408> O<009>(  Recon Tank Sec)
-find_formations: [105] FORMATION: P<1> ID<105> L<00434> O<073>(    Hvy Tank Sec)
-find_formations: [106] FORMATION: P<1> ID<106> L<00411> O<196>(        SPAA Sec)
-find_formations: [107] FORMATION: P<1> ID<107> L<00413> O<132>(         ATG Sec)
-find_formations: [108] FORMATION: P<1> ID<108> L<00415> O<121>(    Howitzer Sec)
-find_formations: [109] FORMATION: P<1> ID<109> L<00417> O<163>(     Carrier Sec)
-find_formations: [110] FORMATION: P<1> ID<110> L<00419> O<161>(        Tractors)
-find_formations: [111] FORMATION: P<1> ID<111> L<00423> O<066>(            Fort)
-find_formations: [112] FORMATION: P<1> ID<112> L<00424> O<184>(  Fortifications)
-find_formations: [113] FORMATION: P<1> ID<113> L<00427> O<101>(     Mtcycle Plt)
-find_formations: [114] FORMATION: P<1> ID<114> L<00430> O<044>(   Med Truck Sec)
-find_formations: [115] FORMATION: P<1> ID<115> L<00432> O<063>( Command Post HQ)
+find_formations: [100] FORMATION: P<1> rawFID<100> FID<000> L<00400> O<001>(    SPWAW FV HTH)
+find_formations: [101] FORMATION: P<1> rawFID<101> FID<001> L<00401> O<003>( Armored Car Sec)
+find_formations: [102] FORMATION: P<1> rawFID<102> FID<002> L<00433> O<024>(          TD Sec)
+find_formations: [103] FORMATION: P<1> rawFID<103> FID<003> L<00405> O<015>(    Med Tank Sec)
+find_formations: [104] FORMATION: P<1> rawFID<104> FID<004> L<00408> O<009>(  Recon Tank Sec)
+find_formations: [105] FORMATION: P<1> rawFID<105> FID<005> L<00434> O<073>(    Hvy Tank Sec)
+find_formations: [106] FORMATION: P<1> rawFID<106> FID<006> L<00411> O<196>(        SPAA Sec)
+find_formations: [107] FORMATION: P<1> rawFID<107> FID<007> L<00413> O<132>(         ATG Sec)
+find_formations: [108] FORMATION: P<1> rawFID<108> FID<008> L<00415> O<121>(    Howitzer Sec)
+find_formations: [109] FORMATION: P<1> rawFID<109> FID<009> L<00417> O<163>(     Carrier Sec)
+find_formations: [110] FORMATION: P<1> rawFID<110> FID<010> L<00419> O<161>(        Tractors)
+find_formations: [111] FORMATION: P<1> rawFID<111> FID<011> L<00423> O<066>(            Fort)
+find_formations: [112] FORMATION: P<1> rawFID<112> FID<012> L<00424> O<184>(  Fortifications)
+find_formations: [113] FORMATION: P<1> rawFID<113> FID<013> L<00427> O<101>(     Mtcycle Plt)
+find_formations: [114] FORMATION: P<1> rawFID<114> FID<014> L<00430> O<044>(   Med Truck Sec)
+find_formations: [115] FORMATION: P<1> rawFID<115> FID<015> L<00432> O<063>( Command Post HQ)
 find_formations: [116] SKIPPED (no leader)
 find_formations: [117] SKIPPED (wrong player ID 0)
 find_formations: [118] SKIPPED (wrong player ID 0)
@@ -941,6 +941,8 @@ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (    SPWAW ENH-D
 find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<062> (   Halftrack Sec)
 find_formation_oobrids: FORMATION: P<0> ID<002> L<00003> O<018> (   SS Panzer Plt)
 find_formation_oobrids: FORMATION: P<0> ID<003> L<00007> O<018> (   SS Panzer Plt)
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandant) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (  SdKfz 251/1 HT) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<001,001> (  SdKfz 251/1 HT) ACCEPTED
@@ -953,7 +955,7 @@ verify_candidate_units: [008] UNIT: F<003,001> (       Panther G) ACCEPTED
 verify_candidate_units: [009] UNIT: F<003,002> (       Panther G) ACCEPTED
 verify_candidate_units: [010] UNIT: F<003,003> (       Panther G) ACCEPTED
 unitcount: ul.cnt=11
-FLIST: { { s.nidx=4 }, cnt=4 }
+FLIST: { { s.nidx=5 }, cnt=4 }
     [00000] (    SPWAW ENH-DV) P<000> L<00000> status=000 units=001 OOB 070: [001] FID<00000> RAW<00000>
         [000] ptr[00000]
     [00001] (   Halftrack Sec) P<000> L<00001> status=000 units=002 OOB 070: [062] FID<00001> RAW<00001>
