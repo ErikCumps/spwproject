@@ -66,6 +66,11 @@
 //
 // #3:	process all candidate units and use the formation OOB data to drop
 //	any invalid candidates
+//
+// However, given all the above, we still seem to mis-identify units. This happens
+// mostly with savegames from scenarios. Until now these cases are all false negatives,
+// so the only bad thing about them is that we under-report. But it would be better
+// if our unit detection would be 100% correct.
 
 /* Convenience macro to build a simple comparable timestamp from a year/month date */
 #define	SIMPLE_STAMP(yr_,mo_) ((yr_)*12+((mo_)-1))
@@ -136,11 +141,17 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		// Record the unit's loader
 		uel->d.loader = data[i].loader;
 
-		// Is this a unit or crew/special attached unit?
-		if (is_this_a_UNIT (data, i))
+		// Is this a unit or a special attached unit?
+		if (is_this_a_UNIT (data, i) || is_this_a_SPAU (data, i))
 		{
-			// This is a unit.
-			UFDLOG3 ("UNIT #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
+			if (is_this_a_UNIT (data, i)) {
+				// This is a candidate unit.
+				uel->d.type = SPWAW_UNIT_TYPE_UNIT;
+			} else {
+				// This is a candidate special attached unit.
+				uel->d.type = SPWAW_UNIT_TYPE_SPAU;
+			}
+			UFDLOG4 ("%4.4s #%u F<%3.3u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
 
 			// There can be no units with duplicate formation/subformation IDs
 			if (fel->d.unit_lst[uel->d.FSID]) {
@@ -148,7 +159,6 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 				continue;
 			}
 
-			// This is a candidate unit.
 			UFDLOG0 ("CANDIDATE\n");
 
 			// Keep track of its subformation ID for duplicate detection
@@ -156,21 +166,11 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 				RWE (SPWERR_BADSAVEDATA, "add_unit_to_formation() failed");
 			}
 		} else {
-			// Is this a crew or a special attached unit?
-			if (!is_this_a_SPAU (data, i))
-			{
-				// This is a candidate crew.
-				UFDLOG3 ("CREW #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
+			// This is a candidate crew.
+			uel->d.type = SPWAW_UNIT_TYPE_CREW;
+			UFDLOG4 ("%4.4s #%u F<%3.3u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
 
-				UFDLOG0 ("CANDIDATE\n");
-				uel->d.type = SPWAW_UNIT_TYPE_CREW;
-			} else {
-				// This is a candidate special attached unit.
-				UFDLOG3 ("SPAU #%u F<%3.3u,%3.3u> ", player, uel->d.FMID, uel->d.FSID);
-
-				UFDLOG0 ("CANDIDATE\n");
-				uel->d.type = SPWAW_UNIT_TYPE_SPAU;
-			}
+			UFDLOG0 ("CANDIDATE\n");
 		}
 		if (!commit_UEL (ful.ul, uel)) {
 			RWE (SPWERR_BADSAVEDATA, "commit_UEL() failed");
@@ -569,15 +569,19 @@ verify_candidate_units (FULIST &ful)
 		max_urid = uel->d.RID;
 	}
 
-	// First verify all UNITs
+	// First verify all UNITs and SPAUs
 	p = ful.ul.head;
 	while (p)
 	{
 		uel = p; p = p->l.next;
-		if (uel->d.type != SPWAW_UNIT_TYPE_UNIT) continue;
+		if (	(uel->d.type != SPWAW_UNIT_TYPE_UNIT) &&
+			(uel->d.type != SPWAW_UNIT_TYPE_SPAU)	)
+		{
+			continue;
+		}
 
-		UFDLOG4 ("verify_candidate_units: [%3.3u] UNIT: F<%3.3u,%3.3u> (%16.16s) ",
-			uel->d.RID, uel->d.FMID, uel->d.FSID, uel->d.name);
+		UFDLOG5 ("verify_candidate_units: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+			uel->d.RID,  SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		// Drop all units without a formation reference
 		fel = uel->d.formation;
@@ -601,10 +605,14 @@ verify_candidate_units (FULIST &ful)
 		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
 		// But units can be given a wildcard to stay if:
 		// * the unit is not beyond the last valid unit
+		// * the unit is an SPAU
 		// * the unit is a verified loader (if it has loaded an accepted unit or crew)
 		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
 			if (uel->d.RID <= max_urid) {
 				UFDLOG0 ("ACCEPTED - WILDCARD\n");
+				goto accept_unit;
+			} else if (uel->d.type == SPWAW_UNIT_TYPE_SPAU) {
+				UFDLOG0 ("ACCEPTED - SPAU WILDCARD\n");
 				goto accept_unit;
 			} else {
 				UFDLOG0 ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
@@ -676,28 +684,6 @@ postpone_unit:
 drop_crew:
 		drop_UEL (ful.ul, uel);
 		continue;
-	}
-
-	// Verify all SPAUs
-	// FIXME: why not verify all SPAUs as UNITs?
-	p = ful.ul.head;
-	while (p)
-	{
-		uel = p; p = p->l.next;
-		if (uel->d.type != SPWAW_UNIT_TYPE_SPAU) continue;
-
-		UFDLOG5 ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
-			uel->d.RID, "SPAU", uel->d.FMID, uel->d.FSID, uel->d.name);
-
-		UFDLOG0 ("ACCEPTED\n");
-
-		// Fix up the unit's leader record ID
-		if (uel->d.LRID == SPWAW_BADIDX) {
-			if (uel->d.link.crew) uel->d.LRID = uel->d.link.crew->d.LRID;
-		}
-		if (uel->d.LRID == SPWAW_BADIDX) {
-			uel->d.LRID = uel->d.RID;
-		}
 	}
 
 	// Finally perform a verified loader acceptance test for those units that require it

@@ -95,11 +95,12 @@
 #define	PREVUNITP2POSEND	(PREVUNITP2POSSTART + PREVUNITP2POSCOUNT - 1)
 
 #define	FORMCOUNT		400
+#define	FORMPCOUNT		100
 #define	FORMP1START		0
-#define	FORMP1COUNT		100
+#define	FORMP1COUNT		FORMPCOUNT
 #define	FORMP1END		(FORMP1START + FORMP1COUNT - 1)
-#define	FORMP2START		100
-#define	FORMP2COUNT		100
+#define	FORMP2START		FORMPCOUNT
+#define	FORMP2COUNT		FORMPCOUNT
 #define	FORMP2END		(FORMP2START + FORMP2COUNT - 1)
 
 #define	PLAYER1			0
@@ -115,7 +116,7 @@
 
 /* Maximum supported number of units in a single formation.
  * Note: this is an arbitrary number - it could be anything... */
-#define	MAXFORMATIONUNITS	64
+#define	MAXFORMATIONUNITS	128
 
 /* Starting minor formation number for crews */
 #define	CREWFSID		50

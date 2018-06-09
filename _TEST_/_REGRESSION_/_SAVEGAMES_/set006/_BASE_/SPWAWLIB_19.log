@@ -1021,26 +1021,26 @@ verify_candidate_units: [028] UNIT: F<007,000> (    M4A2 Sherman) ACCEPTED - LEA
 verify_candidate_units: [029] UNIT: F<007,001> (    M4A2 Sherman) ACCEPTED
 verify_candidate_units: [030] UNIT: F<007,002> (    M4A2 Sherman) ACCEPTED
 verify_candidate_units: [031] UNIT: F<007,003> (    M4A2 Sherman) ACCEPTED
+verify_candidate_units: [032] SPAU: F<000,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [033] SPAU: F<001,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [034] SPAU: F<002,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [035] SPAU: F<002,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [036] SPAU: F<002,063> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [037] SPAU: F<003,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [038] SPAU: F<003,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [039] SPAU: F<003,063> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [040] SPAU: F<004,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [041] SPAU: F<004,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [042] SPAU: F<004,063> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [043] SPAU: F<005,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [044] SPAU: F<005,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [045] SPAU: F<005,064> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [046] SPAU: F<005,066> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [047] SPAU: F<006,060> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [048] SPAU: F<006,061> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [049] SPAU: F<006,062> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [050] SPAU: F<007,063> (             LCM) ACCEPTED - SPAU WILDCARD
 verify_candidate_units: [051] CREW: F<002,110> (         Crewmen) ACCEPTED
-verify_candidate_units: [032] SPAU: F<000,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [033] SPAU: F<001,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [034] SPAU: F<002,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [035] SPAU: F<002,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [036] SPAU: F<002,063> (           LVT 2) ACCEPTED
-verify_candidate_units: [037] SPAU: F<003,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [038] SPAU: F<003,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [039] SPAU: F<003,063> (           LVT 2) ACCEPTED
-verify_candidate_units: [040] SPAU: F<004,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [041] SPAU: F<004,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [042] SPAU: F<004,063> (           LVT 2) ACCEPTED
-verify_candidate_units: [043] SPAU: F<005,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [044] SPAU: F<005,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [045] SPAU: F<005,064> (           LVT 2) ACCEPTED
-verify_candidate_units: [046] SPAU: F<005,066> (           LVT 2) ACCEPTED
-verify_candidate_units: [047] SPAU: F<006,060> (             LCM) ACCEPTED
-verify_candidate_units: [048] SPAU: F<006,061> (             LCM) ACCEPTED
-verify_candidate_units: [049] SPAU: F<006,062> (             LCM) ACCEPTED
-verify_candidate_units: [050] SPAU: F<007,063> (             LCM) ACCEPTED
 unitcount: ul.cnt=52
 FLIST: { { s.nidx=9 }, cnt=8 }
     [00000] (       SPWAW 8.3) P<000> L<00000> status=001 units=001 OOB 083: [001] FID<00000> RAW<00000>
@@ -1117,25 +1117,25 @@ ULIST: { { s.nidx=52 }, cnt=52 }
     [00029] (    M4A2 Sherman) UNIT leader=[00029] loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00001> ptr[00007] link crew=nil[65535], parent=nil[65535]
     [00030] (    M4A2 Sherman) UNIT leader=[00030] loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00002> ptr[00007] link crew=nil[65535], parent=nil[65535]
     [00031] (    M4A2 Sherman) UNIT leader=[00031] loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00003> ptr[00007] link crew=nil[65535], parent=nil[65535]
-!!! [00032] (           LVT 2) SPAU leader=[00032] loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00000]<00000,00060> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00033] (           LVT 2) SPAU leader=[00033] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00001]<00001,00060> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00034] (           LVT 2) SPAU leader=[00051] loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00002]<00002,00060> nil[65535] link crew=ptr[00051], parent=ptr[00051]
-!!! [00035] (           LVT 2) SPAU leader=[00035] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00002]<00002,00062> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00036] (           LVT 2) SPAU leader=[00036] loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00002]<00002,00063> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00037] (           LVT 2) SPAU leader=[00037] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00060> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00038] (           LVT 2) SPAU leader=[00038] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00062> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00039] (           LVT 2) SPAU leader=[00039] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00063> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00040] (           LVT 2) SPAU leader=[00040] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00060> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00041] (           LVT 2) SPAU leader=[00041] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00062> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00042] (           LVT 2) SPAU leader=[00042] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00063> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00043] (           LVT 2) SPAU leader=[00043] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00060> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00044] (           LVT 2) SPAU leader=[00044] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00062> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00045] (           LVT 2) SPAU leader=[00045] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00064> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00046] (           LVT 2) SPAU leader=[00046] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00066> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00047] (             LCM) SPAU leader=[00047] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00060> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00048] (             LCM) SPAU leader=[00048] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00061> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00049] (             LCM) SPAU leader=[00049] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00062> nil[65535] link crew=nil[65535], parent=nil[65535]
-!!! [00050] (             LCM) SPAU leader=[00050] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00007]<00007,00063> nil[65535] link crew=nil[65535], parent=nil[65535]
+    [00032] (           LVT 2) SPAU leader=[00032] loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00000]<00000,00060> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00033] (           LVT 2) SPAU leader=[00033] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00001]<00001,00060> ptr[00001] link crew=nil[65535], parent=nil[65535]
+    [00034] (           LVT 2) SPAU leader=[00051] loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00002]<00002,00060> ptr[00002] link crew=ptr[00051], parent=ptr[00051]
+    [00035] (           LVT 2) SPAU leader=[00035] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00002]<00002,00062> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00036] (           LVT 2) SPAU leader=[00036] loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00002]<00002,00063> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00037] (           LVT 2) SPAU leader=[00037] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00060> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00038] (           LVT 2) SPAU leader=[00038] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00062> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00039] (           LVT 2) SPAU leader=[00039] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00063> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00040] (           LVT 2) SPAU leader=[00040] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00060> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00041] (           LVT 2) SPAU leader=[00041] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00062> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00042] (           LVT 2) SPAU leader=[00042] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00063> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00043] (           LVT 2) SPAU leader=[00043] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00060> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00044] (           LVT 2) SPAU leader=[00044] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00062> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00045] (           LVT 2) SPAU leader=[00045] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00064> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00046] (           LVT 2) SPAU leader=[00046] loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00066> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00047] (             LCM) SPAU leader=[00047] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00060> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00048] (             LCM) SPAU leader=[00048] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00061> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00049] (             LCM) SPAU leader=[00049] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00062> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00050] (             LCM) SPAU leader=[00050] loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00007]<00007,00063> ptr[00007] link crew=nil[65535], parent=nil[65535]
 !!! [00051] (         Crewmen) CREW leader=[00051] loader<65535> vrf=N vrfneed=N  OOB 083: [249] F[00002]<00002,00110> nil[65535] link crew=ptr[00034], parent=ptr[00034]
 find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<083> (         USMC HQ) SKIPPED: invalid formation reference
