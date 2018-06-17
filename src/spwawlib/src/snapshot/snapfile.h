@@ -176,6 +176,7 @@ typedef struct s_SNAP_OOB_UEL {
 	BYTE		sup;			/* Unit suppression							*/
 	BYTE		status;			/* Unit status								*/
 	BYTE		entr;			/* Unit entrenchment status						*/
+	BYTE		aband;			/* Unit abandonment status						*/
 	BYTE		smkdev;			/* Unit smoke device flag						*/
 	BYTE		smkammo;		/* Unit smoke ammo							*/
 	USHORT		crew;			/* Unit crew record ID (if abandoned)					*/

@@ -178,6 +178,7 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			sup;				/* Unit suppression					*/
 	BYTE			status;				/* Unit status						*/
 	BYTE			entr;				/* Unit entrenchment status				*/
+	SPWAW_ABAND		aband;				/* Unit abandonment status				*/
 	BYTE			smkdev;				/* Unit smoke device flag				*/
 	BYTE			smkammo;			/* Unit smoke ammo					*/
 	USHORT			crew;				/* Unit crew record ID (if abandoned)			*/

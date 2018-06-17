@@ -307,7 +307,7 @@ B : regular average platoon
 		B0 PzKpfw IV H abandoned by B50 Crewmen
 		B1 PzKpfw IV H abandoned by B51 Crewmen
 		B2 PzKpfw IV H abandoned by B52 Crewmen
-		B3 PzKpfw IV H
+		B3 PzKpfw IV H abandoned by lost crew
 
 C : regular recon company
 	leader    : C0 Panther A (KIA Schumacher)
@@ -318,7 +318,7 @@ C : regular recon company
 	unit count: 2
 	unit list :
 		C0 Panther A abandoned by C50 Crewmen
-		C1 Panther A
+		C1 Panther A abandoned by lost crew
 
 D : regular average platoon
 	leader    : D0 Grenadier Grp (KIA Meyer)
@@ -396,7 +396,7 @@ J : regular average platoon
 		J0 SPW 251/1 HT abandoned by J50 Crewmen
 		J1 SPW 251/1 HT abandoned by J51 Crewmen
 		J2 SPW 251/1 HT abandoned by J52 Crewmen
-		J3 SPW 251/10
+		J3 SPW 251/10 abandoned by lost crew
 
 
 Short units report:
@@ -405,9 +405,9 @@ Short units report:
 + -A B0  : PzKpfw IV H      (KIA Rauch           ) RID 0401 UTG 014 EXP 065 MOR 069 SUP 017 RAL 035 INF 032 ART 050 ARM 060 KILL 002 LOSS 002 MEN 005 KIA 005 DMG 122 RDY   0.00 POS (  none  )
 + -A B1  : PzKpfw IV H      (KIA Hartueb         ) RID 0402 UTG 014 EXP 066 MOR 068 SUP 014 RAL 050 INF 041 ART 036 ARM 055 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 122 RDY   0.00 POS (  none  )
 + -A B2  : PzKpfw IV H      (KIA Eberbach        ) RID 0403 UTG 014 EXP 055 MOR 056 SUP 012 RAL 027 INF 040 ART 043 ARM 063 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 122 RDY   0.00 POS (  none  )
-+ -  B3  : PzKpfw IV H      (KIA Schmeltzer      ) RID 0404 UTG 014 EXP 057 MOR 055 SUP 017 RAL 040 INF 047 ART 042 ARM 059 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 122 RDY   0.00 POS (  none  )
++ -A B3  : PzKpfw IV H      (KIA Schmeltzer      ) RID 0404 UTG 014 EXP 057 MOR 055 SUP 017 RAL 040 INF 047 ART 042 ARM 059 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 122 RDY   0.00 POS (  none  )
 + -A C0  : Panther A        (KIA Schumacher      ) RID 0405 UTG 015 EXP 069 MOR 060 SUP 013 RAL 059 INF 044 ART 044 ARM 061 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 187 RDY   0.00 POS (  none  )
-+ -  C1  : Panther A        (KIA Boettcher       ) RID 0406 UTG 015 EXP 050 MOR 052 SUP 006 RAL 036 INF 038 ART 035 ARM 045 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 187 RDY   0.00 POS (  none  )
++ -A C1  : Panther A        (KIA Boettcher       ) RID 0406 UTG 015 EXP 050 MOR 052 SUP 006 RAL 036 INF 038 ART 035 ARM 045 KILL 000 LOSS 002 MEN 005 KIA 005 DMG 187 RDY   0.00 POS (  none  )
 + -  D0  : Grenadier Grp    (KIA Meyer           ) RID 0407 UTG 016 EXP 055 MOR 045 SUP 042 RAL 032 INF 062 ART 045 ARM 049 KILL 000 LOSS 001 MEN 010 KIA 010 DMG 039 RDY   0.00 POS (  none  )
 + -  D1  : Grenadier Grp    (KIA Strauch         ) RID 0408 UTG 017 EXP 055 MOR 055 SUP 099 RAL 025 INF 057 ART 048 ARM 050 KILL 000 LOSS 001 MEN 010 KIA 010 DMG 034 RDY   0.00 POS (  none  )
 + -  D2  : Grenadier Grp    (KIA Vosse           ) RID 0409 UTG 017 EXP 050 MOR 040 SUP 099 RAL 047 INF 067 ART 042 ARM 044 KILL 000 LOSS 001 MEN 010 KIA 010 DMG 034 RDY   0.00 POS (  none  )
@@ -422,7 +422,7 @@ Short units report:
 + -A J0  : SPW 251/1 HT     (KIA Kroh            ) RID 0421 UTG 023 EXP 066 MOR 051 SUP 006 RAL 049 INF 043 ART 040 ARM 061 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 028 RDY   0.00 POS (  none  )
 + -A J1  : SPW 251/1 HT     (KIA Vogel           ) RID 0422 UTG 023 EXP 075 MOR 069 SUP 012 RAL 041 INF 047 ART 038 ARM 083 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 028 RDY   0.00 POS (  none  )
 + -A J2  : SPW 251/1 HT     (KIA Schweitzer      ) RID 0423 UTG 023 EXP 053 MOR 055 SUP 009 RAL 026 INF 047 ART 037 ARM 057 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 028 RDY   0.00 POS (  none  )
-+ -  J3  : SPW 251/10       (KIA Brunner         ) RID 0426 UTG 024 EXP 060 MOR 080 SUP 004 RAL 070 INF 038 ART 042 ARM 068 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 051 RDY   0.00 POS (  none  )
++ -A J3  : SPW 251/10       (KIA Brunner         ) RID 0426 UTG 024 EXP 060 MOR 080 SUP 004 RAL 070 INF 038 ART 042 ARM 068 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 051 RDY   0.00 POS (  none  )
 
 Short crews report:
 -------------------

@@ -747,7 +747,7 @@ N : support elite platoon
 	readiness :   0.00 %
 	unit count: 2
 	unit list :
-		N0 TKS nkm
+		N0 TKS nkm abandoned by lost crew
 		N1 TKS nkm
 
 O : support recon platoon
@@ -758,7 +758,7 @@ O : support recon platoon
 	readiness :   0.00 %
 	unit count: 3
 	unit list :
-		O0 wz.34 (37mm)
+		O0 wz.34 (37mm) abandoned by lost crew
 		O1 wz.34 (37mm)
 		O2 wz.34 (37mm)
 
@@ -791,7 +791,7 @@ R : support average platoon
 	readiness :   0.00 %
 	unit count: 2
 	unit list :
-		R0 7-TP jw
+		R0 7-TP jw abandoned by lost crew
 		R1 7-TP jw abandoned by R51 Crewmen
 
 S : support recon platoon
@@ -978,7 +978,7 @@ AG: support recon platoon
 	unit list :
 		AG0 wz.34 (37mm)
 		AG1 wz.34 (37mm)
-		AG2 wz.34 (37mm)
+		AG2 wz.34 (37mm) abandoned by lost crew
 
 AH: support dedicated artillery platoon
 	leader    : AH0 Mozdzierz Szwad (2Lt Kintzi)
@@ -999,7 +999,7 @@ AI: support average platoon
 	readiness :   0.00 %
 	unit count: 2
 	unit list :
-		AI0 7-TP dw.
+		AI0 7-TP dw. abandoned by lost crew
 		AI1 7-TP dw.
 
 AJ: support recon platoon
@@ -1112,15 +1112,15 @@ Short units report:
      L1  : AAMG Szwad       (Sgt Poploski        ) RID 0441 UTG 034 EXP 051 MOR 076 SUP 002 RAL 067 INF 037 ART 057 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  97.37 POS ( 46,  21)
 + -  M0  : TKS              (KIA Krzyzanowski    ) RID 0442 UTG 035 EXP 080 MOR 093 SUP 017 RAL 064 INF 030 ART 027 ARM 057 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 019 RDY   0.00 POS (  none  )
 + -A M1  : TKS              (KIA Gasiorowski     ) RID 0443 UTG 035 EXP 068 MOR 089 SUP 098 RAL 076 INF 033 ART 034 ARM 064 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 019 RDY   0.00 POS (  none  )
-+ -  N0  : TKS nkm          (KIA Weglarz         ) RID 0444 UTG 036 EXP 061 MOR 097 SUP 010 RAL 065 INF 035 ART 040 ARM 065 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
++ -A N0  : TKS nkm          (KIA Weglarz         ) RID 0444 UTG 036 EXP 061 MOR 097 SUP 010 RAL 065 INF 035 ART 040 ARM 065 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  N1  : TKS nkm          (KIA Cegielski       ) RID 0445 UTG 036 EXP 053 MOR 091 SUP 043 RAL 071 INF 035 ART 029 ARM 061 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
-+ -  O0  : wz.34 (37mm)     (KIA Levandoski      ) RID 0446 UTG 029 EXP 062 MOR 080 SUP 005 RAL 068 INF 033 ART 028 ARM 063 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
++ -A O0  : wz.34 (37mm)     (KIA Levandoski      ) RID 0446 UTG 029 EXP 062 MOR 080 SUP 005 RAL 068 INF 033 ART 028 ARM 063 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  O1  : wz.34 (37mm)     (KIA Wiercinski      ) RID 0447 UTG 029 EXP 056 MOR 070 SUP 028 RAL 072 INF 036 ART 027 ARM 063 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  O2  : wz.34 (37mm)     (KIA Pulaski         ) RID 0448 UTG 029 EXP 061 MOR 070 SUP 020 RAL 068 INF 031 ART 036 ARM 058 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
  #   P0  : Mozdzierz Szwad  (2Lt Cieslak         ) RID 0449 UTG 037 EXP 058 MOR 069 SUP 000 RAL 069 INF 033 ART 064 ARM 038 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 47,  30)
  #   P1  : Mozdzierz Szwad  (Sgt Placek          ) RID 0450 UTG 037 EXP 055 MOR 072 SUP 000 RAL 066 INF 026 ART 054 ARM 037 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 46,  29)
  #   Q0  : 100mm FH Bty     (1Lt Yaworski        ) RID 0451 UTG 038 EXP 046 MOR 080 SUP 000 RAL 071 INF 028 ART 053 ARM 036 KILL 000 LOSS 000 MEN 032 KIA 000 DMG 000 RDY 100.00 POS ( 51,  30)
-+ -  R0  : 7-TP jw          (KIA Sebdza          ) RID 0452 UTG 039 EXP 058 MOR 068 SUP 039 RAL 074 INF 033 ART 035 ARM 063 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 045 RDY   0.00 POS (  none  )
++ -A R0  : 7-TP jw          (KIA Sebdza          ) RID 0452 UTG 039 EXP 058 MOR 068 SUP 039 RAL 074 INF 033 ART 035 ARM 063 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 045 RDY   0.00 POS (  none  )
 + -A R1  : 7-TP jw          (Sgt Suski           ) RID 0453 UTG 039 EXP 061 MOR 067 SUP 004 RAL 075 INF 024 ART 037 ARM 068 KILL 000 LOSS 001 MEN 003 KIA 003 DMG 045 RDY   0.00 POS (  none  )
 + -  S0  : wz.34 (37mm)     (KIA Rybak           ) RID 0454 UTG 029 EXP 052 MOR 071 SUP 016 RAL 062 INF 029 ART 026 ARM 054 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  S1  : wz.34 (37mm)     (KIA Szefczyk        ) RID 0455 UTG 029 EXP 063 MOR 060 SUP 015 RAL 073 INF 023 ART 034 ARM 060 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
@@ -1172,10 +1172,10 @@ Short units report:
 + -  AF1 : TKS nkm          (KIA Grajek          ) RID 0501 UTG 036 EXP 080 MOR 075 SUP 008 RAL 072 INF 035 ART 037 ARM 053 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  AG0 : wz.34 (37mm)     (KIA Rydzewski       ) RID 0502 UTG 029 EXP 051 MOR 064 SUP 062 RAL 072 INF 039 ART 028 ARM 056 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  AG1 : wz.34 (37mm)     (KIA Pisarek         ) RID 0503 UTG 029 EXP 058 MOR 077 SUP 052 RAL 064 INF 033 ART 040 ARM 056 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
-+ -  AG2 : wz.34 (37mm)     (KIA Tomczak         ) RID 0504 UTG 029 EXP 052 MOR 073 SUP 082 RAL 073 INF 028 ART 033 ARM 058 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
++ -A AG2 : wz.34 (37mm)     (KIA Tomczak         ) RID 0504 UTG 029 EXP 052 MOR 073 SUP 082 RAL 073 INF 028 ART 033 ARM 058 KILL 000 LOSS 002 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
  #   AH0 : Mozdzierz Szwad  (2Lt Kintzi          ) RID 0505 UTG 037 EXP 070 MOR 072 SUP 000 RAL 069 INF 027 ART 066 ARM 034 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 46,  35)
  #   AH1 : Mozdzierz Szwad  (Sgt Gomolka         ) RID 0506 UTG 037 EXP 065 MOR 076 SUP 000 RAL 077 INF 031 ART 066 ARM 030 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 46,  34)
-+ -  AI0 : 7-TP dw.         (KIA Arbaczewski     ) RID 0507 UTG 043 EXP 060 MOR 074 SUP 078 RAL 069 INF 036 ART 032 ARM 054 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 026 RDY   0.00 POS (  none  )
++ -A AI0 : 7-TP dw.         (KIA Arbaczewski     ) RID 0507 UTG 043 EXP 060 MOR 074 SUP 078 RAL 069 INF 036 ART 032 ARM 054 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 026 RDY   0.00 POS (  none  )
 + -  AI1 : 7-TP dw.         (KIA Solnick         ) RID 0508 UTG 043 EXP 059 MOR 084 SUP 031 RAL 074 INF 036 ART 037 ARM 056 KILL 000 LOSS 001 MEN 003 KIA 003 DMG 026 RDY   0.00 POS (  none  )
 + -  AJ0 : wz.34 (37mm)     (KIA Sucharski       ) RID 0509 UTG 029 EXP 062 MOR 071 SUP 068 RAL 071 INF 034 ART 031 ARM 061 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )
 + -  AJ1 : wz.34 (37mm)     (KIA Warchol         ) RID 0510 UTG 029 EXP 062 MOR 082 SUP 023 RAL 064 INF 028 ART 029 ARM 053 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 028 RDY   0.00 POS (  none  )

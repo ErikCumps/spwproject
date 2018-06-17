@@ -83,7 +83,9 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 		fprintf (rf, "Its higher command is %s %s.\n",
 			p->formations.list[i].data.hcmd.up->strings.uid, p->formations.list[i].data.hcmd.up->data.type);
 		fprintf (rf, "It has killed %u enemy units.\n", p->formations.list[i].attr.gen.kills);
+		//fprintf (rf, "It has %u recorded kills.\n", p->formations.list[i].attr.gen.kills);
 		fprintf (rf, "It has lost %u units.\n", p->formations.list[i].attr.gen.losses);
+		//fprintf (rf, "It has %u losses.\n", p->formations.list[i].attr.gen.losses);
 		fprintf (rf, "It is %3.0f %% ready.\n", p->formations.list[i].attr.gen.ready * 100.0);
 		fprintf (rf, "This formation contains %u units:\n", p->formations.list[i].data.ucnt);
 		for (j=0; j<p->formations.list[i].data.ucnt; j++) {
@@ -119,10 +121,15 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 				p->formations.list[i].data.ulist[j]->data.damage,
 				p->formations.list[i].data.ulist[j]->data.cost);
 			fprintf (rf, "\t\tIt is %3.0f %% ready.\n", p->formations.list[i].data.ulist[j]->attr.gen.ready * 100.0);
-			if (p->formations.list[i].data.ulist[j]->data.aband != SPWAW_ANONE)
-				fprintf (rf, "\t\tIt is abandoned by %s %s.\n",
-					p->formations.list[i].data.ulist[j]->data.aunit.up->strings.uid,
-					p->formations.list[i].data.ulist[j]->data.aunit.up->data.type);
+			if (p->formations.list[i].data.ulist[j]->data.aband != SPWAW_ANONE) {
+				if (p->formations.list[i].data.ulist[j]->data.aunit.up) {
+					fprintf (rf, "\t\tIt is abandoned by %s %s.\n",
+						p->formations.list[i].data.ulist[j]->data.aunit.up->strings.uid,
+						p->formations.list[i].data.ulist[j]->data.aunit.up->data.type);
+				} else {
+					fprintf (rf, "\t\tIt is abandoned by a lost crew.\n");
+				}
+			}
 			fprintf (rf, "\t\tIt is situated at (%d, %d).\n",
 				p->formations.list[i].data.ulist[j]->data.posx,
 				p->formations.list[i].data.ulist[j]->data.posy);

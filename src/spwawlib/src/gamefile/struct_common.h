@@ -43,6 +43,7 @@ typedef struct s_UEL {
 		FEL		*formation;			/* Associated formation				*/
 		SPWAW_UNIT_TYPE	type;				/* Unit type: unit/crew/spau			*/
 		USHORT		LRID;				/* Detected leader unit record ID		*/
+		SPWAW_ABAND	aband;				/* Unit abandonment status			*/
 		USHORT		loader;				/* Loader unit record ID			*/
 		bool		vrfloader;			/* Verified loader				*/
 		bool		needvrfldrtst;			/* Requires loader verification acceptance test	*/

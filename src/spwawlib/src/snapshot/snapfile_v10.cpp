@@ -45,8 +45,9 @@ snapshot_load_v10_oobu (SNAP_OOB_UEL_V10 *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTA
 {
 	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_UELRAW));
 
-	/* A V10 snapshot unit element only lacks the unit type. */
+	/* A V10 snapshot unit element lacks the unit type and abandonment status. */
 	dst->type = SPWAW_UNIT_TYPE_UNKNOWN;
+	dst->aband = SPWAW_ANONE;
 
 	getOU (RID); getOU (FRID); getOU (FMID); getOU (FSID);
 	dst->name = STRTAB_getstr (stab, src->name);
@@ -142,11 +143,16 @@ snapshot_legacy_ldrcrw_detect (USHORT cnt, SPWAW_SNAP_OOB_RAW *oob)
 		if (!snapshot_legacy_determine_ldrcrw (&(oob->units), i, ldridx, crwidx, iscrew)) continue;
 		if (!iscrew) {
 			oob->units.raw[i].type = SPWAW_UNIT_TYPE_UNIT;
+			if (oob->units.raw[i].leader == SPWAW_BADIDX) oob->units.raw[i].aband = SPWAW_ASTAY;
 		} else {
 			oob->units.raw[i].type = SPWAW_UNIT_TYPE_CREW;
+			oob->units.raw[i].aband = SPWAW_ALEFT;
 		}
 		oob->units.raw[i].leader = ldridx;
-		//log ("snapshot_legacy_ldrcrw_detect[%u] type=%s leader=%5.5u iscrew=%u\n", i, SPWAW_unittype2str (oob->units.raw[i].type), oob->units.raw[i].leader, iscrew);
+		//log ("snapshot_legacy_ldrcrw_detect[%u] type=%s leader=%5.5u crew=%5.5u iscrew=%u aband=%s\n",
+		//	i, SPWAW_unittype2str (oob->units.raw[i].type),
+		//	oob->units.raw[i].leader, oob->units.raw[i].crew, iscrew,
+		//	SPWAW_aband2str (oob->units.raw[i].aband));
 	}
 
 	return (SPWERR_OK);

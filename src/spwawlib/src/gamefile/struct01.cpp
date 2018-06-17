@@ -161,6 +161,9 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 
 			UFDLOG0 ("CANDIDATE\n");
 
+			// Keep track of abandoned units
+			uel->d.aband = (uel->d.LRID == SPWAW_BADIDX) ? SPWAW_ASTAY : SPWAW_ANONE;
+
 			// Keep track of its subformation ID for duplicate detection
 			if (!add_unit_to_formation (fel, uel)) {
 				RWE (SPWERR_BADSAVEDATA, "add_unit_to_formation() failed");
@@ -171,6 +174,9 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 			UFDLOG4 ("%4.4s #%u F<%3.3u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
 
 			UFDLOG0 ("CANDIDATE\n");
+
+			// Keep track of abandoned units
+			uel->d.aband = SPWAW_ALEFT;
 		}
 		if (!commit_UEL (ful.ul, uel)) {
 			RWE (SPWERR_BADSAVEDATA, "commit_UEL() failed");
@@ -779,6 +785,7 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *st
 	ptr->sup	= src->supp;
 	ptr->status	= src->status;
 	ptr->entr	= src->entr;
+	ptr->aband	= p->d.aband;
 	ptr->smkdev	= src->smoke_dev;
 	ptr->smkammo	= src->smoke_ammo;
 	ptr->crew	= src->crew;

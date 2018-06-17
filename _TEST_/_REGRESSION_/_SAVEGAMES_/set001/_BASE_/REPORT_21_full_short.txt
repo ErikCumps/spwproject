@@ -672,7 +672,7 @@ G : support average platoon
 		G0 Chef Peloton
 		G1 Demi Sectn LMG
 		G2 Demi Sectn VB
-		G3 Section Mortier
+		G3 Section Mortier abandoned by lost crew
 		G4 Equipe AntiChar
 
 H : support elite company
@@ -683,7 +683,7 @@ H : support elite company
 	readiness :   0.00 %
 	unit count: 1
 	unit list :
-		H0 Panhard 165 TOE
+		H0 Panhard 165 TOE abandoned by lost crew
 
 I : core average platoon
 	leader    : I0 Camion DCA 25mm (1Lt Jacquot)
@@ -1075,9 +1075,9 @@ AO: support average platoon
 	readiness :   0.00 %
 	unit count: 3
 	unit list :
-		AO0 Renault B1bis
+		AO0 Renault B1bis abandoned by lost crew
 		AO1 Renault B1bis
-		AO2 Renault B1bis
+		AO2 Renault B1bis abandoned by lost crew
 
 AP: support recon platoon
 	leader    : AP1 FF Patrouille (KIA Dupre)
@@ -1292,9 +1292,9 @@ Short units report:
 + -  G0  : Chef Peloton     (KIA Nicollet        ) RID 0420 UTG 022 EXP 044 MOR 034 SUP 092 RAL 052 INF 042 ART 030 ARM 020 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 012 RDY   0.00 POS (  none  )
 + -  G1  : Demi Sectn LMG   (KIA Montagu         ) RID 0421 UTG 025 EXP 050 MOR 036 SUP 055 RAL 053 INF 049 ART 020 ARM 024 KILL 000 LOSS 001 MEN 006 KIA 006 DMG 011 RDY   0.00 POS (  none  )
 + -  G2  : Demi Sectn VB    (KIA Blanchard       ) RID 0422 UTG 026 EXP 047 MOR 041 SUP 054 RAL 045 INF 046 ART 028 ARM 026 KILL 000 LOSS 001 MEN 006 KIA 006 DMG 013 RDY   0.00 POS (  none  )
-  -  G3  : Section Mortier  (KIA Dejardins       ) RID 0423 UTG 024 EXP 052 MOR 034 SUP 011 RAL 048 INF 022 ART 042 ARM 020 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 004 RDY   0.00 POS ( 31,  32)
+  -A G3  : Section Mortier  (KIA Dejardins       ) RID 0423 UTG 024 EXP 052 MOR 034 SUP 011 RAL 048 INF 022 ART 042 ARM 020 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 004 RDY   0.00 POS ( 31,  32)
 + -  G4  : Equipe AntiChar  (KIA Boighut         ) RID 0424 UTG 027 EXP 055 MOR 038 SUP 020 RAL 047 INF 046 ART 031 ARM 021 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 011 RDY   0.00 POS (  none  )
-+ -  H0  : Panhard 165 TOE  (KIA De Clouet       ) RID 0425 UTG 028 EXP 060 MOR 052 SUP 073 RAL 042 INF 019 ART 028 ARM 039 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 033 RDY   0.00 POS (  none  )
++ -A H0  : Panhard 165 TOE  (KIA De Clouet       ) RID 0425 UTG 028 EXP 060 MOR 052 SUP 073 RAL 042 INF 019 ART 028 ARM 039 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 033 RDY   0.00 POS (  none  )
 + -A I0  : Camion DCA 25mm  (1Lt Jacquot         ) RID 0426 UTG 029 EXP 050 MOR 046 SUP 001 RAL 045 INF 019 ART 026 ARM 037 KILL 000 LOSS 001 MEN 006 KIA 006 DMG 030 RDY   0.00 POS (  none  )
  #   I1  : Camion DCA 25mm  (Sgt La Rue          ) RID 0427 UTG 029 EXP 057 MOR 048 SUP 004 RAL 046 INF 023 ART 019 ARM 039 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY  91.67 POS ( 11,  24)
 + -  J0  : Renault FT 75BS  (KIA Chartier        ) RID 0428 UTG 030 EXP 057 MOR 045 SUP 006 RAL 044 INF 031 ART 029 ARM 042 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 014 RDY   0.00 POS (  none  )
@@ -1389,9 +1389,9 @@ Short units report:
  #   AN0 : Renault D2       (1Lt Bonnepas        ) RID 0517 UTG 046 EXP 051 MOR 030 SUP 000 RAL 049 INF 019 ART 026 ARM 053 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 33,  10)
  #   AN1 : Renault D2       (Sgt Joliet          ) RID 0518 UTG 046 EXP 042 MOR 036 SUP 000 RAL 047 INF 022 ART 019 ARM 044 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 32,   9)
      AN2 : Renault D2       (Sgt De Virien       ) RID 0519 UTG 046 EXP 046 MOR 044 SUP 000 RAL 038 INF 027 ART 024 ARM 051 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 31,  11)
-+ -  AO0 : Renault B1bis    (KIA Girard          ) RID 0520 UTG 049 EXP 052 MOR 037 SUP 024 RAL 044 INF 017 ART 020 ARM 039 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 113 RDY   0.00 POS (  none  )
++ -A AO0 : Renault B1bis    (KIA Girard          ) RID 0520 UTG 049 EXP 052 MOR 037 SUP 024 RAL 044 INF 017 ART 020 ARM 039 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 113 RDY   0.00 POS (  none  )
 + -  AO1 : Renault B1bis    (KIA Langlade        ) RID 0521 UTG 049 EXP 055 MOR 045 SUP 022 RAL 049 INF 023 ART 025 ARM 039 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 113 RDY   0.00 POS (  none  )
-+ -  AO2 : Renault B1bis    (KIA Bonnet          ) RID 0522 UTG 049 EXP 049 MOR 037 SUP 025 RAL 045 INF 020 ART 019 ARM 037 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 113 RDY   0.00 POS (  none  )
++ -A AO2 : Renault B1bis    (KIA Bonnet          ) RID 0522 UTG 049 EXP 049 MOR 037 SUP 025 RAL 045 INF 020 ART 019 ARM 037 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 113 RDY   0.00 POS (  none  )
 + -  AP0 : FF Patrouille    (KIA Dumas           ) RID 0523 UTG 047 EXP 039 MOR 045 SUP 013 RAL 038 INF 045 ART 021 ARM 023 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 012 RDY   0.00 POS (  none  )
 + -  AP1 : FF Patrouille    (KIA Dupre           ) RID 0524 UTG 047 EXP 046 MOR 051 SUP 038 RAL 042 INF 041 ART 028 ARM 022 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 012 RDY   0.00 POS (  none  )
  #   AQ0 : Section Fusil    (2Lt De Leusse       ) RID 0525 UTG 023 EXP 040 MOR 046 SUP 000 RAL 044 INF 045 ART 020 ARM 020 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 21,  25)

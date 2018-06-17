@@ -273,6 +273,26 @@ raw2vhstatus (BYTE id)
 	return (rc);
 }
 
+bool
+rawtfs2water (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
+{
+	return (((tfs1 & TFS1_WATER) | (tfs2 & TFS2_WATER) | (tfs3 & TFS3_WATER) | (tfs4 & TFS4_WATER)) != 0);
+}
+
+bool
+rawtfs2bridge (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
+{
+	return (((tfs1 & TFS1_BRIDGE) | (tfs2 & TFS2_BRIDGE) | (tfs3 & TFS3_BRIDGE) | (tfs4 & TFS4_BRIDGE)) != 0);
+}
+
+bool
+rawtfs2road (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
+{
+	return (((tfs1 & TFS1_ROAD) | (tfs2 & TFS2_ROAD) | (tfs3 & TFS3_ROAD) | (tfs4 & TFS4_ROAD)) != 0);
+}
+
+
+
 static const char *terrain_strings[SPWAW_TLASTCODE+1] = {
 	"desert",
 	"summer",
@@ -421,6 +441,26 @@ rank2str (SPWAW_RANK id)
 	return ((char*)rank_strings[id]);
 }
 
+static const char *exp_strings[SPWAW_ELASTCODE+1] = {
+	"cadet",
+	"green",
+	"average",
+	"veteran",
+	"elite"
+};
+
+char *
+exp2str (SPWAW_EXP id)
+{
+	return ((char*)exp_strings[id]);
+}
+
+static const char *aband_strings[SPWAW_ALASTCODE+1] = {
+	"not abandoned",
+	"abandoned unit",
+	"abandoned crew"
+};
+
 static const char *btstatus_strings[SPWAW_BTLASTCODE+1] = {
 	"deployment",
 	"in progress",
@@ -445,6 +485,8 @@ vhstatus2str (SPWAW_VHSTATUS id)
 {
 	return ((char*)vhstatus_strings[id]);
 }
+
+
 
 void
 FID2str (BYTE id, char *buf, int len)
@@ -507,25 +549,7 @@ UID2str (BYTE id, BYTE subid)
 	return (strdup(buf));
 }
 
-static const char *exp_strings[SPWAW_ELASTCODE+1] = {
-	"cadet",
-	"green",
-	"average",
-	"veteran",
-	"elite"
-};
 
-char *
-exp2str (SPWAW_EXP id)
-{
-	return ((char*)exp_strings[id]);
-}
-
-static const char *aband_strings[SPWAW_ALASTCODE+1] = {
-	"not abandoned",
-	"abandoned unit",
-	"abandoned crew"
-};
 
 char *
 aband2str (SPWAW_ABAND id)
@@ -533,23 +557,50 @@ aband2str (SPWAW_ABAND id)
 	return ((char*)aband_strings[id]);
 }
 
-bool
-rawtfs2water (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
+SPWAW_ABAND
+raw2aband (BYTE aband)
 {
-	return (((tfs1 & TFS1_WATER) | (tfs2 & TFS2_WATER) | (tfs3 & TFS3_WATER) | (tfs4 & TFS4_WATER)) != 0);
+	SPWAW_ABAND	a;
+
+	switch (aband) {
+		case 1:
+			a = SPWAW_ASTAY;
+			break;
+		case 2:
+			a = SPWAW_ALEFT;
+			break;
+		case 0:
+		case 0xFF:
+		default:
+			a = SPWAW_ANONE;
+			break;
+	}
+	return (a);
 }
 
-bool
-rawtfs2bridge (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
+BYTE
+aband2raw (SPWAW_ABAND aband)
 {
-	return (((tfs1 & TFS1_BRIDGE) | (tfs2 & TFS2_BRIDGE) | (tfs3 & TFS3_BRIDGE) | (tfs4 & TFS4_BRIDGE)) != 0);
+	BYTE	b;
+
+	switch (aband) {
+		case SPWAW_ANONE:
+			b = 0;
+			break;
+		case SPWAW_ASTAY:
+			b = 1;
+			break;
+		case SPWAW_ALEFT:
+			b = 2;
+			break;
+		default:
+			b = 0xFF;
+			break;
+	}
+	return (b);
 }
 
-bool
-rawtfs2road (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
-{
-	return (((tfs1 & TFS1_ROAD) | (tfs2 & TFS2_ROAD) | (tfs3 & TFS3_ROAD) | (tfs4 & TFS4_ROAD)) != 0);
-}
+
 
 SPWAW_UNIT_TYPE
 raw2unittype (BYTE type)

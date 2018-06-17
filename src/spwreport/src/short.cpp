@@ -152,12 +152,18 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 		fprintf (rf, "\tunit count: %u\n", p->data.ucnt);
 		fprintf (rf, "\tunit list :\n");
 		for (j=0; j<p->data.ucnt; j++) {
-			if (p->data.ulist[j]->data.aband == SPWAW_ANONE)
+			if (p->data.ulist[j]->data.aband == SPWAW_ANONE) {
 				fprintf (rf, "\t\t%s %s\n", p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type);
-			else
-				fprintf (rf, "\t\t%s %s abandoned by %s %s\n",
-					p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type,
-					p->data.ulist[j]->data.aunit.up->strings.uid, p->data.ulist[j]->data.aunit.up->data.type);
+			} else {
+				if (p->data.ulist[j]->data.aunit.up) {
+					fprintf (rf, "\t\t%s %s abandoned by %s %s\n",
+						p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type,
+						p->data.ulist[j]->data.aunit.up->strings.uid, p->data.ulist[j]->data.aunit.up->data.type);
+				} else {
+					fprintf (rf, "\t\t%s %s abandoned by lost crew\n",
+						p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type);
+				}
+			}
 		}
 
 		fprintf (rf, "\n");

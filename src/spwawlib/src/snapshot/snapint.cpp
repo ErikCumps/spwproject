@@ -288,23 +288,6 @@ handle_error:
 }
 
 static inline void
-abandoned (USHORT cidx, bool iscrew, SPWAW_ABAND *flag, SPWAW_SNAP_OOB_PTR *id)
-{
-	if (flag) *flag = SPWAW_ANONE;
-	if (id) id->rid = SPWAW_BADIDX;
-	if (!flag || !id) return;
-
-	if (cidx != SPWAW_BADIDX) {
-		if (!iscrew) {
-			*flag = SPWAW_ASTAY;
-		} else {
-			*flag = SPWAW_ALEFT;
-		}
-		id->rid = cidx;
-	}
-}
-
-static inline void
 loaded (SPWAW_SNAP_OOB_UELRAW *ptr, bool *flag, SPWAW_SNAP_OOB_PTR *id)
 {
 	if (flag) *flag = false;
@@ -356,7 +339,10 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		iscrew = (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW);
 		ldridx = raw->units.raw[i].leader;
 		crwidx = raw->units.raw[i].crew;
-		//log ("snapint_oob_units_stage1[%u] type=%s ldridx=%5.5u, crwidx=%5.5u, iscrew=%d\n", i, SPWAW_unittype2str(raw->units.raw[i].type), raw->units.raw[i].leader, raw->units.raw[i].crew, iscrew);
+		//log ("snapint_oob_units_stage1: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//	raw->units.raw[i].RID, SPWAW_unittype2str(raw->units.raw[i].type), raw->units.raw[i].FMID, raw->units.raw[i].FSID, raw->units.raw[i].name);
+		//log ("ldridx=%5.5u, crwidx=%5.5u, iscrew=%d, aband=%d\n",
+		//	raw->units.raw[i].leader, raw->units.raw[i].crew, iscrew, raw->units.raw[i].aband);
 
 		if (iscrew) {
 			dat = &(p->crews.list[cidx].data);
@@ -404,7 +390,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->cost	= src->cost;
 		dat->damage	= src->damage;
 		dat->crew	= crwidx != SPWAW_BADIDX;
-		abandoned (crwidx, iscrew, &(dat->aband), &(dat->aunit));
+		dat->aband	= src->aband;
+		dat->aunit.rid	= crwidx;
 		loaded (src, &(dat->loaded), &(dat->loader));
 		dat->exp	= src->exp;
 		dat->eclass	= raw2exp (src->exp);
@@ -520,7 +507,6 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		if (!p.up->data.aunit.up || (p.up->data.aunit.up->data.aunit.rid != p.up->data.RID))
 		{
 			p.up->data.aunit.up = NULL;
-			p.up->data.aband = SPWAW_ANONE;
 		}
 	}
 	for (i=0; i<bp->crews.cnt; i++) {
@@ -529,7 +515,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		p.up->data.aunit.up = unitbyid (p.up->data.aunit.rid, bp);
 		if (!p.up->data.aunit.up) abort();
-		p.up->data.aunit.up->data.aband = SPWAW_ASTAY;
+
 		p.up->data.aunit.up->data.aunit.up = p.up;
 	}
 
@@ -539,7 +525,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		/* Check crew linkage */
 		if (p.up->data.aband != SPWAW_ANONE) {
-			if (p.up->data.status == SPWAW_UABANDONED) {
+			if ((p.up->data.status == SPWAW_UABANDONED) && p.up->data.aunit.up) {
 				/* Update missing attributes with those of crew */
 				p.up->data.name = p.up->data.aunit.up->data.name;
 				p.up->data.rank = p.up->data.aunit.up->data.rank;
@@ -957,11 +943,19 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 		up->attr.gen.kills = up->data.kills;
 		if (!up->data.alive) up->attr.gen.losses = 1;
 
+		//log ("snapint_oob_attrs[%3.3u]: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//	i, up->data.RID, up->data.type, up->data.FMID, up->data.FSID, up->data.name);
+		//log ("type=%s alive=%d aband=%d aunit=%s losses=%d\n",
+		//	up->strings.utype, up->data.alive,
+		//	up->data.aband, up->data.aunit.up ? "ptr" : "nil",
+		//	up->attr.gen.losses);
+
 		/* Also allocate losses for crew members that were not recorded!
 		 * (crew member killed and slot reused before save) */
-		if (up->data.crew && !up->data.aunit.up) up->attr.gen.losses++;
-		//FIXME?
-		//if (up->data.crew && (up->data.aband == SPWAW_ASTAY) && !up->data.aunit.up) up->attr.gen.losses++;
+		if ((up->data.aband == SPWAW_ASTAY) && !up->data.aunit.up) {
+			//log ("  allocated loss for unrecorded KIA crew\n");
+			up->attr.gen.losses++;
+		}
 	}
 
 	/* No attributes for crewmen!
@@ -969,8 +963,19 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 	for (i=0; i<ptr->crews.cnt; i++) {
 		up = &(ptr->crews.list[i]);
 
+		//log ("snapint_oob_attrs[%3.3u]: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//	i, up->data.RID, up->data.type, up->data.FMID, up->data.FSID, up->data.name);
+		//log ("type=%s alive=%d aband=%d aunit=%s losses=%d\n",
+		//	up->strings.utype, up->data.alive,
+		//	up->data.aband, up->data.aunit.up ? "ptr" : "nil",
+		//	up->attr.gen.losses);
+
 		//up->data.aunit.up->attr.gen.kills += up->data.kills;
-		if (!up->data.alive) up->data.aunit.up->attr.gen.losses++;
+		if (!up->data.alive) {
+			//log ("  allocated loss for KIA crew\n");
+			up->data.aunit.up->attr.gen.losses++;
+		}
+
 	}
 
 	/* Calculate attributes for each formation */

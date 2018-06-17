@@ -145,6 +145,7 @@ prep_oobu (SPWAW_SNAP_OOB_UELRAW *src, SNAP_OOB_UEL *dst, STRTAB *stab)
 	setOU (classID); setOU (OOB); setOU (OOBrid);
 	setOU (size); setOU (cost); setOU (survive); setOU (leader);
 	setOU (exp); setOU (mor); setOU (sup); setOU (status); setOU (entr);
+	dst->aband = aband2raw (src->aband);
 	setOU (smkdev); setOU (smkammo); setOU (crew);
 	setOU (range); setOU (stance_x); setOU (stance_y);
 	setOU (loader); setOU (load_cap); setOU (load_cost);

@@ -81,8 +81,8 @@ dump_UEL (UEL *uel, char *prefix)
 
 	UFDTRACE3 ("[%5.5u] (%16.16s) %4.4s",
 		uel->d.RID, uel->d.name, SPWAW_unittype2str(uel->d.type));
-	UFDTRACE1 (" leader=[%5.5u]",
-		uel->d.LRID);
+	UFDTRACE2 (" leader=[%5.5u] abandoned=%d",
+		uel->d.LRID, uel->d.aband);
 	UFDTRACE3 (" loader<%5.5u> vrf=%s vrfneed=%s ",
 		uel->d.loader, uel->d.vrfloader ? "Y" : "N", uel->d.needvrfldrtst ? "Y" : "N");
 	UFDTRACE2 (" OOB %3.3u: [%3.3u]",

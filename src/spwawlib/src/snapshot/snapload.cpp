@@ -169,6 +169,7 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 	getOU (classID); getOU (OOB); getOU (OOBrid);
 	getOU (size); getOU (cost); getOU (survive); getOU (leader);
 	getOU (exp); getOU (mor); getOU (sup); getOU (status); getOU (entr);
+	dst->aband = raw2aband (src->aband);
 	getOU (smkdev); getOU (smkammo); getOU (crew);
 	getOU (range); getOU (stance_x); getOU (stance_y);
 	getOU (loader); getOU (load_cap); getOU (load_cost);
