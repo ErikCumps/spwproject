@@ -118,9 +118,11 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].ra.data = bseekget (fd) - p0;
 		hdrs[idx].ra.size = src->ucnt * sizeof (SPWAW_DOSSIER_BURA);
 
-		cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);
-		if (!cbwrite (fd, cbio, "compressed battle unit ra", compress))
-			FAILGOTO (SPWERR_FWFAILED, "cbwrite(compressed battle unit ra) failed", handle_error);
+		if (hdrs[idx].ra.size) {
+			cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);
+			if (!cbwrite (fd, cbio, "compressed battle unit ra", compress))
+				FAILGOTO (SPWERR_FWFAILED, "cbwrite(compressed battle unit ra) failed", handle_error);
+		}
 
 		idx++;
 	}
