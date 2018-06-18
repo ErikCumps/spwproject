@@ -561,6 +561,21 @@ WARCABState::refresh_savelists (void)
 }
 
 static void
+update_seqnums (MDLD_TREE_ITEM *item)
+{
+	MDLD_TREE_ITEM	*parent;
+
+	if (!item) return;
+
+	parent = item->parent;
+	while (parent) {
+                parent->seqnum.update();
+		parent = parent->parent;
+	}
+}
+
+
+static void
 link_as_child (MDLD_TREE_ITEM *item)
 {
 	MDLD_TREE_ITEM	*parent;
@@ -617,7 +632,7 @@ delete_battle (MDLD_TREE_ITEM *b)
 {
 	MDLD_TREE_ITEM	*p, *q;
 
-	b->parent->seqnum.update();
+	update_seqnums (b);
 
 	if (!b->campaign) {
 		 b = b->cfirst;
@@ -653,7 +668,7 @@ new_bturn (SPWAW_BTURN *data, MDLD_TREE_ITEM *tree)
 static void
 delete_bturn (MDLD_TREE_ITEM *t)
 {
-	t->parent->seqnum.update();
+	update_seqnums (t);
 	delete (t);
 }
 
@@ -736,7 +751,7 @@ WARCABState::refresh_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 				t = new_bturn (b->data.b->tlist[j], b);
 			}
 
-			b->parent->seqnum.update();
+			update_seqnums (b);
 		} else {
 			if (transform) {
 				MDLD_TREE_ITEM *nb = new_battle (tree->data.d->blist[i], tree);
@@ -767,8 +782,7 @@ WARCABState::refresh_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 				if (!t) {
 					t = new_bturn (b->data.b->tlist[j], b);
 
-					t->parent->seqnum.update();
-					t->parent->parent->seqnum.update();
+					update_seqnums (t);
 				} else {
 					link_as_child (t);
 				}
