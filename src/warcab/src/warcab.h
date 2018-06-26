@@ -11,62 +11,7 @@
 
 #include "stdafx.h"
 
-#include "util/util_seqnum.h"
-
-typedef enum e_MDLD_TREE_TYPE {
-	MDLD_TREE_NONE = 0,
-	MDLD_TREE_DOSSIER,
-	MDLD_TREE_STDALONE,
-	MDLD_TREE_BATTLE,
-	MDLD_TREE_BTURN
-} MDLD_TREE_TYPE;
-
-typedef struct s_MDLD_TREE_ITEM MDLD_TREE_ITEM;
-
-struct s_MDLD_TREE_ITEM {
-	MDLD_TREE_TYPE			type;
-	union u_data {
-		SPWAW_DOSSIER		*d;
-		SPWAW_BATTLE		*b;
-		SPWAW_BTURN		*t;
-	}				data;
-	MDLD_TREE_ITEM		*parent;
-	MDLD_TREE_ITEM		*prev;
-	MDLD_TREE_ITEM		*next;
-	QList<MDLD_TREE_ITEM *>	children;
-	MDLD_TREE_ITEM		*cfirst;
-	MDLD_TREE_ITEM		*clast;
-	UtilSeqnum		seqnum;
-	bool			campaign;	/*!< Campaign mode flag	*/
-};
-
-static inline MDLD_TREE_ITEM *
-MDLD_TREE_raise_to (MDLD_TREE_ITEM *item, MDLD_TREE_TYPE target)
-{
-	MDLD_TREE_ITEM *p = item;
-
-	while (p && (p->type != target)) p = p->parent;
-
-	return (p);
-}
-
-static inline MDLD_TREE_ITEM *
-MDLD_TREE_lower_to (MDLD_TREE_ITEM *item, MDLD_TREE_TYPE target)
-{
-	MDLD_TREE_ITEM *p = item;
-
-	while (p && (p->type != target)) p = p->cfirst;
-
-	return (p);
-}
-
-static inline void
-MDLD_TREE_extract_children (MDLD_TREE_ITEM *item, QList<MDLD_TREE_ITEM *> &list)
-{
-	list = item->children;
-
-	item->children.clear();	item->cfirst = item->clast = NULL;
-}
+#include "mdld_tree.h"
 
 /* application state: options */
 typedef struct s_WARCABOptions {

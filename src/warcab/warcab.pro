@@ -27,6 +27,7 @@ HEADERS +=					\
 	common.h				\
 	error.h					\
 	init.h					\
+	mdld_tree.h				\
 	warcab.h				\
 	dbg/dbg.h				\
 	dbg/dbg_private.h			\
@@ -151,6 +152,7 @@ SOURCES +=					\
 	main.cpp				\
 	error.cpp				\
 	init.cpp				\
+	mdld_tree.cpp				\
 	warcab.cpp				\
 	dbg/dbg.cpp				\
 	dbg/dbg_console.cpp			\

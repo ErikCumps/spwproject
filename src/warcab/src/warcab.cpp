@@ -277,7 +277,7 @@ WARCABState::add (SPWAW_SAVELIST *list)
 	SPWAW_BTURN	*added = NULL;
 	FAILMAP		failures;
 
-	GuiProgress		gp ("Adding savegame(s)...", 0);
+	GuiProgress	gp ("Adding savegame(s)...", 0);
 
 	if (!list) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL savelist argument");
@@ -560,118 +560,6 @@ WARCABState::refresh_savelists (void)
 	RETURN_OK;
 }
 
-static void
-update_seqnums (MDLD_TREE_ITEM *item)
-{
-	MDLD_TREE_ITEM	*parent;
-
-	if (!item) return;
-
-	parent = item->parent;
-	while (parent) {
-                parent->seqnum.update();
-		parent = parent->parent;
-	}
-}
-
-
-static void
-link_as_child (MDLD_TREE_ITEM *item)
-{
-	MDLD_TREE_ITEM	*parent;
-
-	if (!item) return;
-
-	parent = item->parent;
-	if (!parent) {
-		item->prev = item->next = NULL;
-	} else {
-		parent->children.append (item);
-
-		item->prev = parent->clast; item->next = NULL;
-		if (item->prev) item->prev->next = item;
-
-		parent->cfirst = parent->children[0];
-		parent->clast  = parent->children[parent->children.size()-1];
-	}
-}
-
-static MDLD_TREE_ITEM *
-new_battle (SPWAW_BATTLE *data, MDLD_TREE_ITEM *tree)
-{
-	MDLD_TREE_ITEM	*p = tree;
-	MDLD_TREE_ITEM	*b;
-
-	if (!tree->campaign) {
-		p = new MDLD_TREE_ITEM;
-		p->parent   = tree;
-		p->type     = MDLD_TREE_STDALONE;
-		p->data.b   = data;
-		p->campaign = tree->campaign;
-
-		p->cfirst = p->clast = NULL;
-
-		link_as_child (p);
-	}
-
-	b = new MDLD_TREE_ITEM;
-	b->parent   = p;
-	b->type     = MDLD_TREE_BATTLE;
-	b->data.b   = data;
-	b->campaign = tree->campaign;
-
-	b->cfirst = b->clast = NULL;
-
-	link_as_child (b);
-
-	return (b);
-}
-
-static void
-delete_battle (MDLD_TREE_ITEM *b)
-{
-	MDLD_TREE_ITEM	*p, *q;
-
-	update_seqnums (b);
-
-	if (!b->campaign) {
-		 b = b->cfirst;
-		 delete (b->parent);
-	}
-
-	p = b->cfirst;
-	while (p) {
-		q = p; p = p->next; delete (q);
-	}
-
-	delete (b);
-}
-
-static MDLD_TREE_ITEM *
-new_bturn (SPWAW_BTURN *data, MDLD_TREE_ITEM *tree)
-{
-	MDLD_TREE_ITEM	*t;
-
-	t = new MDLD_TREE_ITEM;
-	t->parent   = tree;
-	t->type     = MDLD_TREE_BTURN;
-	t->data.t   = data;
-	t->campaign = tree->campaign;
-
-	t->cfirst = t->clast = NULL;
-
-	link_as_child (t);
-
-	return (t);
-}
-
-static void
-delete_bturn (MDLD_TREE_ITEM *t)
-{
-	update_seqnums (t);
-	delete (t);
-}
-
 void
 WARCABState::setup_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 {
@@ -687,12 +575,12 @@ WARCABState::setup_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 	for (i=0; i<tree->data.d->bcnt; i++) {
 		if (!tree->data.d->blist[i]) continue;
 
-		b = new_battle (tree->data.d->blist[i], tree);
+		b = MDLD_TREE_new_battle (tree->data.d->blist[i], tree);
 
 		for (j=0; j<b->data.b->tcnt; j++) {
 			if (!b->data.b->tlist[j]) continue;
 
-			t = new_bturn (b->data.b->tlist[j], b);
+			t = MDLD_TREE_new_bturn (b->data.b->tlist[j], b);
 		}
 	}
 }
@@ -743,18 +631,18 @@ WARCABState::refresh_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 		}
 
 		if (!b) {
-			b = new_battle (tree->data.d->blist[i], tree);
+			b = MDLD_TREE_new_battle (tree->data.d->blist[i], tree);
 
 			for (j=0; j<b->data.b->tcnt; j++) {
 				if (!b->data.b->tlist[j]) continue;
 
-				t = new_bturn (b->data.b->tlist[j], b);
+				t = MDLD_TREE_new_bturn (b->data.b->tlist[j], b);
 			}
 
-			update_seqnums (b);
+			MDLD_TREE_update_seqnums (b);
 		} else {
 			if (transform) {
-				MDLD_TREE_ITEM *nb = new_battle (tree->data.d->blist[i], tree);
+				MDLD_TREE_ITEM *nb = MDLD_TREE_new_battle (tree->data.d->blist[i], tree);
 				if (ocf) {
 					MDLD_TREE_extract_children (b, nb->children);
 				} else {
@@ -762,10 +650,10 @@ WARCABState::refresh_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 
 					MDLD_TREE_extract_children (b->cfirst, nb->children);
 				}
-				delete_battle (b);
+				MDLD_TREE_delete_battle (b);
 				b = nb;
 			} else {
-				link_as_child (b);
+				MDLD_TREE_link_as_child (b);
 				if (b->type == MDLD_TREE_STDALONE) b = b->cfirst;
 			}
 
@@ -780,17 +668,17 @@ WARCABState::refresh_tree_data (MDLD_TREE_ITEM *tree, bool campaign)
 					}
 				}
 				if (!t) {
-					t = new_bturn (b->data.b->tlist[j], b);
+					t = MDLD_TREE_new_bturn (b->data.b->tlist[j], b);
 
-					update_seqnums (t);
+					MDLD_TREE_update_seqnums (t);
 				} else {
-					link_as_child (t);
+					MDLD_TREE_link_as_child (t);
 				}
 			}
 		}
-		for (j=0; j<tlist.size(); j++) { delete_bturn (tlist[j]); } tlist.clear();
+		for (j=0; j<tlist.size(); j++) { MDLD_TREE_delete_bturn (tlist[j]); } tlist.clear();
 	}
-	for (i=0; i<blist.size(); i++) { delete_battle (blist[i]); } blist.clear();
+	for (i=0; i<blist.size(); i++) { MDLD_TREE_delete_battle (blist[i]); } blist.clear();
 }
 
 void
