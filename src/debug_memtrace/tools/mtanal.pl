@@ -442,15 +442,19 @@ sub Report
 	my (@list, $key, $ptr, $size);
 	my ($idx, $table);
 	my (@l1list, $l1key, @l2list, $l2key, $func, $line);
+	my ($val);
 
 	print "\n";
 	print "Memory allocation report:\n";
 	print "=========================\n";
 	print "\n";
-	printf "Current   : %lu bytes (about %lu KB or %lu MB)\n", ($rMINF->[0], $rMINF->[0]/1024, $rMINF->[0]/1024/1024);
-	printf "Peak      : %lu bytes (about %lu KB or %lu MB)\n", ($rMINF->[1], $rMINF->[1]/1024, $rMINF->[1]/1024/1024);
+	$val = $rMINF->[0];
+	printf "Current   : %lu bytes (about %lu KB or %lu MB)\n", ($val, $val/1024, $val/1024/1024);
+	$val = $rMINF->[1];
+	printf "Peak      : %lu bytes (about %lu KB or %lu MB)\n", ($val, $val/1024, $val/1024/1024);
 	printf "Totals    : %d = %lu - %lu (saldo = allocs - frees)\n", @{$rINFO->{stats}->{cnt}};
-	printf "Peak block: %lu bytes (%u times)\n", @{$rINFO->{stats}->{max}};
+	$val = ${$rINFO->{stats}->{max}}[0];
+	printf "Peak block: %lu x %lu bytes (about %lu KB or %lu MB)\n", (${$rINFO->{stats}->{max}}[1], $val, $val/1024, $val/1024/1024);
 	
 	print "\n";
 	print "Memory leak report:\n";
