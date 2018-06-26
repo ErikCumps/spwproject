@@ -89,10 +89,10 @@ dump_UEL (UEL *uel, char *prefix)
 		uel->d.OOB, uel->d.OOBrid);
 	UFDTRACE5 (" F[%5.5u]<%5.5u,%5.5u> %s[%5.5u]",
 		uel->d.FRID, uel->d.FMID, uel->d.FSID,
-		uel->d.formation ? "ptr" : "nil", uel->d.formation ? uel->d.formation->d.RID : 0xFFFF);
+		uel->d.formation ? "ptr" : "nil", uel->d.formation ? uel->d.formation->d.RID : SPWAW_BADIDX);
 	UFDTRACE4 (" link crew=%s[%5.5u], parent=%s[%5.5u]\n",
-		uel->d.link.crew ? "ptr" : "nil", uel->d.link.crew ? uel->d.link.crew->d.RID : 0xFFFF,
-		uel->d.link.parent ? "ptr" : "nil", uel->d.link.parent ? uel->d.link.parent->d.RID : 0xFFFF);
+		uel->d.link.crew ? "ptr" : "nil", uel->d.link.crew ? uel->d.link.crew->d.RID : SPWAW_BADIDX,
+		uel->d.link.parent ? "ptr" : "nil", uel->d.link.parent ? uel->d.link.parent->d.RID : SPWAW_BADIDX);
 }
 
 /* Reserves the next available element for the unit list */
@@ -212,7 +212,7 @@ dump_FEL (FEL *fel, char *prefix)
 			fel->d.unit_lst[i] ? "   " : "---",
 			i,
 			fel->d.unit_lst[i] ? "ptr" : "nil",
-			fel->d.unit_lst[i] ? fel->d.unit_lst[i]->d.RID : 0xFFFF);
+			fel->d.unit_lst[i] ? fel->d.unit_lst[i]->d.RID : SPWAW_BADIDX);
 	}
 }
 /* Reserves the next available element for the formation list */
