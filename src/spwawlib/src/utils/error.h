@@ -19,6 +19,9 @@ extern void error (const char *file, unsigned long line, const char *func, char 
 #define	ERROR1(m_,a1_)		do { error (__FILE__, __LINE__, __FUNCTION__, m_, a1_); } while (0)
 #define	ERROR2(m_,a1_,a2_)	do { error (__FILE__, __LINE__, __FUNCTION__, m_, a1_, a2_); } while (0)
 
+/*! Returns true case of error */
+#define	HASERROR		(rc != SPWERR_OK)
+
 /*! Returns in case of error */
 #define	ROE(m_)								\
 do {									\
