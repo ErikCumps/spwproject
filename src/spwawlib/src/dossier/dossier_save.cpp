@@ -101,6 +101,12 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;
 
+		if (p->name) {
+			hdrs[idx].name = STRTAB_getidx (stab, p->name);
+		} else {
+			hdrs[idx].name = BADSTRIDX;
+		}
+
 		bseekmove (fd, sizeof (DOS_BHEADER));
 
 		idx++;

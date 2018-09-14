@@ -53,6 +53,7 @@ typedef struct s_DOS_BHEADER {
 		ULONG	size;			/* data size									*/
 		ULONG	comp;			/* compressed data size (0 if no compression)					*/
 	}	ra;
+	ULONG		name;			/* optional battle name symbol								*/
 } DOS_BHEADER;
 
 typedef struct s_DOS_THEADER {

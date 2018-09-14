@@ -81,6 +81,7 @@ typedef struct s_SPWAW_DOSSIER_BURA {
 
 /* SPWAW dossier: battle data */
 struct s_SPWAW_BATTLE {
+	char			*name;				/* Optional battle name				*/
 	SPWAW_BATTLE		*prev;				/* Pointer to previous battle			*/
 	SPWAW_BATTLE		*next;				/* Pointer to next battle			*/
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn #0 snapshot data			*/
@@ -131,19 +132,21 @@ typedef struct s_SPWAW_DOSSIER_INFO {
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new	(const char *name, const char *comment, SPWAW_DOSSIER **dossier);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_info	(const char *file, SPWAW_DOSSIER_INFO *info);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load	(const char *file, SPWAW_DOSSIER **dossier);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save	(SPWAW_DOSSIER **dossier, const char *file, bool compress);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_export	(const char *file, const char *export);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_import	(const char *import, const char *file);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_free	(SPWAW_DOSSIER **dossier);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_edit	(SPWAW_DOSSIER *dossier, const char *name, const char *comment);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del	(SPWAW_DOSSIER *dossier, SPWAW_BTURN *bturn);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del	(SPWAW_DOSSIER *dossier, SPWAW_BATTLE *battle);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist	(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist	(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(const char *name, const char *comment, SPWAW_DOSSIER **dossier);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_info		(const char *file, SPWAW_DOSSIER_INFO *info);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOSSIER **dossier);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_export		(const char *file, const char *export);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_import		(const char *import, const char *file);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_free		(SPWAW_DOSSIER **dossier);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_edit		(SPWAW_DOSSIER *dossier, const char *name, const char *comment);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_campaign_snap	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_battle	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, const char *name, SPWAW_BATTLE **battle);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_battle_snap	(SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del		(SPWAW_DOSSIER *dossier, SPWAW_BTURN *bturn);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del		(SPWAW_DOSSIER *dossier, SPWAW_BATTLE *battle);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist		(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist		(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
 
 #endif	/* SPWAW_LIB_DOSSIER_H */
 

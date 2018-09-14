@@ -34,10 +34,15 @@ static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_BADDATE: invalid date",
 	"SPWERR_BADSTAMP: invalid timestamp",
 	"SPWERR_BADPERIOD: invalid period",
+	"SPWERR_BADDTYPE: dossier type not supported for this operation",
 	"SPWERR_BADBTYPE: battle type is not 'campaign'",
 	"SPWERR_NOMATCH_OOBDATA: OOB data files do not match",
-	"SPWERR_NOMATCH_OOB: player OOB ID does not match",
-	"SPWERR_NOMATCH_CORECNT: formation or unit core count does not match",
+	"SPWERR_NOMATCH_OOB: player or opponent OOB ID does not match",
+	"SPWERR_NOMATCH_CORECNT: player formation or unit core count does not match",
+	"SPWERR_NOMATCH_DATE: date does not match",
+	"SPWERR_NOMATCH_LOCATION: location does not match",
+	"SPWERR_NOMATCH_MISSION: player or opponent mission type does not match",
+	"SPWERR_NOMATCH_UFCNT: player or opponent unit or formation count does not match",
 	"SPWERR_DUPTURN: duplicate battle turn",
 };
 

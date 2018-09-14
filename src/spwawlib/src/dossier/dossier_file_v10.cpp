@@ -51,14 +51,16 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 	if (!bread (fd, (char *)hdrs_v10, cnt * sizeof (DOS_BHEADER_V10), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs v10)", handle_error);
 
-	/* A V10 battle header only has a slightly different OOB organization,
-	 * but it is just as long as the current battle header, so a quick copy
-	 * and fix up is all we need :)
+	/* A V10 battle header only has a slightly different OOB organization and it lacks
+	 * the battle name symbol at the end.
+	 * The only supported dossier type for V10 snapshots is the SPWAW_CAMPAIGN_DOSSIER
+	 * that doesn't use battle names, so a quick copy and fix up is all we need :)
 	 */
-	memcpy (hdrs, hdrs_v10, cnt * sizeof (DOS_BHEADER));
 	for (i=0; i<cnt; i++) {
+		memcpy (&(hdrs[i]), &(hdrs_v10[i]), sizeof (DOS_BHEADER_V10));
 		hdrs[i].OOB_p1 = (BYTE)((hdrs_v10[i].OOB >> 16) & 0xFF);
 		hdrs[i].OOB_p2 = (BYTE)((hdrs_v10[i].OOB >>  0) & 0xFF);
+		hdrs[i].name = BADSTRIDX;
 	}
 
 handle_error:

@@ -153,6 +153,12 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		p->miss_p2  = STRTAB_getstr (stab, hdrs[i].miss_p2);
 		p->meeting  = hdrs[i].meeting != 0;
 
+		if (hdrs[i].name != BADSTRIDX) {
+			p->name = STRTAB_getstr (stab, hdrs[i].name);
+		} else {
+			p->name = NULL;
+		}
+
 		bseekset (fd, pos + hdrs[i].tlist);
 		rc = dossier_load_battle_turns (fd, p, hdrs[i].tcnt, stab);
 		ERRORGOTO ("dossier_load_battle_turns()", handle_error);

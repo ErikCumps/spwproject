@@ -18,7 +18,10 @@ extern SPWAW_ERROR	dossier_load			(int fd, SPWAW_DOSSIER *dst);
 extern SPWAW_ERROR	dossier_clean			(SPWAW_DOSSIER *ptr);
 extern void		dossier_clean_battle		(SPWAW_BATTLE *b);
 extern void		dossier_clean_turn		(SPWAW_BTURN *t);
-extern SPWAW_ERROR	dossier_add			(SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
+
+extern SPWAW_ERROR	dossier_add_to_campaign		(SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
+extern SPWAW_ERROR	dossier_add_new_battle		(SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, const char *name, SPWAW_BATTLE **battle);
+extern SPWAW_ERROR	dossier_add_to_battle		(SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
 extern SPWAW_ERROR	dossier_del			(SPWAW_DOSSIER *ptr, SPWAW_BTURN *bturn);
 extern SPWAW_ERROR	dossier_del			(SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle);
 extern SPWAW_ERROR	dossier_savelist		(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
