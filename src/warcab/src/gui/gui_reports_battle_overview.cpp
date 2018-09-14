@@ -29,6 +29,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "layout");
 	d.layout->setVerticalSpacing (20);
 
+	GUINEW (d.name, QLabel(d.frame), ERR_GUI_REPORTS_INIT_FAILED, "battle name label");
+
+	d.layout->addWidget (d.name, 0, 0, 1, 4);
+
 	GUINEW (d.player1, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player1 label");
 	GUINEW (d.mission, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "mission label");
 	GUINEW (d.player2, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player2 label");
@@ -44,10 +48,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.player2->setAlignment (Qt::AlignLeft);
 	d.player2->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-	d.layout->addWidget (d.player1,	0, 0, 1, 1);
-	d.layout->addWidget (d.mission,	0, 1, 1, 1);
-	d.layout->addWidget (d.player2,	0, 2, 1, 1);
-	d.layout->addItem   (d.rspacer,	0, 3, 1, 1);
+	d.layout->addWidget (d.player1,	1, 0, 1, 1);
+	d.layout->addWidget (d.mission,	1, 1, 1, 1);
+	d.layout->addWidget (d.player2,	1, 2, 1, 1);
+	d.layout->addItem   (d.rspacer,	1, 3, 1, 1);
 
 	GUINEW (d.overview, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "overview");
 	d.overview->setAlignment (Qt::AlignLeft|Qt::AlignTop);
@@ -79,10 +83,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.losses.layout->addWidget (d.losses.opp,	0, 1, 1, 1);
 	d.losses.layout->addItem   (d.losses.spacer,	0, 2, 1, 1);
 
-	d.layout->addWidget (d.overview,	1, 0, 1, 4);
-	d.layout->addLayout (d.losses.layout,	2, 0, 1, 4);
-	d.layout->addWidget (d.changes,		3, 0, 1, 4);
-	d.layout->addItem   (d.bspacer,		4, 0, 1, 4);
+	d.layout->addWidget (d.overview,	2, 0, 1, 4);
+	d.layout->addLayout (d.losses.layout,	3, 0, 1, 4);
+	d.layout->addWidget (d.changes,		4, 0, 1, 4);
+	d.layout->addItem   (d.bspacer,		5, 0, 1, 4);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -258,6 +262,7 @@ GuiRptBtlOvr::refresh (void)
 	p = (item != NULL) ? item->data.b : NULL;
 
 	if (!p) {
+		d.name->clear(); d.name->hide();
 		d.player1->setPixmap (*RES_flag (0));
 		d.mission->setPixmap (*RES_pixmap (RID_MSSN_UNKNOWN));
 		d.mission->setToolTip (QString());
@@ -269,6 +274,12 @@ GuiRptBtlOvr::refresh (void)
 		d.changes->clear ();
 	} else {
 		DEVASSERT (p->tcnt > 0);
+
+		if (p->name) {
+			d.name->setText (p->name); d.name->show();
+		} else {
+			d.name->clear(); d.name->hide();
+		}
 
 		d.model->load (p->next ? p->next : p, p, true, true);
 
@@ -302,7 +313,7 @@ GuiRptBtlOvr::refresh (void)
 		if (p->tcnt > 1) {
 			SPWAW_date_delta (&(p->tfirst->date), &(p->tlast->date), &span);
 			str.printf ("Recorded %u battle turns spanning ", p->tcnt);
-			UTIL_fmt_shortspan (&span, &str);
+			UTIL_fmt_fullspan (&span, &str);
 			str.printf (".\n");
 		} else {
 			str.printf ("Recorded 1 battle turn.\n");

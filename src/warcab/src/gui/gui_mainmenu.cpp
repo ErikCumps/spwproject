@@ -40,9 +40,14 @@ GuiMainMenu::GuiMainMenu (void)
 	/* Create and hook file menu */
 	GUINEW (d.file, QMenu ("File", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<file> menu");
 
-	d.file->addAction (GUI_ACTIONS->p.file_add_game);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.file->addAction (GUI_ACTIONS->p.file_add_snap);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+#if	ALLOW_SNAPSHOTS_LOAD
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	d.menu->addMenu (d.file);

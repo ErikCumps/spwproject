@@ -112,7 +112,7 @@ GuiRptDsr::set_enabled (bool flag)
 	if (flag) {
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.overview, "Overview");
-		if (d.item->campaign) {
+		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 			addTab (d.cnd, "Status");
 			addTab (d.prg, "Progress");
 			addTab (d.kill, "Kills");
@@ -164,7 +164,7 @@ GuiRptDsr::refresh (bool forced)
 	DBG_TRACE_FENTER;
 
 	d.overview->refresh(forced);
-	if (d.item && d.item->campaign) {
+	if (d.item && (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 		d.cnd->refresh();
 		d.prg->refresh();
 		d.kill->refresh();

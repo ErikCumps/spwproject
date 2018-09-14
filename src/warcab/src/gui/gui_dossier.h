@@ -23,8 +23,9 @@ public:
 	SL_ERROR	error_code;
 
 public:
-	void	contextMenuEvent	(QContextMenuEvent *event);
-	void	setCurrentItem		(MDLD_TREE_ITEM *item);
+	void			contextMenuEvent	(QContextMenuEvent *event);
+	void			setCurrentItem		(MDLD_TREE_ITEM *item);
+	MDLD_TREE_ITEM *	get_actionitem		(void);
 
 public slots:
 	void	was_loaded		(MDLD_TREE_ITEM *tree);

@@ -37,7 +37,7 @@ struct s_MDLD_TREE_ITEM {
 	MDLD_TREE_ITEM		*cfirst;
 	MDLD_TREE_ITEM		*clast;
 	UtilSeqnum		seqnum;
-	bool			campaign;	/*!< Campaign mode flag	*/
+	SPWAW_DOSSIER_TYPE	dossier_type;	/*!< Dossier type	*/
 };
 
 static inline MDLD_TREE_ITEM *

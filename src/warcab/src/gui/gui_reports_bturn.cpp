@@ -104,7 +104,7 @@ GuiRptTrn::set_enabled (bool flag)
 		removeTab (indexOf (d.disabled_label));
 
 		addTab (d.overview, "Overview");
-		if (d.item->campaign) {
+		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 			addTab (d.force_core, "Core force");
 			addTab (d.force_spt, "Support force");
 		} else {
@@ -153,7 +153,7 @@ GuiRptTrn::refresh (void)
 
 		memset (buf, 0, sizeof (buf));
 
-		if (d.item->campaign) {
+		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 			setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.t->battle->dossier->OOB));
 			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.t->battle->dossier->OOB));
 		} else {

@@ -30,34 +30,40 @@ public:
 	GuiMainRpt *	get_report	(void);
 
 public slots:
-	void	action_app_exit		(void);
-	void	action_app_prefs	(void);
+	void	action_app_exit				(void);
+	void	action_app_prefs			(void);
 
-	void	action_dossier_new	(void);
-	void	action_dossier_open	(void);
-	void	action_dossier_close	(void);
-	void	action_dossier_save	(void);
-	void	action_dossier_saveAs	(void);
-	bool	action_dossier_edit	(void);
+	void	action_dossier_new			(void);
+	void	action_dossier_open			(void);
+	void	action_dossier_close			(void);
+	void	action_dossier_save			(void);
+	void	action_dossier_saveAs			(void);
+	bool	action_dossier_edit			(void);
 
-	void	action_file_add_game	(void);
+	void	action_file_add_campaign_savegame	(void);
+	void	action_file_add_battle_savegame		(void);
 #if	ALLOW_SNAPSHOTS_LOAD
-	void	action_file_add_snap	(void);
+	void	action_file_add_campaign_snapshot	(void);
+	void	action_file_add_battle_snapshot		(void);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
-	void	action_delete_turn	(void);
-	void	action_delete_battle	(void);
-	void	action_delete_dossier	(void);
+	void	action_add_battle_savegame		(void);
+#if	ALLOW_SNAPSHOTS_LOAD
+	void	action_add_battle_snapshot		(void);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+	void	action_delete_turn			(void);
+	void	action_delete_battle			(void);
+	void	action_delete_dossier			(void);
 
-	void	action_nav_raise	(void);
-	void	action_nav_first	(void);
-	void	action_nav_previous	(void);
-	void	action_nav_next		(void);
-	void	action_nav_last		(void);
-	void	action_nav_lower	(void);
+	void	action_nav_raise			(void);
+	void	action_nav_first			(void);
+	void	action_nav_previous			(void);
+	void	action_nav_next				(void);
+	void	action_nav_last				(void);
+	void	action_nav_lower			(void);
 
-	void	action_help_reset_gui	(void);
-	void	action_help_about	(void);
+	void	action_help_reset_gui			(void);
+	void	action_help_about			(void);
 
 private:
 	struct s_data {

@@ -102,10 +102,23 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 	}
 	menu->addSeparator ();
 
-	menu->addAction (GUI_ACTIONS->p.file_add_game);
+	if (d.actionitem->dossier_type != SPWAW_STDALONE_DOSSIER) {
+		menu->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	menu->addAction (GUI_ACTIONS->p.file_add_snap);
+		menu->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
+	} else {
+		menu->addAction (GUI_ACTIONS->p.add_battle_savegame);
+#if	ALLOW_SNAPSHOTS_LOAD
+		menu->addAction (GUI_ACTIONS->p.add_battle_snapshot);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+		menu->addSeparator ();
+
+		menu->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+#if	ALLOW_SNAPSHOTS_LOAD
+		menu->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+	}
 	menu->addSeparator ();
 
 	menu->addAction (GUI_ACTIONS->p.dossier_edit);
@@ -121,6 +134,12 @@ void
 GuiDossier::setCurrentItem (MDLD_TREE_ITEM *item)
 {
 	setCurrentIndex (d.model->index(item));
+}
+
+MDLD_TREE_ITEM *
+GuiDossier::get_actionitem (void)
+{
+	return (d.actionitem);
 }
 
 void
@@ -161,7 +180,7 @@ report_GMD (MDLD_TREE_ITEM *p)
 	if (!p) return;
 
 	DBG_log ("[MDLD_TREE_ITEM] type=%d, parent=0x%8.8x, children=%d\n", p->type, p->parent, p->children.size());
-	DBG_log ("[MDLD_TREE_ITEM] seqnum=%d, campaign=%s\n", p->seqnum.value(), p->campaign ? "true" : "false");
+	DBG_log ("[MDLD_TREE_ITEM] seqnum=%d, campaign=%s\n", p->seqnum.value(), (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) ? "true" : "false");
 
 	switch (p->type) {
 		case MDLD_TREE_DOSSIER:
@@ -220,7 +239,7 @@ GuiDossier::was_loaded (MDLD_TREE_ITEM *tree)
 	refresh();
 	setCurrentIndex (d.model->root_index());
 
-	GUI_ACTIONS->enable_dossier_actions (true);
+	GUI_ACTIONS->enable_dossier_actions (true, tree->dossier_type);
 }
 
 void
@@ -229,7 +248,7 @@ GuiDossier::will_close (void)
 	DBG_log ("[%s]\n", __FUNCTION__);
 
 	GUI_WIN->get_report()->clear ();
-	GUI_ACTIONS->enable_dossier_actions (false);
+	GUI_ACTIONS->enable_dossier_actions (false, SPWAW_EMPTY_DOSSIER);
 }
 
 void
@@ -252,6 +271,8 @@ GuiDossier::was_added (MDLD_TREE_ITEM *item)
 	d.model->refresh();
 	refresh();
 	setCurrentItem (item);
+
+	GUI_ACTIONS->enable_dossier_actions (true, item->dossier_type);
 }
 
 void
@@ -326,7 +347,7 @@ GuiDossier::select_first_item (void)
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
 
-	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+	if (p->type == MDLD_TREE_BATTLE && !(p->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 		q = p->parent->prev ? p->parent->parent->cfirst->cfirst : NULL;
 	} else {
 		q = p->prev ? p->parent->cfirst : NULL;
@@ -347,7 +368,7 @@ GuiDossier::select_prev_item (void)
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
 
-	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+	if (p->type == MDLD_TREE_BATTLE && !(p->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 		q = p->parent->prev ? p->parent->prev->cfirst : NULL;
 	} else {
 		q = p->prev;
@@ -366,7 +387,7 @@ GuiDossier::select_next_item (void)
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
 
-	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+	if (p->type == MDLD_TREE_BATTLE && !(p->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 		q = p->parent->next ? p->parent->next->cfirst : NULL;
 	} else {
 		q = p->next;
@@ -385,7 +406,7 @@ GuiDossier::select_last_item (void)
 	if (p == NULL) return;
 	if (p->type == MDLD_TREE_DOSSIER) return;
 
-	if (p->type == MDLD_TREE_BATTLE && !p->campaign) {
+	if (p->type == MDLD_TREE_BATTLE && !(p->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 		q = p->parent->next ? p->parent->parent->clast->cfirst : NULL;
 	} else {
 		q = p->next ? p->parent->clast : NULL;

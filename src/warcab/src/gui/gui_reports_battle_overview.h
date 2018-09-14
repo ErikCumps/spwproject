@@ -41,6 +41,7 @@ private:
 		QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;
+		QLabel			*name;
 		QLabel			*player1;
 		QLabel			*mission;
 		QLabel			*player2;

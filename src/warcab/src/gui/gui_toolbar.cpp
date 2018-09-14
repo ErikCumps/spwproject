@@ -37,9 +37,13 @@ GuiToolbar::GuiToolbar (void)
 	/* Create file tool bar */
 	TOOLBAR (file, "File Toolbar");
 
-	d.file->addAction (GUI_ACTIONS->p.file_add_game);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.file->addAction (GUI_ACTIONS->p.file_add_snap);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+#if	ALLOW_SNAPSHOTS_LOAD
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	d.file->addAction (GUI_ACTIONS->p.app_prefs);
 

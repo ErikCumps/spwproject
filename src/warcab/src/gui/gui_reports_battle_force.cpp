@@ -85,7 +85,7 @@ GuiRptBtlFrc::set_enabled (bool flag)
 	if (flag) {
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.cnd, "Status");
-		if (d.parent && d.parent->current() && d.parent->current()->campaign) {
+		if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 			addTab (d.prg, "Progress");
 		}
 		addTab (d.kill, "Kills");
@@ -147,7 +147,7 @@ GuiRptBtlFrc::refresh (void)
 
 	if (enable) {
 		d.cnd->refresh();
-		if (d.parent && d.parent->current() && d.parent->current()->campaign) {
+		if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
 			d.prg->refresh();
 		}
 		d.kill->refresh();

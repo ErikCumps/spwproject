@@ -35,7 +35,7 @@ void
 ModelDossier::update_header (void)
 {
 	if (d.tree) {
-		if (d.tree->campaign) {
+		if (d.tree->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 			header[0] = "Campaign dossier";
 		} else {
 			header[0] = "Battle dossier";
@@ -92,7 +92,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			if (p->campaign) {
+			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s (%s forces)",
 					p->data.d->name, SPWAW_oob_people (p->data.d->OOB));
 			} else {
@@ -102,7 +102,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
-			if (p->campaign) {
+			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				v = QVariant (QIcon (*RES_flag (p->data.d->OOB)));
 			}
 			break;
@@ -127,8 +127,8 @@ ModelDossier::data_standalone (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			snprintf (buf, sizeof (buf) - 1, "%s %s against %s %s",
-				SPWAW_oob_people (p->data.b->OOB_p1), p->data.b->miss_p1, SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
+			snprintf (buf, sizeof (buf) - 1, "%s",
+				p->data.b->name);
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
@@ -155,7 +155,7 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			if (p->campaign) {
+			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
 					p->data.b->location, p->data.b->miss_p1,
 					SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);

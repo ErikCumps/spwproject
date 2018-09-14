@@ -22,7 +22,7 @@ public:
 	SL_ERROR	error_code;
 
 public:
-	void		enable_dossier_actions (bool b);
+	void		enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t);
 
 public:
 	struct s_data {
@@ -36,9 +36,13 @@ public:
 		QAction		*dossier_saveAs;
 		QAction		*dossier_edit;
 
-		QAction		*file_add_game;
+		QAction		*file_add_campaign_savegame;
+		QAction		*file_add_battle_savegame;
+		QAction		*add_battle_savegame;
 #if	ALLOW_SNAPSHOTS_LOAD
-		QAction		*file_add_snap;
+		QAction		*file_add_campaign_snapshot;
+		QAction		*file_add_battle_snapshot;
+		QAction		*add_battle_snapshot;
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 		QAction		*delete_turn;
