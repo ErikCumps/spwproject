@@ -239,7 +239,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 	calc_bridgecon();
 	calc_influence();
 	calc_frontline();
-	
+
 	d.renderlist[ZOOM_1X]->render();
 	d.renderlist[ZOOM_2X]->render();
 
@@ -277,52 +277,58 @@ SmapWidget::reset_cursor (void)
 }
 	
 void
-SmapWidget::enable_grid (bool enable)
+SmapWidget::enable_grid (bool enable, bool paint)
 {
 	if (d.comp_cfg.grid != enable) {
 		d.comp_cfg.grid = enable;
-		repaint();
+		if (paint) repaint();
 	}
 }
 
 void
-SmapWidget::enable_victoryhexes (bool enable)
+SmapWidget::enable_victoryhexes (bool enable, bool paint)
 {
 	if (d.comp_cfg.vhex != enable) {
 		d.comp_cfg.vhex = enable;
-		repaint();
+		if (paint) repaint();
 	}
 }
 
 void
-SmapWidget::enable_influence (bool enable)
+SmapWidget::enable_influence (bool enable, bool paint)
 {
 	if (d.comp_cfg.influence != enable) {
 		d.comp_cfg.influence = enable;
-		repaint();
+		if (paint) repaint();
 	}
 }
 
 void
-SmapWidget::enable_frontline (bool enable)
+SmapWidget::enable_frontline (bool enable, bool paint)
 {
 	if (d.comp_cfg.frontline != enable) {
 		d.comp_cfg.frontline = enable;
-		repaint();
+		if (paint) repaint();
 	}
 }
 
 void
-SmapWidget::set_zoom (ZOOMLEVEL zoom)
+SmapWidget::set_zoom (ZOOMLEVEL zoom, bool paint)
 {
 	if (d.zoom != zoom) {
 		setrender (zoom);
-		repaint();
+		if (paint) repaint();
 	}
 }
 
 void
-SmapWidget::askscroll(void)
+SmapWidget::trigger_repaint (void)
+{
+	repaint();
+}
+
+void
+SmapWidget::askscroll (void)
 {
 	int	px, py;
 

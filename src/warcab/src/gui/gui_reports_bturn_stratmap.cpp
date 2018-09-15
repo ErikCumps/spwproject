@@ -251,11 +251,12 @@ skip_data_update:
 	skip_render &= !GUIVALCHANGED (Vzoom2x);
 	if (skip_render) goto skip_render_update;
 
-	d.smap->enable_grid (d.Vgrid);
-	d.smap->enable_victoryhexes (d.Vvichexes);
-	d.smap->enable_influence (d.Vinfluence);
-	d.smap->enable_frontline (d.Vfrontline);
-	d.smap->set_zoom (d.Vzoom2x ? SmapWidget::ZOOM_2X : SmapWidget::ZOOM_1X);
+	d.smap->enable_grid (d.Vgrid, false);
+	d.smap->enable_victoryhexes (d.Vvichexes, false);
+	d.smap->enable_influence (d.Vinfluence, false);
+	d.smap->enable_frontline (d.Vfrontline, false);
+	d.smap->set_zoom (d.Vzoom2x ? SmapWidget::ZOOM_2X : SmapWidget::ZOOM_1X, false);
+	d.smap->trigger_repaint();
 
 skip_render_update:
 	if (isVisible()) {
