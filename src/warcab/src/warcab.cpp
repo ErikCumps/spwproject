@@ -6,9 +6,9 @@
  * License: GPL v2
  */
 
-#include "warcab.h"
 #include "common.h"
 #include "gui/gui_private.h"
+#include "warcab.h"
 
 WARCABState	*WARCAB;
 
