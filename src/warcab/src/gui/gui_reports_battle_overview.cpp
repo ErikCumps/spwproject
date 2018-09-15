@@ -276,7 +276,9 @@ GuiRptBtlOvr::refresh (void)
 		DEVASSERT (p->tcnt > 0);
 
 		if (p->name) {
-			d.name->setText (p->name); d.name->show();
+			str.printf ("<h1>%s</h1>", p->name);
+			d.name->setText (buf); d.name->show();
+			str.clear();
 		} else {
 			d.name->clear(); d.name->hide();
 		}

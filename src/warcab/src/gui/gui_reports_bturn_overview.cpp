@@ -20,9 +20,13 @@ GuiRptTrnOvr::GuiRptTrnOvr (QWidget *P)
 	GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_INIT_FAILED, "font");
 
 	GUINEW (d.frame, QFrame (this), ERR_GUI_REPORTS_INIT_FAILED, "frame");
-	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "layout");
 
+	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "layout");
 	d.layout->setVerticalSpacing (20);
+
+	GUINEW (d.name, QLabel(d.frame), ERR_GUI_REPORTS_INIT_FAILED, "battle name label");
+
+	d.layout->addWidget (d.name, 0, 0, 1, 4);
 
 	GUINEW (d.player1, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player1 label");
 	GUINEW (d.mission, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "mission label");
@@ -39,17 +43,20 @@ GuiRptTrnOvr::GuiRptTrnOvr (QWidget *P)
 	d.player2->setAlignment (Qt::AlignLeft);
 	d.player2->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-	d.layout->addWidget (d.player1,	0, 0, 1, 1);
-	d.layout->addWidget (d.mission,	0, 1, 1, 1);
-	d.layout->addWidget (d.player2,	0, 2, 1, 1);
-	d.layout->addItem   (d.spacer,	0, 3, 1, 1);
+	d.layout->addWidget (d.player1,	1, 0, 1, 1);
+	d.layout->addWidget (d.mission,	1, 1, 1, 1);
+	d.layout->addWidget (d.player2,	1, 2, 1, 1);
+	d.layout->addItem   (d.spacer,	1, 3, 1, 1);
 
 	GUINEW (d.label, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label");
 	d.label->setAlignment (Qt::AlignLeft|Qt::AlignTop);
 	d.label->setWordWrap (true);
 	d.label->setFont (*d.font);
 
-	d.layout->addWidget (d.label, 1, 0, 1, 4);
+	GUINEW (d.bspacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "bspacer");
+
+	d.layout->addWidget (d.label,	2, 0, 1, 4);
+	d.layout->addItem   (d.bspacer,	3, 0, 1, 4);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -101,6 +108,7 @@ GuiRptTrnOvr::refresh (void)
 	p = (item != NULL) ? item->data.t : NULL;
 
 	if (!p) {
+		d.name->clear(); d.name->hide();
 		d.player1->setPixmap (*RES_flag (0));
 		d.mission->setPixmap (*RES_pixmap (RID_MSSN_UNKNOWN));
 		d.mission->setToolTip (QString());
@@ -108,6 +116,14 @@ GuiRptTrnOvr::refresh (void)
 
 		d.label->setText ("No overview available yet.");
 	} else {
+		if (p->battle->name) {
+			str.printf ("<h1>%s</h1>", p->battle->name);
+			d.name->setText (buf); d.name->show();
+			str.clear();
+		} else {
+			d.name->clear(); d.name->hide();
+		}
+
 		d.player1->setPixmap (*RES_flag (p->battle->OOB_p1));
 		d.mission->setPixmap (*RES_mission (p->battle->snap->game.battle.data.miss_p1, p->battle->meeting));
 		d.mission->setToolTip (QString (p->battle->miss_p1) + QString(" against ") + QString(p->battle->miss_p2));
