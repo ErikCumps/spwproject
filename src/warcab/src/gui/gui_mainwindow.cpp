@@ -511,7 +511,7 @@ GuiMainWindow::action_file_add_battle_snapshot (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_snaplist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddBattleSavegame (CFG_save_path(), WARCAB->get_snaplist());
+	dlg = new GuiDlgAddBattleSavegame (CFG_snap_path(), WARCAB->get_snaplist());
 	if (rc = dlg->exec ()) {
 		name = dlg->get_data (list);
 	}
@@ -592,7 +592,7 @@ GuiMainWindow::action_add_battle_snapshot (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_snaplist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddBattleSavegame (CFG_save_path(), WARCAB->get_snaplist(), item->data.b->name);
+	dlg = new GuiDlgAddBattleSavegame (CFG_snap_path(), WARCAB->get_snaplist(), item->data.b->name);
 	rc = dlg->exec ();
 	dlg->get_data (list);
 	delete dlg;
