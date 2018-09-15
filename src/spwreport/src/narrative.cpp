@@ -145,6 +145,9 @@ narrative_report (SPWAW_SNAPSHOT *ptr, FILE *rf, bool core)
 {
 	if (!ptr || !rf) return;
 
+	fprintf (rf, "Battle type: %s\n", SPWAW_battletype2str (ptr->type));
+	fprintf (rf, "\n");
+
 	report_game	(rf, &(ptr->game));		fprintf (rf, "\n\n");
 	report_oob	(rf, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");
 	report_oob	(rf, &(ptr->OOBp2), core);	fprintf (rf, "\n\n");

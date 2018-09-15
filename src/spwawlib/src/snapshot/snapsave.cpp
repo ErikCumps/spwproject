@@ -363,7 +363,7 @@ snapsave (SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress)
 	ERRORGOTO ("SPWAW_date2stamp(start date)", handle_error);
 	rc = SPWAW_date2stamp (&(src->game.battle.data.date), &(ihdr.date));
 	ERRORGOTO ("SPWAW_date2stamp(turn date)", handle_error);
-	ihdr.title = src->type;
+	ihdr.type       = src->type;
 
 	mhdr.info = bseekget (fd) - p0;
 	if (!bwrite (fd, (char *)&ihdr, sizeof (ihdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(ihdr) failed", handle_error);

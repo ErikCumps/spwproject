@@ -366,6 +366,9 @@ raw_report (SPWAW_SNAPSHOT *ptr, FILE *rf)
 {
 	if (!ptr || !rf) return;
 
+	fprintf (rf, "Battle type: %s\n", SPWAW_battletype2str (ptr->type));
+	fprintf (rf, "\n");
+
 	report_game	(rf, &(ptr->raw.game));
 	report_oob	(rf, &(ptr->raw.OOBp1), 1);
 	report_oob	(rf, &(ptr->raw.OOBp2), 2);

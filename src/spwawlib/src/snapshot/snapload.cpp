@@ -570,8 +570,7 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	rc = load_oob (fd, &(dst->raw.OOBp2), stab, mhdr.version);
 	ERRORGOTO ("load_oob(OOBp2)", handle_error);
 
-	/* Determine snapshot type */
-	dst->type = (dst->raw.OOBp1.formations.cnt != 0) ? SPWAW_CAMPAIGN_BATTLE : SPWAW_STDALONE_BATTLE;
+	dst->type = (SPWAW_BATTLE_TYPE)ihdr.type;
 
 	return (SPWERR_OK);
 
