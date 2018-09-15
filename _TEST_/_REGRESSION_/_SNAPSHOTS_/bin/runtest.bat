@@ -13,7 +13,7 @@ call report_all.bat
 echo.
 
 echo ### Comparing reports...
-diff -U3 -r _BASE_ _RPT_ >DIFF
+diff -U3 -r _BASE_ _RPT_ >DIFF_BASE.diff
 echo.
 
 if "x%RUNTEST_NO_PAUSE%" == "x" goto DOPAUSE 

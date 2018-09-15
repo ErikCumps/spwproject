@@ -9,7 +9,7 @@ echo Performing _RPT_ cleanup...
 del /Q _RPT_\*.*		1>nul 2>nul
 
 echo Performing DIFF data cleanup...
-del /Q DIFF			1>nul 2>nul
+del /Q DIFF_*			1>nul 2>nul
 del /Q DIFFSTAT.txt		1>nul 2>nul
 
 :DONE
