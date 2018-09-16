@@ -545,6 +545,7 @@ GuiMainWindow::action_add_battle_savegame (void)
 
 	item = d.dossier->get_actionitem();
 	if (!item) return;
+	if (item->type == MDLD_TREE_BTURN) item = MDLD_TREE_raise_to (item, MDLD_TREE_BATTLE);
 	if ((item->type != MDLD_TREE_STDALONE) && (item->type != MDLD_TREE_BATTLE)) return;
 
 	arc = SPWAW_savelist_new (&list);

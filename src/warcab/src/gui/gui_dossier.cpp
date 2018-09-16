@@ -90,6 +90,7 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 		case MDLD_TREE_DOSSIER:
 			menu->addAction (GUI_ACTIONS->p.delete_dossier);
 			break;
+		case MDLD_TREE_STDALONE:
 		case MDLD_TREE_BATTLE:
 			menu->addAction (GUI_ACTIONS->p.delete_battle);
 			break;
@@ -316,6 +317,7 @@ GuiDossier::delete_item (void)
 	//report_GMD (d.actionitem);
 
 	switch (d.actionitem->type) {
+		case MDLD_TREE_STDALONE:
 		case MDLD_TREE_BATTLE:
 		case MDLD_TREE_BTURN:
 			WARCAB->del (d.actionitem);

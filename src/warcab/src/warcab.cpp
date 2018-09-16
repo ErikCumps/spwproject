@@ -549,6 +549,7 @@ WARCABState::del (MDLD_TREE_ITEM *item)
 		emit will_delete (item);
 
 	switch (item->type) {
+		case MDLD_TREE_STDALONE:
 		case MDLD_TREE_BATTLE:
 			arc = SPWAW_dossier_del (d.dossier, item->data.b);
 			break;
