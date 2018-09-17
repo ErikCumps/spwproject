@@ -3,3 +3,5 @@ The Steel Panthers World At War savegame inspection and campaign tracking projec
 
 Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
 
+[Screenshots](info/screenshots/LIST.md)
+
