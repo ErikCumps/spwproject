@@ -53,7 +53,7 @@ GuiDlgAddCampaignSavegame::constructor_core (QString &type, QString &items)
 
 	GUINEW (d.but_cancel, QPushButton (d.buttons), ERR_GUI_DLG_ADD_CAMPAIGN_SAVEGAME_INIT_FAILED, "cancel button");
 	d.but_cancel->setText ("&Cancel");
-	d.buttons->addButton (d.but_cancel, QDialogButtonBox::AcceptRole);
+	d.buttons->addButton (d.but_cancel, QDialogButtonBox::RejectRole);
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_ADD_CAMPAIGN_SAVEGAME_INIT_FAILED, "body widget");

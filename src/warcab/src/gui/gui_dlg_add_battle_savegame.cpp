@@ -59,7 +59,7 @@ GuiDlgAddBattleSavegame::constructor_core (char *name, QString &type, QString &i
 
 	GUINEW (d.but_cancel, QPushButton (d.buttons), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "cancel button");
 	d.but_cancel->setText ("&Cancel");
-	d.buttons->addButton (d.but_cancel, QDialogButtonBox::AcceptRole);
+	d.buttons->addButton (d.but_cancel, QDialogButtonBox::RejectRole);
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "body widget");
@@ -69,9 +69,9 @@ GuiDlgAddBattleSavegame::constructor_core (char *name, QString &type, QString &i
 	GUINEW (d.info, QLabel (d.body), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "info label");
 	d.info->setWordWrap(true);
 	if (!d.needs_name) {
-		d.info->setText ("\nPlease select one or more " + items + " to add to the \"<b>" + QString(name) + "</b>\" standalone battle:\n");
+		d.info->setText ("Please select one or more " + items + " to add to the \"<b>" + QString(name) + "</b>\" standalone battle:");
 	} else {
-		d.info->setText ("\nPlease enter a name and select one or more " + items + " to create a new standalone battle:\n");
+		d.info->setText ("<b>Please enter a name and select one or more " + items + " to create a new standalone battle:<b>\n");
 	}
 
 	if (d.needs_name) {
