@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_dossier.h>
 #include "dossier/dossier.h"
+#include "spwoob/spwoob_list.h"
 #include "common/internal.h"
 #include "utils/filecheck.h"
 
@@ -34,10 +35,6 @@ SPWAW_dossier_new (const char *name, const char *comment, SPWAW_DOSSIER **dossie
 
 	/* Record original OOB dir */
 	ptr->oobdir = STRTAB_add (stab, cfg.oobdir);
-
-	/* Record OOB data */
-	rc = SPWOOB_copy (ptr->oobdat, cfg.oobptr);
-	ERRORGOTO ("spwoob_copy()", handle_error);
 
 	*dossier = ptr;
 	return (SPWERR_OK);
@@ -264,10 +261,6 @@ SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, S
 	if (snap->type != SPWAW_CAMPAIGN_BATTLE) {
 		RWE (SPWERR_BADBTYPE, "this snapshot does not allow campaign tracking");
 	}
-
-	/* Verify dossier and snapshot OOB match */
-	rc = SPWOOB_compare (snap->oobdat, dossier->oobdat);
-	ROE ("SPWOOB_compare(snapshot, dossier)");
 
 	/* Apply dossier type compatibility rules */
 	if (dossier->bcnt != 0) {

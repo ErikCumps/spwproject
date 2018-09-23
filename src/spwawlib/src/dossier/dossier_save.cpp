@@ -10,6 +10,7 @@
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
 #include "dossier/dossier_file.h"
+#include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -101,6 +102,9 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;
 
+		rc = SPWOOB_LIST_spwoob2idx (src->oobdata, p->oobdat, &(hdrs[idx].oobdat));
+		ERRORGOTO ("SPWOOB_LIST_spwoob2idx(battle oob data)", handle_error);
+
 		if (p->name) {
 			hdrs[idx].name = STRTAB_getidx (stab, p->name);
 		} else {
@@ -183,12 +187,14 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 
 	bseekmove (fd, sizeof (hdr));
 
-	hdr.oobdat = bseekget (fd) - p0;
-	rc = SPWOOB_save (src->oobdat, fd, compress);
-	ROE ("spwoob_save()");
+	hdr.oobdata = bseekget (fd) - p0;
+	rc = SPWOOB_LIST_compress (src->oobdata);		ROE ("SPWOOB_LIST_compress()");
+	rc = SPWOOB_LIST_save (src->oobdata, fd, compress);	ROE ("SPWOOB_LIST_save()");
+	SPWOOB_LIST_debug_log (src->oobdata);
 
 	hdr.blist = bseekget (fd) - p0;
-	dossier_save_battles (src, fd, &(hdr.bcnt), stab, compress);
+	rc = dossier_save_battles (src, fd, &(hdr.bcnt), stab, compress);
+	ROE ("dossier_save_battles()");
 
 	hdr.stab = bseekget (fd) - p0;
 	rc = STRTAB_fdsave (stab, fd, compress);

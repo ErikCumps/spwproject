@@ -49,6 +49,7 @@ typedef struct s_DOS_BHEADER_V10 {
 #pragma pack(pop, r1)
 
 extern SPWAW_ERROR	dossier_load_v10_header		(int fd, DOS_HEADER *hdr);
+extern SPWAW_ERROR	dossier_load_v10_oobdata	(int fd, SPWAW_SPWOOB_LIST *oobdata);
 extern SPWAW_ERROR	dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt);
 
 #endif	/* INTERNAL_DOSSIER_FILE_V10_H */

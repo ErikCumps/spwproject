@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
+#include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
 #include "common/internal.h"
@@ -57,6 +58,7 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 	}
 	p->date		= p->snap->game.battle.data.start;
 	p->location	= STRTAB_add (stab, p->snap->game.battle.data.location);
+	p->oobdat	= p->snap->oobdat;
 	p->OOB_p1	= p->snap->game.battle.data.OOB_p1;
 	p->OOB_p2	= p->snap->game.battle.data.OOB_p2;
 	p->miss_p1	= STRTAB_add (stab, p->snap->game.battle.strings.miss_p1);
@@ -97,11 +99,18 @@ dossier_add_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b)
 	SPWAW_ERROR	rc = SPWERR_OK;
 	USHORT		idx;
 	SPWAW_BATTLE	*pp;
+	unsigned long	oobidx;
 
 	CNULLARG (ptr); CNULLARG (b);
 
 	rc = dossier_list_expand (ptr);
 	ROE ("dossier_list_expand()");
+
+	rc = SPWOOB_LIST_add (ptr->oobdata, b->oobdat, &oobidx);
+	ROE ("SPWOOB_LIST_add()");
+
+	rc = SPWOOB_LIST_idx2spwoob (ptr->oobdata, oobidx, &(b->oobdat));
+	ROE ("SPWOOB_LIST_idx2spwoob()");
 
 	b->dossier = ptr;
 	ptr->blist[ptr->bcnt++] = b;
@@ -172,6 +181,9 @@ battle_add_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab, SPWAW_B
 
 	CNULLARG (ptr); CNULLARG (snap); CNULLARG (bturn);
 	*bturn = NULL;
+
+	rc = SPWOOB_compare (snap->oobdat, ptr->oobdat);
+	ROE ("SPWOOB_compare()");
 
 	bt = safe_malloc (SPWAW_BTURN); COOM (bt, "SPWAW_BTURN");
 
@@ -308,7 +320,6 @@ dossier_add_new_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, const char *na
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_BATTLE	*b = NULL;
-	STRTAB		*stab = NULL;
 
 	CSPWINIT;
 	CNULLARG (ptr); CNULLARG (snap); CNULLARG (battle);
@@ -318,8 +329,6 @@ dossier_add_new_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, const char *na
 	if (ptr->type != SPWAW_STDALONE_DOSSIER) {
 		RWE (SPWERR_BADDTYPE, "this dossier does not allow adding standalone battles");
 	}
-
-	stab = (STRTAB *)ptr->stab;
 
 	rc = dossier_make_battle (ptr, snap, name, &b);
 	ROE ("dossier_make_battle()");

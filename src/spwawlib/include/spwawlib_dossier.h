@@ -17,6 +17,7 @@
 #include <spwawlib_snapshot.h>
 #include <spwawlib_savelist.h>
 #include <spwawlib_snaplist.h>
+#include <spwawlib_spwoob_list.h>
 
 /*******************************/
 /***   MAIN DATA STRUCTURE   ***/
@@ -87,6 +88,7 @@ struct s_SPWAW_BATTLE {
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn #0 snapshot data			*/
 	SPWAW_DATE		date;				/* Battle date					*/
 	char			*location;			/* Battle location				*/
+	SPWOOB			*oobdat;			/* Battle OOB data				*/
 	BYTE			OOB_p1;				/* Player OOB ID				*/
 	BYTE			OOB_p2;				/* Opponent OOB ID				*/
 	char			*miss_p1;			/* Player mission				*/
@@ -109,7 +111,7 @@ struct s_SPWAW_DOSSIER {
 	char			*comment;			/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
 	char			*oobdir;			/* Original OOB data directory			*/
-	SPWOOB			*oobdat;			/* OOB data					*/
+	SPWAW_SPWOOB_LIST	*oobdata;			/* OOB data list				*/
 	BYTE			OOB;				/* OOB ID					*/
 	USHORT			fcnt;				/* Core formations count			*/
 	USHORT			ucnt;				/* Core units count				*/

@@ -11,6 +11,7 @@
 #include "dossier/dossier.h"
 #include "dossier/dossier_file.h"
 #include "dossier/dossier_file_v10.h"
+#include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -59,7 +60,7 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 
 		p->turn = hdrs[i].turn;
 
-		rc = snapnew (&(p->snap), dst->dossier->oobdat, stab);
+		rc = snapnew (&(p->snap), dst->oobdat, stab);
 		ERRORGOTO ("snapnew()", handle_error);
 
 		bseekset (fd, pos + hdrs[i].snap);
@@ -153,6 +154,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		p->miss_p2  = STRTAB_getstr (stab, hdrs[i].miss_p2);
 		p->meeting  = hdrs[i].meeting != 0;
 
+		rc = SPWOOB_LIST_idx2spwoob (dst->oobdata, hdrs[i].oobdat, &(p->oobdat));
+		ERRORGOTO ("SPWOOB_LIST_idx2spwoob(battle oob data index)", handle_error);
+
 		if (hdrs[i].name != BADSTRIDX) {
 			p->name = STRTAB_getstr (stab, hdrs[i].name);
 		} else {
@@ -205,7 +209,7 @@ dossier_check_magic_version (DOS_MV_HEADER &hdr)
 static SPWAW_ERROR
 dossier_check_header (DOS_HEADER &hdr)
 {
-	if (hdr.oobdat == 0)
+	if (hdr.oobdata == 0)
 		RWE (SPWERR_BADSAVEDATA, "dossier contains no OOB data");
 
 	if (hdr.stab == 0)
@@ -299,7 +303,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	/* We are now backwards compatible with version 10 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
-		ERRORGOTO ("snapshot_load_v10_info_header(snapshot info hdr)", handle_error);
+		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
@@ -308,9 +312,16 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	rc = dossier_check_header (hdr);
 	ERRORGOTO ("dossier_check_header()", handle_error);
 
-	bseekset (fd, pos + hdr.oobdat);
-	rc = SPWOOB_load (dst->oobdat, fd);
-	ERRORGOTO ("spwoob_load()", handle_error);
+	bseekset (fd, pos + hdr.oobdata);
+	/* We are now backwards compatible with version 10 */
+	if (mvhdr.version == DOSS_VERSION_V10) {
+		rc = dossier_load_v10_oobdata (fd, dst->oobdata);
+		ERRORGOTO ("dossier_load_v10_oobdata()", handle_error);
+	} else {
+		rc = SPWOOB_LIST_load (dst->oobdata, fd);
+		ERRORGOTO ("SPWOOB_LIST_load()", handle_error);
+	}
+	SPWOOB_LIST_debug_log (dst->oobdata);
 
 	bseekset (fd, pos + hdr.stab);
 	rc = STRTAB_fdload (stab, fd);

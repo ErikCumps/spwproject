@@ -10,6 +10,7 @@
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
 #include "spwoob/spwoob.h"
+#include "spwoob/spwoob_list.h"
 #include "common/internal.h"
 
 SPWAW_ERROR
@@ -23,8 +24,8 @@ dossier_new (SPWAW_DOSSIER **ptr)
 
 	p = safe_malloc (SPWAW_DOSSIER); COOMGOTO (p, "SPWAW_DOSSIER", handle_error);
 
-	rc = SPWOOB_new (&(p->oobdat));
-	ERRORGOTO ("spwoob_new()", handle_error);
+	rc = SPWOOB_LIST_new (&(p->oobdata));
+	ERRORGOTO ("SPWOOB_LIST_new()", handle_error);
 
 	rc = STRTAB_new ((STRTAB **)&(p->stab));
 	ERRORGOTO ("STRTAB_new()", handle_error);
@@ -35,7 +36,7 @@ dossier_new (SPWAW_DOSSIER **ptr)
 handle_error:
 	if (p) {
 		if (p->stab) STRTAB_free ((STRTAB **)&(p->stab));
-		if (p->oobdat) SPWOOB_free (&(p->oobdat));
+		if (p->oobdata) SPWOOB_LIST_free (&(p->oobdata));
 		free (p);
 	}
 	return (rc);

@@ -28,7 +28,7 @@ typedef struct s_DOS_HEADER {
 	ULONG		name;			/* Dossier name	symbol								*/
 	ULONG		comment;		/* Dossier comment symbol							*/
 	ULONG		oobdir;			/* Original OOB data directory symbol						*/
-	ULONG		oobdat;			/* OOB data offset, relative to start of header					*/
+	ULONG		oobdata;		/* Dossier OOB data list offset, relative to start of header			*/
 	ULONG		OOB;			/* OOB ID									*/
 	USHORT		fcnt;			/* Core formations count							*/
 	USHORT		ucnt;			/* Core units count								*/
@@ -53,6 +53,7 @@ typedef struct s_DOS_BHEADER {
 		ULONG	size;			/* data size									*/
 		ULONG	comp;			/* compressed data size (0 if no compression)					*/
 	}	ra;
+	ULONG		oobdat;			/* Battle OOB data index in dossier OOB list					*/
 	ULONG		name;			/* optional battle name symbol								*/
 } DOS_BHEADER;
 
