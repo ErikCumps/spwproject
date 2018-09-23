@@ -79,7 +79,8 @@ sort_dossier (const void *a, const void *b)
 
 	SPWAW_date2stamp (&(fa->date), &sa);
 	SPWAW_date2stamp (&(fb->date), &sb);
-	return ((sa==sb)?0:((sa<sb)?-1:+1));
+
+	return ((fa->name==fb->name)?(sa==sb)?0:((sa<sb)?-1:+1):((fa->name==NULL)?-1:((fb->name==NULL)?+1:strcmp(fa->name, fb->name))));
 }
 
 static SPWAW_BATTLE *
