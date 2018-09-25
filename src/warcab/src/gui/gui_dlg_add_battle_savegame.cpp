@@ -114,6 +114,16 @@ GuiDlgAddBattleSavegame::constructor_core (char *name, QString &type, QString &i
 
 	connect (d.name_edit, SIGNAL(textChanged(const QString&)), this, SLOT(name_changed(const QString&)));
 	connect (d.view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
+	connect (d.view, SIGNAL(activated(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
+
+	// Consider hooking up the selectionChanged signal of the d.view->selectionModel() to refresh_activation_status
+
+	// And set the focus
+	if (d.needs_name) {
+		d.name_edit->setFocus(Qt::ActiveWindowFocusReason);
+	} else {
+		d.view->setFocus(Qt::ActiveWindowFocusReason);
+	}
 
 	SET_GUICLS_NOERR;
 }

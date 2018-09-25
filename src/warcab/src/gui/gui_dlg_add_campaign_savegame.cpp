@@ -89,6 +89,12 @@ GuiDlgAddCampaignSavegame::constructor_core (QString &type, QString &items)
 	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
 
 	connect (d.view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
+	connect (d.view, SIGNAL(activated(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
+
+	// Consider hooking up the selectionChanged signal of the d.view->selectionModel() to refresh_activation_status
+
+	// And set the focus
+	d.view->setFocus(Qt::ActiveWindowFocusReason);
 
 	SET_GUICLS_NOERR;
 }
