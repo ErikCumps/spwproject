@@ -47,6 +47,8 @@ extern SPWAW_ERROR	SPWOOB_LIST_save	(SPWAW_SPWOOB_LIST *list, int fd, bool compr
 extern SPWAW_ERROR	SPWOOB_LIST_idx2spwoob	(SPWAW_SPWOOB_LIST *list, unsigned long idx, SPWOOB **spwoob);
 extern SPWAW_ERROR	SPWOOB_LIST_spwoob2idx	(SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx);
 
+extern SPWAW_ERROR	SPWOOB_LIST_takeref	(SPWAW_SPWOOB_LIST *list, unsigned long idx, SPWOOB **spwoob);
+
 extern SPWAW_ERROR	SPWOOB_LIST_debug_log	(SPWAW_SPWOOB_LIST *list);
 
 #endif	/* INTERNAL_SPWOOB_LIST_H */

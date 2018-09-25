@@ -154,7 +154,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		p->miss_p2  = STRTAB_getstr (stab, hdrs[i].miss_p2);
 		p->meeting  = hdrs[i].meeting != 0;
 
-		rc = SPWOOB_LIST_idx2spwoob (dst->oobdata, hdrs[i].oobdat, &(p->oobdat));
+		rc = SPWOOB_LIST_takeref (dst->oobdata, hdrs[i].oobdat, &(p->oobdat));
 		ERRORGOTO ("SPWOOB_LIST_idx2spwoob(battle oob data index)", handle_error);
 
 		if (hdrs[i].name != BADSTRIDX) {
@@ -321,7 +321,6 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 		rc = SPWOOB_LIST_load (dst->oobdata, fd);
 		ERRORGOTO ("SPWOOB_LIST_load()", handle_error);
 	}
-	SPWOOB_LIST_debug_log (dst->oobdata);
 
 	bseekset (fd, pos + hdr.stab);
 	rc = STRTAB_fdload (stab, fd);
@@ -339,6 +338,8 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	bseekset (fd, pos + hdr.blist);
 	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);
 	ERRORGOTO ("dossier_load_battles()", handle_error);
+
+	SPWOOB_LIST_debug_log (dst->oobdata);
 
 	return (SPWERR_OK);
 

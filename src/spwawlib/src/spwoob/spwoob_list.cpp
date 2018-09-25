@@ -68,7 +68,7 @@ SPWOOB_LIST_add (SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx)
 		p = safe_malloc (SPWAW_SPWOOB_LIST_NODE); COOMGOTO (p, "SPWAW_SPWOOB_LIST_NODE node", handle_error);
 		rc = SPWOOB_new (&(p->data)); ERRORGOTO("SPWOOB_new() failed", handle_error);
 		rc = SPWOOB_copy (p->data, spwoob); ERRORGOTO("SPWOOB_copy() failed", handle_error);
-		p->refcnt = 1;
+		p->refcnt = 0;
 
 		if (list->cnt >= list->len) {
 			list->len += LISTINC;
@@ -82,11 +82,13 @@ SPWOOB_LIST_add (SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx)
 		}
 		lidx = list->cnt++;
 		list->list[lidx] = p;
-	} else {
-		list->list[lidx]->refcnt++;
 	}
 
-	if (idx) *idx = lidx;
+	// Only increment the reference count when a reference is taken
+	if (idx) {
+		*idx = lidx;
+		list->list[*idx]->refcnt++;
+	}
 
 	return (SPWERR_OK);
 
@@ -179,9 +181,14 @@ SPWOOB_LIST_compact (SPWAW_SPWOOB_LIST *list)
 	CSPWINIT;
 	CNULLARG (list);
 
+	// Clean up all unused nodes first
+	for (i=0; i<list->cnt; i++) {
+		if (list->list[i]->refcnt == 0) SPWOOB_free (&(list->list[i]->data));
+	}
+
 	// Detect first non-empty node
 	for (i=0; i<list->cnt; i++) {
-		if (list->list[i]->data) break;
+		if (list->list[i]->refcnt != 0) break;
 	}
 
 	// Early exit if all nodes are empty
@@ -218,6 +225,7 @@ SPWOOB_LIST_idx2spwoob (SPWAW_SPWOOB_LIST *list, unsigned long idx, SPWOOB **spw
 	if (idx >= list->cnt) RWE (SPWERR_FAILED, "invalid idx");
 
 	*spwoob = list->list[idx]->data;
+
 	return (SPWERR_OK);
 }
 
@@ -239,6 +247,21 @@ SPWOOB_LIST_spwoob2idx (SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *
 	if (!found) RWE (SPWERR_FAILED, "entry not found");
 
 	*idx = i;
+
+	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
+SPWOOB_LIST_takeref (SPWAW_SPWOOB_LIST *list, unsigned long idx, SPWOOB **spwoob)
+{
+	CNULLARG (list); CNULLARG (spwoob);
+	*spwoob = NULL;
+
+	if (idx >= list->cnt) RWE (SPWERR_FAILED, "invalid idx");
+
+	*spwoob = list->list[idx]->data;
+	list->list[idx]->refcnt++;
+
 	return (SPWERR_OK);
 }
 
