@@ -700,6 +700,7 @@ typedef struct s_SPWAW_SNAPSHOT {
 	SPWAW_SNAP_OOB		OOBp1;				/* Player1 OOB info					*/
 	SPWAW_SNAP_OOB		OOBp2;				/* Player2 OOB info					*/
 	SPWOOB			*oobdat;			/* OOB data						*/
+	bool			freeoobdat;			/* indicates if OOB data must be freed			*/
 	void			*stab;				/* \internal string table				*/
 	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 } SPWAW_SNAPSHOT;

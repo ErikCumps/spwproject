@@ -172,7 +172,7 @@ SPWOOB_LIST_clear (SPWAW_SPWOOB_LIST *list)
 }
 
 SPWAW_ERROR
-SPWOOB_LIST_compress (SPWAW_SPWOOB_LIST *list)
+SPWOOB_LIST_compact (SPWAW_SPWOOB_LIST *list)
 {
 	unsigned int	i, j;
 

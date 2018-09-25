@@ -24,13 +24,8 @@ snapnew (SPWAW_SNAPSHOT **ptr, SPWOOB *oobptr, STRTAB *stabptr)
 
 	p = safe_malloc (SPWAW_SNAPSHOT); COOMGOTO (p, "SPWAW_SNAPSHOT", handle_error);
 
-	rc = SPWOOB_new (&(p->oobdat));
-	ERRORGOTO ("SPWOOB_new()", handle_error);
-
-	if (oobptr) {
-		rc = SPWOOB_copy (p->oobdat, oobptr);
-		ERRORGOTO ("SPWOOB_copy()", handle_error);
-	}
+	p->oobdat = oobptr;
+	p->freeoobdat = false;
 
 	if (!stab) {
 		rc = STRTAB_new (&stab);

@@ -188,7 +188,7 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	bseekmove (fd, sizeof (hdr));
 
 	hdr.oobdata = bseekget (fd) - p0;
-	rc = SPWOOB_LIST_compress (src->oobdata);		ROE ("SPWOOB_LIST_compress()");
+	rc = SPWOOB_LIST_compact (src->oobdata);		ROE ("SPWOOB_LIST_compact()");
 	rc = SPWOOB_LIST_save (src->oobdata, fd, compress);	ROE ("SPWOOB_LIST_save()");
 	SPWOOB_LIST_debug_log (src->oobdata);
 

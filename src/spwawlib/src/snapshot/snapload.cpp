@@ -535,6 +535,10 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	ERRORGOTO ("snaploadhdrs()", handle_error);
 
 	if (mhdr.oobdat) {
+		rc = SPWOOB_new (&(dst->oobdat));
+		ERRORGOTO ("SPWOOB_new()", handle_error);
+		dst->freeoobdat = true;
+
 		bseekset (fd, pos + mhdr.oobdat);
 		rc = SPWOOB_load (dst->oobdat, fd);
 		ERRORGOTO ("SPWOOB_load()", handle_error);

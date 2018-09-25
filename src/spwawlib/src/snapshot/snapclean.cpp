@@ -93,7 +93,7 @@ snapclean (SPWAW_SNAPSHOT *ptr, STRTAB *stptr)
 	snapclean_game	(&(ptr->game));
 	snapclean_oob	(&(ptr->OOBp1));
 	snapclean_oob	(&(ptr->OOBp2));
-	SPWOOB_free (&(ptr->oobdat));
+	if (ptr->freeoobdat) SPWOOB_free (&(ptr->oobdat));
 	if (ptr->stab != stptr) {
 		STRTAB_free ((STRTAB **)&(ptr->stab));
 	}

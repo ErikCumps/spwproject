@@ -38,7 +38,7 @@ extern SPWAW_ERROR	SPWOOB_LIST_del		(SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob);
 extern SPWAW_ERROR	SPWOOB_LIST_match	(SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx);
 
 extern SPWAW_ERROR	SPWOOB_LIST_clear	(SPWAW_SPWOOB_LIST *list);
-extern SPWAW_ERROR	SPWOOB_LIST_compress	(SPWAW_SPWOOB_LIST *list);
+extern SPWAW_ERROR	SPWOOB_LIST_compact	(SPWAW_SPWOOB_LIST *list);
 
 extern SPWAW_ERROR	SPWOOB_LIST_load	(SPWAW_SPWOOB_LIST *list, int fd);
 extern SPWAW_ERROR	SPWOOB_LIST_save	(SPWAW_SPWOOB_LIST *list, int fd, bool compress);
