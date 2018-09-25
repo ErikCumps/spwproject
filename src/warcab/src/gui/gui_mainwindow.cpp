@@ -242,7 +242,7 @@ GuiMainWindow::action_app_exit (void)
 void
 GuiMainWindow::action_app_prefs (void)
 {
-	CFG_DLG ();
+	if (CFG_DLG ()) SPWAW_recfg (CFG_oob_path (), false);
 }
 
 void
