@@ -59,12 +59,12 @@ private:
 	} d;
 
 private slots:
-	void	tree_clicked	(const QModelIndex& index);
-	void	accept		(void);
+	void	selection_changed	(const QItemSelection &selected, const QItemSelection &deselected);
+	void	accept			(void);
 
 private:
 	void	constructor_core		(QString &type, QString &items);
-	void	refresh_activation_status	(void);
+	void	refresh_ok_button_status	(void);
 };
 
 #endif	/* GUI_DLG_ADD_CAMPAIGN_SAVEGAME_H */

@@ -113,10 +113,6 @@ GuiDlgAddBattleSavegame::constructor_core (char *name, QString &type, QString &i
 	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
 
 	connect (d.name_edit, SIGNAL(textChanged(const QString&)), this, SLOT(name_changed(const QString&)));
-	connect (d.view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
-	connect (d.view, SIGNAL(activated(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
-
-	// Consider hooking up the selectionChanged signal of the d.view->selectionModel() to refresh_activation_status
 
 	// And set the focus
 	if (d.needs_name) {
@@ -149,7 +145,11 @@ GuiDlgAddBattleSavegame::GuiDlgAddBattleSavegame (char *path, SPWAW_SAVELIST *ig
 	/* Connect data model with tree view */
 	d.view->setModel (d.savemodel);
 
-	refresh_activation_status();
+	/* Hook up the selectionChanged signal of the d.view->selectionModel() to refresh_ok_button_status */
+	connect (d.view->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+		this, SLOT(selection_changed(const QItemSelection&, const QItemSelection&)));
+
+	refresh_ok_button_status();
 
 	SET_GUICLS_NOERR;
 }
@@ -176,7 +176,11 @@ GuiDlgAddBattleSavegame::GuiDlgAddBattleSavegame (char *path, SPWAW_SNAPLIST *ig
 	/* Connect data model with tree view */
 	d.view->setModel (d.snapmodel);
 
-	refresh_activation_status();
+	/* Hook up the selectionChanged signal of the d.view->selectionModel() to refresh_ok_button_status */
+	connect (d.view->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+		this, SLOT(selection_changed(const QItemSelection&, const QItemSelection&)));
+
+	refresh_ok_button_status();
 
 	SET_GUICLS_NOERR;
 
@@ -231,7 +235,7 @@ GuiDlgAddBattleSavegame::get_data (SPWAW_SNAPLIST *list)
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 void
-GuiDlgAddBattleSavegame::refresh_activation_status (void)
+GuiDlgAddBattleSavegame::refresh_ok_button_status (void)
 {
 	bool			activate = false;
 	QItemSelectionModel	*selection;
@@ -249,13 +253,13 @@ GuiDlgAddBattleSavegame::refresh_activation_status (void)
 void
 GuiDlgAddBattleSavegame::name_changed (const QString& /*name*/)
 {
-	refresh_activation_status();
+	refresh_ok_button_status();
 }
 
 void
-GuiDlgAddBattleSavegame::tree_clicked (const QModelIndex& /*index*/)
+GuiDlgAddBattleSavegame::selection_changed (const QItemSelection&/*selected*/, const QItemSelection&/*deselected*/)
 {
-	refresh_activation_status();
+	refresh_ok_button_status();
 }
 
 void

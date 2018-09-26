@@ -91,8 +91,6 @@ GuiDlgAddCampaignSavegame::constructor_core (QString &type, QString &items)
 	connect (d.view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
 	connect (d.view, SIGNAL(activated(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
 
-	// Consider hooking up the selectionChanged signal of the d.view->selectionModel() to refresh_activation_status
-
 	// And set the focus
 	d.view->setFocus(Qt::ActiveWindowFocusReason);
 
@@ -120,7 +118,11 @@ GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (char *path, SPWAW_SAVELIST
 	/* Connect data model with tree view */
 	d.view->setModel (d.savemodel);
 
-	refresh_activation_status();
+	/* Hook up the selectionChanged signal of the d.view->selectionModel() to refresh_ok_button_status */
+	connect (d.view->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+		this, SLOT(selection_changed(const QItemSelection&, const QItemSelection&)));
+
+	refresh_ok_button_status();
 
 	SET_GUICLS_NOERR;
 }
@@ -147,7 +149,11 @@ GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (char *path, SPWAW_SNAPLIST
 	/* Connect data model with tree view */
 	d.view->setModel (d.snapmodel);
 
-	refresh_activation_status();
+	/* Hook up the selectionChanged signal of the d.view->selectionModel() to refresh_ok_button_status */
+	connect (d.view->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+		this, SLOT(selection_changed(const QItemSelection&, const QItemSelection&)));
+
+	refresh_ok_button_status();
 
 	SET_GUICLS_NOERR;
 }
@@ -191,7 +197,7 @@ GuiDlgAddCampaignSavegame::get_data (SPWAW_SNAPLIST *list)
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 void
-GuiDlgAddCampaignSavegame::refresh_activation_status (void)
+GuiDlgAddCampaignSavegame::refresh_ok_button_status (void)
 {
 	bool			activate = false;
 	QItemSelectionModel	*selection;
@@ -203,10 +209,11 @@ GuiDlgAddCampaignSavegame::refresh_activation_status (void)
 }
 
 void
-GuiDlgAddCampaignSavegame::tree_clicked (const QModelIndex& /*index*/)
+GuiDlgAddCampaignSavegame::selection_changed (const QItemSelection&/*selected*/, const QItemSelection&/*deselected*/)
 {
-	refresh_activation_status();
+	refresh_ok_button_status();
 }
+
 
 void
 GuiDlgAddCampaignSavegame::accept (void)

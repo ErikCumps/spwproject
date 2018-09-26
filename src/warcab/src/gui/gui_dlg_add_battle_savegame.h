@@ -62,13 +62,13 @@ private:
 	} d;
 
 private slots:
-	void	name_changed	(const QString& text);
-	void	tree_clicked	(const QModelIndex& index);
-	void	accept		(void);
+	void	name_changed		(const QString& text);
+	void	selection_changed	(const QItemSelection &selected, const QItemSelection &deselected);
+	void	accept			(void);
 
 private:
 	void	constructor_core		(char *name, QString &type, QString &items);
-	void	refresh_activation_status	(void);
+	void	refresh_ok_button_status	(void);
 };
 
 #endif	/* GUI_DLG_ADD_BATTLE_SAVEGAME_H */
