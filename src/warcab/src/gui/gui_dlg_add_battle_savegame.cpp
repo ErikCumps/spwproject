@@ -31,7 +31,7 @@ GuiDlgAddBattleSavegame::constructor_core (char *name, QString &type, QString &i
 
 	/* Set dialog caption and icon */
 	if (!d.needs_name) {
-		setWindowTitle ("Add " + type + "To Standalone Battle");
+		setWindowTitle ("Add " + type + " To Standalone Battle");
 	} else {
 		setWindowTitle ("Add Standalone Battle From " + type);
 	}

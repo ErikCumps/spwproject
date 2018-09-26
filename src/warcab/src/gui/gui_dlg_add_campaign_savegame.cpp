@@ -28,7 +28,7 @@ GuiDlgAddCampaignSavegame::constructor_core (QString &type, QString &items)
 	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption and icon */
-	setWindowTitle ("Add " + type + "To Campaign");
+	setWindowTitle ("Add " + type + " To Campaign");
 	setWindowIcon (*(RES_pixmap (RID_MAIN_ICON)));
 
 	/* Set dialog font */
