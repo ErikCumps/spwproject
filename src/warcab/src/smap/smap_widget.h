@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - widget.
  *
- * Copyright (C) 2012-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -33,10 +33,10 @@ public:
 	void	reset_cursor		(void);
 
 public:
-	void	enable_grid		(bool enable);
-	void	enable_victoryhexes	(bool enable);
-	void	enable_influence	(bool enable);
-	void	enable_frontline	(bool enable);
+	void	enable_grid		(bool enable, bool paint);
+	void	enable_victoryhexes	(bool enable, bool paint);
+	void	enable_influence	(bool enable, bool paint);
+	void	enable_frontline	(bool enable, bool paint);
 	void	save_smap		(void);
 
 public:
@@ -46,7 +46,10 @@ public:
 		ZOOM_LIMIT
 	} ZOOMLEVEL;
 
-	void	set_zoom		(ZOOMLEVEL zoom);
+	void	set_zoom		(ZOOMLEVEL zoom, bool paint);
+
+public:
+	void	trigger_repaint		(void);
 
 signals:
 	void	wouldscroll		(int x, int y);

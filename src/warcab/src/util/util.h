@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - utility functions.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,6 +19,8 @@ extern void	UTIL_fmt_longspan	(SPWAW_PERIOD *span, char *buf, int len);
 extern void	UTIL_fmt_longspan	(SPWAW_PERIOD *span, UtilStrbuf *buf);
 extern void	UTIL_fmt_shortspan	(SPWAW_PERIOD *span, char *buf, int len);
 extern void	UTIL_fmt_shortspan	(SPWAW_PERIOD *span, UtilStrbuf *buf);
+extern void	UTIL_fmt_fullspan	(SPWAW_PERIOD *span, char *buf, int len);
+extern void	UTIL_fmt_fullspan	(SPWAW_PERIOD *span, UtilStrbuf *buf);
 
 /*! Simple macro to calculate the length of a (statically initialized) array */
 #define	ARRAYCOUNT(arr_) (sizeof(arr_)/sizeof(arr_[0]))

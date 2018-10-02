@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -96,10 +96,13 @@ GuiRptBtl::set_enabled (bool flag)
 
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.overview, "Overview");
-		addTab (d.force_core, *RES_flag (d.item->data.b->dossier->OOB), "Core force");
-		addTab (d.force_spt, *RES_flag (d.item->data.b->dossier->OOB), "Support force");
-		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB));
-		addTab (d.force_opp, *RES_flag (d.item->data.b->OOB), buf);
+		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+			addTab (d.force_core, "Core force");
+			addTab (d.force_spt, "Support force");
+		} else {
+			addTab (d.force_spt, "Support force");
+		}
+		addTab (d.force_opp, "Opponent force");
 #if	EXPERIMENTAL
 		addTab (d.compare, "Comparisons");
 #endif	/* EXPERIMENTAL */
@@ -139,11 +142,17 @@ GuiRptBtl::refresh (void)
 
 		memset (buf, 0, sizeof (buf));
 
-		setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.b->dossier->OOB));
-		setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.b->dossier->OOB));
-		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB));
+		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+			setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.b->dossier->OOB));
+			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.b->dossier->OOB));
+		} else {
+			snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB_p1));
+			setTabText (indexOf (d.force_spt), buf);
+			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.b->OOB_p1));
+		}
+		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.b->OOB_p2));
 		setTabText (indexOf (d.force_opp), buf);
-		setTabIcon (indexOf (d.force_opp), *RES_flag (d.item->data.b->OOB));
+		setTabIcon (indexOf (d.force_opp), *RES_flag (d.item->data.b->OOB_p2));
 	}
 
 	d.overview->refresh();

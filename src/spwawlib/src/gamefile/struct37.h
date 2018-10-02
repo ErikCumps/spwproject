@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -94,6 +94,7 @@ typedef struct s_STRUCT37 {
 	} u;
 } STRUCT37;
 
-extern SPWAW_ERROR	sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab);
+extern void		sec37_prepare		(STRUCT37 *src);
+extern SPWAW_ERROR	sec37_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab);
 
 #endif	/* INTERNAL_STRUCT37_H */

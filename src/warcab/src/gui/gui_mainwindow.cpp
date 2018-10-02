@@ -1,15 +1,15 @@
 /** \file
  * The SPWaW war cabinet - GUI - main window.
  *
- * Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "resource.h"
 #include "gui_mainwindow.h"
-#include "gui_dlg_load_savegame.h"
-#include "gui_dlg_load_snapshot.h"
+#include "gui_dlg_add_campaign_savegame.h"
+#include "gui_dlg_add_battle_savegame.h"
 #include "gui_dlg_load_dossier.h"
 #include "gui_dlg_edit_dossier.h"
 #include "gui_dlg_about.h"
@@ -116,7 +116,12 @@ GuiMainWindow::~GuiMainWindow (void)
 void
 GuiMainWindow::caption (void)
 {
-	setWindowTitle (SL_APP_version_ex());
+	char	caption[256];
+
+	memset (caption, 0, sizeof (caption));
+	snprintf (caption, sizeof (caption) - 1, "%s[*]", SL_APP_version_ex());
+
+	setWindowTitle (caption);
 }
 
 void
@@ -237,7 +242,7 @@ GuiMainWindow::action_app_exit (void)
 void
 GuiMainWindow::action_app_prefs (void)
 {
-	CFG_DLG ();
+	if (CFG_DLG ()) SPWAW_recfg (CFG_oob_path (), false);
 }
 
 void
@@ -383,70 +388,225 @@ GuiMainWindow::action_dossier_edit (void)
 }
 
 void
-GuiMainWindow::action_file_add_game (void)
+GuiMainWindow::action_file_add_campaign_savegame (void)
 {
-	SPWAW_ERROR		arc;
-	SPWAW_SAVELIST		*data = NULL;
-	GuiDlgLoadSavegame	*dlg;
-	int			rc;
-	SL_ERROR		erc;
-	SL_ERROR_REQUEST	erq;
+	SPWAW_ERROR			arc;
+	SPWAW_SAVELIST			*data = NULL;
+	GuiDlgAddCampaignSavegame	*dlg;
+	int				rc;
+	SL_ERROR			erc;
+	SL_ERROR_REQUEST		erq;
 
 	if (!WARCAB->is_loaded()) return;
 
 	arc = SPWAW_savelist_new (&data);
 	if (SPWAW_HAS_ERROR (arc)) {
-		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add savegame!",
+		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add campaign savegame(s)!",
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgLoadSavegame (CFG_save_path(), WARCAB->get_gamelist());
+	dlg = new GuiDlgAddCampaignSavegame (CFG_save_path(), WARCAB->get_gamelist());
 	rc = dlg->exec ();
-	dlg->data_get (data);
+	dlg->get_data (data);
 	delete dlg;
 
 	if (rc) {
-		erc = WARCAB->add (data);
+		erc = WARCAB->add_campaign (data);
 		SPWAW_savelist_free (&data);
 
 		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add savegame.");
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
 		}
 	}
 }
 
 #if	ALLOW_SNAPSHOTS_LOAD
 void
-GuiMainWindow::action_file_add_snap (void)
+GuiMainWindow::action_file_add_campaign_snapshot (void)
+{
+	SPWAW_ERROR			arc;
+	SPWAW_SNAPLIST			*data = NULL;
+	GuiDlgAddCampaignSavegame	*dlg;
+	int				rc;
+	SL_ERROR			erc;
+	SL_ERROR_REQUEST		erq;
+
+	if (!WARCAB->is_loaded()) return;
+
+	arc = SPWAW_snaplist_new (&data);
+	if (SPWAW_HAS_ERROR (arc)) {
+		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add campaign snapshot(s)!",
+			ERR_GUI_ACTION_ERROR, "SPWAW_snaplist_new() failed: %s", SPWAW_errstr (arc), erq);
+	}
+
+	dlg = new GuiDlgAddCampaignSavegame (CFG_snap_path(), WARCAB->get_snaplist());
+	rc = dlg->exec ();
+	dlg->get_data (data);
+	delete dlg;
+
+	if (rc) {
+		erc = WARCAB->add_campaign (data);
+		SPWAW_snaplist_free (&data);
+
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign snapshot(s)!");
+		}
+	}
+}
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+
+void
+GuiMainWindow::action_file_add_battle_savegame (void)
 {
 	SPWAW_ERROR		arc;
-	SPWAW_SNAPLIST		*data = NULL;
-	GuiDlgLoadSnapshot	*dlg;
+	SPWAW_SAVELIST		*list = NULL;
+	GuiDlgAddBattleSavegame	*dlg;
+	int			rc;
+	char			*name;
+	SL_ERROR		erc;
+	SL_ERROR_REQUEST	erq;
+
+	if (!WARCAB->is_loaded()) return;
+
+	arc = SPWAW_savelist_new (&list);
+	if (SPWAW_HAS_ERROR (arc)) {
+		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add standalone battle from savegame(s)!",
+			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
+	}
+
+	dlg = new GuiDlgAddBattleSavegame (CFG_save_path(), WARCAB->get_gamelist());
+	if (rc = dlg->exec ()) {
+		name = dlg->get_data (list);
+	}
+	delete dlg;
+
+	if (rc) {
+		erc = WARCAB->add_stdalone (name, list);
+		SPWAW_savelist_free (&list);
+		SL_SAFE_FREE (name);
+
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from savegame(s)!");
+		}
+	}
+}
+
+#if	ALLOW_SNAPSHOTS_LOAD
+void
+GuiMainWindow::action_file_add_battle_snapshot (void)
+{
+	SPWAW_ERROR		arc;
+	SPWAW_SNAPLIST		*list = NULL;
+	GuiDlgAddBattleSavegame	*dlg;
+	int			rc;
+	char			*name;
+	SL_ERROR		erc;
+	SL_ERROR_REQUEST	erq;
+
+	if (!WARCAB->is_loaded()) return;
+
+	arc = SPWAW_snaplist_new (&list);
+	if (SPWAW_HAS_ERROR (arc)) {
+		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add standalone battle from snapshot(s)!",
+			ERR_GUI_ACTION_ERROR, "SPWAW_snaplist_new() failed: %s", SPWAW_errstr (arc), erq);
+	}
+
+	dlg = new GuiDlgAddBattleSavegame (CFG_snap_path(), WARCAB->get_snaplist());
+	if (rc = dlg->exec ()) {
+		name = dlg->get_data (list);
+	}
+	delete dlg;
+
+	if (rc) {
+		erc = WARCAB->add_stdalone (name, list);
+		SPWAW_snaplist_free (&list);
+		SL_SAFE_FREE (name);
+
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from snapshot(s)!");
+		}
+	}
+
+}
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+
+void
+GuiMainWindow::action_add_battle_savegame (void)
+{
+	MDLD_TREE_ITEM		*item = NULL;
+	SPWAW_ERROR		arc;
+	SPWAW_SAVELIST		*list = NULL;
+	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
 
 	if (!WARCAB->is_loaded()) return;
 
-	arc = SPWAW_snaplist_new (&data);
+	item = d.dossier->get_actionitem();
+	if (!item) return;
+	if (item->type == MDLD_TREE_BTURN) item = MDLD_TREE_raise_to (item, MDLD_TREE_BATTLE);
+	if ((item->type != MDLD_TREE_STDALONE) && (item->type != MDLD_TREE_BATTLE)) return;
+
+	arc = SPWAW_savelist_new (&list);
 	if (SPWAW_HAS_ERROR (arc)) {
-		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add snapshot!",
-			ERR_GUI_ACTION_ERROR, "SPWAW_snaplist_new() failed: %s", SPWAW_errstr (arc), erq);
+		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add savegame(s) to standalone battle!",
+			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgLoadSnapshot (CFG_snap_path(), WARCAB->get_snaplist());
+	dlg = new GuiDlgAddBattleSavegame (CFG_save_path(), WARCAB->get_gamelist(), item->data.b->name);
 	rc = dlg->exec ();
-	dlg->data_get (data);
+	dlg->get_data (list);
 	delete dlg;
 
 	if (rc) {
-		erc = WARCAB->add (data);
-		SPWAW_snaplist_free (&data);
+		erc = WARCAB->add_stdalone (item->data.b, list);
+		SPWAW_savelist_free (&list);
 
 		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add snapshot.");
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add savegame(s) to standalone savegame.");
 		}
 	}
+}
+
+#if	ALLOW_SNAPSHOTS_LOAD
+void
+GuiMainWindow::action_add_battle_snapshot (void)
+{
+	MDLD_TREE_ITEM		*item = NULL;
+	SPWAW_ERROR		arc;
+	SPWAW_SNAPLIST		*list = NULL;
+	GuiDlgAddBattleSavegame	*dlg;
+	int			rc;
+	SL_ERROR		erc;
+	SL_ERROR_REQUEST	erq;
+
+	if (!WARCAB->is_loaded()) return;
+
+	item = d.dossier->get_actionitem();
+	if (!item) return;
+	if ((item->type != MDLD_TREE_STDALONE) && (item->type != MDLD_TREE_BATTLE)) return;
+
+	arc = SPWAW_snaplist_new (&list);
+	if (SPWAW_HAS_ERROR (arc)) {
+		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to add snapshot(s) to standalone battle!",
+			ERR_GUI_ACTION_ERROR, "SPWAW_snaplist_new() failed: %s", SPWAW_errstr (arc), erq);
+	}
+
+	dlg = new GuiDlgAddBattleSavegame (CFG_snap_path(), WARCAB->get_snaplist(), item->data.b->name);
+	rc = dlg->exec ();
+	dlg->get_data (list);
+	delete dlg;
+
+	if (rc) {
+		erc = WARCAB->add_stdalone (item->data.b, list);
+		SPWAW_snaplist_free (&list);
+
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add snapshot(s) to standalone snapshot.");
+		}
+	}
+
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
@@ -472,6 +632,14 @@ GuiMainWindow::action_delete_dossier (void)
 	if (!WARCAB->is_loaded()) return;
 
 	action_dossier_close ();
+}
+
+void
+GuiMainWindow::action_nav_raise (void)
+{
+	if (!WARCAB->is_loaded()) return;
+
+	d.dossier->select_parent_item();
 }
 
 void
@@ -504,6 +672,14 @@ GuiMainWindow::action_nav_last (void)
 	if (!WARCAB->is_loaded()) return;
 
 	d.dossier->select_last_item();
+}
+
+void
+GuiMainWindow::action_nav_lower (void)
+{
+	if (!WARCAB->is_loaded()) return;
+
+	d.dossier->select_child_item();
 }
 
 void

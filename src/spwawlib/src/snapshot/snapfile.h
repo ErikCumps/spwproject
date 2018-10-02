@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20
-#define	SNAP_VERSION	10
+#define	SNAP_VERSION	11
 #define	SNAP_VHEXCNT	SPWAW_VHEXCNT
 
 #pragma pack(push, r1, 1)
@@ -50,6 +50,7 @@ typedef struct s_SNAP_INFO {
 	SPWAW_TIMESTAMP	date;			/* Battle turn date/time stamp						*/
 	BYTE		turn;			/* Battle turn number							*/
 	ULONG		location;		/* Battle location symbol						*/
+	ULONG		type;			/* Snapshot battle type							*/
 } SNAP_INFO;
 
 typedef struct s_SNAP_CMT {
@@ -157,6 +158,7 @@ typedef struct s_SNAP_OOB_FEL {
 } SNAP_OOB_FEL;
 
 typedef struct s_SNAP_OOB_UEL {
+	BYTE		type;			/* Detected unit type							*/
 	USHORT		RID;			/* Unit record ID							*/
 	USHORT		FRID;			/* Unit formation record ID						*/
 	BYTE		FMID;			/* Unit formation major ID						*/
@@ -174,6 +176,7 @@ typedef struct s_SNAP_OOB_UEL {
 	BYTE		sup;			/* Unit suppression							*/
 	BYTE		status;			/* Unit status								*/
 	BYTE		entr;			/* Unit entrenchment status						*/
+	BYTE		aband;			/* Unit abandonment status						*/
 	BYTE		smkdev;			/* Unit smoke device flag						*/
 	BYTE		smkammo;		/* Unit smoke ammo							*/
 	USHORT		crew;			/* Unit crew record ID (if abandoned)					*/

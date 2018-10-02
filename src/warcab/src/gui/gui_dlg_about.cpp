@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "about" dialog box.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -17,7 +17,8 @@
 #define	BKG_HEIGHT	BOX_HEIGHT
 
 #define	ABOUT_MSG								\
-	"Warcab is a tool to record and track battles in an SPWaW campaign.\n"	\
+	"Warcab is a tool to record and track battles in an SPWaW campaign,\n"	\
+	"or to record and track turns in standalone battles from scenarios.\n"	\
 	"It is inspired by Campaign Watcher.\n"					\
 	"\n"									\
 	"Warcab tracks information for core units (including reassignments)\n"	\
@@ -40,7 +41,7 @@ GuiDlgAbout::GuiDlgAbout (void)
 	setModal (true);
 
 	/* Set dialog size */
-	resize (BOX_WIDTH, BOX_HEIGHT);
+	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption */
 	memset (buffer, 0, sizeof (buffer));
@@ -95,7 +96,7 @@ GuiDlgAbout::GuiDlgAbout (void)
 
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_ABOUT_INIT_FAILED, "body layout");
-	d.layout->setContentsMargins(BOX_MARGIN, BOX_MARGIN, BOX_MARGIN, BOX_MARGIN);
+	d.layout->setContentsMargins(BOX_MARGIN, BOX_MARGIN, BOX_MARGIN, BOX_MARGIN + but_height);
 	d.layout->addWidget (d.app_icon,	0, 0, 1, 1);
 	d.layout->addWidget (d.app_info,	0, 1, 1, 1);
 	d.layout->addWidget (d.message,		1, 0, 1, 2);
@@ -103,8 +104,6 @@ GuiDlgAbout::GuiDlgAbout (void)
 	/* Finally connect signals and slots */
 	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
-
-	resize (BOX_WIDTH, BOX_HEIGHT);
 
 	SET_GUICLS_NOERR;
 }

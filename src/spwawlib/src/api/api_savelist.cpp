@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame list API implementation.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -88,6 +88,7 @@ handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_S
 		memcpy (ptr->info.stamp, info.stamp, sizeof (info.stamp));
 		memcpy (ptr->info.location, info.location, sizeof (info.location));
 		memcpy (ptr->info.comment, info.comment, sizeof (info.comment));
+		ptr->info.type = info.type;
 	}
 
 	/* skip file if on ignore list */

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - utility code: error handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -18,6 +18,9 @@ extern void error (const char *file, unsigned long line, const char *func, char 
 #define	ERROR0(m_)		do { error (__FILE__, __LINE__, __FUNCTION__, m_); } while (0)
 #define	ERROR1(m_,a1_)		do { error (__FILE__, __LINE__, __FUNCTION__, m_, a1_); } while (0)
 #define	ERROR2(m_,a1_,a2_)	do { error (__FILE__, __LINE__, __FUNCTION__, m_, a1_, a2_); } while (0)
+
+/*! Returns true case of error */
+#define	HASERROR		(rc != SPWERR_OK)
 
 /*! Returns in case of error */
 #define	ROE(m_)								\

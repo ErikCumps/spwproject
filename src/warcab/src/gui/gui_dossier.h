@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier treeview.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -23,8 +23,9 @@ public:
 	SL_ERROR	error_code;
 
 public:
-	void	contextMenuEvent	(QContextMenuEvent *event);
-	void	setCurrentItem		(MDLD_TREE_ITEM *item);
+	void			contextMenuEvent	(QContextMenuEvent *event);
+	void			setCurrentItem		(MDLD_TREE_ITEM *item);
+	MDLD_TREE_ITEM *	get_actionitem		(void);
 
 public slots:
 	void	was_loaded		(MDLD_TREE_ITEM *tree);
@@ -37,10 +38,12 @@ public slots:
 
 	void	delete_item		(void);
 
+	void	select_parent_item	(void);
 	void	select_first_item	(void);
 	void	select_prev_item	(void);
 	void	select_next_item	(void);
 	void	select_last_item	(void);
+	void	select_child_item	(void);
 
 	virtual void	currentChanged	(const QModelIndex &current, const QModelIndex &previous);
 

@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -152,12 +152,18 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 		fprintf (rf, "\tunit count: %u\n", p->data.ucnt);
 		fprintf (rf, "\tunit list :\n");
 		for (j=0; j<p->data.ucnt; j++) {
-			if (p->data.ulist[j]->data.aband == SPWAW_ANONE)
+			if (p->data.ulist[j]->data.aband == SPWAW_ANONE) {
 				fprintf (rf, "\t\t%s %s\n", p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type);
-			else
-				fprintf (rf, "\t\t%s %s abandoned by %s %s\n",
-					p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type,
-					p->data.ulist[j]->data.aunit.up->strings.uid, p->data.ulist[j]->data.aunit.up->data.type);
+			} else {
+				if (p->data.ulist[j]->data.aunit.up) {
+					fprintf (rf, "\t\t%s %s abandoned by %s %s\n",
+						p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type,
+						p->data.ulist[j]->data.aunit.up->strings.uid, p->data.ulist[j]->data.aunit.up->data.type);
+				} else {
+					fprintf (rf, "\t\t%s %s abandoned by lost crew\n",
+						p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.type);
+				}
+			}
 		}
 
 		fprintf (rf, "\n");
@@ -289,6 +295,9 @@ void
 short_report (SPWAW_SNAPSHOT *ptr, FILE *rf, bool core)
 {
 	if (!ptr || !rf) return;
+
+	fprintf (rf, "Battle type: %s\n", SPWAW_battletype2str (ptr->type));
+	fprintf (rf, "\n");
 
 	report_game	(rf, &(ptr->game));		fprintf (rf, "\n\n");
 	report_oob	(rf, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");

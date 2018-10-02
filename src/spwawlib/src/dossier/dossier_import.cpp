@@ -1,13 +1,15 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "stdafx.h"
 #include "dossier/dossier.h"
+
+#if	0
 #include "dossier/dossier_file.h"
 #include "snapshot/snapshot.h"
 #include "fileio/fileio.h"
@@ -44,10 +46,15 @@ dossier_import_hdr (FILE *src, int dst, long &pos, DOS_HEADER &hdr)
 handle_error:
 	return (rc);
 }
+#endif	/* 0 */
 
 SPWAW_ERROR
-dossier_import (FILE *src, int dst)
+dossier_import (FILE * /*src*/, int /*dst*/)
 {
+	// This is basically broken
+	return (SPWERR_FAILED);
+
+#if	0
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
 	DOS_HEADER	hdr;
@@ -71,4 +78,5 @@ dossier_import (FILE *src, int dst)
 
 handle_error:
 	return (rc);
+#endif	/* 0 */
 }

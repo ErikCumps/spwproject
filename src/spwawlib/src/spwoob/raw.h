@@ -1,5 +1,5 @@
 /** \file
- * The SPWaW Library - SPWaw OOB handling.
+ * The SPWaW Library - SPWaW OOB handling.
  *
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *

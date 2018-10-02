@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API implementation.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -30,7 +30,7 @@ SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
 	ERRORGOTO ("snapnew()", handle_error);
 	stab = (STRTAB *)ptr->stab;
 
-	/* Open savegame, load and interprete data */
+	/* Open savegame, load and decompress data */
 	data = game_load_full (dir, id, &info);
 	if (!data) FAILGOTO (SPWERR_BADSAVEGAME, "game_load_full()", handle_error);
 
@@ -39,11 +39,15 @@ SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
 	ptr->src.file = STRTAB_add (stab, info.file);
 	ptr->src.date = info.date;
 
+	/* Extract and interprete data from savegame data */
 	rc = load_from_game (data, ptr);
 	ERRORGOTO ("load_from_game()", handle_error);
 
 	rc = snapint (ptr);
 	ERRORGOTO ("snapint()", handle_error);
+
+	/* Set snapshot battle type */
+	ptr->type = data->type;
 
 	/* Cleanup and return */
 	game_free (&data);

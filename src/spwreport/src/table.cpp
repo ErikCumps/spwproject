@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -285,6 +285,9 @@ void
 table_report (SPWAW_SNAPSHOT *ptr, FILE *rf, bool core)
 {
 	if (!ptr || !rf) return;
+
+	fprintf (rf, "Battle type: %s\n", SPWAW_battletype2str (ptr->type));
+	fprintf (rf, "\n");
 
 	report_game	(rf, &(ptr->game));		fprintf (rf, "\n\n");
 	report_oob	(rf, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");

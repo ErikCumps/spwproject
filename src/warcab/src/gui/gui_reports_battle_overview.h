@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -41,6 +41,7 @@ private:
 		QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;
+		QLabel			*name;
 		QLabel			*player1;
 		QLabel			*mission;
 		QLabel			*player2;

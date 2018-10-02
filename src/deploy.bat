@@ -94,6 +94,7 @@ xcopy /Y spwreconstruct\%TYPE%\spwreconstruct.exe	%DST%
 xcopy /Y warcab\%TYPE%\warcab.exe			%DST%
 xcopy /Y warcab\resource\warcab.res			%DST%
 xcopy /Y DATA\demo.warcab				%SAVE%
+xcopy /Y DATA\demo_standalone.warcab			%SAVE%
 xcopy /Y DATA\README.txt				%DST%
 xcopy /Y DATA\CHANGES					%DST%
 xcopy /Y ..\LICENSE					%DST%
@@ -149,6 +150,7 @@ xcopy /Y warcab\warcab.pdb				%DST%
 xcopy /Y warcab\resource\warcab.res			%DST%
 copy /Y warcab\Release\warcab.exe			%DST%\warcab_release.exe
 xcopy /Y DATA\demo.warcab				%SAVE%
+xcopy /Y DATA\demo_standalone.warcab			%SAVE%
 
 goto DONE
 

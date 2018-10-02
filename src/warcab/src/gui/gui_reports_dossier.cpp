@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -112,15 +112,17 @@ GuiRptDsr::set_enabled (bool flag)
 	if (flag) {
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.overview, "Overview");
-		addTab (d.cnd, "Status");
-		addTab (d.prg, "Progress");
-		addTab (d.kill, "Kills");
-		addTab (d.loss, "Losses");
-		addTab (d.oob, "OOB");
-		addTab (d.rst, "Roster");
-		addTab (d.hst, "History");
-		addTab (d.mmas, "MMAS");
-		addTab (d.graphs, "Battle graphs");
+		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+			addTab (d.cnd, "Status");
+			addTab (d.prg, "Progress");
+			addTab (d.kill, "Kills");
+			addTab (d.loss, "Losses");
+			addTab (d.oob, "OOB");
+			addTab (d.rst, "Roster");
+			addTab (d.hst, "History");
+			addTab (d.mmas, "MMAS");
+			addTab (d.graphs, "Battle graphs");
+		}
 
 		setCurrentIndex (d.last_index);
 		tabBar()->setTabTextColor (currentIndex(), *RES_color (RID_TAB_FG_SEL));
@@ -162,15 +164,17 @@ GuiRptDsr::refresh (bool forced)
 	DBG_TRACE_FENTER;
 
 	d.overview->refresh(forced);
-	d.cnd->refresh();
-	d.prg->refresh();
-	d.kill->refresh();
-	d.loss->refresh();
-	d.oob->refresh();
-	d.rst->refresh();
-	d.hst->refresh();
-	d.mmas->refresh();
-	d.graphs->refresh();
+	if (d.item && (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
+		d.cnd->refresh();
+		d.prg->refresh();
+		d.kill->refresh();
+		d.loss->refresh();
+		d.oob->refresh();
+		d.rst->refresh();
+		d.hst->refresh();
+		d.mmas->refresh();
+		d.graphs->refresh();
+	}
 
 	DBG_TRACE_FLEAVE;
 }

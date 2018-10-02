@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -29,6 +29,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "layout");
 	d.layout->setVerticalSpacing (20);
 
+	GUINEW (d.name, QLabel(d.frame), ERR_GUI_REPORTS_INIT_FAILED, "battle name label");
+
+	d.layout->addWidget (d.name, 0, 0, 1, 4);
+
 	GUINEW (d.player1, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player1 label");
 	GUINEW (d.mission, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "mission label");
 	GUINEW (d.player2, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player2 label");
@@ -44,10 +48,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.player2->setAlignment (Qt::AlignLeft);
 	d.player2->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-	d.layout->addWidget (d.player1,	0, 0, 1, 1);
-	d.layout->addWidget (d.mission,	0, 1, 1, 1);
-	d.layout->addWidget (d.player2,	0, 2, 1, 1);
-	d.layout->addItem   (d.rspacer,	0, 3, 1, 1);
+	d.layout->addWidget (d.player1,	1, 0, 1, 1);
+	d.layout->addWidget (d.mission,	1, 1, 1, 1);
+	d.layout->addWidget (d.player2,	1, 2, 1, 1);
+	d.layout->addItem   (d.rspacer,	1, 3, 1, 1);
 
 	GUINEW (d.overview, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "overview");
 	d.overview->setAlignment (Qt::AlignLeft|Qt::AlignTop);
@@ -79,10 +83,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.losses.layout->addWidget (d.losses.opp,	0, 1, 1, 1);
 	d.losses.layout->addItem   (d.losses.spacer,	0, 2, 1, 1);
 
-	d.layout->addWidget (d.overview,	1, 0, 1, 4);
-	d.layout->addLayout (d.losses.layout,	2, 0, 1, 4);
-	d.layout->addWidget (d.changes,		3, 0, 1, 4);
-	d.layout->addItem   (d.bspacer,		4, 0, 1, 4);
+	d.layout->addWidget (d.overview,	2, 0, 1, 4);
+	d.layout->addLayout (d.losses.layout,	3, 0, 1, 4);
+	d.layout->addWidget (d.changes,		4, 0, 1, 4);
+	d.layout->addItem   (d.bspacer,		5, 0, 1, 4);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -258,6 +262,7 @@ GuiRptBtlOvr::refresh (void)
 	p = (item != NULL) ? item->data.b : NULL;
 
 	if (!p) {
+		d.name->clear(); d.name->hide();
 		d.player1->setPixmap (*RES_flag (0));
 		d.mission->setPixmap (*RES_pixmap (RID_MSSN_UNKNOWN));
 		d.mission->setToolTip (QString());
@@ -270,17 +275,25 @@ GuiRptBtlOvr::refresh (void)
 	} else {
 		DEVASSERT (p->tcnt > 0);
 
+		if (p->name) {
+			str.printf ("<h1>%s</h1>", p->name);
+			d.name->setText (buf); d.name->show();
+			str.clear();
+		} else {
+			d.name->clear(); d.name->hide();
+		}
+
 		d.model->load (p->next ? p->next : p, p, true, true);
 
-		d.player1->setPixmap (*RES_flag (p->dossier->OOB));
+		d.player1->setPixmap (*RES_flag (p->OOB_p1));
 		d.mission->setPixmap (*RES_mission (p->snap->game.battle.data.miss_p1, p->meeting));
 		d.mission->setToolTip (QString (p->miss_p1) + QString(" against ") + QString(p->miss_p2));
-		d.player2->setPixmap (*RES_flag (p->OOB));
+		d.player2->setPixmap (*RES_flag (p->OOB_p2));
 
 		str.printf ("<pre>");
 		str.printf ("<h2>Battle at %s,\n%s %s against %s %s.</h2>", p->location,
-			SPWAW_oob_people (p->dossier->OOB), p->miss_p1,
-			SPWAW_oob_people (p->OOB), p->miss_p2);
+			SPWAW_oob_people (p->OOB_p1), p->miss_p1,
+			SPWAW_oob_people (p->OOB_p2), p->miss_p2);
 
 		SPWAW_date2str (&(p->date), date, sizeof (date));
 		str.printf ("%s, %u turns.\n", date, p->snap->game.battle.data.turn_max);
@@ -293,16 +306,16 @@ GuiRptBtlOvr::refresh (void)
 			SPWAW_HEX2M (p->tfirst->snap->game.battle.data.visibility));
 		str.printf ("\n");
 
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->dossier->OOB),
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB_p1),
 			p->info_sob->pbir.ucnt, p->info_sob->pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB),
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB_p2),
 			p->info_sob->obir.ucnt, p->info_sob->obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("\n");
 
 		if (p->tcnt > 1) {
 			SPWAW_date_delta (&(p->tfirst->date), &(p->tlast->date), &span);
 			str.printf ("Recorded %u battle turns spanning ", p->tcnt);
-			UTIL_fmt_shortspan (&span, &str);
+			UTIL_fmt_fullspan (&span, &str);
 			str.printf (".\n");
 		} else {
 			str.printf ("Recorded 1 battle turn.\n");
@@ -327,7 +340,7 @@ GuiRptBtlOvr::refresh (void)
 			case SPWAW_BTSCORE:
 			case SPWAW_BTBUSY:
 				str.printf ("<pre>");
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->dossier->OOB));
+				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB_p1));
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->tlast->snap->OOBp1.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -340,7 +353,7 @@ GuiRptBtlOvr::refresh (void)
 					p->tlast->snap->OOBp1.battle.crews.cnt
 					);
 
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB));
+				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB_p2));
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->tlast->snap->OOBp2.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -364,7 +377,7 @@ GuiRptBtlOvr::refresh (void)
 		str.clear();
 
 		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->dossier->OOB));
+		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB_p1));
 		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.men, "men");
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.art, "artillery");
@@ -381,7 +394,7 @@ GuiRptBtlOvr::refresh (void)
 		str.clear();
 
 		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB));
+		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB_p2));
 		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.men, "men");
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.art, "artillery");

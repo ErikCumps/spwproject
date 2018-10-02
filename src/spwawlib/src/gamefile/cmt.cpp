@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,11 +14,24 @@
 bool
 gamedata_load_cmt (GAMEFILE *file, CMTDATA *dst)
 {
+	bool		rc;
+	unsigned int	i;
+
 	if (!file || !dst) return (false);
 
 	clear_ptr (dst);
 
-	return (bread (file->cmt_fd, (char *)dst, sizeof (*dst), false));
+	rc = bread (file->cmt_fd, (char *)dst, sizeof (*dst), false);
+
+	if (rc) {
+		/* Fix unprintable characters */
+		for (i = 0; i < sizeof (dst->title); i++)
+			if (dst->title[i] != '\0' && !isprint(dst->title[i])) dst->title[i] = ' ';
+		for (i = 0; i < sizeof (dst->mapsrc); i++)
+			if (dst->mapsrc[i] != '\0' && !isprint(dst->mapsrc[i])) dst->mapsrc[i] = ' ';
+	}
+
+	return (rc);
 }
 
 bool

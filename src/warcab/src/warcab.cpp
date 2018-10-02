@@ -1,13 +1,14 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "common.h"
 #include "gui/gui_private.h"
+#include "warcab.h"
 
 WARCABState	*WARCAB;
 
@@ -259,7 +260,9 @@ WARCABState::close (void)
 	free_tree();
 
 	SPWAW_savelist_free (&d.gamelist);
+#if	ALLOW_SNAPSHOTS_LOAD
 	SPWAW_snaplist_free (&d.snaplist);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
 	SPWAW_dossier_free (&d.dossier);
 
 	emit was_closed ();
@@ -267,118 +270,268 @@ WARCABState::close (void)
 	RETURN_OK;
 }
 
-SL_ERROR
-WARCABState::add (SPWAW_SAVELIST *list)
-{
-	unsigned long	i, done;
-	SPWAW_SNAPSHOT	*snap;
-	SPWAW_BTURN	*t = NULL;
-	SPWAW_ERROR	arc = SPWERR_OK;
-	SL_ERROR	rc;
+typedef QMap<QString, QString>			FAILMAP;
+typedef QMap<QString, QString>::const_iterator	FAILMAP_it;
 
-	GuiProgress	gp ("Adding savegame(s)...", 0);
+SL_ERROR
+WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp)
+{
+	unsigned long	cnt, i, done;
+	SPWAW_BTURN	*added = NULL;
+	FAILMAP		failures;
+
+	SL_CWENULLARG (context);
+
+	cnt = list.savelist ? list.list.save->cnt : list.list.snap->cnt;
+	for (i=done=0; i<cnt; i++) {
+		SPWAW_ERROR	arc;
+		SPWAW_SNAPSHOT	*s;
+		SPWAW_BTURN	*t;
+
+		if (list.savelist) {
+			arc = SPWAW_snap_make (list.list.save->list[i]->dir, list.list.save->list[i]->id, &s);
+		} else {
+			arc = SPWAW_snap_load (list.list.snap->list[i]->filepath, &s);
+		}
+		gp.inc ();
+		if (SPWAW_HAS_ERROR (arc)) {
+			if (list.savelist) {
+				failures[list.list.save->list[i]->filename] = SPWAW_errstr (arc);
+			} else {
+				failures[list.list.snap->list[i]->filepath] = SPWAW_errstr (arc);
+			}
+			gp.inc ();
+			continue;
+		}
+
+		arc = add (context, s, &t);
+		gp.inc ();
+		if (SPWAW_HAS_ERROR (arc)) {
+			if (list.savelist) {
+				failures[list.list.save->list[i]->filename] = SPWAW_errstr (arc);
+			} else {
+				failures[list.list.snap->list[i]->filepath] = SPWAW_errstr (arc);
+			}
+			SPWAW_snap_free (&s);
+			continue;
+		} else {
+			if (!added) added = t;
+		}
+
+		done++;
+	}
+
+	if (done) {
+		set_dirty (true);
+
+		refresh_tree();
+		MDLD_TREE_ITEM *item = item_from_turn (added); DEVASSERT (item != NULL);
+		emit was_added (item);
+
+		SL_ERROR rc = refresh_savelists ();
+		if (SL_HAS_ERROR (rc)) {
+			RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "WARCAB_refresh_savelists() failed!");
+		}
+	}
+	gp.inc ();
+
+	if (!failures.empty())
+	{
+		char		buf[16384];
+		UtilStrbuf	str(buf, sizeof (buf), true, true);
+		char		*title = NULL;
+
+		if (list.savelist) {
+			title = (failures.count() == 1) ? "Failed to add savegame" : "Failed to add some savegames";
+		} else {
+			title = (failures.count() == 1) ? "Failed to add snapshot" : "Failed to add some snapshots";
+		}
+
+		for (FAILMAP_it i = failures.constBegin(); i != failures.constEnd(); ++i)
+			str.printf ("%s: %s\n", qPrintable(i.key()), qPrintable(i.value()));
+
+		if (list.savelist) {
+			GUI_errorbox (SL_ERR_FATAL_WARN, title, "Savegame", buf);
+		}else {
+			GUI_errorbox (SL_ERR_FATAL_WARN, title, "Snapshot", buf);
+		}
+	}
+
+	gp.done ();
+	RETURN_OK;
+}
+
+static SPWAW_ERROR
+add_to_campaign (void *target, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
+{
+	return (SPWAW_dossier_add_campaign_snap ((SPWAW_DOSSIER *)target, snap, bturn));
+}
+
+static SPWAW_ERROR
+add_to_standalone (void *target, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
+{
+	return (SPWAW_dossier_add_battle_snap ((SPWAW_BATTLE *)target, snap, bturn));
+}
+
+SL_ERROR
+WARCABState::add_campaign (SPWAW_SAVELIST *list)
+{
+	SL_ERROR	rc;
+	PL_LIST		pl;
 
 	if (!list) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL savelist argument");
 	}
 
+	GuiProgress gp ("Adding savegame(s) to campaign...", 0);
 	gp.setRange (0, (2*list->cnt) + 1);
 
-	for (i=done=0; i<list->cnt; i++) {
-		arc = SPWAW_snap_make (list->list[i]->dir, list->list[i]->id, &snap);
-		if (SPWAW_HAS_ERROR (arc)) {
-			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SAVE_FAILED, "SPWAW_snap_make() failed: %s", SPWAW_errstr (arc));
-			break;
-		}
-		gp.inc ();
+	pl.list.save = list;
+	pl.savelist = true;
+	rc = process_list (pl, add_to_campaign, d.dossier, gp); SL_ROE(rc);
 
-		arc = SPWAW_dossier_add (d.dossier, snap, &t);
-		if (SPWAW_HAS_ERROR (arc)) {
-			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SAVE_FAILED, "SPWAW_dossier_add() failed: %s", SPWAW_errstr (arc));
-			SPWAW_snap_free (&snap);
-			break;
-		}
-		gp.inc ();
-
-		done++;
-	}
-
-	if (done) {
-		set_dirty (true);
-		rc = refresh_savelists ();
-		if (SL_HAS_ERROR (rc)) {
-			RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "WARCAB_refresh_savelists() failed!");
-		}
-	}
-
-	if (SPWAW_HAS_ERROR (arc)) {
-		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "failed to add a savegame");
-	} else {
-		refresh_tree();
-		// FIXME: this will only work for the last savegame in the list. Is this intentional?
-		MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
-		emit was_added (item);
-	}
-
-	gp.done ();
 	RETURN_OK;
 }
 
 SL_ERROR
-WARCABState::add (SPWAW_SNAPLIST *list)
+WARCABState::add_stdalone (char *name, SPWAW_SAVELIST *list)
 {
-	unsigned long	i, done;
-	SPWAW_SNAPSHOT	*snap;
-	SPWAW_BTURN	*t = NULL;
-	SPWAW_ERROR	arc = SPWERR_OK;
 	SL_ERROR	rc;
-
-	GuiProgress	gp ("Adding snapshot(s)...", 0);
+	SPWAW_ERROR	arc;
+	SPWAW_SNAPSHOT	*s;
+	SPWAW_BATTLE	*b;
+	PL_LIST		pl;
 
 	if (!list) {
-		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SNAP_FAILED, "NULL snaplist argument");
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL savelist argument");
 	}
 
-	gp.setRange (0, (2*list->cnt) + 1);
+	GuiProgress gp ("Adding standalone battle and savegame(s)...", 0);
+	gp.setRange (0, (2*list->cnt) + 3);
 
-	for (i=done=0; i<list->cnt; i++) {
-		arc = SPWAW_snap_load (list->list[i]->filepath, &snap);
-		if (SPWAW_HAS_ERROR (arc)) {
-			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SNAP_FAILED, "SPWAW_snap_load() failed: %s", SPWAW_errstr (arc));
-			break;
-		}
-		gp.inc ();
-
-		arc = SPWAW_dossier_add (d.dossier, snap, &t);
-		if (SPWAW_HAS_ERROR (arc)) {
-			SET_ERR_FUNCTION_EX1 (ERR_DOSSIER_ADD_SNAP_FAILED, "SPWAW_dossier_add() failed: %s", SPWAW_errstr (arc));
-			SPWAW_snap_free (&snap);
-			break;
-		}
-		gp.inc ();
-
-		done++;
-	}
-
-	if (done) {
-		set_dirty (true);
-		rc = refresh_savelists ();
-		if (SL_HAS_ERROR (rc)) {
-			RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "WARCAB_refresh_savelists() failed!");
-		}
-	}
-
+	arc = SPWAW_snap_make (list->list[0]->dir, list->list[0]->id, &s);
 	if (SPWAW_HAS_ERROR (arc)) {
-		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SNAP_FAILED, "failed to add a snapshot");
-	} else {
-		refresh_tree();
-		MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
-		emit was_added (item);
+		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "initial SPWAW_snap_make() failed!");
 	}
+	gp.inc ();
 
-	gp.done ();
+	arc = SPWAW_dossier_add_battle (d.dossier, s, name, &b);
+	SPWAW_snap_free (&s);
+	if (SPWAW_HAS_ERROR (arc)) {
+		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "SPWAW_dossier_add_battle() failed!");
+	}
+	gp.inc ();
+
+	pl.list.save = list;
+	pl.savelist = true;
+	rc = process_list (pl, add_to_standalone, b, gp); SL_ROE(rc);
+
 	RETURN_OK;
 }
+
+SL_ERROR
+WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SAVELIST *list)
+{
+	SL_ERROR	rc;
+	PL_LIST		pl;
+
+	if (!battle) {
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL battle argument");
+	}
+	if (!list) {
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL savelist argument");
+	}
+
+	GuiProgress gp ("Adding savegame(s) to standalone battle...", 0);
+	gp.setRange (0, (2*list->cnt) + 1);
+
+	pl.list.save = list;
+	pl.savelist = true;
+	rc = process_list (pl, add_to_standalone, battle, gp); SL_ROE(rc);
+
+	RETURN_OK;
+}
+
+#if	ALLOW_SNAPSHOTS_LOAD
+SL_ERROR
+WARCABState::add_campaign (SPWAW_SNAPLIST *list)
+{
+	SL_ERROR	rc;
+	PL_LIST		pl;
+
+	if (!list) {
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL snaplist argument");
+	}
+
+	GuiProgress gp ("Adding snapshot(s) to campaign...", 0);
+	gp.setRange (0, (2*list->cnt) + 1);
+
+	pl.list.snap = list;
+	pl.savelist = false;
+	rc = process_list (pl, add_to_campaign, d.dossier, gp); SL_ROE(rc);
+
+	RETURN_OK;
+}
+
+SL_ERROR
+WARCABState::add_stdalone (char *name, SPWAW_SNAPLIST *list)
+{
+	SL_ERROR	rc;
+	SPWAW_ERROR	arc;
+	SPWAW_SNAPSHOT	*s;
+	SPWAW_BATTLE	*b;
+	PL_LIST		pl;
+
+	if (!list) {
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL snaplist argument");
+	}
+
+	GuiProgress gp ("Adding standalone battle and snapshot(s)...", 0);
+	gp.setRange (0, (2*list->cnt) + 3);
+
+	arc = SPWAW_snap_load (list->list[0]->filepath, &s);
+	if (SPWAW_HAS_ERROR (arc)) {
+		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "initial SPWAW_snap_load() failed!");
+	}
+	gp.inc ();
+
+	arc = SPWAW_dossier_add_battle (d.dossier, s, name, &b);
+	SPWAW_snap_free (&s);
+	if (SPWAW_HAS_ERROR (arc)) {
+		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "SPWAW_dossier_add_battle() failed!");
+	}
+	gp.inc ();
+
+	pl.list.snap = list;
+	pl.savelist = false;
+	rc = process_list (pl, add_to_standalone, b, gp); SL_ROE(rc);
+
+	RETURN_OK;
+}
+
+SL_ERROR
+WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list)
+{
+	SL_ERROR	rc;
+	PL_LIST		pl;
+
+	if (!battle) {
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL battle argument");
+	}
+	if (!list) {
+		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL snaplist argument");
+	}
+
+	GuiProgress gp ("Adding snapshot(s) to standalone battle...", 0);
+	gp.setRange (0, (2*list->cnt) + 1);
+
+	pl.list.snap = list;
+	pl.savelist = false;
+	rc = process_list (pl, add_to_standalone, battle, gp); SL_ROE(rc);
+
+	RETURN_OK;
+}
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 SL_ERROR
 WARCABState::del (MDLD_TREE_ITEM *item)
@@ -396,6 +549,7 @@ WARCABState::del (MDLD_TREE_ITEM *item)
 		emit will_delete (item);
 
 	switch (item->type) {
+		case MDLD_TREE_STDALONE:
 		case MDLD_TREE_BATTLE:
 			arc = SPWAW_dossier_del (d.dossier, item->data.b);
 			break;
@@ -488,11 +642,13 @@ WARCABState::get_gamelist (void)
 	return (d.gamelist);
 }
 
+#if	ALLOW_SNAPSHOTS_LOAD
 SPWAW_SNAPLIST *
 WARCABState::get_snaplist (void)
 {
 	return (d.snaplist);
 }
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 void
 WARCABState::set_dirty (bool flag)
@@ -515,129 +671,123 @@ WARCABState::refresh_savelists (void)
 	SPWAW_ERROR	arc;
 
 	SPWAW_savelist_free (&d.gamelist);
-	SPWAW_snaplist_free (&d.snaplist);
 
 	arc = SPWAW_dossier_savelist (d.dossier, &d.gamelist);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_REFRESH_FAILED, "SPWAW_dossier_savelist() failed: %s", SPWAW_errstr (arc));
 	}
 
+#if	ALLOW_SNAPSHOTS_LOAD
+	SPWAW_snaplist_free (&d.snaplist);
+
 	arc = SPWAW_dossier_snaplist (d.dossier, &d.snaplist);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_REFRESH_FAILED, "SPWAW_dossier_snaplist() failed: %s", SPWAW_errstr (arc));
 	}
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	RETURN_OK;
 }
 
 void
-WARCABState::setup_tree (void)
+WARCABState::setup_tree_data (MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type)
 {
 	DWORD		i, j;
 	MDLD_TREE_ITEM	*b, *t;
-	MDLD_TREE_ITEM	*pb, *pt;
 
+	if (!tree) return;
+
+	DBG_log ("[%s]", __FUNCTION__);
+
+	tree->dossier_type = type;
+
+	for (i=0; i<tree->data.d->bcnt; i++) {
+		if (!tree->data.d->blist[i]) continue;
+
+		b = MDLD_TREE_new_battle (tree->data.d->blist[i], tree);
+
+		for (j=0; j<b->data.b->tcnt; j++) {
+			if (!b->data.b->tlist[j]) continue;
+
+			t = MDLD_TREE_new_bturn (b->data.b->tlist[j], b);
+		}
+	}
+}
+
+void
+WARCABState::setup_tree (void)
+{
 	free_tree();
 
 	if (!d.dossier) return;
+
+	DBG_log ("[%s]", __FUNCTION__);
 
 	d.tree = new MDLD_TREE_ITEM;
 	d.tree->parent = NULL;
 	d.tree->type = MDLD_TREE_DOSSIER;
 	d.tree->data.d = d.dossier;
+	d.tree->prev = d.tree->next = NULL;
+	d.tree->cfirst = d.tree->clast = NULL;
 
-	pb = NULL;
-	for (i=0; i<d.tree->data.d->bcnt; i++) {
-		if (!d.tree->data.d->blist[i]) continue;
-
-		b = new MDLD_TREE_ITEM;
-		b->parent = d.tree;
-		b->type = MDLD_TREE_BATTLE;
-		b->data.b = b->parent->data.d->blist[i];
-
-		b->prev = pb; b->next = NULL; pb = b;
-		if (b->prev) b->prev->next = b;
-
-		pt = NULL;
-		for (j=0; j<b->data.b->tcnt; j++) {
-			if (!b->data.b->tlist[j]) continue;
-
-			t = new MDLD_TREE_ITEM;
-			t->parent = b;
-			t->type = MDLD_TREE_BTURN;
-			t->data.t = b->data.b->tlist[j];
-
-			t->cfirst = t->clast = NULL;
-
-			t->prev = pt; t->next = NULL; pt = t;
-			if (t->prev) t->prev->next = t;
-
-			t->parent->children.append (t);
-		}
-		if (b->children.size()) {
-			b->cfirst = b->children[0];
-			b->clast  = b->children[b->children.size()-1];
-		}else {
-			b->cfirst = b->clast = NULL;
-		}
-		b->parent->children.append (b);
-	}
-	if (d.tree->children.size()) {
-		d.tree->cfirst = d.tree->children[0];
-		d.tree->clast  = d.tree->children[d.tree->children.size()-1];
-	} else {
-		d.tree->cfirst = d.tree->clast = NULL;
-	}
+	setup_tree_data (d.tree, d.tree->data.d->type);
 }
 
 void
-WARCABState::refresh_tree ()
+WARCABState::refresh_tree_data (MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type)
 {
+	SPWAW_DOSSIER_TYPE	odt;
+	bool			transform;
 	int			i, j, k;
 	MDLD_TREE_ITEM		*b, *t;
-	MDLD_TREE_ITEM		*pb, *pt;
 	QList<MDLD_TREE_ITEM *>	blist, tlist;
 
-	if (!d.tree) return;
+	if (!tree) return;
 
-	pb = NULL;
-	blist = d.tree->children; d.tree->children.clear();
+	DBG_log ("[%s]", __FUNCTION__);
 
-	for (i=0; i<d.tree->data.d->bcnt; i++) {
+	odt = tree->dossier_type; tree->dossier_type = type;
+	transform = (odt != tree->dossier_type);
+
+	MDLD_TREE_extract_children (tree, blist);
+
+	for (i=0; i<tree->data.d->bcnt; i++) {
 		b = NULL;
 		for (j=0; j<blist.size(); j++) {
-			if (blist[j]->data.b == d.tree->data.d->blist[i]) {
+			if (blist[j]->data.b == tree->data.d->blist[i]) {
 				b = blist[j]; blist.removeAt(j);
 				break;
 			}
 		}
 
-		pt = NULL;
 		if (!b) {
-			b = new MDLD_TREE_ITEM;
-			b->parent = d.tree;
-			b->type = MDLD_TREE_BATTLE;
-			b->data.b = b->parent->data.d->blist[i];
+			b = MDLD_TREE_new_battle (tree->data.d->blist[i], tree);
 
 			for (j=0; j<b->data.b->tcnt; j++) {
 				if (!b->data.b->tlist[j]) continue;
 
-				t = new MDLD_TREE_ITEM;
-				t->parent = b;
-				t->type = MDLD_TREE_BTURN;
-				t->data.t = b->data.b->tlist[j];
-
-				t->cfirst = t->clast = NULL;
-
-				t->prev = pt; t->next = NULL; pt = t;
-				if (t->prev) t->prev->next = t;
-
-				t->parent->children.append (t);
+				t = MDLD_TREE_new_bturn (b->data.b->tlist[j], b);
 			}
 
-			b->parent->seqnum.update();
+			MDLD_TREE_update_seqnums (b);
 		} else {
-			tlist = b->children; b->children.clear();
+			if (transform) {
+				MDLD_TREE_ITEM *nb = MDLD_TREE_new_battle (tree->data.d->blist[i], tree);
+				if (odt) {
+					MDLD_TREE_extract_children (b, nb->children);
+				} else {
+					DEVASSERT (b->cfirst != NULL);
+
+					MDLD_TREE_extract_children (b->cfirst, nb->children);
+				}
+				MDLD_TREE_delete_battle (b);
+				b = nb;
+			} else {
+				MDLD_TREE_link_as_child (b);
+				if (b->type == MDLD_TREE_STDALONE) b = b->cfirst;
+			}
+
+			MDLD_TREE_extract_children (b, tlist);
 
 			for (j=0; j<b->data.b->tcnt; j++) {
 				t = NULL;
@@ -648,64 +798,51 @@ WARCABState::refresh_tree ()
 					}
 				}
 				if (!t) {
-					t = new MDLD_TREE_ITEM;
-					t->parent = b;
-					t->type = MDLD_TREE_BTURN;
-					t->data.t = b->data.b->tlist[j];
+					t = MDLD_TREE_new_bturn (b->data.b->tlist[j], b);
 
-					t->cfirst = t->clast = NULL;
-
-					t->parent->seqnum.update();
-					t->parent->parent->seqnum.update();
+					MDLD_TREE_update_seqnums (t);
+				} else {
+					MDLD_TREE_link_as_child (t);
 				}
-				t->prev = pt; t->next = NULL; pt = t;
-				if (t->prev) t->prev->next = t;
-
-				t->parent->children.append (t);
 			}
 		}
-		if (b->children.size()) {
-			b->cfirst = b->children[0];
-			b->clast  = b->children[b->children.size()-1];
-		} else {
-			b->cfirst = b->clast = NULL;
-		}
-
-		for (j=0; j<tlist.size(); j++) { t = tlist[j]; t->parent->seqnum.update(); delete (t); } tlist.clear();
-
-		b->prev = pb; b->next = NULL; pb = b;
-		if (b->prev) b->prev->next = b;
-
-		b->parent->children.append (b);
+		for (j=0; j<tlist.size(); j++) { MDLD_TREE_delete_bturn (tlist[j]); } tlist.clear();
 	}
-	if (d.tree->children.size()) {
-		d.tree->cfirst = d.tree->children[0];
-		d.tree->clast  = d.tree->children[d.tree->children.size()-1];
-	} else {
-		d.tree->cfirst = d.tree->clast = NULL;
-	}
+	for (i=0; i<blist.size(); i++) { MDLD_TREE_delete_battle (blist[i]); } blist.clear();
+}
 
-	for (i=0; i<blist.size(); i++) { b = blist[i]; b->parent->seqnum.update(); delete (b); } blist.clear();
+void
+WARCABState::refresh_tree ()
+{
+	if (!d.tree || !d.tree->data.d) return;
+
+	DBG_log ("[%s]", __FUNCTION__);
+
+	refresh_tree_data (d.tree, d.tree->data.d->type);
+}
+
+void
+WARCABState::free_tree_children (MDLD_TREE_ITEM *tree)
+{
+	int		i;
+	MDLD_TREE_ITEM	*child;
+
+	if (!tree) return;
+
+	for (i=0; i<tree->children.size(); i++) {
+		child = tree->children[i];
+		free_tree_children (child);
+		delete (child);
+	}
+	tree->children.clear();
 }
 
 void
 WARCABState::free_tree (void)
 {
-	int		i, j;
-	MDLD_TREE_ITEM	*b, *t;
-
 	if (!d.tree) return;
 
-	for (i=0; i<d.tree->children.size(); i++) {
-		b = d.tree->children[i];
-		for (j=0; j<b->children.size(); j++) {
-			t = b->children[j];
-			delete (t);
-		}
-		b->children.clear();
-		delete (b);
-	}
-	d.tree->children.clear();
+	free_tree_children (d.tree);
 	delete (d.tree); d.tree = NULL;
 }
 
@@ -720,6 +857,7 @@ WARCABState::item_from_turn (SPWAW_BTURN *turn)
 	p = NULL;
 	for (i=0; i<d.tree->children.size(); i++) {
 		b = d.tree->children[i];
+		if (b->type == MDLD_TREE_STDALONE) b = b->cfirst;
 		for (j=0; j<b->children.size(); j++) {
 			if (b->children[j]->data.t == turn) {
 				p = b->children[j];
@@ -767,7 +905,9 @@ WARCABState::statereport (SL_STDBG_INFO_LEVEL level)
 	if (level >= SL_STDBG_LEVEL_EXT) {
 		SAYSTATE1 ("\tdossier: dossier data  = 0x%8.8x\n", d.dossier);
 		SAYSTATE2 ("\tdossier: savegame list = 0x%8.8x, %lu entries\n", d.gamelist, d.gamelist ? d.gamelist->cnt : 0);
+#if	ALLOW_SNAPSHOTS_LOAD
 		SAYSTATE2 ("\tdossier: snapshot list = 0x%8.8x, %lu entries\n", d.snaplist, d.snaplist ? d.snaplist->cnt : 0);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
 	}
 
 	/* deep probe */

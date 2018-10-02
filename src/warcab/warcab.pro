@@ -27,6 +27,7 @@ HEADERS +=					\
 	common.h				\
 	error.h					\
 	init.h					\
+	mdld_tree.h				\
 	warcab.h				\
 	dbg/dbg.h				\
 	dbg/dbg_private.h			\
@@ -101,8 +102,8 @@ HEADERS +=					\
 	gui/gui_progress.h			\
 	gui/gui_private.h			\
 	gui/gui_dlg_about.h			\
-	gui/gui_dlg_load_savegame.h		\
-	gui/gui_dlg_load_snapshot.h		\
+	gui/gui_dlg_add_campaign_savegame.h	\
+	gui/gui_dlg_add_battle_savegame.h	\
 	gui/gui_dlg_load_dossier.h		\
 	gui/gui_dossier.h			\
 	gui/gui_dlg_edit_dossier.h		\
@@ -151,6 +152,7 @@ SOURCES +=					\
 	main.cpp				\
 	error.cpp				\
 	init.cpp				\
+	mdld_tree.cpp				\
 	warcab.cpp				\
 	dbg/dbg.cpp				\
 	dbg/dbg_console.cpp			\
@@ -221,8 +223,8 @@ SOURCES +=					\
 	gui/gui_errorbox.cpp			\
 	gui/gui_progress.cpp			\
 	gui/gui_dlg_about.cpp			\
-	gui/gui_dlg_load_savegame.cpp		\
-	gui/gui_dlg_load_snapshot.cpp		\
+	gui/gui_dlg_add_campaign_savegame.cpp	\
+	gui/gui_dlg_add_battle_savegame.cpp	\
 	gui/gui_dlg_load_dossier.cpp		\
 	gui/gui_dossier.cpp			\
 	gui/gui_dlg_edit_dossier.cpp		\

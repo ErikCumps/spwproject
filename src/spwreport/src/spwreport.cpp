@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -18,6 +18,13 @@ usage (char *app)
 	printf ("Where: OOB     path to oob dir\n");
 	printf ("       DIR     path to savegame dir\n");
 	printf ("       INDEX   index of savegame to generate report for\n");
+	printf ("       BASE    basename for report files\n");
+	printf ("       TYPE    optional type of report to generate (defaults to ALL reports)\n");
+	printf ("\n");
+	printf ("Generate SPWaW snapshot reports.\n");
+	printf ("\n");
+	printf ("Usage: %s snap SNAP BASE [TYPE]\n", app);
+	printf ("Where: SNAP    filename of snapshot to generate report for\n");
 	printf ("       BASE    basename for report files\n");
 	printf ("       TYPE    optional type of report to generate (defaults to ALL reports)\n");
 	printf ("\n");
@@ -239,101 +246,147 @@ do_map_dump (SPWAW_SNAPSHOT *ptr, char *rbfn)
 	fclose (rf);
 }
 
-int
-main (int argc, char** argv)
+void
+generate_oob_dump(int /*argc*/, char** argv)
+{
+	SPWAW_ERROR	rc;
+	SPWOOB		*oob;
+
+	if ((rc = SPWAW_init (argv[2], false)) != SPWERR_OK) {
+		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_SPWOOB(&oob)) != SPWERR_OK) {
+		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
+		error ("failed to generate oob dump: %s", SPWAW_errstr (rc));
+	}
+}
+
+void
+generate_reports(int argc, char** argv, char *base, SPWAW_SNAPSHOT *snap)
+{
+	char	rprtbase[MAX_PATH+1];
+
+	memset (rprtbase, 0, sizeof (rprtbase));
+	snprintf (rprtbase, sizeof (rprtbase) - 1, "%s", base);
+
+	bool	raw	  = false;
+	bool	elaborate = false;
+	bool	normal	  = false;
+	bool	narrative = false;
+	bool	table	  = false;
+	bool	map	  = false;
+
+	if (argc > 5) {
+		if (strcmp (argv[5], "raw") == 0)	raw	  = true;
+		if (strcmp (argv[5], "elaborate") == 0)	elaborate = true;
+		if (strcmp (argv[5], "normal") == 0)	normal	  = true;
+		if (strcmp (argv[5], "narrative") == 0)	narrative = true;
+		if (strcmp (argv[5], "table") == 0)	table	  = true;
+		if (strcmp (argv[5], "map") == 0)	map	  = true;
+	} else {
+		raw = elaborate = normal = narrative = table = map = true;
+	}
+
+	if (raw) {
+		do_raw_report		(snap, rprtbase);
+		do_rawlink_report	(snap, rprtbase);
+	}
+	if (elaborate) {
+		do_full_complete_report	(snap, rprtbase);
+		do_core_complete_report	(snap, rprtbase);
+	}
+	if (normal) {
+		do_full_short_report	(snap, rprtbase);
+		do_core_short_report	(snap, rprtbase);
+	}
+	if (narrative) {
+		do_full_narrative_report(snap, rprtbase);
+		do_core_narrative_report(snap, rprtbase);
+	}
+	if (table) {
+		do_full_table_report	(snap, rprtbase);
+		do_core_table_report	(snap, rprtbase);
+	}
+	if (map) {
+		do_map_dump		(snap, rprtbase);
+	}
+}
+
+void
+generate_savegame_report(int argc, char** argv)
+{
+	SPWAW_ERROR	rc;
+	SPWAW_SNAPSHOT	*snap;
+	char		savename[MAX_PATH+1];
+
+	if ((rc = SPWAW_init (argv[1], true)) != SPWERR_OK) {
+		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_snap_make (argv[2], atoi(argv[3]), &snap)) != SPWERR_OK) {
+		error ("failed to create snapshot for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
+	}
+
+	generate_reports (argc, argv, argv[4], snap);
+
+	memset (savename, 0, sizeof (savename));
+	snprintf (savename, sizeof (savename) - 1, "snapshot_%s.snap", argv[3]);
+	if ((rc = SPWAW_snap_save (&snap, savename, false)) != SPWERR_OK) {
+		error ("failed to save snapshot as \"%s\": %s", savename, SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_snap_free (&snap)) != SPWERR_OK) {
+		error ("failed to free snapshot: %s", SPWAW_errstr (rc));
+	}
+}
+
+void
+generate_snapshot_report(int argc, char** argv)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_SNAPSHOT	*snap;
 
-	if (argc < 3) usage (argv[0]);
+	if ((rc = SPWAW_init (NULL, true)) != SPWERR_OK) {
+		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
+	}
 
-	if (argc == 3) {
-		// Generate OOB dump
+	if ((rc = SPWAW_snap_load (argv[2], &snap)) != SPWERR_OK) {
+		error ("failed to load snapshot \"%s\": %s", argv[2], SPWAW_errstr (rc));
+	}
 
-		SPWOOB	*oob;
+	generate_reports (argc, argv, argv[3], snap);
 
-		if ((rc = SPWAW_init (argv[2], false)) != SPWERR_OK) {
-			error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
-		}
+	if ((rc = SPWAW_snap_free (&snap)) != SPWERR_OK) {
+		error ("failed to free snapshot: %s", SPWAW_errstr (rc));
+	}
+}
 
-		if ((rc = SPWAW_SPWOOB(&oob)) != SPWERR_OK) {
-			error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
-		}
-
-		if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
-			error ("failed to generate oob dump: %s", SPWAW_errstr (rc));
-		}
-
-	} else {
-		char	savename[MAX_PATH+1];
-		char	rprtbase[MAX_PATH+1];
-
-		if (argc < 5) usage (argv[0]);
-
-		// Generate report
-
-		if ((rc = SPWAW_init (argv[1], true)) != SPWERR_OK) {
-			error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
-		}
-
-		if ((rc = SPWAW_snap_make (argv[2], atoi(argv[3]), &snap)) != SPWERR_OK) {
-			error ("failed to create snapshot for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
-		}
-
-		memset (rprtbase, 0, sizeof (rprtbase));
-		snprintf (rprtbase, sizeof (rprtbase) - 1, "%s", argv[4]);
-
-		bool	raw	  = false;
-		bool	elaborate = false;
-		bool	normal	  = false;
-		bool	narrative = false;
-		bool	table	  = false;
-		bool	map	  = false;
-
-		if (argc > 5) {
-			if (strcmp (argv[5], "raw") == 0)	raw	  = true;
-			if (strcmp (argv[5], "elaborate") == 0)	elaborate = true;
-			if (strcmp (argv[5], "normal") == 0)	normal	  = true;
-			if (strcmp (argv[5], "narrative") == 0)	narrative = true;
-			if (strcmp (argv[5], "table") == 0)	table	  = true;
-			if (strcmp (argv[5], "map") == 0)	map	  = true;
-		} else {
-			raw = elaborate = normal = narrative = table = map = true;
-		}
-
-		if (raw) {
-			do_raw_report		(snap, rprtbase);
-			do_rawlink_report	(snap, rprtbase);
-		}
-		if (elaborate) {
-			do_full_complete_report	(snap, rprtbase);
-			do_core_complete_report	(snap, rprtbase);
-		}
-		if (normal) {
-			do_full_short_report	(snap, rprtbase);
-			do_core_short_report	(snap, rprtbase);
-		}
-		if (narrative) {
-			do_full_narrative_report(snap, rprtbase);
-			do_core_narrative_report(snap, rprtbase);
-		}
-		if (table) {
-			do_full_table_report	(snap, rprtbase);
-			do_core_table_report	(snap, rprtbase);
-		}
-		if (map) {
-			do_map_dump		(snap, rprtbase);
-		}
-
-		memset (savename, 0, sizeof (savename));
-		snprintf (savename, sizeof (savename) - 1, "snapshot_%lu.snap", atoi(argv[3]));
-		if ((rc = SPWAW_snap_save (&snap, savename, false)) != SPWERR_OK) {
-			error ("failed to save snapshot as \"%s\": %s", savename, SPWAW_errstr (rc));
-		}
-
-		if ((rc = SPWAW_snap_free (&snap)) != SPWERR_OK) {
-			error ("failed to free snapshot: %s", SPWAW_errstr (rc));
-		}
+int
+main (int argc, char** argv)
+{
+	if (argc < 3)
+	{
+		usage (argv[0]);
+	}
+	else if ((argc == 3) && (strcmp (argv[1], "dump") == 0))
+	{
+		generate_oob_dump (argc, argv);
+	}
+	else if ((argc >= 4) && (strcmp (argv[1], "snap") == 0))
+	{
+		generate_snapshot_report (argc, argv);
+	}
+	else if (argc >= 5)
+	{
+		generate_savegame_report (argc, argv);
+	}
+	else
+	{
+		usage (argv[0]);
 	}
 
 	SPWAW_shutdown ();

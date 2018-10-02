@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
 #include "dossier/dossier_file.h"
+#include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -95,10 +96,20 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		ERRORGOTO ("SPWAW_date2stamp(battle hdr date)", handle_error);
 
 		hdrs[idx].location = STRTAB_getidx (stab, p->location);
-		hdrs[idx].OOB      = p->OOB;
+		hdrs[idx].OOB_p1   = p->OOB_p1;
+		hdrs[idx].OOB_p2   = p->OOB_p2;
 		hdrs[idx].miss_p1  = STRTAB_getidx (stab, p->miss_p1);
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;
+
+		rc = SPWOOB_LIST_spwoob2idx (src->oobdata, p->oobdat, &(hdrs[idx].oobdat));
+		ERRORGOTO ("SPWOOB_LIST_spwoob2idx(battle oob data)", handle_error);
+
+		if (p->name) {
+			hdrs[idx].name = STRTAB_getidx (stab, p->name);
+		} else {
+			hdrs[idx].name = BADSTRIDX;
+		}
 
 		bseekmove (fd, sizeof (DOS_BHEADER));
 
@@ -117,9 +128,11 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].ra.data = bseekget (fd) - p0;
 		hdrs[idx].ra.size = src->ucnt * sizeof (SPWAW_DOSSIER_BURA);
 
-		cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);
-		if (!cbwrite (fd, cbio, "compressed battle unit ra", compress))
-			FAILGOTO (SPWERR_FWFAILED, "cbwrite(compressed battle unit ra) failed", handle_error);
+		if (hdrs[idx].ra.size) {
+			cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);
+			if (!cbwrite (fd, cbio, "compressed battle unit ra", compress))
+				FAILGOTO (SPWERR_FWFAILED, "cbwrite(compressed battle unit ra) failed", handle_error);
+		}
 
 		idx++;
 	}
@@ -144,6 +157,7 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		p0, p1;
+	DOS_MV_HEADER	mvhdr;
 	DOS_HEADER	hdr;
 	STRTAB		*stab = NULL;
 
@@ -154,10 +168,14 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 
 	p0 = bseekget (fd);
 
-	memset (&hdr, 0, sizeof (hdr));
+	memset (&mvhdr, 0, sizeof (mvhdr));
 
-	memcpy (hdr.magic, DOSS_MAGIC, strlen (DOSS_MAGIC));
-	hdr.version = DOSS_VERSION;
+	memcpy (mvhdr.magic, DOSS_MAGIC, strlen (DOSS_MAGIC));
+	mvhdr.version = DOSS_VERSION;
+
+	bseekmove (fd, sizeof (mvhdr));
+
+	memset (&hdr, 0, sizeof (hdr));
 
 	hdr.name = STRTAB_getidx (stab, src->name);
 	hdr.comment = STRTAB_getidx (stab, src->comment);
@@ -165,21 +183,26 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	hdr.OOB = src->OOB;
 	hdr.fcnt = src->fcnt;
 	hdr.ucnt = src->ucnt;
+	hdr.type = src->type;
 
 	bseekmove (fd, sizeof (hdr));
 
-	hdr.oobdat = bseekget (fd) - p0;
-	rc = SPWOOB_save (src->oobdat, fd, compress);
-	ROE ("spwoob_save()");
+	hdr.oobdata = bseekget (fd) - p0;
+	rc = SPWOOB_LIST_compact (src->oobdata);		ROE ("SPWOOB_LIST_compact()");
+	rc = SPWOOB_LIST_save (src->oobdata, fd, compress);	ROE ("SPWOOB_LIST_save()");
+	SPWOOB_LIST_debug_log (src->oobdata);
 
 	hdr.blist = bseekget (fd) - p0;
-	dossier_save_battles (src, fd, &(hdr.bcnt), stab, compress);
+	rc = dossier_save_battles (src, fd, &(hdr.bcnt), stab, compress);
+	ROE ("dossier_save_battles()");
 
 	hdr.stab = bseekget (fd) - p0;
 	rc = STRTAB_fdsave (stab, fd, compress);
 	ROE ("STRTAB_fdsave()");
 
 	p1 = bseekget (fd); bseekset (fd, p0);
+	if (!bwrite (fd, (char *)&mvhdr, sizeof (mvhdr)))
+		RWE (SPWERR_FWFAILED, "bwrite(mvhdr) failed");
 	if (!bwrite (fd, (char *)&hdr, sizeof (hdr)))
 		RWE (SPWERR_FWFAILED, "bwrite(hdr) failed");
 	bseekset (fd, p1);

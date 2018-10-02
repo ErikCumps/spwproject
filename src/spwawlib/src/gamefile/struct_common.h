@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -25,13 +25,7 @@ typedef struct s_FEL FEL;
 
 
 
-/* Supported unit types */
-typedef enum e_UTYPE {
-	UTYPE_UNIT = 0,		/* Unit				*/
-	UTYPE_CREW,		/* Crew				*/
-	UTYPE_SPAU		/* Special Attached Unit	*/
-} UTYPE;
-
+/* Intermediate unit element - used during formation/unit detection */
 typedef struct s_UEL {
 	struct s_list {
 		UEL	*prev;					/* Unit list: previous unit			*/
@@ -41,14 +35,16 @@ typedef struct s_UEL {
 		USHORT		RID;				/* Unit record ID				*/
 		char		name[SPWAW_AZSNAME];		/* Unit name					*/
 		USHORT		FRID;				/* Formation record ID				*/
-		USHORT		FMID;				/* Formation ID					*/
-		USHORT		FSID;				/* Formation sub-ID				*/
+		BYTE		FMID;				/* Formation ID					*/
+		BYTE		FSID;				/* Formation sub-ID				*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		OOBrid;				/* OOB record ID				*/
 		SPWOOB_UTYPE	OOBtype;			/* OOB unit type				*/
 		FEL		*formation;			/* Associated formation				*/
-		UTYPE		type;				/* Unit type: unit/crew/spau			*/
-		USHORT		LRID;				/* Loader unit record ID			*/
+		SPWAW_UNIT_TYPE	type;				/* Unit type: unit/crew/spau			*/
+		USHORT		LRID;				/* Detected leader unit record ID		*/
+		SPWAW_ABAND	aband;				/* Unit abandonment status			*/
+		USHORT		loader;				/* Loader unit record ID			*/
 		bool		vrfloader;			/* Verified loader				*/
 		bool		needvrfldrtst;			/* Requires loader verification acceptance test	*/
 		union u_link {
@@ -69,6 +65,8 @@ typedef	struct s_ULIST {
 } ULIST;
 
 void	init_ULIST	(ULIST &ul);
+void	dump_ULIST	(ULIST &ul);
+void	dump_UEL	(UEL *uel, char *prefix);
 UEL *	reserve_UEL	(ULIST &ul);
 bool	commit_UEL	(ULIST &ul, UEL *uel);
 void	drop_UEL	(ULIST &ul, UEL *uel);
@@ -84,12 +82,13 @@ typedef struct s_FEL {
 	}	l;
 	struct s_data {
 		USHORT		RID;				/* Formation record ID				*/
-		USHORT		rawFID;				/* Raw formation ID				*/
+		BYTE		rawFID;				/* Raw formation ID				*/
 		BYTE		player;				/* Player ID					*/
 		USHORT		leader;				/* Leader unit ID				*/
 		BYTE		OOBrid;				/* Formation OOB record ID			*/
 		char		name[SPWAW_AZSNAME];		/* Formation name				*/
-		USHORT		FID;				/* Adjusted formation ID			*/
+		BYTE		status;				/* Formation status				*/
+		BYTE		FID;				/* Adjusted formation ID			*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		unit_cnt;			/* Number of associated units			*/
 		UEL		*unit_lst[MAXFORMATIONUNITS];	/* List of associated units			*/
@@ -107,6 +106,8 @@ typedef	struct s_FLIST {
 } FLIST;
 
 void	init_FLIST	(FLIST &fl);
+void	dump_FLIST	(FLIST &fl);
+void	dump_FEL	(FEL *fel, char *prefix);
 FEL *	reserve_FEL	(FLIST &fl);
 bool	commit_FEL	(FLIST &fl, FEL *fel);
 void	drop_FEL	(FLIST &fl, FEL *fel);
@@ -125,5 +126,6 @@ typedef struct s_FULIST {
 } FULIST;
 
 void	init_FULIST	(FULIST &l);
+void	dump_FULIST	(FULIST &l);
 
 #endif	/* INTERNAL_STRUCT_COMMON_H */

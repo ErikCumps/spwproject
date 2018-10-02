@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - file I/O handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,9 +16,7 @@ bwrite (int fd, char *b, int len)
 
 	rc = write (fd, b, len);
 
-#if	IOLOGGING
-	log ("write(fd=%d, len=%d) = %d\n", fd, len, rc);
-#endif	/* IOLOGGING */
+	IOLOG3 ("write(fd=%d, len=%d) = %d\n", fd, len, rc);
 
 	if (rc == -1) ERROR1 ("failed to write to file (errno=%lu)", errno);
 

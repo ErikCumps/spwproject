@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,8 @@
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
 #include "dossier/dossier_file.h"
+#include "dossier/dossier_file_v10.h"
+#include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -58,7 +60,7 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 
 		p->turn = hdrs[i].turn;
 
-		rc = snapnew (&(p->snap), dst->dossier->oobdat, stab);
+		rc = snapnew (&(p->snap), dst->oobdat, stab);
 		ERRORGOTO ("snapnew()", handle_error);
 
 		bseekset (fd, pos + hdrs[i].snap);
@@ -104,7 +106,7 @@ link_battle (SPWAW_BATTLE *p, SPWAW_BATTLE *pp)
 }
 
 static SPWAW_ERROR
-dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab)
+dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULONG version)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
@@ -123,8 +125,14 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab)
 	dst->blen = cnt;
 	dst->blist = safe_nmalloc (SPWAW_BATTLE *, cnt); COOMGOTO (dst->blist, "SPWAW_BATTLE* list", handle_error);
 
-	if (!bread (fd, (char *)hdrs, cnt * sizeof (DOS_BHEADER), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
+	/* We are now backwards compatible with version 10 */
+	if (version == DOSS_VERSION_V10) {
+		rc = dossier_load_v10_battle_headers (fd, hdrs, cnt);
+		ERRORGOTO ("dossier_load_v10_battle_headers(battle hdrs)", handle_error);
+	} else {
+		if (!bread (fd, (char *)hdrs, cnt * sizeof (DOS_BHEADER), false))
+			FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
+	}
 
 	pp = NULL;
 	for (i=0; i<dst->blen; i++) {
@@ -136,10 +144,24 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab)
 		ERRORGOTO ("SPWAW_stamp2date(battle hdr date)", handle_error);
 
 		p->location = STRTAB_getstr (stab, hdrs[i].location);
-		p->OOB      = hdrs[i].OOB;
+		if (dst->type == SPWAW_CAMPAIGN_DOSSIER) {
+			p->OOB_p1   = dst->OOB;
+		} else {
+			p->OOB_p1   = (BYTE)(hdrs[i].OOB_p1 & 0xFF);
+		}
+		p->OOB_p2   = (BYTE)(hdrs[i].OOB_p2 & 0xFF);
 		p->miss_p1  = STRTAB_getstr (stab, hdrs[i].miss_p1);
 		p->miss_p2  = STRTAB_getstr (stab, hdrs[i].miss_p2);
 		p->meeting  = hdrs[i].meeting != 0;
+
+		rc = SPWOOB_LIST_takeref (dst->oobdata, hdrs[i].oobdat, &(p->oobdat));
+		ERRORGOTO ("SPWOOB_LIST_idx2spwoob(battle oob data index)", handle_error);
+
+		if (hdrs[i].name != BADSTRIDX) {
+			p->name = STRTAB_getstr (stab, hdrs[i].name);
+		} else {
+			p->name = NULL;
+		}
 
 		bseekset (fd, pos + hdrs[i].tlist);
 		rc = dossier_load_battle_turns (fd, p, hdrs[i].tcnt, stab);
@@ -172,15 +194,22 @@ handle_error:
 }
 
 static SPWAW_ERROR
-dossier_check_header (DOS_HEADER &hdr)
+dossier_check_magic_version (DOS_MV_HEADER &hdr)
 {
 	if (memcmp (hdr.magic, DOSS_MAGIC, DOSS_MGCLEN) != 0)
 		RWE (SPWERR_BADSAVEDATA, "dossier header check failed");
 
-	if (hdr.version != DOSS_VERSION)
+	/* We are now backwards compatible with version 10 */
+	if ((hdr.version != DOSS_VERSION) && (hdr.version != DOSS_VERSION_V10))
 		RWE (SPWERR_INCOMPATIBLE, "dossier header version check failed");
 
-	if (hdr.oobdat == 0)
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+dossier_check_header (DOS_HEADER &hdr)
+{
+	if (hdr.oobdata == 0)
 		RWE (SPWERR_BADSAVEDATA, "dossier contains no OOB data");
 
 	if (hdr.stab == 0)
@@ -194,6 +223,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
+	DOS_MV_HEADER	mvhdr;
 	DOS_HEADER	hdr;
 	STRTAB		*stab = NULL;
 
@@ -201,10 +231,24 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 
 	pos = bseekget (fd);
 
+	memset (&mvhdr, 0, sizeof (mvhdr));
+
+	if (!bread (fd, (char *)&mvhdr, sizeof (mvhdr), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(mvhdr)", handle_error);
+
+	rc = dossier_check_magic_version (mvhdr);
+	ERRORGOTO ("dossier_check_header()", handle_error);
+
 	memset (&hdr, 0, sizeof (hdr));
 
-	if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
+	/* We are now backwards compatible with version 10 */
+	if (mvhdr.version == DOSS_VERSION_V10) {
+		rc = dossier_load_v10_header (fd, &hdr);
+		ERRORGOTO ("snapshot_load_v10_info_header(snapshot info hdr)", handle_error);
+	} else {
+		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
+			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
+	}
 
 	rc = dossier_check_header (hdr);
 	ERRORGOTO ("dossier_check_header()", handle_error);
@@ -218,7 +262,9 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 
 	snprintf (dst->name, sizeof (dst->name) - 1, "%s", STRTAB_getstr (stab, hdr.name));
 	snprintf (dst->comment, sizeof (dst->comment) - 1, "%s", STRTAB_getstr (stab, hdr.comment));
-	dst->OOB = hdr.OOB;
+	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
+
+	dst->OOB = (BYTE)(hdr.OOB & 0xFF);
 	dst->bcnt = hdr.bcnt;
 
 	STRTAB_free (&stab);
@@ -235,6 +281,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
+	DOS_MV_HEADER	mvhdr;
 	DOS_HEADER	hdr;
 	STRTAB		*stab = NULL;
 
@@ -243,17 +290,37 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	pos = bseekget (fd);
 
+	memset (&mvhdr, 0, sizeof (mvhdr));
+
+	if (!bread (fd, (char *)&mvhdr, sizeof (mvhdr), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(mvhdr)", handle_error);
+
+	rc = dossier_check_magic_version (mvhdr);
+	ERRORGOTO ("dossier_check_header()", handle_error);
+
 	memset (&hdr, 0, sizeof (hdr));
 
-	if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
+	/* We are now backwards compatible with version 10 */
+	if (mvhdr.version == DOSS_VERSION_V10) {
+		rc = dossier_load_v10_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
+	} else {
+		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
+			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
+	}
 
 	rc = dossier_check_header (hdr);
 	ERRORGOTO ("dossier_check_header()", handle_error);
 
-	bseekset (fd, pos + hdr.oobdat);
-	rc = SPWOOB_load (dst->oobdat, fd);
-	ERRORGOTO ("spwoob_load()", handle_error);
+	bseekset (fd, pos + hdr.oobdata);
+	/* We are now backwards compatible with version 10 */
+	if (mvhdr.version == DOSS_VERSION_V10) {
+		rc = dossier_load_v10_oobdata (fd, dst->oobdata);
+		ERRORGOTO ("dossier_load_v10_oobdata()", handle_error);
+	} else {
+		rc = SPWOOB_LIST_load (dst->oobdata, fd);
+		ERRORGOTO ("SPWOOB_LIST_load()", handle_error);
+	}
 
 	bseekset (fd, pos + hdr.stab);
 	rc = STRTAB_fdload (stab, fd);
@@ -261,14 +328,18 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	dst->name = STRTAB_getstr (stab, hdr.name);
 	dst->comment = STRTAB_getstr (stab, hdr.comment);
+	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
+
 	dst->oobdir = STRTAB_getstr (stab, hdr.oobdir);
-	dst->OOB = hdr.OOB;
+	dst->OOB  = (BYTE)(hdr.OOB & 0xFF);
 	dst->fcnt = hdr.fcnt;
 	dst->ucnt = hdr.ucnt;
 
 	bseekset (fd, pos + hdr.blist);
-	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab);
+	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);
 	ERRORGOTO ("dossier_load_battles()", handle_error);
+
+	SPWOOB_LIST_debug_log (dst->oobdata);
 
 	return (SPWERR_OK);
 

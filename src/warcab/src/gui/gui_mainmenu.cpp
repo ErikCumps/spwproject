@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main menu.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -40,9 +40,14 @@ GuiMainMenu::GuiMainMenu (void)
 	/* Create and hook file menu */
 	GUINEW (d.file, QMenu ("File", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<file> menu");
 
-	d.file->addAction (GUI_ACTIONS->p.file_add_game);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.file->addAction (GUI_ACTIONS->p.file_add_snap);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+#if	ALLOW_SNAPSHOTS_LOAD
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	d.menu->addMenu (d.file);
@@ -50,10 +55,12 @@ GuiMainMenu::GuiMainMenu (void)
 	/* Create and hook navigation menu */
 	GUINEW (d.nav, QMenu ("Navigation", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<nav> menu");
 
+	d.nav->addAction (GUI_ACTIONS->p.nav_raise);
 	d.nav->addAction (GUI_ACTIONS->p.nav_first);
 	d.nav->addAction (GUI_ACTIONS->p.nav_previous);
 	d.nav->addAction (GUI_ACTIONS->p.nav_next);
 	d.nav->addAction (GUI_ACTIONS->p.nav_last);
+	d.nav->addAction (GUI_ACTIONS->p.nav_lower);
 
 	d.menu->addMenu (d.nav);
 

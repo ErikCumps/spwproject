@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - data definitions.
  *
- * Copyright (C) 2012-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -76,8 +76,8 @@ extern int	SMAP_HRD_mask[SMAP_HRD_CNT];
 extern int	SMAP_HRD_180mask[SMAP_HRD_CNT];
 
 /*! Strategic Map: convert height (in meters) to SMAP_HH */
-static inline
-SMAP_HH raw2ht (int h)
+static inline SMAP_HH
+raw2ht (int h)
 {
 	SMAP_HH	ht;
 

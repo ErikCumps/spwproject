@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main report widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -60,8 +60,6 @@ GuiMainRpt::~GuiMainRpt (void)
 void
 GuiMainRpt::report (MDLD_TREE_ITEM *item)
 {
-	MDLD_TREE_ITEM	*i1, *i2, *p;
-
 	if (!item) return;
 
 	DBG_log ("[%s] item=0x%8.8x\n", __FUNCTION__, item);
@@ -72,27 +70,22 @@ GuiMainRpt::report (MDLD_TREE_ITEM *item)
 				prepare_battle (NULL);
 				prepare_bturn (NULL);
 			} else {
-				i1 = item->cfirst;
-				p = prepare_battle (i1);
-				i2 = p ? p->cfirst : NULL;
-				prepare_bturn (i2);
+				prepare_battle (MDLD_TREE_lower_to (item, MDLD_TREE_BATTLE));
+				prepare_bturn (MDLD_TREE_lower_to (item, MDLD_TREE_BTURN));
 			}
 			select_dossier (item);
 			setCurrentIndex (indexOf (d.dossier));
 			break;
+		case MDLD_TREE_STDALONE:
 		case MDLD_TREE_BATTLE:
-			i1 = item->cfirst;
-			p = prepare_bturn (i1);
-			i2 = item->parent;
-			select_dossier (i2);
+			prepare_bturn (MDLD_TREE_lower_to (item, MDLD_TREE_BTURN));
+			select_dossier (MDLD_TREE_raise_to (item, MDLD_TREE_DOSSIER));
 			select_battle (item);
 			setCurrentIndex (indexOf (d.battle));
 			break;
 		case MDLD_TREE_BTURN:
-			i1 = item->parent;
-			select_battle (i1);
-			i2 = i1->parent;
-			select_dossier (i2);
+			select_battle (MDLD_TREE_raise_to (item, MDLD_TREE_BATTLE));
+			select_dossier (MDLD_TREE_raise_to (item, MDLD_TREE_DOSSIER));
 			select_bturn (item);
 			setCurrentIndex (indexOf (d.bturn));
 			break;
@@ -186,6 +179,7 @@ GuiMainRpt::prepare_bturn (MDLD_TREE_ITEM *item)
 	}
 	return (cur);
 }
+
 void
 GuiMainRpt::selectedCurrentIndex (int index)
 {

@@ -1,13 +1,15 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "stdafx.h"
 #include "dossier/dossier.h"
+
+#if	0
 #include "dossier/dossier_file.h"
 #include "snapshot/snapshot.h"
 #include "fileio/fileio.h"
@@ -96,7 +98,8 @@ dossier_export_blist (int src, FILE *dst, long pos, USHORT cnt, USHORT ucnt)
 
 		b = TC_v2t (dst, "dossier.battle.header.date",		TC_DATA_IDX_TIMESTAMP, &(hdrs[i].date), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.location",	TC_DATA_IDX_ULONG, &(hdrs[i].location), 0, i);	ROF(b);
-		b = TC_v2t (dst, "dossier.battle.header.OOB",		TC_DATA_IDX_BYTE, &(hdrs[i].OOB), 0, i);	ROF(b);
+		b = TC_v2t (dst, "dossier.battle.header.OOB_p1",	TC_DATA_IDX_BYTE, &(hdrs[i].OOB_p1), 0, i);	ROF(b);
+		b = TC_v2t (dst, "dossier.battle.header.OOB_p2",	TC_DATA_IDX_BYTE, &(hdrs[i].OOB_p2), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.miss_p1",	TC_DATA_IDX_ULONG, &(hdrs[i].miss_p1), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.miss_p2",	TC_DATA_IDX_ULONG, &(hdrs[i].miss_p2), 0, i);	ROF(b);
 		b = TC_v2t (dst, "dossier.battle.header.meeting",	TC_DATA_IDX_BYTE, &(hdrs[i].meeting), 0, i);	ROF(b);
@@ -140,10 +143,14 @@ dossier_export_stab (int src, FILE *dst, long pos)
 handle_error:
 	return (rc);
 }
+#endif	/* 0 */
 
 SPWAW_ERROR
-dossier_export (int src, FILE *dst)
+dossier_export (int /*src*/, FILE * /*dst*/)
 {
+	// This is basically broken
+	return (SPWERR_FAILED);
+#if	0
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
 	DOS_HEADER	hdr;
@@ -163,4 +170,5 @@ dossier_export (int src, FILE *dst)
 
 handle_error:
 	return (rc);
+#endif	/* 0 */
 }

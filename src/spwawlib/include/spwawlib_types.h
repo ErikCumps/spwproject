@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -227,6 +227,34 @@ typedef enum e_SPWAW_VHSTATUS {
 #define	SPWAW_VHSTATUS_CNT	(SPWAW_VHLASTCODE - SPWAW_VHSTARTCODE + 1)
 
 extern SPWAWLIB_API const char *SPWAW_vhstatus2str (SPWAW_VHSTATUS id);
+
+/* SPWAW battle type */
+typedef enum e_SPWAW_BATTLE_TYPE {
+	SPWAW_UNKNOWN_BATTLE = 0,	/* The type of this battle is unknown			*/
+	SPWAW_CAMPAIGN_BATTLE,		/* A campaign battle (allows campaign tracking)		*/
+	SPWAW_STDALONE_BATTLE		/* A standalone battle (no campaign tracking)		*/
+} SPWAW_BATTLE_TYPE;
+
+extern SPWAWLIB_API const char *SPWAW_battletype2str	(SPWAW_BATTLE_TYPE type);
+
+/* SPWAW dossier type */
+typedef enum e_SPWAW_DOSSIER_TYPE {
+	SPWAW_EMPTY_DOSSIER = 0,	/* An empty dossier (type not yet determined)		*/
+	SPWAW_CAMPAIGN_DOSSIER,		/* A campaign dossier (tracks a campaign)		*/
+	SPWAW_STDALONE_DOSSIER		/* A standalone dossier (no campaign tracking)		*/
+} SPWAW_DOSSIER_TYPE;
+
+extern SPWAWLIB_API const char *SPWAW_dossiertype2str	(SPWAW_DOSSIER_TYPE type);
+
+/* SPWAW unit type */
+typedef enum e_SPWAW_UNIT_TYPE {
+	SPWAW_UNIT_TYPE_UNKNOWN = 0,	/* Unknown unit type		*/
+	SPWAW_UNIT_TYPE_UNIT,		/* Unit				*/
+	SPWAW_UNIT_TYPE_CREW,		/* Crew				*/
+	SPWAW_UNIT_TYPE_SPAU		/* Special Attached Unit	*/
+} SPWAW_UNIT_TYPE;
+
+extern SPWAWLIB_API const char *SPWAW_unittype2str	(SPWAW_UNIT_TYPE type);
 
 #endif	/* SPWAW_LIB_TYPES_H */
 

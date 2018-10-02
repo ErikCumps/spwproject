@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
+#include "spwoob/spwoob_list.h"
 #include "common/internal.h"
 
 void
@@ -48,7 +49,7 @@ dossier_clean (SPWAW_DOSSIER *ptr)
 		}
 		safe_free (ptr->blist);
 	}
-	SPWOOB_free (&(ptr->oobdat));
+	SPWOOB_LIST_free (&(ptr->oobdata));
 	STRTAB_free ((STRTAB **)&(ptr->stab));
 
 	clear_ptr (ptr);

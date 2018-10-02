@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -31,6 +31,7 @@ extern char *			fstatus2str	(SPWAW_FSTATUS id);
 extern char *			ustatus2str	(SPWAW_USTATUS id);
 extern char *			entr2str	(SPWAW_ENTR id);
 extern char *			rank2str	(SPWAW_RANK id);
+extern char *			exp2str		(SPWAW_EXP id);
 extern char *			btstatus2str	(SPWAW_BTSTATUS id);
 extern char *			vhstatus2str	(SPWAW_VHSTATUS id);
 
@@ -38,7 +39,14 @@ extern void			FID2str		(BYTE id, char *buf, int len);
 extern char *			FID2str		(BYTE id);
 extern void			UID2str		(BYTE id, BYTE subid, char *buf, int len);
 extern char *			UID2str		(BYTE id, BYTE subid);
-extern char *			exp2str		(SPWAW_EXP id);
+
+
 extern char *			aband2str	(SPWAW_ABAND id);
+extern SPWAW_ABAND		raw2aband	(BYTE aband);
+extern BYTE			aband2raw	(SPWAW_ABAND aband);
+
+extern SPWAW_UNIT_TYPE		raw2unittype	(BYTE type);
+extern BYTE			unittype2raw	(SPWAW_UNIT_TYPE type);
+
 
 #endif	/* TRANSLATE_H */

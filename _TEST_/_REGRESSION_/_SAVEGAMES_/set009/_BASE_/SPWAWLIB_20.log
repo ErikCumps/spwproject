@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=20, info=0x0018f8ac)
+game_load_full (dir="_SAVE_", id=20)
 open_gamefiles: comment: name="_SAVE_\save020.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save020.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -85,79 +85,810 @@ unpacked section 47: 210 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=16, flag=0x00000001>
 unpacked section 48: 16 bytes -> 80 bytes
+setup_info: fcnt=47, cfcnt=19
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(  SP ENH FR v1.1)
-find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<187>(     Forward Obs)
-find_formations: [002] FORMATION: P<0> ID<002> L<00002> O<148>( Moerser Section)
-find_formations: [003] FORMATION: P<0> ID<003> L<00004> O<148>( Moerser Section)
-find_formations: [004] FORMATION: P<0> ID<004> L<00006> O<194>(       Munitions)
-find_formations: [005] FORMATION: P<0> ID<005> L<00007> O<056>(   Truck Section)
-find_formations: [006] FORMATION: P<0> ID<006> L<00009> O<089>(  Motor Rifle Co)
-find_formations: [007] FORMATION: P<0> ID<007> L<00011> O<000>( Motor Rifle Plt)
-find_formations: [008] FORMATION: P<0> ID<008> L<00021> O<000>( Motor Rifle Plt)
-find_formations: [009] FORMATION: P<0> ID<009> L<00031> O<000>( Motor Rifle Plt)
-find_formations: [010] FORMATION: P<0> ID<010> L<00041> O<000>( Mot Weapons Plt)
-find_formations: [011] FORMATION: P<0> ID<018> L<00047> O<140>(          Sniper)
-find_formations: [012] FORMATION: P<0> ID<011> L<00051> O<125>(     Pionere Plt)
-find_formations: [013] FORMATION: P<0> ID<012> L<00060> O<139>(   Scout Platoon)
-find_formations: [014] FORMATION: P<0> ID<013> L<00063> O<139>(   Scout Platoon)
-find_formations: [015] FORMATION: P<0> ID<014> L<00066> O<007>(   Lt Panzer Plt)
-find_formations: [016] FORMATION: P<0> ID<015> L<00071> O<007>(   Lt Panzer Plt)
-find_formations: [017] FORMATION: P<0> ID<016> L<00076> O<015>(  Panzer Platoon)
-find_formations: [018] FORMATION: P<0> ID<017> L<00081> O<020>(   CS Panzer Sec)
-find_formations: [019] FORMATION: P<0> ID<019> L<00084> O<131>(  Motorcycle Plt)
-find_formations: [020] FORMATION: P<0> ID<020> L<00087> O<131>(  Motorcycle Plt)
-find_formations: [021] FORMATION: P<0> ID<021> L<00090> O<131>(  Motorcycle Plt)
-find_formations: [022] FORMATION: P<0> ID<022> L<00093> O<052>(   Halftrack Plt)
-find_formations: [023] FORMATION: P<0> ID<023> L<00097> O<028>(     JPz Section)
-find_formations: [024] FORMATION: P<0> ID<024> L<00099> O<043>( Utility Vehicle)
-find_formations: [025] FORMATION: P<0> ID<025> L<00100> O<001>(    SPWAW H2H ce)
-find_formations: [026] FORMATION: P<0> ID<026> L<00101> O<085>(   Infanterie Kp)
-find_formations: [027] FORMATION: P<0> ID<027> L<00102> O<000>(  Infanterie Zug)
-find_formations: [028] FORMATION: P<0> ID<028> L<00107> O<000>(  Infanterie Zug)
-find_formations: [029] FORMATION: P<0> ID<029> L<00112> O<000>(  Infanterie Zug)
-find_formations: [030] FORMATION: P<0> ID<030> L<00117> O<142>(        MG Trupp)
-find_formations: [031] FORMATION: P<0> ID<031> L<00118> O<142>(        MG Trupp)
-find_formations: [032] FORMATION: P<0> ID<032> L<00119> O<000>( (l) Moerser Grp)
-find_formations: [033] FORMATION: P<0> ID<033> L<00122> O<085>(   Infanterie Kp)
-find_formations: [034] FORMATION: P<0> ID<034> L<00123> O<000>(  Infanterie Zug)
-find_formations: [035] FORMATION: P<0> ID<035> L<00128> O<000>(  Infanterie Zug)
-find_formations: [036] FORMATION: P<0> ID<036> L<00133> O<000>(  Infanterie Zug)
-find_formations: [037] FORMATION: P<0> ID<037> L<00138> O<142>(        MG Trupp)
-find_formations: [038] FORMATION: P<0> ID<038> L<00139> O<142>(        MG Trupp)
-find_formations: [039] FORMATION: P<0> ID<039> L<00140> O<000>( (l) Moerser Grp)
-find_formations: [040] FORMATION: P<0> ID<040> L<00143> O<148>(     Moerser Grp)
-find_formations: [041] FORMATION: P<0> ID<041> L<00145> O<148>(     Moerser Grp)
-find_formations: [042] FORMATION: P<0> ID<042> L<00147> O<161>(     FeldArt Zug)
-find_formations: [043] FORMATION: P<0> ID<043> L<00151> O<066>(         Gespann)
-find_formations: [044] FORMATION: P<0> ID<044> L<00153> O<187>( Vorg Beobachter)
-find_formations: [045] FORMATION: P<0> ID<045> L<00154> O<139>(         Spaeher)
-find_formations: cnt=46
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>(  SP ENH FR v1.1)
+find_formations: [001] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<187>(     Forward Obs)
+find_formations: [002] FORMATION: P<0> rawFID<002> FID<002> L<00002> O<148>( Moerser Section)
+find_formations: [003] FORMATION: P<0> rawFID<003> FID<003> L<00004> O<148>( Moerser Section)
+find_formations: [004] FORMATION: P<0> rawFID<004> FID<004> L<00006> O<194>(       Munitions)
+find_formations: [005] FORMATION: P<0> rawFID<005> FID<005> L<00007> O<056>(   Truck Section)
+find_formations: [006] FORMATION: P<0> rawFID<006> FID<006> L<00009> O<089>(  Motor Rifle Co)
+find_formations: [007] FORMATION: P<0> rawFID<007> FID<007> L<00011> O<000>( Motor Rifle Plt)
+find_formations: [008] FORMATION: P<0> rawFID<008> FID<008> L<00021> O<000>( Motor Rifle Plt)
+find_formations: [009] FORMATION: P<0> rawFID<009> FID<009> L<00031> O<000>( Motor Rifle Plt)
+find_formations: [010] FORMATION: P<0> rawFID<010> FID<010> L<00041> O<000>( Mot Weapons Plt)
+find_formations: [011] FORMATION: P<0> rawFID<018> FID<018> L<00047> O<140>(          Sniper)
+find_formations: [012] FORMATION: P<0> rawFID<011> FID<011> L<00051> O<125>(     Pionere Plt)
+find_formations: [013] FORMATION: P<0> rawFID<012> FID<012> L<00060> O<139>(   Scout Platoon)
+find_formations: [014] FORMATION: P<0> rawFID<013> FID<013> L<00063> O<139>(   Scout Platoon)
+find_formations: [015] FORMATION: P<0> rawFID<014> FID<014> L<00066> O<007>(   Lt Panzer Plt)
+find_formations: [016] FORMATION: P<0> rawFID<015> FID<015> L<00071> O<007>(   Lt Panzer Plt)
+find_formations: [017] FORMATION: P<0> rawFID<016> FID<016> L<00076> O<015>(  Panzer Platoon)
+find_formations: [018] FORMATION: P<0> rawFID<017> FID<017> L<00081> O<020>(   CS Panzer Sec)
+find_formations: [019] FORMATION: P<0> rawFID<019> FID<019> L<00084> O<131>(  Motorcycle Plt)
+find_formations: [020] FORMATION: P<0> rawFID<020> FID<020> L<00087> O<131>(  Motorcycle Plt)
+find_formations: [021] FORMATION: P<0> rawFID<021> FID<021> L<00090> O<131>(  Motorcycle Plt)
+find_formations: [022] FORMATION: P<0> rawFID<022> FID<022> L<00093> O<052>(   Halftrack Plt)
+find_formations: [023] FORMATION: P<0> rawFID<023> FID<023> L<00097> O<028>(     JPz Section)
+find_formations: [024] FORMATION: P<0> rawFID<024> FID<024> L<00099> O<043>( Utility Vehicle)
+find_formations: [025] FORMATION: P<0> rawFID<025> FID<025> L<00100> O<001>(    SPWAW H2H ce)
+find_formations: [026] FORMATION: P<0> rawFID<026> FID<026> L<00101> O<085>(   Infanterie Kp)
+find_formations: [027] FORMATION: P<0> rawFID<027> FID<027> L<00102> O<000>(  Infanterie Zug)
+find_formations: [028] FORMATION: P<0> rawFID<028> FID<028> L<00107> O<000>(  Infanterie Zug)
+find_formations: [029] FORMATION: P<0> rawFID<029> FID<029> L<00112> O<000>(  Infanterie Zug)
+find_formations: [030] FORMATION: P<0> rawFID<030> FID<030> L<00117> O<142>(        MG Trupp)
+find_formations: [031] FORMATION: P<0> rawFID<031> FID<031> L<00118> O<142>(        MG Trupp)
+find_formations: [032] FORMATION: P<0> rawFID<032> FID<032> L<00119> O<000>( (l) Moerser Grp)
+find_formations: [033] FORMATION: P<0> rawFID<033> FID<033> L<00122> O<085>(   Infanterie Kp)
+find_formations: [034] FORMATION: P<0> rawFID<034> FID<034> L<00123> O<000>(  Infanterie Zug)
+find_formations: [035] FORMATION: P<0> rawFID<035> FID<035> L<00128> O<000>(  Infanterie Zug)
+find_formations: [036] FORMATION: P<0> rawFID<036> FID<036> L<00133> O<000>(  Infanterie Zug)
+find_formations: [037] FORMATION: P<0> rawFID<037> FID<037> L<00138> O<142>(        MG Trupp)
+find_formations: [038] FORMATION: P<0> rawFID<038> FID<038> L<00139> O<142>(        MG Trupp)
+find_formations: [039] FORMATION: P<0> rawFID<039> FID<039> L<00140> O<000>( (l) Moerser Grp)
+find_formations: [040] FORMATION: P<0> rawFID<040> FID<040> L<00143> O<148>(     Moerser Grp)
+find_formations: [041] FORMATION: P<0> rawFID<041> FID<041> L<00145> O<148>(     Moerser Grp)
+find_formations: [042] FORMATION: P<0> rawFID<042> FID<042> L<00147> O<161>(     FeldArt Zug)
+find_formations: [043] FORMATION: P<0> rawFID<043> FID<043> L<00151> O<066>(         Gespann)
+find_formations: [044] FORMATION: P<0> rawFID<044> FID<044> L<00153> O<187>( Vorg Beobachter)
+find_formations: [045] FORMATION: P<0> rawFID<045> FID<045> L<00154> O<139>(         Spaeher)
+find_formations: [046] SKIPPED (wrong player ID 1)
+find_formations: [047] SKIPPED (wrong player ID 1)
+find_formations: [048] SKIPPED (wrong player ID 1)
+find_formations: [049] SKIPPED (wrong player ID 1)
+find_formations: [050] SKIPPED (wrong player ID 1)
+find_formations: [051] SKIPPED (wrong player ID 1)
+find_formations: [052] SKIPPED (wrong player ID 1)
+find_formations: [053] SKIPPED (wrong player ID 1)
+find_formations: [054] SKIPPED (wrong player ID 1)
+find_formations: [055] SKIPPED (wrong player ID 1)
+find_formations: [056] SKIPPED (wrong player ID 1)
+find_formations: [057] SKIPPED (wrong player ID 1)
+find_formations: [058] SKIPPED (wrong player ID 1)
+find_formations: [059] SKIPPED (wrong player ID 1)
+find_formations: [060] SKIPPED (wrong player ID 1)
+find_formations: [061] SKIPPED (wrong player ID 1)
+find_formations: [062] SKIPPED (wrong player ID 1)
+find_formations: [063] SKIPPED (wrong player ID 1)
+find_formations: [064] SKIPPED (wrong player ID 1)
+find_formations: [065] SKIPPED (wrong player ID 1)
+find_formations: [066] SKIPPED (wrong player ID 1)
+find_formations: [067] SKIPPED (wrong player ID 1)
+find_formations: [068] SKIPPED (wrong player ID 1)
+find_formations: [069] SKIPPED (wrong player ID 1)
+find_formations: [070] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
+find_formations: [071] SKIPPED (duplicate formation ID 0)
+find_formations: [072] SKIPPED (duplicate formation ID 0)
+find_formations: [073] SKIPPED (duplicate formation ID 0)
+find_formations: [074] SKIPPED (duplicate formation ID 0)
+find_formations: [075] SKIPPED (duplicate formation ID 0)
+find_formations: [076] SKIPPED (duplicate formation ID 0)
+find_formations: [077] SKIPPED (duplicate formation ID 0)
+find_formations: [078] SKIPPED (duplicate formation ID 0)
+find_formations: [079] SKIPPED (duplicate formation ID 0)
+find_formations: [080] SKIPPED (duplicate formation ID 0)
+find_formations: [081] SKIPPED (duplicate formation ID 0)
+find_formations: [082] SKIPPED (duplicate formation ID 0)
+find_formations: [083] SKIPPED (duplicate formation ID 0)
+find_formations: [084] SKIPPED (duplicate formation ID 0)
+find_formations: [085] SKIPPED (duplicate formation ID 0)
+find_formations: [086] SKIPPED (duplicate formation ID 0)
+find_formations: [087] SKIPPED (duplicate formation ID 0)
+find_formations: [088] SKIPPED (duplicate formation ID 0)
+find_formations: [089] SKIPPED (duplicate formation ID 0)
+find_formations: [090] SKIPPED (duplicate formation ID 0)
+find_formations: [091] SKIPPED (duplicate formation ID 0)
+find_formations: [092] SKIPPED (duplicate formation ID 0)
+find_formations: [093] SKIPPED (duplicate formation ID 0)
+find_formations: [094] SKIPPED (duplicate formation ID 0)
+find_formations: [095] SKIPPED (duplicate formation ID 0)
+find_formations: [096] SKIPPED (duplicate formation ID 0)
+find_formations: [097] SKIPPED (duplicate formation ID 0)
+find_formations: [098] SKIPPED (duplicate formation ID 0)
+find_formations: [099] SKIPPED (duplicate formation ID 0)
+find_formations: [100] SKIPPED (duplicate formation ID 0)
+find_formations: [101] SKIPPED (duplicate formation ID 0)
+find_formations: [102] SKIPPED (duplicate formation ID 0)
+find_formations: [103] SKIPPED (duplicate formation ID 0)
+find_formations: [104] SKIPPED (duplicate formation ID 0)
+find_formations: [105] SKIPPED (duplicate formation ID 0)
+find_formations: [106] SKIPPED (duplicate formation ID 0)
+find_formations: [107] SKIPPED (duplicate formation ID 0)
+find_formations: [108] SKIPPED (duplicate formation ID 0)
+find_formations: [109] SKIPPED (duplicate formation ID 0)
+find_formations: [110] SKIPPED (duplicate formation ID 0)
+find_formations: [111] SKIPPED (duplicate formation ID 0)
+find_formations: [112] SKIPPED (duplicate formation ID 0)
+find_formations: [113] SKIPPED (duplicate formation ID 0)
+find_formations: [114] SKIPPED (duplicate formation ID 0)
+find_formations: [115] SKIPPED (duplicate formation ID 0)
+find_formations: [116] SKIPPED (duplicate formation ID 0)
+find_formations: [117] SKIPPED (duplicate formation ID 0)
+find_formations: [118] SKIPPED (duplicate formation ID 0)
+find_formations: [119] SKIPPED (duplicate formation ID 0)
+find_formations: [120] SKIPPED (duplicate formation ID 0)
+find_formations: [121] SKIPPED (duplicate formation ID 0)
+find_formations: [122] SKIPPED (duplicate formation ID 0)
+find_formations: [123] SKIPPED (duplicate formation ID 0)
+find_formations: [124] SKIPPED (duplicate formation ID 0)
+find_formations: [125] SKIPPED (duplicate formation ID 0)
+find_formations: [126] SKIPPED (duplicate formation ID 0)
+find_formations: [127] SKIPPED (duplicate formation ID 0)
+find_formations: [128] SKIPPED (duplicate formation ID 0)
+find_formations: [129] SKIPPED (duplicate formation ID 0)
+find_formations: [130] SKIPPED (duplicate formation ID 0)
+find_formations: [131] SKIPPED (duplicate formation ID 0)
+find_formations: [132] SKIPPED (duplicate formation ID 0)
+find_formations: [133] SKIPPED (duplicate formation ID 0)
+find_formations: [134] SKIPPED (duplicate formation ID 0)
+find_formations: [135] SKIPPED (duplicate formation ID 0)
+find_formations: [136] SKIPPED (duplicate formation ID 0)
+find_formations: [137] SKIPPED (duplicate formation ID 0)
+find_formations: [138] SKIPPED (duplicate formation ID 0)
+find_formations: [139] SKIPPED (duplicate formation ID 0)
+find_formations: [140] SKIPPED (duplicate formation ID 0)
+find_formations: [141] SKIPPED (duplicate formation ID 0)
+find_formations: [142] SKIPPED (duplicate formation ID 0)
+find_formations: [143] SKIPPED (duplicate formation ID 0)
+find_formations: [144] SKIPPED (duplicate formation ID 0)
+find_formations: [145] SKIPPED (duplicate formation ID 0)
+find_formations: [146] SKIPPED (duplicate formation ID 0)
+find_formations: [147] SKIPPED (duplicate formation ID 0)
+find_formations: [148] SKIPPED (duplicate formation ID 0)
+find_formations: [149] SKIPPED (duplicate formation ID 0)
+find_formations: [150] SKIPPED (duplicate formation ID 0)
+find_formations: [151] SKIPPED (duplicate formation ID 0)
+find_formations: [152] SKIPPED (duplicate formation ID 0)
+find_formations: [153] SKIPPED (duplicate formation ID 0)
+find_formations: [154] SKIPPED (duplicate formation ID 0)
+find_formations: [155] SKIPPED (duplicate formation ID 0)
+find_formations: [156] SKIPPED (duplicate formation ID 0)
+find_formations: [157] SKIPPED (duplicate formation ID 0)
+find_formations: [158] SKIPPED (duplicate formation ID 0)
+find_formations: [159] SKIPPED (duplicate formation ID 0)
+find_formations: [160] SKIPPED (duplicate formation ID 0)
+find_formations: [161] SKIPPED (duplicate formation ID 0)
+find_formations: [162] SKIPPED (duplicate formation ID 0)
+find_formations: [163] SKIPPED (duplicate formation ID 0)
+find_formations: [164] SKIPPED (duplicate formation ID 0)
+find_formations: [165] SKIPPED (duplicate formation ID 0)
+find_formations: [166] SKIPPED (duplicate formation ID 0)
+find_formations: [167] SKIPPED (duplicate formation ID 0)
+find_formations: [168] SKIPPED (duplicate formation ID 0)
+find_formations: [169] SKIPPED (duplicate formation ID 0)
+find_formations: [170] SKIPPED (duplicate formation ID 0)
+find_formations: [171] SKIPPED (duplicate formation ID 0)
+find_formations: [172] SKIPPED (duplicate formation ID 0)
+find_formations: [173] SKIPPED (duplicate formation ID 0)
+find_formations: [174] SKIPPED (duplicate formation ID 0)
+find_formations: [175] SKIPPED (duplicate formation ID 0)
+find_formations: [176] SKIPPED (duplicate formation ID 0)
+find_formations: [177] SKIPPED (duplicate formation ID 0)
+find_formations: [178] SKIPPED (duplicate formation ID 0)
+find_formations: [179] SKIPPED (duplicate formation ID 0)
+find_formations: [180] SKIPPED (duplicate formation ID 0)
+find_formations: [181] SKIPPED (duplicate formation ID 0)
+find_formations: [182] SKIPPED (duplicate formation ID 0)
+find_formations: [183] SKIPPED (duplicate formation ID 0)
+find_formations: [184] SKIPPED (duplicate formation ID 0)
+find_formations: [185] SKIPPED (duplicate formation ID 0)
+find_formations: [186] SKIPPED (duplicate formation ID 0)
+find_formations: [187] SKIPPED (duplicate formation ID 0)
+find_formations: [188] SKIPPED (duplicate formation ID 0)
+find_formations: [189] SKIPPED (duplicate formation ID 0)
+find_formations: [190] SKIPPED (duplicate formation ID 0)
+find_formations: [191] SKIPPED (duplicate formation ID 0)
+find_formations: [192] SKIPPED (duplicate formation ID 0)
+find_formations: [193] SKIPPED (duplicate formation ID 0)
+find_formations: [194] SKIPPED (duplicate formation ID 0)
+find_formations: [195] SKIPPED (duplicate formation ID 0)
+find_formations: [196] SKIPPED (duplicate formation ID 0)
+find_formations: [197] SKIPPED (duplicate formation ID 0)
+find_formations: [198] SKIPPED (duplicate formation ID 0)
+find_formations: [199] SKIPPED (duplicate formation ID 0)
+find_formations: [200] SKIPPED (duplicate formation ID 0)
+find_formations: [201] SKIPPED (duplicate formation ID 0)
+find_formations: [202] SKIPPED (duplicate formation ID 0)
+find_formations: [203] SKIPPED (duplicate formation ID 0)
+find_formations: [204] SKIPPED (duplicate formation ID 0)
+find_formations: [205] SKIPPED (duplicate formation ID 0)
+find_formations: [206] SKIPPED (duplicate formation ID 0)
+find_formations: [207] SKIPPED (duplicate formation ID 0)
+find_formations: [208] SKIPPED (duplicate formation ID 0)
+find_formations: [209] SKIPPED (duplicate formation ID 0)
+find_formations: [210] SKIPPED (duplicate formation ID 0)
+find_formations: [211] SKIPPED (duplicate formation ID 0)
+find_formations: [212] SKIPPED (duplicate formation ID 0)
+find_formations: [213] SKIPPED (duplicate formation ID 0)
+find_formations: [214] SKIPPED (duplicate formation ID 0)
+find_formations: [215] SKIPPED (duplicate formation ID 0)
+find_formations: [216] SKIPPED (duplicate formation ID 0)
+find_formations: [217] SKIPPED (duplicate formation ID 0)
+find_formations: [218] SKIPPED (duplicate formation ID 0)
+find_formations: [219] SKIPPED (duplicate formation ID 0)
+find_formations: [220] SKIPPED (duplicate formation ID 0)
+find_formations: [221] SKIPPED (duplicate formation ID 0)
+find_formations: [222] SKIPPED (duplicate formation ID 0)
+find_formations: [223] SKIPPED (duplicate formation ID 0)
+find_formations: [224] SKIPPED (duplicate formation ID 0)
+find_formations: [225] SKIPPED (duplicate formation ID 0)
+find_formations: [226] SKIPPED (duplicate formation ID 0)
+find_formations: [227] SKIPPED (duplicate formation ID 0)
+find_formations: [228] SKIPPED (duplicate formation ID 0)
+find_formations: [229] SKIPPED (duplicate formation ID 0)
+find_formations: [230] SKIPPED (duplicate formation ID 0)
+find_formations: [231] SKIPPED (duplicate formation ID 0)
+find_formations: [232] SKIPPED (duplicate formation ID 0)
+find_formations: [233] SKIPPED (duplicate formation ID 0)
+find_formations: [234] SKIPPED (duplicate formation ID 0)
+find_formations: [235] SKIPPED (duplicate formation ID 0)
+find_formations: [236] SKIPPED (duplicate formation ID 0)
+find_formations: [237] SKIPPED (duplicate formation ID 0)
+find_formations: [238] SKIPPED (duplicate formation ID 0)
+find_formations: [239] SKIPPED (duplicate formation ID 0)
+find_formations: [240] SKIPPED (duplicate formation ID 0)
+find_formations: [241] SKIPPED (duplicate formation ID 0)
+find_formations: [242] SKIPPED (duplicate formation ID 0)
+find_formations: [243] SKIPPED (duplicate formation ID 0)
+find_formations: [244] SKIPPED (duplicate formation ID 0)
+find_formations: [245] SKIPPED (duplicate formation ID 0)
+find_formations: [246] SKIPPED (duplicate formation ID 0)
+find_formations: [247] SKIPPED (duplicate formation ID 0)
+find_formations: [248] SKIPPED (duplicate formation ID 0)
+find_formations: [249] SKIPPED (duplicate formation ID 0)
+find_formations: [250] SKIPPED (duplicate formation ID 0)
+find_formations: [251] SKIPPED (duplicate formation ID 0)
+find_formations: [252] SKIPPED (duplicate formation ID 0)
+find_formations: [253] SKIPPED (duplicate formation ID 0)
+find_formations: [254] SKIPPED (duplicate formation ID 0)
+find_formations: [255] SKIPPED (duplicate formation ID 0)
+find_formations: [256] SKIPPED (duplicate formation ID 0)
+find_formations: [257] SKIPPED (duplicate formation ID 0)
+find_formations: [258] SKIPPED (duplicate formation ID 0)
+find_formations: [259] SKIPPED (duplicate formation ID 0)
+find_formations: [260] SKIPPED (duplicate formation ID 0)
+find_formations: [261] SKIPPED (duplicate formation ID 0)
+find_formations: [262] SKIPPED (duplicate formation ID 0)
+find_formations: [263] SKIPPED (duplicate formation ID 0)
+find_formations: [264] SKIPPED (duplicate formation ID 0)
+find_formations: [265] SKIPPED (duplicate formation ID 0)
+find_formations: [266] SKIPPED (duplicate formation ID 0)
+find_formations: [267] SKIPPED (duplicate formation ID 0)
+find_formations: [268] SKIPPED (duplicate formation ID 0)
+find_formations: [269] SKIPPED (duplicate formation ID 0)
+find_formations: [270] SKIPPED (duplicate formation ID 0)
+find_formations: [271] SKIPPED (duplicate formation ID 0)
+find_formations: [272] SKIPPED (duplicate formation ID 0)
+find_formations: [273] SKIPPED (duplicate formation ID 0)
+find_formations: [274] SKIPPED (duplicate formation ID 0)
+find_formations: [275] SKIPPED (duplicate formation ID 0)
+find_formations: [276] SKIPPED (duplicate formation ID 0)
+find_formations: [277] SKIPPED (duplicate formation ID 0)
+find_formations: [278] SKIPPED (duplicate formation ID 0)
+find_formations: [279] SKIPPED (duplicate formation ID 0)
+find_formations: [280] SKIPPED (duplicate formation ID 0)
+find_formations: [281] SKIPPED (duplicate formation ID 0)
+find_formations: [282] SKIPPED (duplicate formation ID 0)
+find_formations: [283] SKIPPED (duplicate formation ID 0)
+find_formations: [284] SKIPPED (duplicate formation ID 0)
+find_formations: [285] SKIPPED (duplicate formation ID 0)
+find_formations: [286] SKIPPED (duplicate formation ID 0)
+find_formations: [287] SKIPPED (duplicate formation ID 0)
+find_formations: [288] SKIPPED (duplicate formation ID 0)
+find_formations: [289] SKIPPED (duplicate formation ID 0)
+find_formations: [290] SKIPPED (duplicate formation ID 0)
+find_formations: [291] SKIPPED (duplicate formation ID 0)
+find_formations: [292] SKIPPED (duplicate formation ID 0)
+find_formations: [293] SKIPPED (duplicate formation ID 0)
+find_formations: [294] SKIPPED (duplicate formation ID 0)
+find_formations: [295] SKIPPED (duplicate formation ID 0)
+find_formations: [296] SKIPPED (duplicate formation ID 0)
+find_formations: [297] SKIPPED (duplicate formation ID 0)
+find_formations: [298] SKIPPED (duplicate formation ID 0)
+find_formations: [299] SKIPPED (duplicate formation ID 0)
+find_formations: [300] SKIPPED (duplicate formation ID 0)
+find_formations: [301] SKIPPED (duplicate formation ID 0)
+find_formations: [302] SKIPPED (duplicate formation ID 0)
+find_formations: [303] SKIPPED (duplicate formation ID 0)
+find_formations: [304] SKIPPED (duplicate formation ID 0)
+find_formations: [305] SKIPPED (duplicate formation ID 0)
+find_formations: [306] SKIPPED (duplicate formation ID 0)
+find_formations: [307] SKIPPED (duplicate formation ID 0)
+find_formations: [308] SKIPPED (duplicate formation ID 0)
+find_formations: [309] SKIPPED (duplicate formation ID 0)
+find_formations: [310] SKIPPED (duplicate formation ID 0)
+find_formations: [311] SKIPPED (duplicate formation ID 0)
+find_formations: [312] SKIPPED (duplicate formation ID 0)
+find_formations: [313] SKIPPED (duplicate formation ID 0)
+find_formations: [314] SKIPPED (duplicate formation ID 0)
+find_formations: [315] SKIPPED (duplicate formation ID 0)
+find_formations: [316] SKIPPED (duplicate formation ID 0)
+find_formations: [317] SKIPPED (duplicate formation ID 0)
+find_formations: [318] SKIPPED (duplicate formation ID 0)
+find_formations: [319] SKIPPED (duplicate formation ID 0)
+find_formations: [320] SKIPPED (duplicate formation ID 0)
+find_formations: [321] SKIPPED (duplicate formation ID 0)
+find_formations: [322] SKIPPED (duplicate formation ID 0)
+find_formations: [323] SKIPPED (duplicate formation ID 0)
+find_formations: [324] SKIPPED (duplicate formation ID 0)
+find_formations: [325] SKIPPED (duplicate formation ID 0)
+find_formations: [326] SKIPPED (duplicate formation ID 0)
+find_formations: [327] SKIPPED (duplicate formation ID 0)
+find_formations: [328] SKIPPED (duplicate formation ID 0)
+find_formations: [329] SKIPPED (duplicate formation ID 0)
+find_formations: [330] SKIPPED (duplicate formation ID 0)
+find_formations: [331] SKIPPED (duplicate formation ID 0)
+find_formations: [332] SKIPPED (duplicate formation ID 0)
+find_formations: [333] SKIPPED (duplicate formation ID 0)
+find_formations: [334] SKIPPED (duplicate formation ID 0)
+find_formations: [335] SKIPPED (duplicate formation ID 0)
+find_formations: [336] SKIPPED (duplicate formation ID 0)
+find_formations: [337] SKIPPED (duplicate formation ID 0)
+find_formations: [338] SKIPPED (duplicate formation ID 0)
+find_formations: [339] SKIPPED (duplicate formation ID 0)
+find_formations: [340] SKIPPED (duplicate formation ID 0)
+find_formations: [341] SKIPPED (duplicate formation ID 0)
+find_formations: [342] SKIPPED (duplicate formation ID 0)
+find_formations: [343] SKIPPED (duplicate formation ID 0)
+find_formations: [344] SKIPPED (duplicate formation ID 0)
+find_formations: [345] SKIPPED (duplicate formation ID 0)
+find_formations: [346] SKIPPED (duplicate formation ID 0)
+find_formations: [347] SKIPPED (duplicate formation ID 0)
+find_formations: [348] SKIPPED (duplicate formation ID 0)
+find_formations: [349] SKIPPED (duplicate formation ID 0)
+find_formations: [350] SKIPPED (duplicate formation ID 0)
+find_formations: [351] SKIPPED (duplicate formation ID 0)
+find_formations: [352] SKIPPED (duplicate formation ID 0)
+find_formations: [353] SKIPPED (duplicate formation ID 0)
+find_formations: [354] SKIPPED (duplicate formation ID 0)
+find_formations: [355] SKIPPED (duplicate formation ID 0)
+find_formations: [356] SKIPPED (duplicate formation ID 0)
+find_formations: [357] SKIPPED (duplicate formation ID 0)
+find_formations: [358] SKIPPED (duplicate formation ID 0)
+find_formations: [359] SKIPPED (duplicate formation ID 0)
+find_formations: [360] SKIPPED (duplicate formation ID 0)
+find_formations: [361] SKIPPED (duplicate formation ID 0)
+find_formations: [362] SKIPPED (duplicate formation ID 0)
+find_formations: [363] SKIPPED (duplicate formation ID 0)
+find_formations: [364] SKIPPED (duplicate formation ID 0)
+find_formations: [365] SKIPPED (duplicate formation ID 0)
+find_formations: [366] SKIPPED (duplicate formation ID 0)
+find_formations: [367] SKIPPED (duplicate formation ID 0)
+find_formations: [368] SKIPPED (duplicate formation ID 0)
+find_formations: [369] SKIPPED (duplicate formation ID 0)
+find_formations: [370] SKIPPED (duplicate formation ID 0)
+find_formations: [371] SKIPPED (duplicate formation ID 0)
+find_formations: [372] SKIPPED (duplicate formation ID 0)
+find_formations: [373] SKIPPED (duplicate formation ID 0)
+find_formations: [374] SKIPPED (duplicate formation ID 0)
+find_formations: [375] SKIPPED (duplicate formation ID 0)
+find_formations: [376] SKIPPED (duplicate formation ID 0)
+find_formations: [377] SKIPPED (duplicate formation ID 0)
+find_formations: [378] SKIPPED (duplicate formation ID 0)
+find_formations: [379] SKIPPED (duplicate formation ID 0)
+find_formations: [380] SKIPPED (duplicate formation ID 0)
+find_formations: [381] SKIPPED (duplicate formation ID 0)
+find_formations: [382] SKIPPED (duplicate formation ID 0)
+find_formations: [383] SKIPPED (duplicate formation ID 0)
+find_formations: [384] SKIPPED (duplicate formation ID 0)
+find_formations: [385] SKIPPED (duplicate formation ID 0)
+find_formations: [386] SKIPPED (duplicate formation ID 0)
+find_formations: [387] SKIPPED (duplicate formation ID 0)
+find_formations: [388] SKIPPED (duplicate formation ID 0)
+find_formations: [389] SKIPPED (duplicate formation ID 0)
+find_formations: [390] SKIPPED (duplicate formation ID 0)
+find_formations: [391] SKIPPED (duplicate formation ID 0)
+find_formations: [392] SKIPPED (duplicate formation ID 0)
+find_formations: [393] SKIPPED (duplicate formation ID 0)
+find_formations: [394] SKIPPED (duplicate formation ID 0)
+find_formations: [395] SKIPPED (duplicate formation ID 0)
+find_formations: [396] SKIPPED (duplicate formation ID 0)
+find_formations: [397] SKIPPED (duplicate formation ID 0)
+find_formations: [398] SKIPPED (duplicate formation ID 0)
+find_formations: [399] SKIPPED (duplicate formation ID 0)
+find_formations: cnt=47
 find_formations: player #1
-find_formations: [046] FORMATION: P<1> ID<100> L<00157> O<001>(    SPWAW H2H ce)
-find_formations: [047] FORMATION: P<1> ID<101> L<00158> O<102>(   Voltigeurs Co)
-find_formations: [048] FORMATION: P<1> ID<102> L<00159> O<000>(  Voltigeurs Plt)
-find_formations: [049] FORMATION: P<1> ID<103> L<00163> O<000>(  Voltigeurs Plt)
-find_formations: [050] FORMATION: P<1> ID<104> L<00167> O<000>(  Voltigeurs Plt)
-find_formations: [051] FORMATION: P<1> ID<105> L<00171> O<000>(  Voltigeurs Plt)
-find_formations: [052] FORMATION: P<1> ID<106> L<00175> O<000>(   Lt Mortar Sec)
-find_formations: [053] FORMATION: P<1> ID<107> L<00177> O<102>(   Voltigeurs Co)
-find_formations: [054] FORMATION: P<1> ID<108> L<00178> O<000>(  Voltigeurs Plt)
-find_formations: [055] FORMATION: P<1> ID<109> L<00182> O<000>(  Voltigeurs Plt)
-find_formations: [056] FORMATION: P<1> ID<110> L<00186> O<000>(  Voltigeurs Plt)
-find_formations: [057] FORMATION: P<1> ID<111> L<00190> O<000>(  Voltigeurs Plt)
-find_formations: [058] FORMATION: P<1> ID<112> L<00194> O<000>(   Lt Mortar Sec)
-find_formations: [059] FORMATION: P<1> ID<113> L<00196> O<071>(     HMG Section)
-find_formations: [060] FORMATION: P<1> ID<114> L<00198> O<071>(     HMG Section)
-find_formations: [061] FORMATION: P<1> ID<115> L<00200> O<071>(     HMG Section)
-find_formations: [062] FORMATION: P<1> ID<116> L<00202> O<101>(  Voltigeurs Plt)
-find_formations: [063] FORMATION: P<1> ID<117> L<00206> O<101>(  Voltigeurs Plt)
-find_formations: [064] FORMATION: P<1> ID<118> L<00210> O<101>(  Voltigeurs Plt)
-find_formations: [065] FORMATION: P<1> ID<119> L<00214> O<014>(      AA-Gun Sec)
-find_formations: [066] FORMATION: P<1> ID<120> L<00216> O<012>( Inf Gun Section)
-find_formations: [067] FORMATION: P<1> ID<121> L<00218> O<011>(      AT-Gun Sec)
-find_formations: [068] FORMATION: P<1> ID<124> L<00220> O<183>(   DCA Ammo Cars)
-find_formations: [069] FORMATION: P<1> ID<128> L<00224> O<005>(  Light Tank Trp)
+find_formations: [000] SKIPPED (wrong player ID 0)
+find_formations: [001] SKIPPED (wrong player ID 0)
+find_formations: [002] SKIPPED (wrong player ID 0)
+find_formations: [003] SKIPPED (wrong player ID 0)
+find_formations: [004] SKIPPED (wrong player ID 0)
+find_formations: [005] SKIPPED (wrong player ID 0)
+find_formations: [006] SKIPPED (wrong player ID 0)
+find_formations: [007] SKIPPED (wrong player ID 0)
+find_formations: [008] SKIPPED (wrong player ID 0)
+find_formations: [009] SKIPPED (wrong player ID 0)
+find_formations: [010] SKIPPED (wrong player ID 0)
+find_formations: [011] SKIPPED (wrong player ID 0)
+find_formations: [012] SKIPPED (wrong player ID 0)
+find_formations: [013] SKIPPED (wrong player ID 0)
+find_formations: [014] SKIPPED (wrong player ID 0)
+find_formations: [015] SKIPPED (wrong player ID 0)
+find_formations: [016] SKIPPED (wrong player ID 0)
+find_formations: [017] SKIPPED (wrong player ID 0)
+find_formations: [018] SKIPPED (wrong player ID 0)
+find_formations: [019] SKIPPED (wrong player ID 0)
+find_formations: [020] SKIPPED (wrong player ID 0)
+find_formations: [021] SKIPPED (wrong player ID 0)
+find_formations: [022] SKIPPED (wrong player ID 0)
+find_formations: [023] SKIPPED (wrong player ID 0)
+find_formations: [024] SKIPPED (wrong player ID 0)
+find_formations: [025] SKIPPED (wrong player ID 0)
+find_formations: [026] SKIPPED (wrong player ID 0)
+find_formations: [027] SKIPPED (wrong player ID 0)
+find_formations: [028] SKIPPED (wrong player ID 0)
+find_formations: [029] SKIPPED (wrong player ID 0)
+find_formations: [030] SKIPPED (wrong player ID 0)
+find_formations: [031] SKIPPED (wrong player ID 0)
+find_formations: [032] SKIPPED (wrong player ID 0)
+find_formations: [033] SKIPPED (wrong player ID 0)
+find_formations: [034] SKIPPED (wrong player ID 0)
+find_formations: [035] SKIPPED (wrong player ID 0)
+find_formations: [036] SKIPPED (wrong player ID 0)
+find_formations: [037] SKIPPED (wrong player ID 0)
+find_formations: [038] SKIPPED (wrong player ID 0)
+find_formations: [039] SKIPPED (wrong player ID 0)
+find_formations: [040] SKIPPED (wrong player ID 0)
+find_formations: [041] SKIPPED (wrong player ID 0)
+find_formations: [042] SKIPPED (wrong player ID 0)
+find_formations: [043] SKIPPED (wrong player ID 0)
+find_formations: [044] SKIPPED (wrong player ID 0)
+find_formations: [045] SKIPPED (wrong player ID 0)
+find_formations: [046] FORMATION: P<1> rawFID<100> FID<000> L<00157> O<001>(    SPWAW H2H ce)
+find_formations: [047] FORMATION: P<1> rawFID<101> FID<001> L<00158> O<102>(   Voltigeurs Co)
+find_formations: [048] FORMATION: P<1> rawFID<102> FID<002> L<00159> O<000>(  Voltigeurs Plt)
+find_formations: [049] FORMATION: P<1> rawFID<103> FID<003> L<00163> O<000>(  Voltigeurs Plt)
+find_formations: [050] FORMATION: P<1> rawFID<104> FID<004> L<00167> O<000>(  Voltigeurs Plt)
+find_formations: [051] FORMATION: P<1> rawFID<105> FID<005> L<00171> O<000>(  Voltigeurs Plt)
+find_formations: [052] FORMATION: P<1> rawFID<106> FID<006> L<00175> O<000>(   Lt Mortar Sec)
+find_formations: [053] FORMATION: P<1> rawFID<107> FID<007> L<00177> O<102>(   Voltigeurs Co)
+find_formations: [054] FORMATION: P<1> rawFID<108> FID<008> L<00178> O<000>(  Voltigeurs Plt)
+find_formations: [055] FORMATION: P<1> rawFID<109> FID<009> L<00182> O<000>(  Voltigeurs Plt)
+find_formations: [056] FORMATION: P<1> rawFID<110> FID<010> L<00186> O<000>(  Voltigeurs Plt)
+find_formations: [057] FORMATION: P<1> rawFID<111> FID<011> L<00190> O<000>(  Voltigeurs Plt)
+find_formations: [058] FORMATION: P<1> rawFID<112> FID<012> L<00194> O<000>(   Lt Mortar Sec)
+find_formations: [059] FORMATION: P<1> rawFID<113> FID<013> L<00196> O<071>(     HMG Section)
+find_formations: [060] FORMATION: P<1> rawFID<114> FID<014> L<00198> O<071>(     HMG Section)
+find_formations: [061] FORMATION: P<1> rawFID<115> FID<015> L<00200> O<071>(     HMG Section)
+find_formations: [062] FORMATION: P<1> rawFID<116> FID<016> L<00202> O<101>(  Voltigeurs Plt)
+find_formations: [063] FORMATION: P<1> rawFID<117> FID<017> L<00206> O<101>(  Voltigeurs Plt)
+find_formations: [064] FORMATION: P<1> rawFID<118> FID<018> L<00210> O<101>(  Voltigeurs Plt)
+find_formations: [065] FORMATION: P<1> rawFID<119> FID<019> L<00214> O<014>(      AA-Gun Sec)
+find_formations: [066] FORMATION: P<1> rawFID<120> FID<020> L<00216> O<012>( Inf Gun Section)
+find_formations: [067] FORMATION: P<1> rawFID<121> FID<021> L<00218> O<011>(      AT-Gun Sec)
+find_formations: [068] FORMATION: P<1> rawFID<124> FID<024> L<00220> O<183>(   DCA Ammo Cars)
+find_formations: [069] FORMATION: P<1> rawFID<128> FID<028> L<00224> O<005>(  Light Tank Trp)
+find_formations: [070] SKIPPED (wrong player ID 0)
+find_formations: [071] SKIPPED (wrong player ID 0)
+find_formations: [072] SKIPPED (wrong player ID 0)
+find_formations: [073] SKIPPED (wrong player ID 0)
+find_formations: [074] SKIPPED (wrong player ID 0)
+find_formations: [075] SKIPPED (wrong player ID 0)
+find_formations: [076] SKIPPED (wrong player ID 0)
+find_formations: [077] SKIPPED (wrong player ID 0)
+find_formations: [078] SKIPPED (wrong player ID 0)
+find_formations: [079] SKIPPED (wrong player ID 0)
+find_formations: [080] SKIPPED (wrong player ID 0)
+find_formations: [081] SKIPPED (wrong player ID 0)
+find_formations: [082] SKIPPED (wrong player ID 0)
+find_formations: [083] SKIPPED (wrong player ID 0)
+find_formations: [084] SKIPPED (wrong player ID 0)
+find_formations: [085] SKIPPED (wrong player ID 0)
+find_formations: [086] SKIPPED (wrong player ID 0)
+find_formations: [087] SKIPPED (wrong player ID 0)
+find_formations: [088] SKIPPED (wrong player ID 0)
+find_formations: [089] SKIPPED (wrong player ID 0)
+find_formations: [090] SKIPPED (wrong player ID 0)
+find_formations: [091] SKIPPED (wrong player ID 0)
+find_formations: [092] SKIPPED (wrong player ID 0)
+find_formations: [093] SKIPPED (wrong player ID 0)
+find_formations: [094] SKIPPED (wrong player ID 0)
+find_formations: [095] SKIPPED (wrong player ID 0)
+find_formations: [096] SKIPPED (wrong player ID 0)
+find_formations: [097] SKIPPED (wrong player ID 0)
+find_formations: [098] SKIPPED (wrong player ID 0)
+find_formations: [099] SKIPPED (wrong player ID 0)
+find_formations: [100] SKIPPED (wrong player ID 0)
+find_formations: [101] SKIPPED (wrong player ID 0)
+find_formations: [102] SKIPPED (wrong player ID 0)
+find_formations: [103] SKIPPED (wrong player ID 0)
+find_formations: [104] SKIPPED (wrong player ID 0)
+find_formations: [105] SKIPPED (wrong player ID 0)
+find_formations: [106] SKIPPED (wrong player ID 0)
+find_formations: [107] SKIPPED (wrong player ID 0)
+find_formations: [108] SKIPPED (wrong player ID 0)
+find_formations: [109] SKIPPED (wrong player ID 0)
+find_formations: [110] SKIPPED (wrong player ID 0)
+find_formations: [111] SKIPPED (wrong player ID 0)
+find_formations: [112] SKIPPED (wrong player ID 0)
+find_formations: [113] SKIPPED (wrong player ID 0)
+find_formations: [114] SKIPPED (wrong player ID 0)
+find_formations: [115] SKIPPED (wrong player ID 0)
+find_formations: [116] SKIPPED (wrong player ID 0)
+find_formations: [117] SKIPPED (wrong player ID 0)
+find_formations: [118] SKIPPED (wrong player ID 0)
+find_formations: [119] SKIPPED (wrong player ID 0)
+find_formations: [120] SKIPPED (wrong player ID 0)
+find_formations: [121] SKIPPED (wrong player ID 0)
+find_formations: [122] SKIPPED (wrong player ID 0)
+find_formations: [123] SKIPPED (wrong player ID 0)
+find_formations: [124] SKIPPED (wrong player ID 0)
+find_formations: [125] SKIPPED (wrong player ID 0)
+find_formations: [126] SKIPPED (wrong player ID 0)
+find_formations: [127] SKIPPED (wrong player ID 0)
+find_formations: [128] SKIPPED (wrong player ID 0)
+find_formations: [129] SKIPPED (wrong player ID 0)
+find_formations: [130] SKIPPED (wrong player ID 0)
+find_formations: [131] SKIPPED (wrong player ID 0)
+find_formations: [132] SKIPPED (wrong player ID 0)
+find_formations: [133] SKIPPED (wrong player ID 0)
+find_formations: [134] SKIPPED (wrong player ID 0)
+find_formations: [135] SKIPPED (wrong player ID 0)
+find_formations: [136] SKIPPED (wrong player ID 0)
+find_formations: [137] SKIPPED (wrong player ID 0)
+find_formations: [138] SKIPPED (wrong player ID 0)
+find_formations: [139] SKIPPED (wrong player ID 0)
+find_formations: [140] SKIPPED (wrong player ID 0)
+find_formations: [141] SKIPPED (wrong player ID 0)
+find_formations: [142] SKIPPED (wrong player ID 0)
+find_formations: [143] SKIPPED (wrong player ID 0)
+find_formations: [144] SKIPPED (wrong player ID 0)
+find_formations: [145] SKIPPED (wrong player ID 0)
+find_formations: [146] SKIPPED (wrong player ID 0)
+find_formations: [147] SKIPPED (wrong player ID 0)
+find_formations: [148] SKIPPED (wrong player ID 0)
+find_formations: [149] SKIPPED (wrong player ID 0)
+find_formations: [150] SKIPPED (wrong player ID 0)
+find_formations: [151] SKIPPED (wrong player ID 0)
+find_formations: [152] SKIPPED (wrong player ID 0)
+find_formations: [153] SKIPPED (wrong player ID 0)
+find_formations: [154] SKIPPED (wrong player ID 0)
+find_formations: [155] SKIPPED (wrong player ID 0)
+find_formations: [156] SKIPPED (wrong player ID 0)
+find_formations: [157] SKIPPED (wrong player ID 0)
+find_formations: [158] SKIPPED (wrong player ID 0)
+find_formations: [159] SKIPPED (wrong player ID 0)
+find_formations: [160] SKIPPED (wrong player ID 0)
+find_formations: [161] SKIPPED (wrong player ID 0)
+find_formations: [162] SKIPPED (wrong player ID 0)
+find_formations: [163] SKIPPED (wrong player ID 0)
+find_formations: [164] SKIPPED (wrong player ID 0)
+find_formations: [165] SKIPPED (wrong player ID 0)
+find_formations: [166] SKIPPED (wrong player ID 0)
+find_formations: [167] SKIPPED (wrong player ID 0)
+find_formations: [168] SKIPPED (wrong player ID 0)
+find_formations: [169] SKIPPED (wrong player ID 0)
+find_formations: [170] SKIPPED (wrong player ID 0)
+find_formations: [171] SKIPPED (wrong player ID 0)
+find_formations: [172] SKIPPED (wrong player ID 0)
+find_formations: [173] SKIPPED (wrong player ID 0)
+find_formations: [174] SKIPPED (wrong player ID 0)
+find_formations: [175] SKIPPED (wrong player ID 0)
+find_formations: [176] SKIPPED (wrong player ID 0)
+find_formations: [177] SKIPPED (wrong player ID 0)
+find_formations: [178] SKIPPED (wrong player ID 0)
+find_formations: [179] SKIPPED (wrong player ID 0)
+find_formations: [180] SKIPPED (wrong player ID 0)
+find_formations: [181] SKIPPED (wrong player ID 0)
+find_formations: [182] SKIPPED (wrong player ID 0)
+find_formations: [183] SKIPPED (wrong player ID 0)
+find_formations: [184] SKIPPED (wrong player ID 0)
+find_formations: [185] SKIPPED (wrong player ID 0)
+find_formations: [186] SKIPPED (wrong player ID 0)
+find_formations: [187] SKIPPED (wrong player ID 0)
+find_formations: [188] SKIPPED (wrong player ID 0)
+find_formations: [189] SKIPPED (wrong player ID 0)
+find_formations: [190] SKIPPED (wrong player ID 0)
+find_formations: [191] SKIPPED (wrong player ID 0)
+find_formations: [192] SKIPPED (wrong player ID 0)
+find_formations: [193] SKIPPED (wrong player ID 0)
+find_formations: [194] SKIPPED (wrong player ID 0)
+find_formations: [195] SKIPPED (wrong player ID 0)
+find_formations: [196] SKIPPED (wrong player ID 0)
+find_formations: [197] SKIPPED (wrong player ID 0)
+find_formations: [198] SKIPPED (wrong player ID 0)
+find_formations: [199] SKIPPED (wrong player ID 0)
+find_formations: [200] SKIPPED (wrong player ID 0)
+find_formations: [201] SKIPPED (wrong player ID 0)
+find_formations: [202] SKIPPED (wrong player ID 0)
+find_formations: [203] SKIPPED (wrong player ID 0)
+find_formations: [204] SKIPPED (wrong player ID 0)
+find_formations: [205] SKIPPED (wrong player ID 0)
+find_formations: [206] SKIPPED (wrong player ID 0)
+find_formations: [207] SKIPPED (wrong player ID 0)
+find_formations: [208] SKIPPED (wrong player ID 0)
+find_formations: [209] SKIPPED (wrong player ID 0)
+find_formations: [210] SKIPPED (wrong player ID 0)
+find_formations: [211] SKIPPED (wrong player ID 0)
+find_formations: [212] SKIPPED (wrong player ID 0)
+find_formations: [213] SKIPPED (wrong player ID 0)
+find_formations: [214] SKIPPED (wrong player ID 0)
+find_formations: [215] SKIPPED (wrong player ID 0)
+find_formations: [216] SKIPPED (wrong player ID 0)
+find_formations: [217] SKIPPED (wrong player ID 0)
+find_formations: [218] SKIPPED (wrong player ID 0)
+find_formations: [219] SKIPPED (wrong player ID 0)
+find_formations: [220] SKIPPED (wrong player ID 0)
+find_formations: [221] SKIPPED (wrong player ID 0)
+find_formations: [222] SKIPPED (wrong player ID 0)
+find_formations: [223] SKIPPED (wrong player ID 0)
+find_formations: [224] SKIPPED (wrong player ID 0)
+find_formations: [225] SKIPPED (wrong player ID 0)
+find_formations: [226] SKIPPED (wrong player ID 0)
+find_formations: [227] SKIPPED (wrong player ID 0)
+find_formations: [228] SKIPPED (wrong player ID 0)
+find_formations: [229] SKIPPED (wrong player ID 0)
+find_formations: [230] SKIPPED (wrong player ID 0)
+find_formations: [231] SKIPPED (wrong player ID 0)
+find_formations: [232] SKIPPED (wrong player ID 0)
+find_formations: [233] SKIPPED (wrong player ID 0)
+find_formations: [234] SKIPPED (wrong player ID 0)
+find_formations: [235] SKIPPED (wrong player ID 0)
+find_formations: [236] SKIPPED (wrong player ID 0)
+find_formations: [237] SKIPPED (wrong player ID 0)
+find_formations: [238] SKIPPED (wrong player ID 0)
+find_formations: [239] SKIPPED (wrong player ID 0)
+find_formations: [240] SKIPPED (wrong player ID 0)
+find_formations: [241] SKIPPED (wrong player ID 0)
+find_formations: [242] SKIPPED (wrong player ID 0)
+find_formations: [243] SKIPPED (wrong player ID 0)
+find_formations: [244] SKIPPED (wrong player ID 0)
+find_formations: [245] SKIPPED (wrong player ID 0)
+find_formations: [246] SKIPPED (wrong player ID 0)
+find_formations: [247] SKIPPED (wrong player ID 0)
+find_formations: [248] SKIPPED (wrong player ID 0)
+find_formations: [249] SKIPPED (wrong player ID 0)
+find_formations: [250] SKIPPED (wrong player ID 0)
+find_formations: [251] SKIPPED (wrong player ID 0)
+find_formations: [252] SKIPPED (wrong player ID 0)
+find_formations: [253] SKIPPED (wrong player ID 0)
+find_formations: [254] SKIPPED (wrong player ID 0)
+find_formations: [255] SKIPPED (wrong player ID 0)
+find_formations: [256] SKIPPED (wrong player ID 0)
+find_formations: [257] SKIPPED (wrong player ID 0)
+find_formations: [258] SKIPPED (wrong player ID 0)
+find_formations: [259] SKIPPED (wrong player ID 0)
+find_formations: [260] SKIPPED (wrong player ID 0)
+find_formations: [261] SKIPPED (wrong player ID 0)
+find_formations: [262] SKIPPED (wrong player ID 0)
+find_formations: [263] SKIPPED (wrong player ID 0)
+find_formations: [264] SKIPPED (wrong player ID 0)
+find_formations: [265] SKIPPED (wrong player ID 0)
+find_formations: [266] SKIPPED (wrong player ID 0)
+find_formations: [267] SKIPPED (wrong player ID 0)
+find_formations: [268] SKIPPED (wrong player ID 0)
+find_formations: [269] SKIPPED (wrong player ID 0)
+find_formations: [270] SKIPPED (wrong player ID 0)
+find_formations: [271] SKIPPED (wrong player ID 0)
+find_formations: [272] SKIPPED (wrong player ID 0)
+find_formations: [273] SKIPPED (wrong player ID 0)
+find_formations: [274] SKIPPED (wrong player ID 0)
+find_formations: [275] SKIPPED (wrong player ID 0)
+find_formations: [276] SKIPPED (wrong player ID 0)
+find_formations: [277] SKIPPED (wrong player ID 0)
+find_formations: [278] SKIPPED (wrong player ID 0)
+find_formations: [279] SKIPPED (wrong player ID 0)
+find_formations: [280] SKIPPED (wrong player ID 0)
+find_formations: [281] SKIPPED (wrong player ID 0)
+find_formations: [282] SKIPPED (wrong player ID 0)
+find_formations: [283] SKIPPED (wrong player ID 0)
+find_formations: [284] SKIPPED (wrong player ID 0)
+find_formations: [285] SKIPPED (wrong player ID 0)
+find_formations: [286] SKIPPED (wrong player ID 0)
+find_formations: [287] SKIPPED (wrong player ID 0)
+find_formations: [288] SKIPPED (wrong player ID 0)
+find_formations: [289] SKIPPED (wrong player ID 0)
+find_formations: [290] SKIPPED (wrong player ID 0)
+find_formations: [291] SKIPPED (wrong player ID 0)
+find_formations: [292] SKIPPED (wrong player ID 0)
+find_formations: [293] SKIPPED (wrong player ID 0)
+find_formations: [294] SKIPPED (wrong player ID 0)
+find_formations: [295] SKIPPED (wrong player ID 0)
+find_formations: [296] SKIPPED (wrong player ID 0)
+find_formations: [297] SKIPPED (wrong player ID 0)
+find_formations: [298] SKIPPED (wrong player ID 0)
+find_formations: [299] SKIPPED (wrong player ID 0)
+find_formations: [300] SKIPPED (wrong player ID 0)
+find_formations: [301] SKIPPED (wrong player ID 0)
+find_formations: [302] SKIPPED (wrong player ID 0)
+find_formations: [303] SKIPPED (wrong player ID 0)
+find_formations: [304] SKIPPED (wrong player ID 0)
+find_formations: [305] SKIPPED (wrong player ID 0)
+find_formations: [306] SKIPPED (wrong player ID 0)
+find_formations: [307] SKIPPED (wrong player ID 0)
+find_formations: [308] SKIPPED (wrong player ID 0)
+find_formations: [309] SKIPPED (wrong player ID 0)
+find_formations: [310] SKIPPED (wrong player ID 0)
+find_formations: [311] SKIPPED (wrong player ID 0)
+find_formations: [312] SKIPPED (wrong player ID 0)
+find_formations: [313] SKIPPED (wrong player ID 0)
+find_formations: [314] SKIPPED (wrong player ID 0)
+find_formations: [315] SKIPPED (wrong player ID 0)
+find_formations: [316] SKIPPED (wrong player ID 0)
+find_formations: [317] SKIPPED (wrong player ID 0)
+find_formations: [318] SKIPPED (wrong player ID 0)
+find_formations: [319] SKIPPED (wrong player ID 0)
+find_formations: [320] SKIPPED (wrong player ID 0)
+find_formations: [321] SKIPPED (wrong player ID 0)
+find_formations: [322] SKIPPED (wrong player ID 0)
+find_formations: [323] SKIPPED (wrong player ID 0)
+find_formations: [324] SKIPPED (wrong player ID 0)
+find_formations: [325] SKIPPED (wrong player ID 0)
+find_formations: [326] SKIPPED (wrong player ID 0)
+find_formations: [327] SKIPPED (wrong player ID 0)
+find_formations: [328] SKIPPED (wrong player ID 0)
+find_formations: [329] SKIPPED (wrong player ID 0)
+find_formations: [330] SKIPPED (wrong player ID 0)
+find_formations: [331] SKIPPED (wrong player ID 0)
+find_formations: [332] SKIPPED (wrong player ID 0)
+find_formations: [333] SKIPPED (wrong player ID 0)
+find_formations: [334] SKIPPED (wrong player ID 0)
+find_formations: [335] SKIPPED (wrong player ID 0)
+find_formations: [336] SKIPPED (wrong player ID 0)
+find_formations: [337] SKIPPED (wrong player ID 0)
+find_formations: [338] SKIPPED (wrong player ID 0)
+find_formations: [339] SKIPPED (wrong player ID 0)
+find_formations: [340] SKIPPED (wrong player ID 0)
+find_formations: [341] SKIPPED (wrong player ID 0)
+find_formations: [342] SKIPPED (wrong player ID 0)
+find_formations: [343] SKIPPED (wrong player ID 0)
+find_formations: [344] SKIPPED (wrong player ID 0)
+find_formations: [345] SKIPPED (wrong player ID 0)
+find_formations: [346] SKIPPED (wrong player ID 0)
+find_formations: [347] SKIPPED (wrong player ID 0)
+find_formations: [348] SKIPPED (wrong player ID 0)
+find_formations: [349] SKIPPED (wrong player ID 0)
+find_formations: [350] SKIPPED (wrong player ID 0)
+find_formations: [351] SKIPPED (wrong player ID 0)
+find_formations: [352] SKIPPED (wrong player ID 0)
+find_formations: [353] SKIPPED (wrong player ID 0)
+find_formations: [354] SKIPPED (wrong player ID 0)
+find_formations: [355] SKIPPED (wrong player ID 0)
+find_formations: [356] SKIPPED (wrong player ID 0)
+find_formations: [357] SKIPPED (wrong player ID 0)
+find_formations: [358] SKIPPED (wrong player ID 0)
+find_formations: [359] SKIPPED (wrong player ID 0)
+find_formations: [360] SKIPPED (wrong player ID 0)
+find_formations: [361] SKIPPED (wrong player ID 0)
+find_formations: [362] SKIPPED (wrong player ID 0)
+find_formations: [363] SKIPPED (wrong player ID 0)
+find_formations: [364] SKIPPED (wrong player ID 0)
+find_formations: [365] SKIPPED (wrong player ID 0)
+find_formations: [366] SKIPPED (wrong player ID 0)
+find_formations: [367] SKIPPED (wrong player ID 0)
+find_formations: [368] SKIPPED (wrong player ID 0)
+find_formations: [369] SKIPPED (wrong player ID 0)
+find_formations: [370] SKIPPED (wrong player ID 0)
+find_formations: [371] SKIPPED (wrong player ID 0)
+find_formations: [372] SKIPPED (wrong player ID 0)
+find_formations: [373] SKIPPED (wrong player ID 0)
+find_formations: [374] SKIPPED (wrong player ID 0)
+find_formations: [375] SKIPPED (wrong player ID 0)
+find_formations: [376] SKIPPED (wrong player ID 0)
+find_formations: [377] SKIPPED (wrong player ID 0)
+find_formations: [378] SKIPPED (wrong player ID 0)
+find_formations: [379] SKIPPED (wrong player ID 0)
+find_formations: [380] SKIPPED (wrong player ID 0)
+find_formations: [381] SKIPPED (wrong player ID 0)
+find_formations: [382] SKIPPED (wrong player ID 0)
+find_formations: [383] SKIPPED (wrong player ID 0)
+find_formations: [384] SKIPPED (wrong player ID 0)
+find_formations: [385] SKIPPED (wrong player ID 0)
+find_formations: [386] SKIPPED (wrong player ID 0)
+find_formations: [387] SKIPPED (wrong player ID 0)
+find_formations: [388] SKIPPED (wrong player ID 0)
+find_formations: [389] SKIPPED (wrong player ID 0)
+find_formations: [390] SKIPPED (wrong player ID 0)
+find_formations: [391] SKIPPED (wrong player ID 0)
+find_formations: [392] SKIPPED (wrong player ID 0)
+find_formations: [393] SKIPPED (wrong player ID 0)
+find_formations: [394] SKIPPED (wrong player ID 0)
+find_formations: [395] SKIPPED (wrong player ID 0)
+find_formations: [396] SKIPPED (wrong player ID 0)
+find_formations: [397] SKIPPED (wrong player ID 0)
+find_formations: [398] SKIPPED (wrong player ID 0)
+find_formations: [399] SKIPPED (wrong player ID 0)
 find_formations: cnt=24
 find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) UNIT #1 F<000,000> CANDIDATE
@@ -436,8 +1167,7 @@ find_formation_oobrids: FORMATION: P<0> ID<027> L<00102> O<000> (  Infanterie Zu
   >>> SEARCH OOBRID - BY NAME: F<027>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<027>, T<  Infanterie Zug>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<027>, T<  Infanterie Zug>, D<1940/05>
   U<102> F<027,000> O<077> UT<082> <      Zugfuehrer>
   U<103> F<027,001> O<151> UT<001> < Schuetzengruppe>
   U<104> F<027,002> O<151> UT<001> < Schuetzengruppe>
@@ -448,8 +1178,7 @@ find_formation_oobrids: FORMATION: P<0> ID<028> L<00107> O<000> (  Infanterie Zu
   >>> SEARCH OOBRID - BY NAME: F<028>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<028>, T<  Infanterie Zug>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<028>, T<  Infanterie Zug>, D<1940/05>
   U<107> F<028,000> O<077> UT<082> <      Zugfuehrer>
   U<108> F<028,001> O<151> UT<001> < Schuetzengruppe>
   U<109> F<028,002> O<151> UT<001> < Schuetzengruppe>
@@ -460,8 +1189,7 @@ find_formation_oobrids: FORMATION: P<0> ID<029> L<00112> O<000> (  Infanterie Zu
   >>> SEARCH OOBRID - BY NAME: F<029>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<029>, T<  Infanterie Zug>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<029>, T<  Infanterie Zug>, D<1940/05>
   U<112> F<029,000> O<077> UT<082> <      Zugfuehrer>
   U<113> F<029,001> O<151> UT<001> < Schuetzengruppe>
   U<114> F<029,002> O<151> UT<001> < Schuetzengruppe>
@@ -474,8 +1202,7 @@ find_formation_oobrids: FORMATION: P<0> ID<032> L<00119> O<000> ( (l) Moerser Gr
   >>> SEARCH OOBRID - BY NAME: F<032>, T< (l) Moerser Grp>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<032>, T< (l) Moerser Grp>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<032>, T< (l) Moerser Grp>, D<1940/05>
   U<119> F<032,000> O<133> UT<041> <    50mm Moerser>
   U<120> F<032,001> O<133> UT<041> <    50mm Moerser>
   U<121> F<032,002> O<133> UT<041> <    50mm Moerser>
@@ -485,8 +1212,7 @@ find_formation_oobrids: FORMATION: P<0> ID<034> L<00123> O<000> (  Infanterie Zu
   >>> SEARCH OOBRID - BY NAME: F<034>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<034>, T<  Infanterie Zug>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<034>, T<  Infanterie Zug>, D<1940/05>
   U<123> F<034,000> O<077> UT<082> <      Zugfuehrer>
   U<124> F<034,001> O<151> UT<001> < Schuetzengruppe>
   U<125> F<034,002> O<151> UT<001> < Schuetzengruppe>
@@ -497,8 +1223,7 @@ find_formation_oobrids: FORMATION: P<0> ID<035> L<00128> O<000> (  Infanterie Zu
   >>> SEARCH OOBRID - BY NAME: F<035>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<035>, T<  Infanterie Zug>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<035>, T<  Infanterie Zug>, D<1940/05>
   U<128> F<035,000> O<077> UT<082> <      Zugfuehrer>
   U<129> F<035,001> O<151> UT<001> < Schuetzengruppe>
   U<130> F<035,002> O<151> UT<001> < Schuetzengruppe>
@@ -509,8 +1234,7 @@ find_formation_oobrids: FORMATION: P<0> ID<036> L<00133> O<000> (  Infanterie Zu
   >>> SEARCH OOBRID - BY NAME: F<036>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<036>, T<  Infanterie Zug>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<036>, T<  Infanterie Zug>, D<1940/05>
   U<133> F<036,000> O<077> UT<082> <      Zugfuehrer>
   U<134> F<036,001> O<151> UT<001> < Schuetzengruppe>
   U<135> F<036,002> O<151> UT<001> < Schuetzengruppe>
@@ -523,8 +1247,7 @@ find_formation_oobrids: FORMATION: P<0> ID<039> L<00140> O<000> ( (l) Moerser Gr
   >>> SEARCH OOBRID - BY NAME: F<039>, T< (l) Moerser Grp>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<039>, T< (l) Moerser Grp>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<039>, T< (l) Moerser Grp>, D<1940/05>
   U<140> F<039,000> O<133> UT<041> <    50mm Moerser>
   U<141> F<039,001> O<133> UT<041> <    50mm Moerser>
   U<142> F<039,002> O<133> UT<041> <    50mm Moerser>
@@ -535,6 +1258,8 @@ find_formation_oobrids: FORMATION: P<0> ID<042> L<00147> O<161> (     FeldArt Zu
 find_formation_oobrids: FORMATION: P<0> ID<043> L<00151> O<066> (         Gespann)
 find_formation_oobrids: FORMATION: P<0> ID<044> L<00153> O<187> ( Vorg Beobachter)
 find_formation_oobrids: FORMATION: P<0> ID<045> L<00154> O<139> (         Spaeher)
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandeur) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (        Obs Team) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<002,000> (     Moerser Grp) ACCEPTED - LEADER
@@ -693,6 +1418,370 @@ verify_candidate_units: [154] UNIT: F<045,000> (     Spaehtruppe) ACCEPTED - LEA
 verify_candidate_units: [155] UNIT: F<045,001> (     Spaehtruppe) ACCEPTED
 verify_candidate_units: [156] UNIT: F<045,002> (     Spaehtruppe) ACCEPTED
 unitcount: ul.cnt=157
+FLIST: { { s.nidx=47 }, cnt=46 }
+    [00000] (  SP ENH FR v1.1) P<000> L<00000> status=001 units=001 OOB 070: [001] FID<00000> RAW<00000>
+        [000] ptr[00000]
+    [00001] (     Forward Obs) P<000> L<00001> status=001 units=001 OOB 070: [187] FID<00001> RAW<00001>
+        [000] ptr[00001]
+    [00002] ( Moerser Section) P<000> L<00002> status=001 units=002 OOB 070: [148] FID<00002> RAW<00002>
+        [000] ptr[00002]
+        [001] ptr[00003]
+    [00003] ( Moerser Section) P<000> L<00004> status=001 units=002 OOB 070: [148] FID<00003> RAW<00003>
+        [000] ptr[00004]
+        [001] ptr[00005]
+    [00004] (       Munitions) P<000> L<00006> status=001 units=001 OOB 070: [194] FID<00004> RAW<00004>
+        [000] ptr[00006]
+    [00005] (   Truck Section) P<000> L<00007> status=001 units=002 OOB 070: [056] FID<00005> RAW<00005>
+        [000] ptr[00007]
+        [001] ptr[00008]
+    [00006] (  Motor Rifle Co) P<000> L<00009> status=001 units=002 OOB 070: [089] FID<00006> RAW<00006>
+        [000] ptr[00009]
+        [001] ptr[00010]
+    [00007] ( Motor Rifle Plt) P<000> L<00011> status=001 units=010 OOB 070: [087] FID<00007> RAW<00007>
+        [000] ptr[00011]
+        [001] ptr[00012]
+        [002] ptr[00013]
+        [003] ptr[00014]
+        [004] ptr[00015]
+        [005] ptr[00016]
+        [006] ptr[00017]
+        [007] ptr[00018]
+        [008] ptr[00019]
+        [009] ptr[00020]
+    [00008] ( Motor Rifle Plt) P<000> L<00021> status=001 units=010 OOB 070: [087] FID<00008> RAW<00008>
+        [000] ptr[00021]
+        [001] ptr[00022]
+        [002] ptr[00023]
+        [003] ptr[00024]
+        [004] ptr[00025]
+        [005] ptr[00026]
+        [006] ptr[00027]
+        [007] ptr[00028]
+        [008] ptr[00029]
+        [009] ptr[00030]
+    [00009] ( Motor Rifle Plt) P<000> L<00031> status=001 units=010 OOB 070: [087] FID<00009> RAW<00009>
+        [000] ptr[00031]
+        [001] ptr[00032]
+        [002] ptr[00033]
+        [003] ptr[00034]
+        [004] ptr[00035]
+        [005] ptr[00036]
+        [006] ptr[00037]
+        [007] ptr[00038]
+        [008] ptr[00039]
+        [009] ptr[00040]
+    [00010] ( Mot Weapons Plt) P<000> L<00041> status=001 units=010 OOB 070: [167] FID<00010> RAW<00010>
+        [000] ptr[00041]
+        [001] ptr[00042]
+        [002] ptr[00043]
+        [003] ptr[00044]
+        [004] ptr[00045]
+        [005] ptr[00046]
+    --- [006] nil[65535]
+    --- [007] nil[65535]
+        [008] ptr[00049]
+        [009] ptr[00050]
+    [00011] (          Sniper) P<000> L<00047> status=001 units=001 OOB 070: [140] FID<00018> RAW<00018>
+        [000] ptr[00083]
+    [00012] (     Pionere Plt) P<000> L<00051> status=001 units=009 OOB 070: [125] FID<00011> RAW<00011>
+        [000] ptr[00051]
+        [001] ptr[00052]
+        [002] ptr[00053]
+        [003] ptr[00054]
+        [004] ptr[00055]
+        [005] ptr[00056]
+        [006] ptr[00057]
+        [007] ptr[00058]
+        [008] ptr[00059]
+    [00013] (   Scout Platoon) P<000> L<00060> status=001 units=003 OOB 070: [139] FID<00012> RAW<00012>
+        [000] ptr[00060]
+        [001] ptr[00061]
+        [002] ptr[00062]
+    [00014] (   Scout Platoon) P<000> L<00063> status=001 units=003 OOB 070: [139] FID<00013> RAW<00013>
+        [000] ptr[00063]
+        [001] ptr[00064]
+        [002] ptr[00065]
+    [00015] (   Lt Panzer Plt) P<000> L<00066> status=001 units=005 OOB 070: [007] FID<00014> RAW<00014>
+        [000] ptr[00066]
+        [001] ptr[00067]
+        [002] ptr[00068]
+        [003] ptr[00069]
+        [004] ptr[00070]
+    [00016] (   Lt Panzer Plt) P<000> L<00071> status=001 units=005 OOB 070: [007] FID<00015> RAW<00015>
+        [000] ptr[00071]
+        [001] ptr[00072]
+        [002] ptr[00073]
+        [003] ptr[00074]
+        [004] ptr[00075]
+    [00017] (  Panzer Platoon) P<000> L<00076> status=001 units=005 OOB 070: [015] FID<00016> RAW<00016>
+        [000] ptr[00076]
+        [001] ptr[00077]
+        [002] ptr[00078]
+        [003] ptr[00079]
+        [004] ptr[00080]
+    [00018] (   CS Panzer Sec) P<000> L<00081> status=001 units=002 OOB 070: [020] FID<00017> RAW<00017>
+        [000] ptr[00081]
+        [001] ptr[00082]
+    [00019] (  Motorcycle Plt) P<000> L<00084> status=002 units=003 OOB 070: [131] FID<00019> RAW<00019>
+        [000] ptr[00084]
+        [001] ptr[00085]
+        [002] ptr[00086]
+    [00020] (  Motorcycle Plt) P<000> L<00087> status=002 units=003 OOB 070: [131] FID<00020> RAW<00020>
+        [000] ptr[00087]
+        [001] ptr[00088]
+        [002] ptr[00089]
+    [00021] (  Motorcycle Plt) P<000> L<00090> status=002 units=003 OOB 070: [131] FID<00021> RAW<00021>
+        [000] ptr[00090]
+        [001] ptr[00091]
+        [002] ptr[00092]
+    [00022] (   Halftrack Plt) P<000> L<00093> status=002 units=004 OOB 070: [052] FID<00022> RAW<00022>
+        [000] ptr[00093]
+        [001] ptr[00094]
+        [002] ptr[00095]
+        [003] ptr[00096]
+    [00023] (     JPz Section) P<000> L<00097> status=002 units=002 OOB 070: [028] FID<00023> RAW<00023>
+        [000] ptr[00097]
+        [001] ptr[00098]
+    [00024] ( Utility Vehicle) P<000> L<00099> status=002 units=001 OOB 070: [043] FID<00024> RAW<00024>
+        [000] ptr[00099]
+    [00025] (    SPWAW H2H ce) P<000> L<00100> status=000 units=001 OOB 070: [001] FID<00025> RAW<00025>
+        [000] ptr[00100]
+    [00026] (   Infanterie Kp) P<000> L<00101> status=000 units=001 OOB 070: [085] FID<00026> RAW<00026>
+        [000] ptr[00101]
+    [00027] (  Infanterie Zug) P<000> L<00102> status=000 units=005 OOB 070: [000] FID<00027> RAW<00027>
+        [000] ptr[00102]
+        [001] ptr[00103]
+        [002] ptr[00104]
+        [003] ptr[00105]
+        [004] ptr[00106]
+    [00028] (  Infanterie Zug) P<000> L<00107> status=000 units=005 OOB 070: [000] FID<00028> RAW<00028>
+        [000] ptr[00107]
+        [001] ptr[00108]
+        [002] ptr[00109]
+        [003] ptr[00110]
+        [004] ptr[00111]
+    [00029] (  Infanterie Zug) P<000> L<00112> status=000 units=005 OOB 070: [000] FID<00029> RAW<00029>
+        [000] ptr[00112]
+        [001] ptr[00113]
+        [002] ptr[00114]
+        [003] ptr[00115]
+        [004] ptr[00116]
+    [00030] (        MG Trupp) P<000> L<00117> status=000 units=002 OOB 070: [142] FID<00030> RAW<00030>
+        [000] ptr[00117]
+    --- [001] nil[65535]
+    [00031] (        MG Trupp) P<000> L<00118> status=000 units=002 OOB 070: [142] FID<00031> RAW<00031>
+        [000] ptr[00118]
+    --- [001] nil[65535]
+    [00032] ( (l) Moerser Grp) P<000> L<00119> status=000 units=003 OOB 070: [000] FID<00032> RAW<00032>
+        [000] ptr[00119]
+        [001] ptr[00120]
+        [002] ptr[00121]
+    [00033] (   Infanterie Kp) P<000> L<00122> status=000 units=001 OOB 070: [085] FID<00033> RAW<00033>
+        [000] ptr[00122]
+    [00034] (  Infanterie Zug) P<000> L<00123> status=000 units=005 OOB 070: [000] FID<00034> RAW<00034>
+        [000] ptr[00123]
+        [001] ptr[00124]
+        [002] ptr[00125]
+        [003] ptr[00126]
+        [004] ptr[00127]
+    [00035] (  Infanterie Zug) P<000> L<00128> status=000 units=005 OOB 070: [000] FID<00035> RAW<00035>
+        [000] ptr[00128]
+        [001] ptr[00129]
+        [002] ptr[00130]
+        [003] ptr[00131]
+        [004] ptr[00132]
+    [00036] (  Infanterie Zug) P<000> L<00133> status=000 units=005 OOB 070: [000] FID<00036> RAW<00036>
+        [000] ptr[00133]
+        [001] ptr[00134]
+        [002] ptr[00135]
+        [003] ptr[00136]
+        [004] ptr[00137]
+    [00037] (        MG Trupp) P<000> L<00138> status=000 units=002 OOB 070: [142] FID<00037> RAW<00037>
+        [000] ptr[00138]
+    --- [001] nil[65535]
+    [00038] (        MG Trupp) P<000> L<00139> status=000 units=002 OOB 070: [142] FID<00038> RAW<00038>
+        [000] ptr[00139]
+    --- [001] nil[65535]
+    [00039] ( (l) Moerser Grp) P<000> L<00140> status=000 units=003 OOB 070: [000] FID<00039> RAW<00039>
+        [000] ptr[00140]
+        [001] ptr[00141]
+        [002] ptr[00142]
+    [00040] (     Moerser Grp) P<000> L<00143> status=000 units=002 OOB 070: [148] FID<00040> RAW<00040>
+        [000] ptr[00143]
+        [001] ptr[00144]
+    [00041] (     Moerser Grp) P<000> L<00145> status=000 units=002 OOB 070: [148] FID<00041> RAW<00041>
+        [000] ptr[00145]
+        [001] ptr[00146]
+    [00042] (     FeldArt Zug) P<000> L<00147> status=000 units=002 OOB 070: [161] FID<00042> RAW<00042>
+        [000] ptr[00147]
+        [001] ptr[00148]
+    [00043] (         Gespann) P<000> L<00151> status=000 units=002 OOB 070: [066] FID<00043> RAW<00043>
+        [000] ptr[00151]
+        [001] ptr[00152]
+    [00044] ( Vorg Beobachter) P<000> L<00153> status=000 units=001 OOB 070: [187] FID<00044> RAW<00044>
+        [000] ptr[00153]
+    [00045] (         Spaeher) P<000> L<00154> status=000 units=003 OOB 070: [139] FID<00045> RAW<00045>
+        [000] ptr[00154]
+        [001] ptr[00155]
+        [002] ptr[00156]
+ULIST: { { s.nidx=157 }, cnt=157 }
+    [00000] (   GE Kommandeur) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00001] (        Obs Team) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [241] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
+    [00002] (     Moerser Grp) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00003] (     Moerser Grp) UNIT leader=[00003] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00002]<00002,00001> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00004] (     Moerser Grp) UNIT leader=[00004] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00003]<00003,00000> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00005] (     Moerser Grp) UNIT leader=[00005] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00003]<00003,00001> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00006] (    Ammo Carrier) UNIT leader=[00006] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [235] F[00004]<00004,00000> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00007] (    SPW 251/1 HT) UNIT leader=[00007] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [102] F[00005]<00005,00000> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00008] (    SPW 251/1 HT) UNIT leader=[00008] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [102] F[00005]<00005,00001> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00009] (     Kompanie HQ) UNIT leader=[00009] abandoned=0 loader<00010> vrf=N vrfneed=N  OOB 070: [038] F[00006]<00006,00000> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00010] (    SPW 251/1 HT) UNIT leader=[00010] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00006]<00006,00001> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00011] (      Zugfuehrer) UNIT leader=[00011] abandoned=0 loader<00016> vrf=N vrfneed=N  OOB 070: [077] F[00007]<00007,00000> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00012] ( Schuetzengruppe) UNIT leader=[00012] abandoned=0 loader<00017> vrf=N vrfneed=N  OOB 070: [152] F[00007]<00007,00001> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00013] ( Schuetzengruppe) UNIT leader=[00013] abandoned=0 loader<00018> vrf=N vrfneed=N  OOB 070: [184] F[00007]<00007,00002> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00014] ( Schuetzengruppe) UNIT leader=[00014] abandoned=0 loader<00019> vrf=N vrfneed=N  OOB 070: [184] F[00007]<00007,00003> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00015] ( Schuetzengruppe) UNIT leader=[00015] abandoned=0 loader<00020> vrf=N vrfneed=N  OOB 070: [184] F[00007]<00007,00004> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00016] (    Horch Kfz 70) UNIT leader=[00016] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [092] F[00007]<00007,00005> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00017] (    Krupp Kfz 69) UNIT leader=[00017] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [094] F[00007]<00007,00006> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00018] (    Krupp Kfz 69) UNIT leader=[00018] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [094] F[00007]<00007,00007> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00019] (    Krupp Kfz 69) UNIT leader=[00019] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [094] F[00007]<00007,00008> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00020] (    Krupp Kfz 69) UNIT leader=[00020] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [094] F[00007]<00007,00009> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00021] (      Zugfuehrer) UNIT leader=[00021] abandoned=0 loader<00026> vrf=N vrfneed=N  OOB 070: [077] F[00008]<00008,00000> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00022] ( Schuetzengruppe) UNIT leader=[00022] abandoned=0 loader<00027> vrf=N vrfneed=N  OOB 070: [152] F[00008]<00008,00001> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00023] ( Schuetzengruppe) UNIT leader=[00023] abandoned=0 loader<00028> vrf=N vrfneed=N  OOB 070: [184] F[00008]<00008,00002> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00024] ( Schuetzengruppe) UNIT leader=[00024] abandoned=0 loader<00029> vrf=N vrfneed=N  OOB 070: [184] F[00008]<00008,00003> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00025] ( Schuetzengruppe) UNIT leader=[00025] abandoned=0 loader<00030> vrf=N vrfneed=N  OOB 070: [184] F[00008]<00008,00004> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00026] (    Horch Kfz 70) UNIT leader=[00026] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [092] F[00008]<00008,00005> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00027] (      Opel Blitz) UNIT leader=[00027] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00008]<00008,00006> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00028] (      Opel Blitz) UNIT leader=[00028] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00008]<00008,00007> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00029] (      Opel Blitz) UNIT leader=[00029] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00008]<00008,00008> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00030] (      Opel Blitz) UNIT leader=[00030] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00008]<00008,00009> ptr[00008] link crew=nil[65535], parent=nil[65535]
+    [00031] (      Zugfuehrer) UNIT leader=[00031] abandoned=0 loader<00036> vrf=N vrfneed=N  OOB 070: [077] F[00009]<00009,00000> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00032] ( Schuetzengruppe) UNIT leader=[00032] abandoned=0 loader<00037> vrf=N vrfneed=N  OOB 070: [152] F[00009]<00009,00001> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00033] ( Schuetzengruppe) UNIT leader=[00033] abandoned=0 loader<00038> vrf=N vrfneed=N  OOB 070: [184] F[00009]<00009,00002> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00034] ( Schuetzengruppe) UNIT leader=[00034] abandoned=0 loader<00039> vrf=N vrfneed=N  OOB 070: [184] F[00009]<00009,00003> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00035] ( Schuetzengruppe) UNIT leader=[00035] abandoned=0 loader<00040> vrf=N vrfneed=N  OOB 070: [184] F[00009]<00009,00004> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00036] (    Opel Kommand) UNIT leader=[00036] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [093] F[00009]<00009,00005> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00037] (      Opel Blitz) UNIT leader=[00037] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00009]<00009,00006> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00038] (      Opel Blitz) UNIT leader=[00038] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00009]<00009,00007> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00039] (      Opel Blitz) UNIT leader=[00039] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00009]<00009,00008> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00040] (      Opel Blitz) UNIT leader=[00040] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [095] F[00009]<00009,00009> ptr[00009] link crew=nil[65535], parent=nil[65535]
+    [00041] (      Zugfuehrer) UNIT leader=[00041] abandoned=0 loader<00044> vrf=N vrfneed=N  OOB 070: [077] F[00010]<00010,00000> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00042] (      LMG Gruppe) UNIT leader=[00042] abandoned=0 loader<00049> vrf=Y vrfneed=N  OOB 070: [078] F[00010]<00010,00001> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00043] (      LMG Gruppe) UNIT leader=[00043] abandoned=0 loader<00042> vrf=N vrfneed=N  OOB 070: [078] F[00010]<00010,00002> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00044] (  Lt Moerser Trp) UNIT leader=[00044] abandoned=0 loader<00045> vrf=Y vrfneed=N  OOB 070: [133] F[00010]<00010,00003> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00045] (  Lt Moerser Trp) UNIT leader=[00045] abandoned=0 loader<00046> vrf=Y vrfneed=N  OOB 070: [133] F[00010]<00010,00004> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00046] (  Lt Moerser Trp) UNIT leader=[00046] abandoned=0 loader<00050> vrf=Y vrfneed=N  OOB 070: [133] F[00010]<00010,00005> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00047] ( Grenadiergruppe) UNIT leader=[00047] abandoned=0 loader<00095> vrf=N vrfneed=N  OOB 070: [243] F[00011]<00018,00001> ptr[00011] link crew=nil[65535], parent=nil[65535]
+    [00048] ( Grenadiergruppe) UNIT leader=[00048] abandoned=0 loader<00096> vrf=N vrfneed=N  OOB 070: [243] F[00011]<00018,00002> ptr[00011] link crew=nil[65535], parent=nil[65535]
+    [00049] (    SPW 251/1 HT) UNIT leader=[00049] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00010]<00010,00008> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00050] (    SPW 251/1 HT) UNIT leader=[00050] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00010]<00010,00009> ptr[00010] link crew=nil[65535], parent=nil[65535]
+    [00051] (      Zugfuehrer) UNIT leader=[00051] abandoned=0 loader<00056> vrf=Y vrfneed=N  OOB 070: [077] F[00012]<00011,00000> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00052] ( Panzerpionieres) UNIT leader=[00052] abandoned=0 loader<00057> vrf=N vrfneed=N  OOB 070: [075] F[00012]<00011,00001> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00053] ( Panzerpionieres) UNIT leader=[00053] abandoned=0 loader<00058> vrf=N vrfneed=N  OOB 070: [075] F[00012]<00011,00002> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00054] ( Panzerpionieres) UNIT leader=[00054] abandoned=0 loader<00059> vrf=N vrfneed=N  OOB 070: [075] F[00012]<00011,00003> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00055] (      LMG Gruppe) UNIT leader=[00055] abandoned=0 loader<00051> vrf=N vrfneed=N  OOB 070: [078] F[00012]<00011,00004> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00056] (    SPW 251/1 HT) UNIT leader=[00056] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00012]<00011,00005> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00057] (    SPW 251/1 HT) UNIT leader=[00057] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00012]<00011,00006> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00058] (    SPW 251/1 HT) UNIT leader=[00058] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00012]<00011,00007> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00059] (    SPW 251/1 HT) UNIT leader=[00059] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00012]<00011,00008> ptr[00012] link crew=nil[65535], parent=nil[65535]
+    [00060] (     Spaehgruppe) UNIT leader=[00060] abandoned=0 loader<00078> vrf=N vrfneed=N  OOB 070: [185] F[00013]<00012,00000> ptr[00013] link crew=nil[65535], parent=nil[65535]
+    [00061] (     Spaehgruppe) UNIT leader=[00061] abandoned=0 loader<00080> vrf=N vrfneed=N  OOB 070: [185] F[00013]<00012,00001> ptr[00013] link crew=nil[65535], parent=nil[65535]
+    [00062] (     Spaehgruppe) UNIT leader=[00062] abandoned=0 loader<00077> vrf=N vrfneed=N  OOB 070: [185] F[00013]<00012,00002> ptr[00013] link crew=nil[65535], parent=nil[65535]
+    [00063] (     Spaehgruppe) UNIT leader=[00063] abandoned=0 loader<00070> vrf=N vrfneed=N  OOB 070: [185] F[00014]<00013,00000> ptr[00014] link crew=nil[65535], parent=nil[65535]
+    [00064] (     Spaehgruppe) UNIT leader=[00064] abandoned=0 loader<00074> vrf=N vrfneed=N  OOB 070: [185] F[00014]<00013,00001> ptr[00014] link crew=nil[65535], parent=nil[65535]
+    [00065] (     Spaehgruppe) UNIT leader=[00065] abandoned=0 loader<00082> vrf=N vrfneed=N  OOB 070: [185] F[00014]<00013,00002> ptr[00014] link crew=nil[65535], parent=nil[65535]
+    [00066] (     PzKpfw II C) UNIT leader=[00066] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [011] F[00015]<00014,00000> ptr[00015] link crew=nil[65535], parent=nil[65535]
+    [00067] (     PzKpfw II C) UNIT leader=[00067] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [011] F[00015]<00014,00001> ptr[00015] link crew=nil[65535], parent=nil[65535]
+    [00068] (     PzKpfw II C) UNIT leader=[00068] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [011] F[00015]<00014,00002> ptr[00015] link crew=nil[65535], parent=nil[65535]
+    [00069] (    PzKpfw III E) UNIT leader=[00069] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [017] F[00015]<00014,00003> ptr[00015] link crew=nil[65535], parent=nil[65535]
+    [00070] (    PzKpfw III E) UNIT leader=[00070] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [017] F[00015]<00014,00004> ptr[00015] link crew=nil[65535], parent=nil[65535]
+    [00071] (     PzKpfw II C) UNIT leader=[00071] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [011] F[00016]<00015,00000> ptr[00016] link crew=nil[65535], parent=nil[65535]
+    [00072] (     PzKpfw II C) UNIT leader=[00072] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [011] F[00016]<00015,00001> ptr[00016] link crew=nil[65535], parent=nil[65535]
+    [00073] (     PzKpfw II C) UNIT leader=[00073] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [011] F[00016]<00015,00002> ptr[00016] link crew=nil[65535], parent=nil[65535]
+    [00074] (    PzKpfw III E) UNIT leader=[00074] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [017] F[00016]<00015,00003> ptr[00016] link crew=nil[65535], parent=nil[65535]
+    [00075] (    PzKpfw III E) UNIT leader=[00075] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [017] F[00016]<00015,00004> ptr[00016] link crew=nil[65535], parent=nil[65535]
+    [00076] (    PzKpfw III E) UNIT leader=[00076] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [017] F[00017]<00016,00000> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00077] (     PzKpfw IV D) UNIT leader=[00077] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [025] F[00017]<00016,00001> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00078] (    PzKpfw III E) UNIT leader=[00078] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [017] F[00017]<00016,00002> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00079] (     PzKpfw IV D) UNIT leader=[00079] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [025] F[00017]<00016,00003> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00080] (    PzKpfw III E) UNIT leader=[00080] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [017] F[00017]<00016,00004> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00081] (     PzKpfw IV C) UNIT leader=[00081] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [024] F[00018]<00017,00000> ptr[00018] link crew=nil[65535], parent=nil[65535]
+    [00082] (     PzKpfw IV C) UNIT leader=[00082] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [024] F[00018]<00017,00001> ptr[00018] link crew=nil[65535], parent=nil[65535]
+    [00083] ( Grenadiergruppe) UNIT leader=[00083] abandoned=0 loader<00094> vrf=N vrfneed=N  OOB 070: [243] F[00011]<00018,00000> ptr[00011] link crew=nil[65535], parent=nil[65535]
+    [00084] (    Motorrad Grp) UNIT leader=[00084] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00019]<00019,00000> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00085] (    Motorrad Grp) UNIT leader=[00085] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00019]<00019,00001> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00086] (    Motorrad Grp) UNIT leader=[00086] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00019]<00019,00002> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00087] (    Motorrad Grp) UNIT leader=[00087] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00020]<00020,00000> ptr[00020] link crew=nil[65535], parent=nil[65535]
+    [00088] (    Motorrad Grp) UNIT leader=[00088] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00020]<00020,00001> ptr[00020] link crew=nil[65535], parent=nil[65535]
+    [00089] (    Motorrad Grp) UNIT leader=[00089] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00020]<00020,00002> ptr[00020] link crew=nil[65535], parent=nil[65535]
+    [00090] (    Motorrad Grp) UNIT leader=[00090] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00021]<00021,00000> ptr[00021] link crew=nil[65535], parent=nil[65535]
+    [00091] (    Motorrad Grp) UNIT leader=[00091] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00021]<00021,00001> ptr[00021] link crew=nil[65535], parent=nil[65535]
+    [00092] (    Motorrad Grp) UNIT leader=[00092] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [165] F[00021]<00021,00002> ptr[00021] link crew=nil[65535], parent=nil[65535]
+    [00093] (    SPW 251/1 HT) UNIT leader=[00093] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [102] F[00022]<00022,00000> ptr[00022] link crew=nil[65535], parent=nil[65535]
+    [00094] (    SPW 251/1 HT) UNIT leader=[00094] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00022]<00022,00001> ptr[00022] link crew=nil[65535], parent=nil[65535]
+    [00095] (    SPW 251/1 HT) UNIT leader=[00095] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00022]<00022,00002> ptr[00022] link crew=nil[65535], parent=nil[65535]
+    [00096] (    SPW 251/1 HT) UNIT leader=[00096] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [102] F[00022]<00022,00003> ptr[00022] link crew=nil[65535], parent=nil[65535]
+    [00097] (        PzJg I B) UNIT leader=[00097] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [039] F[00023]<00023,00000> ptr[00023] link crew=nil[65535], parent=nil[65535]
+    [00098] (        PzJg I B) UNIT leader=[00098] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [039] F[00023]<00023,00001> ptr[00023] link crew=nil[65535], parent=nil[65535]
+    [00099] (    Horch Kfz 70) UNIT leader=[00099] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [092] F[00024]<00024,00000> ptr[00024] link crew=nil[65535], parent=nil[65535]
+    [00100] (      HQ III/IR1) UNIT leader=[00100] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00025]<00025,00000> ptr[00025] link crew=nil[65535], parent=nil[65535]
+    [00101] (   HQ 10/III/IR1) UNIT leader=[00101] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [038] F[00026]<00026,00000> ptr[00026] link crew=nil[65535], parent=nil[65535]
+    [00102] (      Zugfuehrer) UNIT leader=[00102] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [077] F[00027]<00027,00000> ptr[00027] link crew=nil[65535], parent=nil[65535]
+    [00103] ( Schuetzengruppe) UNIT leader=[00103] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00027]<00027,00001> ptr[00027] link crew=nil[65535], parent=nil[65535]
+    [00104] ( Schuetzengruppe) UNIT leader=[00104] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00027]<00027,00002> ptr[00027] link crew=nil[65535], parent=nil[65535]
+    [00105] ( Schuetzengruppe) UNIT leader=[00105] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00027]<00027,00003> ptr[00027] link crew=nil[65535], parent=nil[65535]
+    [00106] ( Schuetzengruppe) UNIT leader=[00106] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00027]<00027,00004> ptr[00027] link crew=nil[65535], parent=nil[65535]
+    [00107] (      Zugfuehrer) UNIT leader=[00107] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [077] F[00028]<00028,00000> ptr[00028] link crew=nil[65535], parent=nil[65535]
+    [00108] ( Schuetzengruppe) UNIT leader=[00108] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00028]<00028,00001> ptr[00028] link crew=nil[65535], parent=nil[65535]
+    [00109] ( Schuetzengruppe) UNIT leader=[00109] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00028]<00028,00002> ptr[00028] link crew=nil[65535], parent=nil[65535]
+    [00110] ( Schuetzengruppe) UNIT leader=[00110] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00028]<00028,00003> ptr[00028] link crew=nil[65535], parent=nil[65535]
+    [00111] ( Schuetzengruppe) UNIT leader=[00111] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00028]<00028,00004> ptr[00028] link crew=nil[65535], parent=nil[65535]
+    [00112] (      Zugfuehrer) UNIT leader=[00112] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [077] F[00029]<00029,00000> ptr[00029] link crew=nil[65535], parent=nil[65535]
+    [00113] ( Schuetzengruppe) UNIT leader=[00113] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00029]<00029,00001> ptr[00029] link crew=nil[65535], parent=nil[65535]
+    [00114] ( Schuetzengruppe) UNIT leader=[00114] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00029]<00029,00002> ptr[00029] link crew=nil[65535], parent=nil[65535]
+    [00115] ( Schuetzengruppe) UNIT leader=[00115] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00029]<00029,00003> ptr[00029] link crew=nil[65535], parent=nil[65535]
+    [00116] ( Schuetzengruppe) UNIT leader=[00116] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00029]<00029,00004> ptr[00029] link crew=nil[65535], parent=nil[65535]
+    [00117] (  MG Lafette Trp) UNIT leader=[00117] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [172] F[00030]<00030,00000> ptr[00030] link crew=nil[65535], parent=nil[65535]
+    [00118] (  MG Lafette Trp) UNIT leader=[00118] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [172] F[00031]<00031,00000> ptr[00031] link crew=nil[65535], parent=nil[65535]
+    [00119] (    50mm Moerser) UNIT leader=[00119] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [133] F[00032]<00032,00000> ptr[00032] link crew=nil[65535], parent=nil[65535]
+    [00120] (    50mm Moerser) UNIT leader=[00120] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [133] F[00032]<00032,00001> ptr[00032] link crew=nil[65535], parent=nil[65535]
+    [00121] (    50mm Moerser) UNIT leader=[00121] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [133] F[00032]<00032,00002> ptr[00032] link crew=nil[65535], parent=nil[65535]
+    [00122] (   HQ 11/III/IR1) UNIT leader=[00122] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [038] F[00033]<00033,00000> ptr[00033] link crew=nil[65535], parent=nil[65535]
+    [00123] (      Zugfuehrer) UNIT leader=[00123] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [077] F[00034]<00034,00000> ptr[00034] link crew=nil[65535], parent=nil[65535]
+    [00124] ( Schuetzengruppe) UNIT leader=[00124] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00034]<00034,00001> ptr[00034] link crew=nil[65535], parent=nil[65535]
+    [00125] ( Schuetzengruppe) UNIT leader=[00125] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00034]<00034,00002> ptr[00034] link crew=nil[65535], parent=nil[65535]
+    [00126] ( Schuetzengruppe) UNIT leader=[00126] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00034]<00034,00003> ptr[00034] link crew=nil[65535], parent=nil[65535]
+    [00127] ( Schuetzengruppe) UNIT leader=[00127] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00034]<00034,00004> ptr[00034] link crew=nil[65535], parent=nil[65535]
+    [00128] (      Zugfuehrer) UNIT leader=[00128] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [077] F[00035]<00035,00000> ptr[00035] link crew=nil[65535], parent=nil[65535]
+    [00129] ( Schuetzengruppe) UNIT leader=[00129] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00035]<00035,00001> ptr[00035] link crew=nil[65535], parent=nil[65535]
+    [00130] ( Schuetzengruppe) UNIT leader=[00130] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00035]<00035,00002> ptr[00035] link crew=nil[65535], parent=nil[65535]
+    [00131] ( Schuetzengruppe) UNIT leader=[00131] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00035]<00035,00003> ptr[00035] link crew=nil[65535], parent=nil[65535]
+    [00132] ( Schuetzengruppe) UNIT leader=[00132] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00035]<00035,00004> ptr[00035] link crew=nil[65535], parent=nil[65535]
+    [00133] (      Zugfuehrer) UNIT leader=[00133] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [077] F[00036]<00036,00000> ptr[00036] link crew=nil[65535], parent=nil[65535]
+    [00134] ( Schuetzengruppe) UNIT leader=[00134] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00036]<00036,00001> ptr[00036] link crew=nil[65535], parent=nil[65535]
+    [00135] ( Schuetzengruppe) UNIT leader=[00135] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00036]<00036,00002> ptr[00036] link crew=nil[65535], parent=nil[65535]
+    [00136] ( Schuetzengruppe) UNIT leader=[00136] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00036]<00036,00003> ptr[00036] link crew=nil[65535], parent=nil[65535]
+    [00137] ( Schuetzengruppe) UNIT leader=[00137] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [151] F[00036]<00036,00004> ptr[00036] link crew=nil[65535], parent=nil[65535]
+    [00138] (  MG Lafette Trp) UNIT leader=[00138] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [172] F[00037]<00037,00000> ptr[00037] link crew=nil[65535], parent=nil[65535]
+    [00139] (  MG Lafette Trp) UNIT leader=[00139] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [172] F[00038]<00038,00000> ptr[00038] link crew=nil[65535], parent=nil[65535]
+    [00140] (    50mm Moerser) UNIT leader=[00140] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [133] F[00039]<00039,00000> ptr[00039] link crew=nil[65535], parent=nil[65535]
+    [00141] (    50mm Moerser) UNIT leader=[00141] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [133] F[00039]<00039,00001> ptr[00039] link crew=nil[65535], parent=nil[65535]
+    [00142] (    50mm Moerser) UNIT leader=[00142] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [133] F[00039]<00039,00002> ptr[00039] link crew=nil[65535], parent=nil[65535]
+    [00143] (    81mm Moerser) UNIT leader=[00143] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00040]<00040,00000> ptr[00040] link crew=nil[65535], parent=nil[65535]
+    [00144] (    81mm Moerser) UNIT leader=[00144] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00040]<00040,00001> ptr[00040] link crew=nil[65535], parent=nil[65535]
+    [00145] (    81mm Moerser) UNIT leader=[00145] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00041]<00041,00000> ptr[00041] link crew=nil[65535], parent=nil[65535]
+    [00146] (    81mm Moerser) UNIT leader=[00146] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [134] F[00041]<00041,00001> ptr[00041] link crew=nil[65535], parent=nil[65535]
+    [00147] (      Zugfuehrer) UNIT leader=[00147] abandoned=0 loader<00151> vrf=Y vrfneed=N  OOB 070: [077] F[00042]<00042,00000> ptr[00042] link crew=nil[65535], parent=nil[65535]
+    [00148] (     150mm sIG33) UNIT leader=[00148] abandoned=0 loader<00147> vrf=N vrfneed=N  OOB 070: [137] F[00042]<00042,00001> ptr[00042] link crew=nil[65535], parent=nil[65535]
+    [00149] (     150mm sIG33) UNIT leader=[00149] abandoned=0 loader<00150> vrf=N vrfneed=N  OOB 070: [137] F[00042]<00042,00002> ptr[00042] link crew=nil[65535], parent=nil[65535]
+    [00150] (      LMG Gruppe) UNIT leader=[00150] abandoned=0 loader<00152> vrf=Y vrfneed=N  OOB 070: [078] F[00042]<00042,00003> ptr[00042] link crew=nil[65535], parent=nil[65535]
+    [00151] (         Gespann) UNIT leader=[00151] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [233] F[00043]<00043,00000> ptr[00043] link crew=nil[65535], parent=nil[65535]
+    [00152] (         Gespann) UNIT leader=[00152] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [233] F[00043]<00043,00001> ptr[00043] link crew=nil[65535], parent=nil[65535]
+    [00153] ( Vorg Beobachter) UNIT leader=[00153] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [241] F[00044]<00044,00000> ptr[00044] link crew=nil[65535], parent=nil[65535]
+    [00154] (     Spaehtruppe) UNIT leader=[00154] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [170] F[00045]<00045,00000> ptr[00045] link crew=nil[65535], parent=nil[65535]
+    [00155] (     Spaehtruppe) UNIT leader=[00155] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [170] F[00045]<00045,00001> ptr[00045] link crew=nil[65535], parent=nil[65535]
+    [00156] (     Spaehtruppe) UNIT leader=[00156] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [170] F[00045]<00045,00002> ptr[00045] link crew=nil[65535], parent=nil[65535]
 find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (        Obs Team) SKIPPED: invalid formation reference
@@ -946,8 +2035,7 @@ find_formation_oobrids: FORMATION: P<1> ID<006> L<00175> O<000> (   Lt Mortar Se
   >>> SEARCH OOBRID - BY NAME: F<006>, T<   Lt Mortar Sec>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<006>, T<   Lt Mortar Sec>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<006>, T<   Lt Mortar Sec>, D<1940/05>
   U<175> F<006,000> O<017> UT<042> <    60mm Mtr Sqd>
   U<176> F<006,001> O<017> UT<042> <    60mm Mtr Sqd>
   <<< rv=0
@@ -972,8 +2060,7 @@ find_formation_oobrids: FORMATION: P<1> ID<012> L<00194> O<000> (   Lt Mortar Se
   >>> SEARCH OOBRID - BY NAME: F<012>, T<   Lt Mortar Sec>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
-  >>> SEARCH OOBRID - EXTENSIVE
-  F<012>, T<   Lt Mortar Sec>, D<1940/05>
+  >>> SEARCH OOBRID - EXTENSIVE: F<012>, T<   Lt Mortar Sec>, D<1940/05>
   U<194> F<012,000> O<017> UT<042> <    60mm Mtr Sqd>
   U<195> F<012,001> O<017> UT<042> <    60mm Mtr Sqd>
   <<< rv=0
@@ -1062,231 +2149,399 @@ verify_candidate_units: [227] UNIT: F<028,003> (            H-39) ACCEPTED
 verify_candidate_units: [228] UNIT: F<028,004> (            H-39) POSTPONED: invalid subformation ID - pending verified loader acceptance test
 verify_candidate_units: [228] VLAT: F<028,004> (            H-39) DROPPED: not a verified loader unit
 unitcount: ul.cnt=71
-add_unit: idx=0, RID=0
-add_unit: idx=1, RID=1
-add_unit: idx=2, RID=2
-add_unit: idx=3, RID=3
-add_unit: idx=4, RID=4
-add_unit: idx=5, RID=5
-add_unit: idx=6, RID=6
-add_unit: idx=7, RID=7
-add_unit: idx=8, RID=8
-add_unit: idx=9, RID=9
-add_unit: idx=10, RID=10
-add_unit: idx=11, RID=11
-add_unit: idx=12, RID=12
-add_unit: idx=13, RID=13
-add_unit: idx=14, RID=14
-add_unit: idx=15, RID=15
-add_unit: idx=16, RID=16
-add_unit: idx=17, RID=17
-add_unit: idx=18, RID=18
-add_unit: idx=19, RID=19
-add_unit: idx=20, RID=20
-add_unit: idx=21, RID=21
-add_unit: idx=22, RID=22
-add_unit: idx=23, RID=23
-add_unit: idx=24, RID=24
-add_unit: idx=25, RID=25
-add_unit: idx=26, RID=26
-add_unit: idx=27, RID=27
-add_unit: idx=28, RID=28
-add_unit: idx=29, RID=29
-add_unit: idx=30, RID=30
-add_unit: idx=31, RID=31
-add_unit: idx=32, RID=32
-add_unit: idx=33, RID=33
-add_unit: idx=34, RID=34
-add_unit: idx=35, RID=35
-add_unit: idx=36, RID=36
-add_unit: idx=37, RID=37
-add_unit: idx=38, RID=38
-add_unit: idx=39, RID=39
-add_unit: idx=40, RID=40
-add_unit: idx=41, RID=41
-add_unit: idx=42, RID=42
-add_unit: idx=43, RID=43
-add_unit: idx=44, RID=44
-add_unit: idx=45, RID=45
-add_unit: idx=46, RID=46
-add_unit: idx=47, RID=47
-add_unit: idx=48, RID=48
-add_unit: idx=49, RID=49
-add_unit: idx=50, RID=50
-add_unit: idx=51, RID=51
-add_unit: idx=52, RID=52
-add_unit: idx=53, RID=53
-add_unit: idx=54, RID=54
-add_unit: idx=55, RID=55
-add_unit: idx=56, RID=56
-add_unit: idx=57, RID=57
-add_unit: idx=58, RID=58
-add_unit: idx=59, RID=59
-add_unit: idx=60, RID=60
-add_unit: idx=61, RID=61
-add_unit: idx=62, RID=62
-add_unit: idx=63, RID=63
-add_unit: idx=64, RID=64
-add_unit: idx=65, RID=65
-add_unit: idx=66, RID=66
-add_unit: idx=67, RID=67
-add_unit: idx=68, RID=68
-add_unit: idx=69, RID=69
-add_unit: idx=70, RID=70
-add_unit: idx=71, RID=71
-add_unit: idx=72, RID=72
-add_unit: idx=73, RID=73
-add_unit: idx=74, RID=74
-add_unit: idx=75, RID=75
-add_unit: idx=76, RID=76
-add_unit: idx=77, RID=77
-add_unit: idx=78, RID=78
-add_unit: idx=79, RID=79
-add_unit: idx=80, RID=80
-add_unit: idx=81, RID=81
-add_unit: idx=82, RID=82
-add_unit: idx=83, RID=83
-add_unit: idx=84, RID=84
-add_unit: idx=85, RID=85
-add_unit: idx=86, RID=86
-add_unit: idx=87, RID=87
-add_unit: idx=88, RID=88
-add_unit: idx=89, RID=89
-add_unit: idx=90, RID=90
-add_unit: idx=91, RID=91
-add_unit: idx=92, RID=92
-add_unit: idx=93, RID=93
-add_unit: idx=94, RID=94
-add_unit: idx=95, RID=95
-add_unit: idx=96, RID=96
-add_unit: idx=97, RID=97
-add_unit: idx=98, RID=98
-add_unit: idx=99, RID=99
-add_unit: idx=100, RID=100
-add_unit: idx=101, RID=101
-add_unit: idx=102, RID=102
-add_unit: idx=103, RID=103
-add_unit: idx=104, RID=104
-add_unit: idx=105, RID=105
-add_unit: idx=106, RID=106
-add_unit: idx=107, RID=107
-add_unit: idx=108, RID=108
-add_unit: idx=109, RID=109
-add_unit: idx=110, RID=110
-add_unit: idx=111, RID=111
-add_unit: idx=112, RID=112
-add_unit: idx=113, RID=113
-add_unit: idx=114, RID=114
-add_unit: idx=115, RID=115
-add_unit: idx=116, RID=116
-add_unit: idx=117, RID=117
-add_unit: idx=118, RID=118
-add_unit: idx=119, RID=119
-add_unit: idx=120, RID=120
-add_unit: idx=121, RID=121
-add_unit: idx=122, RID=122
-add_unit: idx=123, RID=123
-add_unit: idx=124, RID=124
-add_unit: idx=125, RID=125
-add_unit: idx=126, RID=126
-add_unit: idx=127, RID=127
-add_unit: idx=128, RID=128
-add_unit: idx=129, RID=129
-add_unit: idx=130, RID=130
-add_unit: idx=131, RID=131
-add_unit: idx=132, RID=132
-add_unit: idx=133, RID=133
-add_unit: idx=134, RID=134
-add_unit: idx=135, RID=135
-add_unit: idx=136, RID=136
-add_unit: idx=137, RID=137
-add_unit: idx=138, RID=138
-add_unit: idx=139, RID=139
-add_unit: idx=140, RID=140
-add_unit: idx=141, RID=141
-add_unit: idx=142, RID=142
-add_unit: idx=143, RID=143
-add_unit: idx=144, RID=144
-add_unit: idx=145, RID=145
-add_unit: idx=146, RID=146
-add_unit: idx=147, RID=147
-add_unit: idx=148, RID=148
-add_unit: idx=149, RID=149
-add_unit: idx=150, RID=150
-add_unit: idx=151, RID=151
-add_unit: idx=152, RID=152
-add_unit: idx=153, RID=153
-add_unit: idx=154, RID=154
-add_unit: idx=155, RID=155
-add_unit: idx=156, RID=156
-add_unit: idx=0, RID=157
-add_unit: idx=1, RID=158
-add_unit: idx=2, RID=159
-add_unit: idx=3, RID=160
-add_unit: idx=4, RID=161
-add_unit: idx=5, RID=162
-add_unit: idx=6, RID=163
-add_unit: idx=7, RID=164
-add_unit: idx=8, RID=165
-add_unit: idx=9, RID=166
-add_unit: idx=10, RID=167
-add_unit: idx=11, RID=168
-add_unit: idx=12, RID=169
-add_unit: idx=13, RID=170
-add_unit: idx=14, RID=171
-add_unit: idx=15, RID=172
-add_unit: idx=16, RID=173
-add_unit: idx=17, RID=174
-add_unit: idx=18, RID=175
-add_unit: idx=19, RID=176
-add_unit: idx=20, RID=177
-add_unit: idx=21, RID=178
-add_unit: idx=22, RID=179
-add_unit: idx=23, RID=180
-add_unit: idx=24, RID=181
-add_unit: idx=25, RID=182
-add_unit: idx=26, RID=183
-add_unit: idx=27, RID=184
-add_unit: idx=28, RID=185
-add_unit: idx=29, RID=186
-add_unit: idx=30, RID=187
-add_unit: idx=31, RID=188
-add_unit: idx=32, RID=189
-add_unit: idx=33, RID=190
-add_unit: idx=34, RID=191
-add_unit: idx=35, RID=192
-add_unit: idx=36, RID=193
-add_unit: idx=37, RID=194
-add_unit: idx=38, RID=195
-add_unit: idx=39, RID=196
-add_unit: idx=40, RID=197
-add_unit: idx=41, RID=198
-add_unit: idx=42, RID=199
-add_unit: idx=43, RID=200
-add_unit: idx=44, RID=201
-add_unit: idx=45, RID=202
-add_unit: idx=46, RID=203
-add_unit: idx=47, RID=204
-add_unit: idx=48, RID=205
-add_unit: idx=49, RID=206
-add_unit: idx=50, RID=207
-add_unit: idx=51, RID=208
-add_unit: idx=52, RID=209
-add_unit: idx=53, RID=210
-add_unit: idx=54, RID=211
-add_unit: idx=55, RID=212
-add_unit: idx=56, RID=213
-add_unit: idx=57, RID=214
-add_unit: idx=58, RID=215
-add_unit: idx=59, RID=216
-add_unit: idx=60, RID=217
-add_unit: idx=61, RID=218
-add_unit: idx=62, RID=219
-add_unit: idx=63, RID=220
-add_unit: idx=64, RID=221
-add_unit: idx=65, RID=222
-add_unit: idx=66, RID=223
-add_unit: idx=67, RID=224
-add_unit: idx=68, RID=225
-add_unit: idx=69, RID=226
-add_unit: idx=70, RID=227
+FLIST: { { s.nidx=24 }, cnt=24 }
+    [00046] (    SPWAW H2H ce) P<001> L<00157> status=000 units=001 OOB 076: [001] FID<00000> RAW<00100>
+        [000] ptr[00157]
+    [00047] (   Voltigeurs Co) P<001> L<00158> status=000 units=003 OOB 076: [102] FID<00001> RAW<00101>
+        [000] ptr[00158]
+    --- [001] nil[65535]
+    --- [002] nil[65535]
+    [00048] (  Voltigeurs Plt) P<001> L<00159> status=000 units=004 OOB 076: [024] FID<00002> RAW<00102>
+        [000] ptr[00159]
+        [001] ptr[00160]
+        [002] ptr[00161]
+        [003] ptr[00162]
+    [00049] (  Voltigeurs Plt) P<001> L<00163> status=000 units=004 OOB 076: [024] FID<00003> RAW<00103>
+        [000] ptr[00163]
+        [001] ptr[00164]
+        [002] ptr[00165]
+        [003] ptr[00166]
+    [00050] (  Voltigeurs Plt) P<001> L<00167> status=000 units=004 OOB 076: [024] FID<00004> RAW<00104>
+        [000] ptr[00167]
+        [001] ptr[00168]
+        [002] ptr[00169]
+        [003] ptr[00170]
+    [00051] (  Voltigeurs Plt) P<001> L<00171> status=000 units=004 OOB 076: [024] FID<00005> RAW<00105>
+        [000] ptr[00171]
+        [001] ptr[00172]
+        [002] ptr[00173]
+        [003] ptr[00174]
+    [00052] (   Lt Mortar Sec) P<001> L<00175> status=000 units=002 OOB 076: [000] FID<00006> RAW<00106>
+        [000] ptr[00175]
+        [001] ptr[00176]
+    [00053] (   Voltigeurs Co) P<001> L<00177> status=000 units=003 OOB 076: [102] FID<00007> RAW<00107>
+        [000] ptr[00177]
+    --- [001] nil[65535]
+    --- [002] nil[65535]
+    [00054] (  Voltigeurs Plt) P<001> L<00178> status=000 units=004 OOB 076: [024] FID<00008> RAW<00108>
+        [000] ptr[00178]
+        [001] ptr[00179]
+        [002] ptr[00180]
+        [003] ptr[00181]
+    [00055] (  Voltigeurs Plt) P<001> L<00182> status=000 units=004 OOB 076: [024] FID<00009> RAW<00109>
+        [000] ptr[00182]
+        [001] ptr[00183]
+        [002] ptr[00184]
+        [003] ptr[00185]
+    [00056] (  Voltigeurs Plt) P<001> L<00186> status=000 units=004 OOB 076: [024] FID<00010> RAW<00110>
+        [000] ptr[00186]
+        [001] ptr[00187]
+        [002] ptr[00188]
+        [003] ptr[00189]
+    [00057] (  Voltigeurs Plt) P<001> L<00190> status=000 units=004 OOB 076: [024] FID<00011> RAW<00111>
+        [000] ptr[00190]
+        [001] ptr[00191]
+        [002] ptr[00192]
+        [003] ptr[00193]
+    [00058] (   Lt Mortar Sec) P<001> L<00194> status=000 units=002 OOB 076: [000] FID<00012> RAW<00112>
+        [000] ptr[00194]
+        [001] ptr[00195]
+    [00059] (     HMG Section) P<001> L<00196> status=000 units=002 OOB 076: [071] FID<00013> RAW<00113>
+        [000] ptr[00196]
+        [001] ptr[00197]
+    [00060] (     HMG Section) P<001> L<00198> status=000 units=002 OOB 076: [071] FID<00014> RAW<00114>
+        [000] ptr[00198]
+        [001] ptr[00199]
+    [00061] (     HMG Section) P<001> L<00200> status=000 units=002 OOB 076: [071] FID<00015> RAW<00115>
+        [000] ptr[00200]
+        [001] ptr[00201]
+    [00062] (  Voltigeurs Plt) P<001> L<00202> status=000 units=001 OOB 076: [101] FID<00016> RAW<00116>
+        [000] ptr[00202]
+    [00063] (  Voltigeurs Plt) P<001> L<00206> status=000 units=001 OOB 076: [101] FID<00017> RAW<00117>
+        [000] ptr[00206]
+    [00064] (  Voltigeurs Plt) P<001> L<00210> status=000 units=001 OOB 076: [101] FID<00018> RAW<00118>
+        [000] ptr[00210]
+    [00065] (      AA-Gun Sec) P<001> L<00214> status=000 units=001 OOB 076: [014] FID<00019> RAW<00119>
+        [000] ptr[00214]
+    [00066] ( Inf Gun Section) P<001> L<00216> status=000 units=003 OOB 076: [012] FID<00020> RAW<00120>
+        [000] ptr[00216]
+        [001] ptr[00217]
+    --- [002] nil[65535]
+    [00067] (      AT-Gun Sec) P<001> L<00218> status=000 units=006 OOB 076: [011] FID<00021> RAW<00121>
+        [000] ptr[00218]
+        [001] ptr[00219]
+    --- [002] nil[65535]
+    --- [003] nil[65535]
+    --- [004] nil[65535]
+    --- [005] nil[65535]
+    [00068] (   DCA Ammo Cars) P<001> L<00220> status=000 units=005 OOB 076: [183] FID<00024> RAW<00124>
+        [000] ptr[00220]
+        [001] ptr[00221]
+        [002] ptr[00222]
+        [003] ptr[00223]
+    --- [004] nil[65535]
+    [00069] (  Light Tank Trp) P<001> L<00224> status=000 units=004 OOB 076: [005] FID<00028> RAW<00128>
+        [000] ptr[00224]
+        [001] ptr[00225]
+        [002] ptr[00226]
+        [003] ptr[00227]
+ULIST: { { s.nidx=72 }, cnt=71 }
+    [00157] (           FR HQ) UNIT leader=[00157] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [244] F[00046]<00000,00000> ptr[00046] link crew=nil[65535], parent=nil[65535]
+    [00158] (    Compagnie HQ) UNIT leader=[00158] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [071] F[00047]<00001,00000> ptr[00047] link crew=nil[65535], parent=nil[65535]
+    [00159] (      Platoon HQ) UNIT leader=[00159] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00048]<00002,00000> ptr[00048] link crew=nil[65535], parent=nil[65535]
+    [00160] (  FR Rifle Squad) UNIT leader=[00160] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00048]<00002,00001> ptr[00048] link crew=nil[65535], parent=nil[65535]
+    [00161] (  FR Rifle Squad) UNIT leader=[00161] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00048]<00002,00002> ptr[00048] link crew=nil[65535], parent=nil[65535]
+    [00162] (  FR Rifle Squad) UNIT leader=[00162] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00048]<00002,00003> ptr[00048] link crew=nil[65535], parent=nil[65535]
+    [00163] (      Platoon HQ) UNIT leader=[00163] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00049]<00003,00000> ptr[00049] link crew=nil[65535], parent=nil[65535]
+    [00164] (  FR Rifle Squad) UNIT leader=[00164] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00049]<00003,00001> ptr[00049] link crew=nil[65535], parent=nil[65535]
+    [00165] (  FR Rifle Squad) UNIT leader=[00165] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00049]<00003,00002> ptr[00049] link crew=nil[65535], parent=nil[65535]
+    [00166] (  FR Rifle Squad) UNIT leader=[00166] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00049]<00003,00003> ptr[00049] link crew=nil[65535], parent=nil[65535]
+    [00167] (      Platoon HQ) UNIT leader=[00167] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00050]<00004,00000> ptr[00050] link crew=nil[65535], parent=nil[65535]
+    [00168] (  FR Rifle Squad) UNIT leader=[00168] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00050]<00004,00001> ptr[00050] link crew=nil[65535], parent=nil[65535]
+    [00169] (  FR Rifle Squad) UNIT leader=[00169] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00050]<00004,00002> ptr[00050] link crew=nil[65535], parent=nil[65535]
+    [00170] (  FR Rifle Squad) UNIT leader=[00170] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00050]<00004,00003> ptr[00050] link crew=nil[65535], parent=nil[65535]
+    [00171] (      Platoon HQ) UNIT leader=[00171] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00051]<00005,00000> ptr[00051] link crew=nil[65535], parent=nil[65535]
+    [00172] (  FR Rifle Squad) UNIT leader=[00172] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00051]<00005,00001> ptr[00051] link crew=nil[65535], parent=nil[65535]
+    [00173] (  FR Rifle Squad) UNIT leader=[00173] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00051]<00005,00002> ptr[00051] link crew=nil[65535], parent=nil[65535]
+    [00174] (  FR Rifle Squad) UNIT leader=[00174] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00051]<00005,00003> ptr[00051] link crew=nil[65535], parent=nil[65535]
+    [00175] (    60mm Mtr Sqd) UNIT leader=[00175] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [017] F[00052]<00006,00000> ptr[00052] link crew=nil[65535], parent=nil[65535]
+    [00176] (    60mm Mtr Sqd) UNIT leader=[00176] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [017] F[00052]<00006,00001> ptr[00052] link crew=nil[65535], parent=nil[65535]
+    [00177] (    Compagnie HQ) UNIT leader=[00177] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [071] F[00053]<00007,00000> ptr[00053] link crew=nil[65535], parent=nil[65535]
+    [00178] (      Platoon HQ) UNIT leader=[00178] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00054]<00008,00000> ptr[00054] link crew=nil[65535], parent=nil[65535]
+    [00179] (  FR Rifle Squad) UNIT leader=[00179] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00054]<00008,00001> ptr[00054] link crew=nil[65535], parent=nil[65535]
+    [00180] (  FR Rifle Squad) UNIT leader=[00180] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00054]<00008,00002> ptr[00054] link crew=nil[65535], parent=nil[65535]
+    [00181] (  FR Rifle Squad) UNIT leader=[00181] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00054]<00008,00003> ptr[00054] link crew=nil[65535], parent=nil[65535]
+    [00182] (      Platoon HQ) UNIT leader=[00182] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00055]<00009,00000> ptr[00055] link crew=nil[65535], parent=nil[65535]
+    [00183] (  FR Rifle Squad) UNIT leader=[00183] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00055]<00009,00001> ptr[00055] link crew=nil[65535], parent=nil[65535]
+    [00184] (  FR Rifle Squad) UNIT leader=[00184] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00055]<00009,00002> ptr[00055] link crew=nil[65535], parent=nil[65535]
+    [00185] (  FR Rifle Squad) UNIT leader=[00185] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00055]<00009,00003> ptr[00055] link crew=nil[65535], parent=nil[65535]
+    [00186] (      Platoon HQ) UNIT leader=[00186] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00056]<00010,00000> ptr[00056] link crew=nil[65535], parent=nil[65535]
+    [00187] (  FR Rifle Squad) UNIT leader=[00187] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00056]<00010,00001> ptr[00056] link crew=nil[65535], parent=nil[65535]
+    [00188] (  FR Rifle Squad) UNIT leader=[00188] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00056]<00010,00002> ptr[00056] link crew=nil[65535], parent=nil[65535]
+    [00189] (  FR Rifle Squad) UNIT leader=[00189] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00056]<00010,00003> ptr[00056] link crew=nil[65535], parent=nil[65535]
+    [00190] (      Platoon HQ) UNIT leader=[00190] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00057]<00011,00000> ptr[00057] link crew=nil[65535], parent=nil[65535]
+    [00191] (  FR Rifle Squad) UNIT leader=[00191] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00057]<00011,00001> ptr[00057] link crew=nil[65535], parent=nil[65535]
+    [00192] (  FR Rifle Squad) UNIT leader=[00192] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00057]<00011,00002> ptr[00057] link crew=nil[65535], parent=nil[65535]
+    [00193] (  FR Rifle Squad) UNIT leader=[00193] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [014] F[00057]<00011,00003> ptr[00057] link crew=nil[65535], parent=nil[65535]
+    [00194] (    60mm Mtr Sqd) UNIT leader=[00194] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [017] F[00058]<00012,00000> ptr[00058] link crew=nil[65535], parent=nil[65535]
+    [00195] (    60mm Mtr Sqd) UNIT leader=[00195] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [017] F[00058]<00012,00001> ptr[00058] link crew=nil[65535], parent=nil[65535]
+    [00196] (   Hotchkiss HMG) UNIT leader=[00196] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [016] F[00059]<00013,00000> ptr[00059] link crew=nil[65535], parent=nil[65535]
+    [00197] (   Hotchkiss HMG) UNIT leader=[00197] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [016] F[00059]<00013,00001> ptr[00059] link crew=nil[65535], parent=nil[65535]
+    [00198] (   Hotchkiss HMG) UNIT leader=[00198] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [016] F[00060]<00014,00000> ptr[00060] link crew=nil[65535], parent=nil[65535]
+    [00199] (   Hotchkiss HMG) UNIT leader=[00199] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [016] F[00060]<00014,00001> ptr[00060] link crew=nil[65535], parent=nil[65535]
+    [00200] (   Hotchkiss HMG) UNIT leader=[00200] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [016] F[00061]<00015,00000> ptr[00061] link crew=nil[65535], parent=nil[65535]
+    [00201] (   Hotchkiss HMG) UNIT leader=[00201] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [016] F[00061]<00015,00001> ptr[00061] link crew=nil[65535], parent=nil[65535]
+    [00202] (      Platoon HQ) UNIT leader=[00202] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00062]<00016,00000> ptr[00062] link crew=nil[65535], parent=nil[65535]
+    [00203] (  Voltigeurs Sqd) UNIT leader=[00203] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00062]<00016,00001> ptr[00062] link crew=nil[65535], parent=nil[65535]
+    [00204] (  Voltigeurs Sqd) UNIT leader=[00204] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00062]<00016,00002> ptr[00062] link crew=nil[65535], parent=nil[65535]
+    [00205] (  Voltigeurs Sqd) UNIT leader=[00205] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00062]<00016,00003> ptr[00062] link crew=nil[65535], parent=nil[65535]
+    [00206] (      Platoon HQ) UNIT leader=[00206] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00063]<00017,00000> ptr[00063] link crew=nil[65535], parent=nil[65535]
+    [00207] (  Voltigeurs Sqd) UNIT leader=[00207] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00063]<00017,00001> ptr[00063] link crew=nil[65535], parent=nil[65535]
+    [00208] (  Voltigeurs Sqd) UNIT leader=[00208] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00063]<00017,00002> ptr[00063] link crew=nil[65535], parent=nil[65535]
+    [00209] (  Voltigeurs Sqd) UNIT leader=[00209] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00063]<00017,00003> ptr[00063] link crew=nil[65535], parent=nil[65535]
+    [00210] (      Platoon HQ) UNIT leader=[00210] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [219] F[00064]<00018,00000> ptr[00064] link crew=nil[65535], parent=nil[65535]
+    [00211] (  Voltigeurs Sqd) UNIT leader=[00211] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00064]<00018,00001> ptr[00064] link crew=nil[65535], parent=nil[65535]
+    [00212] (  Voltigeurs Sqd) UNIT leader=[00212] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00064]<00018,00002> ptr[00064] link crew=nil[65535], parent=nil[65535]
+    [00213] (  Voltigeurs Sqd) UNIT leader=[00213] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [027] F[00064]<00018,00003> ptr[00064] link crew=nil[65535], parent=nil[65535]
+    [00214] (  25mm DCA mle39) UNIT leader=[00214] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [045] F[00065]<00019,00000> ptr[00065] link crew=nil[65535], parent=nil[65535]
+    [00215] (  25mm DCA mle39) UNIT leader=[00215] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [045] F[00065]<00019,00001> ptr[00065] link crew=nil[65535], parent=nil[65535]
+    [00216] (  37mm mle 16 TR) UNIT leader=[00216] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [021] F[00066]<00020,00000> ptr[00066] link crew=nil[65535], parent=nil[65535]
+    [00217] (  37mm mle 16 TR) UNIT leader=[00217] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [021] F[00066]<00020,00001> ptr[00066] link crew=nil[65535], parent=nil[65535]
+    [00218] ( 25mm mle 34 ATG) UNIT leader=[00218] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [019] F[00067]<00021,00000> ptr[00067] link crew=nil[65535], parent=nil[65535]
+    [00219] ( 25mm mle 34 ATG) UNIT leader=[00219] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [019] F[00067]<00021,00001> ptr[00067] link crew=nil[65535], parent=nil[65535]
+    [00220] (      Ammo Boxes) UNIT leader=[00220] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [216] F[00068]<00024,00000> ptr[00068] link crew=nil[65535], parent=nil[65535]
+    [00221] (      Ammo Boxes) UNIT leader=[00221] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [216] F[00068]<00024,00001> ptr[00068] link crew=nil[65535], parent=nil[65535]
+    [00222] (      Ammo Boxes) UNIT leader=[00222] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [216] F[00068]<00024,00002> ptr[00068] link crew=nil[65535], parent=nil[65535]
+    [00223] (      Ammo Boxes) UNIT leader=[00223] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [216] F[00068]<00024,00003> ptr[00068] link crew=nil[65535], parent=nil[65535]
+    [00224] (            H-39) UNIT leader=[00224] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [004] F[00069]<00028,00000> ptr[00069] link crew=nil[65535], parent=nil[65535]
+    [00225] (            H-39) UNIT leader=[00225] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [004] F[00069]<00028,00001> ptr[00069] link crew=nil[65535], parent=nil[65535]
+    [00226] (            H-39) UNIT leader=[00226] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [004] F[00069]<00028,00002> ptr[00069] link crew=nil[65535], parent=nil[65535]
+    [00227] (            H-39) UNIT leader=[00227] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [004] F[00069]<00028,00003> ptr[00069] link crew=nil[65535], parent=nil[65535]
+add_unit: idx=0, RID=0, type=UNIT
+add_unit: idx=1, RID=1, type=UNIT
+add_unit: idx=2, RID=2, type=UNIT
+add_unit: idx=3, RID=3, type=UNIT
+add_unit: idx=4, RID=4, type=UNIT
+add_unit: idx=5, RID=5, type=UNIT
+add_unit: idx=6, RID=6, type=UNIT
+add_unit: idx=7, RID=7, type=UNIT
+add_unit: idx=8, RID=8, type=UNIT
+add_unit: idx=9, RID=9, type=UNIT
+add_unit: idx=10, RID=10, type=UNIT
+add_unit: idx=11, RID=11, type=UNIT
+add_unit: idx=12, RID=12, type=UNIT
+add_unit: idx=13, RID=13, type=UNIT
+add_unit: idx=14, RID=14, type=UNIT
+add_unit: idx=15, RID=15, type=UNIT
+add_unit: idx=16, RID=16, type=UNIT
+add_unit: idx=17, RID=17, type=UNIT
+add_unit: idx=18, RID=18, type=UNIT
+add_unit: idx=19, RID=19, type=UNIT
+add_unit: idx=20, RID=20, type=UNIT
+add_unit: idx=21, RID=21, type=UNIT
+add_unit: idx=22, RID=22, type=UNIT
+add_unit: idx=23, RID=23, type=UNIT
+add_unit: idx=24, RID=24, type=UNIT
+add_unit: idx=25, RID=25, type=UNIT
+add_unit: idx=26, RID=26, type=UNIT
+add_unit: idx=27, RID=27, type=UNIT
+add_unit: idx=28, RID=28, type=UNIT
+add_unit: idx=29, RID=29, type=UNIT
+add_unit: idx=30, RID=30, type=UNIT
+add_unit: idx=31, RID=31, type=UNIT
+add_unit: idx=32, RID=32, type=UNIT
+add_unit: idx=33, RID=33, type=UNIT
+add_unit: idx=34, RID=34, type=UNIT
+add_unit: idx=35, RID=35, type=UNIT
+add_unit: idx=36, RID=36, type=UNIT
+add_unit: idx=37, RID=37, type=UNIT
+add_unit: idx=38, RID=38, type=UNIT
+add_unit: idx=39, RID=39, type=UNIT
+add_unit: idx=40, RID=40, type=UNIT
+add_unit: idx=41, RID=41, type=UNIT
+add_unit: idx=42, RID=42, type=UNIT
+add_unit: idx=43, RID=43, type=UNIT
+add_unit: idx=44, RID=44, type=UNIT
+add_unit: idx=45, RID=45, type=UNIT
+add_unit: idx=46, RID=46, type=UNIT
+add_unit: idx=47, RID=47, type=UNIT
+add_unit: idx=48, RID=48, type=UNIT
+add_unit: idx=49, RID=49, type=UNIT
+add_unit: idx=50, RID=50, type=UNIT
+add_unit: idx=51, RID=51, type=UNIT
+add_unit: idx=52, RID=52, type=UNIT
+add_unit: idx=53, RID=53, type=UNIT
+add_unit: idx=54, RID=54, type=UNIT
+add_unit: idx=55, RID=55, type=UNIT
+add_unit: idx=56, RID=56, type=UNIT
+add_unit: idx=57, RID=57, type=UNIT
+add_unit: idx=58, RID=58, type=UNIT
+add_unit: idx=59, RID=59, type=UNIT
+add_unit: idx=60, RID=60, type=UNIT
+add_unit: idx=61, RID=61, type=UNIT
+add_unit: idx=62, RID=62, type=UNIT
+add_unit: idx=63, RID=63, type=UNIT
+add_unit: idx=64, RID=64, type=UNIT
+add_unit: idx=65, RID=65, type=UNIT
+add_unit: idx=66, RID=66, type=UNIT
+add_unit: idx=67, RID=67, type=UNIT
+add_unit: idx=68, RID=68, type=UNIT
+add_unit: idx=69, RID=69, type=UNIT
+add_unit: idx=70, RID=70, type=UNIT
+add_unit: idx=71, RID=71, type=UNIT
+add_unit: idx=72, RID=72, type=UNIT
+add_unit: idx=73, RID=73, type=UNIT
+add_unit: idx=74, RID=74, type=UNIT
+add_unit: idx=75, RID=75, type=UNIT
+add_unit: idx=76, RID=76, type=UNIT
+add_unit: idx=77, RID=77, type=UNIT
+add_unit: idx=78, RID=78, type=UNIT
+add_unit: idx=79, RID=79, type=UNIT
+add_unit: idx=80, RID=80, type=UNIT
+add_unit: idx=81, RID=81, type=UNIT
+add_unit: idx=82, RID=82, type=UNIT
+add_unit: idx=83, RID=83, type=UNIT
+add_unit: idx=84, RID=84, type=UNIT
+add_unit: idx=85, RID=85, type=UNIT
+add_unit: idx=86, RID=86, type=UNIT
+add_unit: idx=87, RID=87, type=UNIT
+add_unit: idx=88, RID=88, type=UNIT
+add_unit: idx=89, RID=89, type=UNIT
+add_unit: idx=90, RID=90, type=UNIT
+add_unit: idx=91, RID=91, type=UNIT
+add_unit: idx=92, RID=92, type=UNIT
+add_unit: idx=93, RID=93, type=UNIT
+add_unit: idx=94, RID=94, type=UNIT
+add_unit: idx=95, RID=95, type=UNIT
+add_unit: idx=96, RID=96, type=UNIT
+add_unit: idx=97, RID=97, type=UNIT
+add_unit: idx=98, RID=98, type=UNIT
+add_unit: idx=99, RID=99, type=UNIT
+add_unit: idx=100, RID=100, type=UNIT
+add_unit: idx=101, RID=101, type=UNIT
+add_unit: idx=102, RID=102, type=UNIT
+add_unit: idx=103, RID=103, type=UNIT
+add_unit: idx=104, RID=104, type=UNIT
+add_unit: idx=105, RID=105, type=UNIT
+add_unit: idx=106, RID=106, type=UNIT
+add_unit: idx=107, RID=107, type=UNIT
+add_unit: idx=108, RID=108, type=UNIT
+add_unit: idx=109, RID=109, type=UNIT
+add_unit: idx=110, RID=110, type=UNIT
+add_unit: idx=111, RID=111, type=UNIT
+add_unit: idx=112, RID=112, type=UNIT
+add_unit: idx=113, RID=113, type=UNIT
+add_unit: idx=114, RID=114, type=UNIT
+add_unit: idx=115, RID=115, type=UNIT
+add_unit: idx=116, RID=116, type=UNIT
+add_unit: idx=117, RID=117, type=UNIT
+add_unit: idx=118, RID=118, type=UNIT
+add_unit: idx=119, RID=119, type=UNIT
+add_unit: idx=120, RID=120, type=UNIT
+add_unit: idx=121, RID=121, type=UNIT
+add_unit: idx=122, RID=122, type=UNIT
+add_unit: idx=123, RID=123, type=UNIT
+add_unit: idx=124, RID=124, type=UNIT
+add_unit: idx=125, RID=125, type=UNIT
+add_unit: idx=126, RID=126, type=UNIT
+add_unit: idx=127, RID=127, type=UNIT
+add_unit: idx=128, RID=128, type=UNIT
+add_unit: idx=129, RID=129, type=UNIT
+add_unit: idx=130, RID=130, type=UNIT
+add_unit: idx=131, RID=131, type=UNIT
+add_unit: idx=132, RID=132, type=UNIT
+add_unit: idx=133, RID=133, type=UNIT
+add_unit: idx=134, RID=134, type=UNIT
+add_unit: idx=135, RID=135, type=UNIT
+add_unit: idx=136, RID=136, type=UNIT
+add_unit: idx=137, RID=137, type=UNIT
+add_unit: idx=138, RID=138, type=UNIT
+add_unit: idx=139, RID=139, type=UNIT
+add_unit: idx=140, RID=140, type=UNIT
+add_unit: idx=141, RID=141, type=UNIT
+add_unit: idx=142, RID=142, type=UNIT
+add_unit: idx=143, RID=143, type=UNIT
+add_unit: idx=144, RID=144, type=UNIT
+add_unit: idx=145, RID=145, type=UNIT
+add_unit: idx=146, RID=146, type=UNIT
+add_unit: idx=147, RID=147, type=UNIT
+add_unit: idx=148, RID=148, type=UNIT
+add_unit: idx=149, RID=149, type=UNIT
+add_unit: idx=150, RID=150, type=UNIT
+add_unit: idx=151, RID=151, type=UNIT
+add_unit: idx=152, RID=152, type=UNIT
+add_unit: idx=153, RID=153, type=UNIT
+add_unit: idx=154, RID=154, type=UNIT
+add_unit: idx=155, RID=155, type=UNIT
+add_unit: idx=156, RID=156, type=UNIT
+add_unit: idx=0, RID=157, type=UNIT
+add_unit: idx=1, RID=158, type=UNIT
+add_unit: idx=2, RID=159, type=UNIT
+add_unit: idx=3, RID=160, type=UNIT
+add_unit: idx=4, RID=161, type=UNIT
+add_unit: idx=5, RID=162, type=UNIT
+add_unit: idx=6, RID=163, type=UNIT
+add_unit: idx=7, RID=164, type=UNIT
+add_unit: idx=8, RID=165, type=UNIT
+add_unit: idx=9, RID=166, type=UNIT
+add_unit: idx=10, RID=167, type=UNIT
+add_unit: idx=11, RID=168, type=UNIT
+add_unit: idx=12, RID=169, type=UNIT
+add_unit: idx=13, RID=170, type=UNIT
+add_unit: idx=14, RID=171, type=UNIT
+add_unit: idx=15, RID=172, type=UNIT
+add_unit: idx=16, RID=173, type=UNIT
+add_unit: idx=17, RID=174, type=UNIT
+add_unit: idx=18, RID=175, type=UNIT
+add_unit: idx=19, RID=176, type=UNIT
+add_unit: idx=20, RID=177, type=UNIT
+add_unit: idx=21, RID=178, type=UNIT
+add_unit: idx=22, RID=179, type=UNIT
+add_unit: idx=23, RID=180, type=UNIT
+add_unit: idx=24, RID=181, type=UNIT
+add_unit: idx=25, RID=182, type=UNIT
+add_unit: idx=26, RID=183, type=UNIT
+add_unit: idx=27, RID=184, type=UNIT
+add_unit: idx=28, RID=185, type=UNIT
+add_unit: idx=29, RID=186, type=UNIT
+add_unit: idx=30, RID=187, type=UNIT
+add_unit: idx=31, RID=188, type=UNIT
+add_unit: idx=32, RID=189, type=UNIT
+add_unit: idx=33, RID=190, type=UNIT
+add_unit: idx=34, RID=191, type=UNIT
+add_unit: idx=35, RID=192, type=UNIT
+add_unit: idx=36, RID=193, type=UNIT
+add_unit: idx=37, RID=194, type=UNIT
+add_unit: idx=38, RID=195, type=UNIT
+add_unit: idx=39, RID=196, type=UNIT
+add_unit: idx=40, RID=197, type=UNIT
+add_unit: idx=41, RID=198, type=UNIT
+add_unit: idx=42, RID=199, type=UNIT
+add_unit: idx=43, RID=200, type=UNIT
+add_unit: idx=44, RID=201, type=UNIT
+add_unit: idx=45, RID=202, type=UNIT
+add_unit: idx=46, RID=203, type=UNIT
+add_unit: idx=47, RID=204, type=UNIT
+add_unit: idx=48, RID=205, type=UNIT
+add_unit: idx=49, RID=206, type=UNIT
+add_unit: idx=50, RID=207, type=UNIT
+add_unit: idx=51, RID=208, type=UNIT
+add_unit: idx=52, RID=209, type=UNIT
+add_unit: idx=53, RID=210, type=UNIT
+add_unit: idx=54, RID=211, type=UNIT
+add_unit: idx=55, RID=212, type=UNIT
+add_unit: idx=56, RID=213, type=UNIT
+add_unit: idx=57, RID=214, type=UNIT
+add_unit: idx=58, RID=215, type=UNIT
+add_unit: idx=59, RID=216, type=UNIT
+add_unit: idx=60, RID=217, type=UNIT
+add_unit: idx=61, RID=218, type=UNIT
+add_unit: idx=62, RID=219, type=UNIT
+add_unit: idx=63, RID=220, type=UNIT
+add_unit: idx=64, RID=221, type=UNIT
+add_unit: idx=65, RID=222, type=UNIT
+add_unit: idx=66, RID=223, type=UNIT
+add_unit: idx=67, RID=224, type=UNIT
+add_unit: idx=68, RID=225, type=UNIT
+add_unit: idx=69, RID=226, type=UNIT
+add_unit: idx=70, RID=227, type=UNIT

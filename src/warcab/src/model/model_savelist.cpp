@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - savegame list.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,8 +16,8 @@ ModelSaveList::ModelSaveList (char *path, SPWAW_SAVELIST *ignore, QObject *paren
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "filename" << "battle date" << "battle location" << "comment";
-	d.col_cnt = 4;
+	header << "filename" << "type" << "battle date" << "battle location" << "comment";
+	d.col_cnt = 5;
 
 	setupModelData (path, ignore);
 }
@@ -115,7 +115,11 @@ ModelSaveList::setupModelData (char *path, SPWAW_SAVELIST *ignore)
 
 		p = d.save_list->list[i];
 
-		node.data << p->filename << p->info.stamp << p->info.location << p->info.comment;
+		node.data	<< p->filename
+				<< SPWAW_battletype2str(p->info.type)
+				<< p->info.stamp
+				<< p->info.location
+				<< p->info.comment;
 		node.node = p;
 
 		data_list.append (node);
@@ -139,32 +143,33 @@ ModelSaveList::sort_transform (NODE_DATA *ptr, int col, int idx)
 {
 	QString	turn = "turn ";
 	int	pos;
-	QString	s1, s2, col1;
+	QString	s1, s2, col1, col2, col3;
 	QString	out;
 
-	pos = ptr->data[1].toString().indexOf (turn, 0, Qt::CaseSensitive);
+	col1 = ptr->data[1].toString();
+	col3 = ptr->data[3].toString();
+
+	pos = ptr->data[2].toString().indexOf (turn, 0, Qt::CaseSensitive);
 	if (pos != -1) {
-		s1 = ptr->data[1].toString().mid(0, pos + turn.length());
-		s2 = ptr->data[1].toString().mid (pos + turn.length());
-		col1.sprintf ("%s%06.6u", qPrintable(s1), s2.toUInt());
+		s1 = ptr->data[2].toString().mid(0, pos + turn.length());
+		s2 = ptr->data[2].toString().mid (pos + turn.length());
+		col2.sprintf ("%s%06.6u", qPrintable(s1), s2.toUInt());
 	} else {
-		col1 = ptr->data[1].toString();
+		col2 = ptr->data[2].toString();
 	}
 
 	switch (col) {
 		case 1:
-			out = col1;
+			out = col1 + col2;
 			break;
 		case 2:
-			out = ptr->data[3].toString() + col1;
+			out = col2;
+			break;
 		case 3:
-			pos = ptr->data[3].toString().lastIndexOf (',');
-			if (pos != -1) {
-				s1 = ptr->data[3].toString().mid(0, pos);
-				out = s1 + col1;
-			} else {
-				out = ptr->data[3].toString() + col1;
-			}
+			out = col3 + col2;
+			break;
+		case 4:
+			out = ptr->data[4].toString() + col2;
 			break;
 		default:
 			out = ptr->data[col].toString();

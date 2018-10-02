@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -53,8 +53,10 @@ private:
 	} d;
 
 private:
+	void		update_header	(void);
 	QBrush		item_brush	(int role, MDLD_TREE_ITEM *item)	const;
 	QVariant	data_dossier	(int role, MDLD_TREE_ITEM *p)		const;
+	QVariant	data_standalone	(int role, MDLD_TREE_ITEM *p)		const;
 	QVariant	data_battle	(int role, MDLD_TREE_ITEM *p)		const;
 	QVariant	data_bturn	(int role, MDLD_TREE_ITEM *p)		const;
 };

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types implementation.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,7 +15,7 @@
 
 static unsigned int dec_month_days[12] = { 30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30 };
 
-static void	eval_period	(SPWAW_PERIOD *period);
+static void	eval_period(SPWAW_PERIOD *period);
 static bool	isValidDate	(SPWAW_DATE *date);
 static bool	isValidStamp	(SPWAW_TIMESTAMP *stamp);
 static bool	isValidPeriod	(SPWAW_PERIOD *period);
@@ -447,4 +447,73 @@ SPWAW_vhstatus2str (SPWAW_VHSTATUS id)
 {
 	if ((id < SPWAW_VHSTARTCODE) || (id > SPWAW_VHLASTCODE)) return ("???");
 	return ((const char *)vhstatus2str (id));
+}
+
+SPWAWLIB_API const char *
+SPWAW_battletype2str (SPWAW_BATTLE_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SPWAW_UNKNOWN_BATTLE:
+			p = "unknown";
+			break;
+		case SPWAW_CAMPAIGN_BATTLE:
+			p = "campaign";
+			break;
+		case SPWAW_STDALONE_BATTLE:
+			p = "standalone";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
+
+SPWAWLIB_API const char *
+SPWAW_dossiertype2str (SPWAW_DOSSIER_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SPWAW_EMPTY_DOSSIER:
+			p = "empty";
+			break;
+		case SPWAW_CAMPAIGN_DOSSIER:
+			p = "campaign";
+			break;
+		case SPWAW_STDALONE_DOSSIER:
+			p = "standalone";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
+
+SPWAWLIB_API const char *
+SPWAW_unittype2str (SPWAW_UNIT_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SPWAW_UNIT_TYPE_UNKNOWN:
+			p = "unknown";
+			break;
+		case SPWAW_UNIT_TYPE_UNIT:
+			p = "UNIT";
+			break;
+		case SPWAW_UNIT_TYPE_CREW:
+			p = "CREW";
+			break;
+		case SPWAW_UNIT_TYPE_SPAU:
+			p = "SPAU";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
 }

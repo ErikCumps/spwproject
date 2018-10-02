@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=20, info=0x0018f8ac)
+game_load_full (dir="_SAVE_", id=20)
 open_gamefiles: comment: name="_SAVE_\save020.cmt", fd=5
 open_gamefiles: data: name="_SAVE_\save020.dat", fd=6
 # gamedata_load_all: START<SPWAW_SAVE_V101>
@@ -85,27 +85,810 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
 ### gamedata_load_all: BLOCK #48 <size=36, flag=0x00000001>
 unpacked section 48: 36 bytes -> 80 bytes
+setup_info: fcnt=9, cfcnt=7
 find_formations: player #0
-find_formations: [000] FORMATION: P<0> ID<000> L<00000> O<001>(       SPWAW 8.3)
-find_formations: [001] FORMATION: P<0> ID<001> L<00001> O<098>(   Infantry Co E)
-find_formations: [002] FORMATION: P<0> ID<002> L<00002> O<000>(  Infantry Plt E)
-find_formations: [003] FORMATION: P<0> ID<003> L<00007> O<000>(  Infantry Plt E)
-find_formations: [004] FORMATION: P<0> ID<004> L<00012> O<000>(  Infantry Plt E)
-find_formations: [005] FORMATION: P<0> ID<005> L<00017> O<000>(   Weapons Plt E)
-find_formations: [006] FORMATION: P<0> ID<006> L<00025> O<000>(   Lt Mortar Plt)
-find_formations: [007] FORMATION: P<0> ID<007> L<00028> O<011>(    Med Tank Plt)
+find_formations: [000] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<001>(       SPWAW 8.3)
+find_formations: [001] FORMATION: P<0> rawFID<001> FID<001> L<00001> O<098>(   Infantry Co E)
+find_formations: [002] FORMATION: P<0> rawFID<002> FID<002> L<00002> O<000>(  Infantry Plt E)
+find_formations: [003] FORMATION: P<0> rawFID<003> FID<003> L<00007> O<000>(  Infantry Plt E)
+find_formations: [004] FORMATION: P<0> rawFID<004> FID<004> L<00012> O<000>(  Infantry Plt E)
+find_formations: [005] FORMATION: P<0> rawFID<005> FID<005> L<00017> O<000>(   Weapons Plt E)
+find_formations: [006] FORMATION: P<0> rawFID<006> FID<006> L<00025> O<000>(   Lt Mortar Plt)
+find_formations: [007] FORMATION: P<0> rawFID<007> FID<007> L<00028> O<011>(    Med Tank Plt)
 find_formations: [008] SKIPPED (no leader)
+find_formations: [009] FORMATION: P<0> rawFID<000> FID<000> L<00000> O<000>(                )
+find_formations: [010] SKIPPED (duplicate formation ID 0)
+find_formations: [011] SKIPPED (duplicate formation ID 0)
+find_formations: [012] SKIPPED (duplicate formation ID 0)
+find_formations: [013] SKIPPED (duplicate formation ID 0)
+find_formations: [014] SKIPPED (duplicate formation ID 0)
+find_formations: [015] SKIPPED (duplicate formation ID 0)
+find_formations: [016] SKIPPED (duplicate formation ID 0)
+find_formations: [017] SKIPPED (duplicate formation ID 0)
+find_formations: [018] SKIPPED (duplicate formation ID 0)
+find_formations: [019] SKIPPED (duplicate formation ID 0)
+find_formations: [020] SKIPPED (duplicate formation ID 0)
+find_formations: [021] SKIPPED (duplicate formation ID 0)
+find_formations: [022] SKIPPED (duplicate formation ID 0)
+find_formations: [023] SKIPPED (duplicate formation ID 0)
+find_formations: [024] SKIPPED (duplicate formation ID 0)
+find_formations: [025] SKIPPED (duplicate formation ID 0)
+find_formations: [026] SKIPPED (duplicate formation ID 0)
+find_formations: [027] SKIPPED (duplicate formation ID 0)
+find_formations: [028] SKIPPED (duplicate formation ID 0)
+find_formations: [029] SKIPPED (duplicate formation ID 0)
+find_formations: [030] SKIPPED (duplicate formation ID 0)
+find_formations: [031] SKIPPED (duplicate formation ID 0)
+find_formations: [032] SKIPPED (duplicate formation ID 0)
+find_formations: [033] SKIPPED (duplicate formation ID 0)
+find_formations: [034] SKIPPED (duplicate formation ID 0)
+find_formations: [035] SKIPPED (duplicate formation ID 0)
+find_formations: [036] SKIPPED (duplicate formation ID 0)
+find_formations: [037] SKIPPED (duplicate formation ID 0)
+find_formations: [038] SKIPPED (duplicate formation ID 0)
+find_formations: [039] SKIPPED (duplicate formation ID 0)
+find_formations: [040] SKIPPED (duplicate formation ID 0)
+find_formations: [041] SKIPPED (duplicate formation ID 0)
+find_formations: [042] SKIPPED (duplicate formation ID 0)
+find_formations: [043] SKIPPED (duplicate formation ID 0)
+find_formations: [044] SKIPPED (duplicate formation ID 0)
+find_formations: [045] SKIPPED (duplicate formation ID 0)
+find_formations: [046] SKIPPED (duplicate formation ID 0)
+find_formations: [047] SKIPPED (duplicate formation ID 0)
+find_formations: [048] SKIPPED (duplicate formation ID 0)
+find_formations: [049] SKIPPED (duplicate formation ID 0)
+find_formations: [050] SKIPPED (duplicate formation ID 0)
+find_formations: [051] SKIPPED (duplicate formation ID 0)
+find_formations: [052] SKIPPED (duplicate formation ID 0)
+find_formations: [053] SKIPPED (duplicate formation ID 0)
+find_formations: [054] SKIPPED (duplicate formation ID 0)
+find_formations: [055] SKIPPED (duplicate formation ID 0)
+find_formations: [056] SKIPPED (duplicate formation ID 0)
+find_formations: [057] SKIPPED (duplicate formation ID 0)
+find_formations: [058] SKIPPED (duplicate formation ID 0)
+find_formations: [059] SKIPPED (duplicate formation ID 0)
+find_formations: [060] SKIPPED (duplicate formation ID 0)
+find_formations: [061] SKIPPED (duplicate formation ID 0)
+find_formations: [062] SKIPPED (duplicate formation ID 0)
+find_formations: [063] SKIPPED (duplicate formation ID 0)
+find_formations: [064] SKIPPED (duplicate formation ID 0)
+find_formations: [065] SKIPPED (duplicate formation ID 0)
+find_formations: [066] SKIPPED (duplicate formation ID 0)
+find_formations: [067] SKIPPED (duplicate formation ID 0)
+find_formations: [068] SKIPPED (duplicate formation ID 0)
+find_formations: [069] SKIPPED (duplicate formation ID 0)
+find_formations: [070] SKIPPED (duplicate formation ID 0)
+find_formations: [071] SKIPPED (duplicate formation ID 0)
+find_formations: [072] SKIPPED (duplicate formation ID 0)
+find_formations: [073] SKIPPED (duplicate formation ID 0)
+find_formations: [074] SKIPPED (duplicate formation ID 0)
+find_formations: [075] SKIPPED (duplicate formation ID 0)
+find_formations: [076] SKIPPED (duplicate formation ID 0)
+find_formations: [077] SKIPPED (duplicate formation ID 0)
+find_formations: [078] SKIPPED (duplicate formation ID 0)
+find_formations: [079] SKIPPED (duplicate formation ID 0)
+find_formations: [080] SKIPPED (duplicate formation ID 0)
+find_formations: [081] SKIPPED (duplicate formation ID 0)
+find_formations: [082] SKIPPED (duplicate formation ID 0)
+find_formations: [083] SKIPPED (duplicate formation ID 0)
+find_formations: [084] SKIPPED (duplicate formation ID 0)
+find_formations: [085] SKIPPED (duplicate formation ID 0)
+find_formations: [086] SKIPPED (duplicate formation ID 0)
+find_formations: [087] SKIPPED (duplicate formation ID 0)
+find_formations: [088] SKIPPED (duplicate formation ID 0)
+find_formations: [089] SKIPPED (duplicate formation ID 0)
+find_formations: [090] SKIPPED (duplicate formation ID 0)
+find_formations: [091] SKIPPED (duplicate formation ID 0)
+find_formations: [092] SKIPPED (duplicate formation ID 0)
+find_formations: [093] SKIPPED (duplicate formation ID 0)
+find_formations: [094] SKIPPED (duplicate formation ID 0)
+find_formations: [095] SKIPPED (duplicate formation ID 0)
+find_formations: [096] SKIPPED (duplicate formation ID 0)
+find_formations: [097] SKIPPED (duplicate formation ID 0)
+find_formations: [098] SKIPPED (duplicate formation ID 0)
+find_formations: [099] SKIPPED (duplicate formation ID 0)
+find_formations: [100] SKIPPED (wrong player ID 1)
+find_formations: [101] SKIPPED (wrong player ID 1)
+find_formations: [102] SKIPPED (wrong player ID 1)
+find_formations: [103] SKIPPED (wrong player ID 1)
+find_formations: [104] SKIPPED (wrong player ID 1)
+find_formations: [105] SKIPPED (wrong player ID 1)
 find_formations: [106] SKIPPED (no leader)
-find_formations: cnt=8
+find_formations: [107] SKIPPED (duplicate formation ID 0)
+find_formations: [108] SKIPPED (duplicate formation ID 0)
+find_formations: [109] SKIPPED (duplicate formation ID 0)
+find_formations: [110] SKIPPED (duplicate formation ID 0)
+find_formations: [111] SKIPPED (duplicate formation ID 0)
+find_formations: [112] SKIPPED (duplicate formation ID 0)
+find_formations: [113] SKIPPED (duplicate formation ID 0)
+find_formations: [114] SKIPPED (duplicate formation ID 0)
+find_formations: [115] SKIPPED (duplicate formation ID 0)
+find_formations: [116] SKIPPED (duplicate formation ID 0)
+find_formations: [117] SKIPPED (duplicate formation ID 0)
+find_formations: [118] SKIPPED (duplicate formation ID 0)
+find_formations: [119] SKIPPED (duplicate formation ID 0)
+find_formations: [120] SKIPPED (duplicate formation ID 0)
+find_formations: [121] SKIPPED (duplicate formation ID 0)
+find_formations: [122] SKIPPED (duplicate formation ID 0)
+find_formations: [123] SKIPPED (duplicate formation ID 0)
+find_formations: [124] SKIPPED (duplicate formation ID 0)
+find_formations: [125] SKIPPED (duplicate formation ID 0)
+find_formations: [126] SKIPPED (duplicate formation ID 0)
+find_formations: [127] SKIPPED (duplicate formation ID 0)
+find_formations: [128] SKIPPED (duplicate formation ID 0)
+find_formations: [129] SKIPPED (duplicate formation ID 0)
+find_formations: [130] SKIPPED (duplicate formation ID 0)
+find_formations: [131] SKIPPED (duplicate formation ID 0)
+find_formations: [132] SKIPPED (duplicate formation ID 0)
+find_formations: [133] SKIPPED (duplicate formation ID 0)
+find_formations: [134] SKIPPED (duplicate formation ID 0)
+find_formations: [135] SKIPPED (duplicate formation ID 0)
+find_formations: [136] SKIPPED (duplicate formation ID 0)
+find_formations: [137] SKIPPED (duplicate formation ID 0)
+find_formations: [138] SKIPPED (duplicate formation ID 0)
+find_formations: [139] SKIPPED (duplicate formation ID 0)
+find_formations: [140] SKIPPED (duplicate formation ID 0)
+find_formations: [141] SKIPPED (duplicate formation ID 0)
+find_formations: [142] SKIPPED (duplicate formation ID 0)
+find_formations: [143] SKIPPED (duplicate formation ID 0)
+find_formations: [144] SKIPPED (duplicate formation ID 0)
+find_formations: [145] SKIPPED (duplicate formation ID 0)
+find_formations: [146] SKIPPED (duplicate formation ID 0)
+find_formations: [147] SKIPPED (duplicate formation ID 0)
+find_formations: [148] SKIPPED (duplicate formation ID 0)
+find_formations: [149] SKIPPED (duplicate formation ID 0)
+find_formations: [150] SKIPPED (duplicate formation ID 0)
+find_formations: [151] SKIPPED (duplicate formation ID 0)
+find_formations: [152] SKIPPED (duplicate formation ID 0)
+find_formations: [153] SKIPPED (duplicate formation ID 0)
+find_formations: [154] SKIPPED (duplicate formation ID 0)
+find_formations: [155] SKIPPED (duplicate formation ID 0)
+find_formations: [156] SKIPPED (duplicate formation ID 0)
+find_formations: [157] SKIPPED (duplicate formation ID 0)
+find_formations: [158] SKIPPED (duplicate formation ID 0)
+find_formations: [159] SKIPPED (duplicate formation ID 0)
+find_formations: [160] SKIPPED (duplicate formation ID 0)
+find_formations: [161] SKIPPED (duplicate formation ID 0)
+find_formations: [162] SKIPPED (duplicate formation ID 0)
+find_formations: [163] SKIPPED (duplicate formation ID 0)
+find_formations: [164] SKIPPED (duplicate formation ID 0)
+find_formations: [165] SKIPPED (duplicate formation ID 0)
+find_formations: [166] SKIPPED (duplicate formation ID 0)
+find_formations: [167] SKIPPED (duplicate formation ID 0)
+find_formations: [168] SKIPPED (duplicate formation ID 0)
+find_formations: [169] SKIPPED (duplicate formation ID 0)
+find_formations: [170] SKIPPED (duplicate formation ID 0)
+find_formations: [171] SKIPPED (duplicate formation ID 0)
+find_formations: [172] SKIPPED (duplicate formation ID 0)
+find_formations: [173] SKIPPED (duplicate formation ID 0)
+find_formations: [174] SKIPPED (duplicate formation ID 0)
+find_formations: [175] SKIPPED (duplicate formation ID 0)
+find_formations: [176] SKIPPED (duplicate formation ID 0)
+find_formations: [177] SKIPPED (duplicate formation ID 0)
+find_formations: [178] SKIPPED (duplicate formation ID 0)
+find_formations: [179] SKIPPED (duplicate formation ID 0)
+find_formations: [180] SKIPPED (duplicate formation ID 0)
+find_formations: [181] SKIPPED (duplicate formation ID 0)
+find_formations: [182] SKIPPED (duplicate formation ID 0)
+find_formations: [183] SKIPPED (duplicate formation ID 0)
+find_formations: [184] SKIPPED (duplicate formation ID 0)
+find_formations: [185] SKIPPED (duplicate formation ID 0)
+find_formations: [186] SKIPPED (duplicate formation ID 0)
+find_formations: [187] SKIPPED (duplicate formation ID 0)
+find_formations: [188] SKIPPED (duplicate formation ID 0)
+find_formations: [189] SKIPPED (duplicate formation ID 0)
+find_formations: [190] SKIPPED (duplicate formation ID 0)
+find_formations: [191] SKIPPED (duplicate formation ID 0)
+find_formations: [192] SKIPPED (duplicate formation ID 0)
+find_formations: [193] SKIPPED (duplicate formation ID 0)
+find_formations: [194] SKIPPED (duplicate formation ID 0)
+find_formations: [195] SKIPPED (duplicate formation ID 0)
+find_formations: [196] SKIPPED (duplicate formation ID 0)
+find_formations: [197] SKIPPED (duplicate formation ID 0)
+find_formations: [198] SKIPPED (duplicate formation ID 0)
+find_formations: [199] SKIPPED (duplicate formation ID 0)
+find_formations: [200] SKIPPED (duplicate formation ID 0)
+find_formations: [201] SKIPPED (duplicate formation ID 0)
+find_formations: [202] SKIPPED (duplicate formation ID 0)
+find_formations: [203] SKIPPED (duplicate formation ID 0)
+find_formations: [204] SKIPPED (duplicate formation ID 0)
+find_formations: [205] SKIPPED (duplicate formation ID 0)
+find_formations: [206] SKIPPED (duplicate formation ID 0)
+find_formations: [207] SKIPPED (duplicate formation ID 0)
+find_formations: [208] SKIPPED (duplicate formation ID 0)
+find_formations: [209] SKIPPED (duplicate formation ID 0)
+find_formations: [210] SKIPPED (duplicate formation ID 0)
+find_formations: [211] SKIPPED (duplicate formation ID 0)
+find_formations: [212] SKIPPED (duplicate formation ID 0)
+find_formations: [213] SKIPPED (duplicate formation ID 0)
+find_formations: [214] SKIPPED (duplicate formation ID 0)
+find_formations: [215] SKIPPED (duplicate formation ID 0)
+find_formations: [216] SKIPPED (duplicate formation ID 0)
+find_formations: [217] SKIPPED (duplicate formation ID 0)
+find_formations: [218] SKIPPED (duplicate formation ID 0)
+find_formations: [219] SKIPPED (duplicate formation ID 0)
+find_formations: [220] SKIPPED (duplicate formation ID 0)
+find_formations: [221] SKIPPED (duplicate formation ID 0)
+find_formations: [222] SKIPPED (duplicate formation ID 0)
+find_formations: [223] SKIPPED (duplicate formation ID 0)
+find_formations: [224] SKIPPED (duplicate formation ID 0)
+find_formations: [225] SKIPPED (duplicate formation ID 0)
+find_formations: [226] SKIPPED (duplicate formation ID 0)
+find_formations: [227] SKIPPED (duplicate formation ID 0)
+find_formations: [228] SKIPPED (duplicate formation ID 0)
+find_formations: [229] SKIPPED (duplicate formation ID 0)
+find_formations: [230] SKIPPED (duplicate formation ID 0)
+find_formations: [231] SKIPPED (duplicate formation ID 0)
+find_formations: [232] SKIPPED (duplicate formation ID 0)
+find_formations: [233] SKIPPED (duplicate formation ID 0)
+find_formations: [234] SKIPPED (duplicate formation ID 0)
+find_formations: [235] SKIPPED (duplicate formation ID 0)
+find_formations: [236] SKIPPED (duplicate formation ID 0)
+find_formations: [237] SKIPPED (duplicate formation ID 0)
+find_formations: [238] SKIPPED (duplicate formation ID 0)
+find_formations: [239] SKIPPED (duplicate formation ID 0)
+find_formations: [240] SKIPPED (duplicate formation ID 0)
+find_formations: [241] SKIPPED (duplicate formation ID 0)
+find_formations: [242] SKIPPED (duplicate formation ID 0)
+find_formations: [243] SKIPPED (duplicate formation ID 0)
+find_formations: [244] SKIPPED (duplicate formation ID 0)
+find_formations: [245] SKIPPED (duplicate formation ID 0)
+find_formations: [246] SKIPPED (duplicate formation ID 0)
+find_formations: [247] SKIPPED (duplicate formation ID 0)
+find_formations: [248] SKIPPED (duplicate formation ID 0)
+find_formations: [249] SKIPPED (duplicate formation ID 0)
+find_formations: [250] SKIPPED (duplicate formation ID 0)
+find_formations: [251] SKIPPED (duplicate formation ID 0)
+find_formations: [252] SKIPPED (duplicate formation ID 0)
+find_formations: [253] SKIPPED (duplicate formation ID 0)
+find_formations: [254] SKIPPED (duplicate formation ID 0)
+find_formations: [255] SKIPPED (duplicate formation ID 0)
+find_formations: [256] SKIPPED (duplicate formation ID 0)
+find_formations: [257] SKIPPED (duplicate formation ID 0)
+find_formations: [258] SKIPPED (duplicate formation ID 0)
+find_formations: [259] SKIPPED (duplicate formation ID 0)
+find_formations: [260] SKIPPED (duplicate formation ID 0)
+find_formations: [261] SKIPPED (duplicate formation ID 0)
+find_formations: [262] SKIPPED (duplicate formation ID 0)
+find_formations: [263] SKIPPED (duplicate formation ID 0)
+find_formations: [264] SKIPPED (duplicate formation ID 0)
+find_formations: [265] SKIPPED (duplicate formation ID 0)
+find_formations: [266] SKIPPED (duplicate formation ID 0)
+find_formations: [267] SKIPPED (duplicate formation ID 0)
+find_formations: [268] SKIPPED (duplicate formation ID 0)
+find_formations: [269] SKIPPED (duplicate formation ID 0)
+find_formations: [270] SKIPPED (duplicate formation ID 0)
+find_formations: [271] SKIPPED (duplicate formation ID 0)
+find_formations: [272] SKIPPED (duplicate formation ID 0)
+find_formations: [273] SKIPPED (duplicate formation ID 0)
+find_formations: [274] SKIPPED (duplicate formation ID 0)
+find_formations: [275] SKIPPED (duplicate formation ID 0)
+find_formations: [276] SKIPPED (duplicate formation ID 0)
+find_formations: [277] SKIPPED (duplicate formation ID 0)
+find_formations: [278] SKIPPED (duplicate formation ID 0)
+find_formations: [279] SKIPPED (duplicate formation ID 0)
+find_formations: [280] SKIPPED (duplicate formation ID 0)
+find_formations: [281] SKIPPED (duplicate formation ID 0)
+find_formations: [282] SKIPPED (duplicate formation ID 0)
+find_formations: [283] SKIPPED (duplicate formation ID 0)
+find_formations: [284] SKIPPED (duplicate formation ID 0)
+find_formations: [285] SKIPPED (duplicate formation ID 0)
+find_formations: [286] SKIPPED (duplicate formation ID 0)
+find_formations: [287] SKIPPED (duplicate formation ID 0)
+find_formations: [288] SKIPPED (duplicate formation ID 0)
+find_formations: [289] SKIPPED (duplicate formation ID 0)
+find_formations: [290] SKIPPED (duplicate formation ID 0)
+find_formations: [291] SKIPPED (duplicate formation ID 0)
+find_formations: [292] SKIPPED (duplicate formation ID 0)
+find_formations: [293] SKIPPED (duplicate formation ID 0)
+find_formations: [294] SKIPPED (duplicate formation ID 0)
+find_formations: [295] SKIPPED (duplicate formation ID 0)
+find_formations: [296] SKIPPED (duplicate formation ID 0)
+find_formations: [297] SKIPPED (duplicate formation ID 0)
+find_formations: [298] SKIPPED (duplicate formation ID 0)
+find_formations: [299] SKIPPED (duplicate formation ID 0)
+find_formations: [300] SKIPPED (duplicate formation ID 0)
+find_formations: [301] SKIPPED (duplicate formation ID 0)
+find_formations: [302] SKIPPED (duplicate formation ID 0)
+find_formations: [303] SKIPPED (duplicate formation ID 0)
+find_formations: [304] SKIPPED (duplicate formation ID 0)
+find_formations: [305] SKIPPED (duplicate formation ID 0)
+find_formations: [306] SKIPPED (duplicate formation ID 0)
+find_formations: [307] SKIPPED (duplicate formation ID 0)
+find_formations: [308] SKIPPED (duplicate formation ID 0)
+find_formations: [309] SKIPPED (duplicate formation ID 0)
+find_formations: [310] SKIPPED (duplicate formation ID 0)
+find_formations: [311] SKIPPED (duplicate formation ID 0)
+find_formations: [312] SKIPPED (duplicate formation ID 0)
+find_formations: [313] SKIPPED (duplicate formation ID 0)
+find_formations: [314] SKIPPED (duplicate formation ID 0)
+find_formations: [315] SKIPPED (duplicate formation ID 0)
+find_formations: [316] SKIPPED (duplicate formation ID 0)
+find_formations: [317] SKIPPED (duplicate formation ID 0)
+find_formations: [318] SKIPPED (duplicate formation ID 0)
+find_formations: [319] SKIPPED (duplicate formation ID 0)
+find_formations: [320] SKIPPED (duplicate formation ID 0)
+find_formations: [321] SKIPPED (duplicate formation ID 0)
+find_formations: [322] SKIPPED (duplicate formation ID 0)
+find_formations: [323] SKIPPED (duplicate formation ID 0)
+find_formations: [324] SKIPPED (duplicate formation ID 0)
+find_formations: [325] SKIPPED (duplicate formation ID 0)
+find_formations: [326] SKIPPED (duplicate formation ID 0)
+find_formations: [327] SKIPPED (duplicate formation ID 0)
+find_formations: [328] SKIPPED (duplicate formation ID 0)
+find_formations: [329] SKIPPED (duplicate formation ID 0)
+find_formations: [330] SKIPPED (duplicate formation ID 0)
+find_formations: [331] SKIPPED (duplicate formation ID 0)
+find_formations: [332] SKIPPED (duplicate formation ID 0)
+find_formations: [333] SKIPPED (duplicate formation ID 0)
+find_formations: [334] SKIPPED (duplicate formation ID 0)
+find_formations: [335] SKIPPED (duplicate formation ID 0)
+find_formations: [336] SKIPPED (duplicate formation ID 0)
+find_formations: [337] SKIPPED (duplicate formation ID 0)
+find_formations: [338] SKIPPED (duplicate formation ID 0)
+find_formations: [339] SKIPPED (duplicate formation ID 0)
+find_formations: [340] SKIPPED (duplicate formation ID 0)
+find_formations: [341] SKIPPED (duplicate formation ID 0)
+find_formations: [342] SKIPPED (duplicate formation ID 0)
+find_formations: [343] SKIPPED (duplicate formation ID 0)
+find_formations: [344] SKIPPED (duplicate formation ID 0)
+find_formations: [345] SKIPPED (duplicate formation ID 0)
+find_formations: [346] SKIPPED (duplicate formation ID 0)
+find_formations: [347] SKIPPED (duplicate formation ID 0)
+find_formations: [348] SKIPPED (duplicate formation ID 0)
+find_formations: [349] SKIPPED (duplicate formation ID 0)
+find_formations: [350] SKIPPED (duplicate formation ID 0)
+find_formations: [351] SKIPPED (duplicate formation ID 0)
+find_formations: [352] SKIPPED (duplicate formation ID 0)
+find_formations: [353] SKIPPED (duplicate formation ID 0)
+find_formations: [354] SKIPPED (duplicate formation ID 0)
+find_formations: [355] SKIPPED (duplicate formation ID 0)
+find_formations: [356] SKIPPED (duplicate formation ID 0)
+find_formations: [357] SKIPPED (duplicate formation ID 0)
+find_formations: [358] SKIPPED (duplicate formation ID 0)
+find_formations: [359] SKIPPED (duplicate formation ID 0)
+find_formations: [360] SKIPPED (duplicate formation ID 0)
+find_formations: [361] SKIPPED (duplicate formation ID 0)
+find_formations: [362] SKIPPED (duplicate formation ID 0)
+find_formations: [363] SKIPPED (duplicate formation ID 0)
+find_formations: [364] SKIPPED (duplicate formation ID 0)
+find_formations: [365] SKIPPED (duplicate formation ID 0)
+find_formations: [366] SKIPPED (duplicate formation ID 0)
+find_formations: [367] SKIPPED (duplicate formation ID 0)
+find_formations: [368] SKIPPED (duplicate formation ID 0)
+find_formations: [369] SKIPPED (duplicate formation ID 0)
+find_formations: [370] SKIPPED (duplicate formation ID 0)
+find_formations: [371] SKIPPED (duplicate formation ID 0)
+find_formations: [372] SKIPPED (duplicate formation ID 0)
+find_formations: [373] SKIPPED (duplicate formation ID 0)
+find_formations: [374] SKIPPED (duplicate formation ID 0)
+find_formations: [375] SKIPPED (duplicate formation ID 0)
+find_formations: [376] SKIPPED (duplicate formation ID 0)
+find_formations: [377] SKIPPED (duplicate formation ID 0)
+find_formations: [378] SKIPPED (duplicate formation ID 0)
+find_formations: [379] SKIPPED (duplicate formation ID 0)
+find_formations: [380] SKIPPED (duplicate formation ID 0)
+find_formations: [381] SKIPPED (duplicate formation ID 0)
+find_formations: [382] SKIPPED (duplicate formation ID 0)
+find_formations: [383] SKIPPED (duplicate formation ID 0)
+find_formations: [384] SKIPPED (duplicate formation ID 0)
+find_formations: [385] SKIPPED (duplicate formation ID 0)
+find_formations: [386] SKIPPED (duplicate formation ID 0)
+find_formations: [387] SKIPPED (duplicate formation ID 0)
+find_formations: [388] SKIPPED (duplicate formation ID 0)
+find_formations: [389] SKIPPED (duplicate formation ID 0)
+find_formations: [390] SKIPPED (duplicate formation ID 0)
+find_formations: [391] SKIPPED (duplicate formation ID 0)
+find_formations: [392] SKIPPED (duplicate formation ID 0)
+find_formations: [393] SKIPPED (duplicate formation ID 0)
+find_formations: [394] SKIPPED (duplicate formation ID 0)
+find_formations: [395] SKIPPED (duplicate formation ID 0)
+find_formations: [396] SKIPPED (duplicate formation ID 0)
+find_formations: [397] SKIPPED (duplicate formation ID 0)
+find_formations: [398] SKIPPED (duplicate formation ID 0)
+find_formations: [399] SKIPPED (duplicate formation ID 0)
+find_formations: cnt=9
 find_formations: player #1
+find_formations: [000] SKIPPED (wrong player ID 0)
+find_formations: [001] SKIPPED (wrong player ID 0)
+find_formations: [002] SKIPPED (wrong player ID 0)
+find_formations: [003] SKIPPED (wrong player ID 0)
+find_formations: [004] SKIPPED (wrong player ID 0)
+find_formations: [005] SKIPPED (wrong player ID 0)
+find_formations: [006] SKIPPED (wrong player ID 0)
+find_formations: [007] SKIPPED (wrong player ID 0)
 find_formations: [008] SKIPPED (no leader)
-find_formations: [100] FORMATION: P<1> ID<100> L<00400> O<001>(       SPWAW 8.3)
-find_formations: [101] FORMATION: P<1> ID<101> L<00401> O<102>(   Infantry Co A)
-find_formations: [102] FORMATION: P<1> ID<102> L<00403> O<000>(  Infantry Plt A)
-find_formations: [103] FORMATION: P<1> ID<103> L<00407> O<000>(  Infantry Plt A)
-find_formations: [104] FORMATION: P<1> ID<104> L<00412> O<000>(  Infantry Plt A)
-find_formations: [105] FORMATION: P<1> ID<105> L<00416> O<110>(      Inf AT Sec)
+find_formations: [009] SKIPPED (wrong player ID 0)
+find_formations: [010] SKIPPED (wrong player ID 0)
+find_formations: [011] SKIPPED (wrong player ID 0)
+find_formations: [012] SKIPPED (wrong player ID 0)
+find_formations: [013] SKIPPED (wrong player ID 0)
+find_formations: [014] SKIPPED (wrong player ID 0)
+find_formations: [015] SKIPPED (wrong player ID 0)
+find_formations: [016] SKIPPED (wrong player ID 0)
+find_formations: [017] SKIPPED (wrong player ID 0)
+find_formations: [018] SKIPPED (wrong player ID 0)
+find_formations: [019] SKIPPED (wrong player ID 0)
+find_formations: [020] SKIPPED (wrong player ID 0)
+find_formations: [021] SKIPPED (wrong player ID 0)
+find_formations: [022] SKIPPED (wrong player ID 0)
+find_formations: [023] SKIPPED (wrong player ID 0)
+find_formations: [024] SKIPPED (wrong player ID 0)
+find_formations: [025] SKIPPED (wrong player ID 0)
+find_formations: [026] SKIPPED (wrong player ID 0)
+find_formations: [027] SKIPPED (wrong player ID 0)
+find_formations: [028] SKIPPED (wrong player ID 0)
+find_formations: [029] SKIPPED (wrong player ID 0)
+find_formations: [030] SKIPPED (wrong player ID 0)
+find_formations: [031] SKIPPED (wrong player ID 0)
+find_formations: [032] SKIPPED (wrong player ID 0)
+find_formations: [033] SKIPPED (wrong player ID 0)
+find_formations: [034] SKIPPED (wrong player ID 0)
+find_formations: [035] SKIPPED (wrong player ID 0)
+find_formations: [036] SKIPPED (wrong player ID 0)
+find_formations: [037] SKIPPED (wrong player ID 0)
+find_formations: [038] SKIPPED (wrong player ID 0)
+find_formations: [039] SKIPPED (wrong player ID 0)
+find_formations: [040] SKIPPED (wrong player ID 0)
+find_formations: [041] SKIPPED (wrong player ID 0)
+find_formations: [042] SKIPPED (wrong player ID 0)
+find_formations: [043] SKIPPED (wrong player ID 0)
+find_formations: [044] SKIPPED (wrong player ID 0)
+find_formations: [045] SKIPPED (wrong player ID 0)
+find_formations: [046] SKIPPED (wrong player ID 0)
+find_formations: [047] SKIPPED (wrong player ID 0)
+find_formations: [048] SKIPPED (wrong player ID 0)
+find_formations: [049] SKIPPED (wrong player ID 0)
+find_formations: [050] SKIPPED (wrong player ID 0)
+find_formations: [051] SKIPPED (wrong player ID 0)
+find_formations: [052] SKIPPED (wrong player ID 0)
+find_formations: [053] SKIPPED (wrong player ID 0)
+find_formations: [054] SKIPPED (wrong player ID 0)
+find_formations: [055] SKIPPED (wrong player ID 0)
+find_formations: [056] SKIPPED (wrong player ID 0)
+find_formations: [057] SKIPPED (wrong player ID 0)
+find_formations: [058] SKIPPED (wrong player ID 0)
+find_formations: [059] SKIPPED (wrong player ID 0)
+find_formations: [060] SKIPPED (wrong player ID 0)
+find_formations: [061] SKIPPED (wrong player ID 0)
+find_formations: [062] SKIPPED (wrong player ID 0)
+find_formations: [063] SKIPPED (wrong player ID 0)
+find_formations: [064] SKIPPED (wrong player ID 0)
+find_formations: [065] SKIPPED (wrong player ID 0)
+find_formations: [066] SKIPPED (wrong player ID 0)
+find_formations: [067] SKIPPED (wrong player ID 0)
+find_formations: [068] SKIPPED (wrong player ID 0)
+find_formations: [069] SKIPPED (wrong player ID 0)
+find_formations: [070] SKIPPED (wrong player ID 0)
+find_formations: [071] SKIPPED (wrong player ID 0)
+find_formations: [072] SKIPPED (wrong player ID 0)
+find_formations: [073] SKIPPED (wrong player ID 0)
+find_formations: [074] SKIPPED (wrong player ID 0)
+find_formations: [075] SKIPPED (wrong player ID 0)
+find_formations: [076] SKIPPED (wrong player ID 0)
+find_formations: [077] SKIPPED (wrong player ID 0)
+find_formations: [078] SKIPPED (wrong player ID 0)
+find_formations: [079] SKIPPED (wrong player ID 0)
+find_formations: [080] SKIPPED (wrong player ID 0)
+find_formations: [081] SKIPPED (wrong player ID 0)
+find_formations: [082] SKIPPED (wrong player ID 0)
+find_formations: [083] SKIPPED (wrong player ID 0)
+find_formations: [084] SKIPPED (wrong player ID 0)
+find_formations: [085] SKIPPED (wrong player ID 0)
+find_formations: [086] SKIPPED (wrong player ID 0)
+find_formations: [087] SKIPPED (wrong player ID 0)
+find_formations: [088] SKIPPED (wrong player ID 0)
+find_formations: [089] SKIPPED (wrong player ID 0)
+find_formations: [090] SKIPPED (wrong player ID 0)
+find_formations: [091] SKIPPED (wrong player ID 0)
+find_formations: [092] SKIPPED (wrong player ID 0)
+find_formations: [093] SKIPPED (wrong player ID 0)
+find_formations: [094] SKIPPED (wrong player ID 0)
+find_formations: [095] SKIPPED (wrong player ID 0)
+find_formations: [096] SKIPPED (wrong player ID 0)
+find_formations: [097] SKIPPED (wrong player ID 0)
+find_formations: [098] SKIPPED (wrong player ID 0)
+find_formations: [099] SKIPPED (wrong player ID 0)
+find_formations: [100] FORMATION: P<1> rawFID<100> FID<000> L<00400> O<001>(       SPWAW 8.3)
+find_formations: [101] FORMATION: P<1> rawFID<101> FID<001> L<00401> O<102>(   Infantry Co A)
+find_formations: [102] FORMATION: P<1> rawFID<102> FID<002> L<00403> O<000>(  Infantry Plt A)
+find_formations: [103] FORMATION: P<1> rawFID<103> FID<003> L<00407> O<000>(  Infantry Plt A)
+find_formations: [104] FORMATION: P<1> rawFID<104> FID<004> L<00412> O<000>(  Infantry Plt A)
+find_formations: [105] FORMATION: P<1> rawFID<105> FID<005> L<00416> O<110>(      Inf AT Sec)
 find_formations: [106] SKIPPED (no leader)
+find_formations: [107] SKIPPED (wrong player ID 0)
+find_formations: [108] SKIPPED (wrong player ID 0)
+find_formations: [109] SKIPPED (wrong player ID 0)
+find_formations: [110] SKIPPED (wrong player ID 0)
+find_formations: [111] SKIPPED (wrong player ID 0)
+find_formations: [112] SKIPPED (wrong player ID 0)
+find_formations: [113] SKIPPED (wrong player ID 0)
+find_formations: [114] SKIPPED (wrong player ID 0)
+find_formations: [115] SKIPPED (wrong player ID 0)
+find_formations: [116] SKIPPED (wrong player ID 0)
+find_formations: [117] SKIPPED (wrong player ID 0)
+find_formations: [118] SKIPPED (wrong player ID 0)
+find_formations: [119] SKIPPED (wrong player ID 0)
+find_formations: [120] SKIPPED (wrong player ID 0)
+find_formations: [121] SKIPPED (wrong player ID 0)
+find_formations: [122] SKIPPED (wrong player ID 0)
+find_formations: [123] SKIPPED (wrong player ID 0)
+find_formations: [124] SKIPPED (wrong player ID 0)
+find_formations: [125] SKIPPED (wrong player ID 0)
+find_formations: [126] SKIPPED (wrong player ID 0)
+find_formations: [127] SKIPPED (wrong player ID 0)
+find_formations: [128] SKIPPED (wrong player ID 0)
+find_formations: [129] SKIPPED (wrong player ID 0)
+find_formations: [130] SKIPPED (wrong player ID 0)
+find_formations: [131] SKIPPED (wrong player ID 0)
+find_formations: [132] SKIPPED (wrong player ID 0)
+find_formations: [133] SKIPPED (wrong player ID 0)
+find_formations: [134] SKIPPED (wrong player ID 0)
+find_formations: [135] SKIPPED (wrong player ID 0)
+find_formations: [136] SKIPPED (wrong player ID 0)
+find_formations: [137] SKIPPED (wrong player ID 0)
+find_formations: [138] SKIPPED (wrong player ID 0)
+find_formations: [139] SKIPPED (wrong player ID 0)
+find_formations: [140] SKIPPED (wrong player ID 0)
+find_formations: [141] SKIPPED (wrong player ID 0)
+find_formations: [142] SKIPPED (wrong player ID 0)
+find_formations: [143] SKIPPED (wrong player ID 0)
+find_formations: [144] SKIPPED (wrong player ID 0)
+find_formations: [145] SKIPPED (wrong player ID 0)
+find_formations: [146] SKIPPED (wrong player ID 0)
+find_formations: [147] SKIPPED (wrong player ID 0)
+find_formations: [148] SKIPPED (wrong player ID 0)
+find_formations: [149] SKIPPED (wrong player ID 0)
+find_formations: [150] SKIPPED (wrong player ID 0)
+find_formations: [151] SKIPPED (wrong player ID 0)
+find_formations: [152] SKIPPED (wrong player ID 0)
+find_formations: [153] SKIPPED (wrong player ID 0)
+find_formations: [154] SKIPPED (wrong player ID 0)
+find_formations: [155] SKIPPED (wrong player ID 0)
+find_formations: [156] SKIPPED (wrong player ID 0)
+find_formations: [157] SKIPPED (wrong player ID 0)
+find_formations: [158] SKIPPED (wrong player ID 0)
+find_formations: [159] SKIPPED (wrong player ID 0)
+find_formations: [160] SKIPPED (wrong player ID 0)
+find_formations: [161] SKIPPED (wrong player ID 0)
+find_formations: [162] SKIPPED (wrong player ID 0)
+find_formations: [163] SKIPPED (wrong player ID 0)
+find_formations: [164] SKIPPED (wrong player ID 0)
+find_formations: [165] SKIPPED (wrong player ID 0)
+find_formations: [166] SKIPPED (wrong player ID 0)
+find_formations: [167] SKIPPED (wrong player ID 0)
+find_formations: [168] SKIPPED (wrong player ID 0)
+find_formations: [169] SKIPPED (wrong player ID 0)
+find_formations: [170] SKIPPED (wrong player ID 0)
+find_formations: [171] SKIPPED (wrong player ID 0)
+find_formations: [172] SKIPPED (wrong player ID 0)
+find_formations: [173] SKIPPED (wrong player ID 0)
+find_formations: [174] SKIPPED (wrong player ID 0)
+find_formations: [175] SKIPPED (wrong player ID 0)
+find_formations: [176] SKIPPED (wrong player ID 0)
+find_formations: [177] SKIPPED (wrong player ID 0)
+find_formations: [178] SKIPPED (wrong player ID 0)
+find_formations: [179] SKIPPED (wrong player ID 0)
+find_formations: [180] SKIPPED (wrong player ID 0)
+find_formations: [181] SKIPPED (wrong player ID 0)
+find_formations: [182] SKIPPED (wrong player ID 0)
+find_formations: [183] SKIPPED (wrong player ID 0)
+find_formations: [184] SKIPPED (wrong player ID 0)
+find_formations: [185] SKIPPED (wrong player ID 0)
+find_formations: [186] SKIPPED (wrong player ID 0)
+find_formations: [187] SKIPPED (wrong player ID 0)
+find_formations: [188] SKIPPED (wrong player ID 0)
+find_formations: [189] SKIPPED (wrong player ID 0)
+find_formations: [190] SKIPPED (wrong player ID 0)
+find_formations: [191] SKIPPED (wrong player ID 0)
+find_formations: [192] SKIPPED (wrong player ID 0)
+find_formations: [193] SKIPPED (wrong player ID 0)
+find_formations: [194] SKIPPED (wrong player ID 0)
+find_formations: [195] SKIPPED (wrong player ID 0)
+find_formations: [196] SKIPPED (wrong player ID 0)
+find_formations: [197] SKIPPED (wrong player ID 0)
+find_formations: [198] SKIPPED (wrong player ID 0)
+find_formations: [199] SKIPPED (wrong player ID 0)
+find_formations: [200] SKIPPED (wrong player ID 0)
+find_formations: [201] SKIPPED (wrong player ID 0)
+find_formations: [202] SKIPPED (wrong player ID 0)
+find_formations: [203] SKIPPED (wrong player ID 0)
+find_formations: [204] SKIPPED (wrong player ID 0)
+find_formations: [205] SKIPPED (wrong player ID 0)
+find_formations: [206] SKIPPED (wrong player ID 0)
+find_formations: [207] SKIPPED (wrong player ID 0)
+find_formations: [208] SKIPPED (wrong player ID 0)
+find_formations: [209] SKIPPED (wrong player ID 0)
+find_formations: [210] SKIPPED (wrong player ID 0)
+find_formations: [211] SKIPPED (wrong player ID 0)
+find_formations: [212] SKIPPED (wrong player ID 0)
+find_formations: [213] SKIPPED (wrong player ID 0)
+find_formations: [214] SKIPPED (wrong player ID 0)
+find_formations: [215] SKIPPED (wrong player ID 0)
+find_formations: [216] SKIPPED (wrong player ID 0)
+find_formations: [217] SKIPPED (wrong player ID 0)
+find_formations: [218] SKIPPED (wrong player ID 0)
+find_formations: [219] SKIPPED (wrong player ID 0)
+find_formations: [220] SKIPPED (wrong player ID 0)
+find_formations: [221] SKIPPED (wrong player ID 0)
+find_formations: [222] SKIPPED (wrong player ID 0)
+find_formations: [223] SKIPPED (wrong player ID 0)
+find_formations: [224] SKIPPED (wrong player ID 0)
+find_formations: [225] SKIPPED (wrong player ID 0)
+find_formations: [226] SKIPPED (wrong player ID 0)
+find_formations: [227] SKIPPED (wrong player ID 0)
+find_formations: [228] SKIPPED (wrong player ID 0)
+find_formations: [229] SKIPPED (wrong player ID 0)
+find_formations: [230] SKIPPED (wrong player ID 0)
+find_formations: [231] SKIPPED (wrong player ID 0)
+find_formations: [232] SKIPPED (wrong player ID 0)
+find_formations: [233] SKIPPED (wrong player ID 0)
+find_formations: [234] SKIPPED (wrong player ID 0)
+find_formations: [235] SKIPPED (wrong player ID 0)
+find_formations: [236] SKIPPED (wrong player ID 0)
+find_formations: [237] SKIPPED (wrong player ID 0)
+find_formations: [238] SKIPPED (wrong player ID 0)
+find_formations: [239] SKIPPED (wrong player ID 0)
+find_formations: [240] SKIPPED (wrong player ID 0)
+find_formations: [241] SKIPPED (wrong player ID 0)
+find_formations: [242] SKIPPED (wrong player ID 0)
+find_formations: [243] SKIPPED (wrong player ID 0)
+find_formations: [244] SKIPPED (wrong player ID 0)
+find_formations: [245] SKIPPED (wrong player ID 0)
+find_formations: [246] SKIPPED (wrong player ID 0)
+find_formations: [247] SKIPPED (wrong player ID 0)
+find_formations: [248] SKIPPED (wrong player ID 0)
+find_formations: [249] SKIPPED (wrong player ID 0)
+find_formations: [250] SKIPPED (wrong player ID 0)
+find_formations: [251] SKIPPED (wrong player ID 0)
+find_formations: [252] SKIPPED (wrong player ID 0)
+find_formations: [253] SKIPPED (wrong player ID 0)
+find_formations: [254] SKIPPED (wrong player ID 0)
+find_formations: [255] SKIPPED (wrong player ID 0)
+find_formations: [256] SKIPPED (wrong player ID 0)
+find_formations: [257] SKIPPED (wrong player ID 0)
+find_formations: [258] SKIPPED (wrong player ID 0)
+find_formations: [259] SKIPPED (wrong player ID 0)
+find_formations: [260] SKIPPED (wrong player ID 0)
+find_formations: [261] SKIPPED (wrong player ID 0)
+find_formations: [262] SKIPPED (wrong player ID 0)
+find_formations: [263] SKIPPED (wrong player ID 0)
+find_formations: [264] SKIPPED (wrong player ID 0)
+find_formations: [265] SKIPPED (wrong player ID 0)
+find_formations: [266] SKIPPED (wrong player ID 0)
+find_formations: [267] SKIPPED (wrong player ID 0)
+find_formations: [268] SKIPPED (wrong player ID 0)
+find_formations: [269] SKIPPED (wrong player ID 0)
+find_formations: [270] SKIPPED (wrong player ID 0)
+find_formations: [271] SKIPPED (wrong player ID 0)
+find_formations: [272] SKIPPED (wrong player ID 0)
+find_formations: [273] SKIPPED (wrong player ID 0)
+find_formations: [274] SKIPPED (wrong player ID 0)
+find_formations: [275] SKIPPED (wrong player ID 0)
+find_formations: [276] SKIPPED (wrong player ID 0)
+find_formations: [277] SKIPPED (wrong player ID 0)
+find_formations: [278] SKIPPED (wrong player ID 0)
+find_formations: [279] SKIPPED (wrong player ID 0)
+find_formations: [280] SKIPPED (wrong player ID 0)
+find_formations: [281] SKIPPED (wrong player ID 0)
+find_formations: [282] SKIPPED (wrong player ID 0)
+find_formations: [283] SKIPPED (wrong player ID 0)
+find_formations: [284] SKIPPED (wrong player ID 0)
+find_formations: [285] SKIPPED (wrong player ID 0)
+find_formations: [286] SKIPPED (wrong player ID 0)
+find_formations: [287] SKIPPED (wrong player ID 0)
+find_formations: [288] SKIPPED (wrong player ID 0)
+find_formations: [289] SKIPPED (wrong player ID 0)
+find_formations: [290] SKIPPED (wrong player ID 0)
+find_formations: [291] SKIPPED (wrong player ID 0)
+find_formations: [292] SKIPPED (wrong player ID 0)
+find_formations: [293] SKIPPED (wrong player ID 0)
+find_formations: [294] SKIPPED (wrong player ID 0)
+find_formations: [295] SKIPPED (wrong player ID 0)
+find_formations: [296] SKIPPED (wrong player ID 0)
+find_formations: [297] SKIPPED (wrong player ID 0)
+find_formations: [298] SKIPPED (wrong player ID 0)
+find_formations: [299] SKIPPED (wrong player ID 0)
+find_formations: [300] SKIPPED (wrong player ID 0)
+find_formations: [301] SKIPPED (wrong player ID 0)
+find_formations: [302] SKIPPED (wrong player ID 0)
+find_formations: [303] SKIPPED (wrong player ID 0)
+find_formations: [304] SKIPPED (wrong player ID 0)
+find_formations: [305] SKIPPED (wrong player ID 0)
+find_formations: [306] SKIPPED (wrong player ID 0)
+find_formations: [307] SKIPPED (wrong player ID 0)
+find_formations: [308] SKIPPED (wrong player ID 0)
+find_formations: [309] SKIPPED (wrong player ID 0)
+find_formations: [310] SKIPPED (wrong player ID 0)
+find_formations: [311] SKIPPED (wrong player ID 0)
+find_formations: [312] SKIPPED (wrong player ID 0)
+find_formations: [313] SKIPPED (wrong player ID 0)
+find_formations: [314] SKIPPED (wrong player ID 0)
+find_formations: [315] SKIPPED (wrong player ID 0)
+find_formations: [316] SKIPPED (wrong player ID 0)
+find_formations: [317] SKIPPED (wrong player ID 0)
+find_formations: [318] SKIPPED (wrong player ID 0)
+find_formations: [319] SKIPPED (wrong player ID 0)
+find_formations: [320] SKIPPED (wrong player ID 0)
+find_formations: [321] SKIPPED (wrong player ID 0)
+find_formations: [322] SKIPPED (wrong player ID 0)
+find_formations: [323] SKIPPED (wrong player ID 0)
+find_formations: [324] SKIPPED (wrong player ID 0)
+find_formations: [325] SKIPPED (wrong player ID 0)
+find_formations: [326] SKIPPED (wrong player ID 0)
+find_formations: [327] SKIPPED (wrong player ID 0)
+find_formations: [328] SKIPPED (wrong player ID 0)
+find_formations: [329] SKIPPED (wrong player ID 0)
+find_formations: [330] SKIPPED (wrong player ID 0)
+find_formations: [331] SKIPPED (wrong player ID 0)
+find_formations: [332] SKIPPED (wrong player ID 0)
+find_formations: [333] SKIPPED (wrong player ID 0)
+find_formations: [334] SKIPPED (wrong player ID 0)
+find_formations: [335] SKIPPED (wrong player ID 0)
+find_formations: [336] SKIPPED (wrong player ID 0)
+find_formations: [337] SKIPPED (wrong player ID 0)
+find_formations: [338] SKIPPED (wrong player ID 0)
+find_formations: [339] SKIPPED (wrong player ID 0)
+find_formations: [340] SKIPPED (wrong player ID 0)
+find_formations: [341] SKIPPED (wrong player ID 0)
+find_formations: [342] SKIPPED (wrong player ID 0)
+find_formations: [343] SKIPPED (wrong player ID 0)
+find_formations: [344] SKIPPED (wrong player ID 0)
+find_formations: [345] SKIPPED (wrong player ID 0)
+find_formations: [346] SKIPPED (wrong player ID 0)
+find_formations: [347] SKIPPED (wrong player ID 0)
+find_formations: [348] SKIPPED (wrong player ID 0)
+find_formations: [349] SKIPPED (wrong player ID 0)
+find_formations: [350] SKIPPED (wrong player ID 0)
+find_formations: [351] SKIPPED (wrong player ID 0)
+find_formations: [352] SKIPPED (wrong player ID 0)
+find_formations: [353] SKIPPED (wrong player ID 0)
+find_formations: [354] SKIPPED (wrong player ID 0)
+find_formations: [355] SKIPPED (wrong player ID 0)
+find_formations: [356] SKIPPED (wrong player ID 0)
+find_formations: [357] SKIPPED (wrong player ID 0)
+find_formations: [358] SKIPPED (wrong player ID 0)
+find_formations: [359] SKIPPED (wrong player ID 0)
+find_formations: [360] SKIPPED (wrong player ID 0)
+find_formations: [361] SKIPPED (wrong player ID 0)
+find_formations: [362] SKIPPED (wrong player ID 0)
+find_formations: [363] SKIPPED (wrong player ID 0)
+find_formations: [364] SKIPPED (wrong player ID 0)
+find_formations: [365] SKIPPED (wrong player ID 0)
+find_formations: [366] SKIPPED (wrong player ID 0)
+find_formations: [367] SKIPPED (wrong player ID 0)
+find_formations: [368] SKIPPED (wrong player ID 0)
+find_formations: [369] SKIPPED (wrong player ID 0)
+find_formations: [370] SKIPPED (wrong player ID 0)
+find_formations: [371] SKIPPED (wrong player ID 0)
+find_formations: [372] SKIPPED (wrong player ID 0)
+find_formations: [373] SKIPPED (wrong player ID 0)
+find_formations: [374] SKIPPED (wrong player ID 0)
+find_formations: [375] SKIPPED (wrong player ID 0)
+find_formations: [376] SKIPPED (wrong player ID 0)
+find_formations: [377] SKIPPED (wrong player ID 0)
+find_formations: [378] SKIPPED (wrong player ID 0)
+find_formations: [379] SKIPPED (wrong player ID 0)
+find_formations: [380] SKIPPED (wrong player ID 0)
+find_formations: [381] SKIPPED (wrong player ID 0)
+find_formations: [382] SKIPPED (wrong player ID 0)
+find_formations: [383] SKIPPED (wrong player ID 0)
+find_formations: [384] SKIPPED (wrong player ID 0)
+find_formations: [385] SKIPPED (wrong player ID 0)
+find_formations: [386] SKIPPED (wrong player ID 0)
+find_formations: [387] SKIPPED (wrong player ID 0)
+find_formations: [388] SKIPPED (wrong player ID 0)
+find_formations: [389] SKIPPED (wrong player ID 0)
+find_formations: [390] SKIPPED (wrong player ID 0)
+find_formations: [391] SKIPPED (wrong player ID 0)
+find_formations: [392] SKIPPED (wrong player ID 0)
+find_formations: [393] SKIPPED (wrong player ID 0)
+find_formations: [394] SKIPPED (wrong player ID 0)
+find_formations: [395] SKIPPED (wrong player ID 0)
+find_formations: [396] SKIPPED (wrong player ID 0)
+find_formations: [397] SKIPPED (wrong player ID 0)
+find_formations: [398] SKIPPED (wrong player ID 0)
+find_formations: [399] SKIPPED (wrong player ID 0)
 find_formations: cnt=6
 find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<083> (         USMC HQ) UNIT #1 F<000,000> CANDIDATE
@@ -159,7 +942,7 @@ find_candidate_units: [047] F[006]<060> C<65535> L<00047> O<083> (             L
 find_candidate_units: [048] F[006]<061> C<65535> L<00048> O<083> (             LCM) SPAU #1 F<006,061> CANDIDATE
 find_candidate_units: [049] F[006]<062> C<65535> L<00049> O<083> (             LCM) SPAU #1 F<006,062> CANDIDATE
 find_candidate_units: [050] F[007]<063> C<65535> L<00050> O<083> (             LCM) SPAU #1 F<007,063> CANDIDATE
-find_candidate_units: [051] F[002]<110> C<00034> L<65535> O<083> (         Crewmen) CREW #1 F<002,110> SKIPPED: invalid crew parent unit linkage
+find_candidate_units: [051] F[002]<110> C<00034> L<65535> O<083> (         Crewmen) CREW #1 F<002,110> CANDIDATE
 find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<075> (           JA HQ) SKIPPED: invalid formation reference
 find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<075> (    JA Inf A Sqd) SKIPPED: invalid formation reference
 find_candidate_units: [402] F[102]<000> C<65535> L<00402> O<075> (       A Plt HQ*) SKIPPED: invalid formation reference
@@ -179,7 +962,8 @@ find_candidate_units: [415] F[104]<003> C<65535> L<00415> O<075> (    JA Inf A S
 find_candidate_units: [416] F[105]<000> C<65535> L<00416> O<075> ( JA Tank Hunters) SKIPPED: invalid formation reference
 find_candidate_units: [417] F[102]<054> C<00406> L<00417> O<075> (         Crewmen) SKIPPED: invalid formation reference
 find_candidate_units: [418] F[103]<054> C<00411> L<00418> O<075> (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: 51 candidates
+find_candidate_units: 52 candidates
+link_candidate_crews: [051] CREW<00034> F<002,110> (         Crewmen) DROPPED: invalid crew parent unit linkage
 find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.3)
 find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<098> (   Infantry Co E)
 find_formation_oobrids: FORMATION: P<0> ID<002> L<00002> O<000> (  Infantry Plt E)
@@ -203,6 +987,8 @@ find_formation_oobrids: FORMATION: P<0> ID<006> L<00025> O<000> (   Lt Mortar Pl
     OOB #121 <   Lt Mortar Plt> from=1940/01 to=1949/12 - MATCH: name and date
   <<< rv=121
 find_formation_oobrids: FORMATION: P<0> ID<007> L<00028> O<011> (    Med Tank Plt)
+find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
+no units recorded for formation - dropping formation!
 verify_candidate_units: [000] UNIT: F<000,000> (         USMC HQ) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (      USMC Co HQ) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<002,000> (     USMC Plt HQ) ACCEPTED - LEADER
@@ -235,26 +1021,120 @@ verify_candidate_units: [028] UNIT: F<007,000> (    M4A2 Sherman) ACCEPTED - LEA
 verify_candidate_units: [029] UNIT: F<007,001> (    M4A2 Sherman) ACCEPTED
 verify_candidate_units: [030] UNIT: F<007,002> (    M4A2 Sherman) ACCEPTED
 verify_candidate_units: [031] UNIT: F<007,003> (    M4A2 Sherman) ACCEPTED
-verify_candidate_units: [032] SPAU: F<000,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [033] SPAU: F<001,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [034] SPAU: F<002,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [035] SPAU: F<002,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [036] SPAU: F<002,063> (           LVT 2) ACCEPTED
-verify_candidate_units: [037] SPAU: F<003,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [038] SPAU: F<003,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [039] SPAU: F<003,063> (           LVT 2) ACCEPTED
-verify_candidate_units: [040] SPAU: F<004,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [041] SPAU: F<004,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [042] SPAU: F<004,063> (           LVT 2) ACCEPTED
-verify_candidate_units: [043] SPAU: F<005,060> (           LVT 2) ACCEPTED
-verify_candidate_units: [044] SPAU: F<005,062> (           LVT 2) ACCEPTED
-verify_candidate_units: [045] SPAU: F<005,064> (           LVT 2) ACCEPTED
-verify_candidate_units: [046] SPAU: F<005,066> (           LVT 2) ACCEPTED
-verify_candidate_units: [047] SPAU: F<006,060> (             LCM) ACCEPTED
-verify_candidate_units: [048] SPAU: F<006,061> (             LCM) ACCEPTED
-verify_candidate_units: [049] SPAU: F<006,062> (             LCM) ACCEPTED
-verify_candidate_units: [050] SPAU: F<007,063> (             LCM) ACCEPTED
+verify_candidate_units: [032] SPAU: F<000,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [033] SPAU: F<001,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [034] SPAU: F<002,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [035] SPAU: F<002,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [036] SPAU: F<002,063> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [037] SPAU: F<003,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [038] SPAU: F<003,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [039] SPAU: F<003,063> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [040] SPAU: F<004,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [041] SPAU: F<004,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [042] SPAU: F<004,063> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [043] SPAU: F<005,060> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [044] SPAU: F<005,062> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [045] SPAU: F<005,064> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [046] SPAU: F<005,066> (           LVT 2) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [047] SPAU: F<006,060> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [048] SPAU: F<006,061> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [049] SPAU: F<006,062> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [050] SPAU: F<007,063> (             LCM) ACCEPTED - SPAU WILDCARD
 unitcount: ul.cnt=51
+FLIST: { { s.nidx=9 }, cnt=8 }
+    [00000] (       SPWAW 8.3) P<000> L<00000> status=001 units=001 OOB 083: [001] FID<00000> RAW<00000>
+        [000] ptr[00000]
+    [00001] (   Infantry Co E) P<000> L<00001> status=001 units=001 OOB 083: [098] FID<00001> RAW<00001>
+        [000] ptr[00001]
+    [00002] (  Infantry Plt E) P<000> L<00002> status=001 units=005 OOB 083: [096] FID<00002> RAW<00002>
+        [000] ptr[00002]
+        [001] ptr[00003]
+        [002] ptr[00004]
+        [003] ptr[00005]
+        [004] ptr[00006]
+    [00003] (  Infantry Plt E) P<000> L<00007> status=001 units=005 OOB 083: [096] FID<00003> RAW<00003>
+        [000] ptr[00007]
+        [001] ptr[00008]
+        [002] ptr[00009]
+        [003] ptr[00010]
+        [004] ptr[00011]
+    [00004] (  Infantry Plt E) P<000> L<00012> status=001 units=005 OOB 083: [096] FID<00004> RAW<00004>
+        [000] ptr[00012]
+        [001] ptr[00013]
+        [002] ptr[00014]
+        [003] ptr[00015]
+        [004] ptr[00016]
+    [00005] (   Weapons Plt E) P<000> L<00017> status=001 units=008 OOB 083: [126] FID<00005> RAW<00005>
+        [000] ptr[00017]
+        [001] ptr[00018]
+        [002] ptr[00019]
+        [003] ptr[00020]
+        [004] ptr[00021]
+        [005] ptr[00022]
+        [006] ptr[00023]
+        [007] ptr[00024]
+    [00006] (   Lt Mortar Plt) P<000> L<00025> status=001 units=003 OOB 083: [121] FID<00006> RAW<00006>
+        [000] ptr[00025]
+        [001] ptr[00026]
+        [002] ptr[00027]
+    [00007] (    Med Tank Plt) P<000> L<00028> status=002 units=005 OOB 083: [011] FID<00007> RAW<00007>
+        [000] ptr[00028]
+        [001] ptr[00029]
+        [002] ptr[00030]
+        [003] ptr[00031]
+    --- [004] nil[65535]
+ULIST: { { s.nidx=52 }, cnt=51 }
+    [00000] (         USMC HQ) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [220] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00001] (      USMC Co HQ) UNIT leader=[00001] abandoned=0 loader<00033> vrf=N vrfneed=N  OOB 083: [174] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
+    [00002] (     USMC Plt HQ) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [173] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00003] (  USMC Inf Sqd E) UNIT leader=[00003] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [133] F[00002]<00002,00001> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00004] (  USMC Inf Sqd E) UNIT leader=[00004] abandoned=0 loader<00035> vrf=N vrfneed=N  OOB 083: [133] F[00002]<00002,00002> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00005] (  USMC Inf Sqd E) UNIT leader=[00005] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [133] F[00002]<00002,00003> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00006] (     .30 Cal MMG) UNIT leader=[00006] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [167] F[00002]<00002,00004> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00007] (     USMC Plt HQ) UNIT leader=[00007] abandoned=0 loader<00008> vrf=N vrfneed=N  OOB 083: [173] F[00003]<00003,00000> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00008] (  USMC Inf Sqd E) UNIT leader=[00008] abandoned=0 loader<00037> vrf=Y vrfneed=N  OOB 083: [133] F[00003]<00003,00001> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00009] (  USMC Inf Sqd E) UNIT leader=[00009] abandoned=0 loader<00038> vrf=N vrfneed=N  OOB 083: [133] F[00003]<00003,00002> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00010] (  USMC Inf Sqd E) UNIT leader=[00010] abandoned=0 loader<00011> vrf=N vrfneed=N  OOB 083: [133] F[00003]<00003,00003> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00011] (     .30 Cal MMG) UNIT leader=[00011] abandoned=0 loader<00039> vrf=Y vrfneed=N  OOB 083: [167] F[00003]<00003,00004> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00012] (     USMC Plt HQ) UNIT leader=[00012] abandoned=0 loader<00013> vrf=N vrfneed=N  OOB 083: [173] F[00004]<00004,00000> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00013] (  USMC Inf Sqd E) UNIT leader=[00013] abandoned=0 loader<00040> vrf=Y vrfneed=N  OOB 083: [133] F[00004]<00004,00001> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00014] (  USMC Inf Sqd E) UNIT leader=[00014] abandoned=0 loader<00041> vrf=N vrfneed=N  OOB 083: [133] F[00004]<00004,00002> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00015] (  USMC Inf Sqd E) UNIT leader=[00015] abandoned=0 loader<00016> vrf=N vrfneed=N  OOB 083: [133] F[00004]<00004,00003> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00016] (     .30 Cal MMG) UNIT leader=[00016] abandoned=0 loader<00042> vrf=Y vrfneed=N  OOB 083: [167] F[00004]<00004,00004> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00017] (     USMC Plt HQ) UNIT leader=[00017] abandoned=0 loader<00018> vrf=N vrfneed=N  OOB 083: [173] F[00005]<00005,00000> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00018] (     .30 Cal MMG) UNIT leader=[00018] abandoned=0 loader<00043> vrf=Y vrfneed=N  OOB 083: [167] F[00005]<00005,00001> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00019] (     .30 Cal MMG) UNIT leader=[00019] abandoned=0 loader<00020> vrf=N vrfneed=N  OOB 083: [167] F[00005]<00005,00002> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00020] (     .30 Cal MMG) UNIT leader=[00020] abandoned=0 loader<00044> vrf=Y vrfneed=N  OOB 083: [167] F[00005]<00005,00003> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00021] (     .30 Cal MMG) UNIT leader=[00021] abandoned=0 loader<00022> vrf=N vrfneed=N  OOB 083: [167] F[00005]<00005,00004> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00022] ( M1 Bazooka Team) UNIT leader=[00022] abandoned=0 loader<00045> vrf=Y vrfneed=N  OOB 083: [169] F[00005]<00005,00005> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00023] ( M1 Bazooka Team) UNIT leader=[00023] abandoned=0 loader<00024> vrf=N vrfneed=N  OOB 083: [169] F[00005]<00005,00006> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00024] ( M1 Bazooka Team) UNIT leader=[00024] abandoned=0 loader<00046> vrf=Y vrfneed=N  OOB 083: [169] F[00005]<00005,00007> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00025] (  M2 60mm Mortar) UNIT leader=[00025] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [110] F[00006]<00006,00000> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00026] (  M2 60mm Mortar) UNIT leader=[00026] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [110] F[00006]<00006,00001> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00027] (  M2 60mm Mortar) UNIT leader=[00027] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [110] F[00006]<00006,00002> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00028] (    M4A2 Sherman) UNIT leader=[00028] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00000> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00029] (    M4A2 Sherman) UNIT leader=[00029] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00001> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00030] (    M4A2 Sherman) UNIT leader=[00030] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00002> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00031] (    M4A2 Sherman) UNIT leader=[00031] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [021] F[00007]<00007,00003> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00032] (           LVT 2) SPAU leader=[00032] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00000]<00000,00060> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00033] (           LVT 2) SPAU leader=[00033] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00001]<00001,00060> ptr[00001] link crew=nil[65535], parent=nil[65535]
+    [00034] (           LVT 2) SPAU leader=[00034] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00002]<00002,00060> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00035] (           LVT 2) SPAU leader=[00035] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00002]<00002,00062> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00036] (           LVT 2) SPAU leader=[00036] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [216] F[00002]<00002,00063> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00037] (           LVT 2) SPAU leader=[00037] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00060> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00038] (           LVT 2) SPAU leader=[00038] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00062> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00039] (           LVT 2) SPAU leader=[00039] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00003]<00003,00063> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00040] (           LVT 2) SPAU leader=[00040] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00060> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00041] (           LVT 2) SPAU leader=[00041] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00062> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00042] (           LVT 2) SPAU leader=[00042] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00004]<00004,00063> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00043] (           LVT 2) SPAU leader=[00043] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00060> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00044] (           LVT 2) SPAU leader=[00044] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00062> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00045] (           LVT 2) SPAU leader=[00045] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00064> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00046] (           LVT 2) SPAU leader=[00046] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 083: [216] F[00005]<00005,00066> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00047] (             LCM) SPAU leader=[00047] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00060> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00048] (             LCM) SPAU leader=[00048] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00061> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00049] (             LCM) SPAU leader=[00049] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00006]<00006,00062> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00050] (             LCM) SPAU leader=[00050] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [212] F[00007]<00007,00063> ptr[00007] link crew=nil[65535], parent=nil[65535]
 find_candidate_units: player #2
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<083> (         USMC HQ) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<083> (      USMC Co HQ) SKIPPED: invalid formation reference
@@ -328,6 +1208,8 @@ find_candidate_units: [416] F[105]<000> C<65535> L<00416> O<075> ( JA Tank Hunte
 find_candidate_units: [417] F[102]<054> C<00406> L<00417> O<075> (         Crewmen) CREW #2 F<002,054> CANDIDATE
 find_candidate_units: [418] F[103]<054> C<00411> L<00418> O<075> (         Crewmen) CREW #2 F<003,054> CANDIDATE
 find_candidate_units: 19 candidates
+link_candidate_crews: [417] CREW<00406> F<002,054> (         Crewmen) LINKED
+link_candidate_crews: [418] CREW<00411> F<003,054> (         Crewmen) LINKED
 find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (       SPWAW 8.3)
 find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<102> (   Infantry Co A)
 find_formation_oobrids: FORMATION: P<1> ID<002> L<00403> O<000> (  Infantry Plt A)
@@ -363,73 +1245,119 @@ verify_candidate_units: [416] UNIT: F<005,000> ( JA Tank Hunters) ACCEPTED - LEA
 verify_candidate_units: [417] CREW: F<002,054> (         Crewmen) ACCEPTED
 verify_candidate_units: [418] CREW: F<003,054> (         Crewmen) ACCEPTED
 unitcount: ul.cnt=19
-add_unit: idx=0, RID=0
-add_unit: idx=1, RID=1
-add_unit: idx=2, RID=2
-add_unit: idx=3, RID=3
-add_unit: idx=4, RID=4
-add_unit: idx=5, RID=5
-add_unit: idx=6, RID=6
-add_unit: idx=7, RID=7
-add_unit: idx=8, RID=8
-add_unit: idx=9, RID=9
-add_unit: idx=10, RID=10
-add_unit: idx=11, RID=11
-add_unit: idx=12, RID=12
-add_unit: idx=13, RID=13
-add_unit: idx=14, RID=14
-add_unit: idx=15, RID=15
-add_unit: idx=16, RID=16
-add_unit: idx=17, RID=17
-add_unit: idx=18, RID=18
-add_unit: idx=19, RID=19
-add_unit: idx=20, RID=20
-add_unit: idx=21, RID=21
-add_unit: idx=22, RID=22
-add_unit: idx=23, RID=23
-add_unit: idx=24, RID=24
-add_unit: idx=25, RID=25
-add_unit: idx=26, RID=26
-add_unit: idx=27, RID=27
-add_unit: idx=28, RID=28
-add_unit: idx=29, RID=29
-add_unit: idx=30, RID=30
-add_unit: idx=31, RID=31
-add_unit: idx=32, RID=32
-add_unit: idx=33, RID=33
-add_unit: idx=34, RID=34
-add_unit: idx=35, RID=35
-add_unit: idx=36, RID=36
-add_unit: idx=37, RID=37
-add_unit: idx=38, RID=38
-add_unit: idx=39, RID=39
-add_unit: idx=40, RID=40
-add_unit: idx=41, RID=41
-add_unit: idx=42, RID=42
-add_unit: idx=43, RID=43
-add_unit: idx=44, RID=44
-add_unit: idx=45, RID=45
-add_unit: idx=46, RID=46
-add_unit: idx=47, RID=47
-add_unit: idx=48, RID=48
-add_unit: idx=49, RID=49
-add_unit: idx=50, RID=50
-add_unit: idx=0, RID=400
-add_unit: idx=1, RID=401
-add_unit: idx=2, RID=402
-add_unit: idx=3, RID=403
-add_unit: idx=4, RID=404
-add_unit: idx=5, RID=405
-add_unit: idx=6, RID=406
-add_unit: idx=7, RID=407
-add_unit: idx=8, RID=408
-add_unit: idx=9, RID=409
-add_unit: idx=10, RID=410
-add_unit: idx=11, RID=411
-add_unit: idx=12, RID=412
-add_unit: idx=13, RID=413
-add_unit: idx=14, RID=414
-add_unit: idx=15, RID=415
-add_unit: idx=16, RID=416
-add_unit: idx=17, RID=417
-add_unit: idx=18, RID=418
+FLIST: { { s.nidx=6 }, cnt=6 }
+    [00100] (       SPWAW 8.3) P<001> L<00400> status=001 units=001 OOB 075: [001] FID<00000> RAW<00100>
+        [000] ptr[00400]
+    [00101] (   Infantry Co A) P<001> L<00401> status=002 units=001 OOB 075: [102] FID<00001> RAW<00101>
+        [000] ptr[00401]
+    [00102] (  Infantry Plt A) P<001> L<00403> status=002 units=005 OOB 075: [099] FID<00002> RAW<00102>
+        [000] ptr[00402]
+        [001] ptr[00403]
+        [002] ptr[00404]
+        [003] ptr[00405]
+        [004] ptr[00406]
+    [00103] (  Infantry Plt A) P<001> L<00407> status=002 units=005 OOB 075: [099] FID<00003> RAW<00103>
+        [000] ptr[00407]
+        [001] ptr[00408]
+        [002] ptr[00409]
+        [003] ptr[00410]
+        [004] ptr[00411]
+    [00104] (  Infantry Plt A) P<001> L<00412> status=002 units=005 OOB 075: [099] FID<00004> RAW<00104>
+        [000] ptr[00412]
+        [001] ptr[00413]
+        [002] ptr[00414]
+        [003] ptr[00415]
+    --- [004] nil[65535]
+    [00105] (      Inf AT Sec) P<001> L<00416> status=002 units=002 OOB 075: [110] FID<00005> RAW<00105>
+        [000] ptr[00416]
+    --- [001] nil[65535]
+ULIST: { { s.nidx=19 }, cnt=19 }
+    [00400] (           JA HQ) UNIT leader=[00400] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [245] F[00100]<00000,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
+    [00401] (    JA Inf A Sqd) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00101]<00001,00000> ptr[00101] link crew=nil[65535], parent=nil[65535]
+    [00402] (       A Plt HQ*) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [135] F[00102]<00002,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00403] (    JA Inf A Sqd) UNIT leader=[00403] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00102]<00002,00001> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00404] (    JA Inf A Sqd) UNIT leader=[00404] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00102]<00002,00002> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00405] (    JA Inf A Sqd) UNIT leader=[00405] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00102]<00002,00003> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00406] ( Knee Mortar Plt) UNIT leader=[00417] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 075: [186] F[00102]<00002,00004> ptr[00102] link crew=ptr[00417], parent=ptr[00417]
+    [00407] (       A Plt HQ*) UNIT leader=[00407] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [135] F[00103]<00003,00000> ptr[00103] link crew=nil[65535], parent=nil[65535]
+    [00408] (    JA Inf A Sqd) UNIT leader=[00408] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00103]<00003,00001> ptr[00103] link crew=nil[65535], parent=nil[65535]
+    [00409] (    JA Inf A Sqd) UNIT leader=[00409] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00103]<00003,00002> ptr[00103] link crew=nil[65535], parent=nil[65535]
+    [00410] (    JA Inf A Sqd) UNIT leader=[00410] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [138] F[00103]<00003,00003> ptr[00103] link crew=nil[65535], parent=nil[65535]
+    [00411] ( Knee Mortar Plt) UNIT leader=[00418] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 075: [186] F[00103]<00003,00004> ptr[00103] link crew=ptr[00418], parent=ptr[00418]
+    [00412] (         SNLF HQ) UNIT leader=[00412] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [152] F[00104]<00004,00000> ptr[00104] link crew=nil[65535], parent=nil[65535]
+    [00413] (    JA Inf A Sqd) UNIT leader=[00413] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [058] F[00104]<00004,00001> ptr[00104] link crew=nil[65535], parent=nil[65535]
+    [00414] (    JA Inf A Sqd) UNIT leader=[00414] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [058] F[00104]<00004,00002> ptr[00104] link crew=nil[65535], parent=nil[65535]
+    [00415] (    JA Inf A Sqd) UNIT leader=[00415] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [058] F[00104]<00004,00003> ptr[00104] link crew=nil[65535], parent=nil[65535]
+    [00416] ( JA Tank Hunters) UNIT leader=[00416] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [171] F[00105]<00005,00000> ptr[00105] link crew=nil[65535], parent=nil[65535]
+!!! [00417] (         Crewmen) CREW leader=[00417] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 075: [249] F[00102]<00002,00054> nil[65535] link crew=ptr[00406], parent=ptr[00406]
+!!! [00418] (         Crewmen) CREW leader=[00418] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 075: [249] F[00103]<00003,00054> nil[65535] link crew=ptr[00411], parent=ptr[00411]
+add_unit: idx=0, RID=0, type=UNIT
+add_unit: idx=1, RID=1, type=UNIT
+add_unit: idx=2, RID=2, type=UNIT
+add_unit: idx=3, RID=3, type=UNIT
+add_unit: idx=4, RID=4, type=UNIT
+add_unit: idx=5, RID=5, type=UNIT
+add_unit: idx=6, RID=6, type=UNIT
+add_unit: idx=7, RID=7, type=UNIT
+add_unit: idx=8, RID=8, type=UNIT
+add_unit: idx=9, RID=9, type=UNIT
+add_unit: idx=10, RID=10, type=UNIT
+add_unit: idx=11, RID=11, type=UNIT
+add_unit: idx=12, RID=12, type=UNIT
+add_unit: idx=13, RID=13, type=UNIT
+add_unit: idx=14, RID=14, type=UNIT
+add_unit: idx=15, RID=15, type=UNIT
+add_unit: idx=16, RID=16, type=UNIT
+add_unit: idx=17, RID=17, type=UNIT
+add_unit: idx=18, RID=18, type=UNIT
+add_unit: idx=19, RID=19, type=UNIT
+add_unit: idx=20, RID=20, type=UNIT
+add_unit: idx=21, RID=21, type=UNIT
+add_unit: idx=22, RID=22, type=UNIT
+add_unit: idx=23, RID=23, type=UNIT
+add_unit: idx=24, RID=24, type=UNIT
+add_unit: idx=25, RID=25, type=UNIT
+add_unit: idx=26, RID=26, type=UNIT
+add_unit: idx=27, RID=27, type=UNIT
+add_unit: idx=28, RID=28, type=UNIT
+add_unit: idx=29, RID=29, type=UNIT
+add_unit: idx=30, RID=30, type=UNIT
+add_unit: idx=31, RID=31, type=UNIT
+add_unit: idx=32, RID=32, type=SPAU
+add_unit: idx=33, RID=33, type=SPAU
+add_unit: idx=34, RID=34, type=SPAU
+add_unit: idx=35, RID=35, type=SPAU
+add_unit: idx=36, RID=36, type=SPAU
+add_unit: idx=37, RID=37, type=SPAU
+add_unit: idx=38, RID=38, type=SPAU
+add_unit: idx=39, RID=39, type=SPAU
+add_unit: idx=40, RID=40, type=SPAU
+add_unit: idx=41, RID=41, type=SPAU
+add_unit: idx=42, RID=42, type=SPAU
+add_unit: idx=43, RID=43, type=SPAU
+add_unit: idx=44, RID=44, type=SPAU
+add_unit: idx=45, RID=45, type=SPAU
+add_unit: idx=46, RID=46, type=SPAU
+add_unit: idx=47, RID=47, type=SPAU
+add_unit: idx=48, RID=48, type=SPAU
+add_unit: idx=49, RID=49, type=SPAU
+add_unit: idx=50, RID=50, type=SPAU
+add_unit: idx=0, RID=400, type=UNIT
+add_unit: idx=1, RID=401, type=UNIT
+add_unit: idx=2, RID=402, type=UNIT
+add_unit: idx=3, RID=403, type=UNIT
+add_unit: idx=4, RID=404, type=UNIT
+add_unit: idx=5, RID=405, type=UNIT
+add_unit: idx=6, RID=406, type=UNIT
+add_unit: idx=7, RID=407, type=UNIT
+add_unit: idx=8, RID=408, type=UNIT
+add_unit: idx=9, RID=409, type=UNIT
+add_unit: idx=10, RID=410, type=UNIT
+add_unit: idx=11, RID=411, type=UNIT
+add_unit: idx=12, RID=412, type=UNIT
+add_unit: idx=13, RID=413, type=UNIT
+add_unit: idx=14, RID=414, type=UNIT
+add_unit: idx=15, RID=415, type=UNIT
+add_unit: idx=16, RID=416, type=UNIT
+add_unit: idx=17, RID=417, type=CREW
+add_unit: idx=18, RID=418, type=CREW

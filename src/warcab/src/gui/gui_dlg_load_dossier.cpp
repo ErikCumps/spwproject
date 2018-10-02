@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "dossier load" dialog box.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,7 +10,7 @@
 #include "gui_dlg_load_dossier.h"
 
 #define	BOX_WIDTH	600
-#define	BOX_HEIGHT	300
+#define	BOX_HEIGHT	400
 #define	BOX_MARGIN	 10
 
 GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
@@ -30,7 +30,7 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	setModal (true);
 
 	/* Set dialog size */
-	resize (BOX_WIDTH, BOX_HEIGHT);
+	setFixedSize (BOX_WIDTH, BOX_HEIGHT);
 
 	/* Set dialog caption and icon */
 	setWindowTitle ("Load Dossier");
@@ -49,11 +49,11 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	but_height = d.buttons->height();
 	d.buttons->setGeometry(QRect(BOX_MARGIN, BOX_HEIGHT - BOX_MARGIN - but_height, BOX_WIDTH - 2*BOX_MARGIN, but_height));
 	d.buttons->setOrientation(Qt::Horizontal);
-	d.buttons->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok);
+	d.buttons->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
 
 	/* Create body widget */
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "body widget");
-	d.body->setGeometry(QRect(10, 10, 581, 221));
+	d.body->setGeometry(QRect(BOX_MARGIN, BOX_MARGIN, BOX_WIDTH - 2*BOX_MARGIN, BOX_HEIGHT - 3*BOX_MARGIN - but_height));
 
 	/* Create data model */
 	GUINEW (d.model, ModelDossList (path, ignore), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "dosslist data model");
@@ -70,11 +70,8 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	d.view->setSelectionBehavior (QAbstractItemView::SelectRows);
 	d.view->setSelectionMode (QAbstractItemView::SingleSelection);
 	d.view->sortByColumn (1, Qt::AscendingOrder);
-	d.view->resizeColumnToContents (0);
-	d.view->resizeColumnToContents (1);
-	//d.view->resizeColumnToContents (2);
-	d.view->resizeColumnToContents (3);
-	d.view->resizeColumnToContents (4);
+	d.view->header()->setResizeMode(QHeaderView::ResizeToContents);
+	d.view->header()->setStretchLastSection(false);
 
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED, "body layout");

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - tool bar.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -37,19 +37,25 @@ GuiToolbar::GuiToolbar (void)
 	/* Create file tool bar */
 	TOOLBAR (file, "File Toolbar");
 
-	d.file->addAction (GUI_ACTIONS->p.file_add_game);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.file->addAction (GUI_ACTIONS->p.file_add_snap);
+	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
+#endif	/* ALLOW_SNAPSHOTS_LOAD */
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+#if	ALLOW_SNAPSHOTS_LOAD
+	d.file->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	d.file->addAction (GUI_ACTIONS->p.app_prefs);
 
 	/* Create navigation tool bar */
 	TOOLBAR (nav, "Navigation Toolbar");
 
+	d.nav->addAction (GUI_ACTIONS->p.nav_raise);
 	d.nav->addAction (GUI_ACTIONS->p.nav_first);
 	d.nav->addAction (GUI_ACTIONS->p.nav_previous);
 	d.nav->addAction (GUI_ACTIONS->p.nav_next);
 	d.nav->addAction (GUI_ACTIONS->p.nav_last);
+	d.nav->addAction (GUI_ACTIONS->p.nav_lower);
 
 	SET_GUICLS_NOERR;
 }

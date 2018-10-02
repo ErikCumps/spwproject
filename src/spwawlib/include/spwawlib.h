@@ -13,7 +13,7 @@
 /**
  * \mainpage
  *
- * The SPWaw Library API is documented here: \ref API
+ * The SPWaW Library API is documented here: \ref API
  */
 
 #ifndef	SPWAW_LIB_H

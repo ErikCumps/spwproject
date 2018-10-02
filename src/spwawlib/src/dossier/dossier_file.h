@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,29 +15,34 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	10
+#define	DOSS_VERSION	11
 
 #pragma pack(push, r1, 1)
 
-typedef struct s_DOS_HEADER {
+typedef struct s_DOS_MV_HEADER {
 	char		magic[DOSS_MGCLEN];	/* Dossier magic string								*/
 	ULONG		version;		/* Dossier file format version							*/
+} DOS_MV_HEADER;
+
+typedef struct s_DOS_HEADER {
 	ULONG		name;			/* Dossier name	symbol								*/
 	ULONG		comment;		/* Dossier comment symbol							*/
 	ULONG		oobdir;			/* Original OOB data directory symbol						*/
-	ULONG		oobdat;			/* OOB data offset, relative to start of header					*/
+	ULONG		oobdata;		/* Dossier OOB data list offset, relative to start of header			*/
 	ULONG		OOB;			/* OOB ID									*/
 	USHORT		fcnt;			/* Core formations count							*/
 	USHORT		ucnt;			/* Core units count								*/
 	USHORT		bcnt;			/* Battle list count								*/
 	ULONG		blist;			/* Battle list offset, relative to start of header				*/
 	ULONG		stab;			/* String table offset, relative to start of header				*/
+	ULONG		type;			/* Dossier type									*/
 } DOS_HEADER;
 
 typedef struct s_DOS_BHEADER {
 	SPWAW_TIMESTAMP	date;			/* Battle date timestamp							*/
 	ULONG		location;		/* Battle location symbol							*/
-	ULONG		OOB;			/* Opponent OOB ID								*/
+	USHORT		OOB_p1;			/* Player OOB ID								*/
+	USHORT		OOB_p2;			/* Opponent OOB ID								*/
 	ULONG		miss_p1;		/* Player mission symbol							*/
 	ULONG		miss_p2;		/* Opponent mission symbol							*/
 	BYTE		meeting;		/* Meeting engagement flag							*/
@@ -48,6 +53,8 @@ typedef struct s_DOS_BHEADER {
 		ULONG	size;			/* data size									*/
 		ULONG	comp;			/* compressed data size (0 if no compression)					*/
 	}	ra;
+	ULONG		oobdat;			/* Battle OOB data index in dossier OOB list					*/
+	ULONG		name;			/* optional battle name symbol								*/
 } DOS_BHEADER;
 
 typedef struct s_DOS_THEADER {

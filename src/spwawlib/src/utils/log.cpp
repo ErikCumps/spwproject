@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - utility code: logging.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -95,6 +95,19 @@ log (char *fmt, ...)
 }
 
 void
+log_disable (void)
+{
+	logging = false;
+}
+
+void
+log_enable (void)
+{
+	logging = true;
+}
+
+
+void
 log_shutdown (void)
 {
 	if (logfile) {
@@ -113,6 +126,14 @@ log_init (char *log, bool append)
 void
 log (char *fmt, ...)
 { UNREFERENCED_PARAMETER(fmt); }
+
+void
+log_disable (void)
+{ }
+
+void
+log_enable (void)
+{ }
 
 void
 log_shutdown (void)

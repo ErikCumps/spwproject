@@ -1,5 +1,5 @@
 /** \file
- * The SPWaW Library - SPWaw OOB type codes.
+ * The SPWaW Library - SPWaW OOB type codes.
  *
  * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
  *

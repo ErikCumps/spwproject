@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "dossier/dossier.h"
+#include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
 #include "common/internal.h"
@@ -33,6 +34,7 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 	bb = b->prev;
 	ba = b->next;
 
+	SPWOOB_LIST_del (ptr->oobdata, b->oobdat);
 	STRTAB_del (stab, b->location);
 	STRTAB_del (stab, b->miss_p1);
 	STRTAB_del (stab, b->miss_p2);

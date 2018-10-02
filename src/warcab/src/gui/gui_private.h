@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - private header file.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -48,6 +48,9 @@ extern GuiMainWindow	*GUI_WIN;
 		if (SL_HAS_ERROR (obj_->error_code))								\
 			SET_GUICLS_ERROR (err_, "failed to create <" #obj_ "> object");				\
 	} while (0)
+
+#define GUIROE(obj_)												\
+	do { if (SL_HAS_ERROR (obj_->error_code)) return; } while (0)
 
 static inline bool
 is_initial_empty_index (const QModelIndex &idx)

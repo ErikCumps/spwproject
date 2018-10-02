@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,7 +10,6 @@
 #include "snapshot/index.h"
 #include "snapshot/translate.h"
 #include "snapshot/snapshot.h"
-//#include "utils/log.h"
 #include "common/internal.h"
 
 static SPWAW_ERROR
@@ -258,7 +257,7 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 		}
 
 		if (src->name == NULL) {
-			if (src->FID == 0) {
+			if (dat->type == SPWOOB_FTYPE_FHQ) {
 				memset (buf, 0, sizeof (buf));
 				snprintf (buf, sizeof (buf) - 1, "%s HQ", ptr->people);
 				src->name = STRTAB_add (stab, buf);
@@ -286,75 +285,6 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 handle_error:
 	if (p->list) free (p->list);
 	return (rc);
-}
-
-/* Unit leader and crew linkage determination:
- *
- * <unit has crew?>
- * 	NO : <unit has leader?>
- * 		YES: leader found
- * 		NO : use unit #id as leader #id
- * 	YES: <crew has unit?>
- * 		NO : INVALID UNIT!
- * 		YES: <crew unit == unit?>
- * 			YES: <crew has no leader?>
- * 				NO : leader found
- * 				YES: [GOTO <unit has no leader?>]
- * 			NO : [GOTO <unit has no leader?>]
- */
-static inline bool
-determine_ldrcrw (SPWAW_SNAP_OOB_URAW *ptr, int i, USHORT &ldr, USHORT &crw, bool &iscrew)
-{
-	SPWAW_SNAP_OOB_UELRAW	*uptr, *cptr = NULL;
-	DWORD			idx;
-	USHORT			lidx = SPWAW_BADIDX;
-
-	ldr = SPWAW_BADIDX;
-	crw = SPWAW_BADIDX;
-	iscrew = false;
-
-	if (!ptr) return (false);
-
-	uptr = &(ptr->raw[i]);
-	if ((uptr->crew != SPWAW_BADIDX) && ((idx = uridx (ptr, uptr->crew)) != SPWAW_BADIDX)) {
-		//log ("ldrcrw[%u] ID=%4.4x, crew=%4.4x\n", i, uptr->ID, uptr->crew);
-		cptr = &(ptr->raw[idx]);
-		//log ("ldrcrw[%u] crew=%4.4x, unit=%4.4x\n", i, cptr->ID, cptr->crew);
-		if (cptr->crew == SPWAW_BADIDX) return (false);
-		if (cptr->crew == uptr->RID) {
-			lidx = cptr->leader;
-		}
-	}
-	//log ("ldrcrw[%u] lidx=%4.4x", i, lidx);
-	if (lidx == SPWAW_BADIDX) lidx = uptr->leader;
-	//log (", %4.4x", lidx);
-	if (lidx == SPWAW_BADIDX) lidx = uptr->RID;
-	//log (", %4.4x\n", lidx);
-
-	ldr = lidx;
-	crw = (cptr?cptr->RID:SPWAW_BADIDX);
-	iscrew = (cptr && (cptr->RID < uptr->RID));
-
-	//if (iscrew) log ("ldrcrw[%u] ldr=%4.4x, crw=%4.4x, iscrew=%u\n", i, ldr, crw, iscrew);
-
-	return (true);
-}
-
-static inline void
-abandoned (SPWAW_SNAP_OOB_UELRAW *ptr, USHORT cidx, SPWAW_ABAND *flag, SPWAW_SNAP_OOB_PTR *id)
-{
-	if (flag) *flag = SPWAW_ANONE;
-	if (id) id->rid = SPWAW_BADIDX;
-	if (!flag || !id) return;
-
-	if (cidx != SPWAW_BADIDX) {
-		if ((DWORD)cidx > ptr->RID) {
-			*flag = SPWAW_ASTAY;
-		} else {
-			*flag = SPWAW_ALEFT;
-		}
-		id->rid = cidx;
-	}
 }
 
 static inline void
@@ -389,8 +319,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 
 	// Detect unit and crew counts
 	for (i=0; i<(int)raw->units.cnt; i++) {
-		if (!determine_ldrcrw (&(raw->units), i, ldridx, crwidx, iscrew)) continue;
-		if (iscrew) p->crews.cnt++; else p->units.cnt++;
+		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_UNKNOWN) continue;
+		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW) p->crews.cnt++; else p->units.cnt++;
 	}
 
 	p->units.list = safe_nmalloc(SPWAW_SNAP_OOB_UEL, p->units.cnt);
@@ -404,8 +334,16 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		SPWAW_SNAP_OOB_UEL_STRINGS	*str;
 		SPWAW_SNAP_OOB_UEL_DATA		*dat;
 
-		SPWAW_SNAP_OOB_UELRAW *src = &(raw->units.raw[i]);
-		if (!determine_ldrcrw (&(raw->units), i, ldridx, crwidx, iscrew)) continue;
+		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_UNKNOWN) continue;
+
+		iscrew = (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW);
+		ldridx = raw->units.raw[i].leader;
+		crwidx = raw->units.raw[i].crew;
+		//log ("snapint_oob_units_stage1: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//	raw->units.raw[i].RID, SPWAW_unittype2str(raw->units.raw[i].type), raw->units.raw[i].FMID, raw->units.raw[i].FSID, raw->units.raw[i].name);
+		//log ("ldridx=%5.5u, crwidx=%5.5u, iscrew=%d, aband=%d\n",
+		//	raw->units.raw[i].leader, raw->units.raw[i].crew, iscrew, raw->units.raw[i].aband);
+
 		if (iscrew) {
 			dat = &(p->crews.list[cidx].data);
 			str = &(p->crews.list[cidx].strings);
@@ -417,6 +355,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 			dat->idx = uidx;
 			uidx++;
 		}
+
+		SPWAW_SNAP_OOB_UELRAW *src = &(raw->units.raw[i]);
 
 		ulidx = lridx (&(raw->leaders), (src->leader!=SPWAW_BADIDX) ? src->leader : src->RID);
 		ulsrc = (ulidx < raw->leaders.cnt) ? &(raw->leaders.raw[ulidx]) : NULL;
@@ -449,8 +389,9 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->hcnt_left	= src->men;
 		dat->cost	= src->cost;
 		dat->damage	= src->damage;
-		dat->crew	= (src->crew != SPWAW_BADIDX);
-		abandoned (src, crwidx, &(dat->aband), &(dat->aunit));
+		dat->crew	= crwidx != SPWAW_BADIDX;
+		dat->aband	= src->aband;
+		dat->aunit.rid	= crwidx;
 		loaded (src, &(dat->loaded), &(dat->loader));
 		dat->exp	= src->exp;
 		dat->eclass	= raw2exp (src->exp);
@@ -541,9 +482,6 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 	cp = &(oob->core); clear_ptr (cp);
 	sp = &(oob->support); clear_ptr (sp);
 
-	/* OOB force leader */
-	bp->leader = &(bp->units.list[0]);
-
 	/* Reset formation unit counts and core status */
 	for (i=0; i<bp->formations.cnt; i++) {
 		p.fp = &(bp->formations.list[i]);
@@ -569,7 +507,6 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		if (!p.up->data.aunit.up || (p.up->data.aunit.up->data.aunit.rid != p.up->data.RID))
 		{
 			p.up->data.aunit.up = NULL;
-			p.up->data.aband = SPWAW_ANONE;
 		}
 	}
 	for (i=0; i<bp->crews.cnt; i++) {
@@ -578,7 +515,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		p.up->data.aunit.up = unitbyid (p.up->data.aunit.rid, bp);
 		if (!p.up->data.aunit.up) abort();
-		p.up->data.aunit.up->data.aband = SPWAW_ASTAY;
+
 		p.up->data.aunit.up->data.aunit.up = p.up;
 	}
 
@@ -588,7 +525,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		/* Check crew linkage */
 		if (p.up->data.aband != SPWAW_ANONE) {
-			if (p.up->data.status == SPWAW_UABANDONED) {
+			if ((p.up->data.status == SPWAW_UABANDONED) && p.up->data.aunit.up) {
 				/* Update missing attributes with those of crew */
 				p.up->data.name = p.up->data.aunit.up->data.name;
 				p.up->data.rank = p.up->data.aunit.up->data.rank;
@@ -642,6 +579,10 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 
 		p.fp->data.leader.up = unitorcrewbyid (p.fp->data.leader.rid, bp);
 		p.fp->data.hcmd.up = unitorcrewbyid (p.fp->data.hcmd.rid, bp);
+		if (!p.fp->data.hcmd.up) {
+			// TODO: more of these checks to prevent NULL pointer propagation
+			RWE (SPWERR_BADSAVEDATA, "missing leader unit for formation");
+		}
 
 		/* Do not link crewmen to formation leader, use abandoned unit instead! */
 		if (p.fp->data.leader.up->data.aband == SPWAW_ALEFT) {
@@ -703,6 +644,17 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		while (q.up->data.loaded == true) q.up = q.up->data.loader.up;
 		p.up->data.loader.up = q.up;
 	}
+
+	/* Determine OOB force leader: it is the first unit of the (first) force HQ formation */
+	for (i=0; i<bp->formations.cnt; i++) {
+		p.fp = &(bp->formations.list[i]);
+		if (p.fp->data.type != SPWOOB_FTYPE_FHQ) continue;
+		bp->leader = p.fp->data.ulist[0];
+		break;
+	}
+
+	/* Fall back to first force unit if force leader not found */
+	if (!bp->leader) bp->leader = &(bp->units.list[0]);
 
 	return (SPWERR_OK);
 }
@@ -991,11 +943,19 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 		up->attr.gen.kills = up->data.kills;
 		if (!up->data.alive) up->attr.gen.losses = 1;
 
+		//log ("snapint_oob_attrs[%3.3u]: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//	i, up->data.RID, up->data.type, up->data.FMID, up->data.FSID, up->data.name);
+		//log ("type=%s alive=%d aband=%d aunit=%s losses=%d\n",
+		//	up->strings.utype, up->data.alive,
+		//	up->data.aband, up->data.aunit.up ? "ptr" : "nil",
+		//	up->attr.gen.losses);
+
 		/* Also allocate losses for crew members that were not recorded!
 		 * (crew member killed and slot reused before save) */
-		if (up->data.crew && !up->data.aunit.up) up->attr.gen.losses++;
-		//FIXME?
-		//if (up->data.crew && (up->data.aband == SPWAW_ASTAY) && !up->data.aunit.up) up->attr.gen.losses++;
+		if ((up->data.aband == SPWAW_ASTAY) && !up->data.aunit.up) {
+			//log ("  allocated loss for unrecorded KIA crew\n");
+			up->attr.gen.losses++;
+		}
 	}
 
 	/* No attributes for crewmen!
@@ -1003,8 +963,19 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 	for (i=0; i<ptr->crews.cnt; i++) {
 		up = &(ptr->crews.list[i]);
 
+		//log ("snapint_oob_attrs[%3.3u]: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//	i, up->data.RID, up->data.type, up->data.FMID, up->data.FSID, up->data.name);
+		//log ("type=%s alive=%d aband=%d aunit=%s losses=%d\n",
+		//	up->strings.utype, up->data.alive,
+		//	up->data.aband, up->data.aunit.up ? "ptr" : "nil",
+		//	up->attr.gen.losses);
+
 		//up->data.aunit.up->attr.gen.kills += up->data.kills;
-		if (!up->data.alive) up->data.aunit.up->attr.gen.losses++;
+		if (!up->data.alive) {
+			//log ("  allocated loss for KIA crew\n");
+			up->data.aunit.up->attr.gen.losses++;
+		}
+
 	}
 
 	/* Calculate attributes for each formation */
