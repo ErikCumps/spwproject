@@ -7,6 +7,37 @@ License: GPL V2.
 ChangeLog
 ---------
 
+2018-10-03, version 0.7.0
+
+    * New feature - standalone battle dossiers
+    Warcab now also supports recording and tracking turns from standalone
+    battles from scenarios.
+
+    * Improvement - per-battle OOB data support
+    It is now possible to track campaigns even when the OOB data changes, for
+    example when SPWaW is updated. Instead of tracking a single OOB data set for
+    the entire campaign (and getting an error when trying to add savegames using
+    a newer OOB), Warcab now tracks an OOB data set for each battle separately.
+
+    * Improvement - attempts to load/add all selected savegames
+    When loading/adding multiple savegames, Warcab will now attempt to process
+    all savegames, instead of stopping when it encounters a savegame with an
+    error.
+
+    * Fix - unit/formation detection improvements
+    The support for scenario-based savegames required many improvements to the
+    detection of units, formations, unit types, abandonment status and force
+    leader.
+
+    * Small fix - unprintable characters in savegame comment
+    Unprintable characters in savegame comments are no longer shown.
+
+    * Small fix - empty battle location in savegame
+    Empty battle locations in savegames are now called "unknown location".
+
+    * Other - GUI
+    Some dialog box improvements and some new icons.
+
 2017-10-15, version 0.6.3
 
     * Fixed issue #6:

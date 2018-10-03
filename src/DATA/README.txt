@@ -1,6 +1,6 @@
-Welcome to the SPWaW war cabinet, release 0.6.3.
+Welcome to the SPWaW war cabinet, release 0.7.0.
 
-Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
@@ -9,8 +9,9 @@ This installation provides the following tools:
 warcab.exe
 ----------
 
-  Warcab is a tool to record and track battles in an SPWaW campaign. It is
-  inspired by Campaign Watcher.
+  Warcab is a tool to record and track battles in an SPWaW campaign, or to
+  record and track turns in standalone battles from scenarios. It is inspired by
+  Campaign Watcher.
   
   Warcab tracks information for core units (including reassignments) during a
   campaign. It also shows and tracks information for core, auxiliary and
@@ -18,7 +19,8 @@ warcab.exe
   
   Its current main missing features are data export and printing.
   
-  A demo warcab dossier has been included in the "save" folder of this release.
+  Demo warcab campaign and standalone dossiers have been included in the "save"
+  folder of this release.
 
 
 spwreport.exe
