@@ -14,7 +14,59 @@
 
 #define	PATHMAX	256
 
-static SECMAP	MAP[SPWAW_SECTION_COUNT] = {
+//static SECMAP	MAP[SPWAW_SECTION_COUNT] = {
+//	{  0,	(void *)offsetof (GAMEDATA, sec00),	SIZESEC00,	false	},
+//	{  1,	(void *)offsetof (GAMEDATA, sec01),	SIZESEC01,	true	},
+//	{  2,	(void *)offsetof (GAMEDATA, sec02),	SIZESEC02,	false	},
+//	{  3,	(void *)offsetof (GAMEDATA, sec03),	SIZESEC03,	true	},
+//	{  4,	(void *)offsetof (GAMEDATA, sec04),	SIZESEC04,	true	},
+//	{  5,	(void *)offsetof (GAMEDATA, sec05),	SIZESEC05,	true	},
+//	{  6,	(void *)offsetof (GAMEDATA, sec06),	SIZESEC06,	true	},
+//	{  7,	(void *)offsetof (GAMEDATA, sec07),	SIZESEC07,	true	},
+//	{  8,	(void *)offsetof (GAMEDATA, sec08),	SIZESEC08,	true	},
+//	{  9,	(void *)offsetof (GAMEDATA, sec09),	SIZESEC09,	true	},
+//	{ 10,	(void *)offsetof (GAMEDATA, sec10),	SIZESEC10,	false	},
+//	{ 11,	(void *)offsetof (GAMEDATA, sec11),	SIZESEC11,	true	},
+//	{ 12,	(void *)offsetof (GAMEDATA, sec12),	SIZESEC12,	false	},
+//	{ 13,	(void *)offsetof (GAMEDATA, sec13),	SIZESEC13,	false	},
+//	{ 14,	(void *)offsetof (GAMEDATA, sec14),	SIZESEC14,	false	},
+//	{ 15,	(void *)offsetof (GAMEDATA, sec15),	SIZESEC15,	false	},
+//	{ 16,	(void *)offsetof (GAMEDATA, sec16),	SIZESEC16,	false	},
+//	{ 17,	(void *)offsetof (GAMEDATA, sec17),	SIZESEC17,	true	},
+//	{ 18,	(void *)offsetof (GAMEDATA, sec18),	SIZESEC18,	true	},
+//	{ 19,	(void *)offsetof (GAMEDATA, sec19),	SIZESEC19,	true	},
+//	{ 20,	(void *)offsetof (GAMEDATA, sec20),	SIZESEC20,	false	},
+//	{ 21,	(void *)offsetof (GAMEDATA, sec21),	SIZESEC21,	false	},
+//	{ 22,	(void *)offsetof (GAMEDATA, sec22),	SIZESEC22,	false	},
+//	{ 23,	(void *)offsetof (GAMEDATA, sec23),	SIZESEC23,	true	},
+//	{ 24,	(void *)offsetof (GAMEDATA, sec24),	SIZESEC24,	true	},
+//	{ 25,	(void *)offsetof (GAMEDATA, sec25),	SIZESEC25,	true	},
+//	{ 26,	(void *)offsetof (GAMEDATA, sec26),	SIZESEC26,	true	},
+//	{ 27,	(void *)offsetof (GAMEDATA, sec27),	SIZESEC27,	false	},
+//	{ 28,	(void *)offsetof (GAMEDATA, sec28),	SIZESEC28,	true	},
+//	{ 29,	(void *)offsetof (GAMEDATA, sec29),	SIZESEC29,	true	},
+//	{ 30,	(void *)offsetof (GAMEDATA, sec30),	SIZESEC30,	true	},
+//	{ 31,	(void *)offsetof (GAMEDATA, sec31),	SIZESEC31,	true	},
+//	{ 32,	(void *)offsetof (GAMEDATA, sec32),	SIZESEC32,	true	},
+//	{ 33,	(void *)offsetof (GAMEDATA, sec33),	SIZESEC33,	true	},
+//	{ 34,	(void *)offsetof (GAMEDATA, sec34),	SIZESEC34,	true	},
+//	{ 35,	(void *)offsetof (GAMEDATA, sec35),	SIZESEC35,	true	},
+//	{ 36,	(void *)offsetof (GAMEDATA, sec36),	SIZESEC36,	true	},
+//	{ 37,	(void *)offsetof (GAMEDATA, sec37),	SIZESEC37,	true	},
+//	{ 38,	(void *)offsetof (GAMEDATA, sec38),	SIZESEC38,	false	},
+//	{ 39,	(void *)offsetof (GAMEDATA, sec39),	SIZESEC39,	false	},
+//	{ 40,	(void *)offsetof (GAMEDATA, sec40),	SIZESEC40,	true	},
+//	{ 41,	(void *)offsetof (GAMEDATA, sec41),	SIZESEC41,	true	},
+//	{ 42,	(void *)offsetof (GAMEDATA, sec42),	SIZESEC42,	false	},
+//	{ 43,	(void *)offsetof (GAMEDATA, sec43),	SIZESEC43,	false	},
+//	{ 44,	(void *)offsetof (GAMEDATA, sec44),	SIZESEC44,	true	},
+//	{ 45,	(void *)offsetof (GAMEDATA, sec45),	SIZESEC45,	false	},
+//	{ 46,	(void *)offsetof (GAMEDATA, sec46),	SIZESEC46,	true	},
+//	{ 47,	(void *)offsetof (GAMEDATA, sec47),	SIZESEC47,	true	},
+//	{ 51,	(void *)offsetof (GAMEDATA, sec51),	SIZESEC51,	false	},
+//	{ 48,	(void *)offsetof (GAMEDATA, sec48),	SIZESEC48,	true	},
+//};
+static SECMAP	MAP[SPWW2_SECTION_COUNT] = {
 	{  0,	(void *)offsetof (GAMEDATA, sec00),	SIZESEC00,	false	},
 	{  1,	(void *)offsetof (GAMEDATA, sec01),	SIZESEC01,	true	},
 	{  2,	(void *)offsetof (GAMEDATA, sec02),	SIZESEC02,	false	},
@@ -25,7 +77,7 @@ static SECMAP	MAP[SPWAW_SECTION_COUNT] = {
 	{  7,	(void *)offsetof (GAMEDATA, sec07),	SIZESEC07,	true	},
 	{  8,	(void *)offsetof (GAMEDATA, sec08),	SIZESEC08,	true	},
 	{  9,	(void *)offsetof (GAMEDATA, sec09),	SIZESEC09,	true	},
-	{ 10,	(void *)offsetof (GAMEDATA, sec10),	SIZESEC10,	false	},
+	{ 10,	(void *)offsetof (GAMEDATA, sec10),	SIZESEC10,	true	},
 	{ 11,	(void *)offsetof (GAMEDATA, sec11),	SIZESEC11,	true	},
 	{ 12,	(void *)offsetof (GAMEDATA, sec12),	SIZESEC12,	false	},
 	{ 13,	(void *)offsetof (GAMEDATA, sec13),	SIZESEC13,	false	},
@@ -41,13 +93,13 @@ static SECMAP	MAP[SPWAW_SECTION_COUNT] = {
 	{ 23,	(void *)offsetof (GAMEDATA, sec23),	SIZESEC23,	true	},
 	{ 24,	(void *)offsetof (GAMEDATA, sec24),	SIZESEC24,	true	},
 	{ 25,	(void *)offsetof (GAMEDATA, sec25),	SIZESEC25,	true	},
-	{ 26,	(void *)offsetof (GAMEDATA, sec26),	SIZESEC26,	true	},
+	{ 26,	(void *)offsetof (GAMEDATA, sec26),	SIZESEC26,	false	},
 	{ 27,	(void *)offsetof (GAMEDATA, sec27),	SIZESEC27,	false	},
 	{ 28,	(void *)offsetof (GAMEDATA, sec28),	SIZESEC28,	true	},
-	{ 29,	(void *)offsetof (GAMEDATA, sec29),	SIZESEC29,	true	},
+	{ 29,	(void *)offsetof (GAMEDATA, sec29),	SIZESEC29,	false	},
 	{ 30,	(void *)offsetof (GAMEDATA, sec30),	SIZESEC30,	true	},
 	{ 31,	(void *)offsetof (GAMEDATA, sec31),	SIZESEC31,	true	},
-	{ 32,	(void *)offsetof (GAMEDATA, sec32),	SIZESEC32,	true	},
+	{ 32,	(void *)offsetof (GAMEDATA, sec32),	SIZESEC32,	false	},
 	{ 33,	(void *)offsetof (GAMEDATA, sec33),	SIZESEC33,	true	},
 	{ 34,	(void *)offsetof (GAMEDATA, sec34),	SIZESEC34,	true	},
 	{ 35,	(void *)offsetof (GAMEDATA, sec35),	SIZESEC35,	true	},
@@ -55,17 +107,21 @@ static SECMAP	MAP[SPWAW_SECTION_COUNT] = {
 	{ 37,	(void *)offsetof (GAMEDATA, sec37),	SIZESEC37,	true	},
 	{ 38,	(void *)offsetof (GAMEDATA, sec38),	SIZESEC38,	false	},
 	{ 39,	(void *)offsetof (GAMEDATA, sec39),	SIZESEC39,	false	},
-	{ 40,	(void *)offsetof (GAMEDATA, sec40),	SIZESEC40,	true	},
+	{ 40,	(void *)offsetof (GAMEDATA, sec40),	SIZESEC40,	false	},
 	{ 41,	(void *)offsetof (GAMEDATA, sec41),	SIZESEC41,	true	},
 	{ 42,	(void *)offsetof (GAMEDATA, sec42),	SIZESEC42,	false	},
 	{ 43,	(void *)offsetof (GAMEDATA, sec43),	SIZESEC43,	false	},
-	{ 44,	(void *)offsetof (GAMEDATA, sec44),	SIZESEC44,	true	},
-	{ 45,	(void *)offsetof (GAMEDATA, sec45),	SIZESEC45,	false	},
-	{ 46,	(void *)offsetof (GAMEDATA, sec46),	SIZESEC46,	true	},
-	{ 47,	(void *)offsetof (GAMEDATA, sec47),	SIZESEC47,	true	},
 	{ 51,	(void *)offsetof (GAMEDATA, sec51),	SIZESEC51,	false	},
+	{ 52,	(void *)offsetof (GAMEDATA, sec52),	SIZESEC52,	true	},
+	{ 53,	(void *)offsetof (GAMEDATA, sec53),	SIZESEC53,	false	},
+	{ 54,	(void *)offsetof (GAMEDATA, sec54),	SIZESEC54,	true	},
+	{ 56,	(void *)offsetof (GAMEDATA, sec56),	SIZESEC56,	true	},
+	{ 57,	(void *)offsetof (GAMEDATA, sec57),	SIZESEC57,	true	},
+	{ 59,	(void *)offsetof (GAMEDATA, sec59),	SIZESEC59,	true	},
 	{ 48,	(void *)offsetof (GAMEDATA, sec48),	SIZESEC48,	true	},
+	{ 49,	(void *)offsetof (GAMEDATA, sec49),	SIZESEC49,	true	},
 };
+
 
 SECMAP *
 gamedata_secmap (void)
@@ -85,7 +141,8 @@ game_new (void)
 	clear_ptr (ptr);
 	memcpy (ptr->MAP, &MAP, sizeof (MAP));
 
-	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	//for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	for (i=0; i<SPWW2_SECTION_COUNT; i++) {
 		DWORD p = (DWORD)ptr->MAP[i].ptr;
 		p += (DWORD)ptr;
 		ptr->MAP[i].ptr = (void *)p;
@@ -103,7 +160,8 @@ gamedata_section (SECMAP *map, int idx)
 
 	CWVNULL (map, NULL);
 
-	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	//for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	for (i=0; i<SPWW2_SECTION_COUNT; i++) {
 		if (map[i].idx == idx) {
 			sp = &(map[i]);
 			break;

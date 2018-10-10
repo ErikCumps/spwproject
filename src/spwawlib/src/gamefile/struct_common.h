@@ -128,4 +128,62 @@ typedef struct s_FULIST {
 void	init_FULIST	(FULIST &l);
 void	dump_FULIST	(FULIST &l);
 
+
+typedef struct s_STRUCT49 {
+	union u_u {
+		char	raw[SIZESEC49];
+		struct s_d {
+			char	data[SIZESEC49];
+		} d;
+	} u;
+} STRUCT49;
+typedef struct s_STRUCT52 {
+	union u_u {
+		char	raw[SIZESEC52];
+		struct s_d {
+			char	data[SIZESEC52];
+		} d;
+	} u;
+} STRUCT52;
+typedef struct s_STRUCT53 {
+	union u_u {
+		char	raw[SIZESEC53];
+		struct s_d {
+			char	data[SIZESEC53];
+		} d;
+	} u;
+} STRUCT53;
+typedef struct s_STRUCT54 {
+	union u_u {
+		char	raw[SIZESEC54];
+		struct s_d {
+			char	data[SIZESEC54];
+		} d;
+	} u;
+} STRUCT54;
+typedef struct s_STRUCT56 {
+	union u_u {
+		char	raw[SIZESEC56];
+		struct s_d {
+			char	data[SIZESEC56];
+		} d;
+	} u;
+} STRUCT56;
+typedef struct s_STRUCT57 {
+	union u_u {
+		char	raw[SIZESEC57];
+		struct s_d {
+			char	data[SIZESEC57];
+		} d;
+	} u;
+} STRUCT57;
+typedef struct s_STRUCT59 {
+	union u_u {
+		char	raw[SIZESEC59];
+		struct s_d {
+			char	data[SIZESEC59];
+		} d;
+	} u;
+} STRUCT59;
+
 #endif	/* INTERNAL_STRUCT_COMMON_H */

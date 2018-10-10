@@ -11,13 +11,13 @@
 
 #include "gamefile/struct_common.h"
 
-typedef struct s_STRUCT46 {
-	union u_u {
-		char	raw[SIZESEC46];
-		struct s_d {
-			char	data[SIZESEC46];
-		} d;
-	} u;
-} STRUCT46;
+//typedef struct s_STRUCT46 {
+//	union u_u {
+//		char	raw[SIZESEC46];
+//		struct s_d {
+//			char	data[SIZESEC46];
+//		} d;
+//	} u;
+//} STRUCT46;
 
 #endif	/* INTERNAL_STRUCT46_H */

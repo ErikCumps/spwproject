@@ -27,8 +27,8 @@ gamedata_load_cmt (GAMEFILE *file, CMTDATA *dst)
 		/* Fix unprintable characters */
 		for (i = 0; i < sizeof (dst->title); i++)
 			if (dst->title[i] != '\0' && !isprint(dst->title[i])) dst->title[i] = ' ';
-		for (i = 0; i < sizeof (dst->mapsrc); i++)
-			if (dst->mapsrc[i] != '\0' && !isprint(dst->mapsrc[i])) dst->mapsrc[i] = ' ';
+		//for (i = 0; i < sizeof (dst->mapsrc); i++)
+		//	if (dst->mapsrc[i] != '\0' && !isprint(dst->mapsrc[i])) dst->mapsrc[i] = ' ';
 	}
 
 	return (rc);

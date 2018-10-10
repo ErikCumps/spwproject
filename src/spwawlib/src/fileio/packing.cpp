@@ -59,11 +59,13 @@
  *	the N data bytes can be copied as-is
  */
 
+#pragma pack(push, r1, 1)
 typedef struct s_BLOCKHEAD {
 	unsigned int	section;
 	unsigned int	size;
-	unsigned int	flag;
+	unsigned char	flag;
 } BLOCKHEAD;
+#pragma pack(pop, r1)
 
 #define	FLAG_COMPRESSED	0x00000001
 
@@ -76,7 +78,7 @@ typedef struct s_BLOCKHEAD {
 #define	SETURLC(b_,ul_)	b_ = (unsigned char)((char)(ul_) & 0x7f)
 
 static DWORD
-unpack_crlc (BBR *bbr, unsigned char rlb, SBW *sbw)
+unpack_crlc (BBR *bbr, unsigned char rlb, SBW *sbw, DWORD offset)
 {
 	int		rl;
 	unsigned char	c, buf[127];
@@ -92,7 +94,8 @@ unpack_crlc (BBR *bbr, unsigned char rlb, SBW *sbw)
 		return (0);
 	}
 
-	//log ("RL=%3.3d (0x%02.2x), RLB=0x%02.2x, C=0x%02.2x\n", rl, rl & 0xff, rlb, c);
+	PACKLOG5 ("UNPACK CRLC [0x%8.8x] RL=%3.3d (0x%02.2x), RLB=0x%02.2x, C=0x%02.2x\n", 
+		offset, rl, rl & 0xff, rlb, c);
 
 	memset (buf, c, rl);
 	if (sbwrite (sbw, (char *)buf, rl) != rl) {
@@ -104,7 +107,7 @@ unpack_crlc (BBR *bbr, unsigned char rlb, SBW *sbw)
 }
 
 static DWORD
-unpack_urlc (BBR *bbr, unsigned char ulb, SBW *sbw)
+unpack_urlc (BBR *bbr, unsigned char ulb, SBW *sbw, DWORD offset)
 {
 	int		ul, todo;
 	unsigned char	c, buf[127];
@@ -126,7 +129,8 @@ unpack_urlc (BBR *bbr, unsigned char ulb, SBW *sbw)
 		todo--; done++;
 	}
 
-	//log ("UL=%3.3d (0x%02.2x), ULB=0x%02.2x, C=0x%02.2x...0x%02.2x\n", ul, ul & 0xff, ulb, buf[0], buf[done-1]);
+	PACKLOG6 ("UNPACK URLC [0x%8.8x] UL=%3.3d (0x%02.2x), ULB=0x%02.2x, C=0x%02.2x...0x%02.2x\n", 
+		offset, ul, ul & 0xff, ulb, buf[0], buf[done-1]);
 
 	if (sbwrite (sbw, (char *)buf, done) != done) {
 		ERROR0 ("failed to write unpacked URLC data");
@@ -149,6 +153,8 @@ unpack (int fd, DWORD len, void *dst, DWORD size)
 	if ((bbr = bbread_init (fd, len)) == 0) return (0);
 	if ((sbw = sbwrite_init (dst, size)) == 0) return (0);
 
+	PACKLOG4 ("UNPACK %lu (0x%8.8x) -> %lu (0x%8.8x)\n", len, len, size, size);
+
 	left = len; done = 0;
 	while (left) {
 		if (!bbread (bbr, (char *)&c)) {
@@ -158,10 +164,10 @@ unpack (int fd, DWORD len, void *dst, DWORD size)
 		left--;
 
 		if (ISCRLC(c)) {
-			rl = unpack_crlc (bbr, c, sbw);
+			rl = unpack_crlc (bbr, c, sbw, done);
 			left--;
 		} else {
-			rl = unpack_urlc (bbr, c, sbw);
+			rl = unpack_urlc (bbr, c, sbw, done);
 			left -= rl;
 		}
 		done += rl;
@@ -179,7 +185,7 @@ unpack (int fd, DWORD len, void *dst, DWORD size)
 }
 
 static DWORD
-pack_crlc (SBW *sbw, int *rl, unsigned char c)
+pack_crlc (SBW *sbw, int *rl, unsigned char c, DWORD offset)
 {
 	unsigned char	rlb;
 	int		done = 0;
@@ -190,7 +196,8 @@ pack_crlc (SBW *sbw, int *rl, unsigned char c)
 	}
 	SETCRLC (rlb, *rl);
 
-	//log ("RL=%3.3d (0x%02.2x), RLB=0x%02.2x, C=0x%02.2x\n", *rl, *rl & 0xff, rlb, c);
+	PACKLOG5 ("PACK CRLC [0x%8.8x] RL=%3.3d (0x%02.2x), RLB=0x%02.2x, C=0x%02.2x\n",
+		offset, *rl, *rl & 0xff, rlb, c);
 
 	if (sbwrite (sbw, (char *)&rlb, 1) != 1) {
 		ERROR0 ("failed to write packed CRLC data");
@@ -207,7 +214,7 @@ pack_crlc (SBW *sbw, int *rl, unsigned char c)
 }
 
 static DWORD
-pack_urlc (SBW *sbw, int *ul, unsigned char *buf)
+pack_urlc (SBW *sbw, int *ul, unsigned char *buf, DWORD offset)
 {
 	unsigned char	ulb;
 	int		done;
@@ -218,7 +225,8 @@ pack_urlc (SBW *sbw, int *ul, unsigned char *buf)
 	}
 	SETURLC(ulb, *ul);
 
-	//log ("UL=%3.3d (0x%02.2x), ULB=0x%02.2x, C=0x%02.2x...0x%02.2x\n", *ul, *ul & 0xff, ulb, buf[0], buf[*ul-1]);
+	PACKLOG6 ("PACK URLC [0x%8.8x] UL=%3.3d (0x%02.2x), ULB=0x%02.2x, C=0x%02.2x...0x%02.2x\n",
+		offset, *ul, *ul & 0xff, ulb, buf[0], buf[*ul-1]);
 
 	if (sbwrite (sbw, (char *)&ulb, 1) != 1) {
 		ERROR0 ("failed to write packed URLC data");
@@ -251,6 +259,8 @@ pack (void *src, DWORD len, char **dst, long *size)
 	if ((sbr = sbread_init (src, len)) == NULL) return (0);
 	if ((sbw = sbwrite_init (NULL, 0)) == NULL) return (0);
 
+	PACKLOG4 ("PACK %lu (0x%8.8x) -> %lu (0x%8.8x)\n", len, len, size, size);
+
 	memset (buf, 0, sizeof (buf));
 
 	left = len; done = 0;
@@ -271,34 +281,34 @@ pack (void *src, DWORD len, char **dst, long *size)
 		if (ul) {
 			if ((ul >= 2) && (c == buf[ul-1]) && (c == buf[ul-2])) {
 				ul -= 2;
-				if (ul) done += pack_urlc (sbw, &ul, buf);
+				if (ul) done += pack_urlc (sbw, &ul, buf, done);
 				c0 = c;
 				rl = 3;
 			} else {
 	                        if (ul >= 127) {
-					done += pack_urlc (sbw, &ul, buf);
+					done += pack_urlc (sbw, &ul, buf, done);
 				}
 				buf[ul++] = c;
 			}
 		} else {
 			if (c == c0) {
 				if (rl >= 127) {
-					done += pack_crlc (sbw, &rl, c0);
+					done += pack_crlc (sbw, &rl, c0, done);
 					buf[ul++] = c;
 				} else {
 					rl++;
 				}
 			} else {
-				done += pack_crlc (sbw, &rl, c0);
+				done += pack_crlc (sbw, &rl, c0, done);
 				buf[ul++] = c;
 			}
 		}
 	}
 	if (rl) {
-		done += pack_crlc (sbw, &rl, c0);
+		done += pack_crlc (sbw, &rl, c0, done);
 	}
 	if (ul) {
-		done += pack_urlc (sbw, &ul, buf);
+		done += pack_urlc (sbw, &ul, buf, done);
 	}
 
 	sbwrite_stop (sbw, dst, size);
@@ -313,6 +323,7 @@ gamedata_load_all (GAMEFILE *file, GAMEDATA *dst)
 {
 	BLOCKHEAD	block;
 	SECMAP		*sp;
+	long		pos;
 
 	if (!file || !dst) return (false);
 
@@ -321,27 +332,34 @@ gamedata_load_all (GAMEFILE *file, GAMEDATA *dst)
 		for (int i=0; i<sizeof (dst->sec00); i++) log ("%c", dst->sec00.u.raw[i]);
 		log (">\n");
 
+		pos = bseekget(file->dat_fd);
 		while (bread (file->dat_fd, (char *)&block, sizeof (block), true)) {
-			log ("### gamedata_load_all: BLOCK #%lu <size=%lu, flag=0x%8.8x>\n", block.section, block.size, block.flag);
+			//log ("### gamedata_load_all: BLOCK #%lu <size=%lu, flag=0x%8.8x>\n", block.section, block.size, block.flag);
+			log ("### gamedata_load_all: 0x%8.8x BLOCK #%lu (0x%8.8x) <size=%lu (0x%8.8x), flag=0x%8.8x>\n", pos, block.section, block.section, block.size, block.size, block.flag);
 
 			sp = gamedata_section ((SECMAP *)&(dst->MAP), block.section);
 			if (!sp) {
 				ERROR1 ("unknown gamedata section %d", block.section);
+				//return (false);
+				bseekset (file->dat_fd, bseekget(file->dat_fd)+block.size);
+				continue;
 			}
 			void *dptr = sp->ptr;
 			DWORD size = sp->size;
 			if (block.flag & FLAG_COMPRESSED) {
 				if (unpack (file->dat_fd, block.size, dptr, size) != size) {
 					ERROR2 ("failed to unpack section %d (%lu bytes)", block.section, block.size);
-					return (false);
+					//return (false);
 				}
 				log ("unpacked section %d: %lu bytes -> %lu bytes\n", block.section, block.size, size);
 			} else {
-				if (!bread (file->dat_fd, (char *)dptr, size, true)) {
+				//if (!bread (file->dat_fd, (char *)dptr, size, true)) {
+				if (!bread (file->dat_fd, (char *)dptr, block.size, true)) {
 					ERROR2 ("failed to read section %d (%lu bytes)", block.section, block.size);
 					return (false);
 				}
 			}
+			pos = bseekget(file->dat_fd);
 		}
 	}
 	return (true);
@@ -412,7 +430,8 @@ gamedata_save_all (GAMEDATA *src, GAMEFILE *file)
 	if (bwrite (file->dat_fd, (char *)&(src->sec00), sizeof (src->sec00))) {
 		log ("# gamedata_save_all: START\n");
 
-		for (i=1; i<SPWAW_SECTION_COUNT; i++) {
+		//for (i=1; i<SPWAW_SECTION_COUNT; i++) {
+		for (i=1; i<SPWW2_SECTION_COUNT; i++) {
 			block.section = src->MAP[i].idx;
 			if (src->MAP[i].compress) {
 				if (pack (src->MAP[i].ptr, src->MAP[i].size, &dst, &size) != size) {

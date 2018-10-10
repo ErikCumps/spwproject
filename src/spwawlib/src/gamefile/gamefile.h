@@ -69,9 +69,13 @@ typedef struct s_GAMEDATA GAMEDATA;
 
 #pragma pack(pop, r1)
 
+//typedef struct s_CMTDATA {
+//	char	title[SPWAW_AZSCMTTITLE];	/* Savegame title	*/
+//	char	mapsrc[SPWAW_AZSCMTMAPSRC];	/* Savegame map source?	*/
+//} CMTDATA;
+
 typedef struct s_CMTDATA {
-	char	title[SPWAW_AZSCMTTITLE];	/* Savegame title	*/
-	char	mapsrc[SPWAW_AZSCMTMAPSRC];	/* Savegame map source?	*/
+	char	title[SPWW2_AZSCMTTITLE];	/* Savegame title	*/
 } CMTDATA;
 
 typedef struct s_SECMAP {
@@ -84,7 +88,8 @@ typedef struct s_SECMAP {
 typedef struct s_GAMEDATA {
 	SPWAW_BATTLE_TYPE	type;	/* battle type		*/
 	CMTDATA			cmt;
-	SECMAP			MAP[SPWAW_SECTION_COUNT];
+	//SECMAP			MAP[SPWAW_SECTION_COUNT];
+	SECMAP			MAP[SPWW2_SECTION_COUNT];
 	STRUCT00		sec00;	/* start		*/
 	STRUCT01		sec01;	/* units		*/
 	STRUCT02		sec02;	/* map_icon_main	*/
@@ -129,12 +134,19 @@ typedef struct s_GAMEDATA {
 	STRUCT41		sec41;
 	STRUCT42		sec42;
 	STRUCT43		sec43;
-	STRUCT44		sec44;
-	STRUCT45		sec45;
-	STRUCT46		sec46;
-	STRUCT47		sec47;
+	//STRUCT44		sec44;
+	//STRUCT45		sec45;
+	//STRUCT46		sec46;
+	//STRUCT47		sec47;
 	STRUCT48		sec48;	/* rec_header		*/
+	STRUCT49		sec49;
 	STRUCT51		sec51;
+	STRUCT52		sec52;
+	STRUCT53		sec53;
+	STRUCT54		sec54;
+	STRUCT56		sec56;
+	STRUCT57		sec57;
+	STRUCT59		sec59;
 };
 
 typedef struct s_GAMEFILE {

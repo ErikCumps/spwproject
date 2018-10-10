@@ -24,7 +24,7 @@ load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	stab = (STRTAB *)(dst->stab);
 
 	dst->raw.game.cmt.title = azstrstab (src->cmt.title, stab);
-	dst->raw.game.cmt.mapsrc = azstrstab (src->cmt.mapsrc, stab);
+	//dst->raw.game.cmt.mapsrc = azstrstab (src->cmt.mapsrc, stab);
 
 	rc = sec38_save_snapshot (src, dst, stab);		ROE ("sec38_save_snapshot()");
 	rc = sec39_save_snapshot (src, dst, stab);		ROE ("sec39_save_snapshot()");

@@ -18,6 +18,7 @@
 #define	SPWAW_STARTYEAR		1900
 
 #define	SPWAW_AZSCMTTITLE	200
+#define	SPWW2_AZSCMTTITLE	32
 #define	SPWAW_AZSCMTMAPSRC	50
 #define	SPWAW_AZSLOCATION	112
 #define	SPWAW_AZSNAME		16
@@ -40,6 +41,7 @@
 #define	SPWAW_HEX_NE		0x20	/* hex northeast side	*/
 
 #define	SPWAW_SECTION_COUNT	50	/*!< total number of sections in a savegame	*/
+#define	SPWW2_SECTION_COUNT	53	/*!< total number of sections in a savegame	*/
 
 #endif	/* SPWAW_LIB_DEFINES_H */
 

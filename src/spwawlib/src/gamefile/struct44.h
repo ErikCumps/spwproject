@@ -11,13 +11,13 @@
 
 #include "gamefile/struct_common.h"
 
-typedef struct s_STRUCT44 {
-	union u_u {
-		char	raw[SIZESEC44];
-		struct s_d {
-			char	data[SIZESEC44];
-		} d;
-	} u;
-} STRUCT44;
+//typedef struct s_STRUCT44 {
+//	union u_u {
+//		char	raw[SIZESEC44];
+//		struct s_d {
+//			char	data[SIZESEC44];
+//		} d;
+//	} u;
+//} STRUCT44;
 
 #endif	/* INTERNAL_STRUCT44_H */
