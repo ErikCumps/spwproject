@@ -17,8 +17,8 @@
 #include <spwawlib_spwoob_types.h>
 
 #define	SPWOOB_WCNT	250
-#define	SPWOOB_UCNT	250
-#define	SPWOOB_FCNT	200
+#define	SPWOOB_UCNT	1000 /*250*/
+#define	SPWOOB_FCNT	1000 /*200*/
 #define	SPWOOB_FMUCNT	10
 #define	SPWOOB_DCNT	256
 

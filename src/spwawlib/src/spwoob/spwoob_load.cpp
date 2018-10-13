@@ -17,6 +17,30 @@
 
 #define	BADOOBID	((BYTE)-1)
 
+//static BYTE
+//name2id (const char *name)
+//{
+//	char	local[16];
+//	int	id;
+//	int	rc;
+//
+//	if (strlen (name) > 6) return (BADOOBID);
+//	if (strnicmp (name, "oob", 3) != 0) return (BADOOBID);
+//
+//	memset (local, 0, sizeof (local));
+//	snprintf (local, sizeof (local) - 1, "%s", name);
+//
+//	local[0] = (char)tolower (local[0]);
+//	local[1] = (char)tolower (local[1]);
+//	local[2] = (char)tolower (local[2]);
+//
+//	rc = sscanf (local, "oob%d", &id);
+//	if (rc <= 0) id = BADOOBID;
+//	if ((id < 0) || (id > 255)) id = BADOOBID;
+//
+//	return ((BYTE)id);
+//}
+
 static BYTE
 name2id (const char *name)
 {
@@ -24,8 +48,8 @@ name2id (const char *name)
 	int	id;
 	int	rc;
 
-	if (strlen (name) > 6) return (BADOOBID);
-	if (strnicmp (name, "oob", 3) != 0) return (BADOOBID);
+	if (strlen (name) > 11) return (BADOOBID);
+	if (strnicmp (name, "spob", 4) != 0) return (BADOOBID);
 
 	memset (local, 0, sizeof (local));
 	snprintf (local, sizeof (local) - 1, "%s", name);
@@ -33,8 +57,9 @@ name2id (const char *name)
 	local[0] = (char)tolower (local[0]);
 	local[1] = (char)tolower (local[1]);
 	local[2] = (char)tolower (local[2]);
+	local[3] = (char)tolower (local[3]);
 
-	rc = sscanf (local, "oob%d", &id);
+	rc = sscanf (local, "spob%d", &id);
 	if (rc <= 0) id = BADOOBID;
 	if ((id < 0) || (id > 255)) id = BADOOBID;
 
@@ -212,111 +237,111 @@ load_oob_data (SPWOOB_DATA *dst)
 	for (i=0; i<SPWOOB_WCNT; i++) {
 		if (raw->w.name[i].data[0] != '\0') {
 			azstrcpy (raw->w.name[i].data, dst->wdata[i].name);
-			dst->wdata[i].wclass		= SPWOOB_WCLASS_xlt (raw->w.wclass[i]);
-			dst->wdata[i].size		= raw->w.size[i];
-			dst->wdata[i].warhead		= raw->w.warhead[i];
-			dst->wdata[i].kill		= raw->w.kill[i];
-			dst->wdata[i].pen_AP		= raw->w.pen[i].AP;
-			dst->wdata[i].pen_HE		= raw->w.pen[i].HE;
-			dst->wdata[i].pen_HEAT		= raw->w.pen_HEAT[i];
-			dst->wdata[i].pen_APCR		= raw->w.pen_APCR[i];
-			dst->wdata[i].accuracy		= raw->w.accuracy[i];
-			dst->wdata[i].range_max		= raw->w.rng_max[i];
-			dst->wdata[i].range_APCR	= raw->w.rng_APCR[i];
-			dst->wdata[i].valid		= true;
+			//dst->wdata[i].wclass		= SPWOOB_WCLASS_xlt (raw->w.wclass[i]);
+			//dst->wdata[i].size		= raw->w.size[i];
+			//dst->wdata[i].warhead		= raw->w.warhead[i];
+			//dst->wdata[i].kill		= raw->w.kill[i];
+			//dst->wdata[i].pen_AP		= raw->w.pen[i].AP;
+			//dst->wdata[i].pen_HE		= raw->w.pen[i].HE;
+			//dst->wdata[i].pen_HEAT		= raw->w.pen_HEAT[i];
+			//dst->wdata[i].pen_APCR		= raw->w.pen_APCR[i];
+			//dst->wdata[i].accuracy		= raw->w.accuracy[i];
+			//dst->wdata[i].range_max		= raw->w.rng_max[i];
+			//dst->wdata[i].range_APCR	= raw->w.rng_APCR[i];
+			//dst->wdata[i].valid		= true;
 		}
 	}
 
 	for (i=0; i<SPWOOB_UCNT; i++) {
 		if (raw->u.name[i].data[0] != '\0') {
 			azstrcpy (raw->u.name[i].data, dst->udata[i].name);
-			dst->udata[i].nation		= raw->u.nation[i];
-			dst->udata[i].type		= SPWOOB_UTYPE_xlt (raw->u.uclass[i]);
-			dst->udata[i].uclass		= utype2class (dst->udata[i].type);
-			dst->udata[i].start_yr		= raw->u.start_yr[i] + SPWAW_STARTYEAR;
-			dst->udata[i].start_mo		= raw->u.start_mo[i];
-			dst->udata[i].end_yr		= raw->u.end_yr[i] + SPWAW_STARTYEAR;
-			dst->udata[i].end_mo		= raw->u.end_mo[i];
-			dst->udata[i].size		= raw->u.size[i];
-			dst->udata[i].crew		= raw->u.crew[i];
-			dst->udata[i].survive		= raw->u.survive[i];
-			dst->udata[i].cost		= raw->u.cost[i];
-			dst->udata[i].speed		= raw->u.speed[i];
-			//dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (raw->u.movcl[i]);
-			dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (0);		//FIXME
-			dst->udata[i].radio		= raw->u.radio[i];
-			dst->udata[i].irvis		= raw->u.irvis[i];
-			dst->udata[i].fc		= raw->u.fc[i];
-			dst->udata[i].rf		= raw->u.rf[i];
-			dst->udata[i].stab		= raw->u.stab[i];
-			dst->udata[i].rof		= raw->u.rof[i];
-			dst->udata[i].load_cap		= raw->u.load_cap[i];
-			dst->udata[i].load_cost		= raw->u.load_cost[i];
-			dst->udata[i].swim		= raw->u.swim[i];
-			dst->udata[i].smkdev		= raw->u.smkdev[i];
-			dst->udata[i].wpn1		= raw->u.wpn[i].w1;
-			dst->udata[i].wpn1_HEammo	= raw->u.wpn_ammo[i].HE1;
-			dst->udata[i].wpn1_APammo	= raw->u.wpn_ammo[i].AP1;
-			dst->udata[i].wpn1_HEATammo	= raw->u.wpn1_HEATammo[i];
-			dst->udata[i].wpn1_APCRammo	= raw->u.wpn1_APCRammo[i];
-			dst->udata[i].wpn2		= raw->u.wpn[i].w2;
-			dst->udata[i].wpn2_HEammo	= raw->u.wpn_ammo[i].HE2;
-			dst->udata[i].wpn2_APammo	= raw->u.wpn_ammo[i].AP2;
-			dst->udata[i].wpn3		= raw->u.wpn[i].w3;
-			dst->udata[i].wpn3_HEammo	= raw->u.wpn_ammo[i].HE3;
-			dst->udata[i].wpn3_APammo	= raw->u.wpn_ammo[i].AP3;
-			dst->udata[i].wpn4		= raw->u.wpn[i].w4;
-			dst->udata[i].wpn4_HEammo	= raw->u.wpn_ammo[i].HE4;
-			dst->udata[i].wpn4_APammo	= raw->u.wpn_ammo[i].AP4;
-			dst->udata[i].arm_FH		= raw->u.arm[i].FH;
-			dst->udata[i].arm_SH		= raw->u.arm[i].SH;
-			dst->udata[i].arm_RH		= raw->u.arm[i].RH;
-			dst->udata[i].arm_FT		= raw->u.arm[i].FT;
-			dst->udata[i].arm_ST		= raw->u.arm[i].ST;
-			dst->udata[i].arm_RT		= raw->u.arm[i].RT;
-			dst->udata[i].arm_TP		= raw->u.arm[i].TP;
-			dst->udata[i].arm_SK		= raw->u.arm_SK[i];
-			dst->udata[i].slp_FH		= raw->u.slp[i].FH;
-			dst->udata[i].slp_SH		= raw->u.slp[i].SH;
-			dst->udata[i].slp_RH		= raw->u.slp[i].RH;
-			dst->udata[i].slp_FT		= raw->u.slp[i].FT;
-			dst->udata[i].slp_ST		= raw->u.slp[i].ST;
-			dst->udata[i].slp_RT		= raw->u.slp[i].RT;
-			dst->udata[i].valid		= true;
+			//dst->udata[i].nation		= raw->u.nation[i];
+			//dst->udata[i].type		= SPWOOB_UTYPE_xlt (raw->u.uclass[i]);
+			//dst->udata[i].uclass		= utype2class (dst->udata[i].type);
+			//dst->udata[i].start_yr		= raw->u.start_yr[i] + SPWAW_STARTYEAR;
+			//dst->udata[i].start_mo		= raw->u.start_mo[i];
+			//dst->udata[i].end_yr		= raw->u.end_yr[i] + SPWAW_STARTYEAR;
+			//dst->udata[i].end_mo		= raw->u.end_mo[i];
+			//dst->udata[i].size		= raw->u.size[i];
+			//dst->udata[i].crew		= raw->u.crew[i];
+			//dst->udata[i].survive		= raw->u.survive[i];
+			//dst->udata[i].cost		= raw->u.cost[i];
+			//dst->udata[i].speed		= raw->u.speed[i];
+			////dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (raw->u.movcl[i]);
+			//dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (0);		//FIXME
+			//dst->udata[i].radio		= raw->u.radio[i];
+			//dst->udata[i].irvis		= raw->u.irvis[i];
+			//dst->udata[i].fc		= raw->u.fc[i];
+			//dst->udata[i].rf		= raw->u.rf[i];
+			//dst->udata[i].stab		= raw->u.stab[i];
+			//dst->udata[i].rof		= raw->u.rof[i];
+			//dst->udata[i].load_cap		= raw->u.load_cap[i];
+			//dst->udata[i].load_cost		= raw->u.load_cost[i];
+			//dst->udata[i].swim		= raw->u.swim[i];
+			//dst->udata[i].smkdev		= raw->u.smkdev[i];
+			//dst->udata[i].wpn1		= raw->u.wpn[i].w1;
+			//dst->udata[i].wpn1_HEammo	= raw->u.wpn_ammo[i].HE1;
+			//dst->udata[i].wpn1_APammo	= raw->u.wpn_ammo[i].AP1;
+			//dst->udata[i].wpn1_HEATammo	= raw->u.wpn1_HEATammo[i];
+			//dst->udata[i].wpn1_APCRammo	= raw->u.wpn1_APCRammo[i];
+			//dst->udata[i].wpn2		= raw->u.wpn[i].w2;
+			//dst->udata[i].wpn2_HEammo	= raw->u.wpn_ammo[i].HE2;
+			//dst->udata[i].wpn2_APammo	= raw->u.wpn_ammo[i].AP2;
+			//dst->udata[i].wpn3		= raw->u.wpn[i].w3;
+			//dst->udata[i].wpn3_HEammo	= raw->u.wpn_ammo[i].HE3;
+			//dst->udata[i].wpn3_APammo	= raw->u.wpn_ammo[i].AP3;
+			//dst->udata[i].wpn4		= raw->u.wpn[i].w4;
+			//dst->udata[i].wpn4_HEammo	= raw->u.wpn_ammo[i].HE4;
+			//dst->udata[i].wpn4_APammo	= raw->u.wpn_ammo[i].AP4;
+			//dst->udata[i].arm_FH		= raw->u.arm[i].FH;
+			//dst->udata[i].arm_SH		= raw->u.arm[i].SH;
+			//dst->udata[i].arm_RH		= raw->u.arm[i].RH;
+			//dst->udata[i].arm_FT		= raw->u.arm[i].FT;
+			//dst->udata[i].arm_ST		= raw->u.arm[i].ST;
+			//dst->udata[i].arm_RT		= raw->u.arm[i].RT;
+			//dst->udata[i].arm_TP		= raw->u.arm[i].TP;
+			//dst->udata[i].arm_SK		= raw->u.arm_SK[i];
+			//dst->udata[i].slp_FH		= raw->u.slp[i].FH;
+			//dst->udata[i].slp_SH		= raw->u.slp[i].SH;
+			//dst->udata[i].slp_RH		= raw->u.slp[i].RH;
+			//dst->udata[i].slp_FT		= raw->u.slp[i].FT;
+			//dst->udata[i].slp_ST		= raw->u.slp[i].ST;
+			//dst->udata[i].slp_RT		= raw->u.slp[i].RT;
+			//dst->udata[i].valid		= true;
 		}
 	}
 
 	for (i=0; i<SPWOOB_FCNT; i++) {
 		if (raw->f.name[i].data[0] != '\0') {
 			azstrcpy (raw->f.name[i].data, dst->fdata[i].name);
-			dst->fdata[i].nation		= raw->f.nation[i];
-			dst->fdata[i].stat		= SPWOOB_FSTAT_xlt (raw->f.special[i]);
-			dst->fdata[i].type		= SPWOOB_FTYPE_xlt (raw->f.type[i]);
-			dst->fdata[i].pscr		= SPWOOB_FPSCR_xlt (raw->f.purchscrn[i]);
-			dst->fdata[i].start_yr		= raw->f.start_yr[i] + SPWAW_STARTYEAR;
-			dst->fdata[i].start_mo		= raw->f.start_mo[i];
-			dst->fdata[i].end_yr		= raw->f.end_yr[i] + SPWAW_STARTYEAR;
-			dst->fdata[i].unit_ids[0]	= raw->f.urid[i].dat[0];
-			dst->fdata[i].unit_ids[1]	= raw->f.urid[i].dat[1];
-			dst->fdata[i].unit_ids[2]	= raw->f.urid[i].dat[2];
-			dst->fdata[i].unit_ids[3]	= raw->f.urid[i].dat[3];
-			dst->fdata[i].unit_ids[4]	= raw->f.urid[i].dat[4];
-			dst->fdata[i].unit_ids[5]	= raw->f.urid[i].dat[5];
-			dst->fdata[i].unit_ids[6]	= raw->f.urid[i].dat[6];
-			dst->fdata[i].unit_ids[7]	= raw->f.urid[i].dat[7];
-			dst->fdata[i].unit_ids[8]	= raw->f.urid[i].dat[8];
-			dst->fdata[i].unit_ids[9]	= raw->f.urid[i].dat[9];
-			dst->fdata[i].unit_cnt[0]	= raw->f.ucnt[i].dat[0];
-			dst->fdata[i].unit_cnt[1]	= raw->f.ucnt[i].dat[1];
-			dst->fdata[i].unit_cnt[2]	= raw->f.ucnt[i].dat[2];
-			dst->fdata[i].unit_cnt[3]	= raw->f.ucnt[i].dat[3];
-			dst->fdata[i].unit_cnt[4]	= raw->f.ucnt[i].dat[4];
-			dst->fdata[i].unit_cnt[5]	= raw->f.ucnt[i].dat[5];
-			dst->fdata[i].unit_cnt[6]	= raw->f.ucnt[i].dat[6];
-			dst->fdata[i].unit_cnt[7]	= raw->f.ucnt[i].dat[7];
-			dst->fdata[i].unit_cnt[8]	= raw->f.ucnt[i].dat[8];
-			dst->fdata[i].unit_cnt[9]	= raw->f.ucnt[i].dat[9];
-			dst->fdata[i].valid		= true;
+			//dst->fdata[i].nation		= raw->f.nation[i];
+			//dst->fdata[i].stat		= SPWOOB_FSTAT_xlt (raw->f.special[i]);
+			//dst->fdata[i].type		= SPWOOB_FTYPE_xlt (raw->f.type[i]);
+			//dst->fdata[i].pscr		= SPWOOB_FPSCR_xlt (raw->f.purchscrn[i]);
+			//dst->fdata[i].start_yr		= raw->f.start_yr[i] + SPWAW_STARTYEAR;
+			//dst->fdata[i].start_mo		= raw->f.start_mo[i];
+			//dst->fdata[i].end_yr		= raw->f.end_yr[i] + SPWAW_STARTYEAR;
+			//dst->fdata[i].unit_ids[0]	= raw->f.urid[i].dat[0];
+			//dst->fdata[i].unit_ids[1]	= raw->f.urid[i].dat[1];
+			//dst->fdata[i].unit_ids[2]	= raw->f.urid[i].dat[2];
+			//dst->fdata[i].unit_ids[3]	= raw->f.urid[i].dat[3];
+			//dst->fdata[i].unit_ids[4]	= raw->f.urid[i].dat[4];
+			//dst->fdata[i].unit_ids[5]	= raw->f.urid[i].dat[5];
+			//dst->fdata[i].unit_ids[6]	= raw->f.urid[i].dat[6];
+			//dst->fdata[i].unit_ids[7]	= raw->f.urid[i].dat[7];
+			//dst->fdata[i].unit_ids[8]	= raw->f.urid[i].dat[8];
+			//dst->fdata[i].unit_ids[9]	= raw->f.urid[i].dat[9];
+			//dst->fdata[i].unit_cnt[0]	= raw->f.ucnt[i].dat[0];
+			//dst->fdata[i].unit_cnt[1]	= raw->f.ucnt[i].dat[1];
+			//dst->fdata[i].unit_cnt[2]	= raw->f.ucnt[i].dat[2];
+			//dst->fdata[i].unit_cnt[3]	= raw->f.ucnt[i].dat[3];
+			//dst->fdata[i].unit_cnt[4]	= raw->f.ucnt[i].dat[4];
+			//dst->fdata[i].unit_cnt[5]	= raw->f.ucnt[i].dat[5];
+			//dst->fdata[i].unit_cnt[6]	= raw->f.ucnt[i].dat[6];
+			//dst->fdata[i].unit_cnt[7]	= raw->f.ucnt[i].dat[7];
+			//dst->fdata[i].unit_cnt[8]	= raw->f.ucnt[i].dat[8];
+			//dst->fdata[i].unit_cnt[9]	= raw->f.ucnt[i].dat[9];
+			//dst->fdata[i].valid		= true;
 		}
 	}
 
@@ -386,7 +411,8 @@ load_oob_files (SPWOOB *oob)
 	if (oob->count) return (SPWERR_OK);
 
 	memset (glob, 0, sizeof (glob));
-	snprintf (glob, sizeof (glob) - 1, "%s\\oob*", oob->srcdir);
+	//snprintf (glob, sizeof (glob) - 1, "%s\\oob*", oob->srcdir);
+	snprintf (glob, sizeof (glob) - 1, "%s\\*.obf", oob->srcdir);
 
 	if ((f_hndl = _findfirst (glob, &f_data)) == -1)
 		FAILGOTO (SPWERR_NOOOBFILES, "_findfirst() failed", handle_error);

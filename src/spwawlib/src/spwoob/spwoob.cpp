@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_spwoob.h>
 #include "common/internal.h"
+#include "raw.h"
 
 void
 spwoob_free (SPWOOB *oob)
@@ -224,6 +225,11 @@ spwoob_dump (SPWOOB *oob, char *base)
 	if (!oob || !base) return;
 
 	for (i=0; i<SPWOOB_DCNT; i++) {
-		if (oob->data[i]) { spwoob_dump_data (oob->data[i], base); }
+		if (oob->data[i]) {
+			spwoob_dump_data (oob->data[i], base);
+#if DUMPRAWOOB
+			spwoob_dump_raw_data ((RAWOOB*)oob->data[i]->rdata, oob->data[i]->id, base);
+#endif /* DUMPRAWOOB */
+		}
 	}
 }
