@@ -53,7 +53,7 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 		fprintf (file,
 			"id,name,"
 			"wclass,size,"
-			"B00,"
+			"B02,"
 			"warhead,pen.HE,pen.AP,kill.HE,kill.AP,accuracy,range_max,range_APCR,pen_APCR,pen_HEAT,"
 			"X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12"
 			"\n");
@@ -69,7 +69,7 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 				"\n",
 				i, azsname,
 				raw->w.wclass[i], raw->w.size[i],
-				raw->w.__data0[i],
+				raw->w.__data02[i],
 				raw->w.warhead[i],
 				raw->w.pen[i].HE, raw->w.pen[i].AP,
 				raw->w.kill[i].HE, raw->w.kill[i].AP,
@@ -96,19 +96,22 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 			"wpn_w1,wpn_w2,wpn_w3,wpn_w4,"
 			"wpn_ammo_HE1,wpn_ammo_AP1,wpn_ammo_HE2,wpn_ammo_AP2,wpn_ammo_HE3,wpn_ammo_AP3,wpn_ammo_HE4,wpn_ammo_AP4,"
 			"speed,"
-			"B17,B18,B19,"
-			"B20,B21,B22,B23,B24,B25,B26,B27,B28,B29,"
-			"B30,B31,B32,B33,B34,B35,B36,B37,B38,B39,"
-			"B40,B41,B42,B43,"
+			"arm.steel_FH,arm.steel_SH,arm.steel_RH,arm.steel_FT,arm.steel_ST,arm.steel_RT,arm.steel_TP,"
+			"arm.heat_FH,arm.heat_SH,arm.heat_RH,arm.heat_FT,arm.heat_ST,arm.heat_RT,arm.heat_TP,"
+			"B31,B32,B33,B34,B35,B36,B37,B38,B39,B40,B41,B42,B43,"
 			"radio,start_yr,end_yr,cost,nation,"
-			//"B50,B51,"
-			"lbm,"
-			"B52,B53,B54,B55,B56,B57,B58,B59,"
-			"B60,B61,B62,B63,B64,B65,B66,B67,B68,B69,"
-			"B70,B71,B72,B73,B74,B75,B76,B77,B78,B79,"
-			"B80,B81,B82,B83,B84,B85,B86,B87,B88,B89,"
-			"B90,B91,B92,B93,B94,B95,B96,B97,B98,B99,"
-			"B100,B101,B102,B103,B104,B105"
+			"lbm,irvis,fc,"
+			"wpn1_APCRammo,wpn1_HEATammo,"
+			"rof,stab,rf,"
+			"B59,"
+			"load_cap,survive,load_cost,"
+			"icon,"
+			"swim,movcl,smkdev,"
+			"start_mo,end_mo,"
+			"sound,wpn_snd_s1,wpn_snd_s2,wpn_snd_s3,wpn_snd_s4,"
+			"B75,"
+			"icon_winter,icon_desert,"
+			"X01,X02,X03,X04,X05,X06,X07,X08,X09,X11,X12,X13,X14,X15,X16,X17,X18,X19,X21,X22,X23,X24,X25,X26"
 			"\n");
 
 		for (i=1; i<SPWOOB_UCNT; i++) {
@@ -119,19 +122,22 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 				"%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,%u,%u,%u,"
 				"%u,"
-				"%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,"
+				"%u,%u,%u,%u,%u,%u,%u,"
+				"%u,%u,%u,%u,%u,%u,%u,"
+				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,"
-				//"%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,"
+				"%u,%u,%u,"
 				"%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u"
+				"%u,%u,%u,"
+				"%u,"
+				"%u,%u,%u,"
+				"%u,%u,"
+				"%u,%u,%u,%u,%u,"
+				"%u,"
+				"%u,%u,"
+				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u"
 				"\n",
 				i, azsname,
 				raw->u.uclass[i], raw->u.arm_SK[i], raw->u.size[i], raw->u.crew[i],
@@ -139,27 +145,34 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 				raw->u.wpn_ammo[i].HE1, raw->u.wpn_ammo[i].AP1, raw->u.wpn_ammo[i].HE2, raw->u.wpn_ammo[i].AP2,
 				raw->u.wpn_ammo[i].HE3, raw->u.wpn_ammo[i].AP3, raw->u.wpn_ammo[i].HE4, raw->u.wpn_ammo[i].AP4,
 				raw->u.speed[i],
-				raw->u.__data17[i], raw->u.__data18[i], raw->u.__data19[i],
-				raw->u.__data20[i], raw->u.__data21[i], raw->u.__data22[i], raw->u.__data23[i], raw->u.__data24[i],
-				raw->u.__data25[i], raw->u.__data26[i], raw->u.__data27[i], raw->u.__data28[i], raw->u.__data29[i],
-				raw->u.__data30[i], raw->u.__data31[i], raw->u.__data32[i], raw->u.__data33[i], raw->u.__data34[i],
-				raw->u.__data35[i], raw->u.__data36[i], raw->u.__data37[i], raw->u.__data38[i], raw->u.__data39[i],
-				raw->u.__data40[i], raw->u.__data41[i], raw->u.__data42[i], raw->u.__data43[i],
+				raw->u.arm[i].steel_FH,raw->u.arm[i].steel_SH,raw->u.arm[i].steel_RH,raw->u.arm[i].steel_FT,raw->u.arm[i].steel_ST,raw->u.arm[i].steel_RT,raw->u.arm[i].steel_TP,
+				raw->u.arm[i].heat_FH,raw->u.arm[i].heat_SH,raw->u.arm[i].heat_RH,raw->u.arm[i].heat_FT,raw->u.arm[i].heat_ST,raw->u.arm[i].heat_RT,raw->u.arm[i].heat_TP,
+				raw->u.__data31[i], raw->u.__data32[i], raw->u.__data33[i], raw->u.__data34[i], raw->u.__data35[i], raw->u.__data36[i], raw->u.__data37[i], raw->u.__data38[i], raw->u.__data39[i], raw->u.__data40[i], raw->u.__data41[i], raw->u.__data42[i], raw->u.__data43[i],
 				raw->u.radio[i], raw->u.start_yr[i], raw->u.end_yr[i], raw->u.cost[i], raw->u.nation[i],
-				//raw->u.__data50[i], raw->u.__data51[i],
-				raw->u.lbm[i],
-				raw->u.__data52[i], raw->u.__data53[i], raw->u.__data54[i],
-				raw->u.__data55[i], raw->u.__data56[i], raw->u.__data57[i], raw->u.__data58[i], raw->u.__data59[i],
-				raw->u.__data60[i], raw->u.__data61[i], raw->u.__data62[i], raw->u.__data63[i], raw->u.__data64[i],
-				raw->u.__data65[i], raw->u.__data66[i], raw->u.__data67[i], raw->u.__data68[i], raw->u.__data69[i],
-				raw->u.__data70[i], raw->u.__data71[i], raw->u.__data72[i], raw->u.__data73[i], raw->u.__data74[i],
-				raw->u.__data75[i], raw->u.__data76[i], raw->u.__data77[i], raw->u.__data78[i], raw->u.__data79[i],
-				raw->u.__data80[i], raw->u.__data81[i], raw->u.__data82[i], raw->u.__data83[i], raw->u.__data84[i],
-				raw->u.__data85[i], raw->u.__data86[i], raw->u.__data87[i], raw->u.__data88[i], raw->u.__data89[i],
-				raw->u.__data90[i], raw->u.__data91[i], raw->u.__data92[i], raw->u.__data93[i], raw->u.__data94[i],
-				raw->u.__data95[i], raw->u.__data96[i], raw->u.__data97[i], raw->u.__data98[i], raw->u.__data99[i],
-				raw->u.__data100[i], raw->u.__data101[i], raw->u.__data102[i],
-				raw->u.__data103[i], raw->u.__data104[i], raw->u.__data105[i]
+				raw->u.lbm[i], raw->u.irvis[i], raw->u.fc[i],
+				raw->u.wpn1_APCRammo[i], raw->u.wpn1_HEATammo[i],
+				raw->u.rof[i], raw->u.stab[i], raw->u.rf[i],
+				raw->u.__data59[i],
+				raw->u.load_cap[i], raw->u.survive[i], raw->u.load_cost[i],
+				raw->u.icon[i],
+				raw->u.swim[i], raw->u.movcl[i], raw->u.smkdev[i],
+				raw->u.start_mo[i], raw->u.end_mo[i],
+				raw->u.sound[i], raw->u.wpn_snd[i].s1, raw->u.wpn_snd[i].s2, raw->u.wpn_snd[i].s3, raw->u.wpn_snd[i].s4,
+				raw->u.__data75[i],
+				raw->u.icon_winter[i], raw->u.icon_desert[i],
+				raw->u.__dataX[ 0*SPWOOB_UCNT+i], raw->u.__dataX[ 1*SPWOOB_UCNT+i],
+				raw->u.__dataX[ 2*SPWOOB_UCNT+i], raw->u.__dataX[ 3*SPWOOB_UCNT+i],
+				raw->u.__dataX[ 4*SPWOOB_UCNT+i], raw->u.__dataX[ 5*SPWOOB_UCNT+i],
+				raw->u.__dataX[ 6*SPWOOB_UCNT+i], raw->u.__dataX[ 7*SPWOOB_UCNT+i],
+				raw->u.__dataX[ 8*SPWOOB_UCNT+i], raw->u.__dataX[ 9*SPWOOB_UCNT+i],
+				raw->u.__dataX[10*SPWOOB_UCNT+i], raw->u.__dataX[11*SPWOOB_UCNT+i],
+				raw->u.__dataX[12*SPWOOB_UCNT+i], raw->u.__dataX[13*SPWOOB_UCNT+i],
+				raw->u.__dataX[14*SPWOOB_UCNT+i], raw->u.__dataX[15*SPWOOB_UCNT+i],
+				raw->u.__dataX[16*SPWOOB_UCNT+i], raw->u.__dataX[17*SPWOOB_UCNT+i],
+				raw->u.__dataX[18*SPWOOB_UCNT+i], raw->u.__dataX[19*SPWOOB_UCNT+i],
+				raw->u.__dataX[20*SPWOOB_UCNT+i], raw->u.__dataX[21*SPWOOB_UCNT+i],
+				raw->u.__dataX[22*SPWOOB_UCNT+i], raw->u.__dataX[23*SPWOOB_UCNT+i],
+				raw->u.__dataX[24*SPWOOB_UCNT+i], raw->u.__dataX[25*SPWOOB_UCNT+i]
 				);
 		}
 		fclose (file);
