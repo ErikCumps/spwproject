@@ -42,8 +42,9 @@ usage (char *app)
 	printf ("\n");
 	printf ("Generate an OOB dump in CSV format (spwoobdump_*.csv files).\n");
 	printf ("\n");
-	printf ("Usage: %s dump OOB\n", app);
+	printf ("Usage: %s dump OOB [raw]\n", app);
 	printf ("Where: OOB      path to oob dir\n");
+	printf ("       raw      also perform a raw dump of the OOB content\n");
 	printf ("\n");
 	exit (1);
 }
@@ -251,6 +252,9 @@ generate_oob_dump(int /*argc*/, char** argv)
 {
 	SPWAW_ERROR	rc;
 	SPWOOB		*oob;
+	bool		raw = false;
+
+	raw = (argv[3] && (strcmp (argv[3], "raw") == 0));
 
 	if ((rc = SPWAW_init (argv[2], false)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
@@ -260,7 +264,7 @@ generate_oob_dump(int /*argc*/, char** argv)
 		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
+	if ((rc = SPWAW_oob_dump (oob, "spwoobdump", raw)) != SPWERR_OK) {
 		error ("failed to generate oob dump: %s", SPWAW_errstr (rc));
 	}
 }
@@ -372,7 +376,7 @@ main (int argc, char** argv)
 	{
 		usage (argv[0]);
 	}
-	else if ((argc == 3) && (strcmp (argv[1], "dump") == 0))
+	else if ((argc >= 3) && (strcmp (argv[1], "dump") == 0))
 	{
 		generate_oob_dump (argc, argv);
 	}

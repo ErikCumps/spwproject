@@ -28,9 +28,10 @@ typedef struct s_SPWOOB_WDATA {
 	SPWOOB_WCLASS	wclass;
 	BYTE		size;
 	BYTE		warhead;
-	USHORT		kill;
-	BYTE		pen_AP;
+	BYTE		kill_HE;
+	BYTE		kill_AP;
 	BYTE		pen_HE;
+	BYTE		pen_AP;
 	BYTE		pen_HEAT;
 	BYTE		pen_APCR;
 	BYTE		accuracy;
@@ -51,7 +52,7 @@ typedef struct s_SPWOOB_UDATA {
 	BYTE		size;
 	BYTE		crew;
 	BYTE		survive;
-	BYTE		cost;
+	USHORT		cost;
 	BYTE		speed;
 	SPWOOB_MOVCL	mclass;
 	BYTE		radio;
@@ -69,29 +70,46 @@ typedef struct s_SPWOOB_UDATA {
 	BYTE		wpn1_APammo;
 	BYTE		wpn1_HEATammo;
 	BYTE		wpn1_APCRammo;
+	BYTE		wpn1_sound;
 	BYTE		wpn2;
 	BYTE		wpn2_HEammo;
 	BYTE		wpn2_APammo;
+	BYTE		wpn2_sound;
 	BYTE		wpn3;
 	BYTE		wpn3_HEammo;
 	BYTE		wpn3_APammo;
+	BYTE		wpn3_sound;
 	BYTE		wpn4;
 	BYTE		wpn4_HEammo;
 	BYTE		wpn4_APammo;
-	BYTE		arm_FH;
-	BYTE		arm_SH;
-	BYTE		arm_RH;
-	BYTE		arm_FT;
-	BYTE		arm_ST;
-	BYTE		arm_RT;
-	BYTE		arm_TP;
-	BYTE		arm_SK;
+	BYTE		wpn4_sound;
+	BYTE		arm_HE_FH;
+	BYTE		arm_HE_SH;
+	BYTE		arm_HE_RH;
+	BYTE		arm_HE_FT;
+	BYTE		arm_HE_ST;
+	BYTE		arm_HE_RT;
+	BYTE		arm_HE_TP;
+	BYTE		arm_HE_SK;
+	BYTE		arm_AP_FH;
+	BYTE		arm_AP_SH;
+	BYTE		arm_AP_RH;
+	BYTE		arm_AP_FT;
+	BYTE		arm_AP_ST;
+	BYTE		arm_AP_RT;
+	BYTE		arm_AP_TP;
+	BYTE		arm_AP_SK;
 	BYTE		slp_FH;
 	BYTE		slp_SH;
 	BYTE		slp_RH;
 	BYTE		slp_FT;
 	BYTE		slp_ST;
 	BYTE		slp_RT;
+	BYTE		sound;
+	USHORT		lbm;
+	USHORT		icon;
+	USHORT		icon_desert;
+	USHORT		icon_winter;
 } SPWOOB_UDATA;
 
 typedef struct s_SPWOOB_FDATA {
@@ -104,6 +122,9 @@ typedef struct s_SPWOOB_FDATA {
 	USHORT		start_yr;
 	BYTE		start_mo;
 	USHORT		end_yr;
+	BYTE		end_mo;
+	BYTE		exp_mod;
+	BYTE		mor_mod;
 	USHORT		unit_ids[10];
 	BYTE		unit_cnt[10];
 } SPWOOB_FDATA;
@@ -133,7 +154,7 @@ extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_data		(SPWOOB *oob, BYTE id, SPWOOB_D
 extern SPWAWLIB_API const char *	SPWAW_oob_nation	(BYTE id);
 extern SPWAWLIB_API const char *	SPWAW_oob_people	(BYTE id);
 extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(BYTE id);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base, bool raw);
 
 extern SPWAWLIB_API const char *	SPWAW_oob_uclass	(SPWOOB_UCLASS e);
 

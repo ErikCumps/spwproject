@@ -44,12 +44,12 @@ SPWAW_oob_prefix (BYTE id)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_oob_dump (SPWOOB *oob, char *base)
+SPWAW_oob_dump (SPWOOB *oob, char *base, bool raw)
 {
 	CSPWINIT;
 	CNULLARG (oob); CNULLARG (base);
 
-	spwoob_dump (oob, base);
+	spwoob_dump (oob, base, raw);
 
 	return (SPWERR_OK);
 }

@@ -96,8 +96,8 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 			"wpn_w1,wpn_w2,wpn_w3,wpn_w4,"
 			"wpn_ammo_HE1,wpn_ammo_AP1,wpn_ammo_HE2,wpn_ammo_AP2,wpn_ammo_HE3,wpn_ammo_AP3,wpn_ammo_HE4,wpn_ammo_AP4,"
 			"speed,"
-			"arm.steel_FH,arm.steel_SH,arm.steel_RH,arm.steel_FT,arm.steel_ST,arm.steel_RT,arm.steel_TP,"
-			"arm.heat_FH,arm.heat_SH,arm.heat_RH,arm.heat_FT,arm.heat_ST,arm.heat_RT,arm.heat_TP,"
+			"arm.AP_FH,arm.AP_SH,arm.AP_RH,arm.AP_FT,arm.AP_ST,arm.AP_RT,arm.AP_TP,"
+			"arm.HE_FH,arm.HE_SH,arm.HE_RH,arm.HE_FT,arm.HE_ST,arm.HE_RT,arm.HE_TP,"
 			"B31,B32,B33,B34,B35,B36,B37,B38,B39,B40,B41,B42,B43,"
 			"radio,start_yr,end_yr,cost,nation,"
 			"lbm,irvis,fc,"
@@ -145,8 +145,8 @@ spwoob_dump_raw_data (RAWOOB *raw, BYTE id, char *base)
 				raw->u.wpn_ammo[i].HE1, raw->u.wpn_ammo[i].AP1, raw->u.wpn_ammo[i].HE2, raw->u.wpn_ammo[i].AP2,
 				raw->u.wpn_ammo[i].HE3, raw->u.wpn_ammo[i].AP3, raw->u.wpn_ammo[i].HE4, raw->u.wpn_ammo[i].AP4,
 				raw->u.speed[i],
-				raw->u.arm[i].steel_FH,raw->u.arm[i].steel_SH,raw->u.arm[i].steel_RH,raw->u.arm[i].steel_FT,raw->u.arm[i].steel_ST,raw->u.arm[i].steel_RT,raw->u.arm[i].steel_TP,
-				raw->u.arm[i].heat_FH,raw->u.arm[i].heat_SH,raw->u.arm[i].heat_RH,raw->u.arm[i].heat_FT,raw->u.arm[i].heat_ST,raw->u.arm[i].heat_RT,raw->u.arm[i].heat_TP,
+				raw->u.arm[i].AP_FH,raw->u.arm[i].AP_SH,raw->u.arm[i].AP_RH,raw->u.arm[i].AP_FT,raw->u.arm[i].AP_ST,raw->u.arm[i].AP_RT,raw->u.arm[i].AP_TP,
+				raw->u.arm[i].HE_FH,raw->u.arm[i].HE_SH,raw->u.arm[i].HE_RH,raw->u.arm[i].HE_FT,raw->u.arm[i].HE_ST,raw->u.arm[i].HE_RT,raw->u.arm[i].HE_TP,
 				raw->u.__data31[i], raw->u.__data32[i], raw->u.__data33[i], raw->u.__data34[i], raw->u.__data35[i], raw->u.__data36[i], raw->u.__data37[i], raw->u.__data38[i], raw->u.__data39[i], raw->u.__data40[i], raw->u.__data41[i], raw->u.__data42[i], raw->u.__data43[i],
 				raw->u.radio[i], raw->u.start_yr[i], raw->u.end_yr[i], raw->u.cost[i], raw->u.nation[i],
 				raw->u.lbm[i], raw->u.irvis[i], raw->u.fc[i],

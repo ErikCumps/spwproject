@@ -137,8 +137,8 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 	if (file) {
 		fprintf (file,
 			"id,name,wclass,wclass,"
-			"size,warhead,kill,"
-			"pen_AP,pen_HE,pen_HEAT,pen_APCR,"
+			"size,warhead,kill_HE,kill_AP,,"
+			"pen_HE,pen_AP,pen_HEAT,pen_APCR,"
 			"accuracy,range_max,range_APCR\n");
 
 		for (i=0; i<SPWOOB_WCNT; i++) {
@@ -147,8 +147,8 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 			SPWOOB_WDATA *wp = &(data->wdata[i]);
 			fprintf (file, "%d,%s,%d,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u\n",
 				i, wp->name, wp->wclass, SPWOOB_WCLASS_lookup (wp->wclass),
-				wp->size, wp->warhead, wp->kill,
-				wp->pen_AP, wp->pen_HE, wp->pen_HEAT, wp->pen_APCR,
+				wp->size, wp->warhead, wp->kill_HE, wp->kill_AP,
+				wp->pen_HE, wp->pen_AP, wp->pen_HEAT, wp->pen_APCR,
 				wp->accuracy, wp->range_max, wp->range_APCR);
 		}
 		fclose (file);
@@ -165,7 +165,8 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 			"radio,irvis,fc,rf,stab,rof,load_cap,load_cost,swim,smkdev,"
 			"wpn1,wpn1_HEammo,wpn1_APammo,wpn1_HEATammo,wpn1_APCRammo,"
 			"wpn2,wpn2_HEammo,wpn2_APammo,wpn3,wpn3_HEammo,wpn3_APammo,wpn4,wpn4_HEammo,wpn4_APammo,"
-			"arm_FH,arm_SH,arm_RH,arm_FT,arm_ST,arm_RT,arm_TP,arm_SK,"
+			"arm_HE_FH,arm_HE_SH,arm_HE_RH,arm_HE_FT,arm_HE_ST,arm_HE_RT,arm_HE_TP,arm_HE_SK,"
+			"arm_AP_FH,arm_AP_SH,arm_AP_RH,arm_AP_FT,arm_AP_ST,arm_AP_RT,arm_AP_TP,arm_AP_SK,"
 			"slp_FH,slp_SH,slp_RH,slp_FT,slp_ST,slp_RT\n");
 
 		for (i=0; i<SPWOOB_UCNT; i++) {
@@ -185,7 +186,8 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 				up->radio,up->irvis,up->fc,up->rf,up->stab,up->rof,up->load_cap,up->load_cost,up->swim,up->smkdev,
 				up->wpn1,up->wpn1_HEammo,up->wpn1_APammo,up->wpn1_HEATammo,up->wpn1_APCRammo,
 				up->wpn2,up->wpn2_HEammo,up->wpn2_APammo,up->wpn3,up->wpn3_HEammo,up->wpn3_APammo,up->wpn4,up->wpn4_HEammo,up->wpn4_APammo,
-				up->arm_FH,up->arm_SH,up->arm_RH,up->arm_FT,up->arm_ST,up->arm_RT,up->arm_TP,up->arm_SK,
+				up->arm_HE_FH,up->arm_HE_SH,up->arm_HE_RH,up->arm_HE_FT,up->arm_HE_ST,up->arm_HE_RT,up->arm_HE_TP,up->arm_HE_SK,
+				up->arm_AP_FH,up->arm_AP_SH,up->arm_AP_RH,up->arm_AP_FT,up->arm_AP_ST,up->arm_AP_RT,up->arm_AP_TP,up->arm_AP_SK,
 				up->slp_FH,up->slp_SH,up->slp_RH,up->slp_FT,up->slp_ST,up->slp_RT);
 		}
 		fclose (file);
@@ -218,7 +220,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 }
 
 void
-spwoob_dump (SPWOOB *oob, char *base)
+spwoob_dump (SPWOOB *oob, char *base, bool raw)
 {
 	int	i;
 
@@ -227,9 +229,7 @@ spwoob_dump (SPWOOB *oob, char *base)
 	for (i=0; i<SPWOOB_DCNT; i++) {
 		if (oob->data[i]) {
 			spwoob_dump_data (oob->data[i], base);
-#if DUMPRAWOOB
-			spwoob_dump_raw_data ((RAWOOB*)oob->data[i]->rdata, oob->data[i]->id, base);
-#endif /* DUMPRAWOOB */
+			if (raw) spwoob_dump_raw_data ((RAWOOB*)oob->data[i]->rdata, oob->data[i]->id, base);
 		}
 	}
 }

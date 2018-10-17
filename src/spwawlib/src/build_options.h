@@ -21,8 +21,5 @@
 /* Set to 1 to enable unit/formation detection tracing */
 #define	UFDTRACING	1
 
-/* Set to 1 to enable dumping the raw OOB data */
-#define	DUMPRAWOOB	1
-
 #endif	/* BUILD_OPTIONS_H */
 

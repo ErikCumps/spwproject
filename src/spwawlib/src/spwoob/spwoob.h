@@ -29,6 +29,6 @@ extern const char *	spwoob_id2people	(BYTE id);
 extern const char *	spwoob_id2nation	(BYTE id);
 extern const char *	spwoob_id2prefix	(BYTE id);
 
-extern void		spwoob_dump		(SPWOOB *oob, char *base);
+extern void		spwoob_dump		(SPWOOB *oob, char *base, bool raw);
 
 #endif	/* INTERNAL_SPWOOB_H */

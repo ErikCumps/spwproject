@@ -70,20 +70,20 @@ typedef struct s_RAWOOB {
 		}	wpn_ammo	[SPWOOB_UCNT];
 		BYTE	speed		[SPWOOB_UCNT];
 		struct s_arm {
-			BYTE	steel_FH;
-			BYTE	steel_SH;
-			BYTE	steel_RH;
-			BYTE	steel_FT;
-			BYTE	steel_ST;
-			BYTE	steel_RT;
-			BYTE	steel_TP;
-			BYTE	heat_FH;
-			BYTE	heat_SH;
-			BYTE	heat_RH;
-			BYTE	heat_FT;
-			BYTE	heat_ST;
-			BYTE	heat_RT;
-			BYTE	heat_TP;
+			BYTE	AP_FH;
+			BYTE	AP_SH;
+			BYTE	AP_RH;
+			BYTE	AP_FT;
+			BYTE	AP_ST;
+			BYTE	AP_RT;
+			BYTE	AP_TP;
+			BYTE	HE_FH;
+			BYTE	HE_SH;
+			BYTE	HE_RH;
+			BYTE	HE_FT;
+			BYTE	HE_ST;
+			BYTE	HE_RT;
+			BYTE	HE_TP;
 		}	arm		[SPWOOB_UCNT];
 		BYTE	__data31	[SPWOOB_UCNT];		/* ???			*/
 		BYTE	__data32	[SPWOOB_UCNT];		/* ???			*/

@@ -1,0 +1,58 @@
+W.kill.AP	-> W.kill		--> W.kill_AP ? OK
+W.kill.HE				--> W.kill_HE
+W.pen.AP	-> W.pen_AP
+W.pen.HE	-> W.pen_HE
+W.rng_APCR	-> W.range_APCR
+W.rng_max	-> W.range_max
+
+U.arm.heat_FH				--> U.arm_HE_FH
+U.arm.heat_FT				--> U.arm_HE_FT
+U.arm.heat_RH				--> U.arm_HE_RH
+U.arm.heat_RT				--> U.arm_HE_RT
+U.arm.heat_SH				--> U.arm_HE_SH
+U.arm.heat_ST				--> U.arm_HE_ST
+U.arm.heat_TP				--> U.arm_HE_TP
+U.arm.steel_FH	-> U.arm_FH (x10)	--> U.arm_AP_FH ? OK
+U.arm.steel_FT	-> U.arm_FT (x10)	--> U.arm_AP_FT ? OK
+U.arm.steel_RH	-> U.arm_RH (x10)	--> U.arm_AP_RH ? OK
+U.arm.steel_RT	-> U.arm_RT (x10)	--> U.arm_AP_RT ? OK
+U.arm.steel_SH	-> U.arm_SH (x10)	--> U.arm_AP_SH ? OK
+U.arm.steel_ST	-> U.arm_ST (x10)	--> U.arm_AP_ST ? OK
+U.arm.steel_TP	-> U.arm_TP (x10)	--> U.arm_AP_TP ? OK
+U.icon					--> U.icon
+U.icon_desert				--> U.icon_desert
+U.icon_winter				--> U.icon_winter
+U.lbm					--> U.lbm
+U.movcl		-> U.mclass
+U.sound					--> U.sound
+U.wpn.w1	-> U.wpn1
+U.wpn.w2	-> U.wpn2
+U.wpn.w3	-> U.wpn3
+U.wpn.w4	-> U.wpn4
+U.wpn_ammo.AP1	-> U.wpn1_APammo
+U.wpn_ammo.AP2	-> U.wpn2_APammo
+U.wpn_ammo.AP3	-> U.wpn3_APammo
+U.wpn_ammo.AP4	-> U.wpn4_APammo
+U.wpn_ammo.HE1	-> U.wpn1_HEammo
+U.wpn_ammo.HE2	-> U.wpn2_HEammo
+U.wpn_ammo.HE3	-> U.wpn3_HEammo
+U.wpn_ammo.HE4	-> U.wpn4_HEammo
+U.wpn_snd.s1				--> U.wpn1_sound
+U.wpn_snd.s2				--> U.wpn2_sound
+U.wpn_snd.s3				--> U.wpn3_sound
+U.wpn_snd.s4				--> U.wpn4_sound
+
+### U.slp_FH = 0
+### U.slp_FT = 0
+### U.slp_RH = 0
+### U.slp_RT = 0
+### U.slp_SH = 0
+### U.slp_ST = 0
+
+F.end_mo
+F.exp_mod
+F.mor_mod
+F.urid		-> F.unit_ids
+
+### F.unit_cnt = 1
+### F.stat = SPWOOB_FSTAT_D
