@@ -31,7 +31,8 @@ typedef struct s_SPWAW_SAVEGAME_SECTION {
 /*! SPWAW savegame content structure */
 typedef struct s_SPWAW_SAVEGAME {
 	SPWAW_SAVEGAME_COMMENT	comment;			/*!< savegame comment content	*/
-	SPWAW_SAVEGAME_SECTION	sections[SPWAW_SECTION_COUNT];	/*!< savegame sections content	*/
+	//SPWAW_SAVEGAME_SECTION	sections[SPWAW_SECTION_COUNT];	/*!< savegame sections content	*/
+	SPWAW_SAVEGAME_SECTION	sections[SPWW2_SECTION_COUNT];	/*!< savegame sections content	*/
 } SPWAW_SAVEGAME;
 
 

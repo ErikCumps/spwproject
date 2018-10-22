@@ -26,7 +26,8 @@ SPWAW_savegame_new (SPWAW_SAVEGAME **game)
 	p = safe_malloc (SPWAW_SAVEGAME); COOM (p, "SPWAW_SAVEGAME");
 
 	map = gamedata_secmap();
-	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	//for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	for (i=0; i<SPWW2_SECTION_COUNT; i++) {
 		p->sections[i].idx = map[i].idx;
 	}
 
@@ -47,7 +48,8 @@ SPWAW_savegame_free (SPWAW_SAVEGAME **game)
 	p = *game; *game = NULL;
 	if (p) {
 		if (p->comment.data) safe_free (p->comment.data);
-		for (int i=0; i<SPWAW_SECTION_COUNT; i++) {
+		//for (int i=0; i<SPWAW_SECTION_COUNT; i++) {
+		for (int i=0; i<SPWW2_SECTION_COUNT; i++) {
 			if (p->sections[i].data) safe_free (p->sections[i].data);
 		}
 
@@ -82,7 +84,8 @@ SPWAW_savegame_load (const char *dir, int id, SPWAW_SAVEGAME **game)
 	COOMGOTO (p->comment.data, "SPWAW_SAVEGAME comment data", handle_error);
 	memcpy (p->comment.data, &(data->cmt), p->comment.size);
 
-	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	//for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	for (i=0; i<SPWW2_SECTION_COUNT; i++) {
 		p->sections[i].idx = data->MAP[i].idx;
 		p->sections[i].size = data->MAP[i].size;
 
@@ -123,9 +126,11 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 		FAILGOTO (SPWERR_FAILED, "invalid comment data in SPWAW_SAVEGAME", handle_error);
 	memcpy (&(data->cmt), p->comment.data, p->comment.size);
 
-	for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	//for (i=0; i<SPWAW_SECTION_COUNT; i++) {
+	for (i=0; i<SPWW2_SECTION_COUNT; i++) {
 		SPWAW_SAVEGAME_SECTION *sp = NULL;
-		for (j=0; j<SPWAW_SECTION_COUNT; j++) {
+		//for (j=0; j<SPWAW_SECTION_COUNT; j++) {
+		for (j=0; j<SPWW2_SECTION_COUNT; j++) {
 			if (p->sections[j].idx == data->MAP[i].idx) {
 				sp = &(p->sections[j]);
 				break;

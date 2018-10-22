@@ -177,6 +177,9 @@ freegame (GAMEDATA **ptr)
 	if (*ptr) safe_free (*ptr);
 }
 
+//#define	SPWAW_SAVEGAME_BASE "save"
+#define	SPWW2_SAVEGAME_BASE "SpSv"
+
 static bool
 open_gamefiles (const char *dir, int id, GAMEFILE *game)
 {
@@ -190,11 +193,11 @@ open_gamefiles (const char *dir, int id, GAMEFILE *game)
 	game->cmt_fd = game->dat_fd = -1;
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.cmt", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\" SPWW2_SAVEGAME_BASE "%03.3d.cmt", dir, id);
 	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.dat", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\" SPWW2_SAVEGAME_BASE "%03.3d.dat", dir, id);
 	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
 
 	game->cmt_fd = open (game->cmt_name, O_RDONLY|O_BINARY);
