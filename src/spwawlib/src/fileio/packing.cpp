@@ -141,7 +141,7 @@ unpack_urlc (BBR *bbr, unsigned char ulb, SBW *sbw, DWORD offset)
 
 
 static DWORD
-unpack (int fd, DWORD len, void *dst, DWORD size)
+unpack (int fd, DWORD len, void **dst, DWORD *size)
 {
 	BBR		*bbr = NULL;
 	SBW		*sbw = NULL;
@@ -150,8 +150,10 @@ unpack (int fd, DWORD len, void *dst, DWORD size)
 	unsigned char	c;
 	int		rl;
 
+	if (!dst || !size) return (0);
+
 	if ((bbr = bbread_init (fd, len)) == 0) return (0);
-	if ((sbw = sbwrite_init (dst, size)) == 0) return (0);
+	if ((sbw = sbwrite_init (*dst, *size)) == 0) return (0);
 
 	PACKLOG4 ("UNPACK %lu (0x%8.8x) -> %lu (0x%8.8x)\n", len, len, size, size);
 
@@ -178,7 +180,11 @@ unpack (int fd, DWORD len, void *dst, DWORD size)
 		}
 	}
 
-	sbwrite_stop (sbw);
+	if (!*dst) {
+		sbwrite_stop (sbw, (char **)dst, (long *)size);
+	} else {
+		sbwrite_stop (sbw);
+	}
 	bbread_stop (bbr);
 
 	return (done);
@@ -344,17 +350,14 @@ gamedata_load_all (GAMEFILE *file, GAMEDATA *dst)
 				bseekset (file->dat_fd, bseekget(file->dat_fd)+block.size);
 				continue;
 			}
-			void *dptr = sp->ptr;
-			DWORD size = sp->size;
 			if (block.flag & FLAG_COMPRESSED) {
-				if (unpack (file->dat_fd, block.size, dptr, size) != size) {
+				if (unpack (file->dat_fd, block.size, &(sp->ptr), &(sp->size)) != sp->size) {
 					ERROR2 ("failed to unpack section %d (%lu bytes)", block.section, block.size);
 					//return (false);
 				}
-				log ("unpacked section %d: %lu bytes -> %lu bytes\n", block.section, block.size, size);
+				log ("unpacked section %d: %lu bytes -> %lu bytes\n", block.section, block.size, sp->size);
 			} else {
-				//if (!bread (file->dat_fd, (char *)dptr, size, true)) {
-				if (!bread (file->dat_fd, (char *)dptr, block.size, true)) {
+				if (!bread (file->dat_fd, (char *)sp->ptr, block.size, true)) {
 					ERROR2 ("failed to read section %d (%lu bytes)", block.section, block.size);
 					return (false);
 				}
@@ -399,7 +402,7 @@ gamedata_load_section (GAMEFILE *file, DWORD sec, void *dst, unsigned long len)
 						return (false);
 					}
 					if (block.flag & FLAG_COMPRESSED) {
-						if (unpack (file->dat_fd, block.size, dst, size) != size) {
+						if (unpack (file->dat_fd, block.size,&dst, &size) != size) {
 							ERROR2 ("failed to unpack section %d (%lu bytes)", sec, size);
 							return (false);
 						}

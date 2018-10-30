@@ -119,7 +119,9 @@ static SECMAP	MAP[SPWW2_SECTION_COUNT] = {
 	{ 57,	(void *)offsetof (GAMEDATA, sec57),	SIZESEC57,	true	},
 	{ 59,	(void *)offsetof (GAMEDATA, sec59),	SIZESEC59,	true	},
 	{ 48,	(void *)offsetof (GAMEDATA, sec48),	SIZESEC48,	true	},
-	{ 49,	(void *)offsetof (GAMEDATA, sec49),	SIZESEC49,	true	},
+	//{ 49,	(void *)offsetof (GAMEDATA, sec49),	SIZESEC49,	true	},
+	{ 49,	0,					0,		true	},
+	{ 50,	0,					0,		true	},
 };
 
 
@@ -139,15 +141,18 @@ game_new (void)
 	if (!ptr) return (NULL);
 
 	clear_ptr (ptr);
-	memcpy (ptr->MAP, &MAP, sizeof (MAP));
+	memcpy (ptr->MAP, gamedata_secmap(), sizeof (ptr->MAP));
 
 	//for (i=0; i<SPWAW_SECTION_COUNT; i++) {
 	for (i=0; i<SPWW2_SECTION_COUNT; i++) {
-		DWORD p = (DWORD)ptr->MAP[i].ptr;
-		p += (DWORD)ptr;
+		DWORD	p = 0;
+		if (ptr->MAP[i].size) {
+			p = (DWORD)ptr->MAP[i].ptr + (DWORD)ptr;
+		} else {
+			ptr->MAP[i].freeme = true;
+		}
 		ptr->MAP[i].ptr = (void *)p;
 	}
-
 
 	return (ptr);
 }
@@ -173,8 +178,18 @@ gamedata_section (SECMAP *map, int idx)
 static void
 freegame (GAMEDATA **ptr)
 {
+	GAMEDATA	*p;
+	int		i;
+
 	if (!ptr) return;
-	if (*ptr) safe_free (*ptr);
+
+	p = *ptr; *ptr = NULL;
+	if (p) {
+		for (i=0; i<SPWW2_SECTION_COUNT; i++) {
+			if (p->MAP[i].freeme) safe_free (p->MAP[i].ptr);
+		}
+		safe_free (p);
+	}
 }
 
 //#define	SPWAW_SAVEGAME_BASE "save"
@@ -245,11 +260,11 @@ create_gamefiles (const char *dir, int id, GAMEFILE *game)
 	game->cmt_fd = game->dat_fd = -1;
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.cmt", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\" SPWW2_SAVEGAME_BASE "%03.3d.cmt", dir, id);
 	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\save%03.3d.dat", dir, id);
+	snprintf (name, sizeof (name) - 1, "%s\\" SPWW2_SAVEGAME_BASE "%03.3d.dat", dir, id);
 	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
 
 	game->cmt_fd = open (game->cmt_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
@@ -427,8 +442,7 @@ game_save_full (GAMEDATA *src, const char *dir, unsigned int id)
 void
 game_free (GAMEDATA **game)
 {
-	if (!game || !*game) return;
-	free (*game); *game = NULL;
+	freegame (game);
 }
 
 bool

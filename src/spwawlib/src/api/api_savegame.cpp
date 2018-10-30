@@ -141,9 +141,15 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 
 		if (!sp->data)
 			FAILGOTO (SPWERR_FAILED, "missing section data in SPWAW_SAVEGAME", handle_error);
-		if (sp->size != data->MAP[i].size)
-			FAILGOTO (SPWERR_FAILED, "invalid section data in SPWAW_SAVEGAME", handle_error);
-		memcpy (data->MAP[i].ptr, sp->data, sp->size);
+		if (data->MAP[i].size) {
+			if (sp->size != data->MAP[i].size)
+				FAILGOTO (SPWERR_FAILED, "invalid section data in SPWAW_SAVEGAME", handle_error);
+			memcpy (data->MAP[i].ptr, sp->data, sp->size);
+		} else {
+			data->MAP[i].ptr = sp->data;
+			data->MAP[i].size = sp->size;
+			data->MAP[i].freeme = false;
+		}
 	}
 
 	if (!game_save_full (data, dir, id))

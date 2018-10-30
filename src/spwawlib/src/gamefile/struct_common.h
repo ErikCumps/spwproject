@@ -129,14 +129,6 @@ void	init_FULIST	(FULIST &l);
 void	dump_FULIST	(FULIST &l);
 
 
-typedef struct s_STRUCT49 {
-	union u_u {
-		char	raw[SIZESEC49];
-		struct s_d {
-			char	data[SIZESEC49];
-		} d;
-	} u;
-} STRUCT49;
 typedef struct s_STRUCT52 {
 	union u_u {
 		char	raw[SIZESEC52];

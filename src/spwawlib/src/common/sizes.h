@@ -58,7 +58,6 @@
 //#define	SIZESEC46		60
 //#define	SIZESEC47		6400
 #define	SIZESEC48		72
-#define	SIZESEC49		73673
 #define	SIZESEC51		2
 #define	SIZESEC52		32000
 #define	SIZESEC53		2
