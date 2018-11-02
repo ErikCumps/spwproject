@@ -40,9 +40,9 @@ section	size	info
 32	2	??
 33	27	??
 34	40000	?? Unit leader information
-35	24000	?? Formation information?
+35	24000	Formation information?
 36	780	??
-37	594	?? Game data
+37	594	Game data
 38	4	Map width
 39	4	Map height
 40	120	??
@@ -638,39 +638,38 @@ Description:	?????
 section #34	<size=0x00009C40>	(size=40000, flag=1)
 ----------------------------------------------------------------------------------------------
 
-	Description:	Unit leader information
-	Type:		RECORDS
-	
-	Record size:	40	(0x0028)
-	Record count:	1000	(0x03e8)
-	
-	offset	size	type	description
-	
-	0x0000	16	ASCIIZ	Name
-???	0x0010	2	UINT2	Unit number
-???	0x0012	1	???	???
-???	0x0013	1	ENUM	Rank			<1|2|...9|10>
-???	0x0014	1	UINT1	Rally rating
-???	0x0015	1	UINT1	Infantry skill
-???	0x0016	1	UINT1	Artillery skill
-???	0x0017	1	UINT1	Armor skill
-???	0x0018	4	???	???
-???	0x001C	1	UINT1	Kills
-???	0x001D	1	???	???
-???	0x001E	1	FLAG	Status			<0|1>	<dead|alive>
-???	0x001F	1	???	???
-???	
-???	[ENUM:Leader rank]
-???		 1	Pvt	Private
-???		 2	Cpl	Corporal
-???		 3	Sgt	Sergeant
-???		 4	2Lt	Second Lietenant
-???		 5	1Lt	First Lieutenant
-???		 6	Cpt	Captain
-???		 7	Maj	Major
-???		 8	LtC	Lietenant-Colonel
-???		 9	Col	Colonel
-???		10 	Gen	General
+Description:	Unit leader information
+Type:		RECORDS
+
+Record size:	40	(0x0028)
+Record count:	1000	(0x03e8)
+
+offset	size	type	description
+
+0x0000	16	ASCIIZ	Name (including trailing '\n')
+0x0010	2	UINT2	Unit ID
+0x0012	1	???	???
+0x0013	1	ENUM	Rank			<1|2|...9|10>
+0x0014	1	UINT1	Rally rating
+0x0015	1	UINT1	Infantry skill
+0x0016	1	UINT1	Artillery skill
+0x0017	1	UINT1	Armor skill
+0x0018	3	???	???
+0x001B	2	UINT2	Kills
+0x001D	1	FLAG	Status			<0|1>	<dead|alive>
+0x001E	10	???	???
+
+[ENUM:Leader rank]
+	 1	Pvt	Private
+	 2	Cpl	Corporal
+	 3	Sgt	Sergeant
+	 4	2Lt	Second Lietenant
+	 5	1Lt	First Lieutenant
+	 6	Cpt	Captain
+	 7	Maj	Major
+	 8	LtC	Lietenant-Colonel
+	 9	Col	Colonel
+	10 	Gen	General
 
 
 
