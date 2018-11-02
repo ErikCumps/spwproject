@@ -32,6 +32,19 @@ error (char *fmt, ...)
 }
 
 void
+warn (char *fmt, ...)
+{
+	va_list	AP;
+	char	buf[1024];
+
+	memset (buf, 0, sizeof (buf));
+	va_start (AP, fmt);
+	vsnprintf (buf, sizeof (buf) - 1, fmt, AP);
+	va_end (AP);
+	fprintf (stderr, "+++ Warning: %s\n\n", buf);
+}
+
+void
 read_data (char *fn, void **data, DWORD *size)
 {
 	int		fd;
@@ -43,7 +56,10 @@ read_data (char *fn, void **data, DWORD *size)
 	*size = 0;
 
 	fd = open (fn, O_RDONLY|O_BINARY, 0666);
-	if (fd == -1) error ("failed to open input file \"%s\" for reading!", fn);
+	if (fd == -1) {
+		warn ("failed to open input file \"%s\" for reading", fn);
+		return;
+	}
 
 	if (fstat (fd, &st) == -1) error ("failed to stat() input file \"%s\"!", fn);
 

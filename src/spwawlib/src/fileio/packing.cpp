@@ -435,6 +435,8 @@ gamedata_save_all (GAMEDATA *src, GAMEFILE *file)
 
 		//for (i=1; i<SPWAW_SECTION_COUNT; i++) {
 		for (i=1; i<SPWW2_SECTION_COUNT; i++) {
+			if (src->MAP[i].optional && (src->MAP[i].size == 0)) continue;
+
 			block.section = src->MAP[i].idx;
 			if (src->MAP[i].compress) {
 				if (pack (src->MAP[i].ptr, src->MAP[i].size, &dst, &size) != size) {

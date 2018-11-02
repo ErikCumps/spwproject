@@ -83,6 +83,7 @@ typedef struct s_SECMAP {
 	void	*ptr;		/* offset					*/
 	DWORD	size;		/* size	(0 if section must be allocated)	*/
 	bool	compress;	/* section likes to be compressed		*/
+	bool	optional;	/* section is optional				*/
 	bool	freeme;		/* section must be freed after use		*/
 } SECMAP;
 

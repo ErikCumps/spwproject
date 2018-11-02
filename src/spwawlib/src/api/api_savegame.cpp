@@ -137,10 +137,17 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 			}
 		}
 		if (!sp)
-			FAILGOTO (SPWERR_FAILED, "missing section data in SPWAW_SAVEGAME", handle_error);
+			FAILGOTO (SPWERR_FAILED, "missing section in SPWAW_SAVEGAME", handle_error);
 
-		if (!sp->data)
-			FAILGOTO (SPWERR_FAILED, "missing section data in SPWAW_SAVEGAME", handle_error);
+		if (!sp->data) {
+			if (data->MAP[i].optional) {
+				// ignore missing optional sections
+				continue;
+			} else {
+				FAILGOTO (SPWERR_FAILED, "missing section data in SPWAW_SAVEGAME", handle_error);
+			}
+		}
+
 		if (data->MAP[i].size) {
 			if (sp->size != data->MAP[i].size)
 				FAILGOTO (SPWERR_FAILED, "invalid section data in SPWAW_SAVEGAME", handle_error);
