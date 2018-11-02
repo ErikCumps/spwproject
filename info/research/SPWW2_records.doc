@@ -678,31 +678,28 @@ section #34	<size=0x00009C40>	(size=40000, flag=1)
 section #35	<size=0x00005dc0>	(size=24000, flag=1)
 ----------------------------------------------------------------------------------------------
 
-	Description:	Formation information
-	Type:		RECORDS
-	
-	Record size:	60	(0x003C)
-	Record count:	400	(0x0190)
-	
-	offset	size	type	description
-	
-	0x0000	16	ASCIIZ	Name
-???	0x0010	1	UINT1	Formation OOB record ID?	// this can be 0!
-???	0x0011	1	???	???
-???	0x0012	2	UINT2	Higher command leader unit ID
-???	0x0014	2	UINT2	Formation leader unit ID
-???	0x0016	6	???	???
-???	0x001C	1	UINT1	Player ID		<0|1>	<player#1/player#2>
-???	0x001D	1	???	???
-???	0x001E	1	UINT1	Formation ID
-???	0x001F	1	???	???
-???	0x0020	1	FLAG	Formation status
-???	0x0021	13	??	??
-???	
-???	[FLAG:Formation status]
-???		0	regular non-campaign formation
-???		1	campaign core formation
-???		2	campaign auxilliary formation
+Description:	Formation information
+Type:		RECORDS
+
+Record size:	60	(0x003C)
+Record count:	400	(0x0190)
+
+offset	size	type	description
+
+0x0000	16	ASCIIZ	Name
+0x0010	2	UINT2	Formation OOB record ID		// this can be 0?
+0x0012	2	UINT2	Higher command leader unit ID
+0x0014	2	UINT2	Formation leader unit ID
+0x0016	6	???	???
+0x001C	2	UINT2	Player ID		<0|1>	<player#1/player#2>
+0x001E	2	UINT2	Formation ID
+0x0020	1	FLAG	Formation status
+0x0021	27	??	??
+
+[FLAG:Formation status]
+	0	regular non-campaign formation
+	1	campaign core formation
+	2	campaign auxilliary formation
 
 
 
