@@ -85,91 +85,91 @@ Record count:	800	(0x0320)
 offset	size	type	description
 
 0x0000	16	ASCIIZ	Name
-0x0010	1	INT1	Class ID
+0x0010	1	UINT1	Class ID
 0x0011	1	???	???						{0x??}
-0x0012	2	INT2	Image number
-0x0014	1	INT1	Component ID			
-0x0015	1	INT1	Component subID
+0x0012	2	UINT2	Image number
+0x0014	1	UINT1	Component ID
+0x0015	1	UINT1	Component subID
 0x0016	2	???	???						{[2]0x00}
-0x0018	1	INT1	Size
+0x0018	1	UINT1	Size
 0x0019	1	???	???						{0x00}
-0x001A	2	INT2	Slot0 weapon type ID
-0x001C	2	INT2	Slot1 weapon type ID
-0x001E	2	INT2	Slot2 weapon type ID
-0x0020	2	INT2	Slot3 weapon type ID
+0x001A	2	UINT2	Slot0 weapon type ID
+0x001C	2	UINT2	Slot1 weapon type ID
+0x001E	2	UINT2	Slot2 weapon type ID
+0x0020	2	UINT2	Slot3 weapon type ID
 0x0022	4	???	???						{[4]0x00}
 0x0026	8	???	???						{[4]0x01 [4]0x00}
-0x002E	4	INT1	Slot0 weapon ammo count (HE/AP/S1/S2)
-0x0032	4	INT1	Slot1 weapon ammo count (HE/AP/S1/S2)
-0x0036	4	INT1	Slot2 weapon ammo count (HE/AP/S1/S2)
-0x003A	4	INT1	Slot3 weapon ammo count (HE/AP/S1/S2)
+0x002E	4	UINT1	Slot0 weapon ammo count (HE/AP/S1/S2)
+0x0032	4	UINT1	Slot1 weapon ammo count (HE/AP/S1/S2)
+0x0036	4	UINT1	Slot2 weapon ammo count (HE/AP/S1/S2)
+0x003A	4	UINT1	Slot3 weapon ammo count (HE/AP/S1/S2)
 0x003E	36	STRUCT	Armor strength values
 0x0062	9	???	???						{[9]0x00}
 0x006B	6	STRUCT	Armor slope values
 0x0071	3	???	???						{[3]0x00}
-0x0074	1	INT1	Men		// may be 0 with non-dead unit in case of abandonment
-0x0075	1	INT1	Speed
-0x0076	1	INT1	Suppression
-0x0077	1	INT1	Experience
-0x0078	1	INT1	Morale
-0x0079	1	INT1	Status (ready/pinned/...)
-0x007A	2	INT2	Damage
-0x007C	2	INT2	Current target unit number (0xFFFF if no target)
+0x0074	1	UINT1	Men		// may be 0 with non-dead unit in case of abandonment
+0x0075	1	UINT1	Speed
+0x0076	1	UINT1	Suppression
+0x0077	1	UINT1	Experience
+0x0078	1	UINT1	Morale
+0x0079	1	UINT1	Status (ready/pinned/...)
+0x007A	2	UINT2	Damage
+0x007C	2	UINT2	Current target unit number (0xFFFF if no target)
 0x007E	1	??	???						{0x00}
-0x007F	1	INT1	Set range
+0x007F	1	UINT1	Set range
 0x0080	1	???	???						{0x00}
-0x0081	1	INT1	Night vision
+0x0081	1	UINT1	Night vision
 0x0082	2	???	???						{[2]0xFF}
 0x0084	2	???	???						{0x00 0x01}
-0x0086	1	INT1	Fire control
+0x0086	1	UINT1	Fire control
 0x0087	1	???	???						{0x00}
-0x0088	1	INT1	Cost
+0x0088	1	UINT1	Cost
 0x0089	1	???	???						{0x00}
-0x008A	2	INT2	Leader number	(0xFFFF if no leader == abandoned)
+0x008A	2	UINT2	Leader number	(0xFFFF if no leader == abandoned)
 0x008C	6	???	???						{[6]0x00}
-0x0092	1	INT1	Radio
-0x0093	1	INT1	Smoke ammo
+0x0092	1	UINT1	Radio
+0x0093	1	UINT1	Smoke ammo
 0x0094	4	???	???						{[4]0x??}
-0x0098	2	INT2	Rotation (1?) (CW degrees, 0 = east)
-0x009A	2	INT2	Rotation (2?) (CW degrees, 0 = east)
+0x0098	2	UINT2	Rotation (1?) (CW degrees, 0 = east)
+0x009A	2	UINT2	Rotation (2?) (CW degrees, 0 = east)
 0x009C	4	???	???						{[4]0x00}
 0x00A0	2	???	???						{[2]0xFF}
 0x00A2	2	???	???						{0x00 0x??}
 0x00A4	3	???	???						{[3]0x00}
-0x00A7	1	INT1	OOB country number
-0x00A8	1	INT1	OOB unit number
+0x00A7	1	UINT1	OOB country number
+0x00A8	1	UINT1	OOB unit number
 0x00A9	1	???	???						{0x00}
-0x00AA	1	INT1	Unit type group index (used to group units per type)
+0x00AA	1	UINT1	Unit type group index (used to group units per type)
 0x00AB	1	???	???						{0x00}
 0x00AC	2	???	???						{[2]0xFF}
 0x00AE	2	???	???						{[2]0xFF}
 0x00B0	2	???	???						{[2]0xFF}
 0x00B2	2	???	???						{[2]0xFF}
-0x00B4	2	INT2	Loader unit number
+0x00B4	2	UINT2	Loader unit number
 0x00B6	1	???	???						{0x01}
-0x00B7	1	INT1	Entrenchment status				
+0x00B7	1	UINT1	Entrenchment status
 0x00B8	5	???	???						{[3]0x00 0x01 0x00}
-0x00BD	1	INT1	Rate of Fire
-0x00BE	1	INT1	Targetting
-0x00BF	1	INT1	Range finder value
+0x00BD	1	UINT1	Rate of Fire
+0x00BE	1	UINT1	Targetting
+0x00BF	1	UINT1	Range finder value
 0x00C0	1	???	???						{0x00}
-0x00C1	1	INT1	Loading capacity
+0x00C1	1	UINT1	Loading capacity
 0x00C2	1	???	???						{0x00}
-0x00C3	1	INT1	Loading cost
-0x00C4	2	INT2	Crew unit number (0xFFFF if not abandoned)
-0x00C6	1	INT1	Water movement points
+0x00C3	1	UINT1	Loading cost
+0x00C4	2	UINT2	Crew unit number (0xFFFF if not abandoned)
+0x00C6	1	UINT1	Water movement points
 0x00C7	7	???	???						{[7]0x00}
-0x00CE	1	INT1	Survivability
+0x00CE	1	UINT1	Survivability
 0x00CF	16	???	???						{[6]0x00 [2]0x?? [2]0x46 0x?? 0x00 [3]0x?? 0x00}
-0x00DF	1	INT1	Smoke device flag
+0x00DF	1	UINT1	Smoke device flag
 0x00E0	7	???	???						{[4]0x00 [3]0x01}
-0x00E7	1	INT1	Original manpower
-0x00E8	1	INT1	Stance hex X-coord
-0x00E9	1	INT1	Stance hex Y-coord
+0x00E7	1	UINT1	Original manpower
+0x00E8	1	UINT1	Stance hex X-coord
+0x00E9	1	UINT1	Stance hex Y-coord
 0x00EA	3	???	???						{0x?? [2]0x00}
-0x00ED	1	INT1	Available speed?
+0x00ED	1	UINT1	Available speed?
 0x00EE	12	???	???						{[12]0x00}
-0x00FA	1	INT1	Armor Skirt
+0x00FA	1	UINT1	Armor Skirt
 0x00FB	7	???	???						{[7]0x00}
 
 [INT:Component ID] (starts at 64 for player2)
@@ -216,8 +216,8 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	File ID	(Terxxxzy.shp)
-0x0001	1	INT1	Icon ID
+0x0000	1	UINT1	File ID	(Terxxxzy.shp)
+0x0001	1	UINT1	Icon ID
 
 
 
@@ -235,8 +235,8 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	File ID	(Terxxxzy.shp)
-0x0001	1	INT1	Icon ID
+0x0000	1	UINT1	File ID	(Terxxxzy.shp)
+0x0001	1	UINT1	Icon ID
 
 
 
@@ -254,8 +254,8 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	File ID	(Terxxxzy.shp)
-0x0001	1	INT1	Icon ID
+0x0000	1	UINT1	File ID	(Terxxxzy.shp)
+0x0001	1	UINT1	Icon ID
 
 
 
@@ -273,8 +273,8 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	File ID	(Terxxxzy.shp)
-0x0001	1	INT1	Icon ID
+0x0000	1	UINT1	File ID	(Terxxxzy.shp)
+0x0001	1	UINT1	Icon ID
 
 
 
@@ -292,8 +292,8 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	File ID	(Terxxxzy.shp)
-0x0001	1	INT1	Icon ID
+0x0000	1	UINT1	File ID	(Terxxxzy.shp)
+0x0001	1	UINT1	Icon ID
 
 
 
@@ -311,8 +311,8 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	File ID	(Terxxxzy.shp)
-0x0001	1	INT1	Icon ID
+0x0000	1	UINT1	File ID	(Terxxxzy.shp)
+0x0001	1	UINT1	Icon ID
 
 
 
@@ -334,7 +334,7 @@ offset	size	type	description
 0x0001	1	BITMAP	Terrain feature set #2
 0x0002	1	BITMAP	Terrain feature set #3
 0x0003	1	BITMAP	Terrain feature set #4
-0x0004	2	INT2	Height
+0x0004	2	SINT2	Height
 0x0006	6	???	???
 0x000C	1	CMAP	Secondary road connections (...sides of the hex are number 1,2,4,8,16,32 clockwise around from the east and summed up)
 0x000D	1	CMAP	Primary road connections
@@ -442,7 +442,7 @@ Type:		BLOCK
 
 offset	size	type	description
 
-0x0000	4	INT4	Purchase points
+0x0000	4	UINT4	Purchase points
 
 
 
@@ -474,10 +474,10 @@ Record count:	5400	(0x1518)
 
 offset	size	type	description
 
-0x0000	2	INT2	hex X-coord
-0x0002	2	INT2	hex Y-coord
+0x0000	2	UINT2	hex X-coord
+0x0002	2	UINT2	hex Y-coord
 0x0004	10	???	???						{[2]0x00 [8]0x??}
-0x000E	1	INT1	Spotted flag	<0|1>	<seen|hidden>
+0x000E	1	UINT1	Spotted flag	<0|1>	<seen|hidden>
 0x000F	5	???	???						{0xFF [3]0x00 0x01}
 
 Record ID == unit ID
@@ -578,9 +578,9 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	2	INT2	Tile count
-0x0002	1	INT1	Tile ID + 0xD6 ???
-0x0003	1	INT1	File ID - 1
+0x0000	2	UINT2	Tile count
+0x0002	1	UINT1	Tile ID + 0xD6 ???
+0x0003	1	UINT1	File ID - 1
 0x0004	10	???	???
 
 
@@ -599,7 +599,7 @@ Map order:	Y,X = column#0{x0:y0,y1,...,y239},column#1{x1:y0,y1,...,y239},...,col
 
 offset	size	type	description
 
-0x0000	1	INT1	visibility type?
+0x0000	1	UINT1	visibility type?
 
 	01	default?
 	02	hill level 1?	(height 10)
@@ -653,15 +653,15 @@ Record count:	800	(0x0320)
 offset	size	type	description
 
 0x0000	16	ASCIIZ	Name
-0x0010	2	INT2	Unit number
+0x0010	2	UINT2	Unit number
 0x0012	1	???	???
 0x0013	1	ENUM	Rank			<1|2|...9|10>
-0x0014	1	INT1	Rally rating
-0x0015	1	INT1	Infantry skill
-0x0016	1	INT1	Artillery skill
-0x0017	1	INT1	Armor skill
+0x0014	1	UINT1	Rally rating
+0x0015	1	UINT1	Infantry skill
+0x0016	1	UINT1	Artillery skill
+0x0017	1	UINT1	Armor skill
 0x0018	4	???	???
-0x001C	1	INT1	Kills
+0x001C	1	UINT1	Kills
 0x001D	1	???	???
 0x001E	1	FLAG	Status			<0|1>	<dead|alive>
 0x001F	1	???	???
@@ -693,14 +693,14 @@ Record count:	400	(0x0190)
 offset	size	type	description
 
 0x0000	16	ASCIIZ	Name
-0x0010	1	INT1	Formation OOB record ID?	// this can be 0!
+0x0010	1	UINT1	Formation OOB record ID?	// this can be 0!
 0x0011	1	???	???
-0x0012	2	INT2	Higher command leader unit ID
-0x0014	2	INT2	Formation leader unit ID
+0x0012	2	UINT2	Higher command leader unit ID
+0x0014	2	UINT2	Formation leader unit ID
 0x0016	6	???	???
-0x001C	1	INT1	Player ID		<0|1>	<player#1/player#2>
+0x001C	1	UINT1	Player ID		<0|1>	<player#1/player#2>
 0x001D	1	???	???
-0x001E	1	INT1	Formation ID
+0x001E	1	UINT1	Formation ID
 0x001F	1	???	???
 0x0020	1	FLAG	Formation status
 0x0021	13	??	??
@@ -730,71 +730,71 @@ Type:		BLOCK
 offset	size	type	description
 
 0x0000	3	??	??
-0x0003	1	INT1	Battle date month
-0x0004	1	INT1	Battle date year (-1900)
-0x0005	1	INT1	Battle terrain type
-0x0006	1	INT1	Campaign mode flag??
+0x0003	1	UINT1	Battle date month
+0x0004	1	UINT1	Battle date year (-1900)
+0x0005	1	UINT1	Battle terrain type
+0x0006	1	UINT1	Campaign mode flag??
 0x0007	1	??	??
-0x0008	1	INT1	Country1 OOB ID
-0x0009	1	INT1	Country2 OOB ID
-0x000A	1	INT1	Country3 OOB ID
-0x000B	1	INT1	Country4 OOB ID
-0x000C	1	INT1	Battle mission type player1
-0x000D	1	INT1	Battle mission type player2
-0x000E	1	INT1	Battle max turns
-0x000F	1	INT1	Battle current turn
-0x0010	21	INT1	Battle victory hex: X-coords
-0x0025	21	INT1	Battle victory hex: y-coords
-0x003A	21	INT1	Battle victory hex: amounts
-0x004F	21	INT1	Battle victory hex: side	<0|1|2>	<player1|player2|neutral>
+0x0008	1	UINT1	Country1 OOB ID
+0x0009	1	UINT1	Country2 OOB ID
+0x000A	1	UINT1	Country3 OOB ID
+0x000B	1	UINT1	Country4 OOB ID
+0x000C	1	UINT1	Battle mission type player1
+0x000D	1	UINT1	Battle mission type player2
+0x000E	1	UINT1	Battle max turns
+0x000F	1	UINT1	Battle current turn
+0x0010	21	UINT1	Battle victory hex: X-coords
+0x0025	21	UINT1	Battle victory hex: y-coords
+0x003A	21	UINT1	Battle victory hex: amounts
+0x004F	21	UINT1	Battle victory hex: side	<0|1|2>	<player1|player2|neutral>
 0x0064	2	??	??
-0x0066	1	INT1	Battle visibility
-0x0067	1	INT1	Battle wind direction (blows to)	<0..5=E,SE,SW,W,NW,NE>
-0x0068	1	INT1	Battle weather
-0x0069	1	INT1	Battle date day
-0x006A	1	INT1	Battle date hour
+0x0066	1	UINT1	Battle visibility
+0x0067	1	UINT1	Battle wind direction (blows to)	<0..5=E,SE,SW,W,NW,NE>
+0x0068	1	UINT1	Battle weather
+0x0069	1	UINT1	Battle date day
+0x006A	1	UINT1	Battle date hour
 0x006B	9	??	??
-0x0074	2	INT2	Campaign battles fought
-0x0076	2	INT2	Campaign major victories
+0x0074	2	UINT2	Campaign battles fought
+0x0076	2	UINT2	Campaign major victories
 0x0078	112	ASCII	Battle location description
-0x00E8	2	INT2	Campaign max battles
-0x00EA	2	INT2	Campaign start date month
-0x00EC	2	INT2	Campaign start date year (-1900)
-0x00EE	2	INT2	Campaign end date month
-0x00F0	2	INT2	Campaign end date year (-1900)
+0x00E8	2	UINT2	Campaign max battles
+0x00EA	2	UINT2	Campaign start date month
+0x00EC	2	UINT2	Campaign start date year (-1900)
+0x00EE	2	UINT2	Campaign end date month
+0x00F0	2	UINT2	Campaign end date year (-1900)
 0x00F2	16	??	??
-0x0102	2	INT2	Campaign P1 total men losses
-0x0104	2	INT2	Campaign P2 total men losses
+0x0102	2	UINT2	Campaign P1 total men losses
+0x0104	2	UINT2	Campaign P2 total men losses
 0x0106	2	??	??
-0x0108	2	INT2	Campaign P1 total AFV losses
-0x010A	2	INT2	Campaign P1 total APC losses
-0x010C	2	INT2	Campaign P1 total ART losses
+0x0108	2	UINT2	Campaign P1 total AFV losses
+0x010A	2	UINT2	Campaign P1 total APC losses
+0x010C	2	UINT2	Campaign P1 total ART losses
 0x010E	4	??	??
-0x0112	2	INT2	Campaign P1 total soft vehicle losses
-0x0114	2	INT2	Campaign P2 total soft vehicle losses
+0x0112	2	UINT2	Campaign P1 total soft vehicle losses
+0x0114	2	UINT2	Campaign P2 total soft vehicle losses
 0x0116	6	??	??
-0x011C	2	INT2	Campaign P2 total AFV losses
-0x011E	2	INT2	Campaign P2 total APC losses
-0x0120	2	INT2	Campaign P2 total ART losses
+0x011C	2	UINT2	Campaign P2 total AFV losses
+0x011E	2	UINT2	Campaign P2 total APC losses
+0x0120	2	UINT2	Campaign P2 total ART losses
 0x0122	32	??	??
-0x0142	2	INT2	Campaign P1 battle men losses
-0x0144	2	INT2	Campaign P2 battle men losses
+0x0142	2	UINT2	Campaign P1 battle men losses
+0x0144	2	UINT2	Campaign P2 battle men losses
 0x0146	2	??	??
-0x0148	2	INT2	Campaign P1 battle AFV losses
-0x014A	2	INT2	Campaign P1 battle APC losses
-0x014C	2	INT2	Campaign P1 battle ART losses
+0x0148	2	UINT2	Campaign P1 battle AFV losses
+0x014A	2	UINT2	Campaign P1 battle APC losses
+0x014C	2	UINT2	Campaign P1 battle ART losses
 0x014E	4	??	??
-0x0152	2	INT2	Campaign P1 battle soft vehicle losses
-0x0154	2	INT2	Campaign P2 battle soft vehicle losses
+0x0152	2	UINT2	Campaign P1 battle soft vehicle losses
+0x0154	2	UINT2	Campaign P2 battle soft vehicle losses
 0x0156	6	??	??
-0x015C	2	INT2	Campaign P2 battle AFV losses
-0x015E	2	INT2	Campaign P2 battle APC losses
-0x0160	2	INT2	Campaign P2 battle ART losses
+0x015C	2	UINT2	Campaign P2 battle AFV losses
+0x015E	2	UINT2	Campaign P2 battle APC losses
+0x0160	2	UINT2	Campaign P2 battle ART losses
 0x0162	12	??	??
-0x016E	2	INT2	Inverted battle busy flag?
+0x016E	2	UINT2	Inverted battle busy flag?
 0x0170	4	??	??
-0x0174	4	INT4	Campaign P1 battle score
-0x0178	4	INT4	Campaign P2 battle score
+0x0174	4	UINT4	Campaign P1 battle score
+0x0178	4	UINT4	Campaign P2 battle score
 0x017C	896	??	??
 
 [INT:Mission type]
@@ -814,7 +814,7 @@ Type:		BLOCK
 
 offset	size	type	description
 
-0x0000	4	INT4	Width
+0x0000	4	UINT4	Width
 
 
 
@@ -827,7 +827,7 @@ Type:		BLOCK
 
 offset	size	type	description
 
-0x0000	4	INT4	Height
+0x0000	4	UINT4	Height
 
 
 
@@ -909,7 +909,7 @@ Record count:	4	(0x0008)
 offset	size	type	description
 
 0x0000	4	???	???
-0x0004	4	INT4	data size in bytes?
+0x0004	4	UINT4	data size in bytes?
 0x0008	72	???	???
 
 
