@@ -22,7 +22,7 @@ section	size	info
 14	2	??
 15	2	??
 16	1	??
-17	608000	?? Unit position info
+17	608000	Unit position info
 18	200000	??
 19	400	??
 20	1	??
@@ -39,7 +39,7 @@ section	size	info
 31	100	??
 32	2	??
 33	27	??
-34	40000	?? Unit leader information
+34	40000	Unit leader information
 35	24000	Formation information?
 36	780	??
 37	594	Game data
@@ -88,14 +88,13 @@ Record count:	1000	(0x03e8)
 	offset	size	type	description
 	
 	0x0000	16	ASCIIZ	Name
-???	0x0010	1	UINT1	Class ID
-???	0x0011	1	???	???						{0x??}
-???	0x0012	2	UINT2	Image number
-???	0x0014	1	UINT1	Component ID
-???	0x0015	1	UINT1	Component subID
-???	0x0016	2	???	???						{[2]0x00}
-???	0x0018	1	UINT1	Size
-???	0x0019	1	???	???						{0x00}
+	0x0010	1	UINT1	Class ID
+	0x0011	1	???	???						{0x??}
+	0x0012	2	UINT2	Unit icon number
+	0x0014	2	UINT2	Formation record ID
+	0x0016	1	UINT1	Formation subID
+???	0x0017	2	???	???
+	0x0019	1	UINT1	Size
 ???	0x001A	2	UINT2	Slot0 weapon type ID
 ???	0x001C	2	UINT2	Slot1 weapon type ID
 ???	0x001E	2	UINT2	Slot2 weapon type ID
@@ -164,6 +163,12 @@ Record count:	1000	(0x03e8)
 ???	0x00C7	7	???	???						{[7]0x00}
 ???	0x00CE	1	UINT1	Survivability
 ???	0x00CF	16	???	???						{[6]0x00 [2]0x?? [2]0x46 0x?? 0x00 [3]0x?? 0x00}
+
+	0x00D0	1	UINT1	Slot0 weapon OOB record ID
+	0x00D1	1	UINT1	Slot1 weapon OOB record ID
+	0x00D2	1	UINT1	Slot2 weapon OOB record ID
+	0x00D3	1	UINT1	Slot3 weapon OOB record ID
+
 ???	0x00DF	1	UINT1	Smoke device flag
 ???	0x00E0	7	???	???						{[4]0x00 [3]0x01}
 ???	0x00E7	1	UINT1	Original manpower
@@ -174,6 +179,11 @@ Record count:	1000	(0x03e8)
 ???	0x00EE	12	???	???						{[12]0x00}
 ???	0x00FA	1	UINT1	Armor Skirt
 ???	0x00FB	7	???	???						{[7]0x00}
+
+	0x00F8	2	UINT2	Unit winter icon number
+	0x00FA	2	UINT2	Unit desert icon number
+	0x00FC	9	???	???
+
 ???	
 ???	[INT:Component ID] (starts at 64 for player2)
 ???		 0	 A
@@ -458,21 +468,20 @@ Description:	?????
 section #17	<size=0x00094700>	(size=608000, flag=1)
 ----------------------------------------------------------------------------------------------
 
-	Description:	Unit position info
-	Type:		RECORDS
-	
-	Record size:	19	(0x0013)
-	Record count:	32000	(0x7D00)
-	
-	offset	size	type	description
-	
-???	0x0000	2	UINT2	hex X-coord
-???	0x0002	2	UINT2	hex Y-coord
-???	0x0004	10	???	???						{[2]0x00 [8]0x??}
-???	0x000E	1	UINT1	Spotted flag	<0|1>	<seen|hidden>
-???	0x000F	5	???	???						{0xFF [3]0x00 0x01}
-???	
-???	Record ID == unit ID
+Description:	Unit position info
+Type:		RECORDS
+
+Record size:	19	(0x0013)
+Record count:	32000	(0x7D00)
+
+offset	size	type	description
+
+0x0000	2	UINT2	hex X-coord
+0x0002	2	UINT2	hex Y-coord
+0x0004	10	???	???
+0x000E	1	UINT1	Spotted flag	<0|1>	<seen|hidden>
+0x000F	4	???	??????
+Record ID == unit ID
 
 
 
@@ -647,7 +656,7 @@ Record count:	1000	(0x03e8)
 offset	size	type	description
 
 0x0000	16	ASCIIZ	Name (including trailing '\n')
-0x0010	2	UINT2	Unit ID
+0x0010	2	UINT2	Unit record ID
 0x0012	1	???	???
 0x0013	1	ENUM	Rank			<1|2|...9|10>
 0x0014	1	UINT1	Rally rating
@@ -687,8 +696,8 @@ offset	size	type	description
 
 0x0000	16	ASCIIZ	Name
 0x0010	2	UINT2	Formation OOB record ID		// this can be 0?
-0x0012	2	UINT2	Higher command leader unit ID
-0x0014	2	UINT2	Formation leader unit ID
+0x0012	2	UINT2	Higher command leader unit record ID
+0x0014	2	UINT2	Formation leader unit record ID
 0x0016	6	???	???
 0x001C	2	UINT2	Player ID		<0|1>	<player#1/player#2>
 0x001E	2	UINT2	Formation ID
