@@ -6,7 +6,7 @@ Overview:
 section	size	info
 
 0	20	Start header
-1	26100	?? Unit information
+1	26100	Unit information
 2	64000	Map main tile data
 3	64000	Map tile data Sec3
 4	64000	Map tile data Sec4
@@ -56,7 +56,7 @@ section	size	info
 56	32000	Map data Sec56?
 57	32000	Map data Sec57?
 59	986002	??
-48	72	??
+48	72	Turn replay data info?
 49	??	Turn replay data?
 50	??	Turn replay data?
 
@@ -85,133 +85,114 @@ Type:		RECORDS
 Record size:	261	(0x0105)
 Record count:	1000	(0x03e8)
 	
-	offset	size	type	description
-	
-	0x0000	16	ASCIIZ	Name
-	0x0010	1	UINT1	Class ID
-	0x0011	1	???	???						{0x??}
-	0x0012	2	UINT2	Unit icon number
-	0x0014	2	UINT2	Formation record ID
-	0x0016	1	UINT1	Formation subID
-???	0x0017	2	???	???
-	0x0019	1	UINT1	Size
-???	0x001A	2	UINT2	Slot0 weapon type ID
-???	0x001C	2	UINT2	Slot1 weapon type ID
-???	0x001E	2	UINT2	Slot2 weapon type ID
-???	0x0020	2	UINT2	Slot3 weapon type ID
-???	0x0022	4	???	???						{[4]0x00}
-???	0x0026	8	???	???						{[4]0x01 [4]0x00}
-???	0x002E	4	UINT1	Slot0 weapon ammo count (HE/AP/S1/S2)
-???	0x0032	4	UINT1	Slot1 weapon ammo count (HE/AP/S1/S2)
-???	0x0036	4	UINT1	Slot2 weapon ammo count (HE/AP/S1/S2)
-???	0x003A	4	UINT1	Slot3 weapon ammo count (HE/AP/S1/S2)
-???	0x003E	36	STRUCT	Armor strength values
-???	0x0062	9	???	???						{[9]0x00}
-???	0x006B	6	STRUCT	Armor slope values
-???	0x0071	3	???	???						{[3]0x00}
-???	0x0074	1	UINT1	Men		// may be 0 with non-dead unit in case of abandonment
-???	0x0075	1	UINT1	Speed
-???	0x0076	1	UINT1	Suppression
-???	0x0077	1	UINT1	Experience
-???	0x0078	1	UINT1	Morale
-???	0x0079	1	UINT1	Status (ready/pinned/...)
-???	0x007A	2	UINT2	Damage
-???	0x007C	2	UINT2	Current target unit number (0xFFFF if no target)
-???	0x007E	1	??	???						{0x00}
-???	0x007F	1	UINT1	Set range
-???	0x0080	1	???	???						{0x00}
-???	0x0081	1	UINT1	Night vision
-???	0x0082	2	???	???						{[2]0xFF}
-???	0x0084	2	???	???						{0x00 0x01}
-???	0x0086	1	UINT1	Fire control
-???	0x0087	1	???	???						{0x00}
-???	0x0088	1	UINT1	Cost
-???	0x0089	1	???	???						{0x00}
-???	0x008A	2	UINT2	Leader number	(0xFFFF if no leader == abandoned)
-???	0x008C	6	???	???						{[6]0x00}
-???	0x0092	1	UINT1	Radio
-???	0x0093	1	UINT1	Smoke ammo
-???	0x0094	4	???	???						{[4]0x??}
-???	0x0098	2	UINT2	Rotation (1?) (CW degrees, 0 = east)
-???	0x009A	2	UINT2	Rotation (2?) (CW degrees, 0 = east)
-???	0x009C	4	???	???						{[4]0x00}
-???	0x00A0	2	???	???						{[2]0xFF}
-???	0x00A2	2	???	???						{0x00 0x??}
-???	0x00A4	3	???	???						{[3]0x00}
-???	0x00A7	1	UINT1	OOB country number
-???	0x00A8	1	UINT1	OOB unit number
-???	0x00A9	1	???	???						{0x00}
-???	0x00AA	1	UINT1	Unit type group index (used to group units per type)
-???	0x00AB	1	???	???						{0x00}
-???	0x00AC	2	???	???						{[2]0xFF}
-???	0x00AE	2	???	???						{[2]0xFF}
-???	0x00B0	2	???	???						{[2]0xFF}
-???	0x00B2	2	???	???						{[2]0xFF}
-???	0x00B4	2	UINT2	Loader unit number
-???	0x00B6	1	???	???						{0x01}
-???	0x00B7	1	UINT1	Entrenchment status
-???	0x00B8	5	???	???						{[3]0x00 0x01 0x00}
-???	0x00BD	1	UINT1	Rate of Fire
-???	0x00BE	1	UINT1	Targetting
-???	0x00BF	1	UINT1	Range finder value
-???	0x00C0	1	???	???						{0x00}
-???	0x00C1	1	UINT1	Loading capacity
-???	0x00C2	1	???	???						{0x00}
-???	0x00C3	1	UINT1	Loading cost
-???	0x00C4	2	UINT2	Crew unit number (0xFFFF if not abandoned)
-???	0x00C6	1	UINT1	Water movement points
-???	0x00C7	7	???	???						{[7]0x00}
-???	0x00CE	1	UINT1	Survivability
-???	0x00CF	16	???	???						{[6]0x00 [2]0x?? [2]0x46 0x?? 0x00 [3]0x?? 0x00}
+offset	size	type	description
 
-	0x00D0	1	UINT1	Slot0 weapon OOB record ID
-	0x00D1	1	UINT1	Slot1 weapon OOB record ID
-	0x00D2	1	UINT1	Slot2 weapon OOB record ID
-	0x00D3	1	UINT1	Slot3 weapon OOB record ID
+0x0000	16	ASCIIZ	Name
+0x0010	1	UINT1	Class ID
+0x0011	1	???	???
+0x0012	2	UINT2	Unit icon number
+0x0014	2	UINT2	Formation record ID
+0x0016	1	UINT1	Formation subID
+0x0017	2	???	???
+0x0019	1	UINT1	Size
+0x001A	2	UINT2	Slot0 weapon type ID?
+0x001C	2	UINT2	Slot1 weapon type ID?
+0x001E	2	UINT2	Slot2 weapon type ID?
+0x0020	2	UINT2	Slot3 weapon type ID?
+0x0022	12	???	???
+0x002E	4	UINT1	Slot0 weapon ammo count (HE/AP/S1/S2)
+0x0032	4	UINT1	Slot1 weapon ammo count (HE/AP/S1/S2)
+0x0036	4	UINT1	Slot2 weapon ammo count (HE/AP/S1/S2)
+0x003A	4	UINT1	Slot3 weapon ammo count (HE/AP/S1/S2)
+0x003E	36	STRUCT	Armor strength values
+0x0062	9	???	???
+0x006B	6	STRUCT	Armor slope values?	// seem empty?
+0x0071	3	???	???
+0x0074	1	UINT1	Men		// may be 0 with non-dead unit in case of abandonment
+0x0075	1	UINT1	Speed (0 = immobilized)
+0x0076	1	UINT1	Suppression
+0x0077	1	UINT1	Experience
+0x0078	1	UINT1	Morale
+0x0079	1	UINT1	Status (ready/pinned/...)
+0x007A	2	UINT2	Damage
+0x007C	2	UINT2	Current target unit number? (0xFFFF if no target)
+0x007E	1	???	???
+0x007F	1	UINT1	Range
+0x0080	1	UINT1	Night vision
+0x0081	4	???	???
+0x0085	1	UINT1	Fire control
+0x0086	1	UINT1	Cost
+0x0087	1	???	???
+0x0088	2	UINT2	Leader record ID (0xFFFF if no leader == abandoned)
+0x008A	10	???	???
+0x0094	2	UINT2	Rotation (1?) (CW degrees, 0 = east)
+0x0096	2	UINT2	Rotation (2?) (CW degrees, 0 = east)
+0x0098	10	???	???
+0x00A2	1	UINT1	Country OOB ID
+0x00A3	1	UINT1	OOB unit record ID
+0x00A4	1	???	???
+0x00A5	1	UINT1	Unit type group index? (used to group units per type)
+0x00A6	9	???	???
+0x00AF	2	UINT2	Loader unit number
+0x00B1	1	???	???
+0x00B2	1	UINT1	Entrenchment status
+0x00B3	4	???	???
+0x00B7	1	UINT1	Rate of Fire
+0x00B8	1	???	???
+0x00B9	1	UINT1	Range finder value
+0x00BA	1	???	???						{0x00}
+0x00BB	1	UINT1	Loading capacity
+0x00BC	1	???	???
+0x00BD	1	UINT1	Loading cost
+0x00BE	2	UINT2	Crew unit number (0xFFFF if not abandoned)
+0x00C0	1	UINT1	Water movement points?
+0x00C1	2	???	???
+0x00C3	1	UINT1	Survivability
+0x00C4	12	???	???
+0x00D0	1	UINT1	Slot0 weapon OOB record ID
+0x00D1	1	UINT1	Slot1 weapon OOB record ID
+0x00D2	1	UINT1	Slot2 weapon OOB record ID
+0x00D3	1	UINT1	Slot3 weapon OOB record ID
+0x00D4	1	UINT1	Smoke device flag
+0x00D5	11	???	???						{[4]0x00 [3]0x01}
+0X00E0	1	UINT1	Country OOB ID?
+0x00E1	23	???	???
+0x00F8	2	UINT2	Unit winter icon number
+0x00FA	2	UINT2	Unit desert icon number
+0x00FC	9	???	???
 
-???	0x00DF	1	UINT1	Smoke device flag
-???	0x00E0	7	???	???						{[4]0x00 [3]0x01}
-???	0x00E7	1	UINT1	Original manpower
-???	0x00E8	1	UINT1	Stance hex X-coord
-???	0x00E9	1	UINT1	Stance hex Y-coord
-???	0x00EA	3	???	???						{0x?? [2]0x00}
-???	0x00ED	1	UINT1	Available speed?
-???	0x00EE	12	???	???						{[12]0x00}
-???	0x00FA	1	UINT1	Armor Skirt
-???	0x00FB	7	???	???						{[7]0x00}
 
-	0x00F8	2	UINT2	Unit winter icon number
-	0x00FA	2	UINT2	Unit desert icon number
-	0x00FC	9	???	???
+[STRUCT:Armor strength values]
+	[4]Hull		Front	(AP/HE/APCR/HEAT)
+	[4]Hull		Side1	(AP/HE/APCR/HEAT)
+	[4]Hull		Side2	(AP/HE/APCR/HEAT)
+	[4]Hull		Rear	(AP/HE/APCR/HEAT)
+	[4]Turret	Front	(AP/HE/APCR/HEAT)
+	[4]Turret	Side1	(AP/HE/APCR/HEAT)
+	[4]Turret	Side2	(AP/HE/APCR/HEAT)
+	[4]Turret	Rear	(AP/HE/APCR/HEAT)
+	[4]Turret	Top	(AP/HE/APCR/HEAT)
 
-???	
-???	[INT:Component ID] (starts at 64 for player2)
-???		 0	 A
-???		 1	 B
-???		...
-???		26	 Z
-???		27	AA
-???		...
-???	
-???	[STRUCT:Armor strength values]
-???		[4]Hull		Front	(AP/HE/APCR/HEAT)
-???		[4]Hull		Side1	(AP/HE/APCR/HEAT)
-???		[4]Hull		Side2	(AP/HE/APCR/HEAT)
-???		[4]Hull		Rear	(AP/HE/APCR/HEAT)
-???		[4]Turret	Front	(AP/HE/APCR/HEAT)
-???		[4]Turret	Side1	(AP/HE/APCR/HEAT)
-???		[4]Turret	Side2	(AP/HE/APCR/HEAT)
-???		[4]Turret	Rear	(AP/HE/APCR/HEAT)
-???		[4]Turret	Top	(AP/HE/APCR/HEAT)
-???	
-???	[STRUCT:Armor slope values]	
-???		[3]Hull Slope	Front/Side/Rear
-???		[3]Turret Slope	Front/Side/Rear
-???	
-???	[INT:Entrenchment status]
-???		0	Positioned (no entrenchment)
-???		1	In Cover
-???		2	Dug in
+[STRUCT:Armor slope values]
+	[3]Hull Slope	Front/Side/Rear
+	[3]Turret Slope	Front/Side/Rear
+
+
+[UINT1:Unit status]
+	0	Ready
+	1	Pinned
+	2	Retreating?
+	3	Routed
+	4	Abandoned?
+	5	Destroyed
+	6	Burning?
+	7	Buttoned?
+	8	Immobilized?
+	9	Passenger?
+
+[INT:Entrenchment status]
+	0	Positioned (no entrenchment)
+	1	Dug In
 
 
 
@@ -340,7 +321,7 @@ offset	size	type	description
 
 0x0000	2	SINT2	Height
 0x0002	1	UUINT1	terrain defense modifier?
-0x0003	1	UINT1	???
+0x0003	1	???	???
 0x0004	1	UINT1	terrain LoS spotting modifier?
 0x0005	1	UINT1	(00)
 0x0006	1	UINT1	movement radius? (0 = accessible, 1 = not accessible)
@@ -474,14 +455,15 @@ Type:		RECORDS
 Record size:	19	(0x0013)
 Record count:	32000	(0x7D00)
 
+Record ID == unit ID
+
 offset	size	type	description
 
 0x0000	2	UINT2	hex X-coord
 0x0002	2	UINT2	hex Y-coord
 0x0004	10	???	???
 0x000E	1	UINT1	Spotted flag	<0|1>	<seen|hidden>
-0x000F	4	???	??????
-Record ID == unit ID
+0x000F	4	???	???
 
 
 
@@ -605,9 +587,9 @@ offset	size	type	description
 
 0x0000	2	UINT2	???
 
-???	40	<- lake		<- height = -3
-???	10	<- swamp	<- height == -1
-???	1->10	<- height code	<- height/10 + 1
+	1->10	<- height code	<- height/10 + 1
+	10	<- swamp	<- height == -1
+	40	<- lake		<- height = -3
 
 
 
@@ -669,14 +651,15 @@ offset	size	type	description
 0x001E	10	???	???
 
 [ENUM:Leader rank]
+	 0	KIA	Killed In Action
 	 1	Pvt	Private
 	 2	Cpl	Corporal
 	 3	Sgt	Sergeant
-	 4	2Lt	Second Lietenant
+	 4	2Lt	Second Lieutenant
 	 5	1Lt	First Lieutenant
 	 6	Cpt	Captain
 	 7	Maj	Major
-	 8	LtC	Lietenant-Colonel
+	 8	LtC	Lieutenant-Colonel
 	 9	Col	Colonel
 	10 	Gen	General
 
@@ -702,7 +685,7 @@ offset	size	type	description
 0x001C	2	UINT2	Player ID		<0|1>	<player#1/player#2>
 0x001E	2	UINT2	Formation ID
 0x0020	1	FLAG	Formation status
-0x0021	27	??	??
+0x0021	27	???	???
 
 [FLAG:Formation status]
 	0	regular non-campaign formation
@@ -728,10 +711,10 @@ Type:		BLOCK
 	
 offset	size	type	description
 
-0x0000	1	??	??
-0x0001	1	??	??					{0x02}
+0x0000	1	???	???
+0x0001	1	???	???					{0x02}
 0x0002	1	UINT1	Battle location number
-0x0003	1	??	??					{0x00}
+0x0003	1	???	???					{0x00}
 0x0004	1	UINT1	Battle date month
 0x0005	1	UINT1	Battle date year (-1900)
 0x0006	1	UINT1	Battle terrain type?
@@ -749,49 +732,49 @@ offset	size	type	description
 0x0026	21	UINT1	Battle victory hex: y-coords
 0x003B	21	UINT1	Battle victory hex: amounts
 0x0050	21	UINT1	Battle victory hex: side	<0|1|2>	<player1|player2|neutral>
-0x0065	2	??	??					{0X01 0X00}
+0x0065	2	???	???					{0X01 0X00}
 0x0067	1	UINT1	Battle visibility
 0x0068	1	UINT1	Battle wind direction? (blows to)	<0..5=E,SE,SW,W,NW,NE>
-0x0069	4	??	??					{0x00 0x00 0x00 0x00}
+0x0069	4	???	???					{0x00 0x00 0x00 0x00}
 0x006D	2	SINT2	Campaign P1 battle result?	<-2|2>	<Decisive Defeat|Decisive Victory>
 0x006F	2	SINT2	Campaign P2 battle result?
-0x0071	2 	UINT2	??					{0x00 0x00}
+0x0071	2 	UINT2	???					{0x00 0x00}
 0x0073	2	UINT2	Campaign battle count
 0x0075	2 	UINT2	Campaign Decisive Defeats count
-0x0077	2	??	??
+0x0077	2	???	???
 0x0079	2	UINT2	Campaign Marginal Defeats count
-0x007B	2	??	??					{0x00 0x00}
+0x007B	2	???	???					{0x00 0x00}
 0x007D	2	UINT2	Campaign Drawn Battles count
-0x007F	2	??	??					{0x00 0x00}
+0x007F	2	???	???					{0x00 0x00}
 0x0081	2	UINT2	Campaign Marginal Victories count
-0x0083	2	??	??					{0x00 0x00}
+0x0083	2	???	???					{0x00 0x00}
 0x0085	2 	UINT2	Campaign Decisive Victories count
-0x0087	2	??	??					{0x00 0x00}
+0x0087	2	???	???					{0x00 0x00}
 0x0089	116	ASCII	Battle location description
 0x00FD	2	UINT2	Campaign max battles
 0x00FF	2	UINT2	Campaign start date month
 0x0101	2	UINT2	Campaign start date year (-1900)
 0x0103	2	UINT2	Campaign end date month
 0x0105	2	UINT2	Campaign end date year (-1900)
-0x0107	12	??	??					{0xCC 0x00 0x00 0x00 0x10 0x00 0x07 0x00 0x0C 0x00 0x1E 0x00}
+0x0107	12	???	???					{0xCC 0x00 0x00 0x00 0x10 0x00 0x07 0x00 0x0C 0x00 0x1E 0x00}
 								{0xCC 0x00 0x04 0x00 0x10 0x00 0x07 0x00 0x0C 0x00 0x1E 0x00}
 								seems to affect campaign date month?
 0x0113	2	UINT2	Campaign P1 total men losses
 0x0115	2	UINT2	Campaign P2 total men losses
-0x0117	2	??	??					{0x00 0x00}
-0x0119	2	??	??					{0x01 0x00}
+0x0117	2	???	???					{0x00 0x00}
+0x0119	2	???	???					{0x01 0x00}
 0x011B	4	UINT4	Campaign P1 total AFV losses
 0x011F	4	UINT4	Campaign P1 total APC losses
 0x0123	4	UINT4	Campaign P1 total ART losses
-0x0127	8	??	??					{8x 0x00}
+0x0127	8	???	???					{8x 0x00}
 0x012F	4	UINT4	Campaign P1 total soft vehicle losses
 0x0133	4	UINT4	Campaign P1 total aircraft losses
 0x0137	4	UINT4	Campaign P1 total air transport losses
-0x013B	8	??	??
+0x013B	8	???	???
 0x0143	4	UINT4	Campaign P2 total AFV losses
 0x0147	4	UINT4	Campaign P2 total APC losses
 0x014B	4	UINT4	Campaign P2 total ART losses
-0x014F	8	??	??
+0x014F	8	???	???
 0x0157	4	UINT4	Campaign P2 total soft vehicle losses
 0x015F	4	UINT4	Campaign P2 total aircraft losses
 0x0163	4	UINT4	Campaign P2 total air transport losses
@@ -802,23 +785,23 @@ offset	size	type	description
 0x0177	4	UINT4	Campaign P1 battle ?? losses
 0x017B	4	UINT4	Campaign P1 battle ?? losses
 0x017F	4	UINT4	Campaign P1 battle ART losses
-0x0183	4	??	??					{4x 0x00}
+0x0183	4	???	???					{4x 0x00}
 0x0187	4	UINT4	Campaign P1 battle soft vehicle losses
 0x018B	4	UINT4	Campaign P2 battle soft vehicle losses
-0x018F	4	??	??					{4x 0x00}
-0x0193	4	??	??					{4x 0x00}
+0x018F	4	???	???					{4x 0x00}
+0x0193	4	???	???					{4x 0x00}
 0x0197	4	UINT4	Campaign P2 battle APC losses
 0x019B	4	UINT4	Campaign P2 battle AFV losses
 0x019F	4	UINT4	Campaign P2 battle ?? losses
 0x01A3	4	UINT4	Campaign P2 battle ?? losses
 0x01A7	4	UINT4	Campaign P2 battle ART losses
-0x01AB	4	??	??					{4x 0x00}
-0x01AF	16	??	??					{16x 0x00}
+0x01AB	4	???	???					{4x 0x00}
+0x01AF	16	???	???					{16x 0x00}
 0x01BF	2	UINT2	Inverted battle busy flag
-0x01C1	2	??	??					{0xE7 0x03}
+0x01C1	2	???	???					{0xE7 0x03}
 0x01C3	4	UINT4	Campaign P1 battle score
 0x01C7	4	UINT4	Campaign P1 battle score
-0x01CB	135	??	??					{135x 0x00}
+0x01CB	135	???	???					{135x 0x00}
 
 [INT:Post-Load action type]
 	0	show "next mission" popup, show "force maintenance" screen
@@ -998,11 +981,11 @@ Type:		BLOCK
 
 offset	size	type	description
 
-0x0000	4	??	??
+0x0000	4	???	???
 0x0004	4	UINT4	Section #49 size in bytes
-0x0008	14	??	??
+0x0008	14	???	???
 0x0016	4	UINT4	Section #50 size in bytes
-0x001A	46	??	??
+0x001A	46	???	???
 
 
 
