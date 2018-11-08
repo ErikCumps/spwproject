@@ -124,7 +124,9 @@ offset	size	type	description
 0x0086	1	UINT1	Cost
 0x0087	1	???	???
 0x0088	2	UINT2	Leader record ID (0xFFFF if no leader == abandoned)
-0x008A	10	???	???
+0x008A	5	???	???
+0x008F	1	UINT1	Radio contact flag? (2=in contact, 0=out of contact)
+0x0090	4	???	???
 0x0094	2	UINT2	Rotation (1?) (CW degrees, 0 = east)
 0x0096	2	UINT2	Rotation (2?) (CW degrees, 0 = east)
 0x0098	10	???	???
@@ -138,7 +140,7 @@ offset	size	type	description
 0x00B2	1	UINT1	Entrenchment status
 0x00B3	4	???	???
 0x00B7	1	UINT1	Rate of Fire
-0x00B8	1	???	???
+0x00B8	1	UINT1	Targetting?
 0x00B9	1	UINT1	Range finder value
 0x00BA	1	???	???						{0x00}
 0x00BB	1	UINT1	Loading capacity
@@ -323,8 +325,8 @@ offset	size	type	description
 0x0002	1	UUINT1	terrain defense modifier?
 0x0003	1	???	???
 0x0004	1	UINT1	terrain LoS spotting modifier?
-0x0005	1	UINT1	(00)
-0x0006	1	UINT1	movement radius? (0 = accessible, 1 = not accessible)
+0x0005	1	???	???
+0x0006	1	UINT1	current unit movement radius? (0 = accessible, 1 = not accessible)
 0x0007	1	BITMAP	Terrain feature set #1
 0x0008	1	BITMAP	Terrain feature set #2
 0x0009	1	BITMAP	Terrain feature set #3
