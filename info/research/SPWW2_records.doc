@@ -131,8 +131,7 @@ offset	size	type	description
 0x0096	2	UINT2	Rotation (2?) (CW degrees, 0 = east)
 0x0098	10	???	???
 0x00A2	1	UINT1	Country OOB ID
-0x00A3	1	UINT1	OOB unit record ID
-0x00A4	1	???	???
+0x00A3	2	UINT2	OOB unit record ID
 0x00A5	1	UINT1	Unit type group index? (used to group units per type)
 0x00A6	9	???	???
 0x00AF	2	UINT2	Loader unit number
