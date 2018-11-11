@@ -329,7 +329,8 @@ offset	size	type	description
 0x0007	1	BITMAP	Terrain feature set #1
 0x0008	1	BITMAP	Terrain feature set #2
 0x0009	1	BITMAP	Terrain feature set #3
-0x000A	3	???	???
+0x000A	1	BITMAP	Terrain feature set #4
+0x000B	2	???	???
 0x000D	1	UINT1	Smoke value (0-100, 101 = fire in hex)
 0x000E	1	UINT1	hex name index?
 
@@ -343,7 +344,7 @@ offset	size	type	description
 	0x40	Secondary Road
 	0x80	Primary Road
 	
-[BITMAP: Terrain feature set #1]
+[BITMAP: Terrain feature set #2]
 	0x01	Wooden Bridge
 	0x02	Stone Bridge
 	0x04	Swamp
@@ -353,7 +354,7 @@ offset	size	type	description
 	0x40	Trench_I?
 	0x80	Trench_G?
 
-[BITMAP: Terrain feature set #2]
+[BITMAP: Terrain feature set #3]
 	0x01	Mud
 	0x02	Hedgerow
 	0x04	Snow drift
@@ -362,6 +363,16 @@ offset	size	type	description
 	0x20	??
 	0x40	??
 	0x80	Tall Grass
+
+[BITMAP: Terrain feature set #4]
+	0x01	??
+	0x02	??
+	0x04	??
+	0x08	Railroad
+	0x10	Tramline
+	0x20	??
+	0x40	??
+	0x80	??
 	
 [FLAG:Spotting/defense]
 	0	?? (highlighted hex)
