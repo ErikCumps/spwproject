@@ -215,7 +215,7 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 	SPWAW_ERROR			rc = SPWERR_OK;
 	SPWAW_SNAP_OOB_F		*p;
 	USHORT				i;
-	BYTE				form_oobrid, unit_oobrid;
+	USHORT				form_oobrid, unit_oobrid;
 	char				buf[256];
 
 	CNULLARG (raw); CNULLARG (ptr); CNULLARG (oob);
@@ -339,7 +339,7 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		iscrew = (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW);
 		ldridx = raw->units.raw[i].leader;
 		crwidx = raw->units.raw[i].crew;
-		//log ("snapint_oob_units_stage1: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//log ("snapint_oob_units_stage1: [%5.5u] %4.4s: F<%5.5u,%3.3u> (%16.16s) ",
 		//	raw->units.raw[i].RID, SPWAW_unittype2str(raw->units.raw[i].type), raw->units.raw[i].FMID, raw->units.raw[i].FSID, raw->units.raw[i].name);
 		//log ("ldridx=%5.5u, crwidx=%5.5u, iscrew=%d, aband=%d\n",
 		//	raw->units.raw[i].leader, raw->units.raw[i].crew, iscrew, raw->units.raw[i].aband);
@@ -943,7 +943,7 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 		up->attr.gen.kills = up->data.kills;
 		if (!up->data.alive) up->attr.gen.losses = 1;
 
-		//log ("snapint_oob_attrs[%3.3u]: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//log ("snapint_oob_attrs[%5.5u]: [%5.5u] %4.4s: F<%5.5u,%3.3u> (%16.16s) ",
 		//	i, up->data.RID, up->data.type, up->data.FMID, up->data.FSID, up->data.name);
 		//log ("type=%s alive=%d aband=%d aunit=%s losses=%d\n",
 		//	up->strings.utype, up->data.alive,
@@ -963,7 +963,7 @@ snapint_oob_attrs (SPWAW_SNAP_OOB_FORCE *ptr)
 	for (i=0; i<ptr->crews.cnt; i++) {
 		up = &(ptr->crews.list[i]);
 
-		//log ("snapint_oob_attrs[%3.3u]: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
+		//log ("snapint_oob_attrs[%5.5u]: [%5.5u] %4.4s: F<%5.5u,%3.3u> (%16.16s) ",
 		//	i, up->data.RID, up->data.type, up->data.FMID, up->data.FSID, up->data.name);
 		//log ("type=%s alive=%d aband=%d aunit=%s losses=%d\n",
 		//	up->strings.utype, up->data.alive,

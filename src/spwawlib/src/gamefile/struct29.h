@@ -12,7 +12,7 @@
 #include "gamefile/struct_common.h"
 
 typedef struct s_MAP_DATA2 {
-	BYTE	vis;	/* Visibility?	*/
+	USHORT	vis;	/* Visibility?	*/
 } MAP_DATA2;
 
 typedef struct s_STRUCT29 {

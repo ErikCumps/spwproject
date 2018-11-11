@@ -48,9 +48,13 @@ sec08_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*stab*/)
 			mp->data[y*mp->width+x].has_T2 = src->sec08.u.d.terrain[x][y].uT2.has_T2;
 			mp->data[y*mp->width+x].has_T3 = src->sec08.u.d.terrain[x][y].uT3.has_T3;
 			mp->data[y*mp->width+x].has_T4 = src->sec08.u.d.terrain[x][y].uT4.has_T4;
-			mp->data[y*mp->width+x].conn_road1 = src->sec08.u.d.terrain[x][y].uR1.conn_road1;
-			mp->data[y*mp->width+x].conn_road2 = src->sec08.u.d.terrain[x][y].uR2.conn_road2;
-			mp->data[y*mp->width+x].conn_rail  = src->sec08.u.d.terrain[x][y].uRR.conn_rail;
+			//mp->data[y*mp->width+x].conn_road1 = src->sec08.u.d.terrain[x][y].uR1.conn_road1;
+			//mp->data[y*mp->width+x].conn_road2 = src->sec08.u.d.terrain[x][y].uR2.conn_road2;
+			//mp->data[y*mp->width+x].conn_rail  = src->sec08.u.d.terrain[x][y].uRR.conn_rail;
+			// SPWW2 does not record road connections!
+			mp->data[y*mp->width+x].conn_road1 = 0;
+			mp->data[y*mp->width+x].conn_road2 = 0;
+			mp->data[y*mp->width+x].conn_rail  = 0;
                 }
         }
 

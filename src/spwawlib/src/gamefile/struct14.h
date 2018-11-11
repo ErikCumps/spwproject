@@ -11,15 +11,24 @@
 
 #include "gamefile/struct_common.h"
 
-typedef struct s_CREDIT {
-	DWORD	amount;	/* Amount of available purchase points	*/
-} CREDIT;
+//typedef struct s_CREDIT {
+//	DWORD	amount;	/* Amount of available purchase points	*/
+//} CREDIT;
+//
+//typedef struct s_STRUCT14 {
+//	union u_u {
+//		char	raw[SIZESEC14];
+//		struct s_d {
+//			CREDIT	data;
+//		} d;
+//	} u;
+//} STRUCT14;
 
 typedef struct s_STRUCT14 {
 	union u_u {
 		char	raw[SIZESEC14];
 		struct s_d {
-			CREDIT	data;
+			char	data[SIZESEC14];
 		} d;
 	} u;
 } STRUCT14;

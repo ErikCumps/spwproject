@@ -11,20 +11,33 @@
 
 #include "gamefile/struct_common.h"
 
+//typedef struct s_FORMATION {
+//	char	name[SPWAW_AZSNAME];	/* Formation name (ASCIIZ)	*/
+//	BYTE	OOBrid;			/* Formation OOB record ID?	*/
+//	char	__data000[1];
+//	USHORT	hcmd;			/* Higher command leader ID	*/
+//	USHORT	leader;			/* Formation leader unit ID	*/
+//	char	__data0010[6];
+//	BYTE	player;			/* Player ID			*/
+//	char	__data0011[1];
+//	BYTE	ID;			/* Formation ID			*/
+//	char	__data010[1];
+//	BYTE	status:3;		/* Formation campaign status	*/
+//	BYTE	reserved:5;
+//	char	__data011[13];
+//} FORMATION;
+
 typedef struct s_FORMATION {
 	char	name[SPWAW_AZSNAME];	/* Formation name (ASCIIZ)	*/
-	BYTE	OOBrid;			/* Formation OOB record ID?	*/
-	char	__data000[1];
+	USHORT	OOBrid;			/* Formation OOB record ID	*/
 	USHORT	hcmd;			/* Higher command leader ID	*/
 	USHORT	leader;			/* Formation leader unit ID	*/
-	char	__data0010[6];
-	BYTE	player;			/* Player ID			*/
-	char	__data0011[1];
-	BYTE	ID;			/* Formation ID			*/
-	char	__data010[1];
+	char	__data00[6];
+	USHORT	player;			/* Player ID			*/
+	USHORT	ID;			/* Formation ID			*/
 	BYTE	status:3;		/* Formation campaign status	*/
 	BYTE	reserved:5;
-	char	__data011[13];
+	char	__data01[27];
 } FORMATION;
 
 typedef struct s_STRUCT35 {

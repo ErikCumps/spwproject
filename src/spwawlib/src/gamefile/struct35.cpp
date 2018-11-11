@@ -21,6 +21,7 @@
 // counts and invalid formation data.
 //
 // What is known with some degree of certainty:
+//	+ saved formations must have a name
 //	+ saved formations for player #1 and player #2 can be mixed together
 //	+ valid formations must have a leader
 //	+ there can be no formations with duplicate formation IDs
@@ -41,22 +42,29 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 	// Add all valid player formations
 	for (i=start; i<end; i++)
 	{
+		// SPWW2: formations need a valid name
+		if (src[i].name[0] == '\0') {
+			// skipped: no name
+			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no name)\n", i);
+			continue;
+		}
+
 		if (src[i].leader == SPWAW_BADIDX) {
 			// skipped: no leader
-			UFDTRACE1 ("find_formations: [%3.3u] SKIPPED (no leader)\n", i);
+			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
 			continue;
 		}
 
 		if (src[i].player != player) {
 			// skipped: wrong player
-			UFDTRACE2 ("find_formations: [%3.3u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
+			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
 			continue;
 		}
 
 		// Allow a single duplicate formation ID, the duplicate may be the valid formation
 		if (seen[src[i].ID] > 1) {
 			// skipped: duplicate formation ID
-			UFDTRACE2 ("find_formations: [%3.3u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
+			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
 			continue;
 		}
 
@@ -71,14 +79,14 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 		fel->d.status = src[i].status;
 		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
 
-		UFDLOG3 ("find_formations: [%3.3u] FORMATION: P<%1.1u> rawFID<%3.3u>",
+		UFDLOG3 ("find_formations: [%5.5u] FORMATION: P<%1.1u> rawFID<%5.5u>",
 			i, fel->d.player, fel->d.rawFID);
 
 		if (!commit_FEL (fl, fel)) {
 			RWE (SPWERR_FAILED, "commit_fel() failed");
 		}
 
-		UFDLOG4 (" FID<%3.3u> L<%5.5u> O<%3.3u>(%16.16s)\n",
+		UFDLOG4 (" FID<%5.5u> L<%5.5u> O<%5.5u>(%16.16s)\n",
 			fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
 
 		seen[src[i].ID]++;
@@ -127,11 +135,8 @@ add_formation (FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab,
 	if (cfg.withUD) {
 		UD = &(dst->UD);
 		UD_init (UD, sizeof (*src));
-		UD_ADD (UD, src, __data000);
-		UD_ADD (UD, src, __data0010);
-		UD_ADD (UD, src, __data0011);
-		UD_ADD (UD, src, __data010);
-		UD_ADD (UD, src, __data011);
+		UD_ADD (UD, src, __data00);
+		UD_ADD (UD, src, __data01);
 	}
 
 	return (SPWERR_OK);

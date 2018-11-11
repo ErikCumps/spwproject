@@ -14,10 +14,16 @@
 #include "strtab/strtab.h"
 
 /* Common savegame map icon data */
+//typedef struct s_MAP_ICON {
+//	BYTE	file;	/* File ID (TerIIIzJ.shp)	*/
+//	BYTE	icon;	/* Icon ID in SHP file		*/
+//} MAP_ICON;
+
 typedef struct s_MAP_ICON {
-	BYTE	file;	/* File ID (TerIIIzJ.shp)	*/
-	BYTE	icon;	/* Icon ID in SHP file		*/
+	USHORT	FileTileId;	/* FileID * 250 + TileId	*/
 } MAP_ICON;
+
+
 
 /* forward declarations */
 typedef struct s_UEL UEL;
@@ -35,10 +41,10 @@ typedef struct s_UEL {
 		USHORT		RID;				/* Unit record ID				*/
 		char		name[SPWAW_AZSNAME];		/* Unit name					*/
 		USHORT		FRID;				/* Formation record ID				*/
-		BYTE		FMID;				/* Formation ID					*/
+		USHORT		FMID;				/* Formation ID					*/
 		BYTE		FSID;				/* Formation sub-ID				*/
 		BYTE		OOB;				/* OOB country ID				*/
-		BYTE		OOBrid;				/* OOB record ID				*/
+		USHORT		OOBrid;				/* OOB record ID				*/
 		SPWOOB_UTYPE	OOBtype;			/* OOB unit type				*/
 		FEL		*formation;			/* Associated formation				*/
 		SPWAW_UNIT_TYPE	type;				/* Unit type: unit/crew/spau			*/
@@ -82,13 +88,13 @@ typedef struct s_FEL {
 	}	l;
 	struct s_data {
 		USHORT		RID;				/* Formation record ID				*/
-		BYTE		rawFID;				/* Raw formation ID				*/
-		BYTE		player;				/* Player ID					*/
+		USHORT		rawFID;				/* Raw formation ID				*/
+		USHORT		player;				/* Player ID					*/
 		USHORT		leader;				/* Leader unit ID				*/
-		BYTE		OOBrid;				/* Formation OOB record ID			*/
+		USHORT		OOBrid;				/* Formation OOB record ID			*/
 		char		name[SPWAW_AZSNAME];		/* Formation name				*/
 		BYTE		status;				/* Formation status				*/
-		BYTE		FID;				/* Adjusted formation ID			*/
+		USHORT		FID;				/* Adjusted formation ID			*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		unit_cnt;			/* Number of associated units			*/
 		UEL		*unit_lst[MAXFORMATIONUNITS];	/* List of associated units			*/
@@ -145,11 +151,14 @@ typedef struct s_STRUCT53 {
 		} d;
 	} u;
 } STRUCT53;
+typedef struct s_MAPHEXNAME {
+	char	name[64];
+} MAPHEXNAME;
 typedef struct s_STRUCT54 {
 	union u_u {
 		char	raw[SIZESEC54];
 		struct s_d {
-			char	data[SIZESEC54];
+			MAPHEXNAME	name[100];
 		} d;
 	} u;
 } STRUCT54;

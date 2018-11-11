@@ -11,10 +11,18 @@
 
 #include "gamefile/struct_common.h"
 
+//typedef struct s_RECHEAD {
+//	char	__data00[4];
+//	DWORD	size;		/* Data size in bytes	*/
+//	char	__data01[72];
+//} RECHEAD;
+
 typedef struct s_RECHEAD {
 	char	__data00[4];
-	DWORD	size;		/* Data size in bytes	*/
-	char	__data01[72];
+	DWORD	size49;		/* Data size section #49 in bytes	*/
+	char	__data01[14];
+	DWORD	size50;		/* Data size section #50 in bytes	*/
+	char	__data02[46];
 } RECHEAD;
 
 typedef struct s_STRUCT48 {

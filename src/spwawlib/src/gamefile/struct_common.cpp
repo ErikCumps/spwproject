@@ -85,9 +85,9 @@ dump_UEL (UEL *uel, char *prefix)
 		uel->d.LRID, uel->d.aband);
 	UFDTRACE3 (" loader<%5.5u> vrf=%s vrfneed=%s ",
 		uel->d.loader, uel->d.vrfloader ? "Y" : "N", uel->d.needvrfldrtst ? "Y" : "N");
-	UFDTRACE2 (" OOB %3.3u: [%3.3u]",
+	UFDTRACE2 (" OOB %3.3u: [%5.5u]",
 		uel->d.OOB, uel->d.OOBrid);
-	UFDTRACE5 (" F[%5.5u]<%5.5u,%5.5u> %s[%5.5u]",
+	UFDTRACE5 (" F[%5.5u]<%5.5u,%3.3u> %s[%5.5u]",
 		uel->d.FRID, uel->d.FMID, uel->d.FSID,
 		uel->d.formation ? "ptr" : "nil", uel->d.formation ? uel->d.formation->d.RID : SPWAW_BADIDX);
 	UFDTRACE4 (" link crew=%s[%5.5u], parent=%s[%5.5u]\n",
@@ -205,7 +205,7 @@ dump_FEL (FEL *fel, char *prefix)
 
 	UFDTRACE6 ("[%5.5u] (%16.16s) P<%3.3u> L<%5.5u> status=%3.3u units=%3.3u",
 		fel->d.RID, fel->d.name, fel->d.player, fel->d.leader, fel->d.status, fel->d.unit_cnt);
-	UFDTRACE4 (" OOB %3.3u: [%3.3u] FID<%5.5u> RAW<%5.5u>\n",
+	UFDTRACE4 (" OOB %3.3u: [%5.5u] FID<%5.5u> RAW<%5.5u>\n",
 		fel->d.OOB, fel->d.OOBrid, fel->d.FID, fel->d.rawFID);
 	for (BYTE i=0; i<fel->d.unit_cnt; i++) {
 		UFDTRACE4 ("    %s [%3.3u] %s[%5.5u]\n",

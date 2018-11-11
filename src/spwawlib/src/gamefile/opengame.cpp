@@ -123,6 +123,66 @@ static SECMAP	MAP[SPWW2_SECTION_COUNT] = {
 	{ 50,	0,					0,		true,	true	},
 };
 
+static bool
+validate_gamedata_structures (void)
+{
+	GAMEDATA	*p = NULL;
+	assert (sizeof(p->sec00.u.raw) == sizeof(p->sec00.u.d));
+	assert (sizeof(p->sec01.u.raw) == sizeof(p->sec01.u.d));
+	assert (sizeof(p->sec02.u.raw) == sizeof(p->sec02.u.d));
+	assert (sizeof(p->sec03.u.raw) == sizeof(p->sec03.u.d));
+	assert (sizeof(p->sec04.u.raw) == sizeof(p->sec04.u.d));
+	assert (sizeof(p->sec05.u.raw) == sizeof(p->sec05.u.d));
+	assert (sizeof(p->sec06.u.raw) == sizeof(p->sec06.u.d));
+	assert (sizeof(p->sec07.u.raw) == sizeof(p->sec07.u.d));
+	assert (sizeof(p->sec08.u.raw) == sizeof(p->sec08.u.d));
+	assert (sizeof(p->sec09.u.raw) == sizeof(p->sec09.u.d));
+	assert (sizeof(p->sec10.u.raw) == sizeof(p->sec10.u.d));
+	assert (sizeof(p->sec11.u.raw) == sizeof(p->sec11.u.d));
+	assert (sizeof(p->sec12.u.raw) == sizeof(p->sec12.u.d));
+	assert (sizeof(p->sec13.u.raw) == sizeof(p->sec13.u.d));
+	assert (sizeof(p->sec14.u.raw) == sizeof(p->sec14.u.d));
+	assert (sizeof(p->sec15.u.raw) == sizeof(p->sec15.u.d));
+	assert (sizeof(p->sec16.u.raw) == sizeof(p->sec16.u.d));
+	assert (sizeof(p->sec17.u.raw) == sizeof(p->sec17.u.d));
+	assert (sizeof(p->sec18.u.raw) == sizeof(p->sec18.u.d));
+	assert (sizeof(p->sec19.u.raw) == sizeof(p->sec19.u.d));
+	assert (sizeof(p->sec20.u.raw) == sizeof(p->sec20.u.d));
+	assert (sizeof(p->sec21.u.raw) == sizeof(p->sec21.u.d));
+	assert (sizeof(p->sec22.u.raw) == sizeof(p->sec22.u.d));
+	assert (sizeof(p->sec23.u.raw) == sizeof(p->sec23.u.d));
+	assert (sizeof(p->sec24.u.raw) == sizeof(p->sec24.u.d));
+	assert (sizeof(p->sec25.u.raw) == sizeof(p->sec25.u.d));
+	assert (sizeof(p->sec26.u.raw) == sizeof(p->sec26.u.d));
+	assert (sizeof(p->sec27.u.raw) == sizeof(p->sec27.u.d));
+	assert (sizeof(p->sec28.u.raw) == sizeof(p->sec28.u.d));
+	assert (sizeof(p->sec29.u.raw) == sizeof(p->sec29.u.d));
+	assert (sizeof(p->sec30.u.raw) == sizeof(p->sec30.u.d));
+	assert (sizeof(p->sec31.u.raw) == sizeof(p->sec31.u.d));
+	assert (sizeof(p->sec32.u.raw) == sizeof(p->sec32.u.d));
+	assert (sizeof(p->sec33.u.raw) == sizeof(p->sec33.u.d));
+	assert (sizeof(p->sec34.u.raw) == sizeof(p->sec34.u.d));
+	assert (sizeof(p->sec35.u.raw) == sizeof(p->sec35.u.d));
+	assert (sizeof(p->sec36.u.raw) == sizeof(p->sec36.u.d));
+	assert (sizeof(p->sec37.u.raw) == sizeof(p->sec37.u.d));
+	assert (sizeof(p->sec38.u.raw) == sizeof(p->sec38.u.d));
+	assert (sizeof(p->sec39.u.raw) == sizeof(p->sec39.u.d));
+	assert (sizeof(p->sec40.u.raw) == sizeof(p->sec40.u.d));
+	assert (sizeof(p->sec41.u.raw) == sizeof(p->sec41.u.d));
+	assert (sizeof(p->sec42.u.raw) == sizeof(p->sec42.u.d));
+	assert (sizeof(p->sec43.u.raw) == sizeof(p->sec43.u.d));
+	assert (sizeof(p->sec51.u.raw) == sizeof(p->sec51.u.d));
+	assert (sizeof(p->sec52.u.raw) == sizeof(p->sec52.u.d));
+	assert (sizeof(p->sec53.u.raw) == sizeof(p->sec53.u.d));
+	assert (sizeof(p->sec54.u.raw) == sizeof(p->sec54.u.d));
+	assert (sizeof(p->sec56.u.raw) == sizeof(p->sec56.u.d));
+	assert (sizeof(p->sec57.u.raw) == sizeof(p->sec57.u.d));
+	assert (sizeof(p->sec59.u.raw) == sizeof(p->sec59.u.d));
+	assert (sizeof(p->sec48.u.raw) == sizeof(p->sec48.u.d));
+	return (true);
+}
+static bool gamedata_structures_ok = validate_gamedata_structures();
+
 SECMAP *
 gamedata_secmap (void)
 {
@@ -340,12 +400,21 @@ setup_info (GAMEINFO *info, char *filename, FILETIME filedate, STRUCT37 *gamedat
 	snprintf (info->file, sizeof (info->file) - 1, "%s", q);
 	info->date = filedate;
 
+	//SPWAW_set_date (base,
+	//	gamedata->u.d.data.Ygame + SPWAW_STARTYEAR,
+	//	gamedata->u.d.data.Mgame,
+	//	gamedata->u.d.data.Dgame,
+	//	gamedata->u.d.data.Hgame
+	//);
+	// SPWW2 games do not seem to have a battle day and hour!
+	// So we assume battles to start at 09h00, the first day of the month.
 	SPWAW_set_date (base,
 		gamedata->u.d.data.Ygame + SPWAW_STARTYEAR,
 		gamedata->u.d.data.Mgame,
-		gamedata->u.d.data.Dgame,
-		gamedata->u.d.data.Hgame
+		1,
+		9
 	);
+
 	add.stamp  = gamedata->u.d.data.turn * SPWAW_MINSPERTURN;
 	SPWAW_date_add (&base, &add, &date);
 	snprintf (info->stamp, sizeof (info->stamp) - 1, "%4.4u/%02.2u/%02.2u %02.2u:%02.2u, turn %u",

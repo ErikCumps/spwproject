@@ -12,17 +12,18 @@
 #include "common/internal.h"
 
 SPWAW_ERROR
-sec14_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*stab*/)
+sec14_save_snapshot (GAMEDATA * /*src*/, SPWAW_SNAPSHOT * /*dst*/, STRTAB * /*stab*/)
 {
-	CREDIT			*data;
-	SPWAW_SNAP_BATTLE_RAW	*bp;
+	//CREDIT			*data;
+	//SPWAW_SNAP_BATTLE_RAW	*bp;
 
-	CNULLARG (src); CNULLARG (dst);
+	//CNULLARG (src); CNULLARG (dst);
 
-	data = &(src->sec14.u.d.data);
-	bp   = &(dst->raw.game.battle);
+	//data = &(src->sec14.u.d.data);
+	//bp   = &(dst->raw.game.battle);
 
-	bp->credit = data->amount;
+	//bp->credit = data->amount;
 
+	// SPWW2 does not record player credit!
 	return (SPWERR_OK);
 }

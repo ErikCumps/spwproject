@@ -11,6 +11,7 @@
 #include "gamefile/gamefile.h"
 #include "utils/ud.h"
 #include "common/internal.h"
+#include "common/types.h"
 
 void
 sec37_prepare (STRUCT37 *src)
@@ -41,11 +42,16 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 
 	bp->year  = data->Ygame;
 	bp->month = data->Mgame;
-	bp->day   = data->Dgame;
-	bp->hour  = data->Hgame;
+	//bp->day   = data->Dgame;
+	//bp->hour  = data->Hgame;
+	// SPWW2 games do not seem to have a battle day and hour!
+	// So we assume battles to start at 09h00, the first day of the month.
+	bp->day        = 1;
+	bp->hour       = 9;
 	bp->location   = azstrstab (data->location, stab);
 	bp->terrain    = data->terrain;
-	bp->weather    = data->weather;
+	// SPWW2 does not record weather, assume it's excellent weather
+	bp->weather    = W_BEST;
 	bp->visibility = data->vis;
 	bp->turn       = data->turn;
 	bp->turn_max   = data->turn_max;
@@ -62,8 +68,9 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	cp->end_year    = data->Yend;
 	cp->end_month   = data->Mend;
 	cp->battles     = data->battles;
-	cp->majvics     = data->majvic;
-	cp->minvics     = 0;			// FIXME!
+	cp->majvics     = data->DVcount;
+	cp->minvics     = data->MVcount;
+	// FIXME! Dcount, MDcount, DDcount
 	cp->battles_max = data->battles_max;
 
 	cp->P1BLmen     = data->P1BLmen;
@@ -125,6 +132,12 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 		UD_ADD (UD, data, __data12);
 		UD_ADD (UD, data, __data13);
 		UD_ADD (UD, data, __data14);
+		UD_ADD (UD, data, __data15);
+		UD_ADD (UD, data, __data16);
+		UD_ADD (UD, data, __data17);
+		UD_ADD (UD, data, __data18);
+		UD_ADD (UD, data, __data19);
+		UD_ADD (UD, data, __data20);
 	}
 
 	return (SPWERR_OK);

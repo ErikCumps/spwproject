@@ -32,7 +32,7 @@ check_unitid (DWORD urid, SPWAW_SNAP_OOB_URAW *ptr, SPWAW_SNAP_OOB_UELRAW **udat
 
 // Checks formation record ID
 bool
-check_formationid (DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, BYTE *fid, SPWAW_SNAP_OOB_FELRAW **fdata)
+check_formationid (DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, USHORT *fid, SPWAW_SNAP_OOB_FELRAW **fdata)
 {
 	DWORD	i;
 

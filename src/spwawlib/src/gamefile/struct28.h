@@ -11,12 +11,23 @@
 
 #include "gamefile/struct_common.h"
 
+//typedef struct s_MAP_DATA1 {
+//	USHORT	count;		/* Tile count		*/
+//	BYTE	ID;		/* Tile ID + 0xD6 ???)	*/
+//	BYTE	file;		/* File ID - 1 ???	*/
+//	char	__data00[10];
+//} MAP_DATA1;
+
 typedef struct s_MAP_DATA1 {
-	USHORT	count;		/* Tile count		*/
-	BYTE	ID;		/* Tile ID + 0xD6 ???)	*/
-	BYTE	file;		/* File ID - 1 ???	*/
-	char	__data00[10];
+	BYTE		count;		/* Tile count		*/
+	MAP_ICON	tile0;		/* Tile #0		*/
+	MAP_ICON	tile1;		/* Tile #1		*/
+	MAP_ICON	tile2;		/* Tile #2		*/
+	MAP_ICON	tile3;		/* Tile #3		*/
+	MAP_ICON	tile4;		/* Tile #4		*/
+	MAP_ICON	tile5;		/* Tile #5		*/
 } MAP_DATA1;
+
 
 typedef struct s_STRUCT28 {
 	union u_u {

@@ -31,6 +31,15 @@ add_leader (LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STR
 {
 	SPWAW_SNAP_OOB_LELRAW	*ptr;
 
+	/* SPWW2 adds a trailing '\n' to the leader's name: remove it here */
+	int i = SPWAW_AZSNAME;
+	while (i-- > 0) {
+		if (src->name[i] == '\n') {
+			src->name[i] = '\0';
+			break;
+		}
+	}
+
 	ptr = &(dst[*idx]);
 
 	ptr->RID	= id;
@@ -50,7 +59,6 @@ add_leader (LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STR
 		UD_ADD (UD, src, __data00);
 		UD_ADD (UD, src, __data01);
 		UD_ADD (UD, src, __data02);
-		UD_ADD (UD, src, __data03);
 	}
 
 	(*idx)++;

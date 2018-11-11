@@ -26,7 +26,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 
 	for (i=0; i<ptr->cnt; i++) {
 		SPWAW_SNAP_OOB_FELRAW *p = &(ptr->raw[i]);
-		fprintf (rf, "{%4lu} RID=%4.4x, FID=%2.2x, leader=%4.4x <%s>\n", i, p->RID, p->FID, p->leader, p->name);
+		fprintf (rf, "{%4lu} RID=%4.4x, FID=%4.4x, leader=%4.4x <%s>\n", i, p->RID, p->FID, p->leader, p->name);
 	}
 	fprintf (rf, "\n");
 
@@ -51,7 +51,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 
 	for (i=0; i<ptr->cnt; i++) {
 		SPWAW_SNAP_OOB_UELRAW *p = &(ptr->raw[i]);
-		fprintf (rf, "{%4lu} RID=%4.4x, FRID=%2.2x, FMID=%2.2x, FSID=%2.2x, leader=%4.4x, crew=%4.4x, loader=%4.4x, target=%4.4x <%s>\n",
+		fprintf (rf, "{%4lu} RID=%4.4x, FRID=%4.4x, FMID=%4.4x, FSID=%2.2x, leader=%4.4x, crew=%4.4x, loader=%4.4x, target=%4.4x <%s>\n",
 			i, p->RID, p->FRID, p->FMID, p->FSID, p->leader, p->crew, p->loader, p->target, p->name);
 	}
 	fprintf (rf, "\n");

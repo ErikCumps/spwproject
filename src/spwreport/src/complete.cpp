@@ -145,7 +145,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 	for (i=0; i<ptr->cnt; i++) {
 		fp = &(ptr->list[i]);
 
-		fprintf (rf, "#%4.4u %s (FID %2.2u)\n", fp->data.RID, fp->strings.name, fp->data.FID);
+		fprintf (rf, "#%5.5u %s (FID %5.5u)\n", fp->data.RID, fp->strings.name, fp->data.FID);
 		fprintf (rf, "\tleader      : %s %s (%s %s)\n",
 			fp->data.leader.up->strings.uid, fp->data.leader.up->data.type,
 			fp->data.leader.up->strings.rank, fp->data.leader.up->data.name);
@@ -217,7 +217,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		p = &(ptr->list[i]);
 
-		fprintf (rf, "#%4.4u (%2.2u:%2.2u,%2.2u) %-4s %s\n",
+		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
 			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.type);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.name, p->data.rank, p->strings.rank);
@@ -314,7 +314,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		p = &(ptr->list[i]);
 
-		fprintf (rf, "#%4.4u (%2.2u:%2.2u,%2.2u) %-4s %s\n",
+		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
 			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.type);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.name, p->data.rank, p->strings.rank);
