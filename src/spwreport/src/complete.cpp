@@ -274,7 +274,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tarm skills  : %u\n", p->data.arm);
 		fprintf (rf, "\tspeed       : %u (%.3f km/h)\n", p->data.speed, HEX2KPH (p->data.speed));
 		fprintf (rf, "\tsmokedevice : %u\n", p->data.smkdev);
-		fprintf (rf, "\tradio       : %u\n", p->data.radio);
+		fprintf (rf, "\tcontact     : %u (%s)\n", p->data.contact, p->strings.contact);
 		fprintf (rf, "\trate of fire: %u\n", p->data.rof);
 		fprintf (rf, "\ttargetting  : %u\n", p->data.tgt);
 		fprintf (rf, "\trange finder: %u\n", p->data.rf);
@@ -364,7 +364,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tarm skills  : %u\n", p->data.arm);
 		fprintf (rf, "\tspeed       : %u (%.3f km/h)\n", p->data.speed, HEX2KPH (p->data.speed));
 		fprintf (rf, "\tsmokedevice : %u\n", p->data.smkdev);
-		fprintf (rf, "\tradio       : %u\n", p->data.radio);
+		fprintf (rf, "\tcontact      : %u\n", p->data.contact);
 		fprintf (rf, "\trate of fire: %u\n", p->data.rof);
 		fprintf (rf, "\ttargetting  : %u\n", p->data.tgt);
 		fprintf (rf, "\trange finder: %u\n", p->data.rf);

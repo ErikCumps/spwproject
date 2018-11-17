@@ -92,6 +92,7 @@ private:
 		QString		status;
 		QString		spotted;
 		QString		entrenchment;
+		QString		contact;
 	} UNIT_INFO;
 
 	struct s_data {

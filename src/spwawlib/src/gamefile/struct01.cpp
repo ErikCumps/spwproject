@@ -808,8 +808,7 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *st
 	ptr->load_cap	= src->load_cap;
 	ptr->load_cost	= src->load_cost;
 	//ptr->radio	= src->radio;
-	// SPWW2 does not record radio. Get it from the OOB?
-	ptr->radio	= OOBdata->udata[ptr->OOBrid].radio;
+	ptr->contact	= src->contact;
 	// FIXME: add contact flag?
 	ptr->rof	= src->rof;
 	ptr->tgt	= src->targetting;

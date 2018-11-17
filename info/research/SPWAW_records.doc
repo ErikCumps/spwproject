@@ -127,7 +127,7 @@ offset	size	type	description
 0x0089	1	???	???						{0x00}
 0x008A	2	UINT2	Leader number	(0xFFFF if no leader == abandoned)
 0x008C	6	???	???						{[6]0x00}
-0x0092	1	UINT1	Radio
+0x0092	1	UINT1	Contact status
 0x0093	1	UINT1	Smoke ammo
 0x0094	4	???	???						{[4]0x??}
 0x0098	2	UINT2	Rotation (1?) (CW degrees, 0 = east)
@@ -195,7 +195,12 @@ offset	size	type	description
 	[3]Hull Slope	Front/Side/Rear
 	[3]Turret Slope	Front/Side/Rear
 
-[INT:Entrenchment status]
+[UINT1:Contact status]
+	0	No contact
+	1	Radio contact
+	2	Contact
+
+[UINT1:Entrenchment status]
 	0	Positioned (no entrenchment)
 	1	In Cover
 	2	Dug in

@@ -229,7 +229,7 @@ snapexport_oob (int src, FILE *dst, long pos)
 		dumpOU (loader,		TC_DATA_IDX_USHORT,	i);
 		dumpOU (load_cap,	TC_DATA_IDX_BYTE,	i);
 		dumpOU (load_cost,	TC_DATA_IDX_BYTE,	i);
-		dumpOU (radio,		TC_DATA_IDX_BYTE,	i);
+		dumpOU (contact,	TC_DATA_IDX_BYTE,	i);
 		dumpOU (rof,		TC_DATA_IDX_BYTE,	i);
 		dumpOU (tgt,		TC_DATA_IDX_BYTE,	i);
 		dumpOU (rf,		TC_DATA_IDX_BYTE,	i);

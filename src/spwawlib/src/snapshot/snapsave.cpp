@@ -149,7 +149,7 @@ prep_oobu (SPWAW_SNAP_OOB_UELRAW *src, SNAP_OOB_UEL *dst, STRTAB *stab)
 	setOU (smkdev); setOU (smkammo); setOU (crew);
 	setOU (range); setOU (stance_x); setOU (stance_y);
 	setOU (loader); setOU (load_cap); setOU (load_cost);
-	setOU (radio); setOU (rof); setOU (tgt); setOU (rf); setOU (fc); setOU (iv);
+	setOU (contact); setOU (rof); setOU (tgt); setOU (rf); setOU (fc); setOU (iv);
 	setOU (swim); setOU (men); setOU (men_ori); setOU (speed); setOU (moves);
 	setOU (damage); setOU (movdir); setOU (shtdir); setOU (target); setOU (UTGidx);
 //	setOU (SPECIAL_OU); setOU (SPECIAL[0]); setOU (SPECIAL[1]);

@@ -42,6 +42,10 @@
 #define	U_IMMOBILIZED	0x08
 #define	U_PASSENGER	0x09
 
+#define	C_NONE		0x00
+#define	C_RADIO		0x01
+#define	C_DIRECT	0x02
+
 #define	E_NONE		0x00
 #define	E_COVER		0x01
 #define	E_DUGIN		0x02

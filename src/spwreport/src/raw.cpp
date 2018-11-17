@@ -226,7 +226,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 		fprintf (rf, "{%4lu} loader    : %4.4x (%d)\n", i, p->loader, p->loader);
 		fprintf (rf, "{%4lu} load_cap  : %u\n", i, p->load_cap);
 		fprintf (rf, "{%4lu} load_cost : %u\n", i, p->load_cost);
-		fprintf (rf, "{%4lu} radio     : %u\n", i, p->radio);
+		fprintf (rf, "{%4lu} contact   : %u\n", i, p->contact);
 		fprintf (rf, "{%4lu} rof       : %u\n", i, p->rof);
 		fprintf (rf, "{%4lu} tgt       : %u\n", i, p->tgt);
 		fprintf (rf, "{%4lu} rf        : %u\n", i, p->rf);

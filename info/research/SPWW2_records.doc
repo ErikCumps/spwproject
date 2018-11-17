@@ -125,7 +125,7 @@ offset	size	type	description
 0x0087	1	???	???
 0x0088	2	UINT2	Leader record ID (0xFFFF if no leader == abandoned)
 0x008A	5	???	???
-0x008F	1	UINT1	Radio contact flag? (2=in contact, 0=out of contact)
+0x008F	1	UINT1	Contact status
 0x0090	4	???	???
 0x0094	2	UINT2	Rotation (1?) (CW degrees, 0 = east)
 0x0096	2	UINT2	Rotation (2?) (CW degrees, 0 = east)
@@ -191,7 +191,12 @@ offset	size	type	description
 	8	Immobilized?
 	9	Passenger?
 
-[INT:Entrenchment status]
+[UINT1:Contact status]
+	0	No contact
+	1	Radio contact
+	2	Contact
+
+[UINT1:Entrenchment status]
 	0	Positioned (no entrenchment)
 	1	Dug In
 

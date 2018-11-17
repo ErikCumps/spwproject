@@ -173,7 +173,7 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 	getOU (smkdev); getOU (smkammo); getOU (crew);
 	getOU (range); getOU (stance_x); getOU (stance_y);
 	getOU (loader); getOU (load_cap); getOU (load_cost);
-	getOU (radio); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
+	getOU (contact); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
 	getOU (swim); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
 	getOU (damage); getOU (movdir); getOU (shtdir); getOU (target); getOU (UTGidx);
 //	getOU (SPECIAL_OU); getOU (SPECIAL[0]); getOU (SPECIAL[1]);

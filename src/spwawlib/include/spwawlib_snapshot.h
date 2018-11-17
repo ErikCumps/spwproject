@@ -188,7 +188,7 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	USHORT			loader;				/* Unit loader record ID (if loaded)			*/
 	BYTE			load_cap;			/* Unit load capacity					*/
 	BYTE			load_cost;			/* Unit load cost					*/
-	BYTE			radio;				/* Unit radio flag					*/
+	BYTE			contact;			/* Unit contact status					*/
 	BYTE			rof;				/* Unit rate of fire					*/
 	BYTE			tgt;				/* Unit targetting rating				*/
 	BYTE			rf;				/* Unit rangefinder rating				*/
@@ -592,7 +592,7 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	int			arm;
 	int			speed;
 	int			smkdev;
-	int			radio;
+	SPWAW_CSTATUS		contact;
 	int			rof;
 	int			tgt;
 	int			rf;
@@ -614,6 +614,7 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_STRINGS {
 	char			*exp;
 	char			*status;
 	char			*entr;
+	char			*contact;
 	char			*utype;
 	char			*uclass;
 } SPWAW_SNAP_OOB_UEL_STRINGS;

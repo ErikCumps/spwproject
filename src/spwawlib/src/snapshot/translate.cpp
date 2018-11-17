@@ -164,6 +164,28 @@ raw2ustatus (BYTE id)
 	return (rc);
 }
 
+SPWAW_CSTATUS
+raw2cstatus (BYTE id)
+{
+	SPWAW_CSTATUS	rc;
+
+	switch (id) {
+		case C_NONE:
+			rc = SPWAW_CSTATUSNONE;
+			break;
+		case C_RADIO:
+			rc = SPWAW_CSTATUSRADIO;
+			break;
+		case C_DIRECT:
+			rc = SPWAW_CSTATUSDIRECT;
+			break;
+		default:
+			rc = SPWAW_CSTATUSUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
 SPWAW_ENTR
 raw2entr (BYTE id)
 {
@@ -184,7 +206,6 @@ raw2entr (BYTE id)
 			break;
 	}
 	return (rc);
-
 }
 
 SPWAW_RANK
@@ -405,6 +426,19 @@ char *
 ustatus2str (SPWAW_USTATUS id)
 {
 	return ((char*)ustatus_strings[id]);
+}
+
+static const char *cstatus_strings[SPWAW_CSTATUSLASTCODE+1] = {
+	"no contact",
+	"radio contact",
+	"direct contact",
+	"???"
+};
+
+char *
+cstatus2str (SPWAW_CSTATUS id)
+{
+	return ((char*)cstatus_strings[id]);
 }
 
 static const char *entr_strings[SPWAW_ENTRLASTCODE+1] = {

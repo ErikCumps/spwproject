@@ -187,6 +187,20 @@ typedef enum e_SPWAW_ABAND {
 
 extern SPWAWLIB_API const char *SPWAW_aband2str (SPWAW_ABAND id);
 
+/* SPWAW unit contact status */
+typedef enum e_SPWAW_CSTATUS {
+	SPWAW_CSTATUSNONE = 0,	/* No contact	*/
+	SPWAW_CSTATUSRADIO,	/* Radio contact	*/
+	SPWAW_CSTATUSDIRECT,	/* Direct Contact	*/
+	SPWAW_CSTATUSUNKNOWN,
+	SPWAW_CSTATUSSTARTCODE = SPWAW_CSTATUSNONE,
+	SPWAW_CSTATUSLASTCODE = SPWAW_CSTATUSUNKNOWN
+} SPWAW_CSTATUS;
+
+#define	SPWAW_CSTATUS_CNT	(SPWAW_CSTATUSLASTCODE - SPWAW_CSTATUSSTARTCODE + 1)
+
+extern SPWAWLIB_API const char *SPWAW_cstatus2str (SPWAW_CSTATUS id);
+
 /* SPWAW unit entrenchment status */
 typedef enum e_SPWAW_ENTR {
 	SPWAW_ENTRNONE = 0,	/* No entrenchment	*/

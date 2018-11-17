@@ -113,6 +113,7 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 				p->formations.list[i].data.ulist[j]->strings.entr,
 				p->formations.list[i].data.ulist[j]->data.sup,
 				emor, 100.0 * (double)emor / (double)omor);
+			fprintf (rf, "\t\tIt has %s with higher command.\n", p->formations.list[i].data.ulist[j]->strings.contact);
 			hc = p->formations.list[i].data.ulist[j]->data.hcnt;
 			hl = p->formations.list[i].data.ulist[j]->data.hcnt_left;
 			fprintf (rf, "\t\tIt has %d of %d effectives available (%6.2f %%)\n",

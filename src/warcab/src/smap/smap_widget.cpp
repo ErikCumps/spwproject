@@ -41,7 +41,8 @@ typedef enum e_UTCID {
 	UTC_STATUS,
 	UTC_SEEN,
 	UTC_ENTR,
-	UTC_LAST = UTC_ENTR	/*!< \internal */
+	UTC_CONTACT,
+	UTC_LAST = UTC_CONTACT	/*!< \internal */
 } UTCID;
 
 /*! A unit table model column definition */
@@ -62,6 +63,7 @@ static UTCDEF	unit_table_coldef[] = {
 	{ UTC_STATUS,	{ "Status",		MDLT_DATA_STR,	BASE_SIZE*2	} },
 	{ UTC_SEEN,	{ "Spotted",		MDLT_DATA_STR,	BASE_SIZE*2	} },
 	{ UTC_ENTR,	{ "Entrenchment",	MDLT_DATA_STR,	BASE_SIZE*2	} },
+	{ UTC_CONTACT,	{ "Contact",		MDLT_DATA_STR,	BASE_SIZE*2	} },
 };
 
 /*! Convenience function to create a MDLT_DEF for the unit table model */
@@ -210,6 +212,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 			d.b_info[d.b_cnt].status	= udata->list[i].strings.status;
 			d.b_info[d.b_cnt].spotted	= udata->list[i].data.spotted ? "spotted" : "hidden";
 			d.b_info[d.b_cnt].entrenchment	= udata->list[i].strings.entr;
+			d.b_info[d.b_cnt].contact	= udata->list[i].strings.contact;
 			d.b_cnt++;
 		}
 	}
@@ -232,6 +235,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 			d.r_info[d.r_cnt].status	= udata->list[i].strings.status;
 			d.r_info[d.r_cnt].spotted	= udata->list[i].data.spotted ? "spotted" : "hidden";
 			d.r_info[d.r_cnt].entrenchment	= udata->list[i].strings.entr;
+			d.r_info[d.r_cnt].contact	= udata->list[i].strings.contact;
 			d.r_cnt++;
 		}
 	}
@@ -691,6 +695,7 @@ SmapWidget::setcursor (SmapHexPos &pos)
 		data.row[idx].data[UTC_STATUS]	= d.r_info[i].status;
 		data.row[idx].data[UTC_SEEN]	= d.r_info[i].spotted;
 		data.row[idx].data[UTC_ENTR]	= d.r_info[i].entrenchment;
+		data.row[idx].data[UTC_CONTACT]	= d.r_info[i].contact;
 		idx++;
 	}
 
