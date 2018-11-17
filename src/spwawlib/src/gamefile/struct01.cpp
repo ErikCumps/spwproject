@@ -80,9 +80,9 @@ static inline bool
 is_this_a_UNIT (UNIT *data, USHORT idx)
 {
 	
-	return (data[idx].minform < CREWFSID);
+	//return (data[idx].minform < CREWFSID);
 	// SPWW2 sometimes records crews with a regular unit subformation sub-ID?
-	//return ((data[idx].minform < CREWFSID) && ((data[idx].crew == SPWAW_BADIDX) || (data[idx].crew < idx)));
+	return ((data[idx].minform < CREWFSID) && ((data[idx].crew == SPWAW_BADIDX) || (data[idx].crew > idx)));
 }
 
 /* Determines if a unit is a special attached unit (or a crew/regular unit) */
