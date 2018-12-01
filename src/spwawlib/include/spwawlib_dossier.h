@@ -105,6 +105,12 @@ struct s_SPWAW_BATTLE {
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
 };
 
+/* SPWAW dossier: campaign stats */
+typedef struct s_SPWAW_DOSSIER_CAMPAIGN {
+	USHORT	concluded;					/* Number of concluded battles in this campaign	*/
+	USHORT	results[SPWAW_BRLASTCODE+1];			/* Counts for each battle result		*/
+} SPWAW_DOSSIER_CAMPAIGN;
+
 /* SPWAW dossier: data */
 struct s_SPWAW_DOSSIER {
 	char			*name;				/* Dossier name					*/
@@ -121,6 +127,7 @@ struct s_SPWAW_DOSSIER {
 	SPWAW_BATTLE		*bfirst;			/* Pointer to first battle			*/
 	SPWAW_BATTLE		*blast;				/* Pointer to last battle			*/
 	void			*stab;				/* \internal string table			*/
+	SPWAW_DOSSIER_CAMPAIGN	stats;				/* Campaign stats				*/
 };
 
 /* SPWAW dossier: file info */

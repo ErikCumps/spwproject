@@ -40,9 +40,13 @@ typedef struct s_GAME_DATA {
 	BYTE	weather;			/* Game weather type			*/
 	BYTE	Dgame;				/* Game date: day?			*/
 	BYTE	Hgame;				/* Game date: hour?			*/
-	char	__data04[9];
-	USHORT	battles;			/* Campaign battles fought		*/
-	USHORT	majvic;				/* Campaign major victories		*/
+	char	__data040[5];
+	SHORT	P1result;			/* Player1 battle result					*/
+	SHORT	P2result;			/* Player2 battle result					*/
+	char	__data041[1];
+	BYTE	battles;			/* Campaign battles fought		*/
+	char	__data042[1];
+	BYTE	majvic;				/* Campaign major victories		*/
 	char	location[SPWAW_AZSLOCATION];	/* Game location/description (ASCIIZ)	*/
 	USHORT	battles_max;			/* Campaign max battles			*/
 	USHORT	Mstart;				/* Campaign start date: month		*/

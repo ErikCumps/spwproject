@@ -36,6 +36,8 @@ extern void		dossier_free_bturn_info		(SPWAW_DOSSIER_BIRS *ip);
 extern SPWAW_ERROR	dossier_update_battle_info	(SPWAW_BATTLE *ptr);
 extern SPWAW_ERROR	dossier_update_battle_rainfo	(SPWAW_BATTLE *src, SPWAW_BATTLE *dst);
 
+extern SPWAW_ERROR	dossier_update_dossier_info	(SPWAW_DOSSIER *ptr);
+
 extern SPWAW_ERROR	dossier_export			(int src, FILE *dst);
 extern SPWAW_ERROR	dossier_import			(FILE *src, int dst);
 

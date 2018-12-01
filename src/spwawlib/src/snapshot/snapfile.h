@@ -16,7 +16,7 @@
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20
-#define	SNAP_VERSION	11
+#define	SNAP_VERSION	12
 #define	SNAP_VHEXCNT	SPWAW_VHEXCNT
 
 #pragma pack(push, r1, 1)
@@ -127,6 +127,8 @@ typedef struct s_SNAP_CAMPAIGN {
 	USHORT		busy;			/* Inverted battle busy flag						*/
 	DWORD		P1score;		/* Player1 battle score							*/
 	DWORD		P2score;		/* Player2 battle score							*/
+	SHORT		P1result;		/* Player1 battle result						*/
+	SHORT		P2result;		/* Player2 battle result						*/
 } SNAP_CAMPAIGN;
 
 typedef struct s_SNAP {
@@ -186,7 +188,7 @@ typedef struct s_SNAP_OOB_UEL {
 	USHORT		loader;			/* Unit loader record ID (if loaded)					*/
 	BYTE		load_cap;		/* Unit load capacity							*/
 	BYTE		load_cost;		/* Unit load cost							*/
-	BYTE		radio;			/* Unit radio flag							*/
+	BYTE		contact;		/* Unit contact status							*/
 	BYTE		rof;			/* Unit rate of fire							*/
 	BYTE		tgt;			/* Unit targetting rating						*/
 	BYTE		rf;			/* Unit rangefinder rating						*/

@@ -164,6 +164,28 @@ raw2ustatus (BYTE id)
 	return (rc);
 }
 
+SPWAW_CSTATUS
+raw2cstatus (BYTE id)
+{
+	SPWAW_CSTATUS	rc;
+
+	switch (id) {
+		case C_NONE:
+			rc = SPWAW_CSTATUSNONE;
+			break;
+		case C_RADIO:
+			rc = SPWAW_CSTATUSRADIO;
+			break;
+		case C_DIRECT:
+			rc = SPWAW_CSTATUSDIRECT;
+			break;
+		default:
+			rc = SPWAW_CSTATUSUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
 SPWAW_ENTR
 raw2entr (BYTE id)
 {
@@ -268,6 +290,35 @@ raw2vhstatus (BYTE id)
 			break;
 		default:
 			rc = SPWAW_VHUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
+SPWAW_BRESULT
+raw2bresult (SHORT result)
+{
+	SPWAW_BRESULT	rc;
+
+	switch (result) {
+		case BR_DD:
+			rc = SPWAW_BRDD;
+			break;
+		case BR_MD:
+			rc = SPWAW_BRMD;
+			break;
+		case BR_DB:
+			rc = SPWAW_BRDB;
+			break;
+		case BR_MV:
+			rc = SPWAW_BRMV;
+			break;
+		case BR_DV:
+			rc = SPWAW_BRDV;
+			break;
+		case BR_UNKNOWN:
+		default:
+			rc = SPWAW_BRUNKNOWN;
 			break;
 	}
 	return (rc);
@@ -407,6 +458,19 @@ ustatus2str (SPWAW_USTATUS id)
 	return ((char*)ustatus_strings[id]);
 }
 
+static const char *cstatus_strings[SPWAW_CSTATUSLASTCODE+1] = {
+	"no contact",
+	"radio contact",
+	"direct contact",
+	"???"
+};
+
+char *
+cstatus2str (SPWAW_CSTATUS id)
+{
+	return ((char*)cstatus_strings[id]);
+}
+
 static const char *entr_strings[SPWAW_ENTRLASTCODE+1] = {
 	"positioned",
 	"in cover",
@@ -450,9 +514,9 @@ static const char *exp_strings[SPWAW_ELASTCODE+1] = {
 };
 
 char *
-exp2str (SPWAW_EXP id)
+exp2str (SPWAW_EXP exp)
 {
-	return ((char*)exp_strings[id]);
+	return ((char*)exp_strings[exp]);
 }
 
 static const char *aband_strings[SPWAW_ALASTCODE+1] = {
@@ -486,6 +550,20 @@ vhstatus2str (SPWAW_VHSTATUS id)
 	return ((char*)vhstatus_strings[id]);
 }
 
+static const char *bresult_strings[SPWAW_BRLASTCODE+1] = {
+	"decisive victory",
+	"marginal victory",
+	"drawn battle",
+	"marginal defeat",
+	"decisive defeat",
+	"???"
+};
+
+char *
+bresult2str (SPWAW_BRESULT result)
+{
+	return ((char*)bresult_strings[result]);
+}
 
 
 void

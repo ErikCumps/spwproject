@@ -320,14 +320,23 @@ GuiRptBtlOvr::refresh (void)
 		} else {
 			str.printf ("Recorded 1 battle turn.\n");
 		}
-		str.printf ("\n");
+		str.printf ("</pre>");
 
+		str.printf ("<pre>");
 		switch (p->tlast->snap->game.battle.data.status){
 			case SPWAW_BTDEPLOY:
 				str.printf ("This battle is not yet started.");
 				break;
 			case SPWAW_BTSCORE:
-				str.printf ("This battle is finished.");
+				if (p->tlast->snap->game.campaign.data.P1result != SPWAW_BRUNKNOWN) {
+					str.printf ("<h3>A %s:</h3>", SPWAW_bresult2str (p->tlast->snap->game.campaign.data.P1result));
+				} else {
+					str.printf ("<h3>Unfortunately, the battle result is not available.</h3>");
+				}
+				str.printf ("\t%s score:\t%u\n",
+					SPWAW_oob_people (p->OOB_p1), p->tlast->snap->game.campaign.data.P1score);
+				str.printf ("\t%s score:\t%u\n",
+					SPWAW_oob_people (p->OOB_p2), p->tlast->snap->game.campaign.data.P2score);
 				break;
 			case SPWAW_BTBUSY:
 			default:

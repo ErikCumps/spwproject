@@ -13,6 +13,7 @@
 #include "snapshot/snapfile.h"
 #include "snapshot/translate.h"
 #include "snapshot/snapfile_v10.h"
+#include "snapshot/snapfile_v11.h"
 #include "snapshot/index.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -50,7 +51,7 @@ load_snap (SNAP *src, STRTAB *stab, SPWAW_SNAPSHOT *dst)
 	getC (P2BLmen); getC (P2BLart); getC (P2BLsoft); getC (P2BLapc); getC (P2BLafv); getC (P2BLgliders); getC (P2BLair);
 	getC (P1TLmen); getC (P1TLart); getC (P1TLsoft); getC (P1TLapc); getC (P1TLafv); getC (P1TLgliders); getC (P1TLair);
 	getC (P2TLmen); getC (P2TLart); getC (P2TLsoft); getC (P2TLapc); getC (P2TLafv); getC (P2TLgliders); getC (P2TLair);
-	getC (busy); getC (P1score); getC (P2score);
+	getC (busy); getC (P1score); getC (P2score); getC (P1result); getC (P2result);
 }
 
 static SPWAW_ERROR
@@ -173,7 +174,7 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 	getOU (smkdev); getOU (smkammo); getOU (crew);
 	getOU (range); getOU (stance_x); getOU (stance_y);
 	getOU (loader); getOU (load_cap); getOU (load_cost);
-	getOU (radio); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
+	getOU (contact); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
 	getOU (swim); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
 	getOU (damage); getOU (movdir); getOU (shtdir); getOU (target); getOU (UTGidx);
 //	getOU (SPECIAL_OU); getOU (SPECIAL[0]); getOU (SPECIAL[1]);
@@ -432,8 +433,8 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNA
 	if (memcmp (mhdr->magic, SNAP_MAGIC, SNAP_MGCLEN) != 0)
 		RWE (SPWERR_BADSAVEDATA, "snapshot header check failed");
 
-	/* We are now backwards compatible with version 10 */
-	if ((mhdr->version != SNAP_VERSION) && (mhdr->version != SNAP_VERSION_V10))
+	/* We are now backwards compatible with versions 10 and newer */
+	if ((mhdr->version != SNAP_VERSION) && (mhdr->version < SNAP_VERSION_V10))
 		RWE (SPWERR_INCOMPATIBLE, "snapshot header version check failed");
 
 	bseekset (fd, mhdr->src + p0);
@@ -555,11 +556,15 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	dst->src.date = *((FILETIME *)&(shdr.date));
 
 	bseekset (fd, mhdr.snap.data + pos);
-
-	cbio.data = (char *)&snap; cbio.size = mhdr.snap.size; cbio.comp = &(mhdr.snap.comp);
-	if (!cbread (fd, cbio, "snapshot game data"))
-		FAILGOTO (SPWERR_FRFAILED, "cbread(snapshot game data) failed", handle_error);
-
+	/* We are now backwards compatible with version 11 and older */
+	if (mhdr.version <= SNAP_VERSION_V11) {
+		rc = snapshot_load_v11_snap (fd, &mhdr, &snap);
+		ROE ("snapshot_load_v11_snap(snapshot game data)");
+	} else {
+		cbio.data = (char *)&snap; cbio.size = mhdr.snap.size; cbio.comp = &(mhdr.snap.comp);
+		if (!cbread (fd, cbio, "snapshot game data"))
+			FAILGOTO (SPWERR_FRFAILED, "cbread(snapshot game data) failed", handle_error);
+	}
 	load_snap (&snap, stab, dst);
 
 	bseekset (fd, pos + mhdr.map);

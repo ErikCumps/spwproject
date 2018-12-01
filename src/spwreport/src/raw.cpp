@@ -84,6 +84,8 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN_RAW *ptr)
 		ptr->P2TLmen, ptr->P2TLart, ptr->P2TLsoft, ptr->P2TLapc, ptr->P2TLafv, ptr->P2TLgliders, ptr->P2TLair);
 	fprintf (rf, "P1score    : %u\n", ptr->P1score);
 	fprintf (rf, "P2score    : %u\n", ptr->P2score);
+	fprintf (rf, "P1result   : %d\n", ptr->P1result);
+	fprintf (rf, "P2result   : %d\n", ptr->P2result);
 	fprintf (rf, "\n");
 }
 
@@ -226,7 +228,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 		fprintf (rf, "{%4lu} loader    : %4.4x\n", i, p->loader);
 		fprintf (rf, "{%4lu} load_cap  : %u\n", i, p->load_cap);
 		fprintf (rf, "{%4lu} load_cost : %u\n", i, p->load_cost);
-		fprintf (rf, "{%4lu} radio     : %u\n", i, p->radio);
+		fprintf (rf, "{%4lu} contact   : %u\n", i, p->contact);
 		fprintf (rf, "{%4lu} rof       : %u\n", i, p->rof);
 		fprintf (rf, "{%4lu} tgt       : %u\n", i, p->tgt);
 		fprintf (rf, "{%4lu} rf        : %u\n", i, p->rf);

@@ -187,6 +187,19 @@ typedef enum e_SPWAW_ABAND {
 
 extern SPWAWLIB_API const char *SPWAW_aband2str (SPWAW_ABAND id);
 
+/* SPWAW unit contact status */
+typedef enum e_SPWAW_CSTATUS {
+	SPWAW_CSTATUSNONE = 0,	/* No contact	*/
+	SPWAW_CSTATUSRADIO,	/* Radio contact	*/
+	SPWAW_CSTATUSDIRECT,	/* Direct Contact	*/
+	SPWAW_CSTATUSUNKNOWN,
+	SPWAW_CSTATUSSTARTCODE = SPWAW_CSTATUSNONE,
+	SPWAW_CSTATUSLASTCODE = SPWAW_CSTATUSUNKNOWN
+} SPWAW_CSTATUS;
+
+#define	SPWAW_CSTATUS_CNT	(SPWAW_CSTATUSLASTCODE - SPWAW_CSTATUSSTARTCODE + 1)
+
+extern SPWAWLIB_API const char *SPWAW_cstatus2str (SPWAW_CSTATUS id);
 /* SPWAW unit entrenchment status */
 typedef enum e_SPWAW_ENTR {
 	SPWAW_ENTRNONE = 0,	/* No entrenchment	*/
@@ -227,6 +240,22 @@ typedef enum e_SPWAW_VHSTATUS {
 #define	SPWAW_VHSTATUS_CNT	(SPWAW_VHLASTCODE - SPWAW_VHSTARTCODE + 1)
 
 extern SPWAWLIB_API const char *SPWAW_vhstatus2str (SPWAW_VHSTATUS id);
+
+/* SPWAW battle results */
+typedef enum e_SPWAW_BRESULT {
+	SPWAW_BRDV = 0,		/* Decisive victory	*/
+	SPWAW_BRMV,		/* Marginal victory	*/
+	SPWAW_BRDB,		/* Drawn battle		*/
+	SPWAW_BRMD,		/* Marginal defeat	*/
+	SPWAW_BRDD,		/* Decisive defeat	*/
+	SPWAW_BRUNKNOWN,
+	SPWAW_BRSTARTCODE = SPWAW_BRDV,
+	SPWAW_BRLASTCODE = SPWAW_BRUNKNOWN
+} SPWAW_BRESULT;
+
+#define	SPWAW_BRESULT_CNT	(SPWAW_BRLASTCODE - SPWAW_BRSTARTCODE + 1)
+
+extern SPWAWLIB_API const char *SPWAW_bresult2str (SPWAW_BRESULT result);
 
 /* SPWAW battle type */
 typedef enum e_SPWAW_BATTLE_TYPE {

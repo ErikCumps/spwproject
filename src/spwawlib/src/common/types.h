@@ -42,6 +42,10 @@
 #define	U_IMMOBILIZED	0x08
 #define	U_PASSENGER	0x09
 
+#define	C_NONE		0x00
+#define	C_RADIO		0x01
+#define	C_DIRECT	0x02
+
 #define	E_NONE		0x00
 #define	E_COVER		0x01
 #define	E_DUGIN		0x02
@@ -61,6 +65,13 @@
 #define	VH_PLAYER1	0x00
 #define	VH_PLAYER2	0x01
 #define	VH_NEUTRAL	0x02
+
+#define	BR_DD		-2
+#define	BR_MD		-1
+#define	BR_DB		0
+#define	BR_MV		1
+#define	BR_DV		2
+#define	BR_UNKNOWN	42
 
 #define	TFS1_WATER	0x08
 #define	TFS2_WATER	0x0C

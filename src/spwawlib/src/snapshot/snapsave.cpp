@@ -46,7 +46,7 @@ prep_snap (SPWAW_SNAPSHOT *src, SNAP *dst, STRTAB *stab)
 	setC (P2BLmen); setC (P2BLart); setC (P2BLsoft); setC (P2BLapc); setC (P2BLafv); setC (P2BLgliders); setC (P2BLair);
 	setC (P1TLmen); setC (P1TLart); setC (P1TLsoft); setC (P1TLapc); setC (P1TLafv); setC (P1TLgliders); setC (P1TLair);
 	setC (P2TLmen); setC (P2TLart); setC (P2TLsoft); setC (P2TLapc); setC (P2TLafv); setC (P2TLgliders); setC (P2TLair);
-	setC (busy); setC (P1score); setC (P2score);
+	setC (busy); setC (P1score); setC (P2score); setC (P1result); setC (P2result);
 }
 
 static SPWAW_ERROR
@@ -149,7 +149,7 @@ prep_oobu (SPWAW_SNAP_OOB_UELRAW *src, SNAP_OOB_UEL *dst, STRTAB *stab)
 	setOU (smkdev); setOU (smkammo); setOU (crew);
 	setOU (range); setOU (stance_x); setOU (stance_y);
 	setOU (loader); setOU (load_cap); setOU (load_cost);
-	setOU (radio); setOU (rof); setOU (tgt); setOU (rf); setOU (fc); setOU (iv);
+	setOU (contact); setOU (rof); setOU (tgt); setOU (rf); setOU (fc); setOU (iv);
 	setOU (swim); setOU (men); setOU (men_ori); setOU (speed); setOU (moves);
 	setOU (damage); setOU (movdir); setOU (shtdir); setOU (target); setOU (UTGidx);
 //	setOU (SPECIAL_OU); setOU (SPECIAL[0]); setOU (SPECIAL[1]);

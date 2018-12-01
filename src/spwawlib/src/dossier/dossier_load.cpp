@@ -186,6 +186,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	dst->bfirst = dst->blist[0];
 	dst->blast  = dst->blist[dst->bcnt-1];
 
+	rc = dossier_update_dossier_info (dst);
+	ROE ("dossier_update_dossier_info()");
+
 handle_error:
 	// dossier cleanup done by caller
 	if (p) dossier_clean_battle (p);
@@ -199,8 +202,8 @@ dossier_check_magic_version (DOS_MV_HEADER &hdr)
 	if (memcmp (hdr.magic, DOSS_MAGIC, DOSS_MGCLEN) != 0)
 		RWE (SPWERR_BADSAVEDATA, "dossier header check failed");
 
-	/* We are now backwards compatible with version 10 */
-	if ((hdr.version != DOSS_VERSION) && (hdr.version != DOSS_VERSION_V10))
+	/* We are now backwards compatible with versions 10 and newer */
+	if ((hdr.version != DOSS_VERSION) && (hdr.version < DOSS_VERSION_V10))
 		RWE (SPWERR_INCOMPATIBLE, "dossier header version check failed");
 
 	return (SPWERR_OK);

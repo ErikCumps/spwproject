@@ -157,6 +157,11 @@ snapint_game_campaign (SPWAW_SNAPSHOT *ptr)
 	dst->P1score = raw->P1score;
 	dst->P2score = raw->P2score;
 
+	dst->P1result = raw2bresult (raw->P1result);
+	str->P1result = bresult2str (dst->P1result);
+	dst->P2result = raw2bresult (raw->P2result);
+	str->P2result = bresult2str (dst->P2result);
+
 	return (SPWERR_OK);
 }
 
@@ -403,7 +408,7 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->arm	= ulsrc ? ulsrc->arm : 0;
 		dat->speed	= src->speed;
 		dat->smkdev	= src->smkdev;
-		dat->radio	= src->radio;
+		dat->contact	= raw2cstatus (src->contact);
 		dat->rof	= src->rof;
 		dat->tgt	= src->tgt;
 		dat->rf		= src->rf;
@@ -798,6 +803,7 @@ snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, STRTAB * /*stab*/)
 	str->exp	= exp2str (dat->eclass);
 	str->status	= ustatus2str (dat->status);
 	str->entr	= entr2str (dat->entr);
+	str->contact	= cstatus2str (dat->contact);
 	str->utype	= (char*)SPWOOB_UTYPE_lookup (dat->utype);
 	str->uclass	= (char*)SPWOOB_UCLASS_lookup (dat->uclass);
 

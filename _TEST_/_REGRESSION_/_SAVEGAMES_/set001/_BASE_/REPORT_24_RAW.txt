@@ -140,8 +140,8 @@ RAW game campaign report:
 campaign   : 1
 {start     } year=0, month=0
 {end       } year=0, month=0
-battles    : 768
-majvics    : 768
+battles    : 3
+majvics    : 3
 minvics    : 0
 battles_max: 0
 Busy       : 1
@@ -151,6 +151,8 @@ Busy       : 1
 {P2TL      } men=2283, art=64, soft=0, apc=11, afv=94, gliders=0, air=0
 P1score    : 8145
 P2score    : 281
+P1result   : 2
+P2result   : -2
 
 RAW game map report:
 --------------------
@@ -2200,7 +2202,7 @@ map info:
 		(  48,  39} height=01 has_T1=0x00 has_T2=0x00 has_T3=0x00 has_T4=0x00 conn_road1=0x00 conn_road2=0x00 conn_rail=0x00
 		(  49,  39} height=01 has_T1=0x00 has_T2=0x00 has_T3=0x00 has_T4=0x00 conn_road1=0x00 conn_road2=0x00 conn_rail=0x00
 
-Unknown game data report: (103 out of 1278 bytes)
+Unknown game data report: (101 out of 1278 bytes)
 -------------------------------------------------
 
             00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 
@@ -2212,7 +2214,7 @@ Unknown game data report: (103 out of 1278 bytes)
   00000040: .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. 
   00000050: .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. 
   00000060: .. .. .. .. 01 00 .. .. .. .. .. 00 00 00 00 00 
-  00000070: 02 00 FE FF .. .. .. .. .. .. .. .. .. .. .. .. 
+  00000070: .. .. .. .. 00 .. 00 .. .. .. .. .. .. .. .. .. 
   00000080: .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. 
   00000090: .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. 
   000000A0: .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. 
@@ -2759,7 +2761,7 @@ count: 106
 {   0} loader    : 0005
 {   0} load_cap  : 0
 {   0} load_cost : 0
-{   0} radio     : 2
+{   0} contact   : 2
 {   0} rof       : 9
 {   0} tgt       : 0
 {   0} rf        : 0
@@ -2824,7 +2826,7 @@ count: 106
 {   1} loader    : 0006
 {   1} load_cap  : 0
 {   1} load_cost : 0
-{   1} radio     : 2
+{   1} contact   : 2
 {   1} rof       : 9
 {   1} tgt       : 0
 {   1} rf        : 0
@@ -2889,7 +2891,7 @@ count: 106
 {   2} loader    : ffff
 {   2} load_cap  : 0
 {   2} load_cost : 0
-{   2} radio     : 1
+{   2} contact   : 1
 {   2} rof       : 9
 {   2} tgt       : 0
 {   2} rf        : 0
@@ -2954,7 +2956,7 @@ count: 106
 {   3} loader    : ffff
 {   3} load_cap  : 0
 {   3} load_cost : 0
-{   3} radio     : 1
+{   3} contact   : 1
 {   3} rof       : 9
 {   3} tgt       : 0
 {   3} rf        : 0
@@ -3019,7 +3021,7 @@ count: 106
 {   4} loader    : ffff
 {   4} load_cap  : 0
 {   4} load_cost : 0
-{   4} radio     : 1
+{   4} contact   : 1
 {   4} rof       : 9
 {   4} tgt       : 0
 {   4} rf        : 0
@@ -3084,7 +3086,7 @@ count: 106
 {   5} loader    : ffff
 {   5} load_cap  : 112
 {   5} load_cost : 226
-{   5} radio     : 2
+{   5} contact   : 2
 {   5} rof       : 9
 {   5} tgt       : 0
 {   5} rf        : 1
@@ -3149,7 +3151,7 @@ count: 106
 {   6} loader    : ffff
 {   6} load_cap  : 112
 {   6} load_cost : 226
-{   6} radio     : 1
+{   6} contact   : 1
 {   6} rof       : 9
 {   6} tgt       : 0
 {   6} rf        : 1
@@ -3214,7 +3216,7 @@ count: 106
 {   7} loader    : ffff
 {   7} load_cap  : 112
 {   7} load_cost : 226
-{   7} radio     : 1
+{   7} contact   : 1
 {   7} rof       : 9
 {   7} tgt       : 0
 {   7} rf        : 1
@@ -3279,7 +3281,7 @@ count: 106
 {   8} loader    : ffff
 {   8} load_cap  : 112
 {   8} load_cost : 226
-{   8} radio     : 1
+{   8} contact   : 1
 {   8} rof       : 9
 {   8} tgt       : 0
 {   8} rf        : 1
@@ -3344,7 +3346,7 @@ count: 106
 {   9} loader    : ffff
 {   9} load_cap  : 112
 {   9} load_cost : 226
-{   9} radio     : 1
+{   9} contact   : 1
 {   9} rof       : 9
 {   9} tgt       : 0
 {   9} rf        : 1
@@ -3409,7 +3411,7 @@ count: 106
 {  10} loader    : ffff
 {  10} load_cap  : 8
 {  10} load_cost : 228
-{  10} radio     : 2
+{  10} contact   : 2
 {  10} rof       : 6
 {  10} tgt       : 0
 {  10} rf        : 2
@@ -3474,7 +3476,7 @@ count: 106
 {  11} loader    : ffff
 {  11} load_cap  : 8
 {  11} load_cost : 228
-{  11} radio     : 2
+{  11} contact   : 2
 {  11} rof       : 6
 {  11} tgt       : 0
 {  11} rf        : 2
@@ -3539,7 +3541,7 @@ count: 106
 {  12} loader    : ffff
 {  12} load_cap  : 8
 {  12} load_cost : 228
-{  12} radio     : 1
+{  12} contact   : 1
 {  12} rof       : 6
 {  12} tgt       : 0
 {  12} rf        : 2
@@ -3604,7 +3606,7 @@ count: 106
 {  13} loader    : ffff
 {  13} load_cap  : 8
 {  13} load_cost : 228
-{  13} radio     : 1
+{  13} contact   : 1
 {  13} rof       : 6
 {  13} tgt       : 0
 {  13} rf        : 2
@@ -3669,7 +3671,7 @@ count: 106
 {  14} loader    : ffff
 {  14} load_cap  : 8
 {  14} load_cost : 228
-{  14} radio     : 0
+{  14} contact   : 0
 {  14} rof       : 6
 {  14} tgt       : 0
 {  14} rf        : 2
@@ -3734,7 +3736,7 @@ count: 106
 {  15} loader    : ffff
 {  15} load_cap  : 8
 {  15} load_cost : 228
-{  15} radio     : 2
+{  15} contact   : 2
 {  15} rof       : 6
 {  15} tgt       : 0
 {  15} rf        : 2
@@ -3799,7 +3801,7 @@ count: 106
 {  16} loader    : ffff
 {  16} load_cap  : 8
 {  16} load_cost : 228
-{  16} radio     : 1
+{  16} contact   : 1
 {  16} rof       : 6
 {  16} tgt       : 0
 {  16} rf        : 2
@@ -3864,7 +3866,7 @@ count: 106
 {  17} loader    : ffff
 {  17} load_cap  : 8
 {  17} load_cost : 228
-{  17} radio     : 1
+{  17} contact   : 1
 {  17} rof       : 6
 {  17} tgt       : 0
 {  17} rf        : 2
@@ -3929,7 +3931,7 @@ count: 106
 {  18} loader    : ffff
 {  18} load_cap  : 8
 {  18} load_cost : 228
-{  18} radio     : 1
+{  18} contact   : 1
 {  18} rof       : 6
 {  18} tgt       : 0
 {  18} rf        : 2
@@ -3994,7 +3996,7 @@ count: 106
 {  19} loader    : ffff
 {  19} load_cap  : 8
 {  19} load_cost : 228
-{  19} radio     : 1
+{  19} contact   : 1
 {  19} rof       : 6
 {  19} tgt       : 0
 {  19} rf        : 2
@@ -4059,7 +4061,7 @@ count: 106
 {  20} loader    : ffff
 {  20} load_cap  : 10
 {  20} load_cost : 228
-{  20} radio     : 2
+{  20} contact   : 2
 {  20} rof       : 6
 {  20} tgt       : 0
 {  20} rf        : 2
@@ -4124,7 +4126,7 @@ count: 106
 {  21} loader    : ffff
 {  21} load_cap  : 10
 {  21} load_cost : 228
-{  21} radio     : 0
+{  21} contact   : 0
 {  21} rof       : 6
 {  21} tgt       : 0
 {  21} rf        : 2
@@ -4189,7 +4191,7 @@ count: 106
 {  22} loader    : ffff
 {  22} load_cap  : 10
 {  22} load_cost : 228
-{  22} radio     : 1
+{  22} contact   : 1
 {  22} rof       : 6
 {  22} tgt       : 0
 {  22} rf        : 2
@@ -4254,7 +4256,7 @@ count: 106
 {  23} loader    : ffff
 {  23} load_cap  : 10
 {  23} load_cost : 228
-{  23} radio     : 1
+{  23} contact   : 1
 {  23} rof       : 6
 {  23} tgt       : 0
 {  23} rf        : 2
@@ -4319,7 +4321,7 @@ count: 106
 {  24} loader    : ffff
 {  24} load_cap  : 10
 {  24} load_cost : 228
-{  24} radio     : 2
+{  24} contact   : 2
 {  24} rof       : 6
 {  24} tgt       : 0
 {  24} rf        : 2
@@ -4384,7 +4386,7 @@ count: 106
 {  25} loader    : ffff
 {  25} load_cap  : 10
 {  25} load_cost : 228
-{  25} radio     : 1
+{  25} contact   : 1
 {  25} rof       : 6
 {  25} tgt       : 0
 {  25} rf        : 2
@@ -4449,7 +4451,7 @@ count: 106
 {  26} loader    : ffff
 {  26} load_cap  : 10
 {  26} load_cost : 228
-{  26} radio     : 0
+{  26} contact   : 0
 {  26} rof       : 6
 {  26} tgt       : 0
 {  26} rf        : 2
@@ -4514,7 +4516,7 @@ count: 106
 {  27} loader    : ffff
 {  27} load_cap  : 10
 {  27} load_cost : 228
-{  27} radio     : 1
+{  27} contact   : 1
 {  27} rof       : 6
 {  27} tgt       : 0
 {  27} rf        : 2
@@ -4579,7 +4581,7 @@ count: 106
 {  28} loader    : ffff
 {  28} load_cap  : 10
 {  28} load_cost : 228
-{  28} radio     : 2
+{  28} contact   : 2
 {  28} rof       : 6
 {  28} tgt       : 0
 {  28} rf        : 2
@@ -4644,7 +4646,7 @@ count: 106
 {  29} loader    : ffff
 {  29} load_cap  : 10
 {  29} load_cost : 228
-{  29} radio     : 2
+{  29} contact   : 2
 {  29} rof       : 6
 {  29} tgt       : 0
 {  29} rf        : 2
@@ -4709,7 +4711,7 @@ count: 106
 {  30} loader    : 001f
 {  30} load_cap  : 0
 {  30} load_cost : 0
-{  30} radio     : 2
+{  30} contact   : 2
 {  30} rof       : 9
 {  30} tgt       : 0
 {  30} rf        : 0
@@ -4774,7 +4776,7 @@ count: 106
 {  31} loader    : ffff
 {  31} load_cap  : 112
 {  31} load_cost : 226
-{  31} radio     : 2
+{  31} contact   : 2
 {  31} rof       : 9
 {  31} tgt       : 0
 {  31} rf        : 1
@@ -4839,7 +4841,7 @@ count: 106
 {  32} loader    : 0042
 {  32} load_cap  : 0
 {  32} load_cost : 0
-{  32} radio     : 2
+{  32} contact   : 2
 {  32} rof       : 9
 {  32} tgt       : 0
 {  32} rf        : 0
@@ -4904,7 +4906,7 @@ count: 106
 {  33} loader    : ffff
 {  33} load_cap  : 0
 {  33} load_cost : 0
-{  33} radio     : 0
+{  33} contact   : 0
 {  33} rof       : 9
 {  33} tgt       : 0
 {  33} rf        : 0
@@ -4969,7 +4971,7 @@ count: 106
 {  34} loader    : 0029
 {  34} load_cap  : 0
 {  34} load_cost : 0
-{  34} radio     : 1
+{  34} contact   : 1
 {  34} rof       : 9
 {  34} tgt       : 0
 {  34} rf        : 0
@@ -5034,7 +5036,7 @@ count: 106
 {  35} loader    : 0026
 {  35} load_cap  : 0
 {  35} load_cost : 0
-{  35} radio     : 1
+{  35} contact   : 1
 {  35} rof       : 9
 {  35} tgt       : 0
 {  35} rf        : 0
@@ -5099,7 +5101,7 @@ count: 106
 {  36} loader    : 0028
 {  36} load_cap  : 0
 {  36} load_cost : 0
-{  36} radio     : 1
+{  36} contact   : 1
 {  36} rof       : 9
 {  36} tgt       : 0
 {  36} rf        : 0
@@ -5164,7 +5166,7 @@ count: 106
 {  37} loader    : ffff
 {  37} load_cap  : 112
 {  37} load_cost : 226
-{  37} radio     : 2
+{  37} contact   : 2
 {  37} rof       : 9
 {  37} tgt       : 0
 {  37} rf        : 1
@@ -5229,7 +5231,7 @@ count: 106
 {  38} loader    : ffff
 {  38} load_cap  : 112
 {  38} load_cost : 226
-{  38} radio     : 1
+{  38} contact   : 1
 {  38} rof       : 9
 {  38} tgt       : 0
 {  38} rf        : 1
@@ -5294,7 +5296,7 @@ count: 106
 {  39} loader    : ffff
 {  39} load_cap  : 112
 {  39} load_cost : 226
-{  39} radio     : 2
+{  39} contact   : 2
 {  39} rof       : 9
 {  39} tgt       : 0
 {  39} rf        : 1
@@ -5359,7 +5361,7 @@ count: 106
 {  40} loader    : ffff
 {  40} load_cap  : 112
 {  40} load_cost : 226
-{  40} radio     : 1
+{  40} contact   : 1
 {  40} rof       : 9
 {  40} tgt       : 0
 {  40} rf        : 1
@@ -5424,7 +5426,7 @@ count: 106
 {  41} loader    : ffff
 {  41} load_cap  : 112
 {  41} load_cost : 226
-{  41} radio     : 1
+{  41} contact   : 1
 {  41} rof       : 9
 {  41} tgt       : 0
 {  41} rf        : 1
@@ -5489,7 +5491,7 @@ count: 106
 {  42} loader    : 002f
 {  42} load_cap  : 0
 {  42} load_cost : 0
-{  42} radio     : 2
+{  42} contact   : 2
 {  42} rof       : 9
 {  42} tgt       : 0
 {  42} rf        : 0
@@ -5554,7 +5556,7 @@ count: 106
 {  43} loader    : 0030
 {  43} load_cap  : 0
 {  43} load_cost : 0
-{  43} radio     : 1
+{  43} contact   : 1
 {  43} rof       : 9
 {  43} tgt       : 0
 {  43} rf        : 0
@@ -5619,7 +5621,7 @@ count: 106
 {  44} loader    : 0031
 {  44} load_cap  : 0
 {  44} load_cost : 0
-{  44} radio     : 1
+{  44} contact   : 1
 {  44} rof       : 9
 {  44} tgt       : 0
 {  44} rf        : 0
@@ -5684,7 +5686,7 @@ count: 106
 {  45} loader    : 0032
 {  45} load_cap  : 0
 {  45} load_cost : 0
-{  45} radio     : 1
+{  45} contact   : 1
 {  45} rof       : 9
 {  45} tgt       : 0
 {  45} rf        : 0
@@ -5749,7 +5751,7 @@ count: 106
 {  46} loader    : 0033
 {  46} load_cap  : 0
 {  46} load_cost : 0
-{  46} radio     : 2
+{  46} contact   : 2
 {  46} rof       : 9
 {  46} tgt       : 0
 {  46} rf        : 0
@@ -5814,7 +5816,7 @@ count: 106
 {  47} loader    : ffff
 {  47} load_cap  : 112
 {  47} load_cost : 226
-{  47} radio     : 2
+{  47} contact   : 2
 {  47} rof       : 9
 {  47} tgt       : 0
 {  47} rf        : 1
@@ -5879,7 +5881,7 @@ count: 106
 {  48} loader    : ffff
 {  48} load_cap  : 112
 {  48} load_cost : 226
-{  48} radio     : 1
+{  48} contact   : 1
 {  48} rof       : 9
 {  48} tgt       : 0
 {  48} rf        : 1
@@ -5944,7 +5946,7 @@ count: 106
 {  49} loader    : ffff
 {  49} load_cap  : 112
 {  49} load_cost : 226
-{  49} radio     : 1
+{  49} contact   : 1
 {  49} rof       : 9
 {  49} tgt       : 0
 {  49} rf        : 1
@@ -6009,7 +6011,7 @@ count: 106
 {  50} loader    : ffff
 {  50} load_cap  : 112
 {  50} load_cost : 226
-{  50} radio     : 1
+{  50} contact   : 1
 {  50} rof       : 9
 {  50} tgt       : 0
 {  50} rf        : 1
@@ -6074,7 +6076,7 @@ count: 106
 {  51} loader    : ffff
 {  51} load_cap  : 112
 {  51} load_cost : 226
-{  51} radio     : 2
+{  51} contact   : 2
 {  51} rof       : 9
 {  51} tgt       : 0
 {  51} rf        : 1
@@ -6139,7 +6141,7 @@ count: 106
 {  52} loader    : 0039
 {  52} load_cap  : 0
 {  52} load_cost : 0
-{  52} radio     : 2
+{  52} contact   : 2
 {  52} rof       : 9
 {  52} tgt       : 0
 {  52} rf        : 0
@@ -6204,7 +6206,7 @@ count: 106
 {  53} loader    : 003a
 {  53} load_cap  : 0
 {  53} load_cost : 0
-{  53} radio     : 1
+{  53} contact   : 1
 {  53} rof       : 9
 {  53} tgt       : 0
 {  53} rf        : 0
@@ -6269,7 +6271,7 @@ count: 106
 {  54} loader    : ffff
 {  54} load_cap  : 0
 {  54} load_cost : 0
-{  54} radio     : 1
+{  54} contact   : 1
 {  54} rof       : 9
 {  54} tgt       : 0
 {  54} rf        : 0
@@ -6334,7 +6336,7 @@ count: 106
 {  55} loader    : 003c
 {  55} load_cap  : 0
 {  55} load_cost : 0
-{  55} radio     : 2
+{  55} contact   : 2
 {  55} rof       : 9
 {  55} tgt       : 0
 {  55} rf        : 0
@@ -6399,7 +6401,7 @@ count: 106
 {  56} loader    : ffff
 {  56} load_cap  : 0
 {  56} load_cost : 0
-{  56} radio     : 2
+{  56} contact   : 2
 {  56} rof       : 9
 {  56} tgt       : 0
 {  56} rf        : 0
@@ -6464,7 +6466,7 @@ count: 106
 {  57} loader    : ffff
 {  57} load_cap  : 112
 {  57} load_cost : 226
-{  57} radio     : 2
+{  57} contact   : 2
 {  57} rof       : 9
 {  57} tgt       : 0
 {  57} rf        : 1
@@ -6529,7 +6531,7 @@ count: 106
 {  58} loader    : ffff
 {  58} load_cap  : 112
 {  58} load_cost : 226
-{  58} radio     : 1
+{  58} contact   : 1
 {  58} rof       : 9
 {  58} tgt       : 0
 {  58} rf        : 1
@@ -6594,7 +6596,7 @@ count: 106
 {  59} loader    : ffff
 {  59} load_cap  : 112
 {  59} load_cost : 226
-{  59} radio     : 1
+{  59} contact   : 1
 {  59} rof       : 9
 {  59} tgt       : 0
 {  59} rf        : 1
@@ -6659,7 +6661,7 @@ count: 106
 {  60} loader    : ffff
 {  60} load_cap  : 112
 {  60} load_cost : 226
-{  60} radio     : 2
+{  60} contact   : 2
 {  60} rof       : 9
 {  60} tgt       : 0
 {  60} rf        : 1
@@ -6724,7 +6726,7 @@ count: 106
 {  61} loader    : ffff
 {  61} load_cap  : 112
 {  61} load_cost : 226
-{  61} radio     : 1
+{  61} contact   : 1
 {  61} rof       : 9
 {  61} tgt       : 0
 {  61} rf        : 1
@@ -6789,7 +6791,7 @@ count: 106
 {  62} loader    : ffff
 {  62} load_cap  : 0
 {  62} load_cost : 230
-{  62} radio     : 2
+{  62} contact   : 2
 {  62} rof       : 6
 {  62} tgt       : 0
 {  62} rf        : 6
@@ -6854,7 +6856,7 @@ count: 106
 {  63} loader    : ffff
 {  63} load_cap  : 0
 {  63} load_cost : 230
-{  63} radio     : 1
+{  63} contact   : 1
 {  63} rof       : 6
 {  63} tgt       : 0
 {  63} rf        : 6
@@ -6919,7 +6921,7 @@ count: 106
 {  64} loader    : ffff
 {  64} load_cap  : 0
 {  64} load_cost : 230
-{  64} radio     : 1
+{  64} contact   : 1
 {  64} rof       : 6
 {  64} tgt       : 0
 {  64} rf        : 6
@@ -6984,7 +6986,7 @@ count: 106
 {  65} loader    : ffff
 {  65} load_cap  : 0
 {  65} load_cost : 230
-{  65} radio     : 1
+{  65} contact   : 1
 {  65} rof       : 6
 {  65} tgt       : 0
 {  65} rf        : 6
@@ -7049,7 +7051,7 @@ count: 106
 {  66} loader    : 0025
 {  66} load_cap  : 0
 {  66} load_cost : 0
-{  66} radio     : 2
+{  66} contact   : 2
 {  66} rof       : 9
 {  66} tgt       : 0
 {  66} rf        : 3
@@ -7114,7 +7116,7 @@ count: 106
 {  67} loader    : 002a
 {  67} load_cap  : 0
 {  67} load_cost : 0
-{  67} radio     : 1
+{  67} contact   : 1
 {  67} rof       : 9
 {  67} tgt       : 0
 {  67} rf        : 3
@@ -7179,7 +7181,7 @@ count: 106
 {  68} loader    : 0046
 {  68} load_cap  : 0
 {  68} load_cost : 0
-{  68} radio     : 2
+{  68} contact   : 2
 {  68} rof       : 8
 {  68} tgt       : 0
 {  68} rf        : 0
@@ -7244,7 +7246,7 @@ count: 106
 {  69} loader    : 0044
 {  69} load_cap  : 0
 {  69} load_cost : 0
-{  69} radio     : 2
+{  69} contact   : 2
 {  69} rof       : 8
 {  69} tgt       : 0
 {  69} rf        : 0
@@ -7309,7 +7311,7 @@ count: 106
 {  70} loader    : ffff
 {  70} load_cap  : 110
 {  70} load_cost : 228
-{  70} radio     : 2
+{  70} contact   : 2
 {  70} rof       : 9
 {  70} tgt       : 0
 {  70} rf        : 0
@@ -7374,7 +7376,7 @@ count: 106
 {  71} loader    : ffff
 {  71} load_cap  : 2
 {  71} load_cost : 230
-{  71} radio     : 2
+{  71} contact   : 2
 {  71} rof       : 4
 {  71} tgt       : 0
 {  71} rf        : 1
@@ -7439,7 +7441,7 @@ count: 106
 {  72} loader    : ffff
 {  72} load_cap  : 2
 {  72} load_cost : 230
-{  72} radio     : 1
+{  72} contact   : 1
 {  72} rof       : 4
 {  72} tgt       : 0
 {  72} rf        : 1
@@ -7504,7 +7506,7 @@ count: 106
 {  73} loader    : ffff
 {  73} load_cap  : 2
 {  73} load_cost : 230
-{  73} radio     : 1
+{  73} contact   : 1
 {  73} rof       : 4
 {  73} tgt       : 0
 {  73} rf        : 1
@@ -7569,7 +7571,7 @@ count: 106
 {  74} loader    : ffff
 {  74} load_cap  : 2
 {  74} load_cost : 230
-{  74} radio     : 1
+{  74} contact   : 1
 {  74} rof       : 4
 {  74} tgt       : 0
 {  74} rf        : 1
@@ -7634,7 +7636,7 @@ count: 106
 {  75} loader    : ffff
 {  75} load_cap  : 2
 {  75} load_cost : 226
-{  75} radio     : 2
+{  75} contact   : 2
 {  75} rof       : 6
 {  75} tgt       : 0
 {  75} rf        : 3
@@ -7699,7 +7701,7 @@ count: 106
 {  76} loader    : ffff
 {  76} load_cap  : 2
 {  76} load_cost : 226
-{  76} radio     : 0
+{  76} contact   : 0
 {  76} rof       : 6
 {  76} tgt       : 0
 {  76} rf        : 3
@@ -7764,7 +7766,7 @@ count: 106
 {  77} loader    : ffff
 {  77} load_cap  : 2
 {  77} load_cost : 226
-{  77} radio     : 1
+{  77} contact   : 1
 {  77} rof       : 6
 {  77} tgt       : 0
 {  77} rf        : 3
@@ -7829,7 +7831,7 @@ count: 106
 {  78} loader    : ffff
 {  78} load_cap  : 2
 {  78} load_cost : 226
-{  78} radio     : 1
+{  78} contact   : 1
 {  78} rof       : 6
 {  78} tgt       : 0
 {  78} rf        : 3
@@ -7894,7 +7896,7 @@ count: 106
 {  79} loader    : ffff
 {  79} load_cap  : 0
 {  79} load_cost : 230
-{  79} radio     : 2
+{  79} contact   : 2
 {  79} rof       : 9
 {  79} tgt       : 0
 {  79} rf        : 3
@@ -7959,7 +7961,7 @@ count: 106
 {  80} loader    : ffff
 {  80} load_cap  : 0
 {  80} load_cost : 230
-{  80} radio     : 0
+{  80} contact   : 0
 {  80} rof       : 9
 {  80} tgt       : 0
 {  80} rf        : 3
@@ -8024,7 +8026,7 @@ count: 106
 {  81} loader    : ffff
 {  81} load_cap  : 0
 {  81} load_cost : 230
-{  81} radio     : 1
+{  81} contact   : 1
 {  81} rof       : 9
 {  81} tgt       : 0
 {  81} rf        : 3
@@ -8089,7 +8091,7 @@ count: 106
 {  82} loader    : ffff
 {  82} load_cap  : 0
 {  82} load_cost : 230
-{  82} radio     : 2
+{  82} contact   : 2
 {  82} rof       : 9
 {  82} tgt       : 0
 {  82} rf        : 3
@@ -8154,7 +8156,7 @@ count: 106
 {  83} loader    : ffff
 {  83} load_cap  : 0
 {  83} load_cost : 233
-{  83} radio     : 2
+{  83} contact   : 2
 {  83} rof       : 9
 {  83} tgt       : 0
 {  83} rf        : 0
@@ -8219,7 +8221,7 @@ count: 106
 {  84} loader    : ffff
 {  84} load_cap  : 0
 {  84} load_cost : 233
-{  84} radio     : 1
+{  84} contact   : 1
 {  84} rof       : 9
 {  84} tgt       : 0
 {  84} rf        : 0
@@ -8284,7 +8286,7 @@ count: 106
 {  85} loader    : ffff
 {  85} load_cap  : 0
 {  85} load_cost : 233
-{  85} radio     : 1
+{  85} contact   : 1
 {  85} rof       : 9
 {  85} tgt       : 0
 {  85} rf        : 0
@@ -8349,7 +8351,7 @@ count: 106
 {  86} loader    : ffff
 {  86} load_cap  : 0
 {  86} load_cost : 233
-{  86} radio     : 2
+{  86} contact   : 2
 {  86} rof       : 9
 {  86} tgt       : 0
 {  86} rf        : 0
@@ -8414,7 +8416,7 @@ count: 106
 {  87} loader    : ffff
 {  87} load_cap  : 0
 {  87} load_cost : 233
-{  87} radio     : 2
+{  87} contact   : 2
 {  87} rof       : 9
 {  87} tgt       : 0
 {  87} rf        : 0
@@ -8479,7 +8481,7 @@ count: 106
 {  88} loader    : ffff
 {  88} load_cap  : 0
 {  88} load_cost : 233
-{  88} radio     : 1
+{  88} contact   : 1
 {  88} rof       : 9
 {  88} tgt       : 0
 {  88} rf        : 0
@@ -8544,7 +8546,7 @@ count: 106
 {  89} loader    : ffff
 {  89} load_cap  : 0
 {  89} load_cost : 255
-{  89} radio     : 1
+{  89} contact   : 1
 {  89} rof       : 9
 {  89} tgt       : 10
 {  89} rf        : 1
@@ -8609,7 +8611,7 @@ count: 106
 {  90} loader    : ffff
 {  90} load_cap  : 0
 {  90} load_cost : 255
-{  90} radio     : 1
+{  90} contact   : 1
 {  90} rof       : 9
 {  90} tgt       : 10
 {  90} rf        : 1
@@ -8674,7 +8676,7 @@ count: 106
 {  91} loader    : ffff
 {  91} load_cap  : 0
 {  91} load_cost : 255
-{  91} radio     : 0
+{  91} contact   : 0
 {  91} rof       : 9
 {  91} tgt       : 10
 {  91} rf        : 1
@@ -8739,7 +8741,7 @@ count: 106
 {  92} loader    : ffff
 {  92} load_cap  : 0
 {  92} load_cost : 255
-{  92} radio     : 0
+{  92} contact   : 0
 {  92} rof       : 9
 {  92} tgt       : 10
 {  92} rf        : 1
@@ -8804,7 +8806,7 @@ count: 106
 {  93} loader    : ffff
 {  93} load_cap  : 10
 {  93} load_cost : 226
-{  93} radio     : 2
+{  93} contact   : 2
 {  93} rof       : 4
 {  93} tgt       : 0
 {  93} rf        : 2
@@ -8869,7 +8871,7 @@ count: 106
 {  94} loader    : ffff
 {  94} load_cap  : 10
 {  94} load_cost : 226
-{  94} radio     : 1
+{  94} contact   : 1
 {  94} rof       : 4
 {  94} tgt       : 0
 {  94} rf        : 2
@@ -8934,7 +8936,7 @@ count: 106
 {  95} loader    : ffff
 {  95} load_cap  : 10
 {  95} load_cost : 226
-{  95} radio     : 2
+{  95} contact   : 2
 {  95} rof       : 4
 {  95} tgt       : 0
 {  95} rf        : 2
@@ -8999,7 +9001,7 @@ count: 106
 {  96} loader    : ffff
 {  96} load_cap  : 0
 {  96} load_cost : 0
-{  96} radio     : 2
+{  96} contact   : 2
 {  96} rof       : 9
 {  96} tgt       : 0
 {  96} rf        : 0
@@ -9064,7 +9066,7 @@ count: 106
 {  97} loader    : ffff
 {  97} load_cap  : 0
 {  97} load_cost : 0
-{  97} radio     : 1
+{  97} contact   : 1
 {  97} rof       : 9
 {  97} tgt       : 0
 {  97} rf        : 0
@@ -9129,7 +9131,7 @@ count: 106
 {  98} loader    : 005e
 {  98} load_cap  : 0
 {  98} load_cost : 0
-{  98} radio     : 1
+{  98} contact   : 1
 {  98} rof       : 9
 {  98} tgt       : 0
 {  98} rf        : 0
@@ -9194,7 +9196,7 @@ count: 106
 {  99} loader    : ffff
 {  99} load_cap  : 10
 {  99} load_cost : 226
-{  99} radio     : 2
+{  99} contact   : 2
 {  99} rof       : 4
 {  99} tgt       : 0
 {  99} rf        : 2
@@ -9259,7 +9261,7 @@ count: 106
 { 100} loader    : ffff
 { 100} load_cap  : 10
 { 100} load_cost : 226
-{ 100} radio     : 2
+{ 100} contact   : 2
 { 100} rof       : 4
 { 100} tgt       : 0
 { 100} rf        : 0
@@ -9324,7 +9326,7 @@ count: 106
 { 101} loader    : ffff
 { 101} load_cap  : 10
 { 101} load_cost : 226
-{ 101} radio     : 1
+{ 101} contact   : 1
 { 101} rof       : 4
 { 101} tgt       : 0
 { 101} rf        : 2
@@ -9389,7 +9391,7 @@ count: 106
 { 102} loader    : ffff
 { 102} load_cap  : 0
 { 102} load_cost : 0
-{ 102} radio     : 1
+{ 102} contact   : 1
 { 102} rof       : 9
 { 102} tgt       : 0
 { 102} rf        : 0
@@ -9454,7 +9456,7 @@ count: 106
 { 103} loader    : ffff
 { 103} load_cap  : 0
 { 103} load_cost : 0
-{ 103} radio     : 1
+{ 103} contact   : 1
 { 103} rof       : 9
 { 103} tgt       : 0
 { 103} rf        : 0
@@ -9519,7 +9521,7 @@ count: 106
 { 104} loader    : ffff
 { 104} load_cap  : 0
 { 104} load_cost : 0
-{ 104} radio     : 1
+{ 104} contact   : 1
 { 104} rof       : 9
 { 104} tgt       : 0
 { 104} rf        : 0
@@ -9584,7 +9586,7 @@ count: 106
 { 105} loader    : ffff
 { 105} load_cap  : 0
 { 105} load_cost : 0
-{ 105} radio     : 1
+{ 105} contact   : 1
 { 105} rof       : 6
 { 105} tgt       : 0
 { 105} rf        : 0
@@ -14096,7 +14098,7 @@ count: 170
 {   0} loader    : ffff
 {   0} load_cap  : 0
 {   0} load_cost : 0
-{   0} radio     : 2
+{   0} contact   : 2
 {   0} rof       : 9
 {   0} tgt       : 0
 {   0} rf        : 0
@@ -14161,7 +14163,7 @@ count: 170
 {   1} loader    : ffff
 {   1} load_cap  : 0
 {   1} load_cost : 0
-{   1} radio     : 2
+{   1} contact   : 2
 {   1} rof       : 9
 {   1} tgt       : 0
 {   1} rf        : 0
@@ -14226,7 +14228,7 @@ count: 170
 {   2} loader    : ffff
 {   2} load_cap  : 0
 {   2} load_cost : 0
-{   2} radio     : 2
+{   2} contact   : 2
 {   2} rof       : 9
 {   2} tgt       : 0
 {   2} rf        : 0
@@ -14291,7 +14293,7 @@ count: 170
 {   3} loader    : ffff
 {   3} load_cap  : 0
 {   3} load_cost : 0
-{   3} radio     : 2
+{   3} contact   : 2
 {   3} rof       : 9
 {   3} tgt       : 0
 {   3} rf        : 0
@@ -14356,7 +14358,7 @@ count: 170
 {   4} loader    : ffff
 {   4} load_cap  : 0
 {   4} load_cost : 0
-{   4} radio     : 0
+{   4} contact   : 0
 {   4} rof       : 9
 {   4} tgt       : 0
 {   4} rf        : 0
@@ -14421,7 +14423,7 @@ count: 170
 {   5} loader    : ffff
 {   5} load_cap  : 0
 {   5} load_cost : 0
-{   5} radio     : 0
+{   5} contact   : 0
 {   5} rof       : 9
 {   5} tgt       : 0
 {   5} rf        : 0
@@ -14486,7 +14488,7 @@ count: 170
 {   6} loader    : ffff
 {   6} load_cap  : 0
 {   6} load_cost : 0
-{   6} radio     : 0
+{   6} contact   : 0
 {   6} rof       : 9
 {   6} tgt       : 0
 {   6} rf        : 0
@@ -14551,7 +14553,7 @@ count: 170
 {   7} loader    : ffff
 {   7} load_cap  : 0
 {   7} load_cost : 0
-{   7} radio     : 0
+{   7} contact   : 0
 {   7} rof       : 9
 {   7} tgt       : 0
 {   7} rf        : 0
@@ -14616,7 +14618,7 @@ count: 170
 {   8} loader    : ffff
 {   8} load_cap  : 0
 {   8} load_cost : 0
-{   8} radio     : 0
+{   8} contact   : 0
 {   8} rof       : 9
 {   8} tgt       : 0
 {   8} rf        : 0
@@ -14681,7 +14683,7 @@ count: 170
 {   9} loader    : ffff
 {   9} load_cap  : 0
 {   9} load_cost : 0
-{   9} radio     : 0
+{   9} contact   : 0
 {   9} rof       : 9
 {   9} tgt       : 0
 {   9} rf        : 0
@@ -14746,7 +14748,7 @@ count: 170
 {  10} loader    : ffff
 {  10} load_cap  : 0
 {  10} load_cost : 0
-{  10} radio     : 0
+{  10} contact   : 0
 {  10} rof       : 9
 {  10} tgt       : 0
 {  10} rf        : 0
@@ -14811,7 +14813,7 @@ count: 170
 {  11} loader    : ffff
 {  11} load_cap  : 0
 {  11} load_cost : 0
-{  11} radio     : 0
+{  11} contact   : 0
 {  11} rof       : 9
 {  11} tgt       : 0
 {  11} rf        : 0
@@ -14876,7 +14878,7 @@ count: 170
 {  12} loader    : ffff
 {  12} load_cap  : 0
 {  12} load_cost : 0
-{  12} radio     : 1
+{  12} contact   : 1
 {  12} rof       : 9
 {  12} tgt       : 0
 {  12} rf        : 0
@@ -14941,7 +14943,7 @@ count: 170
 {  13} loader    : ffff
 {  13} load_cap  : 0
 {  13} load_cost : 0
-{  13} radio     : 0
+{  13} contact   : 0
 {  13} rof       : 9
 {  13} tgt       : 0
 {  13} rf        : 0
@@ -15006,7 +15008,7 @@ count: 170
 {  14} loader    : ffff
 {  14} load_cap  : 0
 {  14} load_cost : 0
-{  14} radio     : 0
+{  14} contact   : 0
 {  14} rof       : 9
 {  14} tgt       : 0
 {  14} rf        : 0
@@ -15071,7 +15073,7 @@ count: 170
 {  15} loader    : ffff
 {  15} load_cap  : 0
 {  15} load_cost : 0
-{  15} radio     : 0
+{  15} contact   : 0
 {  15} rof       : 9
 {  15} tgt       : 0
 {  15} rf        : 0
@@ -15136,7 +15138,7 @@ count: 170
 {  16} loader    : ffff
 {  16} load_cap  : 0
 {  16} load_cost : 0
-{  16} radio     : 0
+{  16} contact   : 0
 {  16} rof       : 9
 {  16} tgt       : 0
 {  16} rf        : 0
@@ -15201,7 +15203,7 @@ count: 170
 {  17} loader    : ffff
 {  17} load_cap  : 0
 {  17} load_cost : 0
-{  17} radio     : 0
+{  17} contact   : 0
 {  17} rof       : 9
 {  17} tgt       : 0
 {  17} rf        : 0
@@ -15266,7 +15268,7 @@ count: 170
 {  18} loader    : ffff
 {  18} load_cap  : 0
 {  18} load_cost : 0
-{  18} radio     : 0
+{  18} contact   : 0
 {  18} rof       : 9
 {  18} tgt       : 0
 {  18} rf        : 0
@@ -15331,7 +15333,7 @@ count: 170
 {  19} loader    : ffff
 {  19} load_cap  : 0
 {  19} load_cost : 0
-{  19} radio     : 0
+{  19} contact   : 0
 {  19} rof       : 9
 {  19} tgt       : 0
 {  19} rf        : 0
@@ -15396,7 +15398,7 @@ count: 170
 {  20} loader    : ffff
 {  20} load_cap  : 0
 {  20} load_cost : 0
-{  20} radio     : 1
+{  20} contact   : 1
 {  20} rof       : 9
 {  20} tgt       : 0
 {  20} rf        : 0
@@ -15461,7 +15463,7 @@ count: 170
 {  21} loader    : ffff
 {  21} load_cap  : 0
 {  21} load_cost : 0
-{  21} radio     : 1
+{  21} contact   : 1
 {  21} rof       : 9
 {  21} tgt       : 0
 {  21} rf        : 0
@@ -15526,7 +15528,7 @@ count: 170
 {  22} loader    : ffff
 {  22} load_cap  : 0
 {  22} load_cost : 0
-{  22} radio     : 0
+{  22} contact   : 0
 {  22} rof       : 9
 {  22} tgt       : 0
 {  22} rf        : 0
@@ -15591,7 +15593,7 @@ count: 170
 {  23} loader    : ffff
 {  23} load_cap  : 0
 {  23} load_cost : 0
-{  23} radio     : 0
+{  23} contact   : 0
 {  23} rof       : 9
 {  23} tgt       : 0
 {  23} rf        : 0
@@ -15656,7 +15658,7 @@ count: 170
 {  24} loader    : ffff
 {  24} load_cap  : 0
 {  24} load_cost : 0
-{  24} radio     : 0
+{  24} contact   : 0
 {  24} rof       : 9
 {  24} tgt       : 0
 {  24} rf        : 0
@@ -15721,7 +15723,7 @@ count: 170
 {  25} loader    : ffff
 {  25} load_cap  : 0
 {  25} load_cost : 228
-{  25} radio     : 1
+{  25} contact   : 1
 {  25} rof       : 6
 {  25} tgt       : 0
 {  25} rf        : 2
@@ -15786,7 +15788,7 @@ count: 170
 {  26} loader    : ffff
 {  26} load_cap  : 0
 {  26} load_cost : 226
-{  26} radio     : 1
+{  26} contact   : 1
 {  26} rof       : 9
 {  26} tgt       : 0
 {  26} rf        : 0
@@ -15851,7 +15853,7 @@ count: 170
 {  27} loader    : ffff
 {  27} load_cap  : 0
 {  27} load_cost : 226
-{  27} radio     : 0
+{  27} contact   : 0
 {  27} rof       : 9
 {  27} tgt       : 0
 {  27} rf        : 0
@@ -15916,7 +15918,7 @@ count: 170
 {  28} loader    : ffff
 {  28} load_cap  : 6
 {  28} load_cost : 226
-{  28} radio     : 0
+{  28} contact   : 0
 {  28} rof       : 5
 {  28} tgt       : 0
 {  28} rf        : 0
@@ -15981,7 +15983,7 @@ count: 170
 {  29} loader    : ffff
 {  29} load_cap  : 6
 {  29} load_cost : 226
-{  29} radio     : 0
+{  29} contact   : 0
 {  29} rof       : 5
 {  29} tgt       : 0
 {  29} rf        : 0
@@ -16046,7 +16048,7 @@ count: 170
 {  30} loader    : ffff
 {  30} load_cap  : 0
 {  30} load_cost : 104
-{  30} radio     : 2
+{  30} contact   : 2
 {  30} rof       : 8
 {  30} tgt       : 0
 {  30} rf        : 2
@@ -16111,7 +16113,7 @@ count: 170
 {  31} loader    : ffff
 {  31} load_cap  : 0
 {  31} load_cost : 104
-{  31} radio     : 0
+{  31} contact   : 0
 {  31} rof       : 8
 {  31} tgt       : 0
 {  31} rf        : 2
@@ -16176,7 +16178,7 @@ count: 170
 {  32} loader    : ffff
 {  32} load_cap  : 108
 {  32} load_cost : 224
-{  32} radio     : 0
+{  32} contact   : 0
 {  32} rof       : 8
 {  32} tgt       : 0
 {  32} rf        : 0
@@ -16241,7 +16243,7 @@ count: 170
 {  33} loader    : ffff
 {  33} load_cap  : 108
 {  33} load_cost : 224
-{  33} radio     : 0
+{  33} contact   : 0
 {  33} rof       : 8
 {  33} tgt       : 0
 {  33} rf        : 0
@@ -16306,7 +16308,7 @@ count: 170
 {  34} loader    : ffff
 {  34} load_cap  : 6
 {  34} load_cost : 226
-{  34} radio     : 0
+{  34} contact   : 0
 {  34} rof       : 5
 {  34} tgt       : 0
 {  34} rf        : 2
@@ -16371,7 +16373,7 @@ count: 170
 {  35} loader    : ffff
 {  35} load_cap  : 6
 {  35} load_cost : 226
-{  35} radio     : 0
+{  35} contact   : 0
 {  35} rof       : 5
 {  35} tgt       : 0
 {  35} rf        : 0
@@ -16436,7 +16438,7 @@ count: 170
 {  36} loader    : ffff
 {  36} load_cap  : 6
 {  36} load_cost : 226
-{  36} radio     : 0
+{  36} contact   : 0
 {  36} rof       : 5
 {  36} tgt       : 0
 {  36} rf        : 0
@@ -16501,7 +16503,7 @@ count: 170
 {  37} loader    : ffff
 {  37} load_cap  : 6
 {  37} load_cost : 226
-{  37} radio     : 0
+{  37} contact   : 0
 {  37} rof       : 6
 {  37} tgt       : 0
 {  37} rf        : 0
@@ -16566,7 +16568,7 @@ count: 170
 {  38} loader    : ffff
 {  38} load_cap  : 6
 {  38} load_cost : 226
-{  38} radio     : 0
+{  38} contact   : 0
 {  38} rof       : 5
 {  38} tgt       : 0
 {  38} rf        : 2
@@ -16631,7 +16633,7 @@ count: 170
 {  39} loader    : ffff
 {  39} load_cap  : 6
 {  39} load_cost : 226
-{  39} radio     : 0
+{  39} contact   : 0
 {  39} rof       : 5
 {  39} tgt       : 0
 {  39} rf        : 0
@@ -16696,7 +16698,7 @@ count: 170
 {  40} loader    : ffff
 {  40} load_cap  : 6
 {  40} load_cost : 226
-{  40} radio     : 0
+{  40} contact   : 0
 {  40} rof       : 5
 {  40} tgt       : 0
 {  40} rf        : 0
@@ -16761,7 +16763,7 @@ count: 170
 {  41} loader    : ffff
 {  41} load_cap  : 6
 {  41} load_cost : 226
-{  41} radio     : 0
+{  41} contact   : 0
 {  41} rof       : 5
 {  41} tgt       : 0
 {  41} rf        : 2
@@ -16826,7 +16828,7 @@ count: 170
 {  42} loader    : ffff
 {  42} load_cap  : 6
 {  42} load_cost : 226
-{  42} radio     : 0
+{  42} contact   : 0
 {  42} rof       : 6
 {  42} tgt       : 0
 {  42} rf        : 0
@@ -16891,7 +16893,7 @@ count: 170
 {  43} loader    : ffff
 {  43} load_cap  : 6
 {  43} load_cost : 226
-{  43} radio     : 0
+{  43} contact   : 0
 {  43} rof       : 6
 {  43} tgt       : 0
 {  43} rf        : 0
@@ -16956,7 +16958,7 @@ count: 170
 {  44} loader    : ffff
 {  44} load_cap  : 6
 {  44} load_cost : 226
-{  44} radio     : 0
+{  44} contact   : 0
 {  44} rof       : 6
 {  44} tgt       : 0
 {  44} rf        : 2
@@ -17021,7 +17023,7 @@ count: 170
 {  45} loader    : ffff
 {  45} load_cap  : 0
 {  45} load_cost : 0
-{  45} radio     : 1
+{  45} contact   : 1
 {  45} rof       : 9
 {  45} tgt       : 0
 {  45} rf        : 0
@@ -17086,7 +17088,7 @@ count: 170
 {  46} loader    : ffff
 {  46} load_cap  : 0
 {  46} load_cost : 0
-{  46} radio     : 0
+{  46} contact   : 0
 {  46} rof       : 9
 {  46} tgt       : 0
 {  46} rf        : 0
@@ -17151,7 +17153,7 @@ count: 170
 {  47} loader    : ffff
 {  47} load_cap  : 12
 {  47} load_cost : 224
-{  47} radio     : 1
+{  47} contact   : 1
 {  47} rof       : 9
 {  47} tgt       : 0
 {  47} rf        : 1
@@ -17216,7 +17218,7 @@ count: 170
 {  48} loader    : ffff
 {  48} load_cap  : 12
 {  48} load_cost : 224
-{  48} radio     : 0
+{  48} contact   : 0
 {  48} rof       : 9
 {  48} tgt       : 0
 {  48} rf        : 0
@@ -17281,7 +17283,7 @@ count: 170
 {  49} loader    : ffff
 {  49} load_cap  : 0
 {  49} load_cost : 233
-{  49} radio     : 0
+{  49} contact   : 0
 {  49} rof       : 9
 {  49} tgt       : 0
 {  49} rf        : 0
@@ -17346,7 +17348,7 @@ count: 170
 {  50} loader    : ffff
 {  50} load_cap  : 0
 {  50} load_cost : 0
-{  50} radio     : 0
+{  50} contact   : 0
 {  50} rof       : 9
 {  50} tgt       : 0
 {  50} rf        : 0
@@ -17411,7 +17413,7 @@ count: 170
 {  51} loader    : ffff
 {  51} load_cap  : 0
 {  51} load_cost : 0
-{  51} radio     : 0
+{  51} contact   : 0
 {  51} rof       : 9
 {  51} tgt       : 0
 {  51} rf        : 0
@@ -17476,7 +17478,7 @@ count: 170
 {  52} loader    : ffff
 {  52} load_cap  : 0
 {  52} load_cost : 0
-{  52} radio     : 0
+{  52} contact   : 0
 {  52} rof       : 9
 {  52} tgt       : 0
 {  52} rf        : 0
@@ -17541,7 +17543,7 @@ count: 170
 {  53} loader    : ffff
 {  53} load_cap  : 114
 {  53} load_cost : 228
-{  53} radio     : 0
+{  53} contact   : 0
 {  53} rof       : 9
 {  53} tgt       : 0
 {  53} rf        : 0
@@ -17606,7 +17608,7 @@ count: 170
 {  54} loader    : ffff
 {  54} load_cap  : 114
 {  54} load_cost : 228
-{  54} radio     : 0
+{  54} contact   : 0
 {  54} rof       : 9
 {  54} tgt       : 0
 {  54} rf        : 0
@@ -17671,7 +17673,7 @@ count: 170
 {  55} loader    : ffff
 {  55} load_cap  : 114
 {  55} load_cost : 228
-{  55} radio     : 0
+{  55} contact   : 0
 {  55} rof       : 9
 {  55} tgt       : 0
 {  55} rf        : 0
@@ -17736,7 +17738,7 @@ count: 170
 {  56} loader    : ffff
 {  56} load_cap  : 114
 {  56} load_cost : 228
-{  56} radio     : 0
+{  56} contact   : 0
 {  56} rof       : 9
 {  56} tgt       : 0
 {  56} rf        : 0
@@ -17801,7 +17803,7 @@ count: 170
 {  57} loader    : ffff
 {  57} load_cap  : 0
 {  57} load_cost : 0
-{  57} radio     : 1
+{  57} contact   : 1
 {  57} rof       : 8
 {  57} tgt       : 0
 {  57} rf        : 0
@@ -17866,7 +17868,7 @@ count: 170
 {  58} loader    : ffff
 {  58} load_cap  : 0
 {  58} load_cost : 106
-{  58} radio     : 1
+{  58} contact   : 1
 {  58} rof       : 8
 {  58} tgt       : 0
 {  58} rf        : 1
@@ -17931,7 +17933,7 @@ count: 170
 {  59} loader    : ffff
 {  59} load_cap  : 0
 {  59} load_cost : 106
-{  59} radio     : 1
+{  59} contact   : 1
 {  59} rof       : 8
 {  59} tgt       : 0
 {  59} rf        : 1
@@ -17996,7 +17998,7 @@ count: 170
 {  60} loader    : ffff
 {  60} load_cap  : 0
 {  60} load_cost : 106
-{  60} radio     : 0
+{  60} contact   : 0
 {  60} rof       : 8
 {  60} tgt       : 0
 {  60} rf        : 1
@@ -18061,7 +18063,7 @@ count: 170
 {  61} loader    : ffff
 {  61} load_cap  : 0
 {  61} load_cost : 106
-{  61} radio     : 1
+{  61} contact   : 1
 {  61} rof       : 8
 {  61} tgt       : 0
 {  61} rf        : 1
@@ -18126,7 +18128,7 @@ count: 170
 {  62} loader    : ffff
 {  62} load_cap  : 0
 {  62} load_cost : 106
-{  62} radio     : 1
+{  62} contact   : 1
 {  62} rof       : 8
 {  62} tgt       : 0
 {  62} rf        : 1
@@ -18191,7 +18193,7 @@ count: 170
 {  63} loader    : ffff
 {  63} load_cap  : 0
 {  63} load_cost : 107
-{  63} radio     : 2
+{  63} contact   : 2
 {  63} rof       : 8
 {  63} tgt       : 0
 {  63} rf        : 2
@@ -18256,7 +18258,7 @@ count: 170
 {  64} loader    : ffff
 {  64} load_cap  : 0
 {  64} load_cost : 107
-{  64} radio     : 2
+{  64} contact   : 2
 {  64} rof       : 8
 {  64} tgt       : 0
 {  64} rf        : 2
@@ -18321,7 +18323,7 @@ count: 170
 {  65} loader    : ffff
 {  65} load_cap  : 0
 {  65} load_cost : 0
-{  65} radio     : 1
+{  65} contact   : 1
 {  65} rof       : 8
 {  65} tgt       : 0
 {  65} rf        : 0
@@ -18386,7 +18388,7 @@ count: 170
 {  66} loader    : ffff
 {  66} load_cap  : 0
 {  66} load_cost : 0
-{  66} radio     : 1
+{  66} contact   : 1
 {  66} rof       : 8
 {  66} tgt       : 0
 {  66} rf        : 0
@@ -18451,7 +18453,7 @@ count: 170
 {  67} loader    : ffff
 {  67} load_cap  : 0
 {  67} load_cost : 0
-{  67} radio     : 0
+{  67} contact   : 0
 {  67} rof       : 9
 {  67} tgt       : 0
 {  67} rf        : 0
@@ -18516,7 +18518,7 @@ count: 170
 {  68} loader    : ffff
 {  68} load_cap  : 0
 {  68} load_cost : 0
-{  68} radio     : 0
+{  68} contact   : 0
 {  68} rof       : 9
 {  68} tgt       : 0
 {  68} rf        : 0
@@ -18581,7 +18583,7 @@ count: 170
 {  69} loader    : ffff
 {  69} load_cap  : 0
 {  69} load_cost : 0
-{  69} radio     : 0
+{  69} contact   : 0
 {  69} rof       : 9
 {  69} tgt       : 0
 {  69} rf        : 0
@@ -18646,7 +18648,7 @@ count: 170
 {  70} loader    : ffff
 {  70} load_cap  : 0
 {  70} load_cost : 0
-{  70} radio     : 0
+{  70} contact   : 0
 {  70} rof       : 9
 {  70} tgt       : 0
 {  70} rf        : 0
@@ -18711,7 +18713,7 @@ count: 170
 {  71} loader    : ffff
 {  71} load_cap  : 2
 {  71} load_cost : 224
-{  71} radio     : 0
+{  71} contact   : 0
 {  71} rof       : 7
 {  71} tgt       : 0
 {  71} rf        : 2
@@ -18776,7 +18778,7 @@ count: 170
 {  72} loader    : ffff
 {  72} load_cap  : 2
 {  72} load_cost : 224
-{  72} radio     : 0
+{  72} contact   : 0
 {  72} rof       : 7
 {  72} tgt       : 0
 {  72} rf        : 2
@@ -18841,7 +18843,7 @@ count: 170
 {  73} loader    : ffff
 {  73} load_cap  : 0
 {  73} load_cost : 0
-{  73} radio     : 2
+{  73} contact   : 2
 {  73} rof       : 9
 {  73} tgt       : 0
 {  73} rf        : 0
@@ -18906,7 +18908,7 @@ count: 170
 {  74} loader    : ffff
 {  74} load_cap  : 0
 {  74} load_cost : 0
-{  74} radio     : 1
+{  74} contact   : 1
 {  74} rof       : 9
 {  74} tgt       : 0
 {  74} rf        : 0
@@ -18971,7 +18973,7 @@ count: 170
 {  75} loader    : ffff
 {  75} load_cap  : 0
 {  75} load_cost : 0
-{  75} radio     : 1
+{  75} contact   : 1
 {  75} rof       : 9
 {  75} tgt       : 0
 {  75} rf        : 0
@@ -19036,7 +19038,7 @@ count: 170
 {  76} loader    : ffff
 {  76} load_cap  : 0
 {  76} load_cost : 0
-{  76} radio     : 0
+{  76} contact   : 0
 {  76} rof       : 9
 {  76} tgt       : 0
 {  76} rf        : 0
@@ -19101,7 +19103,7 @@ count: 170
 {  77} loader    : ffff
 {  77} load_cap  : 0
 {  77} load_cost : 0
-{  77} radio     : 1
+{  77} contact   : 1
 {  77} rof       : 9
 {  77} tgt       : 0
 {  77} rf        : 0
@@ -19166,7 +19168,7 @@ count: 170
 {  78} loader    : ffff
 {  78} load_cap  : 0
 {  78} load_cost : 0
-{  78} radio     : 0
+{  78} contact   : 0
 {  78} rof       : 9
 {  78} tgt       : 0
 {  78} rf        : 0
@@ -19231,7 +19233,7 @@ count: 170
 {  79} loader    : ffff
 {  79} load_cap  : 0
 {  79} load_cost : 0
-{  79} radio     : 0
+{  79} contact   : 0
 {  79} rof       : 9
 {  79} tgt       : 0
 {  79} rf        : 0
@@ -19296,7 +19298,7 @@ count: 170
 {  80} loader    : ffff
 {  80} load_cap  : 0
 {  80} load_cost : 0
-{  80} radio     : 0
+{  80} contact   : 0
 {  80} rof       : 9
 {  80} tgt       : 0
 {  80} rf        : 0
@@ -19361,7 +19363,7 @@ count: 170
 {  81} loader    : ffff
 {  81} load_cap  : 0
 {  81} load_cost : 0
-{  81} radio     : 0
+{  81} contact   : 0
 {  81} rof       : 9
 {  81} tgt       : 0
 {  81} rf        : 0
@@ -19426,7 +19428,7 @@ count: 170
 {  82} loader    : ffff
 {  82} load_cap  : 0
 {  82} load_cost : 0
-{  82} radio     : 0
+{  82} contact   : 0
 {  82} rof       : 9
 {  82} tgt       : 0
 {  82} rf        : 0
@@ -19491,7 +19493,7 @@ count: 170
 {  83} loader    : ffff
 {  83} load_cap  : 0
 {  83} load_cost : 0
-{  83} radio     : 0
+{  83} contact   : 0
 {  83} rof       : 9
 {  83} tgt       : 0
 {  83} rf        : 0
@@ -19556,7 +19558,7 @@ count: 170
 {  84} loader    : ffff
 {  84} load_cap  : 0
 {  84} load_cost : 0
-{  84} radio     : 1
+{  84} contact   : 1
 {  84} rof       : 9
 {  84} tgt       : 0
 {  84} rf        : 0
@@ -19621,7 +19623,7 @@ count: 170
 {  85} loader    : ffff
 {  85} load_cap  : 0
 {  85} load_cost : 0
-{  85} radio     : 0
+{  85} contact   : 0
 {  85} rof       : 9
 {  85} tgt       : 0
 {  85} rf        : 0
@@ -19686,7 +19688,7 @@ count: 170
 {  86} loader    : ffff
 {  86} load_cap  : 0
 {  86} load_cost : 0
-{  86} radio     : 0
+{  86} contact   : 0
 {  86} rof       : 9
 {  86} tgt       : 0
 {  86} rf        : 0
@@ -19751,7 +19753,7 @@ count: 170
 {  87} loader    : ffff
 {  87} load_cap  : 0
 {  87} load_cost : 0
-{  87} radio     : 0
+{  87} contact   : 0
 {  87} rof       : 9
 {  87} tgt       : 0
 {  87} rf        : 0
@@ -19816,7 +19818,7 @@ count: 170
 {  88} loader    : ffff
 {  88} load_cap  : 0
 {  88} load_cost : 0
-{  88} radio     : 0
+{  88} contact   : 0
 {  88} rof       : 9
 {  88} tgt       : 0
 {  88} rf        : 0
@@ -19881,7 +19883,7 @@ count: 170
 {  89} loader    : ffff
 {  89} load_cap  : 0
 {  89} load_cost : 226
-{  89} radio     : 2
+{  89} contact   : 2
 {  89} rof       : 9
 {  89} tgt       : 0
 {  89} rf        : 2
@@ -19946,7 +19948,7 @@ count: 170
 {  90} loader    : ffff
 {  90} load_cap  : 0
 {  90} load_cost : 226
-{  90} radio     : 2
+{  90} contact   : 2
 {  90} rof       : 9
 {  90} tgt       : 0
 {  90} rf        : 2
@@ -20011,7 +20013,7 @@ count: 170
 {  91} loader    : ffff
 {  91} load_cap  : 6
 {  91} load_cost : 226
-{  91} radio     : 0
+{  91} contact   : 0
 {  91} rof       : 5
 {  91} tgt       : 0
 {  91} rf        : 0
@@ -20076,7 +20078,7 @@ count: 170
 {  92} loader    : ffff
 {  92} load_cap  : 6
 {  92} load_cost : 226
-{  92} radio     : 0
+{  92} contact   : 0
 {  92} rof       : 5
 {  92} tgt       : 0
 {  92} rf        : 0
@@ -20141,7 +20143,7 @@ count: 170
 {  93} loader    : ffff
 {  93} load_cap  : 108
 {  93} load_cost : 224
-{  93} radio     : 0
+{  93} contact   : 0
 {  93} rof       : 8
 {  93} tgt       : 0
 {  93} rf        : 0
@@ -20206,7 +20208,7 @@ count: 170
 {  94} loader    : ffff
 {  94} load_cap  : 108
 {  94} load_cost : 224
-{  94} radio     : 2
+{  94} contact   : 2
 {  94} rof       : 8
 {  94} tgt       : 0
 {  94} rf        : 0
@@ -20271,7 +20273,7 @@ count: 170
 {  95} loader    : ffff
 {  95} load_cap  : 6
 {  95} load_cost : 226
-{  95} radio     : 0
+{  95} contact   : 0
 {  95} rof       : 5
 {  95} tgt       : 0
 {  95} rf        : 0
@@ -20336,7 +20338,7 @@ count: 170
 {  96} loader    : ffff
 {  96} load_cap  : 6
 {  96} load_cost : 226
-{  96} radio     : 0
+{  96} contact   : 0
 {  96} rof       : 5
 {  96} tgt       : 0
 {  96} rf        : 0
@@ -20401,7 +20403,7 @@ count: 170
 {  97} loader    : ffff
 {  97} load_cap  : 6
 {  97} load_cost : 226
-{  97} radio     : 0
+{  97} contact   : 0
 {  97} rof       : 6
 {  97} tgt       : 0
 {  97} rf        : 0
@@ -20466,7 +20468,7 @@ count: 170
 {  98} loader    : ffff
 {  98} load_cap  : 6
 {  98} load_cost : 226
-{  98} radio     : 1
+{  98} contact   : 1
 {  98} rof       : 6
 {  98} tgt       : 0
 {  98} rf        : 2
@@ -20531,7 +20533,7 @@ count: 170
 {  99} loader    : ffff
 {  99} load_cap  : 6
 {  99} load_cost : 226
-{  99} radio     : 0
+{  99} contact   : 0
 {  99} rof       : 6
 {  99} tgt       : 0
 {  99} rf        : 0
@@ -20596,7 +20598,7 @@ count: 170
 { 100} loader    : ffff
 { 100} load_cap  : 0
 { 100} load_cost : 0
-{ 100} radio     : 0
+{ 100} contact   : 0
 { 100} rof       : 9
 { 100} tgt       : 0
 { 100} rf        : 0
@@ -20661,7 +20663,7 @@ count: 170
 { 101} loader    : ffff
 { 101} load_cap  : 0
 { 101} load_cost : 0
-{ 101} radio     : 0
+{ 101} contact   : 0
 { 101} rof       : 9
 { 101} tgt       : 0
 { 101} rf        : 0
@@ -20726,7 +20728,7 @@ count: 170
 { 102} loader    : ffff
 { 102} load_cap  : 12
 { 102} load_cost : 224
-{ 102} radio     : 0
+{ 102} contact   : 0
 { 102} rof       : 9
 { 102} tgt       : 0
 { 102} rf        : 1
@@ -20791,7 +20793,7 @@ count: 170
 { 103} loader    : ffff
 { 103} load_cap  : 12
 { 103} load_cost : 224
-{ 103} radio     : 0
+{ 103} contact   : 0
 { 103} rof       : 9
 { 103} tgt       : 0
 { 103} rf        : 1
@@ -20856,7 +20858,7 @@ count: 170
 { 104} loader    : ffff
 { 104} load_cap  : 0
 { 104} load_cost : 233
-{ 104} radio     : 1
+{ 104} contact   : 1
 { 104} rof       : 9
 { 104} tgt       : 0
 { 104} rf        : 0
@@ -20921,7 +20923,7 @@ count: 170
 { 105} loader    : ffff
 { 105} load_cap  : 114
 { 105} load_cost : 228
-{ 105} radio     : 0
+{ 105} contact   : 0
 { 105} rof       : 9
 { 105} tgt       : 0
 { 105} rf        : 0
@@ -20986,7 +20988,7 @@ count: 170
 { 106} loader    : ffff
 { 106} load_cap  : 114
 { 106} load_cost : 228
-{ 106} radio     : 0
+{ 106} contact   : 0
 { 106} rof       : 9
 { 106} tgt       : 0
 { 106} rf        : 0
@@ -21051,7 +21053,7 @@ count: 170
 { 107} loader    : ffff
 { 107} load_cap  : 114
 { 107} load_cost : 228
-{ 107} radio     : 0
+{ 107} contact   : 0
 { 107} rof       : 9
 { 107} tgt       : 0
 { 107} rf        : 0
@@ -21116,7 +21118,7 @@ count: 170
 { 108} loader    : ffff
 { 108} load_cap  : 114
 { 108} load_cost : 228
-{ 108} radio     : 0
+{ 108} contact   : 0
 { 108} rof       : 9
 { 108} tgt       : 0
 { 108} rf        : 0
@@ -21181,7 +21183,7 @@ count: 170
 { 109} loader    : ffff
 { 109} load_cap  : 6
 { 109} load_cost : 226
-{ 109} radio     : 1
+{ 109} contact   : 1
 { 109} rof       : 5
 { 109} tgt       : 0
 { 109} rf        : 2
@@ -21246,7 +21248,7 @@ count: 170
 { 110} loader    : ffff
 { 110} load_cap  : 6
 { 110} load_cost : 226
-{ 110} radio     : 1
+{ 110} contact   : 1
 { 110} rof       : 5
 { 110} tgt       : 0
 { 110} rf        : 0
@@ -21311,7 +21313,7 @@ count: 170
 { 111} loader    : ffff
 { 111} load_cap  : 6
 { 111} load_cost : 226
-{ 111} radio     : 0
+{ 111} contact   : 0
 { 111} rof       : 5
 { 111} tgt       : 0
 { 111} rf        : 2
@@ -21376,7 +21378,7 @@ count: 170
 { 112} loader    : ffff
 { 112} load_cap  : 6
 { 112} load_cost : 226
-{ 112} radio     : 2
+{ 112} contact   : 2
 { 112} rof       : 5
 { 112} tgt       : 0
 { 112} rf        : 2
@@ -21441,7 +21443,7 @@ count: 170
 { 113} loader    : ffff
 { 113} load_cap  : 6
 { 113} load_cost : 226
-{ 113} radio     : 2
+{ 113} contact   : 2
 { 113} rof       : 5
 { 113} tgt       : 0
 { 113} rf        : 2
@@ -21506,7 +21508,7 @@ count: 170
 { 114} loader    : ffff
 { 114} load_cap  : 6
 { 114} load_cost : 226
-{ 114} radio     : 0
+{ 114} contact   : 0
 { 114} rof       : 6
 { 114} tgt       : 0
 { 114} rf        : 0
@@ -21571,7 +21573,7 @@ count: 170
 { 115} loader    : ffff
 { 115} load_cap  : 6
 { 115} load_cost : 226
-{ 115} radio     : 0
+{ 115} contact   : 0
 { 115} rof       : 6
 { 115} tgt       : 0
 { 115} rf        : 2
@@ -21636,7 +21638,7 @@ count: 170
 { 116} loader    : ffff
 { 116} load_cap  : 6
 { 116} load_cost : 226
-{ 116} radio     : 0
+{ 116} contact   : 0
 { 116} rof       : 6
 { 116} tgt       : 0
 { 116} rf        : 2
@@ -21701,7 +21703,7 @@ count: 170
 { 117} loader    : ffff
 { 117} load_cap  : 6
 { 117} load_cost : 226
-{ 117} radio     : 0
+{ 117} contact   : 0
 { 117} rof       : 6
 { 117} tgt       : 0
 { 117} rf        : 0
@@ -21766,7 +21768,7 @@ count: 170
 { 118} loader    : ffff
 { 118} load_cap  : 6
 { 118} load_cost : 226
-{ 118} radio     : 0
+{ 118} contact   : 0
 { 118} rof       : 6
 { 118} tgt       : 0
 { 118} rf        : 2
@@ -21831,7 +21833,7 @@ count: 170
 { 119} loader    : ffff
 { 119} load_cap  : 6
 { 119} load_cost : 226
-{ 119} radio     : 0
+{ 119} contact   : 0
 { 119} rof       : 6
 { 119} tgt       : 0
 { 119} rf        : 0
@@ -21896,7 +21898,7 @@ count: 170
 { 120} loader    : ffff
 { 120} load_cap  : 8
 { 120} load_cost : 230
-{ 120} radio     : 0
+{ 120} contact   : 0
 { 120} rof       : 6
 { 120} tgt       : 0
 { 120} rf        : 0
@@ -21961,7 +21963,7 @@ count: 170
 { 121} loader    : ffff
 { 121} load_cap  : 8
 { 121} load_cost : 230
-{ 121} radio     : 0
+{ 121} contact   : 0
 { 121} rof       : 6
 { 121} tgt       : 0
 { 121} rf        : 0
@@ -22026,7 +22028,7 @@ count: 170
 { 122} loader    : ffff
 { 122} load_cap  : 8
 { 122} load_cost : 230
-{ 122} radio     : 0
+{ 122} contact   : 0
 { 122} rof       : 6
 { 122} tgt       : 0
 { 122} rf        : 0
@@ -22091,7 +22093,7 @@ count: 170
 { 123} loader    : ffff
 { 123} load_cap  : 0
 { 123} load_cost : 0
-{ 123} radio     : 1
+{ 123} contact   : 1
 { 123} rof       : 9
 { 123} tgt       : 0
 { 123} rf        : 0
@@ -22156,7 +22158,7 @@ count: 170
 { 124} loader    : ffff
 { 124} load_cap  : 0
 { 124} load_cost : 0
-{ 124} radio     : 1
+{ 124} contact   : 1
 { 124} rof       : 9
 { 124} tgt       : 0
 { 124} rf        : 0
@@ -22221,7 +22223,7 @@ count: 170
 { 125} loader    : ffff
 { 125} load_cap  : 0
 { 125} load_cost : 0
-{ 125} radio     : 1
+{ 125} contact   : 1
 { 125} rof       : 9
 { 125} tgt       : 0
 { 125} rf        : 0
@@ -22286,7 +22288,7 @@ count: 170
 { 126} loader    : ffff
 { 126} load_cap  : 0
 { 126} load_cost : 0
-{ 126} radio     : 1
+{ 126} contact   : 1
 { 126} rof       : 9
 { 126} tgt       : 0
 { 126} rf        : 0
@@ -22351,7 +22353,7 @@ count: 170
 { 127} loader    : ffff
 { 127} load_cap  : 0
 { 127} load_cost : 0
-{ 127} radio     : 1
+{ 127} contact   : 1
 { 127} rof       : 9
 { 127} tgt       : 0
 { 127} rf        : 0
@@ -22416,7 +22418,7 @@ count: 170
 { 128} loader    : ffff
 { 128} load_cap  : 0
 { 128} load_cost : 0
-{ 128} radio     : 0
+{ 128} contact   : 0
 { 128} rof       : 9
 { 128} tgt       : 0
 { 128} rf        : 0
@@ -22481,7 +22483,7 @@ count: 170
 { 129} loader    : ffff
 { 129} load_cap  : 0
 { 129} load_cost : 0
-{ 129} radio     : 1
+{ 129} contact   : 1
 { 129} rof       : 9
 { 129} tgt       : 0
 { 129} rf        : 0
@@ -22546,7 +22548,7 @@ count: 170
 { 130} loader    : ffff
 { 130} load_cap  : 0
 { 130} load_cost : 0
-{ 130} radio     : 1
+{ 130} contact   : 1
 { 130} rof       : 9
 { 130} tgt       : 0
 { 130} rf        : 0
@@ -22611,7 +22613,7 @@ count: 170
 { 131} loader    : ffff
 { 131} load_cap  : 0
 { 131} load_cost : 0
-{ 131} radio     : 0
+{ 131} contact   : 0
 { 131} rof       : 9
 { 131} tgt       : 0
 { 131} rf        : 0
@@ -22676,7 +22678,7 @@ count: 170
 { 132} loader    : ffff
 { 132} load_cap  : 0
 { 132} load_cost : 0
-{ 132} radio     : 0
+{ 132} contact   : 0
 { 132} rof       : 9
 { 132} tgt       : 0
 { 132} rf        : 0
@@ -22741,7 +22743,7 @@ count: 170
 { 133} loader    : ffff
 { 133} load_cap  : 0
 { 133} load_cost : 0
-{ 133} radio     : 0
+{ 133} contact   : 0
 { 133} rof       : 9
 { 133} tgt       : 0
 { 133} rf        : 0
@@ -22806,7 +22808,7 @@ count: 170
 { 134} loader    : ffff
 { 134} load_cap  : 0
 { 134} load_cost : 0
-{ 134} radio     : 0
+{ 134} contact   : 0
 { 134} rof       : 9
 { 134} tgt       : 0
 { 134} rf        : 0
@@ -22871,7 +22873,7 @@ count: 170
 { 135} loader    : ffff
 { 135} load_cap  : 0
 { 135} load_cost : 0
-{ 135} radio     : 0
+{ 135} contact   : 0
 { 135} rof       : 9
 { 135} tgt       : 0
 { 135} rf        : 0
@@ -22936,7 +22938,7 @@ count: 170
 { 136} loader    : ffff
 { 136} load_cap  : 0
 { 136} load_cost : 0
-{ 136} radio     : 0
+{ 136} contact   : 0
 { 136} rof       : 9
 { 136} tgt       : 0
 { 136} rf        : 0
@@ -23001,7 +23003,7 @@ count: 170
 { 137} loader    : ffff
 { 137} load_cap  : 0
 { 137} load_cost : 0
-{ 137} radio     : 0
+{ 137} contact   : 0
 { 137} rof       : 9
 { 137} tgt       : 0
 { 137} rf        : 0
@@ -23066,7 +23068,7 @@ count: 170
 { 138} loader    : ffff
 { 138} load_cap  : 0
 { 138} load_cost : 0
-{ 138} radio     : 0
+{ 138} contact   : 0
 { 138} rof       : 9
 { 138} tgt       : 0
 { 138} rf        : 0
@@ -23131,7 +23133,7 @@ count: 170
 { 139} loader    : ffff
 { 139} load_cap  : 0
 { 139} load_cost : 0
-{ 139} radio     : 1
+{ 139} contact   : 1
 { 139} rof       : 9
 { 139} tgt       : 0
 { 139} rf        : 0
@@ -23196,7 +23198,7 @@ count: 170
 { 140} loader    : ffff
 { 140} load_cap  : 0
 { 140} load_cost : 0
-{ 140} radio     : 0
+{ 140} contact   : 0
 { 140} rof       : 9
 { 140} tgt       : 0
 { 140} rf        : 0
@@ -23261,7 +23263,7 @@ count: 170
 { 141} loader    : ffff
 { 141} load_cap  : 0
 { 141} load_cost : 0
-{ 141} radio     : 2
+{ 141} contact   : 2
 { 141} rof       : 9
 { 141} tgt       : 0
 { 141} rf        : 0
@@ -23326,7 +23328,7 @@ count: 170
 { 142} loader    : ffff
 { 142} load_cap  : 0
 { 142} load_cost : 0
-{ 142} radio     : 0
+{ 142} contact   : 0
 { 142} rof       : 9
 { 142} tgt       : 0
 { 142} rf        : 0
@@ -23391,7 +23393,7 @@ count: 170
 { 143} loader    : ffff
 { 143} load_cap  : 0
 { 143} load_cost : 0
-{ 143} radio     : 2
+{ 143} contact   : 2
 { 143} rof       : 9
 { 143} tgt       : 0
 { 143} rf        : 0
@@ -23456,7 +23458,7 @@ count: 170
 { 144} loader    : ffff
 { 144} load_cap  : 0
 { 144} load_cost : 0
-{ 144} radio     : 0
+{ 144} contact   : 0
 { 144} rof       : 9
 { 144} tgt       : 0
 { 144} rf        : 0
@@ -23521,7 +23523,7 @@ count: 170
 { 145} loader    : ffff
 { 145} load_cap  : 0
 { 145} load_cost : 0
-{ 145} radio     : 0
+{ 145} contact   : 0
 { 145} rof       : 9
 { 145} tgt       : 0
 { 145} rf        : 0
@@ -23586,7 +23588,7 @@ count: 170
 { 146} loader    : ffff
 { 146} load_cap  : 0
 { 146} load_cost : 0
-{ 146} radio     : 1
+{ 146} contact   : 1
 { 146} rof       : 9
 { 146} tgt       : 0
 { 146} rf        : 0
@@ -23651,7 +23653,7 @@ count: 170
 { 147} loader    : ffff
 { 147} load_cap  : 0
 { 147} load_cost : 0
-{ 147} radio     : 0
+{ 147} contact   : 0
 { 147} rof       : 9
 { 147} tgt       : 0
 { 147} rf        : 0
@@ -23716,7 +23718,7 @@ count: 170
 { 148} loader    : ffff
 { 148} load_cap  : 0
 { 148} load_cost : 0
-{ 148} radio     : 1
+{ 148} contact   : 1
 { 148} rof       : 9
 { 148} tgt       : 0
 { 148} rf        : 0
@@ -23781,7 +23783,7 @@ count: 170
 { 149} loader    : ffff
 { 149} load_cap  : 0
 { 149} load_cost : 0
-{ 149} radio     : 1
+{ 149} contact   : 1
 { 149} rof       : 9
 { 149} tgt       : 0
 { 149} rf        : 0
@@ -23846,7 +23848,7 @@ count: 170
 { 150} loader    : ffff
 { 150} load_cap  : 0
 { 150} load_cost : 0
-{ 150} radio     : 0
+{ 150} contact   : 0
 { 150} rof       : 9
 { 150} tgt       : 0
 { 150} rf        : 0
@@ -23911,7 +23913,7 @@ count: 170
 { 151} loader    : ffff
 { 151} load_cap  : 0
 { 151} load_cost : 0
-{ 151} radio     : 0
+{ 151} contact   : 0
 { 151} rof       : 9
 { 151} tgt       : 0
 { 151} rf        : 0
@@ -23976,7 +23978,7 @@ count: 170
 { 152} loader    : ffff
 { 152} load_cap  : 0
 { 152} load_cost : 0
-{ 152} radio     : 0
+{ 152} contact   : 0
 { 152} rof       : 9
 { 152} tgt       : 0
 { 152} rf        : 0
@@ -24041,7 +24043,7 @@ count: 170
 { 153} loader    : ffff
 { 153} load_cap  : 0
 { 153} load_cost : 0
-{ 153} radio     : 0
+{ 153} contact   : 0
 { 153} rof       : 9
 { 153} tgt       : 0
 { 153} rf        : 0
@@ -24106,7 +24108,7 @@ count: 170
 { 154} loader    : ffff
 { 154} load_cap  : 0
 { 154} load_cost : 0
-{ 154} radio     : 0
+{ 154} contact   : 0
 { 154} rof       : 9
 { 154} tgt       : 0
 { 154} rf        : 0
@@ -24171,7 +24173,7 @@ count: 170
 { 155} loader    : ffff
 { 155} load_cap  : 0
 { 155} load_cost : 0
-{ 155} radio     : 0
+{ 155} contact   : 0
 { 155} rof       : 9
 { 155} tgt       : 0
 { 155} rf        : 0
@@ -24236,7 +24238,7 @@ count: 170
 { 156} loader    : ffff
 { 156} load_cap  : 0
 { 156} load_cost : 0
-{ 156} radio     : 0
+{ 156} contact   : 0
 { 156} rof       : 9
 { 156} tgt       : 0
 { 156} rf        : 0
@@ -24301,7 +24303,7 @@ count: 170
 { 157} loader    : ffff
 { 157} load_cap  : 0
 { 157} load_cost : 0
-{ 157} radio     : 2
+{ 157} contact   : 2
 { 157} rof       : 9
 { 157} tgt       : 0
 { 157} rf        : 0
@@ -24366,7 +24368,7 @@ count: 170
 { 158} loader    : ffff
 { 158} load_cap  : 0
 { 158} load_cost : 0
-{ 158} radio     : 1
+{ 158} contact   : 1
 { 158} rof       : 9
 { 158} tgt       : 0
 { 158} rf        : 0
@@ -24431,7 +24433,7 @@ count: 170
 { 159} loader    : ffff
 { 159} load_cap  : 0
 { 159} load_cost : 0
-{ 159} radio     : 0
+{ 159} contact   : 0
 { 159} rof       : 9
 { 159} tgt       : 0
 { 159} rf        : 0
@@ -24496,7 +24498,7 @@ count: 170
 { 160} loader    : ffff
 { 160} load_cap  : 0
 { 160} load_cost : 0
-{ 160} radio     : 0
+{ 160} contact   : 0
 { 160} rof       : 9
 { 160} tgt       : 0
 { 160} rf        : 0
@@ -24561,7 +24563,7 @@ count: 170
 { 161} loader    : ffff
 { 161} load_cap  : 0
 { 161} load_cost : 0
-{ 161} radio     : 0
+{ 161} contact   : 0
 { 161} rof       : 9
 { 161} tgt       : 0
 { 161} rf        : 0
@@ -24626,7 +24628,7 @@ count: 170
 { 162} loader    : ffff
 { 162} load_cap  : 0
 { 162} load_cost : 0
-{ 162} radio     : 2
+{ 162} contact   : 2
 { 162} rof       : 9
 { 162} tgt       : 0
 { 162} rf        : 0
@@ -24691,7 +24693,7 @@ count: 170
 { 163} loader    : ffff
 { 163} load_cap  : 0
 { 163} load_cost : 0
-{ 163} radio     : 2
+{ 163} contact   : 2
 { 163} rof       : 9
 { 163} tgt       : 0
 { 163} rf        : 0
@@ -24756,7 +24758,7 @@ count: 170
 { 164} loader    : ffff
 { 164} load_cap  : 0
 { 164} load_cost : 0
-{ 164} radio     : 0
+{ 164} contact   : 0
 { 164} rof       : 9
 { 164} tgt       : 0
 { 164} rf        : 0
@@ -24821,7 +24823,7 @@ count: 170
 { 165} loader    : ffff
 { 165} load_cap  : 0
 { 165} load_cost : 0
-{ 165} radio     : 2
+{ 165} contact   : 2
 { 165} rof       : 6
 { 165} tgt       : 0
 { 165} rf        : 0
@@ -24886,7 +24888,7 @@ count: 170
 { 166} loader    : ffff
 { 166} load_cap  : 0
 { 166} load_cost : 0
-{ 166} radio     : 2
+{ 166} contact   : 2
 { 166} rof       : 6
 { 166} tgt       : 0
 { 166} rf        : 0
@@ -24951,7 +24953,7 @@ count: 170
 { 167} loader    : ffff
 { 167} load_cap  : 0
 { 167} load_cost : 0
-{ 167} radio     : 2
+{ 167} contact   : 2
 { 167} rof       : 6
 { 167} tgt       : 0
 { 167} rf        : 0
@@ -25016,7 +25018,7 @@ count: 170
 { 168} loader    : ffff
 { 168} load_cap  : 0
 { 168} load_cost : 0
-{ 168} radio     : 2
+{ 168} contact   : 2
 { 168} rof       : 6
 { 168} tgt       : 0
 { 168} rf        : 0
@@ -25081,7 +25083,7 @@ count: 170
 { 169} loader    : ffff
 { 169} load_cap  : 0
 { 169} load_cost : 0
-{ 169} radio     : 0
+{ 169} contact   : 0
 { 169} rof       : 6
 { 169} tgt       : 0
 { 169} rf        : 0

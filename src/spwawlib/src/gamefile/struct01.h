@@ -90,7 +90,7 @@ typedef struct s_UNIT {
 	char	__data11[1];
 	USHORT	leader;			/* Unit leader number (0xFFFF if abandoned)	*/
 	char	__data12[6];
-	BYTE	radio;			/* Unit radio flag			*/
+	BYTE	contact;		/* Unit contact status			*/
 	BYTE	smoke_ammo;		/* Unit smoke ammunition		*/
 	char	__data13[4];
 	USHORT	rotation1;		/* Unit rotation (1?) (degrees, 0 = east)	*/

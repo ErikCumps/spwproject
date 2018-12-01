@@ -54,7 +54,7 @@ typedef struct s_SNAP_OOB_UEL_V10 {
 	USHORT		loader;			/* Unit loader record ID (if loaded)					*/
 	BYTE		load_cap;		/* Unit load capacity							*/
 	BYTE		load_cost;		/* Unit load cost							*/
-	BYTE		radio;			/* Unit radio flag							*/
+	BYTE		contact;		/* Unit contact status							*/
 	BYTE		rof;			/* Unit rate of fire							*/
 	BYTE		tgt;			/* Unit targetting rating						*/
 	BYTE		rf;			/* Unit rangefinder rating						*/

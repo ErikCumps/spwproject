@@ -311,6 +311,9 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	rc = dossier_update_battle_rainfo (b, b->next);
 	ROE ("dossier_update_battle_rainfo()");
 
+	rc = dossier_update_dossier_info (ptr);
+	ROE ("dossier_update_dossier_info()");
+
 	*bturn = t;
 
 	return (SPWERR_OK);
@@ -366,6 +369,9 @@ dossier_add_to_battle (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bt
 
 	rc = dossier_update_battle_info (ptr);
 	ROE ("dossier_update_battle_info()");
+
+	rc = dossier_update_dossier_info (ptr->dossier);
+	ROE ("dossier_update_dossier_info()");
 
 	*bturn = t;
 

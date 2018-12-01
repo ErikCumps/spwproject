@@ -429,6 +429,13 @@ SPWAW_aband2str (SPWAW_ABAND id)
 }
 
 SPWAWLIB_API const char *
+SPWAW_cstatus2str (SPWAW_CSTATUS id)
+{
+	if ((id < SPWAW_CSTATUSSTARTCODE) || (id > SPWAW_CSTATUSLASTCODE)) return ("???");
+	return ((const char *)cstatus2str (id));
+}
+
+SPWAWLIB_API const char *
 SPWAW_entr2str (SPWAW_ENTR id)
 {
 	if ((id < SPWAW_ENTRSTARTCODE) || (id > SPWAW_ENTRLASTCODE)) return ("???");
@@ -447,6 +454,13 @@ SPWAW_vhstatus2str (SPWAW_VHSTATUS id)
 {
 	if ((id < SPWAW_VHSTARTCODE) || (id > SPWAW_VHLASTCODE)) return ("???");
 	return ((const char *)vhstatus2str (id));
+}
+
+SPWAWLIB_API const char *
+SPWAW_bresult2str (SPWAW_BRESULT result)
+{
+	if ((result < SPWAW_BRSTARTCODE) || (result > SPWAW_BRLASTCODE)) return ("???");
+	return ((const char *)bresult2str (result));
 }
 
 SPWAWLIB_API const char *
