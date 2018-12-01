@@ -242,6 +242,22 @@ typedef enum e_SPWAW_VHSTATUS {
 
 extern SPWAWLIB_API const char *SPWAW_vhstatus2str (SPWAW_VHSTATUS id);
 
+/* SPWAW battle results */
+typedef enum e_SPWAW_BRESULT {
+	SPWAW_BRDV = 0,		/* Decisive victory	*/
+	SPWAW_BRMV,		/* Marginal victory	*/
+	SPWAW_BRDB,		/* Drawn battle		*/
+	SPWAW_BRMD,		/* Marginal defeat	*/
+	SPWAW_BRDD,		/* Decisive defeat	*/
+	SPWAW_BRUNKNOWN,
+	SPWAW_BRSTARTCODE = SPWAW_BRDV,
+	SPWAW_BRLASTCODE = SPWAW_BRUNKNOWN
+} SPWAW_BRESULT;
+
+#define	SPWAW_BRESULT_CNT	(SPWAW_BRLASTCODE - SPWAW_BRSTARTCODE + 1)
+
+extern SPWAWLIB_API const char *SPWAW_bresult2str (SPWAW_BRESULT result);
+
 /* SPWAW battle type */
 typedef enum e_SPWAW_BATTLE_TYPE {
 	SPWAW_UNKNOWN_BATTLE = 0,	/* The type of this battle is unknown			*/

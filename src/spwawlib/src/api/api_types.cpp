@@ -457,6 +457,13 @@ SPWAW_vhstatus2str (SPWAW_VHSTATUS id)
 }
 
 SPWAWLIB_API const char *
+SPWAW_bresult2str (SPWAW_BRESULT result)
+{
+	if ((result < SPWAW_BRSTARTCODE) || (result > SPWAW_BRLASTCODE)) return ("???");
+	return ((const char *)bresult2str (result));
+}
+
+SPWAWLIB_API const char *
 SPWAW_battletype2str (SPWAW_BATTLE_TYPE type)
 {
 	const char	*p;

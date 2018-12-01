@@ -66,6 +66,13 @@
 #define	VH_PLAYER2	0x01
 #define	VH_NEUTRAL	0x02
 
+#define	BR_DD		-2
+#define	BR_MD		-1
+#define	BR_DB		0
+#define	BR_MV		1
+#define	BR_DV		2
+#define	BR_UNKNOWN	42
+
 #define	TFS1_WATER	0x08
 #define	TFS2_WATER	0x0C
 #define	TFS3_WATER	0x20

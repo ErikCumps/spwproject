@@ -59,6 +59,8 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 		ptr->blast  = ptr->blist[ptr->bcnt-1];
 		dossier_update_battle_rainfo (bb, ba);
 	}
+
+	dossier_update_dossier_info (ptr);
 }
 
 static void
@@ -103,6 +105,7 @@ battle_del_battle_turn (SPWAW_BATTLE *ptr, SPWAW_BTURN *bturn, STRTAB *stab)
 		ptr->tlast  = ptr->tlist[ptr->tcnt-1];
 	}
 	dossier_update_battle_info (ptr);
+	dossier_update_dossier_info (ptr->dossier);
 }
 
 SPWAW_ERROR

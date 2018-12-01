@@ -84,6 +84,8 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN_RAW *ptr)
 		ptr->P2TLmen, ptr->P2TLart, ptr->P2TLsoft, ptr->P2TLapc, ptr->P2TLafv, ptr->P2TLgliders, ptr->P2TLair);
 	fprintf (rf, "P1score    : %u\n", ptr->P1score);
 	fprintf (rf, "P2score    : %u\n", ptr->P2score);
+	fprintf (rf, "P1result   : %d\n", ptr->P1result);
+	fprintf (rf, "P2result   : %d\n", ptr->P2result);
 	fprintf (rf, "\n");
 }
 

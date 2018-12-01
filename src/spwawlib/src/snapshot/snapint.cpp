@@ -157,6 +157,11 @@ snapint_game_campaign (SPWAW_SNAPSHOT *ptr)
 	dst->P1score = raw->P1score;
 	dst->P2score = raw->P2score;
 
+	dst->P1result = raw2bresult (raw->P1result);
+	str->P1result = bresult2str (dst->P1result);
+	dst->P2result = raw2bresult (raw->P2result);
+	str->P2result = bresult2str (dst->P2result);
+
 	return (SPWERR_OK);
 }
 

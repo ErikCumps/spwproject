@@ -138,14 +138,23 @@ GuiRptTrnOvr::refresh (void)
 			p->info.pbir.ucnt, p->info.pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->battle->OOB_p2),
 			p->info.obir.ucnt, p->info.obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
-		str.printf ("\n");
+		str.printf ("</pre>");
 
+		str.printf ("<pre>");
 		switch (p->snap->game.battle.data.status){
 			case SPWAW_BTDEPLOY:
 				str.printf ("Forces are being deployed.\n");
 				break;
 			case SPWAW_BTSCORE:
-				str.printf ("The battle is finished.\n");
+				if (p->snap->game.campaign.data.P1result != SPWAW_BRUNKNOWN) {
+					str.printf ("<h3>A %s:</h3>", SPWAW_bresult2str (p->snap->game.campaign.data.P1result));
+				} else {
+					str.printf ("<h3>Unfortunately, the battle result is not available.</h3>");
+				}
+				str.printf ("\t%s score:\t%u\n",
+					SPWAW_oob_people (p->battle->OOB_p1), p->snap->game.campaign.data.P1score);
+				str.printf ("\t%s score:\t%u\n",
+					SPWAW_oob_people (p->battle->OOB_p2), p->snap->game.campaign.data.P2score);
 				break;
 			case SPWAW_BTBUSY:
 			default:

@@ -46,7 +46,7 @@ prep_snap (SPWAW_SNAPSHOT *src, SNAP *dst, STRTAB *stab)
 	setC (P2BLmen); setC (P2BLart); setC (P2BLsoft); setC (P2BLapc); setC (P2BLafv); setC (P2BLgliders); setC (P2BLair);
 	setC (P1TLmen); setC (P1TLart); setC (P1TLsoft); setC (P1TLapc); setC (P1TLafv); setC (P1TLgliders); setC (P1TLair);
 	setC (P2TLmen); setC (P2TLart); setC (P2TLsoft); setC (P2TLapc); setC (P2TLafv); setC (P2TLgliders); setC (P2TLair);
-	setC (busy); setC (P1score); setC (P2score);
+	setC (busy); setC (P1score); setC (P2score); setC (P1result); setC (P2result);
 }
 
 static SPWAW_ERROR

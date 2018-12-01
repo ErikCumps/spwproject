@@ -41,7 +41,6 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 		fprintf (rf, "\n");
 	}
 
-	fprintf (rf, "%s purchasing credit: %u.\n", ptr->battle.strings.people_p1, ptr->battle.data.credit);
 	fprintf (rf, "\n");
 }
 

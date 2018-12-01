@@ -122,7 +122,7 @@ dossier_update_battle_info (SPWAW_BATTLE *ptr)
 {
 	USHORT	i;
 
-	CNULLARG (ptr);
+	CNULLARG (ptr); CNULLARG(ptr->dossier);
 
 	ptr->snap = NULL;
 	ptr->tfirst = ptr->tlast = NULL;
@@ -266,6 +266,26 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 		for (i=0; i<src->dossier->ucnt; i++) {
 			log ("final reassignment result: src->ra[%03.3d].dst = %03.3d, dst->ra[%03.3d].src = %03.3d, src->ra[%03.3d].rpl = %d\n",
 				i, src->ra[i].dst, i, dst->ra[i].src, i, src->ra[i].rpl);
+		}
+	}
+
+	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
+dossier_update_dossier_info (SPWAW_DOSSIER *ptr)
+{
+	USHORT	i;
+
+	CNULLARG (ptr);
+
+	memset (&(ptr->stats), 0, sizeof(ptr->stats));
+	for (i=0; i<ptr->bcnt; i++) {
+		SPWAW_BATTLE *b = ptr->blist[i];
+		if (b->tcnt == 0) continue;
+		if (b->tlist[b->tcnt-1]->snap->game.battle.data.status == SPWAW_BTSCORE) {
+			ptr->stats.concluded++;
+			ptr->stats.results[b->tlist[b->tcnt-1]->snap->game.campaign.data.P1result]++;
 		}
 	}
 

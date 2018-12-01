@@ -108,6 +108,9 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	cp->P1score = data->P1score;
 	cp->P2score = data->P2score;
 
+	cp->P1result = data->P1result;
+	cp->P2result = data->P2result;
+
 	for (i=0; i<VHEXCOUNT; i++) {
 		bp->vhex[i].x	  = data->vhex.x[i];
 		bp->vhex[i].y     = data->vhex.y[i];
@@ -121,6 +124,7 @@ sec37_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 		UD_ADD (UD, data, __data00);
 		UD_ADD (UD, data, __data01);
 		UD_ADD (UD, data, __data02);
+		UD_ADD (UD, data, __data03);
 		UD_ADD (UD, data, __data04);
 		UD_ADD (UD, data, __data05);
 		UD_ADD (UD, data, __data06);

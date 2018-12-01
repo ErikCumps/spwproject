@@ -40,7 +40,6 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE *ptr)
 	if (ptr->data.OOB_p4) {
 		fprintf (rf, "Player4 OOB    : %u (%s forces)\n", ptr->data.OOB_p4, ptr->strings.people_p4);
 	}
-	fprintf (rf, "Purchase credit: %u\n", ptr->data.credit);
 
 	fprintf (rf, "\n");
 }
@@ -72,6 +71,7 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr)
 			ptr->data.P1TL.men, ptr->data.P1TL.art, ptr->data.P1TL.soft, ptr->data.P1TL.apc, ptr->data.P1TL.afv,
 			ptr->data.P1TL.air, ptr->data.P1TL.gliders);
 		fprintf (rf, "Player1 score        : %d\n", ptr->data.P1score);
+		fprintf (rf, "Player1 result       : %s\n", ptr->strings.P1result);
 		fprintf (rf, "\n");
 
 		fprintf (rf, "                       %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s\n",
@@ -83,6 +83,7 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr)
 			ptr->data.P2TL.men, ptr->data.P2TL.art, ptr->data.P2TL.soft, ptr->data.P2TL.apc, ptr->data.P2TL.afv,
 			ptr->data.P2TL.air, ptr->data.P2TL.gliders);
 		fprintf (rf, "Player2 score        : %d\n", ptr->data.P2score);
+		fprintf (rf, "Player2 result       : %s\n", ptr->strings.P2result);
 	}
 
 	fprintf (rf, "\n");

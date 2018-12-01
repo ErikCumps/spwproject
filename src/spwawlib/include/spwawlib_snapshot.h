@@ -100,6 +100,8 @@ typedef struct s_SPWAW_SNAP_CAMPAIGN_RAW {
 	USHORT			busy;				/* Inverted battle busy flag				*/
 	DWORD			P1score;			/* Player1 battle score					*/
 	DWORD			P2score;			/* Player2 battle score					*/
+	SHORT			P1result;			/* Player1 battle result				*/
+	SHORT			P2result;			/* Player2 battle result				*/
 } SPWAW_SNAP_CAMPAIGN_RAW;
 
 /* SPWAW map info: raw map data element */
@@ -367,12 +369,16 @@ typedef struct s_SPWAW_SNAP_CAMPAIGN_DATA {
 	SPWAW_SNAP_LOSSES	P2TL;				/* Player2 total losses					*/
 	int			P1score;			/* Player1 score					*/
 	int			P2score;			/* Player2 score					*/
+	SPWAW_BRESULT		P1result;			/* Player1 battle result				*/
+	SPWAW_BRESULT		P2result;			/* Player2 battle result				*/
 } SPWAW_SNAP_CAMPAIGN_DATA;
 
 /* SPWAW campaign info: strings */
 typedef struct s_SPWAW_SNAP_CAMPAIGN_STRINGS {
 	char			start[SPWAW_AZSDATE];		/* Campaign start date string				*/
 	char			end[SPWAW_AZSDATE];		/* Campaign end date string				*/
+	char			*P1result;			/* Player1 battle result				*/
+	char			*P2result;			/* Player2 battle result				*/
 } SPWAW_SNAP_CAMPAIGN_STRINGS;
 
 /* SPWAW campaign info */

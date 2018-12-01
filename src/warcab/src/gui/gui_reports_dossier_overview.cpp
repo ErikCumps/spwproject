@@ -228,9 +228,7 @@ GuiRptDsrOvr::refresh (bool forced)
 	SPWAW_DOSSIER	*p = NULL;
 	char		buf[8*4096], buf2[4096];
 	UtilStrbuf	str(buf, sizeof (buf), true, true);
-	int		i, ccnt;
 	SPWAW_PERIOD	span;
-	SPWAW_BATTLE	*b = NULL;
 
 	DBG_TRACE_FENTER;
 
@@ -261,40 +259,36 @@ GuiRptDsrOvr::refresh (bool forced)
 		str.printf ("<h2>%s</h2>", p->comment);
 		if (p->comment[strlen (p->comment) - 1] == '\n') str.del (1);
 
-		if (p->bcnt <= 1) {
-			if (p->bcnt == 0) {
+		switch (p->bcnt) {
+			case 0:
 				str.printf ("No battles recorded yet.\n");
-			} else {
+				break;
+			case 1:
 				str.printf ("One battle recorded.\n");
-			}
-		} else {
-			SPWAW_date_delta (&(p->bfirst->date), &(p->blast->date), &span);
-			str.printf ("%u battles recorded, spanning ", p->bcnt);
-			UTIL_fmt_longspan (&span, &str);
-			str.printf (".\n");
+				break;
+			default:
+				SPWAW_date_delta (&(p->bfirst->date), &(p->blast->date), &span);
+				str.printf ("%u battles recorded, spanning ", p->bcnt);
+				UTIL_fmt_longspan (&span, &str);
+				str.printf (".\n");
+				break;
 		}
-		if (p->bcnt >= 1) {
-			ccnt = 0;
-			for (i=0; i<p->bcnt; i++) {
-				b = p->blist[i];
-				if (b->tcnt == 0) continue;
 
-				switch (b->tlist[b->tcnt-1]->snap->game.battle.data.status) {
-					case SPWAW_BTSCORE:
-						ccnt++;
-						break;
-					case SPWAW_BTDEPLOY:
-					case SPWAW_BTBUSY:
-					default:
-						break;
-				}
+		if (p->stats.concluded > 0) {
+			switch (p->stats.concluded) {
+				case 1:
+					str.printf ("Of these, records show 1 concluded battle.");
+					break;
+				default:
+					str.printf ("Of these, records show %u concluded battles.", p->stats.concluded);
+					break;
 			}
 
-			if (ccnt == 1) {
-				str.printf ("Of these, records show 1 concluded battle.\n");
-			} else {
-				str.printf ("Of these, records show %u concluded battles.\n", ccnt);
+			str.printf ("<h3>Battle results:</h3>\n\n");
+			for (int i=0; i<ARRAYCOUNT(p->stats.results)-1; i++) {
+				str.printf ("  <b>%s</b>:\t%u\n", SPWAW_bresult2str((SPWAW_BRESULT)i), p->stats.results[i]);
 			}
+			str.printf ("\n");
 		}
 		str.printf ("\n");
 
@@ -303,6 +297,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		} else {
 			str.printf ("Campaign tracking is not available for this dossier.");
 		}
+		str.printf ("</pre>");
 
 		d.overview->setText (buf);
 		str.clear();

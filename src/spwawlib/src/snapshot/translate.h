@@ -21,6 +21,7 @@ extern SPWAW_ENTR		raw2entr	(BYTE id);
 extern SPWAW_RANK		raw2rank	(BYTE id);
 extern SPWAW_EXP		raw2exp		(BYTE exp);
 extern SPWAW_VHSTATUS		raw2vhstatus	(BYTE id);
+extern SPWAW_BRESULT		raw2bresult	(SHORT result);
 extern bool			rawtfs2water	(BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4);
 extern bool			rawtfs2bridge	(BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4);
 extern bool			rawtfs2road	(BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4);
@@ -33,15 +34,15 @@ extern char *			ustatus2str	(SPWAW_USTATUS id);
 extern char *			cstatus2str	(SPWAW_CSTATUS id);
 extern char *			entr2str	(SPWAW_ENTR id);
 extern char *			rank2str	(SPWAW_RANK id);
-extern char *			exp2str		(SPWAW_EXP id);
+extern char *			exp2str		(SPWAW_EXP exp);
 extern char *			btstatus2str	(SPWAW_BTSTATUS id);
 extern char *			vhstatus2str	(SPWAW_VHSTATUS id);
+extern char *			bresult2str	(SPWAW_BRESULT result);
 
 extern void			FID2str		(BYTE id, char *buf, int len);
 extern char *			FID2str		(BYTE id);
 extern void			UID2str		(BYTE id, BYTE subid, char *buf, int len);
 extern char *			UID2str		(BYTE id, BYTE subid);
-
 
 extern char *			aband2str	(SPWAW_ABAND id);
 extern SPWAW_ABAND		raw2aband	(BYTE aband);
