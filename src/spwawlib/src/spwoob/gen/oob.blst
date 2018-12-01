@@ -14,26 +14,28 @@
 [title title.txt] SPWaW OOB codes
 
 [rawenum SPWOOB_WCLASS:BYTE] SPWAW OOB weapon class
-0	UNKNOWN
-1	INF_PRM
-2	INF_SEC
-3	TEAM
-4	AA
-5	SML_GUN
-6	MDM_GUN
-7	LRG_GUN
-8	FLAME_INF
-9	FLAME_VHC
-10	NAVAL
-11	AIRCRAFT
-12	SAM
-13	AT
-14	LRG_CLSTR
-15	SML_CLSTR
-16	ARM
-17	ASM
-18	NAPALM
+0	UNKNOWN		"unused"
+1	INF_PRM		"primary infantry weapon"
+2	INF_SEC		"secondary infantry weapon"
+3	TEAM		"team weapon"
+4	AA		"anti-air weapon"
+5	SML_GUN		"light gun"
+6	MDM_GUN		"medium gun"
+7	LRG_GUN		"large gun"
+8	FLAME_INF	"infantry flamethrower"
+9	FLAME_VHC	"vehicle flamethrower"
+10	NAVAL		"naval artillery"
+11	AIRCRAFT	"aircraft weapon"
+12	SAM		"surface-to-air missile"
+13	AT		"anti-tank missile"
+14	LRG_CLSTR	"large cluster bomb"
+15	SML_CLSTR	"small cluster bomb"
+16	ARM		"ARM"
+17	ASM		"ASM"
+18	NAPALM		"napalm"
+19	AUTO_CANNON	"auto cannon"
 
+### NOTE: the following is different with SPWW2!!!
 [rawenum SPWOOB_UTYPE:BYTE] SPWAW OOB unit type
 	### INFANTRY ###
 51	LT_INF		"light infantry"
@@ -181,6 +183,7 @@ NVY	"navy"		"NVY"
 FRT	"fortification"	"FRT"
 OTH	"other"		"OTH"
 
+### NOTE: the following does not apply with SPWW2!!!
 [rawenum SPWOOB_FSTAT:BYTE] SPWAW OOB formation status
 0	D	"average"				"D"
 1	R	"recon"					"R"
@@ -193,9 +196,10 @@ OTH	"other"		"OTH"
 22	SA	"second line dedicated artillery"	"SA"
 
 [rawenum SPWOOB_FTYPE:BYTE] SPWAW OOB formation type
-0	UNKNOWN
+0	SEC	"section"
 1	PLT	"platoon"
 2	COM	"company"
+3	GRP	"combat group"
 4	NAV	"naval"
 5	FHQ	"force HQ"
 
