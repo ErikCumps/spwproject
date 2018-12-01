@@ -176,7 +176,7 @@ typedef struct s_UNIT {
 	char	__data07[1];
 	USHORT	leader;			/* Unit leader number (0xFFFF if abandoned)		*/
 	char	__data08[5];
-	BYTE	contact;		/* Unit contact flag					*/
+	BYTE	contact;		/* Unit contact status					*/
 	char	__data09[4];
 	USHORT	rotation1;		/* Unit rotation (1?) (degrees, 0 = east)		*/
 	USHORT	rotation2;		/* Unit rotation (2?) (degrees, 0 = east)		*/
