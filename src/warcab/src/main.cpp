@@ -14,7 +14,7 @@
 
 static SL_APP_INFO	app_info = {
 	{
-		"Warcab",
+		"WarcabSPWW2",	// FIXME!!!
 		"The SPWaW war cabinet",
 		"0.7.0",
 		"2005-2018",
