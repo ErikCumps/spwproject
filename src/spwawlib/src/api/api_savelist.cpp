@@ -13,13 +13,17 @@
 
 #define	LISTINC	8
 
+//#define	SPWAW_SAVEGAME_BASE "save"
+#define	SPWW2_SAVEGAME_BASE "SpSv"
+
 static bool
 id_from_name (char *name, unsigned int *id)
 {
 	if (!name || !id) return (false);
 
 	*id = 0;
-	return (sscanf (name, "save%u.dat", id) == 1);
+	//return (sscanf (name, SPWAW_SAVEGAME_BASE "%u.dat", id) == 1);
+	return (sscanf (name, SPWW2_SAVEGAME_BASE "%u.dat", id) == 1);
 }
 
 static bool
