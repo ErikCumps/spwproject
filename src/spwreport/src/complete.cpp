@@ -40,7 +40,12 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE *ptr)
 	if (ptr->data.OOB_p4) {
 		fprintf (rf, "Player4 OOB    : %u (%s forces)\n", ptr->data.OOB_p4, ptr->strings.people_p4);
 	}
+	fprintf (rf, "\n");
 
+	for (int i=0; i<ARRAYCOUNT(ptr->stats.vhex_stats)-1; i++) {
+		fprintf (rf, "VHEX: %-9s: %2u (%u points)\n",
+			SPWAW_vhstatus2str((SPWAW_VHSTATUS)i), ptr->stats.vhex_stats[i].count, ptr->stats.vhex_stats[i].value);
+	}
 	fprintf (rf, "\n");
 }
 

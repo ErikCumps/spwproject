@@ -336,10 +336,22 @@ typedef struct s_SPWAW_SNAP_BATTLE_STRINGS {
 	char			*miss_p2;			/* Mission type player2 string				*/
 } SPWAW_SNAP_BATTLE_STRINGS;
 
+/* SPWAW battle info: victory hex statistics */
+typedef struct s_SPWAW_SNAP_VHEX_STATS {
+	int			count;				/* Victory hex count					*/
+	int			value;				/* Total victory hex value				*/
+} SPWAW_SNAP_VHEX_STATS;
+
+/* SPWAW battle info: statistics */
+typedef struct s_SPWAW_SNAP_BATTLE_STATS {
+	SPWAW_SNAP_VHEX_STATS	vhex_stats[SPWAW_VHSTATUS_CNT];	/* Victory hex statistics				*/
+} SPWAW_SNAP_BATTLE_STATS;
+
 /* SPWAW battle info */
 typedef struct s_SPWAW_SNAP_BATTLE {
 	SPWAW_SNAP_BATTLE_DATA		data;			/* Interpreted battle data				*/
 	SPWAW_SNAP_BATTLE_STRINGS	strings;		/* Battle info strings					*/
+	SPWAW_SNAP_BATTLE_STATS		stats;			/* Battle statistics					*/
 } SPWAW_SNAP_BATTLE;
 
 /* SPWAW campaign info: losses */

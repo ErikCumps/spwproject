@@ -200,6 +200,21 @@ GuiRptTrnOvr::refresh (void)
 				break;
 		}
 
+		str.printf ("<pre>");
+		str.printf ("<h3>Victory hex occupation:</h3>");
+		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
+			SPWAW_oob_people (p->battle->OOB_p1),
+			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].count,
+			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].value);
+		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
+			SPWAW_oob_people (p->battle->OOB_p2),
+			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
+			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
+		str.printf ("\tNeutral:\t\t%2u occupied (worth %u points)\n",
+			p->snap->game.battle.stats.vhex_stats[SPWAW_VHN].count,
+			p->snap->game.battle.stats.vhex_stats[SPWAW_VHN].value);
+		str.printf ("</pre>");
+
 		d.label->setText (buf);
 	}
 

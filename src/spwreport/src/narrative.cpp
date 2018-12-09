@@ -41,7 +41,12 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 		fprintf (rf, "\n");
 	}
 
-	fprintf (rf, "\n");
+	fprintf (rf, "%s forces occupy %u victory hexes (worth %u points).\n",
+		ptr->battle.strings.people_p1, ptr->battle.stats.vhex_stats[SPWAW_VHP1].count, ptr->battle.stats.vhex_stats[SPWAW_VHP1].value); 
+	fprintf (rf, "%s forces occupy %u victory hexes (worth %u points).\n",
+		ptr->battle.strings.people_p2, ptr->battle.stats.vhex_stats[SPWAW_VHP2].count, ptr->battle.stats.vhex_stats[SPWAW_VHP2].value); 
+	fprintf (rf, "%u remaining victory hexes (worth %u points) are still neutral.\n",
+		ptr->battle.stats.vhex_stats[SPWAW_VHN].count, ptr->battle.stats.vhex_stats[SPWAW_VHN].value); 
 }
 
 static void
