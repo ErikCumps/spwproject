@@ -19,6 +19,7 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	SPWAW_SNAP_BATTLE_RAW		*raw;
 	SPWAW_SNAP_BATTLE_DATA		*dst;
 	SPWAW_SNAP_BATTLE_STRINGS	*str;
+	SPWAW_SNAP_BATTLE_STATS		*sts;
 	SPWAW_PERIOD			add;
 	int				i;
 
@@ -27,6 +28,7 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	raw = &(ptr->raw.game.battle);
 	dst = &(ptr->game.battle.data);
 	str = &(ptr->game.battle.strings);
+	sts = &(ptr->game.battle.stats);
 
 	dst->start.year  = raw->year + SPWAW_STARTYEAR;
 	dst->start.month = raw->month;
@@ -83,6 +85,9 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 		dst->vhex[i].y = raw->vhex[i].y;
 		dst->vhex[i].value = raw->vhex[i].value;
 		dst->vhex[i].status = raw2vhstatus (raw->vhex[i].owner);
+
+		sts->vhex_stats[dst->vhex[i].status].count++;
+		sts->vhex_stats[dst->vhex[i].status].value += dst->vhex[i].value;
 	}
 
 	return (SPWERR_OK);

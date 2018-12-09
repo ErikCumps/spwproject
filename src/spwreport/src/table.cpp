@@ -28,8 +28,14 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE *ptr)
 	fprintf (rf, "Battle conditions: %s, %u meters visibility\n", ptr->strings.weather, HEX2M (ptr->data.visibility));
 	fprintf (rf, "Player1          : %s forces, %s mission\n", ptr->strings.people_p1, ptr->strings.miss_p1);
 	fprintf (rf, "Player2          : %s forces, %s mission\n", ptr->strings.people_p2, ptr->strings.miss_p2);
-
 	fprintf (rf, "\n");
+
+	for (int i=0; i<ARRAYCOUNT(ptr->stats.vhex_stats)-1; i++) {
+		fprintf (rf, "VHEX: %-11s: %2u victory hexes, %u points\n",
+			SPWAW_vhstatus2str((SPWAW_VHSTATUS)i), ptr->stats.vhex_stats[i].count, ptr->stats.vhex_stats[i].value);
+	}
+	fprintf (rf, "\n");
+
 }
 
 static void

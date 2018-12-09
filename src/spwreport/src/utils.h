@@ -47,4 +47,7 @@ extern void	smart_title	(FILE *rf, char ulc, char *fmt, ...);
 extern void	report_mmas	(FILE *rf, char *msg, SPWAW_IMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bool unit);
 extern void	report_mmas	(FILE *rf, char *msg, SPWAW_FMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bool unit);
 
+/*! Simple macro to calculate the length of a (statically initialized) array */
+#define	ARRAYCOUNT(arr_) (sizeof(arr_)/sizeof(arr_[0]))
+
 #endif	/* INTERNAL_UTILS_H */
