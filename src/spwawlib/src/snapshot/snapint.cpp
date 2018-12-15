@@ -197,6 +197,7 @@ snapint_game_map (SPWAW_SNAPSHOT *ptr)
 			dst->data[idx].conn_road1 = (int)raw->data[idx].conn_road1;
 			dst->data[idx].conn_road2 = (int)raw->data[idx].conn_road2;
 			dst->data[idx].conn_rail  = (int)raw->data[idx].conn_rail;
+			dst->data[idx].conn_tram  = (int)raw->data[idx].conn_tram;
                 }
         }
 

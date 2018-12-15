@@ -22,18 +22,19 @@ map_dump (SPWAW_SNAPSHOT *ptr, FILE *rf)
 	fprintf (rf, "%u %u\n", ptr->game.map.width, ptr->game.map.height);
 	fprintf (rf, "\n");
 
-	fprintf (rf, "# Map hex info: X Y HEIGHT WATER BRIDGE R1C R2C RRC ROAD\n");
+	fprintf (rf, "# Map hex info: X Y HEIGHT WATER BRIDGE R1C R2C RRC TLC ROAD\n");
 	fprintf (rf, "[map info]\n");
 	fprintf (rf, "%u\n", ptr->game.map.width * ptr->game.map.height);
 	for (y=0; y<ptr->raw.game.map.height; y++) {
 		for (x=0; x<ptr->raw.game.map.width; x++) {
-			fprintf (rf, "%lu %lu %d %u %u %u %u %u %u\n", x, y,
+			fprintf (rf, "%lu %lu %d %u %u %u %u %u %u %u\n", x, y,
 				(signed char)ptr->raw.game.map.data[y*ptr->raw.game.map.width+x].height,
 				ptr->game.map.data[y*ptr->game.map.width+x].water,
 				ptr->game.map.data[y*ptr->game.map.width+x].bridge,
 				ptr->game.map.data[y*ptr->game.map.width+x].conn_road1,
 				ptr->game.map.data[y*ptr->game.map.width+x].conn_road2,
 				ptr->game.map.data[y*ptr->game.map.width+x].conn_rail,
+				ptr->game.map.data[y*ptr->game.map.width+x].conn_tram,
 				ptr->game.map.data[y*ptr->game.map.width+x].road);
 		}
 	}

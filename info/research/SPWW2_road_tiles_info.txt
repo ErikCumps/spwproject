@@ -1,67 +1,73 @@
 SPWW2 road tiles info:
 ======================
 
-Primary road:	#24 = TER24Z*.shp
-Secondary road:	#24 = TER24Z*.shp
-Railroad:	#57 = TER57Z*.shp
-Tramline:	#57 = TER57Z*.shp
-
 Tilesets:
-	#0 - #51 = |1 - |52 and #52 - #103 = |53 - |104
 
-Tiles:
-	#00 = EE-WW
-	#01 = SW-NE
-	#02 = EE-SW-WW-NE
-	#03 = SE-SW-NW-NE
-	#04 = WW-NE
-	#05 = WW-SE
-	#06 = EE-SW
-	#07 = EE-NW
-	#08 = SE-NE
-	#09 = SW-NW
-	#10 = EE-WW-NW
-	#11 = SW-NW-NE
-	#12 = EE-SW-NE
-	#13 = EE-SE-WW
-	#14 = EE-SW-NW
-	#15 = SE-WW-NE
-	#16 = SE-NW
-	#17 = EE-SE-WW-NW
-	#18 = SE-NE
-	#19 = SW-NW
-	#20 = EE-WW-NE
-	#21 = EE-SW-WW
-	#22 = EE-WW-NW
-	#23 = EE-SE-WW
-	#24 = EE-SE-WW-NE
-	#25 = EE-SW-WW-NW
-	#26 = EE-SE-SW-WW-NW-NE
-	#27 = EE-SE-NW
-	#28 = SW-WW-NE
-	#29 = SE-WW-NW
-	#30 = EE-SW-WW
-	#31 = SE-NW-NE
-	#32 = EE-WW-NW
-	#33 = SE-SW-NE
-	#34 = EE-SE-SW-NW
-	#35 = EE-SW-NW-NE
-	#36 = SE-WW-NW-NE
-	#37 = SE-SW-WW-NE
-	#38 = EE-WW[BR]
-	#39 = SW-NE[BR]
-	#40 = SE-NW[BR]
-	#41 = SE-SW-NE-NW[BR]
-	#42 = SE-NE[BR]
-	#43 = SW-NW[BR]
-	#44 = EE-WW[BRXXX]
-	#45 = SW-NE[BRXXX]
-	#46 = SE-NW[BRXXX]
-	#47 = EE-SE-WW-NE
-	#48 = EE-SW-WW-NW
-	#49 = SE-SW-NW
-	#50 = SE-NE[BRXXX]
-	#51 = SW-NW[BRXXX]
+	#01 - #52 = |0 - |51 and #53 - #104 = |52 - |103
+
+Road types:
+
+	Primary road:	#24 = TER24Z*.shp tileset #2
+	Secondary road:	#24 = TER24Z*.shp tileset #1
+	Railroad:	#57 = TER57Z*.shp tileset #1
+	Tramline:	#57 = TER57Z*.shp tileset #2
+
+Tiles:	(connector bits - NE-NW-WW-SW-SE-EE)
+
+	#01 = EE-WW		001001
+	#02 = SW-NE		100100
+	#03 = EE-SW-WW-NE	101101
+	#04 = SE-SW-NW-NE	110110
+	#05 = WW-NE		101000
+	#06 = WW-SE		001010
+	#07 = EE-SW		000101
+	#08 = EE-NW		010001
+	#09 = SE-NE		100010
+	#10 = SW-NW		010100
+	#11 = EE-WW-NW		011001
+	#12 = SW-NW-NE		110100
+	#13 = EE-SW-NE		100101
+	#14 = EE-SE-WW		001011
+	#15 = EE-SW-NW		010101
+	#16 = SE-WW-NE		101010
+	#17 = SE-NW		010010
+	#18 = EE-SE-WW-NW	011011
+	#19 = SE-NE		100010
+	#20 = SW-NW		010100
+	#21 = EE-WW-NE		101001
+	#22 = EE-SW-WW		001101
+	#23 = EE-WW-NW		011001
+	#24 = EE-SE-WW		001011
+	#25 = EE-SE-WW-NE	101011
+	#26 = EE-SW-WW-NW	011101
+	#27 = EE-SE-SW-WW-NW-NE	111111
+	#28 = EE-SE-NW		010011
+	#29 = SW-WW-NE		101100
+	#30 = SE-WW-NW		011010
+	#31 = EE-SW-WW		001101
+	#32 = SE-NW-NE		110010
+	#33 = EE-WW-NE		101001
+	#34 = SE-SW-NE		100110
+	#35 = EE-SE-SW-NW	010111
+	#36 = EE-SW-NW-NE	110101
+	#37 = SE-WW-NW-NE	111010
+	#38 = SE-SW-WW-NE	101110
+	#39 = EE-WW[BR]		001001-BR
+	#40 = SW-NE[BR]		100100-BR
+	#41 = SE-NW[BR]		010010-BR
+	#42 = SE-SW-NW-NE[BR]	110110-BR
+	#43 = SE-NE[BR]		100010-BR
+	#44 = SW-NW[BR]		010100-BR
+	#45 = EE-WW[BRXXX]	001001-BX
+	#46 = SW-NE[BRXXX]	100100-BX
+	#47 = SE-NW[BRXXX]	010010-BX
+	#48 = EE-SE-WW-NE	101011
+	#49 = EE-SW-WW-NW	011101
+	#50 = SE-SW-NW		010110
+	#51 = SE-NE[BRXXX]	100010-BX
+	#52 = SW-NW[BRXXX]	010100-BX
+
+
 
 Reference info:
 ---------------

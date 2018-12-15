@@ -20,12 +20,12 @@
 
 typedef struct s_MAP_DATA1 {
 	BYTE		count;		/* Tile count		*/
-	MAP_ICON	tile0;		/* Tile #0		*/
-	MAP_ICON	tile1;		/* Tile #1		*/
-	MAP_ICON	tile2;		/* Tile #2		*/
-	MAP_ICON	tile3;		/* Tile #3		*/
-	MAP_ICON	tile4;		/* Tile #4		*/
-	MAP_ICON	tile5;		/* Tile #5		*/
+	MAP_TILE	tile0;		/* Tile #0		*/
+	MAP_TILE	tile1;		/* Tile #1		*/
+	MAP_TILE	tile2;		/* Tile #2		*/
+	MAP_TILE	tile3;		/* Tile #3		*/
+	MAP_TILE	tile4;		/* Tile #4		*/
+	MAP_TILE	tile5;		/* Tile #5		*/
 } MAP_DATA1;
 
 

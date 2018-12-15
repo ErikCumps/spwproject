@@ -33,7 +33,7 @@ public:
 	void	setBridge	(bool has_bridge);
 
 	/*! Set the road connections for this hex */
-	void	setRoadConn	(int road1, int road2, int railt);
+	void	setRoadConn	(int road1, int road2, int railr, int traml);
 
 	/*! Set the victory hex status of this hex */
 	void	setVicHex	(SPWAW_VHSTATUS owner);
@@ -57,6 +57,7 @@ public:
 	int		conn_road1;		/*!< The primary road connections map for this hex				*/
 	int		conn_road2;		/*!< The secondary road connections map for this hex				*/
 	int		conn_railr;		/*!< The railroad connections map for this hex					*/
+	int		conn_traml;		/*!< The tramline connections map for this hex					*/
 	int		conn_bridge;		/*!< The bridge connections map for this hex					*/
 	bool		vic_hex;		/*!< True if this hex is a victory hex						*/
 	SMAP_HI		vic_hex_owner;		/*!< The owner of the victory hex						*/

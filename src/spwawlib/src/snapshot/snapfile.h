@@ -137,10 +137,6 @@ typedef struct s_SNAP {
 	SNAP_CAMPAIGN	c;			/* Snapshot campaign data						*/
 } SNAP;
 
-typedef struct s_SNAP_MAP_MAP {
-	BYTE		h;			/* Hex height								*/
-} SNAP_MAP_MAP;
-
 typedef struct s_SNAP_MAPHDR {
 	DWORD		width;			/* Battle map width							*/
 	DWORD		height;			/* Battle map height							*/

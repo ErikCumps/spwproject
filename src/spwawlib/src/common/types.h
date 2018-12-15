@@ -73,6 +73,21 @@
 #define	BR_DV		2
 #define	BR_UNKNOWN	42
 
+//#define	TFS1_WATER	0x08
+//#define	TFS2_WATER	0x0C
+//#define	TFS3_WATER	0x20
+//#define	TFS4_WATER	0x00
+//
+//#define	TFS1_BRIDGE	0x00
+//#define	TFS2_BRIDGE	0x03
+//#define	TFS3_BRIDGE	0x00
+//#define	TFS4_BRIDGE	0x00
+//
+//#define	TFS1_ROAD	0xC0
+//#define	TFS2_ROAD	0x00
+//#define	TFS3_ROAD	0x01
+//#define	TFS4_ROAD	0x02
+
 #define	TFS1_WATER	0x08
 #define	TFS2_WATER	0x0C
 #define	TFS3_WATER	0x20
@@ -85,7 +100,7 @@
 
 #define	TFS1_ROAD	0xC0
 #define	TFS2_ROAD	0x00
-#define	TFS3_ROAD	0x01
-#define	TFS4_ROAD	0x02
+#define	TFS3_ROAD	0x00
+#define	TFS4_ROAD	0x18
 
 #endif	/* INTERNAL_TYPES_H */

@@ -183,7 +183,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 			hex->setHeight	(hdata[idx].h);
 			hex->setWater	(hdata[idx].water);
 			hex->setBridge	(hdata[idx].bridge);
-			hex->setRoadConn(hdata[idx].conn_road1, hdata[idx].conn_road2, hdata[idx].conn_rail);
+			hex->setRoadConn(hdata[idx].conn_road1, hdata[idx].conn_road2, hdata[idx].conn_rail, hdata[idx].conn_tram);
 		}
 	}
 

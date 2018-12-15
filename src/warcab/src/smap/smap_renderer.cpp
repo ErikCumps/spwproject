@@ -102,6 +102,13 @@ SmapRenderer::SmapRenderer (SMAP_RENDERDATA &renderdata)
 	d.pm.railr[4] = renderdata.xpms.railrNW;
 	d.pm.railr[5] = renderdata.xpms.railrNE;
 
+	d.pm.traml[0] = renderdata.xpms.tramlEE;
+	d.pm.traml[1] = renderdata.xpms.tramlSE;
+	d.pm.traml[2] = renderdata.xpms.tramlSW;
+	d.pm.traml[3] = renderdata.xpms.tramlWW;
+	d.pm.traml[4] = renderdata.xpms.tramlNW;
+	d.pm.traml[5] = renderdata.xpms.tramlNE;
+
 	for (midx=SMAP_HM_START; midx<=SMAP_HM_LAST; midx++) {
 		d.pm.inf_red[midx] = renderdata.xpms.red;
 		d.pm.inf_red[midx].setAlphaChannel (d.pm.hexmask[midx]);
@@ -369,6 +376,17 @@ SmapRenderer::render (void)
 							d.rgrid.map[idx].posx - map.x(),
 							d.rgrid.map[idx].posy - map.y(),
 							d.pm.railr[i]
+						);
+					}
+				}
+			}
+			if (d.hgrid->map[idx].conn_traml) {
+				for (i=0; i<=5; i++) {
+					if (d.hgrid->map[idx].conn_traml & (1<<i)) {
+						paint->drawPixmap (
+							d.rgrid.map[idx].posx - map.x(),
+							d.rgrid.map[idx].posy - map.y(),
+							d.pm.traml[i]
 						);
 					}
 				}

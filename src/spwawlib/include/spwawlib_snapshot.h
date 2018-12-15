@@ -114,6 +114,7 @@ typedef struct s_SPWAW_SNAP_MAP_DRAW {
 	BYTE			conn_road1;			/* hex primary road connections				*/
 	BYTE			conn_road2;			/* hex secondary road connections			*/
 	BYTE			conn_rail;			/* hex railroad connections				*/
+	BYTE			conn_tram;			/* hex tramline connections				*/
 } SPWAW_SNAP_MAP_DRAW;
 
 /* SPWAW map info: raw data */
@@ -408,6 +409,7 @@ typedef struct s_SPWAW_SNAP_MAP_DATA {
 	int			conn_road1;			/* primary road connections for hex			*/
 	int			conn_road2;			/* secondary road connections for hex			*/
 	int			conn_rail;			/* railroad connections for hex				*/
+	int			conn_tram;			/* tramline connections for hex				*/
 } SPWAW_SNAP_MAP_DATA;
 
 /* SPWAW map info */

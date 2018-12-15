@@ -14,21 +14,20 @@
 #include "strtab/strtab.h"
 
 /* Common savegame map icon data */
-//typedef struct s_MAP_ICON {
+//typedef struct s_MAP_TILE {
 //	BYTE	file;	/* File ID (TerIIIzJ.shp)	*/
 //	BYTE	icon;	/* Icon ID in SHP file		*/
-//} MAP_ICON;
+//} MAP_TILE;
 
-typedef struct s_MAP_ICON {
+/* Common savegame map tile data */
+typedef struct s_MAP_TILE {
 	USHORT	FileTileId;	/* FileID * 250 + TileId	*/
-} MAP_ICON;
-
+} MAP_TILE;
 
 
 /* forward declarations */
 typedef struct s_UEL UEL;
 typedef struct s_FEL FEL;
-
 
 
 /* Intermediate unit element - used during formation/unit detection */
