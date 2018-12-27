@@ -26,8 +26,16 @@ extern void		spwoob_free		(SPWOOB *oob);
 extern SPWOOB_DATA *	spwoob_data		(SPWOOB *oob, BYTE id);
 
 extern const char *	spwoob_id2people	(BYTE id);
+extern const char *	spwoob_id2people	(BYTE id, int year, int month);
+
 extern const char *	spwoob_id2nation	(BYTE id);
+extern const char *	spwoob_id2nation	(BYTE id, int year, int month);
+
 extern const char *	spwoob_id2prefix	(BYTE id);
+extern const char *	spwoob_id2prefix	(BYTE id, int year, int month);
+
+extern const char *	spwoob_id2flagid	(BYTE id);
+extern const char *	spwoob_id2flagid	(BYTE id, int year, int month);
 
 extern void		spwoob_dump		(SPWOOB *oob, char *base, bool raw);
 

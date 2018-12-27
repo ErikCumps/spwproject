@@ -151,12 +151,22 @@ typedef struct s_SPWOOB {
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_SPWOOB		(SPWOOB **oob);
 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_data		(SPWOOB *oob, BYTE id, SPWOOB_DATA **data);
+
 extern SPWAWLIB_API const char *	SPWAW_oob_nation	(BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_nation	(BYTE id, int year, int month);
+
 extern SPWAWLIB_API const char *	SPWAW_oob_people	(BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_people	(BYTE id, int year, int month);
+
 extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(BYTE id);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base, bool raw);
+extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(BYTE id, int year, int month);
+
+extern SPWAWLIB_API const char *	SPWAW_oob_flagid	(BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_flagid	(BYTE id, int year, int month);
 
 extern SPWAWLIB_API const char *	SPWAW_oob_uclass	(SPWOOB_UCLASS e);
+
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base, bool raw);
 
 #endif	/* SPWAW_LIB_OOB_H */
 

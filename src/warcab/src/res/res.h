@@ -21,6 +21,8 @@ extern QColor *		RES_color	(unsigned long rid);
 extern QString		RES_htmlcolor	(unsigned long rid);
 
 extern QPixmap *	RES_flag	(BYTE oob);
+extern QPixmap *	RES_flag	(BYTE oob, int year, int month);
+
 extern QPixmap *	RES_mission	(SPWAW_MISSION mission, bool meeting);
 
 extern QColor *		RES_GUI_color	(SPWAW_RANK id);

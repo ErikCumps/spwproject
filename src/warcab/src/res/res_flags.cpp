@@ -10,59 +10,113 @@
 #include "../common.h"
 
 typedef struct s_OOB_FLAG_MAP {
-	BYTE		OOB;
+	const char	*flagid;
 	unsigned long	rid;
 } OOB_FLAG_MAP;
 
-#define	OOBFLAG1(id_)	{ id_, RID_OOB_FLAG_0##id_ }
-#define	OOBFLAG(id_)	{ id_, RID_OOB_FLAG_##id_ }
+#define	OOBFLAG(id_)	{ #id_, RID_OOB_FLAG_##id_ }
 
 static const OOB_FLAG_MAP flagmap[] = {
-	OOBFLAG1 (9),
-	OOBFLAG (15),
-	OOBFLAG (16),
-	OOBFLAG (19),
-	OOBFLAG (20),
-	OOBFLAG (29),
-	OOBFLAG (70),
-	OOBFLAG (71),
-	OOBFLAG (72),
-	OOBFLAG (73),
-	OOBFLAG (74),
-	OOBFLAG (75),
-	OOBFLAG (76),
-	OOBFLAG (77),
-	OOBFLAG (78),
-	OOBFLAG (79),
-	OOBFLAG (80),
-	OOBFLAG (81),
-	OOBFLAG (82),
-	OOBFLAG (83),
-	OOBFLAG (84),
-	OOBFLAG (85),
-	OOBFLAG (86),
-	OOBFLAG (87),
-	OOBFLAG (88),
-	OOBFLAG (89),
-	OOBFLAG (90),
-	OOBFLAG (91),
+	/*** SPWAW flags ***/
+	OOBFLAG(SPWAW_CC),
+	OOBFLAG(SPWAW_CS),
+	OOBFLAG(SPWAW_PI),
+	OOBFLAG(SPWAW_NS),
+	OOBFLAG(SPWAW_RS),
+	OOBFLAG(SPWAW_BU),
+	OOBFLAG(SPWAW_GE),
+	OOBFLAG(SPWAW_FI),
+	OOBFLAG(SPWAW_IT),
+	OOBFLAG(SPWAW_RO),
+	OOBFLAG(SPWAW_HU),
+	OOBFLAG(SPWAW_JA),
+	OOBFLAG(SPWAW_FR),
+	OOBFLAG(SPWAW_BR),
+	OOBFLAG(SPWAW_BE),
+	OOBFLAG(SPWAW_NL),
+	OOBFLAG(SPWAW_PO),
+	OOBFLAG(SPWAW_SO),
+	OOBFLAG(SPWAW_US),
+	OOBFLAG(SPWAW_USMC),
+	OOBFLAG(SPWAW_NC),
+	OOBFLAG(SPWAW_GK),
+	OOBFLAG(SPWAW_NOR),
+	OOBFLAG(SPWAW_YU),
+	OOBFLAG(SPWAW_CA),
+	OOBFLAG(SPWAW_IN),
+	OOBFLAG(SPWAW_ANZ),
+	OOBFLAG(SPWAW_FF),
+	/*** SPWW2 flags ***/
+	OOBFLAG(SPWW2_ANZ),
+	OOBFLAG(SPWW2_BE),
+	OOBFLAG(SPWW2_BLU),
+	OOBFLAG(SPWW2_BR),
+	OOBFLAG(SPWW2_BU),
+	OOBFLAG(SPWW2_CA),
+	OOBFLAG(SPWW2_CC),
+	OOBFLAG(SPWW2_CS),
+	OOBFLAG(SPWW2_FF),
+	OOBFLAG(SPWW2_FI),
+	OOBFLAG(SPWW2_FR),
+	OOBFLAG(SPWW2_GE),
+	OOBFLAG(SPWW2_GE_emp),
+	OOBFLAG(SPWW2_GE_old),
+	OOBFLAG(SPWW2_GE_wmr),
+	OOBFLAG(SPWW2_GK),
+	OOBFLAG(SPWW2_GRN),
+	OOBFLAG(SPWW2_HU),
+	OOBFLAG(SPWW2_IN),
+	OOBFLAG(SPWW2_ISR),
+	OOBFLAG(SPWW2_IT),
+	OOBFLAG(SPWW2_JA),
+	OOBFLAG(SPWW2_LWP),
+	OOBFLAG(SPWW2_MN),
+	OOBFLAG(SPWW2_NC),
+	OOBFLAG(SPWW2_NL),
+	OOBFLAG(SPWW2_NOR),
+	OOBFLAG(SPWW2_NS),
+	OOBFLAG(SPWW2_NS_old),
+	OOBFLAG(SPWW2_PO),
+	OOBFLAG(SPWW2_RED),
+	OOBFLAG(SPWW2_RO),
+	OOBFLAG(SPWW2_RS),
+	OOBFLAG(SPWW2_RS_old),
+	OOBFLAG(SPWW2_SE),
+	OOBFLAG(SPWW2_SK),
+	OOBFLAG(SPWW2_SO),
+	OOBFLAG(SPWW2_THA),
+	OOBFLAG(SPWW2_USA),
+	OOBFLAG(SPWW2_USMC),
+	OOBFLAG(SPWW2_VFR),
+	OOBFLAG(SPWW2_YU),
+	OOBFLAG(SPWW2_YU_old),
+	/*** unknown flag ***/
 	{ 0, 0 }
 };
 
 QPixmap *
 RES_flag (BYTE oob)
 {
-	int	i = 0;
-	QPixmap	*pm = NULL;
+	return (RES_flag(oob, 0, 0));
+}
 
-	while (flagmap[i].OOB != 0) {
-		if (flagmap[i].OOB == oob) break;
+QPixmap *
+RES_flag (BYTE oob, int year, int month)
+{
+	const char	*flagid;
+	int		i = 0;
+	QPixmap		*pm = NULL;
+
+	flagid = SPWAW_oob_flagid (oob, year, month);
+
+	while (flagmap[i].flagid != 0) {
+		if (strcmp (flagmap[i].flagid, flagid) == 0) break;
 		i++;
 	}
-	if (flagmap[i].OOB != 0) {
+	if (flagmap[i].flagid != 0) {
 		pm = RES_pixmap (flagmap[i].rid);
 	} else {
-		pm = RES_pixmap (RID_OOB_FLAG_00);
+		pm = RES_pixmap (RID_OOB_FLAG_SPWAW_00);
 	}
 	return (pm);
 }

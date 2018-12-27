@@ -32,9 +32,21 @@ SPWAW_oob_nation (BYTE id)
 }
 
 SPWAWLIB_API const char *
+SPWAW_oob_nation (BYTE id, int year, int month)
+{
+	return (spwoob_id2nation (id & 0xFF, year, month));
+}
+
+SPWAWLIB_API const char *
 SPWAW_oob_people (BYTE id)
 {
 	return (spwoob_id2people (id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_people (BYTE id, int year, int month)
+{
+	return (spwoob_id2people (id & 0xFF, year, month));
 }
 
 SPWAWLIB_API const char *
@@ -42,6 +54,32 @@ SPWAW_oob_prefix (BYTE id)
 {
 	return (spwoob_id2prefix (id & 0xFF));
 }
+
+SPWAWLIB_API const char *
+SPWAW_oob_prefix (BYTE id, int year, int month)
+{
+	return (spwoob_id2prefix (id & 0xFF, year, month));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_flagid (BYTE id)
+{
+	return (spwoob_id2flagid (id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_flagid (BYTE id, int year, int month)
+{
+	return (spwoob_id2flagid (id & 0xFF, year, month));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_uclass (SPWOOB_UCLASS e)
+{
+	if ((e < SPWOOB_UCLASS_START) || (e > SPWOOB_UCLASS_LIMIT)) return ("???");
+	return (SPWOOB_UCLASS_lookup(e));
+}
+
 
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_oob_dump (SPWOOB *oob, char *base, bool raw)
@@ -52,11 +90,4 @@ SPWAW_oob_dump (SPWOOB *oob, char *base, bool raw)
 	spwoob_dump (oob, base, raw);
 
 	return (SPWERR_OK);
-}
-
-SPWAWLIB_API const char *
-SPWAW_oob_uclass (SPWOOB_UCLASS e)
-{
-	if ((e < SPWOOB_UCLASS_START) || (e > SPWOOB_UCLASS_LIMIT)) return ("???");
-	return (SPWOOB_UCLASS_lookup(e));
 }
