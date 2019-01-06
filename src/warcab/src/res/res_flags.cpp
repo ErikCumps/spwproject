@@ -103,20 +103,27 @@ RES_flag (BYTE oob)
 QPixmap *
 RES_flag (BYTE oob, int year, int month)
 {
-	const char	*flagid;
+	return (RES_flagbyid (SPWAW_oob_flagid (oob, year, month)));
+}
+
+QPixmap *
+RES_flagbyid (const char *flagid)
+{
 	int		i = 0;
 	QPixmap		*pm = NULL;
 
-	flagid = SPWAW_oob_flagid (oob, year, month);
-
-	while (flagmap[i].flagid != 0) {
-		if (strcmp (flagmap[i].flagid, flagid) == 0) break;
-		i++;
-	}
-	if (flagmap[i].flagid != 0) {
-		pm = RES_pixmap (flagmap[i].rid);
-	} else {
+	if (!flagid) {
 		pm = RES_pixmap (RID_OOB_FLAG_SPWAW_00);
+	} else {
+		while (flagmap[i].flagid != 0) {
+			if (strcmp (flagmap[i].flagid, flagid) == 0) break;
+			i++;
+		}
+		if (flagmap[i].flagid != 0) {
+			pm = RES_pixmap (flagmap[i].rid);
+		} else {
+			pm = RES_pixmap (RID_OOB_FLAG_SPWAW_00);
+		}
 	}
 	return (pm);
 }

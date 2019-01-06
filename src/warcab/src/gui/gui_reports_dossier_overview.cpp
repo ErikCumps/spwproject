@@ -293,7 +293,8 @@ GuiRptDsrOvr::refresh (bool forced)
 		str.printf ("\n");
 
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
-			str.printf ("%s core force consists of %u units in %u formations.", SPWAW_oob_people (p->OOB), p->ucnt, p->fcnt);
+			str.printf ("%s core force consists of %u units in %u formations.",
+				SPWAW_oob_people (p->OOB), p->ucnt, p->fcnt);
 		} else {
 			str.printf ("Campaign tracking is not available for this dossier.");
 		}

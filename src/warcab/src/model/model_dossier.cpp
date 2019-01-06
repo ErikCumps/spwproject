@@ -132,7 +132,7 @@ ModelDossier::data_standalone (int role, MDLD_TREE_ITEM *p) const
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
-			v = QVariant (QIcon (*RES_flag (p->data.b->OOB_p1)));
+			v = QVariant (QIcon (*RES_flagbyid (p->data.b->snap->game.battle.strings.flagid_p1)));
 			break;
 		case Qt::ForegroundRole:
 		case Qt::BackgroundRole:
@@ -158,7 +158,8 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
 					p->data.b->location, p->data.b->miss_p1,
-					SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
+					p->data.b->snap->game.battle.strings.flagid_p2,
+					p->data.b->miss_p2);
 			} else {
 				snprintf (buf, sizeof (buf) - 1, "%s",
 					p->data.b->location);
@@ -166,7 +167,7 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
-			v = QVariant (QIcon (*RES_flag (p->data.b->OOB_p2)));
+			v = QVariant (QIcon (*RES_flagbyid (p->data.b->snap->game.battle.strings.flagid_p2)));
 			break;
 		case Qt::ForegroundRole:
 		case Qt::BackgroundRole:

@@ -22,6 +22,7 @@ extern QString		RES_htmlcolor	(unsigned long rid);
 
 extern QPixmap *	RES_flag	(BYTE oob);
 extern QPixmap *	RES_flag	(BYTE oob, int year, int month);
+extern QPixmap *	RES_flagbyid	(const char *flagid);
 
 extern QPixmap *	RES_mission	(SPWAW_MISSION mission, bool meeting);
 

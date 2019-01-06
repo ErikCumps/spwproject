@@ -324,15 +324,19 @@ typedef struct s_SPWAW_SNAP_BATTLE_STRINGS {
 	char			*nation_p1;			/* Player1 OOB nation string				*/
 	char			*people_p1;			/* Player1 OOB name string				*/
 	char			*prefix_p1;			/* Player1 OOB prefix string				*/
+	char			*flagid_p1;			/* Player1 OOB flag ID string				*/
 	char			*nation_p2;			/* Player2 OOB nation string				*/
 	char			*people_p2;			/* Player2 OOB name string				*/
 	char			*prefix_p2;			/* Player2 OOB prefix string				*/
+	char			*flagid_p2;			/* Player2 OOB flag ID string				*/
 	char			*nation_p3;			/* Player3 OOB nation string				*/
 	char			*people_p3;			/* Player3 OOB name string				*/
 	char			*prefix_p3;			/* Player3 OOB prefix string				*/
+	char			*flagid_p3;			/* Player3 OOB flag ID string				*/
 	char			*nation_p4;			/* Player4 OOB nation string				*/
 	char			*people_p4;			/* Player4 OOB name string				*/
 	char			*prefix_p4;			/* Player4 OOB prefix string				*/
+	char			*flagid_p4;			/* Player4 OOB flag ID string				*/
 	char			*miss_p1;			/* Mission type player1 string				*/
 	char			*miss_p2;			/* Mission type player2 string				*/
 } SPWAW_SNAP_BATTLE_STRINGS;

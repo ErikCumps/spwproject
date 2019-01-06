@@ -285,15 +285,19 @@ GuiRptBtlOvr::refresh (void)
 
 		d.model->load (p->next ? p->next : p, p, true, true);
 
-		d.player1->setPixmap (*RES_flag (p->OOB_p1));
+		int by = p->date.year;
+		int bm = p->date.month;
+
+		d.player1->setPixmap (*RES_flagbyid (p->snap->game.battle.strings.flagid_p1));
 		d.mission->setPixmap (*RES_mission (p->snap->game.battle.data.miss_p1, p->meeting));
 		d.mission->setToolTip (QString (p->miss_p1) + QString(" against ") + QString(p->miss_p2));
-		d.player2->setPixmap (*RES_flag (p->OOB_p2));
+		d.player2->setPixmap (*RES_flagbyid (p->snap->game.battle.strings.flagid_p2));
 
 		str.printf ("<pre>");
-		str.printf ("<h2>Battle at %s,\n%s %s against %s %s.</h2>", p->location,
-			SPWAW_oob_people (p->OOB_p1), p->miss_p1,
-			SPWAW_oob_people (p->OOB_p2), p->miss_p2);
+		str.printf ("<h2>Battle at %s,\n%s %s against %s %s.</h2>",
+			p->location,
+			p->snap->game.battle.strings.people_p1,
+			p->snap->game.battle.strings.people_p2);
 
 		SPWAW_date2str (&(p->date), date, sizeof (date));
 		str.printf ("%s, %u turns.\n", date, p->snap->game.battle.data.turn_max);
@@ -306,10 +310,14 @@ GuiRptBtlOvr::refresh (void)
 			SPWAW_HEX2M (p->tfirst->snap->game.battle.data.visibility));
 		str.printf ("\n");
 
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB_p1),
-			p->info_sob->pbir.ucnt, p->info_sob->pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->OOB_p2),
-			p->info_sob->obir.ucnt, p->info_sob->obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
+			p->snap->game.battle.strings.people_p1,
+			p->info_sob->pbir.ucnt, p->info_sob->pbir.fcnt,
+			p->snap->OOBp1.battle.stats.hcnt);
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
+			p->snap->game.battle.strings.people_p2,
+			p->info_sob->obir.ucnt, p->info_sob->obir.fcnt,
+			p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("\n");
 
 		if (p->tcnt > 1) {
@@ -334,9 +342,9 @@ GuiRptBtlOvr::refresh (void)
 					str.printf ("<h3>Unfortunately, the battle result is not available.</h3>");
 				}
 				str.printf ("\t%s score:\t%u\n",
-					SPWAW_oob_people (p->OOB_p1), p->tlast->snap->game.campaign.data.P1score);
+					SPWAW_oob_people (p->OOB_p1, by, bm), p->tlast->snap->game.campaign.data.P1score);
 				str.printf ("\t%s score:\t%u\n",
-					SPWAW_oob_people (p->OOB_p2), p->tlast->snap->game.campaign.data.P2score);
+					SPWAW_oob_people (p->OOB_p2, by, bm), p->tlast->snap->game.campaign.data.P2score);
 				break;
 			case SPWAW_BTBUSY:
 			default:
@@ -349,7 +357,7 @@ GuiRptBtlOvr::refresh (void)
 			case SPWAW_BTSCORE:
 			case SPWAW_BTBUSY:
 				str.printf ("<pre>");
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB_p1));
+				str.printf ("<h3>%s force:</h3>", p->snap->game.battle.strings.people_p1);
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->tlast->snap->OOBp1.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -362,7 +370,7 @@ GuiRptBtlOvr::refresh (void)
 					p->tlast->snap->OOBp1.battle.crews.cnt
 					);
 
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->OOB_p2));
+				str.printf ("<h3>%s force:</h3>", p->snap->game.battle.strings.people_p2);
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->tlast->snap->OOBp2.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -385,11 +393,11 @@ GuiRptBtlOvr::refresh (void)
 		str.printf ("<pre>");
 		str.printf ("<h3>Victory hex occupation:</h3>");
 		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			 SPWAW_oob_people (p->OOB_p1),
+			p->snap->game.battle.strings.people_p1,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].count,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].value);
 		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			 SPWAW_oob_people (p->OOB_p2),
+			p->snap->game.battle.strings.people_p2,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
 		str.printf ("\tNeutral:\t\t%2u occupied (worth %u points)\n",
@@ -401,7 +409,7 @@ GuiRptBtlOvr::refresh (void)
 		str.clear();
 
 		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB_p1));
+		str.printf ("<h3>%s battle losses:</h3>", p->snap->game.battle.strings.people_p1);
 		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.men, "men");
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.art, "artillery");
@@ -418,7 +426,7 @@ GuiRptBtlOvr::refresh (void)
 		str.clear();
 
 		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", SPWAW_oob_people (p->OOB_p2));
+		str.printf ("<h3>%s battle losses:</h3>", p->snap->game.battle.strings.people_p2);
 		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.men, "men");
 			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.art, "artillery");
