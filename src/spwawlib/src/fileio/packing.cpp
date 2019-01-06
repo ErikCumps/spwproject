@@ -83,6 +83,11 @@ unpack_crlc (BBR *bbr, unsigned char rlb, SBW *sbw, DWORD offset)
 	int		rl;
 	unsigned char	c, buf[127];
 
+#if	!PACKLOGGING
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (offset);
+#endif	/* !PACKLOGGING */
+
 	rl = RL(rlb);
 	if ((rl <= 0) || (rl >= 128)) {
 		ERROR1 ("invalid RL value: %d", rl);
@@ -112,6 +117,11 @@ unpack_urlc (BBR *bbr, unsigned char ulb, SBW *sbw, DWORD offset)
 	int		ul, todo;
 	unsigned char	c, buf[127];
 	int		done;
+
+#if	!PACKLOGGING
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (offset);
+#endif	/* !PACKLOGGING */
 
 	ul = RL(ulb);
 	if ((ul <= 0) || (ul >= 128)) {
@@ -196,6 +206,11 @@ pack_crlc (SBW *sbw, int *rl, unsigned char c, DWORD offset)
 	unsigned char	rlb;
 	int		done = 0;
 
+#if	!PACKLOGGING
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (offset);
+#endif	/* !PACKLOGGING */
+
 	if ((*rl <= 0) || (*rl >= 128)) {
 		ERROR1 ("invalid RL value: %d", *rl);
 		return (0);
@@ -224,6 +239,11 @@ pack_urlc (SBW *sbw, int *ul, unsigned char *buf, DWORD offset)
 {
 	unsigned char	ulb;
 	int		done;
+
+#if	!PACKLOGGING
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (offset);
+#endif	/* !PACKLOGGING */
 
 	if ((*ul <= 0) || (*ul >= 128)) {
 		ERROR1 ("invalid UL value: %d", *ul);
