@@ -17,16 +17,10 @@
 #define	BKG_HEIGHT	BOX_HEIGHT
 
 #define	ABOUT_MSG								\
-	"Warcab is a tool to record and track battles in an SPWaW campaign,\n"	\
-	"or to record and track turns in standalone battles from scenarios.\n"	\
-	"It is inspired by Campaign Watcher.\n"					\
-	"\n"									\
-	"Warcab tracks information for core units (including reassignments)\n"	\
-	"during a campaign. It also shows and tracks information for core,\n"	\
-	"auxiliary and opponent units during battles and battle turns.\n"	\
-	"\n"									\
-	"Its current main missing features are data export and printing.\n"	\
-	"\n"
+	"<b>\n"									\
+	"<p>This experimental build of Warcab only records and tracks battles"	\
+	"<p>in winSPWW2 campaigns and standalone battles from scenarios."	\
+	"</b>\n"
 
 GuiDlgAbout::GuiDlgAbout (void)
 	: QDialog (0, Qt::Dialog)

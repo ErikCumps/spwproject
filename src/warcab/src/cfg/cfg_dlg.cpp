@@ -15,13 +15,21 @@
 #define	BOX_HEIGHT	300
 #define	BOX_MARGIN	 10
 
-#define	STR_OOB_TOOLTIP		"Configure the folder containing the SPWaW OOB files."
-#define	STR_OOB_WHATSTHIS1	"This should be the folder containing the SPWaW OOB files."
-#define	STR_OOB_WHATSTHIS2	"Press this button to browse to the folder containg the SPWaW OOB files."
+//#define	STR_OOB_TOOLTIP		"Configure the folder containing the SPWaW OOB files."
+//#define	STR_OOB_WHATSTHIS1	"This should be the folder containing the SPWaW OOB files."
+//#define	STR_OOB_WHATSTHIS2	"Press this button to browse to the folder containg the SPWaW OOB files."
 
-#define	STR_SVE_TOOLTIP		"Configure the SPWaW SAVE folder."
-#define	STR_SVE_WHATSTHIS1	"This should be the SPWaW SAVE folder."
-#define	STR_SVE_WHATSTHIS2	"Press this button to browse to the SPWaW SAVE folder."
+#define	STR_OOB_TOOLTIP		"Configure the folder containing the winSPWW2 OOB files."
+#define	STR_OOB_WHATSTHIS1	"This should be the folder containing the winSPWW2 OOB files."
+#define	STR_OOB_WHATSTHIS2	"Press this button to browse to the folder containg the winSPWW2 OOB files."
+
+//#define	STR_SVE_TOOLTIP		"Configure the SPWaW SAVE folder."
+//#define	STR_SVE_WHATSTHIS1	"This should be the SPWaW SAVE folder."
+//#define	STR_SVE_WHATSTHIS2	"Press this button to browse to the SPWaW SAVE folder."
+
+#define	STR_SVE_TOOLTIP		"Configure the winSPWW2 Saved Games folder."
+#define	STR_SVE_WHATSTHIS1	"This should be the winSPWW2 Saved Games folder."
+#define	STR_SVE_WHATSTHIS2	"Press this button to browse to the winSPWW2 Saved Games folder."
 
 #define	STR_SNP_TOOLTIP		"Configure the Warcab saves folder."
 #define	STR_SNP_WHATSTHIS1	"This is the folder where warcab saves dossiers and stratmap images."
@@ -88,7 +96,8 @@ CfgDlg::CfgDlg (void)
 
 	/* Create "oob" config ui */
 	d.oob_label = new QLabel (d.body);
-	d.oob_label->setText ("SPWaW OOB files:");
+	//d.oob_label->setText ("SPWaW OOB files:");
+	d.oob_label->setText ("winSPWW2 OOB files:");
 	d.oob_label->setToolTip (STR_OOB_TOOLTIP);
 
 	d.oob_edit = new QLineEdit (d.body);
@@ -108,7 +117,8 @@ CfgDlg::CfgDlg (void)
 
 	/* Create "save" config ui */
 	d.sve_label = new QLabel (d.body);
-	d.sve_label->setText ("SPWaW SAVE folder:");
+	//d.sve_label->setText ("SPWaW SAVE folder:");
+	d.sve_label->setText ("winSPWW2 Saved Games folder:");
 	d.sve_label->setToolTip (STR_SVE_TOOLTIP);
 
 	d.sve_edit = new QLineEdit (d.body);

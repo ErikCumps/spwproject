@@ -14,10 +14,10 @@
 
 static SL_APP_INFO	app_info = {
 	{
-		"WarcabSPWW2",	// FIXME!!!
-		"The SPWaW war cabinet",
-		"0.7.0",
-		"2005-2018",
+		"Warcab-winSPWW2",	// FIXME!!!
+		"The *experimental* winSPWW2 war cabinet",
+		"0.8.0",
+		"2005-2019",
 		"Erik Cumps",
 		"erik.cumps@gmail.com"
 	},
