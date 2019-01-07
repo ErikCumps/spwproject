@@ -88,4 +88,13 @@
 #define	TFS3_ROAD	0x01
 #define	TFS4_ROAD	0x02
 
+#define	UT_UNIT		0x01
+#define	UT_CREW		0x02
+#define	UT_SPAU		0x03
+#define	UT_UNKNOWN	0xFF
+
+#define	AS_STAY		0x01
+#define	AS_LEFT		0x02
+#define	AS_NONE		0xFF
+
 #endif	/* INTERNAL_TYPES_H */

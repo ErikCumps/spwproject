@@ -182,14 +182,19 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-load_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+load_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
 	ULONG		i;
 	SNAP_OOB_UEL	u;
 
 	for (i=0; i<cnt; i++) {
-		if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
-			RWE (SPWERR_FRFAILED, "sbread(unit data)");
+		/* We are now backwards compatible with version 10 */
+		if (version == SNAP_VERSION_V10) {
+			snapshot_load_v10_oob_uel (sbr, &u);
+		} else {
+			if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
+				RWE (SPWERR_FRFAILED, "sbread(unit data)");
+		}
 		load_oobu (&u, &(oob->units.raw[i]), stab);
 	}
 
@@ -220,14 +225,8 @@ load_oob_units (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, S
 	oob->units.raw = safe_nmalloc (SPWAW_SNAP_OOB_UELRAW, oobhdr.ucnt);
 	COOMGOTO (oob->units.raw, "SPWAW_SNAP_OOB_UELRAW list", handle_error);
 
-	/* We are now backwards compatible with version 10 */
-	if (version == SNAP_VERSION_V10) {
-		rc = snapshot_load_v10_oobu_list (sbr, oobhdr.ucnt, oob, stab);
-		ERRORGOTO ("snapshot_load_v10_oobu_list()", handle_error);
-	} else {
-		rc = load_oobu_list (sbr, oobhdr.ucnt, oob, stab);
-		ERRORGOTO ("load_oobu_list()", handle_error);
-	}
+	rc = load_oobu_list (sbr, oobhdr.ucnt, oob, stab, version);
+	ERRORGOTO ("load_oobu_list()", handle_error);
 
 	rc = build_uridx (&(oob->units)); ROE ("build_uridx()");
 

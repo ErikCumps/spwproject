@@ -75,7 +75,7 @@ typedef struct s_SNAP_OOB_UEL_V10 {
 #pragma pack(pop, r1)
 
 extern SPWAW_ERROR	snapshot_load_v10_info_header	(int fd, SNAP_INFO *hdr);
-extern SPWAW_ERROR	snapshot_load_v10_oobu_list	(SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab);
+extern SPWAW_ERROR	snapshot_load_v10_oob_uel	(SBR *sbr, SNAP_OOB_UEL *uel);
 extern SPWAW_ERROR	snapshot_legacy_ldrcrw_detect	(USHORT cnt, SPWAW_SNAP_OOB_RAW *oob);
 
 #endif	/* INTERNAL_SNAPFILE_V10_H */

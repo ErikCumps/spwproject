@@ -12,6 +12,7 @@
 #include "snapshot/index.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
+#include "common/types.h"
 
 SPWAW_ERROR
 snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
@@ -35,43 +36,35 @@ handle_error:
 	return (rc);
 }
 
-#define	getOU(name)	dst->##name = src->##name
-
-static void
-snapshot_load_v10_oobu (SNAP_OOB_UEL_V10 *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
-{
-	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_UELRAW));
-
-	/* A V10 snapshot unit element lacks the unit type and abandonment status. */
-	dst->type = SPWAW_UNIT_TYPE_UNKNOWN;
-	dst->aband = SPWAW_ANONE;
-
-	getOU (RID); getOU (FRID); getOU (FMID); getOU (FSID);
-	dst->name = STRTAB_getstr (stab, src->name);
-	getOU (classID); getOU (OOB); getOU (OOBrid);
-	getOU (size); getOU (cost); getOU (survive); getOU (leader);
-	getOU (exp); getOU (mor); getOU (sup); getOU (status); getOU (entr);
-	getOU (smkdev); getOU (smkammo); getOU (crew);
-	getOU (range); getOU (stance_x); getOU (stance_y);
-	getOU (loader); getOU (load_cap); getOU (load_cost);
-	getOU (contact); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
-	getOU (swim); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
-	getOU (damage); getOU (movdir); getOU (shtdir); getOU (target); getOU (UTGidx);
-//	getOU (SPECIAL_OU); getOU (SPECIAL[0]); getOU (SPECIAL[1]);
-//	getOU (SPECIAL[2]); getOU (SPECIAL[3]); getOU (SPECIAL[4]);
-}
+#define	copyOU(name)	uel->##name = uel_v10.##name
 
 SPWAW_ERROR
-snapshot_load_v10_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+snapshot_load_v10_oob_uel (SBR *sbr, SNAP_OOB_UEL *uel)
 {
-	ULONG			i;
-	SNAP_OOB_UEL_V10	u;
+	SNAP_OOB_UEL_V10	uel_v10;
 
-	for (i=0; i<cnt; i++) {
-		if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
-			RWE (SPWERR_FRFAILED, "sbread(unit data)");
-		snapshot_load_v10_oobu (&u, &(oob->units.raw[i]), stab);
-	}
+	CNULLARG (sbr); CNULLARG (uel);
+
+	if (sbread (sbr, (char *)&uel_v10, sizeof (SNAP_OOB_UEL_V10)) != sizeof (SNAP_OOB_UEL_V10))
+			RWE (SPWERR_FRFAILED, "sbread(v10 unit data)");
+
+	/* A V10 snapshot unit element lacks the unit type and abandonment status. */
+	uel->type = UT_UNKNOWN;
+	uel->aband = AS_NONE;
+
+	copyOU (RID); copyOU (FRID); copyOU (FMID); copyOU (FSID);
+	copyOU (name);
+	copyOU (classID); copyOU (OOB); copyOU (OOBrid);
+	copyOU (size); copyOU (cost); copyOU (survive); copyOU (leader);
+	copyOU (exp); copyOU (mor); copyOU (sup); copyOU (status); copyOU (entr);
+	copyOU (smkdev); copyOU (smkammo); copyOU (crew);
+	copyOU (range); copyOU (stance_x); copyOU (stance_y);
+	copyOU (loader); copyOU (load_cap); copyOU (load_cost);
+	copyOU (contact); copyOU (rof); copyOU (tgt); copyOU (rf); copyOU (fc); copyOU (iv);
+	copyOU (swim); copyOU (men); copyOU (men_ori); copyOU (speed); copyOU (moves);
+	copyOU (damage); copyOU (movdir); copyOU (shtdir); copyOU (target); copyOU (UTGidx);
+//	copyOU (SPECIAL_OU); copyOU (SPECIAL[0]); copyOU (SPECIAL[1]);
+//	copyOU (SPECIAL[2]); copyOU (SPECIAL[3]); copyOU (SPECIAL[4]);
 
 	return (SPWERR_OK);
 }
