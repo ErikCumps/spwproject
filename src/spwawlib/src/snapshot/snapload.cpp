@@ -104,14 +104,19 @@ load_oobf (SNAP_OOB_FEL *src, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-load_oobf_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+load_oobf_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
 	ULONG		i;
 	SNAP_OOB_FEL	f;
 
 	for (i=0; i<cnt; i++) {
-		if (sbread (sbr, (char *)&f, sizeof (f)) != sizeof (f))
-			RWE (SPWERR_FRFAILED, "sbread(formation data)");
+		/* We are now backwards compatible with versions 11 and 10 */
+		if (version <= SNAP_VERSION_V11) {
+			snapshot_load_v11_oob_fel (sbr, &f);
+		} else {
+			if (sbread (sbr, (char *)&f, sizeof (f)) != sizeof (f))
+				RWE (SPWERR_FRFAILED, "sbread(formation data)");
+		}
 		load_oobf (&f, &(oob->formations.raw[i]), stab);
 	}
 
@@ -119,7 +124,7 @@ load_oobf_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-load_oob_formations (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+load_oob_formations (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		size;
@@ -143,7 +148,7 @@ load_oob_formations (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *o
 	oob->formations.raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, oobhdr.fcnt);
 	COOMGOTO (oob->formations.raw, "SPWAW_SNAP_OOB_FELRAW list", handle_error);
 
-	rc = load_oobf_list (sbr, oobhdr.fcnt, oob, stab);
+	rc = load_oobf_list (sbr, oobhdr.fcnt, oob, stab, version);
 	ERRORGOTO ("load_oobf_list()", handle_error);
 
 	rc = build_fridx (&(oob->formations)); ROE ("build_fridx()");
@@ -188,9 +193,11 @@ load_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULO
 	SNAP_OOB_UEL	u;
 
 	for (i=0; i<cnt; i++) {
-		/* We are now backwards compatible with version 10 */
+		/* We are now backwards compatible with versions 11 and 10 */
 		if (version == SNAP_VERSION_V10) {
 			snapshot_load_v10_oob_uel (sbr, &u);
+		} if (version == SNAP_VERSION_V11) {
+			snapshot_load_v11_oob_uel (sbr, &u);
 		} else {
 			if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
 				RWE (SPWERR_FRFAILED, "sbread(unit data)");
@@ -259,14 +266,19 @@ load_oobl (SNAP_OOB_LEL *src, SPWAW_SNAP_OOB_LELRAW *dst, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-load_oobl_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+load_oobl_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
 	ULONG		i;
 	SNAP_OOB_LEL	l;
 
 	for (i=0; i<cnt; i++) {
-		if (sbread (sbr, (char *)&l, sizeof (l)) != sizeof (l))
-			RWE (SPWERR_FRFAILED, "sbread(leader data)");
+		/* We are now backwards compatible with versions 11 and 10 */
+		if (version <= SNAP_VERSION_V11) {
+			snapshot_load_v11_oob_lel (sbr, &l);
+		} else {
+			if (sbread (sbr, (char *)&l, sizeof (l)) != sizeof (l))
+				RWE (SPWERR_FRFAILED, "sbread(leader data)");
+		}
 		load_oobl (&l, &(oob->leaders.raw[i]), stab);
 	}
 
@@ -274,7 +286,7 @@ load_oobl_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-load_oob_leaders (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab)
+load_oob_leaders (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		size;
@@ -297,7 +309,7 @@ load_oob_leaders (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *oob,
 	oob->leaders.raw = safe_nmalloc (SPWAW_SNAP_OOB_LELRAW, oobhdr.lcnt);
 	COOMGOTO (oob->leaders.raw, "SPWAW_SNAP_OOB_LELRAW list", handle_error);
 
-	rc = load_oobl_list (sbr, oobhdr.lcnt, oob, stab);
+	rc = load_oobl_list (sbr, oobhdr.lcnt, oob, stab, version);
 	ERRORGOTO ("load_oobl_list()", handle_error);
 
 	rc = build_lridx (&(oob->leaders)); ROE ("build_lridx()");
@@ -388,13 +400,13 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 	if (!bread (fd, (char *)&oobhdr, sizeof (oobhdr), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(oobhdr)", handle_error);
 
-	rc = load_oob_formations (fd, pos, oobhdr, oob, stab);
+	rc = load_oob_formations (fd, pos, oobhdr, oob, stab, version);
 	ERRORGOTO ("load_oob_formations()", handle_error);
 
 	rc = load_oob_units (fd, pos, oobhdr, oob, stab, version);
 	ERRORGOTO ("load_oob_units()", handle_error);
 
-	rc = load_oob_leaders (fd, pos, oobhdr, oob, stab);
+	rc = load_oob_leaders (fd, pos, oobhdr, oob, stab, version);
 	ERRORGOTO ("load_oob_leaders()", handle_error);
 
 	rc = load_oob_positions (fd, pos, oobhdr, oob, stab);

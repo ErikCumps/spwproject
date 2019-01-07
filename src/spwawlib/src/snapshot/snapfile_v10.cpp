@@ -25,7 +25,7 @@ snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
 	if (!bread (fd, (char *)&hdr_v10, sizeof (SNAP_INFO_V10), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot info hdr v10) failed", handle_error);
 
-	/* A V10 snapshot info header only lacks the battle type at the end.
+	/* The V10 snapshot info header only lacks the battle type at the end.
 	 * The only supported battle type for V10 snapshots is the SPWAW_CAMPAIGN_BATTLE,
 	 * so a quick copy and fix up is all we need :)
 	 */
@@ -48,10 +48,11 @@ snapshot_load_v10_oob_uel (SBR *sbr, SNAP_OOB_UEL *uel)
 	if (sbread (sbr, (char *)&uel_v10, sizeof (SNAP_OOB_UEL_V10)) != sizeof (SNAP_OOB_UEL_V10))
 			RWE (SPWERR_FRFAILED, "sbread(v10 unit data)");
 
-	/* A V10 snapshot unit element lacks the unit type and abandonment status. */
+	/* The V10 snapshot unit element lacks the unit type and abandonment status. */
 	uel->type = UT_UNKNOWN;
 	uel->aband = AS_NONE;
 
+	/* The V10 snapshot data storage uses data types with different widths. */
 	copyOU (RID); copyOU (FRID); copyOU (FMID); copyOU (FSID);
 	copyOU (name);
 	copyOU (classID); copyOU (OOB); copyOU (OOBrid);
