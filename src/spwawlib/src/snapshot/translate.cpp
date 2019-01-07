@@ -640,14 +640,13 @@ raw2aband (BYTE aband)
 	SPWAW_ABAND	a;
 
 	switch (aband) {
-		case 1:
+		case AS_STAY:
 			a = SPWAW_ASTAY;
 			break;
-		case 2:
+		case AS_LEFT:
 			a = SPWAW_ALEFT;
 			break;
-		case 0:
-		case 0xFF:
+		case AS_NONE:
 		default:
 			a = SPWAW_ANONE;
 			break;
@@ -661,17 +660,15 @@ aband2raw (SPWAW_ABAND aband)
 	BYTE	b;
 
 	switch (aband) {
-		case SPWAW_ANONE:
-			b = 0;
-			break;
 		case SPWAW_ASTAY:
-			b = 1;
+			b = AS_STAY;
 			break;
 		case SPWAW_ALEFT:
-			b = 2;
+			b = AS_LEFT;
 			break;
+		case SPWAW_ANONE:
 		default:
-			b = 0xFF;
+			b = AS_NONE;
 			break;
 	}
 	return (b);
@@ -685,17 +682,16 @@ raw2unittype (BYTE type)
 	SPWAW_UNIT_TYPE	t;
 
 	switch (type) {
-		case 1:
+		case UT_UNIT:
 			t = SPWAW_UNIT_TYPE_UNIT;
 			break;
-		case 2:
+		case UT_CREW:
 			t = SPWAW_UNIT_TYPE_CREW;
 			break;
-		case 3:
+		case UT_SPAU:
 			t = SPWAW_UNIT_TYPE_SPAU;
 			break;
-		case 0:
-		case 0xFF:
+		case UT_UNKNOWN:
 		default:
 			t = SPWAW_UNIT_TYPE_UNKNOWN;
 			break;
@@ -709,20 +705,18 @@ unittype2raw (SPWAW_UNIT_TYPE type)
 	BYTE	b;
 
 	switch (type) {
-		case SPWAW_UNIT_TYPE_UNKNOWN:
-			b = 0;
-			break;
 		case SPWAW_UNIT_TYPE_UNIT:
-			b = 1;
+			b = UT_UNIT;
 			break;
 		case SPWAW_UNIT_TYPE_CREW:
-			b = 2;
+			b = UT_CREW;
 			break;
 		case SPWAW_UNIT_TYPE_SPAU:
-			b = 3;
+			b = UT_SPAU;
 			break;
+		case SPWAW_UNIT_TYPE_UNKNOWN:
 		default:
-			b = 0xFF;
+			b = UT_UNKNOWN;
 			break;
 	}
 	return (b);
