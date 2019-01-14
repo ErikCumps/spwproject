@@ -66,159 +66,159 @@ name2id (const char *name)
 	return ((BYTE)id);
 }
 
-static SPWOOB_UCLASS
-utype2class (SPWOOB_UTYPE ut)
-{
-	SPWOOB_UCLASS	uc = SPWOOB_UCLASS_OTH;
-
-	switch (ut) {
-		case SPWOOB_UTYPE_INF:
-		case SPWOOB_UTYPE_LT_INF:
-		case SPWOOB_UTYPE_MD_INF:
-		case SPWOOB_UTYPE_HV_INF:
-		case SPWOOB_UTYPE_MOT_INF:
-		case SPWOOB_UTYPE_ARM_INF:
-		case SPWOOB_UTYPE_ENG:
-		case SPWOOB_UTYPE_MOT_ENG:
-		case SPWOOB_UTYPE_ARM_ENG:
-		case SPWOOB_UTYPE_MG:
-		case SPWOOB_UTYPE_HV_MG:
-		case SPWOOB_UTYPE_SKI:
-		case SPWOOB_UTYPE_AIR_INF:
-		case SPWOOB_UTYPE_BCYCLE:
-		case SPWOOB_UTYPE_ELITE:
-		case SPWOOB_UTYPE_SNIPER:
-		case SPWOOB_UTYPE_SPECOP:
-		case SPWOOB_UTYPE_GUERILLA:
-		case SPWOOB_UTYPE_CONSCR:
-		case SPWOOB_UTYPE_SLINF:
-			uc = SPWOOB_UCLASS_INF;
-			break;
-		case SPWOOB_UTYPE_CAV:
-			uc = SPWOOB_UCLASS_CAV;
-			break;
-		case SPWOOB_UTYPE_AHT:
-		case SPWOOB_UTYPE_LT_TNK:
-		case SPWOOB_UTYPE_MD_TNK:
-		case SPWOOB_UTYPE_HV_TNK:
-		case SPWOOB_UTYPE_VHV_TNK:
-		case SPWOOB_UTYPE_MB_TNK:
-		case SPWOOB_UTYPE_CR_TNK:
-		case SPWOOB_UTYPE_CS_TNK:
-		case SPWOOB_UTYPE_INF_TNK:
-		case SPWOOB_UTYPE_MINECLR_TNK:
-		case SPWOOB_UTYPE_ENG_TNK:
-		case SPWOOB_UTYPE_FLM_TNK:
-		case SPWOOB_UTYPE_SPEC_TNK:
-		case SPWOOB_UTYPE_LL_TNK:
-		case SPWOOB_UTYPE_CAPT_TNK:
-		case SPWOOB_UTYPE_ASSAULT:
-			uc = SPWOOB_UCLASS_ARM;
-			break;
-		case SPWOOB_UTYPE_HT:
-		case SPWOOB_UTYPE_WH_APC:
-		case SPWOOB_UTYPE_TR_APC:
-		case SPWOOB_UTYPE_HV_TR_APC:
-			uc = SPWOOB_UCLASS_APC;
-			break;
-		case SPWOOB_UTYPE_LT_MORT:
-		case SPWOOB_UTYPE_MORT:
-		case SPWOOB_UTYPE_HV_MORT:
-		case SPWOOB_UTYPE_SP_MORT:
-		case SPWOOB_UTYPE_SP_GUN:
-		case SPWOOB_UTYPE_INF_GUN:
-		case SPWOOB_UTYPE_HWTZR:
-		case SPWOOB_UTYPE_SP_ART:
-		case SPWOOB_UTYPE_OB_ART:
-		case SPWOOB_UTYPE_RKT:
-		case SPWOOB_UTYPE_SP_RKT:
-		case SPWOOB_UTYPE_OB_RKT:
-		case SPWOOB_UTYPE_CAPT_SPG:
-			uc = SPWOOB_UCLASS_ART;
-			break;
-		case SPWOOB_UTYPE_INF_AT:
-		case SPWOOB_UTYPE_AT:
-		case SPWOOB_UTYPE_WH_AT:
-		case SPWOOB_UTYPE_SP_AT:
-		case SPWOOB_UTYPE_TD:
-		case SPWOOB_UTYPE_HV_TD:
-		case SPWOOB_UTYPE_TTD:
-			uc = SPWOOB_UCLASS_AT;
-			break;
-		case SPWOOB_UTYPE_FLAK:
-		case SPWOOB_UTYPE_HV_FLAK:
-		case SPWOOB_UTYPE_WH_FLAK:
-		case SPWOOB_UTYPE_SP_FLAK:
-			uc = SPWOOB_UCLASS_AA;
-			break;
-		case SPWOOB_UTYPE_AMPHIB:
-		case SPWOOB_UTYPE_HV_AMPHIB:
-		case SPWOOB_UTYPE_AMPHIB_TNK:
-		case SPWOOB_UTYPE_MRNS:
-			uc = SPWOOB_UCLASS_MAR;
-			break;
-		case SPWOOB_UTYPE_SCOUT:
-		case SPWOOB_UTYPE_VEH_SCOUT:
-		case SPWOOB_UTYPE_APC_SCOUT:
-		case SPWOOB_UTYPE_FO:
-		case SPWOOB_UTYPE_VEH_FO:
-		case SPWOOB_UTYPE_TR_FO:
-		case SPWOOB_UTYPE_MCYCLE:
-		case SPWOOB_UTYPE_RHT:
-		case SPWOOB_UTYPE_LT_ARMCAR:
-		case SPWOOB_UTYPE_ARMCAR:
-		case SPWOOB_UTYPE_HV_ARMCAR:
-		case SPWOOB_UTYPE_RE_TNK:
-			uc = SPWOOB_UCLASS_REC;
-			break;
-		case SPWOOB_UTYPE_HQ:
-		case SPWOOB_UTYPE_PLT_HQ:
-		case SPWOOB_UTYPE_CC_TNK:
-			uc = SPWOOB_UCLASS_CC;
-			break;
-		case SPWOOB_UTYPE_PRMV:
-		case SPWOOB_UTYPE_MD_TRK:
-		case SPWOOB_UTYPE_HV_TRK:
-		case SPWOOB_UTYPE_BCARR:
-		case SPWOOB_UTYPE_WAGON:
-		case SPWOOB_UTYPE_TEAM:
-		case SPWOOB_UTYPE_GTEAM:
-		case SPWOOB_UTYPE_PACK:
-			uc = SPWOOB_UCLASS_TRN;
-			break;
-		case SPWOOB_UTYPE_AIR:
-		case SPWOOB_UTYPE_AIRB:
-		case SPWOOB_UTYPE_CRG_AIR:
-		case SPWOOB_UTYPE_GLIDER:
-		case SPWOOB_UTYPE_HELI:
-		case SPWOOB_UTYPE_AHELI:
-		case SPWOOB_UTYPE_OHELI:
-			uc = SPWOOB_UCLASS_AIR;
-			break;
-		case SPWOOB_UTYPE_BARGE:
-		case SPWOOB_UTYPE_ABOAT:
-		case SPWOOB_UTYPE_LCS:
-		case SPWOOB_UTYPE_LCG:
-		case SPWOOB_UTYPE_SHIP:
-		case SPWOOB_UTYPE_NAVB:
-			uc = SPWOOB_UCLASS_NVY;
-			break;
-		case SPWOOB_UTYPE_FORT:
-		case SPWOOB_UTYPE_EMP_FORT:
-		case SPWOOB_UTYPE_NAV_FORT:
-			uc = SPWOOB_UCLASS_FRT;
-			break;
-		case SPWOOB_UTYPE_UTIL:
-		case SPWOOB_UTYPE_CREW:
-		case SPWOOB_UTYPE_AMMOC:
-		case SPWOOB_UTYPE_AMMOD:
-		case SPWOOB_UTYPE_CAVE:
-		default:
-			uc = SPWOOB_UCLASS_OTH;
-			break;
-	}
-	return (uc);
-}
+//static SPWOOB_UCLASS
+//utype2class (SPWOOB_UTYPE ut)
+//{
+//	SPWOOB_UCLASS	uc = SPWOOB_UCLASS_OTH;
+//
+//	switch (ut) {
+//		case SPWOOB_UTYPE_INF:
+//		case SPWOOB_UTYPE_LT_INF:
+//		case SPWOOB_UTYPE_MD_INF:
+//		case SPWOOB_UTYPE_HV_INF:
+//		case SPWOOB_UTYPE_MOT_INF:
+//		case SPWOOB_UTYPE_ARM_INF:
+//		case SPWOOB_UTYPE_ENG:
+//		case SPWOOB_UTYPE_MOT_ENG:
+//		case SPWOOB_UTYPE_ARM_ENG:
+//		case SPWOOB_UTYPE_MG:
+//		case SPWOOB_UTYPE_HV_MG:
+//		case SPWOOB_UTYPE_SKI:
+//		case SPWOOB_UTYPE_AIR_INF:
+//		case SPWOOB_UTYPE_BCYCLE:
+//		case SPWOOB_UTYPE_ELITE:
+//		case SPWOOB_UTYPE_SNIPER:
+//		case SPWOOB_UTYPE_SPECOP:
+//		case SPWOOB_UTYPE_GUERILLA:
+//		case SPWOOB_UTYPE_CONSCR:
+//		case SPWOOB_UTYPE_SLINF:
+//			uc = SPWOOB_UCLASS_INF;
+//			break;
+//		case SPWOOB_UTYPE_CAV:
+//			uc = SPWOOB_UCLASS_CAV;
+//			break;
+//		case SPWOOB_UTYPE_AHT:
+//		case SPWOOB_UTYPE_LT_TNK:
+//		case SPWOOB_UTYPE_MD_TNK:
+//		case SPWOOB_UTYPE_HV_TNK:
+//		case SPWOOB_UTYPE_VHV_TNK:
+//		case SPWOOB_UTYPE_MB_TNK:
+//		case SPWOOB_UTYPE_CR_TNK:
+//		case SPWOOB_UTYPE_CS_TNK:
+//		case SPWOOB_UTYPE_INF_TNK:
+//		case SPWOOB_UTYPE_MINECLR_TNK:
+//		case SPWOOB_UTYPE_ENG_TNK:
+//		case SPWOOB_UTYPE_FLM_TNK:
+//		case SPWOOB_UTYPE_SPEC_TNK:
+//		case SPWOOB_UTYPE_LL_TNK:
+//		case SPWOOB_UTYPE_CAPT_TNK:
+//		case SPWOOB_UTYPE_ASSAULT:
+//			uc = SPWOOB_UCLASS_ARM;
+//			break;
+//		case SPWOOB_UTYPE_HT:
+//		case SPWOOB_UTYPE_WH_APC:
+//		case SPWOOB_UTYPE_TR_APC:
+//		case SPWOOB_UTYPE_HV_TR_APC:
+//			uc = SPWOOB_UCLASS_APC;
+//			break;
+//		case SPWOOB_UTYPE_LT_MORT:
+//		case SPWOOB_UTYPE_MORT:
+//		case SPWOOB_UTYPE_HV_MORT:
+//		case SPWOOB_UTYPE_SP_MORT:
+//		case SPWOOB_UTYPE_SP_GUN:
+//		case SPWOOB_UTYPE_INF_GUN:
+//		case SPWOOB_UTYPE_HWTZR:
+//		case SPWOOB_UTYPE_SP_ART:
+//		case SPWOOB_UTYPE_OB_ART:
+//		case SPWOOB_UTYPE_RKT:
+//		case SPWOOB_UTYPE_SP_RKT:
+//		case SPWOOB_UTYPE_OB_RKT:
+//		case SPWOOB_UTYPE_CAPT_SPG:
+//			uc = SPWOOB_UCLASS_ART;
+//			break;
+//		case SPWOOB_UTYPE_INF_AT:
+//		case SPWOOB_UTYPE_AT:
+//		case SPWOOB_UTYPE_WH_AT:
+//		case SPWOOB_UTYPE_SP_AT:
+//		case SPWOOB_UTYPE_TD:
+//		case SPWOOB_UTYPE_HV_TD:
+//		case SPWOOB_UTYPE_TTD:
+//			uc = SPWOOB_UCLASS_AT;
+//			break;
+//		case SPWOOB_UTYPE_FLAK:
+//		case SPWOOB_UTYPE_HV_FLAK:
+//		case SPWOOB_UTYPE_WH_FLAK:
+//		case SPWOOB_UTYPE_SP_FLAK:
+//			uc = SPWOOB_UCLASS_AA;
+//			break;
+//		case SPWOOB_UTYPE_AMPHIB:
+//		case SPWOOB_UTYPE_HV_AMPHIB:
+//		case SPWOOB_UTYPE_AMPHIB_TNK:
+//		case SPWOOB_UTYPE_MRNS:
+//			uc = SPWOOB_UCLASS_MAR;
+//			break;
+//		case SPWOOB_UTYPE_SCOUT:
+//		case SPWOOB_UTYPE_VEH_SCOUT:
+//		case SPWOOB_UTYPE_APC_SCOUT:
+//		case SPWOOB_UTYPE_FO:
+//		case SPWOOB_UTYPE_VEH_FO:
+//		case SPWOOB_UTYPE_TR_FO:
+//		case SPWOOB_UTYPE_MCYCLE:
+//		case SPWOOB_UTYPE_RHT:
+//		case SPWOOB_UTYPE_LT_ARMCAR:
+//		case SPWOOB_UTYPE_ARMCAR:
+//		case SPWOOB_UTYPE_HV_ARMCAR:
+//		case SPWOOB_UTYPE_RE_TNK:
+//			uc = SPWOOB_UCLASS_REC;
+//			break;
+//		case SPWOOB_UTYPE_HQ:
+//		case SPWOOB_UTYPE_PLT_HQ:
+//		case SPWOOB_UTYPE_CC_TNK:
+//			uc = SPWOOB_UCLASS_CC;
+//			break;
+//		case SPWOOB_UTYPE_PRMV:
+//		case SPWOOB_UTYPE_MD_TRK:
+//		case SPWOOB_UTYPE_HV_TRK:
+//		case SPWOOB_UTYPE_BCARR:
+//		case SPWOOB_UTYPE_WAGON:
+//		case SPWOOB_UTYPE_TEAM:
+//		case SPWOOB_UTYPE_GTEAM:
+//		case SPWOOB_UTYPE_PACK:
+//			uc = SPWOOB_UCLASS_TRN;
+//			break;
+//		case SPWOOB_UTYPE_AIR:
+//		case SPWOOB_UTYPE_AIRB:
+//		case SPWOOB_UTYPE_CRG_AIR:
+//		case SPWOOB_UTYPE_GLIDER:
+//		case SPWOOB_UTYPE_HELI:
+//		case SPWOOB_UTYPE_AHELI:
+//		case SPWOOB_UTYPE_OHELI:
+//			uc = SPWOOB_UCLASS_AIR;
+//			break;
+//		case SPWOOB_UTYPE_BARGE:
+//		case SPWOOB_UTYPE_ABOAT:
+//		case SPWOOB_UTYPE_LCS:
+//		case SPWOOB_UTYPE_LCG:
+//		case SPWOOB_UTYPE_SHIP:
+//		case SPWOOB_UTYPE_NAVB:
+//			uc = SPWOOB_UCLASS_NVY;
+//			break;
+//		case SPWOOB_UTYPE_FORT:
+//		case SPWOOB_UTYPE_EMP_FORT:
+//		case SPWOOB_UTYPE_NAV_FORT:
+//			uc = SPWOOB_UCLASS_FRT;
+//			break;
+//		case SPWOOB_UTYPE_UTIL:
+//		case SPWOOB_UTYPE_CREW:
+//		case SPWOOB_UTYPE_AMMOC:
+//		case SPWOOB_UTYPE_AMMOD:
+//		case SPWOOB_UTYPE_CAVE:
+//		default:
+//			uc = SPWOOB_UCLASS_OTH;
+//			break;
+//	}
+//	return (uc);
+//}
 
 static SPWAW_ERROR
 load_oob_data (SPWOOB_DATA *dst)
@@ -258,8 +258,9 @@ load_oob_data (SPWOOB_DATA *dst)
 		if (raw->u.name[i].data[0] != '\0') {
 			azstrcpy (raw->u.name[i].data, dst->udata[i].name);
 			dst->udata[i].nation		= raw->u.nation[i];
-			dst->udata[i].type		= SPWOOB_UTYPE_xlt (raw->u.uclass[i]);
-			dst->udata[i].uclass		= utype2class (dst->udata[i].type);
+			//dst->udata[i].type		= SPWOOB_SPWAW_UTYPE_xlt (raw->u.uclass[i]);
+			dst->udata[i].type		= SPWOOB_WINSPWW2_UTYPE_xlt (raw->u.uclass[i]);
+			dst->udata[i].uclass		= SPWOOB_UTYPE_classify (dst->udata[i].type);
 			dst->udata[i].start_yr		= raw->u.start_yr[i] + SPWAW_STARTYEAR;
 			dst->udata[i].start_mo		= raw->u.start_mo[i];
 			dst->udata[i].end_yr		= raw->u.end_yr[i] + SPWAW_STARTYEAR;
