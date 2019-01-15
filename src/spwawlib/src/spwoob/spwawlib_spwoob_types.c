@@ -76,7 +76,7 @@ SPWOOB_UCLASS_lookup_code (SPWOOB_UCLASS e)
 
 /*! SPWOOB weapon class */
 static const char *SPWOOB_WCLASS_names[SPWOOB_WCLASS_LIMIT+1] = {
-	"unused",                                    		/*!< SPWOOB_WCLASS_UNKNOWN        */
+	"unknown weapon",                            		/*!< SPWOOB_WCLASS_UNKNOWN        */
 	"primary infantry weapon",                   		/*!< SPWOOB_WCLASS_INF_PRM        */
 	"secondary infantry weapon",                 		/*!< SPWOOB_WCLASS_INF_SEC        */
 	"team weapon",                               		/*!< SPWOOB_WCLASS_TEAM           */
@@ -181,7 +181,7 @@ SPWOOB_WCLASS_xlt (BYTE r)
 			e = SPWOOB_WCLASS_AUTO_CANNON;
 			break;
 		default:
-			e = SPWOOB_WCLASS__NONE;
+			e = SPWOOB_WCLASS_UNKNOWN;
 			break;
 	}
 	return (e);
@@ -334,7 +334,7 @@ SPWOOB_FTYPE_xlt (BYTE r)
 			e = SPWOOB_FTYPE_FHQ;
 			break;
 		default:
-			e = SPWOOB_FTYPE__NONE;
+			e = SPWOOB_FTYPE_SEC;
 			break;
 	}
 	return (e);
@@ -397,7 +397,7 @@ SPWOOB_FPSCR_xlt (BYTE r)
 			e = SPWOOB_FPSCR_FHQ;
 			break;
 		default:
-			e = SPWOOB_FPSCR__NONE;
+			e = SPWOOB_FPSCR_DEF;
 			break;
 	}
 	return (e);
@@ -452,7 +452,7 @@ SPWOOB_MOVCL_xlt (BYTE r)
 			e = SPWOOB_MOVCL_NAV;
 			break;
 		default:
-			e = SPWOOB_MOVCL__NONE;
+			e = SPWOOB_MOVCL_DEF;
 			break;
 	}
 	return (e);
@@ -744,6 +744,7 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"cave",                                      		/*!< SPWOOB_UTYPE_CAVE             */
 	"explosive",                                 		/*!< SPWOOB_UTYPE_EXPLOSIVE        */
 	"reserved",                                  		/*!< SPWOOB_UTYPE_RESERVED         */
+	"unknown unit type",                         		/*!< SPWOOB_UTYPE_UNKNOWN          */
 	"*unknown value*"                            		/*!< SPWOOB_UTYPE__NONE            */
 };
 
@@ -1078,6 +1079,10 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_CAVE:
 		case SPWOOB_UTYPE_EXPLOSIVE:
 		case SPWOOB_UTYPE_RESERVED:
+		case SPWOOB_UTYPE_UNKNOWN:
+			c = SPWOOB_UCLASS_OTH;
+			break;
+		default:
 			c = SPWOOB_UCLASS_OTH;
 			break;
 	}
@@ -1437,7 +1442,7 @@ SPWOOB_SPWAW_UTYPE_xlt (BYTE r)
 			e = SPWOOB_UTYPE_AIRB;
 			break;
 		default:
-			e = SPWOOB_UTYPE__NONE;
+			e = SPWOOB_UTYPE_UNKNOWN;
 			break;
 	}
 	return (e);
@@ -2225,7 +2230,7 @@ SPWOOB_WINSPWW2_UTYPE_xlt (BYTE r)
 			e = SPWOOB_UTYPE_HV_GLIDER;
 			break;
 		default:
-			e = SPWOOB_UTYPE__NONE;
+			e = SPWOOB_UTYPE_UNKNOWN;
 			break;
 	}
 	return (e);

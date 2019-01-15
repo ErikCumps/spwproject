@@ -14,7 +14,8 @@
 [title title.txt] SPWOOB codes
 
 [rawenum SPWOOB_WCLASS:BYTE] SPWOOB weapon class
-0	UNKNOWN		"unused"
+@default:UNKNOWN
+0	UNKNOWN		"unknown weapon"
 1	INF_PRM		"primary infantry weapon"
 2	INF_SEC		"secondary infantry weapon"
 3	TEAM		"team weapon"
@@ -53,6 +54,8 @@ FRT	"fortification"	"FRT"
 OTH	"other"		"OTH"
 
 [clsenum SPWOOB_UTYPE:SPWOOB_UCLASS] SPWOOB unit type
+@default:OTH
+
 @class:INF	### INFANTRY ###
 INF		"infantry"
 LT_INF		"light infantry"
@@ -364,8 +367,10 @@ CREW		"crew"
 CAVE		"cave"
 EXPLOSIVE	"explosive"
 RESERVED	"reserved"
+UNKNOWN		"unknown unit type"
 
 [raweref SPWOOB_SPWAW_UTYPE:BYTE:SPWOOB_UTYPE] SPWAW OOB unit type
+@default:UNKNOWN
 0	FORT
 1	INF
 2	INF_AT
@@ -481,6 +486,7 @@ RESERVED	"reserved"
 112	AIRB
 
 [raweref SPWOOB_WINSPWW2_UTYPE:BYTE:SPWOOB_UTYPE] winSPWW2 OOB unit type
+@default:UNKNOWN
 0	FORT
 1	INF
 2	INF_AT
@@ -751,6 +757,7 @@ RESERVED	"reserved"
 22	SA	"second line dedicated artillery"	"SA"
 
 [rawenum SPWOOB_FTYPE:BYTE] SPWOOB formation type
+@default:SEC
 0	SEC	"section"
 1	PLT	"platoon"
 2	COM	"company"
@@ -759,6 +766,7 @@ RESERVED	"reserved"
 5	FHQ	"force HQ"
 
 [rawenum SPWOOB_FPSCR:BYTE] SPWOOB formation purchase screen type
+@default:DEF
 0	DEF	"default"
 1	ARM	"armor"
 2	ART	"artillery"
@@ -768,6 +776,7 @@ RESERVED	"reserved"
 10	FHQ	"force HQ"
 
 [rawenum SPWOOB_MOVCL:BYTE] SPWOOB movement class
+@default:DEF
 0	DEF	"default"
 2	WHL	"wheel"
 3	WAT	"wheel (AT)"

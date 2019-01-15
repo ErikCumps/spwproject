@@ -66,7 +66,7 @@ extern const char *SPWOOB_UCLASS_lookup_code (SPWOOB_UCLASS e);
 /*! SPWOOB weapon class */
 typedef enum e_SPWOOB_WCLASS {
 	SPWOOB_WCLASS_START = 0,                     		/*!< \internal start code         */
-	SPWOOB_WCLASS_UNKNOWN = 0,                   		/*!< unused                       */
+	SPWOOB_WCLASS_UNKNOWN = 0,                   		/*!< unknown weapon               */
 	SPWOOB_WCLASS_INF_PRM,                       		/*!< primary infantry weapon      */
 	SPWOOB_WCLASS_INF_SEC,                       		/*!< secondary infantry weapon    */
 	SPWOOB_WCLASS_TEAM,                          		/*!< team weapon                  */
@@ -522,6 +522,7 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_CAVE,                           		/*!< cave                                */
 	SPWOOB_UTYPE_EXPLOSIVE,                      		/*!< explosive                           */
 	SPWOOB_UTYPE_RESERVED,                       		/*!< reserved                            */
+	SPWOOB_UTYPE_UNKNOWN,                        		/*!< unknown unit type                   */
 	SPWOOB_UTYPE__NONE,                          		/*!< \internal default code              */
 	SPWOOB_UTYPE_LIMIT = SPWOOB_UTYPE__NONE      		/*!< \internal final code                */
 } SPWOOB_UTYPE;
