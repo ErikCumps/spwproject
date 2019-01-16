@@ -14,7 +14,8 @@
 #include <spwawlib_defines.h>
 #include <ad_hash.h>
 
-#define	SPWOOB_MAGIC	"SPWAWLIB_SPWOOB"
+//FIXME: we need to indicate and process the spwaw and winspww2 raw oob data differently
+#define	SPWOOB_MAGIC	"WINSPWW2_SPWOOB"	//"SPWAWLIB_SPWOOB"
 #define	SPWOOB_MGCLEN	16
 #define	SPWOOB_VERSION	1
 
