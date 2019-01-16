@@ -379,15 +379,15 @@ snapsave (SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress)
 
 	mhdr.map = bseekget (fd) - p0;
 	rc = save_map (fd, &(src->raw.game.map), compress);
-	ERRORGOTO ("save_map(map) failed", handle_error);
+	ERRORGOTO ("save_map(map)", handle_error);
 
 	mhdr.oobp1 = bseekget (fd) - p0;
 	rc = save_oob (fd, &(src->raw.OOBp1), stab, compress);
-	ERRORGOTO ("save_oob(OOBp1) failed", handle_error);
+	ERRORGOTO ("save_oob(OOBp1)", handle_error);
 
 	mhdr.oobp2 = bseekget (fd) - p0;
 	rc = save_oob (fd, &(src->raw.OOBp2), stab, compress);
-	ERRORGOTO ("save_oob(OOBp2) failed", handle_error);
+	ERRORGOTO ("save_oob(OOBp2)", handle_error);
 
 	if (do_stab) {
 		mhdr.stab = bseekget (fd) - p0;

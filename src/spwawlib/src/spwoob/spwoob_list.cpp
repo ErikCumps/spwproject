@@ -66,8 +66,8 @@ SPWOOB_LIST_add (SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx)
 
 	if (HASERROR) {
 		p = safe_malloc (SPWAW_SPWOOB_LIST_NODE); COOMGOTO (p, "SPWAW_SPWOOB_LIST_NODE node", handle_error);
-		rc = SPWOOB_new (&(p->data)); ERRORGOTO("SPWOOB_new() failed", handle_error);
-		rc = SPWOOB_copy (p->data, spwoob); ERRORGOTO("SPWOOB_copy() failed", handle_error);
+		rc = SPWOOB_new (&(p->data)); ERRORGOTO("SPWOOB_new()", handle_error);
+		rc = SPWOOB_copy (p->data, spwoob); ERRORGOTO("SPWOOB_copy()", handle_error);
 		p->refcnt = 0;
 
 		if (list->cnt >= list->len) {
