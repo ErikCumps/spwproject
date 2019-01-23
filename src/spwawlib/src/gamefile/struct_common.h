@@ -90,6 +90,7 @@ typedef struct s_FEL {
 		USHORT		rawFID;				/* Raw formation ID				*/
 		USHORT		player;				/* Player ID					*/
 		USHORT		leader;				/* Leader unit ID				*/
+		USHORT		hcmd;				/* Higher command unit ID			*/
 		USHORT		OOBrid;				/* Formation OOB record ID			*/
 		char		name[SPWAW_AZSNAME];		/* Formation name				*/
 		BYTE		status;				/* Formation status				*/
@@ -115,7 +116,6 @@ void	dump_FLIST	(FLIST &fl);
 void	dump_FEL	(FEL *fel, char *prefix);
 FEL *	reserve_FEL	(FLIST &fl);
 bool	commit_FEL	(FLIST &fl, FEL *fel);
-void	drop_FEL	(FLIST &fl, FEL *fel);
 FEL *	lookup_FLIST	(FLIST &fl, USHORT frid);
 
 
@@ -132,6 +132,9 @@ typedef struct s_FULIST {
 
 void	init_FULIST	(FULIST &l);
 void	dump_FULIST	(FULIST &l);
+
+UEL *	lookup_FFUEL	(FULIST &l, FEL *fel);
+void	drop_FEL	(FULIST &l, FEL *fel);
 
 
 typedef struct s_STRUCT52 {

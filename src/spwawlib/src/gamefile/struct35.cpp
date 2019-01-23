@@ -23,11 +23,12 @@
 // What is known with some degree of certainty:
 //	+ saved formations must have a name
 //	+ saved formations for player #1 and player #2 can be mixed together
-//	+ valid formations must have a leader
+//	+ valid formations must have a leader (not so for SPWW2!)
 //	+ there can be no formations with duplicate formation IDs
 //	+ valid formations may be saved after an invalid formation with the same formation ID
 //	+ formations are saved in any order
 //	+ formations are not always saved in contiguous groups
+//	+ valid formations must have a valid higher command?
 
 static SPWAW_ERROR
 build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FLIST &fl)
@@ -49,11 +50,21 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 			continue;
 		}
 
+#if	EXP_SKIPNOLDR
 		if (src[i].leader == SPWAW_BADIDX) {
 			// skipped: no leader
 			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
 			continue;
 		}
+#endif	/* EXP_SKIPNOLDR */
+
+#if	EXP_SKIPNOHCMD
+		if (src[i].hcmd == SPWAW_BADIDX) {
+			// skipped: no higher command
+			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no higher command)\n", i);
+			continue;
+		}
+#endif	/* EXP_SKIPNOHCMD */
 
 		if (src[i].player != player) {
 			// skipped: wrong player
@@ -61,8 +72,12 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 			continue;
 		}
 
+#if	EXP_ALLOWDUPF
 		// Allow a single duplicate formation ID, the duplicate may be the valid formation
 		if (seen[src[i].ID] > 1) {
+#else	/* !EXP_ALLOWDUPF */
+		if (seen[src[i].ID] > 0) {
+#endif	/* !EXP_ALLOWDUPF */
 			// skipped: duplicate formation ID
 			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
 			continue;
@@ -75,6 +90,7 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 		fel->d.rawFID = src[i].ID;
 		fel->d.player = src[i].player;
 		fel->d.leader = src[i].leader;
+		fel->d.hcmd   = src[i].hcmd;
 		fel->d.OOBrid = src[i].OOBrid;
 		fel->d.status = src[i].status;
 		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
@@ -86,8 +102,8 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 			RWE (SPWERR_FAILED, "commit_fel() failed");
 		}
 
-		UFDLOG4 (" FID<%5.5u> L<%5.5u> O<%5.5u>(%16.16s)\n",
-			fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
+		UFDLOG5 (" FID<%5.5u> L<%5.5u> H<%5.5u> O<%5.5u>(%16.16s)\n",
+			fel->d.FID, fel->d.leader, fel->d.hcmd, fel->d.OOBrid, fel->d.name);
 
 		seen[src[i].ID]++;
 	}

@@ -412,8 +412,8 @@ dump_FEL (FEL *fel, char *prefix)
 {
 	UFDTRACE1 ("%s", prefix ? prefix : "    ");
 
-	UFDTRACE6 ("[%5.5u] (%16.16s) P<%3.3u> L<%5.5u> status=%3.3u units=%3.3u",
-		fel->d.RID, fel->d.name, fel->d.player, fel->d.leader, fel->d.status, fel->d.unit_cnt);
+	UFDTRACE7 ("[%5.5u] (%16.16s) P<%3.3u> L<%5.5u> H<%5.5u> status=%3.3u units=%3.3u",
+		fel->d.RID, fel->d.name, fel->d.player, fel->d.leader, fel->d.hcmd, fel->d.status, fel->d.unit_cnt);
 	UFDTRACE4 (" OOB %3.3u: [%5.5u] FID<%5.5u> RAW<%5.5u>\n",
 		fel->d.OOB, fel->d.OOBrid, fel->d.FID, fel->d.rawFID);
 	for (BYTE i=0; i<fel->d.unit_cnt; i++) {
@@ -464,23 +464,6 @@ commit_FEL (FLIST &fl, FEL *fel)
 	fl.cnt++;
 
 	return (true);
-}
-
-/* Drops the element from the formation list */
-void
-drop_FEL (FLIST &fl, FEL *fel)
-{
-	if (fl.cnt == 0) return;
-
-	if (fel->l.prev) {
-		fel->l.prev->l.next = fel->l.next;
-	} else {
-		fl.head = fel->l.next;
-	}
-	if (fel->l.next) {
-		fel->l.next->l.prev = fel->l.prev;
-	}
-	fl.cnt--;
 }
 
 /* Looks up the element in the formation list for the given formation record ID */
@@ -551,4 +534,41 @@ dump_FULIST (FULIST &l)
 {
 	dump_FLIST (l.fl);
 	dump_ULIST (l.ul);
+}
+
+/* Looks up the first element in the unit list for the given formation element */
+UEL *
+lookup_FFUEL (FULIST &l, FEL *fel)
+{
+	UEL	*p = l.ul.head;
+
+	if (!fel) return (NULL);
+
+	while (p) {
+		if ((fel->d.RID == p->d.FRID) && (fel->d.FID == p->d.FMID)) break;
+		p = p->l.next;
+	}
+
+	return (p);
+}
+
+/* Drops the formation and all the units it contains from the formation and unit lists */
+void
+drop_FEL (FULIST &l, FEL *fel)
+{
+	if (l.fl.cnt == 0) return;
+
+	if (fel->l.prev) {
+		fel->l.prev->l.next = fel->l.next;
+	} else {
+		l.fl.head = fel->l.next;
+	}
+	if (fel->l.next) {
+		fel->l.next->l.prev = fel->l.prev;
+	}
+	l.fl.cnt--;
+
+	for (BYTE i = 0; i < fel->d.unit_cnt; i++) {
+		if (fel->d.unit_lst[i]) drop_UEL (l.ul, fel->d.unit_lst[i]);
+	}
 }

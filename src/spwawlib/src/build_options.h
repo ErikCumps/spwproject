@@ -21,5 +21,15 @@
 /* Set to 1 to enable unit/formation detection tracing */
 #define	UFDTRACING	1
 
+
+
+			/* winSPWW2 */	/* SPWAW */
+#define	EXP_SUBFUAL	1		//0	// winSPWW2 formations without a leader get one assigned
+#define	EXP_NOWILDCARDS	0		//0
+#define	EXP_SKIPNOLDR	0		//1	// winSPWW2 formations that are completely destroyed have no leader
+#define	EXP_SKIPNOHCMD	1		//0	// winSPWW2 formations must have a higher command link
+#define	EXP_ALLOWDUPF	1		//1
+#define	EXP_FILTERDUPF	1		//0
+
 #endif	/* BUILD_OPTIONS_H */
 

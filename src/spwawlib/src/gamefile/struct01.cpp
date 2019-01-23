@@ -226,7 +226,7 @@ link_candidate_crews (FULIST &ful, UNIT *data)
 			RWE (SPWERR_BADSAVEDATA, "add_crew_to_unit() failed");
 		}
 
-		log ("LINKED\n");
+		UFDLOG0 ("LINKED\n");
 
 		continue;
 
@@ -510,37 +510,51 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 	{
 		fel = p; p = p->l.next;
 
-		UFDLOG5 ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%5.5u> L<%5.5u> O<%5.5u> (%16.16s)\n",
-			fel->d.player, fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
+		UFDLOG6 ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%5.5u> L<%5.5u> H<%5.5u> O<%5.5u> (%16.16s) ",
+			fel->d.player, fel->d.FID, fel->d.leader, fel->d.hcmd, fel->d.OOBrid, fel->d.name);
 
 		if (!fel->d.unit_cnt) {
-			UFDTRACE0 ("no units recorded for formation - dropping formation!\n");
-			drop_FEL (ful.fl, fel);
+			UFDLOG0 ("DROPPED: no units recorded for formation\n");
+			drop_FEL (ful, fel);
 			continue;
 		}
+
+#if	EXP_SUBFUAL
+		/* Subsistute first unit as leader, if no leader recorded? */
+		if (fel->d.leader == SPWAW_BADIDX) {
+			UEL *ffuel = lookup_FFUEL (ful, fel);
+			if (ffuel) fel->d.leader = ffuel->d.RID;
+		}
+#endif	/* EXP_SUBFUAL */
 
 		ldru = lookup_ULIST (ful.ul, fel->d.leader);
 		if (ldru && (ldru->d.type == SPWAW_UNIT_TYPE_CREW)) {
 			ldru = ldru->d.link.parent;
 		}
 		if (!ldru) {
-			UFDTRACE0 ("no leader unit recorded for formation - dropping formation!\n");
-			drop_FEL (ful.fl, fel);
+			UFDLOG0 ("DROPPED: no leader unit recorded for formation\n");
+			drop_FEL (ful, fel);
 			continue;
 		}
 
 		fel->d.OOB = ldru->d.OOB;
 
-		if (fel->d.OOBrid == 0) {
+		if (fel->d.OOBrid != 0) {
+			UFDLOG1 ("OOBrid=%5.5u\n", fel->d.OOBrid);
+		} else {
+			UFDLOG0 ("NOT FOUND\n");
+
 			// If there is no recorded OOB record ID,
 			// try a direct formation name/date match search:
 			fel->d.OOBrid = search_oobrid_by_name (fel, OOB, date);
-		}
 
-		if (fel->d.OOBrid == 0) {
-			// If there is still no OOB record ID,
-			// try an extensive search:
-			fel->d.OOBrid = search_oobrid_extensive (fel, OOB, date);
+			if (fel->d.OOBrid == 0) {
+				// If there is still no OOB record ID,
+				// try an extensive search:
+				fel->d.OOBrid = search_oobrid_extensive (fel, OOB, date);
+			}
+
+			UFDLOG1 ("OOBrid=%5.5u\n", fel->d.OOBrid);
 		}
 
 		formation_unitcount (OOB, fel->d.OOB, fel->d.OOBrid, fel->d.unit_cnt);
@@ -612,6 +626,7 @@ verify_candidate_units (FULIST &ful)
 		}
 
 		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
+#if	!EXP_NOWILDCARDS
 		// But units can be given a wildcard to stay if:
 		// * the unit is not beyond the last valid unit
 		// * the unit is an SPAU
@@ -628,6 +643,7 @@ verify_candidate_units (FULIST &ful)
 				goto postpone_unit;
 			}
 		}
+#endif	/* !EXP_NOWILDCARDS */
 
 		UFDLOG0 ("ACCEPTED\n");
 
@@ -672,7 +688,7 @@ postpone_unit:
 			goto drop_crew;
 		}
 
-		log ("ACCEPTED\n");
+		UFDLOG0 ("ACCEPTED\n");
 
 		// Mark the indicated loader unit as verified
 		if (uel->d.loader != SPWAW_BADIDX) {
@@ -716,6 +732,69 @@ drop_crew:
 	return (SPWERR_OK);
 }
 
+/* Verifies all the candidate formations and drops invalid formations */
+static SPWAW_ERROR
+verify_candidate_formations (FULIST &ful)
+{
+	FEL	*p;
+	FEL	*fel;
+	UEL	*u;
+
+#if	EXP_FILTERDUPF
+	int	seen[FORMCOUNT];
+	memset (seen, 0, sizeof(seen));
+#endif	/* EXP_FILTERDUPF */
+
+	p = ful.fl.head;
+	while (p)
+	{
+		fel = p; p = p->l.next;
+
+		UFDLOG6 ("verify_candidate_formations: FORMATION: P<%1.1u> ID<%5.5u> L<%5.5u> H<%5.5u> O<%5.5u> (%16.16s) ",
+			fel->d.player, fel->d.FID, fel->d.leader, fel->d.hcmd, fel->d.OOBrid, fel->d.name);
+
+		// Drop all formations without a valid leader unit
+		u = lookup_ULIST (ful.ul, fel->d.leader);
+		if (u && (u->d.type == SPWAW_UNIT_TYPE_CREW)) {
+			u = u->d.link.parent;
+		}
+		if (!u) {
+			UFDLOG0 ("DROPPED: no valid leader unit\n");
+			drop_FEL (ful, fel);
+			continue;
+		}
+
+		// Drop all formations without a valid higher command unit
+		u = lookup_ULIST (ful.ul, fel->d.hcmd);
+		if (u && (u->d.type == SPWAW_UNIT_TYPE_CREW)) {
+			u = u->d.link.parent;
+		}
+		if (!u) {
+			UFDLOG0 ("DROPPED: no valid higher command unit\n");
+			drop_FEL (ful, fel);
+			continue;
+		}
+
+		// Some other validation?
+
+#if	EXP_FILTERDUPF
+		// Drop all duplicate formations
+		if (seen[fel->d.FID] > 0) {
+			UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
+			drop_FEL (ful, fel);
+			continue;
+		}
+#endif	/* EXP_FILTERDUPF */
+
+		UFDLOG0 ("ACCEPTED\n");
+
+		seen[fel->d.FID]++;
+		fel = fel->l.next;
+	}
+
+	return (SPWERR_OK);
+}
+
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
 unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
@@ -740,6 +819,10 @@ unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWO
 	// Step 3: verify the candidate units, using the formation OOB info
 	rc = verify_candidate_units (ful);
 	ROE ("verify_candidate_units()");
+
+	// Step 4: verify the candidate formations, using the verified units (and the formation OOB info?)
+	rc = verify_candidate_formations (ful);
+	ROE ("verify_candidate_formations()");
 
 	// Report the results
 	UFDLOG1 ("unitcount: ul.cnt=%u\n", ful.ul.cnt);
