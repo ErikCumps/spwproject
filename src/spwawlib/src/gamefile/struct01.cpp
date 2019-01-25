@@ -603,8 +603,8 @@ verify_candidate_units (FULIST &ful)
 			continue;
 		}
 
-		UFDLOG5 ("verify_candidate_units: [%5.5u] %4.4s: F<%5.5u,%3.3u> (%16.16s) ",
-			uel->d.RID, SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.name);
+		UFDLOG6 ("verify_candidate_units: [%5.5u] %4.4s: F<%5.5u,%3.3u> LO<%5.5u> (%16.16s) ",
+			uel->d.RID, SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.loader, uel->d.name);
 
 		// Drop all units without a formation reference
 		fel = uel->d.formation;
@@ -626,7 +626,6 @@ verify_candidate_units (FULIST &ful)
 		}
 
 		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
-#if	!EXP_NOWILDCARDS
 		// But units can be given a wildcard to stay if:
 		// * the unit is not beyond the last valid unit
 		// * the unit is an SPAU
@@ -643,12 +642,11 @@ verify_candidate_units (FULIST &ful)
 				goto postpone_unit;
 			}
 		}
-#endif	/* !EXP_NOWILDCARDS */
 
 		UFDLOG0 ("ACCEPTED\n");
 
 accept_unit:
-		// Mark the indicated loader unit as verified
+		// Mark the unit's loader unit as verified
 		if (uel->d.loader != SPWAW_BADIDX) {
 			UEL *l = lookup_ULIST (ful.ul, uel->d.loader);
 			if (l) l->d.vrfloader = true;
@@ -690,7 +688,7 @@ postpone_unit:
 
 		UFDLOG0 ("ACCEPTED\n");
 
-		// Mark the indicated loader unit as verified
+		// Mark the unit's loader unit as verified
 		if (uel->d.loader != SPWAW_BADIDX) {
 			UEL *l = lookup_ULIST (ful.ul, uel->d.loader);
 			if (l) l->d.vrfloader = true;
