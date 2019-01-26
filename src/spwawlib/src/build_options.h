@@ -29,6 +29,7 @@
 #define	EXP_SKIPNOHCMD	1		//0	// winSPWW2 formations must have a higher command link
 #define	EXP_ALLOWDUPF	1		//1
 #define	EXP_FILTERDUPF	1		//0
+#define	EXP_FILTERGAPF	1		//0
 
 #endif	/* BUILD_OPTIONS_H */
 

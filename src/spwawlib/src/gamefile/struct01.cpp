@@ -738,10 +738,10 @@ verify_candidate_formations (FULIST &ful)
 	FEL	*fel;
 	UEL	*u;
 
-#if	EXP_FILTERDUPF
-	int	seen[FORMCOUNT];
+#if	EXP_FILTERDUPF || EXP_FILTERGAPF
+	FEL	*seen[FORMCOUNT];
 	memset (seen, 0, sizeof(seen));
-#endif	/* EXP_FILTERDUPF */
+#endif	/* EXP_FILTERDUPF || EXP_FILTERGAPF */
 
 	p = ful.fl.head;
 	while (p)
@@ -777,7 +777,7 @@ verify_candidate_formations (FULIST &ful)
 
 #if	EXP_FILTERDUPF
 		// Drop all duplicate formations
-		if (seen[fel->d.FID] > 0) {
+		if (seen[fel->d.FID]) {
 			UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
 			drop_FEL (ful, fel);
 			continue;
@@ -786,9 +786,43 @@ verify_candidate_formations (FULIST &ful)
 
 		UFDLOG0 ("ACCEPTED\n");
 
-		seen[fel->d.FID]++;
+		seen[fel->d.FID] = fel;
 		fel = fel->l.next;
 	}
+
+#if	EXP_FILTERGAPF
+	const int	allowedgap = 2;
+	int		i, j;
+
+	i = 0; j = 0;
+	while (true) {
+		if (i < FORMCOUNT) {
+			while (seen[i]) {
+				i++;
+				if (i >= FORMCOUNT) break;
+			}
+		}
+		if (i < FORMCOUNT) {
+			j = 0;
+			while (!seen[i]) {
+				j++; i++;
+				if (i >= FORMCOUNT) break;
+			}
+		}
+		if (i >= FORMCOUNT) break;
+		if (j > allowedgap) break;
+	}
+
+	if (j > allowedgap) {
+		while (i < FORMCOUNT) {
+			if (seen[i]) {
+				UFDLOG0 ("DROPPED: detected formation gap\n");
+				drop_FEL (ful, seen[i]);
+			}
+			i++;
+		}
+	}
+#endif	/* EXP_FILTERGAPF */
 
 	return (SPWERR_OK);
 }
