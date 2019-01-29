@@ -229,7 +229,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s%-4s %-16s %-4s %-16s %5u %3u %3u %3u %3u %3u %3u %3u %3u %4u %3u %3u %3u %6.2f %% %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5u %3u %3u %3u %3u %3u %3u %3u %3u %4u %3u %3u %3u %6.2f %% %10s\n",
 			//p->data.lost?"+":" ",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",

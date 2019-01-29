@@ -25,23 +25,22 @@
 //	+ saved units for player #1 and player #2 can be mixed together
 //	+ valid units and crews must have a valid name
 //	+ valid units must reference a valid formation
+//	+ valid units must have their validity flag set to 1 (not so for SPWaW?)
 //	+ the unit's OOB ID must match the formation leader unit's OOB ID
 //	  (make sure to follow through to its unit if the leader is a crew!)
-//	+ the number of units in a formation must match its OOB data
-//	+ however, in some cases the OOB record ID for the formation is 0
+//	+ the number of units in a formation does not need to match its OOB data
+//	+ in some cases the OOB record ID for the formation is 0
 //	+ there can be no units with duplicate formation/subformation IDs
 //	+ crews may be saved before or after their associated units
 //	+ crews must have a valid associated unit
 //	+ units must have either no crew or a valid associated crew
 //	+ units are saved in any order
 //	+ units are not always saved in contiguous groups
-//	+ units with a formation sub-ID >= 50 seem to be crews
+//	+ units with a formation sub-ID >= 50 seem to be crews (not so for winSPWW2)
 //	+ units have been known to get their own, special, formation,
 //	  for which no OOB record ID exists (it can not exist)
-//
-// What seem to be valid assumptions:
-//	+ units with a formation sub-ID >= 60 seem to be special attached units
-//	+ units with a formation sub-ID >= 110 seem to be crews of special attached units
+//	+ units with a formation sub-ID >= 60 seem to be special attached units (not so for winSPWW2)
+//	+ units with a formation sub-ID >= 110 seem to be crews of special attached units (not so for winSPWW2)
 //
 // With the OOB record ID of the formation, units can be verified with their
 // unit class ID - it should match the corresponding unit class ID recorded in
@@ -94,7 +93,7 @@ is_this_a_SPAU (UNIT *data, USHORT idx)
 
 /* Builds a list of all the candidate units */
 static SPWAW_ERROR
-find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful)
+find_candidate_units (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, BYTE player, FULIST &ful)
 {
 	USHORT	i;
 	char	name[SPWAW_AZSNAME+1];
@@ -108,26 +107,26 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 	for (i=start; i<=stop; i++)
 	{
 		// A unit (or crew) must have a valid name
-		if (data[i].name[0] == '\0') continue;
+		if (udata[i].name[0] == '\0') continue;
 
-		snprintf (name, sizeof (name) - 1, "%s", data[i].name); name[16] = '\0';
+		snprintf (name, sizeof (name) - 1, "%s", udata[i].name); name[16] = '\0';
 
 		uel = reserve_UEL (ful.ul);
 		if (!uel) RWE (SPWERR_FAILED, "reserve_UEL() failed");
 
 		// Record the basic unit info
 		uel->d.RID    = i;
-		memcpy (uel->d.name, data[i].name, SPWAW_AZSNAME);
-		uel->d.FRID	= data[i].formID;
-		uel->d.FSID	= data[i].minform;
-		uel->d.OOB	= data[i].OOBid;
-		uel->d.OOBrid	= data[i].OOBnum;
-		uel->d.LRID	= data[i].leader;
+		memcpy (uel->d.name, udata[i].name, SPWAW_AZSNAME);
+		uel->d.FRID	= udata[i].formID;
+		uel->d.FSID	= udata[i].minform;
+		uel->d.OOB	= udata[i].OOBid;
+		uel->d.OOBrid	= udata[i].OOBnum;
+		uel->d.LRID	= udata[i].leader;
 
-		UFDLOG7 ("find_candidate_units: [%5.5u] F[%5.5u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> (%16.16s) ",
+		UFDLOG8 ("find_candidate_units: [%5.5u] F[%5.5u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> V=%u (%16.16s) ",
 			uel->d.RID, uel->d.FRID, uel->d.FSID,
-			data[i].crew, uel->d.LRID, data[i].OOBid,
-			name);
+			udata[i].crew, uel->d.LRID, udata[i].OOBid,
+			udata[i].valid, name);
 
 		// The unit must reference a valid formation, so try to look it up in the FORMATION list
 		fel = lookup_FLIST (ful.fl, uel->d.FRID);
@@ -141,13 +140,23 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		// This unit references a valid formation.
 		uel->d.FMID = fel->d.FID;
 
-		// Record the unit's loader
-		uel->d.loader = data[i].loader;
+		// Record the unit's loader (may be chained)
+		uel->d.loader = udata[i].loader;
+		if (uel->d.loader != SPWAW_BADIDX) {
+			while (udata[uel->d.loader].loader != SPWAW_BADIDX) {
+				uel->d.loader = udata[uel->d.loader].loader;
+			}
+		}
+
+		// Update the unit's position (if it is loaded)
+		if (uel->d.loader != SPWAW_BADIDX) {
+			pdata[i] = pdata[uel->d.loader];
+		}
 
 		// Is this a unit or a special attached unit?
-		if (is_this_a_UNIT (data, i) || is_this_a_SPAU (data, i))
+		if (is_this_a_UNIT (udata, i) || is_this_a_SPAU (udata, i))
 		{
-			if (is_this_a_UNIT (data, i)) {
+			if (is_this_a_UNIT (udata, i)) {
 				// This is a candidate unit.
 				uel->d.type = SPWAW_UNIT_TYPE_UNIT;
 			} else {
@@ -155,6 +164,14 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 				uel->d.type = SPWAW_UNIT_TYPE_SPAU;
 			}
 			UFDLOG4 ("%4.4s #%u F<%5.5u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
+
+#if	EXP_VALIDITY
+			// Is the unit valid?
+			if (!udata[i].valid) {
+				UFDLOG0 ("SKIPPED: invalid unit\n");
+				continue;
+			}
+#endif	/* EXP_VALIDITY */
 
 			// There can be no units with duplicate formation/subformation IDs
 			if (fel->d.unit_lst[uel->d.FSID]) {
@@ -625,6 +642,7 @@ verify_candidate_units (FULIST &ful)
 			goto accept_unit;
 		}
 
+#if	!EXP_VALIDITY
 		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
 		// But units can be given a wildcard to stay if:
 		// * the unit is not beyond the last valid unit
@@ -642,6 +660,7 @@ verify_candidate_units (FULIST &ful)
 				goto postpone_unit;
 			}
 		}
+#endif	/* !EXP_VALIDITY */
 
 		UFDLOG0 ("ACCEPTED\n");
 
@@ -665,9 +684,11 @@ drop_unit:
 		drop_UEL (ful.ul, uel);
 		continue;
 
+#if	!EXP_VALIDITY
 postpone_unit:
 		uel->d.needvrfldrtst = true;
 		continue;
+#endif	/* !EXP_VALIDITY */
 	}
 
 	// Verify all CREWs
@@ -829,16 +850,16 @@ verify_candidate_formations (FULIST &ful)
 
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
+unitcount (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 {
 	SPWAW_ERROR	rc;
 
 	// Step 1.a: find all candidate units
-	rc = find_candidate_units (data, start, stop, player, ful);
+	rc = find_candidate_units (udata, pdata, start, stop, player, ful);
 	ROE ("find_candidate_units()");
 
 	// Step 1.b: link up all candidate crews
-	rc = link_candidate_crews (ful, data);
+	rc = link_candidate_crews (ful, udata);
 	ROE ("verify_candidate_crews()");
 
 	// Early exit if no units are found at all
@@ -965,7 +986,6 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *st
 		UD_ADD (UD, src, __data10);
 		UD_ADD (UD, src, __data11);
 		UD_ADD (UD, src, __data12);
-		UD_ADD (UD, src, __data13);
 		UD_ADD (UD, src, __data14);
 		UD_ADD (UD, src, __data15);
 		UD_ADD (UD, src, __data16);
@@ -983,21 +1003,23 @@ SPWAW_ERROR
 sec01_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
-	UNIT		*data;
+	UNIT		*udata;
+	UNIT_POS	*pdata;
 	SPWAW_DATE	date;
 
 	CNULLARG (src); CNULLARG (dst);
 
-	data = src->sec01.u.d.units;
+	udata = src->sec01.u.d.units;
+	pdata = src->sec17.u.d.pos;
 
 	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
 
 	// Count the available units for player #1
-	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 1, ful1, dst->oobdat, date);
+	rc = unitcount (udata, pdata, UNITP1POSSTART, UNITP2POSEND, 1, ful1, dst->oobdat, date);
 	ROE ("unitcount(OOBp1)");
 
 	// Count the available units for player #2
-	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 2, ful2, dst->oobdat, date);
+	rc = unitcount (udata, pdata, UNITP1POSSTART, UNITP2POSEND, 2, ful2, dst->oobdat, date);
 	ROE ("unitcount(OOBp2)");
 
 	// Verify unit detection

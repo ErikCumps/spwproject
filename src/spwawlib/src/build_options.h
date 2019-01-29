@@ -30,6 +30,7 @@
 #define	EXP_ALLOWDUPF	1		//1
 #define	EXP_FILTERDUPF	1		//0
 #define	EXP_FILTERGAPF	1		//0
+#define	EXP_VALIDITY	1			// does not exist (yet) for SPWAW
 
 #endif	/* BUILD_OPTIONS_H */
 

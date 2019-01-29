@@ -430,12 +430,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->utype	= oob->udata[dat->OOBrid].type;
 		dat->uclass	= oob->udata[dat->OOBrid].uclass;
 
-		if (dat->loaded) {
-			pidx = dat->loader.rid;
-			psrc = (pidx < raw->positions.cnt) ? &(raw->positions.raw[pidx]) : NULL;
-		}
-		dat->posx	= psrc ? (short)psrc->x : -1;
-		dat->posy	= psrc ? (short)psrc->y : -1;
+		dat->posx	= (short)psrc->x;
+		dat->posy	= (short)psrc->y;
 		if ((dat->posx < 0) || (dat->posy < 0)) dat->posx = dat->posy = -1;
 	}
 

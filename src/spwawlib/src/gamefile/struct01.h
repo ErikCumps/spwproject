@@ -192,7 +192,7 @@ typedef struct s_UNIT {
 	USHORT	SPECIAL4;
 	USHORT	SPECIAL5;
 	USHORT	loader;			/* Unit loader unit number				*/
-	char	__data13[1];
+	BYTE	valid;			/* Unit validity flag					*/
 	BYTE	entr;			/* Entrenchment status					*/
 	char	__data14[4];
 	BYTE	rof;			/* Unit rate of fire					*/

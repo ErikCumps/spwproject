@@ -135,7 +135,7 @@ offset	size	type	description
 0x00A5	1	UINT1	Unit type group index? (used to group units per type)
 0x00A6	9	???	???
 0x00AF	2	UINT2	Loader unit number
-0x00B1	1	???	???
+0x00B1	1	UINT1	Unit validity flag
 0x00B2	1	UINT1	Entrenchment status
 0x00B3	4	???	???
 0x00B7	1	UINT1	Rate of Fire
@@ -195,6 +195,10 @@ offset	size	type	description
 	0	No contact
 	1	Radio contact
 	2	Contact
+
+[UINT1:Unit validity flag]
+	0	Invalid
+	1	Valid
 
 [UINT1:Entrenchment status]
 	0	Positioned (no entrenchment)

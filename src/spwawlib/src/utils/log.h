@@ -65,6 +65,7 @@ extern void	log_shutdown	(void);
 #define	UFDLOG5(m_,a1_,a2_,a3_,a4_,a5_)			do { log (m_, a1_, a2_, a3_, a4_, a5_); } while (0)
 #define	UFDLOG6(m_,a1_,a2_,a3_,a4_,a5_,a6_)		do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_); } while (0)
 #define	UFDLOG7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)		do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_); } while (0)
+#define	UFDLOG8(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_,a8_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_, a8_); } while (0)
 
 #else	/* !UFDLOGGING */
 
@@ -76,6 +77,7 @@ extern void	log_shutdown	(void);
 #define	UFDLOG5(m_,a1_,a2_,a3_,a4_,a5_)
 #define	UFDLOG6(m_,a1_,a2_,a3_,a4_,a5_,a6_)
 #define	UFDLOG7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)
+#define	UFDLOG8(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_,a8_)
 
 #endif	/* !UFDLOGGING */
 
