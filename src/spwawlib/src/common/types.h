@@ -88,9 +88,9 @@
 //#define	TFS3_ROAD	0x01
 //#define	TFS4_ROAD	0x02
 
-#define	TFS1_WATER	0x08
-#define	TFS2_WATER	0x0C
-#define	TFS3_WATER	0x20
+#define	TFS1_WATER	0x00
+#define	TFS2_WATER	0x08
+#define	TFS3_WATER	0x00
 #define	TFS4_WATER	0x00
 
 #define	TFS1_BRIDGE	0x00
