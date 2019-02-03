@@ -296,8 +296,8 @@ GuiRptBtlOvr::refresh (void)
 		str.printf ("<pre>");
 		str.printf ("<h2>Battle at %s,\n%s %s against %s %s.</h2>",
 			p->location,
-			p->snap->game.battle.strings.people_p1,
-			p->snap->game.battle.strings.people_p2);
+			p->snap->game.battle.strings.people_p1, p->miss_p1,
+			p->snap->game.battle.strings.people_p2, p->miss_p2);
 
 		SPWAW_date2str (&(p->date), date, sizeof (date));
 		str.printf ("%s, %u turns.\n", date, p->snap->game.battle.data.turn_max);
