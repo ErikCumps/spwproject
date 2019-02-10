@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War savegame reconstruction tool.
  *
- * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -58,7 +58,7 @@ read_data (char *fn, void **data, DWORD *size)
 }
 
 int
-main(int argc, char** argv)
+main (int argc, char** argv)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*game = NULL;
@@ -69,7 +69,7 @@ main(int argc, char** argv)
 	memset (fn, 0, sizeof (fn));
 
 	/* Initialize spwawlib */
-	if ((rc = SPWAW_init (NULL, false)) != SPWERR_OK)
+	if ((rc = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, NULL, false)) != SPWERR_OK)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Create new, empty, savegame data structure */

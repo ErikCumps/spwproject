@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -61,6 +61,9 @@ SPWOOB_copy (SPWOOB *dst, SPWOOB *src)
 		dst->data[i] = safe_malloc (SPWOOB_DATA);
 		COOMGOTO (dst->data[i], "SPWOOB_DATA", handle_error);
 		memcpy (dst->data[i], src->data[i], sizeof (*(dst->data[i])));
+
+		// Fix up parent pointer
+		dst->data[i]->spwoob = dst;
 
 		if (!src->data[i]->rdata || !src->data[i]->rsize) continue;
 

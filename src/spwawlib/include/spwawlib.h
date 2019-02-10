@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - main API header file.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -23,6 +23,7 @@
 #include <windows.h>
 
 #include <spwawlib_api.h>
+#include <spwawlib_types.h>
 #include <spwawlib_spwoob.h>
 #include <spwawlib_savelist.h>
 #include <spwawlib_snapshot.h>
@@ -31,8 +32,8 @@
 #include <spwawlib_dosslist.h>
 #include <spwawlib_savegame.h>
 
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_init	(const char *oobdir, bool withUD);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_recfg	(const char *oobdir, bool withUD);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_init	(SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_recfg	(SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD);
 extern SPWAWLIB_API void		SPWAW_shutdown	(void);
 
 #endif	/* SPWAW_LIB_H */

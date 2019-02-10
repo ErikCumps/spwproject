@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - overview.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -293,7 +293,8 @@ GuiRptDsrOvr::refresh (bool forced)
 		str.printf ("\n");
 
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
-			str.printf ("%s core force consists of %u units in %u formations.", SPWAW_oob_people (p->OOB), p->ucnt, p->fcnt);
+			str.printf ("%s core force consists of %u units in %u formations.",
+				SPWAW_oob_people (p->gametype, p->OOB), p->ucnt, p->fcnt);
 		} else {
 			str.printf ("Campaign tracking is not available for this dossier.");
 		}
@@ -305,7 +306,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
 			if (p->bcnt) {
 				str.printf ("<pre>");
-				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->OOB));
+				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->gametype, p->OOB));
 				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.men, "men");
 				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.art, "artillery");
 				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.soft, "soft vehicles");

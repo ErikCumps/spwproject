@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB API.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -14,7 +14,11 @@
 
 #include <spwawlib_api.h>
 #include <spwawlib_defines.h>
+#include <spwawlib_types.h>
 #include <spwawlib_spwoob_types.h>
+
+/* Forward declaration for convenience */
+typedef struct s_SPWOOB SPWOOB;
 
 #define	SPWOOB_WCNT	250
 #define	SPWOOB_UCNT	250
@@ -116,9 +120,11 @@ typedef struct s_SPWOOB_DATA {
 	SPWOOB_FDATA	fdata[SPWOOB_FCNT];
 	void		*rdata;
 	ULONG		rsize;
+	SPWOOB		*spwoob;
 } SPWOOB_DATA;
 
 typedef struct s_SPWOOB {
+	SPWAW_GAME_TYPE	gametype;
 	char		srcdir[MAX_PATH+1];
 	BYTE		count;
 	SPWOOB_DATA	*data[SPWOOB_DCNT];
@@ -130,12 +136,14 @@ typedef struct s_SPWOOB {
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_SPWOOB		(SPWOOB **oob);
 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_data		(SPWOOB *oob, BYTE id, SPWOOB_DATA **data);
-extern SPWAWLIB_API const char *	SPWAW_oob_nation	(BYTE id);
-extern SPWAWLIB_API const char *	SPWAW_oob_people	(BYTE id);
-extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(BYTE id);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base);
+
+extern SPWAWLIB_API const char *	SPWAW_oob_nation	(SPWAW_GAME_TYPE gametype, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_people	(SPWAW_GAME_TYPE gametype, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(SPWAW_GAME_TYPE gametype, BYTE id);
 
 extern SPWAWLIB_API const char *	SPWAW_oob_uclass	(SPWOOB_UCLASS e);
+
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base);
 
 #endif	/* SPWAW_LIB_OOB_H */
 

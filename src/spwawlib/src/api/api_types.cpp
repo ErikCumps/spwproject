@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types implementation.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -524,6 +524,28 @@ SPWAW_unittype2str (SPWAW_UNIT_TYPE type)
 			break;
 		case SPWAW_UNIT_TYPE_SPAU:
 			p = "SPAU";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
+
+SPWAWLIB_API const char *
+SPWAW_gametype2str (SPWAW_GAME_TYPE gametype)
+{
+	const char	*p;
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_UNKNOWN:
+			p = "unknown";
+			break;
+		case SPWAW_GAME_TYPE_SPWAW:
+			p = "SP:WaW";
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			p = "winSPWW2";
 			break;
 		default:
 			p = "???";

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - overview.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -134,9 +134,11 @@ GuiRptTrnOvr::refresh (void)
 		SPWAW_date2str (&(p->date), date, sizeof (date));
 		str.printf ("<h2>%s, turn %u of %u.</h2>", date, p->turn, p->snap->game.battle.data.turn_max);
 
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->battle->OOB_p1),
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
+			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1),
 			p->info.pbir.ucnt, p->info.pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n", SPWAW_oob_people (p->battle->OOB_p2),
+		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
+			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2),
 			p->info.obir.ucnt, p->info.obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("</pre>");
 
@@ -152,9 +154,11 @@ GuiRptTrnOvr::refresh (void)
 					str.printf ("<h3>Unfortunately, the battle result is not available.</h3>");
 				}
 				str.printf ("\t%s score:\t%u\n",
-					SPWAW_oob_people (p->battle->OOB_p1), p->snap->game.campaign.data.P1score);
+					SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1),
+					p->snap->game.campaign.data.P1score);
 				str.printf ("\t%s score:\t%u\n",
-					SPWAW_oob_people (p->battle->OOB_p2), p->snap->game.campaign.data.P2score);
+					SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2),
+					p->snap->game.campaign.data.P2score);
 				break;
 			case SPWAW_BTBUSY:
 			default:
@@ -170,7 +174,7 @@ GuiRptTrnOvr::refresh (void)
 			case SPWAW_BTSCORE:
 			default:
 				str.printf ("<pre>");
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->OOB_p1));
+				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1));
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->snap->OOBp1.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -183,7 +187,7 @@ GuiRptTrnOvr::refresh (void)
 					p->snap->OOBp1.battle.crews.cnt
 					);
 
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->OOB_p2));
+				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2));
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->snap->OOBp2.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -203,11 +207,11 @@ GuiRptTrnOvr::refresh (void)
 		str.printf ("<pre>");
 		str.printf ("<h3>Victory hex occupation:</h3>");
 		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			SPWAW_oob_people (p->battle->OOB_p1),
+			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1),
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].count,
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].value);
 		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			SPWAW_oob_people (p->battle->OOB_p2),
+			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2),
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
 		str.printf ("\tNeutral:\t\t%2u occupied (worth %u points)\n",

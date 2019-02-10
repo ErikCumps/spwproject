@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame list API.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -47,7 +47,7 @@ typedef struct s_SPWAW_SAVELIST {
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist		(const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist		(SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_new	(SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_free	(SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_add	(SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node);

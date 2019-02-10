@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -121,7 +121,7 @@ WARCABState::mknew (void)
 
 	close();
 
-	arc = SPWAW_dossier_new (DEFAULT_NEW_NAME, DEFAULT_NEW_COMMENT, &d.dossier);
+	arc = SPWAW_dossier_new (SPWAW_GAME_TYPE_SPWAW, DEFAULT_NEW_NAME, DEFAULT_NEW_COMMENT, &d.dossier);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_NEW_FAILED, "SPWAW_dossier_new() failed: %s", SPWAW_errstr (arc));
 	}
@@ -289,7 +289,7 @@ WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress
 		SPWAW_BTURN	*t;
 
 		if (list.savelist) {
-			arc = SPWAW_snap_make (list.list.save->list[i]->dir, list.list.save->list[i]->id, &s);
+			arc = SPWAW_snap_make (SPWAW_GAME_TYPE_SPWAW, list.list.save->list[i]->dir, list.list.save->list[i]->id, &s);
 		} else {
 			arc = SPWAW_snap_load (list.list.snap->list[i]->filepath, &s);
 		}
@@ -409,7 +409,7 @@ WARCABState::add_stdalone (char *name, SPWAW_SAVELIST *list)
 	GuiProgress gp ("Adding standalone battle and savegame(s)...", 0);
 	gp.setRange (0, (2*list->cnt) + 3);
 
-	arc = SPWAW_snap_make (list->list[0]->dir, list->list[0]->id, &s);
+	arc = SPWAW_snap_make (SPWAW_GAME_TYPE_SPWAW, list->list[0]->dir, list->list[0]->id, &s);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "initial SPWAW_snap_make() failed!");
 	}

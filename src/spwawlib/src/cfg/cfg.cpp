@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - internal runtime configuration handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,11 +12,13 @@
 CFG	cfg = { 0 };
 
 SPWAW_ERROR
-cfg_set (const char *oobdir, bool withUD)
+cfg_set (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
 	cfg_free ();
+
+	cfg.gametype = gametype;
 
 	if (oobdir) {
 		char	path[MAX_PATH+1];
@@ -29,7 +31,7 @@ cfg_set (const char *oobdir, bool withUD)
 		rc = SPWOOB_new (&(cfg.oobptr));
 		ERRORGOTO ("spwoob_new()", handle_error);
 
-		rc = SPWOOB_load (cfg.oobptr, cfg.oobdir);
+		rc = SPWOOB_load (cfg.oobptr, cfg.gametype, cfg.oobdir);
 		ERRORGOTO ("spwoob_load()", handle_error);
 	}
 

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier API.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -116,6 +116,7 @@ struct s_SPWAW_DOSSIER {
 	char			*name;				/* Dossier name					*/
 	char			*comment;			/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
+	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
 	char			*oobdir;			/* Original OOB data directory			*/
 	SPWAW_SPWOOB_LIST	*oobdata;			/* OOB data list				*/
 	BYTE			OOB;				/* OOB ID					*/
@@ -135,13 +136,14 @@ typedef struct s_SPWAW_DOSSIER_INFO {
 	char			name[SPWAW_AZSDNAME+1];		/* Dossier name					*/
 	char			comment[SPWAW_AZSDCMT+1];	/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
+	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
 	BYTE			OOB;				/* Dossier OOB ID				*/
 	USHORT			bcnt;				/* Dossier battle count				*/
 } SPWAW_DOSSIER_INFO;
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(const char *name, const char *comment, SPWAW_DOSSIER **dossier);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(SPWAW_GAME_TYPE gametype, const char *name, const char *comment, SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_info		(const char *file, SPWAW_DOSSIER_INFO *info);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress);

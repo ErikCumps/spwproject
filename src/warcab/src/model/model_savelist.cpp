@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - savegame list.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -103,7 +103,7 @@ ModelSaveList::setupModelData (char *path, SPWAW_SAVELIST *ignore)
 
 	freeModelData();
 
-	rc = SPWAW_savelist (path, ignore, &(d.save_list));
+	rc = SPWAW_savelist (SPWAW_GAME_TYPE_SPWAW, path, ignore, &(d.save_list));
 	if (rc != SPWERR_OK) return;
 
 	d.row_cnt = d.save_list->cnt;

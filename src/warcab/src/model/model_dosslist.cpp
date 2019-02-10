@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier list.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -123,7 +123,7 @@ ModelDossList::setupModelData (char *path, SPWAW_DOSSLIST *ignore)
 		int nl = cmt.indexOf('\n'); if (nl != -1) cmt.truncate(nl);
 		node.data	<< p->filename
 				<< SPWAW_dossiertype2str(p->info.type)
-				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.OOB) : "")
+				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.gametype, p->info.OOB) : "")
 				<< p->info.bcnt
 				<< p->info.name
 				<< cmt;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB API implementation.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -26,21 +26,28 @@ SPWAW_oob_data	(SPWOOB *oob, BYTE id, SPWOOB_DATA **data)
 }
 
 SPWAWLIB_API const char *
-SPWAW_oob_nation (BYTE id)
+SPWAW_oob_nation (SPWAW_GAME_TYPE gametype, BYTE id)
 {
-	return (spwoob_id2nation (id & 0xFF));
+	return (spwoob_id2nation (gametype, id & 0xFF));
 }
 
 SPWAWLIB_API const char *
-SPWAW_oob_people (BYTE id)
+SPWAW_oob_people (SPWAW_GAME_TYPE gametype, BYTE id)
 {
-	return (spwoob_id2people (id & 0xFF));
+	return (spwoob_id2people (gametype, id & 0xFF));
 }
 
 SPWAWLIB_API const char *
-SPWAW_oob_prefix (BYTE id)
+SPWAW_oob_prefix (SPWAW_GAME_TYPE gametype, BYTE id)
 {
-	return (spwoob_id2prefix (id & 0xFF));
+	return (spwoob_id2prefix (gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_uclass (SPWOOB_UCLASS e)
+{
+	if ((e < SPWOOB_UCLASS_START) || (e > SPWOOB_UCLASS_LIMIT)) return ("???");
+	return (SPWOOB_UCLASS_lookup(e));
 }
 
 SPWAWLIB_API SPWAW_ERROR
@@ -52,11 +59,4 @@ SPWAW_oob_dump (SPWOOB *oob, char *base)
 	spwoob_dump (oob, base);
 
 	return (SPWERR_OK);
-}
-
-SPWAWLIB_API const char *
-SPWAW_oob_uclass (SPWOOB_UCLASS e)
-{
-	if ((e < SPWOOB_UCLASS_START) || (e > SPWOOB_UCLASS_LIMIT)) return ("???");
-	return (SPWOOB_UCLASS_lookup(e));
 }

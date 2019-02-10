@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War savegame decomposition tool.
  *
- * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -47,22 +47,23 @@ write_data (char *fn, void *data, DWORD size)
 }
 
 int
-main(int argc, char** argv)
+main (int argc, char** argv)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*game = NULL;
 	char		fn[256];
+	SPWAW_GAME_TYPE	gametype = SPWAW_GAME_TYPE_SPWAW;
 
 	if (argc < 3) usage (argv[0]);
 
 	memset (fn, 0, sizeof (fn));
 
 	/* Initialize spwawlib */
-	if ((rc = SPWAW_init (NULL, false)) != SPWERR_OK)
+	if ((rc = SPWAW_init (gametype, NULL, false)) != SPWERR_OK)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Load savegame data */
-	if ((rc = SPWAW_savegame_load (argv[1], atoi(argv[2]), &game)) != SPWERR_OK)
+	if ((rc = SPWAW_savegame_load (gametype, argv[1], atoi(argv[2]), &game)) != SPWERR_OK)
 		error ("failed to load savegame: %s", SPWAW_errstr (rc));
 
 	/* Write savegame comment data */

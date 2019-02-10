@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -65,18 +65,18 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	str->terrain   = terrain2str (dst->terrain);
 	str->weather   = weather2str (dst->terrain, dst->weather);
 	str->status    = btstatus2str (dst->status);
-	str->nation_p1 = (char *)SPWAW_oob_nation (raw->OOB_p1);
-	str->people_p1 = (char *)SPWAW_oob_people (raw->OOB_p1);
-	str->prefix_p1 = (char *)SPWAW_oob_prefix (raw->OOB_p1);
-	str->nation_p2 = (char *)SPWAW_oob_nation (raw->OOB_p2);
-	str->people_p2 = (char *)SPWAW_oob_people (raw->OOB_p2);
-	str->prefix_p2 = (char *)SPWAW_oob_prefix (raw->OOB_p2);
-	str->nation_p3 = (char *)SPWAW_oob_nation (raw->OOB_p3);
-	str->people_p3 = (char *)SPWAW_oob_people (raw->OOB_p3);
-	str->prefix_p3 = (char *)SPWAW_oob_prefix (raw->OOB_p3);
-	str->nation_p4 = (char *)SPWAW_oob_nation (raw->OOB_p4);
-	str->people_p4 = (char *)SPWAW_oob_people (raw->OOB_p4);
-	str->prefix_p4 = (char *)SPWAW_oob_prefix (raw->OOB_p4);
+	str->nation_p1 = (char *)SPWAW_oob_nation (ptr->gametype, raw->OOB_p1);
+	str->people_p1 = (char *)SPWAW_oob_people (ptr->gametype, raw->OOB_p1);
+	str->prefix_p1 = (char *)SPWAW_oob_prefix (ptr->gametype, raw->OOB_p1);
+	str->nation_p2 = (char *)SPWAW_oob_nation (ptr->gametype, raw->OOB_p2);
+	str->people_p2 = (char *)SPWAW_oob_people (ptr->gametype, raw->OOB_p2);
+	str->prefix_p2 = (char *)SPWAW_oob_prefix (ptr->gametype, raw->OOB_p2);
+	str->nation_p3 = (char *)SPWAW_oob_nation (ptr->gametype, raw->OOB_p3);
+	str->people_p3 = (char *)SPWAW_oob_people (ptr->gametype, raw->OOB_p3);
+	str->prefix_p3 = (char *)SPWAW_oob_prefix (ptr->gametype, raw->OOB_p3);
+	str->nation_p4 = (char *)SPWAW_oob_nation (ptr->gametype, raw->OOB_p4);
+	str->people_p4 = (char *)SPWAW_oob_people (ptr->gametype, raw->OOB_p4);
+	str->prefix_p4 = (char *)SPWAW_oob_prefix (ptr->gametype, raw->OOB_p4);
 	str->miss_p1   = mission2str (dst->miss_p1);
 	str->miss_p2   = mission2str (dst->miss_p2);
 
@@ -792,7 +792,7 @@ snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr)
 }
 
 static inline void
-snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, STRTAB * /*stab*/)
+snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, SPWOOB_DATA *oobdata, STRTAB * /*stab*/)
 {
 	SPWAW_SNAP_OOB_UEL_DATA		*dat;
 	SPWAW_SNAP_OOB_UEL_STRINGS	*str;
@@ -803,7 +803,7 @@ snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, STRTAB * /*stab*/)
 
 	// Prevent warning C4244
 	UID2str ((BYTE)(dat->FMID & 0xFF), (BYTE)(dat->FSID & 0xFF), str->uid, sizeof (str->uid));
-	str->people	= (char *)SPWAW_oob_people ((BYTE)(dat->OOB & 0xFF));
+	str->people	= (char *)SPWAW_oob_people (oobdata->spwoob->gametype, (BYTE)(dat->OOB & 0xFF));
 	str->rank	= rank2str (dat->rank);
 	str->exp	= exp2str (dat->eclass);
 	str->status	= ustatus2str (dat->status);
@@ -816,38 +816,38 @@ snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, STRTAB * /*stab*/)
 }
 
 static SPWAW_ERROR
-snapint_oob_units_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, STRTAB *stab)
+snapint_oob_units_stage2 (SPWAW_SNAP_OOB_FORCE *ptr, SPWOOB_DATA *oobdata, STRTAB *stab)
 {
 	DWORD		i;
 
 	CNULLARG (ptr);
 
 	for (i=0; i<ptr->units.cnt; i++) {
-		snapint_oob_units_stage2_core (&(ptr->units.list[i]), stab);
+		snapint_oob_units_stage2_core (&(ptr->units.list[i]), oobdata, stab);
 	}
 
 	for (i=0; i<ptr->crews.cnt; i++) {
-		snapint_oob_units_stage2_core (&(ptr->crews.list[i]), stab);
+		snapint_oob_units_stage2_core (&(ptr->crews.list[i]), oobdata, stab);
 	}
 
 	return (SPWERR_OK);
 }
 
 static SPWAW_ERROR
-snapint_oob_core_stage2 (SPWAW_SNAP_OOB *ptr, STRTAB *stab)
+snapint_oob_core_stage2 (SPWAW_SNAP_OOB *ptr, SPWOOB_DATA *oobdata, STRTAB *stab)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
 	CNULLARG (ptr);
 
-	rc = snapint_oob_formations_stage2 (&(ptr->battle));	ROE ("snapint_oob_formations_stage2(battle)");
-	rc = snapint_oob_units_stage2 (&(ptr->battle), stab);	ROE ("snapint_oob_units_stage2(battle)");
+	rc = snapint_oob_formations_stage2 (&(ptr->battle));		ROE ("snapint_oob_formations_stage2(battle)");
+	rc = snapint_oob_units_stage2 (&(ptr->battle), oobdata, stab);	ROE ("snapint_oob_units_stage2(battle)");
 
-	rc = snapint_oob_formations_stage2 (&(ptr->core));	ROE ("snapint_oob_formations_stage2(core)");
-	rc = snapint_oob_units_stage2 (&(ptr->core), stab);	ROE ("snapint_oob_units_stage2(core)");
+	rc = snapint_oob_formations_stage2 (&(ptr->core));		ROE ("snapint_oob_formations_stage2(core)");
+	rc = snapint_oob_units_stage2 (&(ptr->core), oobdata, stab);	ROE ("snapint_oob_units_stage2(core)");
 
-	rc = snapint_oob_formations_stage2 (&(ptr->support));	ROE ("snapint_oob_formations_stage2(support)");
-	rc = snapint_oob_units_stage2 (&(ptr->support), stab);	ROE ("snapint_oob_units_stage2(support)");
+	rc = snapint_oob_formations_stage2 (&(ptr->support));		ROE ("snapint_oob_formations_stage2(support)");
+	rc = snapint_oob_units_stage2 (&(ptr->support), oobdata, stab);	ROE ("snapint_oob_units_stage2(support)");
 
 	return (SPWERR_OK);
 }
@@ -1124,7 +1124,7 @@ snapint_oobp1 (SPWAW_SNAPSHOT *ptr)
 	rc = OOB_build_subforce (&(ptr->OOBp1.battle), &(ptr->OOBp1.core), true);	ROE ("OOB_build_subforce(OOBp1, core)");
 	rc = OOB_build_subforce (&(ptr->OOBp1.battle), &(ptr->OOBp1.support), false);	ROE ("OOB_build_subforce(OOBp1, support)");
 
-	rc = snapint_oob_core_stage2 (&(ptr->OOBp1), stab);
+	rc = snapint_oob_core_stage2 (&(ptr->OOBp1), oobdata, stab);
 	ROE ("snapint_oob_core_stage2(OOBp1)");
 
 	rc = snapint_oob_attrs (&(ptr->OOBp1.battle));	ROE ("snapint_oob_attrs(OOBp1.battle)");
@@ -1166,7 +1166,7 @@ snapint_oobp2 (SPWAW_SNAPSHOT *ptr)
 
 	rc = OOB_link (&(ptr->OOBp2), false);		ROE ("OOB_link(OOBp2)");
 
-	rc = snapint_oob_core_stage2 (&(ptr->OOBp2),stab);
+	rc = snapint_oob_core_stage2 (&(ptr->OOBp2), oobdata, stab);
 	ROE ("snapint_oob_core_stage2(OOBp2)");
 
 	rc = snapint_oob_attrs (&(ptr->OOBp2.battle));	ROE ("snapint_oob_attrs(OOBp2.battle)");

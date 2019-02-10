@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -413,11 +413,14 @@ handle_error:
 }
 
 SPWAW_ERROR
-SPWOOB_load (SPWOOB *oob, const char *dir)
+SPWOOB_load (SPWOOB *oob, SPWAW_GAME_TYPE gametype, const char *dir)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
 	CNULLARG (dir);
+
+	//TODO
+	gametype = gametype;
 
 	snprintf (oob->srcdir, sizeof (oob->srcdir) - 1, "%s", dir);
 

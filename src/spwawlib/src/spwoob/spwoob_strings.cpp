@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -50,7 +50,7 @@ static const IDSTRMAP spwoob_idstrings_map[] = {
 };
 
 const char *
-spwoob_id2people (BYTE id)
+spwoob_id2people (SPWAW_GAME_TYPE gametype, BYTE id)
 {
 	int	i = 0;
 
@@ -63,7 +63,7 @@ spwoob_id2people (BYTE id)
 }
 
 const char *
-spwoob_id2nation (BYTE id)
+spwoob_id2nation (SPWAW_GAME_TYPE gametype, BYTE id)
 {
 	int	i = 0;
 
@@ -76,7 +76,7 @@ spwoob_id2nation (BYTE id)
 }
 
 const char *
-spwoob_id2prefix (BYTE id)
+spwoob_id2prefix (SPWAW_GAME_TYPE gametype, BYTE id)
 {
 	int	i = 0;
 

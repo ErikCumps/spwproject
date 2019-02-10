@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -252,7 +252,7 @@ generate_oob_dump(int /*argc*/, char** argv)
 	SPWAW_ERROR	rc;
 	SPWOOB		*oob;
 
-	if ((rc = SPWAW_init (argv[2], false)) != SPWERR_OK) {
+	if ((rc = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, argv[2], false)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
@@ -322,12 +322,13 @@ generate_savegame_report(int argc, char** argv)
 	SPWAW_ERROR	rc;
 	SPWAW_SNAPSHOT	*snap;
 	char		savename[MAX_PATH+1];
+	SPWAW_GAME_TYPE	gametype = SPWAW_GAME_TYPE_SPWAW;
 
-	if ((rc = SPWAW_init (argv[1], true)) != SPWERR_OK) {
+	if ((rc = SPWAW_init (gametype, argv[1], true)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_snap_make (argv[2], atoi(argv[3]), &snap)) != SPWERR_OK) {
+	if ((rc = SPWAW_snap_make (gametype, argv[2], atoi(argv[3]), &snap)) != SPWERR_OK) {
 		error ("failed to create snapshot for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
 	}
 
@@ -350,7 +351,7 @@ generate_snapshot_report(int argc, char** argv)
 	SPWAW_ERROR	rc;
 	SPWAW_SNAPSHOT	*snap;
 
-	if ((rc = SPWAW_init (NULL, true)) != SPWERR_OK) {
+	if ((rc = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, NULL, true)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 

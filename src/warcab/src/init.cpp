@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application initialization.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -111,7 +111,7 @@ init_app (SL_APP_INFO *info)
 
 	DBG_log ("initializing SPWAW library\n");
 	while (1) {
-		if ((spwe = SPWAW_init (CFG_oob_path (), false)) == SPWERR_OK) break;
+		if ((spwe = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, CFG_oob_path (), false)) == SPWERR_OK) break;
 
 		if (spwe == SPWERR_NOOOBFILES) {
 			HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_SOFTERR,

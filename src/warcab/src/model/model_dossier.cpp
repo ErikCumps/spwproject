@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -94,7 +94,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 		case Qt::DisplayRole:
 			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s (%s forces)",
-					p->data.d->name, SPWAW_oob_people (p->data.d->OOB));
+					p->data.d->name, SPWAW_oob_people (p->data.d->gametype, p->data.d->OOB));
 			} else {
 				snprintf (buf, sizeof (buf) - 1, "%s",
 					p->data.d->name);
@@ -158,7 +158,7 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
 					p->data.b->location, p->data.b->miss_p1,
-					SPWAW_oob_people (p->data.b->OOB_p2), p->data.b->miss_p2);
+					SPWAW_oob_people (p->data.b->dossier->gametype, p->data.b->OOB_p2), p->data.b->miss_p2);
 			} else {
 				snprintf (buf, sizeof (buf) - 1, "%s",
 					p->data.b->location);

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -157,11 +157,11 @@ GuiRptTrn::refresh (void)
 			setTabIcon (indexOf (d.force_core), *RES_flag (d.item->data.t->battle->dossier->OOB));
 			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.t->battle->dossier->OOB));
 		} else {
-			snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->OOB_p1));
+			snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->dossier->gametype, d.item->data.t->battle->OOB_p1));
 			setTabText (indexOf (d.force_spt), buf);
 			setTabIcon (indexOf (d.force_spt), *RES_flag (d.item->data.t->battle->OOB_p1));
 		}
-		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->OOB_p2));
+		snprintf (buf, sizeof (buf) - 1, "%s force", SPWAW_oob_people (d.item->data.t->battle->dossier->gametype, d.item->data.t->battle->OOB_p2));
 		setTabText (indexOf (d.force_opp), buf);
 		setTabIcon (indexOf (d.force_opp), *RES_flag (d.item->data.t->battle->OOB_p2));
 	}

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main window.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -242,7 +242,7 @@ GuiMainWindow::action_app_exit (void)
 void
 GuiMainWindow::action_app_prefs (void)
 {
-	if (CFG_DLG ()) SPWAW_recfg (CFG_oob_path (), false);
+	if (CFG_DLG ()) SPWAW_recfg (SPWAW_GAME_TYPE_SPWAW, CFG_oob_path (), false);
 }
 
 void

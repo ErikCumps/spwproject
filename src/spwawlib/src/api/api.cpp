@@ -1,13 +1,14 @@
 /** \file
  * The SPWaW Library - main API implementation.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "stdafx.h"
 #include <spwawlib_api.h>
+#include <spwawlib_types.h>
 #include "utils/log.h"
 #include "common/internal.h"
 
@@ -53,13 +54,13 @@ SPWAW_errstr (SPWAW_ERROR e)
 }
 
 static SPWAW_ERROR
-spwaw_recfg (const char *oobdir, bool withUD)
+spwaw_recfg (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 {
-	return cfg_set (oobdir, withUD);
+	return cfg_set (gametype, oobdir, withUD);
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_init (const char *oobdir, bool withUD)
+SPWAW_init (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 {
 	SPWAW_ERROR	rc;
 
@@ -67,7 +68,7 @@ SPWAW_init (const char *oobdir, bool withUD)
 
 	if (spwaw_initialized) FAILGOTO (SPWERR_FAILED, "library already initialized", handle_error);
 
-	rc = spwaw_recfg (oobdir, withUD);
+	rc = spwaw_recfg (gametype, oobdir, withUD);
 	ERRORGOTO ("spwaw_recfg()", handle_error);
 
 	spwaw_initialized = true;
@@ -79,11 +80,11 @@ handle_error:
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_recfg (const char *oobdir, bool withUD)
+SPWAW_recfg (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 {
 	CSPWINIT;
 
-	return (spwaw_recfg (oobdir, withUD));
+	return (spwaw_recfg (gametype, oobdir, withUD));
 }
 
 SPWAWLIB_API void
