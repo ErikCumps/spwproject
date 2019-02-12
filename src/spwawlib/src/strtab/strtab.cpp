@@ -600,6 +600,8 @@ STRTAB_getidx (STRTAB *tab, STRINFO *inf)
 	inf->idx = BADSTRIDX;
 
 	if (inf->str) idx = (ULONG)ADhash_get (tab->hash, inf->str);
+	if (!idx) return (SPWERR_FAILED);
+
 	if (idx-- && tab->idx[idx].ref) inf->idx = idx;
 
 	return (SPWERR_OK);
