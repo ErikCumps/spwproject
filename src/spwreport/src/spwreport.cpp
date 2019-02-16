@@ -12,40 +12,76 @@
 void
 usage (char *app)
 {
-	printf ("Generate SPWaW savegame reports (and an uncompressed snapshot).\n");
+	printf ("Welcome to spwreport.exe, the multi-purpose spwawlib tool:\n");
 	printf ("\n");
-	printf ("Usage: %s OOB DIR INDEX BASE [TYPE]\n", app);
-	printf ("Where: OOB     path to oob dir\n");
-	printf ("       DIR     path to savegame dir\n");
-	printf ("       INDEX   index of savegame to generate report for\n");
-	printf ("       BASE    basename for report files\n");
-	printf ("       TYPE    optional type of report to generate (defaults to ALL reports)\n");
+
+	printf ("*** Generate an OOB dump in CSV format (spwoobdump_*.csv files).\n");
 	printf ("\n");
-	printf ("Generate SPWaW snapshot reports.\n");
+	printf ("    Usage: %s oobdump GAME OOB\n", app);
+	printf ("    Where: GAME    game type\n");
+	printf ("           OOB     path to oob dir\n");
 	printf ("\n");
-	printf ("Usage: %s snap SNAP BASE [TYPE]\n", app);
-	printf ("Where: SNAP    filename of snapshot to generate report for\n");
-	printf ("       BASE    basename for report files\n");
-	printf ("       TYPE    optional type of report to generate (defaults to ALL reports)\n");
+
+	printf ("*** Generate savegame reports:\n");
 	printf ("\n");
+	printf ("    Usage: %s savereport GAME OOB DIR INDEX BASE [TYPE]\n", app);
+	printf ("    Where: GAME    game type\n");
+	printf ("           OOB     path to oob dir\n");
+	printf ("           DIR     path to savegame dir\n");
+	printf ("           INDEX   index of savegame to generate report for\n");
+	printf ("           BASE    basename for report files\n");
+	printf ("           TYPE    optional type of report to generate (defaults to ALL reports)\n");
+	printf ("\n");
+
+	printf ("*** Generate snapshot reports:\n");
+	printf ("\n");
+	printf ("    Usage: %s snapreport SNAP BASE [TYPE]\n", app);
+	printf ("    Where: SNAP    filename of snapshot to generate report for\n");
+	printf ("           BASE    basename for report files\n");
+	printf ("           TYPE    optional type of report to generate (defaults to ALL reports)\n");
+	printf ("\n");
+
+	printf ("Supported game types:\n");
+	printf ("    SPWAW       SPWaW\n");
+	printf ("    WINSPWW2    winSPWW2\n");
+	printf ("\n");
+
 	printf ("Supported report types:\n");
-	printf ("    raw         raw savegame content reports\n");
-	printf ("    elaborate   an elaborate report\n");
-	printf ("    normal      a normal report\n");
-	printf ("    narrative   a normal report in a narrative format\n");
-	printf ("    table       a normal report in table format\n");
-	printf ("    map         a map and unit positions dump\n");
+	printf ("    raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)\n");
+	printf ("    elaborate   an elaborate report (*_complete.txt)\n");
+	printf ("    normal      a normal report (*_short.txt)\n");
+	printf ("    narrative   a normal report in a narrative format (*_narrative.txt)\n");
+	printf ("    table       a normal report in table format (*_table.txt)\n");
+	printf ("    map         a map and unit positions dump (*_positions.dump)\n");
 	printf ("\n");
-	printf ("For complete, short, narrative and table reports a set of 2 reports are\n");
-	printf ("generated: a full report covering the full player1 and player2 forces and\n");
-	printf ("a core report covering the player1 core force only.\n");
-	printf ("\n");
-	printf ("Generate an OOB dump in CSV format (spwoobdump_*.csv files).\n");
-	printf ("\n");
-	printf ("Usage: %s dump OOB\n", app);
-	printf ("Where: OOB      path to oob dir\n");
+
+	printf ("Two reports are generate for elaborate, normal, narrative and table reports:\n");
+	printf ("+ a full report covering the full player1 and player2 forces\n");
+	printf ("+ a core report covering the player1 core force only.\n");
 	printf ("\n");
 	exit (1);
+}
+
+void
+generate_oob_dump(int /*argc*/, char** argv)
+{
+	SPWAW_GAME_TYPE	gametype;
+	SPWAW_ERROR	rc;
+	SPWOOB		*oob;
+
+	gametype = SPWAW_str2gametype (argv[2]);
+
+	if ((rc = SPWAW_init (gametype, argv[3], false)) != SPWERR_OK) {
+		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_SPWOOB(&oob)) != SPWERR_OK) {
+		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
+		error ("failed to generate oob dump: %s", SPWAW_errstr (rc));
+	}
 }
 
 static void
@@ -247,25 +283,6 @@ do_map_dump (SPWAW_SNAPSHOT *ptr, char *rbfn)
 }
 
 void
-generate_oob_dump(int /*argc*/, char** argv)
-{
-	SPWAW_ERROR	rc;
-	SPWOOB		*oob;
-
-	if ((rc = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, argv[2], false)) != SPWERR_OK) {
-		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
-	}
-
-	if ((rc = SPWAW_SPWOOB(&oob)) != SPWERR_OK) {
-		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
-	}
-
-	if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
-		error ("failed to generate oob dump: %s", SPWAW_errstr (rc));
-	}
-}
-
-void
 generate_reports(int argc, char** argv, char *base, SPWAW_SNAPSHOT *snap)
 {
 	char	rprtbase[MAX_PATH+1];
@@ -319,23 +336,25 @@ generate_reports(int argc, char** argv, char *base, SPWAW_SNAPSHOT *snap)
 void
 generate_savegame_report(int argc, char** argv)
 {
+	SPWAW_GAME_TYPE	gametype;
 	SPWAW_ERROR	rc;
 	SPWAW_SNAPSHOT	*snap;
 	char		savename[MAX_PATH+1];
-	SPWAW_GAME_TYPE	gametype = SPWAW_GAME_TYPE_SPWAW;
 
-	if ((rc = SPWAW_init (gametype, argv[1], true)) != SPWERR_OK) {
+	gametype = SPWAW_str2gametype (argv[2]);
+
+	if ((rc = SPWAW_init (gametype, argv[3], true)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_snap_make (gametype, argv[2], atoi(argv[3]), &snap)) != SPWERR_OK) {
-		error ("failed to create snapshot for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
+	if ((rc = SPWAW_snap_make (gametype, argv[4], atoi(argv[5]), &snap)) != SPWERR_OK) {
+		error ("failed to create snapshot for \"%s:%s\": %s", argv[4], argv[5], SPWAW_errstr (rc));
 	}
 
-	generate_reports (argc, argv, argv[4], snap);
+	generate_reports (argc, argv, argv[6], snap);
 
 	memset (savename, 0, sizeof (savename));
-	snprintf (savename, sizeof (savename) - 1, "snapshot_%s.snap", argv[3]);
+	snprintf (savename, sizeof (savename) - 1, "snapshot_%s.snap", argv[5]);
 	if ((rc = SPWAW_snap_save (&snap, savename, false)) != SPWERR_OK) {
 		error ("failed to save snapshot as \"%s\": %s", savename, SPWAW_errstr (rc));
 	}
@@ -369,21 +388,21 @@ generate_snapshot_report(int argc, char** argv)
 int
 main (int argc, char** argv)
 {
-	if (argc < 3)
+	if (argc < 2)
 	{
 		usage (argv[0]);
 	}
-	else if ((argc == 3) && (strcmp (argv[1], "dump") == 0))
+	else if ((strcmp (argv[1], "oobdump") == 0) && (argc == 4))
 	{
 		generate_oob_dump (argc, argv);
 	}
-	else if ((argc >= 4) && (strcmp (argv[1], "snap") == 0))
-	{
-		generate_snapshot_report (argc, argv);
-	}
-	else if (argc >= 5)
+	else if ((strcmp (argv[1], "savereport") == 0) && (argc >= 7))
 	{
 		generate_savegame_report (argc, argv);
+	}
+	else if ((strcmp (argv[1], "snapreport") == 0) && (argc >= 4))
+	{
+		generate_snapshot_report (argc, argv);
 	}
 	else
 	{
