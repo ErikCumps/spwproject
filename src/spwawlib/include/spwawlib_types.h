@@ -292,7 +292,8 @@ typedef enum e_SPWAW_GAME_TYPE {
 	SPWAW_GAME_TYPE_WINSPWW2,	/* The winSPWW2 game		*/
 } SPWAW_GAME_TYPE;
 
-extern SPWAWLIB_API const char *SPWAW_gametype2str	(SPWAW_GAME_TYPE gametype);
+extern SPWAWLIB_API const char *	SPWAW_gametype2str	(SPWAW_GAME_TYPE gametype);
+extern SPWAWLIB_API SPWAW_GAME_TYPE	SPWAW_str2gametype	(char * gametype);
 
 #endif	/* SPWAW_LIB_TYPES_H */
 

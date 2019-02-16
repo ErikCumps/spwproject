@@ -553,3 +553,20 @@ SPWAW_gametype2str (SPWAW_GAME_TYPE gametype)
 	}
 	return (p);
 }
+
+/* Convenience macro */
+#define	STREQ(a_,b_)	strnicmp(a_, b_, strlen(b_)) == 0
+
+SPWAWLIB_API SPWAW_GAME_TYPE
+SPWAW_str2gametype (char * gametype)
+{
+	if (STREQ(gametype, "SP:WaW")) {
+		return (SPWAW_GAME_TYPE_SPWAW);
+	} else if (STREQ (gametype, "SPWAW")) {
+		return (SPWAW_GAME_TYPE_SPWAW);
+	} else if (STREQ (gametype, "winSPWW2")) {
+		return (SPWAW_GAME_TYPE_WINSPWW2);
+	} else {
+		return (SPWAW_GAME_TYPE_UNKNOWN);
+	}
+}
