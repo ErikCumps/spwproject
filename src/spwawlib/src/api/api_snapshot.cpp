@@ -14,13 +14,15 @@
 
 /*! Create snapshot from SPWAW savegame */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_snap_make (const char *dir, int id, SPWAW_SNAPSHOT **snap)
+SPWAW_snap_make (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSHOT **snap)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SNAPSHOT	*ptr = NULL;
 	STRTAB		*stab = NULL;
 	GAMEDATA	*data = NULL;
 	GAMEINFO	info;
+
+	RWE(SPWERR_NOTIMPL, "TODO");
 
 	CSPWINIT;
 	CNULLARG (dir); CNULLARG (snap);

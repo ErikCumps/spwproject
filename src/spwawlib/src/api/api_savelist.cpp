@@ -129,9 +129,11 @@ list_files (const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST *list)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savelist (const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
+SPWAW_savelist (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
 {
 	SPWAW_SAVELIST	*p = NULL;
+
+	RWE(SPWERR_NOTIMPL, "TODO");
 
 	CSPWINIT;
 	CNULLARG (dir); CNULLARG (list);

@@ -59,12 +59,14 @@ SPWAW_savegame_free (SPWAW_SAVEGAME **game)
 
 /*! Creates a new savegame content structure from an existing savegame */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_load (const char *dir, int id, SPWAW_SAVEGAME **game)
+SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SAVEGAME **game)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SAVEGAME	*p;
 	GAMEDATA	*data;
 	int		i;
+
+	RWE(SPWERR_NOTIMPL, "TODO");
 
 	CSPWINIT;
 	CNULLARG (dir); CNULLARG (game);

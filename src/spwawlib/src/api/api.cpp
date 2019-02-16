@@ -17,6 +17,7 @@ bool spwaw_initialized = false;
 static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_OK: no error",
 	"SPWERR_FAILED: failure",
+	"SPWERR_NOTIMPL: feature not yet implemented",
 	"SPWERR_NULLARG: unexpected NULL argument",
 	"SPWERR_OUTOFMEM: out of memory",
 	"SPWERR_NOTINIT: spwawlib not yet initialized",

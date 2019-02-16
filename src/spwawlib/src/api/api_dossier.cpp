@@ -14,11 +14,13 @@
 #include "utils/filecheck.h"
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_dossier_new (const char *name, const char *comment, SPWAW_DOSSIER **dossier)
+SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *name, const char *comment, SPWAW_DOSSIER **dossier)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_DOSSIER	*ptr = NULL;
 	STRTAB		*stab = NULL;
+
+	RWE(SPWERR_NOTIMPL, "TODO");
 
 	CSPWINIT;
 	CNULLARG (name); CNULLARG (comment); CNULLARG (dossier);
