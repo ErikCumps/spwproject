@@ -46,7 +46,7 @@ SPWOOB_LIST_save (SPWAW_SPWOOB_LIST *list, int fd, bool compress)
 		ohdr[i].data = bseekget (fd) - p0;
 
 		rc = SPWOOB_save (list->list[i]->data, fd, compress);
-		ERRORGOTO ("SPWOOB_save() failed", handle_error);
+		ERRORGOTO ("SPWOOB_save()", handle_error);
 	}
 
 	p1 = bseekget (fd); bseekset (fd, p0);

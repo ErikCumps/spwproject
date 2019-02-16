@@ -40,12 +40,12 @@ SPWOOB_LIST_load (SPWAW_SPWOOB_LIST *list, int fd)
 		FAILGOTO (SPWERR_FRFAILED, "bread(SPWOOBLIST SPWOOB data headers) failed", handle_error);
 
 	for (i=0; i<hdr.cnt; i++) {
-		rc = SPWOOB_new (&spwoob); ERRORGOTO ("SPWOOB_new() failed", handle_error);
+		rc = SPWOOB_new (&spwoob); ERRORGOTO ("SPWOOB_new()", handle_error);
 
 		bseekset (fd, p0 + ohdr[i].data);
-		rc = SPWOOB_load (spwoob, fd); ERRORGOTO ("SPWOOB_load() failed", handle_error);
+		rc = SPWOOB_load (spwoob, fd); ERRORGOTO ("SPWOOB_load()", handle_error);
 
-		rc = SPWOOB_LIST_add (list, spwoob); ERRORGOTO ("SPWOOB_LIST_add() failed", handle_error);
+		rc = SPWOOB_LIST_add (list, spwoob); ERRORGOTO ("SPWOOB_LIST_add()", handle_error);
 
 		SPWOOB_free (&spwoob);
 	}
