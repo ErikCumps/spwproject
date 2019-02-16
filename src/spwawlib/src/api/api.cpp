@@ -69,6 +69,8 @@ SPWAW_init (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 
 	if (spwaw_initialized) FAILGOTO (SPWERR_FAILED, "library already initialized", handle_error);
 
+	if (gametype == SPWAW_GAME_TYPE_UNKNOWN) FAILGOTO (SPWERR_FAILED, "unsupported game type", handle_error);
+
 	rc = spwaw_recfg (gametype, oobdir, withUD);
 	ERRORGOTO ("spwaw_recfg()", handle_error);
 
@@ -84,6 +86,8 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_recfg (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 {
 	CSPWINIT;
+
+	if (gametype == SPWAW_GAME_TYPE_UNKNOWN) RWE (SPWERR_FAILED, "unsupported game type");
 
 	return (spwaw_recfg (gametype, oobdir, withUD));
 }
