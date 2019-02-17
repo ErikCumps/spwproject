@@ -20,10 +20,6 @@
 /* Forward declaration for convenience */
 typedef struct s_SPWOOB SPWOOB;
 
-#define	SPWOOB_WCNT	250
-#define	SPWOOB_UCNT	250
-#define	SPWOOB_FCNT	200
-#define	SPWOOB_FMUCNT	10
 #define	SPWOOB_DCNT	256
 
 typedef struct s_SPWOOB_WDATA {
@@ -115,12 +111,16 @@ typedef struct s_SPWOOB_FDATA {
 typedef struct s_SPWOOB_DATA {
 	BYTE		id;
 	ULONG		crc32;
-	SPWOOB_WDATA	wdata[SPWOOB_WCNT];
-	SPWOOB_UDATA	udata[SPWOOB_UCNT];
-	SPWOOB_FDATA	fdata[SPWOOB_FCNT];
 	void		*rdata;
 	ULONG		rsize;
 	SPWOOB		*spwoob;
+	USHORT		wcnt;
+	SPWOOB_WDATA	*wdata;
+	USHORT		ucnt;
+	SPWOOB_UDATA	*udata;
+	USHORT		fcnt;
+	SPWOOB_FDATA	*fdata;
+	USHORT		fmucnt;
 } SPWOOB_DATA;
 
 typedef struct s_SPWOOB {

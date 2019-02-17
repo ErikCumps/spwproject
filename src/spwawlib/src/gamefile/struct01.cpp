@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -261,7 +261,7 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 		return (0);
 	}
 
-	for (BYTE i=0; i<SPWOOB_FCNT; i++) {
+	for (BYTE i=0; i<oobdata->fcnt; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
 
@@ -340,7 +340,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			uel->d.OOBrid, uel->d.OOBtype, uel->d.name);
 	}
 
-	for (BYTE i=0; i<SPWOOB_FCNT; i++) {
+	for (BYTE i=0; i<oobdata->fcnt; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
 		
@@ -370,7 +370,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 		/* Now try to match the units listed for this formation... */
 		j = k = 0;
-		while ((j < SPWOOB_FMUCNT) && (k < MAXFORMATIONUNITS)) {
+		while ((j < oobdata->fmucnt) && (k < MAXFORMATIONUNITS)) {
 			cnt = oobdata->fdata[i].unit_cnt[j];
 			ids = oobdata->fdata[i].unit_ids[j];
 			if (!cnt) { j++; continue; }
@@ -483,7 +483,7 @@ formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid, BYTE &cnt)
 	data = &(oobdata->fdata[OOBrid]);
 
 	max = 0;
-	for (int i=0; i<SPWOOB_FMUCNT; i++)
+	for (int i=0; i<oobdata->fmucnt; i++)
 	{
 		if ((data->unit_ids[i] == 0) || (data->unit_ids[i] >= 1000)) continue;
 		max += data->unit_cnt[i];

@@ -205,9 +205,23 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 	rc = zbuildcrc ((char *)dst->rdata, dst->rsize, &(dst->crc32));
 	ROE ("zbuildcrc()");
 
+	dst->wcnt = SPWOOB_WCNT;
+	dst->wdata = safe_nmalloc (SPWOOB_WDATA, dst->wcnt);
+	COOMGOTO (dst->wdata, "SPWOOB_DATA weapon data", handle_error);
+
+	dst->ucnt = SPWOOB_UCNT;
+	dst->udata = safe_nmalloc (SPWOOB_UDATA, dst->ucnt);
+	COOMGOTO (dst->udata, "SPWOOB_DATA unit data", handle_error);
+
+	dst->fcnt = SPWOOB_FCNT;
+	dst->fdata = safe_nmalloc (SPWOOB_FDATA, dst->fcnt);
+	COOMGOTO (dst->fdata, "SPWOOB_DATA formation data", handle_error);
+
+	dst->fmucnt = SPWOOB_FMUCNT;
+
 	raw = (RAWOOB *)dst->rdata;
 
-	for (i=0; i<SPWOOB_WCNT; i++) {
+	for (i=0; i<dst->wcnt; i++) {
 		if (raw->w.name[i].data[0] != '\0') {
 			azstrcpy (raw->w.name[i].data, dst->wdata[i].name);
 			dst->wdata[i].wclass		= SPWOOB_WCLASS_xlt (raw->w.wclass[i]);
@@ -225,7 +239,7 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 		}
 	}
 
-	for (i=0; i<SPWOOB_UCNT; i++) {
+	for (i=0; i<dst->ucnt; i++) {
 		if (raw->u.name[i].data[0] != '\0') {
 			azstrcpy (raw->u.name[i].data, dst->udata[i].name);
 			dst->udata[i].nation		= raw->u.nation[i];
@@ -284,7 +298,7 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 		}
 	}
 
-	for (i=0; i<SPWOOB_FCNT; i++) {
+	for (i=0; i<dst->fcnt; i++) {
 		if (raw->f.name[i].data[0] != '\0') {
 			azstrcpy (raw->f.name[i].data, dst->fdata[i].name);
 			dst->fdata[i].nation		= raw->f.nation[i];
@@ -319,10 +333,16 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 	}
 
 	return (SPWERR_OK);
+
+handle_error:
+	if (dst->wdata) safe_free (dst->wdata);
+	if (dst->udata) safe_free (dst->udata);
+	if (dst->fdata) safe_free (dst->fdata);
+	return (rc);
 }
 
 static SPWAW_ERROR
-load_oob_file (SPWOOB *oob, BYTE id, const char *file)
+load_raw_file (SPWOOB *oob, BYTE id, const char *file)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWOOB_DATA	*dst;
@@ -393,7 +413,7 @@ spwoob_load_raw_files (SPWOOB *oob)
 	while (f_stat != -1) {
 		BYTE id = name2id (f_data.name);
 		if ((id != BADOOBID) && (oob->data[id] == NULL)) {
-			rc = load_oob_file (oob, id, f_data.name);
+			rc = load_raw_file (oob, id, f_data.name);
 			ERRORGOTO ("load_oob_data()", handle_error);
 		}
 

@@ -11,6 +11,11 @@
 
 #include <spwawlib_spwoob.h>
 
+#define	SPWOOB_WCNT	250
+#define	SPWOOB_UCNT	250
+#define	SPWOOB_FCNT	200
+#define	SPWOOB_FMUCNT	10
+
 #pragma pack(push, r1, 1)
 
 #define	OOBAZSNAME	15
