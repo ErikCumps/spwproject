@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -133,5 +133,7 @@ typedef struct s_RAWOOB {
 
 #pragma pack(pop, r1)
 
+extern SPWAW_ERROR	spwoob_load_raw_files	(SPWOOB *oob);
+extern SPWAW_ERROR	spwoob_load_raw_data	(SPWOOB_DATA *dst);
 
 #endif	/* RAW_H */
