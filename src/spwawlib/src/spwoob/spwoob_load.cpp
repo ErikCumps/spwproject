@@ -11,6 +11,7 @@
 #include "spwoob/spwoob.h"
 #include "spwoob/raw.h"
 #include "spwoob/spwoob_file.h"
+#include "spwoob/spwoob_file_v1.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "utils/compression.h"
@@ -419,9 +420,7 @@ SPWOOB_load (SPWOOB *oob, SPWAW_GAME_TYPE gametype, const char *dir)
 
 	CNULLARG (dir);
 
-	//TODO
-	gametype = gametype;
-
+	oob->gametype = gametype;
 	snprintf (oob->srcdir, sizeof (oob->srcdir) - 1, "%s", dir);
 
 	rc = load_oob_files (oob);
@@ -429,27 +428,52 @@ SPWOOB_load (SPWOOB *oob, SPWAW_GAME_TYPE gametype, const char *dir)
 	return (rc);
 }
 
+static SPWAW_ERROR
+spwoob_check_magic_version (SPWOOB_MV_HEADER &hdr)
+{
+	if (memcmp (hdr.magic, SPWOOB_MAGIC, SPWOOB_MGCLEN) != 0)
+		RWE (SPWERR_BADSAVEDATA, "SPWOOB header check failed");
+
+	/* We are now backwards compatible with version 1 */
+	if ((hdr.version != SPWOOB_VERSION) && (hdr.version < SPWOOB_VERSION_V1))
+		RWE (SPWERR_INCOMPATIBLE, "SPWOOB header version check failed");
+
+	return (SPWERR_OK);
+}
+
 SPWAW_ERROR
 SPWOOB_load (SPWOOB *oob, int fd)
 {
-	SPWAW_ERROR	rc = SPWERR_OK;
-	SPWOOB_HEADER	hdr;
-	SPWOOB_OOBHDR	*ohdr = NULL;
-	long		p0;
-	BYTE		idx;
-	SPWOOB_DATA	*p;
-	CBIO		cbio;
+	SPWAW_ERROR		rc = SPWERR_OK;
+	SPWOOB_MV_HEADER	mvhdr;
+	SPWOOB_HEADER		hdr;
+	SPWOOB_OOBHDR		*ohdr = NULL;
+	long			p0;
+	BYTE			idx;
+	SPWOOB_DATA		*p;
+	CBIO			cbio;
 
 	CNULLARG (oob);
 
-	memset (&hdr, 0, sizeof (hdr));
+	memset (&mvhdr, 0, sizeof (mvhdr));
 
-	if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
-		RWE (SPWERR_FRFAILED, "bread(SPWOOB header) failed");
-	if ((memcmp (hdr.magic, SPWOOB_MAGIC, SPWOOB_MGCLEN) != 0) || (hdr.version != SPWOOB_VERSION))
-		RWE (SPWERR_BADSAVEDATA, "SPWOOB header check failed");
+	if (!bread (fd, (char *)&mvhdr, sizeof (mvhdr), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(SPWOOB MV header) failed", handle_error);
+
+	rc = spwoob_check_magic_version (mvhdr);
+	ERRORGOTO ("spwoob_check_magic_version()", handle_error);
+
+	/* We are now backwards compatible with version 1 */
+	if (mvhdr.version == SPWOOB_VERSION_V1) {
+		rc = spwoob_load_v1_header (fd, &hdr);
+		ERRORGOTO ("spwoob_load_v1_header(SPWOOB header)", handle_error);
+	} else {
+		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
+			FAILGOTO (SPWERR_FRFAILED, "bread(SPWOOB header) failed", handle_error);
+	}
 
 	oob->count = hdr.cnt;
+	oob->gametype = (SPWAW_GAME_TYPE)hdr.gametype;
 
 	ohdr = safe_nmalloc (SPWOOB_OOBHDR, oob->count); COOMGOTO (ohdr, "SPWOOB_OOBDATA list", handle_error);
 

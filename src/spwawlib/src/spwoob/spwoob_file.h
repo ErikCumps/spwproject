@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,14 +16,18 @@
 
 #define	SPWOOB_MAGIC	"SPWAWLIB_SPWOOB"
 #define	SPWOOB_MGCLEN	16
-#define	SPWOOB_VERSION	1
+#define	SPWOOB_VERSION	2
 
 #pragma pack(push, r1, 1)
 
-typedef struct s_SPWOOB_HEADER {
+typedef struct s_SPWOOB_MV_HEADER {
 	char	magic[SPWOOB_MGCLEN];	/* SPWOOB magic string						*/
 	USHORT	version;		/* SPWOOB file format version					*/
+} SPWOOB_MV_HEADER;
+
+typedef struct s_SPWOOB_HEADER {
 	BYTE	cnt;			/* OOB list count						*/
+	ULONG	gametype;		/* OOB game type						*/
 } SPWOOB_HEADER;
 
 typedef struct s_SPWOOB_OOBHDR {

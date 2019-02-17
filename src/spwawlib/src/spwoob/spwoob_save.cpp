@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -17,24 +17,31 @@
 SPWAW_ERROR
 SPWOOB_save (SPWOOB *oob, int fd, bool compress)
 {
-	SPWAW_ERROR	rc = SPWERR_OK;
-	SPWOOB_HEADER	hdr;
-	SPWOOB_OOBHDR	*ohdr = NULL;
-	long		p0, p1;
-	int		i, idx;
-	SPWOOB_DATA	*p;
-	CBIO		cbio;
+	SPWAW_ERROR		rc = SPWERR_OK;
+	SPWOOB_MV_HEADER	mvhdr;
+	SPWOOB_HEADER		hdr;
+	SPWOOB_OOBHDR		*ohdr = NULL;
+	long			p0, p1;
+	int			i, idx;
+	SPWOOB_DATA		*p;
+	CBIO			cbio;
 
 	CNULLARG (oob);
 
 	ohdr = safe_nmalloc (SPWOOB_OOBHDR, oob->count); COOMGOTO (ohdr, "SPWOOB_OOBDATA list", handle_error);
 
+	memset (&mvhdr, 0, sizeof (mvhdr));
+
+	memcpy (mvhdr.magic, SPWOOB_MAGIC, strlen (SPWOOB_MAGIC));
+	mvhdr.version = SPWOOB_VERSION;
+
+	if (!bwrite (fd, (char *)&mvhdr, sizeof (mvhdr)))
+		FAILGOTO (SPWERR_FWFAILED, "bwrite(SPWOOB MV header) failed", handle_error);
+
 	memset (&hdr, 0, sizeof (hdr));
 
-	memcpy (hdr.magic, SPWOOB_MAGIC, strlen (SPWOOB_MAGIC));
-	hdr.version = SPWOOB_VERSION;
-
 	hdr.cnt = oob->count;
+	hdr.gametype = oob->gametype;
 
 	if (!bwrite (fd, (char *)&hdr, sizeof (hdr)))
 		FAILGOTO (SPWERR_FWFAILED, "bwrite(SPWOOB header) failed", handle_error);
