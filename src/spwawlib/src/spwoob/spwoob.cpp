@@ -8,6 +8,7 @@
 
 #include "stdafx.h"
 #include <spwawlib_spwoob.h>
+#include "spwoob/raw.h"
 #include "common/internal.h"
 
 void
@@ -254,13 +255,16 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 }
 
 void
-spwoob_dump (SPWOOB *oob, char *base)
+spwoob_dump (SPWOOB *oob, char *base, bool raw)
 {
 	int	i;
 
 	if (!oob || !base) return;
 
 	for (i=0; i<SPWOOB_DCNT; i++) {
-		if (oob->data[i]) { spwoob_dump_data (oob->data[i], base); }
+		if (oob->data[i]) {
+			spwoob_dump_data (oob->data[i], base);
+			if (raw) spwoob_dump_raw_data (oob->gametype, oob->data[i]->rdata, oob->data[i]->id, base);
+		}
 	}
 }

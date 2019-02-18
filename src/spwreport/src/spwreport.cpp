@@ -17,9 +17,10 @@ usage (char *app)
 
 	printf ("*** Generate an OOB dump in CSV format (spwoobdump_*.csv files).\n");
 	printf ("\n");
-	printf ("    Usage: %s oobdump GAME OOB\n", app);
+	printf ("    Usage: %s oobdump GAME OOB [raw]\n", app);
 	printf ("    Where: GAME    game type\n");
 	printf ("           OOB     path to oob dir\n");
+	printf ("           raw     specify \"raw\" for a raw oob data dump\n");
 	printf ("\n");
 
 	printf ("*** Generate savegame reports:\n");
@@ -63,13 +64,16 @@ usage (char *app)
 }
 
 void
-generate_oob_dump(int /*argc*/, char** argv)
+generate_oob_dump(int argc, char** argv)
 {
 	SPWAW_GAME_TYPE	gametype;
+	bool		raw = false;
 	SPWAW_ERROR	rc;
 	SPWOOB		*oob;
 
 	gametype = SPWAW_str2gametype (argv[2]);
+
+	raw = (argc > 4) && (stricmp (argv[4], "raw") == 0);
 
 	if ((rc = SPWAW_init (gametype, argv[3], false)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
@@ -79,7 +83,7 @@ generate_oob_dump(int /*argc*/, char** argv)
 		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_oob_dump (oob, "spwoobdump")) != SPWERR_OK) {
+	if ((rc = SPWAW_oob_dump (oob, "spwoobdump", raw)) != SPWERR_OK) {
 		error ("failed to generate oob dump: %s", SPWAW_errstr (rc));
 	}
 }
@@ -392,7 +396,7 @@ main (int argc, char** argv)
 	{
 		usage (argv[0]);
 	}
-	else if ((strcmp (argv[1], "oobdump") == 0) && (argc == 4))
+	else if ((strcmp (argv[1], "oobdump") == 0) && (argc >= 4))
 	{
 		generate_oob_dump (argc, argv);
 	}

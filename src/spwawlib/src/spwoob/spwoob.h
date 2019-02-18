@@ -29,6 +29,6 @@ extern const char *	spwoob_id2people	(SPWAW_GAME_TYPE gametype, BYTE id);
 extern const char *	spwoob_id2nation	(SPWAW_GAME_TYPE gametype, BYTE id);
 extern const char *	spwoob_id2prefix	(SPWAW_GAME_TYPE gametype, BYTE id);
 
-extern void		spwoob_dump		(SPWOOB *oob, char *base);
+extern void		spwoob_dump		(SPWOOB *oob, char *base, bool raw);
 
 #endif	/* INTERNAL_SPWOOB_H */

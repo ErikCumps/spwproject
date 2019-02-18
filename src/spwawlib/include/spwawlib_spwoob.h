@@ -150,7 +150,7 @@ extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(SPWAW_GAME_TYPE gametype, BYT
 
 extern SPWAWLIB_API const char *	SPWAW_oob_uclass	(SPWOOB_UCLASS e);
 
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_dump		(SPWOOB *oob, char *base, bool raw);
 
 #endif	/* SPWAW_LIB_OOB_H */
 
