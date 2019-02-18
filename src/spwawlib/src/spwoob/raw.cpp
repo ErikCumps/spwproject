@@ -198,7 +198,7 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 {
 	SPWAW_ERROR	rc;
 	RAWOOB		*raw;
-	int		i;
+	int		i, j;
 
 	CNULLARG (dst); CNULLARG (dst->rdata);
 
@@ -207,17 +207,24 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 
 	dst->wcnt = SPWOOB_WCNT;
 	dst->wdata = safe_nmalloc (SPWOOB_WDATA, dst->wcnt);
-	COOMGOTO (dst->wdata, "SPWOOB_DATA weapon data", handle_error);
+	COOMGOTO (dst->wdata, "SPWOOB_WDATA weapon data", handle_error);
 
 	dst->ucnt = SPWOOB_UCNT;
 	dst->udata = safe_nmalloc (SPWOOB_UDATA, dst->ucnt);
-	COOMGOTO (dst->udata, "SPWOOB_DATA unit data", handle_error);
+	COOMGOTO (dst->udata, "SPWOOB_UDATA unit data", handle_error);
 
 	dst->fcnt = SPWOOB_FCNT;
 	dst->fdata = safe_nmalloc (SPWOOB_FDATA, dst->fcnt);
-	COOMGOTO (dst->fdata, "SPWOOB_DATA formation data", handle_error);
+	COOMGOTO (dst->fdata, "SPWOOB_FDATA formation data", handle_error);
 
-	dst->fmucnt = SPWOOB_FMUCNT;
+	dst->fmecnt = SPWOOB_FMECNT;
+	dst->edata = safe_nmalloc (SPWOOB_EDATA, dst->fcnt * dst->fmecnt);
+	COOMGOTO (dst->edata, "SPWOOBE_DATA formation elements data", handle_error);
+	for (i=0; i<dst->fcnt; i++) {
+		dst->fdata[i].elements = &(((SPWOOB_EDATA *)dst->edata)[i*dst->fmecnt]);
+	}
+
+	dst->efstart = SPWOOB_EFSTART;
 
 	raw = (RAWOOB *)dst->rdata;
 
@@ -308,26 +315,10 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 			dst->fdata[i].start_yr		= raw->f.start_yr[i] + SPWAW_STARTYEAR;
 			dst->fdata[i].start_mo		= raw->f.start_mo[i];
 			dst->fdata[i].end_yr		= raw->f.end_yr[i] + SPWAW_STARTYEAR;
-			dst->fdata[i].unit_ids[0]	= raw->f.urid[i].dat[0];
-			dst->fdata[i].unit_ids[1]	= raw->f.urid[i].dat[1];
-			dst->fdata[i].unit_ids[2]	= raw->f.urid[i].dat[2];
-			dst->fdata[i].unit_ids[3]	= raw->f.urid[i].dat[3];
-			dst->fdata[i].unit_ids[4]	= raw->f.urid[i].dat[4];
-			dst->fdata[i].unit_ids[5]	= raw->f.urid[i].dat[5];
-			dst->fdata[i].unit_ids[6]	= raw->f.urid[i].dat[6];
-			dst->fdata[i].unit_ids[7]	= raw->f.urid[i].dat[7];
-			dst->fdata[i].unit_ids[8]	= raw->f.urid[i].dat[8];
-			dst->fdata[i].unit_ids[9]	= raw->f.urid[i].dat[9];
-			dst->fdata[i].unit_cnt[0]	= raw->f.ucnt[i].dat[0];
-			dst->fdata[i].unit_cnt[1]	= raw->f.ucnt[i].dat[1];
-			dst->fdata[i].unit_cnt[2]	= raw->f.ucnt[i].dat[2];
-			dst->fdata[i].unit_cnt[3]	= raw->f.ucnt[i].dat[3];
-			dst->fdata[i].unit_cnt[4]	= raw->f.ucnt[i].dat[4];
-			dst->fdata[i].unit_cnt[5]	= raw->f.ucnt[i].dat[5];
-			dst->fdata[i].unit_cnt[6]	= raw->f.ucnt[i].dat[6];
-			dst->fdata[i].unit_cnt[7]	= raw->f.ucnt[i].dat[7];
-			dst->fdata[i].unit_cnt[8]	= raw->f.ucnt[i].dat[8];
-			dst->fdata[i].unit_cnt[9]	= raw->f.ucnt[i].dat[9];
+			for (j=0; j<dst->fmecnt; j++) {
+				dst->fdata[i].elements[j].rid = raw->f.urid[i].dat[j];
+				dst->fdata[i].elements[j].cnt = raw->f.ucnt[i].dat[j];
+			}
 			dst->fdata[i].valid		= true;
 		}
 	}
@@ -335,6 +326,7 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 	return (SPWERR_OK);
 
 handle_error:
+	if (dst->edata) safe_free (dst->edata);
 	if (dst->wdata) safe_free (dst->wdata);
 	if (dst->udata) safe_free (dst->udata);
 	if (dst->fdata) safe_free (dst->fdata);

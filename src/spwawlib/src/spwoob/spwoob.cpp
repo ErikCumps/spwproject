@@ -22,6 +22,7 @@ spwoob_free (SPWOOB *oob)
 			if (oob->data[i]->wdata) safe_free (oob->data[i]->wdata);
 			if (oob->data[i]->udata) safe_free (oob->data[i]->udata);
 			if (oob->data[i]->fdata) safe_free (oob->data[i]->fdata);
+			if (oob->data[i]->edata) safe_free (oob->data[i]->edata);
 			if (oob->data[i]->rdata) safe_free (oob->data[i]->rdata);
 			safe_free (oob->data[i]);
 		}
@@ -53,7 +54,7 @@ SPWAW_ERROR
 SPWOOB_copy (SPWOOB *dst, SPWOOB *src)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
-	int		i;
+	int		i, j;
 
 	CNULLARG (dst); CNULLARG (src);
 
@@ -72,23 +73,30 @@ SPWOOB_copy (SPWOOB *dst, SPWOOB *src)
 		if (src->data[i]->wdata && src->data[i]->wcnt) {
 			dst->data[i]->wcnt = src->data[i]->wcnt;
 			dst->data[i]->wdata = safe_nmalloc (SPWOOB_WDATA, dst->data[i]->wcnt);
-			COOMGOTO (dst->data[i]->wdata, "SPWOOB_DATA weapon data", handle_error);
-
+			COOMGOTO (dst->data[i]->wdata, "SPWOOB_WDATA weapon data", handle_error);
 			memcpy (dst->data[i]->wdata, src->data[i]->wdata, dst->data[i]->wcnt * sizeof (SPWOOB_WDATA));
 		}
 		if (src->data[i]->udata && src->data[i]->ucnt) {
 			dst->data[i]->ucnt = src->data[i]->ucnt;
 			dst->data[i]->udata = safe_nmalloc (SPWOOB_UDATA, dst->data[i]->ucnt);
-			COOMGOTO (dst->data[i]->udata, "SPWOOB_DATA unit data", handle_error);
-
+			COOMGOTO (dst->data[i]->udata, "SPWOOB_UDATA unit data", handle_error);
 			memcpy (dst->data[i]->udata, src->data[i]->udata, dst->data[i]->ucnt * sizeof (SPWOOB_UDATA));
 		}
 		if (src->data[i]->fdata && src->data[i]->fcnt) {
 			dst->data[i]->fcnt = src->data[i]->fcnt;
 			dst->data[i]->fdata = safe_nmalloc (SPWOOB_FDATA, dst->data[i]->fcnt);
-			COOMGOTO (dst->data[i]->fdata, "SPWOOB_DATA formation data", handle_error);
-
+			COOMGOTO (dst->data[i]->fdata, "SPWOOB_FDATA formation data", handle_error);
 			memcpy (dst->data[i]->fdata, src->data[i]->fdata, dst->data[i]->fcnt * sizeof (SPWOOB_FDATA));
+		}
+		if (src->data[i]->edata && src->data[i]->fmecnt && dst->data[i]->fcnt) {
+			dst->data[i]->fmecnt = src->data[i]->fmecnt;
+			dst->data[i]->edata = safe_nmalloc (SPWOOB_EDATA, dst->data[i]->fcnt * dst->data[i]->fmecnt);
+			COOMGOTO (dst->data[i]->edata, "SPWOOBE_DATA formation elements data", handle_error);
+			memcpy (dst->data[i]->edata, src->data[i]->edata, dst->data[i]->fcnt * dst->data[i]->fmecnt * sizeof(SPWOOB_EDATA));
+
+			for (j=0; j<dst->data[i]->fcnt; j++) {
+				dst->data[i]->fdata[j].elements = &(((SPWOOB_EDATA *)dst->data[i]->edata)[j*dst->data[i]->fmecnt]);
+			}
 		}
 
 		// Copy raw OOB data, if present
@@ -96,7 +104,6 @@ SPWOOB_copy (SPWOOB *dst, SPWOOB *src)
 			dst->data[i]->rsize = src->data[i]->rsize;
 			dst->data[i]->rdata = safe_nmalloc (char, dst->data[i]->rsize);
 			COOMGOTO (dst->data[i]->rdata, "SPWOOB_DATA raw data", handle_error);
-
 			memcpy (dst->data[i]->rdata, src->data[i]->rdata, dst->data[i]->rsize);
 		}
 	}
@@ -225,7 +232,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file, "id,nation,name,stat,stat,type,type,pscr,pscr,start_yr,start_mo,end_yr");
-		for (int j=0; j<10; j++) fprintf (file, ",unit_ids[%d],unit_cnt[%d]", j, j);
+		for (int j=0; j<10; j++) fprintf (file, ",element_rid[%d],element_cnt[%d]", j, j);
 		fprintf (file, "\n");
 
 		for (i=0; i<data->fcnt; i++) {
@@ -238,7 +245,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 				fp->type, SPWOOB_FTYPE_lookup (fp->type),
 				fp->pscr, SPWOOB_FPSCR_lookup (fp->pscr),
 				fp->start_yr, fp->start_mo, fp->end_yr);
-			for (int j=0; j<10; j++) fprintf (file, ",%u,%u", fp->unit_ids[j], fp->unit_cnt[j]);
+			for (int j=0; j<10; j++) fprintf (file, ",%u,%u", fp->elements[j].rid, fp->elements[j].cnt);
 			fprintf (file, "\n");
 		}
 		fclose (file);

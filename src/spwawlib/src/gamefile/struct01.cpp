@@ -370,12 +370,12 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 		/* Now try to match the units listed for this formation... */
 		j = k = 0;
-		while ((j < oobdata->fmucnt) && (k < MAXFORMATIONUNITS)) {
-			cnt = oobdata->fdata[i].unit_cnt[j];
-			ids = oobdata->fdata[i].unit_ids[j];
+		while ((j < oobdata->fmecnt) && (k < MAXFORMATIONUNITS)) {
+			cnt = oobdata->fdata[i].elements[j].cnt;
+			ids = oobdata->fdata[i].elements[j].rid;
 			if (!cnt) { j++; continue; }
 
-			if (ids<1000) {
+			if (ids<oobdata->efstart) {
 				uid = ids;
 
 				SPWAW_set_date (s_date, oobdata->udata[uid].start_yr, oobdata->udata[uid].start_mo);
@@ -421,7 +421,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 				s += ds;
 			} else {
-				fid = ids-1000;
+				fid = ids-oobdata->efstart;
 
 				SPWAW_set_date (s_date, oobdata->fdata[fid].start_yr, oobdata->fdata[fid].start_mo);
 				s_stmp = SIMPLE_STAMP (s_date.year, s_date.month);
@@ -483,10 +483,10 @@ formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid, BYTE &cnt)
 	data = &(oobdata->fdata[OOBrid]);
 
 	max = 0;
-	for (int i=0; i<oobdata->fmucnt; i++)
+	for (int i=0; i<oobdata->fmecnt; i++)
 	{
-		if ((data->unit_ids[i] == 0) || (data->unit_ids[i] >= 1000)) continue;
-		max += data->unit_cnt[i];
+		if ((data->elements[i].rid == 0) || (data->elements[i].rid >= oobdata->efstart)) continue;
+		max += data->elements[i].cnt;
 	}
 	if (max > MAXFORMATIONUNITS) max = MAXFORMATIONUNITS;
 

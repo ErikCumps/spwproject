@@ -20,6 +20,7 @@
 /* Forward declaration for convenience */
 typedef struct s_SPWOOB SPWOOB;
 
+/* Maximum number of supported OOBs */
 #define	SPWOOB_DCNT	256
 
 typedef struct s_SPWOOB_WDATA {
@@ -94,6 +95,11 @@ typedef struct s_SPWOOB_UDATA {
 	BYTE		slp_RT;
 } SPWOOB_UDATA;
 
+typedef struct s_SPWOOB_EDATA {
+	USHORT		rid;
+	BYTE		cnt;
+} SPWOOB_EDATA;
+
 typedef struct s_SPWOOB_FDATA {
 	bool		valid;
 	BYTE		nation;
@@ -104,8 +110,7 @@ typedef struct s_SPWOOB_FDATA {
 	USHORT		start_yr;
 	BYTE		start_mo;
 	USHORT		end_yr;
-	USHORT		unit_ids[10];
-	BYTE		unit_cnt[10];
+	SPWOOB_EDATA	*elements;
 } SPWOOB_FDATA;
 
 typedef struct s_SPWOOB_DATA {
@@ -120,7 +125,9 @@ typedef struct s_SPWOOB_DATA {
 	SPWOOB_UDATA	*udata;
 	USHORT		fcnt;
 	SPWOOB_FDATA	*fdata;
-	USHORT		fmucnt;
+	USHORT		fmecnt;
+	void		*edata;
+	USHORT		efstart;
 } SPWOOB_DATA;
 
 typedef struct s_SPWOOB {

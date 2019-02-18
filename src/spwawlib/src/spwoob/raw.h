@@ -14,7 +14,8 @@
 #define	SPWOOB_WCNT	250
 #define	SPWOOB_UCNT	250
 #define	SPWOOB_FCNT	200
-#define	SPWOOB_FMUCNT	10
+#define	SPWOOB_FMECNT	10
+#define	SPWOOB_EFSTART	1000
 
 #pragma pack(push, r1, 1)
 
@@ -128,10 +129,10 @@ typedef struct s_RAWOOB {
 		BYTE	purchscrn	[SPWOOB_FCNT];
 		BYTE	type		[SPWOOB_FCNT];
 		struct s_urid {
-			USHORT	dat[SPWOOB_FMUCNT];
+			USHORT	dat[SPWOOB_FMECNT];
 		}	urid		[SPWOOB_FCNT];
 		struct s_ucnt {
-			BYTE	dat[SPWOOB_FMUCNT];
+			BYTE	dat[SPWOOB_FMECNT];
 		}	ucnt		[SPWOOB_FCNT];
 	} f;
 } RAWOOB;
