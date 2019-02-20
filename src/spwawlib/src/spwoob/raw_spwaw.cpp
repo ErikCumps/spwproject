@@ -8,10 +8,9 @@
 
 #include "stdafx.h"
 #include "spwoob/raw_spwaw.h"
+#include "spwoob/raw.h"
 #include "common/internal.h"
 #include "utils/compression.h"
-
-#define	BADOOBID	((BYTE)-1)
 
 static BYTE
 spwaw_name2id (const char *name)
@@ -20,8 +19,8 @@ spwaw_name2id (const char *name)
 	int	id;
 	int	rc;
 
-	if (strlen (name) > 6) return (BADOOBID);
-	if (strnicmp (name, "oob", 3) != 0) return (BADOOBID);
+	if (strlen (name) > 6) return (SPWOOB_BADOOBID);
+	if (strnicmp (name, "oob", 3) != 0) return (SPWOOB_BADOOBID);
 
 	memset (local, 0, sizeof (local));
 	snprintf (local, sizeof (local) - 1, "%s", name);
@@ -31,8 +30,8 @@ spwaw_name2id (const char *name)
 	local[2] = (char)tolower (local[2]);
 
 	rc = sscanf (local, "oob%d", &id);
-	if (rc <= 0) id = BADOOBID;
-	if ((id < 0) || (id > 255)) id = BADOOBID;
+	if (rc <= 0) id = SPWOOB_BADOOBID;
+	if ((id < 0) || (id > 255)) id = SPWOOB_BADOOBID;
 
 	return ((BYTE)id);
 }
@@ -331,93 +330,10 @@ handle_error:
 	return (rc);
 }
 
-static SPWAW_ERROR
-load_raw_spwaw_file (SPWOOB *oob, BYTE id, const char *file)
-{
-	SPWAW_ERROR	rc = SPWERR_OK;
-	SPWOOB_DATA	*dst;
-	char		path[MAX_PATH+1];
-	int		fd = -1;
-	HANDLE		maph;
-	RAWOOB		*raw = NULL;
-
-	CNULLARG (oob); CNULLARG (file);
-	if (oob->data[id]) return (SPWERR_OK);
-
-	dst = safe_malloc (SPWOOB_DATA); COOMGOTO (dst, "SPWOOB_DATA", handle_error);
-	dst->id = id;
-
-	dst->rdata = safe_malloc (RAWOOB); COOMGOTO (dst, "RAWOOB", handle_error);
-	dst->rsize = sizeof (RAWOOB);
-
-	memset (path, 0, sizeof (path));
-	snprintf (path, sizeof (path) - 1, "%s\\%s", oob->srcdir, file);
-
-	fd = open (path, O_RDONLY|O_BINARY);
-	if (fd < 0) FAILGOTO (SPWERR_FOFAILED, "open(oob file) failed", handle_error);
-
-	raw = (RAWOOB *)mmapfile (fd, &maph);
-	if (!raw) FAILGOTO (SPWERR_FRFAILED, "mmapfile(oob file) failed", handle_error);
-
-	memcpy (dst->rdata, raw, dst->rsize);
-	unmmapfile ((void **)&raw, &maph); raw = NULL;
-	close (fd); fd = -1;
-
-	rc = spwoob_load_raw_spwaw_data (dst); ERRORGOTO ("spwoob_load_raw_data()", handle_error);
-
-	oob->data[id] = dst;
-	oob->count++;
-
-	return (SPWERR_OK);
-
-handle_error:
-	if (dst) {
-		if (dst->rdata) safe_free (dst->rdata);
-		safe_free (dst);
-	}
-	if (raw) unmmapfile ((void **)&raw, &maph);
-	if (fd != -1) close (fd);
-	return (rc);
-}
-
 SPWAW_ERROR
 spwoob_load_raw_spwaw_files (SPWOOB *oob)
 {
-	SPWAW_ERROR		rc = SPWERR_OK;
-	char			glob[MAX_PATH+1];
-	intptr_t		f_hndl = -1;
-	int			f_stat;
-	struct _finddata_t	f_data;
-
-	CNULLARG (oob);
-
-	if (oob->count) return (SPWERR_OK);
-
-	memset (glob, 0, sizeof (glob));
-	snprintf (glob, sizeof (glob) - 1, "%s\\oob*", oob->srcdir);
-
-	if ((f_hndl = _findfirst (glob, &f_data)) == -1)
-		FAILGOTO (SPWERR_NOOOBFILES, "_findfirst() failed", handle_error);
-
-	f_stat = 0;
-	while (f_stat != -1) {
-		BYTE id = spwaw_name2id (f_data.name);
-		if ((id != BADOOBID) && (oob->data[id] == NULL)) {
-			rc = load_raw_spwaw_file (oob, id, f_data.name);
-			ERRORGOTO ("load_oob_data()", handle_error);
-		}
-
-		f_stat = _findnext (f_hndl, &f_data);
-	}
-	_findclose (f_hndl);
-
-	if (oob->count == 0) RWE (SPWERR_NOOOBFILES, "no valid OOB files found");
-
-	return (SPWERR_OK);
-
-handle_error:
-	if (f_hndl != -1) _findclose (f_hndl);
-	return (rc);
+	return (spwoob_load_raw_files_core (oob, "oob*", spwaw_name2id, sizeof (RAWOOB), spwoob_load_raw_spwaw_data));
 }
 
 void
@@ -509,10 +425,10 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 			"rof,stab,rf,"
 			"B73,"
 			"load_cap,survive,load_cost,icon,"
-			"movcl,swim,end_mo,smkdev,start_mo,"
-			"sound,wpn1_snd,wpn2_snd,wpn3_snd,wpn4_snd,"
-			"X1,X2,"
-			"msound"
+			"swim,end_mo,smkdev,start_mo,"
+			"B83,B84,B85,B86,"
+			"text,msound,"
+			"X1,X2"
 			"\n");
 
 		for (i=1; i<SPWOOB_UCNT; i++) {
@@ -533,10 +449,10 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 				"%u,%u,%u,"
 				"%u,"
 				"%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,"
+				"%u,%u,%u,%u,"
+				"%u,%u,%u,%u,"
 				"%u,%u,"
-				"%u"
+				"%u,%u"
 				"\n",
 				i, azsname,
 				raw->u.uclass[i], raw->u.arm_SK[i], raw->u.size[i], raw->u.crew[i],
@@ -556,10 +472,11 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 				raw->u.rof[i], raw->u.stab[i], raw->u.rf[i],
 				raw->u.__data2[i],
 				raw->u.load_cap[i], raw->u.survive[i], raw->u.load_cost[i],raw->u.icon[i],
-				raw->u.movcl[i], raw->u.swim[i], raw->u.end_mo[i], raw->u.smkdev[i], raw->u.start_mo[i], 
-				raw->u.sound[i], raw->u.wpn1_snd[i], raw->u.wpn2_snd[i], raw->u.wpn3_snd[i], raw->u.wpn4_snd[i],
+				raw->u.swim[i], raw->u.end_mo[i], raw->u.smkdev[i], raw->u.start_mo[i], 
 				raw->u.__data3[0*SPWOOB_UCNT+i],raw->u.__data3[1*SPWOOB_UCNT+i],
-				raw->u.msound[i]
+				raw->u.__data3[2*SPWOOB_UCNT+i],raw->u.__data3[3*SPWOOB_UCNT+i],
+				raw->u.text[i], raw->u.msound[i],
+				raw->u.__data4[0*SPWOOB_UCNT+i],raw->u.__data4[1*SPWOOB_UCNT+i]
 				);
 		}
 		fclose (file);

@@ -20,13 +20,13 @@
 #pragma pack(push, r1, 1)
 
 #define	OOBAZSNAME	15
-typedef struct s_NAME {
+typedef struct s_OOBNAME {
 	char	data[OOBAZSNAME];
-} NAME;
+} OOBNAME;
 
 typedef struct s_RAWOOB {
         struct s_w {
-		NAME	name		[SPWOOB_WCNT];
+		OOBNAME	name		[SPWOOB_WCNT];
 		BYTE	wclass		[SPWOOB_WCNT];
 		BYTE	__data0		[SPWOOB_WCNT];		/* Sym.			*/
 		BYTE	size		[SPWOOB_WCNT];
@@ -45,7 +45,7 @@ typedef struct s_RAWOOB {
 		BYTE	__data2		[7*SPWOOB_WCNT];	/* x1 ... x7		*/
 	} w;
 	struct s_u {
-		NAME	name		[SPWOOB_UCNT];
+		OOBNAME	name		[SPWOOB_UCNT];
 		BYTE	uclass		[SPWOOB_UCNT];
 		BYTE	arm_SK		[SPWOOB_UCNT];
 		BYTE	size		[SPWOOB_UCNT];
@@ -104,22 +104,18 @@ typedef struct s_RAWOOB {
 		BYTE	load_cap	[SPWOOB_UCNT];
 		BYTE	survive		[SPWOOB_UCNT];
 		BYTE	load_cost	[SPWOOB_UCNT];
-		BYTE	icon		[SPWOOB_UCNT];
-		BYTE	movcl		[SPWOOB_UCNT];
+		USHORT	icon		[SPWOOB_UCNT];
 		BYTE	swim		[SPWOOB_UCNT];
 		BYTE	end_mo		[SPWOOB_UCNT];
 		BYTE	smkdev		[SPWOOB_UCNT];
 		BYTE	start_mo	[SPWOOB_UCNT];
-		USHORT	sound		[SPWOOB_UCNT];
-		BYTE	wpn1_snd	[SPWOOB_UCNT];
-		BYTE	wpn2_snd	[SPWOOB_UCNT];
-		BYTE	wpn3_snd	[SPWOOB_UCNT];
-		BYTE	wpn4_snd	[SPWOOB_UCNT];
-		BYTE	__data3		[2*SPWOOB_UCNT];	/* x1 ... x2		*/
+		BYTE	__data3		[4*SPWOOB_UCNT];	/* ???			*/
+		USHORT	text		[SPWOOB_UCNT];
 		USHORT	msound		[SPWOOB_UCNT];
+		BYTE	__data4		[2*SPWOOB_UCNT];	/* x1 ... x2		*/
 	} u;
 	struct s_f {
-		NAME	name		[SPWOOB_FCNT];
+		OOBNAME	name		[SPWOOB_FCNT];
 		BYTE	nation		[SPWOOB_FCNT];
 		BYTE	start_mo	[SPWOOB_FCNT];
 		BYTE	special		[SPWOOB_FCNT];
