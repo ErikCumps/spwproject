@@ -2,13 +2,16 @@
 #
 # buildlist.pl - code generator for named enum lists.
 #
-# Copyright (C) 2011-2016 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2011-2019 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL v2
 
 use strict;
 use IO::File;
 use File::Basename;
+use Data::Dumper;
+
+our $DEBUG = 0;
 
 sub Usage
 {
@@ -91,14 +94,21 @@ our %PARSER_ERROR = (
 	"DUP_ITEM_VALUE"	=> "duplicate item value data",
 	"DUP_ITEM_DATA"		=> "duplicate item data",
 	"NO_CURRENT_ITEM"	=> "no current item type",
+	"NO_CURRENT_CLASS"	=> "no current item class",
 	"BAD_ENUMFLAG_BASE"	=> "base enum for enumflag does not exist",
+	"BAD_CLSENUM_TYPE"	=> "missing class enum type for clsenum",
 	"BAD_RAWENUM_TYPE"	=> "missing data type for rawenum",
+	"BAD_RAWEREF_DTYPE"	=> "missing data type for raweref",
+	"BAD_RAWEREF_RTYPE"	=> "missing reference type for raweref",
+	"DUP_DEFAULT"		=> "duplicate \@default specifier",
 );
 our %PARSER = (
 	"title"		=> [ \&ParseTitle,	010, 0			],
 	"enum"		=> [ \&ParseEnums,	100, \&RenderEnums 	],
-	"enumflag"	=> [ \&ParseEnumflags,	110, \&RenderEnumflags	],
-	"rawenum"	=> [ \&ParseRawEnums,	200, \&RenderRawEnums 	],
+	"enumflag"	=> [ \&ParseEnumflags,	150, \&RenderEnumflags	],
+	"clsenum"	=> [ \&ParseClsEnums,	120, \&RenderClsEnums 	],
+	"rawenum"	=> [ \&ParseRawEnums,	110, \&RenderRawEnums 	],
+	"raweref"	=> [ \&ParseRawErefs,	210, \&RenderRawErefs 	],
 );
 
 our ($lc, $line);
@@ -201,7 +211,7 @@ sub ParseEnums
 
 	# Store data
 	push @{$rLIST}, ( $item );
-	$rDATA->{$item} = [ $iid, [ @data ]];
+	$rDATA->{items}->{$item} = [ $iid, [ @data ]];
 }
 
 #
@@ -234,7 +244,54 @@ sub ParseEnumflags
 
 	# Store data
 	push @{$rLIST}, ( $item );
-	$rDATA->{$item} = [ @data ];
+	$rDATA->{items}->{$item} = [ @data ];
+}
+
+#
+# Parse [clsenum]
+#
+sub ParseClsEnums
+{
+	my ($NAME, $TYPE, $rSEEN, $rLIST, $rDATA, $rCODE) = @_;
+	my (@data, $item, $desc);
+	
+	@data = split (/:/, $::line);
+
+	if ($data[0] eq "\@default") {
+		# Process @default specifier
+		if ($rDATA->{default}) {
+			&HandleParserError ("DUP_DEFAULT");
+		}
+		$rDATA->{default} = $data[1];
+	} elsif ($data[0] eq "\@class") {
+		# Process @class specifier
+		$rDATA->{class} = $data[1];
+		push @{$rDATA->{class_list}}, ( $data[1] );
+	} else {
+		# Validate class data is present
+		if (!$rDATA->{class}) {
+			&HandleParserError ("NO_CURRENT_CLASS");
+		}
+
+		# Process item data
+		@data = split (/\t+/, $::line);
+		$item = shift (@data);
+		$desc = shift (@data);
+
+		# Validate item name
+		if ($rSEEN->{$TYPE}{$NAME}[1]->{$item}) {
+			&HandleParserError ("DUP_ITEM_DATA");
+		}
+		$rSEEN->{$TYPE}{$NAME}[1]->{$item} = 1;
+	
+		# Massage item description
+		($desc) = $desc =~ /^"([^"]+)"$/; #"
+	
+		# Store data
+		push @{$rLIST}, ( $item );
+		$rDATA->{items}->{$item} = [ $desc ];
+		push @{$rDATA->{classes}->{$rDATA->{class}}}, ( $item );
+	}
 }
 
 #
@@ -245,33 +302,77 @@ sub ParseRawEnums
 	my ($NAME, $TYPE, $rSEEN, $rLIST, $rDATA, $rCODE) = @_;
 	my (@data, $value, $item);
 
-	# Process item data
-	@data = split (/\t+/, $::line);
-	$value = shift (@data);
-	$item  = shift (@data);
+	@data = split (/:/, $::line);
 
-	# Validate item value
-	if ($rSEEN->{$TYPE}{$NAME}[1]->{$value}) {
-		&HandleParserError ("DUP_ITEM_VALUE");
+	if ($data[0] eq "\@default") {
+		# Process @default specifier
+		if ($rDATA->{default}) {
+			&HandleParserError ("DUP_DEFAULT");
+		}
+		$rDATA->{default} = $data[1];
+	} else {
+		# Process item data
+		@data = split (/\t+/, $::line);
+		$value = shift (@data);
+		$item  = shift (@data);
+
+		# Validate item value
+		if ($rSEEN->{$TYPE}{$NAME}[1]->{$value}) {
+			&HandleParserError ("DUP_ITEM_VALUE");
+		}
+		$rSEEN->{$TYPE}{$NAME}[1]->{$value} = 1;
+
+		# Validate item name
+		if ($rSEEN->{$TYPE}{$NAME}[2]->{$item}) {
+			&HandleParserError ("DUP_ITEM_DATA");
+		}
+		$rSEEN->{$TYPE}{$NAME}[2]->{$item} = 1;
+
+		# Massage item data fields
+		($data[0]) = $data[0] =~ /^"([^"]+)"$/;
+		if ($data[1]) {
+			($data[1]) = $data[1] =~ /^"([^"]+)"$/;
+			${$rCODE} = 1;
+		}
+
+		# Store data
+		push @{$rLIST}, ( $item );
+		$rDATA->{items}->{$item} = [ $value, [ @data ]];
 	}
-	$rSEEN->{$TYPE}{$NAME}[1]->{$value} = 1;
+}
 
-	# Validate item name
-	if ($rSEEN->{$TYPE}{$NAME}[2]->{$item}) {
-		&HandleParserError ("DUP_ITEM_DATA");
+#
+# Parse [raweref]
+#
+sub ParseRawErefs
+{
+	my ($NAME, $TYPE, $rSEEN, $rLIST, $rDATA, $rCODE) = @_;
+	my (@data, $value, $ref);
+
+	@data = split (/:/, $::line);
+
+	if ($data[0] eq "\@default") {
+		# Process @default specifier
+		if ($rDATA->{default}) {
+			&HandleParserError ("DUP_DEFAULT");
+		}
+		$rDATA->{default} = $data[1];
+	} else {
+		# Process item data
+		@data  = split (/\t+/, $::line);
+		$value = shift (@data);
+		$ref   = shift (@data);
+
+		# Validate item value
+		if ($rSEEN->{$TYPE}{$NAME}[1]->{$value}) {
+			&HandleParserError ("DUP_ITEM_VALUE");
+		}
+		$rSEEN->{$TYPE}{$NAME}[1]->{$value} = 1;
+
+		# Store data
+		push @{$rLIST}, ( $value );
+		$rDATA->{values}->{$value} =  [ $ref ];
 	}
-	$rSEEN->{$TYPE}{$NAME}[2]->{$item} = 1;
-
-	# Massage item data fields
-	($data[0]) = $data[0] =~ /^"([^"]+)"$/;
-	if ($data[1]) {
-		($data[1]) = $data[1] =~ /^"([^"]+)"$/;
-		${$rCODE} = 1;
-	}
-
-	# Store data
-	push @{$rLIST}, ( $item );
-	$rDATA->{$item} = [ $value, [ @data ]];
 }
 
 #
@@ -302,10 +403,14 @@ sub Parse
 		}
 
 		# Clean up comments
-		s/#.*$//;
+		$::line =~ s/#.*$//;
+		
+		# Clean up leading/trailing whitespace
+		$::line =~ s/^\s+//;
+		$::line =~ s/\s+$//;
 
 		# Skip empty lines
-		if (/^\s*$/) { next; }
+		if ($::line =~ /^\s*$/) { next; }
 
 		# New item header?
 		if (/^\[/) {
@@ -336,10 +441,24 @@ sub Parse
 				if (!$enum || !$seen{"enum"}{$enum}[0]) {
 					&HandleParserError ("BAD_ENUMFLAG_BASE");
 				}
+			} elsif ($ntype eq "clsenum") {
+				my $ctype = (split (/:/, $nname))[1];
+				if (!$ctype) {
+					&HandleParserError ("BAD_CLSENUM_TYPE");
+				}
 			} elsif ($ntype eq "rawenum") {
 				my $dtype = (split (/:/, $nname))[1];
 				if (!$dtype) {
 					&HandleParserError ("BAD_RAWENUM_TYPE");
+				}
+			} elsif ($ntype eq "raweref") {
+				my $dtype = (split (/:/, $nname))[1];
+				if (!$dtype) {
+					&HandleParserError ("BAD_RAWEREF_DTYPE");
+				}
+				my $rtype = (split (/:/, $nname))[2];
+				if (!$rtype) {
+					&HandleParserError ("BAD_RAWEREF_RTYPE");
 				}
 			}
 
@@ -376,6 +495,13 @@ sub Parse
 		$rDATA->{$type}->{"data"}->{$name}->{"code"} = $code;
 
 		push @{$rDATA->{$type}->{"list"}}, ( $name );
+	}
+
+	# Create a debug dump of the parsed data
+	if ($DEBUG && open(DBG,">parsed_data.dump")) {
+		my $d = Data::Dumper->new ([$rDATA]); $d->Indent (1); $d->{xpad} = "\t"; $d->Sortkeys(1);
+		print DBG $d->Dump; print DBG "\n";
+		close (DBG);
 	}
 }
 
@@ -414,9 +540,9 @@ sub RenderEnums
 {
 	my ($rDATA, $Cfh, $Hfh, $OC, $OH) = @_;
 	my ($enum, $INFO);
-	my ($item, $iid, $f, $l, $data, $comm);
+	my ($item, $iid, $f, $data, $comm);
 	my ($len, @maxlen, $fmt);
-	my (@maxcomm);
+	my ($l, @maxcomm);
 
 	if (!$NOC) {
 		print $Cfh "#include <$OH>\n\n";
@@ -430,7 +556,7 @@ sub RenderEnums
 		if (!$NOI) {
 			$maxcomm[0] = 0;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				$l = length ($data->[1]->[0]) + 3;
 				if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
 			}
@@ -449,7 +575,7 @@ sub RenderEnums
 			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				$iid  = $data->[0];
 				$comm = $data->[1]->[0];
 
@@ -496,7 +622,7 @@ sub RenderEnums
 
 			@maxlen = ();
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				if ($data->[1]->[0]) {
 					$len = length ("\"$data->[1]->[0]\",");
 				} else {
@@ -509,7 +635,7 @@ sub RenderEnums
 			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 
 				$comm = "$enum\_$item";
 				if ($data->[1]->[0]) {
@@ -536,7 +662,7 @@ sub RenderEnums
 
 			@maxlen = ();
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				if ($data->[1]->[1]) {
 					$len = length ("\"$data->[1]->[1]\",");
 				} else {
@@ -549,7 +675,7 @@ sub RenderEnums
 			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 
 				$comm = "$enum\_$item";
 				if ($data->[1]->[1]) {
@@ -588,7 +714,7 @@ sub RenderEnumflags
 
 		$maxcomm[0] = 0;
 		foreach $item (@{$INFO->{"list"}}) {
-			$data = $INFO->{"data"}->{$item};
+			$data = $INFO->{"data"}->{items}->{$item};
 			$l = length ($data->[1]->[0]) + 3;
 			if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
 		}
@@ -610,7 +736,7 @@ sub RenderEnumflags
 			$fmt = "#define\t%-$maxlen[0]s\t%-$maxlen[1]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				$iid  = $data->[0];
 				$comm = $data->[1]->[0];
 
@@ -628,24 +754,169 @@ sub RenderEnumflags
 	}
 }
 
+sub RenderClsEnums
+{
+	my ($rDATA, $Cfh, $Hfh, $OC, $OH) = @_;
+	my ($enum, $ctype, $INFO);
+	my ($item, $iid, $f, $data, $comm, $class);
+	my ($len, @maxlen, $fmt);
+	my ($l, @maxcomm);
+	my ($default);
+
+	foreach $enum (@{$rDATA->{"clsenum"}->{"list"}})
+	{
+		$INFO = $rDATA->{"clsenum"}->{"data"}->{$enum};
+
+		$default = $INFO->{data}->{default};
+		if (!$default) { $default = "_NONE"; }
+
+		($enum, $ctype) = split (":", $enum);
+
+		if (!$NOI) {
+			$maxcomm[0] = 0;
+			foreach $item (@{$INFO->{"list"}}) {
+				$data = $INFO->{"data"}->{items}->{$item}[0];
+				$l = length ($data) + 3;
+				if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
+			}
+			$l = length ("\\internal start code");
+			if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
+			$l = length ("\\internal final code");
+			if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
+
+			print $Hfh "/*! ".$INFO->{"desc"}." */\n";
+			print $Hfh "typedef enum e_$enum {\n";
+
+			@maxlen = (); $l = "";
+			foreach $item (@{$INFO->{"list"}}) { $l = $item; }
+			$maxlen[0] = 45;
+
+			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
+			$f = 1;
+			foreach $item (@{$INFO->{"list"}}) {
+				$data = $INFO->{"data"}->{items}->{$item}[0];
+				$comm = $data;
+
+				if ($f) {
+					printf $Hfh $fmt, ("$enum\_START = 0,", "\\internal start code");
+					printf $Hfh $fmt, ("$enum\_$item = 0,", $comm);
+					$f = 0;
+				} else {
+					printf $Hfh $fmt, ("$enum\_$item,", $comm);
+				}
+			}
+			printf $Hfh $fmt, ("$enum\__NONE,", "\\internal default code");
+			printf $Hfh $fmt, ("$enum\_LIMIT = $enum\__NONE", "\\internal final code");
+			print $Hfh "} $enum;\n";
+			print $Hfh "#define\t$enum\_CNT\t($enum\_LIMIT - $enum\_START + 1)\n\n";
+
+			print $Hfh "/*! ".$INFO->{"desc"}." lookup function\n";
+			print $Hfh " *\n";
+			print $Hfh " * \\param e\t".$INFO->{"desc"}."\n";
+			print $Hfh " * \\return\tpointer to const string with ".$INFO->{"desc"}." name\n";
+			print $Hfh " */\n";
+			print $Hfh "extern const char *$enum\_lookup ($enum e);\n\n";
+
+			print $Hfh "/*! ".$INFO->{"desc"}." classification function\n";
+			print $Hfh " *\n";
+			print $Hfh " * \\param e\t".$INFO->{"desc"}." value\n";
+			print $Hfh " * \\return\t$ctype enum\n";
+			print $Hfh " */\n";
+			print $Hfh "extern $ctype $enum\_classify ($enum e);\n\n";
+
+			print $Hfh "\n\n";
+		}
+
+		if (!$NOC) {
+			$maxcomm[0] = 0;
+			foreach $item (@{$INFO->{"list"}}) {
+				$l = length ("$enum\_$item") + 3;
+				if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
+			}
+
+			print $Cfh "/*! ".$INFO->{"desc"}." */\n";
+			print $Cfh "static const char *$enum\_names[$enum\_LIMIT+1] = {\n";
+
+			@maxlen = ();
+			foreach $item (@{$INFO->{"list"}}) {
+				$data = $INFO->{"data"}->{items}->{$item}[0];
+				if ($data) {
+					$len = length ("\"$data\",");
+				} else {
+					$len = length ("\"$enum\_$item\",");
+				}
+				if (!$maxlen[0] || ($len > $maxlen[0])) { $maxlen[0] = $len; }
+			}
+			if ($maxlen[0] < 45) { $maxlen[0] = 45; }
+
+			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
+			$f = 1;
+			foreach $item (@{$INFO->{"list"}}) {
+				$data = $INFO->{"data"}->{items}->{$item}[0];
+
+				$comm = "$enum\_$item";
+				if ($data) {
+					printf $Cfh $fmt, ("\"$data\",", $comm);
+				} else {
+					printf $Cfh $fmt, ("\"$enum\_$item\",", $comm);
+				}
+			}
+			printf $Cfh $fmt, ("\"*unknown value*\"", "$enum\__NONE");
+			print $Cfh "};\n\n";
+
+			print $Cfh "/*! ".$INFO->{"desc"}." lookup function\n";
+			print $Cfh " *\n";
+			print $Cfh " * \\param e\t".$INFO->{"desc"}."\n";
+			print $Cfh " * \\return\tpointer to const string with ".$INFO->{"desc"}." name\n";
+			print $Cfh " */\n";
+			print $Cfh "const char *\n$enum\_lookup ($enum e) {\n\treturn ($enum\_names[e]);\n}\n\n";
+		}
+
+		if (!$NOC) {
+			print $Cfh "/*! ".$INFO->{"desc"}." classification function\n";
+			print $Cfh " *\n";
+			print $Cfh " * \\param e\t".$INFO->{"desc"}." value\n";
+			print $Cfh " * \\return\t$ctype enum\n";
+			print $Cfh " */\n";
+			print $Cfh "$ctype\n$enum\_classify ($enum e)\n{\n\t$ctype\tc = $ctype\_LIMIT;\n\n\tswitch (e) {\n";
+
+			foreach $class (@{$INFO->{data}->{class_list}}) {
+				foreach $item (@{$INFO->{data}->{classes}->{$class}}) {
+					print $Cfh "\t\tcase $enum\_$item:\n"
+				}
+				print $Cfh "\t\t\tc = $ctype\_$class;\n\t\t\tbreak;\n"
+			}
+
+			print $Cfh "\t\tdefault:\n\t\t\tc = $ctype\_$default;\n\t\t\tbreak;\n";
+			print $Cfh "\t}\n\treturn (c);\n}\n\n";
+		}
+
+		print $Cfh "\n\n";
+	}
+}
+
 sub RenderRawEnums
 {
 	my ($rDATA, $Cfh, $Hfh, $OC, $OH) = @_;
 	my ($enum, $dtype, $INFO);
-	my ($item, $iid, $f, $l, $data, $comm);
+	my ($item, $iid, $f, $data, $comm);
 	my ($len, @maxlen, $fmt);
-	my (@maxcomm);
+	my ($l, @maxcomm);
+	my ($default);
 
 	foreach $enum (@{$rDATA->{"rawenum"}->{"list"}})
 	{
 		$INFO = $rDATA->{"rawenum"}->{"data"}->{$enum};
+
+		$default = $INFO->{data}->{default};
+		if (!$default) { $default = "_NONE"; }
 
 		($enum, $dtype) = split (":", $enum);
 
 		if (!$NOI) {
 			$maxcomm[0] = 0;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				$l = length ($data->[1]->[0]) + 3;
 				if ($l > $maxcomm[0]) { $maxcomm[0] = $l; }
 			}
@@ -664,7 +935,7 @@ sub RenderRawEnums
 			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				$iid  = $data->[0];
 				$comm = $data->[1]->[0];
 
@@ -719,7 +990,7 @@ sub RenderRawEnums
 
 			@maxlen = ();
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				if ($data->[1]->[0]) {
 					$len = length ("\"$data->[1]->[0]\",");
 				} else {
@@ -732,7 +1003,7 @@ sub RenderRawEnums
 			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 
 				$comm = "$enum\_$item";
 				if ($data->[1]->[0]) {
@@ -758,7 +1029,7 @@ sub RenderRawEnums
 
 			@maxlen = ();
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 				if ($data->[1]->[1]) {
 					$len = length ("\"$data->[1]->[1]\",");
 				} else {
@@ -771,7 +1042,7 @@ sub RenderRawEnums
 			$fmt = "\t%-$maxlen[0]s\t\t/*!< %-$maxcomm[0]s */\n";
 			$f = 1;
 			foreach $item (@{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+				$data = $INFO->{"data"}->{items}->{$item};
 
 				$comm = "$enum\_$item";
 				if ($data->[1]->[1]) {
@@ -798,13 +1069,65 @@ sub RenderRawEnums
 			print $Cfh " */\n";
 			print $Cfh "$enum\n$enum\_xlt ($dtype r)\n{\n\t$enum\te;\n\n\tswitch (r) {\n";
 
-			foreach $item (sort {$INFO->{"data"}->{$a}->[0] <=> $INFO->{"data"}->{$b}->[0]} @{$INFO->{"list"}}) {
-				$data = $INFO->{"data"}->{$item};
+			foreach $item (sort {$INFO->{"data"}->{items}->{$a}->[0] <=> $INFO->{"data"}->{items}->{$b}->[0]} @{$INFO->{"list"}}) {
+				$data = $INFO->{"data"}->{items}->{$item};
 
 				print $Cfh "\t\tcase $data->[0]:\n\t\t\te = $enum\_$item;\n\t\t\tbreak;\n"
 			}
 
-			print $Cfh "\t\tdefault:\n\t\t\te = $enum\__NONE;\n\t\t\tbreak;\n\t}\n\treturn (e);\n}\n\n";
+			print $Cfh "\t\tdefault:\n\t\t\te = $enum\_$default;\n\t\t\tbreak;\n";
+			print $Cfh "\t}\n\treturn (e);\n}\n\n";
+		}
+
+		print $Cfh "\n\n";
+	}
+}
+
+sub RenderRawErefs
+{
+	my ($rDATA, $Cfh, $Hfh, $OC, $OH) = @_;
+	my ($enum, $dtype, $rtype, $INFO);
+	my ($value, $data);
+	my ($l, @maxcomm);
+	my ($default);
+
+	foreach $enum (@{$rDATA->{"raweref"}->{"list"}})
+	{
+		$INFO = $rDATA->{"raweref"}->{"data"}->{$enum};
+
+		$default = $INFO->{data}->{default};
+		if (!$default) { $default = "_NONE"; }
+
+		($enum, $dtype, $rtype) = split (":", $enum);
+
+		if (!$NOI) {
+
+			print $Hfh "/*! raw ".$INFO->{"desc"}." translation function\n";
+			print $Hfh " *\n";
+			print $Hfh " * \\param r\traw ".$INFO->{"desc"}." value\n";
+			print $Hfh " * \\return\t$rtype enum\n";
+			print $Hfh " */\n";
+			print $Hfh "extern $rtype $enum\_xlt ($dtype r);\n\n";
+
+			print $Hfh "\n\n";
+		}
+
+		if (!$NOC) {
+			print $Cfh "/*! raw ".$INFO->{"desc"}." translation function\n";
+			print $Cfh " *\n";
+			print $Cfh " * \\param r\traw ".$INFO->{"desc"}." value\n";
+			print $Cfh " * \\return\t$rtype enum\n";
+			print $Cfh " */\n";
+			print $Cfh "$rtype\n$enum\_xlt ($dtype r)\n{\n\t$rtype\te;\n\n\tswitch (r) {\n";
+
+			foreach $value (sort {$a <=> $b} @{$INFO->{"list"}}) {
+				$data = $INFO->{"data"}->{values}->{$value};
+
+				print $Cfh "\t\tcase $value:\n\t\t\te = $rtype\_$data->[0];\n\t\t\tbreak;\n"
+			}
+
+			print $Cfh "\t\tdefault:\n\t\t\te = $rtype\_$default;\n\t\t\tbreak;\n";
+			print $Cfh "\t}\n\treturn (e);\n}\n\n";
 		}
 
 		print $Cfh "\n\n";
