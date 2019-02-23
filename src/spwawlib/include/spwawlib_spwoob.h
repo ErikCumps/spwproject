@@ -23,15 +23,19 @@ typedef struct s_SPWOOB SPWOOB;
 /* Maximum number of supported OOBs */
 #define	SPWOOB_DCNT	256
 
+/* A signed byte type */
+typedef signed char	SBYTE;
+
 typedef struct s_SPWOOB_WDATA {
 	bool		valid;
 	char		name[SPWAW_AZSOOBNAME+1];
 	SPWOOB_WCLASS	wclass;
 	BYTE		size;
 	BYTE		warhead;
-	USHORT		kill;
-	BYTE		pen_AP;
+	BYTE		kill_HE;
+	BYTE		kill_AP;
 	BYTE		pen_HE;
+	BYTE		pen_AP;
 	BYTE		pen_HEAT;
 	BYTE		pen_APCR;
 	BYTE		accuracy;
@@ -45,6 +49,7 @@ typedef struct s_SPWOOB_UDATA {
 	char		name[SPWAW_AZSOOBNAME+1];
 	SPWOOB_UTYPE	type;
 	SPWOOB_UCLASS	uclass;
+	SPWOOB_MOVCL	mclass;
 	USHORT		start_yr;
 	BYTE		start_mo;
 	USHORT		end_yr;
@@ -52,9 +57,8 @@ typedef struct s_SPWOOB_UDATA {
 	BYTE		size;
 	BYTE		crew;
 	BYTE		survive;
-	BYTE		cost;
+	USHORT		cost;
 	BYTE		speed;
-	SPWOOB_MOVCL	mclass;
 	BYTE		radio;
 	BYTE		irvis;
 	BYTE		fc;
@@ -79,20 +83,34 @@ typedef struct s_SPWOOB_UDATA {
 	BYTE		wpn4;
 	BYTE		wpn4_HEammo;
 	BYTE		wpn4_APammo;
-	BYTE		arm_FH;
-	BYTE		arm_SH;
-	BYTE		arm_RH;
-	BYTE		arm_FT;
-	BYTE		arm_ST;
-	BYTE		arm_RT;
-	BYTE		arm_TP;
-	BYTE		arm_SK;
+	BYTE		arm_HE_FH;
+	BYTE		arm_HE_SH;
+	BYTE		arm_HE_RH;
+	BYTE		arm_HE_FT;
+	BYTE		arm_HE_ST;
+	BYTE		arm_HE_RT;
+	BYTE		arm_HE_TP;
+	BYTE		arm_HE_SK;
+	BYTE		arm_AP_FH;
+	BYTE		arm_AP_SH;
+	BYTE		arm_AP_RH;
+	BYTE		arm_AP_FT;
+	BYTE		arm_AP_ST;
+	BYTE		arm_AP_RT;
+	BYTE		arm_AP_TP;
+	BYTE		arm_AP_SK;
 	BYTE		slp_FH;
 	BYTE		slp_SH;
 	BYTE		slp_RH;
 	BYTE		slp_FT;
 	BYTE		slp_ST;
 	BYTE		slp_RT;
+	USHORT		sound;
+	USHORT		lbm;
+	USHORT		text;
+	USHORT		icon;
+	USHORT		icon_desert;
+	USHORT		icon_winter;
 } SPWOOB_UDATA;
 
 typedef struct s_SPWOOB_EDATA {
@@ -110,6 +128,9 @@ typedef struct s_SPWOOB_FDATA {
 	USHORT		start_yr;
 	BYTE		start_mo;
 	USHORT		end_yr;
+	BYTE		end_mo;
+	SBYTE		exp_mod;
+	SBYTE		mor_mod;
 	SPWOOB_EDATA	*elements;
 } SPWOOB_FDATA;
 

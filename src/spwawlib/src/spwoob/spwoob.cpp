@@ -173,20 +173,31 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
-			"id,name,wclass,wclass,"
-			"size,warhead,kill,"
-			"pen_AP,pen_HE,pen_HEAT,pen_APCR,"
+			"id,name,"
+			"wclass,wclass,"
+			"size,warhead,"
+			"kill_HE,kill_AP,"
+			"pen_HE,pen_AP,pen_HEAT,pen_APCR,"
 			"accuracy,range_max,range_APCR\n");
 
 		for (i=0; i<data->wcnt; i++) {
 			if (!data->wdata[i].valid) continue;
 
 			SPWOOB_WDATA *wp = &(data->wdata[i]);
-			fprintf (file, "%d,%s,%d,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u\n",
+			fprintf (file,
+				"%d,%s,"
+				"%d,%s,"
+				"%u,%u,"
+				"%u,%u,"
+				"%u,%u,%u,%u,"
+				"%u,"
+				"%u,%u\n",
 				i, wp->name, wp->wclass, SPWOOB_WCLASS_lookup (wp->wclass),
-				wp->size, wp->warhead, wp->kill,
-				wp->pen_AP, wp->pen_HE, wp->pen_HEAT, wp->pen_APCR,
-				wp->accuracy, wp->range_max, wp->range_APCR);
+				wp->size, wp->warhead,
+				wp->kill_HE, wp->kill_AP,
+				wp->pen_HE, wp->pen_AP, wp->pen_HEAT, wp->pen_APCR,
+				wp->accuracy,
+				wp->range_max, wp->range_APCR);
 		}
 		fclose (file);
 	}
@@ -196,34 +207,87 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
-			"id,nation,name,type,type,uclass,uclass,"
+			"id,nation,name,"
+			"type,type,"
+			"uclass,uclass,"
+			"mclass,mclass,"
 			"start_yr,start_mo,end_yr,end_mo,"
-			"size,crew,survive,cost,speed,mclass,"
-			"radio,irvis,fc,rf,stab,rof,load_cap,load_cost,swim,smkdev,"
+			"size,crew,survive,cost,speed,"
+			"radio,irvis,fc,rf,stab,rof,"
+			"load_cap,load_cost,"
+			"swim,smkdev,"
 			"wpn1,wpn1_HEammo,wpn1_APammo,wpn1_HEATammo,wpn1_APCRammo,"
-			"wpn2,wpn2_HEammo,wpn2_APammo,wpn3,wpn3_HEammo,wpn3_APammo,wpn4,wpn4_HEammo,wpn4_APammo,"
-			"arm_FH,arm_SH,arm_RH,arm_FT,arm_ST,arm_RT,arm_TP,arm_SK,"
-			"slp_FH,slp_SH,slp_RH,slp_FT,slp_ST,slp_RT\n");
+			"wpn2,wpn2_HEammo,wpn2_APammo,"
+			"wpn3,wpn3_HEammo,wpn3_APammo,"
+			"wpn4,wpn4_HEammo,wpn4_APammo,"
+			"arm_HE_FH,arm_HE_SH,arm_HE_RH,"
+			"arm_HE_FT,arm_HE_ST,arm_HE_RT,"
+			"arm_HE_TP,arm_HE_SK,"
+			"arm_AP_FH,arm_AP_SH,arm_AP_RH,"
+			"arm_AP_FT,arm_AP_ST,arm_AP_RT,"
+			"arm_AP_TP,arm_AP_SK,"
+			"slp_FH,slp_SH,slp_RH,"
+			"slp_FT,slp_ST,slp_RT,"
+			"sound,"
+			"lbm,"
+			"text,"
+			"icon,icon_desert,icon_winter\n");
 
 		for (i=0; i<data->ucnt; i++) {
 			if (!data->udata[i].valid) continue;
 
 			SPWOOB_UDATA *up = &(data->udata[i]);
 			fprintf (file,
-				"%d,%u,%s,%d,%s,%d,%s,%u,%u,%u,%u,%u,%u,%u,%u,%u,%d,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
+				"%d,%u,%s,"
+				"%d,%s,"
+				"%d,%s,"
+				"%d,%s,"
+				"%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u\n",
-				i, up->nation,up->name,up->type,SPWOOB_UTYPE_lookup(up->type),up->uclass,SPWOOB_UCLASS_lookup(up->uclass),
+				"%u,%u,%u,%u,%u,%u,"
+				"%u,%u,"
+				"%u,%u,"
+				"%u,%u,%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,"
+				"%u,"
+				"%u,"
+				"%u,%u,%u\n",
+				i, up->nation,up->name,
+				up->type,SPWOOB_UTYPE_lookup(up->type),
+				up->uclass,SPWOOB_UCLASS_lookup(up->uclass),
+				up->mclass,SPWOOB_MOVCL_lookup(up->mclass),
 				up->start_yr,up->start_mo,up->end_yr,up->end_mo,
-				up->size,up->crew,up->survive,up->cost,up->speed,up->mclass,
-				up->radio,up->irvis,up->fc,up->rf,up->stab,up->rof,up->load_cap,up->load_cost,up->swim,up->smkdev,
+				up->size,up->crew,up->survive,up->cost,up->speed,
+				up->radio,up->irvis,up->fc,up->rf,up->stab,up->rof,
+				up->load_cap,up->load_cost,
+				up->swim,up->smkdev,
 				up->wpn1,up->wpn1_HEammo,up->wpn1_APammo,up->wpn1_HEATammo,up->wpn1_APCRammo,
-				up->wpn2,up->wpn2_HEammo,up->wpn2_APammo,up->wpn3,up->wpn3_HEammo,up->wpn3_APammo,up->wpn4,up->wpn4_HEammo,up->wpn4_APammo,
-				up->arm_FH,up->arm_SH,up->arm_RH,up->arm_FT,up->arm_ST,up->arm_RT,up->arm_TP,up->arm_SK,
-				up->slp_FH,up->slp_SH,up->slp_RH,up->slp_FT,up->slp_ST,up->slp_RT);
+				up->wpn2,up->wpn2_HEammo,up->wpn2_APammo,
+				up->wpn3,up->wpn3_HEammo,up->wpn3_APammo,
+				up->wpn4,up->wpn4_HEammo,up->wpn4_APammo,
+				up->arm_HE_FH,up->arm_HE_SH,up->arm_HE_RH,
+				up->arm_HE_FT,up->arm_HE_ST,up->arm_HE_RT,
+				up->arm_HE_TP,up->arm_HE_SK,
+				up->arm_AP_FH,up->arm_AP_SH,up->arm_AP_RH,
+				up->arm_AP_FT,up->arm_AP_ST,up->arm_AP_RT,
+				up->arm_AP_TP,up->arm_AP_SK,
+				up->slp_FH,up->slp_SH,up->slp_RH,
+				up->slp_FT,up->slp_ST,up->slp_RT,
+				up->sound,
+				up->lbm,
+				up->text,
+				up->icon, up->icon_desert, up->icon_winter);
 		}
 		fclose (file);
 	}
@@ -232,7 +296,14 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 	snprintf (name, sizeof (name) - 1, "%s_%02u_f.csv", base, data->id);
 	file = fopen (name, "w");
 	if (file) {
-		fprintf (file, "id,nation,name,stat,stat,type,type,pscr,pscr,start_yr,start_mo,end_yr");
+		fprintf (file,
+			"id,nation,name,"
+			"stat,stat,"
+			"type,type,"
+			"pscr,pscr,"
+			"start_yr,start_mo,end_yr,end_mo,"
+			"exp_mod,mor_mod"
+			);
 		for (int j=0; j<10; j++) fprintf (file, ",element_rid[%d],element_cnt[%d]", j, j);
 		fprintf (file, "\n");
 
@@ -240,12 +311,20 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 			if (!data->fdata[i].valid) continue;
 
 			SPWOOB_FDATA *fp = &(data->fdata[i]);
-			fprintf (file, "%d,%u,%s,%d,%s,%d,%s,%d,%s,%u,%u,%u",
+			fprintf (file,
+				"%d,%u,%s,"
+				"%d,%s,"
+				"%d,%s,"
+				"%d,%s,"
+				"%u,%u,%u,%u,"
+				"%d,%d",
 				i, fp->nation, fp->name,
 				fp->stat, SPWOOB_FSTAT_lookup (fp->stat),
 				fp->type, SPWOOB_FTYPE_lookup (fp->type),
 				fp->pscr, SPWOOB_FPSCR_lookup (fp->pscr),
-				fp->start_yr, fp->start_mo, fp->end_yr);
+				fp->start_yr, fp->start_mo, fp->end_yr, fp->end_mo,
+				fp->exp_mod, fp->mor_mod
+				);
 			for (int j=0; j<10; j++) fprintf (file, ",%u,%u", fp->elements[j].rid, fp->elements[j].cnt);
 			fprintf (file, "\n");
 		}

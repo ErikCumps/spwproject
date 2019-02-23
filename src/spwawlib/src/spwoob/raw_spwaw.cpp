@@ -7,6 +7,7 @@
  */
 
 #include "stdafx.h"
+#include <spwawlib_spwoob_types.h>
 #include "spwoob/raw_spwaw.h"
 #include "spwoob/raw.h"
 #include "common/internal.h"
@@ -36,165 +37,11 @@ spwaw_name2id (const char *name)
 	return ((BYTE)id);
 }
 
-static SPWOOB_UCLASS
-spwaw_utype2class (SPWOOB_UTYPE ut)
-{
-	SPWOOB_UCLASS	uc = SPWOOB_UCLASS_OTH;
-
-	switch (ut) {
-		case SPWOOB_UTYPE_INF:
-		case SPWOOB_UTYPE_LT_INF:
-		case SPWOOB_UTYPE_MD_INF:
-		case SPWOOB_UTYPE_HV_INF:
-		case SPWOOB_UTYPE_MOT_INF:
-		case SPWOOB_UTYPE_ARM_INF:
-		case SPWOOB_UTYPE_ENG:
-		case SPWOOB_UTYPE_MOT_ENG:
-		case SPWOOB_UTYPE_ARM_ENG:
-		case SPWOOB_UTYPE_MG:
-		case SPWOOB_UTYPE_HV_MG:
-		case SPWOOB_UTYPE_SKI:
-		case SPWOOB_UTYPE_AIR_INF:
-		case SPWOOB_UTYPE_BCYCLE:
-		case SPWOOB_UTYPE_ELITE:
-		case SPWOOB_UTYPE_SNIPER:
-		case SPWOOB_UTYPE_SPECOP:
-		case SPWOOB_UTYPE_GUERILLA:
-		case SPWOOB_UTYPE_CONSCR:
-		case SPWOOB_UTYPE_SLINF:
-			uc = SPWOOB_UCLASS_INF;
-			break;
-		case SPWOOB_UTYPE_CAV:
-			uc = SPWOOB_UCLASS_CAV;
-			break;
-		case SPWOOB_UTYPE_AHT:
-		case SPWOOB_UTYPE_LT_TNK:
-		case SPWOOB_UTYPE_MD_TNK:
-		case SPWOOB_UTYPE_HV_TNK:
-		case SPWOOB_UTYPE_VHV_TNK:
-		case SPWOOB_UTYPE_MB_TNK:
-		case SPWOOB_UTYPE_CR_TNK:
-		case SPWOOB_UTYPE_CS_TNK:
-		case SPWOOB_UTYPE_INF_TNK:
-		case SPWOOB_UTYPE_MINECLR_TNK:
-		case SPWOOB_UTYPE_ENG_TNK:
-		case SPWOOB_UTYPE_FLM_TNK:
-		case SPWOOB_UTYPE_SPEC_TNK:
-		case SPWOOB_UTYPE_LL_TNK:
-		case SPWOOB_UTYPE_CAPT_TNK:
-		case SPWOOB_UTYPE_ASSAULT:
-			uc = SPWOOB_UCLASS_ARM;
-			break;
-		case SPWOOB_UTYPE_HT:
-		case SPWOOB_UTYPE_WH_APC:
-		case SPWOOB_UTYPE_TR_APC:
-		case SPWOOB_UTYPE_HV_TR_APC:
-			uc = SPWOOB_UCLASS_APC;
-			break;
-		case SPWOOB_UTYPE_LT_MORT:
-		case SPWOOB_UTYPE_MORT:
-		case SPWOOB_UTYPE_HV_MORT:
-		case SPWOOB_UTYPE_SP_MORT:
-		case SPWOOB_UTYPE_SP_GUN:
-		case SPWOOB_UTYPE_INF_GUN:
-		case SPWOOB_UTYPE_HWTZR:
-		case SPWOOB_UTYPE_SP_ART:
-		case SPWOOB_UTYPE_OB_ART:
-		case SPWOOB_UTYPE_RKT:
-		case SPWOOB_UTYPE_SP_RKT:
-		case SPWOOB_UTYPE_OB_RKT:
-		case SPWOOB_UTYPE_CAPT_SPG:
-			uc = SPWOOB_UCLASS_ART;
-			break;
-		case SPWOOB_UTYPE_INF_AT:
-		case SPWOOB_UTYPE_AT:
-		case SPWOOB_UTYPE_WH_AT:
-		case SPWOOB_UTYPE_SP_AT:
-		case SPWOOB_UTYPE_TD:
-		case SPWOOB_UTYPE_HV_TD:
-		case SPWOOB_UTYPE_TTD:
-			uc = SPWOOB_UCLASS_AT;
-			break;
-		case SPWOOB_UTYPE_FLAK:
-		case SPWOOB_UTYPE_HV_FLAK:
-		case SPWOOB_UTYPE_WH_FLAK:
-		case SPWOOB_UTYPE_SP_FLAK:
-			uc = SPWOOB_UCLASS_AA;
-			break;
-		case SPWOOB_UTYPE_AMPHIB:
-		case SPWOOB_UTYPE_HV_AMPHIB:
-		case SPWOOB_UTYPE_AMPHIB_TNK:
-		case SPWOOB_UTYPE_MRNS:
-			uc = SPWOOB_UCLASS_MAR;
-			break;
-		case SPWOOB_UTYPE_SCOUT:
-		case SPWOOB_UTYPE_VEH_SCOUT:
-		case SPWOOB_UTYPE_APC_SCOUT:
-		case SPWOOB_UTYPE_FO:
-		case SPWOOB_UTYPE_VEH_FO:
-		case SPWOOB_UTYPE_TR_FO:
-		case SPWOOB_UTYPE_MCYCLE:
-		case SPWOOB_UTYPE_RHT:
-		case SPWOOB_UTYPE_LT_ARMCAR:
-		case SPWOOB_UTYPE_ARMCAR:
-		case SPWOOB_UTYPE_HV_ARMCAR:
-		case SPWOOB_UTYPE_RE_TNK:
-			uc = SPWOOB_UCLASS_REC;
-			break;
-		case SPWOOB_UTYPE_HQ:
-		case SPWOOB_UTYPE_PLT_HQ:
-		case SPWOOB_UTYPE_CC_TNK:
-			uc = SPWOOB_UCLASS_CC;
-			break;
-		case SPWOOB_UTYPE_PRMV:
-		case SPWOOB_UTYPE_MD_TRK:
-		case SPWOOB_UTYPE_HV_TRK:
-		case SPWOOB_UTYPE_BCARR:
-		case SPWOOB_UTYPE_WAGON:
-		case SPWOOB_UTYPE_TEAM:
-		case SPWOOB_UTYPE_GTEAM:
-		case SPWOOB_UTYPE_PACK:
-			uc = SPWOOB_UCLASS_TRN;
-			break;
-		case SPWOOB_UTYPE_AIR:
-		case SPWOOB_UTYPE_AIRB:
-		case SPWOOB_UTYPE_CRG_AIR:
-		case SPWOOB_UTYPE_GLIDER:
-		case SPWOOB_UTYPE_HELI:
-		case SPWOOB_UTYPE_AHELI:
-		case SPWOOB_UTYPE_OHELI:
-			uc = SPWOOB_UCLASS_AIR;
-			break;
-		case SPWOOB_UTYPE_BARGE:
-		case SPWOOB_UTYPE_ABOAT:
-		case SPWOOB_UTYPE_LCS:
-		case SPWOOB_UTYPE_LCG:
-		case SPWOOB_UTYPE_SHIP:
-		case SPWOOB_UTYPE_NAVB:
-			uc = SPWOOB_UCLASS_NVY;
-			break;
-		case SPWOOB_UTYPE_FORT:
-		case SPWOOB_UTYPE_EMP_FORT:
-		case SPWOOB_UTYPE_NAV_FORT:
-			uc = SPWOOB_UCLASS_FRT;
-			break;
-		case SPWOOB_UTYPE_UTIL:
-		case SPWOOB_UTYPE_CREW:
-		case SPWOOB_UTYPE_AMMOC:
-		case SPWOOB_UTYPE_AMMOD:
-		case SPWOOB_UTYPE_CAVE:
-		default:
-			uc = SPWOOB_UCLASS_OTH;
-			break;
-	}
-	return (uc);
-}
-
 SPWAW_ERROR
 spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 {
 	SPWAW_ERROR	rc;
-	RAWOOB		*raw;
+	RAWOOB_SPWAW	*raw;
 	int		i, j;
 
 	CNULLARG (dst); CNULLARG (dst->rdata);
@@ -223,7 +70,7 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 
 	dst->efstart = SPWOOB_EFSTART;
 
-	raw = (RAWOOB *)dst->rdata;
+	raw = (RAWOOB_SPWAW *)dst->rdata;
 
 	for (i=0; i<dst->wcnt; i++) {
 		if (raw->w.name[i].data[0] != '\0') {
@@ -231,9 +78,10 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 			dst->wdata[i].wclass		= SPWOOB_WCLASS_xlt (raw->w.wclass[i]);
 			dst->wdata[i].size		= raw->w.size[i];
 			dst->wdata[i].warhead		= raw->w.warhead[i];
-			dst->wdata[i].kill		= raw->w.kill[i];
-			dst->wdata[i].pen_AP		= raw->w.pen[i].AP;
+			dst->wdata[i].kill_HE		= raw->w.kill[i];
+			dst->wdata[i].kill_AP		= 0;
 			dst->wdata[i].pen_HE		= raw->w.pen[i].HE;
+			dst->wdata[i].pen_AP		= raw->w.pen[i].AP;
 			dst->wdata[i].pen_HEAT		= raw->w.pen_HEAT[i];
 			dst->wdata[i].pen_APCR		= raw->w.pen_APCR[i];
 			dst->wdata[i].accuracy		= raw->w.accuracy[i];
@@ -245,10 +93,11 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 
 	for (i=0; i<dst->ucnt; i++) {
 		if (raw->u.name[i].data[0] != '\0') {
-			azstrcpy (raw->u.name[i].data, dst->udata[i].name);
 			dst->udata[i].nation		= raw->u.nation[i];
-			dst->udata[i].type		= SPWOOB_UTYPE_xlt (raw->u.uclass[i]);
-			dst->udata[i].uclass		= spwaw_utype2class (dst->udata[i].type);
+			azstrcpy (raw->u.name[i].data, dst->udata[i].name);
+			dst->udata[i].type		= SPWOOB_SPWAW_UTYPE_xlt (raw->u.uclass[i]);
+			dst->udata[i].uclass		= SPWOOB_UTYPE_classify (dst->udata[i].type);
+			dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (0);		//FIXME
 			dst->udata[i].start_yr		= raw->u.start_yr[i] + SPWAW_STARTYEAR;
 			dst->udata[i].start_mo		= raw->u.start_mo[i];
 			dst->udata[i].end_yr		= raw->u.end_yr[i] + SPWAW_STARTYEAR;
@@ -258,8 +107,6 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 			dst->udata[i].survive		= raw->u.survive[i];
 			dst->udata[i].cost		= raw->u.cost[i];
 			dst->udata[i].speed		= raw->u.speed[i];
-			//dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (raw->u.movcl[i]);
-			dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (0);		//FIXME
 			dst->udata[i].radio		= raw->u.radio[i];
 			dst->udata[i].irvis		= raw->u.irvis[i];
 			dst->udata[i].fc		= raw->u.fc[i];
@@ -284,34 +131,49 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 			dst->udata[i].wpn4		= raw->u.wpn[i].w4;
 			dst->udata[i].wpn4_HEammo	= raw->u.wpn_ammo[i].HE4;
 			dst->udata[i].wpn4_APammo	= raw->u.wpn_ammo[i].AP4;
-			dst->udata[i].arm_FH		= raw->u.arm[i].FH;
-			dst->udata[i].arm_SH		= raw->u.arm[i].SH;
-			dst->udata[i].arm_RH		= raw->u.arm[i].RH;
-			dst->udata[i].arm_FT		= raw->u.arm[i].FT;
-			dst->udata[i].arm_ST		= raw->u.arm[i].ST;
-			dst->udata[i].arm_RT		= raw->u.arm[i].RT;
-			dst->udata[i].arm_TP		= raw->u.arm[i].TP;
-			dst->udata[i].arm_SK		= raw->u.arm_SK[i];
+			dst->udata[i].arm_HE_FH		= 0;
+			dst->udata[i].arm_HE_SH		= 0;
+			dst->udata[i].arm_HE_RH		= 0;
+			dst->udata[i].arm_HE_FT		= 0;
+			dst->udata[i].arm_HE_ST		= 0;
+			dst->udata[i].arm_HE_RT		= 0;
+			dst->udata[i].arm_HE_TP		= 0;
+			dst->udata[i].arm_HE_SK		= 0;
+			dst->udata[i].arm_AP_FH		= raw->u.arm[i].FH;
+			dst->udata[i].arm_AP_SH		= raw->u.arm[i].SH;
+			dst->udata[i].arm_AP_RH		= raw->u.arm[i].RH;
+			dst->udata[i].arm_AP_FT		= raw->u.arm[i].FT;
+			dst->udata[i].arm_AP_ST		= raw->u.arm[i].ST;
+			dst->udata[i].arm_AP_RT		= raw->u.arm[i].RT;
+			dst->udata[i].arm_AP_TP		= raw->u.arm[i].TP;
+			dst->udata[i].arm_AP_SK		= raw->u.arm_SK[i];
 			dst->udata[i].slp_FH		= raw->u.slp[i].FH;
 			dst->udata[i].slp_SH		= raw->u.slp[i].SH;
 			dst->udata[i].slp_RH		= raw->u.slp[i].RH;
 			dst->udata[i].slp_FT		= raw->u.slp[i].FT;
 			dst->udata[i].slp_ST		= raw->u.slp[i].ST;
 			dst->udata[i].slp_RT		= raw->u.slp[i].RT;
+			dst->udata[i].sound		= raw->u.sound[i];
+			dst->udata[i].text		= raw->u.text[i];
+			dst->udata[i].lbm		= raw->u.lbm[i];
+			dst->udata[i].icon		= raw->u.icon[i];
 			dst->udata[i].valid		= true;
 		}
 	}
 
 	for (i=0; i<dst->fcnt; i++) {
 		if (raw->f.name[i].data[0] != '\0') {
-			azstrcpy (raw->f.name[i].data, dst->fdata[i].name);
 			dst->fdata[i].nation		= raw->f.nation[i];
-			dst->fdata[i].stat		= SPWOOB_FSTAT_xlt (raw->f.special[i]);
+			azstrcpy (raw->f.name[i].data, dst->fdata[i].name);
+			dst->fdata[i].stat		= SPWOOB_FSTAT_xlt (raw->f.status[i]);
 			dst->fdata[i].type		= SPWOOB_FTYPE_xlt (raw->f.type[i]);
 			dst->fdata[i].pscr		= SPWOOB_FPSCR_xlt (raw->f.purchscrn[i]);
 			dst->fdata[i].start_yr		= raw->f.start_yr[i] + SPWAW_STARTYEAR;
 			dst->fdata[i].start_mo		= raw->f.start_mo[i];
 			dst->fdata[i].end_yr		= raw->f.end_yr[i] + SPWAW_STARTYEAR;
+			dst->fdata[i].end_mo		= 12; /* Units are available until the end of the end year */
+			dst->fdata[i].exp_mod		= 0 ;
+			dst->fdata[i].mor_mod		= 0 ;
 			for (j=0; j<dst->fmecnt; j++) {
 				dst->fdata[i].elements[j].rid = raw->f.urid[i].dat[j];
 				dst->fdata[i].elements[j].cnt = raw->f.ucnt[i].dat[j];
@@ -333,46 +195,46 @@ handle_error:
 SPWAW_ERROR
 spwoob_load_raw_spwaw_files (SPWOOB *oob)
 {
-	return (spwoob_load_raw_files_core (oob, "oob*", spwaw_name2id, sizeof (RAWOOB), spwoob_load_raw_spwaw_data));
+	return (spwoob_load_raw_files_core (oob, "oob*", spwaw_name2id, sizeof (RAWOOB_SPWAW), spwoob_load_raw_spwaw_data));
 }
 
 void
 spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 {
-	RAWOOB	*raw = (RAWOOB *)rdata;
-	char	name[MAX_PATH+1];
-	FILE	*file;
-	int	i;
-	char	azsname[OOBAZSNAME+1];
+	RAWOOB_SPWAW	*raw = (RAWOOB_SPWAW *)rdata;
+	char		name[MAX_PATH+1];
+	FILE		*file;
+	int		i;
+	char		azsname[OOBAZSNAME+1];
 
 	if (!raw || !base) return;
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_%s_%02u_layout.txt", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_spwaw_%s_%02u_layout.txt", base, id);
 	file = fopen (name, "w");
 	if (file) {
-		fprintf (file, "RAWOOB: size=0x%8.8x (%u)\n", sizeof(*raw), sizeof(*raw));
-		fprintf (file, "RAWOOB-  w       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,w), sizeof(raw->w), sizeof(raw->w));
-		fprintf (file, "RAWOOB-  w-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,w.name), sizeof(raw->w.name), sizeof(raw->w.name));
-		fprintf (file, "RAWOOB-  w-wclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,w.wclass), sizeof(raw->w.wclass), sizeof(raw->w.wclass));
-		fprintf (file, "RAWOOB-  u       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,u), sizeof(raw->u), sizeof(raw->u));
-		fprintf (file, "RAWOOB-  u-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,u.name), sizeof(raw->u.name), sizeof(raw->u.name));
-		fprintf (file, "RAWOOB-  u-uclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,u.uclass), sizeof(raw->u.uclass), sizeof(raw->u.uclass));
-		fprintf (file, "RAWOOB-  f       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,f), sizeof(raw->f), sizeof(raw->f));
-		fprintf (file, "RAWOOB-  f-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,f.name), sizeof(raw->f.name), sizeof(raw->f.name));
-		fprintf (file, "RAWOOB-  f-nation: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB,f.nation), sizeof(raw->f.nation), sizeof(raw->f.nation));
+		fprintf (file, "RAWOOB_SPWAW: size=0x%8.8x (%u)\n", sizeof(*raw), sizeof(*raw));
+		fprintf (file, "RAWOOB_SPWAW-  w       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,w), sizeof(raw->w), sizeof(raw->w));
+		fprintf (file, "RAWOOB_SPWAW-  w-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,w.name), sizeof(raw->w.name), sizeof(raw->w.name));
+		fprintf (file, "RAWOOB_SPWAW-  w-wclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,w.wclass), sizeof(raw->w.wclass), sizeof(raw->w.wclass));
+		fprintf (file, "RAWOOB_SPWAW-  u       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,u), sizeof(raw->u), sizeof(raw->u));
+		fprintf (file, "RAWOOB_SPWAW-  u-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,u.name), sizeof(raw->u.name), sizeof(raw->u.name));
+		fprintf (file, "RAWOOB_SPWAW-  u-uclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,u.uclass), sizeof(raw->u.uclass), sizeof(raw->u.uclass));
+		fprintf (file, "RAWOOB_SPWAW-  f       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,f), sizeof(raw->f), sizeof(raw->f));
+		fprintf (file, "RAWOOB_SPWAW-  f-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,f.name), sizeof(raw->f.name), sizeof(raw->f.name));
+		fprintf (file, "RAWOOB_SPWAW-  f-nation: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_SPWAW,f.nation), sizeof(raw->f.nation), sizeof(raw->f.nation));
 		fclose (file);
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_%s_%02u_w.csv", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_spwaw_%s_%02u_w.csv", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
 			"rid,name,"
 			"wclass,B16,size,"
-			"warhead,pen.HE,pen.AP,kill,accuracy,rng_max,rng_APCR,pen_APCR,pen_HEAT,sound,"
-			"X1,X2,X3,X4,X5,X6,X7"
+			"warhead,pen.HE,pen.AP,kill,B22,accuracy,rng_max,rng_APCR,pen_APCR,pen_HEAT,sound,"
+			"B30,B31,B32,B33,B34,B35,B36"
 			"\n");
 
 		for (i=1; i<SPWOOB_WCNT; i++) {
@@ -385,28 +247,29 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 				"\n",
 				i, azsname,
 				raw->w.wclass[i],
-				raw->w.__data0[i],
+				raw->w.__data16[i],
 				raw->w.size[i],
 				raw->w.warhead[i],
 				raw->w.pen[i].HE, raw->w.pen[i].AP,
 				raw->w.kill[i],
+				raw->w.__data22[i],
 				raw->w.accuracy[i],
 				raw->w.rng_max[i],
 				raw->w.rng_APCR[i],
 				raw->w.pen_APCR[i],
 				raw->w.pen_HEAT[i],
 				raw->w.sound[i],
-				raw->w.__data2[0*SPWOOB_WCNT+i], raw->w.__data2[1*SPWOOB_WCNT+i],
-				raw->w.__data2[2*SPWOOB_WCNT+i], raw->w.__data2[3*SPWOOB_WCNT+i],
-				raw->w.__data2[4*SPWOOB_WCNT+i], raw->w.__data2[5*SPWOOB_WCNT+i],
-				raw->w.__data2[6*SPWOOB_WCNT+i]
+				raw->w.__data30[i], raw->w.__data31[i],
+				raw->w.__data32[i], raw->w.__data33[i],
+				raw->w.__data34[i], raw->w.__data35[i],
+				raw->w.__data36[i]
 				);
 		}
 		fclose (file);
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_%s_%02u_u.csv", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_spwaw_%s_%02u_u.csv", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
@@ -416,7 +279,7 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 			"wpn_ammo_HE1,wpn_ammo_AP1,wpn_ammo_HE2,wpn_ammo_AP2,wpn_ammo_HE3,wpn_ammo_AP3,wpn_ammo_HE4,wpn_ammo_AP4,"
 			"speed,"
 			"arm.FH,arm.SH,arm.RH,arm.FT,arm.ST,arm.RT,arm.TP,"
-			"B39,B40,B41,B42,B43,B44,B45,"
+			"arm.B07,arm.B08,arm.B09,arm.B10,arm.B11,arm.B12,arm.B13,"
 			"B46,B47,B48,B49,B50,B51,B52,"
 			"slp.FH,slp.SH,slp.RH,slp.FT,slp.ST,slp.RT,"
 			"radio,start_yr,end_yr,cost,nation,"
@@ -427,8 +290,8 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 			"load_cap,survive,load_cost,icon,"
 			"swim,end_mo,smkdev,start_mo,"
 			"B83,B84,B85,B86,"
-			"text,msound,"
-			"X1,X2"
+			"text,sound,"
+			"B89,B90"
 			"\n");
 
 		for (i=1; i<SPWOOB_UCNT; i++) {
@@ -461,35 +324,34 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 				raw->u.wpn_ammo[i].HE3, raw->u.wpn_ammo[i].AP3, raw->u.wpn_ammo[i].HE4, raw->u.wpn_ammo[i].AP4,
 				raw->u.speed[i],
 				raw->u.arm[i].FH,raw->u.arm[i].SH,raw->u.arm[i].RH,raw->u.arm[i].FT,raw->u.arm[i].ST,raw->u.arm[i].RT,raw->u.arm[i].TP,
-				raw->u.arm[i].__data0[0],raw->u.arm[i].__data0[1],raw->u.arm[i].__data0[2],raw->u.arm[i].__data0[3],
-				raw->u.arm[i].__data0[4],raw->u.arm[i].__data0[5],raw->u.arm[i].__data0[6],
-				raw->u.__data1[0*SPWOOB_UCNT+i],raw->u.__data1[1*SPWOOB_UCNT+i],raw->u.__data1[2*SPWOOB_UCNT+i],raw->u.__data1[3*SPWOOB_UCNT+i],
-				raw->u.__data1[4*SPWOOB_UCNT+i],raw->u.__data1[5*SPWOOB_UCNT+i],raw->u.__data1[6*SPWOOB_UCNT+i],
+				raw->u.arm[i].__data07, raw->u.arm[i].__data08, raw->u.arm[i].__data09, raw->u.arm[i].__data10,
+				raw->u.arm[i].__data11, raw->u.arm[i].__data12, raw->u.arm[i].__data13,
+				raw->u.__data46[i], raw->u.__data47[i], raw->u.__data48[i], raw->u.__data49[i],
+				raw->u.__data50[i], raw->u.__data51[i], raw->u.__data52[i],
 				raw->u.slp[i].FH,raw->u.slp[i].SH,raw->u.slp[i].RH,raw->u.slp[i].FT,raw->u.slp[i].ST,raw->u.slp[i].RT,
 				raw->u.radio[i], raw->u.start_yr[i], raw->u.end_yr[i], raw->u.cost[i], raw->u.nation[i],
 				raw->u.lbm[i], raw->u.irvis[i], raw->u.fc[i],
 				raw->u.wpn1_APCRammo[i], raw->u.wpn1_HEATammo[i],
 				raw->u.rof[i], raw->u.stab[i], raw->u.rf[i],
-				raw->u.__data2[i],
+				raw->u.__data73[i],
 				raw->u.load_cap[i], raw->u.survive[i], raw->u.load_cost[i],raw->u.icon[i],
 				raw->u.swim[i], raw->u.end_mo[i], raw->u.smkdev[i], raw->u.start_mo[i], 
-				raw->u.__data3[0*SPWOOB_UCNT+i],raw->u.__data3[1*SPWOOB_UCNT+i],
-				raw->u.__data3[2*SPWOOB_UCNT+i],raw->u.__data3[3*SPWOOB_UCNT+i],
-				raw->u.text[i], raw->u.msound[i],
-				raw->u.__data4[0*SPWOOB_UCNT+i],raw->u.__data4[1*SPWOOB_UCNT+i]
+				raw->u.__data83[i], raw->u.__data84[i], raw->u.__data85[i], raw->u.__data86[i],
+				raw->u.text[i], raw->u.sound[i],
+				raw->u.__data89[i], raw->u.__data90[i]
 				);
 		}
 		fclose (file);
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_%s_%02u_f.csv", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_spwaw_%s_%02u_f.csv", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
 			"rid,name,"
-			"nation,start_mo,special,"
-			"X1,X2,X3,X4,X5,X6,X7,X8,"
+			"nation,start_mo,status,"
+			"B18,B19,B20,B21,B22,B23,B24,B25,"
 			"start_yr,end_yr,purchscrn,type,"
 			"ERID[1],ECNT[1],ERID[2],ECNT[2],ERID[3],ECNT[3],ERID[4],ECNT[4],ERID[5],ECNT[5],"
 			"ERID[6],ECNT[6],ERID[7],ECNT[7],ERID[8],ECNT[8],ERID[9],ECNT[9],ERID[10],ECNT[10]"
@@ -506,11 +368,9 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u"
 				"\n",
 				i, azsname,
-				raw->f.nation[i], raw->f.start_mo[i], raw->f.special[i],
-				raw->f.__data0[0*SPWOOB_FCNT+i], raw->f.__data0[1*SPWOOB_FCNT+i],
-				raw->f.__data0[2*SPWOOB_FCNT+i], raw->f.__data0[3*SPWOOB_FCNT+i],
-				raw->f.__data0[4*SPWOOB_FCNT+i], raw->f.__data0[5*SPWOOB_FCNT+i],
-				raw->f.__data0[6*SPWOOB_FCNT+i], raw->f.__data0[7*SPWOOB_FCNT+i],
+				raw->f.nation[i], raw->f.start_mo[i], raw->f.status[i],
+				raw->f.__data18[i], raw->f.__data19[i], raw->f.__data20[i], raw->f.__data21[i],
+				raw->f.__data22[i], raw->f.__data23[i], raw->f.__data24[i], raw->f.__data25[i],
 				raw->f.start_yr[i], raw->f.end_yr[i], raw->f.purchscrn[i], raw->f.type[i],
 				raw->f.urid[i].dat[0], raw->f.ucnt[i].dat[0],
 				raw->f.urid[i].dat[1], raw->f.ucnt[i].dat[1],

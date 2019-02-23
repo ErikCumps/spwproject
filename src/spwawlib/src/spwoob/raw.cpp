@@ -8,10 +8,11 @@
 
 #include "stdafx.h"
 #include <spwawlib_api.h>
+#include "common/internal.h"
 #include "spwoob/spwoob.h"
 #include "spwoob/raw.h"
 #include "spwoob/raw_spwaw_api.h"
-#include "common/internal.h"
+#include "spwoob/raw_winspww2_api.h"
 
 SPWAW_ERROR
 spwoob_load_raw_files (SPWOOB *oob)
@@ -21,7 +22,7 @@ spwoob_load_raw_files (SPWOOB *oob)
 			return (spwoob_load_raw_spwaw_files (oob));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
-			RWE (SPWERR_FAILED, "winSPWW2 game type not yet supported");
+			return (spwoob_load_raw_winspww2_files (oob));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
@@ -38,7 +39,7 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 			return (spwoob_load_raw_spwaw_data (dst));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
-			RWE (SPWERR_FAILED, "winSPWW2 game type not yet supported");
+			return (spwoob_load_raw_winspww2_data (dst));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
@@ -55,7 +56,7 @@ spwoob_dump_raw_data (SPWAW_GAME_TYPE gametype, void *rdata, BYTE id, char *base
 			spwoob_dump_raw_spwaw_data (rdata, id, base);
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
-			ERROR0 ("winSPWW2 game type not yet supported");
+			spwoob_dump_raw_winspww2_data (rdata, id, base);
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:

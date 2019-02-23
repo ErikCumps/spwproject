@@ -20,8 +20,8 @@ Description:	Weapon type data
 Type:		TABLE
 
 Table height:	250 rows
-Table width:	20 columns
-Table order:	R,C = column#0{c0:r0,r1,...,r249},column#1{c1:r0,r1,...,r249},...,column#19{c19:r0,r1,...,r249}
+Table width:	21 columns
+Table order:	R,C = column#0{c0:r0,r1,...,r249},column#1{c1:r0,r1,...,r249},...,column#20{c20:r0,r1,...,r249}
 
 column	offset	size	type	description
 
@@ -31,20 +31,21 @@ column	offset	size	type	description
  3	0x0011	1	INT1	Size
  4	0x0012	1	INT1	Warhead size
  5	0x0013	2	STRUCT	HE/AP penetration
- 6	0x0015	2	INT2	HE Kill factor
- 7	0x0017	1	INT1	Accuracy
- 8	0x0018	1	INT1	Maximum range
- 9	0x0019	1	INT1	Maximum APCR range
-10	0x001A	1	INT1	APCR penetration
-11	0x001B	1	INT1	HEAT penetration
-12	0x001C	2	INT2	Sound ID
-13	0x001E	1	INT1	X1 field?
-14	0x001F	1	INT1	X2 field?
-15	0x0020	1	INT1	X3 field?
-16	0x0021	1	INT1	X4 field?
-17	0x0022	1	INT1	X5 field?
-18	0x0023	1	INT1	X6 field?
-19	0x0024	1	INT1	X7 field?
+ 6	0x0015	1	INT1	HE Kill factor
+ 7	0x0016	1	???	???
+ 8	0x0017	1	INT1	Accuracy
+ 9	0x0018	1	INT1	Maximum range
+10	0x0019	1	INT1	Maximum APCR range
+11	0x001A	1	INT1	APCR penetration
+12	0x001B	1	INT1	HEAT penetration
+13	0x001C	2	INT2	Sound ID
+14	0x001E	1	???	???
+15	0x001F	1	???	???
+16	0x0020	1	???	???
+17	0x0021	1	???	???
+18	0x0022	1	???	???
+19	0x0023	1	???	???
+20	0x0024	1	???	???
 
 [INT1:Class type]
 	0	UNKNOWN
@@ -68,7 +69,7 @@ column	offset	size	type	description
 	18	Napalm (NAPALM)
 
 [STRUCT:HE/AP penetration]
-	[2]Penetration	(HE/AP)
+	INT1[2]		Penetration	(HE/AP)
 
 
 
@@ -93,14 +94,14 @@ column	offset	size	type	description
  5	0x0013	4	STRUCT	Weapon ID
  6	0x0017	8	STRUCT	Weapon ammo
  7	0x001F	1	INT1	Speed
- 8	0x0020	14	STRUCT	Armor thickness
- 9	0x002E	1	INT1	Rct1 Field?
-10	0x002F	1	INT1	Rct2 Field?
-11	0x0030	1	INT1	Rct3 Field?
-12	0x0031	1	INT1	Rct4 Field?
-13	0x0032	1	INT1	Rct5 Field?
-14	0x0033	1	INT1	Rct6 Field?
-15	0x0034	1	INT1	Rct7 Field?
+ 8	0x0020	14	STRUCT	AP armor thickness
+ 9	0x002E	1	???	???
+10	0x002F	1	???	???
+11	0x0030	1	???	???
+12	0x0031	1	???	???
+13	0x0032	1	???	???
+14	0x0033	1	???	???
+15	0x0034	1	???	???
 16	0x0035	6	STRUCT	Armor slope
 17	0x003B	1	INT1	Radio availability
 18	0x003C	1	INT1	Availability: start year
@@ -126,29 +127,29 @@ column	offset	size	type	description
 39	0x0052	1	INT1	Availability: start month
 40	0x0053	4	???	???
 41	0x0057	2	INT2	Text ID
-44	0x005B	2	INT2	Movement sound
-42	0x0059	1	INT1	X1 field?
-43	0x005A	1	INT1	X2 field?
+44	0x005B	2	INT2	Sound ID
+42	0x0059	1	???	???
+43	0x005A	1	???	???
 
 
 [STRUCT:Weapon ID]
-	[4]ID	(slot#1/slot#2/slot#3/slot#4)
+	INT1[4]		ID	(slot#1/slot#2/slot#3/slot#4)
 
 [STRUCT:Weapon ammo]
-	[2]slot#1	(HE/AP)
-	[2]slot#2	(HE/AP)
-	[2]slot#3	(HE/AP)
-	[2]slot#4	(HE/AP)
+	INT1[2]		slot#1	(HE/AP)
+	INT1[2]		slot#2	(HE/AP)
+	INT1[2]		slot#3	(HE/AP)
+	INT1[2]		slot#4	(HE/AP)
 
-[STRUCT:Armor thickness]
-	[3]Hull		(Front/Side/Rear)
-	[3]Turret	(Front/Side/Rear)
-	[1]Top
-	[7]??
+[STRUCT:AP armor thickness]
+	INT1[3]		Hull	(Front/Side/Rear)
+	INT1[3]		Turret	(Front/Side/Rear)
+	INT1[1]		Top
+	INT1[7]		???
 
 [STRUCT:Armor slope]
-	[3]Hull		(Front/Side/Rear)
-	[3]Turret	(Front/Side/Rear)
+	INT1[3]		Hull	(Front/Side/Rear)
+	INT1[3]		Turret	(Front/Side/Rear)
 
 
 
@@ -168,21 +169,32 @@ column	offset	size	type	description
  0	0x0000	15	ASCIIZ	Name
  1	0x000F	1	INT1	Nation ID
  2	0x0010	1	INT1	Availability: start month
- 3	0x0011	1	INT1	Special field?
- 4	0x0012	1	INT1	X1 field?
- 5	0x0013	1	INT1	X2 field?
- 6	0x0014	1	INT1	x3 field?
- 7	0x0015	1	INT1	X4 field?
- 8	0x0016	1	INT1	X5 field?
- 9	0x0017	1	INT1	X6 field?
-10	0x0018	1	INT1	X7 field?
-11	0x0019	1	INT1	X8 field?
+ 3	0x0011	1	INT1	Formation status
+ 4	0x0012	1	???	???
+ 5	0x0013	1	???	???
+ 6	0x0014	1	???	???
+ 7	0x0015	1	???	???
+ 8	0x0016	1	???	???
+ 9	0x0017	1	???	???
+10	0x0018	1	???	???
+11	0x0019	1	???	???
 12	0x001A	1	INT1	Availability: start year
 13	0x001B	1	INT1	Availability: end year
 14	0x001C	1	INT1	Purchase screen type
 15	0x001D	1	INT1	Formation type
 16	0x001E	20	INT2	List[10] of formation element IDs
 17	0x0028	10	INT1	List[10] of formation element counts
+
+[INT1:Formation status]
+	0	Average
+	1	Recon
+	2	Dedicated artillery
+	10	Elite
+	11	Elite recon
+	12	Elite dedicated artillery
+	20	Second line
+	21	Second line recon
+	22	Second line dedicated artillery
 
 [INT1:Purchase screen type]
 	0	Default
@@ -194,8 +206,9 @@ column	offset	size	type	description
 	10	Force HQ
 
 [INT1:Formation type]
-	0	UNKNOWN
-	1	platoon
-	2	company
-	3	naval
-	4	force HQ
+	0	Section
+	1	Platoon
+	2	Company
+	3	Combat group
+	4	Naval
+	5	Force HQ
