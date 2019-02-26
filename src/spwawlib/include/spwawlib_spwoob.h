@@ -166,8 +166,20 @@ extern SPWAWLIB_API SPWAW_ERROR		SPWAW_SPWOOB		(SPWOOB **oob);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_data		(SPWOOB *oob, BYTE id, SPWOOB_DATA **data);
 
 extern SPWAWLIB_API const char *	SPWAW_oob_nation	(SPWAW_GAME_TYPE gametype, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_nation	(SPWOOB *oob, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_nation	(SPWOOB *oob, BYTE id, int year, int month);
+
 extern SPWAWLIB_API const char *	SPWAW_oob_people	(SPWAW_GAME_TYPE gametype, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_people	(SPWOOB *oob, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_people	(SPWOOB *oob, BYTE id, int year, int month);
+
 extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(SPWAW_GAME_TYPE gametype, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(SPWOOB *oob, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_prefix	(SPWOOB *oob, BYTE id, int year, int month);
+
+extern SPWAWLIB_API const char *	SPWAW_oob_flagid	(SPWAW_GAME_TYPE gametype, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_flagid	(SPWOOB *oob, BYTE id);
+extern SPWAWLIB_API const char *	SPWAW_oob_flagid	(SPWOOB *oob, BYTE id, int year, int month);
 
 extern SPWAWLIB_API const char *	SPWAW_oob_uclass	(SPWOOB_UCLASS e);
 

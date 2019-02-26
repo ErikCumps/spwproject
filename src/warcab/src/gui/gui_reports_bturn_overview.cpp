@@ -109,10 +109,10 @@ GuiRptTrnOvr::refresh (void)
 
 	if (!p) {
 		d.name->clear(); d.name->hide();
-		d.player1->setPixmap (*RES_flag (0));
+		d.player1->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, 0));
 		d.mission->setPixmap (*RES_pixmap (RID_MSSN_UNKNOWN));
 		d.mission->setToolTip (QString());
-		d.player2->setPixmap (*RES_flag (0));
+		d.player2->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, 0));
 
 		d.label->setText ("No overview available yet.");
 	} else {
@@ -124,10 +124,10 @@ GuiRptTrnOvr::refresh (void)
 			d.name->clear(); d.name->hide();
 		}
 
-		d.player1->setPixmap (*RES_flag (p->battle->OOB_p1));
+		d.player1->setPixmap (*RES_flagbyid (p->battle->snap->game.battle.strings.flagid_p1));
 		d.mission->setPixmap (*RES_mission (p->battle->snap->game.battle.data.miss_p1, p->battle->meeting));
 		d.mission->setToolTip (QString (p->battle->miss_p1) + QString(" against ") + QString(p->battle->miss_p2));
-		d.player2->setPixmap (*RES_flag (p->battle->OOB_p2));
+		d.player2->setPixmap (*RES_flagbyid (p->battle->snap->game.battle.strings.flagid_p2));
 
 		str.printf ("<pre>");
 
@@ -135,10 +135,10 @@ GuiRptTrnOvr::refresh (void)
 		str.printf ("<h2>%s, turn %u of %u.</h2>", date, p->turn, p->snap->game.battle.data.turn_max);
 
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
-			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1),
+			p->battle->snap->game.battle.strings.people_p1,
 			p->info.pbir.ucnt, p->info.pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
-			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2),
+			p->battle->snap->game.battle.strings.people_p2,
 			p->info.obir.ucnt, p->info.obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("</pre>");
 
@@ -154,10 +154,10 @@ GuiRptTrnOvr::refresh (void)
 					str.printf ("<h3>Unfortunately, the battle result is not available.</h3>");
 				}
 				str.printf ("\t%s score:\t%u\n",
-					SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1),
+					p->battle->snap->game.battle.strings.people_p1,
 					p->snap->game.campaign.data.P1score);
 				str.printf ("\t%s score:\t%u\n",
-					SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2),
+					p->battle->snap->game.battle.strings.people_p2,
 					p->snap->game.campaign.data.P2score);
 				break;
 			case SPWAW_BTBUSY:
@@ -174,7 +174,7 @@ GuiRptTrnOvr::refresh (void)
 			case SPWAW_BTSCORE:
 			default:
 				str.printf ("<pre>");
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1));
+				str.printf ("<h3>%s force:</h3>", p->battle->snap->game.battle.strings.people_p1);
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->snap->OOBp1.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -187,7 +187,7 @@ GuiRptTrnOvr::refresh (void)
 					p->snap->OOBp1.battle.crews.cnt
 					);
 
-				str.printf ("<h3>%s force:</h3>", SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2));
+				str.printf ("<h3>%s force:</h3>", p->battle->snap->game.battle.strings.people_p2);
 				str.printf ("\toverall readiness is %.0f %%.\n",
 					p->snap->OOBp2.battle.attr.gen.ready * 100.0);
 				str.printf ("\tachieved %u kills with %u losses.\n",
@@ -207,11 +207,11 @@ GuiRptTrnOvr::refresh (void)
 		str.printf ("<pre>");
 		str.printf ("<h3>Victory hex occupation:</h3>");
 		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p1),
+			p->battle->snap->game.battle.strings.people_p1,
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].count,
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].value);
 		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			SPWAW_oob_people (p->battle->dossier->gametype, p->battle->OOB_p2),
+			p->battle->snap->game.battle.strings.people_p2,
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
 			p->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
 		str.printf ("\tNeutral:\t\t%2u occupied (worth %u points)\n",

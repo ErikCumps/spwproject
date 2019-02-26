@@ -32,15 +32,85 @@ SPWAW_oob_nation (SPWAW_GAME_TYPE gametype, BYTE id)
 }
 
 SPWAWLIB_API const char *
+SPWAW_oob_nation (SPWOOB *oob, BYTE id)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2nation (oob->gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_nation (SPWOOB *oob, BYTE id, int year, int month)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2nation (oob->gametype, id & 0xFF, year, month));
+}
+
+SPWAWLIB_API const char *
 SPWAW_oob_people (SPWAW_GAME_TYPE gametype, BYTE id)
 {
 	return (spwoob_id2people (gametype, id & 0xFF));
 }
 
 SPWAWLIB_API const char *
+SPWAW_oob_people (SPWOOB *oob, BYTE id)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2people (oob->gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_people (SPWOOB *oob, BYTE id, int year, int month)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2people (oob->gametype, id & 0xFF, year, month));
+}
+
+SPWAWLIB_API const char *
 SPWAW_oob_prefix (SPWAW_GAME_TYPE gametype, BYTE id)
 {
 	return (spwoob_id2prefix (gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_prefix (SPWOOB *oob, BYTE id)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2prefix (oob->gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_prefix (SPWOOB *oob, BYTE id, int year, int month)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2prefix (oob->gametype, id & 0xFF, year, month));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_flagid (SPWAW_GAME_TYPE gametype, BYTE id)
+{
+	return (spwoob_id2flagid (gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_flagid (SPWOOB *oob, BYTE id)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2flagid (oob->gametype, id & 0xFF));
+}
+
+SPWAWLIB_API const char *
+SPWAW_oob_flagid (SPWOOB *oob, BYTE id, int year, int month)
+{
+	CWVNULL (oob, NULL);
+
+	return (spwoob_id2flagid (oob->gametype, id & 0xFF, year, month));
 }
 
 SPWAWLIB_API const char *

@@ -240,14 +240,14 @@ GuiRptDsrOvr::refresh (bool forced)
 	p = (item != NULL) ? item->data.d : NULL;
 
 	if (!p) {
-		d.flag->setPixmap (*RES_flag (0));
+		d.flag->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, 0));
 		d.overview->setText ("No overview available yet.");
 		d.losses.plr->clear();
 		d.losses.opp->clear();
 		d.changes->clear();
 	} else {
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
-			d.flag->setPixmap (*RES_flag (p->OOB));
+			d.flag->setPixmap (*RES_flag (p->gametype, p->OOB));
 			d.flag->setHidden(false);
 		} else {
 			d.flag->setHidden(true);

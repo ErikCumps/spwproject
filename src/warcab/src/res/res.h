@@ -20,7 +20,8 @@ extern QPixmap *	RES_pixmap	(unsigned long rid, unsigned long sid);
 extern QColor *		RES_color	(unsigned long rid);
 extern QString		RES_htmlcolor	(unsigned long rid);
 
-extern QPixmap *	RES_flag	(BYTE oob);
+extern QPixmap *	RES_flag	(SPWAW_GAME_TYPE gametype, BYTE oob);
+extern QPixmap *	RES_flagbyid	(const char *flagid);
 extern QPixmap *	RES_mission	(SPWAW_MISSION mission, bool meeting);
 
 extern QColor *		RES_GUI_color	(SPWAW_RANK id);
