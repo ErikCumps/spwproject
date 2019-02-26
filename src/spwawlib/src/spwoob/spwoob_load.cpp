@@ -88,9 +88,10 @@ SPWOOB_load (SPWOOB *oob, int fd)
 	for (idx=0; idx<oob->count; idx++) {
                 p = safe_malloc (SPWOOB_DATA); COOMGOTO (p, "SPWOOB_DATA", handle_error);
 
-		p->id	 = ohdr[idx].id;
-		p->rsize = ohdr[idx].size;
-		p->rdata = safe_smalloc (char, p->rsize); COOMGOTO (p->rdata, "raw SPWOOB data", handle_error);
+		p->id	  = ohdr[idx].id;
+		p->spwoob = oob;
+		p->rsize  = ohdr[idx].size;
+		p->rdata  = safe_smalloc (char, p->rsize); COOMGOTO (p->rdata, "raw SPWOOB data", handle_error);
 
 		bseekset (fd, p0 + ohdr[idx].data);
 

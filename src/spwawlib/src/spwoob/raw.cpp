@@ -79,10 +79,11 @@ spwoob_load_raw_file_core (SPWOOB *oob, BYTE id, const char *file,  ULONG rsize,
 	if (oob->data[id]) return (SPWERR_OK);
 
 	dst = safe_malloc (SPWOOB_DATA); COOMGOTO (dst, "SPWOOB_DATA", handle_error);
-	dst->id = id;
 
-	dst->rdata = safe_smalloc (void, rsize); COOMGOTO (dst, "storage for raw OOB data", handle_error);
-	dst->rsize = rsize;
+	dst->id     = id;
+	dst->spwoob = oob;
+	dst->rdata  = safe_smalloc (void, rsize); COOMGOTO (dst, "storage for raw OOB data", handle_error);
+	dst->rsize  = rsize;
 
 	memset (path, 0, sizeof (path));
 	snprintf (path, sizeof (path) - 1, "%s\\%s", oob->srcdir, file);
