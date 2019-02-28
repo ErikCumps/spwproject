@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - common header file.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -23,6 +23,7 @@
 #include <assert.h>
 #include <math.h>
 #include <zlib.h>
+#include <errno.h>
 
 #define	vsnprintf	_vsnprintf
 #define	snprintf	_snprintf

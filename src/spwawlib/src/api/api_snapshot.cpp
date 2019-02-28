@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API implementation.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -137,25 +137,45 @@ handle_error:
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_snap_save	(SPWAW_SNAPSHOT **snap, const char *file, bool compress)
 {
-	int		fd;
 	SPWAW_ERROR	rc = SPWERR_OK;
+	char		tf[MAX_PATH+1];
+	char		bf[MAX_PATH+1];
+	int		fd;
 
 	CSPWINIT;
 	CNULLARG (snap); CNULLARG (*snap); CNULLARG (file);
 
-	/* Open file and save snapshot data */
-	fd = open (file, O_RDWR|O_BINARY|O_CREAT|O_TRUNC, 0666);
-	if (fd < 0) RWE (SPWERR_FWFAILED, "failed to open snapshot file for writing");
+	memset (tf, 0, sizeof (tf));
+	snprintf (tf, sizeof (tf) - 1, "%s.save.", file);
+
+	memset (bf, 0, sizeof (bf));
+	snprintf (bf, sizeof (bf) - 1, "%s.backup", file);
+
+	/* Open .save. file and save snapshot data */
+	fd = open (tf, O_RDWR|O_BINARY|O_CREAT|O_TRUNC, 0666);
+	if (fd < 0) FAILGOTO (SPWERR_FOFAILED, "snapshot .save. file create", handle_error);
 
 	rc = snapsave (*snap, fd, true, true, compress);
-	ROE ("snapsave()");
+	ERRORGOTO ("snapsave()", handle_error);
 
 	rc = fcheck_make (fd);
-	ROE ("fcheck_make()");
+	ERRORGOTO ("fcheck_make()", handle_error);
 
 	close (fd);
 
+	/* Safely replace original snapshot file with .save. file */
+	unlink (bf);
+	if ((rename (file, bf) != 0) && (errno != ENOENT)) {
+		FAILGOTO (SPWERR_FWFAILED, "safe snapshot backup", handle_error);
+	}
+	if (rename (tf, file) != 0) FAILGOTO (SPWERR_FWFAILED, "safe snapshot replace", handle_error);
+	unlink (bf);
+
 	return (SPWERR_OK);
+
+handle_error:
+	if (fd >= 0) close (fd);
+	return (rc);
 }
 
 /*! Destroy snapshot */
