@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier API implementation.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -120,14 +120,23 @@ handle_error:
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_dossier_save (SPWAW_DOSSIER **dossier, const char *file, bool compress)
 {
-	int		fd;
 	SPWAW_ERROR	rc = SPWERR_OK;
+	char		tf[MAX_PATH+1];
+	char		bf[MAX_PATH+1];
+	int		fd;
 
 	CSPWINIT;
 	CNULLARG (dossier); CNULLARG (*dossier); CNULLARG (file);
 
-	fd = open (file, O_RDWR|O_BINARY|O_CREAT|O_TRUNC, 0666);
-	if (fd < 0) FAILGOTO (SPWERR_FOFAILED, "dossier file create", handle_error);
+	memset (tf, 0, sizeof (tf));
+	snprintf (tf, sizeof (tf) - 1, "%s.save.", file);
+
+	memset (bf, 0, sizeof (bf));
+	snprintf (bf, sizeof (bf) - 1, "%s.backup", file);
+
+	/* Open .save. file and save dossier data */
+	fd = open (tf, O_RDWR|O_BINARY|O_CREAT|O_TRUNC, 0666);
+	if (fd < 0) FAILGOTO (SPWERR_FOFAILED, "dossier .save. file create", handle_error);
 
 	rc = dossier_save (*dossier, fd, compress);
 	ERRORGOTO ("dossier_save()", handle_error);
@@ -136,6 +145,14 @@ SPWAW_dossier_save (SPWAW_DOSSIER **dossier, const char *file, bool compress)
 	ERRORGOTO ("fcheck_make()", handle_error);
 
 	close (fd);
+
+	/* Safely replace original dossier file with .save. file */
+	unlink (bf);
+	if ((rename (file, bf) != 0) && (errno != ENOENT)) {
+		FAILGOTO (SPWERR_FWFAILED, "safe dossier backup", handle_error);
+	}
+	if (rename (tf, file) != 0) FAILGOTO (SPWERR_FWFAILED, "safe dossier replace", handle_error);
+	unlink (bf);
 
 	return (SPWERR_OK);
 
