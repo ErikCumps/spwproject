@@ -192,13 +192,16 @@ SPWOOB_LIST_compact (SPWAW_SPWOOB_LIST *list)
 	}
 
 	// Early exit if all nodes are empty
-	if (i >= list->cnt) return (SPWERR_OK);
+	if (i >= list->cnt) {
+		list->cnt = 0;
+		return (SPWERR_OK);
+	}
 
 	// Remove leading empty nodes first, if any
 	if (i > 0) {
 		for (j=i; i<list->cnt; i++) {
-			memcpy (list->list[i-j], list->list[i], sizeof(list->list[i]));
-			memset (list->list[i], 0, sizeof(list->list[i]));
+			memcpy (list->list[i-j], list->list[i], sizeof(SPWAW_SPWOOB_LIST_NODE));
+			memset (list->list[i], 0, sizeof(SPWAW_SPWOOB_LIST_NODE));
 		}
 	}
 
@@ -206,12 +209,16 @@ SPWOOB_LIST_compact (SPWAW_SPWOOB_LIST *list)
 	for (i=j=0; i<list->cnt; i++) {
 		if (list->list[i]->refcnt == 0) continue;
 		if (i != j) {
-			memcpy (list->list[j], list->list[i], sizeof(list->list[i]));
-			memset (list->list[i], 0, sizeof(list->list[i]));
+			memcpy (list->list[j], list->list[i], sizeof(SPWAW_SPWOOB_LIST_NODE));
+			memset (list->list[i], 0, sizeof(SPWAW_SPWOOB_LIST_NODE));
 		}
 		j++;
 	}
+
+	// Set new list count
 	list->cnt = j;
+
+	SPWOOB_LIST_debug_log (list, __FUNCTION__);
 
 	return (SPWERR_OK);
 }
@@ -266,15 +273,19 @@ SPWOOB_LIST_takeref (SPWAW_SPWOOB_LIST *list, unsigned long idx, SPWOOB **spwoob
 }
 
 SPWAW_ERROR
-SPWOOB_LIST_debug_log (SPWAW_SPWOOB_LIST *list)
+SPWOOB_LIST_debug_log (SPWAW_SPWOOB_LIST *list, char *msg)
 {
 	unsigned int	i;
 
 	CNULLARG (list);
 
-	log ("SPWAW_SPWOOB_LIST: cnt=%lu, len=%lu\n", list->cnt, list->len);
+	if (msg) {
+		log ("SPWAW_SPWOOB_LIST: [%s] cnt=%lu, len=%lu\n", msg, list->cnt, list->len);
+	} else {
+		log ("SPWAW_SPWOOB_LIST: cnt=%lu, len=%lu\n", list->cnt, list->len);
+	}
 	for (i=0; i<list->cnt; i++) {
-		log ("#%01.1lu: 0x%8.8x (refcnt %lu)\n", i, list->list[i]->data, list->list[i]->refcnt);
+		log ("  #%01.1lu: 0x%8.8x (refcnt %lu)\n", i, list->list[i]->data, list->list[i]->refcnt);
 	}
 	return (SPWERR_OK);
 }
