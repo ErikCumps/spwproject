@@ -188,7 +188,7 @@ report_GMD (MDLD_TREE_ITEM *p)
 			DBG_log ("[MDLD_TREE_ITEM] DOSSIER 0x%8.8x:\n", p->data.d);
 			if (p->data.d) {
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] name    = %s\n", p->data.d->name);
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] comment = %s\n", p->data.d->comment);
+				//DBG_log ("[MDLD_TREE_ITEM_DOSSIER] comment = %s\n", p->data.d->comment);
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] oobdir  = %s\n", p->data.d->oobdir);
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] OOB     = %d\n", p->data.d->OOB);
 				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] fcnt    = %d\n", p->data.d->fcnt);

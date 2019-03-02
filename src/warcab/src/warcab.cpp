@@ -543,10 +543,7 @@ WARCABState::del (MDLD_TREE_ITEM *item)
 	if (!item) RETURN_OK;
 
 	next = next_safe_item (item);
-	if (next == d.tree)
-		emit will_delete (NULL);
-	else
-		emit will_delete (item);
+	emit will_delete (item);
 
 	switch (item->type) {
 		case MDLD_TREE_STDALONE:
