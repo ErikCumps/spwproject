@@ -131,6 +131,7 @@ SPWOOB_LIST_match (SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx)
 	// Pass #1 - simple match
 	found = false;
 	for (i=0; i<list->cnt; i++) {
+		if (list->list[i]->refcnt == 0) continue;
 		if (list->list[i]->data == spwoob) {
 			found = true;
 			break;
@@ -144,6 +145,7 @@ SPWOOB_LIST_match (SPWAW_SPWOOB_LIST *list, SPWOOB *spwoob, unsigned long *idx)
 	// Pass #2 - deep match
 	found = false;
 	for (i=0; i<list->cnt; i++) {
+		if (list->list[i]->refcnt == 0) continue;
 		if (SPWOOB_compare (spwoob, list->list[i]->data) == SPWERR_OK) {
 			found = true;
 			break;
