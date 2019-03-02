@@ -342,7 +342,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);
 	ERRORGOTO ("dossier_load_battles()", handle_error);
 
-	SPWOOB_LIST_debug_log (dst->oobdata);
+	SPWOOB_LIST_debug_log (dst->oobdata, __FUNCTION__);
 
 	return (SPWERR_OK);
 
