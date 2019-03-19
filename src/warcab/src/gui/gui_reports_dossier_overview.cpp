@@ -116,12 +116,12 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 		bool	skip, report;
 
 		idx = nidx = i; b = d->bfirst; skip = false; report = false;
-		up = fup = b->info_sob->pbir.uir[idx].snap;
+		up = fup = b->info_sob->pbir_core.uir[idx].snap;
 		while (b->next) {
 			nidx = b->ra[idx].dst;
 			if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) { skip = true; break; }
 
-			lup = b->next->info_sob->pbir.uir[nidx].snap;
+			lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 			if (up->data.rank != lup->data.rank) report = true;
 
 			idx = nidx; up = lup; b = b->next;
@@ -133,8 +133,8 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 			idx = nidx = i; b = d->bfirst;
 			while (b->next) {
 				nidx = b->ra[idx].dst;
-				fup = b->info_sob->pbir.uir[idx].snap;
-				lup = b->next->info_sob->pbir.uir[nidx].snap;
+				fup = b->info_sob->pbir_core.uir[idx].snap;
+				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 				if (fup->data.rank != lup->data.rank) {
 					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
 						b->date.month, b->date.year - 1900, lup->strings.rank);
@@ -146,8 +146,8 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 			idx = nidx = lup->data.uidx; b = d->blast;
 			while (b->prev) {
 				nidx = b->ra[idx].src;
-				fup = b->info_sob->pbir.uir[idx].snap;
-				lup = b->prev->info_sob->pbir.uir[nidx].snap;
+				fup = b->info_sob->pbir_core.uir[idx].snap;
+				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
 				if (fup->data.rank != lup->data.rank) {
 					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
 						b->date.month, b->date.year - 1900, lup->strings.rank);
@@ -176,12 +176,12 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 		bool	skip, report;
 
 		idx = nidx = i; b = d->bfirst; skip = false; report = false;
-		up = fup = b->info_sob->pbir.uir[idx].snap;
+		up = fup = b->info_sob->pbir_core.uir[idx].snap;
 		while (b->next) {
 			nidx = b->ra[idx].dst;
 			if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) { skip = true; break; }
 
-			lup = b->next->info_sob->pbir.uir[nidx].snap;
+			lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 			if (strcmp (up->data.type, lup->data.type) != 0) report = true;
 
 			idx = nidx; up = lup; b = b->next;
@@ -193,8 +193,8 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 			idx = nidx = i; b = d->bfirst;
 			while (b->next) {
 				nidx = b->ra[idx].dst;
-				fup = b->info_sob->pbir.uir[idx].snap;
-				lup = b->next->info_sob->pbir.uir[nidx].snap;
+				fup = b->info_sob->pbir_core.uir[idx].snap;
+				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 				if (strcmp (fup->data.type, lup->data.type) != 0) {
 					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
 						b->date.month, b->date.year - 1900, lup->data.type);
@@ -206,8 +206,8 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 			idx = nidx = lup->data.uidx; b = d->blast;
 			while (b->prev) {
 				nidx = b->ra[idx].src;
-				fup = b->info_sob->pbir.uir[idx].snap;
-				lup = b->prev->info_sob->pbir.uir[nidx].snap;
+				fup = b->info_sob->pbir_core.uir[idx].snap;
+				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
 				if (strcmp (fup->data.type, lup->data.type) != 0) {
 					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
 						b->date.month, b->date.year - 1900, lup->data.type);

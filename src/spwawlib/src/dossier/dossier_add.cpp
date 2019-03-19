@@ -198,10 +198,6 @@ battle_add_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab, SPWAW_B
 
 	bt->date  = bt->snap->game.battle.data.date;
 	bt->turn  = bt->snap->game.battle.data.turn;
-	bt->info.pbir.fcnt = bt->snap->OOBp1.battle.formations.cnt;
-	bt->info.pbir.ucnt = bt->snap->OOBp1.battle.units.cnt;
-	bt->info.obir.fcnt = bt->snap->OOBp2.battle.formations.cnt;
-	bt->info.obir.ucnt = bt->snap->OOBp2.battle.units.cnt;
 
 	rc = dossier_prep_bturn_info (bt);
 	ROE ("dossier_prep_bturn_info()");
@@ -295,12 +291,8 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	rc = battle_add_bturn (b, snap, stab, &t);
 	ROE ("battle_add_bturn()");
 
-	// Update dossier data if this was the first battle added to the dossier
-	if (empty) {
-		ptr->OOB = snap->OOBp1.OOB;
-		ptr->fcnt = snap->OOBp1.core.formations.cnt;
-		ptr->ucnt = snap->OOBp1.core.units.cnt;
-	}
+	// Set dossier data if this was the first battle added
+	if (empty) dossier_set_dossier_info (ptr);
 
 	rc = dossier_update_battle_info (b);
 	ROE ("dossier_update_battle_info()");
@@ -311,8 +303,8 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	rc = dossier_update_battle_rainfo (b, b->next);
 	ROE ("dossier_update_battle_rainfo()");
 
-	rc = dossier_update_dossier_info (ptr);
-	ROE ("dossier_update_dossier_info()");
+	rc = dossier_update_dossier_stats (ptr);
+	ROE ("dossier_update_dossier_stats()");
 
 	*bturn = t;
 
@@ -370,8 +362,8 @@ dossier_add_to_battle (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bt
 	rc = dossier_update_battle_info (ptr);
 	ROE ("dossier_update_battle_info()");
 
-	rc = dossier_update_dossier_info (ptr->dossier);
-	ROE ("dossier_update_dossier_info()");
+	rc = dossier_update_dossier_stats (ptr->dossier);
+	ROE ("dossier_update_dossier_stats()");
 
 	*bturn = t;
 

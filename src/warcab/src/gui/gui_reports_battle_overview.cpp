@@ -181,8 +181,8 @@ GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, bool promo, char *buf, unsigned 
 	for (int i=0; i<b->dossier->ucnt; i++) {
 		if (b->ra[i].rpl || (b->ra[i].dst == SPWAW_BADIDX)) continue;
 
-		up = b->info_sob->pbir.uir[i].snap;
-		nup = nb->info_sob->pbir.uir[b->ra[i].dst].snap;
+		up = b->info_sob->pbir_core.uir[i].snap;
+		nup = nb->info_sob->pbir_core.uir[b->ra[i].dst].snap;
 
 		if (up->data.rank == nup->data.rank) continue;
 
@@ -312,11 +312,11 @@ GuiRptBtlOvr::refresh (void)
 
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
 			p->snap->game.battle.strings.people_p1,
-			p->info_sob->pbir.ucnt, p->info_sob->pbir.fcnt,
+			p->info_sob->pbir_battle.ucnt, p->info_sob->pbir_battle.fcnt,
 			p->snap->OOBp1.battle.stats.hcnt);
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
 			p->snap->game.battle.strings.people_p2,
-			p->info_sob->obir.ucnt, p->info_sob->obir.fcnt,
+			p->info_sob->obir_battle.ucnt, p->info_sob->obir_battle.fcnt,
 			p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("\n");
 

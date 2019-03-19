@@ -660,9 +660,17 @@ verify_candidate_units (FULIST &ful)
 				goto postpone_unit;
 			}
 		}
-#endif	/* !EXP_VALIDITY */
-
+#else	/* EXP_VALIDITY */
+#if	EXP_AUTOSPAU
+		// Units that don't seem to belong to the formation (according to the OOB info) are assumed to be SPAU
+		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
+			uel->d.type = SPWAW_UNIT_TYPE_SPAU;
+			UFDLOG0 ("ACCEPTED - AUTO SPAU\n");
+			goto accept_unit;
+		}
+#endif	/* EXP_AUTOSPAU */
 		UFDLOG0 ("ACCEPTED\n");
+#endif	/* EXP_VALIDITY */
 
 accept_unit:
 		// Mark the unit's loader unit as verified
@@ -911,7 +919,7 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *st
 	log ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
 
 	ptr->RID	= p->d.RID;
-	ptr->type	= p->d.type;
+	ptr->dutype	= p->d.type;
 	ptr->FRID       = p->d.FRID;
 	ptr->FMID       = p->d.FMID;
 	ptr->FSID       = p->d.FSID;

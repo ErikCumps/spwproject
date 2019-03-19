@@ -220,12 +220,12 @@ ModelOob::parent (const QModelIndex &index) const
 }
 
 static SPWAW_DOSSIER_UIR *
-find_uir (SPWAW_DOSSIER_BIR *bir, int birs_idx, int birs_cnt, int fidx, int uidx)
+find_uir (SPWAW_DOSSIER_BIR *bir, int birs_cnt, int fidx, int uidx)
 {
 	SPWAW_DOSSIER_UIR	*u = NULL;
 	SPWAW_SNAP_OOB_UEL	*q;
 
-	if (!bir || (fidx < birs_idx) || (fidx >= (birs_idx + birs_cnt)) || !bir->fir[fidx].snap) return (NULL);
+	if (!bir || (fidx < 0) || (fidx >= birs_cnt) || !bir->fir[fidx].snap) return (NULL);
 
 	q = bir->fir[fidx].snap->data.ulist[uidx];
 	for (int i=0; i<bir->ucnt; i++) {
@@ -277,13 +277,13 @@ ModelOob::setupModelData ()
 	for (i=0; i<d.tree_cnt; i++) {
 		f = &(d.tree[i]);
 
-		f->data.f = &(d.birs->fir[i+d.birs_idx]);
+		f->data.f = &(d.birs->fir[i]);
 		f->ccnt   = f->data.f->snap->data.ucnt;
 
 		for (j=0; j<d.col_cnt; j++) {
 			dlt = &(d.dlts[i*d.col_cnt+j]);
-			cs = d.birs->fir[i+d.birs_idx].snap;
-			bs = (i < d.base_cnt) ? d.base->fir[i+d.birs_idx].snap : NULL;
+			cs = d.birs->fir[i].snap;
+			bs = (i < d.base_cnt) ? d.base->fir[i].snap : NULL;
 			SPWDLT_prep (dlt, MDLO_fcoldef(j)->dtype, cs, bs, MDLO_fcoldef(j)->doffs);
 		}
 	}
@@ -296,9 +296,9 @@ ModelOob::setupModelData ()
 		SL_SAFE_CALLOC (f->cdlt, f->ccnt * d.col_cnt, sizeof (SPWDLT));
 		for (j=0; j<f->ccnt; j++) {
 			u = &(f->clst[j]);
-			uir = find_uir (d.birs, d.birs_idx, d.birs_cnt, i+d.birs_idx, j);
+			uir = find_uir (d.birs, d.birs_cnt, i, j);
 			if (!uir) {
-				uir = find_uir (d.birs, d.birs_idx, d.birs_cnt, i+d.birs_idx, j);
+				uir = find_uir (d.birs, d.birs_cnt, i, j);
 			}
 
 			u->type   = MDLO_DATA_UNIT;
@@ -311,7 +311,7 @@ ModelOob::setupModelData ()
 
 			for (k=0; k<d.col_cnt; k++) {
 				dlt  = &(f->cdlt[j*d.col_cnt+k]);
-				buir = find_uir (d.base, d.base_idx, d.base_cnt, i+d.birs_idx, j);
+				buir = find_uir (d.base, d.base_cnt, i, j);
 				SPWDLT_prep (dlt, MDLO_ucoldef(k)->dtype, uir->snap, buir ? buir->snap : NULL, MDLO_ucoldef(k)->doffs);
 			}
 		}
@@ -414,33 +414,27 @@ ModelOob::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool 
 
 	if (!current || !start) {
 		d.birs = d.base = NULL;
-		d.birs_idx = d.base_idx = 0;
 		d.birs_cnt = d.base_cnt = 0;
 	} else {
 		if (current == start) {
-			nbirs = isplayer ? &(current->info_eob->pbir) : &(current->info_eob->obir);
+			nbirs = isplayer
+				? (iscore ? &(current->info_eob->pbir_core) : &(current->info_eob->pbir_support))
+				: &(current->info_eob->obir_battle);
 		} else {
-			nbirs = isplayer ? &(current->info_sob->pbir) : &(current->info_sob->obir);
+			nbirs = isplayer
+				? (iscore ? &(current->info_sob->pbir_core) : &(current->info_sob->pbir_support))
+				: &(current->info_sob->obir_battle);
 		}
-		nbase = isplayer ? &(start->info_sob->pbir) : &(start->info_sob->obir);
+		nbase = isplayer
+			? (iscore ? &(start->info_sob->pbir_core) : &(start->info_sob->pbir_support))
+			: &(start->info_sob->obir_battle);
 
 		/* Early bailout if attempting to reload same data */
 		if ((d.birs == nbirs) && (d.base == nbase)) return;
 		d.birs = nbirs; d.base = nbase;
 
-		d.birs_idx = d.base_idx = 0;
-		if (isplayer) {
-			if (iscore) {
-				d.birs_cnt = d.base_cnt = current->dossier->fcnt;
-			} else {
-				d.birs_idx = d.base_idx = current->dossier->fcnt;
-				d.birs_cnt = d.birs->fcnt - current->dossier->fcnt;
-				d.base_cnt = d.base->fcnt - current->dossier->fcnt;
-			}
-		} else {
-			d.birs_cnt = d.birs->fcnt;
-			d.base_cnt = d.base->fcnt;
-		}
+		d.birs_cnt = d.birs->fcnt;
+		d.base_cnt = d.base->fcnt;
 	}
 
 	d.pflag = isplayer; d.scol = d.sord = -1;
@@ -455,29 +449,21 @@ ModelOob::load (SPWAW_BATTLE *battle, int current, int start, bool isplayer, boo
 
 	if (!battle || (current < 0) || (start < 0) || (current < start) || (current >= battle->tcnt) || (start >= battle->tcnt)) {
 		d.birs = d.base = NULL;
-		d.birs_idx = d.base_idx = 0;
 		d.birs_cnt = d.base_cnt = 0;
 	} else {
-		nbirs = isplayer ? &(battle->tlist[current]->info.pbir) : &(battle->tlist[current]->info.obir);
-		nbase = isplayer ? &(battle->tlist[start]->info.pbir) : &(battle->tlist[start]->info.obir);
+		nbirs = isplayer
+			? (iscore ? &(battle->tlist[current]->info.pbir_core) : &(battle->tlist[current]->info.pbir_support))
+			: &(battle->tlist[current]->info.obir_battle);
+		nbase = isplayer
+			? (iscore ? &(battle->tlist[start]->info.pbir_core) : &(battle->tlist[start]->info.pbir_support))
+			: &(battle->tlist[start]->info.obir_battle);
 
 		/* Early bailout if attempting to reload same data */
 		if ((d.birs == nbirs) && (d.base == nbase)) return;
 		d.birs = nbirs; d.base = nbase;
 
-		d.birs_idx = d.base_idx = 0;
-		if (isplayer) {
-			if (iscore) {
-				d.birs_cnt = d.base_cnt = battle->dossier->fcnt;
-			} else {
-				d.birs_idx = d.base_idx = battle->dossier->fcnt;
-				d.birs_cnt = d.birs->fcnt - battle->dossier->fcnt;
-				d.base_cnt = d.base->fcnt - battle->dossier->fcnt;
-			}
-		} else {
-			d.birs_cnt = d.birs->fcnt;
-			d.base_cnt = d.base->fcnt;
-		}
+		d.birs_cnt = d.birs->fcnt;
+		d.base_cnt = d.base->fcnt;
 	}
 
 	d.pflag = isplayer; d.scol = d.sord = -1;
@@ -492,29 +478,21 @@ ModelOob::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool is
 
 	if (!current || !start) {
 		d.birs = d.base = NULL;
-		d.birs_idx = d.base_idx = 0;
 		d.birs_cnt = d.base_cnt = 0;
 	} else {
-		nbirs = isplayer ? &(current->info.pbir) : &(current->info.obir);
-		nbase = isplayer ? &(start->info.pbir) : &(start->info.obir);
+		nbirs = isplayer
+			? (iscore ? &(current->info.pbir_core) : &(current->info.pbir_support))
+			: &(current->info.obir_battle);
+		nbase = isplayer
+			? (iscore ? &(start->info.pbir_core) : &(start->info.pbir_support))
+			: &(start->info.obir_battle);
 
 		/* Early bailout if attempting to reload same data */
 		if ((d.birs == nbirs) && (d.base == nbase)) return;
 		d.birs = nbirs; d.base = nbase;
 
-		d.birs_idx = d.base_idx = 0;
-		if (isplayer) {
-			if (iscore) {
-				d.birs_cnt = d.base_cnt = current->battle->dossier->fcnt;
-			} else {
-				d.birs_idx = d.base_idx = current->battle->dossier->fcnt;
-				d.birs_cnt = d.birs->fcnt - current->battle->dossier->fcnt;
-				d.base_cnt = d.base->fcnt - current->battle->dossier->fcnt;
-			}
-		} else {
-			d.birs_cnt = d.birs->fcnt;
-			d.base_cnt = d.base->fcnt;
-		}
+		d.birs_cnt = d.birs->fcnt;
+		d.base_cnt = d.base->fcnt;
 	}
 
 	d.pflag = isplayer; d.scol = d.sord = -1;

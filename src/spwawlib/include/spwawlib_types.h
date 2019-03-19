@@ -286,6 +286,10 @@ typedef enum e_SPWAW_UNIT_TYPE {
 
 extern SPWAWLIB_API const char *SPWAW_unittype2str	(SPWAW_UNIT_TYPE type);
 
+/* SPWAW formation type */
+#define	SPWAW_FORMATION_TYPE_CORE	0x01	/* Formation contains core units	*/
+#define	SPWAW_FORMATION_TYPE_SUPPORT	0x02	/* Formation contains support units	*/
+
 #endif	/* SPWAW_LIB_TYPES_H */
 
 /** @} */

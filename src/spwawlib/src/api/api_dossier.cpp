@@ -379,26 +379,26 @@ SPWAW_dossier_add_battle_snap (SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW
 			}
 		}
 		if (!HASERROR) {
-			if (battle->tfirst->info.pbir.fcnt != snap->OOBp1.battle.formations.cnt) {
-				ERROR2 ("battle player fcnt (%d) != snapshot player fcnt (%d)", battle->tfirst->info.pbir.fcnt, snap->OOBp1.battle.formations.cnt);
+			if (battle->tfirst->info.pbir_battle.fcnt != snap->OOBp1.battle.formations.cnt) {
+				ERROR2 ("battle player fcnt (%d) != snapshot player fcnt (%d)", battle->tfirst->info.pbir_battle.fcnt, snap->OOBp1.battle.formations.cnt);
 				rc = SPWERR_NOMATCH_UFCNT;
 			}
 		}
 		if (!HASERROR) {
-			if (battle->tfirst->info.pbir.ucnt != snap->OOBp1.battle.units.cnt) {
-				ERROR2 ("battle player ucnt (%d) != snapshot player ucnt (%d)", battle->tfirst->info.pbir.ucnt, snap->OOBp1.battle.units.cnt);
+			if (battle->tfirst->info.pbir_battle.ucnt != snap->OOBp1.battle.units.cnt) {
+				ERROR2 ("battle player ucnt (%d) != snapshot player ucnt (%d)", battle->tfirst->info.pbir_battle.ucnt, snap->OOBp1.battle.units.cnt);
 				rc = SPWERR_NOMATCH_UFCNT;
 			}
 		}
 		if (!HASERROR) {
-			if (battle->tfirst->info.obir.fcnt != snap->OOBp2.battle.formations.cnt) {
-				ERROR2 ("battle opponent fcnt (%d) != snapshot opponent fcnt (%d)", battle->tfirst->info.obir.fcnt, snap->OOBp2.battle.formations.cnt);
+			if (battle->tfirst->info.obir_battle.fcnt != snap->OOBp2.battle.formations.cnt) {
+				ERROR2 ("battle opponent fcnt (%d) != snapshot opponent fcnt (%d)", battle->tfirst->info.obir_battle.fcnt, snap->OOBp2.battle.formations.cnt);
 				rc = SPWERR_NOMATCH_UFCNT;
 			}
 		}
 		if (!HASERROR) {
-			if (battle->tfirst->info.obir.ucnt != snap->OOBp2.battle.units.cnt) {
-				ERROR2 ("battle opponent ucnt (%d) != snapshot opponent ucnt (%d)", battle->tfirst->info.obir.ucnt, snap->OOBp2.battle.units.cnt);
+			if (battle->tfirst->info.obir_battle.ucnt != snap->OOBp2.battle.units.cnt) {
+				ERROR2 ("battle opponent ucnt (%d) != snapshot opponent ucnt (%d)", battle->tfirst->info.obir_battle.ucnt, snap->OOBp2.battle.units.cnt);
 				rc = SPWERR_NOMATCH_UFCNT;
 			}
 		}

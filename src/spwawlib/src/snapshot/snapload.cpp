@@ -169,7 +169,7 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 {
 	memset (dst, 0, sizeof (SPWAW_SNAP_OOB_UELRAW));
 
-	dst->type = raw2unittype (src->type);
+	dst->dutype = raw2unittype (src->dutype);
 	getOU (RID); getOU (FRID); getOU (FMID); getOU (FSID);
 	dst->name = STRTAB_getstr (stab, src->name);
 	getOU (classID); getOU (OOB); getOU (OOBrid);

@@ -62,10 +62,9 @@ ModelUnitlist::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelUnitlist::load (SPWAW_DOSSIER_BIR *bir, int idx, int cnt)
+ModelUnitlist::load (SPWAW_DOSSIER_BIR *bir, int cnt)
 {
 	d.data_bir = bir;
-	d.data_idx = idx;
 	d.data_cnt = cnt;
 
 	reset();
@@ -75,7 +74,7 @@ void
 ModelUnitlist::clear (void)
 {
 	d.data_bir = NULL;
-	d.data_idx = d.data_cnt = 0;
+	d.data_cnt = 0;
 
 	reset();
 }

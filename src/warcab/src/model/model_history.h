@@ -25,7 +25,6 @@ extern const char *MDLH_HILITE_lookup (MDLH_HILITE e);
 typedef struct s_MDLH_INFO {
 	int			uidx;
 	SPWAW_DOSSIER_BIR	*bir;
-	int			bir_idx;
 	int			bir_cnt;
 } MDLH_INFO;
 
@@ -69,7 +68,6 @@ private:
 		USHORT			uidx;
 		int			row_cnt;
 		SPWAW_DOSSIER_BIR	*bbir;
-		int			bbir_idx;
 		int			bbir_cnt;
 		SPWAW_BATTLE		*list_ref;
 		MDLH_DATA		*list;

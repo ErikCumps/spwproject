@@ -22,7 +22,7 @@ static const char *MDLR_FILTER_names[MDLR_FILTER_LIMIT+1] = {
 	"status",
 	"entrenchment",
 	"readiness",
-	"suppresion",
+	"suppression",
 	"losses",
 	"damage",
 	"abandoned",

@@ -78,28 +78,69 @@ dossier_prep_bturn_info (SPWAW_BTURN *bt)
 	CNULLARG (bt);
 	ip = &(bt->info);
 
-	ip->pbir.fir = safe_nmalloc (SPWAW_DOSSIER_FIR, ip->pbir.fcnt); COOM (ip->pbir.fir, "player SPWAW_DOSSIER_FIR list");
-	for (idx=0; idx<ip->pbir.fcnt; idx++) {
-		ip->pbir.fir[idx].snap = &(bt->snap->OOBp1.battle.formations.list[idx]);
-		ip->pbir.fir[idx].leader = ip->pbir.fir[idx].snap->data.leader.up->data.idx;
+	ip->pbir_core.fcnt    = bt->snap->OOBp1.core.formations.cnt;
+	ip->pbir_core.ucnt    = bt->snap->OOBp1.core.units.cnt;
+	ip->pbir_support.fcnt = bt->snap->OOBp1.support.formations.cnt;
+	ip->pbir_support.ucnt = bt->snap->OOBp1.support.units.cnt;
+	ip->pbir_battle.fcnt  = bt->snap->OOBp1.battle.formations.cnt;
+	ip->pbir_battle.ucnt  = bt->snap->OOBp1.battle.units.cnt;
+	ip->obir_battle.fcnt  = bt->snap->OOBp2.battle.formations.cnt;
+	ip->obir_battle.ucnt  = bt->snap->OOBp2.battle.units.cnt;
+
+	ip->pbir_core.fir = safe_nmalloc (SPWAW_DOSSIER_FIR, ip->pbir_core.fcnt);
+	COOM (ip->pbir_core.fir, "player core force SPWAW_DOSSIER_FIR list");
+	for (idx=0; idx<ip->pbir_core.fcnt; idx++) {
+		ip->pbir_core.fir[idx].snap = &(bt->snap->OOBp1.core.formations.list[idx]);
+		ip->pbir_core.fir[idx].leader = ip->pbir_core.fir[idx].snap->data.leader.up->data.idx;
 	}
 
-	ip->pbir.uir = safe_nmalloc (SPWAW_DOSSIER_UIR, ip->pbir.ucnt); COOM (ip->pbir.uir, "player SPWAW_DOSSIER_UIR list");
-	for (idx=0; idx<ip->pbir.ucnt; idx++) {
-		ip->pbir.uir[idx].snap = &(bt->snap->OOBp1.battle.units.list[idx]);
-		ip->pbir.uir[idx].fptr = &(ip->pbir.fir[ip->pbir.uir[idx].snap->data.FMID]);
+	ip->pbir_core.uir = safe_nmalloc (SPWAW_DOSSIER_UIR, ip->pbir_core.ucnt);
+	COOM (ip->pbir_core.uir, "player core force SPWAW_DOSSIER_UIR list");
+	for (idx=0; idx<ip->pbir_core.ucnt; idx++) {
+		ip->pbir_core.uir[idx].snap = &(bt->snap->OOBp1.core.units.list[idx]);
+		ip->pbir_core.uir[idx].fptr = &(ip->pbir_core.fir[ip->pbir_core.uir[idx].snap->data.FMID]);
 	}
 
-	ip->obir.fir = safe_nmalloc (SPWAW_DOSSIER_FIR, ip->obir.fcnt); COOM (ip->obir.fir, "opponent SPWAW_DOSSIER_FIR list");
-	for (idx=0; idx<ip->obir.fcnt; idx++) {
-		ip->obir.fir[idx].snap = &(bt->snap->OOBp2.battle.formations.list[idx]);
-		ip->obir.fir[idx].leader = ip->obir.fir[idx].snap->data.leader.up->data.idx;
+	ip->pbir_support.fir = safe_nmalloc (SPWAW_DOSSIER_FIR, ip->pbir_support.fcnt);
+	COOM (ip->pbir_support.fir, "player support force SPWAW_DOSSIER_FIR list");
+	for (idx=0; idx<ip->pbir_support.fcnt; idx++) {
+		ip->pbir_support.fir[idx].snap = &(bt->snap->OOBp1.support.formations.list[idx]);
+		ip->pbir_support.fir[idx].leader = ip->pbir_support.fir[idx].snap->data.leader.up->data.idx;
 	}
 
-	ip->obir.uir = safe_nmalloc (SPWAW_DOSSIER_UIR, ip->obir.ucnt); COOM (ip->obir.uir, "opponent SPWAW_DOSSIER_UIR list");
-	for (idx=0; idx<ip->obir.ucnt; idx++) {
-		ip->obir.uir[idx].snap = &(bt->snap->OOBp2.battle.units.list[idx]);
-		ip->obir.uir[idx].fptr = &(ip->obir.fir[ip->obir.uir[idx].snap->data.FMID]);
+	ip->pbir_support.uir = safe_nmalloc (SPWAW_DOSSIER_UIR, ip->pbir_support.ucnt);
+	COOM (ip->pbir_support.uir, "player support force SPWAW_DOSSIER_UIR list");
+	for (idx=0; idx<ip->pbir_support.ucnt; idx++) {
+		ip->pbir_support.uir[idx].snap = &(bt->snap->OOBp1.support.units.list[idx]);
+		ip->pbir_support.uir[idx].fptr = &(ip->pbir_support.fir[ip->pbir_support.uir[idx].snap->data.FMID]);
+	}
+
+	ip->pbir_battle.fir = safe_nmalloc (SPWAW_DOSSIER_FIR, ip->pbir_battle.fcnt);
+	COOM (ip->pbir_battle.fir, "player battle force SPWAW_DOSSIER_FIR list");
+	for (idx=0; idx<ip->pbir_battle.fcnt; idx++) {
+		ip->pbir_battle.fir[idx].snap = &(bt->snap->OOBp1.battle.formations.list[idx]);
+		ip->pbir_battle.fir[idx].leader = ip->pbir_battle.fir[idx].snap->data.leader.up->data.idx;
+	}
+
+	ip->pbir_battle.uir = safe_nmalloc (SPWAW_DOSSIER_UIR, ip->pbir_battle.ucnt);
+	COOM (ip->pbir_battle.uir, "player battle force SPWAW_DOSSIER_UIR list");
+	for (idx=0; idx<ip->pbir_battle.ucnt; idx++) {
+		ip->pbir_battle.uir[idx].snap = &(bt->snap->OOBp1.battle.units.list[idx]);
+		ip->pbir_battle.uir[idx].fptr = &(ip->pbir_battle.fir[ip->pbir_battle.uir[idx].snap->data.FMID]);
+	}
+
+	ip->obir_battle.fir = safe_nmalloc (SPWAW_DOSSIER_FIR, ip->obir_battle.fcnt);
+	COOM (ip->obir_battle.fir, "opponent battle force SPWAW_DOSSIER_FIR list");
+	for (idx=0; idx<ip->obir_battle.fcnt; idx++) {
+		ip->obir_battle.fir[idx].snap = &(bt->snap->OOBp2.battle.formations.list[idx]);
+		ip->obir_battle.fir[idx].leader = ip->obir_battle.fir[idx].snap->data.leader.up->data.idx;
+	}
+
+	ip->obir_battle.uir = safe_nmalloc (SPWAW_DOSSIER_UIR, ip->obir_battle.ucnt);
+	COOM (ip->obir_battle.uir, "opponent battle force SPWAW_DOSSIER_UIR list");
+	for (idx=0; idx<ip->obir_battle.ucnt; idx++) {
+		ip->obir_battle.uir[idx].snap = &(bt->snap->OOBp2.battle.units.list[idx]);
+		ip->obir_battle.uir[idx].fptr = &(ip->obir_battle.fir[ip->obir_battle.uir[idx].snap->data.FMID]);
 	}
 
 	return (SPWERR_OK);
@@ -110,10 +151,14 @@ dossier_free_bturn_info (SPWAW_DOSSIER_BIRS *ip)
 {
 	if (!ip) return;
 
-	if (ip->pbir.uir) free (ip->pbir.uir);
-	if (ip->pbir.fir) free (ip->pbir.fir);
-	if (ip->obir.uir) free (ip->obir.uir);
-	if (ip->obir.fir) free (ip->obir.fir);
+	if (ip->pbir_core.uir)    free (ip->pbir_core.uir);
+	if (ip->pbir_core.fir)    free (ip->pbir_core.fir);
+	if (ip->pbir_support.uir) free (ip->pbir_support.uir);
+	if (ip->pbir_support.fir) free (ip->pbir_support.fir);
+	if (ip->pbir_battle.uir)  free (ip->pbir_battle.uir);
+	if (ip->pbir_battle.fir)  free (ip->pbir_battle.fir);
+	if (ip->obir_battle.uir)  free (ip->obir_battle.uir);
+	if (ip->obir_battle.fir)  free (ip->obir_battle.fir);
 	clear_ptr (ip);
 }
 
@@ -185,7 +230,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 			src->ra[i].rpl = false;
 		}
 		for (f=0; f<src->dossier->fcnt; f++) {
-			sfp = &(src->info_sob->pbir.fir[f]); dfp = &(dst->info_sob->pbir.fir[f]);
+			sfp = &(src->info_sob->pbir_battle.fir[f]); dfp = &(dst->info_sob->pbir_battle.fir[f]);
 			log ("Src formation #%d: sfp=0x%8.8x = %s\n", f, sfp, sfp->snap->strings.name);
 			log ("Dst formation #%d: dfp=0x%8.8x = %s\n", f, dfp, dfp->snap->strings.name);
 
@@ -193,16 +238,16 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 			log ("/ Assigning live units:\n");
 			for (u=0; u<sfp->snap->data.ucnt; u++) {
 				i = sfp->snap->data.ulist[u]->data.idx;
-				if (!src->info_eob->pbir.uir[i].snap->data.alive) continue;
+				if (!src->info_eob->pbir_battle.uir[i].snap->data.alive) continue;
 
-				sup = &(src->info_sob->pbir.uir[i]);
+				sup = &(src->info_sob->pbir_battle.uir[i]);
 				log ("| Src unit #%d: (%s, %s), ALIVE\n", i, sup->snap->strings.uid, sup->snap->data.name);
 
 				/* find first unassigned matching unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
 				for (j=0; j<dfp->snap->data.ucnt; j++) {
 					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir.uir[k]);
+					p = &(dst->info_sob->pbir_battle.uir[k]);
 
 					log ("| Checking dst unit #%d: (%s, %s), dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
 					if (strcmp (sup->snap->data.name, p->snap->data.name) == 0) {
@@ -234,14 +279,14 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 				i = sfp->snap->data.ulist[u]->data.idx;
 				if (src->ra[i].dst != SPWAW_BADIDX) continue;
 
-				sup = &(src->info_sob->pbir.uir[i]);
+				sup = &(src->info_sob->pbir_battle.uir[i]);
 				log ("| Src unit #%d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.name);
 
 				/* find first unassigned unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
 				for (j=0; j<dfp->snap->data.ucnt; j++) {
 					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir.uir[k]);
+					p = &(dst->info_sob->pbir_battle.uir[k]);
 
 					log ("| Checking dst unit #%d: (%s, %s) dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
 					if (dst->ra[k].src == SPWAW_BADIDX) {
@@ -273,7 +318,25 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 }
 
 SPWAW_ERROR
-dossier_update_dossier_info (SPWAW_DOSSIER *ptr)
+dossier_set_dossier_info (SPWAW_DOSSIER *ptr)
+{
+	SPWAW_BATTLE	*b;
+
+	CNULLARG(ptr);
+
+	if (!ptr->bcnt) RWE (SPWERR_FAILED, "no battle loaded");
+
+	b = ptr->blist[0];
+
+	ptr->OOB  = b->OOB_p1;
+	ptr->fcnt = b->tlist[0]->info.pbir_core.fcnt;
+	ptr->ucnt = b->tlist[0]->info.pbir_core.ucnt;
+
+	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
+dossier_update_dossier_stats (SPWAW_DOSSIER *ptr)
 {
 	USHORT	i;
 

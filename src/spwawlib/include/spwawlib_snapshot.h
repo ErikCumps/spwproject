@@ -163,7 +163,7 @@ typedef struct s_SPWAW_SNAP_OOB_FRAW {
 
 /* SPWAW: raw unit element */
 typedef struct s_SPWAW_SNAP_OOB_UELRAW {
-	SPWAW_UNIT_TYPE		type;				/* Detected unit type					*/
+	SPWAW_UNIT_TYPE		dutype;				/* Detected unit type					*/
 	USHORT			RID;				/* Unit record ID					*/
 	USHORT			FRID;				/* Unit formation record ID				*/
 	USHORT			FMID;				/* Unit formation major ID				*/
@@ -548,6 +548,8 @@ typedef struct s_SPWAW_SNAP_OOB_FEL_DATA {
 	SPWAW_SNAP_OOB_PTR	leader;				/* Formation leader unit record ID or pointer			*/
 	SPWAW_SNAP_OOB_PTR	hcmd;				/* Formation higher command leader unit record ID or pointer	*/
 	USHORT			ucnt;				/* Unit count							*/
+	USHORT			ucnt_core;			/* Unit count (core units)					*/
+	USHORT			ucnt_support;			/* Unit count (support units)					*/
 	SPWAW_SNAP_OOB_UEL	**ulist;			/* Unit pointer list						*/
 } SPWAW_SNAP_OOB_FEL_DATA;
 
@@ -562,7 +564,7 @@ typedef struct s_SPWAW_SNAP_OOB_FEL_STRINGS {
 
 /* SPWAW formation element info */
 struct s_SPWAW_SNAP_OOB_FEL {
-	bool				core;			/* flag indicating core formation			*/
+	BYTE				status;			/* flag indicating formation core/support status	*/
 	SPWAW_SNAP_OOB_FEL_DATA		data;
 	SPWAW_SNAP_OOB_FEL_STRINGS	strings;
 	SPWAW_SNAP_OOB_FATTR		attr;
@@ -576,6 +578,7 @@ typedef struct s_SPWAW_SNAP_OOB_F {
 
 /* SPWAW unit element info: data */
 typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
+	SPWAW_UNIT_TYPE		dutype;				/* Detected unit type					*/
 	USHORT			idx;
 	USHORT			uidx;
 	USHORT			ulidx;

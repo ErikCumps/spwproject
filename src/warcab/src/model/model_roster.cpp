@@ -162,9 +162,9 @@ ModelRoster::setupModelData (void)
 	for (i=0; i<d.list_cnt; i++) {
 		u = &(d.list[i]);
 
-		u->uir = &(d.birs->uir[i+d.birs_idx]);
+		u->uir = &(d.birs->uir[i]);
 
-		bidx = i + d.birs_idx;
+		bidx = i;
 		if (d.d && (d.cb != d.sb) && (d.cb != NULL) && (d.sb != NULL)) {
 			SPWAW_BATTLE *p = d.cb;
 			while (p != d.sb) {
@@ -176,7 +176,7 @@ ModelRoster::setupModelData (void)
 		for (j=0; j<d.col_cnt; j++) {
 			dlt = &(d.dlts[i*d.col_cnt+j]);
 			cs = u->uir->snap;
-			bs = ((bidx - d.base_idx) < d.base_cnt) ? d.base->uir[bidx].snap : NULL;
+			bs = (bidx < d.base_cnt) ? d.base->uir[bidx].snap : NULL;
 			SPWDLT_prep (dlt, MDLR_coldef(j)->dtype, cs, bs, MDLR_coldef(j)->doffs);
 		}
 	}
@@ -268,37 +268,33 @@ ModelRoster::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bo
 	if (!current || !start) {
 		d.d = NULL;
 		d.birs = d.base = NULL;
-		d.birs_idx = d.base_idx = 0;
 		d.birs_cnt = d.base_cnt = 0;
 	} else {
 		if (current == start) {
-			nbirs = isplayer ? &(current->info_eob->pbir) : &(current->info_eob->obir);
+			nbirs = isplayer
+				? (iscore ? &(current->info_eob->pbir_core) : &(current->info_eob->pbir_support))
+				: &(current->info_eob->obir_battle);
 		} else {
-			nbirs = isplayer ? &(current->info_sob->pbir) : &(current->info_sob->obir);
+			nbirs = isplayer
+				? (iscore ? &(current->info_sob->pbir_core) : &(current->info_sob->pbir_support))
+				: &(current->info_sob->obir_battle);
 		}
-		nbase = isplayer ? &(start->info_sob->pbir) : &(start->info_sob->obir);
+		nbase = isplayer
+			? (iscore ? &(start->info_sob->pbir_core) : &(start->info_sob->pbir_support))
+			: &(start->info_sob->obir_battle);
 
 		/* Early bailout if attempting to reload same data */
 		if ((d.birs == nbirs) && (d.base == nbase)) return;
 		d.birs = nbirs; d.base = nbase;
 
 		d.d = NULL;
-		d.birs_idx = d.base_idx = 0;
-		if (isplayer) {
-			if (iscore) {
-				d.d = current->dossier;
-				d.cb = current;
-				d.sb = start;
-				d.birs_cnt = d.base_cnt = d.d->ucnt;
-			} else {
-				d.birs_idx = d.base_idx = current->dossier->ucnt;
-				d.birs_cnt = d.birs->ucnt - current->dossier->ucnt;
-				d.base_cnt = d.base->ucnt - current->dossier->ucnt;
-			}
-		} else {
-			d.birs_cnt = d.birs->ucnt;
-			d.base_cnt = d.base->ucnt;
+		if (isplayer && iscore) {
+			d.d = current->dossier;
+			d.cb = current;
+			d.sb = start;
 		}
+		d.birs_cnt = d.birs->ucnt;
+		d.base_cnt = d.base->ucnt;
 	}
 
 	d.pflag = isplayer; d.scol = d.sord = -1;
@@ -314,30 +310,22 @@ ModelRoster::load (SPWAW_BATTLE *battle, int current, int start, bool isplayer, 
 	if (!battle || (current < 0) || (start < 0) || (current < start) || (current >= battle->tcnt) || (start >= battle->tcnt)) {
 		d.d = NULL;
 		d.birs = d.base = NULL;
-		d.birs_idx = d.base_idx = 0;
 		d.birs_cnt = d.base_cnt = 0;
 	} else {
-		nbirs = isplayer ? &(battle->tlist[current]->info.pbir) : &(battle->tlist[current]->info.obir);
-		nbase = isplayer ? &(battle->tlist[start]->info.pbir) : &(battle->tlist[start]->info.obir);
+		nbirs = isplayer
+			? (iscore ? &(battle->tlist[current]->info.pbir_core) : &(battle->tlist[current]->info.pbir_support))
+			: &(battle->tlist[current]->info.obir_battle);
+		nbase = isplayer
+			? (iscore ? &(battle->tlist[start]->info.pbir_core) : &(battle->tlist[start]->info.pbir_support))
+			: &(battle->tlist[start]->info.obir_battle);
 
 		/* Early bailout if attempting to reload same data */
 		if ((d.birs == nbirs) && (d.base == nbase)) return;
 		d.birs = nbirs; d.base = nbase;
 
 		d.d = NULL;
-		d.birs_idx = d.base_idx = 0;
-		if (isplayer) {
-			if (iscore) {
-				d.birs_cnt = d.base_cnt = battle->dossier->ucnt;
-			} else {
-				d.birs_idx = d.base_idx = battle->dossier->ucnt;
-				d.birs_cnt = d.birs->ucnt - battle->dossier->ucnt;
-				d.base_cnt = d.base->ucnt - battle->dossier->ucnt;
-			}
-		} else {
-			d.birs_cnt = d.birs->ucnt;
-			d.base_cnt = d.base->ucnt;
-		}
+		d.birs_cnt = d.birs->ucnt;
+		d.base_cnt = d.base->ucnt;
 	}
 
 	d.pflag = isplayer; d.scol = d.sord = -1;
@@ -353,30 +341,23 @@ ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool
 	if (!current || !start) {
 		d.d = NULL;
 		d.birs = d.base = NULL;
-		d.birs_idx = d.base_idx = 0;
 		d.birs_cnt = d.base_cnt = 0;
 	} else {
-		nbirs = isplayer ? &(current->info.pbir) : &(current->info.obir);
-		nbase = isplayer ? &(start->info.pbir) : &(start->info.obir);
+		nbirs = isplayer
+			? (iscore ? &(current->info.pbir_core) : &(current->info.pbir_support))
+			: &(current->info.obir_battle);
+		nbase = isplayer
+			? (iscore ? &(start->info.pbir_core) : &(start->info.pbir_support))
+			: &(start->info.obir_battle);
+
 
 		/* Early bailout if attempting to reload same data */
 		if ((d.birs == nbirs) && (d.base == nbase)) return;
 		d.birs = nbirs; d.base = nbase;
 
 		d.d = NULL;
-		d.birs_idx = d.base_idx = 0;
-		if (isplayer) {
-			if (iscore) {
-				d.birs_cnt = d.base_cnt = current->battle->dossier->ucnt;
-			} else {
-				d.birs_idx = d.base_idx = current->battle->dossier->ucnt;
-				d.birs_cnt = d.birs->ucnt - current->battle->dossier->ucnt;
-				d.base_cnt = d.base->ucnt - current->battle->dossier->ucnt;
-			}
-		} else {
-			d.birs_cnt = d.birs->ucnt;
-			d.base_cnt = d.base->ucnt;
-		}
+		d.birs_cnt = d.birs->ucnt;
+		d.base_cnt = d.base->ucnt;
 	}
 
 	d.pflag = isplayer; d.scol = d.sord = -1;
@@ -428,7 +409,7 @@ ModelRoster::rawdata (int row, MDLR_COLUMN col, ModelRosterRawData *data, int cn
 
 	r = row; i = 0;
 	while (r < d.row_cnt) {
-		data[i].idx = d.smap[r].data->idx + d.birs_idx;
+		data[i].idx = d.smap[r].data->idx;
 		data[i].uir = d.smap[r].data->uir;
 		data[i].dlt = &(d.smap[r].data->dlt[col]);
 		r++; i++;
