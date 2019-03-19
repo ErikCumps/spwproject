@@ -768,7 +768,7 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *st
 	log ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
 
 	ptr->RID	= p->d.RID;
-	ptr->type	= p->d.type;
+	ptr->dutype	= p->d.type;
 	ptr->FRID       = p->d.FRID;
 	ptr->FMID       = p->d.FMID;
 	ptr->FSID       = p->d.FSID;

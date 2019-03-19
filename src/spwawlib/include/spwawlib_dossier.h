@@ -58,8 +58,10 @@ typedef struct s_SPWAW_DOSSIER_BIR {
  * The info records are a superset of the core info records.
  */
 typedef struct s_SPWAW_DOSSIER_BIRS {
-	SPWAW_DOSSIER_BIR	pbir;				/* Pointer to player battle info record set	*/
-	SPWAW_DOSSIER_BIR	obir;				/* Pointer to opponent battle info record set	*/
+	SPWAW_DOSSIER_BIR	pbir_core;			/* Player info record set (core force)		*/
+	SPWAW_DOSSIER_BIR	pbir_support;			/* Player info record set (support force)	*/
+	SPWAW_DOSSIER_BIR	pbir_battle;			/* Player info record set (battle force)	*/
+	SPWAW_DOSSIER_BIR	obir_battle;			/* Opponent info record set (battle force)	*/
 } SPWAW_DOSSIER_BIRS;
 
 /* SPWAW dossier: battle turn data */
@@ -69,7 +71,7 @@ struct s_SPWAW_BTURN {
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn snapshot data			*/
 	SPWAW_DATE		date;				/* Battle turn date				*/
 	int			turn;				/* Battle turn					*/
-	SPWAW_DOSSIER_BIRS	info;				/* Battle turn info record set			*/
+	SPWAW_DOSSIER_BIRS	info;				/* Battle info record set			*/
 	SPWAW_BATTLE		*battle;			/* Pointer to parent battle data struct		*/
 };
 

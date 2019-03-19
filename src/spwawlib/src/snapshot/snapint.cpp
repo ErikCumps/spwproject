@@ -333,8 +333,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 
 	// Detect unit and crew counts
 	for (i=0; i<(int)raw->units.cnt; i++) {
-		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_UNKNOWN) continue;
-		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW) p->crews.cnt++; else p->units.cnt++;
+		if (raw->units.raw[i].dutype == SPWAW_UNIT_TYPE_UNKNOWN) continue;
+		if (raw->units.raw[i].dutype == SPWAW_UNIT_TYPE_CREW) p->crews.cnt++; else p->units.cnt++;
 	}
 
 	p->units.list = safe_nmalloc(SPWAW_SNAP_OOB_UEL, p->units.cnt);
@@ -348,13 +348,13 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		SPWAW_SNAP_OOB_UEL_STRINGS	*str;
 		SPWAW_SNAP_OOB_UEL_DATA		*dat;
 
-		if (raw->units.raw[i].type == SPWAW_UNIT_TYPE_UNKNOWN) continue;
+		if (raw->units.raw[i].dutype == SPWAW_UNIT_TYPE_UNKNOWN) continue;
 
-		iscrew = (raw->units.raw[i].type == SPWAW_UNIT_TYPE_CREW);
+		iscrew = (raw->units.raw[i].dutype == SPWAW_UNIT_TYPE_CREW);
 		ldridx = raw->units.raw[i].leader;
 		crwidx = raw->units.raw[i].crew;
 		//log ("snapint_oob_units_stage1: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
-		//	raw->units.raw[i].RID, SPWAW_unittype2str(raw->units.raw[i].type), raw->units.raw[i].FMID, raw->units.raw[i].FSID, raw->units.raw[i].name);
+		//	raw->units.raw[i].RID, SPWAW_unittype2str(raw->units.raw[i].dutype), raw->units.raw[i].FMID, raw->units.raw[i].FSID, raw->units.raw[i].name);
 		//log ("ldridx=%5.5u, crwidx=%5.5u, iscrew=%d, aband=%d\n",
 		//	raw->units.raw[i].leader, raw->units.raw[i].crew, iscrew, raw->units.raw[i].aband);
 
@@ -369,6 +369,8 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 			dat->idx = uidx;
 			uidx++;
 		}
+
+		dat->dutype = raw->units.raw[i].dutype;
 
 		SPWAW_SNAP_OOB_UELRAW *src = &(raw->units.raw[i]);
 
@@ -499,16 +501,10 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 	/* Reset formation unit counts and core status */
 	for (i=0; i<bp->formations.cnt; i++) {
 		p.fp = &(bp->formations.list[i]);
+		p.fp->status = 0;
 		p.fp->data.ucnt = 0;
-		if (prepsf) {
-			if (p.fp->data.status == SPWAW_FCORE) {
-				p.fp->core = true;
-				cp->formations.cnt++;
-			} else {
-				p.fp->core = false;
-				sp->formations.cnt++;
-			}
-		}
+		p.fp->data.ucnt_core = 0;
+		p.fp->data.ucnt_support = 0;
 	}
 
 	/* Unit/crew linkage */
@@ -615,23 +611,45 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		}
 
 		if (prepsf) {
-			if (p.fp->core) {
-				// Prevent warning C4244
-				cp->units.cnt = cp->units.cnt + p.fp->data.ucnt;
+			if (p.fp->data.status == SPWAW_FCORE) {
+				p.fp->status |= SPWAW_FORMATION_TYPE_CORE;
+				cp->formations.cnt++;
+				for (j=0; j<p.fp->data.ucnt; j++) {
+					if (p.fp->data.ulist[j]->data.dutype == SPWAW_UNIT_TYPE_SPAU) {
+						p.fp->status |= SPWAW_FORMATION_TYPE_SUPPORT;
+						sp->formations.cnt++;
+						break;
+					}
+				}
+			} else {
+				p.fp->status |= SPWAW_FORMATION_TYPE_SUPPORT;
+				sp->formations.cnt++;
+			}
+
+			if (p.fp->status & SPWAW_FORMATION_TYPE_CORE) {
 				for (j=0; j<p.fp->data.ucnt; j++) {
 					q.up = p.fp->data.ulist[j];
+					if (q.up->data.dutype != SPWAW_UNIT_TYPE_UNIT) continue;
+
 					q.up->core = true;
+					p.fp->data.ucnt_core++;
+					cp->units.cnt++;
 					if (q.up->data.aunit.up) {
 						q.up->data.aunit.up->core = true;
 						cp->crews.cnt++;
 					}
 				}
-			} else {
-				// Prevent warning C4244
-				sp->units.cnt = sp->units.cnt + p.fp->data.ucnt;
+			}
+
+			if (p.fp->status & SPWAW_FORMATION_TYPE_SUPPORT) {
 				for (j=0; j<p.fp->data.ucnt; j++) {
 					q.up = p.fp->data.ulist[j];
+					if (p.fp->status & SPWAW_FORMATION_TYPE_CORE) {
+						if (q.up->data.dutype != SPWAW_UNIT_TYPE_SPAU) continue;
+					}
 					q.up->core = false;
+					p.fp->data.ucnt_support++;
+					sp->units.cnt++;
 					if (q.up->data.aunit.up) {
 						q.up->data.aunit.up->core = false;
 						sp->crews.cnt++;
@@ -689,7 +707,11 @@ OOB_build_subforce (SPWAW_SNAP_OOB_FORCE *bp, SPWAW_SNAP_OOB_FORCE *sp, bool cor
 		COOMGOTO (sp->formations.list, "SPWAW_SNAP_OOB_FEL list", handle_error);
 	}
 	for (i=idx=0; i<bp->formations.cnt; i++) {
-		if (bp->formations.list[i].core != core) continue;
+		if (core) {
+			if (!(bp->formations.list[i].status & SPWAW_FORMATION_TYPE_CORE)) continue;
+		} else {
+			if (!(bp->formations.list[i].status & SPWAW_FORMATION_TYPE_SUPPORT)) continue;
+		}
 		memcpy (&(sp->formations.list[idx++]), &(bp->formations.list[i]), sizeof (SPWAW_SNAP_OOB_FEL));
 	}
 
@@ -719,7 +741,14 @@ OOB_build_subforce (SPWAW_SNAP_OOB_FORCE *bp, SPWAW_SNAP_OOB_FORCE *sp, bool cor
 	for (i=0; i<sp->formations.cnt; i++) {
 		p.fp = &(sp->formations.list[i]);
 		p.fp->data.idx = i;
-		p.fp->data.leader.up = unitbyid (p.fp->data.leader.up->data.RID, sp);
+		p.fp->data.leader.up = unitbyid (p.fp->data.leader.up->data.RID, bp);
+		if (core) {
+			p.fp->data.ucnt = p.fp->data.ucnt_core;
+			p.fp->data.ucnt_support = 0;
+		} else {
+			p.fp->data.ucnt = p.fp->data.ucnt_support;
+			p.fp->data.ucnt_core = 0;
+		}
 		p.fp->data.ulist = safe_nmalloc (SPWAW_SNAP_OOB_UEL*, p.fp->data.ucnt);
 		COOM (p.fp->data.ulist, "SPWAW_SNAP_OOB_UEL* list");
 		for (idx=j=0; j<sp->units.cnt; j++) {
@@ -815,8 +844,6 @@ snapint_oob_units_stage2_core (SPWAW_SNAP_OOB_UEL *ptr, STRTAB * /*stab*/, char 
 	str->contact	= cstatus2str (dat->contact);
 	str->utype	= (char*)SPWOOB_UTYPE_lookup (dat->utype);
 	str->uclass	= (char*)SPWOOB_UCLASS_lookup (dat->uclass);
-
-	if (ptr->data.formation) ptr->core = ptr->data.formation->core;
 }
 
 static SPWAW_ERROR

@@ -295,6 +295,10 @@ typedef enum e_SPWAW_GAME_TYPE {
 extern SPWAWLIB_API const char *	SPWAW_gametype2str	(SPWAW_GAME_TYPE gametype);
 extern SPWAWLIB_API SPWAW_GAME_TYPE	SPWAW_str2gametype	(char * gametype);
 
+/* SPWAW formation type */
+#define	SPWAW_FORMATION_TYPE_CORE	0x01	/* Formation contains core units	*/
+#define	SPWAW_FORMATION_TYPE_SUPPORT	0x02	/* Formation contains support units	*/
+
 #endif	/* SPWAW_LIB_TYPES_H */
 
 /** @} */

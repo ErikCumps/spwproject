@@ -160,7 +160,7 @@ typedef struct s_SNAP_OOB_FEL {
 } SNAP_OOB_FEL;
 
 typedef struct s_SNAP_OOB_UEL {
-	BYTE		type;			/* Detected unit type							*/
+	BYTE		dutype;			/* Detected unit type							*/
 	USHORT		RID;			/* Unit record ID							*/
 	USHORT		FRID;			/* Unit formation record ID						*/
 	BYTE		FMID;			/* Unit formation major ID						*/

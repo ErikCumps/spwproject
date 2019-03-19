@@ -136,10 +136,12 @@ GuiRptTrnOvr::refresh (void)
 
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
 			p->battle->snap->game.battle.strings.people_p1,
-			p->info.pbir.ucnt, p->info.pbir.fcnt, p->snap->OOBp1.battle.stats.hcnt);
+			p->info.pbir_battle.ucnt, p->info.pbir_battle.fcnt,
+			p->snap->OOBp1.battle.stats.hcnt);
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
 			p->battle->snap->game.battle.strings.people_p2,
-			p->info.obir.ucnt, p->info.obir.fcnt, p->snap->OOBp2.battle.stats.hcnt);
+			p->info.obir_battle.ucnt, p->info.obir_battle.fcnt,
+			p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("</pre>");
 
 		str.printf ("<pre>");

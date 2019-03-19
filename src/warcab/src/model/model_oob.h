@@ -56,10 +56,8 @@ private:
 	struct s_data {
 		int			col_cnt;
 		SPWAW_DOSSIER_BIR	*birs;
-		int			birs_idx;
 		int			birs_cnt;
 		SPWAW_DOSSIER_BIR	*base;
-		int			base_idx;
 		int			base_cnt;
 		bool			pflag;
 		int			row_cnt;

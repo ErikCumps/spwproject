@@ -134,8 +134,7 @@ ModelHistory::setupModelData_campaign (void)
 	if (!d.dptr.d || (!(d.row_cnt = d.dptr.d->bcnt))) return;
 
 	/* Setup bbir */
-	d.bbir = &(d.dptr.d->bfirst->info_sob->pbir);
-	d.bbir_idx = 0;
+	d.bbir = &(d.dptr.d->bfirst->info_sob->pbir_core);
 	d.bbir_cnt = d.dptr.d->ucnt;
 
 	/* Check start unit index */
@@ -167,7 +166,7 @@ ModelHistory::setupModelData_campaign (void)
 	for (i=0; i<d.list_cnt; i++) {
 		hd = &(d.list[i]);
 
-		bir = &(d.dptr.d->blist[i]->info_sob->pbir);
+		bir = &(d.dptr.d->blist[i]->info_sob->pbir_core);
 		hd->uir = (cidx != SPWAW_BADIDX) ? &(bir->uir[cidx]) : NULL;
 
 		if (!base) base = bir;
@@ -195,7 +194,7 @@ ModelHistory::setupModelData_campaign (void)
 				hd->cflag = MDLH_CFLAG_REPLACED;
 			} else if (pidx != cidx) {
 				hd->cflag = MDLH_CFLAG_REASSIGNED;
-			} else if ((pidx != SPWAW_BADIDX) && (d.dptr.d->blist[i-1]->info_sob->pbir.uir[pidx].snap->data.rank != hd->uir->snap->data.rank)) {
+			} else if ((pidx != SPWAW_BADIDX) && (d.dptr.d->blist[i-1]->info_sob->pbir_core.uir[pidx].snap->data.rank != hd->uir->snap->data.rank)) {
 				hd->cflag = MDLH_CFLAG_PROMOTED;
 			} else {
 				hd->cflag = MDLH_CFLAG_NONE;
@@ -212,21 +211,16 @@ ModelHistory::setupModelData_battle (void)
 	int			i, j;
 	MDLH_DATA		*hd;
 	SPWAW_DOSSIER_BIR	*bir, *base;
-	int			bir_idx;
 	SPWAW_DOSSIER_UIR	*buir;
 
 	/* Check data availability */
 	if (!d.dptr.b || (!(d.row_cnt = d.dptr.b->tcnt))) return;
 
 	/* Setup bbir */
-	d.bbir = d.pflag ? &(d.dptr.b->info_sob->pbir) : &(d.dptr.b->info_sob->obir);
-	if (d.pflag) {
-		d.bbir_idx = d.cflag ? 0 : d.dptr.b->dossier->ucnt;
-		d.bbir_cnt = d.cflag ? d.dptr.b->dossier->ucnt : (d.bbir->ucnt - d.dptr.b->dossier->ucnt);
-	} else {
-		d.bbir_idx = 0;
-		d.bbir_cnt = d.bbir->ucnt;
-	}
+	d.bbir = d.pflag
+		? ( d.cflag ? &(d.dptr.b->info_sob->pbir_core) : &(d.dptr.b->info_sob->pbir_support))
+		: &(d.dptr.b->info_sob->obir_battle);
+	d.bbir_cnt = d.bbir->ucnt;
 
 	/* Check start unit index */
 	if (d.uidx >= d.bbir_cnt) { d.uidx = (USHORT)-1; d.row_cnt = 0; return; }
@@ -257,12 +251,13 @@ ModelHistory::setupModelData_battle (void)
 	for (i=0; i<d.list_cnt; i++) {
 		hd = &(d.list[i]);
 
-		bir = d.pflag ? &(d.dptr.b->tlist[i]->info.pbir) : &(d.dptr.b->tlist[i]->info.obir);
-		bir_idx = (d.pflag && !d.cflag) ? d.dptr.b->dossier->ucnt : 0;
-		hd->uir = &(bir->uir[d.uidx+bir_idx]);
+		bir = d.pflag
+			? ( d.cflag ? &(d.dptr.b->tlist[i]->info.pbir_core) : &(d.dptr.b->tlist[i]->info.pbir_support))
+			: &(d.dptr.b->tlist[i]->info.obir_battle);
+		hd->uir = &(bir->uir[d.uidx]);
 
 		if (!base) base = bir;
-		buir = &(base->uir[d.uidx+bir_idx]);
+		buir = &(base->uir[d.uidx]);
 
 		for (j=0; j<d.col_cnt; j++)
 			SPWDLT_prep (&(hd->dlt[j]), MDLH_coldef(j)->dtype, hd->uir->snap, buir->snap, MDLH_coldef(j)->doffs);
@@ -296,7 +291,7 @@ ModelHistory::freeModelData (bool all)
 	}
 
 	d.row_cnt = 0;
-	d.bbir = NULL; d.bbir_idx = d.bbir_cnt = 0;
+	d.bbir = NULL; d.bbir_cnt = 0;
 }
 
 void
@@ -341,7 +336,6 @@ ModelHistory::info (MDLH_INFO &info)
 {
 	info.uidx    = d.uidx;
 	info.bir     = d.bbir;
-	info.bir_idx = d.bbir_idx;
 	info.bir_cnt = d.bbir_cnt;
 }
 

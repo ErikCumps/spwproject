@@ -28,7 +28,7 @@ public:
 	int		columnCount	(const QModelIndex &parent = QModelIndex())				const;
 
 public:
-	void	load		(SPWAW_DOSSIER_BIR *bir, int idx, int cnt);
+	void	load		(SPWAW_DOSSIER_BIR *bir, int cnt);
 	void	clear		(void);
 	int	max_width	(void);
 	void	refresh		(void);
@@ -37,7 +37,6 @@ private:
 	QList<QVariant>		header;
 	struct s_data {
 		SPWAW_DOSSIER_BIR	*data_bir;
-		int			data_idx;
 		int			data_cnt;
 	} d;
 

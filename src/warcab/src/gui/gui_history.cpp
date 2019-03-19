@@ -217,7 +217,7 @@ GuiHistory::update (void)
 		d.hmodel->info (info);
 
 		idx = d.unitlist->currentIndex();
-		d.lmodel->load (info.bir, info.bir_idx, info.bir_cnt);
+		d.lmodel->load (info.bir, info.bir_cnt);
 		d.unitlist->select (idx);
 	} else {
 		d.hmodel->clear();

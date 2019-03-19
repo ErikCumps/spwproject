@@ -70,11 +70,6 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 		rc = snapint (p->snap);
 		ERRORGOTO ("snapint()", handle_error);
 
-		p->info.pbir.fcnt = p->snap->OOBp1.battle.formations.cnt;
-		p->info.pbir.ucnt = p->snap->OOBp1.battle.units.cnt;
-		p->info.obir.fcnt = p->snap->OOBp2.battle.formations.cnt;
-		p->info.obir.ucnt = p->snap->OOBp2.battle.units.cnt;
-
 		rc = dossier_prep_bturn_info (p);
 		ERRORGOTO ("dossier_prep_bturn_info()", handle_error);
 
@@ -169,6 +164,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 
 		if (p->tcnt) p->snap = p->tlist[0]->snap;
 
+		// Set dossier data if this was the first battle loaded
+		if (i == 0) dossier_set_dossier_info (dst);
+
 		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->ucnt); COOMGOTO (p->ra, "RA list", handle_error);
 
 		bseekset (fd, pos + hdrs[i].ra.data);
@@ -186,8 +184,8 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	dst->bfirst = dst->blist[0];
 	dst->blast  = dst->blist[dst->bcnt-1];
 
-	rc = dossier_update_dossier_info (dst);
-	ROE ("dossier_update_dossier_info()");
+	rc = dossier_update_dossier_stats (dst);
+	ROE ("dossier_update_dossier_stats()");
 
 handle_error:
 	// dossier cleanup done by caller
@@ -332,11 +330,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	dst->name = STRTAB_getstr (stab, hdr.name);
 	dst->comment = STRTAB_getstr (stab, hdr.comment);
 	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
-
 	dst->oobdir = STRTAB_getstr (stab, hdr.oobdir);
-	dst->OOB  = (BYTE)(hdr.OOB & 0xFF);
-	dst->fcnt = hdr.fcnt;
-	dst->ucnt = hdr.ucnt;
 
 	bseekset (fd, pos + hdr.blist);
 	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);

@@ -139,7 +139,7 @@ prep_oobu (SPWAW_SNAP_OOB_UELRAW *src, SNAP_OOB_UEL *dst, STRTAB *stab)
 {
 	memset (dst, 0, sizeof (SNAP_OOB_UEL));
 
-	dst->type = unittype2raw (src->type);
+	dst->dutype = unittype2raw (src->dutype);
 	setOU (RID); setOU (FRID); setOU (FMID); setOU (FSID);
 	dst->name = STRTAB_getidx (stab, src->name);
 	setOU (classID); setOU (OOB); setOU (OOBrid);

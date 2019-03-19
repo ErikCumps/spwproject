@@ -228,7 +228,7 @@ GuiRptLoss::list_killed_dossier (char *buf, unsigned int size, int &icnt)
 
 		idx = nidx = i; b = p->bfirst;
 		while (b) {
-			up = b->info_eob->pbir.uir[idx].snap;
+			up = b->info_eob->pbir_core.uir[idx].snap;
 
 			if (!up->data.alive) {
 				str.printf ("%3.3s %s, %s %s<br>",
@@ -310,7 +310,7 @@ GuiRptLoss::list_abandoned_dossier (char *buf, unsigned int size, int &icnt)
 
 		idx = nidx = i; b = p->bfirst;
 		while (b) {
-			up = b->info_eob->pbir.uir[idx].snap;
+			up = b->info_eob->pbir_core.uir[idx].snap;
 			if (up->data.aband != SPWAW_ANONE) {
 				str.printf ("%3.3s %s, %s %s<br>",
 					up->strings.uid, up->data.type, up->strings.rank, up->data.name);
@@ -385,8 +385,8 @@ dmgrpt_cmp (const void *a, const void *b)
 	cmp = ((va->dmg > vb->dmg) ? -1 : ((va->dmg < vb->dmg) ? 1 : 0));
 
 	if (cmp == 0) {
-		USHORT usa = va->ptr->info_sob->pbir.uir[va->idx].snap->data.uidx;
-		USHORT usb = vb->ptr->info_sob->pbir.uir[vb->idx].snap->data.uidx;
+		USHORT usa = va->ptr->info_sob->pbir_core.uir[va->idx].snap->data.uidx;
+		USHORT usb = vb->ptr->info_sob->pbir_core.uir[vb->idx].snap->data.uidx;
 		cmp = ((usa < usb) ? -1 : ((usa > usb) ? 1 : 0));
 	}
 
@@ -414,7 +414,7 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 
 		idx = nidx = i; b = p->bfirst; dmg = 0;
 		while (b) {
-			up = b->info_eob->pbir.uir[idx].snap;
+			up = b->info_eob->pbir_core.uir[idx].snap;
 
 			if (up->data.damage && up->data.alive && (up->data.aband == SPWAW_ANONE)) {
 				dmg += up->data.damage;
@@ -435,7 +435,7 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 	for (int i=0; i<p->ucnt; i++) {
 		if (rpt[i].dmg == 0) continue;
 
-		up = rpt[i].ptr->info_sob->pbir.uir[rpt[i].idx].snap;
+		up = rpt[i].ptr->info_sob->pbir_core.uir[rpt[i].idx].snap;
 
 		str.printf ("%3.3s %s, %s %s (%ld)<br>",
 			up->strings.uid, up->data.type, up->strings.rank, up->data.name, rpt[i].dmg);
