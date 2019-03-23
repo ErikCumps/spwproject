@@ -281,16 +281,55 @@ SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, S
 
 	/* Apply dossier type compatibility rules */
 	if (dossier->bcnt != 0) {
-		if (snap->game.battle.data.OOB_p1 != dossier->OOB) {
-			ERROR2 ("dossier OOB (%d) != snapshot OOB (%d)", dossier->OOB, snap->game.battle.data.OOB_p1);
-			rc = SPWERR_NOMATCH_OOB;
+		if (!HASERROR) {
+			if (snap->game.battle.data.OOB_p1 != dossier->props.OOB) {
+				ERROR2 ("dossier OOB (%d) != snapshot OOB (%d)", dossier->props.OOB, snap->game.battle.data.OOB_p1);
+				rc = SPWERR_NOMATCH_OOB;
+			}
 		}
-		if (snap->OOBp1.core.formations.cnt != dossier->fcnt) {
-			ERROR2 ("dossier formation count (%d) != snapshot core formations count (%d)", dossier->fcnt, snap->OOBp1.core.formations.cnt);
-			rc = SPWERR_NOMATCH_CORECNT;
-		} else if (snap->OOBp1.core.units.cnt != dossier->ucnt) {
-			ERROR2 ("dossier unit count (%d) != snapshot core units count (%d)", dossier->ucnt, snap->OOBp1.core.units.cnt);
-			rc = SPWERR_NOMATCH_CORECNT;
+		if (!HASERROR) {
+			if (snap->OOBp1.core.formations.cnt != dossier->props.fcnt) {
+				ERROR2 ("dossier formation count (%d) != snapshot core formations count (%d)", dossier->props.fcnt, snap->OOBp1.core.formations.cnt);
+				rc = SPWERR_NOMATCH_CORECNT;
+			}
+		}
+		if (!HASERROR) {
+			if (snap->OOBp1.core.units.cnt != dossier->props.ucnt) {
+				ERROR2 ("dossier unit count (%d) != snapshot core units count (%d)", dossier->props.ucnt, snap->OOBp1.core.units.cnt);
+				rc = SPWERR_NOMATCH_CORECNT;
+			}
+		}
+		if (!HASERROR) {
+			SPWAW_TIMESTAMP	tsd, tss;
+			SPWAW_date2stamp (&(dossier->props.start), &tsd);
+			SPWAW_date2stamp (&(snap->game.campaign.data.start), &tss);
+			if (tss != tsd) {
+				char ddate[32];
+				char sdate[32];
+				SPWAW_date2str (&(dossier->props.start), ddate, sizeof(ddate));
+				SPWAW_date2str (&(snap->game.campaign.data.start), sdate, sizeof(sdate));
+				ERROR2 ("dossier campaign start date \"%s\" != snapshot campaign start date \"%s\"", ddate, sdate);
+				rc = SPWERR_NOMATCH_CSDATE;
+			}
+		}
+		if (!HASERROR) {
+			SPWAW_TIMESTAMP	tsd, tss;
+			SPWAW_date2stamp (&(dossier->props.end), &tsd);
+			SPWAW_date2stamp (&(snap->game.campaign.data.end), &tss);
+			if (tss != tsd) {
+				char ddate[32];
+				char sdate[32];
+				SPWAW_date2str (&(dossier->props.end), ddate, sizeof(ddate));
+				SPWAW_date2str (&(snap->game.campaign.data.end), sdate, sizeof(sdate));
+				ERROR2 ("dossier campaign end date \"%s\" != snapshot campaign end date \"%s\"", ddate, sdate);
+				rc = SPWERR_NOMATCH_CEDATE;
+			}
+		}
+		if (!HASERROR) {
+			if (snap->game.campaign.data.battles_max != dossier->props.maxbcnt) {
+				ERROR2 ("dossier campaign max battle count (%d) != snapshot campaign max battle count (%d)", dossier->props.maxbcnt, snap->game.campaign.data.battles_max);
+				rc = SPWERR_NOMATCH_CMBCNT;
+			}
 		}
 	}
 	ROE ("snapshot compatibility verification");

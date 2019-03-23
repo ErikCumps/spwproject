@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -135,7 +135,7 @@ ModelHistory::setupModelData_campaign (void)
 
 	/* Setup bbir */
 	d.bbir = &(d.dptr.d->bfirst->info_sob->pbir_core);
-	d.bbir_cnt = d.dptr.d->ucnt;
+	d.bbir_cnt = d.dptr.d->props.ucnt;
 
 	/* Check start unit index */
 	if (d.uidx >= d.bbir_cnt) { d.uidx = (USHORT)-1; d.row_cnt = 0; return; }

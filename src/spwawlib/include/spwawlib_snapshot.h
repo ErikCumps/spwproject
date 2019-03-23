@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -372,14 +372,14 @@ typedef struct s_SPWAW_SNAP_LOSSES {
 
 /* SPWAW campaign info: interpreted data */
 typedef struct s_SPWAW_SNAP_CAMPAIGN_DATA {
-	int			campaign;			/* Campaign mode active					*/
+	bool			campaign;			/* Campaign mode active					*/
 	SPWAW_DATE		start;				/* Campaign start date					*/
 	SPWAW_DATE		end;				/* Campaign end date					*/
-	int			battles;			/* Battles fought					*/
-	int			majvics;			/* Major victories					*/
-	int			minvics;			/* Minor victories					*/
-	int			losses;				/* Losses						*/
-	int			battles_max;			/* Max battles						*/
+	USHORT			battles;			/* Battles fought					*/
+	USHORT			majvics;			/* Major victories					*/
+	USHORT			minvics;			/* Minor victories					*/
+	USHORT			losses;				/* Losses						*/
+	USHORT			battles_max;			/* Max battles						*/
 	SPWAW_SNAP_LOSSES	P1BL;				/* Player1 battle losses				*/
 	SPWAW_SNAP_LOSSES	P2BL;				/* Player2 battle losses				*/
 	SPWAW_SNAP_LOSSES	P1TL;				/* Player1 total losses					*/

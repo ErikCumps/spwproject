@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling - backwards compatibility with the V10 dossier.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -27,14 +27,24 @@ dossier_load_v10_header (int fd, DOS_HEADER *hdr)
 		FAILGOTO (SPWERR_FRFAILED, "bread(dossier hdr v10)", handle_error);
 
 	/* A V10 dossier header:
-	 * + lacks the dossier type at the end
+	 * + lacks the dossier type
+	 * + lacks the campaign properties
+	 * + but contains player OOB and core formation and unit counts
 	 *
 	 * V10 dossiers only support the SPWAW_CAMPAIGN_DOSSIER dossier type.
-	 *
-	 * So a quick copy and fix up is all we need :)
 	 */
-	memcpy (hdr, hdr_v10, sizeof (DOS_HEADER_V10));
-	hdr->type = SPWAW_CAMPAIGN_DOSSIER;
+	hdr->name	= hdr_v10->name;
+	hdr->comment	= hdr_v10->comment;
+	hdr->oobdir	= hdr_v10->oobdir;
+	hdr->oobdata	= hdr_v10->oobdat;
+	hdr->bcnt	= hdr_v10->bcnt;
+	hdr->blist	= hdr_v10->blist;
+	hdr->stab	= hdr_v10->stab;
+	hdr->type	= SPWAW_CAMPAIGN_DOSSIER;
+
+	hdr->props.OOB	= (BYTE)(hdr_v10->OOB & 0xFF);
+	hdr->props.fcnt	= hdr_v10->fcnt;
+	hdr->props.ucnt	= hdr_v10->ucnt;
 
 handle_error:
 	if (hdr_v10) safe_free (hdr_v10);

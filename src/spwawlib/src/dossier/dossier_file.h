@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,7 +15,7 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	11
+#define	DOSS_VERSION	12
 
 #pragma pack(push, r1, 1)
 
@@ -24,18 +24,25 @@ typedef struct s_DOS_MV_HEADER {
 	ULONG		version;		/* Dossier file format version							*/
 } DOS_MV_HEADER;
 
+typedef struct s_DOS_CMPPROPS {
+	BYTE		OOB;			/* OOB ID									*/
+	USHORT		fcnt;			/* Player core formations count							*/
+	USHORT		ucnt;			/* Player core units count							*/
+	SPWAW_TIMESTAMP	start;			/* Campaign start date								*/
+	SPWAW_TIMESTAMP	end;			/* Campaign end date								*/
+	USHORT		maxbcnt;		/* Campaign maximum battles count						*/
+} DOS_CMPPROPS;
+
 typedef struct s_DOS_HEADER {
 	ULONG		name;			/* Dossier name	symbol								*/
 	ULONG		comment;		/* Dossier comment symbol							*/
 	ULONG		oobdir;			/* Original OOB data directory symbol						*/
 	ULONG		oobdata;		/* Dossier OOB data list offset, relative to start of header			*/
-	ULONG		OOB;			/* OOB ID									*/
-	USHORT		fcnt;			/* Core formations count							*/
-	USHORT		ucnt;			/* Core units count								*/
 	USHORT		bcnt;			/* Battle list count								*/
 	ULONG		blist;			/* Battle list offset, relative to start of header				*/
 	ULONG		stab;			/* String table offset, relative to start of header				*/
 	ULONG		type;			/* Dossier type									*/
+	DOS_CMPPROPS	props;			/* Dossier campaign properties							*/
 } DOS_HEADER;
 
 typedef struct s_DOS_BHEADER {

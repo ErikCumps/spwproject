@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - main API implementation.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -39,6 +39,9 @@ static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_NOMATCH_OOBDATA: OOB data files do not match",
 	"SPWERR_NOMATCH_OOB: player or opponent OOB ID does not match",
 	"SPWERR_NOMATCH_CORECNT: player formation or unit core count does not match",
+	"SPWERR_NOMATCH_CSDATE: campaign start date does not match",
+	"SPWERR_NOMATCH_CEDATE: campaign end date does not match",
+	"SPWERR_NOMATCH_CMBCNT: campaign max battle count does not match",
 	"SPWERR_NOMATCH_DATE: date does not match",
 	"SPWERR_NOMATCH_LOCATION: location does not match",
 	"SPWERR_NOMATCH_MISSION: player or opponent mission type does not match",

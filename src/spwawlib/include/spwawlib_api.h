@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API error codes.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -51,6 +51,9 @@ typedef enum e_SPWAW_ERROR {
 	SPWERR_NOMATCH_OOBDATA,
 	SPWERR_NOMATCH_OOB,
 	SPWERR_NOMATCH_CORECNT,
+	SPWERR_NOMATCH_CSDATE,
+	SPWERR_NOMATCH_CEDATE,
+	SPWERR_NOMATCH_CMBCNT,
 	SPWERR_NOMATCH_DATE,
 	SPWERR_NOMATCH_LOCATION,
 	SPWERR_NOMATCH_MISSION,

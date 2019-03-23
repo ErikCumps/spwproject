@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -126,7 +126,7 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		ERRORGOTO ("dossier_save_battle_turns()", handle_error);
 
 		hdrs[idx].ra.data = bseekget (fd) - p0;
-		hdrs[idx].ra.size = src->ucnt * sizeof (SPWAW_DOSSIER_BURA);
+		hdrs[idx].ra.size = src->props.ucnt * sizeof (SPWAW_DOSSIER_BURA);
 
 		if (hdrs[idx].ra.size) {
 			cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);
@@ -150,6 +150,21 @@ handle_error:
 	if (hdrs) free (hdrs);
 	*cnt = 0;
 	return (rc);
+}
+
+static SPWAW_ERROR
+dossier_save_campaign_props (SPWAW_DOSSIER *src, DOS_CMPPROPS *props)
+{
+	CNULLARG(src); CNULLARG (props);
+
+	props->OOB	= src->props.OOB;
+	props->fcnt	= src->props.fcnt;
+	props->ucnt	= src->props.ucnt;
+	SPWAW_date2stamp (&(src->props.start), &(props->start));
+	SPWAW_date2stamp (&(src->props.end), &(props->end));
+	props->maxbcnt	= src->props.maxbcnt;
+
+	return (SPWERR_OK);
 }
 
 SPWAW_ERROR
@@ -180,10 +195,9 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	hdr.name = STRTAB_getidx (stab, src->name);
 	hdr.comment = STRTAB_getidx (stab, src->comment);
 	hdr.oobdir = STRTAB_getidx (stab, src->oobdir);
-	hdr.OOB = src->OOB;
-	hdr.fcnt = src->fcnt;
-	hdr.ucnt = src->ucnt;
 	hdr.type = src->type;
+
+	rc = dossier_save_campaign_props (src, &(hdr.props));	ROE ("dossier_save_campaign_props()");
 
 	bseekmove (fd, sizeof (hdr));
 

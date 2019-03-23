@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -111,7 +111,7 @@ snapint_game_campaign (SPWAW_SNAPSHOT *ptr)
 	dst = &(ptr->game.campaign.data);
 	str = &(ptr->game.campaign.strings);
 
-	dst->campaign    = raw->campaign;
+	dst->campaign    = (raw->campaign != 0);
 	dst->start.year  = raw->start_year + SPWAW_STARTYEAR;
 	dst->start.month = (char)(raw->start_month);
 	dst->start.day   = 0;
@@ -219,6 +219,7 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 
 	rc = snapint_game_battle (ptr);		ROE ("snapint_game_battle()");
 	rc = snapint_game_campaign (ptr);	ROE ("snapint_game_campaign()");
+	// TODO: calculate the battle index if this is a campaign battle
 	rc = snapint_game_map (ptr);		ROE ("snapint_game_map()");
 
 	return (SPWERR_OK);

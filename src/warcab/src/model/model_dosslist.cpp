@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier list.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@ ModelDossList::ModelDossList (char *path, SPWAW_DOSSLIST *ignore, QObject *paren
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "filename" << "type" << "OOB" << "battles" << "name" << "comment";
+	header << "filename" << "type" << "nation" << "battles" << "name" << "comment";
 	d.col_cnt = 6;
 
 	setupModelData (path, ignore);
@@ -123,7 +123,7 @@ ModelDossList::setupModelData (char *path, SPWAW_DOSSLIST *ignore)
 		int nl = cmt.indexOf('\n'); if (nl != -1) cmt.truncate(nl);
 		node.data	<< p->filename
 				<< SPWAW_dossiertype2str(p->info.type)
-				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.OOB) : "")
+				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.props.OOB) : "")
 				<< p->info.bcnt
 				<< p->info.name
 				<< cmt;
