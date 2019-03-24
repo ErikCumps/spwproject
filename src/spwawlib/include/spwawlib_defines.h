@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API definitions.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -42,6 +42,12 @@
 
 #define	SPWAW_SECTION_COUNT	50	/*!< total number of sections in a savegame	*/
 #define	SPWW2_SECTION_COUNT	54	/*!< total number of sections in a savegame	*/
+
+/* Invalid index value */
+#define	SPWAW_BADIDX	((USHORT)0xFFFF)
+
+/* Unset campaign battle index value */
+#define	SPWAW_NOCBIDX	((USHORT)0xFFFF)
 
 #endif	/* SPWAW_LIB_DEFINES_H */
 

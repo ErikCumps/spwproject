@@ -84,9 +84,11 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 	 * + has a slightly different OOB organization
 	 * + lacks the battle OOB data index (at the end)
 	 * + lacks the battle name symbol (at the end)
+	 * + lacks the campaign battle index (at the end)
 	 *
 	 * V10 dossiers only support a single OOB data, the battle OOB data index must be zero.
 	 * V10 dossiers only support the SPWAW_CAMPAIGN_DOSSIER dossier type which doesn't use battle names.
+	 * V10 dossiers can only specify an SPWAW_NOCBIDX (a later override to set the correct cbidx is possible).
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
@@ -96,6 +98,7 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 		hdrs[i].OOB_p2 = (BYTE)((hdrs_v10[i].OOB >>  0) & 0xFF);
 		hdrs[i].oobdat = 0;
 		hdrs[i].name = BADSTRIDX;
+		hdrs[i].cbidx = SPWAW_NOCBIDX;
 	}
 
 handle_error:

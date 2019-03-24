@@ -38,7 +38,7 @@ dossier_list_expand (SPWAW_DOSSIER *ptr)
 }
 
 static SPWAW_ERROR
-dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, STRTAB *stab)
+dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, STRTAB *stab, SPWAW_DOSSIER_TYPE type)
 {
 	SPWAW_BATTLE	*p = NULL;
 
@@ -56,6 +56,13 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 	} else {
 		p->name	= NULL;
 	}
+
+	if (type == SPWAW_CAMPAIGN_DOSSIER) {
+		p->cbidx = p->snap->game.cbidx;
+	} else {
+		p->cbidx = SPWAW_NOCBIDX;
+	}
+
 	p->date		= p->snap->game.battle.data.start;
 	p->location	= STRTAB_add (stab, p->snap->game.battle.data.location);
 	p->oobdat	= p->snap->oobdat;
@@ -71,12 +78,28 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 }
 
 static int
-sort_dossier (const void *a, const void *b)
+sort_dossier_campaign (const void *a, const void *b)
 {
 	SPWAW_BATTLE	*fa = *((SPWAW_BATTLE **)a);
 	SPWAW_BATTLE	*fb = *((SPWAW_BATTLE **)b);
-	SPWAW_TIMESTAMP	sa, sb;
 
+	USHORT	ia = fa->cbidx;
+	USHORT	ib = fb->cbidx;
+
+	SPWAW_TIMESTAMP	sa, sb;
+	SPWAW_date2stamp (&(fa->date), &sa);
+	SPWAW_date2stamp (&(fb->date), &sb);
+
+	return ((ia==ib)?(sa==sb)?0:((sa<sb)?-1:+1):((ia<ib)?-1:+1));
+}
+
+static int
+sort_dossier_stdalone (const void *a, const void *b)
+{
+	SPWAW_BATTLE	*fa = *((SPWAW_BATTLE **)a);
+	SPWAW_BATTLE	*fb = *((SPWAW_BATTLE **)b);
+
+	SPWAW_TIMESTAMP	sa, sb;
 	SPWAW_date2stamp (&(fa->date), &sa);
 	SPWAW_date2stamp (&(fb->date), &sb);
 
@@ -116,7 +139,8 @@ dossier_add_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b)
 	b->dossier = ptr;
 	ptr->blist[ptr->bcnt++] = b;
 
-	qsort (ptr->blist, ptr->bcnt, sizeof (SPWAW_BATTLE *), sort_dossier);
+	qsort (ptr->blist, ptr->bcnt, sizeof (SPWAW_BATTLE *),
+		(ptr->type == SPWAW_CAMPAIGN_DOSSIER) ? sort_dossier_campaign : sort_dossier_stdalone);
 
 	pp=NULL;
 	for (idx=0; idx<ptr->bcnt; idx++) {
@@ -152,13 +176,10 @@ battle_list_expand (SPWAW_BATTLE *ptr)
 static int
 sort_battle (const void *a, const void *b)
 {
-	SPWAW_BTURN	*fa = *((SPWAW_BTURN **)a);
-	SPWAW_BTURN	*fb = *((SPWAW_BTURN **)b);
-	SPWAW_TIMESTAMP	sa, sb;
+	int	ta = (*((SPWAW_BTURN **)a))->turn;
+	int	tb = (*((SPWAW_BTURN **)b))->turn;
 
-	SPWAW_date2stamp (&(fa->date), &sa);
-	SPWAW_date2stamp (&(fb->date), &sb);
-	return ((sa==sb)?0:((sa<sb)?-1:+1));
+	return ((ta==tb)?0:((ta<tb)?-1:+1));
 }
 
 static SPWAW_BTURN *
@@ -245,7 +266,7 @@ dossier_make_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, const char *name,
 
 	stab = (STRTAB *)ptr->stab;
 
-	rc = dossier_new_battle (&b, snap, name, stab);
+	rc = dossier_new_battle (&b, snap, name, stab, ptr->type);
 	ROE ("dossier_new_battle()");
 
 	rc = dossier_add_battle (ptr, b);

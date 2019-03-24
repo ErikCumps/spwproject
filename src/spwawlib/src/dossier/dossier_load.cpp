@@ -121,10 +121,13 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	dst->blen = cnt;
 	dst->blist = safe_nmalloc (SPWAW_BATTLE *, cnt); COOMGOTO (dst->blist, "SPWAW_BATTLE* list", handle_error);
 
-	/* We are now backwards compatible with version 10 */
+	/* We are now backwards compatible with versions 10 and 11 */
 	if (version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_battle_headers (fd, hdrs, cnt);
 		ERRORGOTO ("dossier_load_v10_battle_headers(battle hdrs)", handle_error);
+	} else 	if (version == DOSS_VERSION_V11) {
+		rc = dossier_load_v11_battle_headers (fd, hdrs, cnt);
+		ERRORGOTO ("dossier_load_v11_battle_headers(battle hdrs)", handle_error);
 	} else {
 		if (!bread (fd, (char *)hdrs, cnt * sizeof (DOS_BHEADER), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
@@ -159,7 +162,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		rc = dossier_load_battle_turns (fd, p, hdrs[i].tcnt, stab);
 		ERRORGOTO ("dossier_load_battle_turns()", handle_error);
 
-		if (p->tcnt) p->snap = p->tlist[0]->snap;
+		//if (p->tcnt) p->snap = p->tlist[0]->snap;
+
+		if ((p->cbidx == SPWAW_NOCBIDX) && p->tcnt) p->cbidx = p->tlist[0]->snap->game.cbidx;
 
 		// Set dossier data if this was the first battle loaded
 		if (i == 0) dossier_set_campaign_props (dst);

@@ -85,6 +85,7 @@ typedef struct s_SPWAW_DOSSIER_BURA {
 /* SPWAW dossier: battle data */
 struct s_SPWAW_BATTLE {
 	char			*name;				/* Optional battle name				*/
+	USHORT			cbidx;				/* Campaign battle index			*/
 	SPWAW_BATTLE		*prev;				/* Pointer to previous battle			*/
 	SPWAW_BATTLE		*next;				/* Pointer to next battle			*/
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn #0 snapshot data			*/

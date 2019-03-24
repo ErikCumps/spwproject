@@ -45,3 +45,34 @@ handle_error:
 	if (hdr_v11) safe_free (hdr_v11);
 	return (rc);
 }
+
+SPWAW_ERROR
+dossier_load_v11_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	DOS_BHEADER_V11	*hdrs_v11;
+	USHORT		i;
+
+	if (!hdrs || !cnt) return (SPWERR_NULLARG);
+
+	hdrs_v11 = safe_nmalloc (DOS_BHEADER_V11, cnt); COOMGOTO (hdrs_v11, "DOS_BHEADER_V11 list", handle_error);
+
+	if (!bread (fd, (char *)hdrs_v11, cnt * sizeof (DOS_BHEADER_V11), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs v11)", handle_error);
+
+	/* A V11 battle header:
+	 * + lacks the campaign battle index (at the end)
+	 *
+	 * V11 dossiers can only specify an SPWAW_NOCBIDX (a later override to set the correct cbidx is possible).
+	 *
+	 * So a quick copy and fix up is all we need :)
+	 */
+	for (i=0; i<cnt; i++) {
+		memcpy (&(hdrs[i]), &(hdrs_v11[i]), sizeof (DOS_BHEADER_V11));
+		hdrs[i].cbidx = SPWAW_NOCBIDX;
+	}
+
+handle_error:
+	if (hdrs_v11) safe_free (hdrs_v11);
+	return (rc);
+}

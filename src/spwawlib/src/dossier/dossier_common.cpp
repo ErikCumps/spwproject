@@ -19,13 +19,19 @@ SPWAW_BATTLE *
 dossier_find_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap)
 {
 	DWORD		i;
-	SPWAW_TIMESTAMP	stamp, s;
 
-	SPWAW_date2stamp (&(snap->game.battle.data.start), &stamp);
+	if (snap->game.cbidx != SPWAW_NOCBIDX) {
+		for (i=0; i<ptr->bcnt; i++) {
+			if (ptr->blist[i]->cbidx == snap->game.cbidx) return (ptr->blist[i]);
+		}
+	} else {
+		SPWAW_TIMESTAMP	stamp, s;
 
-	for (i=0; i<ptr->bcnt; i++) {
-		SPWAW_date2stamp (&(ptr->blist[i]->date), &s);
-		if (s == stamp) return (ptr->blist[i]);
+		SPWAW_date2stamp (&(snap->game.battle.data.start), &stamp);
+		for (i=0; i<ptr->bcnt; i++) {
+			SPWAW_date2stamp (&(ptr->blist[i]->date), &s);
+			if (s == stamp) return (ptr->blist[i]);
+		}
 	}
 	return (NULL);
 }
@@ -230,7 +236,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 			src->ra[i].rpl = false;
 		}
 		for (f=0; f<src->dossier->props.fcnt; f++) {
-			sfp = &(src->info_sob->pbir_battle.fir[f]); dfp = &(dst->info_sob->pbir_battle.fir[f]);
+			sfp = &(src->info_sob->pbir_core.fir[f]); dfp = &(dst->info_sob->pbir_core.fir[f]);
 			log ("Src formation #%d: sfp=0x%8.8x = %s\n", f, sfp, sfp->snap->strings.name);
 			log ("Dst formation #%d: dfp=0x%8.8x = %s\n", f, dfp, dfp->snap->strings.name);
 
@@ -238,16 +244,16 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 			log ("/ Assigning live units:\n");
 			for (u=0; u<sfp->snap->data.ucnt; u++) {
 				i = sfp->snap->data.ulist[u]->data.idx;
-				if (!src->info_eob->pbir_battle.uir[i].snap->data.alive) continue;
+				if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
 
-				sup = &(src->info_sob->pbir_battle.uir[i]);
+				sup = &(src->info_sob->pbir_core.uir[i]);
 				log ("| Src unit #%d: (%s, %s), ALIVE\n", i, sup->snap->strings.uid, sup->snap->data.name);
 
 				/* find first unassigned matching unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
 				for (j=0; j<dfp->snap->data.ucnt; j++) {
 					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir_battle.uir[k]);
+					p = &(dst->info_sob->pbir_core.uir[k]);
 
 					log ("| Checking dst unit #%d: (%s, %s), dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
 					if (strcmp (sup->snap->data.name, p->snap->data.name) == 0) {
@@ -279,14 +285,14 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 				i = sfp->snap->data.ulist[u]->data.idx;
 				if (src->ra[i].dst != SPWAW_BADIDX) continue;
 
-				sup = &(src->info_sob->pbir_battle.uir[i]);
+				sup = &(src->info_sob->pbir_core.uir[i]);
 				log ("| Src unit #%d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.name);
 
 				/* find first unassigned unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
 				for (j=0; j<dfp->snap->data.ucnt; j++) {
 					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir_battle.uir[k]);
+					p = &(dst->info_sob->pbir_core.uir[k]);
 
 					log ("| Checking dst unit #%d: (%s, %s) dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
 					if (dst->ra[k].src == SPWAW_BADIDX) {

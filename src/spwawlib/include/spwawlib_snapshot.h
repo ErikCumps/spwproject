@@ -429,6 +429,7 @@ typedef struct s_SPWAW_SNAP_GAME {
 	SPWAW_SNAP_BATTLE	battle;				/* Battle info						*/
 	SPWAW_SNAP_CAMPAIGN	campaign;			/* Campaign info					*/
 	SPWAW_SNAP_MAP		map;				/* Map info						*/
+	USHORT			cbidx;				/* Campaign battle index (if known)			*/
 } SPWAW_SNAP_GAME;
 
 /* SPWAW coupled unit/formation integer value/id data structure */
@@ -745,11 +746,6 @@ typedef struct s_SPWAW_SNAPSHOT_INFO {
 	FILETIME		filedate;			/* Snapshot source game filedate			*/
 	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 } SPWAW_SNAPSHOT_INFO;
-
-
-
-/* Invalid index value */
-#define	SPWAW_BADIDX	((USHORT)0xFFFF)
 
 
 

@@ -219,8 +219,15 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 
 	rc = snapint_game_battle (ptr);		ROE ("snapint_game_battle()");
 	rc = snapint_game_campaign (ptr);	ROE ("snapint_game_campaign()");
-	// TODO: calculate the battle index if this is a campaign battle
 	rc = snapint_game_map (ptr);		ROE ("snapint_game_map()");
+
+	// Determine campaign battle index
+	if (ptr->game.campaign.data.battles_max > 0) {
+		ptr->game.cbidx = ptr->game.campaign.data.battles;
+		//if (ptr->game.battle.data.status == SPWAW_BTSCORE) ptr->game.cbidx--;
+	} else {
+		ptr->game.cbidx = SPWAW_NOCBIDX;
+	}
 
 	return (SPWERR_OK);
 }

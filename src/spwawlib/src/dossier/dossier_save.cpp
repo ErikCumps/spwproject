@@ -101,6 +101,7 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].miss_p1  = STRTAB_getidx (stab, p->miss_p1);
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;
+		hdrs[idx].cbidx    = p->cbidx;
 
 		rc = SPWOOB_LIST_spwoob2idx (src->oobdata, p->oobdat, &(hdrs[idx].oobdat));
 		ERRORGOTO ("SPWOOB_LIST_spwoob2idx(battle oob data)", handle_error);
