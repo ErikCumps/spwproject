@@ -33,7 +33,7 @@ GuiBattleGraphExp::GuiBattleGraphExp()
 
 	name = "Experience level";
 
-	setup (PLOT_AREA, true, AXIS_TIME);
+	setup (PLOT_AREA, true, AXIS_INDEX);
 
 	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
@@ -82,7 +82,7 @@ GuiBattleGraphRnk::GuiBattleGraphRnk()
 
 	name = "Rank distribution";
 
-	setup (PLOT_BAR, true, AXIS_TIME);
+	setup (PLOT_BAR, true, AXIS_INDEX);
 
 	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
