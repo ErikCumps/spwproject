@@ -38,8 +38,6 @@ typedef struct s_SPWAW_DOSSIER_FIR {
 struct s_SPWAW_DOSSIER_UIR {
 	SPWAW_SNAP_OOB_UEL	*snap;				/* Unit original snapshot data			*/
 	SPWAW_DOSSIER_FIR	*fptr;				/* Unit parent formation info record pointer	*/
-	SPWAW_DOSSIER_UIR	*prev;				/* Pointer to previous battle UIR		*/
-	SPWAW_DOSSIER_UIR	*next;				/* Pointer to next battle UIR			*/
 };
 
 /* SPWAW dossier: battle info record set

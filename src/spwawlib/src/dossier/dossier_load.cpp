@@ -162,8 +162,6 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		rc = dossier_load_battle_turns (fd, p, hdrs[i].tcnt, stab);
 		ERRORGOTO ("dossier_load_battle_turns()", handle_error);
 
-		//if (p->tcnt) p->snap = p->tlist[0]->snap;
-
 		if ((p->cbidx == SPWAW_NOCBIDX) && p->tcnt) p->cbidx = p->tlist[0]->snap->game.cbidx;
 
 		// Set dossier data if this was the first battle loaded
