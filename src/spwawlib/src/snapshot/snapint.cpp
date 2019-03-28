@@ -111,7 +111,7 @@ snapint_game_campaign (SPWAW_SNAPSHOT *ptr)
 	dst = &(ptr->game.campaign.data);
 	str = &(ptr->game.campaign.strings);
 
-	dst->campaign    = raw->campaign;
+	dst->campaign    = (raw->campaign != 0);
 	dst->start.year  = raw->start_year + SPWAW_STARTYEAR;
 	dst->start.month = (char)(raw->start_month);
 	dst->start.day   = 0;
@@ -591,7 +591,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		p.fp->data.hcmd.up = unitorcrewbyid (p.fp->data.hcmd.rid, bp);
 		if (!p.fp->data.hcmd.up) {
 			// TODO: more of these checks to prevent NULL pointer propagation
-			RWE (SPWERR_BADSAVEDATA, "missing leader unit for formation");
+			RWE (SPWERR_BADSAVEDATA, "missing higher command unit for formation");
 		}
 
 		/* Do not link crewmen to formation leader, use abandoned unit instead! */

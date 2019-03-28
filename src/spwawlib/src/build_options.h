@@ -12,6 +12,9 @@
 /* Set to 1 to enable IO logging */
 #define	IOLOGGING	0
 
+/* Set to 1 to enable (un)pack logging */
+#define	PACKLOGGING	0
+
 /* Set to 1 to enable unit/formation detection logging */
 #define	UFDLOGGING	1
 
