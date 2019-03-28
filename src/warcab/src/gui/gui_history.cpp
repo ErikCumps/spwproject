@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit history widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -158,7 +158,7 @@ GuiHistory::set_parent (GuiRptTrn *parent, bool player)
 	setup_highlight();
 }
 
-void	
+void
 GuiHistory::setup_highlight (void)
 {
 	d.highlight->clear();

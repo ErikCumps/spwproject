@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame API implementation.
  *
- * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -18,7 +18,7 @@ SPWAW_savegame_new (SPWAW_SAVEGAME **game)
 	SPWAW_SAVEGAME	*p = NULL;
 	SECMAP		*map;
 	int		i;
-	
+
 	CSPWINIT;
 	CNULLARG (game);
 	*game = NULL;

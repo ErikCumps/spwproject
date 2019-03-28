@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -340,7 +340,7 @@ snapsave (SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress)
 
 	memcpy (mhdr.magic, SNAP_MAGIC, strlen (SNAP_MAGIC));
 	mhdr.version = SNAP_VERSION;
-	
+
 	bseekmove (fd, sizeof (mhdr));
 
 	shdr.path = STRTAB_getidx (stab, src->src.path);

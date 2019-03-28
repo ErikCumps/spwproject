@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling - backwards compatibility with the V10 snapshot.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */

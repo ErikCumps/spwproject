@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB list handling.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */

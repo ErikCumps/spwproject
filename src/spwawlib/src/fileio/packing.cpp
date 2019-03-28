@@ -1,7 +1,7 @@
 /** \file
- * The SPWaW Library - file I/O handling.
+ * The SPWaW Library - gamefile block compression handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */

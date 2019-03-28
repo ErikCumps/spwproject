@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -17,7 +17,7 @@ static SL_APP_INFO	app_info = {
 		"Warcab",
 		"The SPWaW war cabinet",
 		"0.7.0",
-		"2005-2018",
+		"2005-2019",
 		"Erik Cumps",
 		"erik.cumps@gmail.com"
 	},
