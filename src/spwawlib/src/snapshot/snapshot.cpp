@@ -8,8 +8,26 @@
 
 #include "stdafx.h"
 #include <spwawlib_api.h>
-#include <spwawlib_snapshot.h>
+#include "snapshot/snapshot.h"
+#include "gamefile/spwaw/game_spwaw.h"
 #include "common/internal.h"
+
+SPWAW_ERROR
+load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
+{
+	CNULLARG (src); CNULLARG (dst);
+
+	switch (src->gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			return (load_from_spwaw_game (src, dst));
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+		case SPWAW_GAME_TYPE_UNKNOWN:
+		default:
+			RWE (SPWERR_FAILED, "unsupported game type");
+			break;
+	}
+}
 
 // Checks unit record ID
 bool

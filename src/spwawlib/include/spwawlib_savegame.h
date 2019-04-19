@@ -18,28 +18,30 @@
 
 /*! SPWAW savegame comment data */
 typedef struct s_SPWAW_SAVEGAME_COMMENT {
-	void	*data;		/*!< pointer to data buffer	*/
-	DWORD	size;		/*!< size of data buffer	*/
+	void	*data;				/*!< pointer to data buffer		*/
+	DWORD	size;				/*!< size of data buffer		*/
 } SPWAW_SAVEGAME_COMMENT;
 
 /*! SPWAW uncompressed savegame section data */
 typedef struct s_SPWAW_SAVEGAME_SECTION {
-	void	*data;		/*!< pointer to data buffer	*/
-	DWORD	size;		/*!< size of data buffer	*/
-	int	idx;		/*!< section index number	*/
+	void	*data;				/*!< pointer to data buffer		*/
+	DWORD	size;				/*!< size of data buffer		*/
+	int	idx;				/*!< section index number		*/
 } SPWAW_SAVEGAME_SECTION;
 
 /*! SPWAW savegame content structure */
 typedef struct s_SPWAW_SAVEGAME {
-	SPWAW_SAVEGAME_COMMENT	comment;			/*!< savegame comment content	*/
-	SPWAW_SAVEGAME_SECTION	sections[SPWAW_SECTION_COUNT];	/*!< savegame sections content	*/
+	SPWAW_GAME_TYPE		gametype;	/*!< savegame game type			*/
+	SPWAW_SAVEGAME_COMMENT	comment;	/*!< savegame comment content		*/
+	int			seccnt;		/*!< number of savegame sections	*/
+	SPWAW_SAVEGAME_SECTION	*seclst;	/*!< savegame sections content list		*/
 } SPWAW_SAVEGAME;
 
 
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savegame_new	(SPWAW_SAVEGAME **savegame);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savegame_new	(SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **savegame);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savegame_free	(SPWAW_SAVEGAME **savegame);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savegame_load	(SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SAVEGAME **savegame);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savegame_save	(SPWAW_SAVEGAME **savegame, const char *dir, int id);

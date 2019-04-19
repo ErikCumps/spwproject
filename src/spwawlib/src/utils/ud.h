@@ -1,13 +1,15 @@
 /** \file
  * The SPWaW Library - utility code: unknown data handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #ifndef	UD_H
 #define	UD_H	1
+
+#include <spwawlib_ud.h>
 
 extern void		UD_init		(SPWAW_UD *ud, DWORD size);
 extern SPWAW_UD *	UD_new		(DWORD size);

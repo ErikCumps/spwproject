@@ -39,8 +39,6 @@
 #define	SPWAW_HEX_NW		0x10	/* hex northwest side	*/
 #define	SPWAW_HEX_NE		0x20	/* hex northeast side	*/
 
-#define	SPWAW_SECTION_COUNT	50	/*!< total number of sections in a savegame	*/
-
 #endif	/* SPWAW_LIB_DEFINES_H */
 
 /** @} */

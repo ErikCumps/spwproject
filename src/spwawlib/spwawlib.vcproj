@@ -199,9 +199,6 @@
 					RelativePath=".\src\fileio\cbwrite.cpp">
 				</File>
 				<File
-					RelativePath=".\src\fileio\packing.cpp">
-				</File>
-				<File
 					RelativePath=".\src\fileio\sbread.cpp">
 				</File>
 				<File
@@ -212,44 +209,82 @@
 				Name="gamefile"
 				Filter="">
 				<File
-					RelativePath=".\src\gamefile\cmt.cpp">
+					RelativePath=".\src\gamefile\fulist.cpp">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\opengame.cpp">
+					RelativePath=".\src\gamefile\game.cpp">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct01.cpp">
+					RelativePath=".\src\gamefile\gamedata.cpp">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct08.cpp">
+					RelativePath=".\src\gamefile\gamedata_secmap.cpp">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct14.cpp">
+					RelativePath=".\src\gamefile\gamefile.cpp">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct17.cpp">
+					RelativePath=".\src\gamefile\maptile.cpp">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct26.cpp">
+					RelativePath=".\src\gamefile\packing.cpp">
 				</File>
-				<File
-					RelativePath=".\src\gamefile\struct34.cpp">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct35.cpp">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct37.cpp">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct38.cpp">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct39.cpp">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct_common.cpp">
-				</File>
+				<Filter
+					Name="spwaw"
+					Filter="">
+					<File
+						RelativePath=".\src\gamefile\spwaw\cmt_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\game_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\gamedata_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\packing_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section01_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section08_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section14_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section17_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section26_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section34_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section35_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section37_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section38_spwaw.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section39_spwaw.cpp">
+					</File>
+				</Filter>
+				<Filter
+					Name="winspww2"
+					Filter="">
+					<File
+						RelativePath=".\src\gamefile\winspww2\cmt_winspww2.cpp">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\winspww2\packing_winspww2.cpp">
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="snapshot"
@@ -456,161 +491,211 @@
 				Name="gamefile"
 				Filter="">
 				<File
+					RelativePath=".\src\gamefile\fulist.h">
+				</File>
+				<File
+					RelativePath=".\src\gamefile\game.h">
+				</File>
+				<File
+					RelativePath=".\src\gamefile\gamedata.h">
+				</File>
+				<File
+					RelativePath=".\src\gamefile\gamedata_secmap.h">
+				</File>
+				<File
 					RelativePath=".\src\gamefile\gamefile.h">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct00.h">
+					RelativePath=".\src\gamefile\maptile.h">
 				</File>
 				<File
-					RelativePath=".\src\gamefile\struct01.h">
+					RelativePath=".\src\gamefile\packing.h">
 				</File>
-				<File
-					RelativePath=".\src\gamefile\struct02.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct03.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct04.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct05.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct06.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct07.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct08.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct09.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct10.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct11.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct12.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct13.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct14.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct15.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct16.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct17.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct18.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct19.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct20.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct21.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct22.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct23.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct24.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct25.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct26.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct27.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct28.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct29.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct30.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct31.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct32.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct33.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct34.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct35.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct36.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct37.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct38.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct39.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct40.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct41.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct42.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct43.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct44.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct45.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct46.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct47.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct48.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct51.h">
-				</File>
-				<File
-					RelativePath=".\src\gamefile\struct_common.h">
-				</File>
+				<Filter
+					Name="spwaw"
+					Filter="">
+					<File
+						RelativePath=".\src\gamefile\spwaw\cmt_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\defines_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\game_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\gamedata_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\gamedata_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\packing_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section00_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section01_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section02_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section03_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section04_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section05_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section06_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section07_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section08_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section09_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section10_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section11_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section12_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section13_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section14_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section15_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section16_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section17_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section18_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section19_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section20_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section21_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section22_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section23_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section24_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section25_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section26_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section27_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section28_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section29_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section30_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section31_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section32_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section33_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section34_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section35_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section36_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section37_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section38_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section39_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section40_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section41_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section42_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section43_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section44_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section45_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section46_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section47_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section48_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section51_spwaw.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\spwaw\section_common_spwaw.h">
+					</File>
+				</Filter>
+				<Filter
+					Name="winspww2"
+					Filter="">
+					<File
+						RelativePath=".\src\gamefile\winspww2\cmt_winspww2.h">
+					</File>
+					<File
+						RelativePath=".\src\gamefile\winspww2\packing_winspww2.h">
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="snapshot"
@@ -641,10 +726,10 @@
 					RelativePath=".\src\spwoob\raw.h">
 				</File>
 				<File
-					RelativePath=".\src\spwoob\raw_spwaw.h">
+					RelativePath=".\src\spwoob\raw_api_spwaw.h">
 				</File>
 				<File
-					RelativePath=".\src\spwoob\raw_spwaw_api.h">
+					RelativePath=".\src\spwoob\raw_spwaw.h">
 				</File>
 				<File
 					RelativePath=".\src\spwoob\raw_winspww2.h">

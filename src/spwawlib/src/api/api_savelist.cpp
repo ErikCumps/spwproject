@@ -8,18 +8,25 @@
 
 #include "stdafx.h"
 #include <spwawlib_savelist.h>
-#include "gamefile/gamefile.h"
+#include "gamefile/game.h"
 #include "common/internal.h"
 
 #define	LISTINC	8
 
 static bool
-id_from_name (char *name, unsigned int *id)
+id_from_name (SPWAW_GAME_TYPE gametype, char *name, unsigned int *id)
 {
+	const char	*base = NULL;
+	char		match[MAX_PATH+1];
+
 	if (!name || !id) return (false);
+	if (!gamefile_basename (gametype, &base)) return (false);
+
+	memset (match, 0, sizeof (match));
+	snprintf (match, sizeof (match) - 1, "%s%%u.dat", base);
 
 	*id = 0;
-	return (sscanf (name, "save%u.dat", id) == 1);
+	return (sscanf (name, match, id) == 1);
 }
 
 static bool
@@ -46,7 +53,7 @@ file_on_list (SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE *node)
 }
 
 static bool
-handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE **p)
+handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE **p)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
 	unsigned int		id;
@@ -57,7 +64,7 @@ handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_S
 	if (!p) return (false); *p = NULL;
 
 	/* skip file if no id detected */
-	if (!id_from_name (f.cFileName, &id)) goto handle_error;
+	if (!id_from_name (gametype, f.cFileName, &id)) goto handle_error;
 
 	ptr = safe_malloc (SPWAW_SAVELIST_NODE); COOMGOTO (ptr, "SPWAW_SAVELIST_NODE", handle_error);
 
@@ -84,7 +91,7 @@ handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_S
 		mt_local.wYear, mt_local.wMonth, mt_local.wDay, mt_local.wHour, mt_local.wMinute, mt_local.wSecond);
 
 	/* obtain game info */
-	if (game_load_info (dir, id, &info)) {
+	if (game_load_info (gametype, dir, id, &info)) {
 		memcpy (ptr->info.stamp, info.stamp, sizeof (info.stamp));
 		memcpy (ptr->info.location, info.location, sizeof (info.location));
 		memcpy (ptr->info.comment, info.comment, sizeof (info.comment));
@@ -103,22 +110,25 @@ handle_error:
 }
 
 static void
-list_files (const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST *list)
+list_files (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST *list)
 {
+	const char		*base = NULL;
 	char			buffer[MAX_PATH+1];
 	HANDLE			h;
 	WIN32_FIND_DATA		f;
 	BOOL			stop = false;
 	SPWAW_SAVELIST_NODE	*p;
 
+	if (!gamefile_basename (gametype, &base)) return;
+
 	memset (buffer, 0, sizeof (buffer));
-	snprintf (buffer, sizeof (buffer) - 1, "%s\\*.dat", dir);
+	snprintf (buffer, sizeof (buffer) - 1, "%s\\%s*.dat", dir, base);
 
 	h = FindFirstFile (buffer, &f);
 	if (h == INVALID_HANDLE_VALUE) return;	// TODO: flag error!
 
 	while (!stop) {
-		if (handle_file (dir, f, ignore, &p)) {
+		if (handle_file (gametype, dir, f, ignore, &p)) {
 			/* put on list */
 			SPWAW_savelist_add (list, p);
 		}
@@ -131,19 +141,11 @@ list_files (const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST *list)
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_savelist (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
 {
-	SPWAW_SAVELIST	*p = NULL;
+	SPWAW_ERROR	rc;
 
-	RWE(SPWERR_NOTIMPL, "TODO");
+	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");
 
-	CSPWINIT;
-	CNULLARG (dir); CNULLARG (list);
-	*list = NULL;
-
-	p = safe_malloc (SPWAW_SAVELIST); COOM (p, "SPWAW_SAVELIST");
-
-	list_files (dir, ignore, p);
-
-	*list = p;
+	list_files (gametype, dir, ignore, *list);
 
 	return (SPWERR_OK);
 }

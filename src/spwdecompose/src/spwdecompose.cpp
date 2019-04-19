@@ -11,8 +11,9 @@
 void
 usage (char *app)
 {
-	printf ("Usage: %s DIR INDEX\n", app);
-	printf ("Where: DIR     path to savegame dir\n");
+	printf ("Usage: %s GAME DIR INDEX\n", app);
+	printf ("Where: GAME    game type\n");
+	printf ("       DIR     path to savegame dir\n");
 	printf ("       INDEX   index of savegame to decompose\n");
 	exit (0);
 }
@@ -49,12 +50,14 @@ write_data (char *fn, void *data, DWORD size)
 int
 main (int argc, char** argv)
 {
+	SPWAW_GAME_TYPE	gametype;
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*game = NULL;
 	char		fn[256];
-	SPWAW_GAME_TYPE	gametype = SPWAW_GAME_TYPE_SPWAW;
+	
+	if (argc < 4) usage (argv[0]);
 
-	if (argc < 3) usage (argv[0]);
+	gametype = SPWAW_str2gametype (argv[1]);
 
 	memset (fn, 0, sizeof (fn));
 
@@ -63,7 +66,7 @@ main (int argc, char** argv)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Load savegame data */
-	if ((rc = SPWAW_savegame_load (gametype, argv[1], atoi(argv[2]), &game)) != SPWERR_OK)
+	if ((rc = SPWAW_savegame_load (gametype, argv[2], atoi(argv[3]), &game)) != SPWERR_OK)
 		error ("failed to load savegame: %s", SPWAW_errstr (rc));
 
 	/* Write savegame comment data */
@@ -71,9 +74,9 @@ main (int argc, char** argv)
 	write_data (fn, game->comment.data, game->comment.size);
 	
 	/* Write savegame sections data */
-	for (int i = 0; i < SPWAW_SECTION_COUNT; i++) {
-		snprintf (fn, sizeof (fn) - 1, "section%2.2d.sect", game->sections[i].idx);
-		write_data (fn, game->sections[i].data, game->sections[i].size);
+	for (int i = 0; i < game->seccnt; i++) {
+		snprintf (fn, sizeof (fn) - 1, "section%2.2d.sect", game->seclst[i].idx);
+		write_data (fn, game->seclst[i].data, game->seclst[i].size);
 	}
 
 	/* Clean up */

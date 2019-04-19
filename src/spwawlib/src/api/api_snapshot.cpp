@@ -8,8 +8,9 @@
 
 #include "stdafx.h"
 #include <spwawlib_snapshot.h>
-#include "common/internal.h"
+#include "gamefile/game.h"
 #include "snapshot/snapshot.h"
+#include "common/internal.h"
 #include "utils/filecheck.h"
 
 /*! Create snapshot from SPWAW savegame */
@@ -22,8 +23,6 @@ SPWAW_snap_make (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSH
 	GAMEDATA	*data = NULL;
 	GAMEINFO	info;
 
-	RWE(SPWERR_NOTIMPL, "TODO");
-
 	CSPWINIT;
 	CNULLARG (dir); CNULLARG (snap);
 
@@ -33,7 +32,7 @@ SPWAW_snap_make (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSH
 	stab = (STRTAB *)ptr->stab;
 
 	/* Open savegame, load and decompress data */
-	data = game_load_full (dir, id, &info);
+	data = game_load_full (gametype, dir, id, &info);
 	if (!data) FAILGOTO (SPWERR_BADSAVEGAME, "game_load_full()", handle_error);
 
 	/* Record source game data */
@@ -52,13 +51,13 @@ SPWAW_snap_make (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSH
 	ptr->type = data->type;
 
 	/* Cleanup and return */
-	game_free (&data);
+	gamedata_free (&data);
 
 	*snap = ptr;
 	return (SPWERR_OK);
 
 handle_error:
-	if (data) game_free (&data);
+	if (data) gamedata_free (&data);
 	SPWAW_snap_free (&ptr);
 	return (rc);
 }

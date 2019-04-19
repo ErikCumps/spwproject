@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,8 +10,9 @@
 #define	SNAPSHOT_H	1
 
 #include <spwawlib_api.h>
+#include <spwawlib_snapshot.h>
+#include "gamefile/gamedata.h"
 #include "strtab/strtab.h"
-#include "gamefile/gamefile.h"
 #include "snapshot/snapfile.h"
 
 extern SPWAW_ERROR		load_from_game		(GAMEDATA *src, SPWAW_SNAPSHOT *dst);

@@ -11,8 +11,9 @@
 void
 usage (char *app)
 {
-	printf ("Usage: %s DIR INDEX\n", app);
-	printf ("Where: DIR     path to savegame dir\n");
+	printf ("Usage: %s GAME DIR INDEX\n", app);
+	printf ("Where: GAME    game type\n");
+	printf ("       DIR     path to savegame dir\n");
 	printf ("       INDEX   index of savegame to reconstruct\n");
 	exit (0);
 }
@@ -60,20 +61,23 @@ read_data (char *fn, void **data, DWORD *size)
 int
 main (int argc, char** argv)
 {
+	SPWAW_GAME_TYPE	gametype;
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*game = NULL;
 	char		fn[256];
 
-	if (argc < 3) usage (argv[0]);
+	if (argc < 4) usage (argv[0]);
+
+	gametype = SPWAW_str2gametype (argv[1]);
 
 	memset (fn, 0, sizeof (fn));
 
 	/* Initialize spwawlib */
-	if ((rc = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, NULL, false)) != SPWERR_OK)
+	if ((rc = SPWAW_init (gametype, NULL, false)) != SPWERR_OK)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Create new, empty, savegame data structure */
-	if ((rc = SPWAW_savegame_new (&game)) != SPWERR_OK)
+	if ((rc = SPWAW_savegame_new (gametype, &game)) != SPWERR_OK)
 		error ("failed to create new, empty, savegame data structure: %s", SPWAW_errstr (rc));
 
 	/* Read savegame comment data */
@@ -81,13 +85,13 @@ main (int argc, char** argv)
 	read_data (fn, &(game->comment.data), &(game->comment.size));
 	
 	/* Read savegame sections data */
-	for (int i = 0; i < SPWAW_SECTION_COUNT; i++) {
-		snprintf (fn, sizeof (fn) - 1, "section%2.2d.sect", game->sections[i].idx);
-		read_data (fn, &(game->sections[i].data), &(game->sections[i].size));
+	for (int i = 0; i < game->seccnt; i++) {
+		snprintf (fn, sizeof (fn) - 1, "section%2.2d.sect", game->seclst[i].idx);
+		read_data (fn, &(game->seclst[i].data), &(game->seclst[i].size));
 	}
 
 	/* Write savegame data */
-	if ((rc = SPWAW_savegame_save (&game, argv[1], atoi(argv[2]))) != SPWERR_OK)
+	if ((rc = SPWAW_savegame_save (&game, argv[2], atoi(argv[1]))) != SPWERR_OK)
 		error ("failed to write savegame: %s", SPWAW_errstr (rc));
 
 	/* Clean up */

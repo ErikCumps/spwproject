@@ -287,7 +287,7 @@ do_map_dump (SPWAW_SNAPSHOT *ptr, char *rbfn)
 }
 
 void
-generate_reports(int argc, char** argv, char *base, SPWAW_SNAPSHOT *snap)
+generate_reports(char *base, char *type, SPWAW_SNAPSHOT *snap)
 {
 	char	rprtbase[MAX_PATH+1];
 
@@ -301,13 +301,13 @@ generate_reports(int argc, char** argv, char *base, SPWAW_SNAPSHOT *snap)
 	bool	table	  = false;
 	bool	map	  = false;
 
-	if (argc > 5) {
-		if (strcmp (argv[5], "raw") == 0)	raw	  = true;
-		if (strcmp (argv[5], "elaborate") == 0)	elaborate = true;
-		if (strcmp (argv[5], "normal") == 0)	normal	  = true;
-		if (strcmp (argv[5], "narrative") == 0)	narrative = true;
-		if (strcmp (argv[5], "table") == 0)	table	  = true;
-		if (strcmp (argv[5], "map") == 0)	map	  = true;
+	if (type) {
+		if (strcmp (type, "raw") == 0)		raw	  = true;
+		if (strcmp (type, "elaborate") == 0)	elaborate = true;
+		if (strcmp (type, "normal") == 0)	normal	  = true;
+		if (strcmp (type, "narrative") == 0)	narrative = true;
+		if (strcmp (type, "table") == 0)	table	  = true;
+		if (strcmp (type, "map") == 0)		map	  = true;
 	} else {
 		raw = elaborate = normal = narrative = table = map = true;
 	}
@@ -355,7 +355,7 @@ generate_savegame_report(int argc, char** argv)
 		error ("failed to create snapshot for \"%s:%s\": %s", argv[4], argv[5], SPWAW_errstr (rc));
 	}
 
-	generate_reports (argc, argv, argv[6], snap);
+	generate_reports (argv[6], (argc>7)?argv[7]:NULL, snap);
 
 	memset (savename, 0, sizeof (savename));
 	snprintf (savename, sizeof (savename) - 1, "snapshot_%s.snap", argv[5]);
@@ -382,7 +382,7 @@ generate_snapshot_report(int argc, char** argv)
 		error ("failed to load snapshot \"%s\": %s", argv[2], SPWAW_errstr (rc));
 	}
 
-	generate_reports (argc, argv, argv[3], snap);
+	generate_reports (argv[3], (argc>3)?argv[3]:NULL, snap);
 
 	if ((rc = SPWAW_snap_free (&snap)) != SPWERR_OK) {
 		error ("failed to free snapshot: %s", SPWAW_errstr (rc));
