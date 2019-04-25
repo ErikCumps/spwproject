@@ -34,7 +34,7 @@ typedef struct s_SPWAW_SAVEGAME {
 	SPWAW_GAME_TYPE		gametype;	/*!< savegame game type			*/
 	SPWAW_SAVEGAME_COMMENT	comment;	/*!< savegame comment content		*/
 	int			seccnt;		/*!< number of savegame sections	*/
-	SPWAW_SAVEGAME_SECTION	*seclst;	/*!< savegame sections content list		*/
+	SPWAW_SAVEGAME_SECTION	*seclst;	/*!< savegame sections content list	*/
 } SPWAW_SAVEGAME;
 
 

@@ -382,7 +382,7 @@ generate_snapshot_report(int argc, char** argv)
 		error ("failed to load snapshot \"%s\": %s", argv[2], SPWAW_errstr (rc));
 	}
 
-	generate_reports (argv[3], (argc>3)?argv[3]:NULL, snap);
+	generate_reports (argv[3], (argc>4)?argv[4]:NULL, snap);
 
 	if ((rc = SPWAW_snap_free (&snap)) != SPWERR_OK) {
 		error ("failed to free snapshot: %s", SPWAW_errstr (rc));

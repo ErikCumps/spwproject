@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -30,20 +30,7 @@ dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 				for (j=0; j<b->tcnt; j++) {
 					if (!(b->tlist[j])) continue;
 
-					SPWAW_SAVELIST_NODE *n = safe_malloc (SPWAW_SAVELIST_NODE);
-					COOM (n, "SPWAW_SAVELIST_NODE element");
-
-					snprintf (n->dir, sizeof (n->dir) - 1, "%s", b->tlist[j]->snap->src.path);
-					snprintf (n->filename, sizeof (n->filename) - 1, "%s", b->tlist[j]->snap->src.file);
-					n->filedate = b->tlist[j]->snap->src.date;
-
-					snprintf (n->info.location, sizeof (n->info.location) - 1, "%s",
-						b->tlist[j]->snap->raw.game.battle.location);
-					snprintf (n->info.stamp, sizeof (n->info.stamp) - 1, "%s, turn %u",
-						b->tlist[j]->snap->game.battle.strings.date,
-						b->tlist[j]->snap->game.battle.data.turn);
-
-					rc = SPWAW_savelist_add (*list, n); ROE ("SPWAW_savelist_add()");
+					rc = SPWAW_savelist_add (*list, b->tlist[j]->snap); ROE ("SPWAW_savelist_add()");
 				}
 			}
 		}

@@ -11,6 +11,9 @@
 #include "gamefile/game.h"
 #include "common/internal.h"
 
+/* --- forward declarations --- */
+static SPWAW_ERROR SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node);
+
 #define	LISTINC	8
 
 static bool
@@ -96,6 +99,7 @@ handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW
 		memcpy (ptr->info.location, info.location, sizeof (info.location));
 		memcpy (ptr->info.comment, info.comment, sizeof (info.comment));
 		ptr->info.type = info.type;
+		ptr->info.gametype = info.gametype;
 	}
 
 	/* skip file if on ignore list */
@@ -186,14 +190,57 @@ SPWAW_savelist_free (SPWAW_SAVELIST **list)
 	return (SPWERR_OK);
 }
 
-SPWAWLIB_API SPWAW_ERROR
+static SPWAW_ERROR
 SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node)
 {
 	SPWAW_SAVELIST_NODE	**p;
 	unsigned long		idx;
 
-	CSPWINIT;
 	CNULLARG (list); CNULLARG (node);
+
+	if (list->cnt >= list->len) {
+		list->len += LISTINC;
+		p = safe_nmalloc (SPWAW_SAVELIST_NODE *, list->len); COOM (p, "SPWAW_SAVELIST_NODE list");
+
+		if (list->list) {
+			memcpy (p, list->list, list->cnt * sizeof (SPWAW_SAVELIST_NODE *));
+			free (list->list);
+		}
+		list->list = p;
+	}
+	idx = list->cnt++;
+	list->list[idx] = node;
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
+{
+	SPWAW_SAVELIST_NODE	**p;
+	unsigned long		idx;
+
+	CSPWINIT;
+	CNULLARG (list); CNULLARG (snap);
+
+	SPWAW_SAVELIST_NODE *node = safe_malloc (SPWAW_SAVELIST_NODE);
+	COOM (node, "SPWAW_SAVELIST_NODE element");
+
+	snprintf (node->dir, sizeof (node->dir) - 1, "%s", snap->src.path);
+	snprintf (node->filename, sizeof (node->filename) - 1, "%s", snap->src.file);
+	snprintf (node->filepath, sizeof (node->filepath) - 1, "%s\\%s", snap->src.path, snap->src.file);
+	node->filedate = snap->src.date;
+
+	snprintf (node->info.stamp, sizeof (node->info.stamp) - 1, "%s, turn %u",
+		snap->game.battle.strings.date,
+		snap->game.battle.data.turn);
+	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s",
+		snap->raw.game.battle.location);
+	snprintf (node->info.comment, sizeof (node->info.comment) - 1, "%s",
+		snap->raw.game.cmt.title);
+
+	node->info.type = snap->type;
+	node->info.gametype = snap->gametype;
 
 	if (list->cnt >= list->len) {
 		list->len += LISTINC;

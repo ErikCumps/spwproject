@@ -28,6 +28,8 @@ setup_spwaw_info (GAMEINFO *info, char *filename, FILETIME filedate, SECTION37 *
 	if (!info) return;
 	clear_ptr (info);
 
+	info->gametype = SPWAW_GAME_TYPE_SPWAW;
+
 	section37_spwaw_prepare (gamedata);
 
 	p = strrchr (filename, '\\');
@@ -140,6 +142,12 @@ load_from_spwaw_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	FULIST		ful1, ful2;
 
 	CNULLARG (src); CNULLARG (dst);
+	if (src->gametype != SPWAW_GAME_TYPE_SPWAW) {
+		RWE (SPWERR_BADGTYPE, "cannot load snapshot from non-SP:WaW game data");
+	} else {
+		dst->gametype = SPWAW_GAME_TYPE_SPWAW;
+	}
+
 	stab = (STRTAB *)(dst->stab);
 
 	dst->raw.game.cmt.title = azstrstab (src->cmt.title, stab);

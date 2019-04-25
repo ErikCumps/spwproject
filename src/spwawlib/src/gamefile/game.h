@@ -13,6 +13,7 @@
 #include "gamefile/gamedata.h"
 
 typedef struct s_GAMEINFO {
+	SPWAW_GAME_TYPE		gametype;
 	char			path[MAX_PATH+1];
 	char			file[MAX_PATH+1];
 	FILETIME		date;

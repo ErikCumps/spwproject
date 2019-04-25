@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling - backwards compatibility with the V11 snapshot.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,6 +11,28 @@
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "common/types.h"
+
+SPWAW_ERROR
+snapshot_load_v11_info_header (int fd, SNAP_INFO *hdr)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SNAP_INFO_V11	hdr_v11;
+
+	if (!hdr) return (SPWERR_NULLARG);
+
+	if (!bread (fd, (char *)&hdr_v11, sizeof (SNAP_INFO_V11), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot info hdr v11) failed", handle_error);
+
+	/* A V11 snapshot info header only lacks the game type at the end.
+	 * The only supported game type for V11 snapshots is the SPWAW_GAME_TYPE_SPWAW,
+	 * so a quick copy and fix up is all we need :)
+	 */
+	memcpy (hdr, &hdr_v11, sizeof (SNAP_INFO_V11));
+	hdr->gametype = SPWAW_GAME_TYPE_SPWAW;
+
+handle_error:
+	return (rc);
+}
 
 SPWAW_ERROR
 snapshot_load_v11_snap (int fd, SNAP_HEADER *hdr, SNAP *snap)
@@ -24,7 +46,6 @@ snapshot_load_v11_snap (int fd, SNAP_HEADER *hdr, SNAP *snap)
 	cbio.data = (char *)&snap_v11; cbio.size = hdr->snap.size; cbio.comp = &(hdr->snap.comp);
 	if (!cbread (fd, cbio, "snapshot game data v11"))
 		FAILGOTO (SPWERR_FRFAILED, "cbread(snapshot game data v11) failed", handle_error);
-
 
 	/* The V11 snapshot data only lacks the player1 and player2 battle results at the
 	 * end of the campaign data, so a quick copy and fix up is all we need :)

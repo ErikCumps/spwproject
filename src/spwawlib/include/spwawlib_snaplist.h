@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot list API.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -42,7 +42,7 @@ extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(const char *dir, SPWAW_SNAPLIS
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_new	(SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_free	(SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_add	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_addcpy	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_addcpy	(SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_clear	(SPWAW_SNAPLIST *list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_copy	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST *src);
 

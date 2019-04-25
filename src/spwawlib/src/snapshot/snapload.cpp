@@ -440,10 +440,13 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNA
 	if (!bread (fd, (char *)shdr, sizeof (*shdr), false)) RWE (SPWERR_FRFAILED, "bread(shdr) failed");
 
 	bseekset (fd, mhdr->info + p0);
-	/* We are now backwards compatible with version 10 */
+	/* We are now backwards compatible with versions 11 and 10 */
 	if (mhdr->version == SNAP_VERSION_V10) {
 		rc = snapshot_load_v10_info_header (fd, ihdr);
 		ROE ("snapshot_load_v10_info_header(snapshot info hdr)");
+	} else 	if (mhdr->version == SNAP_VERSION_V11) {
+		rc = snapshot_load_v11_info_header (fd, ihdr);
+		ROE ("snapshot_load_v11_info_header(snapshot info hdr)");
 	} else {
 		if (!bread (fd, (char *)ihdr, sizeof (*ihdr), false))
 			RWE (SPWERR_FRFAILED, "bread(ihdr) failed");
@@ -502,6 +505,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	info->filedate = *((FILETIME *)&(shdr.date));
 
 	info->type = (SPWAW_BATTLE_TYPE)ihdr.type;
+	info->gametype = (SPWAW_GAME_TYPE)ihdr.gametype;
 
 	STRTAB_free (&stab);
 
@@ -579,6 +583,7 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	ERRORGOTO ("load_oob(OOBp2)", handle_error);
 
 	dst->type = (SPWAW_BATTLE_TYPE)ihdr.type;
+	dst->gametype = (SPWAW_GAME_TYPE)ihdr.gametype;
 
 	return (SPWERR_OK);
 

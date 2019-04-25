@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot list API implementation.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,9 @@
 #include <spwawlib_snaplist.h>
 #include "gamefile/gamefile.h"
 #include "common/internal.h"
+
+/* --- forward declarations --- */
+static SPWAW_ERROR SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node);
 
 #define	LISTINC	8
 
@@ -161,13 +164,12 @@ SPWAW_snaplist_free (SPWAW_SNAPLIST **list)
 	return (SPWERR_OK);
 }
 
-SPWAWLIB_API SPWAW_ERROR
+static SPWAW_ERROR
 SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node)
 {
 	SPWAW_SNAPLIST_NODE	**p;
 	unsigned long		idx;
 
-	CSPWINIT;
 	CNULLARG (list); CNULLARG (node);
 
 	if (list->cnt >= list->len) {

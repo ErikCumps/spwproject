@@ -38,7 +38,16 @@ game_load_full (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAME
 	}
 
 	if (data && info) {
-		setup_spwaw_info (info, &game, data);
+		switch (gametype) {
+			case SPWAW_GAME_TYPE_SPWAW:
+				setup_spwaw_info (info, &game, data);
+				break;
+			case SPWAW_GAME_TYPE_WINSPWW2:
+			case SPWAW_GAME_TYPE_UNKNOWN:
+			default:
+				ERROR0 ("unsupported game type");
+				break;
+		}
 		data->type = info->type;
 	}
 

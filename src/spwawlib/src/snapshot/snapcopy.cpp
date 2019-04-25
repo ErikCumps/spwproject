@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -388,6 +388,7 @@ snapcopy (SPWAW_SNAPSHOT *src, SPWAW_SNAPSHOT *dst)
 	rc = snapcopy_oob	(&(src->OOBp2),	&(dst->OOBp2),	stab, false);	ROE ("snapcopy_oob(OOBp2)");
 
 	dst->type = src->type;
+	dst->gametype = src->gametype;
 
 	return (SPWERR_OK);
 }

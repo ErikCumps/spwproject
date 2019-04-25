@@ -51,6 +51,7 @@ typedef struct s_SNAP_INFO {
 	BYTE		turn;			/* Battle turn number							*/
 	ULONG		location;		/* Battle location symbol						*/
 	ULONG		type;			/* Snapshot battle type							*/
+	ULONG		gametype;		/* Snapshot game type							*/
 } SNAP_INFO;
 
 typedef struct s_SNAP_CMT {

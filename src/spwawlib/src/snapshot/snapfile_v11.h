@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling - backwards compatibility with the V11 snapshot.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,6 +15,15 @@
 #define	SNAP_VERSION_V11	11
 
 #pragma pack(push, r1, 1)
+
+typedef struct s_SNAP_INFO_V11 {
+	ULONG		title;			/* Title symbol								*/
+	SPWAW_TIMESTAMP	start;			/* Battle start date/time stamp						*/
+	SPWAW_TIMESTAMP	date;			/* Battle turn date/time stamp						*/
+	BYTE		turn;			/* Battle turn number							*/
+	ULONG		location;		/* Battle location symbol						*/
+	ULONG		type;			/* Snapshot battle type							*/
+} SNAP_INFO_V11;
 
 typedef struct s_SNAP_CMT_V11 {
 	ULONG			title;			/* Savegame title symbol						*/
@@ -100,6 +109,7 @@ typedef struct s_SNAP_V11 {
 
 #pragma pack(pop, r1)
 
-extern SPWAW_ERROR	snapshot_load_v11_snap	(int fd, SNAP_HEADER *hdr, SNAP *snap);
+extern SPWAW_ERROR	snapshot_load_v11_info_header	(int fd, SNAP_INFO *hdr);
+extern SPWAW_ERROR	snapshot_load_v11_snap		(int fd, SNAP_HEADER *hdr, SNAP *snap);
 
 #endif	/* INTERNAL_SNAPFILE_V11_H */

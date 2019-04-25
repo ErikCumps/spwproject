@@ -15,6 +15,7 @@
 #include <spwawlib_api.h>
 #include <spwawlib_defines.h>
 #include <spwawlib_types.h>
+#include <spwawlib_snapshot.h>
 
 /* SPWAW savegame info struct */
 typedef struct s_SPWAW_SAVEGAME_INFO {
@@ -22,6 +23,7 @@ typedef struct s_SPWAW_SAVEGAME_INFO {
 	char			location[SPWAW_AZSLOCATION+1];	/*!< game location			*/
 	char			comment[SPWAW_AZSCMTTITLE+1];	/*!< game comment			*/
 	SPWAW_BATTLE_TYPE	type;				/*!< game battle type			*/
+	SPWAW_GAME_TYPE		gametype;			/*!< game type				*/
 } SPWAW_SAVEGAME_INFO;
 
 /* SPWAW savegame list element */
@@ -50,7 +52,7 @@ typedef struct s_SPWAW_SAVELIST {
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist		(SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_new	(SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_free	(SPWAW_SAVELIST **list);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_add	(SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_add	(SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_addcpy	(SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_clear	(SPWAW_SAVELIST *list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_copy	(SPWAW_SAVELIST *list, SPWAW_SAVELIST *src);
