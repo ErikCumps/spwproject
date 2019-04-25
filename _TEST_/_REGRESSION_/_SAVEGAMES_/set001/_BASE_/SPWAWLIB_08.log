@@ -1,88 +1,88 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=8)
-open_gamefiles: comment: name="_SAVE_\save008.cmt", fd=5
-open_gamefiles: data: name="_SAVE_\save008.dat", fd=6
-# gamedata_load_all: START<SPWAW_SAVE_V101>
-### gamedata_load_all: BLOCK #1 <size=47104, flag=0x00000001>
+game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=8)
+gamefile_open: comment: name="_SAVE_\save008.cmt", fd=5
+gamefile_open: data: name="_SAVE_\save008.dat", fd=6
+# load_packed: START<SPWAW_SAVE_V101>
+### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=47104 (0x0000b800), flag=0x00000001>
 unpacked section 1: 47104 bytes -> 206400 bytes
-### gamedata_load_all: BLOCK #2 <size=48000, flag=0x00000000>
-### gamedata_load_all: BLOCK #3 <size=756, flag=0x00000001>
+### load_packed: 0x0000b820 BLOCK #2 (0x00000002) <size=48000 (0x0000bb80), flag=0x00000000>
+### load_packed: 0x000173ac BLOCK #3 (0x00000003) <size=756 (0x000002f4), flag=0x00000001>
 unpacked section 3: 756 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #4 <size=756, flag=0x00000001>
+### load_packed: 0x000176ac BLOCK #4 (0x00000004) <size=756 (0x000002f4), flag=0x00000001>
 unpacked section 4: 756 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #5 <size=914, flag=0x00000001>
+### load_packed: 0x000179ac BLOCK #5 (0x00000005) <size=914 (0x00000392), flag=0x00000001>
 unpacked section 5: 914 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #6 <size=4799, flag=0x00000001>
+### load_packed: 0x00017d4a BLOCK #6 (0x00000006) <size=4799 (0x000012bf), flag=0x00000001>
 unpacked section 6: 4799 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #7 <size=1077, flag=0x00000001>
+### load_packed: 0x00019015 BLOCK #7 (0x00000007) <size=1077 (0x00000435), flag=0x00000001>
 unpacked section 7: 1077 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #8 <size=42420, flag=0x00000001>
+### load_packed: 0x00019456 BLOCK #8 (0x00000008) <size=42420 (0x0000a5b4), flag=0x00000001>
 unpacked section 8: 42420 bytes -> 480000 bytes
-### gamedata_load_all: BLOCK #9 <size=3024, flag=0x00000001>
+### load_packed: 0x00023a16 BLOCK #9 (0x00000009) <size=3024 (0x00000bd0), flag=0x00000001>
 unpacked section 9: 3024 bytes -> 192000 bytes
-### gamedata_load_all: BLOCK #10 <size=2, flag=0x00000001>
+### load_packed: 0x000245f2 BLOCK #10 (0x0000000a) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 10: 2 bytes -> 4 bytes
-### gamedata_load_all: BLOCK #11 <size=10407, flag=0x00000001>
+### load_packed: 0x00024600 BLOCK #11 (0x0000000b) <size=10407 (0x000028a7), flag=0x00000001>
 unpacked section 11: 10407 bytes -> 640000 bytes
-### gamedata_load_all: BLOCK #12 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #13 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #14 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #15 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #16 <size=1, flag=0x00000000>
-### gamedata_load_all: BLOCK #17 <size=19369, flag=0x00000001>
+### load_packed: 0x00026eb3 BLOCK #12 (0x0000000c) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00026ec1 BLOCK #13 (0x0000000d) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x00026ed1 BLOCK #14 (0x0000000e) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x00026ee1 BLOCK #15 (0x0000000f) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00026eef BLOCK #16 (0x00000010) <size=1 (0x00000001), flag=0x00000000>
+### load_packed: 0x00026efc BLOCK #17 (0x00000011) <size=19369 (0x00004ba9), flag=0x00000001>
 unpacked section 17: 19369 bytes -> 108000 bytes
-### gamedata_load_all: BLOCK #18 <size=256, flag=0x00000001>
+### load_packed: 0x0002bab1 BLOCK #18 (0x00000012) <size=256 (0x00000100), flag=0x00000001>
 unpacked section 18: 256 bytes -> 16000 bytes
-### gamedata_load_all: BLOCK #19 <size=14, flag=0x00000001>
+### load_packed: 0x0002bbbd BLOCK #19 (0x00000013) <size=14 (0x0000000e), flag=0x00000001>
 unpacked section 19: 14 bytes -> 400 bytes
-### gamedata_load_all: BLOCK #20 <size=1, flag=0x00000000>
-### gamedata_load_all: BLOCK #21 <size=1, flag=0x00000000>
-### gamedata_load_all: BLOCK #22 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #23 <size=83, flag=0x00000001>
+### load_packed: 0x0002bbd7 BLOCK #20 (0x00000014) <size=1 (0x00000001), flag=0x00000000>
+### load_packed: 0x0002bbe4 BLOCK #21 (0x00000015) <size=1 (0x00000001), flag=0x00000000>
+### load_packed: 0x0002bbf1 BLOCK #22 (0x00000016) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0002bbff BLOCK #23 (0x00000017) <size=83 (0x00000053), flag=0x00000001>
 unpacked section 23: 83 bytes -> 5000 bytes
-### gamedata_load_all: BLOCK #24 <size=1018, flag=0x00000001>
+### load_packed: 0x0002bc5e BLOCK #24 (0x00000018) <size=1018 (0x000003fa), flag=0x00000001>
 unpacked section 24: 1018 bytes -> 6400 bytes
-### gamedata_load_all: BLOCK #25 <size=408, flag=0x00000001>
+### load_packed: 0x0002c064 BLOCK #25 (0x00000019) <size=408 (0x00000198), flag=0x00000001>
 unpacked section 25: 408 bytes -> 1600 bytes
-### gamedata_load_all: BLOCK #26 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #27 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #28 <size=14394, flag=0x00000001>
+### load_packed: 0x0002c208 BLOCK #26 (0x0000001a) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x0002c218 BLOCK #27 (0x0000001b) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0002c226 BLOCK #28 (0x0000001c) <size=14394 (0x0000383a), flag=0x00000001>
 unpacked section 28: 14394 bytes -> 336000 bytes
-### gamedata_load_all: BLOCK #29 <size=2040, flag=0x00000001>
+### load_packed: 0x0002fa6c BLOCK #29 (0x0000001d) <size=2040 (0x000007f8), flag=0x00000001>
 unpacked section 29: 2040 bytes -> 24000 bytes
-### gamedata_load_all: BLOCK #30 <size=2, flag=0x00000001>
+### load_packed: 0x00030270 BLOCK #30 (0x0000001e) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 30: 2 bytes -> 100 bytes
-### gamedata_load_all: BLOCK #31 <size=2, flag=0x00000001>
+### load_packed: 0x0003027e BLOCK #31 (0x0000001f) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 31: 2 bytes -> 100 bytes
-### gamedata_load_all: BLOCK #32 <size=16, flag=0x00000001>
+### load_packed: 0x0003028c BLOCK #32 (0x00000020) <size=16 (0x00000010), flag=0x00000001>
 unpacked section 32: 16 bytes -> 892 bytes
-### gamedata_load_all: BLOCK #33 <size=10, flag=0x00000001>
+### load_packed: 0x000302a8 BLOCK #33 (0x00000021) <size=10 (0x0000000a), flag=0x00000001>
 unpacked section 33: 10 bytes -> 28 bytes
-### gamedata_load_all: BLOCK #34 <size=8874, flag=0x00000001>
+### load_packed: 0x000302be BLOCK #34 (0x00000022) <size=8874 (0x000022aa), flag=0x00000001>
 unpacked section 34: 8874 bytes -> 25600 bytes
-### gamedata_load_all: BLOCK #35 <size=4857, flag=0x00000001>
+### load_packed: 0x00032574 BLOCK #35 (0x00000023) <size=4857 (0x000012f9), flag=0x00000001>
 unpacked section 35: 4857 bytes -> 18400 bytes
-### gamedata_load_all: BLOCK #36 <size=28, flag=0x00000001>
+### load_packed: 0x00033879 BLOCK #36 (0x00000024) <size=28 (0x0000001c), flag=0x00000001>
 unpacked section 36: 28 bytes -> 1680 bytes
-### gamedata_load_all: BLOCK #37 <size=290, flag=0x00000001>
+### load_packed: 0x000338a1 BLOCK #37 (0x00000025) <size=290 (0x00000122), flag=0x00000001>
 unpacked section 37: 290 bytes -> 1276 bytes
-### gamedata_load_all: BLOCK #38 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #39 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #40 <size=2, flag=0x00000001>
+### load_packed: 0x000339cf BLOCK #38 (0x00000026) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x000339df BLOCK #39 (0x00000027) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x000339ef BLOCK #40 (0x00000028) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 40: 2 bytes -> 120 bytes
-### gamedata_load_all: BLOCK #41 <size=127, flag=0x00000001>
+### load_packed: 0x000339fd BLOCK #41 (0x00000029) <size=127 (0x0000007f), flag=0x00000001>
 unpacked section 41: 127 bytes -> 200 bytes
-### gamedata_load_all: BLOCK #42 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #43 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #44 <size=533, flag=0x00000001>
+### load_packed: 0x00033a88 BLOCK #42 (0x0000002a) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00033a96 BLOCK #43 (0x0000002b) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00033aa4 BLOCK #44 (0x0000002c) <size=533 (0x00000215), flag=0x00000001>
 unpacked section 44: 533 bytes -> 9600 bytes
-### gamedata_load_all: BLOCK #45 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #46 <size=52, flag=0x00000001>
+### load_packed: 0x00033cc5 BLOCK #45 (0x0000002d) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00033cd3 BLOCK #46 (0x0000002e) <size=52 (0x00000034), flag=0x00000001>
 unpacked section 46: 52 bytes -> 60 bytes
-### gamedata_load_all: BLOCK #47 <size=102, flag=0x00000001>
+### load_packed: 0x00033d13 BLOCK #47 (0x0000002f) <size=102 (0x00000066), flag=0x00000001>
 unpacked section 47: 102 bytes -> 6400 bytes
-### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #48 <size=37, flag=0x00000001>
+### load_packed: 0x00033d85 BLOCK #51 (0x00000033) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00033d93 BLOCK #48 (0x00000030) <size=37 (0x00000025), flag=0x00000001>
 unpacked section 48: 37 bytes -> 80 bytes
 setup_info: fcnt=30, cfcnt=20
 find_formations: player #0

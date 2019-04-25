@@ -1,25 +1,25 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=38)
-open_gamefiles: comment: name="_SAVE_\save038.cmt", fd=5
-open_gamefiles: data: name="_SAVE_\save038.dat", fd=6
-# gamedata_load_all: START<SPWAW_SAVE_V101>
-### gamedata_load_all: BLOCK #1 <size=39312, flag=0x00000001>
+game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=38)
+gamefile_open: comment: name="_SAVE_\save038.cmt", fd=5
+gamefile_open: data: name="_SAVE_\save038.dat", fd=6
+# load_packed: START<SPWAW_SAVE_V101>
+### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=39312 (0x00009990), flag=0x00000001>
 unpacked section 1: 39312 bytes -> 206400 bytes
-### gamedata_load_all: BLOCK #2 <size=48000, flag=0x00000000>
-### gamedata_load_all: BLOCK #3 <size=2512, flag=0x00000001>
+### load_packed: 0x000099b0 BLOCK #2 (0x00000002) <size=48000 (0x0000bb80), flag=0x00000000>
+### load_packed: 0x0001553c BLOCK #3 (0x00000003) <size=2512 (0x000009d0), flag=0x00000001>
 unpacked section 3: 2512 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #4 <size=756, flag=0x00000001>
+### load_packed: 0x00015f18 BLOCK #4 (0x00000004) <size=756 (0x000002f4), flag=0x00000001>
 unpacked section 4: 756 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #5 <size=1564, flag=0x00000001>
+### load_packed: 0x00016218 BLOCK #5 (0x00000005) <size=1564 (0x0000061c), flag=0x00000001>
 unpacked section 5: 1564 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #6 <size=11638, flag=0x00000001>
+### load_packed: 0x00016840 BLOCK #6 (0x00000006) <size=11638 (0x00002d76), flag=0x00000001>
 unpacked section 6: 11638 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #7 <size=1408, flag=0x00000001>
+### load_packed: 0x000195c2 BLOCK #7 (0x00000007) <size=1408 (0x00000580), flag=0x00000001>
 unpacked section 7: 1408 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #8 <size=106069, flag=0x00000001>
+### load_packed: 0x00019b4e BLOCK #8 (0x00000008) <size=106069 (0x00019e55), flag=0x00000001>
 *** .\src\fileio\sbwrite.cpp:79 sbwrite: Error: buffer overflow detected!
-*** .\src\fileio\packing.cpp:99 unpack_crlc: Error: failed to write unpacked CRLC data!
-*** .\src\fileio\packing.cpp:170 unpack: Error: failed to unpack data!
-*** .\src\fileio\packing.cpp:335 gamedata_load_all: Error: failed to unpack section 8 (106069 bytes)!
-*** .\src\gamefile\opengame.cpp:326 game_load_full: Error: failed to decompress game data!
-*** .\src\api\api_snapshot.cpp:35 SPWAW_snap_make: Error: game_load_full()!
+*** .\src\gamefile\packing.cpp:100 unpack_crlc: Error: failed to write unpacked CRLC data!
+*** .\src\gamefile\packing.cpp:180 unpack: Error: failed to unpack data!
+*** .\src\gamefile\packing.cpp:379 unpack_section: Error: failed to unpack section 8 (480000 bytes)!
+*** .\src\gamefile\game.cpp:36 game_load_full: Error: failed to decompress game data!
+*** .\src\api\api_snapshot.cpp:36 SPWAW_snap_make: Error: game_load_full()!

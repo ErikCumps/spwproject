@@ -1,89 +1,89 @@
 ----------------------------------------------------------------------
-game_load_full (dir="_SAVE_", id=26)
-open_gamefiles: comment: name="_SAVE_\save026.cmt", fd=5
-open_gamefiles: data: name="_SAVE_\save026.dat", fd=6
-# gamedata_load_all: START<SPWAW_SAVE_V101>
-### gamedata_load_all: BLOCK #1 <size=38621, flag=0x00000001>
+game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=26)
+gamefile_open: comment: name="_SAVE_\save026.cmt", fd=5
+gamefile_open: data: name="_SAVE_\save026.dat", fd=6
+# load_packed: START<SPWAW_SAVE_V101>
+### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=38621 (0x000096dd), flag=0x00000001>
 unpacked section 1: 38621 bytes -> 206400 bytes
-### gamedata_load_all: BLOCK #2 <size=48000, flag=0x00000000>
-### gamedata_load_all: BLOCK #3 <size=2512, flag=0x00000001>
+### load_packed: 0x000096fd BLOCK #2 (0x00000002) <size=48000 (0x0000bb80), flag=0x00000000>
+### load_packed: 0x00015289 BLOCK #3 (0x00000003) <size=2512 (0x000009d0), flag=0x00000001>
 unpacked section 3: 2512 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #4 <size=756, flag=0x00000001>
+### load_packed: 0x00015c65 BLOCK #4 (0x00000004) <size=756 (0x000002f4), flag=0x00000001>
 unpacked section 4: 756 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #5 <size=1564, flag=0x00000001>
+### load_packed: 0x00015f65 BLOCK #5 (0x00000005) <size=1564 (0x0000061c), flag=0x00000001>
 unpacked section 5: 1564 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #6 <size=11638, flag=0x00000001>
+### load_packed: 0x0001658d BLOCK #6 (0x00000006) <size=11638 (0x00002d76), flag=0x00000001>
 unpacked section 6: 11638 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #7 <size=930, flag=0x00000001>
+### load_packed: 0x0001930f BLOCK #7 (0x00000007) <size=930 (0x000003a2), flag=0x00000001>
 unpacked section 7: 930 bytes -> 48000 bytes
-### gamedata_load_all: BLOCK #8 <size=105063, flag=0x00000001>
+### load_packed: 0x000196bd BLOCK #8 (0x00000008) <size=105063 (0x00019a67), flag=0x00000001>
 unpacked section 8: 105063 bytes -> 480000 bytes
-### gamedata_load_all: BLOCK #9 <size=3024, flag=0x00000001>
+### load_packed: 0x00033130 BLOCK #9 (0x00000009) <size=3024 (0x00000bd0), flag=0x00000001>
 unpacked section 9: 3024 bytes -> 192000 bytes
-### gamedata_load_all: BLOCK #10 <size=2, flag=0x00000001>
+### load_packed: 0x00033d0c BLOCK #10 (0x0000000a) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 10: 2 bytes -> 4 bytes
-### gamedata_load_all: BLOCK #11 <size=10165, flag=0x00000001>
+### load_packed: 0x00033d1a BLOCK #11 (0x0000000b) <size=10165 (0x000027b5), flag=0x00000001>
 unpacked section 11: 10165 bytes -> 640000 bytes
-### gamedata_load_all: BLOCK #12 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #13 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #14 <size=2, flag=0x00000001>
+### load_packed: 0x000364db BLOCK #12 (0x0000000c) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x000364e9 BLOCK #13 (0x0000000d) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x000364f9 BLOCK #14 (0x0000000e) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 14: 2 bytes -> 4 bytes
-### gamedata_load_all: BLOCK #15 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #16 <size=1, flag=0x00000000>
-### gamedata_load_all: BLOCK #17 <size=18047, flag=0x00000001>
+### load_packed: 0x00036507 BLOCK #15 (0x0000000f) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x00036515 BLOCK #16 (0x00000010) <size=1 (0x00000001), flag=0x00000000>
+### load_packed: 0x00036522 BLOCK #17 (0x00000011) <size=18047 (0x0000467f), flag=0x00000001>
 unpacked section 17: 18047 bytes -> 108000 bytes
-### gamedata_load_all: BLOCK #18 <size=266, flag=0x00000001>
+### load_packed: 0x0003abad BLOCK #18 (0x00000012) <size=266 (0x0000010a), flag=0x00000001>
 unpacked section 18: 266 bytes -> 16000 bytes
-### gamedata_load_all: BLOCK #19 <size=10, flag=0x00000001>
+### load_packed: 0x0003acc3 BLOCK #19 (0x00000013) <size=10 (0x0000000a), flag=0x00000001>
 unpacked section 19: 10 bytes -> 400 bytes
-### gamedata_load_all: BLOCK #20 <size=1, flag=0x00000000>
-### gamedata_load_all: BLOCK #21 <size=1, flag=0x00000000>
-### gamedata_load_all: BLOCK #22 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #23 <size=203, flag=0x00000001>
+### load_packed: 0x0003acd9 BLOCK #20 (0x00000014) <size=1 (0x00000001), flag=0x00000000>
+### load_packed: 0x0003ace6 BLOCK #21 (0x00000015) <size=1 (0x00000001), flag=0x00000000>
+### load_packed: 0x0003acf3 BLOCK #22 (0x00000016) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0003ad01 BLOCK #23 (0x00000017) <size=203 (0x000000cb), flag=0x00000001>
 unpacked section 23: 203 bytes -> 5000 bytes
-### gamedata_load_all: BLOCK #24 <size=176, flag=0x00000001>
+### load_packed: 0x0003add8 BLOCK #24 (0x00000018) <size=176 (0x000000b0), flag=0x00000001>
 unpacked section 24: 176 bytes -> 6400 bytes
-### gamedata_load_all: BLOCK #25 <size=116, flag=0x00000001>
+### load_packed: 0x0003ae94 BLOCK #25 (0x00000019) <size=116 (0x00000074), flag=0x00000001>
 unpacked section 25: 116 bytes -> 1600 bytes
-### gamedata_load_all: BLOCK #26 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #27 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #28 <size=61495, flag=0x00000001>
+### load_packed: 0x0003af14 BLOCK #26 (0x0000001a) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x0003af24 BLOCK #27 (0x0000001b) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0003af32 BLOCK #28 (0x0000001c) <size=61495 (0x0000f037), flag=0x00000001>
 unpacked section 28: 61495 bytes -> 336000 bytes
-### gamedata_load_all: BLOCK #29 <size=7260, flag=0x00000001>
+### load_packed: 0x00049f75 BLOCK #29 (0x0000001d) <size=7260 (0x00001c5c), flag=0x00000001>
 unpacked section 29: 7260 bytes -> 24000 bytes
-### gamedata_load_all: BLOCK #30 <size=2, flag=0x00000001>
+### load_packed: 0x0004bbdd BLOCK #30 (0x0000001e) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 30: 2 bytes -> 100 bytes
-### gamedata_load_all: BLOCK #31 <size=2, flag=0x00000001>
+### load_packed: 0x0004bbeb BLOCK #31 (0x0000001f) <size=2 (0x00000002), flag=0x00000001>
 unpacked section 31: 2 bytes -> 100 bytes
-### gamedata_load_all: BLOCK #32 <size=16, flag=0x00000001>
+### load_packed: 0x0004bbf9 BLOCK #32 (0x00000020) <size=16 (0x00000010), flag=0x00000001>
 unpacked section 32: 16 bytes -> 892 bytes
-### gamedata_load_all: BLOCK #33 <size=10, flag=0x00000001>
+### load_packed: 0x0004bc15 BLOCK #33 (0x00000021) <size=10 (0x0000000a), flag=0x00000001>
 unpacked section 33: 10 bytes -> 28 bytes
-### gamedata_load_all: BLOCK #34 <size=6767, flag=0x00000001>
+### load_packed: 0x0004bc2b BLOCK #34 (0x00000022) <size=6767 (0x00001a6f), flag=0x00000001>
 unpacked section 34: 6767 bytes -> 25600 bytes
-### gamedata_load_all: BLOCK #35 <size=2890, flag=0x00000001>
+### load_packed: 0x0004d6a6 BLOCK #35 (0x00000023) <size=2890 (0x00000b4a), flag=0x00000001>
 unpacked section 35: 2890 bytes -> 18400 bytes
-### gamedata_load_all: BLOCK #36 <size=28, flag=0x00000001>
+### load_packed: 0x0004e1fc BLOCK #36 (0x00000024) <size=28 (0x0000001c), flag=0x00000001>
 unpacked section 36: 28 bytes -> 1680 bytes
-### gamedata_load_all: BLOCK #37 <size=659, flag=0x00000001>
+### load_packed: 0x0004e224 BLOCK #37 (0x00000025) <size=659 (0x00000293), flag=0x00000001>
 unpacked section 37: 659 bytes -> 1276 bytes
-### gamedata_load_all: BLOCK #38 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #39 <size=4, flag=0x00000000>
-### gamedata_load_all: BLOCK #40 <size=20, flag=0x00000001>
+### load_packed: 0x0004e4c3 BLOCK #38 (0x00000026) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x0004e4d3 BLOCK #39 (0x00000027) <size=4 (0x00000004), flag=0x00000000>
+### load_packed: 0x0004e4e3 BLOCK #40 (0x00000028) <size=20 (0x00000014), flag=0x00000001>
 unpacked section 40: 20 bytes -> 120 bytes
-### gamedata_load_all: BLOCK #41 <size=124, flag=0x00000001>
+### load_packed: 0x0004e503 BLOCK #41 (0x00000029) <size=124 (0x0000007c), flag=0x00000001>
 unpacked section 41: 124 bytes -> 200 bytes
-### gamedata_load_all: BLOCK #42 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #43 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #44 <size=164, flag=0x00000001>
+### load_packed: 0x0004e58b BLOCK #42 (0x0000002a) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0004e599 BLOCK #43 (0x0000002b) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0004e5a7 BLOCK #44 (0x0000002c) <size=164 (0x000000a4), flag=0x00000001>
 unpacked section 44: 164 bytes -> 9600 bytes
-### gamedata_load_all: BLOCK #45 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #46 <size=52, flag=0x00000001>
+### load_packed: 0x0004e657 BLOCK #45 (0x0000002d) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0004e665 BLOCK #46 (0x0000002e) <size=52 (0x00000034), flag=0x00000001>
 unpacked section 46: 52 bytes -> 60 bytes
-### gamedata_load_all: BLOCK #47 <size=210, flag=0x00000001>
+### load_packed: 0x0004e6a5 BLOCK #47 (0x0000002f) <size=210 (0x000000d2), flag=0x00000001>
 unpacked section 47: 210 bytes -> 6400 bytes
-### gamedata_load_all: BLOCK #51 <size=2, flag=0x00000000>
-### gamedata_load_all: BLOCK #48 <size=37, flag=0x00000001>
+### load_packed: 0x0004e783 BLOCK #51 (0x00000033) <size=2 (0x00000002), flag=0x00000000>
+### load_packed: 0x0004e791 BLOCK #48 (0x00000030) <size=37 (0x00000025), flag=0x00000001>
 unpacked section 48: 37 bytes -> 80 bytes
 setup_info: fcnt=47, cfcnt=19
 find_formations: player #0
@@ -1168,33 +1168,33 @@ find_formation_oobrids: FORMATION: P<0> ID<027> L<00102> O<000> (  Infanterie Zu
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<027>, T<  Infanterie Zug>, D<1940/05>
-  U<102> F<027,000> O<077> UT<082> <      Zugfuehrer>
-  U<103> F<027,001> O<151> UT<001> < Schuetzengruppe>
-  U<104> F<027,002> O<151> UT<001> < Schuetzengruppe>
-  U<105> F<027,003> O<151> UT<001> < Schuetzengruppe>
-  U<106> F<027,004> O<151> UT<001> < Schuetzengruppe>
+  U<102> F<027,000> O<077> UT<238> <      Zugfuehrer>
+  U<103> F<027,001> O<151> UT<000> < Schuetzengruppe>
+  U<104> F<027,002> O<151> UT<000> < Schuetzengruppe>
+  U<105> F<027,003> O<151> UT<000> < Schuetzengruppe>
+  U<106> F<027,004> O<151> UT<000> < Schuetzengruppe>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<028> L<00107> O<000> (  Infanterie Zug)
   >>> SEARCH OOBRID - BY NAME: F<028>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<028>, T<  Infanterie Zug>, D<1940/05>
-  U<107> F<028,000> O<077> UT<082> <      Zugfuehrer>
-  U<108> F<028,001> O<151> UT<001> < Schuetzengruppe>
-  U<109> F<028,002> O<151> UT<001> < Schuetzengruppe>
-  U<110> F<028,003> O<151> UT<001> < Schuetzengruppe>
-  U<111> F<028,004> O<151> UT<001> < Schuetzengruppe>
+  U<107> F<028,000> O<077> UT<238> <      Zugfuehrer>
+  U<108> F<028,001> O<151> UT<000> < Schuetzengruppe>
+  U<109> F<028,002> O<151> UT<000> < Schuetzengruppe>
+  U<110> F<028,003> O<151> UT<000> < Schuetzengruppe>
+  U<111> F<028,004> O<151> UT<000> < Schuetzengruppe>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<029> L<00112> O<000> (  Infanterie Zug)
   >>> SEARCH OOBRID - BY NAME: F<029>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<029>, T<  Infanterie Zug>, D<1940/05>
-  U<112> F<029,000> O<077> UT<082> <      Zugfuehrer>
-  U<113> F<029,001> O<151> UT<001> < Schuetzengruppe>
-  U<114> F<029,002> O<151> UT<001> < Schuetzengruppe>
-  U<115> F<029,003> O<151> UT<001> < Schuetzengruppe>
-  U<116> F<029,004> O<151> UT<001> < Schuetzengruppe>
+  U<112> F<029,000> O<077> UT<238> <      Zugfuehrer>
+  U<113> F<029,001> O<151> UT<000> < Schuetzengruppe>
+  U<114> F<029,002> O<151> UT<000> < Schuetzengruppe>
+  U<115> F<029,003> O<151> UT<000> < Schuetzengruppe>
+  U<116> F<029,004> O<151> UT<000> < Schuetzengruppe>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<030> L<00117> O<142> (        MG Trupp)
 find_formation_oobrids: FORMATION: P<0> ID<031> L<00118> O<142> (        MG Trupp)
@@ -1203,9 +1203,9 @@ find_formation_oobrids: FORMATION: P<0> ID<032> L<00119> O<000> ( (l) Moerser Gr
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<032>, T< (l) Moerser Grp>, D<1940/05>
-  U<119> F<032,000> O<133> UT<041> <    50mm Moerser>
-  U<120> F<032,001> O<133> UT<041> <    50mm Moerser>
-  U<121> F<032,002> O<133> UT<041> <    50mm Moerser>
+  U<119> F<032,000> O<133> UT<148> <    50mm Moerser>
+  U<120> F<032,001> O<133> UT<148> <    50mm Moerser>
+  U<121> F<032,002> O<133> UT<148> <    50mm Moerser>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<033> L<00122> O<085> (   Infanterie Kp)
 find_formation_oobrids: FORMATION: P<0> ID<034> L<00123> O<000> (  Infanterie Zug)
@@ -1213,33 +1213,33 @@ find_formation_oobrids: FORMATION: P<0> ID<034> L<00123> O<000> (  Infanterie Zu
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<034>, T<  Infanterie Zug>, D<1940/05>
-  U<123> F<034,000> O<077> UT<082> <      Zugfuehrer>
-  U<124> F<034,001> O<151> UT<001> < Schuetzengruppe>
-  U<125> F<034,002> O<151> UT<001> < Schuetzengruppe>
-  U<126> F<034,003> O<151> UT<001> < Schuetzengruppe>
-  U<127> F<034,004> O<151> UT<001> < Schuetzengruppe>
+  U<123> F<034,000> O<077> UT<238> <      Zugfuehrer>
+  U<124> F<034,001> O<151> UT<000> < Schuetzengruppe>
+  U<125> F<034,002> O<151> UT<000> < Schuetzengruppe>
+  U<126> F<034,003> O<151> UT<000> < Schuetzengruppe>
+  U<127> F<034,004> O<151> UT<000> < Schuetzengruppe>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<035> L<00128> O<000> (  Infanterie Zug)
   >>> SEARCH OOBRID - BY NAME: F<035>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<035>, T<  Infanterie Zug>, D<1940/05>
-  U<128> F<035,000> O<077> UT<082> <      Zugfuehrer>
-  U<129> F<035,001> O<151> UT<001> < Schuetzengruppe>
-  U<130> F<035,002> O<151> UT<001> < Schuetzengruppe>
-  U<131> F<035,003> O<151> UT<001> < Schuetzengruppe>
-  U<132> F<035,004> O<151> UT<001> < Schuetzengruppe>
+  U<128> F<035,000> O<077> UT<238> <      Zugfuehrer>
+  U<129> F<035,001> O<151> UT<000> < Schuetzengruppe>
+  U<130> F<035,002> O<151> UT<000> < Schuetzengruppe>
+  U<131> F<035,003> O<151> UT<000> < Schuetzengruppe>
+  U<132> F<035,004> O<151> UT<000> < Schuetzengruppe>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<036> L<00133> O<000> (  Infanterie Zug)
   >>> SEARCH OOBRID - BY NAME: F<036>, T<  Infanterie Zug>, D<1940/05>
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<036>, T<  Infanterie Zug>, D<1940/05>
-  U<133> F<036,000> O<077> UT<082> <      Zugfuehrer>
-  U<134> F<036,001> O<151> UT<001> < Schuetzengruppe>
-  U<135> F<036,002> O<151> UT<001> < Schuetzengruppe>
-  U<136> F<036,003> O<151> UT<001> < Schuetzengruppe>
-  U<137> F<036,004> O<151> UT<001> < Schuetzengruppe>
+  U<133> F<036,000> O<077> UT<238> <      Zugfuehrer>
+  U<134> F<036,001> O<151> UT<000> < Schuetzengruppe>
+  U<135> F<036,002> O<151> UT<000> < Schuetzengruppe>
+  U<136> F<036,003> O<151> UT<000> < Schuetzengruppe>
+  U<137> F<036,004> O<151> UT<000> < Schuetzengruppe>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<037> L<00138> O<142> (        MG Trupp)
 find_formation_oobrids: FORMATION: P<0> ID<038> L<00139> O<142> (        MG Trupp)
@@ -1248,9 +1248,9 @@ find_formation_oobrids: FORMATION: P<0> ID<039> L<00140> O<000> ( (l) Moerser Gr
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<039>, T< (l) Moerser Grp>, D<1940/05>
-  U<140> F<039,000> O<133> UT<041> <    50mm Moerser>
-  U<141> F<039,001> O<133> UT<041> <    50mm Moerser>
-  U<142> F<039,002> O<133> UT<041> <    50mm Moerser>
+  U<140> F<039,000> O<133> UT<148> <    50mm Moerser>
+  U<141> F<039,001> O<133> UT<148> <    50mm Moerser>
+  U<142> F<039,002> O<133> UT<148> <    50mm Moerser>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<0> ID<040> L<00143> O<148> (     Moerser Grp)
 find_formation_oobrids: FORMATION: P<0> ID<041> L<00145> O<148> (     Moerser Grp)
@@ -2036,8 +2036,8 @@ find_formation_oobrids: FORMATION: P<1> ID<006> L<00175> O<000> (   Lt Mortar Se
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<006>, T<   Lt Mortar Sec>, D<1940/05>
-  U<175> F<006,000> O<017> UT<042> <    60mm Mtr Sqd>
-  U<176> F<006,001> O<017> UT<042> <    60mm Mtr Sqd>
+  U<175> F<006,000> O<017> UT<146> <    60mm Mtr Sqd>
+  U<176> F<006,001> O<017> UT<146> <    60mm Mtr Sqd>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<1> ID<007> L<00177> O<102> (   Voltigeurs Co)
 find_formation_oobrids: FORMATION: P<1> ID<008> L<00178> O<000> (  Voltigeurs Plt)
@@ -2061,8 +2061,8 @@ find_formation_oobrids: FORMATION: P<1> ID<012> L<00194> O<000> (   Lt Mortar Se
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<012>, T<   Lt Mortar Sec>, D<1940/05>
-  U<194> F<012,000> O<017> UT<042> <    60mm Mtr Sqd>
-  U<195> F<012,001> O<017> UT<042> <    60mm Mtr Sqd>
+  U<194> F<012,000> O<017> UT<146> <    60mm Mtr Sqd>
+  U<195> F<012,001> O<017> UT<146> <    60mm Mtr Sqd>
   <<< rv=0
 find_formation_oobrids: FORMATION: P<1> ID<013> L<00196> O<071> (     HMG Section)
 find_formation_oobrids: FORMATION: P<1> ID<014> L<00198> O<071> (     HMG Section)
