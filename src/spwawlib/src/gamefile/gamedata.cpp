@@ -98,6 +98,7 @@ gamedata_free (GAMEDATA **game)
 	if (!game || !*game) return;
 
 	gamedata_secmap_destroy (&((*game)->map));
+	gamedata_free_data (*game);
 	safe_free (*game); *game = NULL;
 }
 
