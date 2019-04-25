@@ -189,6 +189,50 @@ SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node)
 }
 
 SPWAWLIB_API SPWAW_ERROR
+SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap)
+{
+	SPWAW_SNAPLIST_NODE	**p;
+	unsigned long		idx;
+
+	CNULLARG (list); CNULLARG (snap);
+
+	SPWAW_SNAPLIST_NODE *node = safe_malloc (SPWAW_SNAPLIST_NODE);
+	COOM (node, "SPWAW_SNAPLIST_NODE element");
+
+	snprintf (node->dir, sizeof (node->dir) - 1, "%s", snap->src.path);
+	snprintf (node->filename, sizeof (node->filename) - 1, "%s", snap->src.file);
+	snprintf (node->filepath, sizeof (node->filepath) - 1, "%s\\%s", snap->src.path, snap->src.file);
+	node->filedate = snap->src.date;
+
+	snprintf (node->info.title, sizeof (node->info.title) - 1, "%s", snap->raw.game.cmt.title);
+	node->info.start = snap->game.campaign.data.start;
+	node->info.turn = snap->raw.game.battle.turn;
+	node->info.date = snap->game.battle.data.date;
+	snprintf (node->info.stamp, sizeof (node->info.stamp) - 1, "%s, turn %u",
+		snap->game.battle.strings.date, snap->game.battle.data.turn);
+	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s", snap->raw.game.battle.location);
+	snprintf (node->info.filename, sizeof (node->info.filename) - 1, "%s", snap->src.file);
+	node->info.filedate = node->filedate;
+	node->info.type = snap->type;
+	node->info.gametype = snap->gametype;
+
+	if (list->cnt >= list->len) {
+		list->len += LISTINC;
+		p = safe_nmalloc (SPWAW_SNAPLIST_NODE *, list->len); COOM (p, "SPWAW_SNAPLIST_NODE LIST");
+
+		if (list->list) {
+			memcpy (p, list->list, list->cnt * sizeof (SPWAW_SNAPLIST_NODE *));
+			free (list->list);
+		}
+		list->list = p;
+	}
+	idx = list->cnt++;
+	list->list[idx] = node;
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
 SPWAW_snaplist_addcpy (SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;

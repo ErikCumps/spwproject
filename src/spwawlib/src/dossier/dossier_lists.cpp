@@ -58,20 +58,7 @@ dossier_snaplist (SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list)
 				for (j=0; j<b->tcnt; j++) {
 					if (!(b->tlist[j])) continue;
 
-					SPWAW_SNAPLIST_NODE *n = safe_malloc (SPWAW_SNAPLIST_NODE);
-					COOM (n, "SPWAW_SNAPLIST_NODE element");
-
-					snprintf (n->dir, sizeof (n->dir) - 1, "%s", b->tlist[j]->snap->src.path);
-					snprintf (n->filename, sizeof (n->filename) - 1, "%s", b->tlist[j]->snap->src.file);
-					n->filedate = b->tlist[j]->snap->src.date;
-
-					snprintf (n->info.location, sizeof (n->info.location) - 1, "%s",
-						b->tlist[j]->snap->raw.game.battle.location);
-					snprintf (n->info.stamp, sizeof (n->info.stamp) - 1, "%s, turn %u",
-						b->tlist[j]->snap->game.battle.strings.date,
-						b->tlist[j]->snap->game.battle.data.turn);
-
-					rc = SPWAW_snaplist_add (*list, n); ROE ("SPWAW_snaplist_add()");
+					rc = SPWAW_snaplist_add (*list, b->tlist[j]->snap); ROE ("SPWAW_snaplist_add()");
 				}
 			}
 		}

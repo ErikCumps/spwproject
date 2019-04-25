@@ -41,8 +41,8 @@ typedef struct s_SPWAW_SNAPLIST {
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_new	(SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_free	(SPWAW_SNAPLIST **list);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_add	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_addcpy	(SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_add	(SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_addcpy	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node); 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_clear	(SPWAW_SNAPLIST *list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_copy	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST *src);
 

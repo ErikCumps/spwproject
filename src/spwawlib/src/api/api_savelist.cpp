@@ -232,13 +232,9 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 	node->filedate = snap->src.date;
 
 	snprintf (node->info.stamp, sizeof (node->info.stamp) - 1, "%s, turn %u",
-		snap->game.battle.strings.date,
-		snap->game.battle.data.turn);
-	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s",
-		snap->raw.game.battle.location);
-	snprintf (node->info.comment, sizeof (node->info.comment) - 1, "%s",
-		snap->raw.game.cmt.title);
-
+		snap->game.battle.strings.date, snap->game.battle.data.turn);
+	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s", snap->raw.game.battle.location);
+	snprintf (node->info.comment, sizeof (node->info.comment) - 1, "%s", snap->raw.game.cmt.title);
 	node->info.type = snap->type;
 	node->info.gametype = snap->gametype;
 
