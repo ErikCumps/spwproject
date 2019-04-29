@@ -39,7 +39,4 @@ extern SPWAW_ERROR	dossier_update_battle_rainfo	(SPWAW_BATTLE *src, SPWAW_BATTLE
 extern SPWAW_ERROR	dossier_set_dossier_info	(SPWAW_DOSSIER *ptr);
 extern SPWAW_ERROR	dossier_update_dossier_stats	(SPWAW_DOSSIER *ptr);
 
-extern SPWAW_ERROR	dossier_export			(int src, FILE *dst);
-extern SPWAW_ERROR	dossier_import			(FILE *src, int dst);
-
 #endif	/* DOSSIER_H */

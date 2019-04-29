@@ -160,9 +160,6 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del		(SPWAW_DOSSIER *dossier, SPWA
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist		(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist		(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
 
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_export		(const char *file, const char *export);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_import		(const char *import, const char *file);
-
 #endif	/* SPWAW_LIB_DOSSIER_H */
 
 /** @} */
