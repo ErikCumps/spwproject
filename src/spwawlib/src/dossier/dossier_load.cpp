@@ -166,7 +166,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		if (p->tcnt) p->snap = p->tlist[0]->snap;
 
 		// Set dossier data if this was the first battle loaded
-		if (i == 0) dossier_set_dossier_info (dst);
+		if (i == 0) dossier_set_dossier_info (dst, p);
 
 		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->ucnt); COOMGOTO (p->ra, "RA list", handle_error);
 

@@ -318,19 +318,13 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 }
 
 SPWAW_ERROR
-dossier_set_dossier_info (SPWAW_DOSSIER *ptr)
+dossier_set_dossier_info (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle)
 {
-	SPWAW_BATTLE	*b;
+	CNULLARG(ptr); CNULLARG(battle);
 
-	CNULLARG(ptr);
-
-	if (!ptr->bcnt) RWE (SPWERR_FAILED, "no battle loaded");
-
-	b = ptr->blist[0];
-
-	ptr->OOB  = b->OOB_p1;
-	ptr->fcnt = b->tlist[0]->info.pbir_core.fcnt;
-	ptr->ucnt = b->tlist[0]->info.pbir_core.ucnt;
+	ptr->OOB  = battle->OOB_p1;
+	ptr->fcnt = battle->tlist[0]->info.pbir_core.fcnt;
+	ptr->ucnt = battle->tlist[0]->info.pbir_core.ucnt;
 
 	return (SPWERR_OK);
 }

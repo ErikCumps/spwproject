@@ -292,7 +292,7 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	ROE ("battle_add_bturn()");
 
 	// Set dossier data if this was the first battle added
-	if (empty) dossier_set_dossier_info (ptr);
+	if (empty) dossier_set_dossier_info (ptr, b);
 
 	rc = dossier_update_battle_info (b);
 	ROE ("dossier_update_battle_info()");
