@@ -16,8 +16,8 @@ ModelDossList::ModelDossList (char *path, SPWAW_DOSSLIST *ignore, QObject *paren
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "filename" << "type" << "OOB" << "battles" << "name" << "comment";
-	d.col_cnt = 6;
+	header << "filename" << "game" << "type" << "OOB" << "battles" << "name" << "comment";
+	d.col_cnt = 7;
 
 	setupModelData (path, ignore);
 }
@@ -122,6 +122,7 @@ ModelDossList::setupModelData (char *path, SPWAW_DOSSLIST *ignore)
 		cmt = QString (p->info.comment);
 		int nl = cmt.indexOf('\n'); if (nl != -1) cmt.truncate(nl);
 		node.data	<< p->filename
+				<< SPWAW_gametype2str(p->info.gametype)
 				<< SPWAW_dossiertype2str(p->info.type)
 				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.gametype, p->info.OOB) : "")
 				<< p->info.bcnt
@@ -148,37 +149,41 @@ ModelDossList::freeModelData (void)
 QString
 ModelDossList::sort_transform (NODE_DATA *ptr, int col, int idx)
 {
-	QString	col1, col2, col3, col4, col5;
+	QString	col1, col2, col3, col4, col5, col6;
 	QString	out;
 
 	col1 = ptr->data[1].toString();
 	col2 = ptr->data[2].toString();
-	col3.sprintf ("%06.6u", ptr->data[3].toUInt());
-	col4 = ptr->data[4].toString();
+	col3 = ptr->data[3].toString();
+	col4.sprintf ("%06.6u", ptr->data[4].toUInt());
 	col5 = ptr->data[5].toString();
+	col6 = ptr->data[6].toString();
 
 	switch (col) {
 		case 0:
 			// col0 explicitely added to end of string later on
 			break;
 		case 1:
-			out = col1 + col2 + col3 + col4 + col5;
+			out = col1 + col2 + col3 + col4 + col5 + col6;
 			break;
 		case 2:
-			out = col2 + col1 + col3 + col4  + col5;
+			out = col2 + col1 + col3 + col4 + col5 + col6;
 			break;
 		case 3:
-			out = col3 + col1 + col2 + col4  + col5;
+			out = col3 + col1 + col2 + col4 + col5  + col6;
 			break;
 		case 4:
-			out = col4 + col1 + col2 + col3 + col5;
+			out = col4 + col1 + col2 + col3 + col5  + col6;
 			break;
 		case 5:
-			out = col5 + col1 + col2 + col3 + col4;
+			out = col5 + col1 + col2 + col3 + col4 + col6;
+			break;
+		case 6:
+			out = col6 + col1 + col2 + col3 + col4 + col5;
 			break;
 		default:
 			// safe default
-			out = col1 + col2 + col3 + col4 + col5;
+			out = col1 + col2 + col3 + col4 + col5 + col6;
 			break;
 	}
 	out += ptr->data[0].toString();

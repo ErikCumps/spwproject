@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - snapshot list.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,8 +16,8 @@ ModelSnapList::ModelSnapList (char *path, SPWAW_SNAPLIST *ignore, QObject *paren
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "filename" << "type" << "battle date" << "battle location" << "comment";
-	d.col_cnt = 5;
+	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
+	d.col_cnt = 6;
 
 	setupModelData (path, ignore);
 }
@@ -116,6 +116,7 @@ ModelSnapList::setupModelData (char *path, SPWAW_SNAPLIST *ignore)
 		p = d.snap_list->list[i];
 
 		node.data	<< p->filename
+				<< SPWAW_gametype2str(p->info.gametype)
 				<< SPWAW_battletype2str(p->info.type)
 				<< p->info.stamp
 				<< p->info.location
@@ -143,33 +144,37 @@ ModelSnapList::sort_transform (NODE_DATA *ptr, int col, int idx)
 {
 	QString	turn = "turn ";
 	int	pos;
-	QString	s1, s2, col1, col2, col3;
+	QString	s1, s2, col1, col2, col3, col4;
 	QString	out;
 
 	col1 = ptr->data[1].toString();
-	col3 = ptr->data[3].toString();
+	col2 = ptr->data[2].toString();
+	col4 = ptr->data[4].toString();
 
-	pos = ptr->data[2].toString().indexOf (turn, 0, Qt::CaseSensitive);
+	pos = ptr->data[3].toString().indexOf (turn, 0, Qt::CaseSensitive);
 	if (pos != -1) {
-		s1 = ptr->data[2].toString().mid(0, pos + turn.length());
-		s2 = ptr->data[2].toString().mid (pos + turn.length());
-		col2.sprintf ("%s%06.6u", qPrintable(s1), s2.toUInt());
+		s1 = ptr->data[3].toString().mid(0, pos + turn.length());
+		s2 = ptr->data[3].toString().mid (pos + turn.length());
+		col3.sprintf ("%s%06.6u", qPrintable(s1), s2.toUInt());
 	} else {
-		col2 = ptr->data[2].toString();
+		col3 = ptr->data[3].toString();
 	}
 
 	switch (col) {
 		case 1:
-			out = col1 + col2;
+			out = col1 + col3;
 			break;
 		case 2:
-			out = col2;
+			out = col2 + col3;
 			break;
 		case 3:
-			out = col3 + col2;
+			out = col3;
 			break;
 		case 4:
-			out = ptr->data[4].toString() + col2;
+			out = col4 + col3;
+			break;
+		case 5:
+			out = ptr->data[5].toString() + col3;
 			break;
 		default:
 			out = ptr->data[col].toString();

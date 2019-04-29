@@ -35,10 +35,12 @@ void
 ModelDossier::update_header (void)
 {
 	if (d.tree) {
+		QString gametype = SPWAW_gametype2str(d.tree->data.d->gametype);
+
 		if (d.tree->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
-			header[0] = "Campaign dossier";
+			header[0] = gametype + " campaign dossier";
 		} else {
-			header[0] = "Battle dossier";
+			header[0] = gametype + " battle dossier";
 		}
 	} else {
 		header[0] = "Empty dossier";
