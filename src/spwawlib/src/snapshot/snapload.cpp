@@ -444,7 +444,7 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNA
 	if (mhdr->version == SNAP_VERSION_V10) {
 		rc = snapshot_load_v10_info_header (fd, ihdr);
 		ROE ("snapshot_load_v10_info_header(snapshot info hdr)");
-	} else 	if (mhdr->version == SNAP_VERSION_V11) {
+	} else if (mhdr->version == SNAP_VERSION_V11) {
 		rc = snapshot_load_v11_info_header (fd, ihdr);
 		ROE ("snapshot_load_v11_info_header(snapshot info hdr)");
 	} else {

@@ -20,8 +20,6 @@ SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *name, const char *comme
 	SPWAW_DOSSIER	*ptr = NULL;
 	STRTAB		*stab = NULL;
 
-	RWE(SPWERR_NOTIMPL, "TODO");
-
 	CSPWINIT;
 	CNULLARG (name); CNULLARG (comment); CNULLARG (dossier);
 	*dossier = NULL;
@@ -30,6 +28,9 @@ SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *name, const char *comme
 	rc = dossier_new (&ptr);
 	ERRORGOTO ("dossier_new()", handle_error);
 	stab = (STRTAB *)ptr->stab;
+
+	/* Set game type */
+	ptr->gametype = gametype;
 
 	/* Set name and comment */
 	ptr->name = STRTAB_add (stab, (char *)name);
@@ -162,69 +163,6 @@ handle_error:
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_dossier_export (const char *file, const char *export)
-{
-	SPWAW_ERROR	rc = SPWERR_OK;
-	int		src = -1;
-	FILE		*dst = NULL;
-
-	CSPWINIT;
-	CNULLARG (file); CNULLARG (export);
-
-	/* Open files and export dossier data */
-	src = open (file, O_RDONLY|O_BINARY); if (src < 0) rc = SPWERR_FOFAILED;
-	ERRORGOTO ("dossier file open", handle_error);
-
-	dst = fopen (export, "w"); if (!dst) rc = SPWERR_FOFAILED;
-	ERRORGOTO ("export file open", handle_error);
-
-	rc = dossier_export (src, dst);
-	ERRORGOTO ("dossier_export()", handle_error);
-
-	/* Cleanup and return */
-	close (src); fclose (dst);
-
-	return (SPWERR_OK);
-
-handle_error:
-	if (src >= 0) close (src);
-	if (dst) fclose (dst);
-	return (rc);
-}
-
-SPWAWLIB_API SPWAW_ERROR
-SPWAW_dossier_import (const char *import, const char *file)
-{
-	SPWAW_ERROR	rc = SPWERR_OK;
-	FILE		*src = NULL;
-	int		dst = -1;
-
-	CSPWINIT;
-	CNULLARG (import); CNULLARG (file);
-
-	/* Open files and export dossier data */
-	src = fopen (import, "r"); if (!src) rc = SPWERR_FOFAILED;
-	ERRORGOTO ("import file open", handle_error);
-
-	dst = open (file, O_CREAT|O_TRUNC|O_WRONLY|O_BINARY, 0666); if (dst < 0) rc = SPWERR_FOFAILED;
-	ERRORGOTO ("dossier file open", handle_error);
-
-	rc = dossier_import (src, dst);
-	ERRORGOTO ("dossier_import()", handle_error);
-
-	/* Cleanup and return */
-	fclose (src); close (dst);
-
-	return (SPWERR_OK);
-
-handle_error:
-	if (src) fclose (src);
-	if (dst >= 0) close (dst);
-	return (rc);
-
-}
-
-SPWAWLIB_API SPWAW_ERROR
 SPWAW_dossier_free (SPWAW_DOSSIER **dossier)
 {
 	SPWAW_DOSSIER	*ptr;
@@ -264,8 +202,6 @@ SPWAW_dossier_edit (SPWAW_DOSSIER *dossier, const char *name, const char *commen
 	return (SPWERR_OK);
 }
 
-
-
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
 {
@@ -281,8 +217,12 @@ SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, S
 		RWE (SPWERR_BADBTYPE, "this snapshot does not allow campaign tracking");
 	}
 
-	/* Apply dossier type compatibility rules */
-	if (dossier->bcnt != 0) {
+	/* Apply snapshot compatibility rules */
+	if (dossier->gametype != snap->gametype) {
+		ERROR2 ("dossier gametype \"%s\" != snapshot gametype \"%s\"",
+			SPWAW_gametype2str (dossier->gametype), SPWAW_gametype2str (snap->gametype));
+		rc = SPWERR_NOMATCH_GTYPE;
+	} else if (dossier->bcnt != 0) {
 		if (snap->game.battle.data.OOB_p1 != dossier->OOB) {
 			ERROR2 ("dossier OOB (%d) != snapshot OOB (%d)", dossier->OOB, snap->game.battle.data.OOB_p1);
 			rc = SPWERR_NOMATCH_OOB;
@@ -315,6 +255,17 @@ SPWAW_dossier_add_battle (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, const ch
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
+	CSPWINIT;
+	CNULLARG (dossier); CNULLARG (snap);
+	if (battle) *battle = NULL;
+
+	/* Apply snapshot compatibility rules */
+	if (dossier->gametype != snap->gametype) {
+		ERROR2 ("dossier gametype \"%s\" != snapshot gametype \"%s\"",
+			SPWAW_gametype2str (dossier->gametype), SPWAW_gametype2str (snap->gametype));
+		return (SPWERR_NOMATCH_GTYPE);
+	}
+
 	/* Set dossier type (if not already set) */
 	if (dossier->type == SPWAW_EMPTY_DOSSIER) {
 		dossier->type = SPWAW_STDALONE_DOSSIER;
@@ -334,6 +285,13 @@ SPWAW_dossier_add_battle_snap (SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW
 	CSPWINIT;
 	CNULLARG (battle); CNULLARG (snap);
 	if (bturn) *bturn = NULL;
+
+	/* Apply snapshot compatibility rules */
+	if (battle->dossier->gametype != snap->gametype) {
+		ERROR2 ("dossier gametype \"%s\" != snapshot gametype \"%s\"",
+			SPWAW_gametype2str (battle->dossier->gametype), SPWAW_gametype2str (snap->gametype));
+		return (SPWERR_NOMATCH_GTYPE);
+	}
 
 	/* Apply battle compatibility rules */
 	if (battle->tcnt != 0) {
@@ -470,4 +428,67 @@ SPWAW_dossier_snaplist (SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list)
 	ROE ("dossier_snaplist()");
 
 	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_dossier_export (const char *file, const char *export)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	int		src = -1;
+	FILE		*dst = NULL;
+
+	CSPWINIT;
+	CNULLARG (file); CNULLARG (export);
+
+	/* Open files and export dossier data */
+	src = open (file, O_RDONLY|O_BINARY); if (src < 0) rc = SPWERR_FOFAILED;
+	ERRORGOTO ("dossier file open", handle_error);
+
+	dst = fopen (export, "w"); if (!dst) rc = SPWERR_FOFAILED;
+	ERRORGOTO ("export file open", handle_error);
+
+	rc = dossier_export (src, dst);
+	ERRORGOTO ("dossier_export()", handle_error);
+
+	/* Cleanup and return */
+	close (src); fclose (dst);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (src >= 0) close (src);
+	if (dst) fclose (dst);
+	return (rc);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_dossier_import (const char *import, const char *file)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	FILE		*src = NULL;
+	int		dst = -1;
+
+	CSPWINIT;
+	CNULLARG (import); CNULLARG (file);
+
+	/* Open files and export dossier data */
+	src = fopen (import, "r"); if (!src) rc = SPWERR_FOFAILED;
+	ERRORGOTO ("import file open", handle_error);
+
+	dst = open (file, O_CREAT|O_TRUNC|O_WRONLY|O_BINARY, 0666); if (dst < 0) rc = SPWERR_FOFAILED;
+	ERRORGOTO ("dossier file open", handle_error);
+
+	rc = dossier_import (src, dst);
+	ERRORGOTO ("dossier_import()", handle_error);
+
+	/* Cleanup and return */
+	fclose (src); close (dst);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (src) fclose (src);
+	if (dst >= 0) close (dst);
+	return (rc);
+
 }

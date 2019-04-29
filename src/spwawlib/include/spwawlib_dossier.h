@@ -113,10 +113,10 @@ typedef struct s_SPWAW_DOSSIER_CAMPAIGN {
 
 /* SPWAW dossier: data */
 struct s_SPWAW_DOSSIER {
+	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
 	char			*name;				/* Dossier name					*/
 	char			*comment;			/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
-	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
 	char			*oobdir;			/* Original OOB data directory			*/
 	SPWAW_SPWOOB_LIST	*oobdata;			/* OOB data list				*/
 	BYTE			OOB;				/* OOB ID					*/
@@ -133,10 +133,10 @@ struct s_SPWAW_DOSSIER {
 
 /* SPWAW dossier: file info */
 typedef struct s_SPWAW_DOSSIER_INFO {
+	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
 	char			name[SPWAW_AZSDNAME+1];		/* Dossier name					*/
 	char			comment[SPWAW_AZSDCMT+1];	/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
-	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
 	BYTE			OOB;				/* Dossier OOB ID				*/
 	USHORT			bcnt;				/* Dossier battle count				*/
 } SPWAW_DOSSIER_INFO;
@@ -147,17 +147,21 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(SPWAW_GAME_TYPE gametype, co
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_info		(const char *file, SPWAW_DOSSIER_INFO *info);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_export		(const char *file, const char *export);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_import		(const char *import, const char *file);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_free		(SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_edit		(SPWAW_DOSSIER *dossier, const char *name, const char *comment);
+
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_campaign_snap	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_battle	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, const char *name, SPWAW_BATTLE **battle);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_battle_snap	(SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
+
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del		(SPWAW_DOSSIER *dossier, SPWAW_BTURN *bturn);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del		(SPWAW_DOSSIER *dossier, SPWAW_BATTLE *battle);
+
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist		(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist		(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
+
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_export		(const char *file, const char *export);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_import		(const char *import, const char *file);
 
 #endif	/* SPWAW_LIB_DOSSIER_H */
 

@@ -39,6 +39,7 @@ static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_BADDTYPE: dossier type is not supported for this operation",
 	"SPWERR_BADBTYPE: battle type is not 'campaign'",
 	"SPWERR_BADGTYPE: game type is not supported for this operation",
+	"SPWERR_NOMATCH_GTYPE: game type does not match",
 	"SPWERR_NOMATCH_OOBDATA: OOB data files do not match",
 	"SPWERR_NOMATCH_OOB: player or opponent OOB ID does not match",
 	"SPWERR_NOMATCH_CORECNT: player formation or unit core count does not match",

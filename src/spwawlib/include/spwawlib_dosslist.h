@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier list API.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -41,7 +41,7 @@ typedef struct s_SPWAW_DOSSLIST {
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist		(const char *dir, SPWAW_DOSSLIST *ignore, SPWAW_DOSSLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_new	(SPWAW_DOSSLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_free	(SPWAW_DOSSLIST **list);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_add	(SPWAW_DOSSLIST *list, SPWAW_DOSSLIST_NODE *node);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_add	(SPWAW_DOSSLIST *list, SPWAW_DOSSIER *doss);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_addcpy	(SPWAW_DOSSLIST *list, SPWAW_DOSSLIST_NODE *node);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_clear	(SPWAW_DOSSLIST *list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_dosslist_copy	(SPWAW_DOSSLIST *list, SPWAW_DOSSLIST *src);

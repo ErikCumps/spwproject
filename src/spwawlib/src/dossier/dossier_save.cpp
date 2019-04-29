@@ -184,6 +184,7 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	hdr.fcnt = src->fcnt;
 	hdr.ucnt = src->ucnt;
 	hdr.type = src->type;
+	hdr.gametype = src->gametype;
 
 	bseekmove (fd, sizeof (hdr));
 

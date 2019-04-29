@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling - backwards compatibility with the V10 dossier.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,13 +28,16 @@ dossier_load_v10_header (int fd, DOS_HEADER *hdr)
 
 	/* A V10 dossier header:
 	 * + lacks the dossier type at the end
+	 * + lacks the dossier game type at the end
 	 *
 	 * V10 dossiers only support the SPWAW_CAMPAIGN_DOSSIER dossier type.
+	 * V10 dossiers only support the SPWAW_GAME_TYPE_SPWAW game type.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
 	memcpy (hdr, hdr_v10, sizeof (DOS_HEADER_V10));
 	hdr->type = SPWAW_CAMPAIGN_DOSSIER;
+	hdr->gametype = SPWAW_GAME_TYPE_SPWAW;
 
 handle_error:
 	if (hdr_v10) safe_free (hdr_v10);

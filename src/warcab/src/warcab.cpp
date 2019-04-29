@@ -121,6 +121,10 @@ WARCABState::mknew (void)
 
 	close();
 
+	// TODO: we will need to obtain the desired game type from the user
+	// TODO: maybe also for dossier name and comment at the same time,
+	// so there is no need for an edit later?
+
 	arc = SPWAW_dossier_new (SPWAW_GAME_TYPE_SPWAW, DEFAULT_NEW_NAME, DEFAULT_NEW_COMMENT, &d.dossier);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_NEW_FAILED, "SPWAW_dossier_new() failed: %s", SPWAW_errstr (arc));

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier list API implementation.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,6 +9,9 @@
 #include "stdafx.h"
 #include <spwawlib_dosslist.h>
 #include "common/internal.h"
+
+/* --- forward declarations --- */
+static SPWAW_ERROR SPWAW_dosslist_add (SPWAW_DOSSLIST *list, SPWAW_DOSSLIST_NODE *node);
 
 #define	LISTINC	8
 
@@ -158,7 +161,7 @@ SPWAW_dosslist_free (SPWAW_DOSSLIST **list)
 	return (SPWERR_OK);
 }
 
-SPWAWLIB_API SPWAW_ERROR
+static SPWAW_ERROR
 SPWAW_dosslist_add (SPWAW_DOSSLIST *list, SPWAW_DOSSLIST_NODE *node)
 {
 	SPWAW_DOSSLIST_NODE	**p;
@@ -166,6 +169,41 @@ SPWAW_dosslist_add (SPWAW_DOSSLIST *list, SPWAW_DOSSLIST_NODE *node)
 
 	CSPWINIT;
 	CNULLARG (list); CNULLARG (node);
+
+	if (list->cnt >= list->len) {
+		list->len += LISTINC;
+		p = safe_nmalloc (SPWAW_DOSSLIST_NODE *, list->len); COOM (p, "SPWAW_DOSSLIST_NODE LIST");
+
+		if (list->list) {
+			memcpy (p, list->list, list->cnt * sizeof (SPWAW_DOSSLIST_NODE *));
+			free (list->list);
+		}
+		list->list = p;
+	}
+	idx = list->cnt++;
+	list->list[idx] = node;
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_dosslist_add (SPWAW_DOSSLIST *list, SPWAW_DOSSIER *doss)
+{
+	SPWAW_DOSSLIST_NODE	**p;
+	unsigned long		idx;
+
+	CSPWINIT;
+	CNULLARG (list); CNULLARG (doss);
+
+	SPWAW_DOSSLIST_NODE *node = safe_malloc (SPWAW_DOSSLIST_NODE);
+	COOM (node, "SPWAW_DOSSLIST_NODE element");
+
+	node->info.gametype = doss->gametype;
+	snprintf (node->info.name, sizeof (node->info.name) - 1, "%s", doss->name);
+	snprintf (node->info.comment, sizeof (node->info.comment) - 1, "%s", doss->comment);
+	node->info.type = doss->type;
+	node->info.OOB = doss->OOB;
+	node->info.bcnt = doss->bcnt;
 
 	if (list->cnt >= list->len) {
 		list->len += LISTINC;

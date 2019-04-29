@@ -11,6 +11,7 @@
 #include "dossier/dossier.h"
 #include "dossier/dossier_file.h"
 #include "dossier/dossier_file_v10.h"
+#include "dossier/dossier_file_v11.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
@@ -242,10 +243,13 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with version 10 */
+	/* We are now backwards compatible with versions 10 and 11 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("snapshot_load_v10_info_header(snapshot info hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V11) {
+		rc = dossier_load_v11_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v11_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
@@ -261,6 +265,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	rc = STRTAB_fdload (stab, fd);
 	ERRORGOTO ("STRTAB_fdload()", handle_error);
 
+	dst->gametype = (SPWAW_GAME_TYPE)hdr.gametype;
 	snprintf (dst->name, sizeof (dst->name) - 1, "%s", STRTAB_getstr (stab, hdr.name));
 	snprintf (dst->comment, sizeof (dst->comment) - 1, "%s", STRTAB_getstr (stab, hdr.comment));
 	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
@@ -301,10 +306,13 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with version 10 */
+	/* We are now backwards compatible with versions 10 and 11 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V11) {
+		rc = dossier_load_v11_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v11_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
@@ -327,6 +335,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	rc = STRTAB_fdload (stab, fd);
 	ERRORGOTO ("STRTAB_fdload()", handle_error);
 
+	dst->gametype = (SPWAW_GAME_TYPE)hdr.gametype;
 	dst->name = STRTAB_getstr (stab, hdr.name);
 	dst->comment = STRTAB_getstr (stab, hdr.comment);
 	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,7 +15,7 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	11
+#define	DOSS_VERSION	12
 
 #pragma pack(push, r1, 1)
 
@@ -36,6 +36,7 @@ typedef struct s_DOS_HEADER {
 	ULONG		blist;			/* Battle list offset, relative to start of header				*/
 	ULONG		stab;			/* String table offset, relative to start of header				*/
 	ULONG		type;			/* Dossier type									*/
+	ULONG		gametype;		/* Dossier game type								*/
 } DOS_HEADER;
 
 typedef struct s_DOS_BHEADER {
