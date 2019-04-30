@@ -140,11 +140,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		ERRORGOTO ("SPWAW_stamp2date(battle hdr date)", handle_error);
 
 		p->location = STRTAB_getstr (stab, hdrs[i].location);
-		if (dst->type == SPWAW_CAMPAIGN_DOSSIER) {
-			p->OOB_p1   = dst->OOB;
-		} else {
-			p->OOB_p1   = (BYTE)(hdrs[i].OOB_p1 & 0xFF);
-		}
+		p->OOB_p1   = (BYTE)(hdrs[i].OOB_p1 & 0xFF);
 		p->OOB_p2   = (BYTE)(hdrs[i].OOB_p2 & 0xFF);
 		p->miss_p1  = STRTAB_getstr (stab, hdrs[i].miss_p1);
 		p->miss_p2  = STRTAB_getstr (stab, hdrs[i].miss_p2);
@@ -246,7 +242,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	/* We are now backwards compatible with versions 10 and 11 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
-		ERRORGOTO ("snapshot_load_v10_info_header(snapshot info hdr)", handle_error);
+		ERRORGOTO ("dossier_load_v10_info_header(dossier hdr)", handle_error);
 	} else if (mvhdr.version == DOSS_VERSION_V11) {
 		rc = dossier_load_v11_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v11_header(dossier hdr)", handle_error);

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - min-max-average-spread widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -47,8 +47,8 @@ GuiMMAS::GuiMMAS (QWidget *P)
 	d.target->setEditable (false);
 
 	GUINEW (d.timeline, QCheckBox ("Time-based axis?", this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "timeline");
-	d.timeline->setCheckState (Qt::Checked);
-	d.Vtimeline = true;
+	d.timeline->setCheckState (Qt::Unchecked);
+	d.Vtimeline = false;
 
 	GUINEW (d.prevcmp, QCheckBox ("prevcmp?", this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "prevcmp");
 	d.prevcmp->setCheckState (Qt::Unchecked);
@@ -179,7 +179,6 @@ GuiMMAS::set_parent (GuiRptBtl *parent, bool player, bool core)
 	set_type (0);
 
 	d.timeline->setHidden (true);
-	d.Vtimeline = true;
 }
 
 void
@@ -199,7 +198,6 @@ GuiMMAS::set_parent (GuiRptTrn *parent, bool player)
 	d.typemap.cnt = 0;
 
 	d.timeline->setHidden (true);
-	d.Vtimeline = true;
 }
 
 void

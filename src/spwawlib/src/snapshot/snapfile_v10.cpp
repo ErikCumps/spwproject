@@ -25,7 +25,7 @@ snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
 	if (!bread (fd, (char *)&hdr_v10, sizeof (SNAP_INFO_V10), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot info hdr v10) failed", handle_error);
 
-	/* A V10 snapshot info header only lacks the battle and game types at the end.
+	/* The V10 snapshot info header only lacks the battle and game types at the end.
 	 * The only supported battle type for V10 snapshots is the SPWAW_CAMPAIGN_BATTLE,
 	 * the only supported game type for V10 snapshots is the SPWAW_GAME_TYPE_SPWAW,
 	 * so a quick copy and fix up is all we need :)

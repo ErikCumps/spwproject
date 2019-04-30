@@ -16,7 +16,7 @@ ModelDossList::ModelDossList (char *path, SPWAW_DOSSLIST *ignore, QObject *paren
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "filename" << "game" << "type" << "OOB" << "battles" << "name" << "comment";
+	header << "filename" << "game" << "type" << "nation" << "battles" << "name" << "comment";
 	d.col_cnt = 7;
 
 	setupModelData (path, ignore);

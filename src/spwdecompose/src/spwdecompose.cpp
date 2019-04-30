@@ -39,10 +39,12 @@ write_data (char *fn, void *data, DWORD size)
 	int	bw;
 
 	fd = open (fn, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
-	if (fd == -1) error ("failed to open output file \"%s\" for writing!", fn);
+	if (fd == -1)
+		error ("failed to open output file \"%s\" for writing!", fn);
 
 	bw = write (fd, data, size);
-	if (bw != (int)size) error ("failed to write savegame data to \"%s\"!", fn);
+	if (bw != (int)size)
+		error ("failed to write savegame data to \"%s\"!", fn);
 
 	close (fd);
 }
