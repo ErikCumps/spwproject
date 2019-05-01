@@ -19,13 +19,19 @@ SPWAW_BATTLE *
 dossier_find_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap)
 {
 	DWORD		i;
-	SPWAW_TIMESTAMP	stamp, s;
 
-	SPWAW_date2stamp (&(snap->game.battle.data.start), &stamp);
+	if (snap->game.btlidx != SPWAW_NOBTLIDX) {
+		for (i=0; i<ptr->bcnt; i++) {
+			if (ptr->blist[i]->btlidx == snap->game.btlidx) return (ptr->blist[i]);
+		}
+	} else {
+		SPWAW_TIMESTAMP	stamp, s;
 
-	for (i=0; i<ptr->bcnt; i++) {
-		SPWAW_date2stamp (&(ptr->blist[i]->date), &s);
-		if (s == stamp) return (ptr->blist[i]);
+		SPWAW_date2stamp (&(snap->game.battle.data.start), &stamp);
+		for (i=0; i<ptr->bcnt; i++) {
+			SPWAW_date2stamp (&(ptr->blist[i]->date), &s);
+			if (s == stamp) return (ptr->blist[i]);
+		}
 	}
 	return (NULL);
 }

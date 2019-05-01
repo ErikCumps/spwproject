@@ -208,6 +208,8 @@ report_GMD (MDLD_TREE_ITEM *p)
 		case MDLD_TREE_BATTLE:
 			DBG_log ("[MDLD_TREE_ITEM] BATTLE 0x%8.8x:\n", p->data.b);
 			if (p->data.b) {
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] name     = %s\n", p->data.b->name);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] btlidx   = %d\n", p->data.b->btlidx);
 				SPWAW_date2str (&(p->data.b->date), &s);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] date     = %s\n", s); free (s);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] location = %s\n", p->data.b->location);

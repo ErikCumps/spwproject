@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API definitions.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -38,6 +38,13 @@
 #define	SPWAW_HEX_WW		0x08	/* hex west side	*/
 #define	SPWAW_HEX_NW		0x10	/* hex northwest side	*/
 #define	SPWAW_HEX_NE		0x20	/* hex northeast side	*/
+
+/* Invalid index value */
+#define	SPWAW_BADIDX	((USHORT)0xFFFF)
+
+/* Unset campaign battle index value */
+#define	SPWAW_NOBTLIDX	((USHORT)0xFFFF)
+
 
 #endif	/* SPWAW_LIB_DEFINES_H */
 

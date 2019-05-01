@@ -62,7 +62,8 @@ typedef struct s_DOS_BHEADER {
 		ULONG	comp;			/* compressed data size (0 if no compression)					*/
 	}	ra;
 	ULONG		oobdat;			/* Battle OOB data index in dossier OOB list					*/
-	ULONG		name;			/* optional battle name symbol								*/
+	ULONG		name;			/* optional battle name symbol							*/
+	USHORT		btlidx;			/* Campaign battle index							*/
 } DOS_BHEADER;
 
 typedef struct s_DOS_THEADER {

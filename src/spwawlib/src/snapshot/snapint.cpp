@@ -220,6 +220,16 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 	rc = snapint_game_campaign (ptr);	ROE ("snapint_game_campaign()");
 	rc = snapint_game_map (ptr);		ROE ("snapint_game_map()");
 
+	// Determine campaign battle index
+	if (ptr->game.campaign.data.battles_max > 0) {
+		// fixme: get rid of the cast!
+		ptr->game.btlidx = (USHORT)ptr->game.campaign.data.battles;
+		// TODO: investigate with SPWAW (commented is fine for winSPWW2)
+		//if (ptr->game.battle.data.status == SPWAW_BTSCORE) ptr->game.btlidx--;
+	} else {
+		ptr->game.btlidx = SPWAW_NOBTLIDX;
+	}
+
 	return (SPWERR_OK);
 }
 
