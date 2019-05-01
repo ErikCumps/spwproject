@@ -111,7 +111,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 
 	icnt = 0;
 
-	for (i=0; i<d->ucnt; i++) {
+	for (i=0; i<d->props.ucnt; i++) {
 		USHORT	idx, nidx;
 		bool	skip, report;
 
@@ -171,7 +171,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 
 	icnt = 0;
 
-	for (i=0; i<d->ucnt; i++) {
+	for (i=0; i<d->props.ucnt; i++) {
 		USHORT	idx, nidx;
 		bool	skip, report;
 
@@ -247,7 +247,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		d.changes->clear();
 	} else {
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
-			d.flag->setPixmap (*RES_flag (p->gametype, p->OOB));
+			d.flag->setPixmap (*RES_flag (p->gametype, p->props.OOB));
 			d.flag->setHidden(false);
 		} else {
 			d.flag->setHidden(true);
@@ -294,7 +294,7 @@ GuiRptDsrOvr::refresh (bool forced)
 
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
 			str.printf ("%s core force consists of %u units in %u formations.",
-				SPWAW_oob_people (p->gametype, p->OOB), p->ucnt, p->fcnt);
+				SPWAW_oob_people (p->gametype, p->props.OOB), p->props.ucnt, p->props.fcnt);
 		} else {
 			str.printf ("Campaign tracking is not available for this dossier.");
 		}
@@ -306,7 +306,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
 			if (p->bcnt) {
 				str.printf ("<pre>");
-				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->gametype, p->OOB));
+				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->gametype, p->props.OOB));
 				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.men, "men");
 				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.art, "artillery");
 				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.soft, "soft vehicles");

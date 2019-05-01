@@ -124,8 +124,8 @@ ModelDossList::setupModelData (char *path, SPWAW_DOSSLIST *ignore)
 		node.data	<< p->filename
 				<< SPWAW_gametype2str(p->info.gametype)
 				<< SPWAW_dossiertype2str(p->info.type)
-				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.gametype, p->info.OOB) : "")
-				<< p->info.bcnt
+				<< ((p->info.type == SPWAW_CAMPAIGN_DOSSIER) ? SPWAW_oob_nation (p->info.gametype, p->info.props.OOB) : "")
+				<< p->info.btlcnt
 				<< p->info.name
 				<< cmt;
 		node.node = p;

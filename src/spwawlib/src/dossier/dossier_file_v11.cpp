@@ -27,14 +27,23 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 		FAILGOTO (SPWERR_FRFAILED, "bread(dossier hdr v11)", handle_error);
 
 	/* A V11 dossier header:
-	 * + lacks the dossier game type at the end
-	 *
-	 * V11 dossiers only support the SPWAW_GAME_TYPE_SPWAW game type.
-	 *
-	 * So a quick copy and fix up is all we need :)
+	 * + lacks the dossier game type
+	 * + lacks the campaign properties
+	 * + but contains player OOB and core formation and unit counts
 	 */
-	memcpy (hdr, hdr_v11, sizeof (DOS_HEADER_V11));
-	hdr->gametype = SPWAW_GAME_TYPE_SPWAW;
+	hdr->name	= hdr_v11->name;
+	hdr->comment	= hdr_v11->comment;
+	hdr->oobdir	= hdr_v11->oobdir;
+	hdr->oobdata	= hdr_v11->oobdata;
+	hdr->bcnt	= hdr_v11->bcnt;
+	hdr->blist	= hdr_v11->blist;
+	hdr->stab	= hdr_v11->stab;
+	hdr->type	= hdr_v11->type;
+	hdr->gametype	= SPWAW_GAME_TYPE_SPWAW;
+
+	hdr->props.OOB	= (BYTE)(hdr_v11->OOB & 0xFF);
+	hdr->props.fcnt	= hdr_v11->fcnt;
+	hdr->props.ucnt	= hdr_v11->ucnt;
 
 handle_error:
 	if (hdr_v11) safe_free (hdr_v11);

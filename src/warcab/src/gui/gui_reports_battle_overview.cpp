@@ -130,7 +130,7 @@ GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, char *buf, unsigned int size, 
 	nb = b->next ? b->next : b;
 
 	icnt = 0;
-	for (int i=0; i<b->dossier->ucnt; i++) {
+	for (int i=0; i<b->dossier->props.ucnt; i++) {
 		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
 		if (b->ra[i].rpl) {
 			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
@@ -152,7 +152,7 @@ GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, char *buf, unsigned int size,
 	nb = b->next ? b->next : b;
 
 	icnt = 0;
-	for (int i=0; i<b->dossier->ucnt; i++) {
+	for (int i=0; i<b->dossier->props.ucnt; i++) {
 		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
 		if ((b->ra[i].dst != i) && !b->ra[i].rpl &&(b->ra[i].src != SPWAW_BADIDX) && (b->ra[i].dst != SPWAW_BADIDX)) {
 			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
@@ -178,7 +178,7 @@ GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, bool promo, char *buf, unsigned 
 
 	icnt = 0;
 
-	for (int i=0; i<b->dossier->ucnt; i++) {
+	for (int i=0; i<b->dossier->props.ucnt; i++) {
 		if (b->ra[i].rpl || (b->ra[i].dst == SPWAW_BADIDX)) continue;
 
 		up = b->info_sob->pbir_core.uir[i].snap;

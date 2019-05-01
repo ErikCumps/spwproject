@@ -202,8 +202,8 @@ SPWAW_dosslist_add (SPWAW_DOSSLIST *list, SPWAW_DOSSIER *doss)
 	snprintf (node->info.name, sizeof (node->info.name) - 1, "%s", doss->name);
 	snprintf (node->info.comment, sizeof (node->info.comment) - 1, "%s", doss->comment);
 	node->info.type = doss->type;
-	node->info.OOB = doss->OOB;
-	node->info.bcnt = doss->bcnt;
+	node->info.btlcnt = doss->bcnt;
+	node->info.props = doss->props;
 
 	if (list->cnt >= list->len) {
 		list->len += LISTINC;

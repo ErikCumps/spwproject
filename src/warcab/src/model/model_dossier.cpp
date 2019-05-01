@@ -96,7 +96,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 		case Qt::DisplayRole:
 			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s (%s forces)",
-					p->data.d->name, SPWAW_oob_people (p->data.d->gametype, p->data.d->OOB));
+					p->data.d->name, SPWAW_oob_people (p->data.d->gametype, p->data.d->props.OOB));
 			} else {
 				snprintf (buf, sizeof (buf) - 1, "%s",
 					p->data.d->name);
@@ -105,7 +105,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 			break;
 		case Qt::DecorationRole:
 			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
-				v = QVariant (QIcon (*RES_flag (p->data.d->gametype, p->data.d->OOB)));
+				v = QVariant (QIcon (*RES_flag (p->data.d->gametype, p->data.d->props.OOB)));
 			}
 			break;
 		case Qt::ForegroundRole:

@@ -105,11 +105,21 @@ struct s_SPWAW_BATTLE {
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
 };
 
+/* SPWAW dossier: campaign properties */
+typedef struct s_SPWAW_DOSSIER_CMPPROPS {
+	BYTE			OOB;				/* Player OOB ID				*/
+	USHORT			fcnt;				/* Player core formations count			*/
+	USHORT			ucnt;				/* Player core units count			*/
+	SPWAW_DATE		start;				/* Campaign start date				*/
+	SPWAW_DATE		end;				/* Campaign end date				*/
+	USHORT			maxbtlcnt;			/* Campaign maximum battles count		*/
+} SPWAW_DOSSIER_CMPPROPS;
+
 /* SPWAW dossier: campaign stats */
-typedef struct s_SPWAW_DOSSIER_CAMPAIGN {
+typedef struct s_SPWAW_DOSSIER_CMPSTATS {
 	USHORT	concluded;					/* Number of concluded battles in this campaign	*/
 	USHORT	results[SPWAW_BRLASTCODE+1];			/* Counts for each battle result		*/
-} SPWAW_DOSSIER_CAMPAIGN;
+} SPWAW_DOSSIER_CMPSTATS;
 
 /* SPWAW dossier: data */
 struct s_SPWAW_DOSSIER {
@@ -119,16 +129,14 @@ struct s_SPWAW_DOSSIER {
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
 	char			*oobdir;			/* Original OOB data directory			*/
 	SPWAW_SPWOOB_LIST	*oobdata;			/* OOB data list				*/
-	BYTE			OOB;				/* OOB ID					*/
-	USHORT			fcnt;				/* Core formations count			*/
-	USHORT			ucnt;				/* Core units count				*/
 	SPWAW_BATTLE		**blist;			/* Battle list					*/
 	USHORT			bcnt;				/* Battle list element count			*/
 	USHORT			blen;				/* Battle list length				*/
 	SPWAW_BATTLE		*bfirst;			/* Pointer to first battle			*/
 	SPWAW_BATTLE		*blast;				/* Pointer to last battle			*/
 	void			*stab;				/* \internal string table			*/
-	SPWAW_DOSSIER_CAMPAIGN	stats;				/* Campaign stats				*/
+	SPWAW_DOSSIER_CMPPROPS	props;				/* Campaign properties				*/
+	SPWAW_DOSSIER_CMPSTATS	stats;				/* Campaign stats				*/
 };
 
 /* SPWAW dossier: file info */
@@ -137,8 +145,8 @@ typedef struct s_SPWAW_DOSSIER_INFO {
 	char			name[SPWAW_AZSDNAME+1];		/* Dossier name					*/
 	char			comment[SPWAW_AZSDCMT+1];	/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
-	BYTE			OOB;				/* Dossier OOB ID				*/
-	USHORT			bcnt;				/* Dossier battle count				*/
+	USHORT			btlcnt;				/* Dossier battle count				*/
+	SPWAW_DOSSIER_CMPPROPS	props;				/* Campaign properties				*/
 } SPWAW_DOSSIER_INFO;
 
 /*** API ***/

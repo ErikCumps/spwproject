@@ -143,10 +143,8 @@ GuiRptBtl::refresh (void)
 		memset (buf, 0, sizeof (buf));
 
 		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
-			setTabIcon (indexOf (d.force_core),
-				*RES_flag (d.item->data.b->dossier->gametype, d.item->data.b->dossier->OOB));
-			setTabIcon (indexOf (d.force_spt),
-				*RES_flag (d.item->data.b->dossier->gametype, d.item->data.b->dossier->OOB));
+			setTabIcon (indexOf (d.force_core), *RES_flagbyid (d.item->data.b->snap->game.battle.strings.flagid_p1));
+			setTabIcon (indexOf (d.force_spt), *RES_flagbyid (d.item->data.b->snap->game.battle.strings.flagid_p1));
 		} else {
 			snprintf (buf, sizeof (buf) - 1, "%s force", d.item->data.b->snap->game.battle.strings.people_p1);
 			setTabText (indexOf (d.force_spt), buf);
