@@ -92,7 +92,7 @@ is_this_a_SPAU (UNIT *data, USHORT idx)
 
 /* Builds a list of all the candidate units */
 static SPWAW_ERROR
-find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful)
+find_candidate_units (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, BYTE player, FULIST &ful)
 {
 	USHORT	i;
 	char	name[SPWAW_AZSNAME+1];
@@ -106,25 +106,25 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 	for (i=start; i<=stop; i++)
 	{
 		// A unit (or crew) must have a valid name
-		if (data[i].name[0] == '\0') continue;
+		if (udata[i].name[0] == '\0') continue;
 
-		snprintf (name, sizeof (name) - 1, "%s", data[i].name); name[16] = '\0';
+		snprintf (name, sizeof (name) - 1, "%s", udata[i].name); name[16] = '\0';
 
 		uel = reserve_UEL (ful.ul);
 		if (!uel) RWE (SPWERR_FAILED, "reserve_UEL() failed");
 
 		// Record the basic unit info
 		uel->d.RID    = i;
-		memcpy (uel->d.name, data[i].name, SPWAW_AZSNAME);
-		uel->d.FRID	= data[i].formID;
-		uel->d.FSID	= data[i].minform;
-		uel->d.OOB	= data[i].OOBid;
-		uel->d.OOBrid	= data[i].OOBnum;
-		uel->d.LRID	= data[i].leader;
+		memcpy (uel->d.name, udata[i].name, SPWAW_AZSNAME);
+		uel->d.FRID	= udata[i].formID;
+		uel->d.FSID	= udata[i].minform;
+		uel->d.OOB	= udata[i].OOBid;
+		uel->d.OOBrid	= udata[i].OOBnum;
+		uel->d.LRID	= udata[i].leader;
 
 		UFDLOG7 ("find_candidate_units: [%3.3u] F[%3.3u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FRID, uel->d.FSID,
-			data[i].crew, uel->d.LRID, data[i].OOBid,
+			udata[i].crew, uel->d.LRID, udata[i].OOBid,
 			name);
 
 		// The unit must reference a valid formation, so try to look it up in the FORMATION list
@@ -139,13 +139,23 @@ find_candidate_units (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST
 		// This unit references a valid formation.
 		uel->d.FMID = fel->d.FID;
 
-		// Record the unit's loader
-		uel->d.loader = data[i].loader;
+		// Record the unit's loader (could be chained)
+		uel->d.loader = udata[i].loader;
+		if (uel->d.loader != SPWAW_BADIDX) {
+			while (udata[uel->d.loader].loader != SPWAW_BADIDX) {
+				uel->d.loader = udata[uel->d.loader].loader;
+			}
+		}
+
+		// Update the unit's position (if it is loaded)
+		if (uel->d.loader != SPWAW_BADIDX) {
+			pdata[i] = pdata[uel->d.loader];
+		}
 
 		// Is this a unit or a special attached unit?
-		if (is_this_a_UNIT (data, i) || is_this_a_SPAU (data, i))
+		if (is_this_a_UNIT (udata, i) || is_this_a_SPAU (udata, i))
 		{
-			if (is_this_a_UNIT (data, i)) {
+			if (is_this_a_UNIT (udata, i)) {
 				// This is a candidate unit.
 				uel->d.type = SPWAW_UNIT_TYPE_UNIT;
 			} else {
@@ -716,16 +726,16 @@ drop_crew:
 
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (UNIT *data, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
+unitcount (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 {
 	SPWAW_ERROR	rc;
 
 	// Step 1.a: find all candidate units
-	rc = find_candidate_units (data, start, stop, player, ful);
+	rc = find_candidate_units (udata, pdata, start, stop, player, ful);
 	ROE ("find_candidate_units()");
 
 	// Step 1.b: link up all candidate crews
-	rc = link_candidate_crews (ful, data);
+	rc = link_candidate_crews (ful, udata);
 	ROE ("verify_candidate_crews()");
 
 	// Early exit if no units are found at all
@@ -861,21 +871,23 @@ SPWAW_ERROR
 section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
-	UNIT		*data;
+	UNIT		*udata;
+	UNIT_POS	*pdata;
 	SPWAW_DATE	date;
 
 	CNULLARG (src); CNULLARG (dst);
 
-	data = GDSPWAW(src)->sec01.u.d.units;
+	udata = GDSPWAW(src)->sec01.u.d.units;
+	pdata = GDSPWAW(src)->sec17.u.d.pos;
 
 	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
 
 	// Count the available units for player #1
-	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 1, ful1, dst->oobdat, date);
+	rc = unitcount (udata, pdata, UNITP1POSSTART, UNITP2POSEND, 1, ful1, dst->oobdat, date);
 	ROE ("unitcount(OOBp1)");
 
 	// Count the available units for player #2
-	rc = unitcount (data, UNITP1POSSTART, UNITP2POSEND, 2, ful2, dst->oobdat, date);
+	rc = unitcount (udata, pdata, UNITP1POSSTART, UNITP2POSEND, 2, ful2, dst->oobdat, date);
 	ROE ("unitcount(OOBp2)");
 
 	// Verify unit detection
