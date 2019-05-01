@@ -522,8 +522,8 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			fel->d.player, fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
 
 		if (!fel->d.unit_cnt) {
-			UFDTRACE0 ("no units recorded for formation - dropping formation!\n");
-			drop_FEL (ful.fl, fel);
+			UFDLOG0 ("DROPPED: no units recorded for formation\n");
+			drop_FEL (ful, fel);
 			continue;
 		}
 
@@ -532,8 +532,8 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			ldru = ldru->d.link.parent;
 		}
 		if (!ldru) {
-			UFDTRACE0 ("no leader unit recorded for formation - dropping formation!\n");
-			drop_FEL (ful.fl, fel);
+			UFDLOG0 ("DROPPED: no leader unit recorded for formation\n");
+			drop_FEL (ful, fel);
 			continue;
 		}
 

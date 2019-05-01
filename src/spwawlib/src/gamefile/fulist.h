@@ -107,7 +107,6 @@ void	dump_FLIST	(FLIST &fl);
 void	dump_FEL	(FEL *fel, char *prefix);
 FEL *	reserve_FEL	(FLIST &fl);
 bool	commit_FEL	(FLIST &fl, FEL *fel);
-void	drop_FEL	(FLIST &fl, FEL *fel);
 FEL *	lookup_FLIST	(FLIST &fl, USHORT frid);
 
 
@@ -124,5 +123,8 @@ typedef struct s_FULIST {
 
 void	init_FULIST	(FULIST &l);
 void	dump_FULIST	(FULIST &l);
+
+UEL *	lookup_FFUEL	(FULIST &l, FEL *fel);
+void	drop_FEL	(FULIST &fl, FEL *fel);
 
 #endif	/* FULIST_H */

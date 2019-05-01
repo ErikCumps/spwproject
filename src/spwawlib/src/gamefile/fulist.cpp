@@ -221,23 +221,6 @@ commit_FEL (FLIST &fl, FEL *fel)
 	return (true);
 }
 
-/* Drops the element from the formation list */
-void
-drop_FEL (FLIST &fl, FEL *fel)
-{
-	if (fl.cnt == 0) return;
-
-	if (fel->l.prev) {
-		fel->l.prev->l.next = fel->l.next;
-	} else {
-		fl.head = fel->l.next;
-	}
-	if (fel->l.next) {
-		fel->l.next->l.prev = fel->l.prev;
-	}
-	fl.cnt--;
-}
-
 /* Looks up the element in the formation list for the given formation record ID */
 FEL *
 lookup_FLIST (FLIST &fl, USHORT frid)
@@ -307,3 +290,41 @@ dump_FULIST (FULIST &l)
 	dump_FLIST (l.fl);
 	dump_ULIST (l.ul);
 }
+
+/* Looks up the first element in the unit list for the given formation element */
+UEL *
+lookup_FFUEL (FULIST &l, FEL *fel)
+{
+	UEL	*p = l.ul.head;
+
+	if (!fel) return (NULL);
+
+	while (p) {
+		if ((fel->d.RID == p->d.FRID) && (fel->d.FID == p->d.FMID)) break;
+		p = p->l.next;
+	}
+
+	return (p);
+}
+
+/* Drops the formation and all the units it contains from the formation and unit lists */
+void
+drop_FEL (FULIST &l, FEL *fel)
+{
+	if (l.fl.cnt == 0) return;
+
+	if (fel->l.prev) {
+		fel->l.prev->l.next = fel->l.next;
+	} else {
+		l.fl.head = fel->l.next;
+	}
+	if (fel->l.next) {
+		fel->l.next->l.prev = fel->l.prev;
+	}
+	l.fl.cnt--;
+
+	for (BYTE i = 0; i < fel->d.unit_cnt; i++) {
+		if (fel->d.unit_lst[i]) drop_UEL (l.ul, fel->d.unit_lst[i]);
+	}
+}
+
