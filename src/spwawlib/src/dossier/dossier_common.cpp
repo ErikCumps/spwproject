@@ -182,8 +182,8 @@ dossier_update_battle_info (SPWAW_BATTLE *ptr)
 	ptr->info_eob = &(ptr->tlast->info);
 
 	if (!ptr->ra) {
-		ptr->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, ptr->dossier->ucnt); COOM (ptr->ra, "RA list");
-		for (i=0; i<ptr->dossier->ucnt; i++) {
+		ptr->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, ptr->dossier->props.ucnt); COOM (ptr->ra, "RA list");
+		for (i=0; i<ptr->dossier->props.ucnt; i++) {
 			ptr->ra[i].src = SPWAW_BADIDX;
 			ptr->ra[i].dst = SPWAW_BADIDX;
 			ptr->ra[i].rpl = false;
@@ -199,12 +199,12 @@ dossier_update_battle_rainfo_simple (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 	USHORT	i;
 
 	if (src == NULL) {
-		for (i=0; i<dst->dossier->ucnt; i++) {
+		for (i=0; i<dst->dossier->props.ucnt; i++) {
 			dst->ra[i].src = SPWAW_BADIDX;
 		}
 	}
 	if (dst == NULL) {
-		for (i=0; i<src->dossier->ucnt; i++) {
+		for (i=0; i<src->dossier->props.ucnt; i++) {
 			src->ra[i].dst = SPWAW_BADIDX;
 			src->ra[i].rpl = false;
 		}
@@ -225,12 +225,12 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 		dossier_update_battle_rainfo_simple (src, dst);
 	} else {
 		log ("### dossier_update_battle_rainfo ###\n");
-		for (i=0; i<src->dossier->ucnt; i++) {
+		for (i=0; i<src->dossier->props.ucnt; i++) {
 			src->ra[i].dst = dst->ra[i].src = SPWAW_BADIDX;
 			src->ra[i].rpl = false;
 		}
-		for (f=0; f<src->dossier->fcnt; f++) {
-			sfp = &(src->info_sob->pbir_battle.fir[f]); dfp = &(dst->info_sob->pbir_battle.fir[f]);
+		for (f=0; f<src->dossier->props.fcnt; f++) {
+			sfp = &(src->info_sob->pbir_core.fir[f]); dfp = &(dst->info_sob->pbir_core.fir[f]);
 			log ("Src formation #%d: sfp=0x%8.8x = %s\n", f, sfp, sfp->snap->strings.name);
 			log ("Dst formation #%d: dfp=0x%8.8x = %s\n", f, dfp, dfp->snap->strings.name);
 
@@ -238,16 +238,16 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 			log ("/ Assigning live units:\n");
 			for (u=0; u<sfp->snap->data.ucnt; u++) {
 				i = sfp->snap->data.ulist[u]->data.idx;
-				if (!src->info_eob->pbir_battle.uir[i].snap->data.alive) continue;
+				if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
 
-				sup = &(src->info_sob->pbir_battle.uir[i]);
+				sup = &(src->info_sob->pbir_core.uir[i]);
 				log ("| Src unit #%d: (%s, %s), ALIVE\n", i, sup->snap->strings.uid, sup->snap->data.name);
 
 				/* find first unassigned matching unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
 				for (j=0; j<dfp->snap->data.ucnt; j++) {
 					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir_battle.uir[k]);
+					p = &(dst->info_sob->pbir_core.uir[k]);
 
 					log ("| Checking dst unit #%d: (%s, %s), dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
 					if (strcmp (sup->snap->data.name, p->snap->data.name) == 0) {
@@ -279,14 +279,14 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 				i = sfp->snap->data.ulist[u]->data.idx;
 				if (src->ra[i].dst != SPWAW_BADIDX) continue;
 
-				sup = &(src->info_sob->pbir_battle.uir[i]);
+				sup = &(src->info_sob->pbir_core.uir[i]);
 				log ("| Src unit #%d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.name);
 
 				/* find first unassigned unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
 				for (j=0; j<dfp->snap->data.ucnt; j++) {
 					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir_battle.uir[k]);
+					p = &(dst->info_sob->pbir_core.uir[k]);
 
 					log ("| Checking dst unit #%d: (%s, %s) dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
 					if (dst->ra[k].src == SPWAW_BADIDX) {
@@ -308,7 +308,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 				}
 			}
 		}
-		for (i=0; i<src->dossier->ucnt; i++) {
+		for (i=0; i<src->dossier->props.ucnt; i++) {
 			log ("final reassignment result: src->ra[%03.3d].dst = %03.3d, dst->ra[%03.3d].src = %03.3d, src->ra[%03.3d].rpl = %d\n",
 				i, src->ra[i].dst, i, dst->ra[i].src, i, src->ra[i].rpl);
 		}
@@ -318,13 +318,16 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 }
 
 SPWAW_ERROR
-dossier_set_dossier_info (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle)
+dossier_set_campaign_props (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle)
 {
 	CNULLARG(ptr); CNULLARG(battle);
 
-	ptr->OOB  = battle->OOB_p1;
-	ptr->fcnt = battle->tlist[0]->info.pbir_core.fcnt;
-	ptr->ucnt = battle->tlist[0]->info.pbir_core.ucnt;
+	ptr->props.OOB       = battle->OOB_p1;
+	ptr->props.fcnt      = battle->tlist[0]->info.pbir_core.fcnt;
+	ptr->props.ucnt      = battle->tlist[0]->info.pbir_core.ucnt;
+	ptr->props.start     = battle->tlist[0]->snap->game.campaign.data.start;
+	ptr->props.end       = battle->tlist[0]->snap->game.campaign.data.end;
+	ptr->props.maxbtlcnt = (USHORT)battle->tlist[0]->snap->game.campaign.data.battles_max;
 
 	return (SPWERR_OK);
 }

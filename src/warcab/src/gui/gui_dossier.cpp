@@ -187,13 +187,19 @@ report_GMD (MDLD_TREE_ITEM *p)
 		case MDLD_TREE_DOSSIER:
 			DBG_log ("[MDLD_TREE_ITEM] DOSSIER 0x%8.8x:\n", p->data.d);
 			if (p->data.d) {
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] name    = %s\n", p->data.d->name);
-				//DBG_log ("[MDLD_TREE_ITEM_DOSSIER] comment = %s\n", p->data.d->comment);
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] oobdir  = %s\n", p->data.d->oobdir);
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] OOB     = %d\n", p->data.d->OOB);
-				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] fcnt    = %d\n", p->data.d->fcnt);
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] ucnt    = %d\n", p->data.d->ucnt);
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] battles = %d\n", p->data.d->bcnt);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] name         = %s\n", p->data.d->name);
+				//DBG_log ("[MDLD_TREE_ITEM_DOSSIER] comment      = %s\n", p->data.d->comment);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] oobdir       = %s\n", p->data.d->oobdir);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] OOB          = %u\n", p->data.d->props.OOB);
+				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] fcnt         = %u\n", p->data.d->props.fcnt);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] ucnt         = %u\n", p->data.d->props.ucnt);
+				SPWAW_date2str (&(p->data.d->props.start), &s);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] start        = %s\n", s); free(s);
+				SPWAW_date2str (&(p->data.d->props.end), &s);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] end          = %s\n", s); free(s);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] max battles  = %u\n", p->data.d->props.maxbtlcnt);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] battle count = %u\n", p->data.d->bcnt);
+
 			}
 			break;
 		case MDLD_TREE_STDALONE:

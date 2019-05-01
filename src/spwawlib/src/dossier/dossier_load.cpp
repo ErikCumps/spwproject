@@ -162,9 +162,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		if (p->tcnt) p->snap = p->tlist[0]->snap;
 
 		// Set dossier data if this was the first battle loaded
-		if (i == 0) dossier_set_dossier_info (dst, p);
+		if (i == 0) dossier_set_campaign_props (dst, p);
 
-		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->ucnt); COOMGOTO (p->ra, "RA list", handle_error);
+		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->props.ucnt); COOMGOTO (p->ra, "RA list", handle_error);
 
 		bseekset (fd, pos + hdrs[i].ra.data);
 
@@ -216,6 +216,21 @@ dossier_check_header (DOS_HEADER &hdr)
 	return (SPWERR_OK);
 }
 
+static SPWAW_ERROR
+dossier_load_campaign_props (DOS_CMPPROPS *props, SPWAW_DOSSIER_CMPPROPS *dst)
+{
+	CNULLARG (props); CNULLARG(dst);
+
+	dst->OOB	= props->OOB;
+	dst->fcnt	= props->fcnt;
+	dst->ucnt	= props->ucnt;
+	SPWAW_stamp2date (&(props->start), &(dst->start));
+	SPWAW_stamp2date (&(props->end), &(dst->end));
+	dst->maxbtlcnt	= props->maxbtlcnt;
+
+	return (SPWERR_OK);
+}
+
 SPWAW_ERROR
 dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 {
@@ -254,6 +269,9 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	rc = dossier_check_header (hdr);
 	ERRORGOTO ("dossier_check_header()", handle_error);
 
+	rc = dossier_load_campaign_props (&(hdr.props), &(dst->props));
+	ERRORGOTO ("dossier_load_campaign_props()", handle_error);
+
 	rc = STRTAB_new (&stab);
 	ERRORGOTO ("STRTAB_new()", handle_error);
 
@@ -266,8 +284,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	snprintf (dst->comment, sizeof (dst->comment) - 1, "%s", STRTAB_getstr (stab, hdr.comment));
 	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
 
-	dst->OOB = (BYTE)(hdr.OOB & 0xFF);
-	dst->bcnt = hdr.bcnt;
+	dst->btlcnt = hdr.bcnt;
 
 	STRTAB_free (&stab);
 
@@ -316,6 +333,9 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	rc = dossier_check_header (hdr);
 	ERRORGOTO ("dossier_check_header()", handle_error);
+
+	rc = dossier_load_campaign_props (&(hdr.props), &(dst->props));
+	ERRORGOTO ("dossier_load_campaign_props()", handle_error);
 
 	bseekset (fd, pos + hdr.oobdata);
 	/* We are now backwards compatible with version 10 */

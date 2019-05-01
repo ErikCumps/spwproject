@@ -223,7 +223,7 @@ GuiRptLoss::list_killed_dossier (char *buf, unsigned int size, int &icnt)
 
 	str.clear();
 
-	for (int i=0; i<p->ucnt; i++) {
+	for (int i=0; i<p->props.ucnt; i++) {
 		USHORT	idx, nidx;
 
 		idx = nidx = i; b = p->bfirst;
@@ -305,7 +305,7 @@ GuiRptLoss::list_abandoned_dossier (char *buf, unsigned int size, int &icnt)
 
 	str.clear();
 
-	for (int i=0; i<p->ucnt; i++) {
+	for (int i=0; i<p->props.ucnt; i++) {
 		USHORT	idx, nidx;
 
 		idx = nidx = i; b = p->bfirst;
@@ -407,8 +407,8 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 
 	str.clear();
 
-	SL_SAFE_CALLOC (rpt, p->ucnt, sizeof (DMGRPT));
-	for (int i=0; i<p->ucnt; i++) {
+	SL_SAFE_CALLOC (rpt, p->props.ucnt, sizeof (DMGRPT));
+	for (int i=0; i<p->props.ucnt; i++) {
 		USHORT		idx, nidx;
 		unsigned long	dmg;
 
@@ -430,9 +430,9 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 		rpt[i].dmg = dmg;
 	}
 
-	qsort (rpt, p->ucnt, sizeof (DMGRPT), dmgrpt_cmp);
+	qsort (rpt, p->props.ucnt, sizeof (DMGRPT), dmgrpt_cmp);
 
-	for (int i=0; i<p->ucnt; i++) {
+	for (int i=0; i<p->props.ucnt; i++) {
 		if (rpt[i].dmg == 0) continue;
 
 		up = rpt[i].ptr->info_sob->pbir_core.uir[rpt[i].idx].snap;
