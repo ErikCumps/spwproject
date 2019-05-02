@@ -404,39 +404,41 @@ GuiRptBtlOvr::refresh (void)
 		d.overview->setText (buf);
 		str.clear();
 
-		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", p->snap->game.battle.strings.people_p1);
-		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.men, "men");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.art, "artillery");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.soft, "soft vehicles");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.apc, "armoured personnel carriers");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.afv, "armoured fighting vehicles");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.gliders, "gliders");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.air, "aircraft");
-		} else {
-			str.printf ("  none yet\n");
-		}
-		str.printf ("</pre>");
-		d.losses.plr->setText (buf);
-		str.clear();
+		switch (p->tlast->snap->game.battle.data.status){
+			case SPWAW_BTSCORE:
+				str.printf ("<pre>");
+				str.printf ("<h3>%s battle losses:</h3>", p->snap->game.battle.strings.people_p1);
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.men, "men");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.art, "artillery");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.soft, "soft vehicles");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.apc, "armoured personnel carriers");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.afv, "armoured fighting vehicles");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.gliders, "gliders");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P1BL.air, "aircraft");
+				str.printf ("</pre>");
+				d.losses.plr->setText (buf);
+				str.clear();
 
-		str.printf ("<pre>");
-		str.printf ("<h3>%s battle losses:</h3>", p->snap->game.battle.strings.people_p2);
-		if (p->tlist[p->tcnt-1]->snap->game.battle.data.status != SPWAW_BTDEPLOY) {
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.men, "men");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.art, "artillery");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.soft, "soft vehicles");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.apc, "armoured personnel carriers");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.afv, "armoured fighting vehicles");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.gliders, "gliders");
-			str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.air, "aircraft");
-		} else {
-			str.printf ("  none yet\n");
+				str.printf ("<pre>");
+				str.printf ("<h3>%s battle losses:</h3>", p->snap->game.battle.strings.people_p2);
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.men, "men");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.art, "artillery");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.soft, "soft vehicles");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.apc, "armoured personnel carriers");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.afv, "armoured fighting vehicles");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.gliders, "gliders");
+				str.printf ("  %6u %s\n", p->tlast->snap->game.campaign.data.P2BL.air, "aircraft");
+				str.printf ("</pre>");
+				d.losses.opp->setText (buf);
+				str.clear();
+
+				break;
+			case SPWAW_BTBUSY:
+			case SPWAW_BTDEPLOY:
+			default:
+				break;
 		}
-		str.printf ("</pre>");
-		d.losses.opp->setText (buf);
-		str.clear();
+
 
 		list_replacements (p, buf2, sizeof (buf2), cnt);
 		if (cnt) {

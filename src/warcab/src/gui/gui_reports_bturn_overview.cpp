@@ -170,11 +170,8 @@ GuiRptTrnOvr::refresh (void)
 		str.printf ("</pre>");
 
 		switch (p->snap->game.battle.data.status){
-			case SPWAW_BTDEPLOY:
-				break;
-			case SPWAW_BTBUSY:
 			case SPWAW_BTSCORE:
-			default:
+			case SPWAW_BTBUSY:
 				str.printf ("<pre>");
 				str.printf ("<h3>%s force:</h3>", p->battle->snap->game.battle.strings.people_p1);
 				str.printf ("\toverall readiness is %.0f %%.\n",
@@ -203,6 +200,9 @@ GuiRptTrnOvr::refresh (void)
 					);
 
 				str.printf ("</pre>");
+				break;
+			case SPWAW_BTDEPLOY:
+			default:
 				break;
 		}
 
