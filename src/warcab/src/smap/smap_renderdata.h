@@ -56,6 +56,12 @@ typedef struct s_SMAP_RENDERDATA_XPMS {
 	const char **railrWW;		/*!< Railroad section running to the west edge of the hex		*/
 	const char **railrNW;		/*!< Railroad section running to the north west edge of the hex		*/
 	const char **railrNE;		/*!< Railroad section running to the north east edge of the hex		*/
+	const char **tramlEE;		/*!< Tramline section running to the east edge of the hex		*/
+	const char **tramlSE;		/*!< Tramline section running to the south east edge of the hex		*/
+	const char **tramlSW;		/*!< Tramline section running to the south west edge of the hex		*/
+	const char **tramlWW;		/*!< Tramline section running to the west edge of the hex		*/
+	const char **tramlNW;		/*!< Tramline section running to the north west edge of the hex		*/
+	const char **tramlNE;		/*!< Tramline section running to the north east edge of the hex		*/
 	const char **blue;		/*!< Color field for blue influence					*/
 	const char **red;		/*!< Color field for red influence					*/
 	const char **neutral;		/*!< Color field for neutral influence					*/
