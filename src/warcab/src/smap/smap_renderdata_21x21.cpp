@@ -45,6 +45,12 @@
 #include "xpm_21x21/new_railr_WW_21x21.xpm"
 #include "xpm_21x21/new_railr_NW_21x21.xpm"
 #include "xpm_21x21/new_railr_NE_21x21.xpm"
+#include "xpm_21x21/traml_EE_21x21.xpm"
+#include "xpm_21x21/traml_SE_21x21.xpm"
+#include "xpm_21x21/traml_SW_21x21.xpm"
+#include "xpm_21x21/traml_WW_21x21.xpm"
+#include "xpm_21x21/traml_NW_21x21.xpm"
+#include "xpm_21x21/traml_NE_21x21.xpm"
 #include "xpm_21x21/blue_21x21.xpm"
 #include "xpm_21x21/red_21x21.xpm"
 #include "xpm_21x21/neutral_21x21.xpm"
@@ -135,6 +141,12 @@ static SMAP_RENDERDATA_XPMS xpms = {
 	RAILR_WW_21X21,
 	RAILR_NW_21X21,
 	RAILR_NE_21X21,
+	TRAML_EE_21X21,
+	TRAML_SE_21X21,
+	TRAML_SW_21X21,
+	TRAML_WW_21X21,
+	TRAML_NW_21X21,
+	TRAML_NE_21X21,
 	BLUE_21X21,
 	RED_21X21,
 	NEUTRAL_21X21,

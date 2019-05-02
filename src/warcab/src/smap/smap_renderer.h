@@ -96,7 +96,8 @@ private:
 			QPixmap	bridge[SMAP_HRD_CNT];			/*!< Bridge feature sections		*/
 			QPixmap	road1[SMAP_HRD_CNT];			/*!< Primary road feature sections	*/
 			QPixmap	road2[SMAP_HRD_CNT];			/*!< Secondary road feature sections	*/
-			QPixmap	railr[SMAP_HRD_CNT];			/*!< Reailroad feature sections		*/
+			QPixmap	railr[SMAP_HRD_CNT];			/*!< Reilroad feature sections		*/
+			QPixmap	traml[SMAP_HRD_CNT];			/*!< Tramline feature sections		*/
 			QPixmap	inf_blue[SMAP_HM_CNT];			/*!< Blue influence colorfields		*/
 			QPixmap	inf_red[SMAP_HM_CNT];			/*!< Red influence colorfields		*/
 			QPixmap	inf_neutral[SMAP_HM_CNT];		/*!< Neutral influence colorfields	*/

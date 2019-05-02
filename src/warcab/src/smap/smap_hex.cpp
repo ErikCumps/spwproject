@@ -15,7 +15,7 @@ SmapHex::SmapHex (void)
 	actheight = 0;
 	water = false;
 	bridge = false;
-	conn_road1 = conn_road2 = conn_railr = conn_bridge = 0;
+	conn_road1 = conn_road2 = conn_railr = conn_traml = conn_bridge = 0;
 	vic_hex = false;
 	vic_hex_owner = SMAP_HI_NONE;
 	unit_cnt_blue = unit_cnt_red = 0;
@@ -64,13 +64,14 @@ SmapHex::setBridge	(bool has_bridge)
 }
 
 void
-SmapHex::setRoadConn (int road1, int road2, int railr)
+SmapHex::setRoadConn (int road1, int road2, int railr, int traml)
 {
 	if (!d.ready) return;
 
 	conn_road1 = road1;
 	conn_road2 = road2;
 	conn_railr = railr;
+	conn_traml = traml;
 	conn_bridge = 0;
 }
 
@@ -122,7 +123,8 @@ SmapHex::hasRoad (SMAP_HRD dir)
 {
 	int conns =	(conn_road1 & SMAP_HRD_180mask[dir]) |
 			(conn_road2 & SMAP_HRD_180mask[dir]) |
-			(conn_railr & SMAP_HRD_180mask[dir]);
+			(conn_railr & SMAP_HRD_180mask[dir]) |
+			(conn_traml & SMAP_HRD_180mask[dir]);
 
 	return (conns != 0);
 }
