@@ -25,7 +25,7 @@ section38_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*st
 
 	map->width = 0;
 
-	if (data->size <= MAPWIDTH)
+	if (data->size <= SPWAW_MAPWIDTH)
 		map->width = data->size;
 	else {
 		ERROR1 ("invalid game map width %lu", data->size);

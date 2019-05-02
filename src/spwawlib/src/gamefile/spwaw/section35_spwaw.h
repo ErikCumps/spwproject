@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW gamefile handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -29,9 +29,9 @@ typedef struct s_FORMATION {
 
 typedef struct s_SECTION35 {
 	union u_u {
-		char	raw[SIZESEC35];
+		char	raw[SPWAW_SIZESEC35];
 		struct s_d {
-			FORMATION	formations[FORMCOUNT];
+			FORMATION	formations[SPWAW_FORMCOUNT];
 		} d;
 	} u;
 } SECTION35;

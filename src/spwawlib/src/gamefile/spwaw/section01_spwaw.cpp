@@ -92,7 +92,7 @@ is_this_a_SPAU (UNIT *data, USHORT idx)
 
 /* Builds a list of all the candidate units */
 static SPWAW_ERROR
-find_candidate_units (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, BYTE player, FULIST &ful)
+find_candidate_units (UNIT *udata, UNIT_POS *pdata, BYTE player, FULIST &ful)
 {
 	USHORT	i;
 	char	name[SPWAW_AZSNAME+1];
@@ -103,7 +103,7 @@ find_candidate_units (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, B
 
 	init_ULIST (ful.ul);
 
-	for (i=start; i<=stop; i++)
+	for (i=0; i<SPWAW_UNITCOUNT; i++)
 	{
 		// A unit (or crew) must have a valid name
 		if (udata[i].name[0] == '\0') continue;
@@ -726,12 +726,12 @@ drop_crew:
 
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (UNIT *udata, UNIT_POS *pdata, USHORT start, USHORT stop, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
+unitcount (UNIT *udata, UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 {
 	SPWAW_ERROR	rc;
 
 	// Step 1.a: find all candidate units
-	rc = find_candidate_units (udata, pdata, start, stop, player, ful);
+	rc = find_candidate_units (udata, pdata, player, ful);
 	ROE ("find_candidate_units()");
 
 	// Step 1.b: link up all candidate crews
@@ -883,11 +883,11 @@ section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FUL
 	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
 
 	// Count the available units for player #1
-	rc = unitcount (udata, pdata, UNITP1POSSTART, UNITP2POSEND, 1, ful1, dst->oobdat, date);
+	rc = unitcount (udata, pdata, PLAYER1, ful1, dst->oobdat, date);
 	ROE ("unitcount(OOBp1)");
 
 	// Count the available units for player #2
-	rc = unitcount (udata, pdata, UNITP1POSSTART, UNITP2POSEND, 2, ful2, dst->oobdat, date);
+	rc = unitcount (udata, pdata, PLAYER2, ful2, dst->oobdat, date);
 	ROE ("unitcount(OOBp2)");
 
 	// Verify unit detection

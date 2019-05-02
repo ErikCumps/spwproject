@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW gamefile handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,9 +13,9 @@
 
 typedef struct s_SECTION41 {
 	union u_u {
-		char	raw[SIZESEC41];
+		char	raw[SPWAW_SIZESEC41];
 		struct s_d {
-			char	data[SIZESEC41];
+			char	data[SPWAW_SIZESEC41];
 		} d;
 	} u;
 } SECTION41;

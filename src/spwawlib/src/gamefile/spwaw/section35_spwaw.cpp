@@ -30,7 +30,7 @@
 //	+ formations are not always saved in contiguous groups
 
 static SPWAW_ERROR
-build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FLIST &fl)
+build_formations_list (FORMATION *src, BYTE player, FLIST &fl)
 {
 	int	seen[FORMCOUNT];
 	USHORT	i;
@@ -40,7 +40,7 @@ build_formations_list (FORMATION *src, BYTE player, USHORT start, USHORT end, FL
 	memset (seen, 0, sizeof(seen));
 
 	// Add all valid player formations
-	for (i=start; i<end; i++)
+	for (i=0; i<SPWAW_FORMCOUNT; i++)
 	{
 		if (src[i].leader == SPWAW_BADIDX) {
 			// skipped: no leader
@@ -96,7 +96,7 @@ build_formations (FORMATION *src, BYTE player, FLIST &fl)
 
 	init_FLIST (fl);
 
-	rc = build_formations_list (src, player, FORMP1START, FORMCOUNT, fl);
+	rc = build_formations_list (src, player, fl);
 	ROE ("build_formations_list()");
 
 	if (fl.cnt == 0) RWE (SPWERR_BADSAVEDATA, "no formations found");
@@ -196,7 +196,7 @@ section35_spwaw_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTA
 {
 	SPWAW_ERROR	rc;
 
-	rc = add_formations (src, dst, fl, stab, oob, player ? FORMP1START : FORMP2START);
+	rc = add_formations (src, dst, fl, stab, oob, player ? SPWAW_FORMP1START : SPWAW_FORMP2START);
 	ROE ("add_formations()");
 
 	rc = build_fridx (dst);

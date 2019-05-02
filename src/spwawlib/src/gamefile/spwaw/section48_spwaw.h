@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW gamefile handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,7 +19,7 @@ typedef struct s_RECHEAD {
 
 typedef struct s_SECTION48 {
 	union u_u {
-		char	raw[SIZESEC48];
+		char	raw[SPWAW_SIZESEC48];
 		struct s_d {
 			RECHEAD	data;
 		} d;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW gamefile handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,10 +12,10 @@
 #include "gamefile/spwaw/defines_spwaw.h"
 
 typedef struct s_VHEX {
-	BYTE	x[VHEXCOUNT];		/* Victory hexes: x-coordinate					*/
-	BYTE	y[VHEXCOUNT];		/* Victory hexes: y-coordinate					*/
-	BYTE	amount[VHEXCOUNT];	/* Victory hexes: amount					*/
-	BYTE	owner[VHEXCOUNT];	/* Victory hexes: owner	0=player1, 1=player2, 2=neutral		*/
+	BYTE	x[SPWAW_VHEXCOUNT];		/* Victory hexes: x-coordinate					*/
+	BYTE	y[SPWAW_VHEXCOUNT];		/* Victory hexes: y-coordinate					*/
+	BYTE	amount[SPWAW_VHEXCOUNT];	/* Victory hexes: amount					*/
+	BYTE	owner[SPWAW_VHEXCOUNT];		/* Victory hexes: owner	0=player1, 1=player2, 2=neutral		*/
 } VHEX;
 
 typedef struct s_GAME_DATA {
@@ -91,7 +91,7 @@ typedef struct s_GAME_DATA {
 
 typedef struct s_SECTION37 {
 	union u_u {
-		char	raw[SIZESEC37];
+		char	raw[SPWAW_SIZESEC37];
 		struct s_d {
 			GAME_DATA	data;
 		} d;

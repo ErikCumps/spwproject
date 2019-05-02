@@ -25,7 +25,7 @@ section39_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*st
 
 	map->height = 0;
 
-	if (data->size <= MAPHEIGHT)
+	if (data->size <= SPWAW_MAPHEIGHT)
 		map->height = data->size;
 	else {
 		ERROR1 ("invalid game map height %lu", data->size);

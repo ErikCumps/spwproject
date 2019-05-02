@@ -104,7 +104,7 @@ section37_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	cp->P1result = data->P1result;
 	cp->P2result = data->P2result;
 
-	for (i=0; i<VHEXCOUNT; i++) {
+	for (i=0; i<SPWAW_VHEXCOUNT; i++) {
 		bp->vhex[i].x	  = data->vhex.x[i];
 		bp->vhex[i].y     = data->vhex.y[i];
 		bp->vhex[i].value = data->vhex.amount[i];

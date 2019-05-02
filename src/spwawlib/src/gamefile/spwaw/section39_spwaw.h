@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW gamefile handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -17,7 +17,7 @@ typedef struct s_MAP_HEIGHT {
 
 typedef struct s_SECTION39 {
 	union u_u {
-		char	raw[SIZESEC39];
+		char	raw[SPWAW_SIZESEC39];
 		struct s_d {
 			MAP_HEIGHT	data;
 		} d;
