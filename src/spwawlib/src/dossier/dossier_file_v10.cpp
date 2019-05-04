@@ -35,7 +35,6 @@ dossier_load_v10_header (int fd, DOS_HEADER *hdr)
 	 * V10 dossiers only support the SPWAW_CAMPAIGN_DOSSIER dossier type.
 	 * V10 dossiers only support the SPWAW_GAME_TYPE_SPWAW game type.
 	 */
-	memcpy (hdr, hdr_v10, sizeof (DOS_HEADER_V10));
 	hdr->name	= hdr_v10->name;
 	hdr->comment	= hdr_v10->comment;
 	hdr->oobdir	= hdr_v10->oobdir;

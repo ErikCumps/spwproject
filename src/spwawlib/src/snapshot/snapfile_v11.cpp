@@ -8,6 +8,7 @@
 
 #include "stdafx.h"
 #include "snapshot/snapfile_v11.h"
+#include "snapshot/snapfile_v10.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "common/types.h"
@@ -60,4 +61,11 @@ snapshot_load_v11_snap (int fd, SNAP_HEADER *hdr, SNAP *snap)
 
 handle_error:
 	return (rc);
+}
+
+SPWAW_ERROR
+snapshot_load_v11_oob_header (int fd, SNAP_OOBHDR *hdr)
+{
+	/* The V11 snapshot OOB data header is identical to the V10 snapshot OOB data header. */
+	return (snapshot_load_v10_oob_header(fd,hdr));
 }

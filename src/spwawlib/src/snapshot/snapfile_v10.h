@@ -72,9 +72,30 @@ typedef struct s_SNAP_OOB_UEL_V10 {
 	BYTE		UTGidx;			/* Unit type grouping index						*/
 } SNAP_OOB_UEL_V10;
 
+typedef struct s_SNAP_OOBHDR_V10 {
+	USHORT		fcnt;			/* Formation count							*/
+	ULONG		fpos;			/* Formation data offset, relative to start of header			*/
+	ULONG		fsize;			/* Formation data size							*/
+	ULONG		fcomp;			/* Formation compressed data size (0 if no compression)			*/
+	USHORT		fstart;			/* Formation ID start							*/
+	USHORT		ucnt;			/* Unit count								*/
+	ULONG		upos;			/* Unit data offset, relative to start of header			*/
+	ULONG		usize;			/* Unit data size							*/
+	ULONG		ucomp;			/* Unit compressed data size (0 if no compression)			*/
+	USHORT		lcnt;			/* Leader count								*/
+	ULONG		lpos;			/* Leader data offset, relative to start of header			*/
+	ULONG		lsize;			/* Leader data size							*/
+	ULONG		lcomp;			/* Leader compressed data size (0 if no compression)			*/
+	USHORT		pcnt;			/* Position count							*/
+	ULONG		ppos;			/* Position data offset, relative to start of header			*/
+	ULONG		psize;			/* Position data size							*/
+	ULONG		pcomp;			/* Position compressed data size (0 if no compression)			*/
+} SNAP_OOBHDR_V10;
+
 #pragma pack(pop, r1)
 
 extern SPWAW_ERROR	snapshot_load_v10_info_header	(int fd, SNAP_INFO *hdr);
+extern SPWAW_ERROR	snapshot_load_v10_oob_header	(int fd, SNAP_OOBHDR *hdr);
 extern SPWAW_ERROR	snapshot_load_v10_oob_uel	(SBR *sbr, SNAP_OOB_UEL *uel);
 extern SPWAW_ERROR	snapshot_legacy_ldrcrw_detect	(USHORT cnt, SPWAW_SNAP_OOB_RAW *oob);
 

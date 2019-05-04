@@ -39,9 +39,6 @@ extern SPWAW_SNAP_OOB_UEL *	crewbyid		(DWORD urid, SPWAW_SNAP_OOB_FORCE *ptr);
 extern SPWAW_SNAP_OOB_UEL *	unitorcrewbyid		(DWORD urid, SPWAW_SNAP_OOB_FORCE *ptr);
 extern SPWAW_SNAP_OOB_FEL *	formationbyid		(DWORD frid, SPWAW_SNAP_OOB_FORCE *ptr);
 
-extern SPWAW_ERROR		snapexport		(int src, FILE *dst);
-extern SPWAW_ERROR		snapimport		(FILE *src, int dst);
-
 extern void			snapint_addmmas		(SPWAW_IMMAS *dst, DWORD val, USHORT id);
 extern void			snapint_addmmas		(SPWAW_FMMAS *dst, double val, USHORT id);
 

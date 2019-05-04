@@ -157,7 +157,6 @@ typedef struct s_SPWAW_SNAP_OOB_FRAW {
 	USHORT			cnt;				/* raw data count					*/
 	SPWAW_SNAP_OOB_FELRAW	*raw;				/* array of raw data elements				*/
 	SPWAW_RINDEX		*ridx;				/* record index array					*/
-	USHORT			start;				/* formation ID start number				*/
 } SPWAW_SNAP_OOB_FRAW;
 
 /* SPWAW: raw unit element */

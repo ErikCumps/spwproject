@@ -128,7 +128,6 @@ load_oob_formations (int fd, long pos, SNAP_OOBHDR oobhdr, SPWAW_SNAP_OOB_RAW *o
 	SBR		*sbr = NULL;
 
 	oob->formations.cnt = oobhdr.fcnt;
-	oob->formations.start = oobhdr.fstart;
 	size = oobhdr.fsize;
 	data = safe_smalloc (char, size);
 	COOMGOTO (data, "SPWAW_SNAP_OOB_FEL data", handle_error);
@@ -385,8 +384,17 @@ load_oob (int fd, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 	pos = bseekget (fd);
 
 	memset (&oobhdr, 0, sizeof (oobhdr));
-	if (!bread (fd, (char *)&oobhdr, sizeof (oobhdr), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(oobhdr)", handle_error);
+	/* We are now backwards compatible with versions 11 and 10 */
+	if (version == SNAP_VERSION_V10) {
+		rc = snapshot_load_v10_oob_header (fd, &oobhdr);
+		ERRORGOTO ("snapshot_load_v10_oob_header(snapshot OOB data hdr)", handle_error);
+	} else if (version == SNAP_VERSION_V11) {
+		rc = snapshot_load_v11_oob_header (fd, &oobhdr);
+		ERRORGOTO ("snapshot_load_v11_oob_header(snapshot OOB data hdr)", handle_error);
+	} else {
+		if (!bread (fd, (char *)&oobhdr, sizeof (oobhdr), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot OOB data hdr)", handle_error);
+	}
 
 	rc = load_oob_formations (fd, pos, oobhdr, oob, stab);
 	ERRORGOTO ("load_oob_formations()", handle_error);

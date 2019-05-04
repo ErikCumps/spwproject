@@ -114,7 +114,6 @@ save_oob_formations (int fd, ULONG pos, SNAP_OOBHDR &oobhdr, SPWAW_SNAP_OOB_RAW 
 
 	oobhdr.fpos = bseekget (fd) - pos;
 	oobhdr.fcnt = oob->formations.cnt;
-	oobhdr.fstart = oob->formations.start;
 	for (i=0; i<oobhdr.fcnt; i++) {
 		prep_oobf (&(oob->formations.raw[i]), &f, stab);
 		if (sbwrite (sbw, (char *)&f, sizeof (f)) != sizeof (f))

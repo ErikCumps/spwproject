@@ -19,7 +19,6 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 	smart_title (rf, '-', "RAWLINK formations report:\n");
 
 	fprintf (rf, "count: %u\n", ptr->cnt);
-	fprintf (rf, "start: %u\n", ptr->start);
 	fprintf (rf, "\n");
 
 	if (!ptr->cnt || !ptr->raw || !ptr->ridx) return;

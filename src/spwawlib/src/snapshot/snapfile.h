@@ -229,7 +229,6 @@ typedef struct s_SNAP_OOBHDR {
 	ULONG		fpos;			/* Formation data offset, relative to start of header			*/
 	ULONG		fsize;			/* Formation data size							*/
 	ULONG		fcomp;			/* Formation compressed data size (0 if no compression)			*/
-	USHORT		fstart;			/* Formation ID start							*/
 	USHORT		ucnt;			/* Unit count								*/
 	ULONG		upos;			/* Unit data offset, relative to start of header			*/
 	ULONG		usize;			/* Unit data size							*/

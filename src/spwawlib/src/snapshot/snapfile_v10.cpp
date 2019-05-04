@@ -38,6 +38,39 @@ handle_error:
 	return (rc);
 }
 
+SPWAW_ERROR
+snapshot_load_v10_oob_header (int fd, SNAP_OOBHDR *hdr)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SNAP_OOBHDR_V10	hdr_v10;
+
+	if (!hdr) return (SPWERR_NULLARG);
+
+	if (!bread (fd, (char *)&hdr_v10, sizeof (SNAP_OOBHDR_V10), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot OOB data hdr v10) failed", handle_error);
+
+	/* The V10 snapshot OOB data header has an unused fstart field. */
+	hdr->fcnt  = hdr_v10.fcnt;
+	hdr->fpos  = hdr_v10.fpos;
+	hdr->fsize = hdr_v10.fsize;
+	hdr->fcomp = hdr_v10.fcomp;
+	hdr->ucnt  = hdr_v10.ucnt;
+	hdr->upos  = hdr_v10.upos;
+	hdr->usize = hdr_v10.usize;
+	hdr->ucomp = hdr_v10.ucomp;
+	hdr->lcnt  = hdr_v10.lcnt;
+	hdr->lpos  = hdr_v10.lpos;
+	hdr->lsize = hdr_v10.lsize;
+	hdr->lcomp = hdr_v10.lcomp;
+	hdr->pcnt  = hdr_v10.pcnt;
+	hdr->ppos  = hdr_v10.ppos;
+	hdr->psize = hdr_v10.psize;
+	hdr->pcomp = hdr_v10.pcomp;
+
+handle_error:
+	return (rc);
+}
+
 #define	copyOU(name)	uel->##name = uel_v10.##name
 
 SPWAW_ERROR

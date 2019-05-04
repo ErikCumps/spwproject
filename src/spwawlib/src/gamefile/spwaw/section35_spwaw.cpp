@@ -139,7 +139,7 @@ add_formation (FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab,
 }
 
 static SPWAW_ERROR
-add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab, SPWOOB *oob, USHORT start)
+add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab, SPWOOB *oob)
 {
 	SPWAW_ERROR	rc;
 	FEL		*p;
@@ -150,7 +150,6 @@ add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *sta
 
 	dst->raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, fl.cnt); COOM (dst->raw, "SPWAW_SNAP_OOB_FELRAW list");
 	dst->cnt   = fl.cnt;
-	dst->start = start;
 
 	p = fl.head; idx = 0;
 	while (p) {
@@ -192,11 +191,11 @@ section35_spwaw_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
 }
 
 static SPWAW_ERROR
-section35_spwaw_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, SPWOOB *oob, FLIST &fl, bool player)
+section35_spwaw_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, SPWOOB *oob, FLIST &fl)
 {
 	SPWAW_ERROR	rc;
 
-	rc = add_formations (src, dst, fl, stab, oob, player ? SPWAW_FORMP1START : SPWAW_FORMP2START);
+	rc = add_formations (src, dst, fl, stab, oob);
 	ROE ("add_formations()");
 
 	rc = build_fridx (dst);
@@ -212,10 +211,10 @@ section35_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab,
 
 	CNULLARG (src); CNULLARG (dst); CNULLARG (stab);
 
-	rc = section35_spwaw_save_formations (GDSPWAW(src)->sec35.u.d.formations, &(dst->raw.OOBp1.formations), stab, dst->oobdat, ful1.fl, true);
+	rc = section35_spwaw_save_formations (GDSPWAW(src)->sec35.u.d.formations, &(dst->raw.OOBp1.formations), stab, dst->oobdat, ful1.fl);
 	ROE ("section35_spwaw_save_formations(OOBp1)");
 
-	rc = section35_spwaw_save_formations (GDSPWAW(src)->sec35.u.d.formations, &(dst->raw.OOBp2.formations), stab, dst->oobdat, ful2.fl, false);
+	rc = section35_spwaw_save_formations (GDSPWAW(src)->sec35.u.d.formations, &(dst->raw.OOBp2.formations), stab, dst->oobdat, ful2.fl);
 	ROE ("section35_spwaw_save_formations(OOBp2)");
 
 	return (SPWERR_OK);

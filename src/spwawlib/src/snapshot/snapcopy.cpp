@@ -67,7 +67,6 @@ snapcopy_raw_oob_formations (SPWAW_SNAP_OOB_FRAW *src, SPWAW_SNAP_OOB_FRAW *dst,
 	DWORD		i;
 
 	dst->cnt   = src->cnt;
-	dst->start = src->start;
 
 	dst->raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, dst->cnt); COOMGOTO (dst->raw, "SPWAW_SNAP_OOB_FELRAW list", handle_error);
 	memcpy (dst->raw, src->raw, dst->cnt * sizeof (SPWAW_SNAP_OOB_FELRAW));

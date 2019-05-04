@@ -111,5 +111,6 @@ typedef struct s_SNAP_V11 {
 
 extern SPWAW_ERROR	snapshot_load_v11_info_header	(int fd, SNAP_INFO *hdr);
 extern SPWAW_ERROR	snapshot_load_v11_snap		(int fd, SNAP_HEADER *hdr, SNAP *snap);
+extern SPWAW_ERROR	snapshot_load_v11_oob_header	(int fd, SNAP_OOBHDR *hdr);
 
 #endif	/* INTERNAL_SNAPFILE_V11_H */
