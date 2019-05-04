@@ -444,6 +444,16 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->posx	= (short)psrc->x;
 		dat->posy	= (short)psrc->y;
 		if ((dat->posx < 0) || (dat->posy < 0)) dat->posx = dat->posy = -1;
+
+		/* Backwards compatibility support for older snapshots... */
+		if ((dat->posx == -1) && (dat->posx == -1) && dat->loaded) {
+			pidx = dat->loader.rid;
+			psrc = (pidx < raw->positions.cnt) ? &(raw->positions.raw[pidx]) : NULL;
+			if (psrc) {
+				dat->posx = (short)psrc->x;
+				dat->posy = (short)psrc->y;
+			}
+		}
 	}
 
 	return (SPWERR_OK);
