@@ -208,7 +208,9 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			p->strings.uid, p->data.type, p->strings.rank, p->data.name,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
-			p->attr.gen.kills, p->attr.gen.losses, p->data.hcnt, p->data.hcnt - p->data.hcnt_left, p->data.damage,
+			p->attr.gen.kills, p->attr.gen.losses, p->data.hcnt,
+			(p->data.hcnt_left > p->data.hcnt)?0:(p->data.hcnt - p->data.hcnt_left),
+			p->data.damage,
 			p->attr.gen.ready * 100.0,
 			posb);
 	}
@@ -246,7 +248,9 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			p->strings.uid, p->data.type, p->strings.rank, p->data.name,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
-			p->attr.gen.kills, p->data.hcnt, p->data.hcnt - p->data.hcnt_left, p->data.damage,
+			p->attr.gen.kills, p->data.hcnt,
+			(p->data.hcnt_left > p->data.hcnt)?0:(p->data.hcnt - p->data.hcnt_left),
+			p->data.damage,
 			p->attr.gen.ready * 100.0,
 			posb);
 	}
