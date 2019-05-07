@@ -890,16 +890,16 @@ find_formations: [397] SKIPPED (wrong player ID 0)
 find_formations: [398] SKIPPED (wrong player ID 0)
 find_formations: [399] SKIPPED (wrong player ID 0)
 find_formations: cnt=2
-find_candidate_units: player #1
-find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) UNIT #1 F<000,000> CANDIDATE
-find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (   Scharfschutze) UNIT #1 F<001,000> CANDIDATE
+find_candidate_units: player #0
+find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) UNIT #0 F<000,000> CANDIDATE
+find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (   Scharfschutze) UNIT #0 F<001,000> CANDIDATE
 find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) SKIPPED: invalid formation reference
 find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (         Snajper) SKIPPED: invalid formation reference
 find_candidate_units: 2 candidates
 find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (    SPWAW ENH-DV)
 find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<140> (          Sniper)
 find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
-no units recorded for formation - dropping formation!
+DROPPED: no units recorded for formation
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandant) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (   Scharfschutze) ACCEPTED - LEADER
 unitcount: ul.cnt=2
@@ -911,11 +911,11 @@ FLIST: { { s.nidx=3 }, cnt=2 }
 ULIST: { { s.nidx=2 }, cnt=2 }
     [00000] (   GE Kommandant) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [245] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (   Scharfschutze) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [171] F[00001]<00001,00000> ptr[00001] link crew=nil[65535], parent=nil[65535]
-find_candidate_units: player #2
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (   Scharfschutze) SKIPPED: invalid formation reference
-find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) UNIT #2 F<000,000> CANDIDATE
-find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (         Snajper) UNIT #2 F<001,000> CANDIDATE
+find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) UNIT #1 F<000,000> CANDIDATE
+find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (         Snajper) UNIT #1 F<001,000> CANDIDATE
 find_candidate_units: 2 candidates
 find_formation_oobrids: FORMATION: P<1> ID<000> L<00400> O<001> (    SPWAW FV HTH)
 find_formation_oobrids: FORMATION: P<1> ID<001> L<00401> O<108> (          Sniper)

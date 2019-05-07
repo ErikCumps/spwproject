@@ -889,18 +889,18 @@ find_formations: [397] SKIPPED (wrong player ID 0)
 find_formations: [398] SKIPPED (wrong player ID 0)
 find_formations: [399] SKIPPED (wrong player ID 0)
 find_formations: cnt=16
-find_candidate_units: player #1
-find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) UNIT #1 F<000,000> CANDIDATE
-find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (  SdKfz 251/1 HT) UNIT #1 F<001,000> CANDIDATE
-find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (  SdKfz 251/1 HT) UNIT #1 F<001,001> CANDIDATE
-find_candidate_units: [003] F[002]<000> C<65535> L<00003> O<070> (     PzKpfw IV J) UNIT #1 F<002,000> CANDIDATE
-find_candidate_units: [004] F[002]<001> C<65535> L<00004> O<070> (     PzKpfw IV J) UNIT #1 F<002,001> CANDIDATE
-find_candidate_units: [005] F[002]<002> C<65535> L<00005> O<070> (     PzKpfw IV J) UNIT #1 F<002,002> CANDIDATE
-find_candidate_units: [006] F[002]<003> C<65535> L<00006> O<070> (     PzKpfw IV J) UNIT #1 F<002,003> CANDIDATE
-find_candidate_units: [007] F[003]<000> C<65535> L<00007> O<070> (       Panther G) UNIT #1 F<003,000> CANDIDATE
-find_candidate_units: [008] F[003]<001> C<65535> L<00008> O<070> (       Panther G) UNIT #1 F<003,001> CANDIDATE
-find_candidate_units: [009] F[003]<002> C<65535> L<00009> O<070> (       Panther G) UNIT #1 F<003,002> CANDIDATE
-find_candidate_units: [010] F[003]<003> C<65535> L<00010> O<070> (       Panther G) UNIT #1 F<003,003> CANDIDATE
+find_candidate_units: player #0
+find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) UNIT #0 F<000,000> CANDIDATE
+find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (  SdKfz 251/1 HT) UNIT #0 F<001,000> CANDIDATE
+find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (  SdKfz 251/1 HT) UNIT #0 F<001,001> CANDIDATE
+find_candidate_units: [003] F[002]<000> C<65535> L<00003> O<070> (     PzKpfw IV J) UNIT #0 F<002,000> CANDIDATE
+find_candidate_units: [004] F[002]<001> C<65535> L<00004> O<070> (     PzKpfw IV J) UNIT #0 F<002,001> CANDIDATE
+find_candidate_units: [005] F[002]<002> C<65535> L<00005> O<070> (     PzKpfw IV J) UNIT #0 F<002,002> CANDIDATE
+find_candidate_units: [006] F[002]<003> C<65535> L<00006> O<070> (     PzKpfw IV J) UNIT #0 F<002,003> CANDIDATE
+find_candidate_units: [007] F[003]<000> C<65535> L<00007> O<070> (       Panther G) UNIT #0 F<003,000> CANDIDATE
+find_candidate_units: [008] F[003]<001> C<65535> L<00008> O<070> (       Panther G) UNIT #0 F<003,001> CANDIDATE
+find_candidate_units: [009] F[003]<002> C<65535> L<00009> O<070> (       Panther G) UNIT #0 F<003,002> CANDIDATE
+find_candidate_units: [010] F[003]<003> C<65535> L<00010> O<070> (       Panther G) UNIT #0 F<003,003> CANDIDATE
 find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) SKIPPED: invalid formation reference
 find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (           BA-11) SKIPPED: invalid formation reference
 find_candidate_units: [402] F[101]<001> C<65535> L<00402> O<081> (           BA-11) SKIPPED: invalid formation reference
@@ -945,7 +945,7 @@ find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<062> (   Halftrack Se
 find_formation_oobrids: FORMATION: P<0> ID<002> L<00003> O<018> (   SS Panzer Plt)
 find_formation_oobrids: FORMATION: P<0> ID<003> L<00007> O<018> (   SS Panzer Plt)
 find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
-no units recorded for formation - dropping formation!
+DROPPED: no units recorded for formation
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandant) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> (  SdKfz 251/1 HT) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<001,001> (  SdKfz 251/1 HT) ACCEPTED
@@ -988,7 +988,7 @@ ULIST: { { s.nidx=11 }, cnt=11 }
     [00008] (       Panther G) UNIT leader=[00008] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [034] F[00003]<00003,00001> ptr[00003] link crew=nil[65535], parent=nil[65535]
     [00009] (       Panther G) UNIT leader=[00009] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [034] F[00003]<00003,00002> ptr[00003] link crew=nil[65535], parent=nil[65535]
     [00010] (       Panther G) UNIT leader=[00010] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [034] F[00003]<00003,00003> ptr[00003] link crew=nil[65535], parent=nil[65535]
-find_candidate_units: player #2
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandant) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> (  SdKfz 251/1 HT) SKIPPED: invalid formation reference
 find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> (  SdKfz 251/1 HT) SKIPPED: invalid formation reference
@@ -1000,44 +1000,44 @@ find_candidate_units: [007] F[003]<000> C<65535> L<00007> O<070> (       Panther
 find_candidate_units: [008] F[003]<001> C<65535> L<00008> O<070> (       Panther G) SKIPPED: invalid formation reference
 find_candidate_units: [009] F[003]<002> C<65535> L<00009> O<070> (       Panther G) SKIPPED: invalid formation reference
 find_candidate_units: [010] F[003]<003> C<65535> L<00010> O<070> (       Panther G) SKIPPED: invalid formation reference
-find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) UNIT #2 F<000,000> CANDIDATE
-find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (           BA-11) UNIT #2 F<001,000> CANDIDATE
-find_candidate_units: [402] F[101]<001> C<65535> L<00402> O<081> (           BA-11) UNIT #2 F<001,001> CANDIDATE
-find_candidate_units: [403] F[102]<000> C<00433> L<65535> O<081> (          ZiS-30) UNIT #2 F<002,000> CANDIDATE
-find_candidate_units: [404] F[102]<001> C<65535> L<00404> O<081> (          ZiS-30) UNIT #2 F<002,001> CANDIDATE
-find_candidate_units: [405] F[103]<000> C<00433> L<65535> O<081> (        T-34 M43) UNIT #2 F<003,000> CANDIDATE
-find_candidate_units: [406] F[103]<001> C<00434> L<65535> O<081> (        T-34 M43) UNIT #2 F<003,001> CANDIDATE
-find_candidate_units: [407] F[104]<000> C<65535> L<00407> O<081> (           T-60E) UNIT #2 F<004,000> CANDIDATE
-find_candidate_units: [408] F[104]<001> C<65535> L<00408> O<081> (           T-60E) UNIT #2 F<004,001> CANDIDATE
-find_candidate_units: [409] F[105]<000> C<00434> L<65535> O<081> (           KV-1s) UNIT #2 F<005,000> CANDIDATE
-find_candidate_units: [410] F[105]<001> C<00435> L<65535> O<081> (           KV-1s) UNIT #2 F<005,001> CANDIDATE
-find_candidate_units: [411] F[106]<000> C<00436> L<65535> O<081> (          ZSU-37) UNIT #2 F<006,000> CANDIDATE
-find_candidate_units: [412] F[106]<001> C<65535> L<00412> O<081> (          ZSU-37) UNIT #2 F<006,001> CANDIDATE
-find_candidate_units: [413] F[107]<000> C<65535> L<00413> O<081> (   57mm ATG M43 ) UNIT #2 F<007,000> CANDIDATE
-find_candidate_units: [414] F[107]<001> C<65535> L<00414> O<081> (   57mm ATG M43 ) UNIT #2 F<007,001> CANDIDATE
-find_candidate_units: [415] F[108]<000> C<65535> L<00415> O<081> (        152mm FH) UNIT #2 F<008,000> CANDIDATE
-find_candidate_units: [416] F[108]<001> C<65535> L<00416> O<081> (        152mm FH) UNIT #2 F<008,001> CANDIDATE
-find_candidate_units: [417] F[109]<000> C<65535> L<00417> O<081> (     Komsomolets) UNIT #2 F<009,000> CANDIDATE
-find_candidate_units: [418] F[109]<001> C<65535> L<00418> O<081> (     Komsomolets) UNIT #2 F<009,001> CANDIDATE
-find_candidate_units: [419] F[110]<000> C<65535> L<00419> O<081> (  Stalinets S-80) UNIT #2 F<010,000> CANDIDATE
-find_candidate_units: [420] F[110]<001> C<65535> L<00420> O<081> (  Stalinets S-80) UNIT #2 F<010,001> CANDIDATE
-find_candidate_units: [421] F[110]<002> C<65535> L<00421> O<081> (  Stalinets S-80) UNIT #2 F<010,002> CANDIDATE
-find_candidate_units: [422] F[110]<003> C<65535> L<00422> O<081> (  Stalinets S-80) UNIT #2 F<010,003> CANDIDATE
-find_candidate_units: [423] F[111]<000> C<00437> L<65535> O<081> (       MG Bunker) UNIT #2 F<011,000> CANDIDATE
-find_candidate_units: [424] F[112]<000> C<65535> L<00424> O<081> (   Log Rifle Pit) UNIT #2 F<012,000> CANDIDATE
-find_candidate_units: [425] F[112]<001> C<65535> L<00425> O<081> (   Log Rifle Pit) UNIT #2 F<012,001> CANDIDATE
-find_candidate_units: [426] F[112]<002> C<65535> L<00426> O<081> (   Log Rifle Pit) UNIT #2 F<012,002> CANDIDATE
-find_candidate_units: [427] F[113]<000> C<65535> L<00427> O<081> (    Motorcylisty) UNIT #2 F<013,000> CANDIDATE
-find_candidate_units: [428] F[113]<001> C<65535> L<00428> O<081> (    Motorcylisty) UNIT #2 F<013,001> CANDIDATE
-find_candidate_units: [429] F[113]<002> C<65535> L<00429> O<081> (    Motorcylisty) UNIT #2 F<013,002> CANDIDATE
-find_candidate_units: [430] F[114]<000> C<65535> L<00430> O<081> (          GAZ-2A) UNIT #2 F<014,000> CANDIDATE
-find_candidate_units: [431] F[114]<001> C<65535> L<00431> O<081> (          GAZ-2A) UNIT #2 F<014,001> CANDIDATE
-find_candidate_units: [432] F[115]<000> C<65535> L<00432> O<081> (    Command Post) UNIT #2 F<015,000> CANDIDATE
-find_candidate_units: [433] F[102]<050> C<00403> L<00433> O<081> (         Crewmen) CREW #2 F<002,050> CANDIDATE
-find_candidate_units: [434] F[105]<050> C<00409> L<00434> O<081> (         Crewmen) CREW #2 F<005,050> CANDIDATE
-find_candidate_units: [435] F[105]<051> C<00410> L<00435> O<081> (         Crewmen) CREW #2 F<005,051> CANDIDATE
-find_candidate_units: [436] F[106]<050> C<00411> L<00436> O<081> (         Crewmen) CREW #2 F<006,050> CANDIDATE
-find_candidate_units: [437] F[111]<050> C<00423> L<00437> O<081> (         Crewmen) CREW #2 F<011,050> CANDIDATE
+find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) UNIT #1 F<000,000> CANDIDATE
+find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (           BA-11) UNIT #1 F<001,000> CANDIDATE
+find_candidate_units: [402] F[101]<001> C<65535> L<00402> O<081> (           BA-11) UNIT #1 F<001,001> CANDIDATE
+find_candidate_units: [403] F[102]<000> C<00433> L<65535> O<081> (          ZiS-30) UNIT #1 F<002,000> CANDIDATE
+find_candidate_units: [404] F[102]<001> C<65535> L<00404> O<081> (          ZiS-30) UNIT #1 F<002,001> CANDIDATE
+find_candidate_units: [405] F[103]<000> C<00433> L<65535> O<081> (        T-34 M43) UNIT #1 F<003,000> CANDIDATE
+find_candidate_units: [406] F[103]<001> C<00434> L<65535> O<081> (        T-34 M43) UNIT #1 F<003,001> CANDIDATE
+find_candidate_units: [407] F[104]<000> C<65535> L<00407> O<081> (           T-60E) UNIT #1 F<004,000> CANDIDATE
+find_candidate_units: [408] F[104]<001> C<65535> L<00408> O<081> (           T-60E) UNIT #1 F<004,001> CANDIDATE
+find_candidate_units: [409] F[105]<000> C<00434> L<65535> O<081> (           KV-1s) UNIT #1 F<005,000> CANDIDATE
+find_candidate_units: [410] F[105]<001> C<00435> L<65535> O<081> (           KV-1s) UNIT #1 F<005,001> CANDIDATE
+find_candidate_units: [411] F[106]<000> C<00436> L<65535> O<081> (          ZSU-37) UNIT #1 F<006,000> CANDIDATE
+find_candidate_units: [412] F[106]<001> C<65535> L<00412> O<081> (          ZSU-37) UNIT #1 F<006,001> CANDIDATE
+find_candidate_units: [413] F[107]<000> C<65535> L<00413> O<081> (   57mm ATG M43 ) UNIT #1 F<007,000> CANDIDATE
+find_candidate_units: [414] F[107]<001> C<65535> L<00414> O<081> (   57mm ATG M43 ) UNIT #1 F<007,001> CANDIDATE
+find_candidate_units: [415] F[108]<000> C<65535> L<00415> O<081> (        152mm FH) UNIT #1 F<008,000> CANDIDATE
+find_candidate_units: [416] F[108]<001> C<65535> L<00416> O<081> (        152mm FH) UNIT #1 F<008,001> CANDIDATE
+find_candidate_units: [417] F[109]<000> C<65535> L<00417> O<081> (     Komsomolets) UNIT #1 F<009,000> CANDIDATE
+find_candidate_units: [418] F[109]<001> C<65535> L<00418> O<081> (     Komsomolets) UNIT #1 F<009,001> CANDIDATE
+find_candidate_units: [419] F[110]<000> C<65535> L<00419> O<081> (  Stalinets S-80) UNIT #1 F<010,000> CANDIDATE
+find_candidate_units: [420] F[110]<001> C<65535> L<00420> O<081> (  Stalinets S-80) UNIT #1 F<010,001> CANDIDATE
+find_candidate_units: [421] F[110]<002> C<65535> L<00421> O<081> (  Stalinets S-80) UNIT #1 F<010,002> CANDIDATE
+find_candidate_units: [422] F[110]<003> C<65535> L<00422> O<081> (  Stalinets S-80) UNIT #1 F<010,003> CANDIDATE
+find_candidate_units: [423] F[111]<000> C<00437> L<65535> O<081> (       MG Bunker) UNIT #1 F<011,000> CANDIDATE
+find_candidate_units: [424] F[112]<000> C<65535> L<00424> O<081> (   Log Rifle Pit) UNIT #1 F<012,000> CANDIDATE
+find_candidate_units: [425] F[112]<001> C<65535> L<00425> O<081> (   Log Rifle Pit) UNIT #1 F<012,001> CANDIDATE
+find_candidate_units: [426] F[112]<002> C<65535> L<00426> O<081> (   Log Rifle Pit) UNIT #1 F<012,002> CANDIDATE
+find_candidate_units: [427] F[113]<000> C<65535> L<00427> O<081> (    Motorcylisty) UNIT #1 F<013,000> CANDIDATE
+find_candidate_units: [428] F[113]<001> C<65535> L<00428> O<081> (    Motorcylisty) UNIT #1 F<013,001> CANDIDATE
+find_candidate_units: [429] F[113]<002> C<65535> L<00429> O<081> (    Motorcylisty) UNIT #1 F<013,002> CANDIDATE
+find_candidate_units: [430] F[114]<000> C<65535> L<00430> O<081> (          GAZ-2A) UNIT #1 F<014,000> CANDIDATE
+find_candidate_units: [431] F[114]<001> C<65535> L<00431> O<081> (          GAZ-2A) UNIT #1 F<014,001> CANDIDATE
+find_candidate_units: [432] F[115]<000> C<65535> L<00432> O<081> (    Command Post) UNIT #1 F<015,000> CANDIDATE
+find_candidate_units: [433] F[102]<050> C<00403> L<00433> O<081> (         Crewmen) CREW #1 F<002,050> CANDIDATE
+find_candidate_units: [434] F[105]<050> C<00409> L<00434> O<081> (         Crewmen) CREW #1 F<005,050> CANDIDATE
+find_candidate_units: [435] F[105]<051> C<00410> L<00435> O<081> (         Crewmen) CREW #1 F<005,051> CANDIDATE
+find_candidate_units: [436] F[106]<050> C<00411> L<00436> O<081> (         Crewmen) CREW #1 F<006,050> CANDIDATE
+find_candidate_units: [437] F[111]<050> C<00423> L<00437> O<081> (         Crewmen) CREW #1 F<011,050> CANDIDATE
 find_candidate_units: 38 candidates
 link_candidate_crews: [433] CREW<00403> F<002,050> (         Crewmen) LINKED
 link_candidate_crews: [434] CREW<00409> F<005,050> (         Crewmen) LINKED

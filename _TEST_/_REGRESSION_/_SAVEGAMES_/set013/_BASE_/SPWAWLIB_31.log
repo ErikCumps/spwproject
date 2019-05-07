@@ -889,13 +889,13 @@ find_formations: [397] SKIPPED (wrong player ID 0)
 find_formations: [398] SKIPPED (wrong player ID 0)
 find_formations: [399] SKIPPED (wrong player ID 0)
 find_formations: cnt=13
-find_candidate_units: player #1
-find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) UNIT #1 F<000,000> CANDIDATE
-find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( sPzAbt 502 #217) UNIT #1 F<001,000> CANDIDATE
-find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> ( sPzAbt 502 #213) UNIT #1 F<001,001> CANDIDATE
-find_candidate_units: [003] F[002]<000> C<65535> L<00003> O<070> ( sPzAbt 502 #218) UNIT #1 F<002,000> CANDIDATE
-find_candidate_units: [004] F[002]<001> C<65535> L<00004> O<070> ( sPzAbt 502 #215) UNIT #1 F<002,001> CANDIDATE
-find_candidate_units: [005] F[001]<051> C<00002> L<65535> O<070> (         Crewmen) CREW #1 F<001,051> CANDIDATE
+find_candidate_units: player #0
+find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) UNIT #0 F<000,000> CANDIDATE
+find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( sPzAbt 502 #217) UNIT #0 F<001,000> CANDIDATE
+find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> ( sPzAbt 502 #213) UNIT #0 F<001,001> CANDIDATE
+find_candidate_units: [003] F[002]<000> C<65535> L<00003> O<070> ( sPzAbt 502 #218) UNIT #0 F<002,000> CANDIDATE
+find_candidate_units: [004] F[002]<001> C<65535> L<00004> O<070> ( sPzAbt 502 #215) UNIT #0 F<002,001> CANDIDATE
+find_candidate_units: [005] F[001]<051> C<00002> L<65535> O<070> (         Crewmen) CREW #0 F<001,051> CANDIDATE
 find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) SKIPPED: invalid formation reference
 find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (            T-70) SKIPPED: invalid formation reference
 find_candidate_units: [402] F[101]<001> C<00428> L<65535> O<081> (            T-70) SKIPPED: invalid formation reference
@@ -935,7 +935,7 @@ find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<001> (       SPWAW 8.
 find_formation_oobrids: FORMATION: P<0> ID<001> L<00001> O<025> (      Hvy Pz Sec)
 find_formation_oobrids: FORMATION: P<0> ID<002> L<00003> O<025> (      Hvy Pz Sec)
 find_formation_oobrids: FORMATION: P<0> ID<000> L<00000> O<000> (                )
-no units recorded for formation - dropping formation!
+DROPPED: no units recorded for formation
 verify_candidate_units: [000] UNIT: F<000,000> (   GE Kommandeur) ACCEPTED - LEADER
 verify_candidate_units: [001] UNIT: F<001,000> ( sPzAbt 502 #217) ACCEPTED - LEADER
 verify_candidate_units: [002] UNIT: F<001,001> ( sPzAbt 502 #213) ACCEPTED
@@ -957,46 +957,46 @@ ULIST: { { s.nidx=6 }, cnt=5 }
     [00002] ( sPzAbt 502 #213) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [037] F[00001]<00001,00001> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00003] ( sPzAbt 502 #218) UNIT leader=[00003] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [037] F[00002]<00002,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
     [00004] ( sPzAbt 502 #215) UNIT leader=[00004] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [069] F[00002]<00002,00001> ptr[00002] link crew=nil[65535], parent=nil[65535]
-find_candidate_units: player #2
+find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<070> (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[001]<000> C<65535> L<00001> O<070> ( sPzAbt 502 #217) SKIPPED: invalid formation reference
 find_candidate_units: [002] F[001]<001> C<65535> L<00002> O<070> ( sPzAbt 502 #213) SKIPPED: invalid formation reference
 find_candidate_units: [003] F[002]<000> C<65535> L<00003> O<070> ( sPzAbt 502 #218) SKIPPED: invalid formation reference
 find_candidate_units: [004] F[002]<001> C<65535> L<00004> O<070> ( sPzAbt 502 #215) SKIPPED: invalid formation reference
 find_candidate_units: [005] F[001]<051> C<00002> L<65535> O<070> (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) UNIT #2 F<000,000> CANDIDATE
-find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (            T-70) UNIT #2 F<001,000> CANDIDATE
-find_candidate_units: [402] F[101]<001> C<00428> L<65535> O<081> (            T-70) UNIT #2 F<001,001> CANDIDATE
-find_candidate_units: [403] F[102]<000> C<00429> L<65535> O<081> (        T-34 M43) UNIT #2 F<002,000> CANDIDATE
-find_candidate_units: [404] F[103]<000> C<65535> L<00404> O<081> (        T-34 M43) UNIT #2 F<003,000> CANDIDATE
-find_candidate_units: [405] F[103]<001> C<00432> L<65535> O<081> (        T-34 M43) UNIT #2 F<003,001> CANDIDATE
-find_candidate_units: [406] F[103]<002> C<00428> L<65535> O<081> (        T-34 M43) UNIT #2 F<003,002> CANDIDATE
-find_candidate_units: [407] F[104]<000> C<65535> L<00407> O<081> (        T-34 M43) UNIT #2 F<004,000> CANDIDATE
-find_candidate_units: [408] F[104]<001> C<65535> L<00408> O<081> (        T-34 M43) UNIT #2 F<004,001> CANDIDATE
-find_candidate_units: [409] F[104]<002> C<00430> L<65535> O<081> (        T-34 M43) UNIT #2 F<004,002> CANDIDATE
-find_candidate_units: [410] F[105]<000> C<65535> L<00410> O<081> (        T-34 M43) UNIT #2 F<005,000> CANDIDATE
-find_candidate_units: [411] F[105]<001> C<65535> L<00411> O<081> (        T-34 M43) UNIT #2 F<005,001> CANDIDATE
-find_candidate_units: [412] F[105]<002> C<65535> L<00412> O<081> (        T-34 M43) UNIT #2 F<005,002> CANDIDATE
-find_candidate_units: [413] F[106]<000> C<00431> L<65535> O<081> (        T-34 M41) UNIT #2 F<006,000> CANDIDATE
-find_candidate_units: [414] F[106]<001> C<65535> L<00414> O<081> (        T-34 M41) UNIT #2 F<006,001> CANDIDATE
-find_candidate_units: [415] F[106]<002> C<65535> L<00415> O<081> (        T-34 M41) UNIT #2 F<006,002> CANDIDATE
-find_candidate_units: [416] F[107]<000> C<65535> L<00416> O<081> (        T-34 M43) UNIT #2 F<007,000> CANDIDATE
-find_candidate_units: [417] F[107]<001> C<00427> L<65535> O<081> (        T-34/85 ) UNIT #2 F<007,001> CANDIDATE
-find_candidate_units: [418] F[107]<002> C<00428> L<65535> O<081> (        T-34/85 ) UNIT #2 F<007,002> CANDIDATE
-find_candidate_units: [419] F[108]<000> C<00428> L<65535> O<081> (            IS-1) UNIT #2 F<008,000> CANDIDATE
-find_candidate_units: [420] F[108]<001> C<65535> L<00420> O<081> (           BA-64) UNIT #2 F<008,001> CANDIDATE
-find_candidate_units: [421] F[109]<000> C<65535> L<00421> O<081> (    Ammo Carrier) UNIT #2 F<009,000> CANDIDATE
-find_candidate_units: [422] F[110]<000> C<65535> L<00422> O<081> (    Ammo Carrier) UNIT #2 F<010,000> CANDIDATE
-find_candidate_units: [423] F[111]<000> C<65535> L<00423> O<081> (     Fuel Bowser) UNIT #2 F<011,000> CANDIDATE
-find_candidate_units: [424] F[111]<001> C<65535> L<00424> O<081> (     Fuel Bowser) UNIT #2 F<011,001> CANDIDATE
-find_candidate_units: [425] F[112]<000> C<65535> L<00425> O<081> (     Fuel Bowser) UNIT #2 F<012,000> CANDIDATE
-find_candidate_units: [426] F[112]<001> C<65535> L<00426> O<081> (     Fuel Bowser) UNIT #2 F<012,001> CANDIDATE
-find_candidate_units: [427] F[107]<051> C<00417> L<00427> O<081> (         Crewmen) CREW #2 F<007,051> CANDIDATE
-find_candidate_units: [428] F[107]<052> C<00418> L<00428> O<081> (         Crewmen) CREW #2 F<007,052> CANDIDATE
-find_candidate_units: [429] F[102]<050> C<00403> L<00429> O<081> (         Crewmen) CREW #2 F<002,050> CANDIDATE
-find_candidate_units: [430] F[104]<052> C<00409> L<00430> O<081> (         Crewmen) CREW #2 F<004,052> CANDIDATE
-find_candidate_units: [431] F[106]<050> C<00413> L<00431> O<081> (         Crewmen) CREW #2 F<006,050> CANDIDATE
-find_candidate_units: [432] F[103]<051> C<00405> L<00432> O<081> (         Crewmen) CREW #2 F<003,051> CANDIDATE
+find_candidate_units: [400] F[100]<000> C<65535> L<00400> O<081> (     SO Komander) UNIT #1 F<000,000> CANDIDATE
+find_candidate_units: [401] F[101]<000> C<65535> L<00401> O<081> (            T-70) UNIT #1 F<001,000> CANDIDATE
+find_candidate_units: [402] F[101]<001> C<00428> L<65535> O<081> (            T-70) UNIT #1 F<001,001> CANDIDATE
+find_candidate_units: [403] F[102]<000> C<00429> L<65535> O<081> (        T-34 M43) UNIT #1 F<002,000> CANDIDATE
+find_candidate_units: [404] F[103]<000> C<65535> L<00404> O<081> (        T-34 M43) UNIT #1 F<003,000> CANDIDATE
+find_candidate_units: [405] F[103]<001> C<00432> L<65535> O<081> (        T-34 M43) UNIT #1 F<003,001> CANDIDATE
+find_candidate_units: [406] F[103]<002> C<00428> L<65535> O<081> (        T-34 M43) UNIT #1 F<003,002> CANDIDATE
+find_candidate_units: [407] F[104]<000> C<65535> L<00407> O<081> (        T-34 M43) UNIT #1 F<004,000> CANDIDATE
+find_candidate_units: [408] F[104]<001> C<65535> L<00408> O<081> (        T-34 M43) UNIT #1 F<004,001> CANDIDATE
+find_candidate_units: [409] F[104]<002> C<00430> L<65535> O<081> (        T-34 M43) UNIT #1 F<004,002> CANDIDATE
+find_candidate_units: [410] F[105]<000> C<65535> L<00410> O<081> (        T-34 M43) UNIT #1 F<005,000> CANDIDATE
+find_candidate_units: [411] F[105]<001> C<65535> L<00411> O<081> (        T-34 M43) UNIT #1 F<005,001> CANDIDATE
+find_candidate_units: [412] F[105]<002> C<65535> L<00412> O<081> (        T-34 M43) UNIT #1 F<005,002> CANDIDATE
+find_candidate_units: [413] F[106]<000> C<00431> L<65535> O<081> (        T-34 M41) UNIT #1 F<006,000> CANDIDATE
+find_candidate_units: [414] F[106]<001> C<65535> L<00414> O<081> (        T-34 M41) UNIT #1 F<006,001> CANDIDATE
+find_candidate_units: [415] F[106]<002> C<65535> L<00415> O<081> (        T-34 M41) UNIT #1 F<006,002> CANDIDATE
+find_candidate_units: [416] F[107]<000> C<65535> L<00416> O<081> (        T-34 M43) UNIT #1 F<007,000> CANDIDATE
+find_candidate_units: [417] F[107]<001> C<00427> L<65535> O<081> (        T-34/85 ) UNIT #1 F<007,001> CANDIDATE
+find_candidate_units: [418] F[107]<002> C<00428> L<65535> O<081> (        T-34/85 ) UNIT #1 F<007,002> CANDIDATE
+find_candidate_units: [419] F[108]<000> C<00428> L<65535> O<081> (            IS-1) UNIT #1 F<008,000> CANDIDATE
+find_candidate_units: [420] F[108]<001> C<65535> L<00420> O<081> (           BA-64) UNIT #1 F<008,001> CANDIDATE
+find_candidate_units: [421] F[109]<000> C<65535> L<00421> O<081> (    Ammo Carrier) UNIT #1 F<009,000> CANDIDATE
+find_candidate_units: [422] F[110]<000> C<65535> L<00422> O<081> (    Ammo Carrier) UNIT #1 F<010,000> CANDIDATE
+find_candidate_units: [423] F[111]<000> C<65535> L<00423> O<081> (     Fuel Bowser) UNIT #1 F<011,000> CANDIDATE
+find_candidate_units: [424] F[111]<001> C<65535> L<00424> O<081> (     Fuel Bowser) UNIT #1 F<011,001> CANDIDATE
+find_candidate_units: [425] F[112]<000> C<65535> L<00425> O<081> (     Fuel Bowser) UNIT #1 F<012,000> CANDIDATE
+find_candidate_units: [426] F[112]<001> C<65535> L<00426> O<081> (     Fuel Bowser) UNIT #1 F<012,001> CANDIDATE
+find_candidate_units: [427] F[107]<051> C<00417> L<00427> O<081> (         Crewmen) CREW #1 F<007,051> CANDIDATE
+find_candidate_units: [428] F[107]<052> C<00418> L<00428> O<081> (         Crewmen) CREW #1 F<007,052> CANDIDATE
+find_candidate_units: [429] F[102]<050> C<00403> L<00429> O<081> (         Crewmen) CREW #1 F<002,050> CANDIDATE
+find_candidate_units: [430] F[104]<052> C<00409> L<00430> O<081> (         Crewmen) CREW #1 F<004,052> CANDIDATE
+find_candidate_units: [431] F[106]<050> C<00413> L<00431> O<081> (         Crewmen) CREW #1 F<006,050> CANDIDATE
+find_candidate_units: [432] F[103]<051> C<00405> L<00432> O<081> (         Crewmen) CREW #1 F<003,051> CANDIDATE
 find_candidate_units: 33 candidates
 link_candidate_crews: [427] CREW<00417> F<007,051> (         Crewmen) LINKED
 link_candidate_crews: [428] CREW<00418> F<007,052> (         Crewmen) LINKED
