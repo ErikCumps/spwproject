@@ -10,7 +10,7 @@
 #define	DEFINES_SPWAW_H	1
 
 #define	SPWAW_AZSNAME		16
-#define	SPWAW_AZSLOCATION	112
+#define	SPWAW_AZSLOCATION	116
 
 #define	SPWAW_SECTION_COUNT	50	/*!< total number of sections in a savegame	*/
 

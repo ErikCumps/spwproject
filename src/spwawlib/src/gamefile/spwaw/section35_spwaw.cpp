@@ -65,8 +65,11 @@ build_formations_list (FORMATION *src, BYTE player, FLIST &fl)
 		if (!fel) RWE (SPWERR_FAILED, "reserve_FEL() failed");
 
 		fel->d.RID    = i;
-		fel->d.rawFID = src[i].ID;
-		fel->d.player = src[i].player;
+		// FIXME
+		//fel->d.rawFID = src[i].ID;
+		//fel->d.player = src[i].player;
+		fel->d.rawFID = (BYTE)(src[i].ID & 0xFF);
+		fel->d.player = (BYTE)(src[i].player & 0xFF);
 		fel->d.leader = src[i].leader;
 		fel->d.OOBrid = src[i].OOBrid;
 		fel->d.status = src[i].status;
@@ -130,8 +133,6 @@ add_formation (FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab,
 		UD_init (UD, sizeof (*src));
 		UD_ADD (UD, src, __data000);
 		UD_ADD (UD, src, __data0010);
-		UD_ADD (UD, src, __data0011);
-		UD_ADD (UD, src, __data010);
 		UD_ADD (UD, src, __data011);
 	}
 

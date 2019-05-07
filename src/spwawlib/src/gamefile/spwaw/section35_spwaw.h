@@ -18,10 +18,8 @@ typedef struct s_FORMATION {
 	USHORT	hcmd;			/* Higher command leader ID	*/
 	USHORT	leader;			/* Formation leader unit ID	*/
 	char	__data0010[6];
-	BYTE	player;			/* Player ID			*/
-	char	__data0011[1];
-	BYTE	ID;			/* Formation ID			*/
-	char	__data010[1];
+	USHORT	player;			/* Player ID			*/
+	USHORT	ID;			/* Formation ID			*/
 	BYTE	status:3;		/* Formation campaign status	*/
 	BYTE	reserved:5;
 	char	__data011[13];

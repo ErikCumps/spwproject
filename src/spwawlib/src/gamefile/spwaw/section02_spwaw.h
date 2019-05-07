@@ -16,7 +16,7 @@ typedef struct s_SECTION02 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC02];
 		struct s_d {
-			MAP_ICON	icon[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
+			MAP_TILE	tile[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
 		} d;
 	} u;
 } SECTION02;

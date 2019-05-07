@@ -851,7 +851,6 @@ add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *st
 		UD_ADD (UD, src, __data15);
 		UD_ADD (UD, src, __data160);
 		UD_ADD (UD, src, __data161);
-		UD_ADD (UD, src, __data170);
 		UD_ADD (UD, src, __data171);
 		UD_ADD (UD, src, __data18);
 		UD_ADD (UD, src, __data19);

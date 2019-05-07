@@ -19,7 +19,7 @@
 
 #define	SPWAW_AZSCMTTITLE	200
 #define	SPWAW_AZSCMTMAPSRC	50
-#define	SPWAW_AZSLOCATION	112
+#define	SPWAW_AZSLOCATION	116
 #define	SPWAW_AZSNAME		16
 #define	SPWAW_AZSOOBNAME	15
 #define	SPWAW_AZSDNAME		256	// TODO: integrate with dossier code

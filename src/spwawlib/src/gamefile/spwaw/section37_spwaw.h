@@ -53,7 +53,7 @@ typedef struct s_GAME_DATA {
 	USHORT	Ystart;				/* Campaign start date: year - 1900	*/
 	USHORT	Mend;				/* Campaign end date: month		*/
 	USHORT	Yend;				/* Campaign end date: year - 1900	*/
-	char	__data05[16];
+	char	__data05[12];
 	USHORT	P1TLmen;			/* P1 Total losses: men			*/
 	USHORT	P2TLmen;			/* P2 Total losses: men			*/
 	char	__data06[2];

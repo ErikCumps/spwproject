@@ -11,18 +11,16 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_MAP_DATA1 {
-	USHORT	count;		/* Tile count		*/
-	BYTE	ID;		/* Tile ID + 0xD6 ???)	*/
-	BYTE	file;		/* File ID - 1 ???	*/
-	char	__data00[10];
-} MAP_DATA1;
+typedef struct s_MAP_SLOPE_DATA {
+	USHORT		count;		/* Tile count		*/
+	MAP_TILE	tiles[6];	/* Tile #0 .. #5	*/
+} MAP_SLOPE_DATA;
 
 typedef struct s_SECTION28 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC28];
 		struct s_d {
-			MAP_DATA1	data[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
+			MAP_SLOPE_DATA	data[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
 		} d;
 	} u;
 } SECTION28;
