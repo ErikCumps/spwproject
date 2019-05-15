@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - SPWaW game data.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "gamefile/gamedata.h"
+#include "gamefile/spwaw/gamedata_spwaw.h"
 #include "utils/ud.h"
 #include "common/internal.h"
 

@@ -108,13 +108,15 @@ report_map (FILE *rf, SPWAW_SNAP_MAP_RAW *ptr)
 		for (x=0; x<ptr->width; x++) {
 			fprintf (rf, "\t\t(%4lu,%4lu} height=%2.2d"
 				" has_T1=0x%2.2x has_T2=0x%2.2x has_T3=0x%2.2x has_T4=0x%2.2x"
-				" conn_road1=0x%2.2x conn_road2=0x%2.2x conn_rail=0x%2.2x"
+				" [tfs=0x%16.16x]"
+				" conn_road1=0x%2.2x conn_road2=0x%2.2x conn_rail=0x%2.2x conn_tram=0x%2.2x"
 				"\n",
 				x, y, (signed char)ptr->data[y*ptr->width+x].height,
 				ptr->data[y*ptr->width+x].has_T1, ptr->data[y*ptr->width+x].has_T2,
 				ptr->data[y*ptr->width+x].has_T3, ptr->data[y*ptr->width+x].has_T4,
+				ptr->data[y*ptr->width+x].tfs.raw,
 				ptr->data[y*ptr->width+x].conn_road1, ptr->data[y*ptr->width+x].conn_road2,
-				ptr->data[y*ptr->width+x].conn_rail);
+				ptr->data[y*ptr->width+x].conn_rail, ptr->data[y*ptr->width+x].conn_tram);
 		}
 	}
 	fprintf (rf, "\n");

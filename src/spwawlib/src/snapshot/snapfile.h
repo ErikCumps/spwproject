@@ -146,6 +146,19 @@ typedef struct s_SNAP_MAPHDR {
 	ULONG		comp;			/* compressed data size (0 if no compression)				*/
 } SNAP_MAPHDR;
 
+typedef struct s_SNAP_MAPDATA {
+	SHORT		height;			/* Hex height								*/
+	BYTE		has_T1;			/* Hex terrain features (set #1)					*/
+	BYTE		has_T2;			/* Hex terrain features (set #2)					*/
+	BYTE		has_T3;			/* Hex terrain features (set #3)					*/
+	BYTE		has_T4;			/* Hex terrain features (set #4)					*/
+	ULONGLONG	tfs;			/* Hex terrain (classified) feature set					*/
+	BYTE		conn_road1;		/* Hex primary road connections						*/
+	BYTE		conn_road2;		/* Hex secondary road connections					*/
+	BYTE		conn_rail;		/* Hex railroad connections						*/
+	BYTE		conn_tram;		/* Hex tramline connections						*/
+} SNAP_MAPDATA;
+
 typedef struct s_SNAP_OOB_FEL {
 	USHORT		RID;			/* Formation record ID							*/
 	BYTE		FID;			/* Formation ID								*/

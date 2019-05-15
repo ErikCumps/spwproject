@@ -324,24 +324,6 @@ raw2bresult (SHORT result)
 	return (rc);
 }
 
-bool
-rawtfs2water (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
-{
-	return (((tfs1 & TFS1_WATER) | (tfs2 & TFS2_WATER) | (tfs3 & TFS3_WATER) | (tfs4 & TFS4_WATER)) != 0);
-}
-
-bool
-rawtfs2bridge (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
-{
-	return (((tfs1 & TFS1_BRIDGE) | (tfs2 & TFS2_BRIDGE) | (tfs3 & TFS3_BRIDGE) | (tfs4 & TFS4_BRIDGE)) != 0);
-}
-
-bool
-rawtfs2road (BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
-{
-	return (((tfs1 & TFS1_ROAD) | (tfs2 & TFS2_ROAD) | (tfs3 & TFS3_ROAD) | (tfs4 & TFS4_ROAD)) != 0);
-}
-
 
 
 static const char *terrain_strings[SPWAW_TLASTCODE+1] = {

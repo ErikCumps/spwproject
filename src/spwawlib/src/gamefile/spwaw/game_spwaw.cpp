@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "gamefile/spwaw/game_spwaw.h"
 #include "gamefile/spwaw/section_common_spwaw.h"
+#include "gamefile/spwaw/road_connections_spwaw.h"
 #include "gamefile/fulist.h"
 #include "common/internal.h"
 #include "common/types.h"
@@ -153,10 +154,13 @@ load_from_spwaw_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	dst->raw.game.cmt.title = azstrstab (src->cmt.title, stab);
 	dst->raw.game.cmt.mapsrc = azstrstab (src->cmt.mapsrc, stab);
 
+	rc = section37_spwaw_save_snapshot (src, dst, stab);		ROE ("section37_spwaw_save_snapshot()");
+
 	rc = section38_spwaw_save_snapshot (src, dst, stab);		ROE ("section38_spwaw_save_snapshot()");
 	rc = section39_spwaw_save_snapshot (src, dst, stab);		ROE ("section39_spwaw_save_snapshot()");
-	rc = section37_spwaw_save_snapshot (src, dst, stab);		ROE ("section37_spwaw_save_snapshot()");
 	rc = section08_spwaw_save_snapshot (src, dst, stab);		ROE ("section08_spwaw_save_snapshot()");
+	rc = detect_spwaw_road_connections (src, dst);			ROE ("detect_spwaw_road_connections()");
+
 	rc = section14_spwaw_save_snapshot (src, dst, stab);		ROE ("section14_spwaw_save_snapshot()");
 
 	init_FULIST (ful1);

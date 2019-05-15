@@ -227,6 +227,56 @@ typedef enum e_SPWAW_BTSTATUS {
 
 extern SPWAWLIB_API const char *SPWAW_btstatus2str (SPWAW_BTSTATUS id);
 
+/* SPWAW terrain feature set */
+typedef union u_SPWAW_TFS {
+	struct s_SPWAW_TFS {
+		// Water features
+		ULONGLONG	stream:1;		/* Terrain contains stream		*/
+		ULONGLONG	swamp:1;		/* Terrain contains swamp		*/
+		ULONGLONG	water:1;		/* Terrain contains water		*/
+		ULONGLONG	water_deep:1;		/* Terrain contains deep water		*/
+		ULONGLONG	water_shallow:1;	/* Terrain contains shallow water	*/
+
+		// Natural features
+		ULONGLONG	slope:1;		/* Terrain contains slope		*/
+		ULONGLONG	hole:1;			/* Terrain contains hole		*/
+		ULONGLONG	mud:1;			/* Terrain contains mud			*/
+		ULONGLONG	rough:1;		/* Terrain contains rough		*/
+		ULONGLONG	snowdrift:1;		/* Terrain contains snowdrift		*/
+		ULONGLONG	softsand:1;		/* Terrain contains soft sand		*/
+		ULONGLONG	tallgrass:1;		/* Terrain contains tall grass		*/
+		ULONGLONG	trees:1;		/* Terrain contains trees		*/
+
+		// Human features
+		ULONGLONG	bocage:1;		/* Terrain contains bocage		*/
+		ULONGLONG	ditch:1;		/* Terrain contains ditch		*/
+		ULONGLONG	field:1;		/* Terrain contains field		*/
+		ULONGLONG	hedgerow:1;		/* Terrain contains hedgerow		*/
+		ULONGLONG	orchard:1;		/* Terrain contains orchard		*/
+
+		// Constructions
+		ULONGLONG	building_stone:1;	/* Terrain contains stone building	*/
+		ULONGLONG	building_wood:1;	/* Terrain contains wooden building	*/
+		ULONGLONG	bridge_wood:1;		/* Terrain contains wooden bridge	*/
+		ULONGLONG	bridge_stone:1;		/* Terrain contains stone bridge	*/
+		ULONGLONG	wall:1;			/* Terrain contains wall		*/
+		ULONGLONG	trench1:1;		/* Terrain contains trench type #1	*/
+		ULONGLONG	trench2:1;		/* Terrain contains trench type #2	*/
+
+		// Transportation
+		ULONGLONG	road1:1;		/* Terrain contains primary road	*/
+		ULONGLONG	road2:1;		/* Terrain contains secondary road	*/
+		ULONGLONG	railroad:1;		/* Terrain contains railroad		*/
+		ULONGLONG	tramline:1;		/* Terrain contains tramline		*/
+		ULONGLONG	path:1;			/* Terrain contains path		*/
+	}		tfs;
+	ULONGLONG	raw;
+} SPWAW_TFS;
+
+extern SPWAWLIB_API	bool	SPWAW_tfs2water	(SPWAW_TFS tfs);
+extern SPWAWLIB_API	bool	SPWAW_tfs2bridge(SPWAW_TFS tfs);
+extern SPWAWLIB_API	bool	SPWAW_tfs2road	(SPWAW_TFS tfs);
+
 /* SPWAW victory hex ownership status */
 typedef enum e_SPWAW_VHSTATUS {
 	SPWAW_VHN = 0,		/* Victory hex unassigned	*/

@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include <spwawlib_api.h>
 #include "gamefile/gamefile.h"
+#include "gamefile/spwaw/gamedata_spwaw.h"
 #include "gamefile/fulist.h"
 #include "snapshot/index.h"
 #include "snapshot/snapshot.h"

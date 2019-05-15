@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -22,9 +22,6 @@ extern SPWAW_RANK		raw2rank	(BYTE id);
 extern SPWAW_EXP		raw2exp		(BYTE exp);
 extern SPWAW_VHSTATUS		raw2vhstatus	(BYTE id);
 extern SPWAW_BRESULT		raw2bresult	(SHORT result);
-extern bool			rawtfs2water	(BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4);
-extern bool			rawtfs2bridge	(BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4);
-extern bool			rawtfs2road	(BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4);
 
 extern char *			terrain2str	(SPWAW_TERRAIN id);
 extern char *			weather2str	(SPWAW_TERRAIN tid, SPWAW_WEATHER wid);

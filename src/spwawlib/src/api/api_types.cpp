@@ -449,6 +449,24 @@ SPWAW_btstatus2str (SPWAW_BTSTATUS id)
 	return ((const char *)btstatus2str (id));
 }
 
+SPWAWLIB_API bool
+SPWAW_tfs2water (SPWAW_TFS tfs)
+{
+	return (tfs.tfs.stream || tfs.tfs.swamp || tfs.tfs.water || tfs.tfs.water_shallow || tfs.tfs.water_deep);
+}
+
+SPWAWLIB_API bool
+SPWAW_tfs2bridge (SPWAW_TFS tfs)
+{
+	return (tfs.tfs.bridge_wood || tfs.tfs.bridge_stone);
+}
+
+SPWAWLIB_API bool
+SPWAW_tfs2road (SPWAW_TFS tfs)
+{
+	return (tfs.tfs.road1 || tfs.tfs.road2 || tfs.tfs.railroad || tfs.tfs.tramline);
+}
+
 SPWAWLIB_API const char *
 SPWAW_vhstatus2str (SPWAW_VHSTATUS id)
 {

@@ -60,6 +60,7 @@ usage (char *app)
 	printf ("+ a full report covering the full player1 and player2 forces\n");
 	printf ("+ a core report covering the player1 core force only.\n");
 	printf ("\n");
+
 	exit (1);
 }
 

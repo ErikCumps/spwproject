@@ -64,6 +64,13 @@ handle_error:
 }
 
 SPWAW_ERROR
+snapshot_load_v11_map_data (SBR *sbr, SNAP_MAPDATA *data)
+{
+	/* The V11 snapshot raw map data is identical to the V10 snapshot raw map data. */
+	return (snapshot_load_v10_map_data(sbr,data));
+}
+
+SPWAW_ERROR
 snapshot_load_v11_oob_header (int fd, SNAP_OOBHDR *hdr)
 {
 	/* The V11 snapshot OOB data header is identical to the V10 snapshot OOB data header. */

@@ -12,7 +12,6 @@
 #include <spwawlib_snapshot.h>
 #include "gamefile/gamefile.h"
 #include "gamefile/gamedata_secmap.h"
-#include "gamefile/spwaw/gamedata_spwaw.h"
 
 typedef struct s_CMTDATA {
 	char		title[SPWAW_AZSCMTTITLE];	/* Savegame title	*/

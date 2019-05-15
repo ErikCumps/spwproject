@@ -54,13 +54,50 @@ load_snap (SNAP *src, STRTAB *stab, SPWAW_SNAPSHOT *dst)
 	getC (busy); getC (P1score); getC (P2score); getC (P1result); getC (P2result);
 }
 
+#define	getMD(name)	dst->##name = src->##name
+
+static void
+load_map_data (SNAP_MAPDATA *src, SPWAW_SNAP_MAP_DRAW *dst)
+{
+	memset (dst, 0, sizeof (SPWAW_SNAP_MAP_DRAW));
+
+	getMD (height);
+	getMD (has_T1); getMD (has_T2); getMD (has_T3); getMD (has_T4);
+	dst->tfs.raw = src->tfs;
+	getMD (conn_road1); getMD (conn_road2); getMD (conn_rail); getMD (conn_tram);
+}
+
 static SPWAW_ERROR
-load_map (int fd, SPWAW_SNAP_MAP_RAW *map)
+load_map_list (SBR *sbr, ULONG cnt, SPWAW_SNAP_MAP_DRAW *map, ULONG version)
+{
+	ULONG		i;
+	SNAP_MAPDATA	d;
+
+	for (i=0; i<cnt; i++) {
+		/* We are now backwards compatible with version 11 and older */
+		if (version <= SNAP_VERSION_V11) {
+			snapshot_load_v11_map_data (sbr, &d);
+		} else {
+			if (sbread (sbr, (char *)&d, sizeof (d)) != sizeof (d))
+				RWE (SPWERR_FRFAILED, "sbread(raw map data) failed");
+		}
+		load_map_data (&d, &(map[i]));
+	}
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+load_map (int fd, SPWAW_SNAP_MAP_RAW *map, ULONG version)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
 	SNAP_MAPHDR	maphdr;
+	ULONG		mapcnt;
+	long		size;
+	char		*data = NULL;
 	CBIO		cbio;
+	SBR		*sbr = NULL;
 
 	pos = bseekget (fd);
 
@@ -68,23 +105,36 @@ load_map (int fd, SPWAW_SNAP_MAP_RAW *map)
 	if (!bread (fd, (char *)&maphdr, sizeof (maphdr), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(maphdr)", handle_error);
 
+	mapcnt = maphdr.width * maphdr.height;
+
+	size = maphdr.size;
+	data = safe_smalloc (char, size);
+	COOMGOTO (data, "SNAP_MAPDATA buffer", handle_error);
+
+	cbio.data = data; cbio.size = size; cbio.comp = &(maphdr.comp);
+	if (!cbread (fd, cbio, "raw map data")) FAILGOTO (SPWERR_FRFAILED, "cbread(raw map data) failed", handle_error);
+
+	sbr = sbread_init (data, size);
+	if (!sbr) FAILGOTO (SPWERR_FRFAILED, "sbread_init() failed", handle_error);
+
 	map->width  = maphdr.width;
 	map->height = maphdr.height;
-
-	map->size = maphdr.size;
-	map->data = safe_smalloc (SPWAW_SNAP_MAP_DRAW, map->size);
+	map->size = mapcnt * sizeof(SPWAW_SNAP_MAP_DRAW);
+	map->data = safe_nmalloc (SPWAW_SNAP_MAP_DRAW, mapcnt);
 	COOMGOTO (map->data, "SPWAW_SNAP_MAP_DRAW map", handle_error);
 
-	bseekset (fd, pos + maphdr.data);
+	rc = load_map_list (sbr, mapcnt, map->data, version);
+	ERRORGOTO ("load_map_list()", handle_error);
 
-	cbio.data = (char *)map->data; cbio.size = map->size; cbio.comp = &(maphdr.comp);
-	if (!cbread (fd, cbio, "raw map data"))
-		FAILGOTO (SPWERR_FRFAILED, "cbread(raw map data)", handle_error);
+	sbread_stop (sbr); sbr = NULL;
+	safe_free (data);
 
 	return (SPWERR_OK);
 
 handle_error:
-	if (map->data) free (map->data);
+	if (sbr) sbread_stop (sbr);
+	if (data) safe_free (data);
+	if (map->data) safe_free (map->data);
 	return (rc);
 }
 
@@ -579,7 +629,7 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	load_snap (&snap, stab, dst);
 
 	bseekset (fd, pos + mhdr.map);
-	rc = load_map (fd, &(dst->raw.game.map));
+	rc = load_map (fd, &(dst->raw.game.map), mhdr.version);
 	ERRORGOTO ("load_map(map)", handle_error);
 
 	bseekset (fd, pos + mhdr.oobp1);

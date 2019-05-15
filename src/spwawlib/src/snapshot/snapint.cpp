@@ -195,12 +195,13 @@ snapint_game_map (SPWAW_SNAPSHOT *ptr)
                 for (y=0; y<dst->height; y++) {
 			idx = y*dst->width+x;
 			dst->data[idx].h = (int)raw->data[idx].height;
-			dst->data[idx].water  = rawtfs2water (raw->data[idx].has_T1, raw->data[idx].has_T2, raw->data[idx].has_T3, raw->data[idx].has_T4);
-			dst->data[idx].bridge = rawtfs2bridge (raw->data[idx].has_T1, raw->data[idx].has_T2, raw->data[idx].has_T3, raw->data[idx].has_T4);
-			dst->data[idx].road   = rawtfs2road (raw->data[idx].has_T1, raw->data[idx].has_T2, raw->data[idx].has_T3, raw->data[idx].has_T4);
+			dst->data[idx].water  = SPWAW_tfs2water (raw->data[idx].tfs);
+			dst->data[idx].bridge = SPWAW_tfs2bridge (raw->data[idx].tfs);
+			dst->data[idx].road   = SPWAW_tfs2road (raw->data[idx].tfs);
 			dst->data[idx].conn_road1 = (int)raw->data[idx].conn_road1;
 			dst->data[idx].conn_road2 = (int)raw->data[idx].conn_road2;
 			dst->data[idx].conn_rail  = (int)raw->data[idx].conn_rail;
+			dst->data[idx].conn_tram  = (int)raw->data[idx].conn_tram;
                 }
         }
 

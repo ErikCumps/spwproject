@@ -111,9 +111,11 @@ typedef struct s_SPWAW_SNAP_MAP_DRAW {
 	BYTE			has_T2;				/* hex terrain features (set #2)			*/
 	BYTE			has_T3;				/* hex terrain features (set #3)			*/
 	BYTE			has_T4;				/* hex terrain features (set #4)			*/
+	SPWAW_TFS		tfs;				/* hex terrain (classified) feature set			*/
 	BYTE			conn_road1;			/* hex primary road connections				*/
 	BYTE			conn_road2;			/* hex secondary road connections			*/
 	BYTE			conn_rail;			/* hex railroad connections				*/
+	BYTE			conn_tram;			/* hex tramline connections				*/
 } SPWAW_SNAP_MAP_DRAW;
 
 /* SPWAW map info: raw data */

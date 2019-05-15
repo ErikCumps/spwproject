@@ -8,6 +8,7 @@
 
 #include "stdafx.h"
 #include "gamefile/gamedata.h"
+#include "gamefile/spwaw/gamedata_spwaw.h"
 #include "gamefile/spwaw/cmt_spwaw.h"
 #include "gamefile/winspww2/cmt_winspww2.h"
 #include "gamefile/packing.h"

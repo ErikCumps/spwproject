@@ -13,6 +13,7 @@
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "common/types.h"
+#include "gamefile/spwaw/section08_spwaw.h"
 
 SPWAW_ERROR
 snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
@@ -36,6 +37,69 @@ snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
 
 handle_error:
 	return (rc);
+}
+
+static void
+raw2tfs (SPWAW_TFS &tfs, BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
+{
+	TFSBITS1	*tfsbits1 = (TFSBITS1 *)&tfs1;
+	TFSBITS2	*tfsbits2 = (TFSBITS2 *)&tfs2;
+	TFSBITS3	*tfsbits3 = (TFSBITS3 *)&tfs3;
+	TFSBITS4	*tfsbits4 = (TFSBITS4 *)&tfs4;
+
+	tfs.tfs.field		= tfsbits1->has_field;
+	tfs.tfs.slope		= tfsbits1->has_slope;
+	tfs.tfs.trees		= tfsbits1->has_trees;
+	tfs.tfs.stream		= tfsbits1->has_stream;
+	tfs.tfs.building_stone	= tfsbits1->has_bld_stone;
+	tfs.tfs.building_wood	= tfsbits1->has_bld_wood;
+	tfs.tfs.road1		= tfsbits1->has_road1;
+	tfs.tfs.road2		= tfsbits1->has_road2;
+
+	tfs.tfs.bridge_wood	= tfsbits2->has_brg_wood;
+	tfs.tfs.bridge_stone	= tfsbits2->has_brg_stone;
+	tfs.tfs.swamp		= tfsbits2->has_swamp;
+	tfs.tfs.water		= tfsbits2->has_water;
+	tfs.tfs.rough		= tfsbits2->has_rough;
+
+	tfs.tfs.railroad	= tfsbits3->has_railroad;
+	tfs.tfs.water_shallow	= tfsbits3->has_shwater;
+	tfs.tfs.water_deep	= tfsbits3->has_dpwater;
+	tfs.tfs.orchard		= tfsbits3->has_orchard;
+
+	tfs.tfs.wall		= tfsbits4->has_wall;
+	tfs.tfs.path		= tfsbits4->has_path;
+	tfs.tfs.bocage		= tfsbits4->has_bocage;
+}
+
+#define	copyMD(name)	data->##name = data_v10.##name
+
+SPWAW_ERROR
+snapshot_load_v10_map_data (SBR *sbr, SNAP_MAPDATA *data)
+{
+	SNAP_MAPDATA_V10	data_v10;
+	SPWAW_TFS		tfs;
+
+	CNULLARG (sbr); CNULLARG (data);
+	memset (data, 0, sizeof (SNAP_MAPDATA));
+
+	if (sbread (sbr, (char *)&data_v10, sizeof (SNAP_MAPDATA_V10)) != sizeof (SNAP_MAPDATA_V10))
+			RWE (SPWERR_FRFAILED, "sbread(v10 raw map data)");
+
+	/* The V10 snapshot unit element lacks the tfs and the tram connection data.
+	 * V10 snapshots only support the SPWAW_GAME_TYPE_SPWAW game type, which means:
+	 * + the tfs bits must be interpreted as SP:WaW tfs bits
+	 * + there are no tramline connections
+	 */
+	raw2tfs (tfs, data_v10.has_T1, data_v10.has_T2, data_v10.has_T3, data_v10.has_T4);
+	data->tfs = tfs.raw;
+	data->conn_tram = 0;
+
+	copyMD (height);
+	copyMD (has_T1); copyMD (has_T2); copyMD (has_T3); copyMD (has_T4);
+	copyMD (conn_road1); copyMD (conn_road2); copyMD (conn_rail);
+
+	return (SPWERR_OK);
 }
 
 SPWAW_ERROR

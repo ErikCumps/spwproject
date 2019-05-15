@@ -49,28 +49,55 @@ prep_snap (SPWAW_SNAPSHOT *src, SNAP *dst, STRTAB *stab)
 	setC (busy); setC (P1score); setC (P2score); setC (P1result); setC (P2result);
 }
 
+#define	setMD(name)	dst->##name = src->##name
+
+static void
+prep_map_data (SPWAW_SNAP_MAP_DRAW *src, SNAP_MAPDATA *dst)
+{
+	memset (dst, 0, sizeof (SNAP_MAPDATA));
+
+	setMD (height);
+	setMD (has_T1); setMD (has_T2); setMD (has_T3); setMD (has_T4);
+	dst->tfs = src->tfs.raw;
+	setMD (conn_road1); setMD (conn_road2); setMD (conn_rail); setMD (conn_tram);
+}
+
 static SPWAW_ERROR
 save_map (int fd, SPWAW_SNAP_MAP_RAW *map, bool compress)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
+	SBW		*sbw = NULL;
+	ULONG		i;
+	SNAP_MAPDATA	d;
 	SNAP_MAPHDR	maphdr;
+	char		*data = NULL;
+	long		size;
 	ULONG		p0, p1;
 	CBIO		cbio;
-
-	memset (&maphdr, 0, sizeof (maphdr));
-
-	maphdr.width  = map->width;
-	maphdr.height = map->height;
 
 	p0 = bseekget (fd);
 	bseekmove (fd, sizeof (maphdr));
 
-	maphdr.data = bseekget (fd) - p0;
-	maphdr.size = map->size;
+	sbw = sbwrite_init (NULL, 0);
+	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
 
-	cbio.data = (char *)(map->data); cbio.size = maphdr.size; cbio.comp = &(maphdr.comp);
-	if (!cbwrite (fd, cbio, "raw map data", compress))
-		FAILGOTO (SPWERR_FWFAILED, "cbwrite(raw map data) failed", handle_error);
+	for (i=0; i<(map->width * map->height); i++) {
+		prep_map_data (&(map->data[i]), &d);
+		if (sbwrite (sbw, (char *)&d, sizeof (d)) != sizeof (d))
+			FAILGOTO (SPWERR_FWFAILED, "sbwrite(raw map data)", handle_error);
+	}
+
+	sbwrite_stop (sbw, &data, &size); sbw = NULL;
+
+	memset (&maphdr, 0, sizeof (maphdr));
+	maphdr.width  = map->width;
+	maphdr.height = map->height;
+	maphdr.data   = bseekget (fd) - p0;
+	maphdr.size   = size;
+
+	cbio.data = data; cbio.size = size; cbio.comp = &(maphdr.comp);
+	if (!cbwrite (fd, cbio, "raw map data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(raw map data) failed", handle_error);
+	safe_free (data);
 
 	p1 = bseekget (fd); bseekset (fd, p0);
 	if (!bwrite (fd, (char *)&maphdr, sizeof (maphdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(maphdr) failed", handle_error);
@@ -79,6 +106,8 @@ save_map (int fd, SPWAW_SNAP_MAP_RAW *map, bool compress)
 	return (SPWERR_OK);
 
 handle_error:
+	if (data) safe_free (data);
+	if (sbw) sbwrite_stop (sbw);
 	bseekset (fd, p0);
 	return (rc);
 }

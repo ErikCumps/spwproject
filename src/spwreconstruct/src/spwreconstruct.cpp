@@ -11,11 +11,24 @@
 void
 usage (char *app)
 {
+	printf ("Welcome to spwreconstruct.exe, the savegame reconstruction tool:\n");
+	printf ("\n");
+
 	printf ("Usage: %s GAME DIR INDEX\n", app);
 	printf ("Where: GAME    game type\n");
 	printf ("       DIR     path to savegame dir\n");
 	printf ("       INDEX   index of savegame to reconstruct\n");
-	exit (0);
+	printf ("\n");
+
+	printf ("Supported game types:\n");
+	printf ("    SPWAW       SPWaW\n");
+	printf ("    WINSPWW2    winSPWW2\n");
+	printf ("\n");
+
+	printf ("The savegame is reconstructed, from separate sections, from the current directory.\n");
+	printf ("\n");
+
+	exit (1);
 }
 
 void
@@ -107,7 +120,7 @@ main (int argc, char** argv)
 	}
 
 	/* Write savegame data */
-	if ((rc = SPWAW_savegame_save (&game, argv[2], atoi(argv[1]))) != SPWERR_OK)
+	if ((rc = SPWAW_savegame_save (&game, argv[2], atoi(argv[3]))) != SPWERR_OK)
 		error ("failed to write savegame: %s", SPWAW_errstr (rc));
 
 	/* Clean up */

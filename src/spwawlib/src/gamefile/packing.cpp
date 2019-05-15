@@ -500,39 +500,40 @@ save_packed (GAMEDATA *src, GAMEFILE *file)
 bool
 load_packed_section (GAMEFILE *file, DWORD sec, void **dst, unsigned long *len)
 {
-	SECTION00	head;
 	SECMAP		*map;
-	SECMAPEL	*sp;
+	SECMAPEL	*spinfo, *sp;
 	BLOCKHEAD	block;
 
 	if (!file || !dst || !len) return (false);
 	*dst = NULL; *len = 0;
 
 	map = gamedata_SECMAP (file->gametype);
+
+	spinfo = gamedata_section (map, GAMEINFO);
+	if (!spinfo) {
+		ERROR0 ("no game info section present in section map");
+		return (false);
+	}
+
 	sp = gamedata_section (map, sec);
 	if (!sp) {
 		ERROR1 ("unknown gamedata section %d", sec);
 		return (false);
 	}
 
-	if (sec == 0) {
-		*len = sizeof (SECTION00);
-		*dst = safe_malloc (SECTION00); COOMRET (dst, "SECTION #00 buffer", false);
-	} else if (sp->size) {
-		*len = sp->size;
-		*dst = safe_smalloc (char, *len); COOMRET (dst, "SECTION data buffer", false);
-	}
+	*len = sp->size;
+	*dst = safe_smalloc (char, *len); COOMRET (dst, "gamedata section data buffer", false);
 
 	bseekset (file->dat_fd, 0);
 
-	if (bread (file->dat_fd, (char *)&(head), sizeof (head), false)) {
-		if (sec == 0) {
-			memcpy (dst, &head, sizeof (head));
-			return (true);
-		}
-	} else {
+	if (!bread (file->dat_fd, (char *)(spinfo->ptr), spinfo->size, false)) {
 		ERROR0 ("failed to read game info section");
 		return (false);
+	}
+
+	if (sec == 0) {
+		memcpy (*dst, spinfo->ptr, spinfo->size);
+		return (true);
 	}
 
 	while (load_block (file->gametype, file->dat_fd, block)) {

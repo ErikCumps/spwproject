@@ -11,11 +11,24 @@
 void
 usage (char *app)
 {
+	printf ("Welcome to spwdecompose.exe, the savegame decomposition tool:\n");
+	printf ("\n");
+
 	printf ("Usage: %s GAME DIR INDEX\n", app);
 	printf ("Where: GAME    game type\n");
 	printf ("       DIR     path to savegame dir\n");
 	printf ("       INDEX   index of savegame to decompose\n");
-	exit (0);
+	printf ("\n");
+
+	printf ("Supported game types:\n");
+	printf ("    SPWAW       SPWaW\n");
+	printf ("    WINSPWW2    winSPWW2\n");
+	printf ("\n");
+
+	printf ("The savegame is decomposed, in separate sections, in the current directory.\n");
+	printf ("\n");
+
+	exit (1);
 }
 
 void

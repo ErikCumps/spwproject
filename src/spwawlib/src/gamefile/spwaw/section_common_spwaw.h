@@ -12,6 +12,7 @@
 #include <spwawlib_api.h>
 #include <spwawlib_snapshot.h>
 #include "gamefile/gamedata.h"
+#include "gamefile/spwaw/gamedata_spwaw.h"
 #include "gamefile/fulist.h"
 #include "strtab/strtab.h"
 
