@@ -11,13 +11,13 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_SECTION26 {
+typedef struct s_SPWAW_SECTION26 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC26];
 		struct s_d {
 			char	data[SPWAW_SIZESEC26];
 		} d;
 	} u;
-} SECTION26;
+} SPWAW_SECTION26;
 
 #endif	/* SECTION26_SPWAW_H */

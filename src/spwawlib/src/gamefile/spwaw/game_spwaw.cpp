@@ -15,10 +15,10 @@
 #include "common/types.h"
 
 static void
-setup_spwaw_info (GAMEINFO *info, char *filename, FILETIME filedate, SECTION37 *sec37, CMTDATA *gamecmt, SECTION35 *sec35)
+setup_spwaw_info (GAMEINFO *info, char *filename, FILETIME filedate, SPWAW_SECTION37 *sec37, CMTDATA *gamecmt, SPWAW_SECTION35 *sec35)
 {
-	SECTION37	*gamedata = sec37;
-	SECTION35	*formdata = sec35;
+	SPWAW_SECTION37	*gamedata = sec37;
+	SPWAW_SECTION35	*formdata = sec35;
 	char		*p, *q;
 	SPWAW_DATE	base, date;
 	SPWAW_PERIOD	add;
@@ -94,9 +94,9 @@ game_load_spwaw_info (const char *dir, unsigned int id, GAMEINFO *info)
 {
 	GAMEFILE	game;
 	bool		grc = true, rc;
-	SECTION37	*sec37;
+	SPWAW_SECTION37	*sec37;
 	unsigned long	len37;
-	SECTION35	*sec35;
+	SPWAW_SECTION35	*sec35;
 	unsigned long	len35;
 	CMTDATA		cmt;
 

@@ -100,13 +100,13 @@ typedef struct s_MAP_TERRAIN {
 	char	__data01[5];
 } MAP_TERRAIN;
 
-typedef struct s_SECTION08 {
+typedef struct s_SPWAW_SECTION08 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC08];
 		struct s_d {
 			MAP_TERRAIN	terrain[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
 		} d;
 	} u;
-} SECTION08;
+} SPWAW_SECTION08;
 
 #endif	/* SECTION08_SPWAW_H */

@@ -17,13 +17,13 @@ typedef struct s_RECHEAD {
 	char	__data01[72];
 } RECHEAD;
 
-typedef struct s_SECTION48 {
+typedef struct s_SPWAW_SECTION48 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC48];
 		struct s_d {
 			RECHEAD	data;
 		} d;
 	} u;
-} SECTION48;
+} SPWAW_SECTION48;
 
 #endif	/* SECTION48_SPWAW_H */

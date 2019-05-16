@@ -19,13 +19,13 @@ typedef struct s_UNIT_POS {
 	char	__data01[5];
 } UNIT_POS;
 
-typedef struct s_SECTION17 {
+typedef struct s_SPWAW_SECTION17 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC17];
 		struct s_d {
 			UNIT_POS	pos[SPWAW_UNITPOSCOUNT];
 		} d;
 	} u;
-} SECTION17;
+} SPWAW_SECTION17;
 
 #endif	/* SECTION17_SPWAW_H */

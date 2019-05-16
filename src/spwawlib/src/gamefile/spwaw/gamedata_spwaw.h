@@ -65,56 +65,56 @@
 #pragma pack(pop, r1)
 
 typedef struct s_GAMEDATA_SPWAW {
-	SECTION00		sec00;	/* start		*/
-	SECTION01		sec01;	/* units		*/
-	SECTION02		sec02;	/* map_icon_main	*/
-	SECTION03		sec03;	/* map_icon_sec3	*/
-	SECTION04		sec04;	/* map_icon_sec4	*/
-	SECTION05		sec05;	/* map_icon_sec5	*/
-	SECTION06		sec06;	/* map_icon_sec6	*/
-	SECTION07		sec07;	/* map_icon_sec7	*/
-	SECTION08		sec08;	/* map_terrain		*/
-	SECTION09		sec09;	/* map_data0		*/
-	SECTION10		sec10;
-	SECTION11		sec11;
-	SECTION12		sec12;
-	SECTION13		sec13;
-	SECTION14		sec14;
-	SECTION15		sec15;
-	SECTION16		sec16;
-	SECTION17		sec17;	/* units_pos		*/
-	SECTION18		sec18;
-	SECTION19		sec19;
-	SECTION20		sec20;
-	SECTION21		sec21;
-	SECTION22		sec22;
-	SECTION23		sec23;
-	SECTION24		sec24;
-	SECTION25		sec25;
-	SECTION26		sec26;	/* credits		*/
-	SECTION27		sec27;
-	SECTION28		sec28;	/* map_data1		*/
-	SECTION29		sec29;	/* map_data2		*/
-	SECTION30		sec30;
-	SECTION31		sec31;
-	SECTION32		sec32;
-	SECTION33		sec33;
-	SECTION34		sec34;	/* leaders		*/
-	SECTION35		sec35;	/* formations		*/
-	SECTION36		sec36;
-	SECTION37		sec37;	/* game			*/
-	SECTION38		sec38;	/* map_width		*/
-	SECTION39		sec39;	/* map_height		*/
-	SECTION40		sec40;
-	SECTION41		sec41;
-	SECTION42		sec42;
-	SECTION43		sec43;
-	SECTION44		sec44;
-	SECTION45		sec45;
-	SECTION46		sec46;
-	SECTION47		sec47;
-	SECTION48		sec48;	/* rec_header		*/
-	SECTION51		sec51;
+	SPWAW_SECTION00		sec00;	/* start		*/
+	SPWAW_SECTION01		sec01;	/* units		*/
+	SPWAW_SECTION02		sec02;	/* map_icon_main	*/
+	SPWAW_SECTION03		sec03;	/* map_icon_sec3	*/
+	SPWAW_SECTION04		sec04;	/* map_icon_sec4	*/
+	SPWAW_SECTION05		sec05;	/* map_icon_sec5	*/
+	SPWAW_SECTION06		sec06;	/* map_icon_sec6	*/
+	SPWAW_SECTION07		sec07;	/* map_icon_sec7	*/
+	SPWAW_SECTION08		sec08;	/* map_terrain		*/
+	SPWAW_SECTION09		sec09;	/* map_data0		*/
+	SPWAW_SECTION10		sec10;
+	SPWAW_SECTION11		sec11;
+	SPWAW_SECTION12		sec12;
+	SPWAW_SECTION13		sec13;
+	SPWAW_SECTION14		sec14;
+	SPWAW_SECTION15		sec15;
+	SPWAW_SECTION16		sec16;
+	SPWAW_SECTION17		sec17;	/* units_pos		*/
+	SPWAW_SECTION18		sec18;
+	SPWAW_SECTION19		sec19;
+	SPWAW_SECTION20		sec20;
+	SPWAW_SECTION21		sec21;
+	SPWAW_SECTION22		sec22;
+	SPWAW_SECTION23		sec23;
+	SPWAW_SECTION24		sec24;
+	SPWAW_SECTION25		sec25;
+	SPWAW_SECTION26		sec26;	/* credits		*/
+	SPWAW_SECTION27		sec27;
+	SPWAW_SECTION28		sec28;	/* map_data1		*/
+	SPWAW_SECTION29		sec29;	/* map_data2		*/
+	SPWAW_SECTION30		sec30;
+	SPWAW_SECTION31		sec31;
+	SPWAW_SECTION32		sec32;
+	SPWAW_SECTION33		sec33;
+	SPWAW_SECTION34		sec34;	/* leaders		*/
+	SPWAW_SECTION35		sec35;	/* formations		*/
+	SPWAW_SECTION36		sec36;
+	SPWAW_SECTION37		sec37;	/* game			*/
+	SPWAW_SECTION38		sec38;	/* map_width		*/
+	SPWAW_SECTION39		sec39;	/* map_height		*/
+	SPWAW_SECTION40		sec40;
+	SPWAW_SECTION41		sec41;
+	SPWAW_SECTION42		sec42;
+	SPWAW_SECTION43		sec43;
+	SPWAW_SECTION44		sec44;
+	SPWAW_SECTION45		sec45;
+	SPWAW_SECTION46		sec46;
+	SPWAW_SECTION47		sec47;
+	SPWAW_SECTION48		sec48;	/* rec_header		*/
+	SPWAW_SECTION51		sec51;
 } GAMEDATA_SPWAW;
 
 extern SECMAP *		gamedata_spwaw_SECMAP		(void);

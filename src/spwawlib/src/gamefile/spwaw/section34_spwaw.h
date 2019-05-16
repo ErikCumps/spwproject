@@ -27,13 +27,13 @@ typedef struct s_LEADER {
 	char	__data03[1];
 } LEADER;
 
-typedef struct s_SECTION34 {
+typedef struct s_SPWAW_SECTION34 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC34];
 		struct s_d {
 			LEADER	leaders[SPWAW_LEADERCOUNT];
 		} d;
 	} u;
-} SECTION34;
+} SPWAW_SECTION34;
 
 #endif	/* SECTION34_SPWAW_H */

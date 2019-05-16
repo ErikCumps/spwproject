@@ -25,13 +25,13 @@ typedef struct s_FORMATION {
 	char	__data011[13];
 } FORMATION;
 
-typedef struct s_SECTION35 {
+typedef struct s_SPWAW_SECTION35 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC35];
 		struct s_d {
 			FORMATION	formations[SPWAW_FORMCOUNT];
 		} d;
 	} u;
-} SECTION35;
+} SPWAW_SECTION35;
 
 #endif	/* SECTION35_SPWAW_H */

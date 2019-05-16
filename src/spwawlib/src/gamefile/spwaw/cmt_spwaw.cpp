@@ -42,7 +42,7 @@ gamedata_load_spwaw_cmt (GAMEFILE *file, CMTDATA *dst)
 		/* Fix unprintable characters */
 		todo = sizeof (dst->mapsrc); if (sizeof(cmt.mapsrc) < todo) todo = sizeof(cmt.mapsrc);
 		for (i = 0; i < todo; i++) {
-			if (cmt.mapsrc[i] != '\0' && !isprint(cmt.mapsrc[i])) 
+			if (cmt.mapsrc[i] != '\0' && !isprint(cmt.mapsrc[i]))
 				dst->mapsrc[i] = ' ';
 			else
 				dst->mapsrc[i] = cmt.mapsrc[i];

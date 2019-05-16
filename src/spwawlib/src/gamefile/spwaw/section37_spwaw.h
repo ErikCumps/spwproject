@@ -89,13 +89,13 @@ typedef struct s_GAME_DATA {
 	char	__data15[896];
 } GAME_DATA;
 
-typedef struct s_SECTION37 {
+typedef struct s_SPWAW_SECTION37 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC37];
 		struct s_d {
 			GAME_DATA	data;
 		} d;
 	} u;
-} SECTION37;
+} SPWAW_SECTION37;
 
 #endif	/* SECTION37_SPWAW_H */

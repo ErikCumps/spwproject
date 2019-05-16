@@ -15,13 +15,13 @@ typedef struct s_STARTSEC {
 	char	info[20];	/* Savegame information string (ASCIIZ)	*/
 } STARTSEC;
 
-typedef struct s_SECTION00 {
+typedef struct s_SPWAW_SECTION00 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC00];
 		struct s_d {
 			STARTSEC	info;
 		} d;
 	} u;
-} SECTION00;
+} SPWAW_SECTION00;
 
 #endif	/* SECTION00_SPWAW_H */

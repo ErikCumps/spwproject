@@ -136,13 +136,13 @@ typedef struct s_UNIT {
 	char	__data26[7];
 } UNIT;
 
-typedef struct s_SECTION01 {
+typedef struct s_SPWAW_SECTION01 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC01];
 		struct s_d {
 			UNIT	units[SPWAW_UNITCOUNT];
 		} d;
 	} u;
-} SECTION01;
+} SPWAW_SECTION01;
 
 #endif	/* SECTION01_SPWAW_H */

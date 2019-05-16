@@ -171,7 +171,7 @@ handle_error:
 }
 
 SPWAW_ERROR
-section35_spwaw_detection (SECTION35 *src, FULIST &ful1, FULIST &ful2)
+section35_spwaw_detection (SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 

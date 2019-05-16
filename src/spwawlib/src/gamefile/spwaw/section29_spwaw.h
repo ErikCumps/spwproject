@@ -15,13 +15,13 @@ typedef struct s_MAP_DATA2 {
 	BYTE	vis;	/* Visibility?	*/
 } MAP_DATA2;
 
-typedef struct s_SECTION29 {
+typedef struct s_SPWAW_SECTION29 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC29];
 		struct s_d {
 			MAP_DATA2	data[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
 		} d;
 	} u;
-} SECTION29;
+} SPWAW_SECTION29;
 
 #endif	/* SECTION29_SPWAW_H */

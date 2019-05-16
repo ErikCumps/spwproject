@@ -14,7 +14,7 @@
 #include "common/internal.h"
 
 void
-section37_spwaw_prepare (SECTION37 *src)
+section37_spwaw_prepare (SPWAW_SECTION37 *src)
 {
 	GAME_DATA	*data;
 

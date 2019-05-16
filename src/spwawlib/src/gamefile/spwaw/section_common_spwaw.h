@@ -29,11 +29,11 @@ extern SPWAW_ERROR	section26_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT 
 
 extern SPWAW_ERROR	section34_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
-extern SPWAW_ERROR	section35_spwaw_detection	(SECTION35 *src, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	section35_spwaw_detection	(SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2);
 extern SPWAW_ERROR	section35_spwaw_detection	(GAMEDATA *src, FULIST &ful1, FULIST &ful2);
 extern SPWAW_ERROR	section35_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
-extern void		section37_spwaw_prepare		(SECTION37 *src);
+extern void		section37_spwaw_prepare		(SPWAW_SECTION37 *src);
 extern SPWAW_ERROR	section37_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab);
 
 extern SPWAW_ERROR	section38_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab);

@@ -15,13 +15,13 @@ typedef struct s_MAP_HEIGHT {
 	DWORD	size;	/* Map height in hexes	*/
 } MAP_HEIGHT;
 
-typedef struct s_SECTION39 {
+typedef struct s_SPWAW_SECTION39 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC39];
 		struct s_d {
 			MAP_HEIGHT	data;
 		} d;
 	} u;
-} SECTION39;
+} SPWAW_SECTION39;
 
 #endif	/* SECTION39_SPWAW_H */

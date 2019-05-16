@@ -15,13 +15,13 @@ typedef struct s_CREDIT {
 	DWORD	amount;	/* Amount of available purchase points	*/
 } CREDIT;
 
-typedef struct s_SECTION14 {
+typedef struct s_SPWAW_SECTION14 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC14];
 		struct s_d {
 			CREDIT	data;
 		} d;
 	} u;
-} SECTION14;
+} SPWAW_SECTION14;
 
 #endif	/* SECTION14_SPWAW_H */
