@@ -32,7 +32,7 @@ setup (SPWAW_SNAP_MAP_RAW *map)
 }
 
 static void
-raw2tfs (SPWAW_TFS &tfs, TFSBITS1 tfsbits1, TFSBITS2 tfsbits2, TFSBITS3 tfsbits3, TFSBITS4 tfsbits4)
+raw2tfs (SPWAW_TFS &tfs, SPWAW_TFSBITS1 tfsbits1, SPWAW_TFSBITS2 tfsbits2, SPWAW_TFSBITS3 tfsbits3, SPWAW_TFSBITS4 tfsbits4)
 {
 	tfs.tfs.field		= tfsbits1.has_field;
 	tfs.tfs.slope		= tfsbits1.has_slope;

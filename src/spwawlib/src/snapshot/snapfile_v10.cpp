@@ -42,10 +42,10 @@ handle_error:
 static void
 raw2tfs (SPWAW_TFS &tfs, BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
 {
-	TFSBITS1	*tfsbits1 = (TFSBITS1 *)&tfs1;
-	TFSBITS2	*tfsbits2 = (TFSBITS2 *)&tfs2;
-	TFSBITS3	*tfsbits3 = (TFSBITS3 *)&tfs3;
-	TFSBITS4	*tfsbits4 = (TFSBITS4 *)&tfs4;
+	SPWAW_TFSBITS1	*tfsbits1 = (SPWAW_TFSBITS1 *)&tfs1;
+	SPWAW_TFSBITS2	*tfsbits2 = (SPWAW_TFSBITS2 *)&tfs2;
+	SPWAW_TFSBITS3	*tfsbits3 = (SPWAW_TFSBITS3 *)&tfs3;
+	SPWAW_TFSBITS4	*tfsbits4 = (SPWAW_TFSBITS4 *)&tfs4;
 
 	tfs.tfs.field		= tfsbits1->has_field;
 	tfs.tfs.slope		= tfsbits1->has_slope;
