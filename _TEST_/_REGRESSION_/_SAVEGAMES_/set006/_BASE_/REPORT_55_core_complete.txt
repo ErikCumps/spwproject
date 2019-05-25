@@ -36,6 +36,8 @@ Major victories      : 0
 Minor victories      : 0
 Losses               : 0
 
+Battle index         : 65535
+
                          MEN   ART   SFT   APC   AFV   AIR   GLD
 Player1 battle losses:     0     0     0     0     0     0     0
 Player1 total losses :     0     0     0     0     0     0     0
@@ -115,7 +117,7 @@ Complete formations report:
 
 Formation count: 12
 
-#0000 A (FID 00)
+#00000 A (FID 00000)
 	leader      : A0 USMC HQ (Col Diaz)
 	higher cmd  : A0 USMC HQ (Col Diaz)
 	status      : 1 (core)
@@ -148,7 +150,7 @@ Formation count: 12
 	unit kills     : tot: 0
 	unit kills     : cnt: 1
 
-#0001 B (FID 01)
+#00001 B (FID 00001)
 	leader      : B0 USMC Co HQ (Cpt Perez)
 	higher cmd  : A0 USMC HQ (Col Diaz)
 	status      : 1 (core)
@@ -181,7 +183,7 @@ Formation count: 12
 	unit kills     : tot: 0
 	unit kills     : cnt: 1
 
-#0002 C (FID 02)
+#00002 C (FID 00002)
 	leader      : C0 USMC Plt HQ (2Lt Reynolds)
 	higher cmd  : B0 USMC Co HQ (Cpt Perez)
 	status      : 1 (core)
@@ -217,7 +219,7 @@ Formation count: 12
 	unit kills     : tot: 1
 	unit kills     : cnt: 4
 
-#0003 D (FID 03)
+#00003 D (FID 00003)
 	leader      : D0 USMC Plt HQ (2Lt Necaise)
 	higher cmd  : B0 USMC Co HQ (Cpt Perez)
 	status      : 1 (core)
@@ -253,7 +255,7 @@ Formation count: 12
 	unit kills     : tot: 1
 	unit kills     : cnt: 4
 
-#0004 E (FID 04)
+#00004 E (FID 00004)
 	leader      : E0 USMC Plt HQ (2Lt Kirby)
 	higher cmd  : B0 USMC Co HQ (Cpt Perez)
 	status      : 1 (core)
@@ -289,7 +291,7 @@ Formation count: 12
 	unit kills     : tot: 1
 	unit kills     : cnt: 4
 
-#0005 F (FID 05)
+#00005 F (FID 00005)
 	leader      : F0 .30 Cal MMG (2Lt Isaac)
 	higher cmd  : B0 USMC Co HQ (Cpt Perez)
 	status      : 1 (core)
@@ -324,7 +326,7 @@ Formation count: 12
 	unit kills     : tot: 1
 	unit kills     : cnt: 3
 
-#0006 G (FID 06)
+#00006 G (FID 00006)
 	leader      : G0 M2 60mm Mortar (2Lt Kramer)
 	higher cmd  : B0 USMC Co HQ (Cpt Perez)
 	status      : 1 (core)
@@ -358,7 +360,7 @@ Formation count: 12
 	unit kills     : tot: 0
 	unit kills     : cnt: 2
 
-#0007 H (FID 07)
+#00007 H (FID 00007)
 	leader      : H0 USMC Eng Sec FT (Cpt Jacobs)
 	higher cmd  : A0 USMC HQ (Col Diaz)
 	status      : 1 (core)
@@ -391,7 +393,7 @@ Formation count: 12
 	unit kills     : tot: 0
 	unit kills     : cnt: 1
 
-#0008 I (FID 08)
+#00008 I (FID 00008)
 	leader      : I0 USMC Eng Sec DC (2Lt McKelvey)
 	higher cmd  : H0 USMC Eng Sec FT (Cpt Jacobs)
 	status      : 1 (core)
@@ -426,7 +428,7 @@ Formation count: 12
 	unit kills     : tot: 0
 	unit kills     : cnt: 3
 
-#0009 J (FID 09)
+#00009 J (FID 00009)
 	leader      : J0 USMC Eng Sec DC (2Lt Nino)
 	higher cmd  : H0 USMC Eng Sec FT (Cpt Jacobs)
 	status      : 1 (core)
@@ -461,7 +463,7 @@ Formation count: 12
 	unit kills     : tot: 0
 	unit kills     : cnt: 3
 
-#0010 K (FID 10)
+#00010 K (FID 00010)
 	leader      : K0 USMC Eng Sec DC (2Lt Gallegos)
 	higher cmd  : H0 USMC Eng Sec FT (Cpt Jacobs)
 	status      : 1 (core)
@@ -496,7 +498,7 @@ Formation count: 12
 	unit kills     : tot: 1
 	unit kills     : cnt: 3
 
-#0011 L (FID 11)
+#00011 L (FID 00011)
 	leader      : L0 .50 Cal HMG (2Lt Guitierez)
 	higher cmd  : H0 USMC Eng Sec FT (Cpt Jacobs)
 	status      : 1 (core)
@@ -537,7 +539,7 @@ Complete units report:
 
 Unit count: 32
 
-#0000 (00:00,00) A0   USMC HQ
+#00000 (00000:00000,000) A0   USMC HQ
 	leader      : Diaz, rank 9 (Col)
 	formation   : A: core elite force HQ
 	OOB         : 83 ( US marine)
@@ -573,7 +575,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0001 (01:01,00) B0   USMC Co HQ
+#00001 (00001:00001,000) B0   USMC Co HQ
 	leader      : Perez, rank 6 (Cpt)
 	formation   : B: core recon company
 	OOB         : 83 ( US marine)
@@ -609,7 +611,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0002 (02:02,00) C0   USMC Plt HQ
+#00002 (00002:00002,000) C0   USMC Plt HQ
 	leader      : Reynolds, rank 4 (2Lt)
 	formation   : C: core average platoon
 	OOB         : 83 ( US marine)
@@ -645,7 +647,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  33.14 %
 
-#0003 (02:02,01) C1   USMC Inf Sqd 
+#00003 (00002:00002,001) C1   USMC Inf Sqd 
 	leader      : Emerson, rank 3 (Sgt)
 	formation   : C: core average platoon
 	OOB         : 83 ( US marine)
@@ -681,7 +683,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0004 (02:02,02) C2   USMC Inf Sqd 
+#00004 (00002:00002,002) C2   USMC Inf Sqd 
 	leader      : Patton, rank 3 (Sgt)
 	formation   : C: core average platoon
 	OOB         : 83 ( US marine)
@@ -717,7 +719,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  70.37 %
 
-#0005 (02:02,03) C3   USMC Inf Sqd 
+#00005 (00002:00002,003) C3   USMC Inf Sqd 
 	leader      : Hunter, rank 3 (Sgt)
 	formation   : C: core average platoon
 	OOB         : 83 ( US marine)
@@ -753,7 +755,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0006 (03:03,00) D0   USMC Plt HQ
+#00006 (00003:00003,000) D0   USMC Plt HQ
 	leader      : Necaise, rank 4 (2Lt)
 	formation   : D: core average platoon
 	OOB         : 83 ( US marine)
@@ -789,7 +791,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0007 (03:03,01) D1   USMC Inf Sqd 
+#00007 (00003:00003,001) D1   USMC Inf Sqd 
 	leader      : Owens, rank 3 (Sgt)
 	formation   : D: core average platoon
 	OOB         : 83 ( US marine)
@@ -825,7 +827,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0008 (03:03,02) D2   USMC Inf Sqd 
+#00008 (00003:00003,002) D2   USMC Inf Sqd 
 	leader      : Lopez, rank 3 (Sgt)
 	formation   : D: core average platoon
 	OOB         : 83 ( US marine)
@@ -861,7 +863,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  77.78 %
 
-#0009 (03:03,03) D3   USMC Inf Sqd 
+#00009 (00003:00003,003) D3   USMC Inf Sqd 
 	leader      : Palmer, rank 3 (Sgt)
 	formation   : D: core average platoon
 	OOB         : 83 ( US marine)
@@ -897,7 +899,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  23.82 %
 
-#0010 (04:04,00) E0   USMC Plt HQ
+#00010 (00004:00004,000) E0   USMC Plt HQ
 	leader      : Kirby, rank 4 (2Lt)
 	formation   : E: core average platoon
 	OOB         : 83 ( US marine)
@@ -933,7 +935,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0011 (04:04,01) E1   USMC Inf Sqd 
+#00011 (00004:00004,001) E1   USMC Inf Sqd 
 	leader      : Glussich, rank 3 (Sgt)
 	formation   : E: core average platoon
 	OOB         : 83 ( US marine)
@@ -969,7 +971,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  55.56 %
 
-#0012 (04:04,02) E2   USMC Inf Sqd 
+#00012 (00004:00004,002) E2   USMC Inf Sqd 
 	leader      : Radford, rank 3 (Sgt)
 	formation   : E: core average platoon
 	OOB         : 83 ( US marine)
@@ -1005,7 +1007,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  27.45 %
 
-#0013 (04:04,03) E3   USMC Inf Sqd 
+#00013 (00004:00004,003) E3   USMC Inf Sqd 
 	leader      : Smith, rank 3 (Sgt)
 	formation   : E: core average platoon
 	OOB         : 83 ( US marine)
@@ -1041,7 +1043,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  53.87 %
 
-#0014 (05:05,00) F0   .30 Cal MMG
+#00014 (00005:00005,000) F0   .30 Cal MMG
 	leader      : Isaac, rank 4 (2Lt)
 	formation   : F: core average platoon
 	OOB         : 83 ( US marine)
@@ -1077,7 +1079,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0015 (05:05,01) F1   .30 Cal MMG
+#00015 (00005:00005,001) F1   .30 Cal MMG
 	leader      : Henderson, rank 3 (Sgt)
 	formation   : F: core average platoon
 	OOB         : 83 ( US marine)
@@ -1113,7 +1115,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0016 (05:05,02) F2   .30 Cal MMG
+#00016 (00005:00005,002) F2   .30 Cal MMG
 	leader      : O'hern, rank 3 (Sgt)
 	formation   : F: core average platoon
 	OOB         : 83 ( US marine)
@@ -1149,7 +1151,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0017 (06:06,00) G0   M2 60mm Mortar
+#00017 (00006:00006,000) G0   M2 60mm Mortar
 	leader      : Kramer, rank 4 (2Lt)
 	formation   : G: core dedicated artillery platoon
 	OOB         : 83 ( US marine)
@@ -1185,7 +1187,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0018 (06:06,01) G1   M2 60mm Mortar
+#00018 (00006:00006,001) G1   M2 60mm Mortar
 	leader      : Ferguson, rank 3 (Sgt)
 	formation   : G: core dedicated artillery platoon
 	OOB         : 83 ( US marine)
@@ -1221,7 +1223,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0019 (07:07,00) H0   USMC Eng Sec FT
+#00019 (00007:00007,000) H0   USMC Eng Sec FT
 	leader      : Jacobs, rank 6 (Cpt)
 	formation   : H: core recon platoon
 	OOB         : 83 ( US marine)
@@ -1257,7 +1259,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0020 (08:08,00) I0   USMC Eng Sec DC
+#00020 (00008:00008,000) I0   USMC Eng Sec DC
 	leader      : McKelvey, rank 4 (2Lt)
 	formation   : I: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1293,7 +1295,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0021 (08:08,01) I1   USMC Eng Sec DC
+#00021 (00008:00008,001) I1   USMC Eng Sec DC
 	leader      : Collins, rank 3 (Sgt)
 	formation   : I: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1329,7 +1331,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0022 (08:08,02) I2   USMC Eng Sec FT
+#00022 (00008:00008,002) I2   USMC Eng Sec FT
 	leader      : Amos, rank 3 (Sgt)
 	formation   : I: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1365,7 +1367,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0023 (09:09,00) J0   USMC Eng Sec DC
+#00023 (00009:00009,000) J0   USMC Eng Sec DC
 	leader      : Nino, rank 4 (2Lt)
 	formation   : J: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1401,7 +1403,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0024 (09:09,01) J1   USMC Eng Sec DC
+#00024 (00009:00009,001) J1   USMC Eng Sec DC
 	leader      : Reeves, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1437,7 +1439,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0025 (09:09,02) J2   USMC Eng Sec FT
+#00025 (00009:00009,002) J2   USMC Eng Sec FT
 	leader      : Davie, rank 3 (Sgt)
 	formation   : J: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1473,7 +1475,7 @@ Unit count: 32
 	losses      : 0
 	readiness   : 100.00 %
 
-#0026 (10:10,00) K0   USMC Eng Sec DC
+#00026 (00010:00010,000) K0   USMC Eng Sec DC
 	leader      : Gallegos, rank 4 (2Lt)
 	formation   : K: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1509,7 +1511,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  74.44 %
 
-#0027 (10:10,01) K1   USMC Eng Sec DC
+#00027 (00010:00010,001) K1   USMC Eng Sec DC
 	leader      : Ellis, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1545,7 +1547,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  78.90 %
 
-#0028 (10:10,02) K2   USMC Eng Sec FT
+#00028 (00010:00010,002) K2   USMC Eng Sec FT
 	leader      : Udell, rank 3 (Sgt)
 	formation   : K: core elite platoon
 	OOB         : 83 ( US marine)
@@ -1581,7 +1583,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  54.47 %
 
-#0029 (11:11,00) L0   .50 Cal HMG
+#00029 (00011:00011,000) L0   .50 Cal HMG
 	leader      : Guitierez, rank 4 (2Lt)
 	formation   : L: core average platoon
 	OOB         : 83 ( US marine)
@@ -1617,7 +1619,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  49.15 %
 
-#0030 (11:11,01) L1   .30 Cal HMG
+#00030 (00011:00011,001) L1   .30 Cal HMG
 	leader      : Jackson, rank 3 (Sgt)
 	formation   : L: core average platoon
 	OOB         : 83 ( US marine)
@@ -1653,7 +1655,7 @@ Unit count: 32
 	losses      : 0
 	readiness   :  75.00 %
 
-#0031 (11:11,02) L2   .30 Cal HMG
+#00031 (00011:00011,002) L2   .30 Cal HMG
 	leader      : Mizerak, rank 3 (Sgt)
 	formation   : L: core average platoon
 	OOB         : 83 ( US marine)

@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "gamefile/gamedata_secmap.h"
 #include "gamefile/spwaw/gamedata_spwaw.h"
+#include "gamefile/winspww2/gamedata_winspww2.h"
 #include "common/internal.h"
 
 SECMAP *
@@ -19,6 +20,8 @@ gamedata_SECMAP (SPWAW_GAME_TYPE gametype)
 			return (gamedata_spwaw_SECMAP());
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
+			return (gamedata_winspww2_SECMAP());
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			ERROR0 ("unsupported game type");

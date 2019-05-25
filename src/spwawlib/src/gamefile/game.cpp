@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "gamefile/game.h"
 #include "gamefile/spwaw/game_spwaw.h"
+#include "gamefile/winspww2/game_winspww2.h"
 #include "common/internal.h"
 
 GAMEDATA *
@@ -43,6 +44,8 @@ game_load_full (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAME
 				setup_spwaw_info (info, &game, data);
 				break;
 			case SPWAW_GAME_TYPE_WINSPWW2:
+				setup_winspww2_info (info, &game, data);
+				break;
 			case SPWAW_GAME_TYPE_UNKNOWN:
 			default:
 				ERROR0 ("unsupported game type");
@@ -64,6 +67,8 @@ game_load_info (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAME
 			return (game_load_spwaw_info(dir, id, info));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
+			return (game_load_winspww2_info(dir, id, info));
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			ERROR0 ("unsupported game type");

@@ -13,7 +13,6 @@
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "common/types.h"
-#include "gamefile/spwaw/section08_spwaw.h"
 
 SPWAW_ERROR
 snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
@@ -39,102 +38,6 @@ handle_error:
 	return (rc);
 }
 
-static void
-raw2tfs (SPWAW_TFS &tfs, BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
-{
-	SPWAW_TFSBITS1	*tfsbits1 = (SPWAW_TFSBITS1 *)&tfs1;
-	SPWAW_TFSBITS2	*tfsbits2 = (SPWAW_TFSBITS2 *)&tfs2;
-	SPWAW_TFSBITS3	*tfsbits3 = (SPWAW_TFSBITS3 *)&tfs3;
-	SPWAW_TFSBITS4	*tfsbits4 = (SPWAW_TFSBITS4 *)&tfs4;
-
-	tfs.tfs.field		= tfsbits1->has_field;
-	tfs.tfs.slope		= tfsbits1->has_slope;
-	tfs.tfs.trees		= tfsbits1->has_trees;
-	tfs.tfs.stream		= tfsbits1->has_stream;
-	tfs.tfs.building_stone	= tfsbits1->has_bld_stone;
-	tfs.tfs.building_wood	= tfsbits1->has_bld_wood;
-	tfs.tfs.road1		= tfsbits1->has_road1;
-	tfs.tfs.road2		= tfsbits1->has_road2;
-
-	tfs.tfs.bridge_wood	= tfsbits2->has_brg_wood;
-	tfs.tfs.bridge_stone	= tfsbits2->has_brg_stone;
-	tfs.tfs.swamp		= tfsbits2->has_swamp;
-	tfs.tfs.water		= tfsbits2->has_water;
-	tfs.tfs.rough		= tfsbits2->has_rough;
-
-	tfs.tfs.railroad	= tfsbits3->has_railroad;
-	tfs.tfs.water_shallow	= tfsbits3->has_shwater;
-	tfs.tfs.water_deep	= tfsbits3->has_dpwater;
-	tfs.tfs.orchard		= tfsbits3->has_orchard;
-
-	tfs.tfs.wall		= tfsbits4->has_wall;
-	tfs.tfs.path		= tfsbits4->has_path;
-	tfs.tfs.bocage		= tfsbits4->has_bocage;
-}
-
-#define	copyMD(name)	data->##name = data_v10.##name
-
-SPWAW_ERROR
-snapshot_load_v10_map_data (SBR *sbr, SNAP_MAPDATA *data)
-{
-	SNAP_MAPDATA_V10	data_v10;
-	SPWAW_TFS		tfs;
-
-	CNULLARG (sbr); CNULLARG (data);
-	memset (data, 0, sizeof (SNAP_MAPDATA));
-
-	if (sbread (sbr, (char *)&data_v10, sizeof (SNAP_MAPDATA_V10)) != sizeof (SNAP_MAPDATA_V10))
-			RWE (SPWERR_FRFAILED, "sbread(v10 raw map data)");
-
-	/* The V10 snapshot unit element lacks the tfs and the tram connection data.
-	 * V10 snapshots only support the SPWAW_GAME_TYPE_SPWAW game type, which means:
-	 * + the tfs bits must be interpreted as SP:WaW tfs bits
-	 * + there are no tramline connections
-	 */
-	raw2tfs (tfs, data_v10.has_T1, data_v10.has_T2, data_v10.has_T3, data_v10.has_T4);
-	data->tfs = tfs.raw;
-	data->conn_tram = 0;
-
-	copyMD (height);
-	copyMD (has_T1); copyMD (has_T2); copyMD (has_T3); copyMD (has_T4);
-	copyMD (conn_road1); copyMD (conn_road2); copyMD (conn_rail);
-
-	return (SPWERR_OK);
-}
-
-SPWAW_ERROR
-snapshot_load_v10_oob_header (int fd, SNAP_OOBHDR *hdr)
-{
-	SPWAW_ERROR	rc = SPWERR_OK;
-	SNAP_OOBHDR_V10	hdr_v10;
-
-	if (!hdr) return (SPWERR_NULLARG);
-
-	if (!bread (fd, (char *)&hdr_v10, sizeof (SNAP_OOBHDR_V10), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot OOB data hdr v10) failed", handle_error);
-
-	/* The V10 snapshot OOB data header has an unused fstart field. */
-	hdr->fcnt  = hdr_v10.fcnt;
-	hdr->fpos  = hdr_v10.fpos;
-	hdr->fsize = hdr_v10.fsize;
-	hdr->fcomp = hdr_v10.fcomp;
-	hdr->ucnt  = hdr_v10.ucnt;
-	hdr->upos  = hdr_v10.upos;
-	hdr->usize = hdr_v10.usize;
-	hdr->ucomp = hdr_v10.ucomp;
-	hdr->lcnt  = hdr_v10.lcnt;
-	hdr->lpos  = hdr_v10.lpos;
-	hdr->lsize = hdr_v10.lsize;
-	hdr->lcomp = hdr_v10.lcomp;
-	hdr->pcnt  = hdr_v10.pcnt;
-	hdr->ppos  = hdr_v10.ppos;
-	hdr->psize = hdr_v10.psize;
-	hdr->pcomp = hdr_v10.pcomp;
-
-handle_error:
-	return (rc);
-}
-
 #define	copyOU(name)	uel->##name = uel_v10.##name
 
 SPWAW_ERROR
@@ -151,6 +54,7 @@ snapshot_load_v10_oob_uel (SBR *sbr, SNAP_OOB_UEL *uel)
 	uel->dutype = UT_UNKNOWN;
 	uel->aband = AS_NONE;
 
+	/* The V10 snapshot data storage uses data types with different widths. */
 	copyOU (RID); copyOU (FRID); copyOU (FMID); copyOU (FSID);
 	copyOU (name);
 	copyOU (classID); copyOU (OOB); copyOU (OOBrid);

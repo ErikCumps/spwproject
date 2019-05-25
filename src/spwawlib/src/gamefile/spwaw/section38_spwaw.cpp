@@ -16,7 +16,7 @@ SPWAW_ERROR
 section38_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*stab*/)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
-	MAP_WIDTH		*data;
+	SPWAW_MAP_WIDTH		*data;
 	SPWAW_SNAP_MAP_RAW	*map;
 
 	CNULLARG (src); CNULLARG (dst);

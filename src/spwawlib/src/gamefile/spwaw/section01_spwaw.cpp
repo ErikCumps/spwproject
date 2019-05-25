@@ -79,21 +79,21 @@
 
 /* Determines if a unit is a unit (or a crew/special attached unit) */
 static inline bool
-is_this_a_UNIT (UNIT *data, USHORT idx)
+is_this_a_UNIT (SPWAW_UNIT *data, USHORT idx)
 {
 	return (data[idx].minform < CREWFSID);
 }
 
 /* Determines if a unit is a special attached unit (or a crew/regular unit) */
 static inline bool
-is_this_a_SPAU (UNIT *data, USHORT idx)
+is_this_a_SPAU (SPWAW_UNIT *data, USHORT idx)
 {
 	return ((data[idx].minform >= SPAUFSID) && (data[idx].minform < SPAUCREWFSID));
 }
 
 /* Builds a list of all the candidate units */
 static SPWAW_ERROR
-find_candidate_units (UNIT *udata, UNIT_POS *pdata, BYTE player, FULIST &ful)
+find_candidate_units (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FULIST &ful)
 {
 	USHORT	i;
 	char	name[SPWAW_AZSNAME+1];
@@ -201,7 +201,7 @@ find_candidate_units (UNIT *udata, UNIT_POS *pdata, BYTE player, FULIST &ful)
 
 /* Links up all candidate crews */
 static SPWAW_ERROR
-link_candidate_crews (FULIST &ful, UNIT *data)
+link_candidate_crews (FULIST &ful, SPWAW_UNIT *data)
 {
 	UEL	*p;
 	UEL	*uel;
@@ -479,7 +479,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 /* Determines the maximum number of units for the formation identified by the OOB record ID */
 static inline bool
-formation_unitcount (SPWOOB *OOB, USHORT OOBid, BYTE OOBrid, BYTE &cnt)
+formation_unitcount (SPWOOB *OOB, USHORT OOBid, USHORT OOBrid, BYTE &cnt)
 {
 	SPWOOB_DATA	*oobdata;
 	SPWOOB_FDATA	*data;
@@ -727,7 +727,7 @@ drop_crew:
 
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (UNIT *udata, UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
+unitcount (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 {
 	SPWAW_ERROR	rc;
 
@@ -771,7 +771,7 @@ setup (SPWAW_SNAP_OOB_URAW *dst, ULIST &up)
 }
 
 static SPWAW_ERROR
-add_unit (UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *stab)
+add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *stab)
 {
 	SPWAW_SNAP_OOB_UELRAW	*ptr;
 
@@ -871,8 +871,8 @@ SPWAW_ERROR
 section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
-	UNIT		*udata;
-	UNIT_POS	*pdata;
+	SPWAW_UNIT	*udata;
+	SPWAW_UNIT_POS	*pdata;
 	SPWAW_DATE	date;
 
 	CNULLARG (src); CNULLARG (dst);
@@ -901,7 +901,7 @@ SPWAW_ERROR
 section01_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
-	UNIT		*data;
+	SPWAW_UNIT	*data;
 	SPWAW_DATE	date;
 	USHORT		idx;
 	UEL		*p;

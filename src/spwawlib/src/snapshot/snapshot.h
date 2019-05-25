@@ -32,7 +32,7 @@ extern SPWAW_ERROR		snapbattlefix		(SPWAW_SNAPSHOT *ptr, SPWAW_SNAPSHOT *ref);
 extern SPWAW_ERROR		OOB_link		(SPWAW_SNAP_OOB *oob, bool prepsf);
 
 extern bool			check_unitid		(DWORD urid, SPWAW_SNAP_OOB_URAW *ptr, SPWAW_SNAP_OOB_UELRAW **udata);
-extern bool			check_formationid	(DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, BYTE *fid, SPWAW_SNAP_OOB_FELRAW **fdata);
+extern bool			check_formationid	(DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, USHORT *fid, SPWAW_SNAP_OOB_FELRAW **fdata);
 
 extern SPWAW_SNAP_OOB_UEL *	unitbyid		(DWORD urid, SPWAW_SNAP_OOB_FORCE *ptr);
 extern SPWAW_SNAP_OOB_UEL *	crewbyid		(DWORD urid, SPWAW_SNAP_OOB_FORCE *ptr);

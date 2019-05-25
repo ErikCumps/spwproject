@@ -11,15 +11,15 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_MAP_DATA0 {
+typedef struct s_SPWAW_MAP_DATA0 {
 	char	__data[8];
-} MAP_DATA0;
+} SPWAW_MAP_DATA0;
 
 typedef struct s_SPWAW_SECTION09 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC09];
 		struct s_d {
-			MAP_DATA0	data[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
+			SPWAW_MAP_DATA0	data[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
 		} d;
 	} u;
 } SPWAW_SECTION09;

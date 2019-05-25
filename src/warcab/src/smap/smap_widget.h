@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - widget.
  *
- * Copyright (C) 2012-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -92,6 +92,7 @@ private:
 		QString		status;
 		QString		spotted;
 		QString		entrenchment;
+		QString		contact;
 	} UNIT_INFO;
 
 	struct s_data {

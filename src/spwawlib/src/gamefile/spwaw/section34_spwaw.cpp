@@ -29,7 +29,7 @@ setup (SPWAW_SNAP_OOB_LRAW *dst, ULIST &up)
 }
 
 static SPWAW_ERROR
-add_leader (LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STRTAB *stab)
+add_leader (SPWAW_LEADER *src, USHORT id, SPWAW_SNAP_OOB_LELRAW *dst, USHORT *idx, STRTAB *stab)
 {
 	SPWAW_SNAP_OOB_LELRAW	*ptr;
 
@@ -63,7 +63,7 @@ SPWAW_ERROR
 section34_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
-	LEADER		*data;
+	SPWAW_LEADER	*data;
 	USHORT		idx;
 	UEL		*p;
 

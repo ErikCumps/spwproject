@@ -48,7 +48,7 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE *ptr)
 }
 
 static void
-report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr)
+report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
 {
 	if (!ptr) return;
 
@@ -63,6 +63,9 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr)
 		fprintf (rf, "Major victories      : %d\n", ptr->data.majvics);
 		fprintf (rf, "Minor victories      : %d\n", ptr->data.minvics);
 		fprintf (rf, "Losses               : %d\n", ptr->data.losses);
+		fprintf (rf, "\n");
+
+		fprintf (rf, "Battle index         : %u\n", game->btlidx);
 		fprintf (rf, "\n");
 
 		fprintf (rf, "                       %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s\n",
@@ -115,7 +118,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 
 	report_comment	(rf, &(ptr->cmt));
 	report_battle	(rf, &(ptr->battle));
-	report_campaign	(rf, &(ptr->campaign));
+	report_campaign	(rf, &(ptr->campaign), ptr);
 	report_map	(rf, &(ptr->map));
 
 	fprintf (rf, "Battle turn status: %s\n", ptr->battle.strings.status);
@@ -199,7 +202,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s%-4s: %-16s (%-3s %-16s) RID %4.4u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
@@ -239,7 +242,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s%-4s: %-16s (%-3s %-16s) RID %4.4u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",

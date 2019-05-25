@@ -31,7 +31,7 @@
 //	+ formations are not always saved in contiguous groups
 
 static SPWAW_ERROR
-build_formations_list (FORMATION *src, BYTE player, FLIST &fl)
+build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 {
 	int	seen[FORMCOUNT];
 	USHORT	i;
@@ -94,7 +94,7 @@ build_formations_list (FORMATION *src, BYTE player, FLIST &fl)
 }
 
 static SPWAW_ERROR
-build_formations (FORMATION *src, BYTE player, FLIST &fl)
+build_formations (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 {
 	SPWAW_ERROR	rc;
 
@@ -109,7 +109,7 @@ build_formations (FORMATION *src, BYTE player, FLIST &fl)
 }
 
 static SPWAW_ERROR
-add_formation (FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab, SPWOOB_FDATA *oob)
+add_formation (SPWAW_FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab, SPWOOB_FDATA *oob)
 {
 	SPWAW_UD		*UD;
 
@@ -117,7 +117,7 @@ add_formation (FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab,
 	dst->FID	= p->d.FID;
 
 	// Do not copy the names of force HQ formations, these names will be generated later
-	if ((oob && (oob[src->OOBrid].type != SPWOOB_FTYPE_FHQ)) && (src->name[0] != '\0')) {
+	if ((oob && (oob[p->d.OOBrid].type != SPWOOB_FTYPE_FHQ)) && (src->name[0] != '\0')) {
 		dst->name = azstrstab (src->name, stab);
 	} else {
 		dst->name = NULL;
@@ -141,7 +141,7 @@ add_formation (FORMATION *src, FEL *p, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab,
 }
 
 static SPWAW_ERROR
-add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab, SPWOOB *oob)
+add_formations (SPWAW_FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *stab, SPWOOB *oob)
 {
 	SPWAW_ERROR	rc;
 	FEL		*p;
@@ -156,7 +156,6 @@ add_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTAB *sta
 	p = fl.head; idx = 0;
 	while (p) {
 		rid = p->d.RID;
-		src[rid].OOBrid = p->d.OOBrid;
 		rc = add_formation (&src[rid], p, &(dst->raw[idx]), stab, oob ? oob->data[p->d.OOB]->fdata : NULL);
 		ERRORGOTO ("add_formation()", handle_error);
 
@@ -193,7 +192,7 @@ section35_spwaw_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
 }
 
 static SPWAW_ERROR
-section35_spwaw_save_formations (FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, SPWOOB *oob, FLIST &fl)
+section35_spwaw_save_formations (SPWAW_FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, STRTAB *stab, SPWOOB *oob, FLIST &fl)
 {
 	SPWAW_ERROR	rc;
 

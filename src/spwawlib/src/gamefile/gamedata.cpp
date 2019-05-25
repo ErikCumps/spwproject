@@ -10,6 +10,7 @@
 #include "gamefile/gamedata.h"
 #include "gamefile/spwaw/gamedata_spwaw.h"
 #include "gamefile/spwaw/cmt_spwaw.h"
+#include "gamefile/winspww2/gamedata_winspww2.h" 
 #include "gamefile/winspww2/cmt_winspww2.h"
 #include "gamefile/packing.h"
 #include "common/internal.h"
@@ -25,6 +26,9 @@ gamedata_new_data (GAMEDATA *game)
 			return (true);
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
+			game->data = gamedata_winspww2_new_data();
+			return (true);
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			ERROR0 ("unsupported game type");
@@ -43,6 +47,8 @@ gamedata_free_data (GAMEDATA *game)
 			gamedata_spwaw_free_data(&(game->data));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
+			gamedata_winspww2_free_data(&(game->data));
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			ERROR0 ("unsupported game type");

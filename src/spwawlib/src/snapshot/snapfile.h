@@ -97,34 +97,34 @@ typedef struct s_SNAP_CAMPAIGN {
 	USHORT		majvics;		/* Major victories							*/
 	USHORT		minvics;		/* Minor victories							*/
 	USHORT		battles_max;		/* Max battles								*/
-	USHORT		P1BLmen;		/* Player1 battle losses: men						*/
-	USHORT		P1BLart;		/* Player1 battle losses: ART						*/
-	USHORT		P1BLsoft;		/* Player1 battle losses: soft vehicles					*/
-	USHORT		P1BLapc;		/* Player1 battle losses: APC						*/
-	USHORT		P1BLafv;		/* Player1 battle losses: AFV						*/
-	USHORT		P1BLgliders;		/* Player1 battle losses: gliders					*/
-	USHORT		P1BLair;		/* Player1 battle losses: aircraft					*/
-	USHORT		P2BLmen;		/* Player2 battle losses: men						*/
-	USHORT		P2BLart;		/* Player2 battle losses: ART						*/
-	USHORT		P2BLsoft;		/* Player2 battle losses: soft vehicles					*/
-	USHORT		P2BLapc;		/* Player2 battle losses: APC						*/
-	USHORT		P2BLafv;		/* Player2 battle losses: AFV						*/
-	USHORT		P2BLgliders;		/* Player2 battle losses: gliders					*/
-	USHORT		P2BLair;		/* Player2 battle losses: aircraft					*/
+	DWORD		P1BLmen;		/* Player1 battle losses: men						*/
+	DWORD		P1BLart;		/* Player1 battle losses: ART						*/
+	DWORD		P1BLsoft;		/* Player1 battle losses: soft vehicles					*/
+	DWORD		P1BLapc;		/* Player1 battle losses: APC						*/
+	DWORD		P1BLafv;		/* Player1 battle losses: AFV						*/
+	DWORD		P1BLgliders;		/* Player1 battle losses: gliders					*/
+	DWORD		P1BLair;		/* Player1 battle losses: aircraft					*/
+	DWORD		P2BLmen;		/* Player2 battle losses: men						*/
+	DWORD		P2BLart;		/* Player2 battle losses: ART						*/
+	DWORD		P2BLsoft;		/* Player2 battle losses: soft vehicles					*/
+	DWORD		P2BLapc;		/* Player2 battle losses: APC						*/
+	DWORD		P2BLafv;		/* Player2 battle losses: AFV						*/
+	DWORD		P2BLgliders;		/* Player2 battle losses: gliders					*/
+	DWORD		P2BLair;		/* Player2 battle losses: aircraft					*/
 	USHORT		P1TLmen;		/* Player1 campaign total losses: men					*/
-	USHORT		P1TLart;		/* Player1 campaign total losses: ART					*/
-	USHORT		P1TLsoft;		/* Player1 campaign total losses: soft vehicles				*/
-	USHORT		P1TLapc;		/* Player1 campaign total losses: APC					*/
-	USHORT		P1TLafv;		/* Player1 campaign total losses: AFV					*/
-	USHORT		P1TLgliders;		/* Player1 campaign total losses: gliders				*/
-	USHORT		P1TLair;		/* Player1 campaign total losses: aircraft				*/
+	DWORD		P1TLart;		/* Player1 campaign total losses: ART					*/
+	DWORD		P1TLsoft;		/* Player1 campaign total losses: soft vehicles				*/
+	DWORD		P1TLapc;		/* Player1 campaign total losses: APC					*/
+	DWORD		P1TLafv;		/* Player1 campaign total losses: AFV					*/
+	DWORD		P1TLgliders;		/* Player1 campaign total losses: gliders				*/
+	DWORD		P1TLair;		/* Player1 campaign total losses: aircraft				*/
 	USHORT		P2TLmen;		/* Player2 campaign total losses: men					*/
-	USHORT		P2TLart;		/* Player2 campaign total losses: ART					*/
-	USHORT		P2TLsoft;		/* Player2 campaign total losses: soft vehicles				*/
-	USHORT		P2TLapc;		/* Player2 campaign total losses: APC					*/
-	USHORT		P2TLafv;		/* Player2 campaign total losses: AFV					*/
-	USHORT		P2TLgliders;		/* Player2 campaign total losses: gliders				*/
-	USHORT		P2TLair;		/* Player2 campaign total losses: aircraft				*/
+	DWORD		P2TLart;		/* Player2 campaign total losses: ART					*/
+	DWORD		P2TLsoft;		/* Player2 campaign total losses: soft vehicles				*/
+	DWORD		P2TLapc;		/* Player2 campaign total losses: APC					*/
+	DWORD		P2TLafv;		/* Player2 campaign total losses: AFV					*/
+	DWORD		P2TLgliders;		/* Player2 campaign total losses: gliders				*/
+	DWORD		P2TLair;		/* Player2 campaign total losses: aircraft				*/
 	USHORT		busy;			/* Inverted battle busy flag						*/
 	DWORD		P1score;		/* Player1 battle score							*/
 	DWORD		P2score;		/* Player2 battle score							*/
@@ -161,11 +161,11 @@ typedef struct s_SNAP_MAPDATA {
 
 typedef struct s_SNAP_OOB_FEL {
 	USHORT		RID;			/* Formation record ID							*/
-	BYTE		FID;			/* Formation ID								*/
+	USHORT		FID;			/* Formation ID								*/
 	ULONG		name;			/* Formation name symbol						*/
 	USHORT		leader;			/* Formation leader unit record ID					*/
 	USHORT		hcmd;			/* Formation higher command leader unit record ID			*/
-	BYTE		OOBrid;			/* Formation OOB record ID						*/
+	USHORT		OOBrid;			/* Formation OOB record ID						*/
 	BYTE		status;			/* Formation campaign status						*/
 } SNAP_OOB_FEL;
 
@@ -173,12 +173,12 @@ typedef struct s_SNAP_OOB_UEL {
 	BYTE		dutype;			/* Detected unit type							*/
 	USHORT		RID;			/* Unit record ID							*/
 	USHORT		FRID;			/* Unit formation record ID						*/
-	BYTE		FMID;			/* Unit formation major ID						*/
+	USHORT		FMID;			/* Unit formation major ID						*/
 	BYTE		FSID;			/* Unit formation sub ID						*/
 	ULONG		name;			/* Unit name symbol							*/
 	BYTE		classID;		/* Unit class ID							*/
 	BYTE		OOB;			/* Unit OOB ID								*/
-	BYTE		OOBrid;			/* Unit OOB record ID							*/
+	USHORT		OOBrid;			/* Unit OOB record ID							*/
 	BYTE		size;			/* Unit size								*/
 	BYTE		cost;			/* Unit cost								*/
 	BYTE		survive;		/* Unit survivability							*/
@@ -225,7 +225,7 @@ typedef struct s_SNAP_OOB_LEL {
 	BYTE		inf;			/* Leader infantry skill						*/
 	BYTE		art;			/* Leader artillery skill						*/
 	BYTE		arm;			/* Leader armor skill							*/
-	BYTE		kills;			/* Leader kill count							*/
+	USHORT		kills;			/* Leader kill count							*/
 	BYTE		status;			/* Leader status							*/
 } SNAP_OOB_LEL;
 

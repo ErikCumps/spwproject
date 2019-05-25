@@ -11,7 +11,7 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_FORMATION {
+typedef struct s_SPWAW_FORMATION {
 	char	name[SPWAW_AZSNAME];	/* Formation name (ASCIIZ)	*/
 	BYTE	OOBrid;			/* Formation OOB record ID?	*/
 	char	__data000[1];
@@ -23,13 +23,13 @@ typedef struct s_FORMATION {
 	BYTE	status:3;		/* Formation campaign status	*/
 	BYTE	reserved:5;
 	char	__data011[13];
-} FORMATION;
+} SPWAW_FORMATION;
 
 typedef struct s_SPWAW_SECTION35 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC35];
 		struct s_d {
-			FORMATION	formations[SPWAW_FORMCOUNT];
+			SPWAW_FORMATION	formations[SPWAW_FORMCOUNT];
 		} d;
 	} u;
 } SPWAW_SECTION35;

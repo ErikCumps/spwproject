@@ -29,7 +29,7 @@ setup (SPWAW_SNAP_OOB_PRAW *dst, ULIST &up)
 }
 
 static SPWAW_ERROR
-add_unitpos (UNIT_POS *src, USHORT id, SPWAW_SNAP_OOB_PELRAW *dst, USHORT *idx)
+add_unitpos (SPWAW_UNIT_POS *src, USHORT id, SPWAW_SNAP_OOB_PELRAW *dst, USHORT *idx)
 {
 	SPWAW_SNAP_OOB_PELRAW	*ptr;
 
@@ -56,7 +56,7 @@ SPWAW_ERROR
 section17_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB * /*stab*/, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
-	UNIT_POS	*data;
+	SPWAW_UNIT_POS	*data;
 	USHORT		idx;
 	UEL		*p;
 

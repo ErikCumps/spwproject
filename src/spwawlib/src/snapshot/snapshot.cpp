@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #include <spwawlib_api.h>
 #include "snapshot/snapshot.h"
 #include "gamefile/spwaw/game_spwaw.h"
+#include "gamefile/winspww2/game_winspww2.h"
 #include "common/internal.h"
 
 SPWAW_ERROR
@@ -22,6 +23,8 @@ load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 			return (load_from_spwaw_game (src, dst));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
+			return (load_from_winspww2_game (src, dst));
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			RWE (SPWERR_FAILED, "unsupported game type");
@@ -50,7 +53,7 @@ check_unitid (DWORD urid, SPWAW_SNAP_OOB_URAW *ptr, SPWAW_SNAP_OOB_UELRAW **udat
 
 // Checks formation record ID
 bool
-check_formationid (DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, BYTE *fid, SPWAW_SNAP_OOB_FELRAW **fdata)
+check_formationid (DWORD frid, SPWAW_SNAP_OOB_FRAW *ptr, USHORT *fid, SPWAW_SNAP_OOB_FELRAW **fdata)
 {
 	DWORD	i;
 

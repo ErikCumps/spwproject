@@ -16,7 +16,7 @@
 void
 section37_spwaw_prepare (SPWAW_SECTION37 *src)
 {
-	GAME_DATA	*data;
+	SPWAW_GAME_DATA	*data;
 
 	if (!src) return;
 
@@ -27,7 +27,7 @@ section37_spwaw_prepare (SPWAW_SECTION37 *src)
 SPWAW_ERROR
 section37_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 {
-	GAME_DATA		*data;
+	SPWAW_GAME_DATA		*data;
 	SPWAW_SNAP_BATTLE_RAW	*bp;
 	SPWAW_SNAP_CAMPAIGN_RAW	*cp;
 	int			i;
@@ -44,6 +44,7 @@ section37_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	bp->month = data->Mgame;
 	bp->day   = data->Dgame;
 	bp->hour  = data->Hgame;
+
 	bp->location   = azstrstab (data->location, stab);
 	bp->terrain    = data->terrain;
 	bp->weather    = data->weather;

@@ -11,17 +11,17 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_RECHEAD {
+typedef struct s_SPWAW_RECHEAD {
 	char	__data00[4];
 	DWORD	size;		/* Data size in bytes	*/
 	char	__data01[72];
-} RECHEAD;
+} SPWAW_RECHEAD;
 
 typedef struct s_SPWAW_SECTION48 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC48];
 		struct s_d {
-			RECHEAD	data;
+			SPWAW_RECHEAD	data;
 		} d;
 	} u;
 } SPWAW_SECTION48;

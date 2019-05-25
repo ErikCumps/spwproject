@@ -50,7 +50,7 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE *ptr)
 }
 
 static void
-report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr)
+report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
 {
 	if (!ptr) return;
 
@@ -65,6 +65,9 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr)
 		fprintf (rf, "Major victories      : %d\n", ptr->data.majvics);
 		fprintf (rf, "Minor victories      : %d\n", ptr->data.minvics);
 		fprintf (rf, "Losses               : %d\n", ptr->data.losses);
+		fprintf (rf, "\n");
+
+		fprintf (rf, "Battle index         : %u\n", game->btlidx);
 		fprintf (rf, "\n");
 
 		fprintf (rf, "                       %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s\n",
@@ -116,7 +119,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 
 	report_comment	(rf, &(ptr->cmt));
 	report_battle	(rf, &(ptr->battle));
-	report_campaign	(rf, &(ptr->campaign));
+	report_campaign	(rf, &(ptr->campaign), ptr);
 	report_map	(rf, &(ptr->map));
 
 	fprintf (rf, "Battle turn status: %s\n", ptr->battle.strings.status);
@@ -151,7 +154,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 	for (i=0; i<ptr->cnt; i++) {
 		fp = &(ptr->list[i]);
 
-		fprintf (rf, "#%4.4u %s (FID %2.2u)\n", fp->data.RID, fp->strings.name, fp->data.FID);
+		fprintf (rf, "#%5.5u %s (FID %5.5u)\n", fp->data.RID, fp->strings.name, fp->data.FID);
 		fprintf (rf, "\tleader      : %s %s (%s %s)\n",
 			fp->data.leader.up->strings.uid, fp->data.leader.up->data.type,
 			fp->data.leader.up->strings.rank, fp->data.leader.up->data.name);
@@ -223,7 +226,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		p = &(ptr->list[i]);
 
-		fprintf (rf, "#%4.4u (%2.2u:%2.2u,%2.2u) %-4s %s\n",
+		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
 			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.type);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.name, p->data.rank, p->strings.rank);
@@ -320,7 +323,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		p = &(ptr->list[i]);
 
-		fprintf (rf, "#%4.4u (%2.2u:%2.2u,%2.2u) %-4s %s\n",
+		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
 			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.type);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.name, p->data.rank, p->strings.rank);

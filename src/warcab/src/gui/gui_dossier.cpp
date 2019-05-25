@@ -213,11 +213,11 @@ report_GMD (MDLD_TREE_ITEM *p)
 				SPWAW_date2str (&(p->data.b->date), &s);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] date     = %s\n", s); free (s);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] location = %s\n", p->data.b->location);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p1   = %d\n", p->data.b->OOB_p1);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p2   = %d\n", p->data.b->OOB_p2);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p1   = %u\n", p->data.b->OOB_p1);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p2   = %u\n", p->data.b->OOB_p2);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p1  = %s\n", p->data.b->miss_p1);
 				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p2  = %s\n", p->data.b->miss_p2);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] turns    = %d\n", p->data.b->tcnt);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] turns    = %u\n", p->data.b->tcnt);
 			}
 			break;
 		case MDLD_TREE_BTURN:
@@ -225,7 +225,7 @@ report_GMD (MDLD_TREE_ITEM *p)
 			if (p->data.t) {
 				SPWAW_date2str (&(p->data.t->date), &s);
 				DBG_log ("[MDLD_TREE_ITEM_BTURN] date = %s\n", s); free (s);
-				DBG_log ("[MDLD_TREE_ITEM_BTURN] turn = %d\n", p->data.t->turn);
+				DBG_log ("[MDLD_TREE_ITEM_BTURN] turn = %u\n", p->data.t->turn);
 			}
 			break;
 		default:

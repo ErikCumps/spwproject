@@ -11,7 +11,7 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_LEADER {
+typedef struct s_SPWAW_LEADER {
 	char	name[SPWAW_AZSNAME];	/* Leader name (ASCIIZ)				*/
 	USHORT	UID;			/* Unit record ID???				*/
 	char	__data00[1];
@@ -25,13 +25,13 @@ typedef struct s_LEADER {
 	char	__data02[1];
 	BYTE	status;			/* Leader status				*/
 	char	__data03[1];
-} LEADER;
+} SPWAW_LEADER;
 
 typedef struct s_SPWAW_SECTION34 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC34];
 		struct s_d {
-			LEADER	leaders[SPWAW_LEADERCOUNT];
+			SPWAW_LEADER	leaders[SPWAW_LEADERCOUNT];
 		} d;
 	} u;
 } SPWAW_SECTION34;

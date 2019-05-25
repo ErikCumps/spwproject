@@ -11,15 +11,15 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_MAP_HEIGHT {
+typedef struct s_SPWAW_MAP_HEIGHT {
 	DWORD	size;	/* Map height in hexes	*/
-} MAP_HEIGHT;
+} SPWAW_MAP_HEIGHT;
 
 typedef struct s_SPWAW_SECTION39 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC39];
 		struct s_d {
-			MAP_HEIGHT	data;
+			SPWAW_MAP_HEIGHT	data;
 		} d;
 	} u;
 } SPWAW_SECTION39;

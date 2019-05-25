@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - rendering.
  *
- * Copyright (C) 2012-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -60,6 +60,7 @@ SmapRenderer::SmapRenderer (SMAP_RENDERDATA &renderdata)
 	d.pm.height[hthm2idx(SMAP_HH_025, SMAP_HM_START)] = renderdata.xpms.h025;
 	d.pm.height[hthm2idx(SMAP_HH_030, SMAP_HM_START)] = renderdata.xpms.h030;
 	d.pm.height[hthm2idx(SMAP_HH_035, SMAP_HM_START)] = renderdata.xpms.h035;
+	// FIXME: winSPWW2 has a much greater range of heights!
 
 	for (hidx=SMAP_HH_START; hidx<=SMAP_HH_LAST; hidx++) {
 		for (midx=SMAP_HM_START; midx<=SMAP_HM_LAST; midx++) {

@@ -1016,26 +1016,26 @@ verify_candidate_units: [037] VLAT: F<011,004> (    M3 Halftrack) ACCEPTED
 verify_candidate_units: [043] VLAT: F<011,005> (    M3 Halftrack) ACCEPTED
 unitcount: ul.cnt=32
 FLIST: { { s.nidx=13 }, cnt=10 }
-    [00000] ( TGN's SPWAW 1.0) P<000> L<00000> status=000 units=001 OOB 082: [001] FID<00000> RAW<00000>
+    [00000] ( TGN's SPWAW 1.0) P<000> L<00000> H<00000> status=000 units=001 OOB 082: [00001] FID<00000> RAW<00000>
         [000] ptr[00000]
-    [00002] (    Med Tank Plt) P<000> L<00001> status=000 units=005 OOB 082: [011] FID<00001> RAW<00001>
+    [00002] (    Med Tank Plt) P<000> L<00001> H<00000> status=000 units=005 OOB 082: [00011] FID<00001> RAW<00001>
         [000] ptr[00001]
         [001] ptr[00002]
         [002] ptr[00003]
         [003] ptr[00004]
         [004] ptr[00005]
-    [00003] (          TD Plt) P<000> L<00006> status=000 units=004 OOB 082: [018] FID<00002> RAW<00002>
+    [00003] (          TD Plt) P<000> L<00006> H<00000> status=000 units=004 OOB 082: [00018] FID<00002> RAW<00002>
         [000] ptr[00006]
         [001] ptr[00007]
         [002] ptr[00008]
         [003] ptr[00009]
-    [00004] ( Armored Car Sec) P<000> L<00011> status=000 units=002 OOB 082: [003] FID<00003> RAW<00003>
+    [00004] ( Armored Car Sec) P<000> L<00011> H<00000> status=000 units=002 OOB 082: [00003] FID<00003> RAW<00003>
         [000] ptr[00011]
         [001] ptr[00012]
-    [00005] ( Armored Car Sec) P<000> L<00013> status=000 units=002 OOB 082: [003] FID<00004> RAW<00004>
+    [00005] ( Armored Car Sec) P<000> L<00013> H<00000> status=000 units=002 OOB 082: [00003] FID<00004> RAW<00004>
         [000] ptr[00013]
         [001] ptr[00014]
-    [00006] (    Mech Inf Plt) P<000> L<00015> status=000 units=010 OOB 082: [098] FID<00005> RAW<00005>
+    [00006] (    Mech Inf Plt) P<000> L<00015> H<00000> status=000 units=010 OOB 082: [00098] FID<00005> RAW<00005>
         [000] ptr[00015]
         [001] ptr[00016]
         [002] ptr[00017]
@@ -1046,51 +1046,51 @@ FLIST: { { s.nidx=13 }, cnt=10 }
     --- [007] nil[65535]
     --- [008] nil[65535]
     --- [009] nil[65535]
-    [00007] (        How Btry) P<000> L<00025> status=000 units=001 OOB 082: [131] FID<00006> RAW<00006>
+    [00007] (        How Btry) P<000> L<00025> H<00000> status=000 units=001 OOB 082: [00131] FID<00006> RAW<00006>
         [000] ptr[00025]
-    [00014] ( Utility Vehicle) P<000> L<00028> status=000 units=001 OOB 082: [048] FID<00009> RAW<00009>
+    [00014] ( Utility Vehicle) P<000> L<00028> H<00000> status=000 units=001 OOB 082: [00048] FID<00009> RAW<00009>
         [000] ptr[00028]
-    [00017] ( Strike Aircraft) P<000> L<00029> status=000 units=002 OOB 082: [044] FID<00010> RAW<00010>
+    [00017] ( Strike Aircraft) P<000> L<00029> H<00000> status=000 units=002 OOB 082: [00044] FID<00010> RAW<00010>
         [000] ptr[00029]
         [001] ptr[00030]
-    [00019] (   Halftrack Plt) P<000> L<00031> status=000 units=004 OOB 082: [059] FID<00011> RAW<00011>
+    [00019] (   Halftrack Plt) P<000> L<00031> H<00000> status=000 units=004 OOB 082: [00059] FID<00011> RAW<00011>
         [000] ptr[00031]
         [001] ptr[00032]
         [002] ptr[00033]
         [003] ptr[00034]
 ULIST: { { s.nidx=32 }, cnt=32 }
-    [00000] (    US Commander) UNIT leader=[00000] abandoned=0 loader<00028> vrf=N vrfneed=N  OOB 082: [243] F[00000]<00000,00000> ptr[00000] link crew=nil[65535], parent=nil[65535]
-    [00001] (    M4A3 Sherman) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00000> ptr[00002] link crew=nil[65535], parent=nil[65535]
-    [00002] (    M4A3 Sherman) UNIT leader=[00021] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00001> ptr[00002] link crew=ptr[00021], parent=ptr[00021]
-    [00003] (    M4A3 Sherman) UNIT leader=[00003] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00002> ptr[00002] link crew=nil[65535], parent=nil[65535]
-    [00004] (    M4A3 Sherman) UNIT leader=[00004] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00003> ptr[00002] link crew=nil[65535], parent=nil[65535]
-    [00005] (    M4A3 Sherman) UNIT leader=[00005] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [023] F[00002]<00001,00004> ptr[00002] link crew=nil[65535], parent=nil[65535]
-    [00006] (  M10 3 inch GMC) UNIT leader=[00006] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [041] F[00003]<00002,00000> ptr[00003] link crew=nil[65535], parent=nil[65535]
-    [00007] (  M10 3 inch GMC) UNIT leader=[00007] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [041] F[00003]<00002,00001> ptr[00003] link crew=nil[65535], parent=nil[65535]
-    [00008] (  M10 3 inch GMC) UNIT leader=[00008] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [041] F[00003]<00002,00002> ptr[00003] link crew=nil[65535], parent=nil[65535]
-    [00009] (  M10 3 inch GMC) UNIT leader=[00009] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [041] F[00003]<00002,00003> ptr[00003] link crew=nil[65535], parent=nil[65535]
-    [00010] (  M3A1 Halftrack) UNIT leader=[00010] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [077] F[00000]<00000,00001> ptr[00000] link crew=nil[65535], parent=nil[65535]
-    [00011] (    M8 Greyhound) UNIT leader=[00011] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [001] F[00004]<00003,00000> ptr[00004] link crew=nil[65535], parent=nil[65535]
-    [00012] (    M8 Greyhound) UNIT leader=[00012] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [001] F[00004]<00003,00001> ptr[00004] link crew=nil[65535], parent=nil[65535]
-    [00013] (    M8 Greyhound) UNIT leader=[00013] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [001] F[00005]<00004,00000> ptr[00005] link crew=nil[65535], parent=nil[65535]
-    [00014] (    M8 Greyhound) UNIT leader=[00014] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [001] F[00005]<00004,00001> ptr[00005] link crew=nil[65535], parent=nil[65535]
-    [00015] (  Armd Inf Squad) UNIT leader=[00015] abandoned=0 loader<00031> vrf=N vrfneed=N  OOB 082: [142] F[00006]<00005,00000> ptr[00006] link crew=nil[65535], parent=nil[65535]
-    [00016] (  Armd Inf Squad) UNIT leader=[00016] abandoned=0 loader<00032> vrf=N vrfneed=N  OOB 082: [142] F[00006]<00005,00001> ptr[00006] link crew=nil[65535], parent=nil[65535]
-    [00017] (  Armd Inf Squad) UNIT leader=[00017] abandoned=0 loader<00033> vrf=N vrfneed=N  OOB 082: [142] F[00006]<00005,00002> ptr[00006] link crew=nil[65535], parent=nil[65535]
-    [00018] (  Armd LMG Squad) UNIT leader=[00018] abandoned=0 loader<00034> vrf=N vrfneed=N  OOB 082: [199] F[00006]<00005,00003> ptr[00006] link crew=nil[65535], parent=nil[65535]
-    [00019] ( Armd Mortar Sqd) UNIT leader=[00019] abandoned=0 loader<00037> vrf=N vrfneed=N  OOB 082: [203] F[00006]<00005,00004> ptr[00006] link crew=nil[65535], parent=nil[65535]
-    [00020] (     57mm AT Gun) UNIT leader=[00020] abandoned=0 loader<00043> vrf=N vrfneed=N  OOB 082: [096] F[00006]<00005,00005> ptr[00006] link crew=nil[65535], parent=nil[65535]
-!!! [00021] (         Crewmen) CREW leader=[00021] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 082: [249] F[00002]<00001,00051> nil[65535] link crew=ptr[00002], parent=ptr[00002]
-    [00025] (   105mm How Bty) UNIT leader=[00025] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [123] F[00007]<00006,00000> ptr[00007] link crew=nil[65535], parent=nil[65535]
-    [00028] (  M3A1 Halftrack) UNIT leader=[00028] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [077] F[00014]<00009,00000> ptr[00014] link crew=nil[65535], parent=nil[65535]
-    [00029] (           P-47D) UNIT leader=[00029] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [181] F[00017]<00010,00000> ptr[00017] link crew=nil[65535], parent=nil[65535]
-    [00030] (           P-47D) UNIT leader=[00030] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [181] F[00017]<00010,00001> ptr[00017] link crew=nil[65535], parent=nil[65535]
-    [00031] (  M3A1 Halftrack) UNIT leader=[00031] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [077] F[00019]<00011,00000> ptr[00019] link crew=nil[65535], parent=nil[65535]
-    [00032] (  M3A1 Halftrack) UNIT leader=[00032] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [077] F[00019]<00011,00001> ptr[00019] link crew=nil[65535], parent=nil[65535]
-    [00033] (  M3A1 Halftrack) UNIT leader=[00033] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [077] F[00019]<00011,00002> ptr[00019] link crew=nil[65535], parent=nil[65535]
-    [00034] (  M3A1 Halftrack) UNIT leader=[00034] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [077] F[00019]<00011,00003> ptr[00019] link crew=nil[65535], parent=nil[65535]
-    [00037] (    M3 Halftrack) UNIT leader=[00037] abandoned=0 loader<65535> vrf=Y vrfneed=Y  OOB 082: [076] F[00019]<00011,00004> ptr[00019] link crew=nil[65535], parent=nil[65535]
-    [00043] (    M3 Halftrack) UNIT leader=[00043] abandoned=0 loader<65535> vrf=Y vrfneed=Y  OOB 082: [087] F[00019]<00011,00005> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00000] (    US Commander) UNIT leader=[00000] abandoned=0 loader<00028> vrf=N vrfneed=N  OOB 082: [00243] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00001] (    M4A3 Sherman) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,000> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00002] (    M4A3 Sherman) UNIT leader=[00021] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,001> ptr[00002] link crew=ptr[00021], parent=ptr[00021]
+    [00003] (    M4A3 Sherman) UNIT leader=[00003] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,002> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00004] (    M4A3 Sherman) UNIT leader=[00004] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,003> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00005] (    M4A3 Sherman) UNIT leader=[00005] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,004> ptr[00002] link crew=nil[65535], parent=nil[65535]
+    [00006] (  M10 3 inch GMC) UNIT leader=[00006] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00041] F[00003]<00002,000> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00007] (  M10 3 inch GMC) UNIT leader=[00007] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00041] F[00003]<00002,001> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00008] (  M10 3 inch GMC) UNIT leader=[00008] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00041] F[00003]<00002,002> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00009] (  M10 3 inch GMC) UNIT leader=[00009] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00041] F[00003]<00002,003> ptr[00003] link crew=nil[65535], parent=nil[65535]
+    [00010] (  M3A1 Halftrack) UNIT leader=[00010] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00077] F[00000]<00000,001> ptr[00000] link crew=nil[65535], parent=nil[65535]
+    [00011] (    M8 Greyhound) UNIT leader=[00011] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00001] F[00004]<00003,000> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00012] (    M8 Greyhound) UNIT leader=[00012] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00001] F[00004]<00003,001> ptr[00004] link crew=nil[65535], parent=nil[65535]
+    [00013] (    M8 Greyhound) UNIT leader=[00013] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00001] F[00005]<00004,000> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00014] (    M8 Greyhound) UNIT leader=[00014] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00001] F[00005]<00004,001> ptr[00005] link crew=nil[65535], parent=nil[65535]
+    [00015] (  Armd Inf Squad) UNIT leader=[00015] abandoned=0 loader<00031> vrf=N vrfneed=N  OOB 082: [00142] F[00006]<00005,000> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00016] (  Armd Inf Squad) UNIT leader=[00016] abandoned=0 loader<00032> vrf=N vrfneed=N  OOB 082: [00142] F[00006]<00005,001> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00017] (  Armd Inf Squad) UNIT leader=[00017] abandoned=0 loader<00033> vrf=N vrfneed=N  OOB 082: [00142] F[00006]<00005,002> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00018] (  Armd LMG Squad) UNIT leader=[00018] abandoned=0 loader<00034> vrf=N vrfneed=N  OOB 082: [00199] F[00006]<00005,003> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00019] ( Armd Mortar Sqd) UNIT leader=[00019] abandoned=0 loader<00037> vrf=N vrfneed=N  OOB 082: [00203] F[00006]<00005,004> ptr[00006] link crew=nil[65535], parent=nil[65535]
+    [00020] (     57mm AT Gun) UNIT leader=[00020] abandoned=0 loader<00043> vrf=N vrfneed=N  OOB 082: [00096] F[00006]<00005,005> ptr[00006] link crew=nil[65535], parent=nil[65535]
+!!! [00021] (         Crewmen) CREW leader=[00021] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 082: [00249] F[00002]<00001,051> nil[65535] link crew=ptr[00002], parent=ptr[00002]
+    [00025] (   105mm How Bty) UNIT leader=[00025] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00123] F[00007]<00006,000> ptr[00007] link crew=nil[65535], parent=nil[65535]
+    [00028] (  M3A1 Halftrack) UNIT leader=[00028] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [00077] F[00014]<00009,000> ptr[00014] link crew=nil[65535], parent=nil[65535]
+    [00029] (           P-47D) UNIT leader=[00029] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00181] F[00017]<00010,000> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00030] (           P-47D) UNIT leader=[00030] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00181] F[00017]<00010,001> ptr[00017] link crew=nil[65535], parent=nil[65535]
+    [00031] (  M3A1 Halftrack) UNIT leader=[00031] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [00077] F[00019]<00011,000> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00032] (  M3A1 Halftrack) UNIT leader=[00032] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [00077] F[00019]<00011,001> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00033] (  M3A1 Halftrack) UNIT leader=[00033] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [00077] F[00019]<00011,002> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00034] (  M3A1 Halftrack) UNIT leader=[00034] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [00077] F[00019]<00011,003> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00037] (    M3 Halftrack) UNIT leader=[00037] abandoned=0 loader<65535> vrf=Y vrfneed=Y  OOB 082: [00076] F[00019]<00011,004> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00043] (    M3 Halftrack) UNIT leader=[00043] abandoned=0 loader<65535> vrf=Y vrfneed=Y  OOB 082: [00087] F[00019]<00011,005> ptr[00019] link crew=nil[65535], parent=nil[65535]
 find_candidate_units: player #1
 find_candidate_units: [000] F[000]<000> C<65535> L<00000> O<082> (    US Commander) SKIPPED: invalid formation reference
 find_candidate_units: [001] F[002]<000> C<65535> L<00001> O<082> (    M4A3 Sherman) SKIPPED: invalid formation reference
@@ -1214,23 +1214,23 @@ verify_candidate_units: [423] UNIT: F<009,002> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [426] UNIT: F<009,003> (      SPW 251/10) ACCEPTED
 unitcount: ul.cnt=21
 FLIST: { { s.nidx=18 }, cnt=9 }
-    [00100] ( TGN's SPWAW 1.0) P<001> L<00400> status=000 units=001 OOB 070: [001] FID<00008> RAW<00108>
+    [00100] ( TGN's SPWAW 1.0) P<001> L<00400> H<00000> status=000 units=001 OOB 070: [00001] FID<00008> RAW<00108>
         [000] ptr[00400]
-    [00102] (   Halftrack Plt) P<001> L<00421> status=000 units=004 OOB 070: [052] FID<00009> RAW<00109>
+    [00102] (   Halftrack Plt) P<001> L<00421> H<00000> status=000 units=004 OOB 070: [00052] FID<00009> RAW<00109>
         [000] ptr[00421]
         [001] ptr[00422]
         [002] ptr[00423]
         [003] ptr[00426]
-    [00108] (  Med Panzer Plt) P<001> L<00401> status=000 units=005 OOB 070: [015] FID<00001> RAW<00101>
+    [00108] (  Med Panzer Plt) P<001> L<00401> H<00000> status=000 units=005 OOB 070: [00015] FID<00001> RAW<00101>
         [000] ptr[00401]
         [001] ptr[00402]
         [002] ptr[00403]
         [003] ptr[00404]
     --- [004] nil[65535]
-    [00109] (  Med Panzer Sec) P<001> L<00405> status=000 units=002 OOB 070: [014] FID<00002> RAW<00102>
+    [00109] (  Med Panzer Sec) P<001> L<00405> H<00000> status=000 units=002 OOB 070: [00014] FID<00002> RAW<00102>
         [000] ptr[00405]
         [001] ptr[00406]
-    [00110] (     PzG Mot Plt) P<001> L<00407> status=000 units=008 OOB 070: [088] FID<00003> RAW<00103>
+    [00110] (     PzG Mot Plt) P<001> L<00407> H<00000> status=000 units=008 OOB 070: [00088] FID<00003> RAW<00103>
         [000] ptr[00407]
         [001] ptr[00408]
         [002] ptr[00409]
@@ -1239,10 +1239,10 @@ FLIST: { { s.nidx=18 }, cnt=9 }
     --- [005] nil[65535]
     --- [006] nil[65535]
     --- [007] nil[65535]
-    [00111] (   SP Mortar Sec) P<001> L<00415> status=000 units=002 OOB 070: [072] FID<00004> RAW<00104>
+    [00111] (   SP Mortar Sec) P<001> L<00415> H<00000> status=000 units=002 OOB 070: [00072] FID<00004> RAW<00104>
         [000] ptr[00415]
         [001] ptr[00416]
-    [00115] ( Utility Vehicle) P<001> L<00417> status=000 units=009 OOB 070: [053] FID<00005> RAW<00105>
+    [00115] ( Utility Vehicle) P<001> L<00417> H<00000> status=000 units=009 OOB 070: [00053] FID<00005> RAW<00105>
         [000] ptr[00417]
     --- [001] nil[65535]
     --- [002] nil[65535]
@@ -1252,33 +1252,33 @@ FLIST: { { s.nidx=18 }, cnt=9 }
     --- [006] nil[65535]
     --- [007] nil[65535]
     --- [008] nil[65535]
-    [00116] (     Flak Pz Sec) P<001> L<00418> status=000 units=002 OOB 070: [068] FID<00006> RAW<00106>
+    [00116] (     Flak Pz Sec) P<001> L<00418> H<00000> status=000 units=002 OOB 070: [00068] FID<00006> RAW<00106>
         [000] ptr[00418]
         [001] ptr[00419]
-    [00118] (          Sniper) P<001> L<00420> status=000 units=001 OOB 070: [140] FID<00007> RAW<00107>
+    [00118] (          Sniper) P<001> L<00420> H<00000> status=000 units=001 OOB 070: [00140] FID<00007> RAW<00107>
         [000] ptr[00420]
 ULIST: { { s.nidx=21 }, cnt=21 }
-    [00400] (   GE Kommandant) UNIT leader=[00400] abandoned=0 loader<00417> vrf=N vrfneed=N  OOB 070: [245] F[00100]<00008,00000> ptr[00100] link crew=nil[65535], parent=nil[65535]
-    [00401] (     PzKpfw IV H) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00000> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00402] (     PzKpfw IV H) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00001> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00403] (     PzKpfw IV H) UNIT leader=[00403] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00002> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00404] (     PzKpfw IV H) UNIT leader=[00404] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [030] F[00108]<00001,00003> ptr[00108] link crew=nil[65535], parent=nil[65535]
-    [00405] (       Panther A) UNIT leader=[00405] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [032] F[00109]<00002,00000> ptr[00109] link crew=nil[65535], parent=nil[65535]
-    [00406] (       Panther A) UNIT leader=[00406] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [032] F[00109]<00002,00001> ptr[00109] link crew=nil[65535], parent=nil[65535]
-    [00407] (   Grenadier Grp) UNIT leader=[00407] abandoned=0 loader<00421> vrf=N vrfneed=N  OOB 070: [152] F[00110]<00003,00000> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00408] (   Grenadier Grp) UNIT leader=[00408] abandoned=0 loader<00422> vrf=N vrfneed=N  OOB 070: [227] F[00110]<00003,00001> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00409] (   Grenadier Grp) UNIT leader=[00409] abandoned=0 loader<00423> vrf=N vrfneed=N  OOB 070: [227] F[00110]<00003,00002> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00410] (      MMG Truppe) UNIT leader=[00410] abandoned=0 loader<00426> vrf=N vrfneed=N  OOB 070: [173] F[00110]<00003,00003> ptr[00110] link crew=nil[65535], parent=nil[65535]
-    [00415] (     SdKfz 250/7) UNIT leader=[00415] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [113] F[00111]<00004,00000> ptr[00111] link crew=nil[65535], parent=nil[65535]
-    [00416] (     SdKfz 250/7) UNIT leader=[00416] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [113] F[00111]<00004,00001> ptr[00111] link crew=nil[65535], parent=nil[65535]
-    [00417] (     SdKfz 251/9) UNIT leader=[00417] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [109] F[00115]<00005,00000> ptr[00115] link crew=nil[65535], parent=nil[65535]
-    [00418] (    FlakPz 38(t)) UNIT leader=[00418] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [083] F[00116]<00006,00000> ptr[00116] link crew=nil[65535], parent=nil[65535]
-    [00419] (    FlakPz 38(t)) UNIT leader=[00419] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [083] F[00116]<00006,00001> ptr[00116] link crew=nil[65535], parent=nil[65535]
-    [00420] (    PzrSchrk Trp) UNIT leader=[00420] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [177] F[00118]<00007,00000> ptr[00118] link crew=nil[65535], parent=nil[65535]
-    [00421] (    SPW 251/1 HT) UNIT leader=[00421] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00009,00000> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00422] (    SPW 251/1 HT) UNIT leader=[00422] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00009,00001> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00423] (    SPW 251/1 HT) UNIT leader=[00423] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [181] F[00102]<00009,00002> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00426] (      SPW 251/10) UNIT leader=[00426] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [182] F[00102]<00009,00003> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00400] (   GE Kommandant) UNIT leader=[00400] abandoned=0 loader<00417> vrf=N vrfneed=N  OOB 070: [00245] F[00100]<00008,000> ptr[00100] link crew=nil[65535], parent=nil[65535]
+    [00401] (     PzKpfw IV H) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00030] F[00108]<00001,000> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00402] (     PzKpfw IV H) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00030] F[00108]<00001,001> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00403] (     PzKpfw IV H) UNIT leader=[00403] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00030] F[00108]<00001,002> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00404] (     PzKpfw IV H) UNIT leader=[00404] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00030] F[00108]<00001,003> ptr[00108] link crew=nil[65535], parent=nil[65535]
+    [00405] (       Panther A) UNIT leader=[00405] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00032] F[00109]<00002,000> ptr[00109] link crew=nil[65535], parent=nil[65535]
+    [00406] (       Panther A) UNIT leader=[00406] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00032] F[00109]<00002,001> ptr[00109] link crew=nil[65535], parent=nil[65535]
+    [00407] (   Grenadier Grp) UNIT leader=[00407] abandoned=0 loader<00421> vrf=N vrfneed=N  OOB 070: [00152] F[00110]<00003,000> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00408] (   Grenadier Grp) UNIT leader=[00408] abandoned=0 loader<00422> vrf=N vrfneed=N  OOB 070: [00227] F[00110]<00003,001> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00409] (   Grenadier Grp) UNIT leader=[00409] abandoned=0 loader<00423> vrf=N vrfneed=N  OOB 070: [00227] F[00110]<00003,002> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00410] (      MMG Truppe) UNIT leader=[00410] abandoned=0 loader<00426> vrf=N vrfneed=N  OOB 070: [00173] F[00110]<00003,003> ptr[00110] link crew=nil[65535], parent=nil[65535]
+    [00415] (     SdKfz 250/7) UNIT leader=[00415] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00113] F[00111]<00004,000> ptr[00111] link crew=nil[65535], parent=nil[65535]
+    [00416] (     SdKfz 250/7) UNIT leader=[00416] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00113] F[00111]<00004,001> ptr[00111] link crew=nil[65535], parent=nil[65535]
+    [00417] (     SdKfz 251/9) UNIT leader=[00417] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [00109] F[00115]<00005,000> ptr[00115] link crew=nil[65535], parent=nil[65535]
+    [00418] (    FlakPz 38(t)) UNIT leader=[00418] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00083] F[00116]<00006,000> ptr[00116] link crew=nil[65535], parent=nil[65535]
+    [00419] (    FlakPz 38(t)) UNIT leader=[00419] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00083] F[00116]<00006,001> ptr[00116] link crew=nil[65535], parent=nil[65535]
+    [00420] (    PzrSchrk Trp) UNIT leader=[00420] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00177] F[00118]<00007,000> ptr[00118] link crew=nil[65535], parent=nil[65535]
+    [00421] (    SPW 251/1 HT) UNIT leader=[00421] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [00181] F[00102]<00009,000> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00422] (    SPW 251/1 HT) UNIT leader=[00422] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [00181] F[00102]<00009,001> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00423] (    SPW 251/1 HT) UNIT leader=[00423] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [00181] F[00102]<00009,002> ptr[00102] link crew=nil[65535], parent=nil[65535]
+    [00426] (      SPW 251/10) UNIT leader=[00426] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 070: [00182] F[00102]<00009,003> ptr[00102] link crew=nil[65535], parent=nil[65535]
 add_unit: idx=0, RID=0, type=UNIT
 add_unit: idx=1, RID=1, type=UNIT
 add_unit: idx=2, RID=2, type=UNIT

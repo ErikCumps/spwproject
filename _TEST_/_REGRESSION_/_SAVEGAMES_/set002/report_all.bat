@@ -1,6 +1,6 @@
 @echo off
 
-call ..\bin\report.bat 03
-call ..\bin\report.bat 04
-call ..\bin\report.bat 09
-call ..\bin\report.bat 12
+call ..\bin\report.bat 03 spwaw
+call ..\bin\report.bat 04 spwaw
+call ..\bin\report.bat 09 spwaw
+call ..\bin\report.bat 12 spwaw

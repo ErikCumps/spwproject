@@ -11,15 +11,15 @@
 
 #include "gamefile/spwaw/defines_spwaw.h"
 
-typedef struct s_STARTSEC {
+typedef struct s_SPWAW_STARTSEC {
 	char	info[20];	/* Savegame information string (ASCIIZ)	*/
-} STARTSEC;
+} SPWAW_STARTSEC;
 
 typedef struct s_SPWAW_SECTION00 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC00];
 		struct s_d {
-			STARTSEC	info;
+			SPWAW_STARTSEC	info;
 		} d;
 	} u;
 } SPWAW_SECTION00;

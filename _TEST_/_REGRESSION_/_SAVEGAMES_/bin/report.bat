@@ -13,11 +13,14 @@ del SPWAWLIB.log	1>nul 2>nul
 
 set REPORT=REPORT_%1
 
+set GAMETYPE=SPWAW
+if NOT "x%2" == "x" set GAMETYPE=%2
+
 set SPWAWLIB_DISABLE_LOGTIME=1
 
 echo Generating reports for %REPORT%...
 
-..\..\..\bin\spwreport.exe savereport SPWAW _OOB_ _SAVE_ %1 %REPORT%
+..\..\..\bin\spwreport.exe savereport %GAMETYPE% _OOB_ _SAVE_ %1 %REPORT%
 move %REPORT%*.txt _RPT_\		1>nul 2>nul
 move %REPORT%*.dump _RPT_\		1>nul 2>nul
 move SPWAWLIB.log _RPT_\SPWAWLIB_%1.log	1>nul 2>nul

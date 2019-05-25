@@ -12,7 +12,7 @@
 #include "gamefile/spwaw/defines_spwaw.h"
 
 /* (...sides of the hex are number 1,2,4,8,16,32 clockwise around from the east and summed up) */
-typedef struct s_CONNMAP {
+typedef struct s_SPWAW_CONNMAP {
 	BYTE	EE:1;					/* East		*/
 	BYTE	SE:1;					/* Southeast	*/
 	BYTE	SW:1;					/* Southwest	*/
@@ -20,7 +20,7 @@ typedef struct s_CONNMAP {
 	BYTE	NW:1;					/* Northwest	*/
 	BYTE	NE:1;					/* Northeast	*/
 	BYTE	reserved:2;
-} CONNMAP;
+} SPWAW_CONNMAP;
 
 typedef struct s_SPWAW_TFSBITS1 {
 	BYTE	has_field:1;		/* Terrain contains field			*/
@@ -66,7 +66,7 @@ typedef struct s_SPWAW_TFSBITS4 {
 	BYTE	has_T4F7:1;		/* Terrain contains feature 0x80 from set #4	*/
 } SPWAW_TFSBITS4;
 
-typedef struct s_MAP_TERRAIN {
+typedef struct sSPWAW_MAP_TERRAIN {
 	union u_uT1 {
 		SPWAW_TFSBITS1	bits1;
 		BYTE		has_T1;			/* Terrain features from set #1			*/
@@ -86,25 +86,25 @@ typedef struct s_MAP_TERRAIN {
 	SHORT	height;					/* Height					*/
 	char	__data00[6];
 	union u_uR2 {
-		CONNMAP	cmap_road2;
+		SPWAW_CONNMAP	cmap_road2;
 		BYTE	conn_road2;			/* Secondary road connections			*/
 	} uR2;
 	union u_uR1 {
-		CONNMAP	cmap_road1;
+		SPWAW_CONNMAP	cmap_road1;
 		BYTE	conn_road1;			/* Primary road connections			*/
 	} uR1;
 	union u_uRR {
-		CONNMAP	cmap_rail;
+		SPWAW_CONNMAP	cmap_rail;
                 BYTE	conn_rail;			/* Railroad connections				*/
 	} uRR;
 	char	__data01[5];
-} MAP_TERRAIN;
+} SPWAW_MAP_TERRAIN;
 
 typedef struct s_SPWAW_SECTION08 {
 	union u_u {
 		char	raw[SPWAW_SIZESEC08];
 		struct s_d {
-			MAP_TERRAIN	terrain[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
+			SPWAW_MAP_TERRAIN	terrain[SPWAW_MAPWIDTH][SPWAW_MAPHEIGHT];
 		} d;
 	} u;
 } SPWAW_SECTION08;
