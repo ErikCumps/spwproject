@@ -33,5 +33,9 @@
 /* Set to 1 to assume unverified units to be SPAU */
 #define	EXP_WINSPWW2_AUTOSPAU	1
 
+#include "gamefile/common_gamedata_handling.h"
+
+extern COMMON_HANDLING_OPTIONS	winspww2_handling_options;
+
 #endif	/* BUILD_OPTIONS_WINSPWW2_H */
 

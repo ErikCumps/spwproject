@@ -36,6 +36,7 @@ static SPWAW_ERROR
 build_formations_list (WINSPWW2_FORMATION *src, BYTE player, FLIST &fl)
 {
 	int	seen[FORMCOUNT];
+	bool	dupf;
 	USHORT	i;
 
 	UFDLOG1 ("find_formations: player #%u\n", player);
@@ -52,21 +53,21 @@ build_formations_list (WINSPWW2_FORMATION *src, BYTE player, FLIST &fl)
 			continue;
 		}
 
-#if	EXP_WINSPWW2_SKIPNOLDR
-		if (src[i].leader == SPWAW_BADIDX) {
-			// skipped: no leader
-			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
-			continue;
+		if (winspww2_handling_options.SKIPNOLDR) {
+			if (src[i].leader == SPWAW_BADIDX) {
+				// skipped: no leader
+				UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
+				continue;
+			}
 		}
-#endif	/* EXP_WINSPWW2_SKIPNOLDR */
 
-#if	EXP_WINSPWW2_SKIPNOHCMD
-		if (src[i].hcmd == SPWAW_BADIDX) {
-			// skipped: no higher command
-			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no higher command)\n", i);
-			continue;
+		if (winspww2_handling_options.SKIPNOHCMD) {
+			if (src[i].hcmd == SPWAW_BADIDX) {
+				// skipped: no higher command
+				UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no higher command)\n", i);
+				continue;
+			}
 		}
-#endif	/* EXP_WINSPWW2_SKIPNOHCMD */
 
 		if (src[i].player != player) {
 			// skipped: wrong player
@@ -74,12 +75,13 @@ build_formations_list (WINSPWW2_FORMATION *src, BYTE player, FLIST &fl)
 			continue;
 		}
 
-#if	EXP_WINSPWW2_ALLOWDUPF
-		// Allow a single duplicate formation ID, the duplicate may be the valid formation
-		if (seen[src[i].ID] > 1) {
-#else	/* !EXP_WINSPWW2_ALLOWDUPF */
-		if (seen[src[i].ID] > 0) {
-#endif	/* !EXP_WINSPWW2_ALLOWDUPF */
+		if (winspww2_handling_options.ALLOWDUPF) {
+			// Allow a single duplicate formation ID, the duplicate may be the valid formation
+			dupf = (seen[src[i].ID] > 1);
+		} else {
+			dupf = (seen[src[i].ID] > 0);
+		}
+		if (dupf) {
 			// skipped: duplicate formation ID
 			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
 			continue;

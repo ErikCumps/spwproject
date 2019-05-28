@@ -737,11 +737,9 @@ verify_candidate_formations (FULIST &ful)
 	FEL	*p;
 	FEL	*fel;
 	UEL	*u;
-
-#if	EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF
 	FEL	*seen[FORMCOUNT];
+
 	memset (seen, 0, sizeof(seen));
-#endif	/* EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF */
 
 	p = ful.fl.head;
 	while (p)
@@ -775,56 +773,56 @@ verify_candidate_formations (FULIST &ful)
 
 		// Some other validation?
 
-#if	EXP_SPWAW_FILTERDUPF
-		// Drop all duplicate formations
-		if (seen[fel->d.FID]) {
-			UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
-			drop_FEL (ful, fel);
-			continue;
+		if (spwaw_handling_options.FILTERDUPF) {
+			// Drop all duplicate formations
+			if (seen[fel->d.FID]) {
+				UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
+				drop_FEL (ful, fel);
+				continue;
+			}
 		}
-#endif	/* EXP_SPWAW_FILTERDUPF */
 
 		UFDLOG0 ("ACCEPTED\n");
 
-#if	EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF
-		seen[fel->d.FID] = fel;
-#endif	/* EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF */
+		if (spwaw_handling_options.FILTERDUPF || spwaw_handling_options.FILTERGAPF) {
+			seen[fel->d.FID] = fel;
+		}
 		fel = fel->l.next;
 	}
 
-#if	EXP_SPWAW_FILTERGAPF
-	const int	allowedgap = 2;
-	int		i, j;
+	if (spwaw_handling_options.FILTERGAPF) {
+		const int	allowedgap = 2;
+		int		i, j;
 
-	i = 0; j = 0;
-	while (true) {
-		if (i < FORMCOUNT) {
-			while (seen[i]) {
+		i = 0; j = 0;
+		while (true) {
+			if (i < FORMCOUNT) {
+				while (seen[i]) {
+					i++;
+					if (i >= FORMCOUNT) break;
+				}
+			}
+			if (i < FORMCOUNT) {
+				j = 0;
+				while (!seen[i]) {
+					j++; i++;
+					if (i >= FORMCOUNT) break;
+				}
+			}
+			if (i >= FORMCOUNT) break;
+			if (j > allowedgap) break;
+		}
+
+		if (j > allowedgap) {
+			while (i < FORMCOUNT) {
+				if (seen[i]) {
+					UFDLOG0 ("DROPPED: detected formation gap\n");
+					drop_FEL (ful, seen[i]);
+				}
 				i++;
-				if (i >= FORMCOUNT) break;
 			}
-		}
-		if (i < FORMCOUNT) {
-			j = 0;
-			while (!seen[i]) {
-				j++; i++;
-				if (i >= FORMCOUNT) break;
-			}
-		}
-		if (i >= FORMCOUNT) break;
-		if (j > allowedgap) break;
-	}
-
-	if (j > allowedgap) {
-		while (i < FORMCOUNT) {
-			if (seen[i]) {
-				UFDLOG0 ("DROPPED: detected formation gap\n");
-				drop_FEL (ful, seen[i]);
-			}
-			i++;
 		}
 	}
-#endif	/* EXP_SPWAW_FILTERGAPF */
 
 	return (SPWERR_OK);
 }

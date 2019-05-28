@@ -33,5 +33,9 @@
 /* Set to 1 to assume unverified units to be SPAU */
 #define	EXP_SPWAW_AUTOSPAU	0
 
+#include "gamefile/common_gamedata_handling.h"
+
+extern COMMON_HANDLING_OPTIONS	spwaw_handling_options;
+
 #endif	/* BUILD_OPTIONS_SPWAW_H */
 

@@ -164,13 +164,13 @@ find_candidate_units (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE playe
 			}
 			UFDLOG4 ("%4.4s #%u F<%5.5u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
 
-#if	EXP_WINSPWW2_VALIDITY
-			// Is the unit valid?
-			if (!udata[i].valid) {
-				UFDLOG0 ("SKIPPED: invalid unit\n");
-				continue;
+			if (winspww2_handling_options.VALIDITY) {
+				// Is the unit valid?
+				if (!udata[i].valid) {
+					UFDLOG0 ("SKIPPED: invalid unit\n");
+					continue;
+				}
 			}
-#endif	/* EXP_WINSPWW2_VALIDITY */
 
 			// There can be no units with duplicate formation/subformation IDs
 			if (fel->d.unit_lst[uel->d.FSID]) {
@@ -535,13 +535,13 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			continue;
 		}
 
-#if	EXP_WINSPWW2_SUBFUAL
-		/* Subsistute first unit as leader, if no leader recorded? */
-		if (fel->d.leader == SPWAW_BADIDX) {
-			UEL *ffuel = lookup_FFUEL (ful, fel);
-			if (ffuel) fel->d.leader = ffuel->d.RID;
+		if (winspww2_handling_options.SUBFUAL) {
+			/* Substitute first unit as leader, if no leader recorded? */
+			if (fel->d.leader == SPWAW_BADIDX) {
+				UEL *ffuel = lookup_FFUEL (ful, fel);
+				if (ffuel) fel->d.leader = ffuel->d.RID;
+			}
 		}
-#endif	/* EXP_WINSPWW2_SUBFUAL */
 
 		ldru = lookup_ULIST (ful.ul, fel->d.leader);
 		if (ldru && (ldru->d.type == SPWAW_UNIT_TYPE_CREW)) {
@@ -641,35 +641,35 @@ verify_candidate_units (FULIST &ful)
 			goto accept_unit;
 		}
 
-#if	!EXP_WINSPWW2_VALIDITY
-		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
-		// But units can be given a wildcard to stay if:
-		// * the unit is not beyond the last valid unit
-		// * the unit is an SPAU
-		// * the unit is a verified loader (if it has loaded an accepted unit or crew)
-		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
-			if (uel->d.RID <= max_urid) {
-				UFDLOG0 ("ACCEPTED - WILDCARD\n");
-				goto accept_unit;
-			} else if (uel->d.type == SPWAW_UNIT_TYPE_SPAU) {
-				UFDLOG0 ("ACCEPTED - SPAU WILDCARD\n");
-				goto accept_unit;
-			} else {
-				UFDLOG0 ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
-				goto postpone_unit;
+		if (!winspww2_handling_options.VALIDITY) {
+			// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
+			// But units can be given a wildcard to stay if:
+			// * the unit is not beyond the last valid unit
+			// * the unit is an SPAU
+			// * the unit is a verified loader (if it has loaded an accepted unit or crew)
+			if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
+				if (uel->d.RID <= max_urid) {
+					UFDLOG0 ("ACCEPTED - WILDCARD\n");
+					goto accept_unit;
+				} else if (uel->d.type == SPWAW_UNIT_TYPE_SPAU) {
+					UFDLOG0 ("ACCEPTED - SPAU WILDCARD\n");
+					goto accept_unit;
+				} else {
+					UFDLOG0 ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
+					goto postpone_unit;
+				}
 			}
+		} else {
+			if (winspww2_handling_options.AUTOSPAU) {
+				// Units that don't seem to belong to the formation (according to the OOB info) are assumed to be SPAU
+				if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
+					uel->d.type = SPWAW_UNIT_TYPE_SPAU;
+					UFDLOG0 ("ACCEPTED - AUTO SPAU\n");
+					goto accept_unit;
+				}
+			}
+			UFDLOG0 ("ACCEPTED\n");
 		}
-#else	/* EXP_WINSPWW2_VALIDITY */
-#if	EXP_WINSPWW2_AUTOSPAU
-		// Units that don't seem to belong to the formation (according to the OOB info) are assumed to be SPAU
-		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
-			uel->d.type = SPWAW_UNIT_TYPE_SPAU;
-			UFDLOG0 ("ACCEPTED - AUTO SPAU\n");
-			goto accept_unit;
-		}
-#endif	/* EXP_WINSPWW2_AUTOSPAU */
-		UFDLOG0 ("ACCEPTED\n");
-#endif	/* EXP_WINSPWW2_VALIDITY */
 
 accept_unit:
 		// Mark the indicated loader unit as verified
@@ -691,11 +691,9 @@ drop_unit:
 		drop_UEL (ful.ul, uel);
 		continue;
 
-#if	!EXP_WINSPWW2_VALIDITY
 postpone_unit:
 		uel->d.needvrfldrtst = true;
 		continue;
-#endif	/* !EXP_WINSPWW2_VALIDITY */
 	}
 
 	// Verify all CREWs
@@ -765,11 +763,9 @@ verify_candidate_formations (FULIST &ful)
 	FEL	*p;
 	FEL	*fel;
 	UEL	*u;
-
-#if	EXP_WINSPWW2_FILTERDUPF || EXP_WINSPWW2_FILTERGAPF
 	FEL	*seen[FORMCOUNT];
+
 	memset (seen, 0, sizeof(seen));
-#endif	/* EXP_WINSPWW2_FILTERDUPF || EXP_WINSPWW2_FILTERGAPF */
 
 	p = ful.fl.head;
 	while (p)
@@ -803,57 +799,57 @@ verify_candidate_formations (FULIST &ful)
 
 		// Some other validation?
 
-#if	EXP_WINSPWW2_FILTERDUPF
-		// Drop all duplicate formations
-		if (seen[fel->d.FID]) {
-			UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
-			drop_FEL (ful, fel);
-			continue;
+		if (winspww2_handling_options.FILTERDUPF) {
+			// Drop all duplicate formations
+			if (seen[fel->d.FID]) {
+				UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
+				drop_FEL (ful, fel);
+				continue;
+			}
 		}
-#endif	/* EXP_WINSPWW2_FILTERDUPF */
 
 		UFDLOG0 ("ACCEPTED\n");
 
-#if	EXP_WINSPWW2_FILTERDUPF || EXP_WINSPWW2_FILTERGAPF
-		seen[fel->d.FID] = fel;
-#endif	/* EXP_WINSPWW2_FILTERDUPF || EXP_WINSPWW2_FILTERGAPF */
+		if (winspww2_handling_options.FILTERDUPF || winspww2_handling_options.FILTERGAPF) {
+			seen[fel->d.FID] = fel;
+		}
 
 		fel = fel->l.next;
 	}
 
-#if	EXP_WINSPWW2_FILTERGAPF
-	const int	allowedgap = 2;
-	int		i, j;
+	if (winspww2_handling_options.FILTERGAPF) {
+		const int	allowedgap = 2;
+		int		i, j;
 
-	i = 0; j = 0;
-	while (true) {
-		if (i < FORMCOUNT) {
-			while (seen[i]) {
+		i = 0; j = 0;
+		while (true) {
+			if (i < FORMCOUNT) {
+				while (seen[i]) {
+					i++;
+					if (i >= FORMCOUNT) break;
+				}
+			}
+			if (i < FORMCOUNT) {
+				j = 0;
+				while (!seen[i]) {
+					j++; i++;
+					if (i >= FORMCOUNT) break;
+				}
+			}
+			if (i >= FORMCOUNT) break;
+			if (j > allowedgap) break;
+		}
+
+		if (j > allowedgap) {
+			while (i < FORMCOUNT) {
+				if (seen[i]) {
+					UFDLOG0 ("DROPPED: detected formation gap\n");
+					drop_FEL (ful, seen[i]);
+				}
 				i++;
-				if (i >= FORMCOUNT) break;
 			}
-		}
-		if (i < FORMCOUNT) {
-			j = 0;
-			while (!seen[i]) {
-				j++; i++;
-				if (i >= FORMCOUNT) break;
-			}
-		}
-		if (i >= FORMCOUNT) break;
-		if (j > allowedgap) break;
-	}
-
-	if (j > allowedgap) {
-		while (i < FORMCOUNT) {
-			if (seen[i]) {
-				UFDLOG0 ("DROPPED: detected formation gap\n");
-				drop_FEL (ful, seen[i]);
-			}
-			i++;
 		}
 	}
-#endif	/* EXP_WINSPWW2_FILTERGAPF */
 
 	return (SPWERR_OK);
 }
