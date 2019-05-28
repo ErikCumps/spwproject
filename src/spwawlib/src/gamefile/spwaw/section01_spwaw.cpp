@@ -354,7 +354,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	for (USHORT i=0; i<oobdata->fcnt; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
-		
+
 		s = 0;
 
 		/* Formation type name match is 1 point */
