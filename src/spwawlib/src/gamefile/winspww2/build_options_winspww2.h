@@ -12,6 +12,9 @@
 /* Set to 1 to substitute the first unit as leader for leaderless formations */
 #define	EXP_WINSPWW2_SUBFUAL	1
 
+/* Set to 1 to skip formations without a valid name during formation detection */
+#define	EXP_WINSPWW2_SKIPNONAME	1
+
 /* Set to 1 to skip formations without a leader during formation detection */
 #define	EXP_WINSPWW2_SKIPNOLDR	0
 

@@ -23,17 +23,20 @@
 // counts and invalid formation data.
 //
 // What is known with some degree of certainty:
+//	+ saved formations must have a name (not so for SPWaW)
 //	+ saved formations for player #1 and player #2 can be mixed together
 //	+ valid formations must have a leader
 //	+ there can be no formations with duplicate formation IDs
 //	+ valid formations may be saved after an invalid formation with the same formation ID
 //	+ formations are saved in any order
 //	+ formations are not always saved in contiguous groups
+//	+ valid formations must have a valid higher command? (not so for SPWaW)
 
 static SPWAW_ERROR
 build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 {
 	int	seen[FORMCOUNT];
+	bool	dupf;
 	USHORT	i;
 
 	UFDLOG1 ("find_formations: player #%u\n", player);
@@ -43,11 +46,29 @@ build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 	// Add all valid player formations
 	for (i=0; i<SPWAW_FORMCOUNT; i++)
 	{
-		if (src[i].leader == SPWAW_BADIDX) {
-			// skipped: no leader
-			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
-			continue;
+		if (spwaw_handling_options.SKIPNONAME) {
+			if (src[i].name[0] == '\0') {
+				// skipped: no name
+				UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no name)\n", i);
+				continue;
+			}
 		}
+
+		if (spwaw_handling_options.SKIPNOLDR) {
+			if (src[i].leader == SPWAW_BADIDX) {
+				// skipped: no leader
+				UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
+				continue;
+			}
+		}
+
+		if (spwaw_handling_options.SKIPNOHCMD) {
+			if (src[i].hcmd == SPWAW_BADIDX) {
+				// skipped: no higher command
+				UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no higher command)\n", i);
+				continue;
+			}
+}
 
 		if (src[i].player != player) {
 			// skipped: wrong player
@@ -55,8 +76,13 @@ build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 			continue;
 		}
 
-		// Allow a single duplicate formation ID, the duplicate may be the valid formation
-		if (seen[src[i].ID] > 1) {
+		if (spwaw_handling_options.ALLOWDUPF) {
+			// Allow a single duplicate formation ID, the duplicate may be the valid formation
+			dupf = (seen[src[i].ID] > 1);
+		} else {
+			dupf = (seen[src[i].ID] > 0);
+		}
+		if (dupf) {
 			// skipped: duplicate formation ID
 			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
 			continue;

@@ -362,7 +362,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	for (USHORT i=0; i<oobdata->fcnt; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
-		
+
 		s = 0;
 
 		/* Formation type name match is 1 point */
@@ -505,7 +505,7 @@ formation_unitcount (SPWOOB *OOB, USHORT OOBid, USHORT OOBrid, BYTE &cnt)
 	for (int i=0; i<oobdata->fmecnt; i++)
 	{
 		if ((data->elements[i].rid == 0) || (data->elements[i].rid >= oobdata->efstart)) continue;
-		max += data->elements[i].cnt; 
+		max += data->elements[i].cnt;
 	}
 	if (max > MAXFORMATIONUNITS) max = MAXFORMATIONUNITS;
 
@@ -668,8 +668,9 @@ verify_candidate_units (FULIST &ful)
 					goto accept_unit;
 				}
 			}
-			UFDLOG0 ("ACCEPTED\n");
 		}
+
+		UFDLOG0 ("ACCEPTED\n");
 
 accept_unit:
 		// Mark the indicated loader unit as verified

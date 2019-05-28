@@ -26,23 +26,22 @@
 //	+ saved units for player #1 and player #2 can be mixed together
 //	+ valid units and crews must have a valid name
 //	+ valid units must reference a valid formation
+//	+ valid units must have their validity flag set to 1 (not so for SPWaW?)
 //	+ the unit's OOB ID must match the formation leader unit's OOB ID
 //	  (make sure to follow through to its unit if the leader is a crew!)
-//	+ the number of units in a formation must match its OOB data
-//	+ however, in some cases the OOB record ID for the formation is 0
+//	+ the number of units in a formation does not need to match its OOB data
+//	+ in some cases the OOB record ID for the formation is 0
 //	+ there can be no units with duplicate formation/subformation IDs
 //	+ crews may be saved before or after their associated units
 //	+ crews must have a valid associated unit
 //	+ units must have either no crew or a valid associated crew
 //	+ units are saved in any order
 //	+ units are not always saved in contiguous groups
-//	+ units with a formation sub-ID >= 50 seem to be crews
+//	+ units with a formation sub-ID >= 50 seem to be crews (not so for winSPWW2)
 //	+ units have been known to get their own, special, formation,
 //	  for which no OOB record ID exists (it can not exist)
-//
-// What seem to be valid assumptions:
-//	+ units with a formation sub-ID >= 60 seem to be special attached units
-//	+ units with a formation sub-ID >= 110 seem to be crews of special attached units
+//	+ units with a formation sub-ID >= 60 seem to be special attached units (not so for winSPWW2)
+//	+ units with a formation sub-ID >= 110 seem to be crews of special attached units (not so for winSPWW2)
 //
 // With the OOB record ID of the formation, units can be verified with their
 // unit class ID - it should match the corresponding unit class ID recorded in
@@ -163,6 +162,14 @@ find_candidate_units (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FUL
 				uel->d.type = SPWAW_UNIT_TYPE_SPAU;
 			}
 			UFDLOG4 ("%4.4s #%u F<%5.5u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
+
+			if (spwaw_handling_options.VALIDITY) {
+				// Is the unit valid?
+				if (!udata[i].valid) {
+					UFDLOG0 ("SKIPPED: invalid unit\n");
+					continue;
+				}
+			}
 
 			// There can be no units with duplicate formation/subformation IDs
 			if (fel->d.unit_lst[uel->d.FSID]) {
@@ -527,6 +534,14 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			continue;
 		}
 
+		if (spwaw_handling_options.SUBFUAL) {
+			/* Substitute first unit as leader, if no leader recorded? */
+			if (fel->d.leader == SPWAW_BADIDX) {
+				UEL *ffuel = lookup_FFUEL (ful, fel);
+				if (ffuel) fel->d.leader = ffuel->d.RID;
+			}
+		}
+
 		ldru = lookup_ULIST (ful.ul, fel->d.leader);
 		if (ldru && (ldru->d.type == SPWAW_UNIT_TYPE_CREW)) {
 			ldru = ldru->d.link.parent;
@@ -604,7 +619,7 @@ verify_candidate_units (FULIST &ful)
 		}
 
 		UFDLOG6 ("verify_candidate_units: [%5.5u] %4.4s: F<%5.5u,%3.3u> LO<%5.5u> (%16.16s) ",
-			uel->d.RID,  SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.loader, uel->d.name);
+			uel->d.RID, SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.loader, uel->d.name);
 
 		// Drop all units without a formation reference
 		fel = uel->d.formation;
@@ -625,21 +640,32 @@ verify_candidate_units (FULIST &ful)
 			goto accept_unit;
 		}
 
-		// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
-		// But units can be given a wildcard to stay if:
-		// * the unit is not beyond the last valid unit
-		// * the unit is an SPAU
-		// * the unit is a verified loader (if it has loaded an accepted unit or crew)
-		if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
-			if (uel->d.RID <= max_urid) {
-				UFDLOG0 ("ACCEPTED - WILDCARD\n");
-				goto accept_unit;
-			} else if (uel->d.type == SPWAW_UNIT_TYPE_SPAU) {
-				UFDLOG0 ("ACCEPTED - SPAU WILDCARD\n");
-				goto accept_unit;
-			} else {
-				UFDLOG0 ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
-				goto postpone_unit;
+		if (!spwaw_handling_options.VALIDITY) {
+			// Units that don't seem to belong to the formation (according to the OOB info) should be dropped.
+			// But units can be given a wildcard to stay if:
+			// * the unit is not beyond the last valid unit
+			// * the unit is an SPAU
+			// * the unit is a verified loader (if it has loaded an accepted unit or crew)
+			if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
+				if (uel->d.RID <= max_urid) {
+					UFDLOG0 ("ACCEPTED - WILDCARD\n");
+					goto accept_unit;
+				} else if (uel->d.type == SPWAW_UNIT_TYPE_SPAU) {
+					UFDLOG0 ("ACCEPTED - SPAU WILDCARD\n");
+					goto accept_unit;
+				} else {
+					UFDLOG0 ("POSTPONED: invalid subformation ID - pending verified loader acceptance test\n");
+					goto postpone_unit;
+				}
+			}
+		} else {
+			if (spwaw_handling_options.AUTOSPAU) {
+				// Units that don't seem to belong to the formation (according to the OOB info) are assumed to be SPAU
+				if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
+					uel->d.type = SPWAW_UNIT_TYPE_SPAU;
+					UFDLOG0 ("ACCEPTED - AUTO SPAU\n");
+					goto accept_unit;
+				}
 			}
 		}
 

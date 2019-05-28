@@ -25,7 +25,7 @@
 // What is known with some degree of certainty:
 //	+ saved formations must have a name
 //	+ saved formations for player #1 and player #2 can be mixed together
-//	+ valid formations must have a leader (not so for winSPWW2!)
+//	+ valid formations must have a leader (not so for winSPWW2)
 //	+ there can be no formations with duplicate formation IDs
 //	+ valid formations may be saved after an invalid formation with the same formation ID
 //	+ formations are saved in any order
@@ -46,11 +46,12 @@ build_formations_list (WINSPWW2_FORMATION *src, BYTE player, FLIST &fl)
 	// Add all valid player formations
 	for (i=0; i<WINSPWW2_FORMCOUNT; i++)
 	{
-		// winSPWW2: formations need a valid name
-		if (src[i].name[0] == '\0') {
-			// skipped: no name
-			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no name)\n", i);
-			continue;
+		if (winspww2_handling_options.SKIPNONAME) {
+			if (src[i].name[0] == '\0') {
+				// skipped: no name
+				UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no name)\n", i);
+				continue;
+			}
 		}
 
 		if (winspww2_handling_options.SKIPNOLDR) {
