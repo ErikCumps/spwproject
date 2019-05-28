@@ -66,10 +66,16 @@ static SECMAPEL	MAPLIST[SPWAW_SECTION_COUNT] = {
 
 static SECMAP	MAP = { SPWAW_SECTION_COUNT, MAPLIST };
 
+#define UNREFERENCED_LOCAL_VARIABLE(V)	(V)
+
 static bool
 validate_spwaw_gamedata_structures (void)
 {
-	GAMEDATA_SPWAW	*p = NULL; //fixme: compiler warning C4189, variable not referenced
+	GAMEDATA_SPWAW	*p = NULL;
+
+	/* prevent compiler warnings */
+	UNREFERENCED_LOCAL_VARIABLE (p);
+
 	assert (sizeof(p->sec00.u.raw) == sizeof(p->sec00.u.d));
 	assert (sizeof(p->sec01.u.raw) == sizeof(p->sec01.u.d));
 	assert (sizeof(p->sec02.u.raw) == sizeof(p->sec02.u.d));

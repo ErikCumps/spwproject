@@ -12,9 +12,9 @@
 #include "gamefile/winspww2/gamedata_winspww2.h"
 #include "gamefile/winspww2/build_options_winspww2.h"
 #include "gamefile/fulist.h"
+#include "snapshot/index.h"
 #include "utils/ud.h"
 #include "common/internal.h"
-#include "snapshot/index.h"
 
 // The end-of-unitlist detection was not 100% correct.
 //
@@ -139,7 +139,7 @@ find_candidate_units (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE playe
 		// This unit references a valid formation.
 		uel->d.FMID = fel->d.FID;
 
-		// Record the unit's loader (may be chained)
+		// Record the unit's loader (could be chained)
 		uel->d.loader = udata[i].loader;
 		if (uel->d.loader != SPWAW_BADIDX) {
 			while (udata[uel->d.loader].loader != SPWAW_BADIDX) {
@@ -394,7 +394,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			ids = oobdata->fdata[i].elements[j].rid;
 			if (!cnt) { j++; continue; }
 
-			if (ids<1000) {
+			if (ids<oobdata->efstart) {
 				uid = ids;
 
 				SPWAW_set_date (s_date, oobdata->udata[uid].start_yr, oobdata->udata[uid].start_mo);
@@ -440,7 +440,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 				s += ds;
 			} else {
-				fid = ids-1000;
+				fid = ids-oobdata->efstart;
 
 				SPWAW_set_date (s_date, oobdata->fdata[fid].start_yr, oobdata->fdata[fid].start_mo);
 				s_stmp = SIMPLE_STAMP (s_date.year, s_date.month);
@@ -672,7 +672,7 @@ verify_candidate_units (FULIST &ful)
 #endif	/* EXP_WINSPWW2_VALIDITY */
 
 accept_unit:
-		// Mark the unit's loader unit as verified
+		// Mark the indicated loader unit as verified
 		if (uel->d.loader != SPWAW_BADIDX) {
 			UEL *l = lookup_ULIST (ful.ul, uel->d.loader);
 			if (l) l->d.vrfloader = true;
@@ -716,7 +716,7 @@ postpone_unit:
 
 		UFDLOG0 ("ACCEPTED\n");
 
-		// Mark the unit's loader unit as verified
+		// Mark the indicated loader unit as verified
 		if (uel->d.loader != SPWAW_BADIDX) {
 			UEL *l = lookup_ULIST (ful.ul, uel->d.loader);
 			if (l) l->d.vrfloader = true;
@@ -814,7 +814,10 @@ verify_candidate_formations (FULIST &ful)
 
 		UFDLOG0 ("ACCEPTED\n");
 
+#if	EXP_WINSPWW2_FILTERDUPF || EXP_WINSPWW2_FILTERGAPF
 		seen[fel->d.FID] = fel;
+#endif	/* EXP_WINSPWW2_FILTERDUPF || EXP_WINSPWW2_FILTERGAPF */
+
 		fel = fel->l.next;
 	}
 
@@ -913,7 +916,7 @@ add_unit (WINSPWW2_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, S
 
 	ptr = &(dst[*idx]);
 
-	rc = SPWAW_oob_data (OOB, p->d.OOB, &OOBdata); ROE ("SPWAW_ooB-data()");
+	rc = SPWAW_oob_data (OOB, p->d.OOB, &OOBdata); ROE ("SPWAW_oob_data()");
 
 	log ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
 

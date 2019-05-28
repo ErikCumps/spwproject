@@ -9,7 +9,7 @@
 #ifndef	INTERNAL_SIZES_H
 #define	INTERNAL_SIZES_H	1
 
-#define	UNITCOUNT		800
+#define	UNITCOUNT		1000
 #define	FORMCOUNT		400
 #define	FORMPCOUNT		100
 

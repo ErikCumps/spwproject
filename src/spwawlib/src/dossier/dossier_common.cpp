@@ -333,8 +333,7 @@ dossier_set_campaign_props (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle)
 	ptr->props.ucnt      = battle->tlist[0]->info.pbir_core.ucnt;
 	ptr->props.start     = battle->tlist[0]->snap->game.campaign.data.start;
 	ptr->props.end       = battle->tlist[0]->snap->game.campaign.data.end;
-	// fixme: get rid of the cast!
-	ptr->props.maxbtlcnt = (USHORT)battle->tlist[0]->snap->game.campaign.data.battles_max;
+	ptr->props.maxbtlcnt = battle->tlist[0]->snap->game.campaign.data.battles_max;
 
 	return (SPWERR_OK);
 }

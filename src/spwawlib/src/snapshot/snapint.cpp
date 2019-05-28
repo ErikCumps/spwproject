@@ -223,8 +223,7 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 
 	// Determine campaign battle index
 	if (ptr->game.campaign.data.battles_max > 0) {
-		// fixme: get rid of the cast!
-		ptr->game.btlidx = (USHORT)ptr->game.campaign.data.battles;
+		ptr->game.btlidx = ptr->game.campaign.data.battles;
 		// TODO: investigate with SPWAW (commented is fine for winSPWW2)
 		//if (ptr->game.battle.data.status == SPWAW_BTSCORE) ptr->game.btlidx--;
 	} else {

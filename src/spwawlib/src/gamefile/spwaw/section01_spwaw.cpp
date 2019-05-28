@@ -8,13 +8,12 @@
 
 #include "stdafx.h"
 #include <spwawlib_api.h>
-#include "gamefile/gamefile.h"
+#include "gamefile/gamedata.h"
 #include "gamefile/spwaw/gamedata_spwaw.h"
+#include "gamefile/spwaw/build_options_spwaw.h"
 #include "gamefile/fulist.h"
 #include "snapshot/index.h"
-#include "snapshot/snapshot.h"
 #include "utils/ud.h"
-#include "utils/log.h"
 #include "common/internal.h"
 
 // The end-of-unitlist detection was not 100% correct.
@@ -123,10 +122,10 @@ find_candidate_units (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FUL
 		uel->d.OOBrid	= udata[i].OOBnum;
 		uel->d.LRID	= udata[i].leader;
 
-		UFDLOG7 ("find_candidate_units: [%3.3u] F[%3.3u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> (%16.16s) ",
+		UFDLOG8 ("find_candidate_units: [%5.5u] F[%5.5u]<%3.3u> C<%5.5u> L<%5.5u> O<%3.3u> V=%u (%16.16s) ",
 			uel->d.RID, uel->d.FRID, uel->d.FSID,
 			udata[i].crew, uel->d.LRID, udata[i].OOBid,
-			name);
+			udata[i].valid, name);
 
 		// The unit must reference a valid formation, so try to look it up in the FORMATION list
 		fel = lookup_FLIST (ful.fl, uel->d.FRID);
@@ -163,7 +162,7 @@ find_candidate_units (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FUL
 				// This is a candidate special attached unit.
 				uel->d.type = SPWAW_UNIT_TYPE_SPAU;
 			}
-			UFDLOG4 ("%4.4s #%u F<%3.3u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
+			UFDLOG4 ("%4.4s #%u F<%5.5u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
 
 			// There can be no units with duplicate formation/subformation IDs
 			if (fel->d.unit_lst[uel->d.FSID]) {
@@ -183,7 +182,7 @@ find_candidate_units (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FUL
 		} else {
 			// This is a candidate crew.
 			uel->d.type = SPWAW_UNIT_TYPE_CREW;
-			UFDLOG4 ("%4.4s #%u F<%3.3u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
+			UFDLOG4 ("%4.4s #%u F<%5.5u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
 
 			UFDLOG0 ("CANDIDATE\n");
 
@@ -213,7 +212,7 @@ link_candidate_crews (FULIST &ful, SPWAW_UNIT *data)
 		uel = p; p = p->l.next;
 		if (uel->d.type != SPWAW_UNIT_TYPE_CREW) continue;
 
-		UFDLOG5 ("link_candidate_crews: [%3.3u] CREW<%5.5u> F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG5 ("link_candidate_crews: [%5.5u] CREW<%5.5u> F<%5.5u,%3.3u> (%16.16s) ",
 			uel->d.RID, data[uel->d.RID].crew, uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		// A crew member must point to a valid unit
@@ -235,7 +234,7 @@ link_candidate_crews (FULIST &ful, SPWAW_UNIT *data)
 			RWE (SPWERR_BADSAVEDATA, "add_crew_to_unit() failed");
 		}
 
-		log ("LINKED\n");
+		UFDLOG0 ("LINKED\n");
 
 		continue;
 
@@ -250,18 +249,18 @@ drop_crew:
 /* Tries to find the OOB record ID for the formation by looking for a single
  * match based on either type and date or type alone.
  */
-static inline BYTE
+static inline USHORT
 search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 {
 	SPWAW_TIMESTAMP	stamp;
 	SPWOOB_DATA	*oobdata;
-	BYTE		rv = 0;
+	USHORT		rv = 0;
 	int		score=0, cnt = 0;
 	SPWAW_DATE	s_date, e_date;
 	SPWAW_TIMESTAMP	s_stmp, e_stmp;
 	bool		mnad;
 
-	UFDLOG4 ("  >>> SEARCH OOBRID - BY NAME: F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
+	UFDLOG4 ("  >>> SEARCH OOBRID - BY NAME: F<%5.5u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
 		fel->d.FID, fel->d.name, date.year, date.month);
 
 	stamp = SIMPLE_STAMP (date.year, date.month);
@@ -273,7 +272,7 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 		return (0);
 	}
 
-	for (BYTE i=0; i<oobdata->fcnt; i++) {
+	for (USHORT i=0; i<oobdata->fcnt; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
 
@@ -294,7 +293,7 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			if (score < 2) { cnt++; }
 		}
 
-		UFDTRACE6 ("    OOB #%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - ",
+		UFDTRACE6 ("    OOB #%5.5u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - ",
 			i, oobdata->fdata[i].name,
 			s_date.year, s_date.month,
 			e_date.year, e_date.month);
@@ -318,12 +317,12 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 /* Tries to find the OOB record ID for the formation by performing an extensive
  * search on formation type, date, units name, units type and units date.
  */
-static inline BYTE
+static inline USHORT
 search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 {
 	SPWAW_TIMESTAMP	stamp;
 	SPWOOB_DATA	*oobdata;
-	BYTE		rv = 0;
+	USHORT		rv = 0;
 	int		score = -100;
 	int		s, ds, j, k;
 	BYTE		cnt;
@@ -332,7 +331,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	SPWAW_TIMESTAMP	s_stmp, e_stmp;
 	UEL		*uel;
 
-	UFDLOG4 ("  >>> SEARCH OOBRID - EXTENSIVE: F<%3.3u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
+	UFDLOG4 ("  >>> SEARCH OOBRID - EXTENSIVE: F<%5.5u>, T<%16.16s>, D<%4.4u/%2.2u>\n",
 		fel->d.FID, fel->d.name, date.year, date.month);
 
 	stamp = SIMPLE_STAMP (date.year, date.month);
@@ -347,12 +346,12 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 	for (BYTE i=0; i<MAXFORMATIONUNITS; i++) {
 		if ((uel = fel->d.unit_lst[i]) == NULL) continue;
 		uel->d.OOBtype = oobdata->udata[uel->d.OOBrid].type;
-		UFDTRACE6 ("  U<%3.3u> F<%3.3u,%3.3u> O<%3.3u> UT<%3.3u> <%16.16s>\n",
+		UFDTRACE6 ("  U<%5.5u> F<%5.5u,%3.3u> O<%5.5u> UT<%3.3u> <%16.16s>\n",
 			uel->d.RID, uel->d.FMID, uel->d.FSID,
 			uel->d.OOBrid, uel->d.OOBtype, uel->d.name);
 	}
 
-	for (BYTE i=0; i<oobdata->fcnt; i++) {
+	for (USHORT i=0; i<oobdata->fcnt; i++) {
 		if (!oobdata->fdata[i].valid) continue;
 		if (strncmp (fel->d.name, oobdata->fdata[i].name, SPWAW_AZSNAME) != 0) continue;
 		
@@ -372,7 +371,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			ds += 2;
 		}
 
-		UFDTRACE7 ("  > OOB #%3.3u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - DS=%d\n",
+		UFDTRACE7 ("  > OOB #%5.5u <%16.16s> from=%4.4u/%2.2u to=%4.4u/%2.2u - DS=%d\n",
 			i, oobdata->fdata[i].name,
 			s_date.year, s_date.month,
 			e_date.year, e_date.month,
@@ -395,7 +394,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 				SPWAW_set_date (e_date, oobdata->udata[uid].end_yr, 12);
 				e_stmp = SIMPLE_STAMP (e_date.year, e_date.month);
 
-				UFDTRACE5 ("  > + UNIT #%2.2u id=%4.4u cnt=%2.2u class=%3.3u <%16.16s>",
+				UFDTRACE5 ("  > + UNIT #%2.2u id=%5.5u cnt=%2.2u class=%3.3u <%16.16s>",
 					j, uid, cnt,
 					oobdata->udata[uid].type,
 					oobdata->udata[uid].name);
@@ -448,7 +447,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 					ds -= 1;
 				}
 
-				UFDTRACE4 ("  > + FORM #%2.2u id=%4.4u cnt=%2.2u <%16.16s>",
+				UFDTRACE4 ("  > + FORM #%5.5u id=%5.5u cnt=%2.2u <%16.16s>",
 					i, fid, cnt, oobdata->fdata[fid].name);
 				UFDTRACE4 (" from=%4.4u/%2.2u to=%4.4u/%2.2u",
 					s_date.year, s_date.month,
@@ -460,7 +459,7 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 			}
 			j++;
 		}
-		UFDTRACE4 ("    SUGGESTED: #%3.3u <%16.16s>, score: %d, uc: %u\n",
+		UFDTRACE4 ("    SUGGESTED: #%5.5u <%16.16s>, score: %d, uc: %u\n",
 			i, oobdata->fdata[i].name, s, k);
 
 		if (s > score) {
@@ -519,8 +518,8 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 	{
 		fel = p; p = p->l.next;
 
-		UFDLOG5 ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%3.3u> L<%5.5u> O<%3.3u> (%16.16s)\n",
-			fel->d.player, fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
+		UFDLOG6 ("find_formation_oobrids: FORMATION: P<%1.1u> ID<%5.5u> L<%5.5u> H<%5.5u> O<%5.5u> (%16.16s) ",
+			fel->d.player, fel->d.FID, fel->d.leader, fel->d.hcmd, fel->d.OOBrid, fel->d.name);
 
 		if (!fel->d.unit_cnt) {
 			UFDLOG0 ("DROPPED: no units recorded for formation\n");
@@ -540,16 +539,22 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 
 		fel->d.OOB = ldru->d.OOB;
 
-		if (fel->d.OOBrid == 0) {
+		if (fel->d.OOBrid != 0) {
+			UFDLOG1 ("OOBrid=%5.5u\n", fel->d.OOBrid);
+		} else {
+			UFDLOG0 ("NOT FOUND\n");
+
 			// If there is no recorded OOB record ID,
 			// try a direct formation name/date match search:
 			fel->d.OOBrid = search_oobrid_by_name (fel, OOB, date);
-		}
 
-		if (fel->d.OOBrid == 0) {
-			// If there is still no OOB record ID,
-			// try an extensive search:
-			fel->d.OOBrid = search_oobrid_extensive (fel, OOB, date);
+			if (fel->d.OOBrid == 0) {
+				// If there is still no OOB record ID,
+				// try an extensive search:
+				fel->d.OOBrid = search_oobrid_extensive (fel, OOB, date);
+			}
+
+			UFDLOG1 ("OOBrid=%5.5u\n", fel->d.OOBrid);
 		}
 
 		formation_unitcount (OOB, fel->d.OOB, fel->d.OOBrid, fel->d.unit_cnt);
@@ -598,8 +603,8 @@ verify_candidate_units (FULIST &ful)
 			continue;
 		}
 
-		UFDLOG5 ("verify_candidate_units: [%3.3u] %4.4s: F<%3.3u,%3.3u> (%16.16s) ",
-			uel->d.RID,  SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.name);
+		UFDLOG6 ("verify_candidate_units: [%5.5u] %4.4s: F<%5.5u,%3.3u> LO<%5.5u> (%16.16s) ",
+			uel->d.RID,  SPWAW_unittype2str(uel->d.type), uel->d.FMID, uel->d.FSID, uel->d.loader, uel->d.name);
 
 		// Drop all units without a formation reference
 		fel = uel->d.formation;
@@ -672,7 +677,7 @@ postpone_unit:
 		uel = p; p = p->l.next;
 		if (uel->d.type != SPWAW_UNIT_TYPE_CREW) continue;
 
-		UFDLOG4 ("verify_candidate_units: [%3.3u] CREW: F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG4 ("verify_candidate_units: [%5.5u] CREW: F<%5.5u,%3.3u> (%16.16s) ",
 			uel->d.RID, uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		// Drop all crews without a parent unit
@@ -681,7 +686,7 @@ postpone_unit:
 			goto drop_crew;
 		}
 
-		log ("ACCEPTED\n");
+		UFDLOG0 ("ACCEPTED\n");
 
 		// Mark the indicated loader unit as verified
 		if (uel->d.loader != SPWAW_BADIDX) {
@@ -711,7 +716,7 @@ drop_crew:
 		uel = p; p = p->l.next;
 		if (!uel->d.needvrfldrtst) continue;
 
-		UFDLOG5 ("verify_candidate_units: [%3.3u] %s: F<%3.3u,%3.3u> (%16.16s) ",
+		UFDLOG5 ("verify_candidate_units: [%5.5u] %s: F<%5.5u,%3.3u> (%16.16s) ",
 			uel->d.RID, "VLAT", uel->d.FMID, uel->d.FSID, uel->d.name);
 
 		if (uel->d.vrfloader) {
@@ -721,6 +726,105 @@ drop_crew:
 			drop_UEL (ful.ul, uel);
 		}
 	}
+
+	return (SPWERR_OK);
+}
+
+/* Verifies all the candidate formations and drops invalid formations */
+static SPWAW_ERROR
+verify_candidate_formations (FULIST &ful)
+{
+	FEL	*p;
+	FEL	*fel;
+	UEL	*u;
+
+#if	EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF
+	FEL	*seen[FORMCOUNT];
+	memset (seen, 0, sizeof(seen));
+#endif	/* EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF */
+
+	p = ful.fl.head;
+	while (p)
+	{
+		fel = p; p = p->l.next;
+
+		UFDLOG6 ("verify_candidate_formations: FORMATION: P<%1.1u> ID<%5.5u> L<%5.5u> H<%5.5u> O<%5.5u> (%16.16s) ",
+			fel->d.player, fel->d.FID, fel->d.leader, fel->d.hcmd, fel->d.OOBrid, fel->d.name);
+
+		// Drop all formations without a valid leader unit
+		u = lookup_ULIST (ful.ul, fel->d.leader);
+		if (u && (u->d.type == SPWAW_UNIT_TYPE_CREW)) {
+			u = u->d.link.parent;
+		}
+		if (!u) {
+			UFDLOG0 ("DROPPED: no valid leader unit\n");
+			drop_FEL (ful, fel);
+			continue;
+		}
+
+		// Drop all formations without a valid higher command unit
+		u = lookup_ULIST (ful.ul, fel->d.hcmd);
+		if (u && (u->d.type == SPWAW_UNIT_TYPE_CREW)) {
+			u = u->d.link.parent;
+		}
+		if (!u) {
+			UFDLOG0 ("DROPPED: no valid higher command unit\n");
+			drop_FEL (ful, fel);
+			continue;
+		}
+
+		// Some other validation?
+
+#if	EXP_SPWAW_FILTERDUPF
+		// Drop all duplicate formations
+		if (seen[fel->d.FID]) {
+			UFDLOG1 ("DROPPED: duplicate formation ID %u\n", fel->d.FID);
+			drop_FEL (ful, fel);
+			continue;
+		}
+#endif	/* EXP_SPWAW_FILTERDUPF */
+
+		UFDLOG0 ("ACCEPTED\n");
+
+#if	EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF
+		seen[fel->d.FID] = fel;
+#endif	/* EXP_SPWAW_FILTERDUPF || EXP_SPWAW_FILTERGAPF */
+		fel = fel->l.next;
+	}
+
+#if	EXP_SPWAW_FILTERGAPF
+	const int	allowedgap = 2;
+	int		i, j;
+
+	i = 0; j = 0;
+	while (true) {
+		if (i < FORMCOUNT) {
+			while (seen[i]) {
+				i++;
+				if (i >= FORMCOUNT) break;
+			}
+		}
+		if (i < FORMCOUNT) {
+			j = 0;
+			while (!seen[i]) {
+				j++; i++;
+				if (i >= FORMCOUNT) break;
+			}
+		}
+		if (i >= FORMCOUNT) break;
+		if (j > allowedgap) break;
+	}
+
+	if (j > allowedgap) {
+		while (i < FORMCOUNT) {
+			if (seen[i]) {
+				UFDLOG0 ("DROPPED: detected formation gap\n");
+				drop_FEL (ful, seen[i]);
+			}
+			i++;
+		}
+	}
+#endif	/* EXP_SPWAW_FILTERGAPF */
 
 	return (SPWERR_OK);
 }
@@ -750,6 +854,10 @@ unitcount (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FULIST &ful, S
 	rc = verify_candidate_units (ful);
 	ROE ("verify_candidate_units()");
 
+	// Step 4: verify the candidate formations, using the verified units (and the formation OOB info?)
+	rc = verify_candidate_formations (ful);
+	ROE ("verify_candidate_formations()");
+
 	// Report the results
 	UFDLOG1 ("unitcount: ul.cnt=%u\n", ful.ul.cnt);
 	dump_FULIST (ful);
@@ -771,11 +879,15 @@ setup (SPWAW_SNAP_OOB_URAW *dst, ULIST &up)
 }
 
 static SPWAW_ERROR
-add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *stab)
+add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRTAB *stab, SPWOOB *OOB)
 {
+	SPWAW_ERROR		rc;
 	SPWAW_SNAP_OOB_UELRAW	*ptr;
+	SPWOOB_DATA		*OOBdata;
 
 	ptr = &(dst[*idx]);
+
+	rc = SPWAW_oob_data (OOB, p->d.OOB, &OOBdata); ROE ("SPWAW_oob_data()");
 
 	log ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
 
@@ -916,7 +1028,7 @@ section01_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab,
 	rc = setup (&(dst->raw.OOBp1.units), ful1.ul); ROE ("setup(OOBp1)");
 	p = ful1.ul.head; idx = 0;
 	while (p) {
-		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp1.units.raw, &idx, stab);
+		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp1.units.raw, &idx, stab, dst->oobdat);
 		ROE ("add_unit(OOBp1)");
 		p = p->l.next;
 	}
@@ -926,7 +1038,7 @@ section01_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab,
 	rc = setup (&(dst->raw.OOBp2.units), ful2.ul); ROE ("setup(OOBp2)");
 	p = ful2.ul.head; idx = 0;
 	while (p) {
-		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp2.units.raw, &idx, stab);
+		rc = add_unit (&(data[p->d.RID]), p, dst->raw.OOBp2.units.raw, &idx, stab, dst->oobdat);
 		ROE ("add_unit(OOBp2)");
 		p = p->l.next;
 	}

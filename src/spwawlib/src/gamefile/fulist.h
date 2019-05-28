@@ -51,7 +51,6 @@ typedef struct s_UEL {
 /* Intermediate unit list - used during formation/unit detection */
 typedef	struct s_ULIST {
 	struct s_storage {
-		// FIXME!
 		UEL	list[UNITCOUNT];			/* Unit data array				*/
 		USHORT	nidx;					/* Next available index in the array		*/
 	}	s;
@@ -87,7 +86,6 @@ typedef struct s_FEL {
 		USHORT		FID;				/* Adjusted formation ID			*/
 		BYTE		OOB;				/* OOB country ID				*/
 		BYTE		unit_cnt;			/* Number of associated units			*/
-		// FIXME?
 		UEL		*unit_lst[MAXFORMATIONUNITS];	/* List of associated units			*/
 	}	d;
 } FEL;
@@ -95,7 +93,6 @@ typedef struct s_FEL {
 /* Intermediate formation list - used during formation/unit detection */
 typedef	struct s_FLIST {
 	struct s_storage {
-		// FIXME!
 		FEL	list[FORMCOUNT];			/* Formation data array				*/
 		USHORT	nidx;					/* Next available index in the array		*/
 	}	s;

@@ -10,11 +10,11 @@
 #include <spwawlib_api.h>
 #include "gamefile/gamedata.h"
 #include "gamefile/spwaw/gamedata_spwaw.h"
+#include "gamefile/spwaw/build_options_spwaw.h"
 #include "gamefile/fulist.h"
 #include "snapshot/index.h"
 #include "utils/ud.h"
 #include "common/internal.h"
-#include <ad_list.h>
 
 // The formation detection was not 100% correct.
 //
@@ -45,20 +45,20 @@ build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 	{
 		if (src[i].leader == SPWAW_BADIDX) {
 			// skipped: no leader
-			UFDTRACE1 ("find_formations: [%3.3u] SKIPPED (no leader)\n", i);
+			UFDTRACE1 ("find_formations: [%5.5u] SKIPPED (no leader)\n", i);
 			continue;
 		}
 
 		if (src[i].player != player) {
 			// skipped: wrong player
-			UFDTRACE2 ("find_formations: [%3.3u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
+			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (wrong player ID %u)\n", i, src[i].player);
 			continue;
 		}
 
 		// Allow a single duplicate formation ID, the duplicate may be the valid formation
 		if (seen[src[i].ID] > 1) {
 			// skipped: duplicate formation ID
-			UFDTRACE2 ("find_formations: [%3.3u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
+			UFDTRACE2 ("find_formations: [%5.5u] SKIPPED (duplicate formation ID %u)\n", i, src[i].ID);
 			continue;
 		}
 
@@ -66,25 +66,23 @@ build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 		if (!fel) RWE (SPWERR_FAILED, "reserve_FEL() failed");
 
 		fel->d.RID    = i;
-		// FIXME
-		//fel->d.rawFID = src[i].ID;
-		//fel->d.player = src[i].player;
-		fel->d.rawFID = (BYTE)(src[i].ID & 0xFF);
-		fel->d.player = (BYTE)(src[i].player & 0xFF);
+		fel->d.rawFID = src[i].ID;
+		fel->d.player = src[i].player;
 		fel->d.leader = src[i].leader;
+		fel->d.hcmd   = src[i].hcmd;
 		fel->d.OOBrid = src[i].OOBrid;
 		fel->d.status = src[i].status;
 		memcpy (fel->d.name, src[i].name, SPWAW_AZSNAME);
 
-		UFDLOG3 ("find_formations: [%3.3u] FORMATION: P<%1.1u> rawFID<%3.3u>",
+		UFDLOG3 ("find_formations: [%5.5u] FORMATION: P<%1.1u> rawFID<%5.5u>",
 			i, fel->d.player, fel->d.rawFID);
 
 		if (!commit_FEL (fl, fel)) {
 			RWE (SPWERR_FAILED, "commit_fel() failed");
 		}
 
-		UFDLOG4 (" FID<%3.3u> L<%5.5u> O<%3.3u>(%16.16s)\n",
-			fel->d.FID, fel->d.leader, fel->d.OOBrid, fel->d.name);
+		UFDLOG5 (" FID<%5.5u> L<%5.5u> H<%5.5u> O<%5.5u>(%16.16s)\n",
+			fel->d.FID, fel->d.leader, fel->d.hcmd, fel->d.OOBrid, fel->d.name);
 
 		seen[src[i].ID]++;
 	}

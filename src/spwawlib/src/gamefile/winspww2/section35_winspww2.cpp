@@ -12,9 +12,9 @@
 #include "gamefile/winspww2/gamedata_winspww2.h"
 #include "gamefile/winspww2/build_options_winspww2.h"
 #include "gamefile/fulist.h"
+#include "snapshot/index.h"
 #include "utils/ud.h"
 #include "common/internal.h"
-#include "snapshot/index.h"
 
 // The formation detection was not 100% correct.
 //
