@@ -52,6 +52,7 @@
 #include <qlistview.h>
 #include <qtreeview.h>
 #include <qtableview.h>
+#include <qgroupbox.h>
 #include <qdialog.h>
 #include <qprogressdialog.h>
 #include <qsplitter.h>

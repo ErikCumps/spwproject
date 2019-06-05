@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration handling.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,19 +19,28 @@ static void	statereport	(SL_STDBG_INFO_LEVEL level);
 
 /* --- private types  --- */
 
+/*! Game type configuration data structure */
+typedef struct s_CFGGAMEDATA {
+	SPWAW_GAME_TYPE	type;			/*!< Game type				*/
+	const char	*name;			/*!< Game type name			*/
+	char		*oob_path;		/*!< OOB path				*/
+	char		*sve_path;		/*!< savegames path			*/
+} CFGGAMEDATA;
+
 /*! Configuration data structure */
 typedef struct s_CFGDATA {
-	int		revision;	/*!< Configuration revision number	*/
-	char		*cwd_path;	/*!< Initial current working directory	*/
-	char		*app_path;	/*!< Application path			*/
-	char		*usr_path;	/*!< User data storage path		*/
-	char		*oob_path;	/*!< SPWAW OOB path			*/
-	char		*sve_path;	/*!< SPWAW savegames path		*/
-	char		*snp_path;	/*!< Snapshots path			*/
-	bool		compress;	/*!< Dossier compression flag		*/
-	bool		autoload;	/*!< Dossier autoload flag		*/
-	char		*lastdoss;	/*!< Last opened dossier		*/
-	GUI_STATE	gui_state;	/*!< GUI state				*/
+	int		revision;		/*!< Configuration revision number	*/
+	char		*cwd_path;		/*!< Initial current working directory	*/
+	char		*app_path;		/*!< Application path			*/
+	char		*usr_path;		/*!< User data storage path		*/
+	SPWAW_GAME_TYPE	def_gametype;		/*!< Default game type			*/
+	CFGGAMEDATA	cfg_spwaw;		/*!< SPWaW specific configuration	*/
+	CFGGAMEDATA	cfg_winspww2;		/*!< winSPWW2 specific configuration	*/
+	char		*snp_path;		/*!< Snapshots path			*/
+	bool		compress;		/*!< Dossier compression flag		*/
+	bool		autoload;		/*!< Dossier autoload flag		*/
+	char		*lastdoss;		/*!< Last opened dossier		*/
+	GUI_STATE	gui_state;		/*!< GUI state				*/
 } CFGDATA;
 
 
@@ -39,7 +48,7 @@ typedef struct s_CFGDATA {
 /* --- private macros  --- */
 
 /*! Configuration version */
-#define	CFG_REVISION	2
+#define	CFG_REVISION	3
 
 
 /* --- private variables --- */
@@ -73,14 +82,31 @@ config_load (void)
 		cfg.revision = data.toInt();
 	}
 
-	data = storage->value ("OobPath");
-	if (!data.isNull ()) {
-		SL_SAFE_STRDUP (cfg.oob_path, qPrintable(data.toString()));
+	data = storage->value ("DefGameType");
+	if (data.isNull ()) {
+		cfg.def_gametype = SPWAW_GAME_TYPE_UNKNOWN;
+	} else {
+		cfg.def_gametype = (SPWAW_GAME_TYPE)data.toInt();
 	}
 
-	data = storage->value ("SavesPath");
+	data = storage->value ("OobPathSPWAW");
 	if (!data.isNull ()) {
-		SL_SAFE_STRDUP (cfg.sve_path, qPrintable(data.toString()));
+		SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, qPrintable(data.toString()));
+	}
+
+	data = storage->value ("SavesPathSPWAW");
+	if (!data.isNull ()) {
+		SL_SAFE_STRDUP (cfg.cfg_spwaw.sve_path, qPrintable(data.toString()));
+	}
+
+	data = storage->value ("OobPathWINSPWW2");
+	if (!data.isNull ()) {
+		SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, qPrintable(data.toString()));
+	}
+
+	data = storage->value ("SavesPathWINSPWW2");
+	if (!data.isNull ()) {
+		SL_SAFE_STRDUP (cfg.cfg_winspww2.sve_path, qPrintable(data.toString()));
 	}
 
 	data = storage->value ("SnapshotsPath");
@@ -166,11 +192,20 @@ config_save (void)
 	data.setValue (CFG_REVISION);
 	storage->setValue ("CfgRevision", data);
 
-	data.setValue (QString (cfg.oob_path));
-	storage->setValue ("OobPath", data);
+	data.setValue ((int)cfg.def_gametype);
+	storage->setValue ("DefGameType", data);
 
-	data.setValue (QString (cfg.sve_path));
-	storage->setValue ("SavesPath", data);
+	data.setValue (QString (cfg.cfg_spwaw.oob_path));
+	storage->setValue ("OobPathSPWAW", data);
+
+	data.setValue (QString (cfg.cfg_spwaw.sve_path));
+	storage->setValue ("SavesPathSPWAW", data);
+
+	data.setValue (QString (cfg.cfg_winspww2.oob_path));
+	storage->setValue ("OobPathWINSPWW2", data);
+
+	data.setValue (QString (cfg.cfg_winspww2.sve_path));
+	storage->setValue ("SavesPathWINSPWW2", data);
 
 	data.setValue (QString (cfg.snp_path));
 	storage->setValue ("SnapshotsPath", data);
@@ -227,6 +262,12 @@ CFG_init (void)
 	if (!(cfg.usr_path = SL_APP_data_path ()))
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_PATH_NOUSR, "SL_APP_data_path() call failed");
 
+	cfg.cfg_spwaw.type = SPWAW_GAME_TYPE_SPWAW;
+	cfg.cfg_spwaw.name = SPWAW_gametype2str (cfg.cfg_spwaw.type);
+
+	cfg.cfg_winspww2.type = SPWAW_GAME_TYPE_WINSPWW2;
+	cfg.cfg_winspww2.name = SPWAW_gametype2str (cfg.cfg_winspww2.type);
+
 	config_load ();
 
 	initialized = SL_true;
@@ -248,8 +289,10 @@ CFG_shutdown (void)
 	if (cfg.gui_state.state_panes)	delete cfg.gui_state.state_panes;
 	if (cfg.gui_state.state_main)	delete cfg.gui_state.state_main;
 
-	if (cfg.oob_path) SL_SAFE_FREE (cfg.oob_path);
-	if (cfg.sve_path) SL_SAFE_FREE (cfg.sve_path);
+	if (cfg.cfg_spwaw.oob_path) SL_SAFE_FREE (cfg.cfg_spwaw.oob_path);
+	if (cfg.cfg_spwaw.sve_path) SL_SAFE_FREE (cfg.cfg_spwaw.sve_path);
+	if (cfg.cfg_winspww2.oob_path) SL_SAFE_FREE (cfg.cfg_winspww2.oob_path);
+	if (cfg.cfg_winspww2.sve_path) SL_SAFE_FREE (cfg.cfg_winspww2.sve_path);
 	if (cfg.snp_path) SL_SAFE_FREE (cfg.snp_path);
 	if (cfg.lastdoss) SL_SAFE_FREE (cfg.lastdoss);
 
@@ -269,12 +312,18 @@ CFG_needsreview (bool &isfirstrun)
 bool
 CFG_iscomplete (void)
 {
-	bool	b = true;
+	bool	b_spwaw = true;
+	bool	b_winspww2 = true;
 
-	if (!cfg.oob_path || !strlen (cfg.oob_path)) b = false;
-	if (!cfg.sve_path || !strlen (cfg.sve_path)) b = false;
+	if (cfg.def_gametype == SPWAW_GAME_TYPE_UNKNOWN) return (false);
 
-	return (b);
+	if (!cfg.cfg_spwaw.oob_path || !strlen (cfg.cfg_spwaw.oob_path)) b_spwaw = false;
+	if (!cfg.cfg_spwaw.sve_path || !strlen (cfg.cfg_spwaw.sve_path)) b_spwaw = false;
+
+	if (!cfg.cfg_winspww2.oob_path || !strlen (cfg.cfg_winspww2.oob_path)) b_winspww2 = false;
+	if (!cfg.cfg_winspww2.sve_path || !strlen (cfg.cfg_winspww2.sve_path)) b_winspww2 = false;
+
+	return (b_spwaw || b_winspww2);
 }
 
 char *
@@ -295,36 +344,97 @@ CFG_usr_path (void)
 	return (initialized ? cfg.usr_path : NULL);
 }
 
-char *
-CFG_oob_path (void)
+SPWAW_GAME_TYPE
+CFG_default_gametype (void)
 {
-	return (initialized ? cfg.oob_path : NULL);
+	return (initialized ? cfg.def_gametype : SPWAW_GAME_TYPE_UNKNOWN);
 }
 
 static void
-CFG_SET_oob_path (char *str)
+CFG_SET_default_gametype (SPWAW_GAME_TYPE gametype)
 {
-	if (!initialized || !str) return;
+	if (!initialized) return;
 
-	if (cfg.oob_path) SL_SAFE_FREE (cfg.oob_path);
-	SL_SAFE_STRDUP (cfg.oob_path, str);
-	DEVASSERT (cfg.oob_path != NULL);
+	cfg.def_gametype = gametype;
 }
 
 char *
-CFG_save_path (void)
+CFG_oob_path (SPWAW_GAME_TYPE gametype)
 {
-	return (initialized ? cfg.sve_path : NULL);
+	if (!initialized) return (NULL);
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			return (cfg.cfg_spwaw.oob_path);
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			return (cfg.cfg_winspww2.oob_path);
+			break;
+		default:
+			return (NULL);
+			break;
+	}
 }
 
 static void
-CFG_SET_sve_path (char *str)
+CFG_SET_oob_path (SPWAW_GAME_TYPE gametype, char *str)
 {
 	if (!initialized || !str) return;
 
-	if (cfg.sve_path) SL_SAFE_FREE (cfg.sve_path);
-	SL_SAFE_STRDUP (cfg.sve_path, str);
-	DEVASSERT (cfg.sve_path != NULL);
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			if (cfg.cfg_spwaw.oob_path) SL_SAFE_FREE (cfg.cfg_spwaw.oob_path);
+			SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, str);
+			DEVASSERT (cfg.cfg_spwaw.oob_path != NULL);
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			if (cfg.cfg_winspww2.oob_path) SL_SAFE_FREE (cfg.cfg_winspww2.oob_path);
+			SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, str);
+			DEVASSERT (cfg.cfg_winspww2.oob_path != NULL);
+			break;
+		default:
+			break;
+	}
+}
+
+char *
+CFG_save_path (SPWAW_GAME_TYPE gametype)
+{
+	if (!initialized) return (NULL);
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			return (cfg.cfg_spwaw.sve_path);
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			return (cfg.cfg_winspww2.sve_path);
+			break;
+		default:
+			return (NULL);
+			break;
+	}
+}
+
+static void
+CFG_SET_sve_path (SPWAW_GAME_TYPE gametype, char *str)
+{
+	if (!initialized || !str) return;
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			if (cfg.cfg_spwaw.sve_path) SL_SAFE_FREE (cfg.cfg_spwaw.sve_path);
+			SL_SAFE_STRDUP (cfg.cfg_spwaw.sve_path, str);
+			DEVASSERT (cfg.cfg_spwaw.sve_path != NULL);
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			if (cfg.cfg_winspww2.sve_path) SL_SAFE_FREE (cfg.cfg_winspww2.sve_path);
+			SL_SAFE_STRDUP (cfg.cfg_winspww2.sve_path, str);
+			DEVASSERT (cfg.cfg_winspww2.sve_path != NULL);
+			break;
+		default:
+			break;
+	}
+
 }
 
 char *
@@ -423,29 +533,44 @@ CFG_gui_state_set (GUI_STATE &state)
 bool
 CFG_DLG (void)
 {
-	CfgDlgData	data;
+
 	CfgDlg		*dlg = NULL;
 	int		rc;
 
-	data.oob	= CFG_oob_path ();
-	data.sve	= CFG_save_path ();
-	data.snp	= CFG_snap_path ();
-	data.compress	= CFG_compress ();
-	data.autoload	= CFG_autoload ();
+	CfgDlgData	data (
+		CFG_default_gametype (),
+		CFG_snap_path (),
+		CFG_compress (),
+		CFG_autoload ());
 
-	dlg = new CfgDlg ();
-	dlg->data_set (&data);
+	CfgDlgGame	spwaw (
+		SPWAW_GAME_TYPE_SPWAW,
+		SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW),
+		CFG_oob_path (SPWAW_GAME_TYPE_SPWAW),
+		CFG_save_path (SPWAW_GAME_TYPE_SPWAW));
+	data.add (&spwaw);
+
+	CfgDlgGame	winspww2 (
+		SPWAW_GAME_TYPE_WINSPWW2,
+		SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2),
+		CFG_oob_path (SPWAW_GAME_TYPE_WINSPWW2),
+		CFG_save_path (SPWAW_GAME_TYPE_WINSPWW2));
+	data.add (&winspww2);
+
+	dlg = new CfgDlg (&data);
 	rc = dlg->exec ();
-	dlg->data_get (&data);
 
 	if (rc == QDialog::Accepted) {
-		CFG_SET_oob_path (data.oob);
-		CFG_SET_sve_path (data.sve);
-		CFG_SET_snp_path (data.snp);
+		CFG_SET_default_gametype (data.def_game);
+		CFG_SET_oob_path (SPWAW_GAME_TYPE_SPWAW,    (char *)qPrintable (spwaw.oob));
+		CFG_SET_sve_path (SPWAW_GAME_TYPE_SPWAW,    (char *)qPrintable (spwaw.sve));
+		CFG_SET_oob_path (SPWAW_GAME_TYPE_WINSPWW2, (char *)qPrintable (winspww2.oob));
+		CFG_SET_sve_path (SPWAW_GAME_TYPE_WINSPWW2, (char *)qPrintable (winspww2.sve));
+		CFG_SET_snp_path ((char *)qPrintable (data.snp));
 		CFG_SET_compress (data.compress);
 		CFG_SET_autoload (data.autoload);
 	}
-	dlg->data_free (&data);
+
 	delete dlg;
 
 	return (rc == QDialog::Accepted);
@@ -458,19 +583,22 @@ statereport (SL_STDBG_INFO_LEVEL level)
 
 	/* basic information */
 	if (level >= SL_STDBG_LEVEL_BAS) {
-		SAYSTATE1 ("\tinitialized     = %s\n", SL_BOOL_tostr (initialized));
-		SAYSTATE1 ("\tCWD             = %s\n", cfg.cwd_path);
-		SAYSTATE1 ("\tapp path        = %s\n", cfg.app_path);
-		SAYSTATE1 ("\tuser data path  = %s\n", cfg.usr_path);
-		SAYSTATE1 ("\tOOB path        = %s\n", cfg.oob_path);
-		SAYSTATE1 ("\tsaves path      = %s\n", cfg.sve_path);
-		SAYSTATE1 ("\tsnapshots path  = %s\n", cfg.snp_path);
-		SAYSTATE1 ("\tcompression     = %s\n", cfg.compress?"enabled":"disabled");
-		SAYSTATE1 ("\tautoload        = %s\n", cfg.autoload?"enabled":"disabled");
-		SAYSTATE1 ("\tlast dossier    = %s\n", cfg.lastdoss);
-		SAYSTATE1 ("\tGUI state       = %u\n", cfg.gui_state.state);
-		SAYSTATE2 ("\tGUI size        = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
-		SAYSTATE2 ("\tGUI position    = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());
+		SAYSTATE1 ("\tinitialized         = %s\n", SL_BOOL_tostr (initialized));
+		SAYSTATE1 ("\tCWD                 = %s\n", cfg.cwd_path);
+		SAYSTATE1 ("\tapp path            = %s\n", cfg.app_path);
+		SAYSTATE1 ("\tuser data path      = %s\n", cfg.usr_path);
+		SAYSTATE1 ("\tdefault game type   = %s\n", SPWAW_gametype2str(cfg.def_gametype));
+		SAYSTATE2 ("\tOOB path %-8s   = %s\n", cfg.cfg_spwaw.name, cfg.cfg_spwaw.oob_path);
+		SAYSTATE2 ("\tsaves path %-8s = %s\n", cfg.cfg_spwaw.name, cfg.cfg_spwaw.sve_path);
+		SAYSTATE2 ("\tOOB path %-8s   = %s\n", cfg.cfg_winspww2.name, cfg.cfg_winspww2.oob_path);
+		SAYSTATE2 ("\tsaves path %-8s = %s\n", cfg.cfg_winspww2.name, cfg.cfg_winspww2.sve_path);
+		SAYSTATE1 ("\tsnapshots path      = %s\n", cfg.snp_path);
+		SAYSTATE1 ("\tcompression         = %s\n", cfg.compress?"enabled":"disabled");
+		SAYSTATE1 ("\tautoload            = %s\n", cfg.autoload?"enabled":"disabled");
+		SAYSTATE1 ("\tlast dossier        = %s\n", cfg.lastdoss);
+		SAYSTATE1 ("\tGUI state           = %u\n", cfg.gui_state.state);
+		SAYSTATE2 ("\tGUI size            = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
+		SAYSTATE2 ("\tGUI position        = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());
 		if (cfg.gui_state.state_panes->isEmpty()) {
 			SAYSTATE1 ("\tGUI main panes  = %s\n", "empty");
 		} else if (cfg.gui_state.state_panes->isNull()) {

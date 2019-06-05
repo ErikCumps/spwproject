@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration handling.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -20,8 +20,9 @@ extern bool		CFG_iscomplete		(void);
 extern char *		CFG_cwd_path		(void);
 extern char *		CFG_app_path		(void);
 extern char *		CFG_usr_path		(void);
-extern char *		CFG_oob_path		(void);
-extern char *		CFG_save_path		(void);
+extern SPWAW_GAME_TYPE	CFG_default_gametype	(void);
+extern char *		CFG_oob_path		(SPWAW_GAME_TYPE gametype);
+extern char *		CFG_save_path		(SPWAW_GAME_TYPE gametype);
 extern char *		CFG_snap_path		(void);
 extern bool		CFG_compress		(void);
 
