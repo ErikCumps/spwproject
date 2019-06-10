@@ -8,12 +8,13 @@
 
 #include "stdafx.h"
 #include "gamefile/spwaw/cmt_spwaw.h"
+#include "gamefile/spwaw/defines_spwaw.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 
 typedef struct s_CMTDATA_SPWAW {
-	char	title[SPWAW_AZSCMTTITLE];	/* Savegame title	*/
-	char	mapsrc[SPWAW_AZSCMTMAPSRC];	/* Savegame map source	*/
+	char	title[SPWAW_AZSTITLE];		/* Savegame title	*/
+	char	mapsrc[SPWAW_AZSMAPSRC];	/* Savegame map source	*/
 } CMTDATA_SPWAW;
 
 bool

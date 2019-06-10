@@ -66,6 +66,7 @@ static SECMAPEL	MAPLIST[WINSPWW2_SECTION_COUNT] = {
 	{ 48,	(void *)offsetof (GAMEDATA_WINSPWW2, sec48),	WINSPWW2_SIZESEC48,	true,	false	},
 	{ 49,	0,						0,			true,	true	},
 	{ 50,	0,						0,			true,	true	},
+	{ 61,	0,						0,			true,	true	},
 };
 
 static SECMAP	MAP = { WINSPWW2_SECTION_COUNT, MAPLIST };
