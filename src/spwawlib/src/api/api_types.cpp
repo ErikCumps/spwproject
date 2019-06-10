@@ -15,8 +15,14 @@
 
 static unsigned int dec_month_days[12] = { 30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30 };
 
+#define	INVALID_STAMP	-1
+
+static SPWAW_DATE EMPTY_DATE = { SPWAW_STARTYEAR, 0, 0, 0, 0 };
+
 static void	eval_period(SPWAW_PERIOD *period);
+static bool	isEmptyDate	(SPWAW_DATE *date);
 static bool	isValidDate	(SPWAW_DATE *date);
+static bool	isEmptyStamp	(SPWAW_TIMESTAMP *stamp);
 static bool	isValidStamp	(SPWAW_TIMESTAMP *stamp);
 static bool	isValidPeriod	(SPWAW_PERIOD *period);
 
@@ -39,14 +45,19 @@ SPWAW_date2stamp (SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp)
 	ULARGE_INTEGER	mins;
 
 	CNULLARG (date); CNULLARG (stamp);
-	*stamp = -1;
+	*stamp = INVALID_STAMP;
+
+	if (isEmptyDate (date)) {
+		*stamp = SPWAW_TIMESTAMP_EMPTY;
+		return (SPWERR_OK);
+	}
 
 	if (!isValidDate (date)) RWE (SPWERR_BADDATE, "invalid SPWAW date");
 
 	memset (&st, 0, sizeof (st));
 	st.wYear   = date->year;
 	st.wMonth  = date->month;
-	st.wDay	   = date->day;
+	st.wDay	   = date->day ? date->day : 1;
 	st.wHour   = date->hour;
 	st.wMinute = date->minute;
 	if (!SystemTimeToFileTime (&st, &ft)) RWE (SPWERR_BADDATE, "invalid SPWAW date");
@@ -69,6 +80,11 @@ SPWAW_stamp2date (SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date)
 
 	CNULLARG (stamp); CNULLARG (date);
 	fill_ptr (date, 0xFF);
+
+	if (isEmptyStamp (stamp)) {
+		*date = EMPTY_DATE;
+		return (SPWERR_OK);
+	}
 
 	if (!isValidStamp (stamp)) RWE (SPWERR_BADSTAMP, "invalid SPWAW timestamp");
 
@@ -95,6 +111,11 @@ SPWAW_date2str (SPWAW_DATE *date, char *buf, int len)
 
 	if (!buf || !len) return (SPWERR_OK);
 	memset (buf, 0, len);
+
+	if (isEmptyDate (date)) {
+		snprintf (buf, len - 1, "(empty date)");
+		return (SPWERR_OK);
+	}
 
 	if (!isValidDate (date)) RWE (SPWERR_BADSTAMP, "invalid SPWAW date");
 
@@ -149,6 +170,8 @@ SPWAW_stamp2period (SPWAW_TIMESTAMP *stamp, SPWAW_PERIOD *period)
 	CNULLARG (period); CNULLARG (stamp);
 	period->stamp = -1; eval_period (period);
 
+	if (isEmptyStamp (stamp)) return (SPWERR_OK);
+
 	if (!isValidStamp (stamp)) RWE (SPWERR_BADSTAMP, "invalid SPWAW timestamp");
 
 	period->stamp = *stamp; eval_period (period);
@@ -163,6 +186,7 @@ SPWAW_period2str (SPWAW_PERIOD *period, char *buf, int len)
 	bool		first = true;
 
 	CNULLARG (period);
+
 	if (!isValidPeriod (period)) RWE (SPWERR_BADSTAMP, "invalid SPWAW period");
 
 	if (!buf || !len) return (SPWERR_OK);
@@ -321,6 +345,16 @@ eval_period (SPWAW_PERIOD *period)
 }
 
 static bool
+isEmptyDate (SPWAW_DATE *date)
+{
+	return ((date->year	== EMPTY_DATE.year	) &&
+		(date->month	== EMPTY_DATE.month	) &&
+		(date->day	== EMPTY_DATE.day	) &&
+		(date->hour	== EMPTY_DATE.hour	) &&
+		(date->minute	== EMPTY_DATE.minute	));
+}
+
+static bool
 isValidDate (SPWAW_DATE *date)
 {
 	bool	isleap = false;
@@ -329,7 +363,7 @@ isValidDate (SPWAW_DATE *date)
 	if (!date) return (false);
 
 	// Early exit when year/month/day/hour/minute are not set
-	if ((date->year == SPWAW_STARTYEAR) && (date->month == 0) && (date->day == 0) && (date->hour == 0) && (date->minute == 0)) return (true);
+	if (isEmptyDate(date)) return (true);
 
 	// The year is set: determine the leap days
 	isleap = (((date->year % 4) == 0) && (((date->year % 100) != 0) || ((date->year % 400) == 0)));
@@ -360,15 +394,22 @@ isValidDate (SPWAW_DATE *date)
 }
 
 static bool
+isEmptyStamp (SPWAW_TIMESTAMP *stamp)
+{
+	return (stamp && (*stamp == SPWAW_TIMESTAMP_EMPTY));
+}
+
+static bool
 isValidStamp (SPWAW_TIMESTAMP *stamp)
 {
+	if (isEmptyStamp(stamp)) return (true);
 	return (stamp && (*stamp >= 0));
 }
 
 static bool
 isValidPeriod (SPWAW_PERIOD *period)
 {
-	return (period && (period->stamp >= 0));
+	return (period && isValidStamp(&(period->stamp)));
 }
 
 SPWAWLIB_API const char *

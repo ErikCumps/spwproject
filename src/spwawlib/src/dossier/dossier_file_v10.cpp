@@ -42,12 +42,15 @@ dossier_load_v10_header (int fd, DOS_HEADER *hdr)
 	hdr->bcnt	= hdr_v10->bcnt;
 	hdr->blist	= hdr_v10->blist;
 	hdr->stab	= hdr_v10->stab;
-	hdr->type = SPWAW_CAMPAIGN_DOSSIER;
-	hdr->gametype = SPWAW_GAME_TYPE_SPWAW;
+	hdr->type	= SPWAW_CAMPAIGN_DOSSIER;
+	hdr->gametype	= SPWAW_GAME_TYPE_SPWAW;
 
-	hdr->props.OOB	= (BYTE)(hdr_v10->OOB & 0xFF);
-	hdr->props.fcnt	= hdr_v10->fcnt;
-	hdr->props.ucnt	= hdr_v10->ucnt;
+	hdr->props.OOB		= (BYTE)(hdr_v10->OOB & 0xFF);
+	hdr->props.fcnt		= hdr_v10->fcnt;
+	hdr->props.ucnt		= hdr_v10->ucnt;
+	hdr->props.start	= SPWAW_TIMESTAMP_EMPTY;
+	hdr->props.end		= SPWAW_TIMESTAMP_EMPTY;
+	hdr->props.maxbtlcnt	= 0;
 
 handle_error:
 	if (hdr_v10) safe_free (hdr_v10);

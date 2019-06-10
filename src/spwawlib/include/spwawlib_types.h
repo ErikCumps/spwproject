@@ -26,6 +26,9 @@ typedef struct s_SPWAW_DATE {
 /* SPWAW timestamp */
 typedef LONGLONG SPWAW_TIMESTAMP;
 
+/* Empty SPWAW timestamp */
+#define	SPWAW_TIMESTAMP_EMPTY	-2
+
 /* SPWAW period */
 typedef struct s_SPWAW_PERIOD {
 	SPWAW_TIMESTAMP	stamp;

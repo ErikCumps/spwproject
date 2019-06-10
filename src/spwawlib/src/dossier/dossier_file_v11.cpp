@@ -41,9 +41,13 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 	hdr->type	= hdr_v11->type;
 	hdr->gametype	= SPWAW_GAME_TYPE_SPWAW;
 
-	hdr->props.OOB	= (BYTE)(hdr_v11->OOB & 0xFF);
-	hdr->props.fcnt	= hdr_v11->fcnt;
-	hdr->props.ucnt	= hdr_v11->ucnt;
+	hdr->props.OOB		= (BYTE)(hdr_v11->OOB & 0xFF);
+	hdr->props.fcnt		= hdr_v11->fcnt;
+	hdr->props.ucnt		= hdr_v11->ucnt;
+	hdr->props.start	= SPWAW_TIMESTAMP_EMPTY;
+	hdr->props.end		= SPWAW_TIMESTAMP_EMPTY;
+	hdr->props.maxbtlcnt	= 0;
+
 
 handle_error:
 	if (hdr_v11) safe_free (hdr_v11);
