@@ -68,19 +68,23 @@ void
 generate_oob_dump(int argc, char** argv)
 {
 	SPWAW_GAME_TYPE	gametype;
+	SPWAW_OOBCFG	oobcfg[1];
 	bool		raw = false;
 	SPWAW_ERROR	rc;
 	SPWOOB		*oob;
 
 	gametype = SPWAW_str2gametype (argv[2]);
 
+	oobcfg[0].gametype = gametype;
+	oobcfg[0].oobdir   = argv[3];
+
 	raw = (argc > 4) && (stricmp (argv[4], "raw") == 0);
 
-	if ((rc = SPWAW_init (gametype, argv[3], false)) != SPWERR_OK) {
+	if ((rc = SPWAW_init (oobcfg, 1, false)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_SPWOOB(&oob)) != SPWERR_OK) {
+	if ((rc = SPWAW_SPWOOB(gametype, &oob)) != SPWERR_OK) {
 		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
 	}
 
@@ -342,13 +346,17 @@ void
 generate_savegame_report(int argc, char** argv)
 {
 	SPWAW_GAME_TYPE	gametype;
+	SPWAW_OOBCFG	oobcfg[1];
 	SPWAW_ERROR	rc;
 	SPWAW_SNAPSHOT	*snap;
 	char		savename[MAX_PATH+1];
 
 	gametype = SPWAW_str2gametype (argv[2]);
 
-	if ((rc = SPWAW_init (gametype, argv[3], true)) != SPWERR_OK) {
+	oobcfg[0].gametype = gametype;
+	oobcfg[0].oobdir   = argv[3];
+
+	if ((rc = SPWAW_init (oobcfg, 1, true)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
@@ -373,9 +381,13 @@ void
 generate_snapshot_report(int argc, char** argv)
 {
 	SPWAW_ERROR	rc;
+	SPWAW_OOBCFG	oobcfg[1];
 	SPWAW_SNAPSHOT	*snap;
 
-	if ((rc = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, NULL, true)) != SPWERR_OK) {
+	oobcfg[0].gametype = SPWAW_GAME_TYPE_SPWAW;
+	oobcfg[0].oobdir   = NULL;
+
+	if ((rc = SPWAW_init (oobcfg, 1, true)) != SPWERR_OK) {
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 

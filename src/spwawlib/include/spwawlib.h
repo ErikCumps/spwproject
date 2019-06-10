@@ -32,8 +32,13 @@
 #include <spwawlib_dosslist.h>
 #include <spwawlib_savegame.h>
 
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_init	(SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_recfg	(SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD);
+typedef struct s_SPWAW_OOBCFG {
+	SPWAW_GAME_TYPE	gametype;
+	const char	*oobdir;
+} SPWAW_OOBCFG;
+
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_init	(SPWAW_OOBCFG *list, int cnt, bool withUD);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_recfg	(SPWAW_OOBCFG *list, int cnt, bool withUD);
 extern SPWAWLIB_API void		SPWAW_shutdown	(void);
 
 #endif	/* SPWAW_LIB_H */

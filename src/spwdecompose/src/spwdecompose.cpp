@@ -66,6 +66,7 @@ int
 main (int argc, char** argv)
 {
 	SPWAW_GAME_TYPE	gametype;
+	SPWAW_OOBCFG	oobcfg[1];
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*game = NULL;
 	char		fn[256];
@@ -77,7 +78,9 @@ main (int argc, char** argv)
 	memset (fn, 0, sizeof (fn));
 
 	/* Initialize spwawlib */
-	if ((rc = SPWAW_init (gametype, NULL, false)) != SPWERR_OK)
+	oobcfg[0].gametype = gametype;
+	oobcfg[0].oobdir   = NULL;
+	if ((rc = SPWAW_init (oobcfg, 1, false)) != SPWERR_OK)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Load savegame data */

@@ -7,8 +7,7 @@
  */
 
 #include "stdafx.h"
-#include <spwawlib_api.h>
-#include <spwawlib_types.h>
+#include <spwawlib.h>
 #include "utils/log.h"
 #include "common/internal.h"
 
@@ -60,13 +59,23 @@ SPWAW_errstr (SPWAW_ERROR e)
 }
 
 static SPWAW_ERROR
-spwaw_recfg (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
+spwaw_recfg (int cnt, SPWAW_OOBCFG *list, bool withUD)
 {
-	return cfg_set (gametype, oobdir, withUD);
+	for (int i=0; i<cnt; i++) {
+		switch (list[i].gametype) {
+			case SPWAW_GAME_TYPE_SPWAW:
+			case SPWAW_GAME_TYPE_WINSPWW2:
+				break;
+			default:
+				RWE (SPWERR_FAILED, "unsupported game type");
+				break;
+		}
+	}
+	return cfg_set (cnt, list, withUD);
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_init (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
+SPWAW_init (SPWAW_OOBCFG *list, int cnt, bool withUD)
 {
 	SPWAW_ERROR	rc;
 
@@ -74,9 +83,7 @@ SPWAW_init (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
 
 	if (spwaw_initialized) FAILGOTO (SPWERR_FAILED, "library already initialized", handle_error);
 
-	if (gametype == SPWAW_GAME_TYPE_UNKNOWN) FAILGOTO (SPWERR_FAILED, "unsupported game type", handle_error);
-
-	rc = spwaw_recfg (gametype, oobdir, withUD);
+	rc = spwaw_recfg (cnt, list, withUD);
 	ERRORGOTO ("spwaw_recfg()", handle_error);
 
 	spwaw_initialized = true;
@@ -88,13 +95,11 @@ handle_error:
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_recfg (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
+SPWAW_recfg (SPWAW_OOBCFG *list, int cnt, bool withUD)
 {
 	CSPWINIT;
 
-	if (gametype == SPWAW_GAME_TYPE_UNKNOWN) RWE (SPWERR_FAILED, "unsupported game type");
-
-	return (spwaw_recfg (gametype, oobdir, withUD));
+	return (spwaw_recfg (cnt, list, withUD));
 }
 
 SPWAWLIB_API void
@@ -109,14 +114,14 @@ SPWAW_shutdown (void)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_SPWOOB (SPWOOB **oob)
+SPWAW_SPWOOB (SPWAW_GAME_TYPE gametype, SPWOOB **oob)
 {
 	CSPWINIT;
 	CNULLARG (oob);
 	*oob = NULL;
 
-	if (!cfg.oobptr) RWE (SPWERR_NOOOBFILES, "no OOB directory configured");
+	if (!cfg_oobptr (gametype)) RWE (SPWERR_NOOOBFILES, "no OOB directory configured");
 
-	*oob = cfg.oobptr;
+	*oob = cfg_oobptr (gametype);
 	return (SPWERR_OK);
 }

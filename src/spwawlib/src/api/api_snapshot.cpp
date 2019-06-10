@@ -27,7 +27,7 @@ SPWAW_snap_make (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSH
 	CNULLARG (dir); CNULLARG (snap);
 
 	/* Create snapshot structure and string table */
-	rc = snapnew (&ptr, cfg.oobptr, NULL);
+	rc = snapnew (&ptr, cfg_oobptr (gametype), NULL);
 	ERRORGOTO ("snapnew()", handle_error);
 	stab = (STRTAB *)ptr->stab;
 

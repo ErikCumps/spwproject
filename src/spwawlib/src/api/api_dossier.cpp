@@ -37,7 +37,7 @@ SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *name, const char *comme
 	ptr->comment = STRTAB_add (stab, (char *)comment);
 
 	/* Record original OOB dir */
-	ptr->oobdir = STRTAB_add (stab, cfg.oobdir);
+	ptr->oobdir = STRTAB_add (stab, (char *)cfg_oobdir (ptr->gametype));
 
 	*dossier = ptr;
 	return (SPWERR_OK);

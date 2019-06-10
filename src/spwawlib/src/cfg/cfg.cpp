@@ -7,32 +7,38 @@
  */
 
 #include "stdafx.h"
+#include "spwawlib.h"
 #include "common/internal.h"
 
 CFG	cfg = { 0 };
 
 SPWAW_ERROR
-cfg_set (SPWAW_GAME_TYPE gametype, const char *oobdir, bool withUD)
+cfg_set (int cnt, SPWAW_OOBCFG *list, bool withUD)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
 	cfg_free ();
 
-	cfg.gametype = gametype;
+	cfg.oob_lst = safe_nmalloc (OOBCFG, cnt); COOMGOTO (cfg.oob_lst, "CFG.oob_lst", handle_error);
+	cfg.oob_cnt = cnt;
 
-	if (oobdir) {
-		char	path[MAX_PATH+1];
+	for (int i=0; i<cfg.oob_cnt; i++){
+		cfg.oob_lst[i].gametype = list[i].gametype;
 
-		memset (path, 0, sizeof (path));
-		_fullpath (path, oobdir, sizeof (path)-1);
-		cfg.oobdir = strdup (path);
-		COOMGOTO (cfg.oobdir, "CFG.oobdir", handle_error);
+		if (list[i].oobdir) {
+			char	path[MAX_PATH+1];
 
-		rc = SPWOOB_new (&(cfg.oobptr));
-		ERRORGOTO ("spwoob_new()", handle_error);
+			memset (path, 0, sizeof (path));
+			_fullpath (path, list[i].oobdir, sizeof (path)-1);
+			cfg.oob_lst[i].oobdir = strdup (path);
+			COOMGOTO (cfg.oob_lst[i].oobdir, "CFG.oob_lst[i].oobdir", handle_error);
 
-		rc = SPWOOB_load (cfg.oobptr, cfg.gametype, cfg.oobdir);
-		ERRORGOTO ("spwoob_load()", handle_error);
+			rc = SPWOOB_new (&(cfg.oob_lst[i].oobptr));
+			ERRORGOTO ("spwoob_new()", handle_error);
+
+			rc = SPWOOB_load (cfg.oob_lst[i].oobptr, cfg.oob_lst[i].gametype, cfg.oob_lst[i].oobdir);
+			ERRORGOTO ("spwoob_load()", handle_error);
+		}
 	}
 
 	cfg.withUD = withUD;
@@ -45,16 +51,44 @@ handle_error:
 	return (rc);
 }
 
+const char *
+cfg_oobdir (SPWAW_GAME_TYPE gametype)
+{
+	for (int i=0; i<cfg.oob_cnt; i++) {
+		if (cfg.oob_lst[i].gametype == gametype) {
+			return (cfg.oob_lst[i].oobdir);
+			break;
+		}
+	}
+
+	return (NULL);
+}
+
+SPWOOB *
+cfg_oobptr (SPWAW_GAME_TYPE gametype)
+{
+	for (int i=0; i<cfg.oob_cnt; i++) {
+		if (cfg.oob_lst[i].gametype == gametype) {
+			return (cfg.oob_lst[i].oobptr);
+			break;
+		}
+	}
+
+	return (NULL);
+}
+
 void
 cfg_free (void)
 {
-	if (cfg.oobptr) {
-		SPWOOB_free (&(cfg.oobptr));
-	}
+	for (int i=0; i<cfg.oob_cnt; i++) {
+		if (cfg.oob_lst[i].oobptr) {
+			SPWOOB_free (&(cfg.oob_lst[i].oobptr));
+		}
 
-	if (cfg.oobdir) {
-		safe_free (cfg.oobdir);
-		cfg.oobdir = NULL;
+		if (cfg.oob_lst[i].oobdir) {
+			safe_free (cfg.oob_lst[i].oobdir);
+		}
 	}
+	safe_free (cfg.oob_lst); cfg.oob_cnt = 0;
 	cfg.init = false;
 }
