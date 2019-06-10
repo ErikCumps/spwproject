@@ -381,10 +381,14 @@ unpack_section (int fd, BLOCKHEAD &block, void **dst, unsigned long *len)
 		}
 		log ("unpacked section %d: %lu bytes -> %lu bytes\n", block.section, block.size, *len);
 	} else {
-		if (*len < block.size) {
-			ERROR2 ("not enough room in caller buffer for uncompressed section %d data (%lu bytes)", block.section, block.size);
-			return (false);
-
+		if (*dst && *len) {
+			if (*len < block.size) {
+				ERROR2 ("not enough room in caller buffer for uncompressed section %d data (%lu bytes)", block.section, block.size);
+				return (false);
+			}
+		} else {
+			*dst = safe_smalloc (char, block.size); COOMRET (*dst, "uncompressed section data buffer", false);
+			*len = block.size;
 		}
 		if (!bread (fd, (char *)*dst, block.size, true)) {
 			ERROR2 ("failed to read section %d data (%lu bytes)", block.section, block.size);
@@ -526,22 +530,21 @@ load_packed_section (GAMEFILE *file, DWORD sec, void **dst, unsigned long *len)
 
 	bseekset (file->dat_fd, 0);
 
-	if (!bread (file->dat_fd, (char *)(spinfo->ptr), spinfo->size, false)) {
-		ERROR0 ("failed to read game info section");
-		return (false);
-	}
+	if (sec == GAMEINFO) {
+		if (!bread (file->dat_fd, (char *)(*dst), *len, false)) {
+			ERROR0 ("failed to read game info section");
+			return (false);
+		}
+	} else {
+		bseekmove (file->dat_fd, spinfo->size);
 
-	if (sec == 0) {
-		memcpy (*dst, spinfo->ptr, spinfo->size);
-		return (true);
-	}
-
-	while (load_block (file->gametype, file->dat_fd, block)) {
-		if (sec == block.section) {
-			if (!unpack_section (file->dat_fd, block, dst, len)) return (false);
-			break;
-		} else {
-			bseekmove (file->dat_fd, block.size);
+		while (load_block (file->gametype, file->dat_fd, block)) {
+			if (sec == block.section) {
+				if (!unpack_section (file->dat_fd, block, dst, len)) return (false);
+				break;
+			} else {
+				bseekmove (file->dat_fd, block.size);
+			}
 		}
 	}
 
