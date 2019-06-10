@@ -305,7 +305,7 @@ CfgDlg::snp_browse_clicked (bool /*checked*/)
 
 	dir = QFileDialog::getExistingDirectory (this,
 		"Specify Warcab snapshot directory:",
-		d.snp_edit->text(), QFileDialog::ShowDirsOnly);
+		d.snp_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
 	if (!dir.isNull()) { d.snp_edit->setText (dir); }
 }
@@ -321,7 +321,7 @@ CfgDlg::oob_browse_clicked (bool /*checked*/)
 
 	dir = QFileDialog::getExistingDirectory (this,
 		QString(STR_OOB_BROWSE).arg(SPWAW_gametype2str(SPWAW_GAME_TYPE_SPWAW)),
-		(*d.games_gui)[idx].oob_edit->text(), QFileDialog::ShowDirsOnly);
+		(*d.games_gui)[idx].oob_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
 	if (!dir.isNull()) { (*d.games_gui)[idx].oob_edit->setText (dir); }
 }
@@ -342,7 +342,7 @@ CfgDlg::sve_browse_clicked (bool /*checked*/)
 
 	dir = QFileDialog::getExistingDirectory (this,
 		QString(STR_SVE_BROWSE).arg(SPWAW_gametype2str(SPWAW_GAME_TYPE_SPWAW)),
-		start, QFileDialog::ShowDirsOnly);
+		start, QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
 	if (!dir.isNull()) { (*d.games_gui)[idx].sve_edit->setText (dir); }
 }

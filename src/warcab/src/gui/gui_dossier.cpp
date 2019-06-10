@@ -189,6 +189,7 @@ report_GMD (MDLD_TREE_ITEM *p)
 			if (p->data.d) {
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] name         = %s\n", p->data.d->name);
 				//DBG_log ("[MDLD_TREE_ITEM_DOSSIER] comment      = %s\n", p->data.d->comment);
+				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] game type    = %s\n", SPWAW_gametype2str(p->data.d->gametype));
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] oobdir       = %s\n", p->data.d->oobdir);
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] OOB          = %u\n", p->data.d->props.OOB);
 				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] fcnt         = %u\n", p->data.d->props.fcnt);

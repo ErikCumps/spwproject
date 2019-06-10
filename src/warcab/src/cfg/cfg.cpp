@@ -50,6 +50,9 @@ typedef struct s_CFGDATA {
 /*! Configuration version */
 #define	CFG_REVISION	3
 
+/* Convenience macro */
+#define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
+
 
 /* --- private variables --- */
 
@@ -64,10 +67,21 @@ static QSettings	*storage = NULL;
 
 /*! Configuration */
 static CFGDATA		cfg;
+static SPWAW_OOBCFG	oobcfg[2];
 
 
 
 /* --- code --- */
+
+static void
+config_update_oobcfg (void)
+{
+	oobcfg[0].gametype = SPWAW_GAME_TYPE_SPWAW;
+	oobcfg[0].oobdir   = cfg.cfg_spwaw.oob_path;
+
+	oobcfg[1].gametype = SPWAW_GAME_TYPE_WINSPWW2;
+	oobcfg[1].oobdir   = cfg.cfg_winspww2.oob_path;
+}
 
 static void
 config_load (void)
@@ -269,6 +283,7 @@ CFG_init (void)
 	cfg.cfg_winspww2.name = SPWAW_gametype2str (cfg.cfg_winspww2.type);
 
 	config_load ();
+	config_update_oobcfg ();
 
 	initialized = SL_true;
 
@@ -324,6 +339,17 @@ CFG_iscomplete (void)
 	if (!cfg.cfg_winspww2.sve_path || !strlen (cfg.cfg_winspww2.sve_path)) b_winspww2 = false;
 
 	return (b_spwaw || b_winspww2);
+}
+
+bool
+CFG_oobcfg (SPWAW_OOBCFG **list, int *cnt)
+{
+	if (!list || !cnt) return (false);
+
+	*list = oobcfg;
+	*cnt = ARRAYCOUNT(oobcfg);
+
+	return (true);
 }
 
 char *
@@ -569,6 +595,7 @@ CFG_DLG (void)
 		CFG_SET_snp_path ((char *)qPrintable (data.snp));
 		CFG_SET_compress (data.compress);
 		CFG_SET_autoload (data.autoload);
+		config_update_oobcfg ();
 	}
 
 	delete dlg;
@@ -621,6 +648,10 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tGUI size obj        = 0x%8.8x\n", cfg.gui_state.size);
 		SAYSTATE1 ("\tGUI main panes obj  = 0x%8.8x\n", cfg.gui_state.state_panes);
 		SAYSTATE1 ("\tGUI main window obj = 0x%8.8x\n", cfg.gui_state.state_main);
+		SAYSTATE1 ("\tOOBCFG[0] type      = %s\n", SPWAW_gametype2str(oobcfg[0].gametype));
+		SAYSTATE1 ("\tOOBCFG[0] oobdir    = %s\n", oobcfg[0].oobdir);
+		SAYSTATE1 ("\tOOBCFG[1] type      = %s\n", SPWAW_gametype2str(oobcfg[1].gametype));
+		SAYSTATE1 ("\tOOBCFG[1] oobdir    = %s\n", oobcfg[1].oobdir);
 	}
 
 	/* deep probe */

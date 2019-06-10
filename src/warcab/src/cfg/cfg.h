@@ -16,6 +16,7 @@ extern void		CFG_shutdown		(void);
 
 extern bool		CFG_needsreview		(bool &isfirstrun);
 extern bool		CFG_iscomplete		(void);
+extern bool		CFG_oobcfg		(SPWAW_OOBCFG **list, int *cnt);
 
 extern char *		CFG_cwd_path		(void);
 extern char *		CFG_app_path		(void);

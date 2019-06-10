@@ -8,7 +8,7 @@
 
 #include "model_savelist.h"
 
-ModelSaveList::ModelSaveList (char *path, SPWAW_SAVELIST *ignore, QObject *parent)
+ModelSaveList::ModelSaveList (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, QObject *parent)
 	: QAbstractItemModel (parent)
 {
 	DBG_TRACE_CONSTRUCT;
@@ -19,7 +19,7 @@ ModelSaveList::ModelSaveList (char *path, SPWAW_SAVELIST *ignore, QObject *paren
 	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
 	d.col_cnt = 6;
 
-	setupModelData (path, ignore);
+	setupModelData (gametype, path, ignore);
 }
 
 ModelSaveList::~ModelSaveList (void)
@@ -93,7 +93,7 @@ ModelSaveList::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelSaveList::setupModelData (char *path, SPWAW_SAVELIST *ignore)
+ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore)
 {
 	SPWAW_ERROR		rc;
 	unsigned long		i;
@@ -103,7 +103,7 @@ ModelSaveList::setupModelData (char *path, SPWAW_SAVELIST *ignore)
 
 	freeModelData();
 
-	rc = SPWAW_savelist (SPWAW_GAME_TYPE_SPWAW, path, ignore, &(d.save_list));
+	rc = SPWAW_savelist (gametype, path, ignore, &(d.save_list));
 	if (rc != SPWERR_OK) return;
 
 	d.row_cnt = d.save_list->cnt;

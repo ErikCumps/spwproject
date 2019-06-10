@@ -81,14 +81,14 @@ init_app (SL_APP_INFO *info)
 	if (CFG_needsreview(initial)) {
 		if (initial) {
 			QMessageBox::information (NULL, SL_APP_name(),
-				"The application is run for the first time!\n\n"
-				"Please review the application preferences...",
+				"The application is run for the first time! \n\n"
+				"Please review the application preferences... ",
 				QMessageBox::Ok, QMessageBox::Ok);
 
 		} else {
 			QMessageBox::information (NULL, SL_APP_name(),
-				"The application was updated!\n\n"
-				"Please review the application preferences...",
+				"The application was updated! \n\n"
+				"Please review the application preferences... ",
 				QMessageBox::Ok, QMessageBox::Ok);
 		}
 		CFG_DLG();
@@ -111,7 +111,11 @@ init_app (SL_APP_INFO *info)
 
 	DBG_log ("initializing SPWAW library\n");
 	while (1) {
-		if ((spwe = SPWAW_init (SPWAW_GAME_TYPE_SPWAW, CFG_oob_path (), false)) == SPWERR_OK) break;
+		SPWAW_OOBCFG	*oobcfg_ptr = NULL;
+		int		oobcfg_cnt = 0;
+		CFG_oobcfg (&oobcfg_ptr, &oobcfg_cnt);
+
+		if ((spwe = SPWAW_init (oobcfg_ptr, oobcfg_cnt, false)) == SPWERR_OK) break;
 
 		if (spwe == SPWERR_NOOOBFILES) {
 			HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_SOFTERR,
@@ -119,16 +123,19 @@ init_app (SL_APP_INFO *info)
 				"The OOB folder specified in the application preferences does not contain valid OOB files!\n\n"
 				"Select <retry> to review the application preferences and try again.\n",
 				ERR_APP_INIT_FAILED,
-				"SPWAWLIB error: %s\n",
-				SPWAW_errstr (spwe), req);
+				"SPWAWLIB error: %s\n", SPWAW_errstr (spwe),
+				req);
 			if (req != SL_ERR_REQUEST_RETRY) {
 				SL_DIE (SL_EXIT_FATAL_ERROR, "This SPWAWLIB initialization error could not be ignored!");
 			} else {
 				CFG_DLG();
 			}
 		} else {
-			HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR, "Failed to initialize SPWAWLIB!", ERR_APP_INIT_FAILED,
-				"SPWAWLIB error: %s", SPWAW_errstr (spwe), req);
+			HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR,
+				"Failed to initialize SPWAWLIB!",
+				ERR_APP_INIT_FAILED,
+				"SPWAWLIB error: %s", SPWAW_errstr (spwe),
+				req);
 		}
 	}
 

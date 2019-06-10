@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -55,6 +55,7 @@ public:
 #if	ALLOW_SNAPSHOTS_LOAD
 	SPWAW_SNAPLIST	*get_snaplist	(void);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
+	SPWAW_GAME_TYPE	get_gametype	(void);
 
 	void		statereport	(SL_STDBG_INFO_LEVEL level);
 
@@ -97,11 +98,12 @@ private:
 
 private:
 	typedef struct {
-		bool	savelist;
 		union {
 			SPWAW_SAVELIST *save;
 			SPWAW_SNAPLIST *snap;
 		} list;
+		bool		savelist;
+		SPWAW_GAME_TYPE	gametype;
 	} PL_LIST;
 	typedef SPWAW_ERROR (*PL_ADD)(void *, SPWAW_SNAPSHOT *, SPWAW_BTURN **);
 	SL_ERROR	process_list	(PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp);

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "add campaign savegame" dialog box.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -21,7 +21,7 @@ class GuiDlgAddCampaignSavegame	: public QDialog
 	Q_OBJECT
 
 public:
-	GuiDlgAddCampaignSavegame	(char *path, SPWAW_SAVELIST *ignore);
+	GuiDlgAddCampaignSavegame	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore);
 #if	ALLOW_SNAPSHOTS_LOAD
 	GuiDlgAddCampaignSavegame	(char *path, SPWAW_SNAPLIST *ignore);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */

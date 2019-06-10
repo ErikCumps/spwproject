@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - savegame list.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@ class ModelSaveList	: public QAbstractItemModel
 	Q_OBJECT
 
 public:
-	ModelSaveList	(char *path, SPWAW_SAVELIST *ignore, QObject *parent = 0);
+	ModelSaveList	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, QObject *parent = 0);
 	~ModelSaveList	(void);
 
 public:
@@ -49,7 +49,7 @@ private:
 	} d;
 
 private:
-	void	setupModelData	(char *path, SPWAW_SAVELIST *ignore);
+	void	setupModelData	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore);
 	void	freeModelData	(void);
 	QString	sort_transform	(NODE_DATA *ptr, int col, int idx);
 };

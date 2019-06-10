@@ -242,7 +242,41 @@ GuiMainWindow::action_app_exit (void)
 void
 GuiMainWindow::action_app_prefs (void)
 {
-	if (CFG_DLG ()) SPWAW_recfg (SPWAW_GAME_TYPE_SPWAW, CFG_oob_path (), false);
+	SPWAW_ERROR		rc;
+	SL_ERROR_REQUEST	req;
+
+	if (CFG_DLG ()) {
+		while (1) {
+			SPWAW_OOBCFG	*oobcfg_ptr = NULL;
+			int		oobcfg_cnt = 0;
+			CFG_oobcfg (&oobcfg_ptr, &oobcfg_cnt);
+
+			if ((rc = SPWAW_recfg (oobcfg_ptr, oobcfg_cnt, false)) == SPWERR_OK) {
+				break;
+			}
+
+			if (rc == SPWERR_NOOOBFILES) {
+				HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_SOFTERR,
+					"Failed to reconfigure SPWAWLIB:\n"
+					"The OOB folder specified in the application preferences does not contain valid OOB files!\n\n"
+					"Select <retry> to review the application preferences and try again.\n",
+					ERR_APP_INIT_FAILED,
+					"SPWAWLIB error: %s\n", SPWAW_errstr (rc),
+					req);
+				if (req != SL_ERR_REQUEST_RETRY) {
+					SL_DIE (SL_EXIT_FATAL_ERROR, "This SPWAWLIB reconfiguration error could not be ignored!");
+				} else {
+					CFG_DLG();
+				}
+			} else {
+				HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR,
+					"Failed to reconfigure SPWAWLIB!",
+					ERR_APP_INIT_FAILED,
+					"SPWAWLIB error: %s", SPWAW_errstr (rc),
+					req);
+			}
+		}
+	}
 }
 
 void
@@ -342,12 +376,13 @@ GuiMainWindow::action_dossier_saveAs (void)
 
 	if (!WARCAB->is_loaded()) return;
 
-	file = QFileDialog::getSaveFileName (this, "Save dossier as...", CFG_snap_path(), "Dossier Files (*.warcab)", 0, 0);
+	file = QFileDialog::getSaveFileName (this, "Save dossier as...", CFG_snap_path(), "Dossier Files (*.warcab)", 0, QFileDialog::DontUseNativeDialog);
 	if (file.isEmpty()) {
 		DBG_log ("[%s] no save filename selected", __FUNCTION__);
 		DBG_log ("[%s] save cancelled!", __FUNCTION__);
 		return;
 	}
+	if (!file.endsWith (".warcab")) file.append (".warcab");
 
 	erc = WARCAB->saveas ((char *)qPrintable (file));
 	if (SL_HAS_ERROR (erc)) {
@@ -405,7 +440,7 @@ GuiMainWindow::action_file_add_campaign_savegame (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddCampaignSavegame (CFG_save_path(), WARCAB->get_gamelist());
+	dlg = new GuiDlgAddCampaignSavegame (WARCAB->get_gametype(), CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist());
 	rc = dlg->exec ();
 	dlg->get_data (data);
 	delete dlg;
@@ -474,7 +509,7 @@ GuiMainWindow::action_file_add_battle_savegame (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddBattleSavegame (CFG_save_path(), WARCAB->get_gamelist());
+	dlg = new GuiDlgAddBattleSavegame (WARCAB->get_gametype(), CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist());
 	if (rc = dlg->exec ()) {
 		name = dlg->get_data (list);
 	}
@@ -554,7 +589,7 @@ GuiMainWindow::action_add_battle_savegame (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddBattleSavegame (CFG_save_path(), WARCAB->get_gamelist(), item->data.b->name);
+	dlg = new GuiDlgAddBattleSavegame (WARCAB->get_gametype(), CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist(), item->data.b->name);
 	rc = dlg->exec ();
 	dlg->get_data (list);
 	delete dlg;
