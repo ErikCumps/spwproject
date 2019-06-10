@@ -61,7 +61,7 @@ static const IDMAP spwaw_idmap[] = {
 	{ 89,	{ "Indian",		"India",		"IN",	"SPWAW_IN"	},	NULL	},
 	{ 90,	{ "ANZAC",		"ANZAC",		"ANZ",	"SPWAW_ANZ"	},	NULL	},
 	{ 91,	{ "Free French",	"Free France",		"FF",	"SPWAW_FF"	},	NULL	},
-	{  0,	{ "???",		"???",			"??",	"SPWAW_??"	},	NULL	},
+	{ SPWOOB_UNKNOWN, { "???", "???",			"??",	"SPWAW_??"	},	NULL	},
 };
 
 static const HISTMAP winspww2_history_map_FR[] = {
@@ -130,7 +130,7 @@ static const IDMAP winspww2_idmap[] = {
 	{ 41,	{ "Thai",		"Thailand",			"THA",	"SPWW2_THA"	},	NULL			},
 	{ 40,	{ "Blue",		"Blue",				"BLU",	"SPWW2_BLU"	},	NULL			},
 	{ 40,	{ "Red",		"Red",				"RED",	"SPWW2_RED"	},	NULL			},
-	{  0,	{ "???",		"???",				"??",	"SPWW2_??"	},	NULL			},
+	{ SPWOOB_UNKNOWN, { "???", "???",				"??",	"SPWW2_??"	},	NULL			},
 };
 
 const OOBSTRINGS *

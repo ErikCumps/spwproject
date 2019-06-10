@@ -240,7 +240,7 @@ GuiRptDsrOvr::refresh (bool forced)
 	p = (item != NULL) ? item->data.d : NULL;
 
 	if (!p) {
-		d.flag->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, 0));
+		d.flag->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, SPWOOB_UNKNOWN));
 		d.overview->setText ("No overview available yet.");
 		d.losses.plr->clear();
 		d.losses.opp->clear();

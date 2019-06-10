@@ -263,10 +263,10 @@ GuiRptBtlOvr::refresh (void)
 
 	if (!p) {
 		d.name->clear(); d.name->hide();
-		d.player1->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, 0));
+		d.player1->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, SPWOOB_UNKNOWN));
 		d.mission->setPixmap (*RES_pixmap (RID_MSSN_UNKNOWN));
 		d.mission->setToolTip (QString());
-		d.player2->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, 0));
+		d.player2->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, SPWOOB_UNKNOWN));
 
 		d.overview->setText ("No overview available yet.");
 		d.losses.plr->clear();

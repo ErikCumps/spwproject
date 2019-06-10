@@ -23,6 +23,9 @@ typedef struct s_SPWOOB SPWOOB;
 /* Maximum number of supported OOBs */
 #define	SPWOOB_DCNT	256
 
+/* OOB ID of the "Unknown" nation */
+#define	SPWOOB_UNKNOWN	0
+
 /* A signed byte type */
 typedef signed char	SBYTE;
 
