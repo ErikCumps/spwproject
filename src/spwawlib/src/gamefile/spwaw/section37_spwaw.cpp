@@ -64,8 +64,9 @@ section37_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 	cp->end_year    = data->Yend;
 	cp->end_month   = data->Mend;
 	cp->battles     = data->battles;
-	cp->majvics     = data->majvic;
-	cp->minvics     = 0;			// FIXME!
+	cp->majvics     = data->DVcount;
+	cp->minvics     = data->MVcount;
+	// FIXME! Dcount, MDcount, DDcount
 	cp->battles_max = data->battles_max;
 
 	cp->P1BLmen     = data->P1BLmen;
@@ -121,7 +122,6 @@ section37_spwaw_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab)
 		UD_ADD (UD, data, __data02);
 		UD_ADD (UD, data, __data040);
 		UD_ADD (UD, data, __data041);
-		UD_ADD (UD, data, __data042);
 		UD_ADD (UD, data, __data05);
 		UD_ADD (UD, data, __data06);
 		UD_ADD (UD, data, __data07);

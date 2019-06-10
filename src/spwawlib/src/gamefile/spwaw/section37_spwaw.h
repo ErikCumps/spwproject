@@ -45,8 +45,8 @@ typedef struct s_SPWAW_GAME_DATA {
 	SHORT		P2result;			/* Player2 battle result					*/
 	char		__data041[1];
 	BYTE		battles;			/* Campaign battles fought		*/
-	char		__data042[1];
-	BYTE		majvic;				/* Campaign major victories		*/
+	BYTE		MVcount;			/* Campaign marginal victories		*/
+	BYTE		DVcount;			/* Campaign decisive victories		*/
 	char		location[SPWAW_AZSLOCATION];	/* Game location/description (ASCIIZ)	*/
 	USHORT		battles_max;			/* Campaign max battles			*/
 	USHORT		Mstart;				/* Campaign start date: month		*/
