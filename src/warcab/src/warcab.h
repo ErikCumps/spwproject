@@ -29,7 +29,7 @@ public:
 
 public:
 	SL_ERROR	init		(void);
-	SL_ERROR	mknew		(void);
+	SL_ERROR	mknew		(SPWAW_GAME_TYPE gametype, const char *name, const char *comment);
 	SL_ERROR	load		(SPWAW_DOSSLIST *list);
 	SL_ERROR	save		(void);
 	SL_ERROR	saveas		(char *file);

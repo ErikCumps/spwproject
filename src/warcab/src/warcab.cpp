@@ -114,18 +114,14 @@ WARCABState::init (void)
 }
 
 SL_ERROR
-WARCABState::mknew (void)
+WARCABState::mknew (SPWAW_GAME_TYPE gametype, const char *name, const char *comment)
 {
 	SPWAW_ERROR	arc;
 	SL_ERROR	rc;
 
 	close();
 
-	// TODO: we will need to obtain the desired game type from the user
-	// TODO: maybe also for dossier name and comment at the same time,
-	// so there is no need for an edit later?
-
-	arc = SPWAW_dossier_new (CFG_default_gametype(), DEFAULT_NEW_NAME, DEFAULT_NEW_COMMENT, &d.dossier);
+	arc = SPWAW_dossier_new (gametype, name, comment, &d.dossier);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_NEW_FAILED, "SPWAW_dossier_new() failed: %s", SPWAW_errstr (arc));
 	}
@@ -150,13 +146,13 @@ WARCABState::load (SPWAW_DOSSLIST *list)
 	SL_ERROR	rc;
 	GuiProgress	gp ("Loading dossier...", 0);
 
+	if (!list || !list->cnt) return (SPWERR_NULLARG);
+
 	DBG_log ("[%s] starting progress", __FUNCTION__);
 	gp.setRange (0, 4);
 
 	close();
 	gp.inc();
-
-	if (!list || !list->cnt) return (mknew());
 
 	arc = SPWAW_dossier_load (list->list[0]->filepath, &d.dossier);
 	if (SPWAW_HAS_ERROR (arc)) {

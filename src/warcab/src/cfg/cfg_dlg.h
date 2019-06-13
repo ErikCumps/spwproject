@@ -55,14 +55,14 @@ public:
 };
 
 typedef struct s_CfgDlgGuiGame {
-		QGroupBox	*box;
-		QGridLayout	*layout;
-		QLabel		*oob_label;
-		QLineEdit	*oob_edit;
-		QPushButton	*oob_browse;
-		QLabel		*sve_label;
-		QLineEdit	*sve_edit;
-		QPushButton	*sve_browse;
+	QGroupBox		*box;
+	QGridLayout		*layout;
+	QLabel			*oob_label;
+	QLineEdit		*oob_edit;
+	QPushButton		*oob_browse;
+	QLabel			*sve_label;
+	QLineEdit		*sve_edit;
+	QPushButton		*sve_browse;
 } CfgDlgGuiGame;
 
 class CfgDlg	: public QDialog

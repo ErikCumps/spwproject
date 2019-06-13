@@ -106,6 +106,7 @@ HEADERS +=					\
 	gui/gui_dlg_add_battle_savegame.h	\
 	gui/gui_dlg_load_dossier.h		\
 	gui/gui_dossier.h			\
+	gui/gui_dlg_new_dossier.h		\
 	gui/gui_dlg_edit_dossier.h		\
 	gui/gui_oob_view.h			\
 	gui/gui_oob.h				\
@@ -227,6 +228,7 @@ SOURCES +=					\
 	gui/gui_dlg_add_battle_savegame.cpp	\
 	gui/gui_dlg_load_dossier.cpp		\
 	gui/gui_dossier.cpp			\
+	gui/gui_dlg_new_dossier.cpp		\
 	gui/gui_dlg_edit_dossier.cpp		\
 	gui/gui_oob_view.cpp			\
 	gui/gui_oob.cpp				\

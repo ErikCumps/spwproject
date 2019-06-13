@@ -11,6 +11,7 @@
 #include "gui_dlg_add_campaign_savegame.h"
 #include "gui_dlg_add_battle_savegame.h"
 #include "gui_dlg_load_dossier.h"
+#include "gui_dlg_new_dossier.h"
 #include "gui_dlg_edit_dossier.h"
 #include "gui_dlg_about.h"
 #include "model/model_sanity.h"
@@ -282,16 +283,27 @@ GuiMainWindow::action_app_prefs (void)
 void
 GuiMainWindow::action_dossier_new (void)
 {
-	SL_ERROR	erc;
+	GuiDlgNewDossier	*dlg = NULL;
+	int			rc;
+	SPWAW_GAME_TYPE		gt;
+	QString			dn, dc;
+	SL_ERROR		erc;
 
 	action_dossier_close();
 
-	erc = WARCAB->mknew ();
-	if (SL_HAS_ERROR (erc)) SL_ERROR_HANDLE (SL_ERR_FATAL_SOFTERR, "Failed to create new dossier!");
+	dlg = new GuiDlgNewDossier(CFG_gametypes(), CFG_default_gametype());
+	rc = dlg->exec ();
+	if (rc == QDialog::Accepted) {
+		dlg->data_get (gt, dn, dc);
 
-	if (!action_dossier_edit()) {
-		WARCAB->close ();
+		erc = WARCAB->mknew (gt, qPrintable(dn), qPrintable(dc));
+
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_SOFTERR, "Failed to create new dossier!");
+		}
 	}
+
+	delete dlg;
 }
 
 void
@@ -401,7 +413,7 @@ GuiMainWindow::action_dossier_edit (void)
 
 	if (!WARCAB->is_loaded()) return (false);
 
-	dlg = new GuiDlgEditDossier();
+	dlg = new GuiDlgEditDossier(WARCAB->get_gametype());
 	dlg->data_set (WARCAB->get_name(), WARCAB->get_comment());
 	rc = dlg->exec ();
 	keep = (rc == QDialog::Accepted);

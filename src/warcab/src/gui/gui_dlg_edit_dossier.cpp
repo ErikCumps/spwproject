@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "dossier edit" dialog box.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,7 +13,7 @@
 #define	BOX_HEIGHT	300
 #define	BOX_MARGIN	 10
 
-GuiDlgEditDossier::GuiDlgEditDossier (void)
+GuiDlgEditDossier::GuiDlgEditDossier (SPWAW_GAME_TYPE gametype)
 	: QDialog (0, Qt::Dialog)
 {
 	int	but_height = 0;
@@ -50,6 +50,10 @@ GuiDlgEditDossier::GuiDlgEditDossier (void)
 	GUINEW (d.body, QWidget (this), ERR_GUI_DLG_EDIT_DOSSIER_INIT_FAILED, "body widget");
 	d.body->setGeometry(QRect(BOX_MARGIN, BOX_MARGIN, BOX_WIDTH - 2*BOX_MARGIN, BOX_HEIGHT - 3*BOX_MARGIN - but_height));
 
+	/* Create "gametype" ui */
+	GUINEW (d.gametype_label, QLabel (d.body), ERR_GUI_DLG_EDIT_DOSSIER_INIT_FAILED, "gametype label");
+	d.gametype_label->setText (QString("Game type: %1").arg(SPWAW_gametype2str(gametype)));
+
 	/* Create "name" ui */
 	GUINEW (d.name_label, QLabel (d.body), ERR_GUI_DLG_EDIT_DOSSIER_INIT_FAILED, "name label");
 	d.name_label->setText ("Title:");
@@ -68,10 +72,11 @@ GuiDlgEditDossier::GuiDlgEditDossier (void)
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_EDIT_DOSSIER_INIT_FAILED, "body layout");
 	d.layout->setContentsMargins(0, 0, 0, 0);
-	d.layout->addWidget (d.name_label,	0, 0, 1, 1);
-	d.layout->addWidget (d.name_edit,	1, 0, 1, 1);
-	d.layout->addWidget (d.comment_label,	2, 0, 1, 1);
-	d.layout->addWidget (d.comment_edit,	3, 0, 1, 1);
+	d.layout->addWidget (d.gametype_label,	0, 0, 1, 1);
+	d.layout->addWidget (d.name_label,	1, 0, 1, 1);
+	d.layout->addWidget (d.name_edit,	2, 0, 1, 1);
+	d.layout->addWidget (d.comment_label,	3, 0, 1, 1);
+	d.layout->addWidget (d.comment_edit,	4, 0, 1, 1);
 
 	/* Finally connect signals and slots */
 	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));

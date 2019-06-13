@@ -57,17 +57,20 @@ typedef struct s_CFGDATA {
 /* --- private variables --- */
 
 /*! Module name */
-static const char	*MODULE = "CFG";
+static const char		*MODULE = "CFG";
 
 /*! Initialization status flag */
-static SL_BOOL		initialized = SL_false;
+static SL_BOOL			initialized = SL_false;
+
+/*! Supported game types	*/
+static QList<CfgGameType>	gametypes;
 
 /*! QT settings object */
-static QSettings	*storage = NULL;
+static QSettings		*storage = NULL;
 
 /*! Configuration */
-static CFGDATA		cfg;
-static SPWAW_OOBCFG	oobcfg[2];
+static CFGDATA			cfg;
+static SPWAW_OOBCFG		oobcfg[2];
 
 
 
@@ -260,6 +263,9 @@ CFG_init (void)
 {
 	if (initialized) RETURN_OK;
 	SL_STDBG_add (statereport, MODULE);
+
+	gametypes.append(CfgGameType(SPWAW_GAME_TYPE_SPWAW, SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW)));
+	gametypes.append(CfgGameType(SPWAW_GAME_TYPE_WINSPWW2, SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2)));
 
 	storage = new QSettings (SL_APP_auth (), SL_APP_name ());
 	if (!storage)
@@ -601,6 +607,12 @@ CFG_DLG (void)
 	delete dlg;
 
 	return (rc == QDialog::Accepted);
+}
+
+QList<CfgGameType>
+CFG_gametypes (void)
+{
+	return (gametypes);
 }
 
 static void

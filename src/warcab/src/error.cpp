@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - error handling.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -44,6 +44,7 @@ static const char *errormsgs[LAST_ERR_CODE-SL_ERR_USER_START+1] = {
 	"failed to create add campaign savegame dialog",
 	"failed to create add standalone battle savegame dialog",
 	"failed to create dossier load dialog",
+	"failed to create dossier new dialog",
 	"failed to create dossier edit dialog",
 	"failed to create about dialog",
 	"GUI action failed",

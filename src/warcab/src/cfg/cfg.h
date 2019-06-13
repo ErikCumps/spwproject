@@ -35,5 +35,17 @@ extern void		CFG_gui_state_set	(GUI_STATE &state);
 
 extern bool		CFG_DLG			(void);
 
+class CfgGameType
+{
+public:
+	CfgGameType (SPWAW_GAME_TYPE type, const char *name)	: type(type), name(name) {}
+	CfgGameType (SPWAW_GAME_TYPE type, QString name)	: type(type), name(name) {}
+
+	SPWAW_GAME_TYPE		type;
+	QString			name;
+};
+
+extern QList<CfgGameType>	CFG_gametypes	(void);
+
 #endif	/* CFG_COMMON_H */
 

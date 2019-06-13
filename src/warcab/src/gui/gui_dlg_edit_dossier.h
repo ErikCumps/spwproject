@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "dossier edit" dialog box.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@ class GuiDlgEditDossier	: public QDialog
 	Q_OBJECT
 
 public:
-	GuiDlgEditDossier	(void);
+	GuiDlgEditDossier	(SPWAW_GAME_TYPE gametype);
 	~GuiDlgEditDossier	(void);
 
 	SL_ERROR	error_code;
@@ -31,6 +31,7 @@ private:
 		QFontMetrics		*dlgfm;
 		QDialogButtonBox	*buttons;
 		QWidget			*body;
+		QLabel			*gametype_label;
 		QLabel			*name_label;
 		QLineEdit		*name_edit;
 		QLabel			*comment_label;
