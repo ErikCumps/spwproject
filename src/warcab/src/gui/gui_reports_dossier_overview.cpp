@@ -268,8 +268,11 @@ GuiRptDsrOvr::refresh (bool forced)
 				break;
 			default:
 				SPWAW_date_delta (&(p->bfirst->date), &(p->blast->date), &span);
-				str.printf ("%u battles recorded, spanning ", p->bcnt);
-				UTIL_fmt_longspan (&span, &str);
+				str.printf ("%u battles recorded", p->bcnt);
+				if ((p->type == SPWAW_CAMPAIGN_DOSSIER) && span.stamp) {
+					str.printf (", spanning ");
+					UTIL_fmt_longspan (&span, &str);
+				}
 				str.printf (".\n");
 				break;
 		}
