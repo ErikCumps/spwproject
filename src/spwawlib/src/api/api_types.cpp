@@ -79,8 +79,8 @@ SPWAW_date2stamp (SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp)
 
 	if (mod) *stamp |= SPWAW_MONTHONLY_TIMESTAMP_BITS;
 
-	log ("%s: date=\"%04.4d/%02.2d/%02.2d %02.2d:%02.2d\" stamp=0x%016.16I64x\n",
-		__FUNCTION__, date->year, date->month, date->day, date->hour, date->minute, *stamp);
+	//log ("%s: date=\"%04.4d/%02.2d/%02.2d %02.2d:%02.2d\" stamp=0x%016.16I64x\n",
+	//	__FUNCTION__, date->year, date->month, date->day, date->hour, date->minute, *stamp);
 
 	return (SPWERR_OK);
 }
@@ -118,8 +118,8 @@ SPWAW_stamp2date (SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date)
 	date->hour   = mod ? 0 : (char)st.wHour;
 	date->minute = mod ? 0 : (char)st.wMinute;
 
-	log ("%s: stamp=0x%016.16I64x date=\"%04.4d/%02.2d/%02.2d %02.2d:%02.2d\"\n",
-		__FUNCTION__, *stamp, date->year, date->month, date->day, date->hour, date->minute);
+	//log ("%s: stamp=0x%016.16I64x date=\"%04.4d/%02.2d/%02.2d %02.2d:%02.2d\"\n",
+	//	__FUNCTION__, *stamp, date->year, date->month, date->day, date->hour, date->minute);
 
 	return (SPWERR_OK);
 }
