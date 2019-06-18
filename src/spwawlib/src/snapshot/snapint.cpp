@@ -54,7 +54,6 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	if (dst->turn == 0) {
 		dst->status = SPWAW_BTDEPLOY;
 	} else {
-		//dst->status = (!ptr->raw.game.campaign.busy) ? SPWAW_BTBUSY : SPWAW_BTSCORE;
 		dst->status = (ptr->raw.game.campaign.busy == 1) ? SPWAW_BTSCORE : SPWAW_BTBUSY;
 	}
 
@@ -230,8 +229,6 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 	// Determine campaign battle index
 	if (ptr->game.campaign.data.battles_max > 0) {
 		ptr->game.btlidx = ptr->game.campaign.data.battles;
-		// TODO: investigate with SPWAW (commented is fine for winSPWW2)
-		//if (ptr->game.battle.data.status == SPWAW_BTSCORE) ptr->game.btlidx--;
 	} else {
 		ptr->game.btlidx = SPWAW_NOBTLIDX;
 	}
