@@ -62,8 +62,8 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
 		fprintf (rf, "Start date           : %s\n", ptr->strings.start);
 		fprintf (rf, "End date             : %s\n", ptr->strings.end);
 		fprintf (rf, "Battles fought       : %u of %u\n", ptr->data.battles, ptr->data.battles_max);
-		fprintf (rf, "Major victories      : %d\n", ptr->data.majvics);
-		fprintf (rf, "Minor victories      : %d\n", ptr->data.minvics);
+		fprintf (rf, "Decisive victories   : %d\n", ptr->data.majvics);
+		fprintf (rf, "Marginal victories   : %d\n", ptr->data.minvics);
 		fprintf (rf, "Losses               : %d\n", ptr->data.losses);
 		fprintf (rf, "\n");
 

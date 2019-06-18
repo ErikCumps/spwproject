@@ -48,7 +48,7 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
 	fprintf (rf, "Campaign flag?       : %u\n", ptr->data.campaign);
 
 	if (ptr->data.campaign) {
-		fprintf (rf, "Battles fought       : %u, %d MV, %d TV, %d L\n", ptr->data.battles, ptr->data.majvics, ptr->data.minvics, ptr->data.losses);
+		fprintf (rf, "Battles fought       : %u, %d DV, %d MV, %d L\n", ptr->data.battles, ptr->data.majvics, ptr->data.minvics, ptr->data.losses);
 		fprintf (rf, "\n");
 
 		fprintf (rf, "Battle index         : %u\n", game->btlidx);
