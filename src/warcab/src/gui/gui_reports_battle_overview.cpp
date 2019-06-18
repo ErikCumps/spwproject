@@ -318,8 +318,11 @@ GuiRptBtlOvr::refresh (void)
 
 		if (p->tcnt > 1) {
 			SPWAW_date_delta (&(p->tfirst->date), &(p->tlast->date), &span);
-			str.printf ("Recorded %u battle turns spanning ", p->tcnt);
-			UTIL_fmt_fullspan (&span, &str);
+			str.printf ("Recorded %u battle turns", p->tcnt);
+			if (span.stamp) {
+				str.printf (", spanning ");
+				UTIL_fmt_fullspan (&span, &str);
+			}
 			str.printf (".\n");
 		} else {
 			str.printf ("Recorded 1 battle turn.\n");

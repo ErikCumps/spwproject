@@ -94,7 +94,7 @@ GuiDlgAddBattleSavegame::constructor_core (char *name, QString &type, QString &i
 	d.view->setItemsExpandable (false);
 	d.view->setSelectionBehavior (QAbstractItemView::SelectRows);
 	d.view->setSelectionMode (QAbstractItemView::ExtendedSelection);
-	d.view->sortByColumn (1, Qt::AscendingOrder);
+	d.view->sortByColumn (0, Qt::AscendingOrder);
 	d.view->header()->setResizeMode(QHeaderView::ResizeToContents);
 	d.view->header()->setStretchLastSection(false);
 
@@ -145,6 +145,9 @@ GuiDlgAddBattleSavegame::GuiDlgAddBattleSavegame (SPWAW_GAME_TYPE gametype, char
 	/* Connect data model with tree view */
 	d.view->setModel (d.savemodel);
 
+	/* Hide useless gametype column */
+	d.view->hideColumn (1);
+
 	/* Hook up the selectionChanged signal of the d.view->selectionModel() to refresh_ok_button_status */
 	connect (d.view->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
 		this, SLOT(selection_changed(const QItemSelection&, const QItemSelection&)));
@@ -175,6 +178,9 @@ GuiDlgAddBattleSavegame::GuiDlgAddBattleSavegame (char *path, SPWAW_SNAPLIST *ig
 
 	/* Connect data model with tree view */
 	d.view->setModel (d.snapmodel);
+
+	/* Hide useless gametype column */
+	d.view->hideColumn (1);
 
 	/* Hook up the selectionChanged signal of the d.view->selectionModel() to refresh_ok_button_status */
 	connect (d.view->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),

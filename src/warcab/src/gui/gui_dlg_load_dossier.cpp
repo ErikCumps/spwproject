@@ -69,7 +69,7 @@ GuiDlgLoadDossier::GuiDlgLoadDossier (char *path, SPWAW_DOSSLIST *ignore)
 	d.view->setDragEnabled (false);
 	d.view->setSelectionBehavior (QAbstractItemView::SelectRows);
 	d.view->setSelectionMode (QAbstractItemView::SingleSelection);
-	d.view->sortByColumn (1, Qt::AscendingOrder);
+	d.view->sortByColumn (0, Qt::AscendingOrder);
 	d.view->header()->setResizeMode(QHeaderView::ResizeToContents);
 	d.view->header()->setStretchLastSection(false);
 
