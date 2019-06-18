@@ -41,12 +41,11 @@ section37_winspww2_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *st
 	bp   = &(dst->raw.game.battle);
 	cp   = &(dst->raw.game.campaign);
 
-	// winSPWW2 games do not seem to have a battle day and hour!
-	// So we assume battles to start at an arbitrarily fixed hour and day.
+	// winSPWW2 games do not have a battle day and hour!
 	bp->year  = data->Ygame;
 	bp->month = data->Mgame;
-	bp->day   = WINSPWW2_BATTLE_DAY;
-	bp->hour  = WINSPWW2_BATTLE_HOUR;
+	bp->day   = 0;
+	bp->hour  = 0;
 
 	bp->location   = azstrstab (data->location, stab);
 	bp->terrain    = data->terrain;

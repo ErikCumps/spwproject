@@ -86,8 +86,8 @@ sort_dossier_campaign (const void *a, const void *b)
 	USHORT	ib = fb->btlidx;
 
 	SPWAW_TIMESTAMP	sa, sb;
-	SPWAW_date2stamp (&(fa->date), &sa);
-	SPWAW_date2stamp (&(fb->date), &sb);
+	SPWAW_date2stamp (&(fa->date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
+	SPWAW_date2stamp (&(fb->date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
 
 	return ((ia==ib)?(sa==sb)?0:((sa<sb)?-1:+1):((ia<ib)?-1:+1));
 }
@@ -99,8 +99,8 @@ sort_dossier_stdalone (const void *a, const void *b)
 	SPWAW_BATTLE	*fb = *((SPWAW_BATTLE **)b);
 
 	SPWAW_TIMESTAMP	sa, sb;
-	SPWAW_date2stamp (&(fa->date), &sa);
-	SPWAW_date2stamp (&(fb->date), &sb);
+	SPWAW_date2stamp (&(fa->date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
+	SPWAW_date2stamp (&(fb->date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
 
 	return ((fa->name==fb->name)?(sa==sb)?0:((sa<sb)?-1:+1):((fa->name==NULL)?-1:((fb->name==NULL)?+1:strcmp(fa->name, fb->name))));
 }

@@ -15,14 +15,16 @@
 
 static unsigned int dec_month_days[12] = { 30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30 };
 
-#define	INVALID_STAMP	-1
+#define	INVALID_STAMP		0xffffffffffffffff
 
-static SPWAW_DATE EMPTY_DATE = { SPWAW_STARTYEAR, 0, 0, 0, 0 };
+static SPWAW_DATE INVALID_DATE	= { 0, 0, 0, 0, 0 };
+static SPWAW_DATE EMPTY_DATE	= { SPWAW_STARTYEAR, 0, 0, 0, 0 };
 
 static void	eval_period(SPWAW_PERIOD *period);
 static bool	isEmptyDate	(SPWAW_DATE *date);
 static bool	isValidDate	(SPWAW_DATE *date);
 static bool	isEmptyStamp	(SPWAW_TIMESTAMP *stamp);
+static bool	isMonthOnlyStamp(SPWAW_TIMESTAMP *stamp);
 static bool	isValidStamp	(SPWAW_TIMESTAMP *stamp);
 static bool	isValidPeriod	(SPWAW_PERIOD *period);
 
@@ -40,6 +42,7 @@ SPWAW_set_date (SPWAW_DATE &date, short year, char month, char day, char hour, c
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_date2stamp (SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp)
 {
+	bool		mod = false;
 	SYSTEMTIME	st;
 	FILETIME	ft;
 	ULARGE_INTEGER	mins;
@@ -54,19 +57,30 @@ SPWAW_date2stamp (SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp)
 
 	if (!isValidDate (date)) RWE (SPWERR_BADDATE, "invalid SPWAW date");
 
+	// Month-only dates can not be accurately represented by a stamp!
+	// The naive fix of forcing the day to 1 (instead of 0) to generate a timestamp will
+	// cause the loss of the original month-only date when converting back.
+	// However, because we down-scale the stamp after creation, some additional bits are
+	// gained which can be used to indicate the status of the original date.
+	mod = SPWAW_isMonthOnlyDate (date);
+
 	memset (&st, 0, sizeof (st));
 	st.wYear   = date->year;
 	st.wMonth  = date->month;
-	st.wDay	   = date->day ? date->day : 1;
-	st.wHour   = date->hour;
-	st.wMinute = date->minute;
+	st.wDay	   = mod ? 1 : date->day;
+	st.wHour   = mod ? 0 : date->hour;
+	st.wMinute = mod ? 0 : date->minute;
 	if (!SystemTimeToFileTime (&st, &ft)) RWE (SPWERR_BADDATE, "invalid SPWAW date");
 
 	mins.LowPart  = ft.dwLowDateTime;
 	mins.HighPart = ft.dwHighDateTime;
 	mins.QuadPart /= (10 * 1000 * 1000 * 60); /* convert units of 100 ns to 1 minute */
-
 	*stamp = mins.QuadPart;
+
+	if (mod) *stamp |= SPWAW_MONTHONLY_TIMESTAMP_BITS;
+
+	log ("%s: date=\"%04.4d/%02.2d/%02.2d %02.2d:%02.2d\" stamp=0x%016.16I64x\n",
+		__FUNCTION__, date->year, date->month, date->day, date->hour, date->minute, *stamp);
 
 	return (SPWERR_OK);
 }
@@ -74,6 +88,7 @@ SPWAW_date2stamp (SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp)
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_stamp2date (SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date)
 {
+	bool		mod = false;
 	ULARGE_INTEGER	ns;
 	FILETIME	ft;
 	SYSTEMTIME	st;
@@ -88,7 +103,9 @@ SPWAW_stamp2date (SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date)
 
 	if (!isValidStamp (stamp)) RWE (SPWERR_BADSTAMP, "invalid SPWAW timestamp");
 
-	ns.QuadPart = *stamp;
+	mod = isMonthOnlyStamp (stamp);
+
+	ns.QuadPart = *stamp & SPWAW_MONTHONLY_TIMESTAMP_MASK;
 	ns.QuadPart *= (10 * 1000 * 1000 * 60); /* convert units of 100 ns to 1 minute */
 
 	ft.dwHighDateTime = ns.HighPart;
@@ -97,9 +114,12 @@ SPWAW_stamp2date (SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date)
 
 	date->year   = st.wYear;
 	date->month  = (char)st.wMonth;
-	date->day    = (char)st.wDay;
-	date->hour   = (char)st.wHour;
-	date->minute = (char)st.wMinute;
+	date->day    = mod ? 0 : (char)st.wDay;
+	date->hour   = mod ? 0 : (char)st.wHour;
+	date->minute = mod ? 0 : (char)st.wMinute;
+
+	log ("%s: stamp=0x%016.16I64x date=\"%04.4d/%02.2d/%02.2d %02.2d:%02.2d\"\n",
+		__FUNCTION__, *stamp, date->year, date->month, date->day, date->hour, date->minute);
 
 	return (SPWERR_OK);
 }
@@ -119,13 +139,9 @@ SPWAW_date2str (SPWAW_DATE *date, char *buf, int len)
 
 	if (!isValidDate (date)) RWE (SPWERR_BADSTAMP, "invalid SPWAW date");
 
-	if (date->minute >= 0) {
+	if (date->day > 0) {
 		snprintf (buf, len - 1, "%04d/%02d/%02d %02d:%02d", date->year, date->month, date->day, date->hour, date->minute);
-	} else if (date->hour >= 0) {
-		snprintf (buf, len - 1, "%04d/%02d/%02d %02d:00", date->year, date->month, date->day, date->hour);
-	} else if (date->day >= 0) {
-		snprintf (buf, len - 1, "%04d/%02d/%02d", date->year, date->month, date->day);
-	} else if (date->month >= 0) {
+	} else if (date->month > 0) {
 		snprintf (buf, len - 1, "%04d/%02d", date->year, date->month);
 	} else {
 		snprintf (buf, len - 1, "%04d", date->year);
@@ -156,7 +172,7 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_period2stamp (SPWAW_PERIOD *period, SPWAW_TIMESTAMP *stamp)
 {
 	CNULLARG (period); CNULLARG (stamp);
-	*stamp = -1;
+	*stamp = INVALID_STAMP;
 
 	if (!isValidPeriod (period)) RWE (SPWERR_BADSTAMP, "invalid SPWAW period");
 	*stamp = period->stamp;
@@ -168,7 +184,7 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_stamp2period (SPWAW_TIMESTAMP *stamp, SPWAW_PERIOD *period)
 {
 	CNULLARG (period); CNULLARG (stamp);
-	period->stamp = -1; eval_period (period);
+	period->stamp = INVALID_STAMP; eval_period (period);
 
 	if (isEmptyStamp (stamp)) return (SPWERR_OK);
 
@@ -244,15 +260,17 @@ SPWAW_date_delta (SPWAW_DATE *base, SPWAW_DATE *item, SPWAW_PERIOD *delta)
 	SPWAW_TIMESTAMP	sb, si;
 
 	CNULLARG (base); CNULLARG (item); CNULLARG (delta);
-	delta->stamp = -1; eval_period (delta);
+	delta->stamp = INVALID_STAMP; eval_period (delta);
 
 	if (!isValidDate (base)) RWE (SPWERR_BADSTAMP, "invalid SPWAW base date");
 	if (!isValidDate (item)) RWE (SPWERR_BADSTAMP, "invalid SPWAW item date");
 
+	if (SPWAW_isMonthOnlyDate (base) != SPWAW_isMonthOnlyDate (item)) RWE (SPWERR_BADSTAMP, "incompatible SPWAW dates");
+
 	rc = SPWAW_date2stamp (base, &sb); ROE ("SPWAW_date2stamp(base date)");
 	rc = SPWAW_date2stamp (item, &si); ROE ("SPWAW_date2stamp(item date)");
 
-	delta->stamp = si - sb; eval_period (delta);
+	delta->stamp = SPWAW_PURE_TIMESTAMP(si) - SPWAW_PURE_TIMESTAMP(sb); eval_period (delta);
 
 	return (SPWERR_OK);
 }
@@ -264,9 +282,10 @@ SPWAW_date_add (SPWAW_DATE *base, SPWAW_PERIOD *add, SPWAW_DATE *sum)
 	SPWAW_TIMESTAMP	stamp;
 
 	CNULLARG (base); CNULLARG (add); CNULLARG (sum);
-	fill_ptr (sum, 0xFF);
+	*sum = INVALID_DATE;
 
 	if (!isValidDate (base)) RWE (SPWERR_BADSTAMP, "invalid SPWAW date");
+	if (SPWAW_isMonthOnlyDate (base)) RWE (SPWERR_BADSTAMP, "incompatible SPWAW date");
 	if (!isValidPeriod (add)) RWE (SPWERR_BADSTAMP, "invalid SPWAW period");
 
 	rc = SPWAW_date2stamp (base, &stamp); ROE ("SPWAW_date2stamp(base date)");
@@ -280,7 +299,7 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_period_delta (SPWAW_PERIOD *base, SPWAW_PERIOD *item, SPWAW_PERIOD *delta)
 {
 	CNULLARG (base); CNULLARG (item); CNULLARG (delta);
-	delta->stamp = -1; eval_period (delta);
+	delta->stamp = INVALID_STAMP; eval_period (delta);
 
 	if (!isValidPeriod (base)) RWE (SPWERR_BADSTAMP, "invalid SPWAW base period");
 	if (!isValidPeriod (item)) RWE (SPWERR_BADSTAMP, "invalid SPWAW item period");
@@ -295,7 +314,7 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_period_add (SPWAW_PERIOD *base, SPWAW_PERIOD *add, SPWAW_PERIOD *sum)
 {
 	CNULLARG (base); CNULLARG (add); CNULLARG (sum);
-	sum->stamp = -1; eval_period (sum);
+	sum->stamp = INVALID_STAMP; eval_period (sum);
 
 	if (!isValidPeriod (base)) RWE (SPWERR_BADSTAMP, "invalid SPWAW base period");
 	if (!isValidPeriod (add)) RWE (SPWERR_BADSTAMP, "invalid SPWAW add period");
@@ -316,7 +335,7 @@ eval_period (SPWAW_PERIOD *period)
 
 	stamp = period->stamp;
 	clear_ptr (period);
-	if ((period->stamp = stamp) == -1) return;
+	if ((period->stamp = stamp) == INVALID_STAMP) return;
 
 	if (period->stamp < 0) stamp = -stamp;
 
@@ -354,6 +373,16 @@ isEmptyDate (SPWAW_DATE *date)
 		(date->minute	== EMPTY_DATE.minute	));
 }
 
+SPWAWLIB_API bool
+SPWAW_isMonthOnlyDate (SPWAW_DATE *date)
+{
+	return ((date->year	!= 0			) &&
+		(date->month	!= EMPTY_DATE.month	) &&
+		(date->day	== EMPTY_DATE.day	) &&
+		(date->hour	== EMPTY_DATE.hour	) &&
+		(date->minute	== EMPTY_DATE.minute	));
+}
+
 static bool
 isValidDate (SPWAW_DATE *date)
 {
@@ -361,6 +390,7 @@ isValidDate (SPWAW_DATE *date)
 	int	feb_days = 28;
 
 	if (!date) return (false);
+	if (!date->year) return (false);
 
 	// Early exit when year/month/day/hour/minute are not set
 	if (isEmptyDate(date)) return (true);
@@ -400,10 +430,17 @@ isEmptyStamp (SPWAW_TIMESTAMP *stamp)
 }
 
 static bool
+isMonthOnlyStamp (SPWAW_TIMESTAMP *stamp)
+{
+	return (stamp && (*stamp & SPWAW_MONTHONLY_TIMESTAMP_BITS));
+}
+
+
+static bool
 isValidStamp (SPWAW_TIMESTAMP *stamp)
 {
 	if (isEmptyStamp(stamp)) return (true);
-	return (stamp && (*stamp >= 0));
+	return (stamp && ((*stamp & SPWAW_MONTHONLY_TIMESTAMP_MASK) >= 0));
 }
 
 static bool

@@ -347,10 +347,18 @@ SPWAW_dossier_add_battle_snap (SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW
 			}
 		}
 		if (!HASERROR) {
+			bool		nomatch = false;
 			SPWAW_TIMESTAMP	tsb, tss;
+
 			SPWAW_date2stamp (&(battle->date), &tsb);
 			SPWAW_date2stamp (&(snap->game.battle.data.date), &tss);
-			if ((tss - (snap->game.battle.data.turn * SPWAW_MINSPERTURN)) != tsb) {
+
+			if (SPWAW_isMonthOnlyDate (&(battle->date)) && SPWAW_isMonthOnlyDate(&(snap->game.battle.data.date))) {
+				nomatch = (tss != tsb);
+			} else {
+				nomatch = ((tss - (snap->game.battle.data.turn * SPWAW_MINSPERTURN)) != tsb);
+			}
+			if (nomatch) {
 				char bdate[32];
 				char sdate[32];
 				SPWAW_date2str (&(battle->date), bdate, sizeof(bdate));

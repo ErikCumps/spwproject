@@ -48,18 +48,10 @@ setup_winspww2_info (GAMEINFO *info, char *filename, FILETIME filedate, WINSPWW2
 	snprintf (info->file, sizeof (info->file) - 1, "%s", q);
 	info->date = filedate;
 
-	// winSPWW2 games do not seem to have a battle day and hour!
-	// So we assume battles to start at an arbitrarily fixed hour and day.
-	SPWAW_set_date (base,
-		gamedata->u.d.data.Ygame + SPWAW_STARTYEAR,
-		gamedata->u.d.data.Mgame,
-		WINSPWW2_BATTLE_DAY,
-		WINSPWW2_BATTLE_HOUR
-	);
-	add.stamp  = gamedata->u.d.data.turn * SPWAW_MINSPERTURN;
-	SPWAW_date_add (&base, &add, &date);
-	snprintf (info->stamp, sizeof (info->stamp) - 1, "%4.4u/%02.2u/%02.2u %02.2u:%02.2u, turn %u",
-		date.year, date.month, date.day, date.hour, date.minute, gamedata->u.d.data.turn);
+	// winSPWW2 games do not have a battle day and hour!
+	SPWAW_set_date (date, gamedata->u.d.data.Ygame + SPWAW_STARTYEAR, gamedata->u.d.data.Mgame);
+	snprintf (info->stamp, sizeof (info->stamp) - 1, "%4.4u/%02.2u, turn %u",
+		date.year, date.month, gamedata->u.d.data.turn);
 
 	memcpy (info->location, gamedata->u.d.data.location, sizeof (gamedata->u.d.data.location));
 	memcpy (info->comment, gamecmt->title, sizeof (gamecmt->title));

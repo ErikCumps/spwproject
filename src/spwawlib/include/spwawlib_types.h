@@ -29,6 +29,16 @@ typedef LONGLONG SPWAW_TIMESTAMP;
 /* Empty SPWAW timestamp */
 #define	SPWAW_TIMESTAMP_EMPTY	-2
 
+/* Month-only timestamp: bits */
+#define	SPWAW_MONTHONLY_TIMESTAMP_BITS	0x4000000000000000
+
+/* Month-only timestamp: bitmask */
+#define	SPWAW_MONTHONLY_TIMESTAMP_MASK	0xbfffffffffffffff
+
+/* Pure Timestamp */
+#define	SPWAW_PURE_TIMESTAMP(stamp_)	((stamp_) & SPWAW_MONTHONLY_TIMESTAMP_MASK)
+
+
 /* SPWAW period */
 typedef struct s_SPWAW_PERIOD {
 	SPWAW_TIMESTAMP	stamp;
@@ -41,6 +51,8 @@ typedef struct s_SPWAW_PERIOD {
 } SPWAW_PERIOD;
 
 extern SPWAWLIB_API void	SPWAW_set_date		(SPWAW_DATE &date, short year, char month=0, char day=0, char hour=0, char minute=0);
+
+extern SPWAWLIB_API bool	SPWAW_isMonthOnlyDate	(SPWAW_DATE *date);
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2stamp	(SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_stamp2date	(SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date);

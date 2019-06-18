@@ -41,12 +41,15 @@ dossier_find_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap)
 {
 	DWORD		i;
 	SPWAW_TIMESTAMP	stamp, s;
+	int		turn, t;
 
 	SPWAW_date2stamp (&(snap->game.battle.data.date), &stamp);
+	turn = snap->game.battle.data.turn;
 
 	for (i=0; i<ptr->tcnt; i++) {
 		SPWAW_date2stamp (&(ptr->tlist[i]->date), &s);
-		if (s == stamp) return (ptr->tlist[i]);
+		t = ptr->tlist[i]->turn;
+		if ((s == stamp) && (t == turn)) return (ptr->tlist[i]);
 	}
 	return (NULL);
 }

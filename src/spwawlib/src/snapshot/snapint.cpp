@@ -20,7 +20,6 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	SPWAW_SNAP_BATTLE_DATA		*dst;
 	SPWAW_SNAP_BATTLE_STRINGS	*str;
 	SPWAW_SNAP_BATTLE_STATS		*sts;
-	SPWAW_PERIOD			add;
 	int				i;
 
 	CNULLARG (ptr);
@@ -35,8 +34,15 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	dst->start.day   = raw->day;
 	dst->start.hour  = raw->hour;
 
-	add.stamp = raw->turn * SPWAW_MINSPERTURN;
-	rc = SPWAW_date_add (&(dst->start), &add, &(dst->date)); ROE ("SPWAW_date_add(turn time)");
+	if (SPWAW_isMonthOnlyDate (&(dst->start))) {
+		// With month-only dates we cannot accurately determine this battle turn's date */
+		dst->date = dst->start;
+	} else {
+		SPWAW_PERIOD	add;
+
+		add.stamp = raw->turn * SPWAW_MINSPERTURN;
+		rc = SPWAW_date_add (&(dst->start), &add, &(dst->date)); ROE ("SPWAW_date_add(turn time)");
+	}
 
 	dst->location   = raw->location;
 	dst->visibility = raw->visibility;
