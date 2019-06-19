@@ -366,7 +366,7 @@ eval_period (SPWAW_PERIOD *period)
 static bool
 isEmptyDate (SPWAW_DATE *date)
 {
-	return ((date->year	== EMPTY_DATE.year	) &&
+	return (((date->year == 0) || (date->year == EMPTY_DATE.year)) &&
 		(date->month	== EMPTY_DATE.month	) &&
 		(date->day	== EMPTY_DATE.day	) &&
 		(date->hour	== EMPTY_DATE.hour	) &&
