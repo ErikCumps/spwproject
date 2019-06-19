@@ -88,9 +88,6 @@ GuiDlgAddCampaignSavegame::constructor_core (QString &type, QString &items)
 	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
 
-	connect (d.view, SIGNAL(clicked(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
-	connect (d.view, SIGNAL(activated(const QModelIndex&)), this, SLOT(tree_clicked(const QModelIndex&)));
-
 	// And set the focus
 	d.view->setFocus(Qt::ActiveWindowFocusReason);
 
