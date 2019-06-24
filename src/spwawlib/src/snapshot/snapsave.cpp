@@ -386,10 +386,11 @@ snapsave (SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress)
 
 	ihdr.title	= STRTAB_getidx (stab, src->raw.game.cmt.title);
 	ihdr.location	= STRTAB_getidx (stab, src->raw.game.battle.location);
-	ihdr.turn	= src->raw.game.battle.turn;
-	rc = SPWAW_date2stamp (&(src->game.battle.data.start), &(ihdr.start));
+	// TODO: this isn't perfect, it would be better if idhr.turn used a wider data type...
+	ihdr.turn	= (BYTE)(src->game.battle.data.tdate.turn & 0xff);
+	rc = SPWAW_date2stamp (&(src->game.battle.data.bdate.date), &(ihdr.start));
 	ERRORGOTO ("SPWAW_date2stamp(start date)", handle_error);
-	rc = SPWAW_date2stamp (&(src->game.battle.data.date), &(ihdr.date));
+	rc = SPWAW_date2stamp (&(src->game.battle.data.tdate.date), &(ihdr.date));
 	ERRORGOTO ("SPWAW_date2stamp(turn date)", handle_error);
 	ihdr.type       = src->type;
 	ihdr.gametype	= src->gametype;

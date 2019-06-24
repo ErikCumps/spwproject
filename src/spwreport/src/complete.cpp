@@ -24,7 +24,7 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE *ptr)
 	smart_title (rf, '-', "Complete battle report:\n");
 
 	fprintf (rf, "Date           : %s\n", ptr->strings.date);
-	fprintf (rf, "Turn           : %u of %u\n", ptr->data.turn, ptr->data.turn_max);
+	fprintf (rf, "Turn           : %u of %u\n", ptr->data.tdate.turn, ptr->data.turn_max);
 	fprintf (rf, "Status         : %u (%s)\n", ptr->data.status, ptr->strings.status);
 	fprintf (rf, "Location       : %s\n", ptr->data.location);
 	fprintf (rf, "Terrain        : %u (%s terrain)\n", ptr->data.terrain, ptr->strings.terrain);

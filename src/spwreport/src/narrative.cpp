@@ -23,7 +23,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 	fprintf (rf, "\n");
 
 	fprintf (rf, "%s, turn %u of %u\n",
-		ptr->battle.strings.date, ptr->battle.data.turn, ptr->battle.data.turn_max);
+		ptr->battle.strings.date, ptr->battle.data.tdate.turn, ptr->battle.data.turn_max);
 	fprintf (rf, "%.3f x %.3f km %s terrain, %s with %u meters visibility.\n",
 		HEX2K (ptr->map.width), HEX2K (ptr->map.height),
 		ptr->battle.strings.terrain, ptr->battle.strings.weather, ptr->battle.data.visibility * HEXSIZE);

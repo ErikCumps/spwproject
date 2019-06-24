@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -37,8 +37,21 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 
 	switch (col) {
 		case MDLH_COLUMN_DATE:
-			SPWAW_date2str (&(data->date), buf, sizeof (buf));
-			s.sprintf ("%s", buf);
+			if (this->d.campaign) {
+				SPWAW_date2str (&(data->date.bdate.date), buf, sizeof (buf));
+				if (SPWAW_isMonthOnlyDate(&(data->date.bdate.date))) {
+					s.sprintf ("#%d %s", data->date.bdate.btlidx+1, buf);
+				} else {
+					s.sprintf ("%s", buf);
+				}
+			} else {
+				SPWAW_date2str (&(data->date.tdate.date), buf, sizeof (buf));
+				if (SPWAW_isMonthOnlyDate(&(data->date.tdate.date))) {
+					s.sprintf ("%s, turn %u", buf, data->date.tdate.turn);
+				} else {
+					s.sprintf ("%s", buf);
+				}
+			}
 			break;
 		case MDLH_COLUMN_CFLAG:
 			switch (data->cflag) {

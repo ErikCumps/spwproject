@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - min-max-average-spread data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -275,7 +275,11 @@ ModelMMAS::setupModelData (void)
 			md = &(d.list[i]);
 
 			md->idx	 = i;
-			md->date = d.campaign ? d.dptr.d->blist[i]->date : d.dptr.b->tlist[i]->date;
+			if (d.campaign) {
+				md->date.bdate = d.dptr.d->blist[i]->bdate;
+			} else {
+                                md->date.tdate = d.dptr.b->tlist[i]->tdate;
+			}
 			md->dlt	 = &(d.dlts[i*d.col_cnt]);
 		}
 	}

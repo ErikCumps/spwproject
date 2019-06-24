@@ -29,29 +29,29 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	str = &(ptr->game.battle.strings);
 	sts = &(ptr->game.battle.stats);
 
-	dst->start.year  = raw->year + SPWAW_STARTYEAR;
-	dst->start.month = raw->month;
-	dst->start.day   = raw->day;
-	dst->start.hour  = raw->hour;
+	dst->bdate.date.year  = raw->year + SPWAW_STARTYEAR;
+	dst->bdate.date.month = raw->month;
+	dst->bdate.date.day   = raw->day;
+	dst->bdate.date.hour  = raw->hour;
 
-	if (SPWAW_isMonthOnlyDate (&(dst->start))) {
+	dst->tdate.turn = raw->turn;
+	if (SPWAW_isMonthOnlyDate (&(dst->bdate.date))) {
 		// With month-only dates we cannot accurately determine this battle turn's date */
-		dst->date = dst->start;
+		dst->tdate.date = dst->bdate.date;
 	} else {
 		SPWAW_PERIOD	add;
 
 		add.stamp = raw->turn * SPWAW_MINSPERTURN;
-		rc = SPWAW_date_add (&(dst->start), &add, &(dst->date)); ROE ("SPWAW_date_add(turn time)");
+		rc = SPWAW_date_add (&(dst->bdate.date), &add, &(dst->tdate.date)); ROE ("SPWAW_date_add(turn time)");
 	}
 
 	dst->location   = raw->location;
 	dst->visibility = raw->visibility;
 	dst->terrain    = raw2terrain (raw->terrain);
 	dst->weather    = raw2weather (raw->weather);
-	dst->turn       = raw->turn;
 	dst->turn_max   = raw->turn_max;
 
-	if (dst->turn == 0) {
+	if (dst->tdate.turn == 0) {
 		dst->status = SPWAW_BTDEPLOY;
 	} else {
 		dst->status = (ptr->raw.game.campaign.busy == 1) ? SPWAW_BTSCORE : SPWAW_BTBUSY;
@@ -66,26 +66,26 @@ snapint_game_battle (SPWAW_SNAPSHOT *ptr)
 	dst->meeting = dst->miss_p1 == dst->miss_p2;
 	dst->credit  = raw->credit;
 
-	rc = SPWAW_date2str (&(dst->date), str->date, sizeof (str->date)); ROE ("SPWAW_date2str(turn date)");
+	rc = SPWAW_date2str (&(dst->tdate.date), str->date, sizeof (str->date)); ROE ("SPWAW_date2str(turn date)");
 	str->terrain   = terrain2str (dst->terrain);
 	str->weather   = weather2str (dst->terrain, dst->weather);
 	str->status    = btstatus2str (dst->status);
-	str->nation_p1 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p1, dst->date.year, dst->date.month);
-	str->people_p1 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p1, dst->date.year, dst->date.month);
-	str->prefix_p1 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p1, dst->date.year, dst->date.month);
-	str->flagid_p1 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p1, dst->date.year, dst->date.month);
-	str->nation_p2 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p2, dst->date.year, dst->date.month);
-	str->people_p2 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p2, dst->date.year, dst->date.month);
-	str->prefix_p2 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p2, dst->date.year, dst->date.month);
-	str->flagid_p2 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p2, dst->date.year, dst->date.month);
-	str->nation_p3 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p3, dst->date.year, dst->date.month);
-	str->people_p3 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p3, dst->date.year, dst->date.month);
-	str->prefix_p3 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p3, dst->date.year, dst->date.month);
-	str->flagid_p3 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p3, dst->date.year, dst->date.month);
-	str->nation_p4 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p4, dst->date.year, dst->date.month);
-	str->people_p4 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p4, dst->date.year, dst->date.month);
-	str->prefix_p4 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p4, dst->date.year, dst->date.month);
-	str->flagid_p4 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p4, dst->date.year, dst->date.month);
+	str->nation_p1 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p1, dst->tdate.date.year, dst->tdate.date.month);
+	str->people_p1 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p1, dst->tdate.date.year, dst->tdate.date.month);
+	str->prefix_p1 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p1, dst->tdate.date.year, dst->tdate.date.month);
+	str->flagid_p1 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p1, dst->tdate.date.year, dst->tdate.date.month);
+	str->nation_p2 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p2, dst->tdate.date.year, dst->tdate.date.month);
+	str->people_p2 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p2, dst->tdate.date.year, dst->tdate.date.month);
+	str->prefix_p2 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p2, dst->tdate.date.year, dst->tdate.date.month);
+	str->flagid_p2 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p2, dst->tdate.date.year, dst->tdate.date.month);
+	str->nation_p3 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p3, dst->tdate.date.year, dst->tdate.date.month);
+	str->people_p3 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p3, dst->tdate.date.year, dst->tdate.date.month);
+	str->prefix_p3 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p3, dst->tdate.date.year, dst->tdate.date.month);
+	str->flagid_p3 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p3, dst->tdate.date.year, dst->tdate.date.month);
+	str->nation_p4 = (char *)SPWAW_oob_nation (ptr->oobdat, raw->OOB_p4, dst->tdate.date.year, dst->tdate.date.month);
+	str->people_p4 = (char *)SPWAW_oob_people (ptr->oobdat, raw->OOB_p4, dst->tdate.date.year, dst->tdate.date.month);
+	str->prefix_p4 = (char *)SPWAW_oob_prefix (ptr->oobdat, raw->OOB_p4, dst->tdate.date.year, dst->tdate.date.month);
+	str->flagid_p4 = (char *)SPWAW_oob_flagid (ptr->oobdat, raw->OOB_p4, dst->tdate.date.year, dst->tdate.date.month);
 	str->miss_p1   = mission2str (dst->miss_p1);
 	str->miss_p2   = mission2str (dst->miss_p2);
 
@@ -232,6 +232,7 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 	} else {
 		ptr->game.btlidx = SPWAW_NOBTLIDX;
 	}
+	ptr->game.battle.data.bdate.btlidx = ptr->game.btlidx;
 
 	return (SPWERR_OK);
 }

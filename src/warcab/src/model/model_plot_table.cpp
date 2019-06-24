@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - plot table data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -177,8 +177,11 @@ ModelPlotTable::plot_data (int col, double *dst, int cnt)
 
 	for (i = 0; i < cnt; i++) {
 		switch (d.dat.row[i].data[col].type) {
-			case MDLPT_DATA_DATE:
-				PLOT_date2timeline (d.dat.row[i].data[col].u.date, dv);
+			case MDLPT_DATA_BDATE:
+				PLOT_date2timeline (d.dat.row[i].data[col].u.bdate, dv);
+				break;
+			case MDLPT_DATA_TDATE:
+				PLOT_date2timeline (d.dat.row[i].data[col].u.tdate, dv);
 				break;
 			case MDLPT_DATA_INT:
 				dv = (double)d.dat.row[i].data[col].u.i;
@@ -223,9 +226,21 @@ ModelPlotTable::MDLPT_data_display (MDLPT_DATA_ITEM *item) const
 	if (!item) return (v);
 
 	switch (item->type) {
-			case MDLPT_DATA_DATE:
-				SPWAW_date2str (&(item->u.date), buf, sizeof (buf));
-				s.sprintf ("%s", buf);
+			case MDLPT_DATA_BDATE:
+				SPWAW_date2str (&(item->u.bdate.date), buf, sizeof (buf));
+				if (SPWAW_isMonthOnlyDate(&(item->u.bdate.date))) {
+					s.sprintf ("#%d %s", item->u.bdate.btlidx+1, buf);
+				} else {
+					s.sprintf ("%s", buf);
+				}
+				break;
+			case MDLPT_DATA_TDATE:
+				SPWAW_date2str (&(item->u.tdate.date), buf, sizeof (buf));
+				if (SPWAW_isMonthOnlyDate(&(item->u.tdate.date))) {
+					s.sprintf ("%s, turn %u", buf, item->u.tdate.turn);
+				} else {
+					s.sprintf ("%s", buf);
+				}
 				break;
 			case MDLPT_DATA_INT:
 				s.setNum (item->u.i);

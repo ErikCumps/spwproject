@@ -137,7 +137,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 				if (fup->data.rank != lup->data.rank) {
 					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
-						b->date.month, b->date.year - 1900, lup->strings.rank);
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank);
 				}
 				idx = nidx; b = b->next;
 			}
@@ -150,7 +150,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
 				if (fup->data.rank != lup->data.rank) {
 					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
-						b->date.month, b->date.year - 1900, lup->strings.rank);
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank);
 				}
 				idx = nidx; b = b->prev;
 			}
@@ -197,7 +197,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 				if (strcmp (fup->data.type, lup->data.type) != 0) {
 					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
-						b->date.month, b->date.year - 1900, lup->data.type);
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.type);
 				}
 				idx = nidx; b = b->next;
 			}
@@ -210,7 +210,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
 				if (strcmp (fup->data.type, lup->data.type) != 0) {
 					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
-						b->date.month, b->date.year - 1900, lup->data.type);
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.type);
 				}
 				idx = nidx; b = b->prev;
 			}
@@ -267,7 +267,7 @@ GuiRptDsrOvr::refresh (bool forced)
 				str.printf ("One battle recorded.\n");
 				break;
 			default:
-				SPWAW_date_delta (&(p->bfirst->date), &(p->blast->date), &span);
+				SPWAW_date_delta (&(p->bfirst->bdate.date), &(p->blast->bdate.date), &span);
 				str.printf ("%u battles recorded", p->bcnt);
 				if ((p->type == SPWAW_CAMPAIGN_DOSSIER) && span.stamp) {
 					str.printf (", spanning ");

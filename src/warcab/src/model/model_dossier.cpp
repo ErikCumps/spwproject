@@ -194,7 +194,7 @@ ModelDossier::data_bturn (int role, MDLD_TREE_ITEM *p) const
 	switch (role) {
 		case Qt::DisplayRole:
 			snprintf (buf, sizeof (buf) - 1, "%s, turn %u",
-				p->data.t->snap->game.battle.strings.date, p->data.t->snap->game.battle.data.turn);
+				p->data.t->snap->game.battle.strings.date, p->data.t->snap->game.battle.data.tdate.turn);
 			v = QVariant (buf);
 			break;
 		case Qt::ForegroundRole:

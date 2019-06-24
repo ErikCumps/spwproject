@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - min-max-average-spread data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -44,8 +44,21 @@ ModelMMAS::MDLMMAS_data_display (int /*row*/, int col, MDLMMAS_DATA *data, SPWDL
 	cd = MDLMMAS_coldef (col);
 	switch (col) {
 		case MDLMMAS_COLUMN_DATE:
-			SPWAW_date2str (&(data->date), buf, sizeof (buf));
-			s.sprintf ("%s", buf);
+			if (this->d.campaign) {
+				SPWAW_date2str (&(data->date.bdate.date), buf, sizeof (buf));
+				if (SPWAW_isMonthOnlyDate(&(data->date.bdate.date))) {
+					s.sprintf ("#%d %s", data->date.bdate.btlidx+1, buf);
+				} else {
+					s.sprintf ("%s", buf);
+				}
+			} else {
+				SPWAW_date2str (&(data->date.tdate.date), buf, sizeof (buf));
+				if (SPWAW_isMonthOnlyDate(&(data->date.tdate.date))) {
+					s.sprintf ("%s, turn %u", buf, data->date.tdate.turn);
+				} else {
+					s.sprintf ("%s", buf);
+				}
+			}
 			break;
 		case MDLMMAS_COLUMN_MAXID:
 		case MDLMMAS_COLUMN_MINID:
@@ -146,7 +159,11 @@ ModelMMAS::MDLMMAS_data_plot (int /*row*/, int col, MDLMMAS_DATA *data, SPWDLT *
 
 	switch (col) {
 		case MDLMMAS_COLUMN_DATE:
-			PLOT_date2timeline (data->date, v);
+			if (d.campaign) {
+				PLOT_date2timeline (data->date.bdate, v);
+			} else {
+				PLOT_date2timeline (data->date.tdate, v);
+			}
 			break;
 		case MDLMMAS_COLUMN_MAX:
 		case MDLMMAS_COLUMN_MIN:

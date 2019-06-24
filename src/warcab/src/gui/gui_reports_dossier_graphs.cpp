@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - graphs.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -192,8 +192,8 @@ GuiRptDsrPlt::refresh (void)
 		MDLPT_alloc_data (data, ptr->bcnt, cnt);
 
 		for (i=0; i<data.row_cnt; i++) {
-			data.row[i].data[0].type = MDLPT_DATA_DATE;
-			data.row[i].data[0].u.date = ptr->blist[i]->snap->game.battle.data.start;
+			data.row[i].data[0].type = MDLPT_DATA_BDATE;
+			data.row[i].data[0].u.bdate = ptr->blist[i]->snap->game.battle.data.bdate;
 
 			for (j=0; j<(data.col_cnt-1); j++) {
 				data.row[i].data[j+1].type = MDLPT_DATA_INT;

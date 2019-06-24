@@ -154,10 +154,10 @@ ModelHistory::setupModelData_campaign (void)
 		for (i=0; i<d.list_cnt; i++) {
 			hd = &(d.list[i]);
 
-			hd->idx   = i;
-			hd->date  = d.dptr.d->blist[i]->date;
-			hd->dlt   = &(d.dlts[i*d.col_cnt]);
-			hd->cflag = MDLH_CFLAG_NONE;
+			hd->idx		= i;
+			hd->date.bdate	= d.dptr.d->blist[i]->bdate;
+			hd->dlt		= &(d.dlts[i*d.col_cnt]);
+			hd->cflag	= MDLH_CFLAG_NONE;
 		}
 	}
 
@@ -239,10 +239,10 @@ ModelHistory::setupModelData_battle (void)
 		for (i=0; i<d.list_cnt; i++) {
 			hd = &(d.list[i]);
 
-			hd->idx   = i;
-			hd->date  = d.dptr.b->tlist[i]->date;
-			hd->dlt   = &(d.dlts[i*d.col_cnt]);
-			hd->cflag = MDLH_CFLAG_NONE;
+			hd->idx		= i;
+			hd->date.tdate	= d.dptr.b->tlist[i]->tdate;
+			hd->dlt		= &(d.dlts[i*d.col_cnt]);
+			hd->cflag	= MDLH_CFLAG_NONE;
 		}
 	}
 

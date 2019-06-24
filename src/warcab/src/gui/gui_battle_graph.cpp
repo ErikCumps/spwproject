@@ -38,7 +38,7 @@ GuiBattleGraphExp::GuiBattleGraphExp()
 	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLPT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_BDATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	for (i=SPWAW_ESTARTCODE; i<SPWAW_ELASTCODE; i++) {
@@ -87,7 +87,7 @@ GuiBattleGraphRnk::GuiBattleGraphRnk()
 	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLPT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_BDATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	for (i=SPWAW_RSTARTCODE; i<(SPWAW_RLASTCODE-2); i++) {
@@ -137,7 +137,7 @@ GuiBattleGraphCls::GuiBattleGraphCls()
 	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLPT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_BDATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	for (i=SPWOOB_UCLASS_START; i<SPWOOB_UCLASS_LIMIT; i++) {
@@ -186,7 +186,7 @@ GuiBattleGraphKal::GuiBattleGraphKal()
 	SL_SAFE_CALLOC (d.coldefs, cnt, sizeof(MDLPT_COLDEF));
 
 	d.coldefs[0].name = "Date";
-	d.coldefs[0].type = MDLPT_DATA_DATE;
+	d.coldefs[0].type = MDLPT_DATA_BDATE;
 	d.coldefs[0].width = BASE_SIZE * 3;
 
 	d.coldefs[1].name = "Kills";

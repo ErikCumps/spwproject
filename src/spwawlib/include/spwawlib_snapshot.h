@@ -295,13 +295,12 @@ typedef struct s_SPWAW_SNAP_VHEX {
 
 /* SPWAW battle info: interpreted data */
 typedef struct s_SPWAW_SNAP_BATTLE_DATA {
-	SPWAW_DATE		start;				/* Battle start date/time				*/
-	SPWAW_DATE		date;				/* Battle turn date/time				*/
+	SPWAW_BATTLE_DATE	bdate;				/* Battle start date					*/
+	SPWAW_TURN_DATE		tdate;				/* Battle turn date					*/
 	char			*location;			/* Battle location name					*/
 	SPWAW_TERRAIN		terrain;			/* Battle terrain					*/
 	SPWAW_WEATHER		weather;			/* Battle weather					*/
 	int			visibility;			/* Battle visibility					*/
-	int			turn;				/* Battle turn						*/
 	int			turn_max;			/* Battle max turn					*/
 	SPWAW_BTSTATUS		status;				/* Battle turn status					*/
 	BYTE			OOB_p1;				/* Player1 OOB ID					*/
@@ -739,8 +738,7 @@ typedef struct s_SPWAW_SNAPSHOT {
 typedef struct s_SPWAW_SNAPSHOT_INFO {
 	char			title[SPWAW_AZSCMTTITLE+1];	/* Snapshot title					*/
 	SPWAW_DATE		start;				/* Snapshot battle start date				*/
-	BYTE			turn;				/* Snapshot battle turn					*/
-	SPWAW_DATE		date;				/* Snapshot battle turn date				*/
+	SPWAW_TURN_DATE		tdate;				/* Snapshot battle turn date				*/
 	char			stamp[32];			/* snapshot battle date/turn string			*/
 	char			location[SPWAW_AZSLOCATION+1];	/* Snapshot battle location				*/
 	char			filename[MAX_PATH+1];		/* Snapshot source game filename			*/

@@ -22,8 +22,7 @@ setup_winspww2_info (GAMEINFO *info, char *filename, FILETIME filedate, WINSPWW2
 	WINSPWW2_SECTION37	*gamedata = sec37;
 	WINSPWW2_SECTION35	*formdata = sec35;
 	char			*p, *q;
-	SPWAW_DATE		base, date;
-	SPWAW_PERIOD		add;
+	SPWAW_DATE		date;
 	SPWAW_ERROR		rc;
 	FULIST			ful1, ful2;
 	USHORT			cfcnt;

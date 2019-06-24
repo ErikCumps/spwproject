@@ -67,8 +67,7 @@ struct s_SPWAW_BTURN {
 	SPWAW_BTURN		*prev;				/* Pointer to previous battle turn		*/
 	SPWAW_BTURN		*next;				/* Pointer to next battle turn			*/
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn snapshot data			*/
-	SPWAW_DATE		date;				/* Battle turn date				*/
-	int			turn;				/* Battle turn					*/
+	SPWAW_TURN_DATE		tdate;				/* Battle turn date				*/
 	SPWAW_DOSSIER_BIRS	info;				/* Battle info record set			*/
 	SPWAW_BATTLE		*battle;			/* Pointer to parent battle data struct		*/
 };
@@ -83,11 +82,10 @@ typedef struct s_SPWAW_DOSSIER_BURA {
 /* SPWAW dossier: battle data */
 struct s_SPWAW_BATTLE {
 	char			*name;				/* Optional battle name				*/
-	USHORT			btlidx;				/* Campaign battle index			*/
 	SPWAW_BATTLE		*prev;				/* Pointer to previous battle			*/
 	SPWAW_BATTLE		*next;				/* Pointer to next battle			*/
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn #0 snapshot data			*/
-	SPWAW_DATE		date;				/* Battle date					*/
+	SPWAW_BATTLE_DATE	bdate;				/* Battle date					*/
 	char			*location;			/* Battle location				*/
 	SPWOOB			*oobdat;			/* Battle OOB data				*/
 	BYTE			OOB_p1;				/* Player OOB ID				*/

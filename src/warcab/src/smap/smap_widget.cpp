@@ -165,8 +165,8 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 	clear();
 
 	SL_SAFE_STRDUP (d.battle.location, snap->game.battle.data.location);
-	d.battle.date = snap->game.battle.data.date;
-	d.battle.turn = snap->game.battle.data.turn;
+	d.battle.date = snap->game.battle.data.tdate.date;
+	d.battle.turn = snap->game.battle.data.tdate.turn;
 
 	d.grid.setup (snap->game.map.width, snap->game.map.height);
 

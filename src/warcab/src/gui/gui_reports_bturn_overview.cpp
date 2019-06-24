@@ -131,8 +131,8 @@ GuiRptTrnOvr::refresh (void)
 
 		str.printf ("<pre>");
 
-		SPWAW_date2str (&(p->date), date, sizeof (date));
-		str.printf ("<h2>%s, turn %u of %u.</h2>", date, p->turn, p->snap->game.battle.data.turn_max);
+		SPWAW_date2str (&(p->tdate.date), date, sizeof (date));
+		str.printf ("<h2>%s, turn %u of %u.</h2>", date, p->tdate.turn, p->snap->game.battle.data.turn_max);
 
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
 			p->battle->snap->game.battle.strings.people_p1,

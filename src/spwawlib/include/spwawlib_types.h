@@ -38,7 +38,6 @@ typedef LONGLONG SPWAW_TIMESTAMP;
 /* Pure Timestamp */
 #define	SPWAW_PURE_TIMESTAMP(stamp_)	((stamp_) & SPWAW_MONTHONLY_TIMESTAMP_MASK)
 
-
 /* SPWAW period */
 typedef struct s_SPWAW_PERIOD {
 	SPWAW_TIMESTAMP	stamp;
@@ -49,6 +48,18 @@ typedef struct s_SPWAW_PERIOD {
 	char		hours;
 	char		minutes;
 } SPWAW_PERIOD;
+
+/* SPWAW battle date */
+typedef struct s_SPWAW_BATTLE_DATE {
+	USHORT		btlidx;
+	SPWAW_DATE	date;
+} SPWAW_BATTLE_DATE;
+
+/* SPWAW turn date */
+typedef struct s_SPWAW_TURN_DATE {
+	int		turn;
+	SPWAW_DATE	date;
+} SPWAW_TURN_DATE;
 
 extern SPWAWLIB_API void	SPWAW_set_date		(SPWAW_DATE &date, short year, char month=0, char day=0, char hour=0, char minute=0);
 

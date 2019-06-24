@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - min-max-average-spread data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,7 +14,10 @@
 
 typedef struct s_MDLMMAS_DATA {
 	int			idx;
-	SPWAW_DATE		date;
+	union u_date {
+		SPWAW_BATTLE_DATE	bdate;
+		SPWAW_TURN_DATE		tdate;
+	} date;
 	SPWAW_SNAP_OOB_FORCE	*force;
 	SPWDLT			*dlt;
 } MDLMMAS_DATA;

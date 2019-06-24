@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - plot table data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,7 +14,8 @@
 
 typedef enum e_MDLPT_DATA_TYPE {
 	MDLPT_DATA_INT = 0,
-	MDLPT_DATA_DATE,
+	MDLPT_DATA_BDATE,
+	MDLPT_DATA_TDATE,
 } MDLPT_DATA_TYPE;
 
 typedef struct s_MDLPT_COLDEF {
@@ -34,12 +35,13 @@ typedef struct s_MDLPT_DEF {
 } MDLPT_DEF;
 
 typedef struct s_MDLPT_DATA_ITEM {
-	MDLPT_DATA_TYPE		type;
+	MDLPT_DATA_TYPE			type;
 	union u_u {
-		SPWAW_DATE	date;
-		int		i;
+		SPWAW_BATTLE_DATE	bdate;
+		SPWAW_TURN_DATE		tdate;
+		int			i;
 	} u;
-	SPWDLT			dlt;
+	SPWDLT				dlt;
 } MDLPT_DATA_ITEM;
 
 typedef struct s_MDLPT_DATA_ROW {

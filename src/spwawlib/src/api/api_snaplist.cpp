@@ -206,10 +206,9 @@ SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap)
 
 	snprintf (node->info.title, sizeof (node->info.title) - 1, "%s", snap->raw.game.cmt.title);
 	node->info.start = snap->game.campaign.data.start;
-	node->info.turn = snap->raw.game.battle.turn;
-	node->info.date = snap->game.battle.data.date;
+	node->info.tdate = snap->game.battle.data.tdate;
 	snprintf (node->info.stamp, sizeof (node->info.stamp) - 1, "%s, turn %u",
-		snap->game.battle.strings.date, snap->game.battle.data.turn);
+		snap->game.battle.strings.date, snap->game.battle.data.tdate.turn);
 	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s", snap->raw.game.battle.location);
 	snprintf (node->info.filename, sizeof (node->info.filename) - 1, "%s", snap->src.file);
 	node->info.filedate = node->filedate;

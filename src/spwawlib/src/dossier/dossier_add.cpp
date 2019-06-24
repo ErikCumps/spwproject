@@ -58,12 +58,12 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 	}
 
 	if (type == SPWAW_CAMPAIGN_DOSSIER) {
-		p->btlidx = p->snap->game.btlidx;
+		p->bdate.btlidx = p->snap->game.btlidx;
 	} else {
-		p->btlidx = SPWAW_NOBTLIDX;
+		p->bdate.btlidx = SPWAW_NOBTLIDX;
 	}
+	p->bdate.date	= p->snap->game.battle.data.bdate.date;
 
-	p->date		= p->snap->game.battle.data.start;
 	p->location	= STRTAB_add (stab, p->snap->game.battle.data.location);
 	p->oobdat	= p->snap->oobdat;
 	p->OOB_p1	= p->snap->game.battle.data.OOB_p1;
@@ -82,12 +82,12 @@ sort_dossier_campaign (const void *a, const void *b)
 	SPWAW_BATTLE	*fa = *((SPWAW_BATTLE **)a);
 	SPWAW_BATTLE	*fb = *((SPWAW_BATTLE **)b);
 
-	USHORT	ia = fa->btlidx;
-	USHORT	ib = fb->btlidx;
+	USHORT	ia = fa->bdate.btlidx;
+	USHORT	ib = fb->bdate.btlidx;
 
 	SPWAW_TIMESTAMP	sa, sb;
-	SPWAW_date2stamp (&(fa->date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
-	SPWAW_date2stamp (&(fb->date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
+	SPWAW_date2stamp (&(fa->bdate.date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
+	SPWAW_date2stamp (&(fb->bdate.date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
 
 	return ((ia==ib)?(sa==sb)?0:((sa<sb)?-1:+1):((ia<ib)?-1:+1));
 }
@@ -99,8 +99,8 @@ sort_dossier_stdalone (const void *a, const void *b)
 	SPWAW_BATTLE	*fb = *((SPWAW_BATTLE **)b);
 
 	SPWAW_TIMESTAMP	sa, sb;
-	SPWAW_date2stamp (&(fa->date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
-	SPWAW_date2stamp (&(fb->date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
+	SPWAW_date2stamp (&(fa->bdate.date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
+	SPWAW_date2stamp (&(fb->bdate.date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
 
 	return ((fa->name==fb->name)?(sa==sb)?0:((sa<sb)?-1:+1):((fa->name==NULL)?-1:((fb->name==NULL)?+1:strcmp(fa->name, fb->name))));
 }
@@ -175,8 +175,8 @@ battle_list_expand (SPWAW_BATTLE *ptr)
 static int
 sort_battle (const void *a, const void *b)
 {
-	int	ta = (*((SPWAW_BTURN **)a))->turn;
-	int	tb = (*((SPWAW_BTURN **)b))->turn;
+	int	ta = (*((SPWAW_BTURN **)a))->tdate.turn;
+	int	tb = (*((SPWAW_BTURN **)b))->tdate.turn;
 
 	return ((ta==tb)?0:((ta<tb)?-1:+1));
 }
@@ -216,8 +216,7 @@ battle_add_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab, SPWAW_B
 	rc = snapstabmerge (bt->snap, stab);
 	ROE ("snapstabmerge()");
 
-	bt->date  = bt->snap->game.battle.data.date;
-	bt->turn  = bt->snap->game.battle.data.turn;
+	bt->tdate = bt->snap->game.battle.data.tdate;
 
 	rc = dossier_prep_bturn_info (bt);
 	ROE ("dossier_prep_bturn_info()");

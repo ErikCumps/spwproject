@@ -22,14 +22,14 @@ dossier_find_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap)
 
 	if (snap->game.btlidx != SPWAW_NOBTLIDX) {
 		for (i=0; i<ptr->bcnt; i++) {
-			if (ptr->blist[i]->btlidx == snap->game.btlidx) return (ptr->blist[i]);
+			if (ptr->blist[i]->bdate.btlidx == snap->game.btlidx) return (ptr->blist[i]);
 		}
 	} else {
 		SPWAW_TIMESTAMP	stamp, s;
 
-		SPWAW_date2stamp (&(snap->game.battle.data.start), &stamp);
+		SPWAW_date2stamp (&(snap->game.battle.data.bdate.date), &stamp);
 		for (i=0; i<ptr->bcnt; i++) {
-			SPWAW_date2stamp (&(ptr->blist[i]->date), &s);
+			SPWAW_date2stamp (&(ptr->blist[i]->bdate.date), &s);
 			if (s == stamp) return (ptr->blist[i]);
 		}
 	}
@@ -43,12 +43,12 @@ dossier_find_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap)
 	SPWAW_TIMESTAMP	stamp, s;
 	int		turn, t;
 
-	SPWAW_date2stamp (&(snap->game.battle.data.date), &stamp);
-	turn = snap->game.battle.data.turn;
+	SPWAW_date2stamp (&(snap->game.battle.data.tdate.date), &stamp);
+	turn = snap->game.battle.data.tdate.turn;
 
 	for (i=0; i<ptr->tcnt; i++) {
-		SPWAW_date2stamp (&(ptr->tlist[i]->date), &s);
-		t = ptr->tlist[i]->turn;
+		SPWAW_date2stamp (&(ptr->tlist[i]->tdate.date), &s);
+		t = ptr->tlist[i]->tdate.turn;
 		if ((s == stamp) && (t == turn)) return (ptr->tlist[i]);
 	}
 	return (NULL);

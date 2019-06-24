@@ -295,7 +295,7 @@ GuiRptBtlOvr::refresh (void)
 			p->snap->game.battle.strings.people_p1,	p->miss_p1,
 			p->snap->game.battle.strings.people_p2, p->miss_p2);
 
-		SPWAW_date2str (&(p->date), date, sizeof (date));
+		SPWAW_date2str (&(p->bdate.date), date, sizeof (date));
 		str.printf ("%s, %u turns.\n", date, p->snap->game.battle.data.turn_max);
 
 		str.printf ("%.3f x %.3f km %s terrain, %s with %u meters visibility.\n",
@@ -317,7 +317,7 @@ GuiRptBtlOvr::refresh (void)
 		str.printf ("\n");
 
 		if (p->tcnt > 1) {
-			SPWAW_date_delta (&(p->tfirst->date), &(p->tlast->date), &span);
+			SPWAW_date_delta (&(p->tfirst->tdate.date), &(p->tlast->tdate.date), &span);
 			str.printf ("Recorded %u battle turns", p->tcnt);
 			if (span.stamp) {
 				str.printf (", spanning ");

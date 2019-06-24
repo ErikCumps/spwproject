@@ -56,10 +56,9 @@ dossier_load_battle_turns (int fd, SPWAW_BATTLE *dst, USHORT cnt, STRTAB *stab)
 
 		p->battle = dst;
 
-		rc = SPWAW_stamp2date (&(hdrs[i].date), &(p->date));
+		p->tdate.turn = hdrs[i].turn;
+		rc = SPWAW_stamp2date (&(hdrs[i].date), &(p->tdate.date));
 		ERRORGOTO ("SPWAW_stamp2date(snap hdr date)", handle_error);
-
-		p->turn = hdrs[i].turn;
 
 		rc = snapnew (&(p->snap), dst->oobdat, stab);
 		ERRORGOTO ("snapnew()", handle_error);
@@ -139,7 +138,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 
 		p->dossier = dst;
 
-		rc = SPWAW_stamp2date (&(hdrs[i].date), &(p->date));
+		rc = SPWAW_stamp2date (&(hdrs[i].date), &(p->bdate.date));
 		ERRORGOTO ("SPWAW_stamp2date(battle hdr date)", handle_error);
 
 		p->location = STRTAB_getstr (stab, hdrs[i].location);
@@ -163,7 +162,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		ERRORGOTO ("dossier_load_battle_turns()", handle_error);
 
 		if (p->tcnt) p->snap = p->tlist[0]->snap;
-		if ((p->btlidx == SPWAW_NOBTLIDX) && p->tcnt) p->btlidx = p->tlist[0]->snap->game.btlidx;
+		p->bdate.btlidx = p->tcnt ? p->tlist[0]->snap->game.btlidx : SPWAW_NOBTLIDX;
 
 		// Set dossier data if this was the first battle loaded
 		if (i == 0) dossier_set_campaign_props (dst, p);

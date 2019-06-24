@@ -36,10 +36,10 @@ dossier_save_battle_turns (SPWAW_BATTLE *src, int fd, USHORT *cnt, STRTAB *stab,
 	for (i=idx=0; i<src->tcnt; i++) {
 		p = src->tlist[i]; if (!p) continue;
 
-		rc = SPWAW_date2stamp (&(p->date), &(hdrs[idx].date));
+		rc = SPWAW_date2stamp (&(p->tdate.date), &(hdrs[idx].date));
 		ERRORGOTO ("SPWAW_date2stamp(snap hdr date)", handle_error);
 
-		hdrs[idx].turn = p->turn;
+		hdrs[idx].turn = p->tdate.turn;
 
 		bseekmove (fd, sizeof (DOS_THEADER));
 
@@ -92,7 +92,7 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 	for (i=idx=0; i<src->bcnt; i++) {
 		p = src->blist[i]; if (!p) continue;
 
-		rc = SPWAW_date2stamp (&(p->date), &(hdrs[idx].date));
+		rc = SPWAW_date2stamp (&(p->bdate.date), &(hdrs[idx].date));
 		ERRORGOTO ("SPWAW_date2stamp(battle hdr date)", handle_error);
 
 		hdrs[idx].location = STRTAB_getidx (stab, p->location);
@@ -101,7 +101,7 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].miss_p1  = STRTAB_getidx (stab, p->miss_p1);
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;
-		hdrs[idx].btlidx   = p->btlidx;
+		hdrs[idx].btlidx   = p->bdate.btlidx;
 
 		rc = SPWOOB_LIST_spwoob2idx (src->oobdata, p->oobdat, &(hdrs[idx].oobdat));
 		ERRORGOTO ("SPWOOB_LIST_spwoob2idx(battle oob data)", handle_error);

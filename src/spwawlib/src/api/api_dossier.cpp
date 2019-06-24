@@ -350,19 +350,19 @@ SPWAW_dossier_add_battle_snap (SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW
 			bool		nomatch = false;
 			SPWAW_TIMESTAMP	tsb, tss;
 
-			SPWAW_date2stamp (&(battle->date), &tsb);
-			SPWAW_date2stamp (&(snap->game.battle.data.date), &tss);
+			SPWAW_date2stamp (&(battle->bdate.date), &tsb);
+			SPWAW_date2stamp (&(snap->game.battle.data.tdate.date), &tss);
 
-			if (SPWAW_isMonthOnlyDate (&(battle->date)) && SPWAW_isMonthOnlyDate(&(snap->game.battle.data.date))) {
+			if (SPWAW_isMonthOnlyDate (&(battle->bdate.date)) && SPWAW_isMonthOnlyDate(&(snap->game.battle.data.tdate.date))) {
 				nomatch = (tss != tsb);
 			} else {
-				nomatch = ((tss - (snap->game.battle.data.turn * SPWAW_MINSPERTURN)) != tsb);
+				nomatch = ((tss - (snap->game.battle.data.tdate.turn * SPWAW_MINSPERTURN)) != tsb);
 			}
 			if (nomatch) {
 				char bdate[32];
 				char sdate[32];
-				SPWAW_date2str (&(battle->date), bdate, sizeof(bdate));
-				SPWAW_date2str (&(snap->game.battle.data.date), sdate, sizeof(sdate));
+				SPWAW_date2str (&(battle->bdate.date), bdate, sizeof(bdate));
+				SPWAW_date2str (&(snap->game.battle.data.tdate.date), sdate, sizeof(sdate));
 				ERROR2 ("battle date \"%s\" != snapshot date \"%s\"", bdate, sdate);
 				rc = SPWERR_NOMATCH_DATE;
 			}
@@ -375,13 +375,13 @@ SPWAW_dossier_add_battle_snap (SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW
 		}
 		if (!HASERROR) {
 			if (strcmp(SPWAW_mission2str(snap->game.battle.data.miss_p1), battle->miss_p1) != 0) {
-				ERROR2 ("battle player mission type \"%s\" != snapshot player mission type \"%s\"", battle->miss_p1, snap->game.battle.data.miss_p1);
+				ERROR2 ("battle player mission type \"%s\" != snapshot player mission type \"%s\"", battle->miss_p1, SPWAW_mission2str(snap->game.battle.data.miss_p1));
 				rc = SPWERR_NOMATCH_MISSION;
 			}
 		}
 		if (!HASERROR) {
 			if (strcmp(SPWAW_mission2str(snap->game.battle.data.miss_p2), battle->miss_p2) != 0) {
-				ERROR2 ("battle opponent mission type \"%s\" != snapshot opponent mission type \"%s\"", battle->miss_p2, snap->game.battle.data.miss_p2);
+				ERROR2 ("battle opponent mission type \"%s\" != snapshot opponent mission type \"%s\"", battle->miss_p2, SPWAW_mission2str(snap->game.battle.data.miss_p2));
 				rc = SPWERR_NOMATCH_MISSION;
 			}
 		}

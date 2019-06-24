@@ -554,18 +554,18 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 
 	strcpy (info->title, STRTAB_getstr (stab, ihdr.title));
 	strcpy (info->location, STRTAB_getstr (stab, ihdr.location));
-	info->turn = ihdr.turn;
 
 	rc = SPWAW_stamp2date (&(ihdr.start), &(info->start));
 	ERRORGOTO ("STRTAB_stamp2date(ihdr.start)", handle_error);
 
-	rc = SPWAW_stamp2date (&(ihdr.date), &(info->date));
+	info->tdate.turn = ihdr.turn;
+	rc = SPWAW_stamp2date (&(ihdr.date), &(info->tdate.date));
 	ERRORGOTO ("STRTAB_stamp2date(ihdr.date)", handle_error);
 
-	rc = SPWAW_date2str (&(info->date), &date);
+	rc = SPWAW_date2str (&(info->tdate.date), &date);
 	ERRORGOTO ("SPWAW_date2str(info->date)", handle_error);
 
-	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->turn);
+	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->tdate.turn);
 	free (date);
 
 	snprintf (info->filename, sizeof (info->filename) - 1, "%s\\%s", STRTAB_getstr (stab, shdr.path), STRTAB_getstr (stab, shdr.file));
