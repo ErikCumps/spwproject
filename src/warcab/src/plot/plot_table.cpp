@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - plot handling - table plot handling.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -483,8 +483,6 @@ PlotTable::track (const QPoint &pos)
 void
 PlotTable::set_axistype (AXIS_TYPE type)
 {
-	if (d.axis_type == type) return;
-
 	d.axis_type = type;
 	set_scaledraw (d.axis_type);
 }
@@ -498,9 +496,11 @@ PlotTable::set_scaledraw (AXIS_TYPE type)
 		case AXIS_TIME:
 		default:
 			p = new PlotTimeline (*(d.p_timeline));
+			//DBG_log ("%s - 0x%8.8x - new PlotTimeline @0x%8.8x", __FUNCTION__, this, p);
 			break;
 		case AXIS_INDEX:
 			p = new PlotIdxline (*(d.p_idxline));
+			//DBG_log ("%s - 0x%8.8x - new PlotIdxline @0x%8.8x", __FUNCTION__, this, p);
 			break;
 	}
 	setAxisScaleDraw (QwtPlot::xBottom, p);

@@ -35,6 +35,9 @@ PlotTimeline::label (double v) const
 	} else {
 		s.sprintf ("%2d:%02d", date.hour, date.minute);
 	}
+
+	//DBG_log ("%s - 0x%8.8x - range = %f - label=\"%s\"", __FUNCTION__, this, scaleDiv().range(), qPrintable (s));
+
 	return (s);
 }
 
