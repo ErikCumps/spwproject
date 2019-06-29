@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - simple message dialog box.
  *
- * Copyright (C) 2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2017-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,7 +12,8 @@
 typedef enum e_MSGBOX_TYPE {
 	MSGBOX_ERROR = 0,
 	MSGBOX_WARNING,
-	MSGBOX_INFO
+	MSGBOX_INFO,
+	MSGBOX_CONFIRM
 } MSGBOX_TYPE;
 
 class GuiMsgbox	: public QDialog
@@ -36,13 +37,15 @@ private:
 		QLabel			*body_msg;
 		QDialogButtonBox	*dlg_buttons;
 		QPushButton		*but_ok;
+		QPushButton		*but_cancel;
 	} d;
 
 private slots:
 	void	clicked_ok	(bool);
+	void	clicked_cancel	(bool);
 };
 
-extern void	GUI_msgbox	(MSGBOX_TYPE type, char *title, char *msg);
+extern int	GUI_msgbox	(MSGBOX_TYPE type, char *title, char *msg);
 
 #endif	/* GUI_MSGBOX_H */
 

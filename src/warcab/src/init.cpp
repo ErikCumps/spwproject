@@ -91,7 +91,7 @@ init_app (SL_APP_INFO *info)
 				"Please review the application preferences... ",
 				QMessageBox::Ok, QMessageBox::Ok);
 		}
-		CFG_DLG();
+		CFG_DLG(initial);
 	}
 
 	DBG_log ("verifying configuration completeness\n");
@@ -106,7 +106,7 @@ init_app (SL_APP_INFO *info)
 		if (req != SL_ERR_REQUEST_RETRY) {
 			SL_DIE (SL_EXIT_FATAL_ERROR, "This application preferences completeness error could not be ignored!");
 		}
-		CFG_DLG();
+		CFG_DLG(false);
 	}
 
 	DBG_log ("initializing SPWAW library\n");
@@ -128,7 +128,7 @@ init_app (SL_APP_INFO *info)
 			if (req != SL_ERR_REQUEST_RETRY) {
 				SL_DIE (SL_EXIT_FATAL_ERROR, "This SPWAWLIB initialization error could not be ignored!");
 			} else {
-				CFG_DLG();
+				CFG_DLG(false);
 			}
 		} else {
 			HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR,

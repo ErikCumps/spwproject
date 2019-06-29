@@ -15,6 +15,21 @@
 #define	BOX_HEIGHT	400
 #define	BOX_MARGIN	 10
 
+#define	STR_LOCPRF_TOOLTIP	"Store preferences locally."
+#define	STR_LOCPRF_WHATSTHIS							\
+	"Select this to store the preferences locally in a \"warcab.ini\"\n"	\
+	"file, allowing installations to have their own preferences.\n"		\
+	"\n"									\
+	"Disable this to store the preferences globally in the registry,\n"	\
+	"so that they can be shared between different installations.\n"
+#define	STR_LOCPRF_OVERWRITE							\
+	"Unchecking the \"Store preferences locally\" checkbox will\n"		\
+	"cause any existing global preferences to be overwritten\n"		\
+	"with the local preferences!\n"						\
+	"\n"									\
+	"If this is not desired, please select <Cancel> to revert\n"		\
+	"to storing the preferences locally...\n"
+
 #define	STR_DGT_NAME		"Default game type:"
 #define	STR_DGT_TOOLTIP		"Configure the default game type."
 #define	STR_DGT_WHATSTHIS	"This sets the default game type for new dossiers."
@@ -97,6 +112,19 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	/* Create body layout */
 	d.layout = new QGridLayout (d.body);
 	d.layout->setContentsMargins(0, 0, 0, 0);
+
+	/* Create "locprf" config ui */
+	d.locprf_label = new QLabel (d.body);
+	d.locprf_label->setText ("Store preferences locally:");
+	d.locprf_label->setToolTip (STR_LOCPRF_TOOLTIP);
+
+	d.locprf_edit = new QCheckBox (d.body);
+	d.locprf_edit->setToolTip (STR_LOCPRF_TOOLTIP);
+	d.locprf_edit->setWhatsThis (STR_LOCPRF_WHATSTHIS);
+
+	d.layout->addWidget (d.locprf_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.locprf_edit,	row, 1, 1, 1);
+	row++;
 
 	/* Create "snap" config ui */
 	d.snp_label = new QLabel (d.body);
@@ -220,6 +248,7 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	row++;
 
 	/* Fix dialog tab order */
+	setTabOrder (d.locprf_edit, d.snp_edit);
 	setTabOrder (d.snp_edit, d.snp_browse);
 	setTabOrder (d.snp_browse, d.compress_edit);
 	setTabOrder (d.compress_edit, d.autoload_edit);
@@ -236,6 +265,7 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	/* Finally connect signals and slots */
 	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
+	connect (d.locprf_edit, SIGNAL(clicked(bool)), this, SLOT(locprf_edit_clicked(bool)));
 	connect (d.snp_browse, SIGNAL(clicked(bool)), this, SLOT(snp_browse_clicked(bool)));
 	for (int i=0; i<d.dlg_data->games.size(); i++) {
 		connect ((*d.games_gui)[i].oob_browse, SIGNAL(clicked(bool)), this, SLOT(oob_browse_clicked(bool)));
@@ -256,6 +286,10 @@ CfgDlg::prepare(void)
 {
 	if (!d.dlg_data) return;
 
+	d.locprf_edit->setCheckState (d.dlg_data->locprf ? Qt::Checked : Qt::Unchecked);
+	d.snp_edit->setText (d.dlg_data->snp);
+	d.compress_edit->setCheckState (d.dlg_data->compress ? Qt::Checked : Qt::Unchecked);
+	d.autoload_edit->setCheckState (d.dlg_data->autoload ? Qt::Checked : Qt::Unchecked);
 	for (int i=0; i<d.dlg_data->types.size(); i++) {
 		if (d.dlg_data->types[i].type == d.dlg_data->def_game) {
 			d.dgt_select->setCurrentIndex (i);
@@ -266,9 +300,6 @@ CfgDlg::prepare(void)
 		(*d.games_gui)[i].oob_edit->setText (d.dlg_data->games[i]->oob);
 		(*d.games_gui)[i].sve_edit->setText (d.dlg_data->games[i]->sve);
 	}
-	d.snp_edit->setText (d.dlg_data->snp);
-	d.compress_edit->setCheckState (d.dlg_data->compress ? Qt::Checked : Qt::Unchecked);
-	d.autoload_edit->setCheckState (d.dlg_data->autoload ? Qt::Checked : Qt::Unchecked);
 }
 
 void
@@ -276,14 +307,15 @@ CfgDlg::update (void)
 {
 	if (!d.dlg_data) return;
 
+	d.dlg_data->locprf = (d.locprf_edit->checkState() == Qt::Checked) ? true : false;
+	d.dlg_data->snp = d.snp_edit->text().replace('/', '\\');
+	d.dlg_data->compress = (d.compress_edit->checkState() == Qt::Checked) ? true : false;
+	d.dlg_data->autoload = (d.autoload_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->def_game = (SPWAW_GAME_TYPE)(d.dgt_select->itemData (d.dgt_select->currentIndex()).toUInt());
 	for (int i=0; i<d.dlg_data->games.size(); i++) {
 		d.dlg_data->games[i]->oob = (*d.games_gui)[i].oob_edit->text().replace('/', '\\');
 		d.dlg_data->games[i]->sve = (*d.games_gui)[i].sve_edit->text().replace('/', '\\');
 	}
-	d.dlg_data->snp = d.snp_edit->text().replace('/', '\\');
-	d.dlg_data->compress = (d.compress_edit->checkState() == Qt::Checked) ? true : false;
-	d.dlg_data->autoload = (d.autoload_edit->checkState() == Qt::Checked) ? true : false;
 }
 
 int
@@ -296,6 +328,26 @@ CfgDlg::exec (void)
 	update();
 
 	return (rc);
+}
+
+void
+CfgDlg::locprf_edit_clicked (bool checked)
+{
+	int	rc;
+
+	/* Warn the user for a local->global change (configuration overwrite),
+	 * except if this is the first time the configuration dialog is shown.
+	 *
+	 * Well, technically, this should be:
+	 * except if this is the first time the configuration dialog is shown
+	 * *AND* there where no other changes to the data...
+	 */
+	if (!d.dlg_data->isfirstrun && d.dlg_data->locprf && !checked) {
+		rc = GUI_msgbox (MSGBOX_CONFIRM, "Overwrite global preferences?", STR_LOCPRF_OVERWRITE);
+		if (rc !=  QDialog::Accepted) {
+			d.locprf_edit->setCheckState (Qt::Checked);
+		}
+	}
 }
 
 void

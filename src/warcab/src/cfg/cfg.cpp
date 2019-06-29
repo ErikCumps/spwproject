@@ -33,6 +33,7 @@ typedef struct s_CFGDATA {
 	char		*cwd_path;		/*!< Initial current working directory	*/
 	char		*app_path;		/*!< Application path			*/
 	char		*usr_path;		/*!< User data storage path		*/
+	bool		local;			/*!< Local configuration flag		*/
 	SPWAW_GAME_TYPE	def_gametype;		/*!< Default game type			*/
 	CFGGAMEDATA	cfg_spwaw;		/*!< SPWaW specific configuration	*/
 	CFGGAMEDATA	cfg_winspww2;		/*!< winSPWW2 specific configuration	*/
@@ -66,7 +67,8 @@ static SL_BOOL			initialized = SL_false;
 static QList<CfgGameType>	gametypes;
 
 /*! QT settings object */
-static QSettings		*storage = NULL;
+static QSettings		*storage_local = NULL;
+static QSettings		*storage_global = NULL;
 
 /*! Configuration */
 static CFGDATA			cfg;
@@ -87,7 +89,29 @@ config_update_oobcfg (void)
 }
 
 static void
-config_load (void)
+load_config_local_flag (void)
+{
+	QVariant	data;
+
+	data = storage_local->value ("CfgLocal");
+	if (data.isNull ()) {
+		cfg.local = DEFAULT_LOCALCFG;
+	} else {
+		cfg.local = data.toBool();
+	}
+}
+
+static void
+save_config_local_flag (void)
+{
+	QVariant	data;
+
+	data.setValue (cfg.local);
+	storage_local->setValue ("CfgLocal", data);
+}
+
+static void
+config_load (QSettings *storage)
 {
 	QVariant	data;
 	char		buffer[MAX_PATH+1];
@@ -202,7 +226,7 @@ config_load (void)
 }
 
 static void
-config_save (void)
+config_save (QSettings *storage)
 {
 	QVariant	data;
 
@@ -267,9 +291,13 @@ CFG_init (void)
 	gametypes.append(CfgGameType(SPWAW_GAME_TYPE_SPWAW, SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW)));
 	gametypes.append(CfgGameType(SPWAW_GAME_TYPE_WINSPWW2, SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2)));
 
-	storage = new QSettings (SL_APP_auth (), SL_APP_name ());
-	if (!storage)
-		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage object");
+	storage_local = new QSettings ("warcab.ini", QSettings::IniFormat);
+	if (!storage_local)
+		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage_local object");
+
+	storage_global = new QSettings (SL_APP_auth (), SL_APP_name ());
+	if (!storage_global)
+		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage_global object");
 
 	memset (&cfg, 0, sizeof (cfg));
 
@@ -288,7 +316,12 @@ CFG_init (void)
 	cfg.cfg_winspww2.type = SPWAW_GAME_TYPE_WINSPWW2;
 	cfg.cfg_winspww2.name = SPWAW_gametype2str (cfg.cfg_winspww2.type);
 
-	config_load ();
+	load_config_local_flag ();
+	if (cfg.local) {
+		config_load (storage_local);
+	} else {
+		config_load (storage_global);
+	}
 	config_update_oobcfg ();
 
 	initialized = SL_true;
@@ -302,8 +335,15 @@ CFG_shutdown (void)
 	if (!initialized) return;
 	SL_STDBG_delete (statereport);
 
-	config_save ();
-	delete storage;
+	if (cfg.local) {
+		config_save (storage_local);
+	} else {
+		config_save (storage_global);
+	}
+	save_config_local_flag ();
+
+	delete storage_global;
+	delete storage_local;
 
 	if (cfg.gui_state.size)		delete cfg.gui_state.size;
 	if (cfg.gui_state.pos)		delete cfg.gui_state.pos;
@@ -563,13 +603,20 @@ CFG_gui_state_set (GUI_STATE &state)
 }
 
 bool
-CFG_DLG (void)
+CFG_DLG (bool isfirstrun)
 {
 
 	CfgDlg		*dlg = NULL;
 	int		rc;
 
+	if (isfirstrun && cfg.local) {
+		/* There could be a global config present, preload it here */
+		config_load (storage_global);
+	}
+
 	CfgDlgData	data (
+		isfirstrun,
+		cfg.local,
 		CFG_default_gametype (),
 		CFG_snap_path (),
 		CFG_compress (),
@@ -593,6 +640,7 @@ CFG_DLG (void)
 	rc = dlg->exec ();
 
 	if (rc == QDialog::Accepted) {
+		cfg.local = data.locprf;
 		CFG_SET_default_gametype (data.def_game);
 		CFG_SET_oob_path (SPWAW_GAME_TYPE_SPWAW,    (char *)qPrintable (spwaw.oob));
 		CFG_SET_sve_path (SPWAW_GAME_TYPE_SPWAW,    (char *)qPrintable (spwaw.sve));
@@ -626,6 +674,7 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tCWD                 = %s\n", cfg.cwd_path);
 		SAYSTATE1 ("\tapp path            = %s\n", cfg.app_path);
 		SAYSTATE1 ("\tuser data path      = %s\n", cfg.usr_path);
+		SAYSTATE1 ("\tuse local config    = %s\n", cfg.local?"yes":"no");
 		SAYSTATE1 ("\tdefault game type   = %s\n", SPWAW_gametype2str(cfg.def_gametype));
 		SAYSTATE2 ("\tOOB path %-8s   = %s\n", cfg.cfg_spwaw.name, cfg.cfg_spwaw.oob_path);
 		SAYSTATE2 ("\tsaves path %-8s = %s\n", cfg.cfg_spwaw.name, cfg.cfg_spwaw.sve_path);
@@ -656,7 +705,8 @@ statereport (SL_STDBG_INFO_LEVEL level)
 
 	/* extended information */
 	if (level >= SL_STDBG_LEVEL_EXT) {
-		SAYSTATE1 ("\tstorage             = 0x%8.8x\n", storage);
+		SAYSTATE1 ("\tstorage_local       = 0x%8.8x\n", storage_local);
+		SAYSTATE1 ("\tstorage_global      = 0x%8.8x\n", storage_global);
 		SAYSTATE1 ("\tGUI size obj        = 0x%8.8x\n", cfg.gui_state.size);
 		SAYSTATE1 ("\tGUI main panes obj  = 0x%8.8x\n", cfg.gui_state.state_panes);
 		SAYSTATE1 ("\tGUI main window obj = 0x%8.8x\n", cfg.gui_state.state_main);

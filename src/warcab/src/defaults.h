@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - default settings.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,6 +11,8 @@
 
 #define	DEFAULT_NEW_NAME	"NEW"
 #define	DEFAULT_NEW_COMMENT	"New dossier"
+
+#define	DEFAULT_LOCALCFG	true
 
 #define	DEFAULT_REVISION	-1
 

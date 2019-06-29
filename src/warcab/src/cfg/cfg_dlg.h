@@ -34,8 +34,8 @@ public:
 class CfgDlgData
 {
 public:
-	CfgDlgData(SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload) :
-		def_game(type), snp(snp), compress(compress), autoload(autoload)
+	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload) :
+		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload)
 	{
 		types.append(CfgGuiGameType(SPWAW_GAME_TYPE_UNKNOWN, "none"));
 	}
@@ -46,6 +46,8 @@ public:
 		types.append(CfgGuiGameType(game->type, game->name));
 	}
 
+	bool			isfirstrun;
+	bool			locprf;
 	SPWAW_GAME_TYPE		def_game;
 	QList<CfgGuiGameType>	types;
 	QList<CfgDlgGame*>	games;
@@ -83,9 +85,8 @@ private:
 		QDialogButtonBox	*buttons;
 		QWidget			*body;
 		QGridLayout		*layout;
-		QLabel			*dgt_label;
-		QComboBox		*dgt_select;
-		QVector<CfgDlgGuiGame>	*games_gui;
+		QLabel			*locprf_label;
+		QCheckBox		*locprf_edit;
 		QLabel			*snp_label;
 		QLineEdit		*snp_edit;
 		QPushButton		*snp_browse;
@@ -93,6 +94,9 @@ private:
 		QCheckBox		*compress_edit;
 		QLabel			*autoload_label;
 		QCheckBox		*autoload_edit;
+		QLabel			*dgt_label;
+		QComboBox		*dgt_select;
+		QVector<CfgDlgGuiGame>	*games_gui;
 
 		int			bbw;
 		int			bbh;
@@ -106,6 +110,7 @@ public slots:
 	int	exec		(void);
 
 private slots:
+	void	locprf_edit_clicked	(bool checked);
 	void	snp_browse_clicked	(bool checked);
 	void	oob_browse_clicked	(bool checked);
 	void	sve_browse_clicked	(bool checked);

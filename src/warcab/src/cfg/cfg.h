@@ -33,7 +33,7 @@ extern void		CFG_autoload_set	(char *file);
 extern GUI_STATE *	CFG_gui_state_get	(void);
 extern void		CFG_gui_state_set	(GUI_STATE &state);
 
-extern bool		CFG_DLG			(void);
+extern bool		CFG_DLG			(bool isfirstrun);
 
 class CfgGameType
 {

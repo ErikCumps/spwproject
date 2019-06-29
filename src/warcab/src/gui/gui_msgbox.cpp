@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - simple message dialog box.
  *
- * Copyright (C) 2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2017-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,6 +36,7 @@ GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg)
 			d.msg_icon = new QPixmap (windows_icon_critical_xpm);
 			break;
 		case MSGBOX_WARNING:
+		case MSGBOX_CONFIRM:
 			d.msg_icon = new QPixmap (windows_icon_warning_xpm);
 			break;
 		case MSGBOX_INFO:
@@ -85,12 +86,30 @@ GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg)
 	d.but_ok->setText ("&Ok");
 	d.but_ok->setDefault (true);
 
+	/* Create and add buttons */
+	d.but_cancel = new QPushButton (d.dlg_buttons);
+	d.but_cancel->setText ("&Cancel");
+	d.but_cancel->setDefault (true);
+
 	/* Add buttons to button box */
-	d.dlg_buttons->addButton (d.but_ok, QDialogButtonBox::AcceptRole);
+	switch (type) {
+		case MSGBOX_ERROR:
+		case MSGBOX_WARNING:
+		case MSGBOX_INFO:
+			d.dlg_buttons->addButton (d.but_ok, QDialogButtonBox::AcceptRole);
+			d.but_cancel->hide();
+			break;
+		case MSGBOX_CONFIRM:
+			d.dlg_buttons->addButton (d.but_ok, QDialogButtonBox::AcceptRole);
+			d.dlg_buttons->addButton (d.but_cancel, QDialogButtonBox::RejectRole);
+			break;
+	}
 
 	/* Finally connect signals and slots */
 	connect (d.but_ok, SIGNAL (clicked (bool)), this, SLOT(clicked_ok (bool)));
+	connect (d.but_cancel, SIGNAL (clicked (bool)), this, SLOT(clicked_cancel (bool)));
 	connect (d.dlg_buttons, SIGNAL(accepted()), this, SLOT(accept()));
+	connect (d.dlg_buttons, SIGNAL(rejected()), this, SLOT(reject()));
 }
 
 GuiMsgbox::~GuiMsgbox (void)
@@ -107,13 +126,21 @@ GuiMsgbox::clicked_ok (bool)
 	accepted ();
 }
 
-
 void
+GuiMsgbox::clicked_cancel (bool)
+{
+	rejected ();
+}
+
+
+int
 GUI_msgbox (MSGBOX_TYPE type, char *title, char *msg)
 {
 	GuiMsgbox	*box;
+	int		rc;
 
 	// TODO: handle out of memory case?
 	box = new GuiMsgbox (type, title, msg);
-	(void)box->exec (); delete (box);
+	rc = box->exec (); delete (box);
+	return (rc);
 }

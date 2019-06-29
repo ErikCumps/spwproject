@@ -246,7 +246,7 @@ GuiMainWindow::action_app_prefs (void)
 	SPWAW_ERROR		rc;
 	SL_ERROR_REQUEST	req;
 
-	if (CFG_DLG ()) {
+	if (CFG_DLG (false)) {
 		while (1) {
 			SPWAW_OOBCFG	*oobcfg_ptr = NULL;
 			int		oobcfg_cnt = 0;
@@ -259,7 +259,7 @@ GuiMainWindow::action_app_prefs (void)
 			if (rc == SPWERR_NOOOBFILES) {
 				HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_SOFTERR,
 					"Failed to reconfigure SPWAWLIB:\n"
-					"The OOB folder specified in the application preferences does not contain valid OOB files!\n\n"
+					"The OOB folders specified in the application preferences do not contain valid OOB files!\n\n"
 					"Select <retry> to review the application preferences and try again.\n",
 					ERR_APP_INIT_FAILED,
 					"SPWAWLIB error: %s\n", SPWAW_errstr (rc),
@@ -267,7 +267,7 @@ GuiMainWindow::action_app_prefs (void)
 				if (req != SL_ERR_REQUEST_RETRY) {
 					SL_DIE (SL_EXIT_FATAL_ERROR, "This SPWAWLIB reconfiguration error could not be ignored!");
 				} else {
-					CFG_DLG();
+					CFG_DLG(false);
 				}
 			} else {
 				HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_ERR,
