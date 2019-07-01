@@ -107,7 +107,7 @@ PlotMMAS::PlotMMAS (ModelMMAS *model, QWidget *P)
 	GUIERR (C, ERR_GUI_PLOT_INIT_FAILED);
 	C->setSymbol (*S); C->setZ (Z_SPR); C->attach (this);
 	d.set.spr.symbol = S; d.set.spr.curve = C; d.set.spr.col = MDLMMAS_COLUMN_NONE;
-	enable_curve (d.set.spr.curve, true);
+	enable_curve (d.set.spr.curve, false);
 
 	/* cnt symbol and curve */
 	GUINEW (S, PlotSymbol (QwtSymbol::Ellipse, RES_color (RID_PLOT_MMAS_CNT), RES_color (RID_PLOT_BG), 10, 10, 2), ERR_GUI_PLOT_INIT_FAILED, "set.cnt.symbol");
