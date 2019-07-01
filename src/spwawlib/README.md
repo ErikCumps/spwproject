@@ -5,12 +5,12 @@ Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
-This library provides (almost complete) access to SPWaW savegames.
+This library provides (almost complete) access to SP:WaW savegames.
 
 It can create snapshots from these savegames and it can add snapshots
 to a dossier for progress and history tracking.
 
-Not all details of the SPWaW savegame content have (yet) been decoded,
+Not all details of the SP:WaW savegame content have (yet) been decoded,
 but most useful information for turn, batle and campaign tracking is
 available. There is some confusion with regards to the extra campaign
 information. for example, the number of major/minor victories and losses
@@ -21,7 +21,7 @@ The library also provides access to the game's OOB file content.
 The snapshot and dossier files can be saved with zlib compression.
 
 Please note that there seem to be some incompatibilities with the new
-SPWaW 2016 release. These are under investigation.
+SP:WaW 2016 release. These are under investigation.
 
 NOTE
 ----

@@ -5,7 +5,7 @@ Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
-This tool generates SPWaW savegame reports (and a snapshot of the savegame).
+This tool generates SP:WaW savegame reports (and a snapshot of the savegame).
 
 Usage: spwreport OOB DIR INDEX BASE [TYPE]
 Where: OOB     path to oob dir

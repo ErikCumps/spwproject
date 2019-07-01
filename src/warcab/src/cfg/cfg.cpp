@@ -35,7 +35,7 @@ typedef struct s_CFGDATA {
 	char		*usr_path;		/*!< User data storage path		*/
 	bool		local;			/*!< Local configuration flag		*/
 	SPWAW_GAME_TYPE	def_gametype;		/*!< Default game type			*/
-	CFGGAMEDATA	cfg_spwaw;		/*!< SPWaW specific configuration	*/
+	CFGGAMEDATA	cfg_spwaw;		/*!< SP:WaW specific configuration	*/
 	CFGGAMEDATA	cfg_winspww2;		/*!< winSPWW2 specific configuration	*/
 	char		*snp_path;		/*!< Snapshots path			*/
 	bool		compress;		/*!< Dossier compression flag		*/

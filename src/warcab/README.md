@@ -5,7 +5,7 @@ Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
-Warcab is a tool to record and track battles in an SPWaW campaign.
+Warcab is a tool to record and track battles in an SP:WaW campaign.
 It is inspired by Campaign Watcher.
 
 Warcab tracks information for core units (including reassignments)

@@ -43,7 +43,7 @@ usage (char *app)
 	printf ("\n");
 
 	printf ("Supported game types:\n");
-	printf ("    SPWAW       SPWaW\n");
+	printf ("    SPWAW       SP:WaW\n");
 	printf ("    WINSPWW2    winSPWW2\n");
 	printf ("\n");
 

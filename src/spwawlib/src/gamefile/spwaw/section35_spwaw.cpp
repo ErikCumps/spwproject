@@ -23,14 +23,14 @@
 // counts and invalid formation data.
 //
 // What is known with some degree of certainty:
-//	+ saved formations must have a name (not so for SPWaW)
+//	+ saved formations must have a name (not so for SP:WaW)
 //	+ saved formations for player #1 and player #2 can be mixed together
 //	+ valid formations must have a leader
 //	+ there can be no formations with duplicate formation IDs
 //	+ valid formations may be saved after an invalid formation with the same formation ID
 //	+ formations are saved in any order
 //	+ formations are not always saved in contiguous groups
-//	+ valid formations must have a valid higher command? (not so for SPWaW)
+//	+ valid formations must have a valid higher command? (not so for SP:WaW)
 
 static SPWAW_ERROR
 build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)

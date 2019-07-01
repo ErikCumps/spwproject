@@ -13,13 +13,13 @@
 #include "fileio/fileio.h"
 #include "common/internal.h"
 
-/* This is the SPWaW/winSPWW2 savegame file format:
+/* This is the SP:WaW/winSPWW2 savegame file format:
  *
  * A savegame is a contiguous set of several data blocks.
  *
  * The first data block is the game info section.
  * This is a fixed-size data block containing the savegame marker.
- * (which is currently "SPWAW_SAVE_V101"/"SPCTS_SAVE_V100" for SPWaW/winSPWW2)
+ * (which is currently "SPWAW_SAVE_V101"/"SPCTS_SAVE_V100" for SP:WaW/winSPWW2)
  *
  * The other data blocks contain the savegame section data.
  *
@@ -38,7 +38,7 @@
  * The actual size of the section data will be larger than the size of the section data in the file.
  */
 
-/* This is the SPWaW/winSPWW2 section data compression format:
+/* This is the SP:WaW/winSPWW2 section data compression format:
  *
  * Compressed section data is a contiguous set of run-length coded data blocks.
  *
