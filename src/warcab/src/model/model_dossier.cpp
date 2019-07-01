@@ -157,16 +157,7 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
-				snprintf (buf, sizeof (buf) - 1, "%s: %s against %s %s",
-					p->data.b->location,
-					p->data.b->miss_p1,
-					p->data.b->snap->game.battle.strings.people_p2,
-					p->data.b->miss_p2);
-			} else {
-				snprintf (buf, sizeof (buf) - 1, "%s",
-					p->data.b->location);
-			}
+			snprintf (buf, sizeof (buf) - 1, "%s", p->data.b->location);
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
