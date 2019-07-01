@@ -1120,10 +1120,9 @@ find_candidate_units: [00225] F[00069]<001> C<65535> L<00225> O<076> V=1 (      
 find_candidate_units: [00226] F[00069]<002> C<65535> L<00226> O<076> V=1 (            H-39) SKIPPED: invalid formation reference
 find_candidate_units: [00227] F[00069]<003> C<65535> L<00227> O<076> V=1 (            H-39) SKIPPED: invalid formation reference
 find_candidate_units: [00228] F[00069]<004> C<65535> L<00228> O<076> V=1 (            H-39) SKIPPED: invalid formation reference
-find_candidate_units: [00229] F[00043]<051> C<00152> L<00229> O<070> V=0 (         Crewmen) CREW #0 F<00043,051> CANDIDATE
+find_candidate_units: [00229] F[00043]<051> C<00152> L<00229> O<070> V=0 (         Crewmen) CREW #0 F<00043,051> SKIPPED: invalid crew
 find_candidate_units: [00400] F[00066]<051> C<00217> L<00400> O<076> V=1 (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: 158 candidates
-link_candidate_crews: [00229] CREW<00152> F<00043,051> (         Crewmen) LINKED
+find_candidate_units: 157 candidates
 find_formation_oobrids: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (  SP ENH FR v1.1) OOBrid=00001
 find_formation_oobrids: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00187> (     Forward Obs) OOBrid=00187
 find_formation_oobrids: FORMATION: P<0> ID<00002> L<00002> H<00000> O<00148> ( Moerser Section) OOBrid=00148
@@ -1322,7 +1321,7 @@ verify_candidate_units: [00044] UNIT: F<00010,003> LO<65535> (  Lt Moerser Trp) 
 verify_candidate_units: [00045] UNIT: F<00010,004> LO<65535> (  Lt Moerser Trp) ACCEPTED
 verify_candidate_units: [00046] UNIT: F<00010,005> LO<65535> (  Lt Moerser Trp) ACCEPTED
 verify_candidate_units: [00047] UNIT: F<00018,001> LO<65535> ( Grenadiergruppe) ACCEPTED - LEADER
-verify_candidate_units: [00048] UNIT: F<00018,002> LO<65535> ( Grenadiergruppe) ACCEPTED - WILDCARD
+verify_candidate_units: [00048] UNIT: F<00018,002> LO<65535> ( Grenadiergruppe) ACCEPTED
 verify_candidate_units: [00049] UNIT: F<00010,008> LO<65535> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [00050] UNIT: F<00010,009> LO<65535> (    SPW 251/1 HT) ACCEPTED
 verify_candidate_units: [00051] UNIT: F<00011,000> LO<65535> (      Zugfuehrer) ACCEPTED - LEADER
@@ -1423,15 +1422,14 @@ verify_candidate_units: [00145] UNIT: F<00041,000> LO<65535> (    81mm Moerser) 
 verify_candidate_units: [00146] UNIT: F<00041,001> LO<65535> (    81mm Moerser) ACCEPTED
 verify_candidate_units: [00147] UNIT: F<00042,000> LO<65535> (      Zugfuehrer) ACCEPTED - LEADER
 verify_candidate_units: [00148] UNIT: F<00042,001> LO<65535> (     150mm sIG33) ACCEPTED
-verify_candidate_units: [00149] UNIT: F<00042,002> LO<65535> (     150mm sIG33) ACCEPTED - WILDCARD
-verify_candidate_units: [00150] UNIT: F<00042,003> LO<65535> (      LMG Gruppe) ACCEPTED - WILDCARD
+verify_candidate_units: [00149] UNIT: F<00042,002> LO<65535> (     150mm sIG33) ACCEPTED
+verify_candidate_units: [00150] UNIT: F<00042,003> LO<65535> (      LMG Gruppe) ACCEPTED
 verify_candidate_units: [00151] UNIT: F<00043,000> LO<65535> (         Gespann) ACCEPTED - LEADER
 verify_candidate_units: [00152] UNIT: F<00043,001> LO<65535> (         Gespann) ACCEPTED
 verify_candidate_units: [00153] UNIT: F<00044,000> LO<65535> ( Vorg Beobachter) ACCEPTED - LEADER
 verify_candidate_units: [00154] UNIT: F<00045,000> LO<65535> (     Spaehtruppe) ACCEPTED - LEADER
 verify_candidate_units: [00155] UNIT: F<00045,001> LO<65535> (     Spaehtruppe) ACCEPTED
 verify_candidate_units: [00156] UNIT: F<00045,002> LO<65535> (     Spaehtruppe) ACCEPTED
-verify_candidate_units: [00229] CREW: F<00043,051> (         Crewmen) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (  SP ENH FR v1.1) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00187> (     Forward Obs) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00002> L<00002> H<00000> O<00148> ( Moerser Section) ACCEPTED
@@ -1478,7 +1476,7 @@ verify_candidate_formations: FORMATION: P<0> ID<00042> L<00147> H<00000> O<00161
 verify_candidate_formations: FORMATION: P<0> ID<00043> L<00151> H<00000> O<00066> (         Gespann) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00044> L<00153> H<00000> O<00187> ( Vorg Beobachter) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00045> L<00154> H<00000> O<00139> (         Spaeher) ACCEPTED
-unitcount: ul.cnt=158
+unitcount: ul.cnt=157
 FLIST: { { s.nidx=47 }, cnt=46 }
     [00000] (  SP ENH FR v1.1) P<000> L<00000> H<00000> status=001 units=001 OOB 070: [00001] FID<00000> RAW<00000>
         [000] ptr[00000]
@@ -1685,7 +1683,7 @@ FLIST: { { s.nidx=47 }, cnt=46 }
         [000] ptr[00154]
         [001] ptr[00155]
         [002] ptr[00156]
-ULIST: { { s.nidx=158 }, cnt=158 }
+ULIST: { { s.nidx=157 }, cnt=157 }
     [00000] (   GE Kommandeur) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00245] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (        Obs Team) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00241] F[00001]<00001,000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (     Moerser Grp) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00134] F[00002]<00002,000> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -1838,12 +1836,11 @@ ULIST: { { s.nidx=158 }, cnt=158 }
     [00149] (     150mm sIG33) UNIT leader=[00149] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00137] F[00042]<00042,002> ptr[00042] link crew=nil[65535], parent=nil[65535]
     [00150] (      LMG Gruppe) UNIT leader=[00150] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00078] F[00042]<00042,003> ptr[00042] link crew=nil[65535], parent=nil[65535]
     [00151] (         Gespann) UNIT leader=[00151] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00233] F[00043]<00043,000> ptr[00043] link crew=nil[65535], parent=nil[65535]
-    [00152] (         Gespann) UNIT leader=[00229] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00233] F[00043]<00043,001> ptr[00043] link crew=ptr[00229], parent=ptr[00229]
+    [00152] (         Gespann) UNIT leader=[00152] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00233] F[00043]<00043,001> ptr[00043] link crew=nil[65535], parent=nil[65535]
     [00153] ( Vorg Beobachter) UNIT leader=[00153] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00241] F[00044]<00044,000> ptr[00044] link crew=nil[65535], parent=nil[65535]
     [00154] (     Spaehtruppe) UNIT leader=[00154] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00170] F[00045]<00045,000> ptr[00045] link crew=nil[65535], parent=nil[65535]
     [00155] (     Spaehtruppe) UNIT leader=[00155] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00170] F[00045]<00045,001> ptr[00045] link crew=nil[65535], parent=nil[65535]
     [00156] (     Spaehtruppe) UNIT leader=[00156] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00170] F[00045]<00045,002> ptr[00045] link crew=nil[65535], parent=nil[65535]
-!!! [00229] (         Crewmen) CREW leader=[00229] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 070: [00249] F[00043]<00043,051> nil[65535] link crew=ptr[00152], parent=ptr[00152]
 find_candidate_units: player #1
 find_candidate_units: [00000] F[00000]<000> C<65535> L<00000> O<070> V=1 (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [00001] F[00001]<000> C<65535> L<00001> O<070> V=1 (        Obs Team) SKIPPED: invalid formation reference
@@ -2196,19 +2193,19 @@ verify_candidate_units: [00199] UNIT: F<00014,001> LO<65535> (   Hotchkiss HMG) 
 verify_candidate_units: [00200] UNIT: F<00015,000> LO<65535> (   Hotchkiss HMG) ACCEPTED - LEADER
 verify_candidate_units: [00201] UNIT: F<00015,001> LO<65535> (   Hotchkiss HMG) ACCEPTED
 verify_candidate_units: [00202] UNIT: F<00016,000> LO<65535> (      Platoon HQ) ACCEPTED - LEADER
-verify_candidate_units: [00203] UNIT: F<00016,001> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
-verify_candidate_units: [00204] UNIT: F<00016,002> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
-verify_candidate_units: [00205] UNIT: F<00016,003> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [00203] UNIT: F<00016,001> LO<65535> (  Voltigeurs Sqd) ACCEPTED
+verify_candidate_units: [00204] UNIT: F<00016,002> LO<65535> (  Voltigeurs Sqd) ACCEPTED
+verify_candidate_units: [00205] UNIT: F<00016,003> LO<65535> (  Voltigeurs Sqd) ACCEPTED
 verify_candidate_units: [00206] UNIT: F<00017,000> LO<65535> (      Platoon HQ) ACCEPTED - LEADER
-verify_candidate_units: [00207] UNIT: F<00017,001> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
-verify_candidate_units: [00208] UNIT: F<00017,002> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
-verify_candidate_units: [00209] UNIT: F<00017,003> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [00207] UNIT: F<00017,001> LO<65535> (  Voltigeurs Sqd) ACCEPTED
+verify_candidate_units: [00208] UNIT: F<00017,002> LO<65535> (  Voltigeurs Sqd) ACCEPTED
+verify_candidate_units: [00209] UNIT: F<00017,003> LO<65535> (  Voltigeurs Sqd) ACCEPTED
 verify_candidate_units: [00210] UNIT: F<00018,000> LO<65535> (      Platoon HQ) ACCEPTED - LEADER
-verify_candidate_units: [00211] UNIT: F<00018,001> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
-verify_candidate_units: [00212] UNIT: F<00018,002> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
-verify_candidate_units: [00213] UNIT: F<00018,003> LO<65535> (  Voltigeurs Sqd) ACCEPTED - WILDCARD
+verify_candidate_units: [00211] UNIT: F<00018,001> LO<65535> (  Voltigeurs Sqd) ACCEPTED
+verify_candidate_units: [00212] UNIT: F<00018,002> LO<65535> (  Voltigeurs Sqd) ACCEPTED
+verify_candidate_units: [00213] UNIT: F<00018,003> LO<65535> (  Voltigeurs Sqd) ACCEPTED
 verify_candidate_units: [00214] UNIT: F<00019,000> LO<65535> (  25mm DCA mle39) ACCEPTED - LEADER
-verify_candidate_units: [00215] UNIT: F<00019,001> LO<65535> (  25mm DCA mle39) ACCEPTED - WILDCARD
+verify_candidate_units: [00215] UNIT: F<00019,001> LO<65535> (  25mm DCA mle39) ACCEPTED
 verify_candidate_units: [00216] UNIT: F<00020,000> LO<65535> (  37mm mle 16 TR) ACCEPTED
 verify_candidate_units: [00217] UNIT: F<00020,001> LO<65535> (  37mm mle 16 TR) ACCEPTED
 verify_candidate_units: [00218] UNIT: F<00021,000> LO<65535> ( 25mm mle 34 ATG) ACCEPTED - LEADER
@@ -2221,9 +2218,8 @@ verify_candidate_units: [00224] UNIT: F<00028,000> LO<65535> (            H-39) 
 verify_candidate_units: [00225] UNIT: F<00028,001> LO<65535> (            H-39) ACCEPTED
 verify_candidate_units: [00226] UNIT: F<00028,002> LO<65535> (            H-39) ACCEPTED
 verify_candidate_units: [00227] UNIT: F<00028,003> LO<65535> (            H-39) ACCEPTED
-verify_candidate_units: [00228] UNIT: F<00028,004> LO<65535> (            H-39) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [00228] UNIT: F<00028,004> LO<65535> (            H-39) ACCEPTED
 verify_candidate_units: [00400] CREW: F<00020,051> (         Crewmen) ACCEPTED
-verify_candidate_units: [00228] VLAT: F<00028,004> (            H-39) DROPPED: not a verified loader unit
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00157> H<00157> O<00001> (    SPWAW H2H ce) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00158> H<00157> O<00102> (   Voltigeurs Co) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00159> H<00157> O<00024> (  Voltigeurs Plt) ACCEPTED
@@ -2248,7 +2244,7 @@ verify_candidate_formations: FORMATION: P<1> ID<00020> L<00400> H<00157> O<00012
 verify_candidate_formations: FORMATION: P<1> ID<00021> L<00218> H<00157> O<00011> (      AT-Gun Sec) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00024> L<00220> H<00157> O<00183> (   DCA Ammo Cars) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00028> L<00224> H<00157> O<00005> (  Light Tank Trp) ACCEPTED
-unitcount: ul.cnt=72
+unitcount: ul.cnt=73
 FLIST: { { s.nidx=24 }, cnt=24 }
     [00046] (    SPWAW H2H ce) P<001> L<00157> H<00157> status=000 units=001 OOB 076: [00001] FID<00000> RAW<00100>
         [000] ptr[00157]
@@ -2345,7 +2341,7 @@ FLIST: { { s.nidx=24 }, cnt=24 }
         [001] ptr[00225]
         [002] ptr[00226]
         [003] ptr[00227]
-ULIST: { { s.nidx=73 }, cnt=72 }
+ULIST: { { s.nidx=73 }, cnt=73 }
     [00157] (           FR HQ) UNIT leader=[00157] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00244] F[00046]<00000,000> ptr[00046] link crew=nil[65535], parent=nil[65535]
     [00158] (    Compagnie HQ) UNIT leader=[00158] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00071] F[00047]<00001,000> ptr[00047] link crew=nil[65535], parent=nil[65535]
     [00159] (      Platoon HQ) UNIT leader=[00159] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00219] F[00048]<00002,000> ptr[00048] link crew=nil[65535], parent=nil[65535]
@@ -2417,6 +2413,7 @@ ULIST: { { s.nidx=73 }, cnt=72 }
     [00225] (            H-39) UNIT leader=[00225] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00004] F[00069]<00028,001> ptr[00069] link crew=nil[65535], parent=nil[65535]
     [00226] (            H-39) UNIT leader=[00226] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00004] F[00069]<00028,002> ptr[00069] link crew=nil[65535], parent=nil[65535]
     [00227] (            H-39) UNIT leader=[00227] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00004] F[00069]<00028,003> ptr[00069] link crew=nil[65535], parent=nil[65535]
+    [00228] (            H-39) UNIT leader=[00228] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00004] F[00069]<00028,004> ptr[00069] link crew=nil[65535], parent=nil[65535]
 !!! [00400] (         Crewmen) CREW leader=[00400] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 076: [00249] F[00066]<00020,051> nil[65535] link crew=ptr[00217], parent=ptr[00217]
 add_unit: idx=0, RID=0, type=UNIT
 add_unit: idx=1, RID=1, type=UNIT
@@ -2575,7 +2572,6 @@ add_unit: idx=153, RID=153, type=UNIT
 add_unit: idx=154, RID=154, type=UNIT
 add_unit: idx=155, RID=155, type=UNIT
 add_unit: idx=156, RID=156, type=UNIT
-add_unit: idx=157, RID=229, type=CREW
 add_unit: idx=0, RID=157, type=UNIT
 add_unit: idx=1, RID=158, type=UNIT
 add_unit: idx=2, RID=159, type=UNIT
@@ -2647,4 +2643,5 @@ add_unit: idx=67, RID=224, type=UNIT
 add_unit: idx=68, RID=225, type=UNIT
 add_unit: idx=69, RID=226, type=UNIT
 add_unit: idx=70, RID=227, type=UNIT
-add_unit: idx=71, RID=400, type=CREW
+add_unit: idx=71, RID=228, type=UNIT
+add_unit: idx=72, RID=400, type=CREW

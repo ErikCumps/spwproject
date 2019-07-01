@@ -990,7 +990,7 @@ verify_candidate_units: [00006] UNIT: F<00002,000> LO<65535> (  M10 3 inch GMC) 
 verify_candidate_units: [00007] UNIT: F<00002,001> LO<65535> (  M10 3 inch GMC) ACCEPTED
 verify_candidate_units: [00008] UNIT: F<00002,002> LO<65535> (  M10 3 inch GMC) ACCEPTED
 verify_candidate_units: [00009] UNIT: F<00002,003> LO<65535> (  M10 3 inch GMC) ACCEPTED
-verify_candidate_units: [00010] UNIT: F<00000,001> LO<65535> (  M3A1 Halftrack) ACCEPTED - WILDCARD
+verify_candidate_units: [00010] UNIT: F<00000,001> LO<65535> (  M3A1 Halftrack) ACCEPTED
 verify_candidate_units: [00011] UNIT: F<00003,000> LO<65535> (    M8 Greyhound) ACCEPTED
 verify_candidate_units: [00012] UNIT: F<00003,001> LO<65535> (    M8 Greyhound) ACCEPTED
 verify_candidate_units: [00013] UNIT: F<00004,000> LO<65535> (    M8 Greyhound) ACCEPTED
@@ -1009,15 +1009,13 @@ verify_candidate_units: [00031] UNIT: F<00011,000> LO<65535> (  M3A1 Halftrack) 
 verify_candidate_units: [00032] UNIT: F<00011,001> LO<65535> (  M3A1 Halftrack) ACCEPTED
 verify_candidate_units: [00033] UNIT: F<00011,002> LO<65535> (  M3A1 Halftrack) ACCEPTED
 verify_candidate_units: [00034] UNIT: F<00011,003> LO<65535> (  M3A1 Halftrack) ACCEPTED
-verify_candidate_units: [00037] UNIT: F<00011,004> LO<65535> (    M3 Halftrack) POSTPONED: invalid subformation ID - pending verified loader acceptance test
-verify_candidate_units: [00043] UNIT: F<00011,005> LO<65535> (    M3 Halftrack) POSTPONED: invalid subformation ID - pending verified loader acceptance test
+verify_candidate_units: [00037] UNIT: F<00011,004> LO<65535> (    M3 Halftrack) ACCEPTED
+verify_candidate_units: [00043] UNIT: F<00011,005> LO<65535> (    M3 Halftrack) ACCEPTED
 verify_candidate_units: [00021] CREW: F<00001,051> (         Crewmen) ACCEPTED
 verify_candidate_units: [00022] CREW: F<00003,051> (         Crewmen) ACCEPTED
 verify_candidate_units: [00023] CREW: F<00003,050> (         Crewmen) ACCEPTED
 verify_candidate_units: [00024] CREW: F<00004,050> (         Crewmen) ACCEPTED
 verify_candidate_units: [00026] CREW: F<00002,053> (         Crewmen) ACCEPTED
-verify_candidate_units: [00037] VLAT: F<00011,004> (    M3 Halftrack) DROPPED: not a verified loader unit
-verify_candidate_units: [00043] VLAT: F<00011,005> (    M3 Halftrack) DROPPED: not a verified loader unit
 verify_candidate_formations: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> ( TGN's SPWAW 1.0) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00011> (    Med Tank Plt) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00002> L<00006> H<00000> O<00018> (          TD Plt) ACCEPTED
@@ -1028,7 +1026,7 @@ verify_candidate_formations: FORMATION: P<0> ID<00006> L<00025> H<00000> O<00131
 verify_candidate_formations: FORMATION: P<0> ID<00009> L<00028> H<00000> O<00048> ( Utility Vehicle) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00010> L<00029> H<00000> O<00044> ( Strike Aircraft) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00011> L<00031> H<00000> O<00059> (   Halftrack Plt) ACCEPTED
-unitcount: ul.cnt=34
+unitcount: ul.cnt=36
 FLIST: { { s.nidx=14 }, cnt=10 }
     [00000] ( TGN's SPWAW 1.0) P<000> L<00000> H<00000> status=000 units=001 OOB 082: [00001] FID<00000> RAW<00100>
         [000] ptr[00000]
@@ -1072,7 +1070,7 @@ FLIST: { { s.nidx=14 }, cnt=10 }
         [001] ptr[00032]
         [002] ptr[00033]
         [003] ptr[00034]
-ULIST: { { s.nidx=36 }, cnt=34 }
+ULIST: { { s.nidx=36 }, cnt=36 }
     [00000] (    US Commander) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00243] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (    M4A3 Sherman) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,000> ptr[00002] link crew=nil[65535], parent=nil[65535]
     [00002] (    M4A3 Sherman) UNIT leader=[00021] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 082: [00023] F[00002]<00001,001> ptr[00002] link crew=ptr[00021], parent=ptr[00021]
@@ -1107,6 +1105,8 @@ ULIST: { { s.nidx=36 }, cnt=34 }
     [00032] (  M3A1 Halftrack) UNIT leader=[00032] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00077] F[00019]<00011,001> ptr[00019] link crew=nil[65535], parent=nil[65535]
     [00033] (  M3A1 Halftrack) UNIT leader=[00033] abandoned=0 loader<65535> vrf=Y vrfneed=N  OOB 082: [00077] F[00019]<00011,002> ptr[00019] link crew=nil[65535], parent=nil[65535]
     [00034] (  M3A1 Halftrack) UNIT leader=[00034] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00077] F[00019]<00011,003> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00037] (    M3 Halftrack) UNIT leader=[00037] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00076] F[00019]<00011,004> ptr[00019] link crew=nil[65535], parent=nil[65535]
+    [00043] (    M3 Halftrack) UNIT leader=[00043] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 082: [00087] F[00019]<00011,005> ptr[00019] link crew=nil[65535], parent=nil[65535]
 find_candidate_units: player #1
 find_candidate_units: [00000] F[00000]<000> C<65535> L<00000> O<082> V=1 (    US Commander) SKIPPED: invalid formation reference
 find_candidate_units: [00001] F[00002]<000> C<65535> L<00001> O<082> V=1 (    M4A3 Sherman) SKIPPED: invalid formation reference
@@ -1347,6 +1347,8 @@ add_unit: idx=30, RID=31, type=UNIT
 add_unit: idx=31, RID=32, type=UNIT
 add_unit: idx=32, RID=33, type=UNIT
 add_unit: idx=33, RID=34, type=UNIT
+add_unit: idx=34, RID=37, type=UNIT
+add_unit: idx=35, RID=43, type=UNIT
 add_unit: idx=0, RID=400, type=UNIT
 add_unit: idx=1, RID=401, type=UNIT
 add_unit: idx=2, RID=402, type=UNIT

@@ -42,30 +42,30 @@ Short US army forces order of battle report:
 
 Leader    : A0 US Commander (Col Wilder)
 Formations: 10
-Units     : 29
+Units     : 31
 Crews     : 3
 
 Total kills        : 35
 Total losses       : 3
-Total readiness    :  85.99 %
+Total readiness    :  86.89 %
 Unit experience    : max: 90 ( 18: F3: Armd LMG Squad (Sgt Arnold))
 Unit experience    : min: 55 (  4: B2: M4A3 Sherman (Sgt Lewis))
-Unit experience    : avg: 69.28
+Unit experience    : avg: 69.23
 Unit experience    : spr: 35
-Unit experience    : tot: 2009
-Unit experience    : cnt: 29
+Unit experience    : tot: 2146
+Unit experience    : cnt: 31
 Unit readiness     : max: 100.00 (  0: A0: US Commander (Col Wilder))
 Unit readiness     : min: 0.00 ( 10: C3: M10 3 inch GMC (Sgt Irwin))
-Unit readiness     : avg: 85.99
+Unit readiness     : avg: 86.89
 Unit readiness     : spr: 100.00
-Unit readiness     : tot: 2493.64
-Unit readiness     : cnt: 29
+Unit readiness     : tot: 2693.64
+Unit readiness     : cnt: 31
 Unit kills         : max: 6 (  3: B1: M4A3 Sherman (Sgt Lopez))
 Unit kills         : min: 0 (  0: A0: US Commander (Col Wilder))
-Unit kills         : avg: 1.21
+Unit kills         : avg: 1.13
 Unit kills         : spr: 6
 Unit kills         : tot: 35
-Unit kills         : cnt: 29
+Unit kills         : cnt: 31
 Formation readiness: max: 100.00 (  4: E: recon platoon)
 Formation readiness: min: 49.50 (  2: C: average platoon)
 Formation readiness: avg: 87.82
@@ -200,12 +200,14 @@ L : regular average platoon
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 4
+	unit count: 6
 	unit list :
 		L0 M3A1 Halftrack
 		L1 M3A1 Halftrack
 		L2 M3A1 Halftrack
 		L3 M3A1 Halftrack
+		L4 M3 Halftrack
+		L5 M3 Halftrack
 
 
 Short units report:
@@ -240,6 +242,8 @@ Short units report:
       L1  : M3A1 Halftrack   (Sgt Jenkins         ) RID 00032 UTG 003 EXP 082 MOR 086 SUP 000 RAL 057 INF 036 ART 036 ARM 066 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 60,  24)
  #    L2  : M3A1 Halftrack   (Sgt Phillips        ) RID 00033 UTG 003 EXP 082 MOR 071 SUP 000 RAL 080 INF 033 ART 033 ARM 059 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 58,  21)
  #    L3  : M3A1 Halftrack   (Sgt Wirth           ) RID 00034 UTG 003 EXP 074 MOR 085 SUP 000 RAL 075 INF 029 ART 029 ARM 069 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 57,  18)
+ #    L4  : M3 Halftrack     (Sgt Kantor          ) RID 00037 UTG 011 EXP 067 MOR 076 SUP 000 RAL 031 INF 027 ART 036 ARM 053 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 50,  14)
+ #    L5  : M3 Halftrack     (Sgt Hamilton        ) RID 00043 UTG 012 EXP 070 MOR 063 SUP 000 RAL 075 INF 030 ART 043 ARM 053 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 54,  23)
 
 Short crews report:
 -------------------
@@ -257,7 +261,7 @@ Short German forces order of battle report:
 Leader    : I0 GE Kommandant (KIA Tychsen)
 Formations: 9
 Units     : 21
-Crews     : 11
+Crews     : 0
 
 Total kills        : 3
 Total losses       : 35
@@ -303,16 +307,16 @@ Short formations report:
 ------------------------
 
 B : regular average platoon
-	leader    : B2 PzKpfw IV H (KIA Eberbach)
+	leader    : B0 PzKpfw IV H (KIA Rauch)
 	higher cmd: I0 GE Kommandant (KIA Tychsen)
 	kills     : 2
 	losses    : 8
 	readiness :   0.00 %
 	unit count: 4
 	unit list :
-		B0 PzKpfw IV H abandoned by B50 Crewmen
-		B1 PzKpfw IV H abandoned by B51 Crewmen
-		B2 PzKpfw IV H abandoned by B52 Crewmen
+		B0 PzKpfw IV H abandoned by lost crew
+		B1 PzKpfw IV H abandoned by lost crew
+		B2 PzKpfw IV H abandoned by lost crew
 		B3 PzKpfw IV H abandoned by lost crew
 
 C : regular recon company
@@ -323,7 +327,7 @@ C : regular recon company
 	readiness :   0.00 %
 	unit count: 2
 	unit list :
-		C0 Panther A abandoned by C50 Crewmen
+		C0 Panther A abandoned by lost crew
 		C1 Panther A abandoned by lost crew
 
 D : regular average platoon
@@ -347,8 +351,8 @@ E : regular dedicated artillery platoon
 	readiness :   0.00 %
 	unit count: 2
 	unit list :
-		E0 SdKfz 250/7 abandoned by E50 Crewmen
-		E1 SdKfz 250/7 abandoned by E51 Crewmen
+		E0 SdKfz 250/7 abandoned by lost crew
+		E1 SdKfz 250/7 abandoned by lost crew
 
 F : regular elite recon platoon
 	leader    : F0 SdKfz 251/9 (KIA Weisbach)
@@ -368,8 +372,8 @@ G : regular average platoon
 	readiness :   0.00 %
 	unit count: 2
 	unit list :
-		G0 FlakPz 38(t) abandoned by G50 Crewmen
-		G1 FlakPz 38(t) abandoned by G51 Crewmen
+		G0 FlakPz 38(t) abandoned by lost crew
+		G1 FlakPz 38(t) abandoned by lost crew
 
 H : regular elite recon platoon
 	leader    : H0 PzrSchrk Trp (KIA Muller)
@@ -399,9 +403,9 @@ J : regular average platoon
 	readiness :   0.00 %
 	unit count: 4
 	unit list :
-		J0 SPW 251/1 HT abandoned by J50 Crewmen
-		J1 SPW 251/1 HT abandoned by J51 Crewmen
-		J2 SPW 251/1 HT abandoned by J52 Crewmen
+		J0 SPW 251/1 HT abandoned by lost crew
+		J1 SPW 251/1 HT abandoned by lost crew
+		J2 SPW 251/1 HT abandoned by lost crew
 		J3 SPW 251/10 abandoned by lost crew
 
 
@@ -429,21 +433,6 @@ Short units report:
 + -A  J1  : SPW 251/1 HT     (KIA Vogel           ) RID 00422 UTG 023 EXP 075 MOR 069 SUP 012 RAL 041 INF 047 ART 038 ARM 083 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 028 RDY   0.00 POS (  none  )
 + -A  J2  : SPW 251/1 HT     (KIA Schweitzer      ) RID 00423 UTG 023 EXP 053 MOR 055 SUP 009 RAL 026 INF 047 ART 037 ARM 057 KILL 000 LOSS 002 MEN 003 KIA 003 DMG 028 RDY   0.00 POS (  none  )
 + -A  J3  : SPW 251/10       (KIA Brunner         ) RID 00426 UTG 024 EXP 060 MOR 080 SUP 004 RAL 070 INF 038 ART 042 ARM 068 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 051 RDY   0.00 POS (  none  )
-
-Short crews report:
--------------------
-
-+ -A  B50 : Crewmen          (KIA Rauch           ) RID 00429 UTG 026 EXP 065 MOR 069 SUP 035 RAL 035 INF 032 ART 050 ARM 060 KILL 000 MEN 005 KIA 005 DMG 002 RDY   0.00 POS (  none  )
-+ -A  B51 : Crewmen          (KIA Hartueb         ) RID 00424 UTG 026 EXP 066 MOR 068 SUP 039 RAL 050 INF 041 ART 036 ARM 055 KILL 000 MEN 005 KIA 005 DMG 002 RDY   0.00 POS (  none  )
-+ -A  B52 : Crewmen          (KIA Eberbach        ) RID 00412 UTG 026 EXP 055 MOR 056 SUP 027 RAL 027 INF 040 ART 043 ARM 063 KILL 000 MEN 005 KIA 005 DMG 002 RDY   0.00 POS (  none  )
-+ -A  C50 : Crewmen          (KIA Schumacher      ) RID 00425 UTG 026 EXP 069 MOR 060 SUP 017 RAL 059 INF 044 ART 044 ARM 061 KILL 000 MEN 005 KIA 005 DMG 002 RDY   0.00 POS (  none  )
-+ -A  E50 : Crewmen          (KIA Scherer         ) RID 00411 UTG 026 EXP 067 MOR 054 SUP 033 RAL 035 INF 044 ART 036 ARM 055 KILL 000 MEN 004 KIA 004 DMG 002 RDY   0.00 POS (  none  )
-+ -A  E51 : Crewmen          (KIA Porsch          ) RID 00413 UTG 026 EXP 056 MOR 049 SUP 030 RAL 046 INF 048 ART 049 ARM 053 KILL 000 MEN 004 KIA 004 DMG 002 RDY   0.00 POS (  none  )
-+ -A  G50 : Crewmen          (KIA Oertzen         ) RID 00430 UTG 026 EXP 050 MOR 052 SUP 099 RAL 040 INF 041 ART 041 ARM 060 KILL 000 MEN 004 KIA 004 DMG 002 RDY   0.00 POS (  none  )
-+ -A  G51 : Crewmen          (KIA Krogel          ) RID 00431 UTG 026 EXP 059 MOR 055 SUP 073 RAL 039 INF 048 ART 034 ARM 055 KILL 000 MEN 004 KIA 004 DMG 002 RDY   0.00 POS (  none  )
-+ -A  J50 : Crewmen          (KIA Kroh            ) RID 00414 UTG 026 EXP 066 MOR 051 SUP 038 RAL 049 INF 043 ART 040 ARM 061 KILL 000 MEN 003 KIA 003 DMG 002 RDY   0.00 POS (  none  )
-+ -A  J51 : Crewmen          (KIA Vogel           ) RID 00428 UTG 026 EXP 075 MOR 069 SUP 099 RAL 041 INF 047 ART 038 ARM 083 KILL 000 MEN 003 KIA 003 DMG 002 RDY   0.00 POS (  none  )
-+ -A  J52 : Crewmen          (KIA Schweitzer      ) RID 00427 UTG 026 EXP 053 MOR 055 SUP 037 RAL 026 INF 047 ART 037 ARM 057 KILL 000 MEN 003 KIA 003 DMG 002 RDY   0.00 POS (  none  )
 
 
 

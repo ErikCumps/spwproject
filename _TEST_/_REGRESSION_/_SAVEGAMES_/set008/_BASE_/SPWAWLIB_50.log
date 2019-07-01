@@ -1113,8 +1113,8 @@ find_candidate_units: [00219] F[00063]<001> C<65535> L<00219> O<070> V=1 (  sIG3
 find_candidate_units: [00220] F[00063]<002> C<65535> L<00220> O<070> V=1 (  sIG33 auf Pz-I) UNIT #0 F<00063,002> CANDIDATE
 find_candidate_units: [00221] F[00063]<003> C<65535> L<00221> O<070> V=1 (  sIG33 auf Pz-I) UNIT #0 F<00063,003> CANDIDATE
 find_candidate_units: [00222] F[00039]<051> C<00148> L<00222> O<070> V=1 (       Besatzung) CREW #0 F<00039,051> CANDIDATE
-find_candidate_units: [00223] F[00040]<055> C<00156> L<00223> O<070> V=0 (       Besatzung) CREW #0 F<00040,055> CANDIDATE
-find_candidate_units: [00224] F[00035]<050> C<00131> L<00224> O<070> V=0 (       Besatzung) CREW #0 F<00035,050> CANDIDATE
+find_candidate_units: [00223] F[00040]<055> C<00156> L<00223> O<070> V=0 (       Besatzung) CREW #0 F<00040,055> SKIPPED: invalid crew
+find_candidate_units: [00224] F[00035]<050> C<00131> L<00224> O<070> V=0 (       Besatzung) CREW #0 F<00035,050> SKIPPED: invalid crew
 find_candidate_units: [00225] F[00064]<000> C<65535> L<00225> O<070> V=0 (      Zugfuehrer) SKIPPED: invalid formation reference
 find_candidate_units: [00226] F[00064]<001> C<65535> L<00226> O<070> V=0 ( Schuetzengruppe) SKIPPED: invalid formation reference
 find_candidate_units: [00227] F[00064]<002> C<65535> L<00227> O<070> V=0 ( Schuetzengruppe) SKIPPED: invalid formation reference
@@ -1152,9 +1152,9 @@ find_candidate_units: [00258] F[00071]<002> C<65535> L<00258> O<070> V=0 (      
 find_candidate_units: [00259] F[00071]<003> C<65535> L<00259> O<070> V=0 (         PSW 222) SKIPPED: invalid formation reference
 find_candidate_units: [00260] F[00071]<004> C<65535> L<00260> O<070> V=0 (         PSW 222) SKIPPED: invalid formation reference
 find_candidate_units: [00261] F[00071]<005> C<00265> L<65535> O<070> V=0 (         PSW 222) SKIPPED: invalid formation reference
-find_candidate_units: [00262] F[00051]<050> C<00178> L<65535> O<070> V=0 (       Besatzung) CREW #0 F<00051,050> CANDIDATE
-find_candidate_units: [00263] F[00050]<051> C<00176> L<65535> O<070> V=0 (       Besatzung) CREW #0 F<00050,051> CANDIDATE
-find_candidate_units: [00264] F[00039]<053> C<00150> L<65535> O<070> V=0 (       Besatzung) CREW #0 F<00039,053> CANDIDATE
+find_candidate_units: [00262] F[00051]<050> C<00178> L<65535> O<070> V=0 (       Besatzung) CREW #0 F<00051,050> SKIPPED: invalid crew
+find_candidate_units: [00263] F[00050]<051> C<00176> L<65535> O<070> V=0 (       Besatzung) CREW #0 F<00050,051> SKIPPED: invalid crew
+find_candidate_units: [00264] F[00039]<053> C<00150> L<65535> O<070> V=0 (       Besatzung) CREW #0 F<00039,053> SKIPPED: invalid crew
 find_candidate_units: [00265] F[00071]<055> C<00261> L<00265> O<070> V=0 (       Besatzung) SKIPPED: invalid formation reference
 find_candidate_units: [00400] F[00100]<000> C<65535> L<00400> O<086> V=1 (   NOR Kommander) SKIPPED: invalid formation reference
 find_candidate_units: [00401] F[00101]<000> C<65535> L<00401> O<086> V=1 (    12cm Haubits) SKIPPED: invalid formation reference
@@ -1519,13 +1519,8 @@ find_candidate_units: [00761] F[00199]<001> C<65535> L<00761> O<080> V=0 (      
 find_candidate_units: [00762] F[00199]<002> C<65535> L<00762> O<080> V=0 (        7-TP dw.) SKIPPED: invalid formation reference
 find_candidate_units: [00763] F[00199]<003> C<65535> L<00763> O<080> V=0 (        7-TP dw.) SKIPPED: invalid formation reference
 find_candidate_units: [00764] F[00199]<004> C<65535> L<00764> O<080> V=0 (        7-TP dw.) SKIPPED: invalid formation reference
-find_candidate_units: 228 candidates
+find_candidate_units: 223 candidates
 link_candidate_crews: [00222] CREW<00148> F<00039,051> (       Besatzung) LINKED
-link_candidate_crews: [00223] CREW<00156> F<00040,055> (       Besatzung) LINKED
-link_candidate_crews: [00224] CREW<00131> F<00035,050> (       Besatzung) LINKED
-link_candidate_crews: [00262] CREW<00178> F<00051,050> (       Besatzung) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00263] CREW<00176> F<00050,051> (       Besatzung) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00264] CREW<00150> F<00039,053> (       Besatzung) DROPPED: invalid crew parent unit linkage
 find_formation_oobrids: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (    SP ENH FR-NL) OOBrid=00001
 find_formation_oobrids: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00109> (       PzGren Kp) OOBrid=00109
 find_formation_oobrids: FORMATION: P<0> ID<00002> L<00003> H<00001> O<00000> (      PzGren Zug) NOT FOUND
@@ -1923,8 +1918,6 @@ verify_candidate_units: [00219] UNIT: F<00063,001> LO<65535> (  sIG33 auf Pz-I) 
 verify_candidate_units: [00220] UNIT: F<00063,002> LO<65535> (  sIG33 auf Pz-I) ACCEPTED
 verify_candidate_units: [00221] UNIT: F<00063,003> LO<65535> (  sIG33 auf Pz-I) ACCEPTED
 verify_candidate_units: [00222] CREW: F<00039,051> (       Besatzung) ACCEPTED
-verify_candidate_units: [00223] CREW: F<00040,055> (       Besatzung) ACCEPTED
-verify_candidate_units: [00224] CREW: F<00035,050> (       Besatzung) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (    SP ENH FR-NL) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00109> (       PzGren Kp) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00002> L<00003> H<00001> O<00092> (      PzGren Zug) ACCEPTED
@@ -1989,7 +1982,7 @@ verify_candidate_formations: FORMATION: P<0> ID<00060> L<00207> H<00200> O<00172
 verify_candidate_formations: FORMATION: P<0> ID<00061> L<00210> H<00000> O<00040> (  Sfl Gesch Bttr) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00062> L<00214> H<00000> O<00040> (  Sfl Gesch Bttr) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00063> L<00218> H<00000> O<00040> (  Sfl Gesch Bttr) ACCEPTED
-unitcount: ul.cnt=225
+unitcount: ul.cnt=223
 FLIST: { { s.nidx=64 }, cnt=64 }
     [00000] (    SP ENH FR-NL) P<000> L<00000> H<00000> status=001 units=001 OOB 070: [00001] FID<00000> RAW<00000>
         [000] ptr[00000]
@@ -2313,7 +2306,7 @@ FLIST: { { s.nidx=64 }, cnt=64 }
         [001] ptr[00219]
         [002] ptr[00220]
         [003] ptr[00221]
-ULIST: { { s.nidx=228 }, cnt=225 }
+ULIST: { { s.nidx=223 }, cnt=223 }
     [00000] (   GE Kommandeur) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00245] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] ( Kompanie GefStd) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00038] F[00001]<00001,000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (       SPW 251/1) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00102] F[00001]<00001,001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -2445,7 +2438,7 @@ ULIST: { { s.nidx=228 }, cnt=225 }
     [00128] (     PzKpfw IV C) UNIT leader=[00128] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00024] F[00034]<00034,001> ptr[00034] link crew=nil[65535], parent=nil[65535]
     [00129] (     PzKpfw IV C) UNIT leader=[00129] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00024] F[00034]<00034,002> ptr[00034] link crew=nil[65535], parent=nil[65535]
     [00130] (     PzKpfw IV C) UNIT leader=[00130] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00024] F[00034]<00034,003> ptr[00034] link crew=nil[65535], parent=nil[65535]
-    [00131] (     PzKpfw IV C) UNIT leader=[00224] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00024] F[00035]<00035,000> ptr[00035] link crew=ptr[00224], parent=ptr[00224]
+    [00131] (     PzKpfw IV C) UNIT leader=[00131] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00024] F[00035]<00035,000> ptr[00035] link crew=nil[65535], parent=nil[65535]
     [00132] (     PzKpfw IV C) UNIT leader=[00132] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00024] F[00035]<00035,001> ptr[00035] link crew=nil[65535], parent=nil[65535]
     [00133] (     PzKpfw II C) UNIT leader=[00133] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00011] F[00036]<00036,000> ptr[00036] link crew=nil[65535], parent=nil[65535]
     [00134] (     PzKpfw II C) UNIT leader=[00134] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00011] F[00036]<00036,001> ptr[00036] link crew=nil[65535], parent=nil[65535]
@@ -2470,7 +2463,7 @@ ULIST: { { s.nidx=228 }, cnt=225 }
     [00153] (         PSW 222) UNIT leader=[00153] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00002] F[00040]<00040,002> ptr[00040] link crew=nil[65535], parent=nil[65535]
     [00154] (         PSW 222) UNIT leader=[00154] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00002] F[00040]<00040,003> ptr[00040] link crew=nil[65535], parent=nil[65535]
     [00155] (         PSW 222) UNIT leader=[00155] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00002] F[00040]<00040,004> ptr[00040] link crew=nil[65535], parent=nil[65535]
-    [00156] (         PSW 222) UNIT leader=[00223] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00002] F[00040]<00040,005> ptr[00040] link crew=ptr[00223], parent=ptr[00223]
+    [00156] (         PSW 222) UNIT leader=[00156] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 070: [00002] F[00040]<00040,005> ptr[00040] link crew=nil[65535], parent=nil[65535]
     [00157] (        VB Trupp) UNIT leader=[00157] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00241] F[00041]<00041,000> ptr[00041] link crew=nil[65535], parent=nil[65535]
     [00158] (        VB Trupp) UNIT leader=[00158] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00241] F[00042]<00042,000> ptr[00042] link crew=nil[65535], parent=nil[65535]
     [00159] (        VB Trupp) UNIT leader=[00159] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00241] F[00043]<00043,000> ptr[00043] link crew=nil[65535], parent=nil[65535]
@@ -2537,8 +2530,6 @@ ULIST: { { s.nidx=228 }, cnt=225 }
     [00220] (  sIG33 auf Pz-I) UNIT leader=[00220] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00062] F[00063]<00063,002> ptr[00063] link crew=nil[65535], parent=nil[65535]
     [00221] (  sIG33 auf Pz-I) UNIT leader=[00221] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00062] F[00063]<00063,003> ptr[00063] link crew=nil[65535], parent=nil[65535]
 !!! [00222] (       Besatzung) CREW leader=[00222] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 070: [00249] F[00039]<00039,051> nil[65535] link crew=ptr[00148], parent=ptr[00148]
-!!! [00223] (       Besatzung) CREW leader=[00223] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 070: [00249] F[00040]<00040,055> nil[65535] link crew=ptr[00156], parent=ptr[00156]
-!!! [00224] (       Besatzung) CREW leader=[00224] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 070: [00249] F[00035]<00035,050> nil[65535] link crew=ptr[00131], parent=ptr[00131]
 find_candidate_units: player #1
 find_candidate_units: [00000] F[00000]<000> C<65535> L<00000> O<070> V=1 (   GE Kommandeur) SKIPPED: invalid formation reference
 find_candidate_units: [00001] F[00001]<000> C<65535> L<00001> O<070> V=1 ( Kompanie GefStd) SKIPPED: invalid formation reference
@@ -3088,51 +3079,51 @@ find_candidate_units: [00678] F[00191]<000> C<65535> L<00678> O<086> V=1 (   Pla
 find_candidate_units: [00679] F[00191]<001> C<65535> L<00679> O<086> V=1 (   Infanteri Grp) UNIT #1 F<00091,001> CANDIDATE
 find_candidate_units: [00680] F[00191]<002> C<65535> L<00680> O<086> V=1 (   Infanteri Grp) UNIT #1 F<00091,002> CANDIDATE
 find_candidate_units: [00681] F[00191]<003> C<65535> L<00681> O<086> V=1 (   Infanteri Grp) UNIT #1 F<00091,003> CANDIDATE
-find_candidate_units: [00683] F[00180]<001> C<65535> L<00683> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00080,001> CANDIDATE
-find_candidate_units: [00684] F[00180]<002> C<65535> L<00684> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00080,002> CANDIDATE
-find_candidate_units: [00685] F[00180]<003> C<65535> L<00685> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00080,003> CANDIDATE
-find_candidate_units: [00686] F[00180]<004> C<65535> L<00686> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00080,004> CANDIDATE
-find_candidate_units: [00687] F[00181]<000> C<65535> L<00687> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00081,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00688] F[00181]<001> C<65535> L<00688> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00081,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00689] F[00181]<002> C<65535> L<00689> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00081,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00690] F[00181]<003> C<65535> L<00690> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00081,003> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00691] F[00181]<004> C<65535> L<00691> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00081,004> CANDIDATE
-find_candidate_units: [00692] F[00182]<000> C<65535> L<00692> O<080> V=0 (       Druz Rozp) UNIT #1 F<00082,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00693] F[00182]<001> C<65535> L<00693> O<080> V=0 (       Druz Rozp) UNIT #1 F<00082,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00694] F[00182]<002> C<65535> L<00694> O<080> V=0 (       Druz Rozp) UNIT #1 F<00082,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00695] F[00183]<000> C<00750> L<65535> O<080> V=0 (    wz.34 (37mm)) UNIT #1 F<00083,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00696] F[00184]<000> C<65535> L<00696> O<080> V=0 (      37mm Ppanc) UNIT #1 F<00084,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00697] F[00184]<001> C<65535> L<00697> O<080> V=0 (      37mm Ppanc) UNIT #1 F<00084,001> CANDIDATE
-find_candidate_units: [00698] F[00185]<000> C<65535> L<00698> O<080> V=0 (           Ulani) UNIT #1 F<00085,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00699] F[00185]<001> C<65535> L<00699> O<080> V=0 (           Ulani) UNIT #1 F<00085,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00700] F[00185]<002> C<65535> L<00700> O<080> V=0 (           Ulani) UNIT #1 F<00085,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00701] F[00185]<003> C<65535> L<00701> O<080> V=0 (           Ulani) UNIT #1 F<00085,003> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00702] F[00185]<004> C<65535> L<00702> O<080> V=0 (           Ulani) UNIT #1 F<00085,004> CANDIDATE
-find_candidate_units: [00703] F[00186]<000> C<65535> L<00703> O<080> V=0 (  Motorcyklistow) UNIT #1 F<00086,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00704] F[00186]<001> C<65535> L<00704> O<080> V=0 (  Motorcyklistow) UNIT #1 F<00086,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00705] F[00186]<002> C<65535> L<00705> O<080> V=0 (  Motorcyklistow) UNIT #1 F<00086,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00706] F[00187]<000> C<65535> L<00706> O<080> V=0 (       Mozdzierz) UNIT #1 F<00087,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00707] F[00187]<001> C<65535> L<00707> O<080> V=0 (       Mozdzierz) UNIT #1 F<00087,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00708] F[00188]<000> C<65535> L<00708> O<080> V=0 (  Sztab Kompanii) UNIT #1 F<00088,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00709] F[00189]<000> C<65535> L<00709> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00089,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00710] F[00189]<001> C<65535> L<00710> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00089,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00711] F[00189]<002> C<65535> L<00711> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00089,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00712] F[00189]<003> C<65535> L<00712> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00089,003> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00713] F[00189]<004> C<65535> L<00713> O<080> V=0 (      Druz Ppanc) UNIT #1 F<00089,004> CANDIDATE
-find_candidate_units: [00714] F[00189]<005> C<65535> L<00714> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00089,005> CANDIDATE
-find_candidate_units: [00715] F[00189]<006> C<65535> L<00715> O<080> V=0 (        Druz ckm) UNIT #1 F<00089,006> CANDIDATE
-find_candidate_units: [00716] F[00190]<000> C<65535> L<00716> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00090,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00717] F[00190]<001> C<65535> L<00717> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00090,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00718] F[00190]<002> C<65535> L<00718> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00090,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00719] F[00190]<003> C<65535> L<00719> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00090,003> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00720] F[00190]<004> C<65535> L<00720> O<080> V=0 (      Druz Ppanc) UNIT #1 F<00090,004> CANDIDATE
-find_candidate_units: [00721] F[00190]<005> C<65535> L<00721> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00090,005> CANDIDATE
-find_candidate_units: [00722] F[00190]<006> C<65535> L<00722> O<080> V=0 (        Druz ckm) UNIT #1 F<00090,006> CANDIDATE
-find_candidate_units: [00723] F[00191]<000> C<65535> L<00723> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00091,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00724] F[00191]<001> C<65535> L<00724> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00091,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00725] F[00191]<002> C<65535> L<00725> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00091,002> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00726] F[00191]<003> C<65535> L<00726> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00091,003> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00727] F[00191]<004> C<65535> L<00727> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00091,004> CANDIDATE
+find_candidate_units: [00683] F[00180]<001> C<65535> L<00683> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00080,001> SKIPPED: invalid unit
+find_candidate_units: [00684] F[00180]<002> C<65535> L<00684> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00080,002> SKIPPED: invalid unit
+find_candidate_units: [00685] F[00180]<003> C<65535> L<00685> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00080,003> SKIPPED: invalid unit
+find_candidate_units: [00686] F[00180]<004> C<65535> L<00686> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00080,004> SKIPPED: invalid unit
+find_candidate_units: [00687] F[00181]<000> C<65535> L<00687> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00081,000> SKIPPED: invalid unit
+find_candidate_units: [00688] F[00181]<001> C<65535> L<00688> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00081,001> SKIPPED: invalid unit
+find_candidate_units: [00689] F[00181]<002> C<65535> L<00689> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00081,002> SKIPPED: invalid unit
+find_candidate_units: [00690] F[00181]<003> C<65535> L<00690> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00081,003> SKIPPED: invalid unit
+find_candidate_units: [00691] F[00181]<004> C<65535> L<00691> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00081,004> SKIPPED: invalid unit
+find_candidate_units: [00692] F[00182]<000> C<65535> L<00692> O<080> V=0 (       Druz Rozp) UNIT #1 F<00082,000> SKIPPED: invalid unit
+find_candidate_units: [00693] F[00182]<001> C<65535> L<00693> O<080> V=0 (       Druz Rozp) UNIT #1 F<00082,001> SKIPPED: invalid unit
+find_candidate_units: [00694] F[00182]<002> C<65535> L<00694> O<080> V=0 (       Druz Rozp) UNIT #1 F<00082,002> SKIPPED: invalid unit
+find_candidate_units: [00695] F[00183]<000> C<00750> L<65535> O<080> V=0 (    wz.34 (37mm)) UNIT #1 F<00083,000> SKIPPED: invalid unit
+find_candidate_units: [00696] F[00184]<000> C<65535> L<00696> O<080> V=0 (      37mm Ppanc) UNIT #1 F<00084,000> SKIPPED: invalid unit
+find_candidate_units: [00697] F[00184]<001> C<65535> L<00697> O<080> V=0 (      37mm Ppanc) UNIT #1 F<00084,001> SKIPPED: invalid unit
+find_candidate_units: [00698] F[00185]<000> C<65535> L<00698> O<080> V=0 (           Ulani) UNIT #1 F<00085,000> SKIPPED: invalid unit
+find_candidate_units: [00699] F[00185]<001> C<65535> L<00699> O<080> V=0 (           Ulani) UNIT #1 F<00085,001> SKIPPED: invalid unit
+find_candidate_units: [00700] F[00185]<002> C<65535> L<00700> O<080> V=0 (           Ulani) UNIT #1 F<00085,002> SKIPPED: invalid unit
+find_candidate_units: [00701] F[00185]<003> C<65535> L<00701> O<080> V=0 (           Ulani) UNIT #1 F<00085,003> SKIPPED: invalid unit
+find_candidate_units: [00702] F[00185]<004> C<65535> L<00702> O<080> V=0 (           Ulani) UNIT #1 F<00085,004> SKIPPED: invalid unit
+find_candidate_units: [00703] F[00186]<000> C<65535> L<00703> O<080> V=0 (  Motorcyklistow) UNIT #1 F<00086,000> SKIPPED: invalid unit
+find_candidate_units: [00704] F[00186]<001> C<65535> L<00704> O<080> V=0 (  Motorcyklistow) UNIT #1 F<00086,001> SKIPPED: invalid unit
+find_candidate_units: [00705] F[00186]<002> C<65535> L<00705> O<080> V=0 (  Motorcyklistow) UNIT #1 F<00086,002> SKIPPED: invalid unit
+find_candidate_units: [00706] F[00187]<000> C<65535> L<00706> O<080> V=0 (       Mozdzierz) UNIT #1 F<00087,000> SKIPPED: invalid unit
+find_candidate_units: [00707] F[00187]<001> C<65535> L<00707> O<080> V=0 (       Mozdzierz) UNIT #1 F<00087,001> SKIPPED: invalid unit
+find_candidate_units: [00708] F[00188]<000> C<65535> L<00708> O<080> V=0 (  Sztab Kompanii) UNIT #1 F<00088,000> SKIPPED: invalid unit
+find_candidate_units: [00709] F[00189]<000> C<65535> L<00709> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00089,000> SKIPPED: invalid unit
+find_candidate_units: [00710] F[00189]<001> C<65535> L<00710> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00089,001> SKIPPED: invalid unit
+find_candidate_units: [00711] F[00189]<002> C<65535> L<00711> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00089,002> SKIPPED: invalid unit
+find_candidate_units: [00712] F[00189]<003> C<65535> L<00712> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00089,003> SKIPPED: invalid unit
+find_candidate_units: [00713] F[00189]<004> C<65535> L<00713> O<080> V=0 (      Druz Ppanc) UNIT #1 F<00089,004> SKIPPED: invalid unit
+find_candidate_units: [00714] F[00189]<005> C<65535> L<00714> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00089,005> SKIPPED: invalid unit
+find_candidate_units: [00715] F[00189]<006> C<65535> L<00715> O<080> V=0 (        Druz ckm) UNIT #1 F<00089,006> SKIPPED: invalid unit
+find_candidate_units: [00716] F[00190]<000> C<65535> L<00716> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00090,000> SKIPPED: invalid unit
+find_candidate_units: [00717] F[00190]<001> C<65535> L<00717> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00090,001> SKIPPED: invalid unit
+find_candidate_units: [00718] F[00190]<002> C<65535> L<00718> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00090,002> SKIPPED: invalid unit
+find_candidate_units: [00719] F[00190]<003> C<65535> L<00719> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00090,003> SKIPPED: invalid unit
+find_candidate_units: [00720] F[00190]<004> C<65535> L<00720> O<080> V=0 (      Druz Ppanc) UNIT #1 F<00090,004> SKIPPED: invalid unit
+find_candidate_units: [00721] F[00190]<005> C<65535> L<00721> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00090,005> SKIPPED: invalid unit
+find_candidate_units: [00722] F[00190]<006> C<65535> L<00722> O<080> V=0 (        Druz ckm) UNIT #1 F<00090,006> SKIPPED: invalid unit
+find_candidate_units: [00723] F[00191]<000> C<65535> L<00723> O<080> V=0 (     Dow Plutonu) UNIT #1 F<00091,000> SKIPPED: invalid unit
+find_candidate_units: [00724] F[00191]<001> C<65535> L<00724> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00091,001> SKIPPED: invalid unit
+find_candidate_units: [00725] F[00191]<002> C<65535> L<00725> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00091,002> SKIPPED: invalid unit
+find_candidate_units: [00726] F[00191]<003> C<65535> L<00726> O<080> V=0 (   Druz Piechoty) UNIT #1 F<00091,003> SKIPPED: invalid unit
+find_candidate_units: [00727] F[00191]<004> C<65535> L<00727> O<080> V=0 ( Lekki Mozdzierz) UNIT #1 F<00091,004> SKIPPED: invalid unit
 find_candidate_units: [00728] F[00192]<000> C<65535> L<00728> O<080> V=0 (     Dow Plutonu) SKIPPED: invalid formation reference
 find_candidate_units: [00729] F[00192]<001> C<65535> L<00729> O<080> V=0 (   Druz Piechoty) SKIPPED: invalid formation reference
 find_candidate_units: [00730] F[00192]<002> C<65535> L<00730> O<080> V=0 (   Druz Piechoty) SKIPPED: invalid formation reference
@@ -3155,8 +3146,8 @@ find_candidate_units: [00746] F[00197]<002> C<65535> L<00746> O<080> V=0 (  Moto
 find_candidate_units: [00747] F[00198]<000> C<65535> L<00747> O<080> V=0 (       Mozdzierz) SKIPPED: invalid formation reference
 find_candidate_units: [00748] F[00198]<001> C<65535> L<00748> O<080> V=0 (       Mozdzierz) SKIPPED: invalid formation reference
 find_candidate_units: [00749] F[00199]<000> C<65535> L<00749> O<080> V=0 (  Sztab Kompanii) SKIPPED: invalid formation reference
-find_candidate_units: [00750] F[00129]<051> C<00495> L<00750> O<080> V=0 (          Zaloga) CREW #1 F<00029,051> CANDIDATE
-find_candidate_units: [00751] F[00154]<051> C<00584> L<00751> O<080> V=0 (          Zaloga) CREW #1 F<00054,051> CANDIDATE
+find_candidate_units: [00750] F[00129]<051> C<00495> L<00750> O<080> V=0 (          Zaloga) CREW #1 F<00029,051> SKIPPED: invalid crew
+find_candidate_units: [00751] F[00154]<051> C<00584> L<00751> O<080> V=0 (          Zaloga) CREW #1 F<00054,051> SKIPPED: invalid crew
 find_candidate_units: [00752] F[00198]<001> C<65535> L<00752> O<080> V=0 (  Motorcyklistow) SKIPPED: invalid formation reference
 find_candidate_units: [00753] F[00198]<002> C<65535> L<00753> O<080> V=0 (  Motorcyklistow) SKIPPED: invalid formation reference
 find_candidate_units: [00754] F[00199]<000> C<65535> L<00754> O<080> V=0 (         Bunkier) SKIPPED: invalid formation reference
@@ -3169,9 +3160,7 @@ find_candidate_units: [00761] F[00199]<001> C<65535> L<00761> O<080> V=0 (      
 find_candidate_units: [00762] F[00199]<002> C<65535> L<00762> O<080> V=0 (        7-TP dw.) SKIPPED: invalid formation reference
 find_candidate_units: [00763] F[00199]<003> C<65535> L<00763> O<080> V=0 (        7-TP dw.) SKIPPED: invalid formation reference
 find_candidate_units: [00764] F[00199]<004> C<65535> L<00764> O<080> V=0 (        7-TP dw.) SKIPPED: invalid formation reference
-find_candidate_units: 298 candidates
-link_candidate_crews: [00750] CREW<00495> F<00029,051> (          Zaloga) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00751] CREW<00584> F<00054,051> (          Zaloga) DROPPED: invalid crew parent unit linkage
+find_candidate_units: 282 candidates
 find_formation_oobrids: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SP ENH FR-NL) OOBrid=00001
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00026> (    Haubits Bttr) OOBrid=00026
 find_formation_oobrids: FORMATION: P<1> ID<00002> L<00404> H<00400> O<00018> ( Infanteri Selkp) OOBrid=00018
@@ -3818,20 +3807,6 @@ verify_candidate_units: [00678] UNIT: F<00091,000> LO<65535> (   Platoon Leder) 
 verify_candidate_units: [00679] UNIT: F<00091,001> LO<65535> (   Infanteri Grp) ACCEPTED
 verify_candidate_units: [00680] UNIT: F<00091,002> LO<65535> (   Infanteri Grp) ACCEPTED
 verify_candidate_units: [00681] UNIT: F<00091,003> LO<65535> (   Infanteri Grp) ACCEPTED
-verify_candidate_units: [00683] UNIT: F<00080,001> LO<65535> (   Druz Piechoty) DROPPED: invalid OOB ID
-verify_candidate_units: [00684] UNIT: F<00080,002> LO<65535> (   Druz Piechoty) DROPPED: invalid OOB ID
-verify_candidate_units: [00685] UNIT: F<00080,003> LO<65535> (   Druz Piechoty) DROPPED: invalid OOB ID
-verify_candidate_units: [00686] UNIT: F<00080,004> LO<65535> ( Lekki Mozdzierz) DROPPED: invalid OOB ID
-verify_candidate_units: [00691] UNIT: F<00081,004> LO<65535> ( Lekki Mozdzierz) DROPPED: invalid OOB ID
-verify_candidate_units: [00697] UNIT: F<00084,001> LO<65535> (      37mm Ppanc) DROPPED: invalid OOB ID
-verify_candidate_units: [00702] UNIT: F<00085,004> LO<65535> (           Ulani) DROPPED: invalid OOB ID
-verify_candidate_units: [00713] UNIT: F<00089,004> LO<65535> (      Druz Ppanc) DROPPED: invalid OOB ID
-verify_candidate_units: [00714] UNIT: F<00089,005> LO<65535> ( Lekki Mozdzierz) DROPPED: invalid OOB ID
-verify_candidate_units: [00715] UNIT: F<00089,006> LO<65535> (        Druz ckm) DROPPED: invalid OOB ID
-verify_candidate_units: [00720] UNIT: F<00090,004> LO<65535> (      Druz Ppanc) DROPPED: invalid OOB ID
-verify_candidate_units: [00721] UNIT: F<00090,005> LO<65535> ( Lekki Mozdzierz) DROPPED: invalid OOB ID
-verify_candidate_units: [00722] UNIT: F<00090,006> LO<65535> (        Druz ckm) DROPPED: invalid OOB ID
-verify_candidate_units: [00727] UNIT: F<00091,004> LO<65535> ( Lekki Mozdzierz) DROPPED: invalid OOB ID
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SP ENH FR-NL) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00026> (    Haubits Bttr) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00404> H<00400> O<00018> ( Infanteri Selkp) ACCEPTED
@@ -4300,7 +4275,7 @@ FLIST: { { s.nidx=92 }, cnt=92 }
         [001] ptr[00679]
         [002] ptr[00680]
         [003] ptr[00681]
-ULIST: { { s.nidx=298 }, cnt=282 }
+ULIST: { { s.nidx=282 }, cnt=282 }
     [00400] (   NOR Kommander) UNIT leader=[00400] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 086: [00244] F[00100]<00000,000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    12cm Haubits) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 086: [00158] F[00101]<00001,000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (    12cm Haubits) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 086: [00158] F[00101]<00001,001> ptr[00101] link crew=nil[65535], parent=nil[65535]
@@ -4806,8 +4781,6 @@ add_unit: idx=219, RID=219, type=UNIT
 add_unit: idx=220, RID=220, type=UNIT
 add_unit: idx=221, RID=221, type=UNIT
 add_unit: idx=222, RID=222, type=CREW
-add_unit: idx=223, RID=223, type=CREW
-add_unit: idx=224, RID=224, type=CREW
 add_unit: idx=0, RID=400, type=UNIT
 add_unit: idx=1, RID=401, type=UNIT
 add_unit: idx=2, RID=402, type=UNIT

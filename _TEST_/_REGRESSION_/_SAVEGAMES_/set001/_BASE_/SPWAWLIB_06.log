@@ -1838,7 +1838,7 @@ find_candidate_units: [00442] F[00112]<000> C<65535> L<00442> O<080> V=1 (      
 find_candidate_units: [00443] F[00112]<001> C<65535> L<00443> O<080> V=1 (      AAMG Szwad) UNIT #1 F<00012,001> CANDIDATE
 find_candidate_units: [00444] F[00113]<000> C<65535> L<00444> O<080> V=1 (             TKS) UNIT #1 F<00013,000> CANDIDATE
 find_candidate_units: [00445] F[00113]<001> C<00446> L<65535> O<080> V=1 (             TKS) UNIT #1 F<00013,001> CANDIDATE
-find_candidate_units: [00446] F[00108]<050> C<00430> L<00446> O<080> V=0 (         Crewmen) CREW #1 F<00008,050> CANDIDATE
+find_candidate_units: [00446] F[00108]<050> C<00430> L<00446> O<080> V=0 (         Crewmen) CREW #1 F<00008,050> SKIPPED: invalid crew
 find_candidate_units: [00447] F[00114]<001> C<65535> L<00447> O<080> V=0 (             TKS) SKIPPED: invalid formation reference
 find_candidate_units: [00448] F[00115]<000> C<65535> L<00448> O<080> V=0 (         TKS nkm) SKIPPED: invalid formation reference
 find_candidate_units: [00449] F[00115]<001> C<65535> L<00449> O<080> V=0 (         TKS nkm) SKIPPED: invalid formation reference
@@ -1917,8 +1917,7 @@ find_candidate_units: [00522] F[00138]<002> C<65535> L<00522> O<080> V=0 (  Piec
 find_candidate_units: [00523] F[00138]<003> C<65535> L<00523> O<080> V=0 (  Piechoty Szwad) SKIPPED: invalid formation reference
 find_candidate_units: [00524] F[00138]<004> C<65535> L<00524> O<080> V=0 (   AT Gren Grupa) SKIPPED: invalid formation reference
 find_candidate_units: [00525] F[00139]<000> C<65535> L<00525> O<080> V=0 (    Pluton Sztab) SKIPPED: invalid formation reference
-find_candidate_units: 47 candidates
-link_candidate_crews: [00446] CREW<00430> F<00008,050> (         Crewmen) LINKED
+find_candidate_units: 46 candidates
 find_formation_oobrids: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SPWAW ENH-DV) OOBrid=00001
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00052> ( +AI Inf 30-39++) OOBrid=00052
 find_formation_oobrids: FORMATION: P<1> ID<00002> L<00403> H<00401> O<00000> (    Infantry Plt) NOT FOUND
@@ -2001,7 +2000,7 @@ verify_candidate_units: [00426] UNIT: F<00006,000> LO<65535> (     Rozpoznanie) 
 verify_candidate_units: [00427] UNIT: F<00006,001> LO<65535> (     Rozpoznanie) ACCEPTED - LEADER
 verify_candidate_units: [00428] UNIT: F<00006,002> LO<65535> ( Rozpoznanie Grp) ACCEPTED
 verify_candidate_units: [00429] UNIT: F<00007,000> LO<65535> (    wz.34 (37mm)) ACCEPTED - LEADER
-verify_candidate_units: [00430] UNIT: F<00008,000> LO<65535> (     37mm AT Gun) ACCEPTED
+verify_candidate_units: [00430] UNIT: F<00008,000> LO<65535> (     37mm AT Gun) ACCEPTED - LEADER
 verify_candidate_units: [00431] UNIT: F<00008,001> LO<65535> (     37mm AT Gun) ACCEPTED
 verify_candidate_units: [00432] UNIT: F<00009,000> LO<65535> (  Uhlan Kaverlia) ACCEPTED
 verify_candidate_units: [00433] UNIT: F<00009,001> LO<65535> (  Uhlan Kaverlia) ACCEPTED - LEADER
@@ -2017,7 +2016,6 @@ verify_candidate_units: [00442] UNIT: F<00012,000> LO<65535> (      AAMG Szwad) 
 verify_candidate_units: [00443] UNIT: F<00012,001> LO<65535> (      AAMG Szwad) ACCEPTED
 verify_candidate_units: [00444] UNIT: F<00013,000> LO<65535> (             TKS) ACCEPTED - LEADER
 verify_candidate_units: [00445] UNIT: F<00013,001> LO<65535> (             TKS) ACCEPTED
-verify_candidate_units: [00446] CREW: F<00008,050> (         Crewmen) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SPWAW ENH-DV) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00052> ( +AI Inf 30-39++) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00403> H<00401> O<00014> (    Infantry Plt) ACCEPTED
@@ -2026,13 +2024,13 @@ verify_candidate_formations: FORMATION: P<1> ID<00004> L<00417> H<00401> O<00021
 verify_candidate_formations: FORMATION: P<1> ID<00005> L<00425> H<00401> O<00021> (  +Infantry Plt+) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00006> L<00427> H<00401> O<00160> (   Inf Recon Sec) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00007> L<00429> H<00401> O<00010> (     Armored Car) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00008> L<00446> H<00401> O<00060> (  Cav AT Gun Sec) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00008> L<00430> H<00401> O<00060> (  Cav AT Gun Sec) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00009> L<00433> H<00401> O<00057> (     Uhlan Troop) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00010> L<00438> H<00401> O<00046> (  Motorcycle Plt) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00011> L<00440> H<00400> O<00042> (  Fortifications) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00012> L<00442> H<00400> O<00067> (  +++AI-36-46+++) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00013> L<00444> H<00442> O<00071> (    TKS nkm Sec*) ACCEPTED
-unitcount: ul.cnt=47
+unitcount: ul.cnt=46
 FLIST: { { s.nidx=14 }, cnt=14 }
     [00100] (    SPWAW ENH-DV) P<001> L<00400> H<00400> status=001 units=001 OOB 080: [00001] FID<00000> RAW<00100>
         [000] ptr[00400]
@@ -2072,7 +2070,7 @@ FLIST: { { s.nidx=14 }, cnt=14 }
         [002] ptr[00428]
     [00107] (     Armored Car) P<001> L<00429> H<00401> status=002 units=001 OOB 080: [00010] FID<00007> RAW<00107>
         [000] ptr[00429]
-    [00108] (  Cav AT Gun Sec) P<001> L<00446> H<00401> status=002 units=004 OOB 080: [00060] FID<00008> RAW<00108>
+    [00108] (  Cav AT Gun Sec) P<001> L<00430> H<00401> status=002 units=004 OOB 080: [00060] FID<00008> RAW<00108>
         [000] ptr[00430]
         [001] ptr[00431]
     --- [002] nil[65535]
@@ -2097,7 +2095,7 @@ FLIST: { { s.nidx=14 }, cnt=14 }
     [00113] (    TKS nkm Sec*) P<001> L<00444> H<00442> status=002 units=002 OOB 080: [00071] FID<00013> RAW<00113>
         [000] ptr[00444]
         [001] ptr[00445]
-ULIST: { { s.nidx=47 }, cnt=47 }
+ULIST: { { s.nidx=46 }, cnt=46 }
     [00400] (      PO Dowodca) UNIT leader=[00400] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00244] F[00100]<00000,000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (  Kompanii Sztab) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00070] F[00101]<00001,000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (    Pluton Sztab) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00112] F[00102]<00002,000> ptr[00102] link crew=nil[65535], parent=nil[65535]
@@ -2128,7 +2126,7 @@ ULIST: { { s.nidx=47 }, cnt=47 }
     [00427] (     Rozpoznanie) UNIT leader=[00427] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00239] F[00106]<00006,001> ptr[00106] link crew=nil[65535], parent=nil[65535]
     [00428] ( Rozpoznanie Grp) UNIT leader=[00428] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00240] F[00106]<00006,002> ptr[00106] link crew=nil[65535], parent=nil[65535]
     [00429] (    wz.34 (37mm)) UNIT leader=[00429] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00024] F[00107]<00007,000> ptr[00107] link crew=nil[65535], parent=nil[65535]
-    [00430] (     37mm AT Gun) UNIT leader=[00446] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 080: [00035] F[00108]<00008,000> ptr[00108] link crew=ptr[00446], parent=ptr[00446]
+    [00430] (     37mm AT Gun) UNIT leader=[00430] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 080: [00035] F[00108]<00008,000> ptr[00108] link crew=nil[65535], parent=nil[65535]
     [00431] (     37mm AT Gun) UNIT leader=[00431] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00035] F[00108]<00008,001> ptr[00108] link crew=nil[65535], parent=nil[65535]
     [00432] (  Uhlan Kaverlia) UNIT leader=[00432] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00232] F[00109]<00009,000> ptr[00109] link crew=nil[65535], parent=nil[65535]
     [00433] (  Uhlan Kaverlia) UNIT leader=[00433] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00232] F[00109]<00009,001> ptr[00109] link crew=nil[65535], parent=nil[65535]
@@ -2144,7 +2142,6 @@ ULIST: { { s.nidx=47 }, cnt=47 }
     [00443] (      AAMG Szwad) UNIT leader=[00443] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00147] F[00112]<00012,001> ptr[00112] link crew=nil[65535], parent=nil[65535]
     [00444] (             TKS) UNIT leader=[00444] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 080: [00093] F[00113]<00013,000> ptr[00113] link crew=nil[65535], parent=nil[65535]
     [00445] (             TKS) UNIT leader=[00445] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 080: [00093] F[00113]<00013,001> ptr[00113] link crew=nil[65535], parent=nil[65535]
-!!! [00446] (         Crewmen) CREW leader=[00446] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 080: [00249] F[00108]<00008,050> nil[65535] link crew=ptr[00430], parent=ptr[00430]
 add_unit: idx=0, RID=0, type=UNIT
 add_unit: idx=1, RID=1, type=UNIT
 add_unit: idx=2, RID=2, type=UNIT
@@ -2309,4 +2306,3 @@ add_unit: idx=42, RID=442, type=UNIT
 add_unit: idx=43, RID=443, type=UNIT
 add_unit: idx=44, RID=444, type=UNIT
 add_unit: idx=45, RID=445, type=UNIT
-add_unit: idx=46, RID=446, type=CREW

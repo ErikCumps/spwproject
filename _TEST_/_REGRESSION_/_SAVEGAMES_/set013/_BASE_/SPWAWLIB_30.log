@@ -895,7 +895,7 @@ find_candidate_units: [00001] F[00001]<000> C<65535> L<00001> O<070> V=1 ( sPzAb
 find_candidate_units: [00002] F[00001]<001> C<65535> L<00002> O<070> V=1 ( sPzAbt 502 #213) UNIT #0 F<00001,001> CANDIDATE
 find_candidate_units: [00003] F[00002]<000> C<65535> L<00003> O<070> V=1 ( sPzAbt 502 #218) UNIT #0 F<00002,000> CANDIDATE
 find_candidate_units: [00004] F[00002]<001> C<65535> L<00004> O<070> V=1 ( sPzAbt 502 #215) UNIT #0 F<00002,001> CANDIDATE
-find_candidate_units: [00005] F[00001]<051> C<00002> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00001,051> CANDIDATE
+find_candidate_units: [00005] F[00001]<051> C<00002> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00001,051> SKIPPED: invalid crew
 find_candidate_units: [00400] F[00100]<000> C<65535> L<00400> O<081> V=1 (     SO Komander) SKIPPED: invalid formation reference
 find_candidate_units: [00401] F[00101]<000> C<65535> L<00401> O<081> V=1 (            T-70) SKIPPED: invalid formation reference
 find_candidate_units: [00402] F[00101]<001> C<00428> L<65535> O<081> V=1 (            T-70) SKIPPED: invalid formation reference
@@ -928,8 +928,7 @@ find_candidate_units: [00428] F[00107]<052> C<00418> L<00428> O<081> V=1 (      
 find_candidate_units: [00429] F[00102]<050> C<00403> L<00429> O<081> V=1 (         Crewmen) SKIPPED: invalid formation reference
 find_candidate_units: [00430] F[00104]<052> C<00409> L<00430> O<081> V=1 (         Crewmen) SKIPPED: invalid formation reference
 find_candidate_units: [00431] F[00106]<050> C<00413> L<00431> O<081> V=1 (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: 6 candidates
-link_candidate_crews: [00005] CREW<00002> F<00001,051> (         Crewmen) DROPPED: invalid crew parent unit linkage
+find_candidate_units: 5 candidates
 find_formation_oobrids: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (       SPWAW 8.3) OOBrid=00001
 find_formation_oobrids: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00025> (      Hvy Pz Sec) OOBrid=00025
 find_formation_oobrids: FORMATION: P<0> ID<00002> L<00003> H<00000> O<00025> (      Hvy Pz Sec) OOBrid=00025
@@ -952,7 +951,7 @@ FLIST: { { s.nidx=4 }, cnt=3 }
     [00002] (      Hvy Pz Sec) P<000> L<00003> H<00000> status=000 units=002 OOB 070: [00025] FID<00002> RAW<00002>
         [000] ptr[00003]
         [001] ptr[00004]
-ULIST: { { s.nidx=6 }, cnt=5 }
+ULIST: { { s.nidx=5 }, cnt=5 }
     [00000] (   GE Kommandeur) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00245] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] ( sPzAbt 502 #217) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00037] F[00001]<00001,000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] ( sPzAbt 502 #213) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00037] F[00001]<00001,001> ptr[00001] link crew=nil[65535], parent=nil[65535]

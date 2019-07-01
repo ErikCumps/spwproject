@@ -2252,7 +2252,7 @@ find_candidate_units: [00151] F[00053]<002> C<65535> L<00151> O<016> V=1 (      
 find_candidate_units: [00152] F[00054]<000> C<65535> L<00152> O<016> V=1 ( 10.5cm Batterie) SKIPPED: invalid formation reference
 find_candidate_units: [00153] F[00054]<001> C<65535> L<00153> O<016> V=1 ( 10.5cm Batterie) SKIPPED: invalid formation reference
 find_candidate_units: [00154] F[00054]<002> C<65535> L<00154> O<016> V=1 ( 10.5cm Batterie) SKIPPED: invalid formation reference
-find_candidate_units: [00155] F[00005]<050> C<00005> L<00155> O<012> V=0 (            Crew) CREW #1 F<00005,050> CANDIDATE
+find_candidate_units: [00155] F[00005]<050> C<00005> L<00155> O<012> V=0 (            Crew) CREW #1 F<00005,050> SKIPPED: invalid crew
 find_candidate_units: [00156] F[00047]<003> C<65535> L<00156> O<011> V=0 (          SU-76M) SKIPPED: invalid formation reference
 find_candidate_units: [00157] F[00047]<004> C<65535> L<00157> O<011> V=0 (          SU-76M) SKIPPED: invalid formation reference
 find_candidate_units: [00158] F[00048]<000> C<65535> L<00158> O<011> V=0 (          SU-76M) SKIPPED: invalid formation reference
@@ -2304,8 +2304,7 @@ find_candidate_units: [00203] F[00060]<003> C<65535> L<00203> O<016> V=0 (      
 find_candidate_units: [00204] F[00061]<000> C<65535> L<00204> O<016> V=0 ( 10.5cm Batterie) SKIPPED: invalid formation reference
 find_candidate_units: [00205] F[00061]<001> C<65535> L<00205> O<016> V=0 ( 10.5cm Batterie) SKIPPED: invalid formation reference
 find_candidate_units: [00206] F[00061]<002> C<65535> L<00206> O<016> V=0 ( 10.5cm Batterie) SKIPPED: invalid formation reference
-find_candidate_units: 85 candidates
-link_candidate_crews: [00155] CREW<00005> F<00005,050> (            Crew) LINKED
+find_candidate_units: 84 candidates
 find_formation_oobrids: FORMATION: P<1> ID<00000> L<00000> H<00000> O<00001> (      US Army HQ) OOBrid=00001
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00001> H<00003> O<00121> (    Artillery OP) OOBrid=00121
 find_formation_oobrids: FORMATION: P<1> ID<00002> L<00002> H<00030> O<00121> (    Artillery OP) OOBrid=00121
@@ -2378,7 +2377,7 @@ verify_candidate_units: [00001] UNIT: F<00001,000> LO<65535> (    Fwd Observer) 
 verify_candidate_units: [00002] UNIT: F<00002,000> LO<65535> (    Fwd Observer) ACCEPTED - LEADER
 verify_candidate_units: [00003] UNIT: F<00003,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00004] UNIT: F<00004,000> LO<65535> (    60mm Mor Sec) ACCEPTED - LEADER
-verify_candidate_units: [00005] UNIT: F<00005,000> LO<65535> (    60mm Mor Sec) ACCEPTED
+verify_candidate_units: [00005] UNIT: F<00005,000> LO<65535> (    60mm Mor Sec) ACCEPTED - LEADER
 verify_candidate_units: [00006] UNIT: F<00006,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00007] UNIT: F<00006,001> LO<65535> (  Rifle Squad 45) ACCEPTED
 verify_candidate_units: [00008] UNIT: F<00006,002> LO<65535> (  Rifle Squad 45) ACCEPTED
@@ -2457,13 +2456,12 @@ verify_candidate_units: [00080] UNIT: F<00033,001> LO<65535> (  Ammo Cannister) 
 verify_candidate_units: [00081] UNIT: F<00034,000> LO<65535> (   105mm Battery) ACCEPTED - LEADER
 verify_candidate_units: [00082] UNIT: F<00034,001> LO<65535> (   105mm Battery) ACCEPTED
 verify_candidate_units: [00083] UNIT: F<00034,002> LO<65535> (   105mm Battery) ACCEPTED
-verify_candidate_units: [00155] CREW: F<00005,050> (            Crew) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00000> H<00000> O<00001> (      US Army HQ) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00001> H<00003> O<00121> (    Artillery OP) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00002> H<00030> O<00121> (    Artillery OP) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00003> L<00003> H<00000> O<00455> (  Veteran Inf Co) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00004> L<00004> H<00003> O<00255> ( 60mm Mortar Sec) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00005> L<00155> H<00003> O<00255> ( 60mm Mortar Sec) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00005> L<00005> H<00003> O<00255> ( 60mm Mortar Sec) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00006> L<00006> H<00003> O<00175> (  Infantry Pl 45) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00007> L<00010> H<00003> O<00175> (  Infantry Pl 45) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00008> L<00014> H<00003> O<00175> (  Infantry Pl 45) ACCEPTED
@@ -2493,7 +2491,7 @@ verify_candidate_formations: FORMATION: P<1> ID<00031> L<00074> H<00000> O<00103
 verify_candidate_formations: FORMATION: P<1> ID<00032> L<00077> H<00000> O<00151> (    Ordnance Sec) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00033> L<00079> H<00000> O<00151> (    Ordnance Sec) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00034> L<00081> H<00000> O<00051> (    Field Art Bn) ACCEPTED
-unitcount: ul.cnt=85
+unitcount: ul.cnt=84
 FLIST: { { s.nidx=35 }, cnt=35 }
     [00000] (      US Army HQ) P<001> L<00000> H<00000> status=000 units=001 OOB 012: [00001] FID<00000> RAW<00000>
         [000] ptr[00000]
@@ -2507,7 +2505,7 @@ FLIST: { { s.nidx=35 }, cnt=35 }
     --- [002] nil[65535]
     [00004] ( 60mm Mortar Sec) P<001> L<00004> H<00003> status=000 units=001 OOB 012: [00255] FID<00004> RAW<00004>
         [000] ptr[00004]
-    [00005] ( 60mm Mortar Sec) P<001> L<00155> H<00003> status=000 units=001 OOB 012: [00255] FID<00005> RAW<00005>
+    [00005] ( 60mm Mortar Sec) P<001> L<00005> H<00003> status=000 units=001 OOB 012: [00255] FID<00005> RAW<00005>
         [000] ptr[00005]
     [00006] (  Infantry Pl 45) P<001> L<00006> H<00003> status=000 units=004 OOB 012: [00175] FID<00006> RAW<00006>
         [000] ptr[00006]
@@ -2618,13 +2616,13 @@ FLIST: { { s.nidx=35 }, cnt=35 }
         [000] ptr[00081]
         [001] ptr[00082]
         [002] ptr[00083]
-ULIST: { { s.nidx=85 }, cnt=85 }
+ULIST: { { s.nidx=84 }, cnt=84 }
     [00000] (          USA HQ) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00254] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (    Fwd Observer) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00239] F[00001]<00001,000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (    Fwd Observer) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00239] F[00002]<00002,000> ptr[00002] link crew=nil[65535], parent=nil[65535]
     [00003] (     Rifle Squad) UNIT leader=[00003] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00434] F[00003]<00003,000> ptr[00003] link crew=nil[65535], parent=nil[65535]
     [00004] (    60mm Mor Sec) UNIT leader=[00004] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00047] F[00004]<00004,000> ptr[00004] link crew=nil[65535], parent=nil[65535]
-    [00005] (    60mm Mor Sec) UNIT leader=[00155] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 012: [00047] F[00005]<00005,000> ptr[00005] link crew=ptr[00155], parent=ptr[00155]
+    [00005] (    60mm Mor Sec) UNIT leader=[00005] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 012: [00047] F[00005]<00005,000> ptr[00005] link crew=nil[65535], parent=nil[65535]
     [00006] (     Rifle Squad) UNIT leader=[00006] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00434] F[00006]<00006,000> ptr[00006] link crew=nil[65535], parent=nil[65535]
     [00007] (  Rifle Squad 45) UNIT leader=[00007] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00154] F[00006]<00006,001> ptr[00006] link crew=nil[65535], parent=nil[65535]
     [00008] (  Rifle Squad 45) UNIT leader=[00008] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00154] F[00006]<00006,002> ptr[00006] link crew=nil[65535], parent=nil[65535]
@@ -2703,7 +2701,6 @@ ULIST: { { s.nidx=85 }, cnt=85 }
     [00081] (   105mm Battery) UNIT leader=[00081] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00411] F[00034]<00034,000> ptr[00034] link crew=nil[65535], parent=nil[65535]
     [00082] (   105mm Battery) UNIT leader=[00082] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00411] F[00034]<00034,001> ptr[00034] link crew=nil[65535], parent=nil[65535]
     [00083] (   105mm Battery) UNIT leader=[00083] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 012: [00411] F[00034]<00034,002> ptr[00034] link crew=nil[65535], parent=nil[65535]
-!!! [00155] (            Crew) CREW leader=[00155] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 012: [00249] F[00005]<00005,050> nil[65535] link crew=ptr[00005], parent=ptr[00005]
 add_unit: idx=0, RID=84, type=UNIT
 add_unit: idx=1, RID=85, type=UNIT
 add_unit: idx=2, RID=86, type=UNIT
@@ -2859,4 +2856,3 @@ add_unit: idx=80, RID=80, type=UNIT
 add_unit: idx=81, RID=81, type=UNIT
 add_unit: idx=82, RID=82, type=UNIT
 add_unit: idx=83, RID=83, type=UNIT
-add_unit: idx=84, RID=155, type=CREW

@@ -1943,13 +1943,12 @@ find_candidate_units: [00565] F[00122]<051> C<00472> L<00565> O<076> V=1 (      
 find_candidate_units: [00566] F[00114]<052> C<00447> L<00566> O<076> V=1 (         Crewmen) CREW #1 F<00014,052> CANDIDATE
 find_candidate_units: [00567] F[00135]<052> C<00502> L<00567> O<076> V=1 (         Crewmen) CREW #1 F<00035,052> CANDIDATE
 find_candidate_units: [00568] F[00122]<050> C<00471> L<00568> O<076> V=1 (         Crewmen) CREW #1 F<00022,050> CANDIDATE
-find_candidate_units: [00569] F[00111]<051> C<00435> L<00569> O<076> V=0 (         Crewmen) CREW #1 F<00011,051> CANDIDATE
-find_candidate_units: 170 candidates
+find_candidate_units: [00569] F[00111]<051> C<00435> L<00569> O<076> V=0 (         Crewmen) CREW #1 F<00011,051> SKIPPED: invalid crew
+find_candidate_units: 169 candidates
 link_candidate_crews: [00565] CREW<00472> F<00022,051> (         Crewmen) LINKED
 link_candidate_crews: [00566] CREW<00447> F<00014,052> (         Crewmen) LINKED
 link_candidate_crews: [00567] CREW<00502> F<00035,052> (         Crewmen) LINKED
 link_candidate_crews: [00568] CREW<00471> F<00022,050> (         Crewmen) LINKED
-link_candidate_crews: [00569] CREW<00435> F<00011,051> (         Crewmen) LINKED
 find_formation_oobrids: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SPWAW ENH-DV) OOBrid=00001
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00401> H<00401> O<00000> ( Inf Command Plt) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00001>, T< Inf Command Plt>, D<1940/06>
@@ -2380,7 +2379,6 @@ verify_candidate_units: [00565] CREW: F<00022,051> (         Crewmen) ACCEPTED
 verify_candidate_units: [00566] CREW: F<00014,052> (         Crewmen) ACCEPTED
 verify_candidate_units: [00567] CREW: F<00035,052> (         Crewmen) ACCEPTED
 verify_candidate_units: [00568] CREW: F<00022,050> (         Crewmen) ACCEPTED
-verify_candidate_units: [00569] CREW: F<00011,051> (         Crewmen) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SPWAW ENH-DV) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00401> H<00401> O<00012> ( Inf Command Plt) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00407> H<00401> O<00005> (  Infanterie Plt) ACCEPTED
@@ -2438,7 +2436,7 @@ verify_candidate_formations: FORMATION: P<1> ID<00053> L<00555> H<00541> O<00083
 verify_candidate_formations: FORMATION: P<1> ID<00054> L<00557> H<00557> O<00012> ( Inf Command Plt) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00055> L<00560> H<00557> O<00005> (  Infanterie Plt) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00056> L<00562> H<00557> O<00005> (  Infanterie Plt) ACCEPTED
-unitcount: ul.cnt=170
+unitcount: ul.cnt=169
 FLIST: { { s.nidx=57 }, cnt=57 }
     [00100] (    SPWAW ENH-DV) P<001> L<00400> H<00400> status=001 units=001 OOB 076: [00001] FID<00000> RAW<00100>
         [000] ptr[00400]
@@ -2725,7 +2723,7 @@ FLIST: { { s.nidx=57 }, cnt=57 }
         [001] ptr[00563]
         [002] ptr[00564]
     --- [003] nil[65535]
-ULIST: { { s.nidx=170 }, cnt=170 }
+ULIST: { { s.nidx=169 }, cnt=169 }
     [00400] (   FR Commandant) UNIT leader=[00400] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00238] F[00100]<00000,000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    Chef Peloton) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00219] F[00101]<00001,000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (   Section Fusil) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00024] F[00101]<00001,001> ptr[00101] link crew=nil[65535], parent=nil[65535]
@@ -2761,7 +2759,7 @@ ULIST: { { s.nidx=170 }, cnt=170 }
     [00432] (      Renault UE) UNIT leader=[00432] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00229] F[00110]<00010,002> ptr[00110] link crew=nil[65535], parent=nil[65535]
     [00433] (      Renault UE) UNIT leader=[00433] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00229] F[00110]<00010,003> ptr[00110] link crew=nil[65535], parent=nil[65535]
     [00434] (  Hotchkiss H35+) UNIT leader=[00434] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00118] F[00111]<00011,000> ptr[00111] link crew=nil[65535], parent=nil[65535]
-    [00435] (  Hotchkiss H35+) UNIT leader=[00569] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 076: [00118] F[00111]<00011,001> ptr[00111] link crew=ptr[00569], parent=ptr[00569]
+    [00435] (  Hotchkiss H35+) UNIT leader=[00435] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 076: [00118] F[00111]<00011,001> ptr[00111] link crew=nil[65535], parent=nil[65535]
     [00436] (  Hotchkiss H35+) UNIT leader=[00436] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00118] F[00111]<00011,002> ptr[00111] link crew=nil[65535], parent=nil[65535]
     [00437] (      AMR 35 ZT3) UNIT leader=[00437] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 076: [00062] F[00112]<00012,000> ptr[00112] link crew=nil[65535], parent=nil[65535]
     [00438] (  Hotchkiss H35+) UNIT leader=[00438] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 076: [00118] F[00112]<00012,001> ptr[00112] link crew=nil[65535], parent=nil[65535]
@@ -2895,7 +2893,6 @@ ULIST: { { s.nidx=170 }, cnt=170 }
 !!! [00566] (         Crewmen) CREW leader=[00566] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 076: [00249] F[00114]<00014,052> nil[65535] link crew=ptr[00447], parent=ptr[00447]
 !!! [00567] (         Crewmen) CREW leader=[00567] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 076: [00249] F[00135]<00035,052> nil[65535] link crew=ptr[00502], parent=ptr[00502]
 !!! [00568] (         Crewmen) CREW leader=[00568] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 076: [00249] F[00122]<00022,050> nil[65535] link crew=ptr[00471], parent=ptr[00471]
-!!! [00569] (         Crewmen) CREW leader=[00569] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 076: [00249] F[00111]<00011,051> nil[65535] link crew=ptr[00435], parent=ptr[00435]
 add_unit: idx=0, RID=0, type=UNIT
 add_unit: idx=1, RID=1, type=UNIT
 add_unit: idx=2, RID=2, type=UNIT
@@ -3171,4 +3168,3 @@ add_unit: idx=165, RID=565, type=CREW
 add_unit: idx=166, RID=566, type=CREW
 add_unit: idx=167, RID=567, type=CREW
 add_unit: idx=168, RID=568, type=CREW
-add_unit: idx=169, RID=569, type=CREW

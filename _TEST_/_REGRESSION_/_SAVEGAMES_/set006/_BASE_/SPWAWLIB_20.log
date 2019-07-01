@@ -942,7 +942,7 @@ find_candidate_units: [00047] F[00006]<060> C<65535> L<00047> O<083> V=1 (      
 find_candidate_units: [00048] F[00006]<061> C<65535> L<00048> O<083> V=1 (             LCM) SPAU #0 F<00006,061> CANDIDATE
 find_candidate_units: [00049] F[00006]<062> C<65535> L<00049> O<083> V=1 (             LCM) SPAU #0 F<00006,062> CANDIDATE
 find_candidate_units: [00050] F[00007]<063> C<65535> L<00050> O<083> V=1 (             LCM) SPAU #0 F<00007,063> CANDIDATE
-find_candidate_units: [00051] F[00002]<110> C<00034> L<65535> O<083> V=0 (         Crewmen) CREW #0 F<00002,110> CANDIDATE
+find_candidate_units: [00051] F[00002]<110> C<00034> L<65535> O<083> V=0 (         Crewmen) CREW #0 F<00002,110> SKIPPED: invalid crew
 find_candidate_units: [00400] F[00100]<000> C<65535> L<00400> O<075> V=1 (           JA HQ) SKIPPED: invalid formation reference
 find_candidate_units: [00401] F[00101]<000> C<65535> L<00401> O<075> V=1 (    JA Inf A Sqd) SKIPPED: invalid formation reference
 find_candidate_units: [00402] F[00102]<000> C<65535> L<00402> O<075> V=1 (       A Plt HQ*) SKIPPED: invalid formation reference
@@ -962,8 +962,7 @@ find_candidate_units: [00415] F[00104]<003> C<65535> L<00415> O<075> V=1 (    JA
 find_candidate_units: [00416] F[00105]<000> C<65535> L<00416> O<075> V=1 ( JA Tank Hunters) SKIPPED: invalid formation reference
 find_candidate_units: [00417] F[00102]<054> C<00406> L<00417> O<075> V=0 (         Crewmen) SKIPPED: invalid formation reference
 find_candidate_units: [00418] F[00103]<054> C<00411> L<00418> O<075> V=0 (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: 52 candidates
-link_candidate_crews: [00051] CREW<00034> F<00002,110> (         Crewmen) DROPPED: invalid crew parent unit linkage
+find_candidate_units: 51 candidates
 find_formation_oobrids: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (       SPWAW 8.3) OOBrid=00001
 find_formation_oobrids: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00098> (   Infantry Co E) OOBrid=00098
 find_formation_oobrids: FORMATION: P<0> ID<00002> L<00002> H<00001> O<00000> (  Infantry Plt E) NOT FOUND
@@ -1025,25 +1024,25 @@ verify_candidate_units: [00028] UNIT: F<00007,000> LO<65535> (    M4A2 Sherman) 
 verify_candidate_units: [00029] UNIT: F<00007,001> LO<65535> (    M4A2 Sherman) ACCEPTED
 verify_candidate_units: [00030] UNIT: F<00007,002> LO<65535> (    M4A2 Sherman) ACCEPTED
 verify_candidate_units: [00031] UNIT: F<00007,003> LO<65535> (    M4A2 Sherman) ACCEPTED
-verify_candidate_units: [00032] SPAU: F<00000,060> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00033] SPAU: F<00001,060> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00034] SPAU: F<00002,060> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00035] SPAU: F<00002,062> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00036] SPAU: F<00002,063> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00037] SPAU: F<00003,060> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00038] SPAU: F<00003,062> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00039] SPAU: F<00003,063> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00040] SPAU: F<00004,060> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00041] SPAU: F<00004,062> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00042] SPAU: F<00004,063> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00043] SPAU: F<00005,060> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00044] SPAU: F<00005,062> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00045] SPAU: F<00005,064> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00046] SPAU: F<00005,066> LO<65535> (           LVT 2) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00047] SPAU: F<00006,060> LO<65535> (             LCM) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00048] SPAU: F<00006,061> LO<65535> (             LCM) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00049] SPAU: F<00006,062> LO<65535> (             LCM) ACCEPTED - SPAU WILDCARD
-verify_candidate_units: [00050] SPAU: F<00007,063> LO<65535> (             LCM) ACCEPTED - SPAU WILDCARD
+verify_candidate_units: [00032] SPAU: F<00000,060> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00033] SPAU: F<00001,060> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00034] SPAU: F<00002,060> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00035] SPAU: F<00002,062> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00036] SPAU: F<00002,063> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00037] SPAU: F<00003,060> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00038] SPAU: F<00003,062> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00039] SPAU: F<00003,063> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00040] SPAU: F<00004,060> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00041] SPAU: F<00004,062> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00042] SPAU: F<00004,063> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00043] SPAU: F<00005,060> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00044] SPAU: F<00005,062> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00045] SPAU: F<00005,064> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00046] SPAU: F<00005,066> LO<65535> (           LVT 2) ACCEPTED
+verify_candidate_units: [00047] SPAU: F<00006,060> LO<65535> (             LCM) ACCEPTED
+verify_candidate_units: [00048] SPAU: F<00006,061> LO<65535> (             LCM) ACCEPTED
+verify_candidate_units: [00049] SPAU: F<00006,062> LO<65535> (             LCM) ACCEPTED
+verify_candidate_units: [00050] SPAU: F<00007,063> LO<65535> (             LCM) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (       SPWAW 8.3) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00098> (   Infantry Co E) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00002> L<00002> H<00001> O<00096> (  Infantry Plt E) ACCEPTED
@@ -1095,7 +1094,7 @@ FLIST: { { s.nidx=9 }, cnt=8 }
         [002] ptr[00030]
         [003] ptr[00031]
     --- [004] nil[65535]
-ULIST: { { s.nidx=52 }, cnt=51 }
+ULIST: { { s.nidx=51 }, cnt=51 }
     [00000] (         USMC HQ) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [00220] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (      USMC Co HQ) UNIT leader=[00001] abandoned=0 loader<00033> vrf=N vrfneed=N  OOB 083: [00174] F[00001]<00001,000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (     USMC Plt HQ) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 083: [00173] F[00002]<00002,000> ptr[00002] link crew=nil[65535], parent=nil[65535]
@@ -1217,11 +1216,9 @@ find_candidate_units: [00413] F[00104]<001> C<65535> L<00413> O<075> V=1 (    JA
 find_candidate_units: [00414] F[00104]<002> C<65535> L<00414> O<075> V=1 (    JA Inf A Sqd) UNIT #1 F<00004,002> CANDIDATE
 find_candidate_units: [00415] F[00104]<003> C<65535> L<00415> O<075> V=1 (    JA Inf A Sqd) UNIT #1 F<00004,003> CANDIDATE
 find_candidate_units: [00416] F[00105]<000> C<65535> L<00416> O<075> V=1 ( JA Tank Hunters) UNIT #1 F<00005,000> CANDIDATE
-find_candidate_units: [00417] F[00102]<054> C<00406> L<00417> O<075> V=0 (         Crewmen) CREW #1 F<00002,054> CANDIDATE
-find_candidate_units: [00418] F[00103]<054> C<00411> L<00418> O<075> V=0 (         Crewmen) CREW #1 F<00003,054> CANDIDATE
-find_candidate_units: 19 candidates
-link_candidate_crews: [00417] CREW<00406> F<00002,054> (         Crewmen) LINKED
-link_candidate_crews: [00418] CREW<00411> F<00003,054> (         Crewmen) LINKED
+find_candidate_units: [00417] F[00102]<054> C<00406> L<00417> O<075> V=0 (         Crewmen) CREW #1 F<00002,054> SKIPPED: invalid crew
+find_candidate_units: [00418] F[00103]<054> C<00411> L<00418> O<075> V=0 (         Crewmen) CREW #1 F<00003,054> SKIPPED: invalid crew
+find_candidate_units: 17 candidates
 find_formation_oobrids: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (       SPWAW 8.3) OOBrid=00001
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00102> (   Infantry Co A) OOBrid=00102
 find_formation_oobrids: FORMATION: P<1> ID<00002> L<00403> H<00401> O<00000> (  Infantry Plt A) NOT FOUND
@@ -1257,15 +1254,13 @@ verify_candidate_units: [00413] UNIT: F<00004,001> LO<65535> (    JA Inf A Sqd) 
 verify_candidate_units: [00414] UNIT: F<00004,002> LO<65535> (    JA Inf A Sqd) ACCEPTED
 verify_candidate_units: [00415] UNIT: F<00004,003> LO<65535> (    JA Inf A Sqd) ACCEPTED
 verify_candidate_units: [00416] UNIT: F<00005,000> LO<65535> ( JA Tank Hunters) ACCEPTED - LEADER
-verify_candidate_units: [00417] CREW: F<00002,054> (         Crewmen) ACCEPTED
-verify_candidate_units: [00418] CREW: F<00003,054> (         Crewmen) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (       SPWAW 8.3) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00102> (   Infantry Co A) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00403> H<00401> O<00099> (  Infantry Plt A) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00003> L<00407> H<00401> O<00099> (  Infantry Plt A) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00004> L<00412> H<00401> O<00099> (  Infantry Plt A) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00005> L<00416> H<00401> O<00110> (      Inf AT Sec) ACCEPTED
-unitcount: ul.cnt=19
+unitcount: ul.cnt=17
 FLIST: { { s.nidx=6 }, cnt=6 }
     [00100] (       SPWAW 8.3) P<001> L<00400> H<00400> status=001 units=001 OOB 075: [00001] FID<00000> RAW<00100>
         [000] ptr[00400]
@@ -1292,26 +1287,24 @@ FLIST: { { s.nidx=6 }, cnt=6 }
     [00105] (      Inf AT Sec) P<001> L<00416> H<00401> status=002 units=002 OOB 075: [00110] FID<00005> RAW<00105>
         [000] ptr[00416]
     --- [001] nil[65535]
-ULIST: { { s.nidx=19 }, cnt=19 }
+ULIST: { { s.nidx=17 }, cnt=17 }
     [00400] (           JA HQ) UNIT leader=[00400] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00245] F[00100]<00000,000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    JA Inf A Sqd) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00101]<00001,000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (       A Plt HQ*) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00135] F[00102]<00002,000> ptr[00102] link crew=nil[65535], parent=nil[65535]
     [00403] (    JA Inf A Sqd) UNIT leader=[00403] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00102]<00002,001> ptr[00102] link crew=nil[65535], parent=nil[65535]
     [00404] (    JA Inf A Sqd) UNIT leader=[00404] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00102]<00002,002> ptr[00102] link crew=nil[65535], parent=nil[65535]
     [00405] (    JA Inf A Sqd) UNIT leader=[00405] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00102]<00002,003> ptr[00102] link crew=nil[65535], parent=nil[65535]
-    [00406] ( Knee Mortar Plt) UNIT leader=[00417] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 075: [00186] F[00102]<00002,004> ptr[00102] link crew=ptr[00417], parent=ptr[00417]
+    [00406] ( Knee Mortar Plt) UNIT leader=[00406] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 075: [00186] F[00102]<00002,004> ptr[00102] link crew=nil[65535], parent=nil[65535]
     [00407] (       A Plt HQ*) UNIT leader=[00407] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00135] F[00103]<00003,000> ptr[00103] link crew=nil[65535], parent=nil[65535]
     [00408] (    JA Inf A Sqd) UNIT leader=[00408] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00103]<00003,001> ptr[00103] link crew=nil[65535], parent=nil[65535]
     [00409] (    JA Inf A Sqd) UNIT leader=[00409] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00103]<00003,002> ptr[00103] link crew=nil[65535], parent=nil[65535]
     [00410] (    JA Inf A Sqd) UNIT leader=[00410] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00138] F[00103]<00003,003> ptr[00103] link crew=nil[65535], parent=nil[65535]
-    [00411] ( Knee Mortar Plt) UNIT leader=[00418] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 075: [00186] F[00103]<00003,004> ptr[00103] link crew=ptr[00418], parent=ptr[00418]
+    [00411] ( Knee Mortar Plt) UNIT leader=[00411] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 075: [00186] F[00103]<00003,004> ptr[00103] link crew=nil[65535], parent=nil[65535]
     [00412] (         SNLF HQ) UNIT leader=[00412] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00152] F[00104]<00004,000> ptr[00104] link crew=nil[65535], parent=nil[65535]
     [00413] (    JA Inf A Sqd) UNIT leader=[00413] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00058] F[00104]<00004,001> ptr[00104] link crew=nil[65535], parent=nil[65535]
     [00414] (    JA Inf A Sqd) UNIT leader=[00414] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00058] F[00104]<00004,002> ptr[00104] link crew=nil[65535], parent=nil[65535]
     [00415] (    JA Inf A Sqd) UNIT leader=[00415] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00058] F[00104]<00004,003> ptr[00104] link crew=nil[65535], parent=nil[65535]
     [00416] ( JA Tank Hunters) UNIT leader=[00416] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 075: [00171] F[00105]<00005,000> ptr[00105] link crew=nil[65535], parent=nil[65535]
-!!! [00417] (         Crewmen) CREW leader=[00417] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 075: [00249] F[00102]<00002,054> nil[65535] link crew=ptr[00406], parent=ptr[00406]
-!!! [00418] (         Crewmen) CREW leader=[00418] abandoned=2 loader<65535> vrf=N vrfneed=N  OOB 075: [00249] F[00103]<00003,054> nil[65535] link crew=ptr[00411], parent=ptr[00411]
 add_unit: idx=0, RID=0, type=UNIT
 add_unit: idx=1, RID=1, type=UNIT
 add_unit: idx=2, RID=2, type=UNIT
@@ -1380,5 +1373,3 @@ add_unit: idx=13, RID=413, type=UNIT
 add_unit: idx=14, RID=414, type=UNIT
 add_unit: idx=15, RID=415, type=UNIT
 add_unit: idx=16, RID=416, type=UNIT
-add_unit: idx=17, RID=417, type=CREW
-add_unit: idx=18, RID=418, type=CREW

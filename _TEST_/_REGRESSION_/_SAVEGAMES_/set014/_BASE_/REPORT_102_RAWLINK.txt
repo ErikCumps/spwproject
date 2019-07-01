@@ -675,7 +675,7 @@ RAWLINK formations report:
 count: 29
 
 {   0} RID=0018, FID=0000, leader=005c <Soviet HQ>
-{   1} RID=0019, FID=0001, leader=0095 <Fortifications>
+{   1} RID=0019, FID=0001, leader=005d <Fortifications>
 {   2} RID=001a, FID=0002, leader=0096 <Bunker>
 {   3} RID=001b, FID=0003, leader=0061 <Bunker>
 {   4} RID=001c, FID=0004, leader=0062 <Bunker>
@@ -688,7 +688,7 @@ count: 29
 {  11} RID=0023, FID=000b, leader=0069 <Bunker>
 {  12} RID=0024, FID=000c, leader=006a <Bunker>
 {  13} RID=0025, FID=000d, leader=006b <Bunker>
-{  14} RID=0026, FID=000e, leader=0092 <Bunker>
+{  14} RID=0026, FID=000e, leader=006c <Bunker>
 {  15} RID=0027, FID=000f, leader=006e <MG Company>
 {  16} RID=0028, FID=0010, leader=0071 <MG Platoon>
 {  17} RID=0029, FID=0011, leader=0074 <MG Platoon>
@@ -737,10 +737,10 @@ ridx[  28] rid=0034, idx=001c
 RAWLINK units report:
 ---------------------
 
-count: 56
+count: 54
 
 {   0} RID=005c, FRID=0018, FMID=0000, FSID=00, leader=005c, crew=ffff, loader=ffff, target=ffff <Soviet HQ>
-{   1} RID=005d, FRID=0019, FMID=0001, FSID=00, leader=0095, crew=0095, loader=ffff, target=ffff <Bunker>
+{   1} RID=005d, FRID=0019, FMID=0001, FSID=00, leader=005d, crew=0095, loader=ffff, target=ffff <Bunker>
 {   2} RID=005e, FRID=0019, FMID=0001, FSID=01, leader=005e, crew=0098, loader=ffff, target=ffff <Bunker>
 {   3} RID=005f, FRID=0019, FMID=0001, FSID=02, leader=005f, crew=ffff, loader=ffff, target=ffff <Bunker>
 {   4} RID=0060, FRID=001a, FMID=0002, FSID=00, leader=0096, crew=0096, loader=ffff, target=ffff <Bunker>
@@ -755,7 +755,7 @@ count: 56
 {  13} RID=0069, FRID=0023, FMID=000b, FSID=00, leader=0069, crew=ffff, loader=ffff, target=ffff <Shelter Bunker>
 {  14} RID=006a, FRID=0024, FMID=000c, FSID=00, leader=006a, crew=ffff, loader=ffff, target=ffff <Shelter Bunker>
 {  15} RID=006b, FRID=0025, FMID=000d, FSID=00, leader=006b, crew=ffff, loader=ffff, target=ffff <Shelter Bunker>
-{  16} RID=006c, FRID=0026, FMID=000e, FSID=00, leader=0092, crew=0092, loader=ffff, target=ffff <Shelter Bunker>
+{  16} RID=006c, FRID=0026, FMID=000e, FSID=00, leader=006c, crew=0092, loader=ffff, target=ffff <Shelter Bunker>
 {  17} RID=006d, FRID=0027, FMID=000f, FSID=00, leader=006d, crew=ffff, loader=ffff, target=ffff <Maxim HMG [2]>
 {  18} RID=006e, FRID=0027, FMID=000f, FSID=01, leader=006e, crew=ffff, loader=ffff, target=ffff <LMG Section>
 {  19} RID=006f, FRID=0028, FMID=0010, FSID=00, leader=006f, crew=ffff, loader=ffff, target=ffff <Maxim HMG [2]>
@@ -792,9 +792,7 @@ count: 56
 {  50} RID=008e, FRID=0032, FMID=001a, FSID=02, leader=008e, crew=ffff, loader=ffff, target=ffff <T-26 M1933>
 {  51} RID=008f, FRID=0033, FMID=001b, FSID=00, leader=008f, crew=ffff, loader=ffff, target=ffff <45mm L46 AT-Gun>
 {  52} RID=0090, FRID=0034, FMID=001c, FSID=00, leader=0090, crew=ffff, loader=ffff, target=ffff <45mm L46 AT-Gun>
-{  53} RID=0092, FRID=0026, FMID=000e, FSID=32, leader=0092, crew=006c, loader=ffff, target=ffff <Crew>
-{  54} RID=0095, FRID=0019, FMID=0001, FSID=03, leader=0095, crew=005d, loader=ffff, target=ffff <Crew>
-{  55} RID=0096, FRID=001a, FMID=0002, FSID=01, leader=0096, crew=0060, loader=ffff, target=ffff <Crew>
+{  53} RID=0096, FRID=001a, FMID=0002, FSID=01, leader=0096, crew=0060, loader=ffff, target=ffff <Crew>
 
 ridx[   0] rid=005c, idx=0000
 ridx[   1] rid=005d, idx=0001
@@ -849,14 +847,12 @@ ridx[  49] rid=008d, idx=0031
 ridx[  50] rid=008e, idx=0032
 ridx[  51] rid=008f, idx=0033
 ridx[  52] rid=0090, idx=0034
-ridx[  53] rid=0092, idx=0035
-ridx[  54] rid=0095, idx=0036
-ridx[  55] rid=0096, idx=0037
+ridx[  53] rid=0096, idx=0035
 
 RAWLINK leaders report:
 -----------------------
 
-count: 56
+count: 54
 
 {   0} RID=005c, URID=005c <Ivanchuk>
 {   1} RID=005d, URID=005d <Babkin>
@@ -911,9 +907,7 @@ count: 56
 {  50} RID=008e, URID=008e <Brusilov >
 {  51} RID=008f, URID=008f <Zhukov >
 {  52} RID=0090, URID=0090 <Borisov>
-{  53} RID=0092, URID=0092 <Lyasota>
-{  54} RID=0095, URID=0095 <Babkin>
-{  55} RID=0096, URID=0096 <Shushkevich>
+{  53} RID=0096, URID=0096 <Shushkevich>
 
 ridx[   0] rid=005c, idx=0000
 ridx[   1] rid=005d, idx=0001
@@ -968,14 +962,12 @@ ridx[  49] rid=008d, idx=0031
 ridx[  50] rid=008e, idx=0032
 ridx[  51] rid=008f, idx=0033
 ridx[  52] rid=0090, idx=0034
-ridx[  53] rid=0092, idx=0035
-ridx[  54] rid=0095, idx=0036
-ridx[  55] rid=0096, idx=0037
+ridx[  53] rid=0096, idx=0035
 
 RAWLINK unit positions report:
 ------------------------------
 
-count: 56
+count: 54
 
 {   0} RID=005c, URID=005c
 {   1} RID=005d, URID=005d
@@ -1030,9 +1022,7 @@ count: 56
 {  50} RID=008e, URID=008e
 {  51} RID=008f, URID=008f
 {  52} RID=0090, URID=0090
-{  53} RID=0092, URID=0092
-{  54} RID=0095, URID=0095
-{  55} RID=0096, URID=0096
+{  53} RID=0096, URID=0096
 
 ridx[   0] rid=005c, idx=0000
 ridx[   1] rid=005d, idx=0001
@@ -1087,8 +1077,6 @@ ridx[  49] rid=008d, idx=0031
 ridx[  50] rid=008e, idx=0032
 ridx[  51] rid=008f, idx=0033
 ridx[  52] rid=0090, idx=0034
-ridx[  53] rid=0092, idx=0035
-ridx[  54] rid=0095, idx=0036
-ridx[  55] rid=0096, idx=0037
+ridx[  53] rid=0096, idx=0035
 
 

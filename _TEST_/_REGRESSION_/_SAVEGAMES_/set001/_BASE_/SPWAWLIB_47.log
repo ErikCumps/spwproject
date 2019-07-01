@@ -979,8 +979,8 @@ find_candidate_units: [00085] F[00018]<002> C<65535> L<00085> O<070> V=1 (  Moto
 find_candidate_units: [00086] F[00019]<000> C<65535> L<00086> O<070> V=1 (  Motorradfahrer) UNIT #0 F<00019,000> CANDIDATE
 find_candidate_units: [00087] F[00019]<001> C<65535> L<00087> O<070> V=1 (  Motorradfahrer) UNIT #0 F<00019,001> CANDIDATE
 find_candidate_units: [00088] F[00019]<002> C<65535> L<00088> O<070> V=1 (  Motorradfahrer) UNIT #0 F<00019,002> CANDIDATE
-find_candidate_units: [00089] F[00012]<050> C<00062> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00012,050> CANDIDATE
-find_candidate_units: [00090] F[00015]<053> C<00074> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00015,053> CANDIDATE
+find_candidate_units: [00089] F[00012]<050> C<00062> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00012,050> SKIPPED: invalid crew
+find_candidate_units: [00090] F[00015]<053> C<00074> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00015,053> SKIPPED: invalid crew
 find_candidate_units: [00091] F[00020]<002> C<65535> L<00091> O<070> V=0 (  sIG33 auf Pz-I) SKIPPED: invalid formation reference
 find_candidate_units: [00092] F[00020]<003> C<65535> L<00092> O<070> V=0 (  sIG33 auf Pz-I) SKIPPED: invalid formation reference
 find_candidate_units: [00093] F[00021]<000> C<65535> L<00093> O<070> V=0 (  sIG33 auf Pz-I) SKIPPED: invalid formation reference
@@ -1003,9 +1003,9 @@ find_candidate_units: [00109] F[00029]<000> C<65535> L<00109> O<070> V=0 (    15
 find_candidate_units: [00110] F[00030]<000> C<65535> L<00110> O<070> V=0 (    150mm FH Bty) SKIPPED: invalid formation reference
 find_candidate_units: [00111] F[00031]<000> C<65535> L<00111> O<070> V=0 (    150mm FH Bty) SKIPPED: invalid formation reference
 find_candidate_units: [00112] F[00025]<050> C<00105> L<00112> O<070> V=0 (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: [00113] F[00015]<050> C<00071> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00015,050> CANDIDATE
-find_candidate_units: [00114] F[00012]<053> C<00065> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00012,053> CANDIDATE
-find_candidate_units: [00115] F[00005]<053> C<00023> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00005,053> CANDIDATE
+find_candidate_units: [00113] F[00015]<050> C<00071> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00015,050> SKIPPED: invalid crew
+find_candidate_units: [00114] F[00012]<053> C<00065> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00012,053> SKIPPED: invalid crew
+find_candidate_units: [00115] F[00005]<053> C<00023> L<65535> O<070> V=0 (         Crewmen) CREW #0 F<00005,053> SKIPPED: invalid crew
 find_candidate_units: [00116] F[00028]<001> C<65535> L<00116> O<070> V=0 ( SdKfz 231 6 Rad) SKIPPED: invalid formation reference
 find_candidate_units: [00117] F[00028]<002> C<65535> L<00117> O<070> V=0 ( SdKfz 231 6 Rad) SKIPPED: invalid formation reference
 find_candidate_units: [00118] F[00028]<003> C<00124> L<65535> O<070> V=0 ( SdKfz 231 6 Rad) SKIPPED: invalid formation reference
@@ -1201,12 +1201,7 @@ find_candidate_units: [00566] F[00114]<052> C<00447> L<00566> O<076> V=0 (      
 find_candidate_units: [00567] F[00135]<052> C<00502> L<00567> O<076> V=0 (         Crewmen) SKIPPED: invalid formation reference
 find_candidate_units: [00568] F[00122]<050> C<00471> L<00568> O<076> V=0 (         Crewmen) SKIPPED: invalid formation reference
 find_candidate_units: [00569] F[00111]<051> C<00435> L<00569> O<076> V=0 (         Crewmen) SKIPPED: invalid formation reference
-find_candidate_units: 94 candidates
-link_candidate_crews: [00089] CREW<00062> F<00012,050> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00090] CREW<00074> F<00015,053> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00113] CREW<00071> F<00015,050> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00114] CREW<00065> F<00012,053> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00115] CREW<00023> F<00005,053> (         Crewmen) DROPPED: invalid crew parent unit linkage
+find_candidate_units: 89 candidates
 find_formation_oobrids: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (    SPWAW ENH-DV) OOBrid=00001
 find_formation_oobrids: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00122> (    Engineer Plt) OOBrid=00122
 find_formation_oobrids: FORMATION: P<0> ID<00002> L<00005> H<00000> O<00052> ( Halftrack Plt 5) OOBrid=00052
@@ -1482,7 +1477,7 @@ FLIST: { { s.nidx=20 }, cnt=20 }
         [000] ptr[00086]
         [001] ptr[00087]
         [002] ptr[00088]
-ULIST: { { s.nidx=94 }, cnt=89 }
+ULIST: { { s.nidx=89 }, cnt=89 }
     [00000] (   GE Kommandant) UNIT leader=[00000] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00245] F[00000]<00000,000> ptr[00000] link crew=nil[65535], parent=nil[65535]
     [00001] (  Sturmpionieres) UNIT leader=[00001] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00163] F[00001]<00001,000> ptr[00001] link crew=nil[65535], parent=nil[65535]
     [00002] (  Sturmpionieres) UNIT leader=[00002] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 070: [00163] F[00001]<00001,001> ptr[00001] link crew=nil[65535], parent=nil[65535]
@@ -1876,20 +1871,15 @@ find_candidate_units: [00557] F[00158]<000> C<65535> L<00557> O<081> V=1 (    Li
 find_candidate_units: [00558] F[00159]<000> C<65535> L<00558> O<081> V=1 (        T-34 M41) UNIT #1 F<00059,000> CANDIDATE
 find_candidate_units: [00559] F[00159]<001> C<65535> L<00559> O<081> V=1 (        T-34 M41) UNIT #1 F<00059,001> CANDIDATE
 find_candidate_units: [00560] F[00159]<002> C<65535> L<00560> O<081> V=1 (        T-34 M41) UNIT #1 F<00059,002> CANDIDATE
-find_candidate_units: [00562] F[00156]<000> C<65535> L<00562> O<076> V=0 (   Section Fusil) UNIT #1 F<00056,000> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00563] F[00156]<001> C<65535> L<00563> O<076> V=0 (   Section Fusil) UNIT #1 F<00056,001> SKIPPED: duplicate formation/subformation ID
-find_candidate_units: [00564] F[00156]<002> C<65535> L<00564> O<076> V=0 (   Section Fusil) UNIT #1 F<00056,002> CANDIDATE
-find_candidate_units: [00565] F[00122]<051> C<00472> L<00565> O<076> V=0 (         Crewmen) CREW #1 F<00022,051> CANDIDATE
-find_candidate_units: [00566] F[00114]<052> C<00447> L<00566> O<076> V=0 (         Crewmen) CREW #1 F<00014,052> CANDIDATE
-find_candidate_units: [00567] F[00135]<052> C<00502> L<00567> O<076> V=0 (         Crewmen) CREW #1 F<00035,052> CANDIDATE
-find_candidate_units: [00568] F[00122]<050> C<00471> L<00568> O<076> V=0 (         Crewmen) CREW #1 F<00022,050> CANDIDATE
-find_candidate_units: [00569] F[00111]<051> C<00435> L<00569> O<076> V=0 (         Crewmen) CREW #1 F<00011,051> CANDIDATE
-find_candidate_units: 167 candidates
-link_candidate_crews: [00565] CREW<00472> F<00022,051> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00566] CREW<00447> F<00014,052> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00567] CREW<00502> F<00035,052> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00568] CREW<00471> F<00022,050> (         Crewmen) DROPPED: invalid crew parent unit linkage
-link_candidate_crews: [00569] CREW<00435> F<00011,051> (         Crewmen) DROPPED: invalid crew parent unit linkage
+find_candidate_units: [00562] F[00156]<000> C<65535> L<00562> O<076> V=0 (   Section Fusil) UNIT #1 F<00056,000> SKIPPED: invalid unit
+find_candidate_units: [00563] F[00156]<001> C<65535> L<00563> O<076> V=0 (   Section Fusil) UNIT #1 F<00056,001> SKIPPED: invalid unit
+find_candidate_units: [00564] F[00156]<002> C<65535> L<00564> O<076> V=0 (   Section Fusil) UNIT #1 F<00056,002> SKIPPED: invalid unit
+find_candidate_units: [00565] F[00122]<051> C<00472> L<00565> O<076> V=0 (         Crewmen) CREW #1 F<00022,051> SKIPPED: invalid crew
+find_candidate_units: [00566] F[00114]<052> C<00447> L<00566> O<076> V=0 (         Crewmen) CREW #1 F<00014,052> SKIPPED: invalid crew
+find_candidate_units: [00567] F[00135]<052> C<00502> L<00567> O<076> V=0 (         Crewmen) CREW #1 F<00035,052> SKIPPED: invalid crew
+find_candidate_units: [00568] F[00122]<050> C<00471> L<00568> O<076> V=0 (         Crewmen) CREW #1 F<00022,050> SKIPPED: invalid crew
+find_candidate_units: [00569] F[00111]<051> C<00435> L<00569> O<076> V=0 (         Crewmen) CREW #1 F<00011,051> SKIPPED: invalid crew
+find_candidate_units: 161 candidates
 find_formation_oobrids: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SPWAW FV HTH) OOBrid=00001
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00072> (       Rifle Plt) OOBrid=00072
 find_formation_oobrids: FORMATION: P<1> ID<00002> L<00402> H<00400> O<00177> ( Lt AA Gun Sec**) OOBrid=00177
@@ -2111,7 +2101,6 @@ verify_candidate_units: [00557] UNIT: F<00058,000> LO<65535> (    Lider Vzvoda) 
 verify_candidate_units: [00558] UNIT: F<00059,000> LO<65535> (        T-34 M41) ACCEPTED - LEADER
 verify_candidate_units: [00559] UNIT: F<00059,001> LO<65535> (        T-34 M41) ACCEPTED
 verify_candidate_units: [00560] UNIT: F<00059,002> LO<65535> (        T-34 M41) ACCEPTED
-verify_candidate_units: [00564] UNIT: F<00056,002> LO<65535> (   Section Fusil) DROPPED: invalid OOB ID
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00400> H<00400> O<00001> (    SPWAW FV HTH) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00401> H<00400> O<00072> (       Rifle Plt) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00002> L<00402> H<00400> O<00177> ( Lt AA Gun Sec**) ACCEPTED
@@ -2451,7 +2440,7 @@ FLIST: { { s.nidx=60 }, cnt=60 }
         [000] ptr[00558]
         [001] ptr[00559]
         [002] ptr[00560]
-ULIST: { { s.nidx=167 }, cnt=161 }
+ULIST: { { s.nidx=161 }, cnt=161 }
     [00400] (     SO Komander) UNIT leader=[00400] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 081: [00245] F[00100]<00000,000> ptr[00100] link crew=nil[65535], parent=nil[65535]
     [00401] (    Lider Vzvoda) UNIT leader=[00401] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 081: [00154] F[00101]<00001,000> ptr[00101] link crew=nil[65535], parent=nil[65535]
     [00402] (   76.2mm AA M38) UNIT leader=[00402] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 081: [00100] F[00102]<00002,000> ptr[00102] link crew=nil[65535], parent=nil[65535]

@@ -4857,7 +4857,7 @@ People: French
 
 Formations: 57
 Units     : 165
-Crews     : 5
+Crews     : 2
 Leader    : A0 FR Commandant (Col De Pellepoix)
 
 Total kills        : 3
@@ -5301,7 +5301,7 @@ Formation count: 57
 	unit count  : 3
 	unit list   :
 		L0 Hotchkiss H35+ (KIA Massu)
-		L1 Hotchkiss H35+ (KIA Fauvelle) abandoned by L51 Crewmen (KIA Fauvelle)
+		L1 Hotchkiss H35+ (KIA Fauvelle) abandoned by lost crew
 		L2 Hotchkiss H35+ (KIA Barthou)
 
 	kills      : 0
@@ -5335,7 +5335,7 @@ Formation count: 57
 	unit type   : Cav Tanks Plt
 	unit count  : 5
 	unit list   :
-		M0 AMR 35 ZT3 (KIA Bugeaud) abandoned by M50 Crewmen (KIA Bugeaud)
+		M0 AMR 35 ZT3 (KIA Bugeaud) abandoned by lost crew
 		M1 Hotchkiss H35+ (KIA Doumerque)
 		M2 Hotchkiss H35+ (KIA Quebre)
 		M3 Hotchkiss H35+ (Sgt Dubois)
@@ -6162,7 +6162,7 @@ Formation count: 57
 	unit kills     : cnt: 4
 
 #00136 AK (FID 00036)
-	leader      : AK3 Laffly S20TL (KIA Archambault)
+	leader      : AK0 Dragons Scouts (KIA Meunier)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
 	status      : 2 (support)
 	force status: 0 (average)
@@ -6173,7 +6173,7 @@ Formation count: 57
 		AK0 Dragons Scouts (KIA Meunier)
 		AK1 Laffly S20TL (KIA Corbin)
 		AK2 Laffly S20TL (KIA Besson)
-		AK3 Laffly S20TL (KIA Archambault) abandoned by AK53 Crewmen (KIA Archambault)
+		AK3 Laffly S20TL (KIA Archambault) abandoned by lost crew
 		AK4 Laffly S20TL (KIA Laurens)
 
 	kills      : 0
@@ -8175,7 +8175,7 @@ Unit count: 165
 	head count  : 2 (0 left)
 	damage      : 3
 	abandoned   : 1
-	abandoned   : unit left by crew L51 Crewmen (KIA Fauvelle)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 52, class 2 (average)
 	morale      : 42
@@ -8248,7 +8248,7 @@ Unit count: 165
 	head count  : 2 (0 left)
 	damage      : 18
 	abandoned   : 1
-	abandoned   : unit left by crew M50 Crewmen (KIA Bugeaud)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 57, class 2 (average)
 	morale      : 45
@@ -10770,7 +10770,7 @@ Unit count: 165
 	head count  : 2 (0 left)
 	damage      : 21
 	abandoned   : 1
-	abandoned   : unit left by crew AK53 Crewmen (KIA Archambault)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 49, class 1 (green)
 	morale      : 49
@@ -12853,7 +12853,7 @@ Unit count: 165
 Complete crews report:
 ----------------------
 
-Unit count: 5
+Unit count: 2
 
 #00566 (00108:00008,050) I50  Crewmen
 	leader      : Jacquot, rank 5 (1Lt)
@@ -12886,68 +12886,6 @@ Unit count: 5
 	swim        : 0
 	type group  : 51
 
-#00569 (00111:00011,051) L51  Crewmen
-	leader      : Fauvelle, rank 0 (KIA)
-	formation   : L: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 2 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit L1 Hotchkiss H35+ (KIA Fauvelle)
-	loaded      : 0
-	experience  : 52, class 2 (average)
-	morale      : 42
-	suppression : 48
-	rally       : 46
-	inf skills  : 19
-	art skills  : 21
-	arm skills  : 44
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 51
-
-#00567 (00112:00012,050) M50  Crewmen
-	leader      : Bugeaud, rank 0 (KIA)
-	formation   : M: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 2 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit M0 AMR 35 ZT3 (KIA Bugeaud)
-	loaded      : 0
-	experience  : 57, class 2 (average)
-	morale      : 45
-	suppression : 99
-	rally       : 44
-	inf skills  : 18
-	art skills  : 28
-	arm skills  : 44
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 51
-
 #00568 (00133:00033,050) AH50 Crewmen
 	leader      : De Nemours, rank 5 (1Lt)
 	formation   : AH: support average platoon
@@ -12972,37 +12910,6 @@ Unit count: 5
 	speed       : 6 (3.600 km/h)
 	smokedevice : 0
 	contact      : 2
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 51
-
-#00565 (00136:00036,053) AK53 Crewmen
-	leader      : Archambault, rank 0 (KIA)
-	formation   : AK: support average platoon
-	OOB         : 76 (    French)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 2 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit AK3 Laffly S20TL (KIA Archambault)
-	loaded      : 0
-	experience  : 49, class 1 (green)
-	morale      : 49
-	suppression : 99
-	rally       : 44
-	inf skills  : 29
-	art skills  : 25
-	arm skills  : 39
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
 	rate of fire: 6
 	targetting  : 0
 	range finder: 0

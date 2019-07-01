@@ -69,7 +69,7 @@ People: German
 
 Formations: 30
 Units     : 123
-Crews     : 2
+Crews     : 0
 Leader    : A0 GE Kommandant (Col Reichmann)
 
 Total kills        : 100
@@ -1140,7 +1140,7 @@ Formation count: 30
 		AC0 SdKfz 231 6 Rad (1Lt Petereit)
 		AC1 SdKfz 231 6 Rad (Sgt Schurz)
 		AC2 SdKfz 231 6 Rad (Sgt Eberbach)
-		AC3 SdKfz 231 6 Rad (KIA Schurz) abandoned by AC53 Crewmen (KIA Schurz)
+		AC3 SdKfz 231 6 Rad (KIA Schurz) abandoned by lost crew
 
 	kills      : 11
 	losses     : 2
@@ -1173,7 +1173,7 @@ Formation count: 30
 	unit type   : Armored Car Plt
 	unit count  : 4
 	unit list   :
-		AD0 SdKfz 231 6 Rad (KIA Schwartz) abandoned by AD50 Crewmen (KIA Schwartz)
+		AD0 SdKfz 231 6 Rad (KIA Schwartz) abandoned by lost crew
 		AD1 SdKfz 231 6 Rad (Sgt Schirmer)
 		AD2 SdKfz 231 6 Rad (Sgt Hummel)
 		AD3 SdKfz 231 6 Rad (Sgt Mittelberg)
@@ -5473,7 +5473,7 @@ Unit count: 123
 	head count  : 4 (0 left)
 	damage      : 33
 	abandoned   : 1
-	abandoned   : unit left by crew AC53 Crewmen (KIA Schurz)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 61, class 2 (average)
 	morale      : 75
@@ -5510,7 +5510,7 @@ Unit count: 123
 	head count  : 4 (0 left)
 	damage      : 33
 	abandoned   : 1
-	abandoned   : unit left by crew AD50 Crewmen (KIA Schwartz)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 68, class 2 (average)
 	morale      : 90
@@ -5644,74 +5644,6 @@ Unit count: 123
 	readiness   : 100.00 %
 
 
-Complete crews report:
-----------------------
-
-Unit count: 2
-
-#00124 (00028:00028,053) AC53 Crewmen
-	leader      : Schurz, rank 0 (KIA)
-	formation   : AC: support elite recon platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 1
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit AC3 SdKfz 231 6 Rad (KIA Schurz)
-	loaded      : 0
-	experience  : 61, class 2 (average)
-	morale      : 75
-	suppression : 31
-	rally       : 78
-	inf skills  : 35
-	art skills  : 43
-	arm skills  : 74
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 44
-
-#00123 (00029:00029,050) AD50 Crewmen
-	leader      : Schwartz, rank 0 (KIA)
-	formation   : AD: support elite recon platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit AD0 SdKfz 231 6 Rad (KIA Schwartz)
-	loaded      : 0
-	experience  : 68, class 2 (average)
-	morale      : 90
-	suppression : 26
-	rally       : 60
-	inf skills  : 40
-	art skills  : 48
-	arm skills  : 67
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 44
-
-
 Complete unit statistics report:
 --------------------------------
 
@@ -5738,7 +5670,7 @@ People: Polish
 
 Formations: 42
 Units     : 142
-Crews     : 3
+Crews     : 2
 Leader    : A0 PO Dowodca (KIA Kosinski)
 
 Total kills        : 7
@@ -6992,7 +6924,7 @@ Formation count: 42
 	unit list   :
 		AI0 7-TP jw (KIA Tokarz)
 		AI1 7-TP jw (Sgt Sadowski) abandoned by AI51 Crewmen (Sgt Sadowski)
-		AI2 7-TP jw (KIA Solnick) abandoned by AI52 Crewmen (KIA Solnick)
+		AI2 7-TP jw (KIA Solnick) abandoned by lost crew
 		AI3 7-TP jw (KIA Gasiorowski)
 		AI4 7-TP jw (KIA Bobka)
 
@@ -11221,7 +11153,7 @@ Unit count: 142
 	head count  : 3 (0 left)
 	damage      : 5
 	abandoned   : 1
-	abandoned   : unit left by crew AI52 Crewmen (KIA Solnick)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 59, class 2 (average)
 	morale      : 72
@@ -12402,7 +12334,7 @@ Unit count: 142
 Complete crews report:
 ----------------------
 
-Unit count: 3
+Unit count: 2
 
 #00543 (00114:00014,052) O52  Crewmen
 	leader      : Rybak, rank 3 (Sgt)
@@ -12458,37 +12390,6 @@ Unit count: 3
 	speed       : 6 (3.600 km/h)
 	smokedevice : 0
 	contact      : 2
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 44
-
-#00544 (00134:00034,052) AI52 Crewmen
-	leader      : Solnick, rank 0 (KIA)
-	formation   : AI: support average platoon
-	OOB         : 80 (    Polish)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 3 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit AI2 7-TP jw (KIA Solnick)
-	loaded      : 0
-	experience  : 59, class 2 (average)
-	morale      : 72
-	suppression : 99
-	rally       : 69
-	inf skills  : 32
-	art skills  : 38
-	arm skills  : 63
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
 	rate of fire: 6
 	targetting  : 0
 	range finder: 0

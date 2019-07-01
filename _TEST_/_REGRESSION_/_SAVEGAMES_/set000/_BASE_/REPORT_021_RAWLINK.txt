@@ -704,13 +704,13 @@ count: 40
 {   9} RID=006d, FID=0009, leader=01b0 <Uhlan Troop>
 {  10} RID=006e, FID=000a, leader=01b5 <Motorcycle Plt>
 {  11} RID=006f, FID=000b, leader=01b8 <+++AI-36-46+++>
-{  12} RID=0070, FID=000c, leader=020e <TKS nkm Sec*>
+{  12} RID=0070, FID=000c, leader=01ba <TKS nkm Sec*>
 {  13} RID=0071, FID=000d, leader=01bc <TKS nkm Sec>
 {  14} RID=0072, FID=000e, leader=01bf <Armored Car Grp>
 {  15} RID=0073, FID=000f, leader=01c1 <Mortar Sec>
 {  16} RID=0074, FID=0010, leader=01c3 <Artillery Btry>
 {  17} RID=0075, FID=0011, leader=0210 <7TP Tank Sec>
-{  18} RID=0076, FID=0012, leader=020f <Arm Car Trp>
+{  18} RID=0076, FID=0012, leader=01c6 <Arm Car Trp>
 {  19} RID=0077, FID=0013, leader=01c9 <+AI Inf 30-39++>
 {  20} RID=0078, FID=0014, leader=01cc <Infantry Plt>
 {  21} RID=0079, FID=0015, leader=01d2 <Infantry Plt>
@@ -777,7 +777,7 @@ ridx[  39] rid=008b, idx=0027
 RAWLINK units report:
 ---------------------
 
-count: 130
+count: 128
 
 {   0} RID=0190, FRID=0064, FMID=0000, FSID=00, leader=0190, crew=ffff, loader=ffff, target=ffff <PO Dowodca>
 {   1} RID=0191, FRID=0065, FMID=0001, FSID=00, leader=0191, crew=ffff, loader=ffff, target=000e <Kompanii Sztab>
@@ -822,7 +822,7 @@ count: 130
 {  40} RID=01b8, FRID=006f, FMID=000b, FSID=00, leader=01b8, crew=ffff, loader=ffff, target=ffff <AAMG Szwad>
 {  41} RID=01b9, FRID=006f, FMID=000b, FSID=01, leader=01b9, crew=ffff, loader=ffff, target=ffff <AAMG Szwad>
 {  42} RID=01ba, FRID=0070, FMID=000c, FSID=00, leader=01ba, crew=ffff, loader=ffff, target=ffff <TKS>
-{  43} RID=01bb, FRID=0070, FMID=000c, FSID=01, leader=020e, crew=020e, loader=ffff, target=ffff <TKS>
+{  43} RID=01bb, FRID=0070, FMID=000c, FSID=01, leader=01bb, crew=020e, loader=ffff, target=ffff <TKS>
 {  44} RID=01bc, FRID=0071, FMID=000d, FSID=00, leader=01bc, crew=020f, loader=ffff, target=ffff <TKS nkm>
 {  45} RID=01bd, FRID=0071, FMID=000d, FSID=01, leader=01bd, crew=ffff, loader=ffff, target=ffff <TKS nkm>
 {  46} RID=01be, FRID=0072, FMID=000e, FSID=00, leader=01be, crew=020e, loader=ffff, target=ffff <wz.34 (37mm)>
@@ -835,7 +835,7 @@ count: 130
 {  53} RID=01c5, FRID=0075, FMID=0011, FSID=01, leader=0210, crew=0210, loader=ffff, target=ffff <7-TP jw>
 {  54} RID=01c6, FRID=0076, FMID=0012, FSID=00, leader=01c6, crew=ffff, loader=ffff, target=ffff <wz.34 (37mm)>
 {  55} RID=01c7, FRID=0076, FMID=0012, FSID=01, leader=01c7, crew=ffff, loader=ffff, target=ffff <wz.34 (37mm)>
-{  56} RID=01c8, FRID=0076, FMID=0012, FSID=02, leader=020f, crew=020f, loader=ffff, target=ffff <wz.34 (37mm)>
+{  56} RID=01c8, FRID=0076, FMID=0012, FSID=02, leader=01c8, crew=020f, loader=ffff, target=ffff <wz.34 (37mm)>
 {  57} RID=01c9, FRID=0077, FMID=0013, FSID=00, leader=01c9, crew=ffff, loader=ffff, target=ffff <Kompanii Sztab>
 {  58} RID=01ca, FRID=0078, FMID=0014, FSID=00, leader=01ca, crew=ffff, loader=ffff, target=ffff <Pluton Sztab>
 {  59} RID=01cb, FRID=0078, FMID=0014, FSID=01, leader=01cb, crew=ffff, loader=ffff, target=ffff <Piechoty Szwad>
@@ -905,10 +905,8 @@ count: 130
 { 123} RID=020b, FRID=008a, FMID=0026, FSID=03, leader=020b, crew=ffff, loader=ffff, target=ffff <Piechoty Szwad>
 { 124} RID=020c, FRID=008a, FMID=0026, FSID=04, leader=020c, crew=ffff, loader=ffff, target=ffff <AT Gren Grupa>
 { 125} RID=020d, FRID=008b, FMID=0027, FSID=00, leader=020d, crew=ffff, loader=ffff, target=ffff <Pluton Sztab>
-{ 126} RID=020e, FRID=0070, FMID=000c, FSID=33, leader=020e, crew=01bb, loader=ffff, target=ffff <Crewmen>
-{ 127} RID=020f, FRID=0076, FMID=0012, FSID=34, leader=020f, crew=01c8, loader=ffff, target=ffff <Crewmen>
-{ 128} RID=0210, FRID=0075, FMID=0011, FSID=33, leader=0210, crew=01c5, loader=ffff, target=ffff <Crewmen>
-{ 129} RID=0211, FRID=006b, FMID=0007, FSID=32, leader=0211, crew=01ad, loader=ffff, target=ffff <Crewmen>
+{ 126} RID=0210, FRID=0075, FMID=0011, FSID=33, leader=0210, crew=01c5, loader=ffff, target=ffff <Crewmen>
+{ 127} RID=0211, FRID=006b, FMID=0007, FSID=32, leader=0211, crew=01ad, loader=ffff, target=ffff <Crewmen>
 
 ridx[   0] rid=0190, idx=0000
 ridx[   1] rid=0191, idx=0001
@@ -1036,15 +1034,13 @@ ridx[ 122] rid=020a, idx=007a
 ridx[ 123] rid=020b, idx=007b
 ridx[ 124] rid=020c, idx=007c
 ridx[ 125] rid=020d, idx=007d
-ridx[ 126] rid=020e, idx=007e
-ridx[ 127] rid=020f, idx=007f
-ridx[ 128] rid=0210, idx=0080
-ridx[ 129] rid=0211, idx=0081
+ridx[ 126] rid=0210, idx=007e
+ridx[ 127] rid=0211, idx=007f
 
 RAWLINK leaders report:
 -----------------------
 
-count: 130
+count: 128
 
 {   0} RID=0190, URID=0190 <Jarzombek>
 {   1} RID=0191, URID=0191 <Bochniak>
@@ -1172,10 +1168,8 @@ count: 130
 { 123} RID=020b, URID=020b <Mazurowski>
 { 124} RID=020c, URID=020c <Micek>
 { 125} RID=020d, URID=020d <Korczak>
-{ 126} RID=020e, URID=020e <Gasiorowski>
-{ 127} RID=020f, URID=020f <Gniadek>
-{ 128} RID=0210, URID=0210 <Suski>
-{ 129} RID=0211, URID=0211 <Stach>
+{ 126} RID=0210, URID=0210 <Suski>
+{ 127} RID=0211, URID=0211 <Stach>
 
 ridx[   0] rid=0190, idx=0000
 ridx[   1] rid=0191, idx=0001
@@ -1303,15 +1297,13 @@ ridx[ 122] rid=020a, idx=007a
 ridx[ 123] rid=020b, idx=007b
 ridx[ 124] rid=020c, idx=007c
 ridx[ 125] rid=020d, idx=007d
-ridx[ 126] rid=020e, idx=007e
-ridx[ 127] rid=020f, idx=007f
-ridx[ 128] rid=0210, idx=0080
-ridx[ 129] rid=0211, idx=0081
+ridx[ 126] rid=0210, idx=007e
+ridx[ 127] rid=0211, idx=007f
 
 RAWLINK unit positions report:
 ------------------------------
 
-count: 130
+count: 128
 
 {   0} RID=0190, URID=0190
 {   1} RID=0191, URID=0191
@@ -1439,10 +1431,8 @@ count: 130
 { 123} RID=020b, URID=020b
 { 124} RID=020c, URID=020c
 { 125} RID=020d, URID=020d
-{ 126} RID=020e, URID=020e
-{ 127} RID=020f, URID=020f
-{ 128} RID=0210, URID=0210
-{ 129} RID=0211, URID=0211
+{ 126} RID=0210, URID=0210
+{ 127} RID=0211, URID=0211
 
 ridx[   0] rid=0190, idx=0000
 ridx[   1] rid=0191, idx=0001
@@ -1570,9 +1560,7 @@ ridx[ 122] rid=020a, idx=007a
 ridx[ 123] rid=020b, idx=007b
 ridx[ 124] rid=020c, idx=007c
 ridx[ 125] rid=020d, idx=007d
-ridx[ 126] rid=020e, idx=007e
-ridx[ 127] rid=020f, idx=007f
-ridx[ 128] rid=0210, idx=0080
-ridx[ 129] rid=0211, idx=0081
+ridx[ 126] rid=0210, idx=007e
+ridx[ 127] rid=0211, idx=007f
 
 

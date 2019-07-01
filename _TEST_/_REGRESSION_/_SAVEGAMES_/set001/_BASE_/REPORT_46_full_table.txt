@@ -313,7 +313,7 @@ Table Soviet forces order of battle report:
 Leader    : A0 SO Komander (KIA Gladkov)
 Formations: 45
 Units     : 106
-Crews     : 6
+Crews     : 0
 
                 item kills losses readiness
                 ---- ----- ------ ---------
@@ -349,9 +349,9 @@ D   : sup average                          platoon          D0               C0 
 D0  :     destroyed                        37mm ATG M30     Schevchuk        *        0      1   0.00 %   4
 D1  :     destroyed                        37mm ATG M30     Lisichkin                 0      2   0.00 %   4
 
-E   : sup average                          platoon          E1               C0       0      4   0.00 %   2
-E0  :     destroyed                        SU-45            Tebyakin                  0      2   0.00 %   3
-E1  :     destroyed                        SU-45            Ivanovich        *        0      2   0.00 %   3
+E   : sup average                          platoon          E0               C0       0      4   0.00 %   2
+E0  :     destroyed                        SU-45            Tebyakin         *        0      2   0.00 %   3
+E1  :     destroyed                        SU-45            Ivanovich                 0      2   0.00 %   3
 
 F   : sup average                          platoon          F0               C0       0      2   0.00 %   2
 F0  :     destroyed                        Log Rifle Pit    Fyodorovich      *        0      1   0.00 %   5
@@ -374,9 +374,9 @@ I1  :     destroyed                        Komanda HMG      Pleve            *  
 J   : sup elite recon                      platoon          J0               A0       0      1   0.00 %   1
 J0  :     destroyed                        Snajper          Bakunin          *        0      1   0.00 %   1
 
-K   : sup average                          platoon          K1               A0       0      4   0.00 %   2
-K0  :     destroyed                        Komanda AAMG     Kozlov                    0      2   0.00 %   4
-K1  :     destroyed                        Komanda AAMG     Lyutiy           *        0      2   0.00 %   4
+K   : sup average                          platoon          K0               A0       0      4   0.00 %   2
+K0  :     destroyed                        Komanda AAMG     Kozlov           *        0      2   0.00 %   4
+K1  :     destroyed                        Komanda AAMG     Lyutiy                    0      2   0.00 %   4
 
 L   : sup average                          platoon          L2               A0       0      3   0.00 %   3
 L0  :     destroyed                        Komanda PTRD     Sharipov                  0      1   0.00 %   2
@@ -415,9 +415,9 @@ T   : sup average                          platoon          T0               S0 
 T0  :     destroyed                        Log MG Bunker    Herzen           *        0      1   0.00 %   9
 T1  :     destroyed                        76.2mm AA M38    Arakcheyev                1      1   0.00 %   8
 
-U   : sup average                          platoon          U1               S0       0      3   0.00 %   2
-U0  :     destroyed                        45mm ATG M38+    Gapon                     0      1   0.00 %   5
-U1  :     destroyed                        45mm ATG M38+    Pugachev         *        0      2   0.00 %   5
+U   : sup average                          platoon          U0               S0       0      3   0.00 %   2
+U0  :     destroyed                        45mm ATG M38+    Gapon            *        0      1   0.00 %   5
+U1  :     destroyed                        45mm ATG M38+    Pugachev                  0      2   0.00 %   5
 
 V   : sup average                          platoon          V0               S0       0      2   0.00 %   2
 V0  :     destroyed                        Log MG Bunker    Ivanov           *        0      1   0.00 %   9
@@ -457,9 +457,9 @@ AD  : sup average                          platoon          AD1              A0 
 AD0 :     destroyed                        37mm ATG M30     Budeny                    0      1   0.00 %   4
 AD1 :     destroyed                        37mm ATG M30     Hohlov           *        1      1   0.00 %   4
 
-AE  : cor average                          platoon          AE1              A0       0      3   0.00 %   2
-AE0 :     destroyed                        37mm ATG M30     Vasiliev                  0      1   0.00 %   4
-AE1 :     destroyed                        37mm ATG M30     Pugovkin         *        0      2   0.00 %   4
+AE  : cor average                          platoon          AE0              A0       0      3   0.00 %   2
+AE0 :     destroyed                        37mm ATG M30     Vasiliev         *        0      1   0.00 %   4
+AE1 :     destroyed                        37mm ATG M30     Pugovkin                  0      2   0.00 %   4
 
 AF  : cor average                          platoon          AF0              A0       0      6   0.00 %   3
 AF0 :     destroyed                        T-28 M38         Mikhaylovich     *        0      2   0.00 %   6
@@ -638,18 +638,6 @@ Table units report:
 + -   AR4  Pehota Vintovka  KIA  Vasiliev           503  35  49  56  41  50  46  25  25    0    1  12  12  21   0.00 % (  none  )
 + -   AS0  Log Rifle Pit    KIA  Schevchuk          504  20  49  91  58  77  30  18  41    0    1   5   5  46   0.00 % (  none  )
 + -A  AS1  76.2mm AA M38    KIA  Chaadayev          505  32  49  43  24  54  31  48  22    0    2   8   8  34   0.00 % (  none  )
-
-Table crews report:
--------------------
-
-+SDAL #    Unit             Rank Leader             RID UTG EXP MOR SUP RAL INF ART ARM Kill Men KIA Dmg    Ready   Position
------ ---- ----             ---- ------             --- --- --- --- --- --- --- --- --- ---- --- --- ---    ----- ----------
-+ -A  E51  Crewmen          KIA  Ivanovich          506  37  36  42  90  52  30  20  45    0   3   3   2   0.00 % (  none  )
-+ -A  K51  Crewmen          KIA  Lyutiy             508  37  41  44  62  48  31  48  22    0   4   4   2   0.00 % (  none  )
-+ -A  U51  Crewmen          KIA  Pugachev           509  37  49  55  46  52  22  47  28    0   5   5   2   0.00 % (  none  )
-+ -A  AE51 Crewmen          KIA  Pugovkin           510  37  51  44  54  43  28  40  23    0   4   4   2   0.00 % (  none  )
-+ -A  AH50 Crewmen          KIA  Kazimirovich       507  37  53  88  98  76  30  22  43    0   9   9   2   0.00 % (  none  )
-+ -A  AS51 Crewmen          KIA  Chaadayev          511  37  49  43  54  54  31  48  22    0   8   8   2   0.00 % (  none  )
 
 
 

@@ -139,7 +139,7 @@ ridx[  63] rid=003f, idx=003f
 RAWLINK units report:
 ---------------------
 
-count: 225
+count: 223
 
 {   0} RID=0000, FRID=0000, FMID=0000, FSID=00, leader=0000, crew=ffff, loader=ffff, target=ffff <GE Kommandeur>
 {   1} RID=0001, FRID=0001, FMID=0001, FSID=00, leader=0001, crew=ffff, loader=ffff, target=ffff <Kompanie GefStd>
@@ -272,7 +272,7 @@ count: 225
 { 128} RID=0080, FRID=0022, FMID=0022, FSID=01, leader=0080, crew=ffff, loader=ffff, target=ffff <PzKpfw IV C>
 { 129} RID=0081, FRID=0022, FMID=0022, FSID=02, leader=0081, crew=ffff, loader=ffff, target=ffff <PzKpfw IV C>
 { 130} RID=0082, FRID=0022, FMID=0022, FSID=03, leader=0082, crew=ffff, loader=ffff, target=ffff <PzKpfw IV C>
-{ 131} RID=0083, FRID=0023, FMID=0023, FSID=00, leader=00e0, crew=00e0, loader=ffff, target=ffff <PzKpfw IV C>
+{ 131} RID=0083, FRID=0023, FMID=0023, FSID=00, leader=0083, crew=00e0, loader=ffff, target=ffff <PzKpfw IV C>
 { 132} RID=0084, FRID=0023, FMID=0023, FSID=01, leader=0084, crew=ffff, loader=ffff, target=ffff <PzKpfw IV C>
 { 133} RID=0085, FRID=0024, FMID=0024, FSID=00, leader=0085, crew=ffff, loader=ffff, target=ffff <PzKpfw II C>
 { 134} RID=0086, FRID=0024, FMID=0024, FSID=01, leader=0086, crew=ffff, loader=ffff, target=ffff <PzKpfw II C>
@@ -297,7 +297,7 @@ count: 225
 { 153} RID=0099, FRID=0028, FMID=0028, FSID=02, leader=0099, crew=ffff, loader=ffff, target=ffff <PSW 222>
 { 154} RID=009a, FRID=0028, FMID=0028, FSID=03, leader=009a, crew=00de, loader=ffff, target=ffff <PSW 222>
 { 155} RID=009b, FRID=0028, FMID=0028, FSID=04, leader=009b, crew=ffff, loader=ffff, target=020a <PSW 222>
-{ 156} RID=009c, FRID=0028, FMID=0028, FSID=05, leader=00df, crew=00df, loader=ffff, target=ffff <PSW 222>
+{ 156} RID=009c, FRID=0028, FMID=0028, FSID=05, leader=009c, crew=00df, loader=ffff, target=ffff <PSW 222>
 { 157} RID=009d, FRID=0029, FMID=0029, FSID=00, leader=009d, crew=ffff, loader=ffff, target=ffff <VB Trupp>
 { 158} RID=009e, FRID=002a, FMID=002a, FSID=00, leader=009e, crew=ffff, loader=ffff, target=ffff <VB Trupp>
 { 159} RID=009f, FRID=002b, FMID=002b, FSID=00, leader=009f, crew=ffff, loader=ffff, target=ffff <VB Trupp>
@@ -364,8 +364,6 @@ count: 225
 { 220} RID=00dc, FRID=003f, FMID=003f, FSID=02, leader=00dc, crew=ffff, loader=ffff, target=ffff <sIG33 auf Pz-I>
 { 221} RID=00dd, FRID=003f, FMID=003f, FSID=03, leader=00dd, crew=ffff, loader=ffff, target=ffff <sIG33 auf Pz-I>
 { 222} RID=00de, FRID=0027, FMID=0027, FSID=33, leader=00de, crew=0094, loader=ffff, target=ffff <Besatzung>
-{ 223} RID=00df, FRID=0028, FMID=0028, FSID=37, leader=00df, crew=009c, loader=ffff, target=ffff <Besatzung>
-{ 224} RID=00e0, FRID=0023, FMID=0023, FSID=32, leader=00e0, crew=0083, loader=ffff, target=ffff <Besatzung>
 
 ridx[   0] rid=0000, idx=0000
 ridx[   1] rid=0001, idx=0001
@@ -590,13 +588,11 @@ ridx[ 219] rid=00db, idx=00db
 ridx[ 220] rid=00dc, idx=00dc
 ridx[ 221] rid=00dd, idx=00dd
 ridx[ 222] rid=00de, idx=00de
-ridx[ 223] rid=00df, idx=00df
-ridx[ 224] rid=00e0, idx=00e0
 
 RAWLINK leaders report:
 -----------------------
 
-count: 225
+count: 223
 
 {   0} RID=0000, URID=0000 <Abt>
 {   1} RID=0001, URID=0001 <Kuhns>
@@ -821,8 +817,6 @@ count: 225
 { 220} RID=00dc, URID=00dc <Gebhart>
 { 221} RID=00dd, URID=00dd <Vosse>
 { 222} RID=00de, URID=00de <Steiner>
-{ 223} RID=00df, URID=00df <Kauffman>
-{ 224} RID=00e0, URID=00e0 <Rosenberg>
 
 ridx[   0] rid=0000, idx=0000
 ridx[   1] rid=0001, idx=0001
@@ -1047,13 +1041,11 @@ ridx[ 219] rid=00db, idx=00db
 ridx[ 220] rid=00dc, idx=00dc
 ridx[ 221] rid=00dd, idx=00dd
 ridx[ 222] rid=00de, idx=00de
-ridx[ 223] rid=00df, idx=00df
-ridx[ 224] rid=00e0, idx=00e0
 
 RAWLINK unit positions report:
 ------------------------------
 
-count: 225
+count: 223
 
 {   0} RID=0000, URID=0000
 {   1} RID=0001, URID=0001
@@ -1278,8 +1270,6 @@ count: 225
 { 220} RID=00dc, URID=00dc
 { 221} RID=00dd, URID=00dd
 { 222} RID=00de, URID=00de
-{ 223} RID=00df, URID=00df
-{ 224} RID=00e0, URID=00e0
 
 ridx[   0] rid=0000, idx=0000
 ridx[   1] rid=0001, idx=0001
@@ -1504,8 +1494,6 @@ ridx[ 219] rid=00db, idx=00db
 ridx[ 220] rid=00dc, idx=00dc
 ridx[ 221] rid=00dd, idx=00dd
 ridx[ 222] rid=00de, idx=00de
-ridx[ 223] rid=00df, idx=00df
-ridx[ 224] rid=00e0, idx=00e0
 
 
 RAWLINK player 2 OOB report:

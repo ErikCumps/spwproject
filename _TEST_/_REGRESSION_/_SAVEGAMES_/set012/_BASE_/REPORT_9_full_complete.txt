@@ -49,31 +49,31 @@ Nation: US Army
 People: US army
 
 Formations: 10
-Units     : 29
+Units     : 31
 Crews     : 3
 Leader    : A0 US Commander (Col Wilder)
 
 Total kills        : 35
 Total losses       : 3
-Total readiness    :  85.99 %
+Total readiness    :  86.89 %
 Unit experience    : max: 90 ( 18: F3: Armd LMG Squad (Sgt Arnold))
 Unit experience    : min: 55 (  4: B2: M4A3 Sherman (Sgt Lewis))
-Unit experience    : avg: 69.28
+Unit experience    : avg: 69.23
 Unit experience    : spr: 35
-Unit experience    : tot: 2009
-Unit experience    : cnt: 29
+Unit experience    : tot: 2146
+Unit experience    : cnt: 31
 Unit readiness     : max: 100.00 (  0: A0: US Commander (Col Wilder))
 Unit readiness     : min: 0.00 ( 10: C3: M10 3 inch GMC (Sgt Irwin))
-Unit readiness     : avg: 85.99
+Unit readiness     : avg: 86.89
 Unit readiness     : spr: 100.00
-Unit readiness     : tot: 2493.64
-Unit readiness     : cnt: 29
+Unit readiness     : tot: 2693.64
+Unit readiness     : cnt: 31
 Unit kills         : max: 6 (  3: B1: M4A3 Sherman (Sgt Lopez))
 Unit kills         : min: 0 (  0: A0: US Commander (Col Wilder))
-Unit kills         : avg: 1.21
+Unit kills         : avg: 1.13
 Unit kills         : spr: 6
 Unit kills         : tot: 35
-Unit kills         : cnt: 29
+Unit kills         : cnt: 31
 Formation readiness: max: 100.00 (  4: E: recon platoon)
 Formation readiness: min: 49.50 (  2: C: average platoon)
 Formation readiness: avg: 87.82
@@ -418,40 +418,42 @@ Formation count: 10
 	force status: 0 (average)
 	type        : platoon
 	unit type   : Halftrack Plt
-	unit count  : 4
+	unit count  : 6
 	unit list   :
 		L0 M3A1 Halftrack (1Lt Grigsby)
 		L1 M3A1 Halftrack (Sgt Jenkins)
 		L2 M3A1 Halftrack (Sgt Phillips)
 		L3 M3A1 Halftrack (Sgt Wirth)
+		L4 M3 Halftrack (Sgt Kantor)
+		L5 M3 Halftrack (Sgt Hamilton)
 
 	kills      : 0
 	losses     : 0
 	readiness  : 100.00 %
 	unit experience: max: 82 ( 26: L1: M3A1 Halftrack (Sgt Jenkins))
-	unit experience: min: 68 ( 25: L0: M3A1 Halftrack (1Lt Grigsby))
-	unit experience: avg: 76.50
-	unit experience: spr: 14
-	unit experience: tot: 306
-	unit experience: cnt: 4
+	unit experience: min: 67 ( 29: L4: M3 Halftrack (Sgt Kantor))
+	unit experience: avg: 73.83
+	unit experience: spr: 15
+	unit experience: tot: 443
+	unit experience: cnt: 6
 	unit readiness : max: 100.00 ( 25: L0: M3A1 Halftrack (1Lt Grigsby))
 	unit readiness : min: 100.00 ( 25: L0: M3A1 Halftrack (1Lt Grigsby))
 	unit readiness : avg: 100.00
 	unit readiness : spr: 0.00
-	unit readiness : tot: 400.00
-	unit readiness : cnt: 4
+	unit readiness : tot: 600.00
+	unit readiness : cnt: 6
 	unit kills     : max: 0 ( 25: L0: M3A1 Halftrack (1Lt Grigsby))
 	unit kills     : min: 0 ( 25: L0: M3A1 Halftrack (1Lt Grigsby))
 	unit kills     : avg: 0.00
 	unit kills     : spr: 0
 	unit kills     : tot: 0
-	unit kills     : cnt: 4
+	unit kills     : cnt: 6
 
 
 Complete units report:
 ----------------------
 
-Unit count: 29
+Unit count: 31
 
 #00000 (00000:00000,000) A0   US Commander
 	leader      : Wilder, rank 9 (Col)
@@ -1500,6 +1502,78 @@ Unit count: 29
 	losses      : 0
 	readiness   : 100.00 %
 
+#00037 (00019:00011,004) L4   M3 Halftrack
+	leader      : Kantor, rank 3 (Sgt)
+	formation   : L: regular average platoon
+	OOB         : 82 (   US army)
+	unit type   : 140 (armed halftrack)
+	unit class  : 3 (APC)
+	kills       : 0
+	status      : 0 (ready) [1:alive] [0:hidden]
+	entrenchment: 1 (in cover)
+	head count  : 2 (2 left)
+	damage      : 0
+	abandoned   : 0
+	loaded      : 0
+	experience  : 67, class 2 (average)
+	morale      : 76
+	suppression : 0
+	rally       : 31
+	inf skills  : 27
+	art skills  : 36
+	arm skills  : 53
+	speed       : 40 (24.000 km/h)
+	smokedevice : 0
+	contact     : 1 (radio contact)
+	rate of fire: 9
+	targetting  : 0
+	range finder: 1
+	fire control: 1
+	infrared    : 0
+	swim        : 0
+	type group  : 11
+	position    : (50, 14)
+
+	kills       : 0
+	losses      : 0
+	readiness   : 100.00 %
+
+#00043 (00019:00011,005) L5   M3 Halftrack
+	leader      : Hamilton, rank 3 (Sgt)
+	formation   : L: regular average platoon
+	OOB         : 82 (   US army)
+	unit type   : 140 (armed halftrack)
+	unit class  : 3 (APC)
+	kills       : 0
+	status      : 0 (ready) [1:alive] [0:hidden]
+	entrenchment: 1 (in cover)
+	head count  : 2 (2 left)
+	damage      : 0
+	abandoned   : 0
+	loaded      : 0
+	experience  : 70, class 2 (average)
+	morale      : 63
+	suppression : 0
+	rally       : 75
+	inf skills  : 30
+	art skills  : 43
+	arm skills  : 53
+	speed       : 40 (24.000 km/h)
+	smokedevice : 0
+	contact     : 1 (radio contact)
+	rate of fire: 9
+	targetting  : 0
+	range finder: 1
+	fire control: 1
+	infrared    : 0
+	swim        : 0
+	type group  : 12
+	position    : (54, 23)
+
+	kills       : 0
+	losses      : 0
+	readiness   : 100.00 %
+
 
 Complete crews report:
 ----------------------
@@ -1603,8 +1677,8 @@ Unit count: 3
 Complete unit statistics report:
 --------------------------------
 
-Unit count: 29
-Units left: 26
+Unit count: 31
+Units left: 28
 
 Complete formation statistics report:
 -------------------------------------
@@ -1626,7 +1700,7 @@ People: German
 
 Formations: 9
 Units     : 21
-Crews     : 11
+Crews     : 0
 Leader    : I0 GE Kommandant (KIA Tychsen)
 
 Total kills        : 3
@@ -1675,7 +1749,7 @@ Complete formations report:
 Formation count: 9
 
 #00108 B (FID 00001)
-	leader      : B2 PzKpfw IV H (KIA Eberbach)
+	leader      : B0 PzKpfw IV H (KIA Rauch)
 	higher cmd  : I0 GE Kommandant (KIA Tychsen)
 	status      : 0 (regular)
 	force status: 0 (average)
@@ -1683,9 +1757,9 @@ Formation count: 9
 	unit type   : Med Panzer Plt
 	unit count  : 4
 	unit list   :
-		B0 PzKpfw IV H (KIA Rauch) abandoned by B50 Crewmen (KIA Rauch)
-		B1 PzKpfw IV H (KIA Hartueb) abandoned by B51 Crewmen (KIA Hartueb)
-		B2 PzKpfw IV H (KIA Eberbach) abandoned by B52 Crewmen (KIA Eberbach)
+		B0 PzKpfw IV H (KIA Rauch) abandoned by lost crew
+		B1 PzKpfw IV H (KIA Hartueb) abandoned by lost crew
+		B2 PzKpfw IV H (KIA Eberbach) abandoned by lost crew
 		B3 PzKpfw IV H (KIA Schmeltzer) abandoned by lost crew
 
 	kills      : 2
@@ -1719,7 +1793,7 @@ Formation count: 9
 	unit type   : Med Panzer Sec
 	unit count  : 2
 	unit list   :
-		C0 Panther A (KIA Schumacher) abandoned by C50 Crewmen (KIA Schumacher)
+		C0 Panther A (KIA Schumacher) abandoned by lost crew
 		C1 Panther A (KIA Boettcher) abandoned by lost crew
 
 	kills      : 0
@@ -1789,8 +1863,8 @@ Formation count: 9
 	unit type   : SP Mortar Sec
 	unit count  : 2
 	unit list   :
-		E0 SdKfz 250/7 (KIA Scherer) abandoned by E50 Crewmen (KIA Scherer)
-		E1 SdKfz 250/7 (KIA Porsch) abandoned by E51 Crewmen (KIA Porsch)
+		E0 SdKfz 250/7 (KIA Scherer) abandoned by lost crew
+		E1 SdKfz 250/7 (KIA Porsch) abandoned by lost crew
 
 	kills      : 0
 	losses     : 4
@@ -1856,8 +1930,8 @@ Formation count: 9
 	unit type   : Flak Pz Sec
 	unit count  : 2
 	unit list   :
-		G0 FlakPz 38(t) (KIA Oertzen) abandoned by G50 Crewmen (KIA Oertzen)
-		G1 FlakPz 38(t) (KIA Krogel) abandoned by G51 Crewmen (KIA Krogel)
+		G0 FlakPz 38(t) (KIA Oertzen) abandoned by lost crew
+		G1 FlakPz 38(t) (KIA Krogel) abandoned by lost crew
 
 	kills      : 0
 	losses     : 4
@@ -1956,9 +2030,9 @@ Formation count: 9
 	unit type   : Halftrack Plt
 	unit count  : 4
 	unit list   :
-		J0 SPW 251/1 HT (KIA Kroh) abandoned by J50 Crewmen (KIA Kroh)
-		J1 SPW 251/1 HT (KIA Vogel) abandoned by J51 Crewmen (KIA Vogel)
-		J2 SPW 251/1 HT (KIA Schweitzer) abandoned by J52 Crewmen (KIA Schweitzer)
+		J0 SPW 251/1 HT (KIA Kroh) abandoned by lost crew
+		J1 SPW 251/1 HT (KIA Vogel) abandoned by lost crew
+		J2 SPW 251/1 HT (KIA Schweitzer) abandoned by lost crew
 		J3 SPW 251/10 (KIA Brunner) abandoned by lost crew
 
 	kills      : 0
@@ -2001,7 +2075,7 @@ Unit count: 21
 	head count  : 5 (0 left)
 	damage      : 122
 	abandoned   : 1
-	abandoned   : unit left by crew B50 Crewmen (KIA Rauch)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 65, class 2 (average)
 	morale      : 69
@@ -2038,7 +2112,7 @@ Unit count: 21
 	head count  : 5 (0 left)
 	damage      : 122
 	abandoned   : 1
-	abandoned   : unit left by crew B51 Crewmen (KIA Hartueb)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 66, class 2 (average)
 	morale      : 68
@@ -2075,7 +2149,7 @@ Unit count: 21
 	head count  : 5 (0 left)
 	damage      : 122
 	abandoned   : 1
-	abandoned   : unit left by crew B52 Crewmen (KIA Eberbach)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 55, class 2 (average)
 	morale      : 56
@@ -2149,7 +2223,7 @@ Unit count: 21
 	head count  : 5 (0 left)
 	damage      : 187
 	abandoned   : 1
-	abandoned   : unit left by crew C50 Crewmen (KIA Schumacher)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 69, class 2 (average)
 	morale      : 60
@@ -2367,7 +2441,7 @@ Unit count: 21
 	head count  : 4 (0 left)
 	damage      : 39
 	abandoned   : 1
-	abandoned   : unit left by crew E50 Crewmen (KIA Scherer)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 67, class 2 (average)
 	morale      : 54
@@ -2404,7 +2478,7 @@ Unit count: 21
 	head count  : 4 (0 left)
 	damage      : 39
 	abandoned   : 1
-	abandoned   : unit left by crew E51 Crewmen (KIA Porsch)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 56, class 2 (average)
 	morale      : 49
@@ -2477,7 +2551,7 @@ Unit count: 21
 	head count  : 4 (0 left)
 	damage      : 38
 	abandoned   : 1
-	abandoned   : unit left by crew G50 Crewmen (KIA Oertzen)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 50, class 2 (average)
 	morale      : 52
@@ -2514,7 +2588,7 @@ Unit count: 21
 	head count  : 4 (0 left)
 	damage      : 38
 	abandoned   : 1
-	abandoned   : unit left by crew G51 Crewmen (KIA Krogel)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 59, class 2 (average)
 	morale      : 55
@@ -2623,7 +2697,7 @@ Unit count: 21
 	head count  : 3 (0 left)
 	damage      : 28
 	abandoned   : 1
-	abandoned   : unit left by crew J50 Crewmen (KIA Kroh)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 66, class 2 (average)
 	morale      : 51
@@ -2660,7 +2734,7 @@ Unit count: 21
 	head count  : 3 (0 left)
 	damage      : 28
 	abandoned   : 1
-	abandoned   : unit left by crew J51 Crewmen (KIA Vogel)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 75, class 2 (average)
 	morale      : 69
@@ -2697,7 +2771,7 @@ Unit count: 21
 	head count  : 3 (0 left)
 	damage      : 28
 	abandoned   : 1
-	abandoned   : unit left by crew J52 Crewmen (KIA Schweitzer)
+	abandoned   : unit left by crew
 	loaded      : 0
 	experience  : 53, class 2 (average)
 	morale      : 55
@@ -2758,353 +2832,6 @@ Unit count: 21
 	kills       : 0
 	losses      : 2
 	readiness   :   0.00 %
-
-
-Complete crews report:
-----------------------
-
-Unit count: 11
-
-#00429 (00108:00001,050) B50  Crewmen
-	leader      : Rauch, rank 0 (KIA)
-	formation   : B: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 2
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 5 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit B0 PzKpfw IV H (KIA Rauch)
-	loaded      : 0
-	experience  : 65, class 2 (average)
-	morale      : 69
-	suppression : 35
-	rally       : 35
-	inf skills  : 32
-	art skills  : 50
-	arm skills  : 60
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00424 (00108:00001,051) B51  Crewmen
-	leader      : Hartueb, rank 0 (KIA)
-	formation   : B: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 5 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit B1 PzKpfw IV H (KIA Hartueb)
-	loaded      : 0
-	experience  : 66, class 2 (average)
-	morale      : 68
-	suppression : 39
-	rally       : 50
-	inf skills  : 41
-	art skills  : 36
-	arm skills  : 55
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00412 (00108:00001,052) B52  Crewmen
-	leader      : Eberbach, rank 0 (KIA)
-	formation   : B: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 5 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit B2 PzKpfw IV H (KIA Eberbach)
-	loaded      : 0
-	experience  : 55, class 2 (average)
-	morale      : 56
-	suppression : 27
-	rally       : 27
-	inf skills  : 40
-	art skills  : 43
-	arm skills  : 63
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00425 (00109:00002,050) C50  Crewmen
-	leader      : Schumacher, rank 0 (KIA)
-	formation   : C: regular recon company
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 5 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit C0 Panther A (KIA Schumacher)
-	loaded      : 0
-	experience  : 69, class 2 (average)
-	morale      : 60
-	suppression : 17
-	rally       : 59
-	inf skills  : 44
-	art skills  : 44
-	arm skills  : 61
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00411 (00111:00004,050) E50  Crewmen
-	leader      : Scherer, rank 0 (KIA)
-	formation   : E: regular dedicated artillery platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit E0 SdKfz 250/7 (KIA Scherer)
-	loaded      : 0
-	experience  : 67, class 2 (average)
-	morale      : 54
-	suppression : 33
-	rally       : 35
-	inf skills  : 44
-	art skills  : 36
-	arm skills  : 55
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00413 (00111:00004,051) E51  Crewmen
-	leader      : Porsch, rank 0 (KIA)
-	formation   : E: regular dedicated artillery platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit E1 SdKfz 250/7 (KIA Porsch)
-	loaded      : 0
-	experience  : 56, class 2 (average)
-	morale      : 49
-	suppression : 30
-	rally       : 46
-	inf skills  : 48
-	art skills  : 49
-	arm skills  : 53
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00430 (00116:00006,050) G50  Crewmen
-	leader      : Oertzen, rank 0 (KIA)
-	formation   : G: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit G0 FlakPz 38(t) (KIA Oertzen)
-	loaded      : 0
-	experience  : 50, class 2 (average)
-	morale      : 52
-	suppression : 99
-	rally       : 40
-	inf skills  : 41
-	art skills  : 41
-	arm skills  : 60
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00431 (00116:00006,051) G51  Crewmen
-	leader      : Krogel, rank 0 (KIA)
-	formation   : G: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 4 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit G1 FlakPz 38(t) (KIA Krogel)
-	loaded      : 0
-	experience  : 59, class 2 (average)
-	morale      : 55
-	suppression : 73
-	rally       : 39
-	inf skills  : 48
-	art skills  : 34
-	arm skills  : 55
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00414 (00102:00009,050) J50  Crewmen
-	leader      : Kroh, rank 0 (KIA)
-	formation   : J: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 3 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit J0 SPW 251/1 HT (KIA Kroh)
-	loaded      : 0
-	experience  : 66, class 2 (average)
-	morale      : 51
-	suppression : 38
-	rally       : 49
-	inf skills  : 43
-	art skills  : 40
-	arm skills  : 61
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00428 (00102:00009,051) J51  Crewmen
-	leader      : Vogel, rank 0 (KIA)
-	formation   : J: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 3 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit J1 SPW 251/1 HT (KIA Vogel)
-	loaded      : 0
-	experience  : 75, class 2 (average)
-	morale      : 69
-	suppression : 99
-	rally       : 41
-	inf skills  : 47
-	art skills  : 38
-	arm skills  : 83
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
-
-#00427 (00102:00009,052) J52  Crewmen
-	leader      : Schweitzer, rank 0 (KIA)
-	formation   : J: regular average platoon
-	OOB         : 70 (    German)
-	unit type   : 278 (crew)
-	unit class  : 14 (other)
-	kills       : 0
-	status      : 5 (destroyed) [0:DEAD] [1:SPOTTED]
-	head count  : 3 (0 left)
-	damage      : 2
-	abandoned   : 2
-	abandoned   : crew left unit J2 SPW 251/1 HT (KIA Schweitzer)
-	loaded      : 0
-	experience  : 53, class 2 (average)
-	morale      : 55
-	suppression : 37
-	rally       : 26
-	inf skills  : 47
-	art skills  : 37
-	arm skills  : 57
-	speed       : 6 (3.600 km/h)
-	smokedevice : 0
-	contact      : 0
-	rate of fire: 6
-	targetting  : 0
-	range finder: 0
-	fire control: 0
-	infrared    : 0
-	swim        : 0
-	type group  : 26
 
 
 Complete unit statistics report:
