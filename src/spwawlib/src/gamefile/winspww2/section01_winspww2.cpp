@@ -26,7 +26,7 @@
 //	+ saved units for player #1 and player #2 can be mixed together
 //	+ valid units and crews must have a valid name
 //	+ valid units must reference a valid formation
-//	+ valid units must have their validity flag set to 1 (not so for SPWaW?)
+//	+ valid units must have their validity flag set to 1 (not so for SP:WaW?)
 //	+ the unit's OOB ID must match the formation leader unit's OOB ID
 //	  (make sure to follow through to its unit if the leader is a crew!)
 //	+ the number of units in a formation does not need to match its OOB data
@@ -191,6 +191,14 @@ find_candidate_units (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE playe
 			// This is a candidate crew.
 			uel->d.type = SPWAW_UNIT_TYPE_CREW;
 			UFDLOG4 ("%4.4s #%u F<%5.5u,%3.3u> ", SPWAW_unittype2str(uel->d.type), player, uel->d.FMID, uel->d.FSID);
+
+			if (winspww2_handling_options.VALIDITY) {
+				// Is the crew valid?
+				if (!udata[i].valid) {
+					UFDLOG0 ("SKIPPED: invalid crew\n");
+					continue;
+				}
+			}
 
 			UFDLOG0 ("CANDIDATE\n");
 
@@ -535,17 +543,17 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 			continue;
 		}
 
-		if (winspww2_handling_options.SUBFUAL) {
-			/* Substitute first unit as leader, if no leader recorded? */
-			if (fel->d.leader == SPWAW_BADIDX) {
-				UEL *ffuel = lookup_FFUEL (ful, fel);
-				if (ffuel) fel->d.leader = ffuel->d.RID;
-			}
-		}
-
 		ldru = lookup_ULIST (ful.ul, fel->d.leader);
 		if (ldru && (ldru->d.type == SPWAW_UNIT_TYPE_CREW)) {
 			ldru = ldru->d.link.parent;
+		}
+		if (!ldru && winspww2_handling_options.SUBFUAL) {
+			/* Substitute first unit as leader, if no leader detected? */
+			UEL *ffuel = lookup_FFUEL (ful, fel);
+			if (ffuel) {
+				fel->d.leader = ffuel->d.RID;
+				ldru = ffuel;
+			}
 		}
 		if (!ldru) {
 			UFDLOG0 ("DROPPED: no leader unit recorded for formation\n");
