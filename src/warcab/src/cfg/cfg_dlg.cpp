@@ -291,6 +291,11 @@ CfgDlg::prepare(void)
 {
 	if (!d.dlg_data) return;
 
+	if (d.dlg_data->isfirstrun) {
+		// Dialog should not be cancellable on first run
+		d.buttons->setStandardButtons(QDialogButtonBox::Ok);
+	}
+
 	d.locprf_edit->setCheckState (d.dlg_data->locprf ? Qt::Checked : Qt::Unchecked);
 	d.snp_edit->setText (d.dlg_data->snp);
 	d.compress_edit->setCheckState (d.dlg_data->compress ? Qt::Checked : Qt::Unchecked);
