@@ -126,6 +126,10 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.locprf_edit,	row, 1, 1, 1);
 	row++;
 
+	/* Add spacer */
+	d.layout->setRowStretch (row, 1);
+	row++;
+
 	/* Create "snap" config ui */
 	d.snp_label = new QLabel (d.body);
 	d.snp_label->setText ("Warcab saves folder:");
@@ -173,6 +177,7 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.autoload_edit,	row, 1, 1, 1);
 	row++;
 
+	/* Add spacer */
 	d.layout->setRowStretch (row, 1);
 	row++;
 
