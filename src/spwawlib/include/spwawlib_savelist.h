@@ -50,6 +50,7 @@ typedef struct s_SPWAW_SAVELIST {
 /*** API ***/
 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist		(SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist		(SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_new	(SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_free	(SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_savelist_add	(SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap);

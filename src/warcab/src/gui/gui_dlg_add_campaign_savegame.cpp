@@ -110,7 +110,7 @@ GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_GAME_TYPE gametype, 
 		SET_GUICLS_ERROR (ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "failed to create new savegame list");
 
 	/* Create data model */
-	GUINEW (d.savemodel, ModelSaveList (gametype, path, ignore), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "savelist data model");
+	GUINEW (d.savemodel, ModelSaveList (gametype, path, ignore, SPWAW_CAMPAIGN_BATTLE), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "savelist data model");
 
 	/* Connect data model with tree view */
 	d.view->setModel (d.savemodel);

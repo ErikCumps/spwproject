@@ -56,7 +56,7 @@ file_on_list (SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE *node)
 }
 
 static bool
-handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE **p)
+handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST_NODE **p)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
 	unsigned int		id;
@@ -102,19 +102,30 @@ handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW
 		ptr->info.gametype = info.gametype;
 	}
 
+	/* skip file if wrong battle type */
+	switch (battletype) {
+		case SPWAW_CAMPAIGN_BATTLE:
+		case SPWAW_STDALONE_BATTLE:
+			if (ptr->info.type != battletype) goto skip_file;
+			break;
+		default:
+			break;
+	}
+
 	/* skip file if on ignore list */
-	if (file_on_list (ignore, ptr)) goto handle_error;
+	if (file_on_list (ignore, ptr)) goto skip_file;
 
 	*p = ptr;
 	return (true);
 
+skip_file:
 handle_error:
 	if (ptr) free (ptr);
 	return (false);
 }
 
 static void
-list_files (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST *list)
+list_files (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST *list)
 {
 	const char		*base = NULL;
 	char			buffer[MAX_PATH+1];
@@ -132,7 +143,7 @@ list_files (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, S
 	if (h == INVALID_HANDLE_VALUE) return;	// TODO: flag error!
 
 	while (!stop) {
-		if (handle_file (gametype, dir, f, ignore, &p)) {
+		if (handle_file (gametype, dir, f, ignore, battletype, &p)) {
 			/* put on list */
 			SPWAW_savelist_add (list, p);
 		}
@@ -149,7 +160,19 @@ SPWAW_savelist (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignor
 
 	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");
 
-	list_files (gametype, dir, ignore, *list);
+	list_files (gametype, dir, ignore, SPWAW_UNKNOWN_BATTLE, *list);
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_savelist (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST **list)
+{
+	SPWAW_ERROR	rc;
+
+	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");
+
+	list_files (gametype, dir, ignore, battletype, *list);
 
 	return (SPWERR_OK);
 }

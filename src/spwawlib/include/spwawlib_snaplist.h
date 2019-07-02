@@ -39,6 +39,7 @@ typedef struct s_SPWAW_SNAPLIST {
 /*** API ***/
 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_new	(SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_free	(SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_add	(SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap);

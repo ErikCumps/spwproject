@@ -40,7 +40,7 @@ file_on_list (SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST_NODE *node)
 }
 
 static bool
-handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST_NODE **p)
+handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST_NODE **p)
 {
 	SPWAW_ERROR		rc;
 	SPWAW_SNAPLIST_NODE	*ptr = NULL;
@@ -73,19 +73,30 @@ handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SNAPLIST *ignore, SPWAW_S
 	rc = SPWAW_snap_info (ptr->filepath, &(ptr->info));
 	if (rc != SPWERR_OK) goto handle_error;
 
+	/* skip file if wrong battle type */
+	switch (battletype) {
+		case SPWAW_CAMPAIGN_BATTLE:
+		case SPWAW_STDALONE_BATTLE:
+			if (ptr->info.type != battletype) goto skip_file;
+			break;
+		default:
+			break;
+	}
+
 	/* skip file if on ignore list */
-	if (file_on_list (ignore, ptr)) goto handle_error;
+	if (file_on_list (ignore, ptr)) goto skip_file;
 
 	*p = ptr;
 	return (true);
 
+skip_file:
 handle_error:
 	if (ptr) free (ptr);
 	return (false);
 }
 
 static void
-list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST *list)
+list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST *list)
 {
 	char			buffer[MAX_PATH+1];
 	HANDLE			h;
@@ -100,7 +111,7 @@ list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST *list)
 	if (h == INVALID_HANDLE_VALUE) return;	// TODO: flag error!
 
 	while (!stop) {
-		if (handle_file (dir, f, ignore, &p)) {
+		if (handle_file (dir, f, ignore, battletype, &p)) {
 			/* put on list */
 			SPWAW_snaplist_add (list, p);
 		}
@@ -121,7 +132,25 @@ SPWAW_snaplist (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list)
 
 	p = safe_malloc (SPWAW_SNAPLIST); COOM (p, "SPWAW_SNAPLIST");
 
-	list_files (dir, ignore, p);
+	list_files (dir, ignore, SPWAW_UNKNOWN_BATTLE, p);
+
+	*list = p;
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_snaplist (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST **list)
+{
+	SPWAW_SNAPLIST	*p = NULL;
+
+	CSPWINIT;
+	CNULLARG (dir); CNULLARG (list);
+	*list = NULL;
+
+	p = safe_malloc (SPWAW_SNAPLIST); COOM (p, "SPWAW_SNAPLIST");
+
+	list_files (dir, ignore, battletype, p);
 
 	*list = p;
 

@@ -19,7 +19,21 @@ ModelSaveList::ModelSaveList (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELI
 	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
 	d.col_cnt = 6;
 
-	setupModelData (gametype, path, ignore);
+	setupModelData (gametype, path, ignore, SPWAW_UNKNOWN_BATTLE);
+}
+
+ModelSaveList::ModelSaveList (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, QObject *parent)
+	: QAbstractItemModel (parent)
+{
+	DBG_TRACE_CONSTRUCT;
+
+	/* Initialize */
+	memset (&d, 0, sizeof (d));
+
+	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
+	d.col_cnt = 6;
+
+	setupModelData (gametype, path, ignore, battletype);
 }
 
 ModelSaveList::~ModelSaveList (void)
@@ -93,7 +107,7 @@ ModelSaveList::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore)
+ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype)
 {
 	SPWAW_ERROR		rc;
 	unsigned long		i;
@@ -103,7 +117,7 @@ ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVEL
 
 	freeModelData();
 
-	rc = SPWAW_savelist (gametype, path, ignore, &(d.save_list));
+	rc = SPWAW_savelist (gametype, path, ignore, battletype, &(d.save_list));
 	if (rc != SPWERR_OK) return;
 
 	d.row_cnt = d.save_list->cnt;

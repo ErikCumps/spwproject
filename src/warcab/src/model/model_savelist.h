@@ -17,6 +17,7 @@ class ModelSaveList	: public QAbstractItemModel
 
 public:
 	ModelSaveList	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, QObject *parent = 0);
+	ModelSaveList	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, QObject *parent = 0);
 	~ModelSaveList	(void);
 
 public:
@@ -43,13 +44,13 @@ private:
 	QList<NODE_DATA>		data_list;
 	QList<NODE_IDX>			data_idx;
 	struct s_data {
-		unsigned long			row_cnt;
-		unsigned long			col_cnt;
-		SPWAW_SAVELIST			*save_list;
+		unsigned long		row_cnt;
+		unsigned long		col_cnt;
+		SPWAW_SAVELIST		*save_list;
 	} d;
 
 private:
-	void	setupModelData	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore);
+	void	setupModelData	(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype);
 	void	freeModelData	(void);
 	QString	sort_transform	(NODE_DATA *ptr, int col, int idx);
 };
