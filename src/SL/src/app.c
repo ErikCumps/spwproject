@@ -1,7 +1,7 @@
 /** \file
  * Slay's Library - application information handling.
  *
- * Copyright (C) 2001-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2001-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -38,7 +38,7 @@ typedef struct s_slapp_info {
 	} info;		/*!< general information	*/
 	struct s_build_internal {
 		char	*build;				/*!< build number			*/
-		char	*date;				/*!< build datestamp			*/
+		char	*date;				/*!< build date				*/
 		char	*time;				/*!< build timestamp			*/
 	} build;	/*!< build information		*/
 	struct s_context_internal {
@@ -347,22 +347,6 @@ SL_APP_description (void)
 	return (info.info.desc);
 }
 
-/*! Returns application executable name
- *
- * \return	pointer to string with application executable name
- */
-char *
-SL_APP_exe_name (void)
-{
-	return (info.context.exe_name);
-}
-
-char *
-SL_APP_auth (void)
-{
-	return (info.info.auth);
-}
-
 /*! Returns application version
  *
  * \return	pointer to string with version info
@@ -381,6 +365,107 @@ char *
 SL_APP_version_ex (void)
 {
 	return (info.extra.longvers);
+}
+
+/*! Returns copyright year info
+ *
+ * \return	pointer to string with copyright year info
+ */
+
+char *
+SL_APP_copyright (void)
+{
+	return (info.info.copy);
+}
+
+/*! Returns main author name
+ *
+ * \return	pointer to string with main author name
+ */
+char *
+SL_APP_author (void)
+{
+	return (info.info.auth);
+}
+
+/*! Returns main author email
+ *
+ * \return	pointer to string with main author email
+ */
+char *
+SL_APP_email (void)
+{
+	return (info.info.mail);
+}
+
+/*! Returns build number
+ *
+ * \return	pointer to string with build number
+ */
+char *
+SL_APP_build_number (void)
+{
+	return (info.build.build);
+}
+
+/*! Returns build date
+ *
+ * \return	pointer to string with build date
+ */
+char *
+SL_APP_build_date (void)
+{
+	return (info.build.date);
+}
+
+/*! Returns build timestamp
+ *
+ * \return	pointer to string with build timestamp
+ */
+char *
+SL_APP_build_time (void)
+{
+	return (info.build.time);
+}
+
+/*! Returns initial current working directory
+ *
+ * \return	pointer to string with initial current working directory
+ */
+char *
+SL_APP_cwd (void)
+{
+	return (info.context.cwd);
+}
+
+/*! Returns application executable name
+ *
+ * \return	pointer to string with application executable name
+ */
+char *
+SL_APP_exe_name (void)
+{
+	return (info.context.exe_name);
+}
+
+/*! Returns application executable path
+ *
+ * \return	pointer to string with application executable path
+ */
+char *
+SL_APP_exe_path (void)
+{
+	return (info.context.exe_path);
+}
+
+/*! Returns application data path
+ *
+ * \return	pointer to string with application data path
+ */
+char *
+SL_APP_data_path (void)
+{
+	return (info.context.data_path);
 }
 
 /*! Returns application info string
@@ -402,25 +487,6 @@ SL_APP_info_ex (void)
 {
 	return (info.extra.longinfo);
 }
-
-char *
-SL_APP_cwd (void)
-{
-	return (info.context.cwd);
-}
-
-char *
-SL_APP_exe_path (void)
-{
-	return (info.context.exe_path);
-}
-
-char *
-SL_APP_data_path (void)
-{
-	return (info.context.data_path);
-}
-
 
 /*! Reports application information handler state
  *

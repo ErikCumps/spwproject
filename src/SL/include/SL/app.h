@@ -1,7 +1,7 @@
 /** \file
  * Slay's Library - application information handling.
  *
- * Copyright (C) 2001-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2001-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -49,15 +49,21 @@ extern void	SL_APP_shutdown		(void);
 
 extern char*	SL_APP_name		(void);
 extern char*	SL_APP_description	(void);
-extern char*	SL_APP_auth		(void);
-extern char*	SL_APP_exe_name		(void);
 extern char*	SL_APP_version		(void);
 extern char*	SL_APP_version_ex	(void);
-extern char*	SL_APP_info		(void);
-extern char*	SL_APP_info_ex		(void);
+extern char*	SL_APP_copyright	(void);
+extern char*	SL_APP_author		(void);
+extern char*	SL_APP_email		(void);
+extern char*	SL_APP_build_number	(void);
+extern char*	SL_APP_build_date	(void);
+extern char*	SL_APP_build_time	(void);
 extern char*	SL_APP_cwd		(void);
+extern char*	SL_APP_exe_name		(void);
 extern char*	SL_APP_exe_path		(void);
 extern char*	SL_APP_data_path	(void);
+extern char*	SL_APP_info		(void);
+extern char*	SL_APP_info_ex		(void);
+
 
 
 
