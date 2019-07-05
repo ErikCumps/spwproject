@@ -295,7 +295,7 @@ CFG_init (void)
 	if (!storage_local)
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage_local object");
 
-	storage_global = new QSettings (SL_APP_auth (), SL_APP_name ());
+	storage_global = new QSettings (SL_APP_author (), SL_APP_name ());
 	if (!storage_global)
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage_global object");
 

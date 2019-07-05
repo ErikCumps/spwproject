@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "about" dialog box.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,24 +9,45 @@
 #include "resource.h"
 #include "gui_dlg_about.h"
 
-#define	BOX_WIDTH	400
-#define	BOX_HEIGHT	300
+#define	BOX_WIDTH	500
+#define	BOX_HEIGHT	350
 #define	BOX_MARGIN	 10
 
 #define	BKG_WIDTH	BOX_WIDTH
 #define	BKG_HEIGHT	BOX_HEIGHT
 
-#define	ABOUT_MSG								\
-	"Warcab is a tool to record and track battles in an SP:WaW campaign,\n"	\
-	"or to record and track turns in standalone battles from scenarios.\n"	\
-	"It is inspired by Campaign Watcher.\n"					\
-	"\n"									\
-	"Warcab tracks information for core units (including reassignments)\n"	\
-	"during a campaign. It also shows and tracks information for core,\n"	\
-	"auxiliary and opponent units during battles and battle turns.\n"	\
-	"\n"									\
-	"Its current main missing features are data export and printing.\n"	\
+#define	ABOUT_MSG												\
+	"Warcab is a tool to record and track battles in SP:Waw and winSPWW2 campaigns, or to record\n"		\
+	"and track turns in standalone battles from scenarios.\n"						\
+	"\n"													\
+	"It is inspired by Campaign Watcher.\n"									\
+	"\n"													\
+	"Warcab tracks information for core units (including reassignments) during a campaign. It also shows\n"	\
+	"and tracks information for core, auxilliary and opponent units during battles and battle turns.\n"	\
+	"\n"													\
+	"Its current main missing features are data export and printing.\n"					\
 	"\n"
+
+static QString
+build_info (void)
+{
+	char			buf[4096];
+	UtilStrbuf		str(buf, sizeof (buf), true, true);
+
+	str.clear();
+	str.printf ("<h2>This is a BETA version!</h2>\n");
+	str.printf ("<b>");
+	str.printf ("<br>%s - %s", SL_APP_name(), SL_APP_description());
+	str.printf ("<br>");
+	str.printf ("<br>Version %s (build %s)", SL_APP_version(), SL_APP_build_number());
+	str.printf ("<br>Copyright (C) %s by %s <%s>", SL_APP_copyright(), SL_APP_author(), SL_APP_email());
+	str.printf ("<br>");
+	str.printf ("<br>Executable file: %s", SL_APP_exe_name());
+	str.printf ("<br>Build timestamp: %s %s", SL_APP_build_date(), SL_APP_build_time());
+	str.printf ("</b>");
+
+	return QString(buf);
+}
 
 GuiDlgAbout::GuiDlgAbout (void)
 	: QDialog (0, Qt::Dialog)
@@ -82,13 +103,13 @@ GuiDlgAbout::GuiDlgAbout (void)
 	d.buttons->setOrientation(Qt::Horizontal);
 	d.buttons->setStandardButtons(QDialogButtonBox::Ok);
 
-	/* Create application icon label */
-	GUINEW (d.app_icon, QLabel (d.body), ERR_GUI_DLG_ABOUT_INIT_FAILED, "application icon label");
-	d.app_icon->setPixmap (*RES_pixmap (RID_MAIN_ICON));
+	/* Create application logo label */
+	GUINEW (d.app_logo, QLabel (d.body), ERR_GUI_DLG_ABOUT_INIT_FAILED, "application logo label");
+	d.app_logo->setPixmap (*RES_pixmap (RID_ABOUT_LOGO));
 
 	/* Create application info label */
 	GUINEW (d.app_info, QLabel (d.body), ERR_GUI_DLG_ABOUT_INIT_FAILED, "application info label");
-	d.app_info->setText (SL_APP_info_ex());
+	d.app_info->setText (build_info());
 
 	/* Create message label */
 	GUINEW (d.message, QLabel (d.body), ERR_GUI_DLG_ABOUT_INIT_FAILED, "message label");
@@ -97,9 +118,10 @@ GuiDlgAbout::GuiDlgAbout (void)
 	/* Create body layout */
 	GUINEW (d.layout, QGridLayout (d.body), ERR_GUI_DLG_ABOUT_INIT_FAILED, "body layout");
 	d.layout->setContentsMargins(BOX_MARGIN, BOX_MARGIN, BOX_MARGIN, BOX_MARGIN + but_height);
-	d.layout->addWidget (d.app_icon,	0, 0, 1, 1);
-	d.layout->addWidget (d.app_info,	0, 1, 1, 1);
-	d.layout->addWidget (d.message,		1, 0, 1, 2);
+	d.layout->addWidget (d.app_logo,	0, 0, 1, 1);
+	d.layout->addWidget (d.app_info,	0, 1, 1, 2);
+	d.layout->setRowStretch (1, 2);
+	d.layout->addWidget (d.message,		2, 0, 1, 3);
 
 	/* Finally connect signals and slots */
 	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));

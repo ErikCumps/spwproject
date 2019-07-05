@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "about" dialog box.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -29,7 +29,7 @@ private:
 		QBrush			*body_brush;
 		QPalette		*body_palette;
 		QDialogButtonBox	*buttons;
-		QLabel			*app_icon;
+		QLabel			*app_logo;
 		QLabel			*app_info;
 		QLabel			*message;
 		QGridLayout		*layout;
