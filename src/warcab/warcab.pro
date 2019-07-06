@@ -1,6 +1,6 @@
 # The SPWaW war cabinet.
 #
-# Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL V2.
 
@@ -15,6 +15,7 @@ CONFIG	+= qwt
 UI_DIR			= ./ui
 MOC_DIR			= ./moc
 PRECOMPILED_HEADER	= stdafx.h
+RC_FILE			= resource/warcab.rc
 
 VPATH	= src
 

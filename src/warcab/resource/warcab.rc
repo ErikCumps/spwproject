@@ -1,0 +1,39 @@
+#include <windows.h>
+
+// Icon
+IDI_ICON1	ICON	DISCARDABLE	"work/logo1/logo1_100x100_icon.ico"
+
+// Version
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION	0,8,0,1
+PRODUCTVERSION	0,8,0,1
+FILEFLAGSMASK	VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+FILEFLAGS	(VS_FF_PRERELEASE|VS_FF_DEBUG)
+#else
+FILEFLAGS	(VS_FF_PRERELEASE|0)
+#endif
+FILEOS		VOS_NT_WINDOWS32
+FILETYPE	VFT_APP
+FILESUBTYPE	0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "Comments", "The SP:WaW and winSPWW2 war cabinet"
+            VALUE "CompanyName", "Erik Cumps"
+            VALUE "FileDescription", "warcab"
+            VALUE "FileVersion", "0.8.0-BETA#1"
+            VALUE "InternalName", "warcab.exe"
+            VALUE "LegalCopyright", "Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>"
+            VALUE "OriginalFilename", "warcab.exe"
+            VALUE "ProductName", "spwproject"
+            VALUE "ProductVersion", "0.8.0-BETA#1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
