@@ -1,5 +1,5 @@
 # spwproject
-The Steel Panthers World At War savegame inspection and campaign tracking project.
+The SP:WaW and winSPWW2 savegame inspection and campaign tracking project.
 
 Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
 

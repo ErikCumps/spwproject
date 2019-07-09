@@ -1,7 +1,7 @@
 #SL
 This is Slay's library.
 
-Copyright (C) 2001-2016 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2001-2019 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 

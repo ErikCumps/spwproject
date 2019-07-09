@@ -1,27 +1,22 @@
 #spwawlib
-This is the Steel Panthers World at War library.
+This is the SP:WaW and winSPWW2 library.
 
-Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
-This library provides (almost complete) access to SP:WaW savegames.
+This library provides (almost complete) access to SP:WaW and winSPWW2 savegames.
 
-It can create snapshots from these savegames and it can add snapshots
-to a dossier for progress and history tracking.
+It can create snapshots from these savegames and it can add snapshots to a
+dossier for progress and history tracking.
 
-Not all details of the SP:WaW savegame content have (yet) been decoded,
-but most useful information for turn, batle and campaign tracking is
-available. There is some confusion with regards to the extra campaign
-information. for example, the number of major/minor victories and losses
-in a campaign is not captured.
+Not all details of the SP:WaW and winSPWW2 savegame content have (yet) been
+decoded, but most useful information for turn, batle and campaign tracking is
+available.
 
-The library also provides access to the game's OOB file content.
+The library also provides access to the SP:WaW and winSPWW2 OOB file content.
 
 The snapshot and dossier files can be saved with zlib compression.
-
-Please note that there seem to be some incompatibilities with the new
-SP:WaW 2016 release. These are under investigation.
 
 NOTE
 ----

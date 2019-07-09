@@ -93,8 +93,7 @@ xcopy /Y spwdecompose\%TYPE%\spwdecompose.exe		%DST%
 xcopy /Y spwreconstruct\%TYPE%\spwreconstruct.exe	%DST%
 xcopy /Y warcab\%TYPE%\warcab.exe			%DST%
 xcopy /Y warcab\resource\warcab.res			%DST%
-xcopy /Y DATA\demo.warcab				%SAVE%
-xcopy /Y DATA\demo_standalone.warcab			%SAVE%
+xcopy /Y DATA\*.warcab					%SAVE%
 xcopy /Y DATA\README.txt				%DST%
 xcopy /Y DATA\CHANGES					%DST%
 xcopy /Y ..\LICENSE					%DST%

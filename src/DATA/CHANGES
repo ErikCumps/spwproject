@@ -1,11 +1,83 @@
-Welcome to the SPWaW war cabinet, release 0.6.3.
+Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.0.
 
-Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
 ChangeLog
 ---------
+
+2019-07-08, version 0.8.0
+
+    * Added support for multiple game types (currently SP:WaW and winSPWW2)
+        + date-specific OOB nation info and flags
+        + map hex connection detection and tramlines
+        + unified unit and formation types
+        + formations can contain core units as well as support units
+        + month-only battle/turn dates
+
+    * New feature - campaign battle results
+    The results of a campaign battle (Decisive Victory, Marginal Victory, Drawn
+    Battle, Marginal Defeat, Decisive Defeat) are now recorded and reported.
+    Note: they are not reported for older dossiers (when battle results were not
+    yet recorded).
+
+    * New feature - victory hex statistics reporting
+    The occupation status of the victory hexes is now reported for each battle
+    turn.
+
+    * New feature - campaign battle index
+    The campaign battle index tracks the position of the battle in the campaign,
+    compared to other battles. It is used to distinguish and sort the different
+    battles of a campaign, replacing the date-based mechanism which did no
+    longer function with month-only dates.
+
+    * New feature - tramlines to stratmap
+    The stratmap now also shows tramlines.
+
+    * New feature - support local and global configuration storage
+    Warcab preferences can now be stored globally (in the registry), or locally
+    (in a warcab.ini file).
+
+    * Improvement - much improved unit detection for SP:WaW
+    Based on information learned from winSPWW2, the SP:WaW unit detection has
+    been much improved, significantly reducing the risk of misdetection.
+
+    * Improvement - changed unit 'radio' status to 'contact' status
+    The old unit radio status is now reported as a unit contact status (No
+    Contact, Radio Contact, Direct Contact)
+
+    * Improvement - updated loaded unit position recording
+    For the position of a loaded unit, the position of the loading unit is
+    recorded.
+
+    * Improvement - only report battle losses and force turn status when relevant
+    These are now only reported for the final (score) turns of campaign battles.
+
+    * Improvement - improved savegame unpacked data handling
+    When the size of the savegame section is not fixed (or unknown), buffers are
+    auto-allocated to load the uncompressed section data in.
+
+    * Improvement - some cosmetic improvements
+
+    * Fix - dossier/snapshot saving
+    Don't destroy existing file if saving fails.
+
+    * Fix - fixed bug not setting dossier info
+    The dossier info was not saved in the dossier file and was lost after
+    loading the dossier file.
+
+    * Fix - fixed graph horizontal axis label redraw problem
+    When moving from battle to battle, the orizontal axis labels where not
+    regenerated when the number of items on the axis did not change between
+    battles.
+
+    * Fix - fixed some memory corruptions and leaks
+
+    * Documentation:
+        + added SP:WaW and winSPWW2 OOB file format documentation
+        + updated SP:WaW save file sections format documentation
+        + added winSPWW2 save file sections format documentation
 
 2018-10-03, version 0.7.0
 
