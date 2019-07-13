@@ -57,7 +57,7 @@ typedef struct s_SPWAW_BATTLE_DATE {
 
 /* SPWAW turn date */
 typedef struct s_SPWAW_TURN_DATE {
-	int		turn;
+	UINT		turn;
 	SPWAW_DATE	date;
 } SPWAW_TURN_DATE;
 

@@ -13,7 +13,7 @@
 
 /*! Creates a new, empty, savegame content structure */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **game)
+SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **savegame)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*p = NULL;
@@ -21,8 +21,8 @@ SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **game)
 	int		i;
 
 	CSPWINIT;
-	CNULLARG (game);
-	*game = NULL;
+	CNULLARG (savegame);
+	*savegame = NULL;
 
 	map = gamedata_SECMAP(gametype);
 
@@ -36,7 +36,7 @@ SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **game)
 		p->seclst[i].idx = map->list[i].idx;
 	}
 
-	*game = p;
+	*savegame = p;
 
 	return (SPWERR_OK);
 
@@ -46,14 +46,14 @@ handle_error:
 
 /*! Frees a savegame content structure */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_free (SPWAW_SAVEGAME **game)
+SPWAW_savegame_free (SPWAW_SAVEGAME **savegame)
 {
 	SPWAW_SAVEGAME	*p;
 
 	CSPWINIT;
-	CNULLARG (game);
+	CNULLARG (savegame);
 
-	p = *game; *game = NULL;
+	p = *savegame; *savegame = NULL;
 	if (p) {
 		if (p->comment.data) safe_free (p->comment.data);
 		if (p->seclst) {
@@ -71,7 +71,7 @@ SPWAW_savegame_free (SPWAW_SAVEGAME **game)
 
 /*! Creates a new savegame content structure from an existing savegame */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SAVEGAME **game)
+SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SAVEGAME **savegame)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SAVEGAME	*p;
@@ -79,8 +79,8 @@ SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SA
 	int		i;
 
 	CSPWINIT;
-	CNULLARG (dir); CNULLARG (game);
-	*game = NULL;
+	CNULLARG (dir); CNULLARG (savegame);
+	*savegame = NULL;
 
 	rc = SPWAW_savegame_new (gametype, &p);
 	ERRORGOTO ("SPWAW_savegame_new()", handle_error);
@@ -105,7 +105,7 @@ SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SA
 
 	gamedata_free (&data);
 
-	*game = p;
+	*savegame = p;
 	return (SPWERR_OK);
 
 handle_error:
@@ -115,7 +115,7 @@ handle_error:
 
 /*! Creates a new savegame from an existing savegame content structure */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
+SPWAW_savegame_save (SPWAW_SAVEGAME **savegame, const char *dir, int id)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SAVEGAME	*p;
@@ -123,8 +123,8 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **game, const char *dir, int id)
 	int		i, j;
 
 	CSPWINIT;
-	CNULLARG (game); CNULLARG (*game);  CNULLARG (dir);
-	p = *game;
+	CNULLARG (savegame); CNULLARG (*savegame);  CNULLARG (dir);
+	p = *savegame;
 
 	data = gamedata_new(p->gametype);
 	COOMGOTO (data, "GAMEDATA", handle_error);

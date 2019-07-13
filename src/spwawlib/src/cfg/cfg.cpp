@@ -57,7 +57,6 @@ cfg_oobdir (SPWAW_GAME_TYPE gametype)
 	for (int i=0; i<cfg.oob_cnt; i++) {
 		if (cfg.oob_lst[i].gametype == gametype) {
 			return (cfg.oob_lst[i].oobdir);
-			break;
 		}
 	}
 
@@ -70,7 +69,6 @@ cfg_oobptr (SPWAW_GAME_TYPE gametype)
 	for (int i=0; i<cfg.oob_cnt; i++) {
 		if (cfg.oob_lst[i].gametype == gametype) {
 			return (cfg.oob_lst[i].oobptr);
-			break;
 		}
 	}
 

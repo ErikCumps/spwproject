@@ -359,7 +359,6 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 
 	uidx = cidx = 0;
 	for (i=0; i<(int)raw->units.cnt; i++) {
-		SPWAW_SNAP_OOB_UEL_STRINGS	*str;
 		SPWAW_SNAP_OOB_UEL_DATA		*dat;
 
 		if (raw->units.raw[i].dutype == SPWAW_UNIT_TYPE_UNKNOWN) continue;
@@ -374,12 +373,10 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 
 		if (iscrew) {
 			dat = &(p->crews.list[cidx].data);
-			str = &(p->crews.list[cidx].strings);
 			dat->idx = cidx;
 			cidx++;
 		} else {
 			dat = &(p->units.list[uidx].data);
-			str = &(p->units.list[uidx].strings);
 			dat->idx = uidx;
 			uidx++;
 		}
@@ -450,7 +447,7 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		if ((dat->posx < 0) || (dat->posy < 0)) dat->posx = dat->posy = -1;
 
 		/* Backwards compatibility support for older snapshots... */
-		if ((dat->posx == -1) && (dat->posx == -1) && dat->loaded) {
+		if ((dat->posx == -1) && (dat->posy == -1) && dat->loaded) {
 			pidx = dat->loader.rid;
 			psrc = (pidx < raw->positions.cnt) ? &(raw->positions.raw[pidx]) : NULL;
 			if (psrc) {

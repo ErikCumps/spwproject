@@ -233,7 +233,8 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 		fprintf (file,
 			"rid,name,"
 			"wclass,B16,size,"
-			"warhead,pen.HE,pen.AP,kill,B22,accuracy,rng_max,rng_APCR,pen_APCR,pen_HEAT,sound,"
+			"warhead,pen.HE,pen.AP,"
+			"kill,B22,accuracy,rng_max,rng_APCR,pen_APCR,pen_HEAT,sound,"
 			"B30,B31,B32,B33,B34,B35,B36"
 			"\n");
 
@@ -242,7 +243,8 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 			fprintf (file,
 				"%d,%s,"
 				"%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
+				"%u,%u,%u,"
+				"%u,%u,%u,%u,%u,%u,%u,%u"
 				"%u,%u,%u,%u,%u,%u,%u"
 				"\n",
 				i, azsname,

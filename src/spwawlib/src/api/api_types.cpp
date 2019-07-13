@@ -229,7 +229,6 @@ SPWAW_period2str (SPWAW_PERIOD *period, char *buf, int len)
 	}
 	if (period->minutes != 0) {
 		sb.printf ("%s%d minutes", first?"":", ", period->minutes);
-		first = false;
 	}
 
 	return (SPWERR_OK);
