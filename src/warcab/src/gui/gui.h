@@ -52,7 +52,7 @@ extern void		GUI_init	(int *argc, char **argv);
 extern void		GUI_exit	(void);
 extern int		GUI_exec	(void);
 
-extern SL_EVT_RC	GUI_EVT_abort	(const char *file, unsigned long line, const char *funct, const char *msg);
+extern SL_EVT_RC	GUI_EVT_abort	(const char *file, unsigned long line, const char *func, const char *msg);
 extern void		GUI_HOOK_exit	(unsigned int ec, char *msg, SL_BOOL dump);
 extern SL_ERROR_REQUEST	GUI_EVT_error	(SL_ERROR_DATA *stack);
 

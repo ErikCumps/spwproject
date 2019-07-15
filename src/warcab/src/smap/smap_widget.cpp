@@ -72,10 +72,10 @@ build_MDLT_DEF (void)
 {
 	MDLT_DEF	*def = NULL;
 
-	SL_SAFE_CALLOC (def, 1, sizeof (*def));
+	SL_SAFE_CALLOC (def, 1, sizeof (*def)); // FIXME: def could be NULL in case of OOM!
 	def->col_cnt = ARRAYCOUNT(unit_table_coldef);
 
-	SL_SAFE_CALLOC (def->col_lst, def->col_cnt, sizeof (*(def->col_lst)));
+	SL_SAFE_CALLOC (def->col_lst, def->col_cnt, sizeof (*(def->col_lst))); // FIXME: def->col_lst could be NULL in case of OOM!
 	for (int i=UTC_UID; i<=UTC_LAST; i++) {
 		for (int j=0; j<def->col_cnt; j++) {
 			if (unit_table_coldef[j].id == i) {

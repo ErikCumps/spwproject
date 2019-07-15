@@ -16,7 +16,7 @@ class GuiMMASView	: public QTableView
 	Q_OBJECT
 
 public:
-	GuiMMASView	(bool hdr, GuiMMAS *stats, QWidget *P = 0);
+	GuiMMASView	(bool hdr, GuiMMAS *mmas, QWidget *P = 0);
 	~GuiMMASView	(void);
 
 	SL_ERROR	error_code;

@@ -57,7 +57,7 @@ public:
 
 public:
 	void		setup		(MDLT_DEF *def);
-	void		load		(MDLT_DATA *dat);
+	void		load		(MDLT_DATA *data);
 	void		clear		(void);
 	void		commit		(void);
 

@@ -71,7 +71,7 @@ public:
 
 public:
 	void		setup		(MDLPT_DEF *def);
-	void		load		(MDLPT_DATA *dat);
+	void		load		(MDLPT_DATA *data);
 	void		clear		(void);
 	void		commit		(void);
 

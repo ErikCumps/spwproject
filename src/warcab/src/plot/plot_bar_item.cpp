@@ -101,7 +101,7 @@ verifyRange (int size, int &i1, int &i2)
 
 class PlotBarItem::PrivateData
 {
-
+// FIXME: consider adding (or denying) a copy constructor?
 public:
 	PrivateData	(void);
 	~PrivateData	(void);

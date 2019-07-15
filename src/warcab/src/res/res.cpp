@@ -156,12 +156,12 @@ find_res_item (unsigned long id)
 }
 
 QPixmap *
-RES_pixmap (unsigned long id)
+RES_pixmap (unsigned long rid)
 {
 	RESITEM	*p = NULL;
 	QPixmap	*pm;
 
-	p = find_res_item (id);
+	p = find_res_item (rid);
 	if (!p) return (RES_PIXMAP_NONE);
 
 	switch (p->info->type) {
@@ -182,12 +182,12 @@ RES_pixmap (unsigned long id)
 }
 
 QPixmap *
-RES_pixmap (unsigned long id, unsigned long sid)
+RES_pixmap (unsigned long rid, unsigned long sid)
 {
 	RESITEM	*p = NULL;
 	QPixmap	*pm = NULL;
 
-	p = find_res_item (id);
+	p = find_res_item (rid);
 	if (!p) return (RES_PIXMAP_NONE);
 
 	if ((p->info->type != arc_IMGCOL) || (sid < 1) || (sid > p->info->sub_cnt)) return (RES_PIXMAP_NONE);

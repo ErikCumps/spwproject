@@ -105,7 +105,7 @@ GuiMainMenu::MenuStatus (QAction *action)
 
 #if	!EXPERIMENTAL
 	name = action->text ();
-	msg.sprintf ("Menu id 0x%8.8x = <%s>", action, qPrintable (name));
+	msg.sprintf ("Menu id 0x%8.8x = <%s>", (void *)action, qPrintable (name));
 	GUI_WIN->get_status()->message (msg, 1000);
 #endif	/* !EXPERIMENTAL */
 }

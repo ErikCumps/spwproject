@@ -50,14 +50,14 @@ RES_IMGCOL_handle (RESITEM *item)
 	rw = resource->width();
 	rh = resource->height();
 
-	SL_SAFE_CALLOC (dp, 1, sizeof (IMGCOL_DATA));
+	SL_SAFE_CALLOC (dp, 1, sizeof (IMGCOL_DATA)); // FIXME: dp could be NULL in case of OOM!
 	dp->iw = item->info->meta[0]; DEVASSERT (dp->iw != 0);
 	dp->ih = item->info->meta[1]; DEVASSERT (dp->ih != 0);
 
 	dp->cols = rw / dp->iw; if (rw % dp->iw) dp->cols++;
 	dp->rows = rh / dp->ih; if (rh % dp->iw) dp->rows++;
 
-	SL_SAFE_CALLOC (dp->res, dp->cols * dp->rows, sizeof (QPixmap *));
+	SL_SAFE_CALLOC (dp->res, dp->cols * dp->rows, sizeof (QPixmap *)); // FIXME: dp->res could be NULL in case of OOM!
 
 	for (r=0; r<dp->rows; r++) {
 		for (c=0; c<dp->cols; c++) {

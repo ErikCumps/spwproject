@@ -124,11 +124,7 @@ ModelOob::data (const QModelIndex &index, int role) const
 	if (!d.smap) return (QVariant());
 	if (!index.isValid()) return (QVariant());
 
-	if (parent (index) == QModelIndex()) {
-		p = (MDLO_DATA *)index.internalPointer();
-	} else {
-		p = (MDLO_DATA *)index.internalPointer();
-	}
+	p = (MDLO_DATA *)index.internalPointer();
 
 	return (MDLO_data (role, index.column(), p));
 }

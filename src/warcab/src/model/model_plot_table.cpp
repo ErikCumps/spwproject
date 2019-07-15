@@ -296,19 +296,19 @@ ModelPlotTable::MDLPT_data (int role, int row, int col) const
 }
 
 SPWDLT_TYPE
-ModelPlotTable::dlt_type (MDLPT_DATA_TYPE t)
+ModelPlotTable::dlt_type (MDLPT_DATA_TYPE type)
 {
-	SPWDLT_TYPE	type = SPWDLT_NONE;
+	SPWDLT_TYPE	t = SPWDLT_NONE;
 
-	switch (t) {
+	switch (type) {
 		case MDLPT_DATA_INT:
-			type = SPWDLT_INT;
+			t = SPWDLT_INT;
 			break;
 		default:
 			break;
 	}
 
-	return (type);
+	return (t);
 }
 
 void

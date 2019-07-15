@@ -43,7 +43,7 @@ filter_grow_list (MDL_MF_TGTLST *list, unsigned int size)
 	if (!list || !size) return;
 	list->size += size;
 
-	SL_SAFE_CALLOC (nptr, list->size, sizeof (MDL_MF_TGT));
+	SL_SAFE_CALLOC (nptr, list->size, sizeof (MDL_MF_TGT)); // FIXME: nptr could be NULL in case of OOM!
 	memcpy (nptr, list->list, list->cnt * sizeof (MDL_MF_TGT));
 
 	SL_SAFE_FREE (list->list); list->list = nptr;
@@ -135,7 +135,7 @@ filter_grow_list (xMDL_FILTER_LIST *list, unsigned int size)
 	if (!list || !size) return;
 
 	list->size += size;
-	SL_SAFE_CALLOC (nptr, list->size, sizeof (xMDL_FILTER_TARGET));
+	SL_SAFE_CALLOC (nptr, list->size, sizeof (xMDL_FILTER_TARGET)); // FIXME: nptr could be NULL in case of OOM!
 	memcpy (nptr, list->data, list->used * sizeof (xMDL_FILTER_TARGET));
 	SL_SAFE_FREE (list->data); list->data = nptr;
 }
@@ -148,7 +148,7 @@ xMDL_FILTER_new (xMDL_FILTER_LIST **list)
 	CAPNULLARG (list);
 	*list = NULL;
 
-	SL_SAFE_CALLOC (ptr, 1, sizeof (xMDL_FILTER_LIST));
+	SL_SAFE_CALLOC (ptr, 1, sizeof (xMDL_FILTER_LIST)); // FIXME: ptr could be NULL in case of OOM!
 
 	/* Preallocate SIZE list entries */
 	filter_alloc_list (ptr, SIZE);

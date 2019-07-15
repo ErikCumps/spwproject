@@ -40,7 +40,7 @@ RES_XPM_handle (RESITEM *item)
 	xpm_lst = (unsigned long *)((char *)item->item->data + sizeof (unsigned long));
 	xpm_str = (char *)item->item->data + sizeof (unsigned long)*(1+*xpm_cnt);
 
-	SL_SAFE_CALLOC (xpm, *xpm_cnt, sizeof (char *));
+	SL_SAFE_CALLOC (xpm, *xpm_cnt, sizeof (char *)); // FIXME: xpm could be NULL in case of OOM!
 	for (i=0; i<*xpm_cnt; i++) {
 		xpm[i] = xpm_lst[i] + xpm_str;
 	}
