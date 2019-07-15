@@ -166,7 +166,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 		if (p->OOBrid) {
 			fprintf (rf, "{%4lu} OOBrid    : %u\n", i, p->OOBrid);
 		} else {
-			fprintf (rf, "{%4lu} OOBrid    : 0 (special formation)\n", i, p->OOBrid);
+			fprintf (rf, "{%4lu} OOBrid    : 0 (special formation)\n", i);
 		}
 		fprintf (rf, "{%4lu} status    : %u\n", i, p->status);
 		fprintf (rf, "{%4lu} player    : %u\n", i, p->player);
