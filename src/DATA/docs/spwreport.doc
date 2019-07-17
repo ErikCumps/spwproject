@@ -1,0 +1,126 @@
+Welcome to spwreport.exe, the multi-purpose spwawlib tool.
+
+Overview
+--------
+
+  The spwreport tool is a multi-purpose spwawlib tool that can be used to:
+
+  * Generate OOB dumps in CSV format for SP:WaW and winSPWW2 OOB data files
+  * Generate reports for SP:WaW and winSPWW2 savegames
+  * Generate reports for spwawlib snapshot files
+
+
+Generating OOB dumps - usage
+----------------------------
+
+  Generate an OOB dump in CSV format (spwoobdump_*.csv files).
+
+  Usage: spwreport.exe oobdump GAME OOB [raw]
+  Where: GAME    game type
+         OOB     path to oob dir
+         raw     specify "raw" for a raw oob data dump
+
+  The OOB files are dumped in CSV format in the current directory.
+
+
+Generating OOB dumps - examples
+-------------------------------
+
+  To dump the SP:WaW OOB data, do:
+
+  C:\path\to\spwreport.exe oobdump c:\path\to\spwaw
+
+  To dump the winSPWW2 OOB data, do:
+
+  C:\path\to\spwreport.exe oobdump "c:\path\to\winspww2\Game Data\OOBs"
+
+
+
+
+
+Generating reports for savegames - usage
+----------------------------------------
+
+  Generate savegame reports:
+
+  Usage: spwreport.exe savereport GAME OOB DIR INDEX BASE [TYPE]
+  Where: GAME    game type
+         OOB     path to oob dir
+         DIR     path to savegame dir
+         INDEX   index of savegame to generate report for
+         BASE    basename for report files
+         TYPE    optional type of report to generate (defaults to ALL reports)
+
+  Supported game types:
+    SPWAW       SP:WaW
+    WINSPWW2    winSPWW2
+
+  Supported report types:
+    raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)
+    elaborate   an elaborate report (*_complete.txt)
+    normal      a normal report (*_short.txt)
+    narrative   a normal report in a narrative format (*_narrative.txt)
+    table       a normal report in table format (*_table.txt)
+    map         a map and unit positions dump (*_positions.dump)
+
+  Two reports are generate for elaborate, normal, narrative and table reports:
+  + a full report covering the full player1 and player2 forces
+  + a core report covering the player1 core force only.
+  
+  The report files of the requested types are created in the current directory.
+  All report fils share the same BASE prefix.
+
+
+Generating reports for savegames - examples
+-------------------------------------------
+
+  To generate all types of reports for the SP:WaW savegame from slot number 42,
+  as files in the current directory all starting with the "REPORT42_" prefix,
+  do:
+  
+  C:\path\to\spwreport.exe savereport SPWAW c:\path\to\spwaw c:\path\to\spwaw\SAVE 42 REPORT42_
+
+  To generate all types of reports for the winSPWW2 savegame from slot number
+  84, as files in the current directory all starting with the "REPORT84_"
+  prefix, do:
+  
+  C:\path\to\spwreport.exe savereport SPWAW "c:\path\to\winspww2\Game Data\OOBs" "c:\path\to\winspww2\Saved Games\" 42 REPORT42_
+
+
+
+
+
+Generating reports for snapshot files - usage
+---------------------------------------------
+
+  Generate snapshot reports:
+
+  Usage: spwreport.exe snapreport SNAP BASE [TYPE]
+  Where: SNAP    filename of snapshot to generate report for
+         BASE    basename for report files
+         TYPE    optional type of report to generate (defaults to ALL reports)
+
+
+  Supported report types:
+    raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)
+    elaborate   an elaborate report (*_complete.txt)
+    normal      a normal report (*_short.txt)
+    narrative   a normal report in a narrative format (*_narrative.txt)
+    table       a normal report in table format (*_table.txt)
+    map         a map and unit positions dump (*_positions.dump)
+
+  Two reports are generate for elaborate, normal, narrative and table reports:
+  + a full report covering the full player1 and player2 forces
+  + a core report covering the player1 core force only.
+
+  The report files of the requested types are created in the current directory.
+  All report fils share the same BASE prefix.
+
+  
+Generating reports for snapshot files - examples
+------------------------------------------------
+
+  To generate all types of reports for the "mysnapshot.snap" snapshot file, as files in
+  the current directory all starting with the "REPORT" prefix, do:
+  
+  C:\path\to\spwreport.exe snapreport mysnapshot.snap REPORT

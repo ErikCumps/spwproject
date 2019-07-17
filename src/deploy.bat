@@ -67,6 +67,10 @@ rem Prepare the Save directory
 set SAVE=%DST%\save
 mkdir %SAVE% >nul 2>nul
 
+rem Prepare the Docs directory
+set DOCS=%DST%\docs
+mkdir %DOCS% >nul 2>nul
+
 rem A test install is a bit special
 if "%TYPE%" == "test" goto TESTINSTALL
 
@@ -96,6 +100,8 @@ xcopy /Y warcab\resource\warcab.res			%DST%
 xcopy /Y DATA\*.warcab					%SAVE%
 xcopy /Y DATA\README.txt				%DST%
 xcopy /Y DATA\CHANGES					%DST%
+xcopy /Y DATA\docs					%DOCS%
+xcopy /Y ..\info\research\*_records.doc			%DOCS%
 xcopy /Y ..\LICENSE					%DST%
 
 if "%TYPE%" == "release" goto DONE

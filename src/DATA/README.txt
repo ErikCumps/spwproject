@@ -30,9 +30,9 @@ spwreport.exe
 
   Generate OOB dumps in CSV format for SP:WaW and winSPWW2 OOB data files.
 
-  Generate savegame reports for SP:WaW and winSPWW2 savegames.
+  Generate reports for SP:WaW and winSPWW2 savegames.
 
-  Generate snapshot reports.
+  Generate reports for spwawlib snapshot files.
   
   
 spwdecompose.exe
