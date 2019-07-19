@@ -3,45 +3,45 @@ Welcome to spwreport.exe, the multi-purpose spwawlib tool.
 Overview
 --------
 
-  The spwreport tool is a multi-purpose spwawlib tool that can be used to:
+The spwreport tool is a multi-purpose spwawlib tool that can be used to:
 
   * Generate OOB dumps in CSV format for SP:WaW and winSPWW2 OOB data files
   * Generate reports for SP:WaW and winSPWW2 savegames
   * Generate reports for spwawlib snapshot files
 
 
-Generating OOB dumps - usage
-----------------------------
+Generating OOB dumps
+--------------------
 
-  Generate an OOB dump in CSV format (spwoobdump_*.csv files).
+This tool can generate OOB dumps in CSV format (spwoobdump_*.csv files).
 
   Usage: spwreport.exe oobdump GAME OOB [raw]
   Where: GAME    game type
          OOB     path to oob dir
          raw     specify "raw" for a raw oob data dump
 
-  The OOB files are dumped in CSV format in the current directory.
+The OOB files are dumped in CSV format in the current directory.
+
+The currently known data items in the OOB files are documented in the
+"SPWAW_oob.doc" and "winSPWW2_oob.doc" files.
 
 
-Generating OOB dumps - examples
--------------------------------
+For example:
 
-  To dump the SP:WaW OOB data, do:
+To dump the SP:WaW OOB data, do:
 
   C:\path\to\spwreport.exe oobdump c:\path\to\spwaw
 
-  To dump the winSPWW2 OOB data, do:
+To dump the winSPWW2 OOB data, do:
 
   C:\path\to\spwreport.exe oobdump "c:\path\to\winspww2\Game Data\OOBs"
 
 
 
+Generating reports for savegames
+--------------------------------
 
-
-Generating reports for savegames - usage
-----------------------------------------
-
-  Generate savegame reports:
+This tool can generate multiple types of savegame reports:
 
   Usage: spwreport.exe savereport GAME OOB DIR INDEX BASE [TYPE]
   Where: GAME    game type
@@ -66,40 +66,36 @@ Generating reports for savegames - usage
   Two reports are generate for elaborate, normal, narrative and table reports:
   + a full report covering the full player1 and player2 forces
   + a core report covering the player1 core force only.
-  
-  The report files of the requested types are created in the current directory.
-  All report fils share the same BASE prefix.
+
+The report files of the requested types are created in the current directory,
+all report files share the same BASE prefix.
+
+Note: a snapshot file of the savegame will also be created.
 
 
-Generating reports for savegames - examples
--------------------------------------------
+For example:
 
-  To generate all types of reports for the SP:WaW savegame from slot number 42,
-  as files in the current directory all starting with the "REPORT42_" prefix,
-  do:
-  
+To generate all types of reports for the SP:WaW savegame from slot number 42, as
+files in the current directory all starting with the "REPORT42_" prefix, do:
+
   C:\path\to\spwreport.exe savereport SPWAW c:\path\to\spwaw c:\path\to\spwaw\SAVE 42 REPORT42_
 
-  To generate all types of reports for the winSPWW2 savegame from slot number
-  84, as files in the current directory all starting with the "REPORT84_"
-  prefix, do:
-  
+To generate all types of reports for the winSPWW2 savegame from slot number 84,
+as files in the current directory all starting with the "REPORT84_" prefix, do:
+
   C:\path\to\spwreport.exe savereport SPWAW "c:\path\to\winspww2\Game Data\OOBs" "c:\path\to\winspww2\Saved Games\" 42 REPORT42_
 
 
 
+Generating reports for snapshot files
+-------------------------------------
 
-
-Generating reports for snapshot files - usage
----------------------------------------------
-
-  Generate snapshot reports:
+This tool can generate multiple types of snapshot reports:
 
   Usage: spwreport.exe snapreport SNAP BASE [TYPE]
   Where: SNAP    filename of snapshot to generate report for
          BASE    basename for report files
          TYPE    optional type of report to generate (defaults to ALL reports)
-
 
   Supported report types:
     raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)
@@ -113,14 +109,13 @@ Generating reports for snapshot files - usage
   + a full report covering the full player1 and player2 forces
   + a core report covering the player1 core force only.
 
-  The report files of the requested types are created in the current directory.
-  All report fils share the same BASE prefix.
+The report files of the requested types are created in the current directory,
+all report files share the same BASE prefix.
 
-  
-Generating reports for snapshot files - examples
-------------------------------------------------
 
-  To generate all types of reports for the "mysnapshot.snap" snapshot file, as files in
-  the current directory all starting with the "REPORT" prefix, do:
-  
+For example:
+
+To generate all types of reports for the "mysnapshot.snap" snapshot file, as
+files in the current directory all starting with the "REPORT" prefix, do:
+
   C:\path\to\spwreport.exe snapreport mysnapshot.snap REPORT

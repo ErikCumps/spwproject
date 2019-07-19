@@ -101,6 +101,7 @@ xcopy /Y DATA\*.warcab					%SAVE%
 xcopy /Y DATA\README.txt				%DST%
 xcopy /Y DATA\CHANGES					%DST%
 xcopy /Y DATA\docs					%DOCS%
+xcopy /Y ..\info\research\oob\*_oob.doc			%DOCS%
 xcopy /Y ..\info\research\*_records.doc			%DOCS%
 xcopy /Y ..\LICENSE					%DST%
 
