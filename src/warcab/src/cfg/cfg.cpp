@@ -456,13 +456,17 @@ CFG_SET_oob_path (SPWAW_GAME_TYPE gametype, char *str)
 	switch (gametype) {
 		case SPWAW_GAME_TYPE_SPWAW:
 			if (cfg.cfg_spwaw.oob_path) SL_SAFE_FREE (cfg.cfg_spwaw.oob_path);
-			SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, str);
-			DEVASSERT (cfg.cfg_spwaw.oob_path != NULL);
+			if (strlen(str)) {
+				SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, str);
+				DEVASSERT (cfg.cfg_spwaw.oob_path != NULL);
+			}
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			if (cfg.cfg_winspww2.oob_path) SL_SAFE_FREE (cfg.cfg_winspww2.oob_path);
-			SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, str);
-			DEVASSERT (cfg.cfg_winspww2.oob_path != NULL);
+			if (strlen(str)) {
+				SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, str);
+				DEVASSERT (cfg.cfg_winspww2.oob_path != NULL);
+			}
 			break;
 		default:
 			break;
