@@ -25,7 +25,7 @@ cfg_set (int cnt, SPWAW_OOBCFG *list, bool withUD)
 	for (int i=0; i<cfg.oob_cnt; i++){
 		cfg.oob_lst[i].gametype = list[i].gametype;
 
-		if (list[i].oobdir) {
+		if (list[i].oobdir && strlen(list[i].oobdir)) {
 			char	path[MAX_PATH+1];
 
 			memset (path, 0, sizeof (path));
