@@ -225,6 +225,7 @@ GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int 
 		tstr.clear();
 		for (int i=0; i<cnt; i++) {
 			if (!SPWDLT_check(data[i].dlt)) { stop = true; break; }
+			if (b->ra[data[i].idx].dst == SPWAW_BADIDX) continue;
 
 			up = &(b->snap->OOBp1.core.units.list[data[i].idx]);
 			nup = &(nb->snap->OOBp1.core.units.list[b->ra[data[i].idx].dst]);
