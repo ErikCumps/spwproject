@@ -16,7 +16,7 @@ static SL_APP_INFO	app_info = {
 	{
 		"Warcab",
 		"The SP:WaW and winSPWW2 war cabinet",
-		"0.8.0-BETA#3",
+		"0.8.0-BETA#5",
 		"2005-2019",
 		"Erik Cumps",
 		"erik.cumps@gmail.com"
