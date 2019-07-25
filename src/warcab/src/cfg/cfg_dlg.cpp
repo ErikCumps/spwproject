@@ -382,7 +382,7 @@ CfgDlg::oob_browse_clicked (bool /*checked*/)
 	QString	dir;
 
 	dir = QFileDialog::getExistingDirectory (this,
-		QString(STR_OOB_BROWSE).arg(SPWAW_gametype2str(SPWAW_GAME_TYPE_SPWAW)),
+		QString(STR_OOB_BROWSE).arg(d.dlg_data->games[idx]->name),
 		(*d.games_gui)[idx].oob_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
 	if (!dir.isNull()) { (*d.games_gui)[idx].oob_edit->setText (dir); }
@@ -403,7 +403,7 @@ CfgDlg::sve_browse_clicked (bool /*checked*/)
 	if (start.isEmpty()) start = (*d.games_gui)[idx].oob_edit->text();
 
 	dir = QFileDialog::getExistingDirectory (this,
-		QString(STR_SVE_BROWSE).arg(SPWAW_gametype2str(SPWAW_GAME_TYPE_SPWAW)),
+		QString(STR_SVE_BROWSE).arg(d.dlg_data->games[idx]->name),
 		start, QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
 	if (!dir.isNull()) { (*d.games_gui)[idx].sve_edit->setText (dir); }
