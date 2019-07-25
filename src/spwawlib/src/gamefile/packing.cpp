@@ -185,7 +185,7 @@ unpack (int fd, DWORD len, void **dst, unsigned long *size)
 	if (!*dst) {
 		sbwrite_stop (sbw, (char **)dst, (long *)size);
 	} else {
-	sbwrite_stop (sbw);
+		sbwrite_stop (sbw);
 	}
 	bbread_stop (bbr);
 
@@ -375,8 +375,9 @@ unpack_section (int fd, BLOCKHEAD &block, void **dst, unsigned long *len)
 	if (!dst || !len) return (false);
 
 	if (block.flag & FLAG_COMPRESSED) {
-		if (unpack (fd, block.size, dst, len) != *len) {
-			ERROR2 ("failed to unpack section %d (%lu bytes)", block.section, *len);
+		volatile unsigned long *vlen = len;
+		if (unpack (fd, block.size, dst, len) != *vlen) {
+			ERROR2 ("failed to unpack section %d (%lu bytes)", block.section, *vlen);
 			return (false);
 		}
 		log ("unpacked section %d: %lu bytes -> %lu bytes\n", block.section, block.size, *len);
