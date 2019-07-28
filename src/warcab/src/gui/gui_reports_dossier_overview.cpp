@@ -203,7 +203,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 			}
 		} else {
 			str.printf ("%s %s: %s", lup->strings.uid, lup->data.name, lup->data.type);
-			idx = nidx = lup->data.uidx; b = d->blast;
+			idx = nidx = lup->data.idx; b = d->blast;
 			while (b->prev) {
 				nidx = b->ra[idx].src;
 				fup = b->info_sob->pbir_core.uir[idx].snap;
