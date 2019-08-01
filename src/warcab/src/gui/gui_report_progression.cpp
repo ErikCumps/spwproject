@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force progression report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -273,8 +273,8 @@ GuiRptPrg::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 
 		tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (dlt_color (SPWDLT_getint (pdata[i].dlt)))));
 		tstr.printf ("%3.3s %s %s %s (%+d)",
-			pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.type,
-			pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.name,
+			pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.tname,
+			pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
 			SPWDLT_getint (pdata[i].dlt));
 		tstr.printf ("</font><br>");
 	}
@@ -292,8 +292,8 @@ GuiRptPrg::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 	for (i=0; i<ncnt; i++) {
 		tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (dlt_color (SPWDLT_getint (ndata[i].dlt)))));
 		tstr.printf ("%3.3s %s %s %s (%+d)",
-			ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.type,
-			ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.name,
+			ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.tname,
+			ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
 			SPWDLT_getint (ndata[i].dlt));
 		tstr.printf ("</font><br>");
 	}

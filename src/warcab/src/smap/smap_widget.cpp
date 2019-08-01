@@ -203,7 +203,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 			hex = d.grid.grid2hex (d.b_info[d.b_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
 			hex->addUnit (SMAP_HI_BLUE);
 			d.b_info[d.b_cnt].uid		= udata->list[i].strings.uid;
-			d.b_info[d.b_cnt].unit		= udata->list[i].data.type;
+			d.b_info[d.b_cnt].unit		= udata->list[i].data.tname;
 			d.b_info[d.b_cnt].ready		= udata->list[i].attr.gen.ready;
 			d.b_info[d.b_cnt].damage	= udata->list[i].data.damage;
 			d.b_info[d.b_cnt].hcnt		= udata->list[i].data.hcnt_left;
@@ -226,7 +226,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 			hex = d.grid.grid2hex (d.r_info[d.r_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
 			hex->addUnit (SMAP_HI_RED);
 			d.r_info[d.r_cnt].uid		= udata->list[i].strings.uid;
-			d.r_info[d.r_cnt].unit		= udata->list[i].data.type;
+			d.r_info[d.r_cnt].unit		= udata->list[i].data.tname;
 			d.r_info[d.r_cnt].ready		= udata->list[i].attr.gen.ready;
 			d.r_info[d.r_cnt].damage	= udata->list[i].data.damage;
 			d.r_info[d.r_cnt].hcnt		= udata->list[i].data.hcnt_left;

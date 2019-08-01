@@ -25,7 +25,7 @@ ModelUnitlist::MDLUL_data (int role, int row, int col) const
 		case MDLUL_COLUMN_ID:
 			s.sprintf ("%s: %s",
 				d.data_bir->uir[row].snap->strings.uid,
-				d.data_bir->uir[row].snap->data.name);
+				d.data_bir->uir[row].snap->data.lname);
 			break;
 		default:
 			break;

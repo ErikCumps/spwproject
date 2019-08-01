@@ -61,14 +61,14 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir, SP
 			s = uir->snap->strings.uid;
 			break;
 		case MDLR_COLUMN_UNIT:
-			s = uir->snap->data.type;
+			s = uir->snap->data.tname;
 			break;
 		case MDLR_COLUMN_RNK:
 			s = uir->snap->strings.rank;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_LDR:
-			s = uir->snap->data.name;
+			s = uir->snap->data.lname;
 			break;
 		case MDLR_COLUMN_TYPE:
 			s = uir->snap->strings.utype;
@@ -299,14 +299,14 @@ MDLR_data_sort (int col, MDLR_DATA *p, MDL_CMPDATA &v)
 			v.u = MDL_PACK_UID(p->uir);
 			break;
 		case MDLR_COLUMN_UNIT:
-			v.s = p->uir->snap->data.type;
+			v.s = p->uir->snap->data.tname;
 			break;
 		case MDLR_COLUMN_RNK:
 			//v.i = p->uir->snap->data.rank;
 			v.i = p->uir->snap->data.brank;
 			break;
 		case MDLR_COLUMN_LDR:
-			v.s = p->uir->snap->data.name;
+			v.s = p->uir->snap->data.lname;
 			break;
 		case MDLR_COLUMN_TYPE:
 			v.i = p->uir->snap->data.utype;

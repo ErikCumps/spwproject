@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force kills report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -210,8 +210,8 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 			if (SPWDLT_getint (data[i].dlt) <= 0) { stop = true; break; }
 
 			tstr.printf ("%3.3s %s %s %s (%d)<br>",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.type,
-				data[i].uir->snap->strings.rank, data[i].uir->snap->data.name,
+				data[i].uir->snap->strings.uid, data[i].uir->snap->data.tname,
+				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
 				SPWDLT_getint (data[i].dlt));
 			icnt++; kcnt += SPWDLT_getint (data[i].dlt);
 		}

@@ -590,8 +590,10 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	SPWAW_SNAP_OOB_FEL	*formation;
 	BYTE			OOB;				/* Unit OOB country ID					*/
 	USHORT			OOBrid;				/* Unit OOB record ID					*/
-	char			*type;
-	char			*name;
+	// TODO: add reporting of unit's designation
+	char			*designation;			/* Unit designation					*/
+	char			*tname;				/* Unit type name					*/
+	char			*lname;				/* Unit leader name					*/
 	SPWAW_RANK		rank;
 	SPWAW_RANK		brank;				/* battle rank, initially SPWAW_RKIA, updated when added to dossier	*/
 	int			kills;

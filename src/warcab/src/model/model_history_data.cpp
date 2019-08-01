@@ -72,14 +72,14 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			s = data->uir->snap->strings.uid;
 			break;
 		case MDLH_COLUMN_UNIT:
-			s = data->uir->snap->data.type;
+			s = data->uir->snap->data.tname;
 			break;
 		case MDLH_COLUMN_RNK:
 			s = data->uir->snap->strings.rank;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_LDR:
-			s = data->uir->snap->data.name;
+			s = data->uir->snap->data.lname;
 			break;
 		case MDLH_COLUMN_KILL:
 			s.setNum (data->uir->snap->attr.gen.kills);

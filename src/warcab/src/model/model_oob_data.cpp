@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - order of battle data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -194,10 +194,10 @@ ModelOob::MDLO_data_unit_display (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) 
 			s = uir->snap->strings.uid;
 			break;
 		case MDLO_COLUMN_TYPE:
-			s = uir->snap->data.type;
+			s = uir->snap->data.tname;
 			break;
 		case MDLO_COLUMN_LDR:
-			s = uir->snap->data.name;
+			s = uir->snap->data.lname;
 			break;
 		case MDLO_COLUMN_HCMD:
 			s = (uir->snap->data.RID == uir->snap->data.formation->data.leader.up->data.RID) ? "*" : "";

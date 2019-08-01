@@ -402,8 +402,9 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->FMID	= src->FMID;
 		dat->FSID	= src->FSID;
 		dat->OOB	= src->OOB;
-		dat->type	= src->name;
-		dat->name	= ulsrc ? ulsrc->name : NULL;
+		dat->designation= src->name;
+		dat->tname	= strdup(oob->udata[src->OOBrid].name);
+		dat->lname	= ulsrc ? ulsrc->name : NULL;
 		dat->rank	= elsrc ? raw2rank (elsrc->rank) : raw2rank (SPWAW_RKIA);
 		dat->kills	= elsrc ? elsrc->kills : 0;
 		dat->status	= raw2ustatus (src->status);
@@ -554,12 +555,12 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		if (p.up->data.aband != SPWAW_ANONE) {
 			if ((p.up->data.status == SPWAW_UABANDONED) && p.up->data.aunit.up) {
 				/* Update missing attributes with those of crew */
-				p.up->data.name = p.up->data.aunit.up->data.name;
-				p.up->data.rank = p.up->data.aunit.up->data.rank;
-				p.up->data.ral  = p.up->data.aunit.up->data.ral;
-				p.up->data.inf  = p.up->data.aunit.up->data.inf;
-				p.up->data.art  = p.up->data.aunit.up->data.art;
-				p.up->data.arm  = p.up->data.aunit.up->data.arm;
+				p.up->data.lname = p.up->data.aunit.up->data.lname;
+				p.up->data.rank  = p.up->data.aunit.up->data.rank;
+				p.up->data.ral   = p.up->data.aunit.up->data.ral;
+				p.up->data.inf   = p.up->data.aunit.up->data.inf;
+				p.up->data.art   = p.up->data.aunit.up->data.art;
+				p.up->data.arm   = p.up->data.aunit.up->data.arm;
 			}
 		} else {
 			p.up->data.aunit.up = NULL;

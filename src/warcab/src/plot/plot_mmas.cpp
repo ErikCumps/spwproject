@@ -371,7 +371,7 @@ PlotMMAS::track (const QPoint &pos)
 
 		p.up = d.model->unitid (curve->col, index);
 		if (p.up) {
-			s.sprintf ("%d (%s: %s)", (int)vy, p.up->strings.uid, p.up->data.type);
+			s.sprintf ("%d (%s: %s)", (int)vy, p.up->strings.uid, p.up->data.tname);
 		} else {
 			s.sprintf ("%.2f", vy);
 		}

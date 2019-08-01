@@ -250,7 +250,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 				if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
 
 				sup = &(src->info_sob->pbir_core.uir[i]);
-				log ("| Src unit #%d: (%s, %s), ALIVE\n", i, sup->snap->strings.uid, sup->snap->data.name);
+				log ("| Src unit #%d: (%s, %s), ALIVE\n", i, sup->snap->strings.uid, sup->snap->data.lname);
 
 				/* find first unassigned matching unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
@@ -258,8 +258,8 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 					k = dfp->snap->data.ulist[j]->data.idx;
 					p = &(dst->info_sob->pbir_core.uir[k]);
 
-					log ("| Checking dst unit #%d: (%s, %s), dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
-					if (strcmp (sup->snap->data.name, p->snap->data.name) == 0) {
+					log ("| Checking dst unit #%d: (%s, %s), dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.lname, dst->ra[k].src);
+					if (strcmp (sup->snap->data.lname, p->snap->data.lname) == 0) {
 						if (dst->ra[k].src == SPWAW_BADIDX) {
 							log ("| -> found 1st match!\n");
 							break;
@@ -289,7 +289,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 				if (src->ra[i].dst != SPWAW_BADIDX) continue;
 
 				sup = &(src->info_sob->pbir_core.uir[i]);
-				log ("| Src unit #%d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.name);
+				log ("| Src unit #%d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.lname);
 
 				/* find first unassigned unit in dst formation */
 				p = NULL; k = SPWAW_BADIDX;
@@ -297,7 +297,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 					k = dfp->snap->data.ulist[j]->data.idx;
 					p = &(dst->info_sob->pbir_core.uir[k]);
 
-					log ("| Checking dst unit #%d: (%s, %s) dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.name, dst->ra[k].src);
+					log ("| Checking dst unit #%d: (%s, %s) dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.lname, dst->ra[k].src);
 					if (dst->ra[k].src == SPWAW_BADIDX) {
 						log ("| -> found 1st unassigned unit!\n");
 						break;
@@ -310,7 +310,8 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 						log ("RESULT: reassigned %d -> %d\n", i, k);
 					src->ra[i].dst = k;
 					dst->ra[k].src = i;
-					src->ra[i].rpl = true;
+					//src->ra[i].rpl = true;
+					dst->ra[i].rpl = true;
 				} else {
 					log ("INTERNAL ERROR: more assigned dst units than src units!!!\n");
 					abort();
@@ -319,7 +320,8 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 		}
 		for (i=0; i<src->dossier->props.ucnt; i++) {
 			log ("final reassignment result: src->ra[%03.3d].dst = %03.3d, dst->ra[%03.3d].src = %03.3d, src->ra[%03.3d].rpl = %d\n",
-				i, src->ra[i].dst, i, dst->ra[i].src, i, src->ra[i].rpl);
+				//i, src->ra[i].dst, i, dst->ra[i].src, i, src->ra[i].rpl);
+				i, src->ra[i].dst, i, dst->ra[i].src, i, dst->ra[i].rpl);
 		}
 	}
 

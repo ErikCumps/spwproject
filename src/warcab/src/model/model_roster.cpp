@@ -20,9 +20,9 @@ typedef struct s_MDLR_COLUMN_DEF {
 
 static MDLR_COLUMN_DEF coldef[MDLR_COLUMN_CNT] = {
 	{ MDLR_COLUMN_UID,		"#",		MDLR_cmp_uid,	SPWDLT_NONE,	0			},
-	{ MDLR_COLUMN_UNIT,		"Unit",		MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.type)		},
+	{ MDLR_COLUMN_UNIT,		"Unit",		MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.tname)		},
 	{ MDLR_COLUMN_RNK,		"Rank",		MDLR_cmp_rnk,	SPWDLT_INT,	OFFS(data.brank)	},
-	{ MDLR_COLUMN_LDR,		"Leader",	MDLR_cmp_ldr,	SPWDLT_STR,	OFFS(data.name)		},
+	{ MDLR_COLUMN_LDR,		"Leader",	MDLR_cmp_ldr,	SPWDLT_STR,	OFFS(data.lname)	},
 	{ MDLR_COLUMN_STATUS,		"Status",	MDLR_cmp_status,SPWDLT_INT,	OFFS(data.status)	},
 	{ MDLR_COLUMN_KILL,		"Kills",	MDLR_cmp_kill,	SPWDLT_INT,	OFFS(attr.gen.kills)	},
 	{ MDLR_COLUMN_EXP,		"Exp",		MDLR_cmp_exp,	SPWDLT_INT,	OFFS(data.exp)		},

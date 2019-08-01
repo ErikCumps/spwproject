@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -48,8 +48,9 @@ fixup_foob (SPWAW_SNAP_OOB_FORCE *foob, STRTAB *stab)
 		foob->formations.list[i].strings.utype = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->formations.list[i].strings.utype));
 	}
 	for (i=0; i<foob->units.cnt; i++) {
-		foob->units.list[i].data.type = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.type));
-		foob->units.list[i].data.name = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.name));
+		foob->units.list[i].data.designation = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.designation));
+		foob->units.list[i].data.tname       = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.tname));
+		foob->units.list[i].data.lname       = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.lname));
 	}
 }
 

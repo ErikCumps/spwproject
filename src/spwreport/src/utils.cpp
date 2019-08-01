@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -269,9 +269,9 @@ report_mmas (FILE *rf, char *msg, SPWAW_IMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bo
 	memset (smin, 0, sizeof (smin));
 	if (unit) {
 		p.up = &(fp->units.list[ptr->max.i]);
-		snprintf (smax, sizeof (smax) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.type, p.up->strings.rank, p.up->data.name);
+		snprintf (smax, sizeof (smax) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.tname, p.up->strings.rank, p.up->data.lname);
 		p.up = &(fp->units.list[ptr->min.i]);
-		snprintf (smin, sizeof (smin) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.type, p.up->strings.rank, p.up->data.name);
+		snprintf (smin, sizeof (smin) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.tname, p.up->strings.rank, p.up->data.lname);
 	} else {
 		p.fp = &(fp->formations.list[ptr->max.i]);
 		snprintf (smax, sizeof (smax) - 1, "%s: %s %s", p.fp->strings.name, p.fp->strings.fstatus, p.fp->strings.type);
@@ -300,9 +300,9 @@ report_mmas (FILE *rf, char *msg, SPWAW_FMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bo
 	memset (smin, 0, sizeof (smin));
 	if (unit) {
 		p.up = &(fp->units.list[ptr->max.i]);
-		snprintf (smax, sizeof (smax) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.type, p.up->strings.rank, p.up->data.name);
+		snprintf (smax, sizeof (smax) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.tname, p.up->strings.rank, p.up->data.lname);
 		p.up = &(fp->units.list[ptr->min.i]);
-		snprintf (smin, sizeof (smin) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.type, p.up->strings.rank, p.up->data.name);
+		snprintf (smin, sizeof (smin) - 1, "%s: %s (%s %s)", p.up->strings.uid, p.up->data.tname, p.up->strings.rank, p.up->data.lname);
 	} else {
 		p.fp = &(fp->formations.list[ptr->max.i]);
 		snprintf (smax, sizeof (smax) - 1, "%s: %s %s", p.fp->strings.name, p.fp->strings.fstatus, p.fp->strings.type);
