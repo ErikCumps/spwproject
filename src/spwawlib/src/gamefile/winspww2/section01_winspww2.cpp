@@ -61,7 +61,7 @@
 //	+ use the save game value if available
 //	+ via a direct formation name/date match if there is only one such match
 //	+ via a unit class type match, assuming all associated units are valid
-//	+ if the record ID is still found, assume it is a special formation:
+//	+ if the record ID is still not found, assume it is a special formation:
 //	  record the unit OOB record ID of the leader of the formation
 //
 // #3:	process all candidate units and use the formation OOB data to drop
@@ -322,8 +322,11 @@ search_oobrid_by_name (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 
 	if (cnt == 0) {
 		UFDTRACE0 ("  NO MATCH FOUND!\n");
+		rv = 0;
 	} else if (cnt > 1) {
 		UFDTRACE0 ("  TOO MANY MATCHES FOUND!\n");
+		/* There is no way to make the right choice, so don't choose at all */
+		rv = 0;
 	}
 
 	UFDLOG1 ("  <<< rv=%u\n", rv);
@@ -443,6 +446,12 @@ search_oobrid_extensive (FEL *fel, SPWOOB *oob, SPWAW_DATE &date)
 					}
 
 					k++;
+				}
+
+				/* Subtract points for each unmatched extra unit in the OOB */
+				if (k >= MAXFORMATIONUNITS)
+				{
+					ds -= 3;
 				}
 
 				UFDTRACE2 (" - DS=%d, k=%u\n", ds, k);
