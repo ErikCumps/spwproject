@@ -155,8 +155,7 @@ xcopy /Y warcab\Debug\warcab.exe			%DST%
 xcopy /Y warcab\warcab.pdb				%DST%
 xcopy /Y warcab\resource\warcab.res			%DST%
 copy /Y warcab\Release\warcab.exe			%DST%\warcab_release.exe
-xcopy /Y DATA\demo.warcab				%SAVE%
-xcopy /Y DATA\demo_standalone.warcab			%SAVE%
+xcopy /Y DATA\*.warcab					%SAVE%
 
 goto DONE
 
