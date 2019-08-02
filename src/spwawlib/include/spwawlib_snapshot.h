@@ -590,7 +590,7 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	SPWAW_SNAP_OOB_FEL	*formation;
 	BYTE			OOB;				/* Unit OOB country ID					*/
 	USHORT			OOBrid;				/* Unit OOB record ID					*/
-	// TODO: add reporting of unit's designation
+	// TODO: add reporting of unit's designation?
 	char			*designation;			/* Unit designation					*/
 	char			*tname;				/* Unit type name					*/
 	char			*lname;				/* Unit leader name					*/

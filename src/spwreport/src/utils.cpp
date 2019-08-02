@@ -279,9 +279,9 @@ report_mmas (FILE *rf, char *msg, SPWAW_IMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bo
 		snprintf (smin, sizeof (smin) - 1, "%s: %s %s", p.fp->strings.name, p.fp->strings.fstatus, p.fp->strings.type);
 	}
 
-	fprintf (rf, "%s: max: %u (%3u: %s)\n", msg, ptr->max.v, ptr->max.i, smax);
-	fprintf (rf, "%s: min: %u (%3u: %s)\n", msg, ptr->min.v, ptr->min.i, smin);
-	fprintf (rf, "%s: avg: %.2f\n", msg, ptr->avg);
+	fprintf (rf, "%s: max: %3u (%03u: %s)\n", msg, ptr->max.v, ptr->max.i, smax);
+	fprintf (rf, "%s: min: %3u (%03u: %s)\n", msg, ptr->min.v, ptr->min.i, smin);
+	fprintf (rf, "%s: avg: %6.2f\n", msg, ptr->avg);
 	fprintf (rf, "%s: spr: %u\n", msg, ptr->spr);
 	fprintf (rf, "%s: tot: %u\n", msg, ptr->tot);
 	fprintf (rf, "%s: cnt: %u\n", msg, ptr->cnt);
@@ -310,10 +310,10 @@ report_mmas (FILE *rf, char *msg, SPWAW_FMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bo
 		snprintf (smin, sizeof (smin) - 1, "%s: %s %s", p.fp->strings.name, p.fp->strings.fstatus, p.fp->strings.type);
 	}
 
-	fprintf (rf, "%s: max: %.2f (%3u: %s)\n", msg, ptr->max.v, ptr->max.i, smax);
-	fprintf (rf, "%s: min: %.2f (%3u: %s)\n", msg, ptr->min.v, ptr->min.i, smin);
-	fprintf (rf, "%s: avg: %.2f\n", msg, ptr->avg);
-	fprintf (rf, "%s: spr: %.2f\n", msg, ptr->spr);
+	fprintf (rf, "%s: max: %6.2f (%03u: %s)\n", msg, ptr->max.v, ptr->max.i, smax);
+	fprintf (rf, "%s: min: %6.2f (%03u: %s)\n", msg, ptr->min.v, ptr->min.i, smin);
+	fprintf (rf, "%s: avg: %6.2f\n", msg, ptr->avg);
+	fprintf (rf, "%s: spr: %6.2f\n", msg, ptr->spr);
 	fprintf (rf, "%s: tot: %.2f\n", msg, ptr->tot);
 	fprintf (rf, "%s: cnt: %u\n", msg, ptr->cnt);
 }
