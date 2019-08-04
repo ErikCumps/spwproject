@@ -232,7 +232,7 @@ GuiRptLoss::list_killed_dossier (char *buf, unsigned int size, int &icnt)
 
 			if (!up->data.alive) {
 				str.printf ("%3.3s %s, %s %s<br>",
-					up->strings.uid, up->data.tname, up->strings.rank, up->data.lname);
+					up->strings.uid, up->data.dname, up->strings.rank, up->data.lname);
 				icnt++;
 			}
 
@@ -277,7 +277,7 @@ GuiRptLoss::list_killed (char *buf, unsigned int size, int &icnt)
 				   && (!data[i].uir->snap->data.aunit.up || !data[i].uir->snap->data.aunit.up->data.alive);
 
 			tstr.printf ("%3.3s %s, %s (%s%s%s)<br>",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.tname,
+				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank,
 				lostunit?"unit":"",
 				(lostunit && lostcrew) ? " and " : "",
@@ -313,7 +313,7 @@ GuiRptLoss::list_abandoned_dossier (char *buf, unsigned int size, int &icnt)
 			up = b->info_eob->pbir_core.uir[idx].snap;
 			if (up->data.aband != SPWAW_ANONE) {
 				str.printf ("%3.3s %s, %s %s<br>",
-					up->strings.uid, up->data.tname, up->strings.rank, up->data.lname);
+					up->strings.uid, up->data.dname, up->strings.rank, up->data.lname);
 				icnt++;
 			}
 
@@ -352,7 +352,7 @@ GuiRptLoss::list_abandoned (char *buf, unsigned int size, int &icnt)
 			if (SPWDLT_int (data[i].dlt) == SPWAW_ANONE) { stop = true; break; }
 
 			tstr.printf ("%3.3s %s, %s<br>",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.tname,
+				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank);
 
 			icnt++;
@@ -438,7 +438,7 @@ GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
 		up = rpt[i].ptr->info_sob->pbir_core.uir[rpt[i].idx].snap;
 
 		str.printf ("%3.3s %s, %s %s (%ld)<br>",
-			up->strings.uid, up->data.tname, up->strings.rank, up->data.lname, rpt[i].dmg);
+			up->strings.uid, up->data.dname, up->strings.rank, up->data.lname, rpt[i].dmg);
 
 		icnt++;
 	}
@@ -477,7 +477,7 @@ GuiRptLoss::list_damaged (char *buf, unsigned int size, int &icnt)
 			if (!data[i].uir->snap->data.alive) continue;
 
 			tstr.printf ("%3.3s %s, %s (%d)<br>",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.tname,
+				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank,
 				SPWDLT_int (data[i].dlt));
 

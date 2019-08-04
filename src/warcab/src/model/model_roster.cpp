@@ -20,7 +20,7 @@ typedef struct s_MDLR_COLUMN_DEF {
 
 static MDLR_COLUMN_DEF coldef[MDLR_COLUMN_CNT] = {
 	{ MDLR_COLUMN_UID,		"#",		MDLR_cmp_uid,	SPWDLT_NONE,	0			},
-	{ MDLR_COLUMN_UNIT,		"Unit",		MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.tname)		},
+	{ MDLR_COLUMN_UNIT,		"Unit",		MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.dname)	}, // FIXME: designation, actually
 	{ MDLR_COLUMN_RNK,		"Rank",		MDLR_cmp_rnk,	SPWDLT_INT,	OFFS(data.brank)	},
 	{ MDLR_COLUMN_LDR,		"Leader",	MDLR_cmp_ldr,	SPWDLT_STR,	OFFS(data.lname)	},
 	{ MDLR_COLUMN_STATUS,		"Status",	MDLR_cmp_status,SPWDLT_INT,	OFFS(data.status)	},

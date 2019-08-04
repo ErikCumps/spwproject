@@ -210,7 +210,7 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 			if (SPWDLT_getint (data[i].dlt) <= 0) { stop = true; break; }
 
 			tstr.printf ("%3.3s %s %s %s (%d)<br>",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.tname,
+				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
 				SPWDLT_getint (data[i].dlt));
 			icnt++; kcnt += SPWDLT_getint (data[i].dlt);

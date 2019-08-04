@@ -43,7 +43,7 @@ static MDLO_COLUMN_DEF *fcoldef_cache[MDLO_COLUMN_CNT] = { 0 };
 
 static MDLO_COLUMN_DEF ucoldef[MDLO_COLUMN_CNT] = {
 	{ MDLO_COLUMN_FID,		NULL,	NULL,	SPWDLT_NONE,	0			},
-	{ MDLO_COLUMN_TYPE,		NULL,	NULL,	SPWDLT_STR,	UOFFS(data.tname)	},
+	{ MDLO_COLUMN_TYPE,		NULL,	NULL,	SPWDLT_STR,	UOFFS(data.dname)	}, // FIXME: designation, actually
 	{ MDLO_COLUMN_LDR,		NULL,	NULL,	SPWDLT_NONE,	0			},	/* unstored item */
 	{ MDLO_COLUMN_HCMD,		NULL,	NULL,	SPWDLT_NONE,	0			},	/* pointer item */
 	{ MDLO_COLUMN_STATUS,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.status)	},

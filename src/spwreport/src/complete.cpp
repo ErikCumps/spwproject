@@ -156,10 +156,10 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		fprintf (rf, "#%5.5u %s (FID %5.5u)\n", fp->data.RID, fp->strings.name, fp->data.FID);
 		fprintf (rf, "\tleader      : %s %s (%s %s)\n",
-			fp->data.leader.up->strings.uid, fp->data.leader.up->data.tname,
+			fp->data.leader.up->strings.uid, fp->data.leader.up->data.dname,
 			fp->data.leader.up->strings.rank, fp->data.leader.up->data.lname);
 		fprintf (rf, "\thigher cmd  : %s %s (%s %s)\n",
-			fp->data.hcmd.up->strings.uid, fp->data.hcmd.up->data.tname,
+			fp->data.hcmd.up->strings.uid, fp->data.hcmd.up->data.dname,
 			fp->data.hcmd.up->strings.rank, fp->data.hcmd.up->data.lname);
 
 		fprintf (rf, "\tstatus      : %u (%s)\n", fp->data.status, fp->strings.status);
@@ -172,20 +172,20 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 			up = fp->data.ulist[j];
 			if (up->data.aband == SPWAW_ANONE) {
 				fprintf (rf, "\t\t%s %s (%s %s)\n",
-					up->strings.uid, up->data.tname,
+					up->strings.uid, up->data.dname,
 					up->strings.rank, up->data.lname);
 			} else {
 				ap = up->data.aunit.up;
 
 				if (ap) {
 					fprintf (rf, "\t\t%s %s (%s %s) abandoned by %s %s (%s %s)\n",
-						up->strings.uid, up->data.tname,
+						up->strings.uid, up->data.dname,
 						up->strings.rank, up->data.lname,
-						ap->strings.uid, ap->data.tname,
+						ap->strings.uid, ap->data.dname,
 						ap->strings.rank, ap->data.lname);
 				} else {
 					fprintf (rf, "\t\t%s %s (%s %s) abandoned by lost crew\n",
-						up->strings.uid, up->data.tname,
+						up->strings.uid, up->data.dname,
 						up->strings.rank, up->data.lname);
 				}
 			}
@@ -227,7 +227,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		p = &(ptr->list[i]);
 
 		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
-			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.tname);
+			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.dname);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.lname, p->data.rank, p->strings.rank);
 		// Prevent warning C4244
@@ -253,7 +253,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 			case SPWAW_ASTAY:
 				if (p->data.aunit.up) {
 					fprintf (rf, "\tabandoned   : unit left by crew %s %s (%s %s)\n",
-						p->data.aunit.up->strings.uid, p->data.aunit.up->data.tname,
+						p->data.aunit.up->strings.uid, p->data.aunit.up->data.dname,
 						p->data.aunit.up->strings.rank, p->data.aunit.up->data.lname);
 				} else {
 					fprintf (rf, "\tabandoned   : unit left by crew\n");
@@ -262,7 +262,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 				break;
 			case SPWAW_ALEFT:
 				fprintf (rf, "\tabandoned   : crew left unit %s %s (%s %s)\n",
-					p->data.aunit.up->strings.uid, p->data.aunit.up->data.tname,
+					p->data.aunit.up->strings.uid, p->data.aunit.up->data.dname,
 					p->data.aunit.up->strings.rank, p->data.aunit.up->data.lname);
 				break;
 			default:
@@ -271,7 +271,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tloaded      : %u\n", p->data.loaded);
 		if (p->data.loaded) {
 			fprintf (rf, "\tloaded      : on or by %s %s (%s %s)\n",
-						p->data.loader.up->strings.uid, p->data.loader.up->data.tname,
+						p->data.loader.up->strings.uid, p->data.loader.up->data.dname,
 						p->data.loader.up->strings.rank, p->data.loader.up->data.lname);
 		}
 		fprintf (rf, "\texperience  : %u, class %u (%s)\n", p->data.exp, p->data.eclass, p->strings.exp);
@@ -324,7 +324,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		p = &(ptr->list[i]);
 
 		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
-			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.tname);
+			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.dname);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.lname, p->data.rank, p->strings.rank);
 		fp = p->data.aunit.up->data.formation;
@@ -347,12 +347,12 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		switch (p->data.aband) {
 			case SPWAW_ASTAY:
 				fprintf (rf, "\tabandoned   : unit left by crew %s %s (%s %s)\n",
-					p->data.aunit.up->strings.uid, p->data.aunit.up->data.tname,
+					p->data.aunit.up->strings.uid, p->data.aunit.up->data.dname,
 					p->data.aunit.up->strings.rank, p->data.aunit.up->data.lname);
 				break;
 			case SPWAW_ALEFT:
 				fprintf (rf, "\tabandoned   : crew left unit %s %s (%s %s)\n",
-					p->data.aunit.up->strings.uid, p->data.aunit.up->data.tname,
+					p->data.aunit.up->strings.uid, p->data.aunit.up->data.dname,
 					p->data.aunit.up->strings.rank, p->data.aunit.up->data.lname);
 				break;
 			default:
@@ -361,7 +361,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tloaded      : %u\n", p->data.loaded);
 		if (p->data.loaded) {
 			fprintf (rf, "\tloaded      : on or by %s %s (%s %s)\n",
-						p->data.loader.up->strings.uid, p->data.loader.up->data.tname,
+						p->data.loader.up->strings.uid, p->data.loader.up->data.dname,
 						p->data.loader.up->strings.rank, p->data.loader.up->data.lname);
 		}
 		fprintf (rf, "\texperience  : %u, class %u (%s)\n", p->data.exp, p->data.eclass, p->strings.exp);
@@ -482,7 +482,7 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 	fprintf (rf, "Formations: %u\n", p->formations.cnt);
 	fprintf (rf, "Units     : %u\n", p->units.cnt);
 	fprintf (rf, "Crews     : %u\n", p->crews.cnt);
-	fprintf (rf, "Leader    : %s %s (%s %s)\n", p->leader->strings.uid, p->leader->data.tname, p->leader->strings.rank, p->leader->data.lname);
+	fprintf (rf, "Leader    : %s %s (%s %s)\n", p->leader->strings.uid, p->leader->data.dname, p->leader->strings.rank, p->leader->data.lname);
 	fprintf (rf, "\n");
 
 	report_attrs		(rf, p);

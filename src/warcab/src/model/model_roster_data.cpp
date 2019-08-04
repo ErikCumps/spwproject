@@ -60,8 +60,8 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir, SP
 		case MDLR_COLUMN_UID:
 			s = uir->snap->strings.uid;
 			break;
-		case MDLR_COLUMN_UNIT:
-			s = uir->snap->data.tname;
+		case MDLR_COLUMN_UNIT: // FIXME: designation, actually
+			s = uir->snap->data.dname;
 			break;
 		case MDLR_COLUMN_RNK:
 			s = uir->snap->strings.rank;
@@ -298,8 +298,8 @@ MDLR_data_sort (int col, MDLR_DATA *p, MDL_CMPDATA &v)
 		case MDLR_COLUMN_UID:
 			v.u = MDL_PACK_UID(p->uir);
 			break;
-		case MDLR_COLUMN_UNIT:
-			v.s = p->uir->snap->data.tname;
+		case MDLR_COLUMN_UNIT: // FIXME: designation, actually
+			v.s = p->uir->snap->data.dname;
 			break;
 		case MDLR_COLUMN_RNK:
 			//v.i = p->uir->snap->data.rank;

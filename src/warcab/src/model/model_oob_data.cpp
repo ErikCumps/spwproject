@@ -193,8 +193,8 @@ ModelOob::MDLO_data_unit_display (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) 
 		case MDLO_COLUMN_FID:
 			s = uir->snap->strings.uid;
 			break;
-		case MDLO_COLUMN_TYPE:
-			s = uir->snap->data.tname;
+		case MDLO_COLUMN_TYPE: // FIXME: designation, actually
+			s = uir->snap->data.dname;
 			break;
 		case MDLO_COLUMN_LDR:
 			s = uir->snap->data.lname;

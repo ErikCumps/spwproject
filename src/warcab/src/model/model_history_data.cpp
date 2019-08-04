@@ -71,8 +71,8 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 		case MDLH_COLUMN_UID:
 			s = data->uir->snap->strings.uid;
 			break;
-		case MDLH_COLUMN_UNIT:
-			s = data->uir->snap->data.tname;
+		case MDLH_COLUMN_UNIT: // FIXME: designation, actually
+			s = data->uir->snap->data.dname;
 			break;
 		case MDLH_COLUMN_RNK:
 			s = data->uir->snap->strings.rank;

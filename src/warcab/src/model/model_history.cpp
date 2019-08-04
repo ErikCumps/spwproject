@@ -21,7 +21,7 @@ static MDLH_COLUMN_DEF coldef[MDLH_COLUMN_CNT] = {
 	{ MDLH_COLUMN_DATE,	"Date",		SPWDLT_NONE,	0			},
 	{ MDLH_COLUMN_CFLAG,	"",		SPWDLT_NONE,	0			},
 	{ MDLH_COLUMN_UID,	"#",		SPWDLT_CHR,	OFFS(strings.uid)	},
-	{ MDLH_COLUMN_UNIT,	"Unit",		SPWDLT_STR,	OFFS(data.tname)	},
+	{ MDLH_COLUMN_UNIT,	"Unit",		SPWDLT_STR,	OFFS(data.dname)	}, // FIXME: designation, actually
 	{ MDLH_COLUMN_RNK,	"Rank",		SPWDLT_INT,	OFFS(data.brank)	},
 	{ MDLH_COLUMN_LDR,	"Leader",	SPWDLT_STR,	OFFS(data.lname)	},
 	{ MDLH_COLUMN_KILL,	"Kills",	SPWDLT_INT,	OFFS(attr.gen.kills)	},

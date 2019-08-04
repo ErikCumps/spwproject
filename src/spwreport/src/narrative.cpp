@@ -83,9 +83,9 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 			p->formations.list[i].strings.fstatus, p->formations.list[i].strings.type);
 
 		fprintf (rf, "It is lead by %s %s.\n",
-			p->formations.list[i].data.leader.up->strings.uid, p->formations.list[i].data.leader.up->data.tname);
+			p->formations.list[i].data.leader.up->strings.uid, p->formations.list[i].data.leader.up->data.dname);
 		fprintf (rf, "Its higher command is %s %s.\n",
-			p->formations.list[i].data.hcmd.up->strings.uid, p->formations.list[i].data.hcmd.up->data.tname);
+			p->formations.list[i].data.hcmd.up->strings.uid, p->formations.list[i].data.hcmd.up->data.dname);
 		fprintf (rf, "It has killed %u enemy units.\n", p->formations.list[i].attr.gen.kills);
 		//fprintf (rf, "It has %u recorded kills.\n", p->formations.list[i].attr.gen.kills);
 		fprintf (rf, "It has lost %u units.\n", p->formations.list[i].attr.gen.losses);
@@ -95,7 +95,7 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 		for (j=0; j<p->formations.list[i].data.ucnt; j++) {
 			fprintf (rf, "\tUnit %s: %s (%s/%s)\n",
 			p->formations.list[i].data.ulist[j]->strings.uid,
-			p->formations.list[i].data.ulist[j]->data.tname,
+			p->formations.list[i].data.ulist[j]->data.dname,
 			p->formations.list[i].data.ulist[j]->strings.utype,
 			p->formations.list[i].data.ulist[j]->strings.uclass);
 
@@ -130,7 +130,7 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 				if (p->formations.list[i].data.ulist[j]->data.aunit.up) {
 					fprintf (rf, "\t\tIt is abandoned by %s %s.\n",
 						p->formations.list[i].data.ulist[j]->data.aunit.up->strings.uid,
-						p->formations.list[i].data.ulist[j]->data.aunit.up->data.tname);
+						p->formations.list[i].data.ulist[j]->data.aunit.up->data.dname);
 				} else {
 					fprintf (rf, "\t\tIt is abandoned by a lost crew.\n");
 				}

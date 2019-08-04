@@ -149,7 +149,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 		for (j=0; j<p->data.ucnt; j++) {
 			q = p->data.ulist[j];
 			fprintf (rf, "%-4s: %-3s %-32s %-16s %-16s %-4s %5u %6u %6.2f %% %3u\n",
-				q->strings.uid, "", q->strings.status, q->data.tname, q->data.lname,
+				q->strings.uid, "", q->strings.status, q->data.dname, q->data.lname,
 				(q->data.RID == q->data.formation->data.leader.up->data.RID) ? "*" : "",
 				q->attr.gen.kills, q->attr.gen.losses, q->attr.gen.ready * 100.0, q->data.hcnt);
 		}
@@ -193,7 +193,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			p->data.damage?"-":" ",
 			p->data.aband?"A":" ",
 			p->data.loaded?"L":" ",
-			p->strings.uid, p->data.tname, p->strings.rank, p->data.lname,
+			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
 			p->attr.gen.kills, p->attr.gen.losses, p->data.hcnt,
@@ -239,7 +239,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			p->data.damage?"-":" ",
 			p->data.aband?"A":" ",
 			p->data.loaded?"L":" ",
-			p->strings.uid, p->data.tname, p->strings.rank, p->data.lname,
+			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
 			p->attr.gen.kills, p->data.hcnt,
@@ -269,7 +269,7 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 	}
 
 	fprintf (rf, "Leader    : %s %s (%s %s)\n",
-		p->leader->strings.uid, p->leader->data.tname,
+		p->leader->strings.uid, p->leader->data.dname,
 		p->leader->strings.rank, p->leader->data.lname);
 
 	fprintf (rf, "Formations: %u\n", p->formations.cnt);

@@ -129,7 +129,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 		if (skip || !report) continue;
 
 		if (!reverse) {
-			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.tname, lup->data.lname, fup->strings.rank);
+			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.dname, lup->data.lname, fup->strings.rank);
 			idx = nidx = i; b = d->bfirst;
 			while (b->next) {
 				nidx = b->ra[idx].dst;
@@ -142,7 +142,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 				idx = nidx; b = b->next;
 			}
 		} else {
-			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.tname, lup->data.lname, lup->strings.rank);
+			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.dname, lup->data.lname, lup->strings.rank);
 			idx = nidx = lup->data.uidx; b = d->blast;
 			while (b->prev) {
 				nidx = b->ra[idx].src;
@@ -182,35 +182,35 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 			if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) { skip = true; break; }
 
 			lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-			if (strcmp (up->data.tname, lup->data.tname) != 0) report = true;
+			if (strcmp (up->data.uname, lup->data.uname) != 0) report = true;
 
 			idx = nidx; up = lup; b = b->next;
 		}
 		if (skip || !report) continue;
 
 		if (!reverse) {
-			str.printf ("%s %s: %s", lup->strings.uid, lup->data.lname, fup->data.tname);
+			str.printf ("%s %s: %s", lup->strings.uid, lup->data.lname, fup->data.dname);
 			idx = nidx = i; b = d->bfirst;
 			while (b->next) {
 				nidx = b->ra[idx].dst;
 				fup = b->info_sob->pbir_core.uir[idx].snap;
 				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-				if (strcmp (fup->data.tname, lup->data.tname) != 0) {
+				if (strcmp (fup->data.uname, lup->data.uname) != 0) {
 					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.tname);
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.dname);
 				}
 				idx = nidx; b = b->next;
 			}
 		} else {
-			str.printf ("%s %s: %s", lup->strings.uid, lup->data.lname, lup->data.tname);
+			str.printf ("%s %s: %s", lup->strings.uid, lup->data.lname, lup->data.dname);
 			idx = nidx = lup->data.idx; b = d->blast;
 			while (b->prev) {
 				nidx = b->ra[idx].src;
 				fup = b->info_sob->pbir_core.uir[idx].snap;
 				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
-				if (strcmp (fup->data.tname, lup->data.tname) != 0) {
+				if (strcmp (fup->data.uname, lup->data.uname) != 0) {
 					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.tname);
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.dname);
 				}
 				idx = nidx; b = b->prev;
 			}

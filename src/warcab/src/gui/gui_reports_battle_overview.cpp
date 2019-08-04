@@ -135,7 +135,7 @@ GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, char *buf, unsigned int size, 
 		if (b->ra[i].rpl) {
 			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
 			str.printf ("\t%s %s: %s %s -> %s %s\n",
-				up->strings.uid, up->data.tname,
+				up->strings.uid, up->data.dname,
 				up->strings.rank, up->data.lname,
 				nup->strings.rank, nup->data.lname);
 			icnt++;
@@ -157,7 +157,7 @@ GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, char *buf, unsigned int size,
 		if ((b->ra[i].dst != i) && !b->ra[i].rpl &&(b->ra[i].src != SPWAW_BADIDX) && (b->ra[i].dst != SPWAW_BADIDX)) {
 			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
 			str.printf ("\t%s %s: %s -> %s\n",
-				up->data.tname, up->data.lname,
+				up->data.dname, up->data.lname,
 				up->strings.uid,
 				nup->strings.uid);
 			icnt++;
@@ -193,7 +193,7 @@ GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, bool promo, char *buf, unsigned 
 		}
 
 		str.printf ("\t%s %s %s: %s -> %s\n",
-			up->strings.uid, up->data.tname, up->data.lname, up->strings.rank, nup->strings.rank);
+			up->strings.uid, up->data.dname, up->data.lname, up->strings.rank, nup->strings.rank);
 		icnt++;
 	}
 }
@@ -231,8 +231,8 @@ GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int 
 			nup = &(nb->snap->OOBp1.core.units.list[b->ra[data[i].idx].dst]);
 			tstr.printf ("\t%s %s %s: %s -> %s\n",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
-				up->data.tname,
-				nup->data.tname);
+				up->data.dname,
+				nup->data.dname);
 			icnt++;
 		}
 		str.add (tbuf);
@@ -440,6 +440,8 @@ GuiRptBtlOvr::refresh (void)
 			case SPWAW_BTBUSY:
 			case SPWAW_BTDEPLOY:
 			default:
+				d.losses.plr->clear();
+				d.losses.opp->clear();
 				break;
 		}
 

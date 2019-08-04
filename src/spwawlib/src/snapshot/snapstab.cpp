@@ -48,9 +48,9 @@ fixup_foob (SPWAW_SNAP_OOB_FORCE *foob, STRTAB *stab)
 		foob->formations.list[i].strings.utype = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->formations.list[i].strings.utype));
 	}
 	for (i=0; i<foob->units.cnt; i++) {
-		foob->units.list[i].data.designation = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.designation));
-		foob->units.list[i].data.tname       = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.tname));
-		foob->units.list[i].data.lname       = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.lname));
+		foob->units.list[i].data.dname = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.dname));
+		foob->units.list[i].data.uname = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.uname));
+		foob->units.list[i].data.lname = STRTAB_getstr (stab, STRTAB_getidx (stab, foob->units.list[i].data.lname));
 	}
 }
 

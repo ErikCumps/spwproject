@@ -259,7 +259,7 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 	tstr.clear();
 	for (i=0; i<pcnt; i++) {
 		tstr.printf ("%3.3s %s %s %s (%d)<br>",
-			pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.tname,
+			pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.dname,
 			pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
 			SPWDLT_int (pdata[i].dlt));
 	}
@@ -276,7 +276,7 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 	tstr.clear();
 	for (i=0; i<ncnt; i++) {
 		tstr.printf ("%3.3s %s %s %s (%d)<br>",
-			ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.tname,
+			ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.dname,
 			ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
 			SPWDLT_int (ndata[i].dlt));
 	}
