@@ -43,6 +43,12 @@ ChangeLog
     Based on information learned from winSPWW2, the SP:WaW unit detection has
     been much improved, significantly reducing the risk of misdetection.
 
+    * Improvement - initial support for unit designations
+    Although unit names are initialized by the games to reflect the unit
+    equipment name, these names are actually unit designations which can change
+    during the course of a battle and/or a campaign. Initial support for these
+    unit designations has been added.
+
     * Improvement - changed unit 'radio' status to 'contact' status
     The old unit radio status is now reported as a unit contact status (No
     Contact, Radio Contact, Direct Contact)
