@@ -136,8 +136,8 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 				fup = b->info_sob->pbir_core.uir[idx].snap;
 				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
 				if (fup->data.rank != lup->data.rank) {
-					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank);
+					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s (%s)",
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank, lup->strings.uid);
 				}
 				idx = nidx; b = b->next;
 			}
@@ -149,8 +149,8 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 				fup = b->info_sob->pbir_core.uir[idx].snap;
 				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
 				if (fup->data.rank != lup->data.rank) {
-					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank);
+					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s (%s)",
+						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank, lup->strings.uid);
 				}
 				idx = nidx; b = b->prev;
 			}
@@ -226,7 +226,7 @@ GuiRptDsrOvr::refresh (bool forced)
 {
 	MDLD_TREE_ITEM	*item;
 	SPWAW_DOSSIER	*p = NULL;
-	char		buf[8*4096], buf2[4096];
+	char		buf[32768], buf2[32768];
 	UtilStrbuf	str(buf, sizeof (buf), true, true);
 	SPWAW_PERIOD	span;
 
@@ -338,7 +338,7 @@ GuiRptDsrOvr::refresh (bool forced)
 			if (p->bcnt) {
 				int	cnt = 0;
 
-				list_promotions (p, false, buf2, sizeof (buf2), cnt);
+				list_promotions (p, true, buf2, sizeof (buf2), cnt);
 				if (cnt) {
 					str.printf ("<pre><h3>Promotions:</h3>");
 					str.add (buf2);

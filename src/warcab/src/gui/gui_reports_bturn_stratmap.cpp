@@ -221,8 +221,6 @@ GuiRptTrnSMap::refresh (void)
 	MDLD_TREE_ITEM	*item;
 	bool		skip_data, skip_render;
 	SPWAW_BTURN	*p = NULL;
-	char		buf[4096];
-	UtilStrbuf	str(buf, sizeof (buf), true, true);
 
 	DBG_TRACE_FENTER;
 

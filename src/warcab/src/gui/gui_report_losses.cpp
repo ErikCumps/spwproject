@@ -494,7 +494,7 @@ void
 GuiRptLoss::refresh (void)
 {
 	bool		nodata;
-	char		buf[16384];
+	char		buf[32768];
 	UtilStrbuf	str(buf, sizeof (buf), true, true);
 	int		cnt;
 	int		mw[2];
