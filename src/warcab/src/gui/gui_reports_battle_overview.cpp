@@ -202,43 +202,29 @@ void
 GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt)
 {
 	UtilStrbuf		str(buf, size, true, true);
-	char			tbuf[4096];
-	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
-	ModelRosterRawData	data[LISTMAX];
-	int			idx;
-	bool			stop;
 	SPWAW_BATTLE		*nb;
+	USHORT			idx, nidx;
 	SPWAW_SNAP_OOB_UEL	*up, *nup;
 
-	nb = b->next ? b->next : b;
+	if (!b->next) return;
+
+	nb = b->next;
 
 	icnt = 0;
 
-	d.model->set_dltsort (true);
-	d.model->sort (MDLR_COLUMN_UNIT, Qt::DescendingOrder);
+	for (int i=0; i<b->dossier->props.ucnt; i++) {
+		idx = i;
+		up = b->info_sob->pbir_core.uir[idx].snap;
 
-	idx = 0; stop = false;
-	while (1) {
-		int cnt = d.model->rawdata (idx, MDLR_COLUMN_UNIT, data, LISTMAX);
-		if (!cnt) break;
+		nidx = b->ra[idx].dst;
+		if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) continue;
 
-		tstr.clear();
-		for (int i=0; i<cnt; i++) {
-			if (!SPWDLT_check(data[i].dlt)) { stop = true; break; }
-			if (b->ra[data[i].idx].dst == SPWAW_BADIDX) continue;
+		nup = nb->info_sob->pbir_core.uir[nidx].snap;
+		if (up->data.OOBrid == nup->data.OOBrid) continue;
 
-			up = &(b->snap->OOBp1.core.units.list[data[i].idx]);
-			nup = &(nb->snap->OOBp1.core.units.list[b->ra[data[i].idx].dst]);
-			tstr.printf ("\t%s %s %s: %s -> %s\n",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
-				up->data.uname,
-				nup->data.uname);
-			icnt++;
-		}
-		str.add (tbuf);
-
-		if (stop) break;
-		idx += cnt;
+		str.printf ("\t%s %s %s: %s -> %s\n",
+			up->strings.uid, up->strings.rank, up->data.lname, up->data.dname, nup->data.dname);
+		icnt++;
 	}
 }
 

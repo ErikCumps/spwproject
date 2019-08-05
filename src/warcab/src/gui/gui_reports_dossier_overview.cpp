@@ -182,7 +182,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 			if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) { skip = true; break; }
 
 			lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-			if (strcmp (up->data.uname, lup->data.uname) != 0) report = true;
+			if (up->data.OOBrid != lup->data.OOBrid) report = true;
 
 			idx = nidx; up = lup; b = b->next;
 		}
@@ -195,7 +195,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 				nidx = b->ra[idx].dst;
 				fup = b->info_sob->pbir_core.uir[idx].snap;
 				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-				if (strcmp (fup->data.uname, lup->data.uname) != 0) {
+				if (fup->data.OOBrid != lup->data.OOBrid) {
 					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
 						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.dname);
 				}
@@ -208,7 +208,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 				nidx = b->ra[idx].src;
 				fup = b->info_sob->pbir_core.uir[idx].snap;
 				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
-				if (strcmp (fup->data.uname, lup->data.uname) != 0) {
+				if (fup->data.OOBrid != lup->data.OOBrid) {
 					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
 						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.dname);
 				}
