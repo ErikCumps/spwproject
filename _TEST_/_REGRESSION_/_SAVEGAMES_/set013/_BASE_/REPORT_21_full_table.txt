@@ -70,13 +70,13 @@ C1  :     ready                            sPzAbt 502 #215  Hummel              
 Table units report:
 -------------------
 
-+SDAL #    Unit             Rank Leader             RID UTG EXP MOR SUP RAL INF ART ARM Kill Loss Men KIA Dmg    Ready   Position
------ ---- ----             ---- ------             --- --- --- --- --- --- --- --- --- ---- ---- --- --- ---    ----- ----------
- #    A0   GE Kommandeur    Col  Schoen               0   0  83  76   0  72  79  38  44    0    0   6   0   0 100.00 % (  5,  43)
- #    B0   sPzAbt 502 #217  1Lt  Otto Carius          1   1  95  95   0  95  35  35 100    0    0   5   0   0 100.00 % (  5,  40)
- #    B1   sPzAbt 502 #213  1Lt  Albert Kerscher      2   1  95  95   0  71  35  35  99    0    0   5   0   0 100.00 % ( 10,  41)
- #    C0   sPzAbt 502 #218  1Lt  Wirth                3   1  92  85   0  85  32  37  85    0    0   5   0   0 100.00 % (  none  )
- #    C1   sPzAbt 502 #215  Sgt  Hummel               4   2  77  96   0  71  33  34  71    0    0   5   0   0 100.00 % (  none  )
++SDAL #    Designation      Rank Leader           Unit               RID UTG EXP MOR SUP RAL INF ART ARM Kill Loss Men KIA Dmg    Ready   Position
+----- ---- -----------      ---- ------           ----               --- --- --- --- --- --- --- --- --- ---- ---- --- --- ---    ----- ----------
+ #    A0   GE Kommandeur    Col  Schoen           GE Kommandeur        0   0  83  76   0  72  79  38  44    0    0   6   0   0 100.00 % (  5,  43)
+ #    B0   sPzAbt 502 #217  1Lt  Otto Carius      Tiger I (L)          1   1  95  95   0  95  35  35 100    0    0   5   0   0 100.00 % (  5,  40)
+ #    B1   sPzAbt 502 #213  1Lt  Albert Kerscher  Tiger I (L)          2   1  95  95   0  71  35  35  99    0    0   5   0   0 100.00 % ( 10,  41)
+ #    C0   sPzAbt 502 #218  1Lt  Wirth            Tiger I (L)          3   1  92  85   0  85  32  37  85    0    0   5   0   0 100.00 % (  none  )
+ #    C1   sPzAbt 502 #215  Sgt  Hummel           Tiger I (E)          4   2  77  96   0  71  33  34  71    0    0   5   0   0 100.00 % (  none  )
 
 
 
@@ -161,35 +161,35 @@ M1  :     ready                            Fuel Bowser      Lavrenev            
 Table units report:
 -------------------
 
-+SDAL #    Unit             Rank Leader             RID UTG EXP MOR SUP RAL INF ART ARM Kill Loss Men KIA Dmg    Ready   Position
------ ---- ----             ---- ------             --- --- --- --- --- --- --- --- --- ---- ---- --- --- ---    ----- ----------
- #    A0   SO Komander      Col  Stolypin           400   3  84  84   0  67  68  34  33    0    0   6   0   0 100.00 % ( 16,   0)
- #    B0   T-70             1Lt  Gapon              401   4  72  74   0  71  33  32  64    0    0   2   0   0 100.00 % ( 11,  17)
- #    B1   T-70             Sgt  Mogilny            402   4  72  67   0  67  29  31  57    0    0   2   0   0 100.00 % ( 11,  15)
- #    C0   T-34 M43         Cpt  Zoshchenko         403   5  74  74   0  63  42  33  61    0    0   4   0   0 100.00 % ( 11,  13)
- #    D0   T-34 M43         1Lt  Morozov            404   5  75  73   0  67  32  32  66    0    0   4   0   0 100.00 % (  none  )
- #    D1   T-34 M43         Sgt  Sorokin            405   5  73  74   0  66  30  28  67    0    0   4   0   0 100.00 % (  none  )
- #    D2   T-34 M43         Sgt  Lucashenko         406   5  74  76   0  59  34  27  68    0    0   4   0   0 100.00 % (  none  )
- #    E0   T-34 M43         1Lt  Fedorov            407   5  74  69   0  63  34  29  66    0    0   4   0   0 100.00 % (  none  )
- #    E1   T-34 M43         Sgt  Belinsky           408   5  83  73   0  57  34  31  58    0    0   4   0   0 100.00 % (  none  )
- #    E2   T-34 M43         Sgt  Vasiliev           409   5  73  74   0  55  34  41  56    0    0   4   0   0 100.00 % (  none  )
- #    F0   T-34 M43         1Lt  Miloslavovich      410   5  64  56   0  70  35  26  69    0    0   4   0   0 100.00 % (  none  )
- #    F1   T-34 M43         Sgt  Vorobiev           411   5  64  59   0  62  38  34  56    0    0   4   0   0 100.00 % (  none  )
- #    F2   T-34 M43         Sgt  Ivanov             412   5  62  72   0  71  28  36  65    0    0   4   0   0 100.00 % (  none  )
- #    G0   T-34 M41         1Lt  Rabinovich         413   6  74  79   0  59  34  33  62    0    0   4   0   0 100.00 % (  none  )
- #    G1   T-34 M41         Sgt  Popov              414   6  77  79   0  63  33  34  66    0    0   4   0   0 100.00 % (  none  )
- #    G2   T-34 M41         Sgt  Pashkov            415   6  71  72   0  56  34  37  57    0    0   4   0   0 100.00 % (  none  )
- #    H0   T-34 M43         1Lt  Lisichkin          416   5  70  70   0  51  33  28  62    0    0   4   0   0 100.00 % ( 13,  14)
- #    H1   T-34/85          Sgt  Zhdanov            417   7  68  71   0  53  35  27  55    0    0   5   0   0 100.00 % ( 13,  13)
- #    H2   T-34/85          Sgt  Kashin             418   7  72  74   0  59  34  34  65    0    0   5   0   0 100.00 % ( 16,   9)
- #    I0   IS-1             1Lt  Pugachev           419   8  68  70   0  60  35  36  61    0    0   4   0   0 100.00 % ( 11,  10)
- #    I1   BA-64            Sgt  Gladkov            420   9  67  65   0  68  29  39  63    0    0   2   0   0 100.00 % ( 11,  18)
- #    J0   Ammo Carrier     1Lt  Kondrashov         421  10  67  73   0  68  39  39  71    0    0   2   0   0 100.00 % ( 12,  13)
- #    K0   Ammo Carrier     1Lt  Kuropatkin         422  10  80  75   0  69  26  29  56    0    0   2   0   0 100.00 % ( 12,   5)
- #    L0   Fuel Bowser      1Lt  Shevchenko         423  11  73  75   0  63  33  26  61    0    0   1   0   0 100.00 % ( 12,   7)
- #    L1   Fuel Bowser      Sgt  Sidorov            424  11  71  78   0  64  43  32  63    0    0   1   0   0 100.00 % ( 13,   3)
- #    M0   Fuel Bowser      1Lt  Antonov            425  11  66  66   0  62  34  26  59    0    0   1   0   0 100.00 % ( 16,   8)
- #    M1   Fuel Bowser      Sgt  Lavrenev           426  11  67  79   0  66  43  31  62    0    0   1   0   0 100.00 % ( 11,   9)
++SDAL #    Designation      Rank Leader           Unit               RID UTG EXP MOR SUP RAL INF ART ARM Kill Loss Men KIA Dmg    Ready   Position
+----- ---- -----------      ---- ------           ----               --- --- --- --- --- --- --- --- --- ---- ---- --- --- ---    ----- ----------
+ #    A0   SO Komander      Col  Stolypin         SO Komander        400   3  84  84   0  67  68  34  33    0    0   6   0   0 100.00 % ( 16,   0)
+ #    B0   T-70             1Lt  Gapon            T-70               401   4  72  74   0  71  33  32  64    0    0   2   0   0 100.00 % ( 11,  17)
+ #    B1   T-70             Sgt  Mogilny          T-70               402   4  72  67   0  67  29  31  57    0    0   2   0   0 100.00 % ( 11,  15)
+ #    C0   T-34 M43         Cpt  Zoshchenko       T-34 M43           403   5  74  74   0  63  42  33  61    0    0   4   0   0 100.00 % ( 11,  13)
+ #    D0   T-34 M43         1Lt  Morozov          T-34 M43           404   5  75  73   0  67  32  32  66    0    0   4   0   0 100.00 % (  none  )
+ #    D1   T-34 M43         Sgt  Sorokin          T-34 M43           405   5  73  74   0  66  30  28  67    0    0   4   0   0 100.00 % (  none  )
+ #    D2   T-34 M43         Sgt  Lucashenko       T-34 M43           406   5  74  76   0  59  34  27  68    0    0   4   0   0 100.00 % (  none  )
+ #    E0   T-34 M43         1Lt  Fedorov          T-34 M43           407   5  74  69   0  63  34  29  66    0    0   4   0   0 100.00 % (  none  )
+ #    E1   T-34 M43         Sgt  Belinsky         T-34 M43           408   5  83  73   0  57  34  31  58    0    0   4   0   0 100.00 % (  none  )
+ #    E2   T-34 M43         Sgt  Vasiliev         T-34 M43           409   5  73  74   0  55  34  41  56    0    0   4   0   0 100.00 % (  none  )
+ #    F0   T-34 M43         1Lt  Miloslavovich    T-34 M43           410   5  64  56   0  70  35  26  69    0    0   4   0   0 100.00 % (  none  )
+ #    F1   T-34 M43         Sgt  Vorobiev         T-34 M43           411   5  64  59   0  62  38  34  56    0    0   4   0   0 100.00 % (  none  )
+ #    F2   T-34 M43         Sgt  Ivanov           T-34 M43           412   5  62  72   0  71  28  36  65    0    0   4   0   0 100.00 % (  none  )
+ #    G0   T-34 M41         1Lt  Rabinovich       T-34 M41           413   6  74  79   0  59  34  33  62    0    0   4   0   0 100.00 % (  none  )
+ #    G1   T-34 M41         Sgt  Popov            T-34 M41           414   6  77  79   0  63  33  34  66    0    0   4   0   0 100.00 % (  none  )
+ #    G2   T-34 M41         Sgt  Pashkov          T-34 M41           415   6  71  72   0  56  34  37  57    0    0   4   0   0 100.00 % (  none  )
+ #    H0   T-34 M43         1Lt  Lisichkin        T-34 M43           416   5  70  70   0  51  33  28  62    0    0   4   0   0 100.00 % ( 13,  14)
+ #    H1   T-34/85          Sgt  Zhdanov          T-34/85            417   7  68  71   0  53  35  27  55    0    0   5   0   0 100.00 % ( 13,  13)
+ #    H2   T-34/85          Sgt  Kashin           T-34/85            418   7  72  74   0  59  34  34  65    0    0   5   0   0 100.00 % ( 16,   9)
+ #    I0   IS-1             1Lt  Pugachev         IS-1               419   8  68  70   0  60  35  36  61    0    0   4   0   0 100.00 % ( 11,  10)
+ #    I1   BA-64            Sgt  Gladkov          BA-64              420   9  67  65   0  68  29  39  63    0    0   2   0   0 100.00 % ( 11,  18)
+ #    J0   Ammo Carrier     1Lt  Kondrashov       Ammo Carrier       421  10  67  73   0  68  39  39  71    0    0   2   0   0 100.00 % ( 12,  13)
+ #    K0   Ammo Carrier     1Lt  Kuropatkin       Ammo Carrier       422  10  80  75   0  69  26  29  56    0    0   2   0   0 100.00 % ( 12,   5)
+ #    L0   Fuel Bowser      1Lt  Shevchenko       Studebaker US-6    423  11  73  75   0  63  33  26  61    0    0   1   0   0 100.00 % ( 12,   7)
+ #    L1   Fuel Bowser      Sgt  Sidorov          Studebaker US-6    424  11  71  78   0  64  43  32  63    0    0   1   0   0 100.00 % ( 13,   3)
+ #    M0   Fuel Bowser      1Lt  Antonov          Studebaker US-6    425  11  66  66   0  62  34  26  59    0    0   1   0   0 100.00 % ( 16,   8)
+ #    M1   Fuel Bowser      Sgt  Lavrenev         Studebaker US-6    426  11  67  79   0  66  43  31  62    0    0   1   0   0 100.00 % ( 11,   9)
 
 
 

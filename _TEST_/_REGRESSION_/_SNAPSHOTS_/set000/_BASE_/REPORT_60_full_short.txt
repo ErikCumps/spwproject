@@ -67,39 +67,39 @@ Crews     : 1
 Total kills        : 22
 Total losses       : 4
 Total readiness    :  76.03 %
-Unit experience    : max: 70 ( 28: K2: USMC Eng Sec FT (Sgt Udell))
-Unit experience    : min: 34 ( 32: M0: M2 Medium (1Lt Taylor))
-Unit experience    : avg: 53.74
+Unit experience    : max:  70 ([ 28] K2: USMC Eng Sec FT (Sgt Udell))
+Unit experience    : min:  34 ([ 32] M0: M2 Medium (1Lt Taylor))
+Unit experience    : avg:  53.74
 Unit experience    : spr: 36
 Unit experience    : tot: 2257
 Unit experience    : cnt: 42
-Unit readiness     : max: 100.00 (  0: A0: USMC HQ (Col Diaz))
-Unit readiness     : min: 0.00 ( 15: F1: .30 Cal MMG (KIA Henderson))
-Unit readiness     : avg: 76.03
+Unit readiness     : max: 100.00 ([  0] A0: USMC HQ (Col Diaz))
+Unit readiness     : min:   0.00 ([ 15] F1: .30 Cal MMG (KIA Henderson))
+Unit readiness     : avg:  76.03
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 3193.42
 Unit readiness     : cnt: 42
-Unit kills         : max: 5 ( 34: M2: M2 Medium (KIA Kempe))
-Unit kills         : min: 0 (  0: A0: USMC HQ (Col Diaz))
-Unit kills         : avg: 0.52
+Unit kills         : max:   5 ([ 34] M2: M2 Medium (KIA Kempe))
+Unit kills         : min:   0 ([  0] A0: USMC HQ (Col Diaz))
+Unit kills         : avg:   0.52
 Unit kills         : spr: 5
 Unit kills         : tot: 22
 Unit kills         : cnt: 42
-Formation readiness: max: 100.00 (  0: A: elite force HQ)
-Formation readiness: min: 43.61 (  4: E: average platoon)
-Formation readiness: avg: 80.58
-Formation readiness: spr: 56.39
+Formation readiness: max: 100.00 ([  0] A: elite force HQ)
+Formation readiness: min:  43.61 ([  4] E: average platoon)
+Formation readiness: avg:  80.58
+Formation readiness: spr:  56.39
 Formation readiness: tot: 1128.14
 Formation readiness: cnt: 14
-Formation kills    : max: 9 ( 12: M: average platoon)
-Formation kills    : min: 0 (  0: A: elite force HQ)
-Formation kills    : avg: 1.57
+Formation kills    : max:   9 ([ 12] M: average platoon)
+Formation kills    : min:   0 ([  0] A: elite force HQ)
+Formation kills    : avg:   1.57
 Formation kills    : spr: 9
 Formation kills    : tot: 22
 Formation kills    : cnt: 14
-Formation losses   : max: 2 ( 12: M: average platoon)
-Formation losses   : min: 0 (  0: A: elite force HQ)
-Formation losses   : avg: 0.29
+Formation losses   : max:   2 ([ 12] M: average platoon)
+Formation losses   : min:   0 ([  0] A: elite force HQ)
+Formation losses   : avg:   0.29
 Formation losses   : spr: 2
 Formation losses   : tot: 4
 Formation losses   : cnt: 14
@@ -107,7 +107,7 @@ Formation losses   : cnt: 14
 Short formations report:
 ------------------------
 
-A : core elite force HQ
+A : core elite force HQ (US marine HQ)
 	leader    : A0 USMC HQ (Col Diaz)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -117,7 +117,7 @@ A : core elite force HQ
 	unit list :
 		A0 USMC HQ
 
-B : core recon company
+B : core recon company (Infantry Co )
 	leader    : B0 USMC Co HQ (Cpt Perez)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -127,7 +127,7 @@ B : core recon company
 	unit list :
 		B0 USMC Co HQ
 
-C : core average platoon
+C : core average platoon (Infantry Plt )
 	leader    : C0 USMC Plt HQ (2Lt Reynolds)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 1
@@ -140,7 +140,7 @@ C : core average platoon
 		C2 USMC Inf Sqd 
 		C3 USMC Inf Sqd 
 
-D : core average platoon
+D : core average platoon (Infantry Plt )
 	leader    : D0 USMC Plt HQ (2Lt Necaise)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 1
@@ -153,7 +153,7 @@ D : core average platoon
 		D2 USMC Inf Sqd 
 		D3 USMC Inf Sqd 
 
-E : core average platoon
+E : core average platoon (Infantry Plt )
 	leader    : E0 USMC Plt HQ (2Lt Kirby)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 4
@@ -166,7 +166,7 @@ E : core average platoon
 		E2 USMC Inf Sqd 
 		E3 USMC Inf Sqd 
 
-F : core average platoon
+F : core average platoon (MG Platoon)
 	leader    : F0 .30 Cal MMG (2Lt Isaac)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 3
@@ -178,7 +178,7 @@ F : core average platoon
 		F1 .30 Cal MMG
 		F2 .30 Cal MMG
 
-G : core dedicated artillery platoon
+G : core dedicated artillery platoon (Lt Mortar Sec)
 	leader    : G0 M2 60mm Mortar (2Lt Kramer)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 0
@@ -189,7 +189,7 @@ G : core dedicated artillery platoon
 		G0 M2 60mm Mortar
 		G1 M2 60mm Mortar
 
-H : core recon platoon
+H : core recon platoon (Engineer Co)
 	leader    : H0 USMC Eng Sec FT (Cpt Jacobs)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -199,7 +199,7 @@ H : core recon platoon
 	unit list :
 		H0 USMC Eng Sec FT
 
-I : core elite platoon
+I : core elite platoon (Engineer Plt)
 	leader    : I0 USMC Eng Sec DC (2Lt McKelvey)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 0
@@ -211,7 +211,7 @@ I : core elite platoon
 		I1 USMC Eng Sec DC
 		I2 USMC Eng Sec FT
 
-J : core elite platoon
+J : core elite platoon (Engineer Plt)
 	leader    : J0 USMC Eng Sec DC (2Lt Nino)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 0
@@ -223,7 +223,7 @@ J : core elite platoon
 		J1 USMC Eng Sec DC
 		J2 USMC Eng Sec FT
 
-K : core elite platoon
+K : core elite platoon (Engineer Plt)
 	leader    : K0 USMC Eng Sec DC (2Lt Gallegos)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 1
@@ -235,7 +235,7 @@ K : core elite platoon
 		K1 USMC Eng Sec DC
 		K2 USMC Eng Sec FT
 
-L : core average platoon
+L : core average platoon (HMG Section)
 	leader    : L1 .30 Cal HMG (Sgt Jackson)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 3
@@ -247,7 +247,7 @@ L : core average platoon
 		L1 .30 Cal HMG
 		L2 .30 Cal HMG
 
-M : support average platoon
+M : support average platoon (Med Tank Plt)
 	leader    : M0 M2 Medium (1Lt Taylor)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 9
@@ -261,7 +261,7 @@ M : support average platoon
 		M3 M2 Medium
 		M4 M2 Medium
 
-N : support recon platoon
+N : support recon platoon (Lt Tank Plt)
 	leader    : N0 M3 Stuart (1Lt Nettles)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -279,53 +279,53 @@ N : support recon platoon
 Short units report:
 -------------------
 
- #    A0  : USMC HQ          (Col Diaz            ) RID 00000 UTG 000 EXP 063 MOR 076 SUP 000 RAL 067 INF 063 ART 033 ARM 031 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 13,  16)
- #    B0  : USMC Co HQ       (Cpt Perez           ) RID 00001 UTG 001 EXP 044 MOR 067 SUP 000 RAL 062 INF 063 ART 037 ARM 028 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
- #-   C0  : USMC Plt HQ      (2Lt Reynolds        ) RID 00002 UTG 002 EXP 052 MOR 070 SUP 007 RAL 058 INF 061 ART 027 ARM 029 KILL 000 LOSS 000 MEN 007 KIA 005 DMG 005 RDY  25.71 POS ( 33,  15)
- #    C1  : USMC Inf Sqd     (Sgt Emerson         ) RID 00003 UTG 003 EXP 050 MOR 064 SUP 001 RAL 062 INF 057 ART 034 ARM 028 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY  98.44 POS ( 35,  14)
-  -   C2  : USMC Inf Sqd     (Sgt Patton          ) RID 00004 UTG 003 EXP 047 MOR 063 SUP 001 RAL 070 INF 064 ART 032 ARM 026 KILL 001 LOSS 000 MEN 009 KIA 002 DMG 002 RDY  76.54 POS ( 34,  16)
-  -   C3  : USMC Inf Sqd     (Sgt Hunter          ) RID 00005 UTG 003 EXP 058 MOR 068 SUP 001 RAL 066 INF 060 ART 035 ARM 031 KILL 000 LOSS 000 MEN 009 KIA 001 DMG 001 RDY  87.58 POS ( 35,  13)
-      D0  : USMC Plt HQ      (2Lt Necaise         ) RID 00006 UTG 002 EXP 067 MOR 061 SUP 000 RAL 070 INF 064 ART 032 ARM 032 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 30,  25)
-      D1  : USMC Inf Sqd     (Sgt Owens           ) RID 00007 UTG 004 EXP 048 MOR 052 SUP 000 RAL 060 INF 061 ART 023 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 31,  24)
-  -   D2  : USMC Inf Sqd     (Sgt Lopez           ) RID 00008 UTG 004 EXP 061 MOR 058 SUP 001 RAL 072 INF 051 ART 028 ARM 035 KILL 001 LOSS 000 MEN 009 KIA 004 DMG 004 RDY  54.60 POS ( 30,  26)
-  -   D3  : USMC Inf Sqd     (Sgt Palmer          ) RID 00009 UTG 004 EXP 053 MOR 064 SUP 000 RAL 060 INF 052 ART 035 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  44.44 POS ( 31,  23)
-  -   E0  : USMC Plt HQ      (2Lt Kirby           ) RID 00010 UTG 002 EXP 047 MOR 069 SUP 000 RAL 061 INF 058 ART 032 ARM 031 KILL 002 LOSS 000 MEN 007 KIA 001 DMG 001 RDY  85.71 POS ( 37,  10)
-  -   E1  : USMC Inf Sqd     (Sgt Glussich        ) RID 00011 UTG 004 EXP 051 MOR 073 SUP 000 RAL 060 INF 055 ART 027 ARM 037 KILL 002 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  44.44 POS ( 37,  10)
-  -   E2  : USMC Inf Sqd     (Sgt Radford         ) RID 00012 UTG 004 EXP 047 MOR 068 SUP 001 RAL 063 INF 066 ART 025 ARM 032 KILL 000 LOSS 000 MEN 009 KIA 008 DMG 008 RDY  10.95 POS ( 34,  11)
-  -   E3  : USMC Inf Sqd     (Sgt Smith           ) RID 00013 UTG 004 EXP 050 MOR 066 SUP 000 RAL 066 INF 062 ART 024 ARM 023 KILL 000 LOSS 000 MEN 009 KIA 006 DMG 006 RDY  33.33 POS ( 37,   8)
-      F0  : .30 Cal MMG      (2Lt Isaac           ) RID 00014 UTG 005 EXP 043 MOR 066 SUP 001 RAL 066 INF 054 ART 025 ARM 030 KILL 002 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  98.48 POS ( 27,  30)
-+ -   F1  : .30 Cal MMG      (KIA Henderson       ) RID 00015 UTG 005 EXP 052 MOR 060 SUP 023 RAL 060 INF 062 ART 034 ARM 035 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 016 RDY   0.00 POS (  none  )
- #-   F2  : .30 Cal MMG      (Sgt O'hern          ) RID 00016 UTG 005 EXP 052 MOR 067 SUP 001 RAL 063 INF 055 ART 033 ARM 032 KILL 001 LOSS 000 MEN 004 KIA 001 DMG 001 RDY  73.88 POS ( 27,  31)
- #    G0  : M2 60mm Mortar   (2Lt Kramer          ) RID 00017 UTG 006 EXP 056 MOR 056 SUP 000 RAL 067 INF 023 ART 063 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 21,  15)
- #    G1  : M2 60mm Mortar   (Sgt Ferguson        ) RID 00018 UTG 006 EXP 048 MOR 056 SUP 000 RAL 058 INF 028 ART 053 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 19,  14)
-      H0  : USMC Eng Sec FT  (Cpt Jacobs          ) RID 00019 UTG 007 EXP 054 MOR 072 SUP 000 RAL 062 INF 061 ART 029 ARM 037 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 37,   7)
- #    I0  : USMC Eng Sec DC  (2Lt McKelvey        ) RID 00020 UTG 008 EXP 060 MOR 071 SUP 000 RAL 068 INF 060 ART 037 ARM 029 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  34)
- #    I1  : USMC Eng Sec DC  (Sgt Collins         ) RID 00021 UTG 008 EXP 069 MOR 082 SUP 000 RAL 061 INF 060 ART 039 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  33)
- #    I2  : USMC Eng Sec FT  (Sgt Amos            ) RID 00022 UTG 007 EXP 065 MOR 075 SUP 000 RAL 061 INF 061 ART 023 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  35)
- #    J0  : USMC Eng Sec DC  (2Lt Nino            ) RID 00023 UTG 008 EXP 065 MOR 078 SUP 000 RAL 067 INF 058 ART 034 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  21)
- #    J1  : USMC Eng Sec DC  (Sgt Reeves          ) RID 00024 UTG 008 EXP 058 MOR 068 SUP 000 RAL 063 INF 060 ART 033 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
- #    J2  : USMC Eng Sec FT  (Sgt Davie           ) RID 00025 UTG 007 EXP 067 MOR 071 SUP 000 RAL 059 INF 062 ART 028 ARM 026 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  22)
- #-   K0  : USMC Eng Sec DC  (2Lt Gallegos        ) RID 00026 UTG 008 EXP 061 MOR 072 SUP 001 RAL 067 INF 051 ART 027 ARM 034 KILL 001 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  78.89 POS ( 34,  16)
- #-   K1  : USMC Eng Sec DC  (Sgt Ellis           ) RID 00027 UTG 008 EXP 069 MOR 073 SUP 001 RAL 070 INF 062 ART 034 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 003 DMG 003 RDY  69.04 POS ( 34,  15)
- #-   K2  : USMC Eng Sec FT  (Sgt Udell           ) RID 00028 UTG 007 EXP 070 MOR 076 SUP 000 RAL 058 INF 056 ART 035 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 006 DMG 006 RDY  40.00 POS ( 33,  17)
-+ -   L0  : .50 Cal HMG      (KIA Guitierez       ) RID 00029 UTG 009 EXP 050 MOR 059 SUP 018 RAL 068 INF 066 ART 032 ARM 033 KILL 001 LOSS 001 MEN 004 KIA 004 DMG 044 RDY   0.00 POS (  none  )
-  -   L1  : .30 Cal HMG      (Sgt Jackson         ) RID 00030 UTG 010 EXP 049 MOR 057 SUP 000 RAL 067 INF 063 ART 036 ARM 022 KILL 001 LOSS 000 MEN 004 KIA 001 DMG 001 RDY  75.00 POS ( 30,  25)
- #    L2  : .30 Cal HMG      (Sgt Mizerak         ) RID 00031 UTG 010 EXP 054 MOR 060 SUP 000 RAL 058 INF 057 ART 029 ARM 038 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 29,  27)
-+ -A  M0  : M2 Medium        (1Lt Taylor          ) RID 00032 UTG 011 EXP 034 MOR 054 SUP 022 RAL 049 INF 025 ART 026 ARM 054 KILL 000 LOSS 001 MEN 006 KIA 006 DMG 055 RDY   0.00 POS (  none  )
-      M1  : M2 Medium        (Sgt Reynolds        ) RID 00033 UTG 011 EXP 049 MOR 043 SUP 000 RAL 049 INF 027 ART 026 ARM 051 KILL 002 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 37,  16)
-+ -   M2  : M2 Medium        (KIA Kempe           ) RID 00034 UTG 011 EXP 047 MOR 051 SUP 028 RAL 049 INF 033 ART 030 ARM 054 KILL 005 LOSS 001 MEN 006 KIA 006 DMG 055 RDY   0.00 POS (  none  )
-      M3  : M2 Medium        (Sgt Nicholson       ) RID 00035 UTG 011 EXP 046 MOR 047 SUP 000 RAL 054 INF 019 ART 027 ARM 046 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 37,  18)
- #-   M4  : M2 Medium        (Sgt Kramer          ) RID 00036 UTG 011 EXP 047 MOR 046 SUP 000 RAL 051 INF 026 ART 028 ARM 044 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 002 RDY  96.36 POS ( 33,  23)
- #    N0  : M3 Stuart        (1Lt Nettles         ) RID 00038 UTG 037 EXP 061 MOR 069 SUP 000 RAL 064 INF 033 ART 028 ARM 057 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #    N1  : M3 Stuart        (Sgt Phillips        ) RID 00039 UTG 037 EXP 045 MOR 068 SUP 000 RAL 061 INF 027 ART 032 ARM 057 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #    N2  : M3 Stuart        (Sgt Babers          ) RID 00040 UTG 037 EXP 056 MOR 060 SUP 000 RAL 065 INF 029 ART 038 ARM 055 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #    N3  : M3 Stuart        (Sgt Swan            ) RID 00041 UTG 037 EXP 048 MOR 074 SUP 000 RAL 064 INF 029 ART 023 ARM 056 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
- #    N4  : M3 Stuart        (Sgt Ginski          ) RID 00042 UTG 037 EXP 044 MOR 064 SUP 000 RAL 058 INF 028 ART 025 ARM 059 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+ #    A0  : USMC HQ          (Col Diaz            ) USMC HQ          RID 00000 UTG 000 EXP 063 MOR 076 SUP 000 RAL 067 INF 063 ART 033 ARM 031 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 13,  16)
+ #    B0  : USMC Co HQ       (Cpt Perez           ) USMC Co HQ       RID 00001 UTG 001 EXP 044 MOR 067 SUP 000 RAL 062 INF 063 ART 037 ARM 028 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
+ #-   C0  : USMC Plt HQ      (2Lt Reynolds        ) USMC Plt HQ      RID 00002 UTG 002 EXP 052 MOR 070 SUP 007 RAL 058 INF 061 ART 027 ARM 029 KILL 000 LOSS 000 MEN 007 KIA 005 DMG 005 RDY  25.71 POS ( 33,  15)
+ #    C1  : USMC Inf Sqd     (Sgt Emerson         ) USMC Inf Sqd     RID 00003 UTG 003 EXP 050 MOR 064 SUP 001 RAL 062 INF 057 ART 034 ARM 028 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY  98.44 POS ( 35,  14)
+  -   C2  : USMC Inf Sqd     (Sgt Patton          ) USMC Inf Sqd     RID 00004 UTG 003 EXP 047 MOR 063 SUP 001 RAL 070 INF 064 ART 032 ARM 026 KILL 001 LOSS 000 MEN 009 KIA 002 DMG 002 RDY  76.54 POS ( 34,  16)
+  -   C3  : USMC Inf Sqd     (Sgt Hunter          ) USMC Inf Sqd     RID 00005 UTG 003 EXP 058 MOR 068 SUP 001 RAL 066 INF 060 ART 035 ARM 031 KILL 000 LOSS 000 MEN 009 KIA 001 DMG 001 RDY  87.58 POS ( 35,  13)
+      D0  : USMC Plt HQ      (2Lt Necaise         ) USMC Plt HQ      RID 00006 UTG 002 EXP 067 MOR 061 SUP 000 RAL 070 INF 064 ART 032 ARM 032 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 30,  25)
+      D1  : USMC Inf Sqd     (Sgt Owens           ) USMC Inf Sqd     RID 00007 UTG 004 EXP 048 MOR 052 SUP 000 RAL 060 INF 061 ART 023 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 31,  24)
+  -   D2  : USMC Inf Sqd     (Sgt Lopez           ) USMC Inf Sqd     RID 00008 UTG 004 EXP 061 MOR 058 SUP 001 RAL 072 INF 051 ART 028 ARM 035 KILL 001 LOSS 000 MEN 009 KIA 004 DMG 004 RDY  54.60 POS ( 30,  26)
+  -   D3  : USMC Inf Sqd     (Sgt Palmer          ) USMC Inf Sqd     RID 00009 UTG 004 EXP 053 MOR 064 SUP 000 RAL 060 INF 052 ART 035 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  44.44 POS ( 31,  23)
+  -   E0  : USMC Plt HQ      (2Lt Kirby           ) USMC Plt HQ      RID 00010 UTG 002 EXP 047 MOR 069 SUP 000 RAL 061 INF 058 ART 032 ARM 031 KILL 002 LOSS 000 MEN 007 KIA 001 DMG 001 RDY  85.71 POS ( 37,  10)
+  -   E1  : USMC Inf Sqd     (Sgt Glussich        ) USMC Inf Sqd     RID 00011 UTG 004 EXP 051 MOR 073 SUP 000 RAL 060 INF 055 ART 027 ARM 037 KILL 002 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  44.44 POS ( 37,  10)
+  -   E2  : USMC Inf Sqd     (Sgt Radford         ) USMC Inf Sqd     RID 00012 UTG 004 EXP 047 MOR 068 SUP 001 RAL 063 INF 066 ART 025 ARM 032 KILL 000 LOSS 000 MEN 009 KIA 008 DMG 008 RDY  10.95 POS ( 34,  11)
+  -   E3  : USMC Inf Sqd     (Sgt Smith           ) USMC Inf Sqd     RID 00013 UTG 004 EXP 050 MOR 066 SUP 000 RAL 066 INF 062 ART 024 ARM 023 KILL 000 LOSS 000 MEN 009 KIA 006 DMG 006 RDY  33.33 POS ( 37,   8)
+      F0  : .30 Cal MMG      (2Lt Isaac           ) .30 Cal MMG      RID 00014 UTG 005 EXP 043 MOR 066 SUP 001 RAL 066 INF 054 ART 025 ARM 030 KILL 002 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  98.48 POS ( 27,  30)
++ -   F1  : .30 Cal MMG      (KIA Henderson       ) .30 Cal MMG      RID 00015 UTG 005 EXP 052 MOR 060 SUP 023 RAL 060 INF 062 ART 034 ARM 035 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 016 RDY   0.00 POS (  none  )
+ #-   F2  : .30 Cal MMG      (Sgt O'hern          ) .30 Cal MMG      RID 00016 UTG 005 EXP 052 MOR 067 SUP 001 RAL 063 INF 055 ART 033 ARM 032 KILL 001 LOSS 000 MEN 004 KIA 001 DMG 001 RDY  73.88 POS ( 27,  31)
+ #    G0  : M2 60mm Mortar   (2Lt Kramer          ) M2 60mm Mortar   RID 00017 UTG 006 EXP 056 MOR 056 SUP 000 RAL 067 INF 023 ART 063 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 21,  15)
+ #    G1  : M2 60mm Mortar   (Sgt Ferguson        ) M2 60mm Mortar   RID 00018 UTG 006 EXP 048 MOR 056 SUP 000 RAL 058 INF 028 ART 053 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 19,  14)
+      H0  : USMC Eng Sec FT  (Cpt Jacobs          ) USMC Eng Sec FT  RID 00019 UTG 007 EXP 054 MOR 072 SUP 000 RAL 062 INF 061 ART 029 ARM 037 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 37,   7)
+ #    I0  : USMC Eng Sec DC  (2Lt McKelvey        ) USMC Eng Sec DC  RID 00020 UTG 008 EXP 060 MOR 071 SUP 000 RAL 068 INF 060 ART 037 ARM 029 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  34)
+ #    I1  : USMC Eng Sec DC  (Sgt Collins         ) USMC Eng Sec DC  RID 00021 UTG 008 EXP 069 MOR 082 SUP 000 RAL 061 INF 060 ART 039 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  33)
+ #    I2  : USMC Eng Sec FT  (Sgt Amos            ) USMC Eng Sec FT  RID 00022 UTG 007 EXP 065 MOR 075 SUP 000 RAL 061 INF 061 ART 023 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  35)
+ #    J0  : USMC Eng Sec DC  (2Lt Nino            ) USMC Eng Sec DC  RID 00023 UTG 008 EXP 065 MOR 078 SUP 000 RAL 067 INF 058 ART 034 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  21)
+ #    J1  : USMC Eng Sec DC  (Sgt Reeves          ) USMC Eng Sec DC  RID 00024 UTG 008 EXP 058 MOR 068 SUP 000 RAL 063 INF 060 ART 033 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
+ #    J2  : USMC Eng Sec FT  (Sgt Davie           ) USMC Eng Sec FT  RID 00025 UTG 007 EXP 067 MOR 071 SUP 000 RAL 059 INF 062 ART 028 ARM 026 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  22)
+ #-   K0  : USMC Eng Sec DC  (2Lt Gallegos        ) USMC Eng Sec DC  RID 00026 UTG 008 EXP 061 MOR 072 SUP 001 RAL 067 INF 051 ART 027 ARM 034 KILL 001 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  78.89 POS ( 34,  16)
+ #-   K1  : USMC Eng Sec DC  (Sgt Ellis           ) USMC Eng Sec DC  RID 00027 UTG 008 EXP 069 MOR 073 SUP 001 RAL 070 INF 062 ART 034 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 003 DMG 003 RDY  69.04 POS ( 34,  15)
+ #-   K2  : USMC Eng Sec FT  (Sgt Udell           ) USMC Eng Sec FT  RID 00028 UTG 007 EXP 070 MOR 076 SUP 000 RAL 058 INF 056 ART 035 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 006 DMG 006 RDY  40.00 POS ( 33,  17)
++ -   L0  : .50 Cal HMG      (KIA Guitierez       ) .50 Cal HMG      RID 00029 UTG 009 EXP 050 MOR 059 SUP 018 RAL 068 INF 066 ART 032 ARM 033 KILL 001 LOSS 001 MEN 004 KIA 004 DMG 044 RDY   0.00 POS (  none  )
+  -   L1  : .30 Cal HMG      (Sgt Jackson         ) .30 Cal HMG      RID 00030 UTG 010 EXP 049 MOR 057 SUP 000 RAL 067 INF 063 ART 036 ARM 022 KILL 001 LOSS 000 MEN 004 KIA 001 DMG 001 RDY  75.00 POS ( 30,  25)
+ #    L2  : .30 Cal HMG      (Sgt Mizerak         ) .30 Cal HMG      RID 00031 UTG 010 EXP 054 MOR 060 SUP 000 RAL 058 INF 057 ART 029 ARM 038 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 29,  27)
++ -A  M0  : M2 Medium        (1Lt Taylor          ) M2 Medium        RID 00032 UTG 011 EXP 034 MOR 054 SUP 022 RAL 049 INF 025 ART 026 ARM 054 KILL 000 LOSS 001 MEN 006 KIA 006 DMG 055 RDY   0.00 POS (  none  )
+      M1  : M2 Medium        (Sgt Reynolds        ) M2 Medium        RID 00033 UTG 011 EXP 049 MOR 043 SUP 000 RAL 049 INF 027 ART 026 ARM 051 KILL 002 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 37,  16)
++ -   M2  : M2 Medium        (KIA Kempe           ) M2 Medium        RID 00034 UTG 011 EXP 047 MOR 051 SUP 028 RAL 049 INF 033 ART 030 ARM 054 KILL 005 LOSS 001 MEN 006 KIA 006 DMG 055 RDY   0.00 POS (  none  )
+      M3  : M2 Medium        (Sgt Nicholson       ) M2 Medium        RID 00035 UTG 011 EXP 046 MOR 047 SUP 000 RAL 054 INF 019 ART 027 ARM 046 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 37,  18)
+ #-   M4  : M2 Medium        (Sgt Kramer          ) M2 Medium        RID 00036 UTG 011 EXP 047 MOR 046 SUP 000 RAL 051 INF 026 ART 028 ARM 044 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 002 RDY  96.36 POS ( 33,  23)
+ #    N0  : M3 Stuart        (1Lt Nettles         ) M3 Stuart        RID 00038 UTG 037 EXP 061 MOR 069 SUP 000 RAL 064 INF 033 ART 028 ARM 057 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+ #    N1  : M3 Stuart        (Sgt Phillips        ) M3 Stuart        RID 00039 UTG 037 EXP 045 MOR 068 SUP 000 RAL 061 INF 027 ART 032 ARM 057 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+ #    N2  : M3 Stuart        (Sgt Babers          ) M3 Stuart        RID 00040 UTG 037 EXP 056 MOR 060 SUP 000 RAL 065 INF 029 ART 038 ARM 055 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+ #    N3  : M3 Stuart        (Sgt Swan            ) M3 Stuart        RID 00041 UTG 037 EXP 048 MOR 074 SUP 000 RAL 064 INF 029 ART 023 ARM 056 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+ #    N4  : M3 Stuart        (Sgt Ginski          ) M3 Stuart        RID 00042 UTG 037 EXP 044 MOR 064 SUP 000 RAL 058 INF 028 ART 025 ARM 059 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 
 Short crews report:
 -------------------
 
-  -A  M50 : Crewmen          (1Lt Taylor          ) RID 00037 UTG 012 EXP 034 MOR 054 SUP 000 RAL 049 INF 025 ART 026 ARM 054 KILL 000 MEN 006 KIA 004 DMG 001 RDY   0.00 POS ( 33,  23)
+  -A  M50 : Crewmen          (1Lt Taylor          )                  RID 00037 UTG 012 EXP 034 MOR 054 SUP 000 RAL 049 INF 025 ART 026 ARM 054 KILL 000 MEN 006 KIA 004 DMG 001 RDY   0.00 POS ( 33,  23)
 
 
 
@@ -341,39 +341,39 @@ Crews     : 0
 Total kills        : 4
 Total losses       : 22
 Total readiness    :  51.50 %
-Unit experience    : max: 94 ( 35: O0: JA Sniper (KIA Saeki))
-Unit experience    : min: 60 ( 11: D4: Knee Mort Sec (Sgt Nakata))
-Unit experience    : avg: 75.45
+Unit experience    : max:  94 ([ 35] O0: JA Sniper (KIA Saeki))
+Unit experience    : min:  60 ([ 11] D4: Knee Mort Sec (Sgt Nakata))
+Unit experience    : avg:  75.45
 Unit experience    : spr: 34
 Unit experience    : tot: 6564
 Unit experience    : cnt: 87
-Unit readiness     : max: 100.00 (  0: A0: JA HQ (Col Sone))
-Unit readiness     : min: 0.00 (  3: C1: JA Inf A Sqd (KIA Egawa))
-Unit readiness     : avg: 51.50
+Unit readiness     : max: 100.00 ([  0] A0: JA HQ (Col Sone))
+Unit readiness     : min:   0.00 ([  3] C1: JA Inf A Sqd (KIA Egawa))
+Unit readiness     : avg:  51.50
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 4480.34
 Unit readiness     : cnt: 87
-Unit kills         : max: 1 (  8: D1: JA Inf A Sqd (Sgt Iida))
-Unit kills         : min: 0 (  0: A0: JA HQ (Col Sone))
-Unit kills         : avg: 0.05
+Unit kills         : max:   1 ([  8] D1: JA Inf A Sqd (Sgt Iida))
+Unit kills         : min:   0 ([  0] A0: JA HQ (Col Sone))
+Unit kills         : avg:   0.05
 Unit kills         : spr: 1
 Unit kills         : tot: 4
 Unit kills         : cnt: 87
-Formation readiness: max: 100.00 (  0: A: elite recon force HQ)
-Formation readiness: min: 0.00 (  5: F: elite recon platoon)
-Formation readiness: avg: 61.69
+Formation readiness: max: 100.00 ([  0] A: elite recon force HQ)
+Formation readiness: min:   0.00 ([  5] F: elite recon platoon)
+Formation readiness: avg:  61.69
 Formation readiness: spr: 100.00
 Formation readiness: tot: 2529.22
 Formation readiness: cnt: 41
-Formation kills    : max: 1 (  3: D: recon platoon)
-Formation kills    : min: 0 (  0: A: elite recon force HQ)
-Formation kills    : avg: 0.10
+Formation kills    : max:   1 ([  3] D: recon platoon)
+Formation kills    : min:   0 ([  0] A: elite recon force HQ)
+Formation kills    : avg:   0.10
 Formation kills    : spr: 1
 Formation kills    : tot: 4
 Formation kills    : cnt: 41
-Formation losses   : max: 3 (  7: H: recon company)
-Formation losses   : min: 0 (  0: A: elite recon force HQ)
-Formation losses   : avg: 0.54
+Formation losses   : max:   3 ([  7] H: recon company)
+Formation losses   : min:   0 ([  0] A: elite recon force HQ)
+Formation losses   : avg:   0.54
 Formation losses   : spr: 3
 Formation losses   : tot: 22
 Formation losses   : cnt: 41
@@ -381,7 +381,7 @@ Formation losses   : cnt: 41
 Short formations report:
 ------------------------
 
-A : core elite recon force HQ
+A : core elite recon force HQ (Japanese HQ)
 	leader    : A0 JA HQ (Col Sone)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -391,7 +391,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 JA HQ
 
-B : support recon company
+B : support recon company (Infantry Co A)
 	leader    : B0 JA Inf A Sqd (Cpt Arai)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -401,7 +401,7 @@ B : support recon company
 	unit list :
 		B0 JA Inf A Sqd
 
-C : support recon platoon
+C : support recon platoon (Infantry Plt A)
 	leader    : C0 A Plt HQ* (2Lt Miwa)
 	higher cmd: B0 JA Inf A Sqd (Cpt Arai)
 	kills     : 0
@@ -415,7 +415,7 @@ C : support recon platoon
 		C3 JA Inf A Sqd
 		C4 Knee Mortar Plt
 
-D : support recon platoon
+D : support recon platoon (Infantry Plt A)
 	leader    : D0 SNLF HQ (2Lt Nagao)
 	higher cmd: B0 JA Inf A Sqd (Cpt Arai)
 	kills     : 1
@@ -429,7 +429,7 @@ D : support recon platoon
 		D3 JA Inf A Sqd
 		D4 Knee Mort Sec
 
-E : support recon platoon
+E : support recon platoon (Infantry Plt A)
 	leader    : E1 JA Inf A Sqd (Sgt Nagata)
 	higher cmd: B0 JA Inf A Sqd (Cpt Arai)
 	kills     : 0
@@ -443,7 +443,7 @@ E : support recon platoon
 		E3 JA Inf A Sqd
 		E4 Knee Mortar Plt
 
-F : support elite recon platoon
+F : support elite recon platoon (HMG Plt A)
 	leader    : F1 Type 92 HMG (KIA Seki)
 	higher cmd: B0 JA Inf A Sqd (Cpt Arai)
 	kills     : 0
@@ -454,7 +454,7 @@ F : support elite recon platoon
 		F0 Type 92 HMG
 		F1 Type 92 HMG
 
-G : support elite platoon
+G : support elite platoon (Inf AT Sec)
 	leader    : G1 JA Tank Hunters (KIA Nakajima)
 	higher cmd: B0 JA Inf A Sqd (Cpt Arai)
 	kills     : 0
@@ -465,7 +465,7 @@ G : support elite platoon
 		G0 JA Tank Hunters
 		G1 JA Tank Hunters
 
-H : support recon company
+H : support recon company (AI Infantry+)
 	leader    : H1 JA Inf A Sqd (Sgt Akune)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -479,7 +479,7 @@ H : support recon company
 		H3 JA Inf B Sqd
 		H4 JA Inf B Sqd*
 
-I : support average platoon
+I : support average platoon (Knee Mort Sec)
 	leader    : I0 Knee Mort Sec (2Lt Ito)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -489,7 +489,7 @@ I : support average platoon
 	unit list :
 		I0 Knee Mort Sec
 
-J : support elite recon platoon
+J : support elite recon platoon (HMG Plt A)
 	leader    : J1 Type 92 HMG (KIA Noda)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -500,7 +500,7 @@ J : support elite recon platoon
 		J0 Type 92 HMG
 		J1 Type 92 HMG
 
-K : support average platoon
+K : support average platoon (AT-Gun Plt)
 	leader    : K0 37mm Type 94 AT (2Lt Mikami)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -511,7 +511,7 @@ K : support average platoon
 		K0 37mm Type 94 AT
 		K1 37mm Type 94 AT
 
-L : support recon platoon
+L : support recon platoon (Scouts)
 	leader    : L1 JA Scout Team (Sgt Noguchi)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -522,7 +522,7 @@ L : support recon platoon
 		L0 JA Scout Team
 		L1 JA Scout Team
 
-M : support elite recon platoon
+M : support elite recon platoon (Sniper)
 	leader    : M0 JA Sniper (KIA Koyama)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -532,7 +532,7 @@ M : support elite recon platoon
 	unit list :
 		M0 JA Sniper
 
-N : support elite recon platoon
+N : support elite recon platoon (Sniper)
 	leader    : N0 JA Sniper (KIA Takizawa)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -542,7 +542,7 @@ N : support elite recon platoon
 	unit list :
 		N0 JA Sniper
 
-O : support elite recon platoon
+O : support elite recon platoon (Sniper)
 	leader    : O0 JA Sniper (KIA Saeki)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -552,7 +552,7 @@ O : support elite recon platoon
 	unit list :
 		O0 JA Sniper
 
-P : support dedicated artillery platoon
+P : support dedicated artillery platoon (Mortar Sec)
 	leader    : P0 JA 81mm Mortar (2Lt Tanaka)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -562,7 +562,7 @@ P : support dedicated artillery platoon
 	unit list :
 		P0 JA 81mm Mortar
 
-Q : core dedicated artillery platoon
+Q : core dedicated artillery platoon (Howitzer Sec)
 	leader    : Q0 70mm Type 92 FG (2Lt Nishida)
 	higher cmd: H0 A Plt HQ* (KIA Miyata)
 	kills     : 0
@@ -572,7 +572,7 @@ Q : core dedicated artillery platoon
 	unit list :
 		Q0 70mm Type 92 FG
 
-R : support average platoon
+R : support average platoon (Engineer Plt)
 	leader    : R0 JA Engineer Sqd (2Lt Nakayama)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 1
@@ -584,7 +584,7 @@ R : support average platoon
 		R1 JA Engineer Sqd
 		R2 JA Engineer Sqd
 
-S : support dedicated artillery platoon
+S : support dedicated artillery platoon (Mortar Sec)
 	leader    : S0 JA 81mm Mortar (2Lt Miyamoto)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -594,7 +594,7 @@ S : support dedicated artillery platoon
 	unit list :
 		S0 JA 81mm Mortar
 
-T : support average platoon
+T : support average platoon (Artillery Btry)
 	leader    : T0 90mm Mort Bty (1Lt Aida)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -604,7 +604,7 @@ T : support average platoon
 	unit list :
 		T0 90mm Mort Bty
 
-U : support recon company
+U : support recon company (Infantry Co A)
 	leader    : U0 JA Inf A Sqd (Cpt Matuda)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -614,7 +614,7 @@ U : support recon company
 	unit list :
 		U0 JA Inf A Sqd
 
-V : support recon platoon
+V : support recon platoon (Infantry Plt A)
 	leader    : V0 A Plt HQ* (2Lt Aoki)
 	higher cmd: U0 JA Inf A Sqd (Cpt Matuda)
 	kills     : 0
@@ -628,7 +628,7 @@ V : support recon platoon
 		V3 JA Inf A Sqd
 		V4 Knee Mortar Plt
 
-W : support recon platoon
+W : support recon platoon (Infantry Plt A)
 	leader    : W1 JA Inf A Sqd (Sgt Hirata)
 	higher cmd: U0 JA Inf A Sqd (Cpt Matuda)
 	kills     : 0
@@ -642,7 +642,7 @@ W : support recon platoon
 		W3 JA Inf A Sqd
 		W4 Knee Mortar Plt
 
-X : support recon platoon
+X : support recon platoon (Infantry Plt A)
 	leader    : X0 A Plt HQ* (2Lt Ota)
 	higher cmd: U0 JA Inf A Sqd (Cpt Matuda)
 	kills     : 0
@@ -656,7 +656,7 @@ X : support recon platoon
 		X3 JA Inf A Sqd
 		X4 Knee Mort Sec
 
-Y : support elite recon platoon
+Y : support elite recon platoon (HMG Plt A)
 	leader    : Y0 Type 92 HMG (2Lt Suzuki)
 	higher cmd: U0 JA Inf A Sqd (Cpt Matuda)
 	kills     : 0
@@ -667,7 +667,7 @@ Y : support elite recon platoon
 		Y0 Type 92 HMG
 		Y1 Type 92 HMG
 
-Z : support elite platoon
+Z : support elite platoon (Inf AT Sec)
 	leader    : Z0 JA Tank Hunters (KIA Takeda)
 	higher cmd: U0 JA Inf A Sqd (Cpt Matuda)
 	kills     : 0
@@ -678,7 +678,7 @@ Z : support elite platoon
 		Z0 JA Tank Hunters
 		Z1 JA Tank Hunters
 
-AA: support recon company
+AA: support recon company (AI Infantry+)
 	leader    : AA0 SNLF HQ (Cpt Naito)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 1
@@ -692,7 +692,7 @@ AA: support recon company
 		AA3 JA Inf B Sqd
 		AA4 JA Inf B Sqd*
 
-AB: support average platoon
+AB: support average platoon (Knee Mort Sec)
 	leader    : AB0 Knee Mort Sec (2Lt Tamura)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -702,7 +702,7 @@ AB: support average platoon
 	unit list :
 		AB0 Knee Mort Sec
 
-AC: support elite recon platoon
+AC: support elite recon platoon (HMG Plt A)
 	leader    : AC1 Type 92 HMG (Sgt Mikawa)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -713,7 +713,7 @@ AC: support elite recon platoon
 		AC0 Type 92 HMG
 		AC1 Type 92 HMG
 
-AD: support average platoon
+AD: support average platoon (AT-Gun Plt)
 	leader    : AD0 37mm Type 94 AT (2Lt Kobayashi)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -724,7 +724,7 @@ AD: support average platoon
 		AD0 37mm Type 94 AT
 		AD1 37mm Type 94 AT
 
-AE: support recon platoon
+AE: support recon platoon (Scouts)
 	leader    : AE0 JA Scout Team (2Lt Ikeyama)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -735,7 +735,7 @@ AE: support recon platoon
 		AE0 JA Scout Team
 		AE1 JA Scout Team
 
-AF: support elite recon platoon
+AF: support elite recon platoon (Sniper)
 	leader    : AF0 JA Sniper (2Lt Ishii)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -745,7 +745,7 @@ AF: support elite recon platoon
 	unit list :
 		AF0 JA Sniper
 
-AG: support elite recon platoon
+AG: support elite recon platoon (Sniper)
 	leader    : AG0 JA Sniper (2Lt Kudo)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -755,7 +755,7 @@ AG: support elite recon platoon
 	unit list :
 		AG0 JA Sniper
 
-AH: support elite recon platoon
+AH: support elite recon platoon (Sniper)
 	leader    : AH0 JA Sniper (2Lt Hamaguchi)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -765,7 +765,7 @@ AH: support elite recon platoon
 	unit list :
 		AH0 JA Sniper
 
-AI: support dedicated artillery platoon
+AI: support dedicated artillery platoon (Mortar Sec)
 	leader    : AI0 JA 81mm Mortar (2Lt Oki)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -775,7 +775,7 @@ AI: support dedicated artillery platoon
 	unit list :
 		AI0 JA 81mm Mortar
 
-AJ: core dedicated artillery platoon
+AJ: core dedicated artillery platoon (Howitzer Sec)
 	leader    : AJ0 75mm Type 38 FG (2Lt Mori)
 	higher cmd: AA0 SNLF HQ (Cpt Naito)
 	kills     : 0
@@ -785,7 +785,7 @@ AJ: core dedicated artillery platoon
 	unit list :
 		AJ0 75mm Type 38 FG
 
-AK: support average platoon
+AK: support average platoon (Engineer Plt)
 	leader    : AK0 JA Engineer Sqd (2Lt Koike)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 1
@@ -797,7 +797,7 @@ AK: support average platoon
 		AK1 JA Engineer Sqd
 		AK2 JA Engineer Sqd
 
-AL: support dedicated artillery platoon
+AL: support dedicated artillery platoon (Mortar Sec)
 	leader    : AL0 JA 81mm Mortar (2Lt Endo)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -807,7 +807,7 @@ AL: support dedicated artillery platoon
 	unit list :
 		AL0 JA 81mm Mortar
 
-AM: support recon company
+AM: support recon company (Infantry Co A)
 	leader    : AM0 JA Inf A Sqd (Cpt Morita)
 	higher cmd: A0 JA HQ (Col Sone)
 	kills     : 0
@@ -817,7 +817,7 @@ AM: support recon company
 	unit list :
 		AM0 JA Inf A Sqd
 
-AN: support recon platoon
+AN: support recon platoon (Infantry Plt A)
 	leader    : AN0 A Plt HQ* (2Lt Negishi)
 	higher cmd: AM0 JA Inf A Sqd (Cpt Morita)
 	kills     : 0
@@ -827,7 +827,7 @@ AN: support recon platoon
 	unit list :
 		AN0 A Plt HQ*
 
-AO: support recon platoon
+AO: support recon platoon (Infantry Plt A)
 	leader    : AO0 SNLF HQ (2Lt Shiozaki)
 	higher cmd: AM0 JA Inf A Sqd (Cpt Morita)
 	kills     : 0
@@ -841,93 +841,93 @@ AO: support recon platoon
 Short units report:
 -------------------
 
- #    A0  : JA HQ            (Col Sone            ) RID 00400 UTG 013 EXP 079 MOR 077 SUP 000 RAL 069 INF 071 ART 044 ARM 035 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 60,  26)
-  -   B0  : JA Inf A Sqd     (Cpt Arai            ) RID 00401 UTG 014 EXP 075 MOR 074 SUP 004 RAL 068 INF 075 ART 034 ARM 038 KILL 000 LOSS 000 MEN 015 KIA 011 DMG 011 RDY  25.23 POS ( 36,  22)
-  -   C0  : A Plt HQ*        (2Lt Miwa            ) RID 00402 UTG 015 EXP 079 MOR 075 SUP 033 RAL 081 INF 071 ART 040 ARM 044 KILL 000 LOSS 000 MEN 007 KIA 006 DMG 006 RDY   1.60 POS ( 38,  16)
-+ -   C1  : JA Inf A Sqd     (KIA Egawa           ) RID 00403 UTG 016 EXP 074 MOR 076 SUP 030 RAL 075 INF 073 ART 037 ARM 038 KILL 000 LOSS 001 MEN 015 KIA 015 DMG 027 RDY   0.00 POS (  none  )
- #-   C2  : JA Inf A Sqd     (Sgt Otuka           ) RID 00404 UTG 016 EXP 085 MOR 074 SUP 003 RAL 070 INF 082 ART 039 ARM 039 KILL 000 LOSS 000 MEN 015 KIA 009 DMG 009 RDY  38.38 POS ( 38,  17)
-  -   C3  : JA Inf A Sqd     (Sgt Kawai           ) RID 00405 UTG 016 EXP 076 MOR 076 SUP 037 RAL 075 INF 070 ART 039 ARM 038 KILL 000 LOSS 000 MEN 015 KIA 003 DMG 003 RDY   8.21 POS ( 36,  13)
- #    C4  : Knee Mortar Plt  (Sgt Hashimoto       ) RID 00406 UTG 017 EXP 077 MOR 083 SUP 000 RAL 076 INF 046 ART 076 ARM 035 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 41,  17)
-  -   D0  : SNLF HQ          (2Lt Nagao           ) RID 00407 UTG 018 EXP 066 MOR 073 SUP 003 RAL 074 INF 071 ART 045 ARM 035 KILL 000 LOSS 000 MEN 007 KIA 005 DMG 005 RDY  27.40 POS ( 32,  26)
- #-   D1  : JA Inf A Sqd     (Sgt Iida            ) RID 00408 UTG 014 EXP 078 MOR 076 SUP 003 RAL 066 INF 083 ART 034 ARM 036 KILL 001 LOSS 000 MEN 015 KIA 011 DMG 011 RDY  25.61 POS ( 32,  28)
- #-   D2  : JA Inf A Sqd     (Sgt Maeda           ) RID 00409 UTG 014 EXP 061 MOR 068 SUP 001 RAL 079 INF 073 ART 042 ARM 034 KILL 000 LOSS 000 MEN 015 KIA 008 DMG 008 RDY  45.98 POS ( 32,  28)
-+ -   D3  : JA Inf A Sqd     (KIA Motoyama        ) RID 00410 UTG 014 EXP 067 MOR 074 SUP 011 RAL 072 INF 070 ART 039 ARM 041 KILL 000 LOSS 001 MEN 015 KIA 015 DMG 031 RDY   0.00 POS (  none  )
- #    D4  : Knee Mort Sec    (Sgt Nakata          ) RID 00411 UTG 019 EXP 060 MOR 070 SUP 000 RAL 079 INF 038 ART 075 ARM 042 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 44,  27)
-+ -   E0  : A Plt HQ*        (KIA Motoki          ) RID 00412 UTG 015 EXP 070 MOR 083 SUP 046 RAL 082 INF 073 ART 044 ARM 041 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 019 RDY   0.00 POS (  none  )
-  -   E1  : JA Inf A Sqd     (Sgt Nagata          ) RID 00413 UTG 016 EXP 067 MOR 078 SUP 019 RAL 069 INF 073 ART 032 ARM 034 KILL 000 LOSS 000 MEN 015 KIA 003 DMG 003 RDY  30.26 POS ( 38,   9)
-  -   E2  : JA Inf A Sqd     (Sgt Namiki          ) RID 00414 UTG 016 EXP 071 MOR 067 SUP 006 RAL 075 INF 077 ART 035 ARM 041 KILL 000 LOSS 000 MEN 015 KIA 008 DMG 008 RDY  42.49 POS ( 38,  11)
-  -   E3  : JA Inf A Sqd     (Sgt Moriyama        ) RID 00415 UTG 016 EXP 064 MOR 069 SUP 022 RAL 072 INF 074 ART 041 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 006 DMG 006 RDY  20.43 POS ( 39,   8)
- #    E4  : Knee Mortar Plt  (Sgt Matushita       ) RID 00416 UTG 017 EXP 072 MOR 073 SUP 000 RAL 081 INF 041 ART 075 ARM 032 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 51,  12)
-+ -   F0  : Type 92 HMG      (KIA Sato            ) RID 00417 UTG 020 EXP 081 MOR 077 SUP 012 RAL 070 INF 077 ART 036 ARM 035 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
-+ -   F1  : Type 92 HMG      (KIA Seki            ) RID 00418 UTG 020 EXP 075 MOR 079 SUP 025 RAL 076 INF 071 ART 041 ARM 036 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
-+ -   G0  : JA Tank Hunters  (KIA Ogawa           ) RID 00419 UTG 021 EXP 086 MOR 089 SUP 039 RAL 066 INF 072 ART 032 ARM 044 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
-+ -   G1  : JA Tank Hunters  (KIA Nakajima        ) RID 00420 UTG 021 EXP 086 MOR 087 SUP 049 RAL 071 INF 069 ART 037 ARM 040 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
-+ -   H0  : A Plt HQ*        (KIA Miyata          ) RID 00421 UTG 015 EXP 079 MOR 071 SUP 054 RAL 077 INF 074 ART 036 ARM 036 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 019 RDY   0.00 POS (  none  )
-  -   H1  : JA Inf A Sqd     (Sgt Akune           ) RID 00422 UTG 014 EXP 076 MOR 076 SUP 026 RAL 071 INF 076 ART 042 ARM 041 KILL 000 LOSS 000 MEN 015 KIA 007 DMG 007 RDY  17.54 POS ( 38,  15)
-  -   H2  : JA Inf A Sqd*    (Sgt Aoyama          ) RID 00423 UTG 022 EXP 082 MOR 067 SUP 009 RAL 067 INF 067 ART 038 ARM 034 KILL 000 LOSS 000 MEN 020 KIA 007 DMG 007 RDY  39.39 POS ( 39,  17)
-+ -   H3  : JA Inf B Sqd     (KIA Ueno            ) RID 00424 UTG 023 EXP 068 MOR 078 SUP 035 RAL 077 INF 081 ART 034 ARM 037 KILL 000 LOSS 001 MEN 013 KIA 013 DMG 023 RDY   0.00 POS (  none  )
-+ -   H4  : JA Inf B Sqd*    (KIA Matumoto        ) RID 00425 UTG 024 EXP 083 MOR 076 SUP 049 RAL 080 INF 075 ART 043 ARM 037 KILL 000 LOSS 001 MEN 018 KIA 018 DMG 031 RDY   0.00 POS (  none  )
- #    I0  : Knee Mort Sec    (2Lt Ito             ) RID 00426 UTG 019 EXP 071 MOR 064 SUP 000 RAL 076 INF 039 ART 072 ARM 040 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 59,  25)
-+ -   J0  : Type 92 HMG      (KIA Shimada         ) RID 00427 UTG 020 EXP 087 MOR 082 SUP 028 RAL 074 INF 069 ART 037 ARM 036 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
-+ -   J1  : Type 92 HMG      (KIA Noda            ) RID 00428 UTG 020 EXP 084 MOR 084 SUP 013 RAL 083 INF 068 ART 035 ARM 039 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
- #    K0  : 37mm Type 94 AT  (2Lt Mikami          ) RID 00429 UTG 025 EXP 062 MOR 059 SUP 000 RAL 077 INF 040 ART 074 ARM 036 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 79,  15)
- #    K1  : 37mm Type 94 AT  (Sgt Kotani          ) RID 00430 UTG 025 EXP 085 MOR 075 SUP 000 RAL 078 INF 041 ART 074 ARM 039 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 81,  14)
-+ -   L0  : JA Scout Team    (KIA Kaneda          ) RID 00431 UTG 026 EXP 072 MOR 069 SUP 020 RAL 074 INF 072 ART 044 ARM 035 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 008 RDY   0.00 POS (  none  )
-      L1  : JA Scout Team    (Sgt Noguchi         ) RID 00432 UTG 026 EXP 069 MOR 075 SUP 029 RAL 076 INF 073 ART 034 ARM 034 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  30.67 POS ( 38,  11)
-+ -   M0  : JA Sniper        (KIA Koyama          ) RID 00433 UTG 027 EXP 092 MOR 085 SUP 020 RAL 074 INF 081 ART 044 ARM 037 KILL 000 LOSS 001 MEN 001 KIA 001 DMG 010 RDY   0.00 POS (  none  )
-+ -   N0  : JA Sniper        (KIA Takizawa        ) RID 00434 UTG 027 EXP 090 MOR 083 SUP 024 RAL 069 INF 074 ART 033 ARM 036 KILL 000 LOSS 001 MEN 001 KIA 001 DMG 010 RDY   0.00 POS (  none  )
-+ -   O0  : JA Sniper        (KIA Saeki           ) RID 00435 UTG 027 EXP 094 MOR 083 SUP 021 RAL 074 INF 067 ART 039 ARM 041 KILL 000 LOSS 001 MEN 001 KIA 001 DMG 010 RDY   0.00 POS (  none  )
- #    P0  : JA 81mm Mortar   (2Lt Tanaka          ) RID 00436 UTG 028 EXP 070 MOR 081 SUP 000 RAL 074 INF 041 ART 081 ARM 038 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 55,  20)
- #    Q0  : 70mm Type 92 FG  (2Lt Nishida         ) RID 00437 UTG 029 EXP 065 MOR 074 SUP 000 RAL 079 INF 041 ART 070 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 76,  21)
-  -   R0  : JA Engineer Sqd  (2Lt Nakayama        ) RID 00438 UTG 030 EXP 080 MOR 072 SUP 019 RAL 065 INF 069 ART 045 ARM 040 KILL 001 LOSS 000 MEN 012 KIA 002 DMG 002 RDY  30.67 POS ( 33,  25)
-  -   R1  : JA Engineer Sqd  (Sgt Ogata           ) RID 00439 UTG 031 EXP 083 MOR 075 SUP 005 RAL 079 INF 075 ART 042 ARM 038 KILL 000 LOSS 000 MEN 012 KIA 011 DMG 011 RDY   7.78 POS ( 33,  28)
-+ -   R2  : JA Engineer Sqd  (KIA Hirai           ) RID 00440 UTG 031 EXP 065 MOR 069 SUP 026 RAL 071 INF 070 ART 045 ARM 036 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 032 RDY   0.00 POS (  none  )
- #    S0  : JA 81mm Mortar   (2Lt Miyamoto        ) RID 00441 UTG 028 EXP 069 MOR 077 SUP 000 RAL 078 INF 045 ART 080 ARM 042 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 56,  17)
-      T0  : 90mm Mort Bty    (1Lt Aida            ) RID 00442 UTG 032 EXP 075 MOR 068 SUP 000 RAL 068 INF 043 ART 074 ARM 043 KILL 000 LOSS 000 MEN 024 KIA 000 DMG 000 RDY 100.00 POS (101,  20)
-  -   U0  : JA Inf A Sqd     (Cpt Matuda          ) RID 00443 UTG 014 EXP 079 MOR 079 SUP 005 RAL 076 INF 068 ART 042 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 004 DMG 004 RDY  68.69 POS ( 38,  11)
- #-   V0  : A Plt HQ*        (2Lt Aoki            ) RID 00444 UTG 015 EXP 081 MOR 071 SUP 003 RAL 077 INF 070 ART 040 ARM 041 KILL 000 LOSS 000 MEN 007 KIA 003 DMG 003 RDY  54.73 POS ( 29,  32)
-  -   V1  : JA Inf A Sqd     (Sgt Kakiuchi        ) RID 00445 UTG 014 EXP 068 MOR 081 SUP 009 RAL 078 INF 077 ART 039 ARM 034 KILL 000 LOSS 000 MEN 015 KIA 010 DMG 010 RDY  20.74 POS ( 30,  30)
-  -   V2  : JA Inf A Sqd     (Sgt Hasegawa        ) RID 00446 UTG 014 EXP 074 MOR 073 SUP 004 RAL 073 INF 073 ART 035 ARM 040 KILL 000 LOSS 000 MEN 015 KIA 006 DMG 006 RDY  56.71 POS ( 29,  32)
-+ -   V3  : JA Inf A Sqd     (KIA Nishi           ) RID 00447 UTG 014 EXP 075 MOR 073 SUP 040 RAL 067 INF 078 ART 044 ARM 044 KILL 000 LOSS 001 MEN 015 KIA 015 DMG 031 RDY   0.00 POS (  none  )
- #    V4  : Knee Mortar Plt  (Sgt Morishita       ) RID 00448 UTG 017 EXP 065 MOR 079 SUP 000 RAL 073 INF 036 ART 074 ARM 043 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 35,  32)
-+ -   W0  : A Plt HQ*        (KIA Nishiyama       ) RID 00449 UTG 015 EXP 075 MOR 059 SUP 030 RAL 076 INF 079 ART 030 ARM 035 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 019 RDY   0.00 POS (  none  )
-  -   W1  : JA Inf A Sqd     (Sgt Hirata          ) RID 00450 UTG 016 EXP 072 MOR 072 SUP 026 RAL 072 INF 073 ART 036 ARM 036 KILL 000 LOSS 000 MEN 015 KIA 007 DMG 007 RDY  17.04 POS ( 36,  21)
-  -   W2  : JA Inf A Sqd     (Sgt Aota            ) RID 00451 UTG 016 EXP 080 MOR 080 SUP 027 RAL 081 INF 072 ART 040 ARM 043 KILL 000 LOSS 000 MEN 015 KIA 008 DMG 008 RDY  15.46 POS ( 37,  23)
-  -   W3  : JA Inf A Sqd     (Sgt Saito           ) RID 00452 UTG 016 EXP 065 MOR 072 SUP 008 RAL 074 INF 068 ART 035 ARM 041 KILL 000 LOSS 000 MEN 015 KIA 007 DMG 007 RDY  33.19 POS ( 37,  19)
- #    W4  : Knee Mortar Plt  (Sgt Sekine          ) RID 00453 UTG 017 EXP 065 MOR 064 SUP 000 RAL 072 INF 046 ART 071 ARM 030 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 49,  23)
-  -   X0  : A Plt HQ*        (2Lt Ota             ) RID 00454 UTG 015 EXP 069 MOR 077 SUP 019 RAL 068 INF 077 ART 039 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 003 DMG 003 RDY  21.52 POS ( 38,  15)
-  -   X1  : JA Inf A Sqd     (Sgt Kawaguchi       ) RID 00455 UTG 016 EXP 087 MOR 071 SUP 020 RAL 075 INF 081 ART 039 ARM 040 KILL 000 LOSS 000 MEN 015 KIA 006 DMG 006 RDY  21.55 POS ( 38,  15)
- #-   X2  : JA Inf A Sqd     (Sgt Etoh            ) RID 00456 UTG 016 EXP 077 MOR 067 SUP 002 RAL 067 INF 076 ART 039 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 003 DMG 003 RDY  77.61 POS ( 38,  17)
-  -   X3  : JA Inf A Sqd     (Sgt Kawasaki        ) RID 00457 UTG 016 EXP 076 MOR 079 SUP 005 RAL 073 INF 069 ART 038 ARM 037 KILL 000 LOSS 000 MEN 015 KIA 005 DMG 005 RDY  62.45 POS ( 37,  13)
- #    X4  : Knee Mort Sec    (Sgt Numata          ) RID 00458 UTG 019 EXP 077 MOR 080 SUP 000 RAL 080 INF 041 ART 073 ARM 038 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 51,  18)
-      Y0  : Type 92 HMG      (2Lt Suzuki          ) RID 00459 UTG 020 EXP 076 MOR 079 SUP 002 RAL 075 INF 070 ART 043 ARM 037 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  97.47 POS ( 32,  26)
-  -   Y1  : Type 92 HMG      (Sgt Ueda            ) RID 00460 UTG 020 EXP 080 MOR 079 SUP 016 RAL 081 INF 071 ART 035 ARM 045 KILL 000 LOSS 000 MEN 004 KIA 002 DMG 002 RDY  27.91 POS ( 31,  25)
-+ -   Z0  : JA Tank Hunters  (KIA Takeda          ) RID 00461 UTG 021 EXP 081 MOR 087 SUP 018 RAL 072 INF 071 ART 036 ARM 037 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
-+ -   Z1  : JA Tank Hunters  (KIA Nomura          ) RID 00462 UTG 021 EXP 086 MOR 083 SUP 024 RAL 078 INF 080 ART 047 ARM 039 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
- #-   AA0 : SNLF HQ          (Cpt Naito           ) RID 00463 UTG 018 EXP 076 MOR 078 SUP 007 RAL 075 INF 072 ART 035 ARM 032 KILL 001 LOSS 000 MEN 007 KIA 002 DMG 002 RDY  65.02 POS ( 29,  31)
-  -   AA1 : JA Inf A Sqd     (Sgt Nagano          ) RID 00464 UTG 014 EXP 067 MOR 069 SUP 014 RAL 067 INF 078 ART 046 ARM 038 KILL 000 LOSS 000 MEN 015 KIA 005 DMG 005 RDY  37.20 POS ( 29,  30)
- #    AA2 : JA Inf A Sqd*    (Sgt Kida            ) RID 00465 UTG 033 EXP 076 MOR 061 SUP 000 RAL 072 INF 075 ART 042 ARM 043 KILL 000 LOSS 000 MEN 020 KIA 000 DMG 000 RDY 100.00 POS ( 29,  32)
-  -   AA3 : JA Inf B Sqd     (Sgt Oyama           ) RID 00466 UTG 034 EXP 070 MOR 066 SUP 001 RAL 074 INF 080 ART 035 ARM 040 KILL 000 LOSS 000 MEN 013 KIA 001 DMG 001 RDY  90.91 POS ( 29,  29)
- #    AA4 : JA Inf B Sqd*    (Sgt Inoue           ) RID 00467 UTG 035 EXP 071 MOR 070 SUP 000 RAL 074 INF 068 ART 040 ARM 035 KILL 000 LOSS 000 MEN 018 KIA 000 DMG 000 RDY 100.00 POS ( 29,  33)
- #    AB0 : Knee Mort Sec    (2Lt Tamura          ) RID 00468 UTG 019 EXP 065 MOR 076 SUP 000 RAL 078 INF 040 ART 077 ARM 043 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 65,  22)
-+ -   AC0 : Type 92 HMG      (KIA Kaneko          ) RID 00469 UTG 020 EXP 084 MOR 084 SUP 035 RAL 074 INF 072 ART 043 ARM 043 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
- #    AC1 : Type 92 HMG      (Sgt Mikawa          ) RID 00470 UTG 020 EXP 081 MOR 089 SUP 003 RAL 072 INF 070 ART 044 ARM 040 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  96.63 POS ( 37,  21)
- #    AD0 : 37mm Type 94 AT  (2Lt Kobayashi       ) RID 00471 UTG 025 EXP 073 MOR 069 SUP 000 RAL 072 INF 041 ART 075 ARM 040 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 84,  10)
- #    AD1 : 37mm Type 94 AT  (Sgt Nemoto          ) RID 00472 UTG 025 EXP 081 MOR 083 SUP 000 RAL 083 INF 038 ART 075 ARM 042 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 86,   9)
-      AE0 : JA Scout Team    (2Lt Ikeyama         ) RID 00473 UTG 026 EXP 080 MOR 071 SUP 016 RAL 072 INF 072 ART 040 ARM 037 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  38.73 POS ( 37,  15)
- #    AE1 : JA Scout Team    (Sgt Matui           ) RID 00474 UTG 026 EXP 076 MOR 069 SUP 003 RAL 072 INF 075 ART 033 ARM 031 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  95.65 POS ( 37,  14)
- #    AF0 : JA Sniper        (2Lt Ishii           ) RID 00475 UTG 027 EXP 086 MOR 076 SUP 001 RAL 076 INF 072 ART 035 ARM 042 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY  98.68 POS ( 32,  26)
- #    AG0 : JA Sniper        (2Lt Kudo            ) RID 00476 UTG 027 EXP 084 MOR 089 SUP 000 RAL 078 INF 072 ART 035 ARM 035 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 40,  10)
-      AH0 : JA Sniper        (2Lt Hamaguchi       ) RID 00477 UTG 027 EXP 087 MOR 070 SUP 001 RAL 075 INF 081 ART 037 ARM 035 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY  98.57 POS ( 30,  30)
- #    AI0 : JA 81mm Mortar   (2Lt Oki             ) RID 00478 UTG 028 EXP 079 MOR 073 SUP 000 RAL 074 INF 037 ART 074 ARM 044 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 55,  15)
- #    AJ0 : 75mm Type 38 FG  (2Lt Mori            ) RID 00479 UTG 036 EXP 069 MOR 070 SUP 000 RAL 072 INF 036 ART 073 ARM 036 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 79,  10)
- #    AK0 : JA Engineer Sqd  (2Lt Koike           ) RID 00480 UTG 030 EXP 064 MOR 075 SUP 003 RAL 073 INF 069 ART 040 ARM 046 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  96.00 POS ( 37,  21)
- #    AK1 : JA Engineer Sqd  (Sgt Nagashima       ) RID 00481 UTG 031 EXP 063 MOR 084 SUP 002 RAL 069 INF 077 ART 036 ARM 044 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  97.62 POS ( 37,  21)
-      AK2 : JA Engineer Sqd  (Sgt Shimizu         ) RID 00482 UTG 031 EXP 074 MOR 073 SUP 001 RAL 072 INF 076 ART 040 ARM 043 KILL 001 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  98.63 POS ( 37,  22)
- #    AL0 : JA 81mm Mortar   (2Lt Endo            ) RID 00483 UTG 028 EXP 080 MOR 072 SUP 000 RAL 076 INF 045 ART 068 ARM 040 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 51,  25)
- #    AM0 : JA Inf A Sqd     (Cpt Morita          ) RID 00484 UTG 016 EXP 072 MOR 072 SUP 000 RAL 083 INF 075 ART 036 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 000 DMG 000 RDY 100.00 POS ( 39,  16)
- #    AN0 : A Plt HQ*        (2Lt Negishi         ) RID 00485 UTG 015 EXP 072 MOR 076 SUP 000 RAL 067 INF 072 ART 035 ARM 041 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 35,  26)
- #    AO0 : SNLF HQ          (2Lt Shiozaki        ) RID 00486 UTG 018 EXP 076 MOR 087 SUP 000 RAL 078 INF 082 ART 042 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 41,  11)
+ #    A0  : JA HQ            (Col Sone            ) JA HQ            RID 00400 UTG 013 EXP 079 MOR 077 SUP 000 RAL 069 INF 071 ART 044 ARM 035 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 60,  26)
+  -   B0  : JA Inf A Sqd     (Cpt Arai            ) JA Inf A Sqd     RID 00401 UTG 014 EXP 075 MOR 074 SUP 004 RAL 068 INF 075 ART 034 ARM 038 KILL 000 LOSS 000 MEN 015 KIA 011 DMG 011 RDY  25.23 POS ( 36,  22)
+  -   C0  : A Plt HQ*        (2Lt Miwa            ) A Plt HQ*        RID 00402 UTG 015 EXP 079 MOR 075 SUP 033 RAL 081 INF 071 ART 040 ARM 044 KILL 000 LOSS 000 MEN 007 KIA 006 DMG 006 RDY   1.60 POS ( 38,  16)
++ -   C1  : JA Inf A Sqd     (KIA Egawa           ) JA Inf A Sqd     RID 00403 UTG 016 EXP 074 MOR 076 SUP 030 RAL 075 INF 073 ART 037 ARM 038 KILL 000 LOSS 001 MEN 015 KIA 015 DMG 027 RDY   0.00 POS (  none  )
+ #-   C2  : JA Inf A Sqd     (Sgt Otuka           ) JA Inf A Sqd     RID 00404 UTG 016 EXP 085 MOR 074 SUP 003 RAL 070 INF 082 ART 039 ARM 039 KILL 000 LOSS 000 MEN 015 KIA 009 DMG 009 RDY  38.38 POS ( 38,  17)
+  -   C3  : JA Inf A Sqd     (Sgt Kawai           ) JA Inf A Sqd     RID 00405 UTG 016 EXP 076 MOR 076 SUP 037 RAL 075 INF 070 ART 039 ARM 038 KILL 000 LOSS 000 MEN 015 KIA 003 DMG 003 RDY   8.21 POS ( 36,  13)
+ #    C4  : Knee Mortar Plt  (Sgt Hashimoto       ) Knee Mortar Plt  RID 00406 UTG 017 EXP 077 MOR 083 SUP 000 RAL 076 INF 046 ART 076 ARM 035 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 41,  17)
+  -   D0  : SNLF HQ          (2Lt Nagao           ) SNLF HQ          RID 00407 UTG 018 EXP 066 MOR 073 SUP 003 RAL 074 INF 071 ART 045 ARM 035 KILL 000 LOSS 000 MEN 007 KIA 005 DMG 005 RDY  27.40 POS ( 32,  26)
+ #-   D1  : JA Inf A Sqd     (Sgt Iida            ) JA Inf A Sqd     RID 00408 UTG 014 EXP 078 MOR 076 SUP 003 RAL 066 INF 083 ART 034 ARM 036 KILL 001 LOSS 000 MEN 015 KIA 011 DMG 011 RDY  25.61 POS ( 32,  28)
+ #-   D2  : JA Inf A Sqd     (Sgt Maeda           ) JA Inf A Sqd     RID 00409 UTG 014 EXP 061 MOR 068 SUP 001 RAL 079 INF 073 ART 042 ARM 034 KILL 000 LOSS 000 MEN 015 KIA 008 DMG 008 RDY  45.98 POS ( 32,  28)
++ -   D3  : JA Inf A Sqd     (KIA Motoyama        ) JA Inf A Sqd     RID 00410 UTG 014 EXP 067 MOR 074 SUP 011 RAL 072 INF 070 ART 039 ARM 041 KILL 000 LOSS 001 MEN 015 KIA 015 DMG 031 RDY   0.00 POS (  none  )
+ #    D4  : Knee Mort Sec    (Sgt Nakata          ) Knee Mort Sec    RID 00411 UTG 019 EXP 060 MOR 070 SUP 000 RAL 079 INF 038 ART 075 ARM 042 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 44,  27)
++ -   E0  : A Plt HQ*        (KIA Motoki          ) A Plt HQ*        RID 00412 UTG 015 EXP 070 MOR 083 SUP 046 RAL 082 INF 073 ART 044 ARM 041 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 019 RDY   0.00 POS (  none  )
+  -   E1  : JA Inf A Sqd     (Sgt Nagata          ) JA Inf A Sqd     RID 00413 UTG 016 EXP 067 MOR 078 SUP 019 RAL 069 INF 073 ART 032 ARM 034 KILL 000 LOSS 000 MEN 015 KIA 003 DMG 003 RDY  30.26 POS ( 38,   9)
+  -   E2  : JA Inf A Sqd     (Sgt Namiki          ) JA Inf A Sqd     RID 00414 UTG 016 EXP 071 MOR 067 SUP 006 RAL 075 INF 077 ART 035 ARM 041 KILL 000 LOSS 000 MEN 015 KIA 008 DMG 008 RDY  42.49 POS ( 38,  11)
+  -   E3  : JA Inf A Sqd     (Sgt Moriyama        ) JA Inf A Sqd     RID 00415 UTG 016 EXP 064 MOR 069 SUP 022 RAL 072 INF 074 ART 041 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 006 DMG 006 RDY  20.43 POS ( 39,   8)
+ #    E4  : Knee Mortar Plt  (Sgt Matushita       ) Knee Mortar Plt  RID 00416 UTG 017 EXP 072 MOR 073 SUP 000 RAL 081 INF 041 ART 075 ARM 032 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 51,  12)
++ -   F0  : Type 92 HMG      (KIA Sato            ) Type 92 HMG      RID 00417 UTG 020 EXP 081 MOR 077 SUP 012 RAL 070 INF 077 ART 036 ARM 035 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
++ -   F1  : Type 92 HMG      (KIA Seki            ) Type 92 HMG      RID 00418 UTG 020 EXP 075 MOR 079 SUP 025 RAL 076 INF 071 ART 041 ARM 036 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
++ -   G0  : JA Tank Hunters  (KIA Ogawa           ) JA Tank Hunters  RID 00419 UTG 021 EXP 086 MOR 089 SUP 039 RAL 066 INF 072 ART 032 ARM 044 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
++ -   G1  : JA Tank Hunters  (KIA Nakajima        ) JA Tank Hunters  RID 00420 UTG 021 EXP 086 MOR 087 SUP 049 RAL 071 INF 069 ART 037 ARM 040 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
++ -   H0  : A Plt HQ*        (KIA Miyata          ) A Plt HQ*        RID 00421 UTG 015 EXP 079 MOR 071 SUP 054 RAL 077 INF 074 ART 036 ARM 036 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 019 RDY   0.00 POS (  none  )
+  -   H1  : JA Inf A Sqd     (Sgt Akune           ) JA Inf A Sqd     RID 00422 UTG 014 EXP 076 MOR 076 SUP 026 RAL 071 INF 076 ART 042 ARM 041 KILL 000 LOSS 000 MEN 015 KIA 007 DMG 007 RDY  17.54 POS ( 38,  15)
+  -   H2  : JA Inf A Sqd*    (Sgt Aoyama          ) JA Inf A Sqd*    RID 00423 UTG 022 EXP 082 MOR 067 SUP 009 RAL 067 INF 067 ART 038 ARM 034 KILL 000 LOSS 000 MEN 020 KIA 007 DMG 007 RDY  39.39 POS ( 39,  17)
++ -   H3  : JA Inf B Sqd     (KIA Ueno            ) JA Inf B Sqd     RID 00424 UTG 023 EXP 068 MOR 078 SUP 035 RAL 077 INF 081 ART 034 ARM 037 KILL 000 LOSS 001 MEN 013 KIA 013 DMG 023 RDY   0.00 POS (  none  )
++ -   H4  : JA Inf B Sqd*    (KIA Matumoto        ) JA Inf B Sqd*    RID 00425 UTG 024 EXP 083 MOR 076 SUP 049 RAL 080 INF 075 ART 043 ARM 037 KILL 000 LOSS 001 MEN 018 KIA 018 DMG 031 RDY   0.00 POS (  none  )
+ #    I0  : Knee Mort Sec    (2Lt Ito             ) Knee Mort Sec    RID 00426 UTG 019 EXP 071 MOR 064 SUP 000 RAL 076 INF 039 ART 072 ARM 040 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 59,  25)
++ -   J0  : Type 92 HMG      (KIA Shimada         ) Type 92 HMG      RID 00427 UTG 020 EXP 087 MOR 082 SUP 028 RAL 074 INF 069 ART 037 ARM 036 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
++ -   J1  : Type 92 HMG      (KIA Noda            ) Type 92 HMG      RID 00428 UTG 020 EXP 084 MOR 084 SUP 013 RAL 083 INF 068 ART 035 ARM 039 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
+ #    K0  : 37mm Type 94 AT  (2Lt Mikami          ) 37mm Type 94 AT  RID 00429 UTG 025 EXP 062 MOR 059 SUP 000 RAL 077 INF 040 ART 074 ARM 036 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 79,  15)
+ #    K1  : 37mm Type 94 AT  (Sgt Kotani          ) 37mm Type 94 AT  RID 00430 UTG 025 EXP 085 MOR 075 SUP 000 RAL 078 INF 041 ART 074 ARM 039 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 81,  14)
++ -   L0  : JA Scout Team    (KIA Kaneda          ) JA Scout Team    RID 00431 UTG 026 EXP 072 MOR 069 SUP 020 RAL 074 INF 072 ART 044 ARM 035 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 008 RDY   0.00 POS (  none  )
+      L1  : JA Scout Team    (Sgt Noguchi         ) JA Scout Team    RID 00432 UTG 026 EXP 069 MOR 075 SUP 029 RAL 076 INF 073 ART 034 ARM 034 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  30.67 POS ( 38,  11)
++ -   M0  : JA Sniper        (KIA Koyama          ) JA Sniper        RID 00433 UTG 027 EXP 092 MOR 085 SUP 020 RAL 074 INF 081 ART 044 ARM 037 KILL 000 LOSS 001 MEN 001 KIA 001 DMG 010 RDY   0.00 POS (  none  )
++ -   N0  : JA Sniper        (KIA Takizawa        ) JA Sniper        RID 00434 UTG 027 EXP 090 MOR 083 SUP 024 RAL 069 INF 074 ART 033 ARM 036 KILL 000 LOSS 001 MEN 001 KIA 001 DMG 010 RDY   0.00 POS (  none  )
++ -   O0  : JA Sniper        (KIA Saeki           ) JA Sniper        RID 00435 UTG 027 EXP 094 MOR 083 SUP 021 RAL 074 INF 067 ART 039 ARM 041 KILL 000 LOSS 001 MEN 001 KIA 001 DMG 010 RDY   0.00 POS (  none  )
+ #    P0  : JA 81mm Mortar   (2Lt Tanaka          ) JA 81mm Mortar   RID 00436 UTG 028 EXP 070 MOR 081 SUP 000 RAL 074 INF 041 ART 081 ARM 038 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 55,  20)
+ #    Q0  : 70mm Type 92 FG  (2Lt Nishida         ) 70mm Type 92 FG  RID 00437 UTG 029 EXP 065 MOR 074 SUP 000 RAL 079 INF 041 ART 070 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 76,  21)
+  -   R0  : JA Engineer Sqd  (2Lt Nakayama        ) JA Engineer Sqd  RID 00438 UTG 030 EXP 080 MOR 072 SUP 019 RAL 065 INF 069 ART 045 ARM 040 KILL 001 LOSS 000 MEN 012 KIA 002 DMG 002 RDY  30.67 POS ( 33,  25)
+  -   R1  : JA Engineer Sqd  (Sgt Ogata           ) JA Engineer Sqd  RID 00439 UTG 031 EXP 083 MOR 075 SUP 005 RAL 079 INF 075 ART 042 ARM 038 KILL 000 LOSS 000 MEN 012 KIA 011 DMG 011 RDY   7.78 POS ( 33,  28)
++ -   R2  : JA Engineer Sqd  (KIA Hirai           ) JA Engineer Sqd  RID 00440 UTG 031 EXP 065 MOR 069 SUP 026 RAL 071 INF 070 ART 045 ARM 036 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 032 RDY   0.00 POS (  none  )
+ #    S0  : JA 81mm Mortar   (2Lt Miyamoto        ) JA 81mm Mortar   RID 00441 UTG 028 EXP 069 MOR 077 SUP 000 RAL 078 INF 045 ART 080 ARM 042 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 56,  17)
+      T0  : 90mm Mort Bty    (1Lt Aida            ) 90mm Mort Bty    RID 00442 UTG 032 EXP 075 MOR 068 SUP 000 RAL 068 INF 043 ART 074 ARM 043 KILL 000 LOSS 000 MEN 024 KIA 000 DMG 000 RDY 100.00 POS (101,  20)
+  -   U0  : JA Inf A Sqd     (Cpt Matuda          ) JA Inf A Sqd     RID 00443 UTG 014 EXP 079 MOR 079 SUP 005 RAL 076 INF 068 ART 042 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 004 DMG 004 RDY  68.69 POS ( 38,  11)
+ #-   V0  : A Plt HQ*        (2Lt Aoki            ) A Plt HQ*        RID 00444 UTG 015 EXP 081 MOR 071 SUP 003 RAL 077 INF 070 ART 040 ARM 041 KILL 000 LOSS 000 MEN 007 KIA 003 DMG 003 RDY  54.73 POS ( 29,  32)
+  -   V1  : JA Inf A Sqd     (Sgt Kakiuchi        ) JA Inf A Sqd     RID 00445 UTG 014 EXP 068 MOR 081 SUP 009 RAL 078 INF 077 ART 039 ARM 034 KILL 000 LOSS 000 MEN 015 KIA 010 DMG 010 RDY  20.74 POS ( 30,  30)
+  -   V2  : JA Inf A Sqd     (Sgt Hasegawa        ) JA Inf A Sqd     RID 00446 UTG 014 EXP 074 MOR 073 SUP 004 RAL 073 INF 073 ART 035 ARM 040 KILL 000 LOSS 000 MEN 015 KIA 006 DMG 006 RDY  56.71 POS ( 29,  32)
++ -   V3  : JA Inf A Sqd     (KIA Nishi           ) JA Inf A Sqd     RID 00447 UTG 014 EXP 075 MOR 073 SUP 040 RAL 067 INF 078 ART 044 ARM 044 KILL 000 LOSS 001 MEN 015 KIA 015 DMG 031 RDY   0.00 POS (  none  )
+ #    V4  : Knee Mortar Plt  (Sgt Morishita       ) Knee Mortar Plt  RID 00448 UTG 017 EXP 065 MOR 079 SUP 000 RAL 073 INF 036 ART 074 ARM 043 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 35,  32)
++ -   W0  : A Plt HQ*        (KIA Nishiyama       ) A Plt HQ*        RID 00449 UTG 015 EXP 075 MOR 059 SUP 030 RAL 076 INF 079 ART 030 ARM 035 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 019 RDY   0.00 POS (  none  )
+  -   W1  : JA Inf A Sqd     (Sgt Hirata          ) JA Inf A Sqd     RID 00450 UTG 016 EXP 072 MOR 072 SUP 026 RAL 072 INF 073 ART 036 ARM 036 KILL 000 LOSS 000 MEN 015 KIA 007 DMG 007 RDY  17.04 POS ( 36,  21)
+  -   W2  : JA Inf A Sqd     (Sgt Aota            ) JA Inf A Sqd     RID 00451 UTG 016 EXP 080 MOR 080 SUP 027 RAL 081 INF 072 ART 040 ARM 043 KILL 000 LOSS 000 MEN 015 KIA 008 DMG 008 RDY  15.46 POS ( 37,  23)
+  -   W3  : JA Inf A Sqd     (Sgt Saito           ) JA Inf A Sqd     RID 00452 UTG 016 EXP 065 MOR 072 SUP 008 RAL 074 INF 068 ART 035 ARM 041 KILL 000 LOSS 000 MEN 015 KIA 007 DMG 007 RDY  33.19 POS ( 37,  19)
+ #    W4  : Knee Mortar Plt  (Sgt Sekine          ) Knee Mortar Plt  RID 00453 UTG 017 EXP 065 MOR 064 SUP 000 RAL 072 INF 046 ART 071 ARM 030 KILL 000 LOSS 000 MEN 016 KIA 000 DMG 000 RDY 100.00 POS ( 49,  23)
+  -   X0  : A Plt HQ*        (2Lt Ota             ) A Plt HQ*        RID 00454 UTG 015 EXP 069 MOR 077 SUP 019 RAL 068 INF 077 ART 039 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 003 DMG 003 RDY  21.52 POS ( 38,  15)
+  -   X1  : JA Inf A Sqd     (Sgt Kawaguchi       ) JA Inf A Sqd     RID 00455 UTG 016 EXP 087 MOR 071 SUP 020 RAL 075 INF 081 ART 039 ARM 040 KILL 000 LOSS 000 MEN 015 KIA 006 DMG 006 RDY  21.55 POS ( 38,  15)
+ #-   X2  : JA Inf A Sqd     (Sgt Etoh            ) JA Inf A Sqd     RID 00456 UTG 016 EXP 077 MOR 067 SUP 002 RAL 067 INF 076 ART 039 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 003 DMG 003 RDY  77.61 POS ( 38,  17)
+  -   X3  : JA Inf A Sqd     (Sgt Kawasaki        ) JA Inf A Sqd     RID 00457 UTG 016 EXP 076 MOR 079 SUP 005 RAL 073 INF 069 ART 038 ARM 037 KILL 000 LOSS 000 MEN 015 KIA 005 DMG 005 RDY  62.45 POS ( 37,  13)
+ #    X4  : Knee Mort Sec    (Sgt Numata          ) Knee Mort Sec    RID 00458 UTG 019 EXP 077 MOR 080 SUP 000 RAL 080 INF 041 ART 073 ARM 038 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 51,  18)
+      Y0  : Type 92 HMG      (2Lt Suzuki          ) Type 92 HMG      RID 00459 UTG 020 EXP 076 MOR 079 SUP 002 RAL 075 INF 070 ART 043 ARM 037 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  97.47 POS ( 32,  26)
+  -   Y1  : Type 92 HMG      (Sgt Ueda            ) Type 92 HMG      RID 00460 UTG 020 EXP 080 MOR 079 SUP 016 RAL 081 INF 071 ART 035 ARM 045 KILL 000 LOSS 000 MEN 004 KIA 002 DMG 002 RDY  27.91 POS ( 31,  25)
++ -   Z0  : JA Tank Hunters  (KIA Takeda          ) JA Tank Hunters  RID 00461 UTG 021 EXP 081 MOR 087 SUP 018 RAL 072 INF 071 ART 036 ARM 037 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
++ -   Z1  : JA Tank Hunters  (KIA Nomura          ) JA Tank Hunters  RID 00462 UTG 021 EXP 086 MOR 083 SUP 024 RAL 078 INF 080 ART 047 ARM 039 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 015 RDY   0.00 POS (  none  )
+ #-   AA0 : SNLF HQ          (Cpt Naito           ) SNLF HQ          RID 00463 UTG 018 EXP 076 MOR 078 SUP 007 RAL 075 INF 072 ART 035 ARM 032 KILL 001 LOSS 000 MEN 007 KIA 002 DMG 002 RDY  65.02 POS ( 29,  31)
+  -   AA1 : JA Inf A Sqd     (Sgt Nagano          ) JA Inf A Sqd     RID 00464 UTG 014 EXP 067 MOR 069 SUP 014 RAL 067 INF 078 ART 046 ARM 038 KILL 000 LOSS 000 MEN 015 KIA 005 DMG 005 RDY  37.20 POS ( 29,  30)
+ #    AA2 : JA Inf A Sqd*    (Sgt Kida            ) JA Inf A Sqd*    RID 00465 UTG 033 EXP 076 MOR 061 SUP 000 RAL 072 INF 075 ART 042 ARM 043 KILL 000 LOSS 000 MEN 020 KIA 000 DMG 000 RDY 100.00 POS ( 29,  32)
+  -   AA3 : JA Inf B Sqd     (Sgt Oyama           ) JA Inf B Sqd     RID 00466 UTG 034 EXP 070 MOR 066 SUP 001 RAL 074 INF 080 ART 035 ARM 040 KILL 000 LOSS 000 MEN 013 KIA 001 DMG 001 RDY  90.91 POS ( 29,  29)
+ #    AA4 : JA Inf B Sqd*    (Sgt Inoue           ) JA Inf B Sqd*    RID 00467 UTG 035 EXP 071 MOR 070 SUP 000 RAL 074 INF 068 ART 040 ARM 035 KILL 000 LOSS 000 MEN 018 KIA 000 DMG 000 RDY 100.00 POS ( 29,  33)
+ #    AB0 : Knee Mort Sec    (2Lt Tamura          ) Knee Mort Sec    RID 00468 UTG 019 EXP 065 MOR 076 SUP 000 RAL 078 INF 040 ART 077 ARM 043 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 65,  22)
++ -   AC0 : Type 92 HMG      (KIA Kaneko          ) Type 92 HMG      RID 00469 UTG 020 EXP 084 MOR 084 SUP 035 RAL 074 INF 072 ART 043 ARM 043 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 022 RDY   0.00 POS (  none  )
+ #    AC1 : Type 92 HMG      (Sgt Mikawa          ) Type 92 HMG      RID 00470 UTG 020 EXP 081 MOR 089 SUP 003 RAL 072 INF 070 ART 044 ARM 040 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  96.63 POS ( 37,  21)
+ #    AD0 : 37mm Type 94 AT  (2Lt Kobayashi       ) 37mm Type 94 AT  RID 00471 UTG 025 EXP 073 MOR 069 SUP 000 RAL 072 INF 041 ART 075 ARM 040 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 84,  10)
+ #    AD1 : 37mm Type 94 AT  (Sgt Nemoto          ) 37mm Type 94 AT  RID 00472 UTG 025 EXP 081 MOR 083 SUP 000 RAL 083 INF 038 ART 075 ARM 042 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 86,   9)
+      AE0 : JA Scout Team    (2Lt Ikeyama         ) JA Scout Team    RID 00473 UTG 026 EXP 080 MOR 071 SUP 016 RAL 072 INF 072 ART 040 ARM 037 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  38.73 POS ( 37,  15)
+ #    AE1 : JA Scout Team    (Sgt Matui           ) JA Scout Team    RID 00474 UTG 026 EXP 076 MOR 069 SUP 003 RAL 072 INF 075 ART 033 ARM 031 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  95.65 POS ( 37,  14)
+ #    AF0 : JA Sniper        (2Lt Ishii           ) JA Sniper        RID 00475 UTG 027 EXP 086 MOR 076 SUP 001 RAL 076 INF 072 ART 035 ARM 042 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY  98.68 POS ( 32,  26)
+ #    AG0 : JA Sniper        (2Lt Kudo            ) JA Sniper        RID 00476 UTG 027 EXP 084 MOR 089 SUP 000 RAL 078 INF 072 ART 035 ARM 035 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 40,  10)
+      AH0 : JA Sniper        (2Lt Hamaguchi       ) JA Sniper        RID 00477 UTG 027 EXP 087 MOR 070 SUP 001 RAL 075 INF 081 ART 037 ARM 035 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY  98.57 POS ( 30,  30)
+ #    AI0 : JA 81mm Mortar   (2Lt Oki             ) JA 81mm Mortar   RID 00478 UTG 028 EXP 079 MOR 073 SUP 000 RAL 074 INF 037 ART 074 ARM 044 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 55,  15)
+ #    AJ0 : 75mm Type 38 FG  (2Lt Mori            ) 75mm Type 38 FG  RID 00479 UTG 036 EXP 069 MOR 070 SUP 000 RAL 072 INF 036 ART 073 ARM 036 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 79,  10)
+ #    AK0 : JA Engineer Sqd  (2Lt Koike           ) JA Engineer Sqd  RID 00480 UTG 030 EXP 064 MOR 075 SUP 003 RAL 073 INF 069 ART 040 ARM 046 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  96.00 POS ( 37,  21)
+ #    AK1 : JA Engineer Sqd  (Sgt Nagashima       ) JA Engineer Sqd  RID 00481 UTG 031 EXP 063 MOR 084 SUP 002 RAL 069 INF 077 ART 036 ARM 044 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  97.62 POS ( 37,  21)
+      AK2 : JA Engineer Sqd  (Sgt Shimizu         ) JA Engineer Sqd  RID 00482 UTG 031 EXP 074 MOR 073 SUP 001 RAL 072 INF 076 ART 040 ARM 043 KILL 001 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  98.63 POS ( 37,  22)
+ #    AL0 : JA 81mm Mortar   (2Lt Endo            ) JA 81mm Mortar   RID 00483 UTG 028 EXP 080 MOR 072 SUP 000 RAL 076 INF 045 ART 068 ARM 040 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 51,  25)
+ #    AM0 : JA Inf A Sqd     (Cpt Morita          ) JA Inf A Sqd     RID 00484 UTG 016 EXP 072 MOR 072 SUP 000 RAL 083 INF 075 ART 036 ARM 045 KILL 000 LOSS 000 MEN 015 KIA 000 DMG 000 RDY 100.00 POS ( 39,  16)
+ #    AN0 : A Plt HQ*        (2Lt Negishi         ) A Plt HQ*        RID 00485 UTG 015 EXP 072 MOR 076 SUP 000 RAL 067 INF 072 ART 035 ARM 041 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 35,  26)
+ #    AO0 : SNLF HQ          (2Lt Shiozaki        ) SNLF HQ          RID 00486 UTG 018 EXP 076 MOR 087 SUP 000 RAL 078 INF 082 ART 042 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 41,  11)
 
 
 

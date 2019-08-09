@@ -67,38 +67,38 @@ Crews     : 0
 Total kills        : 471
 Total losses       : 1
 Total readiness    :  97.02 %
-Unit experience    : max: 103 (072: P3: PzKpfw III E (Sgt Porsch))
-Unit experience    : min:  55 (084: T0: Motorrad Grp (2Lt Schwartz))
+Unit experience    : max: 103 ([ 72] P3: PzKpfw III E (Sgt Porsch))
+Unit experience    : min:  55 ([ 84] T0: Motorrad Grp (2Lt Schwartz))
 Unit experience    : avg:  75.98
 Unit experience    : spr: 48
 Unit experience    : tot: 11929
 Unit experience    : cnt: 157
-Unit readiness     : max: 100.00 (000: A0: GE Kommandeur (Col Bachman))
-Unit readiness     : min:   0.00 (046: K5: Lt Moerser Trp (KIA Muller))
+Unit readiness     : max: 100.00 ([  0] A0: GE Kommandeur (Col Bachman))
+Unit readiness     : min:   0.00 ([ 46] K5: Lt Moerser Trp (KIA Muller))
 Unit readiness     : avg:  97.02
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 15232.70
 Unit readiness     : cnt: 157
-Unit kills         : max:  32 (068: O4: PzKpfw III E (Sgt Vosse))
-Unit kills         : min:   0 (000: A0: GE Kommandeur (Col Bachman))
+Unit kills         : max:  32 ([ 68] O4: PzKpfw III E (Sgt Vosse))
+Unit kills         : min:   0 ([  0] A0: GE Kommandeur (Col Bachman))
 Unit kills         : avg:   3.00
 Unit kills         : spr: 32
 Unit kills         : tot: 471
 Unit kills         : cnt: 157
-Formation readiness: max: 100.00 (000: A: elite recon force HQ)
-Formation readiness: min:  61.56 (020: U: recon platoon)
+Formation readiness: max: 100.00 ([  0] A: elite recon force HQ)
+Formation readiness: min:  61.56 ([ 20] U: recon platoon)
 Formation readiness: avg:  97.73
 Formation readiness: spr:  38.44
 Formation readiness: tot: 4495.38
 Formation readiness: cnt: 46
-Formation kills    : max:  79 (017: R: average platoon)
-Formation kills    : min:   0 (000: A: elite recon force HQ)
+Formation kills    : max:  79 ([ 17] R: average platoon)
+Formation kills    : min:   0 ([  0] A: elite recon force HQ)
 Formation kills    : avg:  10.24
 Formation kills    : spr: 79
 Formation kills    : tot: 471
 Formation kills    : cnt: 46
-Formation losses   : max:   1 (010: K: dedicated artillery platoon)
-Formation losses   : min:   0 (000: A: elite recon force HQ)
+Formation losses   : max:   1 ([ 10] K: dedicated artillery platoon)
+Formation losses   : min:   0 ([  0] A: elite recon force HQ)
 Formation losses   : avg:   0.02
 Formation losses   : spr: 1
 Formation losses   : tot: 1
@@ -107,7 +107,7 @@ Formation losses   : cnt: 46
 Short formations report:
 ------------------------
 
-A : core elite recon force HQ
+A : core elite recon force HQ (German HQ)
 	leader    : A0 GE Kommandeur (Col Bachman)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -117,7 +117,7 @@ A : core elite recon force HQ
 	unit list :
 		A0 GE Kommandeur
 
-B : core elite recon platoon
+B : core elite recon platoon (Forward Obs)
 	leader    : B0 Obs Team (1Lt Flashfyre)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -127,7 +127,7 @@ B : core elite recon platoon
 	unit list :
 		B0 Obs Team
 
-C : core dedicated artillery platoon
+C : core dedicated artillery platoon (Moerser Section)
 	leader    : C0 Moerser Grp (2Lt Stiegel)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 3
@@ -138,7 +138,7 @@ C : core dedicated artillery platoon
 		C0 Moerser Grp
 		C1 Moerser Grp
 
-D : core dedicated artillery platoon
+D : core dedicated artillery platoon (Moerser Section)
 	leader    : D0 Moerser Grp (2Lt Schmidt)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 7
@@ -149,7 +149,7 @@ D : core dedicated artillery platoon
 		D0 Moerser Grp
 		D1 Moerser Grp
 
-E : core average platoon
+E : core average platoon (Munitions)
 	leader    : E0 Ammo Carrier (1Lt Bauer)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -159,7 +159,7 @@ E : core average platoon
 	unit list :
 		E0 Ammo Carrier
 
-F : core average platoon
+F : core average platoon (Truck Section)
 	leader    : F0 SPW 251/1 HT (1Lt Kaptain)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -170,7 +170,7 @@ F : core average platoon
 		F0 SPW 251/1 HT
 		F1 SPW 251/1 HT
 
-G : core recon company
+G : core recon company (Motor Rifle Co)
 	leader    : G0 Kompanie HQ (Cpt Kortenhaus)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 4
@@ -181,7 +181,7 @@ G : core recon company
 		G0 Kompanie HQ
 		G1 SPW 251/1 HT
 
-H : core average platoon
+H : core average platoon (Motor Rifle Plt)
 	leader    : H0 Zugfuehrer (2Lt Metzger)
 	higher cmd: G0 Kompanie HQ (Cpt Kortenhaus)
 	kills     : 34
@@ -200,7 +200,7 @@ H : core average platoon
 		H8 Krupp Kfz 69
 		H9 Krupp Kfz 69
 
-I : core average platoon
+I : core average platoon (Motor Rifle Plt)
 	leader    : I0 Zugfuehrer (2Lt Musser)
 	higher cmd: G0 Kompanie HQ (Cpt Kortenhaus)
 	kills     : 21
@@ -219,7 +219,7 @@ I : core average platoon
 		I8 Opel Blitz
 		I9 Opel Blitz
 
-J : core average platoon
+J : core average platoon (Motor Rifle Plt)
 	leader    : J0 Zugfuehrer (2Lt Briel)
 	higher cmd: G0 Kompanie HQ (Cpt Kortenhaus)
 	kills     : 36
@@ -238,7 +238,7 @@ J : core average platoon
 		J8 Opel Blitz
 		J9 Opel Blitz
 
-K : core dedicated artillery platoon
+K : core dedicated artillery platoon (Mot Weapons Plt)
 	leader    : K0 Zugfuehrer (2Lt Naumann)
 	higher cmd: G0 Kompanie HQ (Cpt Kortenhaus)
 	kills     : 17
@@ -255,7 +255,7 @@ K : core dedicated artillery platoon
 		K8 SPW 251/1 HT
 		K9 SPW 251/1 HT
 
-L : core average platoon
+L : core average platoon (Pionere Plt)
 	leader    : L0 Zugfuehrer (2Lt Eberbach)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 48
@@ -273,7 +273,7 @@ L : core average platoon
 		L7 SPW 251/1 HT
 		L8 SPW 251/1 HT
 
-M : core recon platoon
+M : core recon platoon (Scout Platoon)
 	leader    : M0 Spaehgruppe (2Lt Wirth)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -285,7 +285,7 @@ M : core recon platoon
 		M1 Spaehgruppe
 		M2 Spaehgruppe
 
-N : core recon platoon
+N : core recon platoon (Scout Platoon)
 	leader    : N0 Spaehgruppe (2Lt Stumpf)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -297,7 +297,7 @@ N : core recon platoon
 		N1 Spaehgruppe
 		N2 Spaehgruppe
 
-O : core recon platoon
+O : core recon platoon (Lt Panzer Plt)
 	leader    : O0 PzKpfw II C (2Lt Kortenhaus)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 68
@@ -311,7 +311,7 @@ O : core recon platoon
 		O3 PzKpfw III E
 		O4 PzKpfw III E
 
-P : core recon platoon
+P : core recon platoon (Lt Panzer Plt)
 	leader    : P0 PzKpfw II C (1Lt Harmel)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 72
@@ -325,7 +325,7 @@ P : core recon platoon
 		P3 PzKpfw III E
 		P4 PzKpfw III E
 
-Q : core average platoon
+Q : core average platoon (Panzer Platoon)
 	leader    : Q0 PzKpfw III E (2Lt Schwendt)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 79
@@ -339,7 +339,7 @@ Q : core average platoon
 		Q3 PzKpfw IV D
 		Q4 PzKpfw III E
 
-R : core average platoon
+R : core average platoon (CS Panzer Sec)
 	leader    : R0 PzKpfw IV C (1Lt Bauer)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 52
@@ -350,7 +350,7 @@ R : core average platoon
 		R0 PzKpfw IV C
 		R1 PzKpfw IV C
 
-S : core elite recon platoon
+S : core elite recon platoon (Sniper)
 	leader    : S1 Grenadiergruppe (2Lt Zimmerman)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 29
@@ -362,7 +362,7 @@ S : core elite recon platoon
 		S1 Grenadiergruppe
 		S2 Grenadiergruppe
 
-T : support recon platoon
+T : support recon platoon (Motorcycle Plt)
 	leader    : T0 Motorrad Grp (2Lt Schwartz)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -374,7 +374,7 @@ T : support recon platoon
 		T1 Motorrad Grp
 		T2 Motorrad Grp
 
-U : support recon platoon
+U : support recon platoon (Motorcycle Plt)
 	leader    : U0 Motorrad Grp (2Lt Kroll)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -386,7 +386,7 @@ U : support recon platoon
 		U1 Motorrad Grp
 		U2 Motorrad Grp
 
-V : support recon platoon
+V : support recon platoon (Motorcycle Plt)
 	leader    : V0 Motorrad Grp (2Lt Oertzen)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 1
@@ -398,7 +398,7 @@ V : support recon platoon
 		V1 Motorrad Grp
 		V2 Motorrad Grp
 
-W : support average platoon
+W : support average platoon (Halftrack Plt)
 	leader    : W0 SPW 251/1 HT (1Lt NotAToy)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -411,7 +411,7 @@ W : support average platoon
 		W2 SPW 251/1 HT
 		W3 SPW 251/1 HT
 
-X : support average platoon
+X : support average platoon (JPz Section)
 	leader    : X0 PzJg I B (1Lt Krafft)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -422,7 +422,7 @@ X : support average platoon
 		X0 PzJg I B
 		X1 PzJg I B
 
-Y : support average platoon
+Y : support average platoon (Utility Vehicle)
 	leader    : Y0 Horch Kfz 70 (1Lt Strauch)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -432,7 +432,7 @@ Y : support average platoon
 	unit list :
 		Y0 Horch Kfz 70
 
-Z : regular elite recon force HQ
+Z : regular elite recon force HQ (German HQ)
 	leader    : Z0 HQ III/IR1 (Col Porsch)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -442,7 +442,7 @@ Z : regular elite recon force HQ
 	unit list :
 		Z0 HQ III/IR1
 
-AA: regular recon company
+AA: regular recon company (Infanterie Kp)
 	leader    : AA0 HQ 10/III/IR1 (Cpt Weber)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -452,7 +452,7 @@ AA: regular recon company
 	unit list :
 		AA0 HQ 10/III/IR1
 
-AB: regular average platoon
+AB: regular average platoon (Infanterie Zug)
 	leader    : AB0 Zugfuehrer (2Lt Becker)
 	higher cmd: B0 Obs Team (1Lt Flashfyre)
 	kills     : 0
@@ -466,7 +466,7 @@ AB: regular average platoon
 		AB3 Schuetzengruppe
 		AB4 Schuetzengruppe
 
-AC: regular average platoon
+AC: regular average platoon (Infanterie Zug)
 	leader    : AC0 Zugfuehrer (2Lt Kaptain)
 	higher cmd: B0 Obs Team (1Lt Flashfyre)
 	kills     : 0
@@ -480,7 +480,7 @@ AC: regular average platoon
 		AC3 Schuetzengruppe
 		AC4 Schuetzengruppe
 
-AD: regular average platoon
+AD: regular average platoon (Infanterie Zug)
 	leader    : AD0 Zugfuehrer (2Lt Weiss)
 	higher cmd: B0 Obs Team (1Lt Flashfyre)
 	kills     : 0
@@ -494,7 +494,7 @@ AD: regular average platoon
 		AD3 Schuetzengruppe
 		AD4 Schuetzengruppe
 
-AE: regular average platoon
+AE: regular average platoon (MG Trupp)
 	leader    : AE0 MG Lafette Trp (2Lt Langkeit)
 	higher cmd: B0 Obs Team (1Lt Flashfyre)
 	kills     : 0
@@ -504,7 +504,7 @@ AE: regular average platoon
 	unit list :
 		AE0 MG Lafette Trp
 
-AF: regular average platoon
+AF: regular average platoon (MG Trupp)
 	leader    : AF0 MG Lafette Trp (2Lt Schirmer)
 	higher cmd: B0 Obs Team (1Lt Flashfyre)
 	kills     : 0
@@ -514,7 +514,7 @@ AF: regular average platoon
 	unit list :
 		AF0 MG Lafette Trp
 
-AG: regular average platoon
+AG: regular average platoon ((l) Moerser Grp)
 	leader    : AG0 50mm Moerser (Sgt Musser)
 	higher cmd: B0 Obs Team (1Lt Flashfyre)
 	kills     : 0
@@ -526,7 +526,7 @@ AG: regular average platoon
 		AG1 50mm Moerser
 		AG2 50mm Moerser
 
-AH: regular recon company
+AH: regular recon company (Infanterie Kp)
 	leader    : AH0 HQ 11/III/IR1 (Cpt von  Preussen)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -536,7 +536,7 @@ AH: regular recon company
 	unit list :
 		AH0 HQ 11/III/IR1
 
-AI: regular average platoon
+AI: regular average platoon (Infanterie Zug)
 	leader    : AI0 Zugfuehrer (2Lt Stiegel)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -550,7 +550,7 @@ AI: regular average platoon
 		AI3 Schuetzengruppe
 		AI4 Schuetzengruppe
 
-AJ: regular average platoon
+AJ: regular average platoon (Infanterie Zug)
 	leader    : AJ0 Zugfuehrer (2Lt Heidrich)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -564,7 +564,7 @@ AJ: regular average platoon
 		AJ3 Schuetzengruppe
 		AJ4 Schuetzengruppe
 
-AK: regular average platoon
+AK: regular average platoon (Infanterie Zug)
 	leader    : AK0 Zugfuehrer (2Lt Weisbach)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -578,7 +578,7 @@ AK: regular average platoon
 		AK3 Schuetzengruppe
 		AK4 Schuetzengruppe
 
-AL: regular average platoon
+AL: regular average platoon (MG Trupp)
 	leader    : AL0 MG Lafette Trp (Cpl Hoernlein)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -588,7 +588,7 @@ AL: regular average platoon
 	unit list :
 		AL0 MG Lafette Trp
 
-AM: regular average platoon
+AM: regular average platoon (MG Trupp)
 	leader    : AM0 MG Lafette Trp (2Lt Metzger)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -598,7 +598,7 @@ AM: regular average platoon
 	unit list :
 		AM0 MG Lafette Trp
 
-AN: regular average platoon
+AN: regular average platoon ((l) Moerser Grp)
 	leader    : AN0 50mm Moerser (Sgt Bauman)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -610,7 +610,7 @@ AN: regular average platoon
 		AN1 50mm Moerser
 		AN2 50mm Moerser
 
-AO: regular dedicated artillery platoon
+AO: regular dedicated artillery platoon (Moerser Grp)
 	leader    : AO0 81mm Moerser (2Lt Stolz)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -621,7 +621,7 @@ AO: regular dedicated artillery platoon
 		AO0 81mm Moerser
 		AO1 81mm Moerser
 
-AP: regular dedicated artillery platoon
+AP: regular dedicated artillery platoon (Moerser Grp)
 	leader    : AP0 81mm Moerser (2Lt Tost)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -632,7 +632,7 @@ AP: regular dedicated artillery platoon
 		AP0 81mm Moerser
 		AP1 81mm Moerser
 
-AQ: regular average platoon
+AQ: regular average platoon (FeldArt Zug)
 	leader    : AQ0 Zugfuehrer (2Lt Kessler)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -645,7 +645,7 @@ AQ: regular average platoon
 		AQ2 150mm sIG33
 		AQ3 LMG Gruppe
 
-AR: regular average platoon
+AR: regular average platoon (Gespann)
 	leader    : AR0 Gespann (1Lt Bauer)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -656,7 +656,7 @@ AR: regular average platoon
 		AR0 Gespann
 		AR1 Gespann
 
-AS: regular elite recon platoon
+AS: regular elite recon platoon (Vorg Beobachter)
 	leader    : AS0 Vorg Beobachter (2Lt Letzelder)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -666,7 +666,7 @@ AS: regular elite recon platoon
 	unit list :
 		AS0 Vorg Beobachter
 
-AT: regular recon platoon
+AT: regular recon platoon (Spaeher)
 	leader    : AT0 Spaehtruppe (2Lt Harmel)
 	higher cmd: A0 GE Kommandeur (Col Bachman)
 	kills     : 0
@@ -682,163 +682,163 @@ AT: regular recon platoon
 Short units report:
 -------------------
 
- #    A0  : GE Kommandeur    (Col Bachman         ) RID 00000 UTG 000 EXP 075 MOR 094 SUP 000 RAL 074 INF 080 ART 058 ARM 053 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 47,  24)
- #    B0  : Obs Team         (1Lt Flashfyre       ) RID 00001 UTG 001 EXP 084 MOR 094 SUP 000 RAL 080 INF 053 ART 083 ARM 060 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 48,  27)
- #    C0  : Moerser Grp      (2Lt Stiegel         ) RID 00002 UTG 002 EXP 079 MOR 096 SUP 000 RAL 072 INF 058 ART 085 ARM 058 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  26)
- #    C1  : Moerser Grp      (Sgt Vosse           ) RID 00003 UTG 002 EXP 068 MOR 087 SUP 000 RAL 079 INF 052 ART 087 ARM 055 KILL 002 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  26)
- #    D0  : Moerser Grp      (2Lt Schmidt         ) RID 00004 UTG 002 EXP 076 MOR 095 SUP 000 RAL 085 INF 058 ART 085 ARM 058 KILL 003 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  27)
- #    D1  : Moerser Grp      (Sgt Vebber          ) RID 00005 UTG 002 EXP 079 MOR 098 SUP 000 RAL 076 INF 058 ART 082 ARM 058 KILL 004 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  27)
- #    E0  : Ammo Carrier     (1Lt Bauer           ) RID 00006 UTG 003 EXP 067 MOR 090 SUP 000 RAL 083 INF 055 ART 051 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 48,  26)
- #    F0  : SPW 251/1 HT     (1Lt Kaptain         ) RID 00007 UTG 004 EXP 072 MOR 089 SUP 000 RAL 083 INF 057 ART 055 ARM 083 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 46,  28)
- #    F1  : SPW 251/1 HT     (Sgt Tost            ) RID 00008 UTG 004 EXP 074 MOR 093 SUP 000 RAL 070 INF 043 ART 042 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 45,  25)
- #  L G0  : Kompanie HQ      (Cpt Kortenhaus      ) RID 00009 UTG 005 EXP 080 MOR 099 SUP 000 RAL 083 INF 079 ART 054 ARM 058 KILL 004 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 73,  45)
- #    G1  : SPW 251/1 HT     (Sgt Rittenhaus      ) RID 00010 UTG 004 EXP 079 MOR 099 SUP 000 RAL 075 INF 047 ART 041 ARM 083 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 73,  45)
- #    H0  : Zugfuehrer       (2Lt Metzger         ) RID 00011 UTG 006 EXP 075 MOR 093 SUP 000 RAL 080 INF 084 ART 055 ARM 061 KILL 003 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 72,  45)
- #    H1  : Schuetzengruppe  (Sgt Bruck           ) RID 00012 UTG 007 EXP 091 MOR 094 SUP 000 RAL 077 INF 085 ART 049 ARM 053 KILL 015 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  45)
- #    H2  : Schuetzengruppe  (Sgt Hudel           ) RID 00013 UTG 008 EXP 086 MOR 094 SUP 000 RAL 081 INF 085 ART 054 ARM 049 KILL 008 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 74,  44)
- #    H3  : Schuetzengruppe  (Sgt Schoen          ) RID 00014 UTG 008 EXP 086 MOR 098 SUP 000 RAL 084 INF 089 ART 060 ARM 060 KILL 007 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 75,  44)
- #    H4  : Schuetzengruppe  (Sgt Tychsen         ) RID 00015 UTG 008 EXP 077 MOR 099 SUP 000 RAL 076 INF 081 ART 053 ARM 043 KILL 001 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 73,  43)
- #    H5  : Horch Kfz 70     (Sgt Schirmer        ) RID 00016 UTG 009 EXP 071 MOR 089 SUP 000 RAL 084 INF 056 ART 055 ARM 076 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 72,  43)
- #    H6  : Krupp Kfz 69     (Sgt Tost            ) RID 00017 UTG 010 EXP 072 MOR 090 SUP 000 RAL 074 INF 057 ART 043 ARM 081 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 72,  44)
- #    H7  : Krupp Kfz 69     (Sgt Krause          ) RID 00018 UTG 010 EXP 073 MOR 092 SUP 000 RAL 081 INF 056 ART 056 ARM 085 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 74,  44)
- #    H8  : Krupp Kfz 69     (Sgt Junger          ) RID 00019 UTG 010 EXP 060 MOR 078 SUP 000 RAL 085 INF 064 ART 061 ARM 082 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 75,  44)
- #    H9  : Krupp Kfz 69     (Sgt Meyer           ) RID 00020 UTG 010 EXP 066 MOR 085 SUP 000 RAL 074 INF 057 ART 050 ARM 076 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 73,  43)
- #    I0  : Zugfuehrer       (2Lt Musser          ) RID 00021 UTG 006 EXP 074 MOR 094 SUP 000 RAL 083 INF 083 ART 054 ARM 059 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 70,  43)
- #  L I1  : Schuetzengruppe  (Sgt Ziegler         ) RID 00022 UTG 007 EXP 084 MOR 096 SUP 000 RAL 082 INF 087 ART 055 ARM 053 KILL 003 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
- #  L I2  : Schuetzengruppe  (Sgt Stemberger      ) RID 00023 UTG 008 EXP 083 MOR 097 SUP 000 RAL 086 INF 088 ART 054 ARM 060 KILL 004 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  43)
- #  L I3  : Schuetzengruppe  (Sgt Strauch         ) RID 00024 UTG 008 EXP 080 MOR 096 SUP 000 RAL 084 INF 088 ART 063 ARM 057 KILL 003 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  41)
- #  L I4  : Schuetzengruppe  (Sgt Rauch           ) RID 00025 UTG 008 EXP 087 MOR 095 SUP 000 RAL 076 INF 086 ART 055 ARM 063 KILL 010 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
- #    I5  : Horch Kfz 70     (Sgt Reichmann       ) RID 00026 UTG 009 EXP 065 MOR 084 SUP 000 RAL 078 INF 051 ART 049 ARM 078 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 70,  43)
- #    I6  : Opel Blitz       (Sgt Kronz           ) RID 00027 UTG 011 EXP 076 MOR 098 SUP 000 RAL 077 INF 055 ART 054 ARM 085 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
- #    I7  : Opel Blitz       (Sgt Kuhns           ) RID 00028 UTG 011 EXP 075 MOR 093 SUP 000 RAL 081 INF 048 ART 047 ARM 084 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  43)
- #    I8  : Opel Blitz       (Sgt Weisbach        ) RID 00029 UTG 011 EXP 069 MOR 087 SUP 000 RAL 080 INF 044 ART 053 ARM 079 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  41)
- #    I9  : Opel Blitz       (Sgt Alby            ) RID 00030 UTG 011 EXP 070 MOR 089 SUP 000 RAL 079 INF 056 ART 050 ARM 074 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
-    L J0  : Zugfuehrer       (2Lt Briel           ) RID 00031 UTG 006 EXP 079 MOR 095 SUP 000 RAL 078 INF 088 ART 057 ARM 053 KILL 002 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 99,  34)
- #  L J1  : Schuetzengruppe  (Sgt Falkenberg      ) RID 00032 UTG 007 EXP 088 MOR 097 SUP 000 RAL 074 INF 080 ART 058 ARM 055 KILL 012 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 94,  35)
-    L J2  : Schuetzengruppe  (Sgt Schneider       ) RID 00033 UTG 008 EXP 089 MOR 098 SUP 000 RAL 080 INF 086 ART 054 ARM 058 KILL 012 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 96,  39)
-    L J3  : Schuetzengruppe  (Sgt Brandt          ) RID 00034 UTG 008 EXP 083 MOR 099 SUP 000 RAL 074 INF 082 ART 052 ARM 055 KILL 004 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 96,  40)
-    L J4  : Schuetzengruppe  (Sgt Kuhns           ) RID 00035 UTG 008 EXP 084 MOR 098 SUP 000 RAL 080 INF 086 ART 061 ARM 059 KILL 006 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 97,  37)
-      J5  : Opel Kommand     (Sgt Schurz          ) RID 00036 UTG 012 EXP 064 MOR 082 SUP 000 RAL 083 INF 063 ART 056 ARM 090 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 99,  34)
- #    J6  : Opel Blitz       (Sgt Rittenhaus      ) RID 00037 UTG 011 EXP 067 MOR 085 SUP 000 RAL 084 INF 062 ART 057 ARM 086 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 94,  35)
-      J7  : Opel Blitz       (Sgt Hoffman         ) RID 00038 UTG 011 EXP 073 MOR 091 SUP 000 RAL 078 INF 059 ART 060 ARM 082 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 96,  39)
-      J8  : Opel Blitz       (Sgt Eberhart        ) RID 00039 UTG 011 EXP 065 MOR 085 SUP 000 RAL 082 INF 046 ART 039 ARM 076 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 96,  40)
-      J9  : Opel Blitz       (Sgt Brors           ) RID 00040 UTG 011 EXP 069 MOR 087 SUP 000 RAL 074 INF 051 ART 049 ARM 087 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 97,  37)
-      K0  : Zugfuehrer       (2Lt Naumann         ) RID 00041 UTG 006 EXP 070 MOR 088 SUP 010 RAL 083 INF 077 ART 054 ARM 056 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 000 RDY  62.05 POS ( 50,  43)
- #-   K1  : LMG Gruppe       (Sgt Kleemann        ) RID 00042 UTG 013 EXP 082 MOR 097 SUP 002 RAL 076 INF 076 ART 046 ARM 046 KILL 000 LOSS 000 MEN 003 KIA 001 DMG 001 RDY  65.29 POS ( 51,  44)
- #    K2  : LMG Gruppe       (Sgt Eberhart        ) RID 00043 UTG 013 EXP 087 MOR 097 SUP 000 RAL 085 INF 093 ART 053 ARM 053 KILL 011 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 51,  43)
- #    K3  : Lt Moerser Trp   (Sgt Musser          ) RID 00044 UTG 014 EXP 072 MOR 089 SUP 006 RAL 077 INF 053 ART 079 ARM 049 KILL 001 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  93.26 POS ( 51,  41)
- #-   K4  : Lt Moerser Trp   (Sgt Reichmann       ) RID 00045 UTG 014 EXP 073 MOR 093 SUP 000 RAL 071 INF 060 ART 078 ARM 050 KILL 000 LOSS 000 MEN 002 KIA 001 DMG 001 RDY  50.00 POS ( 50,  43)
-+ -   K5  : Lt Moerser Trp   (KIA Muller          ) RID 00046 UTG 014 EXP 078 MOR 095 SUP 015 RAL 080 INF 053 ART 086 ARM 053 KILL 003 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
-      K8  : SPW 251/1 HT     (Sgt Kaptain         ) RID 00049 UTG 004 EXP 064 MOR 062 SUP 000 RAL 076 INF 040 ART 045 ARM 080 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 48,  41)
- #    K9  : SPW 251/1 HT     (Sgt Remer           ) RID 00050 UTG 004 EXP 065 MOR 083 SUP 000 RAL 084 INF 052 ART 048 ARM 089 KILL 001 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  40)
-      L0  : Zugfuehrer       (2Lt Eberbach        ) RID 00051 UTG 006 EXP 070 MOR 090 SUP 000 RAL 076 INF 085 ART 057 ARM 060 KILL 002 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 62,  36)
-      L1  : Panzerpionieres  (Sgt Steiner         ) RID 00052 UTG 016 EXP 097 MOR 095 SUP 000 RAL 087 INF 090 ART 063 ARM 056 KILL 025 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 61,  37)
- #    L2  : Panzerpionieres  (Sgt Conkling        ) RID 00053 UTG 016 EXP 093 MOR 094 SUP 000 RAL 080 INF 078 ART 047 ARM 055 KILL 008 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 63,  38)
-      L3  : Panzerpionieres  (Sgt Metzger         ) RID 00054 UTG 016 EXP 083 MOR 099 SUP 003 RAL 073 INF 090 ART 048 ARM 050 KILL 005 LOSS 000 MEN 010 KIA 000 DMG 000 RDY  96.97 POS ( 62,  38)
- #    L4  : LMG Gruppe       (Sgt Bruck           ) RID 00055 UTG 013 EXP 080 MOR 095 SUP 000 RAL 079 INF 075 ART 048 ARM 050 KILL 001 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 62,  37)
- #    L5  : SPW 251/1 HT     (Sgt Funck           ) RID 00056 UTG 004 EXP 077 MOR 098 SUP 000 RAL 080 INF 053 ART 060 ARM 080 KILL 004 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 61,  35)
-      L6  : SPW 251/1 HT     (Sgt Kessler         ) RID 00057 UTG 004 EXP 082 MOR 095 SUP 000 RAL 076 INF 063 ART 051 ARM 086 KILL 003 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 62,  33)
-      L7  : SPW 251/1 HT     (Sgt Krause          ) RID 00058 UTG 004 EXP 072 MOR 087 SUP 001 RAL 080 INF 049 ART 042 ARM 084 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  98.85 POS ( 63,  33)
-      L8  : SPW 251/1 HT     (Sgt Stumpf          ) RID 00059 UTG 004 EXP 078 MOR 090 SUP 000 RAL 082 INF 042 ART 044 ARM 076 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 64,  32)
- #    M0  : Spaehgruppe      (2Lt Wirth           ) RID 00060 UTG 017 EXP 066 MOR 085 SUP 000 RAL 079 INF 083 ART 057 ARM 058 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 64,  38)
-    L M1  : Spaehgruppe      (Sgt Wagner          ) RID 00061 UTG 017 EXP 063 MOR 081 SUP 000 RAL 073 INF 076 ART 041 ARM 041 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 41,  46)
- #  L M2  : Spaehgruppe      (Sgt Spengler        ) RID 00062 UTG 017 EXP 078 MOR 099 SUP 000 RAL 069 INF 074 ART 036 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 43,  50)
- #  L N0  : Spaehgruppe      (2Lt Stumpf          ) RID 00063 UTG 017 EXP 069 MOR 089 SUP 000 RAL 082 INF 084 ART 051 ARM 048 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 70,  41)
- #  L N1  : Spaehgruppe      (Sgt Brors           ) RID 00064 UTG 017 EXP 064 MOR 083 SUP 000 RAL 067 INF 077 ART 051 ARM 048 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 89,  50)
-    L N2  : Spaehgruppe      (Sgt Eberhart        ) RID 00065 UTG 017 EXP 067 MOR 091 SUP 000 RAL 078 INF 086 ART 053 ARM 048 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 94,  41)
- #    O0  : PzKpfw II C      (2Lt Kortenhaus      ) RID 00066 UTG 018 EXP 093 MOR 094 SUP 000 RAL 078 INF 056 ART 056 ARM 084 KILL 021 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 74,  40)
- #    O1  : PzKpfw II C      (Sgt Rauch           ) RID 00067 UTG 018 EXP 100 MOR 098 SUP 000 RAL 080 INF 051 ART 040 ARM 087 KILL 011 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 72,  46)
- #    O2  : PzKpfw II C      (Sgt Kramer          ) RID 00068 UTG 018 EXP 099 MOR 094 SUP 000 RAL 078 INF 057 ART 057 ARM 088 KILL 032 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 69,  40)
- #    O3  : PzKpfw III E     (Sgt Junger          ) RID 00069 UTG 019 EXP 090 MOR 081 SUP 000 RAL 072 INF 039 ART 046 ARM 078 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 72,  46)
- #    O4  : PzKpfw III E     (Sgt Vosse           ) RID 00070 UTG 019 EXP 093 MOR 099 SUP 000 RAL 072 INF 044 ART 046 ARM 077 KILL 004 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 70,  41)
- #    P0  : PzKpfw II C      (1Lt Harmel          ) RID 00071 UTG 018 EXP 098 MOR 098 SUP 000 RAL 080 INF 049 ART 061 ARM 085 KILL 027 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 91,  46)
-      P1  : PzKpfw II C      (Sgt Weber           ) RID 00072 UTG 018 EXP 103 MOR 097 SUP 000 RAL 086 INF 049 ART 053 ARM 085 KILL 030 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 91,  48)
- #    P2  : PzKpfw II C      (Sgt Tychsen         ) RID 00073 UTG 018 EXP 098 MOR 087 SUP 000 RAL 075 INF 043 ART 039 ARM 083 KILL 004 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 88,  49)
- #    P3  : PzKpfw III E     (Sgt Porsch          ) RID 00074 UTG 019 EXP 092 MOR 081 SUP 000 RAL 074 INF 048 ART 053 ARM 082 KILL 011 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 89,  50)
- #    P4  : PzKpfw III E     (Sgt Langkeit        ) RID 00075 UTG 019 EXP 091 MOR 089 SUP 000 RAL 066 INF 037 ART 044 ARM 083 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 90,  50)
- #    Q0  : PzKpfw III E     (2Lt Schwendt        ) RID 00076 UTG 019 EXP 094 MOR 095 SUP 000 RAL 076 INF 048 ART 049 ARM 073 KILL 012 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 49,  39)
- #    Q1  : PzKpfw IV D      (Sgt Oertzen         ) RID 00077 UTG 020 EXP 091 MOR 096 SUP 000 RAL 073 INF 052 ART 052 ARM 082 KILL 019 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 43,  50)
-      Q2  : PzKpfw III E     (Sgt Hudel           ) RID 00078 UTG 019 EXP 094 MOR 094 SUP 000 RAL 076 INF 056 ART 059 ARM 078 KILL 021 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 64,  36)
-      Q3  : PzKpfw IV D      (Sgt Falkenberg      ) RID 00079 UTG 020 EXP 087 MOR 065 SUP 001 RAL 074 INF 043 ART 038 ARM 071 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.46 POS ( 62,  39)
-      Q4  : PzKpfw III E     (Sgt Telner          ) RID 00080 UTG 019 EXP 095 MOR 099 SUP 000 RAL 081 INF 058 ART 060 ARM 086 KILL 027 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 41,  46)
- #    R0  : PzKpfw IV C      (1Lt Bauer           ) RID 00081 UTG 021 EXP 091 MOR 095 SUP 000 RAL 075 INF 062 ART 051 ARM 091 KILL 025 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 69,  39)
-      R1  : PzKpfw IV C      (Sgt Klein           ) RID 00082 UTG 021 EXP 090 MOR 099 SUP 000 RAL 089 INF 061 ART 054 ARM 090 KILL 027 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 94,  41)
- #  L S0  : Grenadiergruppe  (Sgt Bauman          ) RID 00083 UTG 015 EXP 076 MOR 098 SUP 000 RAL 067 INF 080 ART 033 ARM 039 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 50,  56)
- #  L S1  : Grenadiergruppe  (2Lt Zimmerman       ) RID 00047 UTG 015 EXP 091 MOR 094 SUP 000 RAL 081 INF 084 ART 054 ARM 059 KILL 011 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 49,  56)
- #  L S2  : Grenadiergruppe  (Sgt Schweitzer      ) RID 00048 UTG 015 EXP 091 MOR 096 SUP 000 RAL 071 INF 075 ART 060 ARM 054 KILL 018 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 46,  56)
- #    T0  : Motorrad Grp     (2Lt Schwartz        ) RID 00084 UTG 022 EXP 055 MOR 077 SUP 000 RAL 072 INF 078 ART 045 ARM 036 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 87,  55)
- #-   T1  : Motorrad Grp     (Sgt Conkling        ) RID 00085 UTG 022 EXP 070 MOR 085 SUP 002 RAL 074 INF 083 ART 046 ARM 045 KILL 000 LOSS 000 MEN 008 KIA 001 DMG 001 RDY  85.44 POS ( 86,  57)
- #    T2  : Motorrad Grp     (Sgt Krause          ) RID 00086 UTG 022 EXP 073 MOR 089 SUP 007 RAL 080 INF 082 ART 042 ARM 046 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY  92.13 POS ( 83,  56)
- #-   U0  : Motorrad Grp     (2Lt Kroll           ) RID 00087 UTG 022 EXP 065 MOR 081 SUP 005 RAL 072 INF 074 ART 036 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  75.06 POS ( 55,  38)
- #    U1  : Motorrad Grp     (Sgt Eberhart        ) RID 00088 UTG 022 EXP 071 MOR 086 SUP 000 RAL 067 INF 079 ART 040 ARM 047 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 50,  55)
-      U2  : Motorrad Grp     (Sgt Rauch           ) RID 00089 UTG 022 EXP 072 MOR 081 SUP 042 RAL 078 INF 077 ART 043 ARM 039 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY   9.63 POS ( 63,  40)
- #    V0  : Motorrad Grp     (2Lt Oertzen         ) RID 00090 UTG 022 EXP 073 MOR 074 SUP 000 RAL 071 INF 083 ART 045 ARM 039 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 69,  41)
- #-   V1  : Motorrad Grp     (Sgt Stiegel         ) RID 00091 UTG 022 EXP 057 MOR 090 SUP 000 RAL 073 INF 078 ART 040 ARM 035 KILL 001 LOSS 000 MEN 009 KIA 007 DMG 007 RDY  22.22 POS ( 73,  42)
-      V2  : Motorrad Grp     (Sgt Hartueb         ) RID 00092 UTG 022 EXP 067 MOR 071 SUP 000 RAL 073 INF 070 ART 041 ARM 046 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 68,  40)
- #    W0  : SPW 251/1 HT     (1Lt NotAToy         ) RID 00093 UTG 004 EXP 064 MOR 075 SUP 000 RAL 077 INF 047 ART 032 ARM 075 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 46,  26)
- #    W1  : SPW 251/1 HT     (Sgt Hoffman         ) RID 00094 UTG 004 EXP 064 MOR 068 SUP 000 RAL 070 INF 037 ART 045 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 50,  56)
- #    W2  : SPW 251/1 HT     (Sgt Albrecht        ) RID 00095 UTG 004 EXP 067 MOR 073 SUP 000 RAL 071 INF 046 ART 049 ARM 080 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  56)
- #    W3  : SPW 251/1 HT     (Sgt Remer           ) RID 00096 UTG 004 EXP 076 MOR 075 SUP 000 RAL 072 INF 041 ART 044 ARM 081 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 46,  56)
- #    X0  : PzJg I B         (1Lt Krafft          ) RID 00097 UTG 023 EXP 062 MOR 083 SUP 000 RAL 068 INF 041 ART 041 ARM 082 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 75,  37)
- #    X1  : PzJg I B         (Sgt Bachman         ) RID 00098 UTG 023 EXP 061 MOR 076 SUP 000 RAL 081 INF 040 ART 040 ARM 079 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 70,  40)
- #    Y0  : Horch Kfz 70     (1Lt Strauch         ) RID 00099 UTG 009 EXP 065 MOR 086 SUP 000 RAL 076 INF 032 ART 042 ARM 078 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 46,  23)
- #    Z0  : HQ III/IR1       (Col Porsch          ) RID 00100 UTG 000 EXP 082 MOR 088 SUP 000 RAL 078 INF 087 ART 046 ARM 043 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 29,  93)
- #    AA0 : HQ 10/III/IR1    (Cpt Weber           ) RID 00101 UTG 005 EXP 063 MOR 074 SUP 000 RAL 073 INF 079 ART 040 ARM 046 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 36,  91)
- #    AB0 : Zugfuehrer       (2Lt Becker          ) RID 00102 UTG 006 EXP 068 MOR 081 SUP 000 RAL 075 INF 082 ART 039 ARM 036 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 39,  86)
- #    AB1 : Schuetzengruppe  (Sgt Ostendorff      ) RID 00103 UTG 024 EXP 079 MOR 076 SUP 000 RAL 075 INF 078 ART 041 ARM 041 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 40,  85)
- #    AB2 : Schuetzengruppe  (Sgt Eberhart        ) RID 00104 UTG 024 EXP 082 MOR 082 SUP 000 RAL 071 INF 080 ART 040 ARM 043 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 41,  85)
- #    AB3 : Schuetzengruppe  (Sgt Schurz          ) RID 00105 UTG 024 EXP 077 MOR 078 SUP 000 RAL 077 INF 073 ART 036 ARM 042 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 41,  87)
- #    AB4 : Schuetzengruppe  (Sgt Meyer           ) RID 00106 UTG 024 EXP 066 MOR 076 SUP 000 RAL 079 INF 080 ART 039 ARM 037 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 39,  85)
- #    AC0 : Zugfuehrer       (2Lt Kaptain         ) RID 00107 UTG 006 EXP 077 MOR 072 SUP 000 RAL 071 INF 072 ART 036 ARM 034 KILL 000 LOSS 000 MEN 006 KIA 001 DMG 000 RDY  83.33 POS ( 40,  90)
- #    AC1 : Schuetzengruppe  (Sgt Kleemann        ) RID 00108 UTG 024 EXP 072 MOR 072 SUP 000 RAL 076 INF 075 ART 045 ARM 046 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 40,  88)
- #    AC2 : Schuetzengruppe  (Sgt Gebhart         ) RID 00109 UTG 024 EXP 066 MOR 064 SUP 000 RAL 066 INF 080 ART 038 ARM 042 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 41,  89)
- #    AC3 : Schuetzengruppe  (Sgt Riedmuller      ) RID 00110 UTG 024 EXP 070 MOR 070 SUP 000 RAL 067 INF 087 ART 037 ARM 042 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 41,  90)
- #    AC4 : Schuetzengruppe  (Sgt Wiedemann       ) RID 00111 UTG 024 EXP 080 MOR 081 SUP 000 RAL 080 INF 085 ART 037 ARM 047 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 39,  89)
- #    AD0 : Zugfuehrer       (2Lt Weiss           ) RID 00112 UTG 006 EXP 067 MOR 073 SUP 000 RAL 076 INF 077 ART 038 ARM 042 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 37,  94)
- #    AD1 : Schuetzengruppe  (Sgt Wagner          ) RID 00113 UTG 024 EXP 065 MOR 073 SUP 000 RAL 072 INF 081 ART 037 ARM 042 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 38,  94)
- #    AD2 : Schuetzengruppe  (Sgt Kauffman        ) RID 00114 UTG 024 EXP 071 MOR 072 SUP 000 RAL 070 INF 079 ART 040 ARM 041 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 40,  94)
- #    AD3 : Schuetzengruppe  (Sgt Telner          ) RID 00115 UTG 024 EXP 066 MOR 065 SUP 000 RAL 077 INF 079 ART 040 ARM 039 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 39,  95)
- #    AD4 : Schuetzengruppe  (Sgt Schmidt         ) RID 00116 UTG 024 EXP 067 MOR 073 SUP 000 RAL 079 INF 075 ART 033 ARM 038 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 40,  95)
- #    AE0 : MG Lafette Trp   (2Lt Langkeit        ) RID 00117 UTG 025 EXP 071 MOR 076 SUP 000 RAL 078 INF 071 ART 035 ARM 047 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 39,  91)
- #    AF0 : MG Lafette Trp   (2Lt Schirmer        ) RID 00118 UTG 025 EXP 070 MOR 072 SUP 000 RAL 081 INF 082 ART 040 ARM 040 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 38,  85)
- #    AG0 : 50mm Moerser     (Sgt Musser          ) RID 00119 UTG 014 EXP 081 MOR 080 SUP 000 RAL 076 INF 044 ART 080 ARM 043 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 38,  90)
- #    AG1 : 50mm Moerser     (Sgt Schumacher      ) RID 00120 UTG 014 EXP 080 MOR 078 SUP 000 RAL 081 INF 047 ART 076 ARM 043 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 38,  92)
- #    AG2 : 50mm Moerser     (Sgt Hartueb         ) RID 00121 UTG 014 EXP 079 MOR 073 SUP 000 RAL 070 INF 040 ART 084 ARM 040 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 37,  90)
- #    AH0 : HQ 11/III/IR1    (Cpt von  Preussen   ) RID 00122 UTG 005 EXP 071 MOR 078 SUP 000 RAL 079 INF 076 ART 039 ARM 037 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 70, 113)
- #    AI0 : Zugfuehrer       (2Lt Stiegel         ) RID 00123 UTG 006 EXP 076 MOR 075 SUP 000 RAL 072 INF 071 ART 039 ARM 050 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 83, 107)
- #    AI1 : Schuetzengruppe  (Sgt Stumpf          ) RID 00124 UTG 024 EXP 073 MOR 063 SUP 000 RAL 070 INF 075 ART 041 ARM 042 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 82, 107)
- #    AI2 : Schuetzengruppe  (Sgt Kronz           ) RID 00125 UTG 024 EXP 081 MOR 072 SUP 000 RAL 068 INF 078 ART 043 ARM 037 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 84, 105)
- #    AI3 : Schuetzengruppe  (Sgt Seibert         ) RID 00126 UTG 024 EXP 079 MOR 062 SUP 000 RAL 071 INF 074 ART 042 ARM 046 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 84, 104)
- #    AI4 : Schuetzengruppe  (Sgt Wittman         ) RID 00127 UTG 024 EXP 065 MOR 083 SUP 000 RAL 075 INF 081 ART 042 ARM 043 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 81, 106)
- #    AJ0 : Zugfuehrer       (2Lt Heidrich        ) RID 00128 UTG 006 EXP 071 MOR 083 SUP 000 RAL 071 INF 072 ART 043 ARM 042 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 67, 104)
- #    AJ1 : Schuetzengruppe  (Sgt Eberbach        ) RID 00129 UTG 024 EXP 077 MOR 066 SUP 000 RAL 081 INF 080 ART 042 ARM 042 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 66, 102)
- #    AJ2 : Schuetzengruppe  (Sgt Ziegler         ) RID 00130 UTG 024 EXP 070 MOR 071 SUP 000 RAL 067 INF 076 ART 046 ARM 045 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 66, 103)
- #    AJ3 : Schuetzengruppe  (Sgt Naumann         ) RID 00131 UTG 024 EXP 080 MOR 069 SUP 000 RAL 069 INF 083 ART 039 ARM 039 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 68, 104)
- #    AJ4 : Schuetzengruppe  (Sgt Schoen          ) RID 00132 UTG 024 EXP 084 MOR 076 SUP 000 RAL 069 INF 079 ART 048 ARM 041 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 68, 105)
- #    AK0 : Zugfuehrer       (2Lt Weisbach        ) RID 00133 UTG 006 EXP 071 MOR 070 SUP 000 RAL 075 INF 078 ART 043 ARM 043 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 52, 111)
- #    AK1 : Schuetzengruppe  (Sgt Schwartz        ) RID 00134 UTG 024 EXP 056 MOR 079 SUP 000 RAL 077 INF 077 ART 039 ARM 039 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 50, 110)
- #    AK2 : Schuetzengruppe  (Sgt Kroll           ) RID 00135 UTG 024 EXP 077 MOR 075 SUP 000 RAL 075 INF 081 ART 041 ARM 038 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 51, 110)
- #    AK3 : Schuetzengruppe  (Sgt Remer           ) RID 00136 UTG 024 EXP 074 MOR 064 SUP 000 RAL 067 INF 083 ART 039 ARM 038 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 51, 109)
- #    AK4 : Schuetzengruppe  (Sgt Spengler        ) RID 00137 UTG 024 EXP 069 MOR 079 SUP 000 RAL 071 INF 084 ART 039 ARM 048 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 52, 107)
- #    AL0 : MG Lafette Trp   (Cpl Hoernlein       ) RID 00138 UTG 025 EXP 067 MOR 078 SUP 000 RAL 080 INF 079 ART 041 ARM 038 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 85, 104)
- #    AM0 : MG Lafette Trp   (2Lt Metzger         ) RID 00139 UTG 025 EXP 078 MOR 075 SUP 000 RAL 072 INF 077 ART 041 ARM 041 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 50, 111)
- #    AN0 : 50mm Moerser     (Sgt Bauman          ) RID 00140 UTG 014 EXP 074 MOR 073 SUP 000 RAL 075 INF 043 ART 084 ARM 038 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 71, 111)
- #    AN1 : 50mm Moerser     (Sgt Steiner         ) RID 00141 UTG 014 EXP 071 MOR 071 SUP 000 RAL 071 INF 044 ART 074 ARM 040 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 71, 112)
- #    AN2 : 50mm Moerser     (Sgt Scherer         ) RID 00142 UTG 014 EXP 079 MOR 070 SUP 000 RAL 071 INF 042 ART 079 ARM 043 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 71, 113)
- #    AO0 : 81mm Moerser     (2Lt Stolz           ) RID 00143 UTG 002 EXP 068 MOR 070 SUP 000 RAL 071 INF 041 ART 077 ARM 032 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 24,  93)
- #    AO1 : 81mm Moerser     (Sgt Abt             ) RID 00144 UTG 002 EXP 069 MOR 072 SUP 000 RAL 072 INF 037 ART 074 ARM 037 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 23,  94)
- #    AP0 : 81mm Moerser     (2Lt Tost            ) RID 00145 UTG 002 EXP 070 MOR 070 SUP 000 RAL 080 INF 038 ART 076 ARM 046 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 24,  94)
- #    AP1 : 81mm Moerser     (Sgt Boettcher       ) RID 00146 UTG 002 EXP 076 MOR 072 SUP 000 RAL 074 INF 038 ART 077 ARM 041 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 22,  94)
- #    AQ0 : Zugfuehrer       (2Lt Kessler         ) RID 00147 UTG 006 EXP 070 MOR 072 SUP 000 RAL 072 INF 073 ART 046 ARM 038 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 45,  95)
- #    AQ1 : 150mm sIG33      (Sgt Brandt          ) RID 00148 UTG 026 EXP 082 MOR 071 SUP 000 RAL 072 INF 050 ART 080 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 45,  95)
- #    AQ2 : 150mm sIG33      (Sgt Albrecht        ) RID 00149 UTG 026 EXP 082 MOR 067 SUP 000 RAL 074 INF 047 ART 074 ARM 040 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 46,  95)
- #    AQ3 : LMG Gruppe       (Sgt Briel           ) RID 00150 UTG 013 EXP 067 MOR 067 SUP 000 RAL 076 INF 082 ART 040 ARM 038 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 46,  95)
- #    AR0 : Gespann          (1Lt Bauer           ) RID 00151 UTG 027 EXP 075 MOR 069 SUP 000 RAL 073 INF 039 ART 043 ARM 073 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 45,  95)
- #    AR1 : Gespann          (Sgt Tychsen         ) RID 00152 UTG 027 EXP 073 MOR 073 SUP 000 RAL 078 INF 036 ART 039 ARM 076 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 46,  95)
- #    AS0 : Vorg Beobachter  (2Lt Letzelder       ) RID 00153 UTG 001 EXP 081 MOR 093 SUP 000 RAL 074 INF 040 ART 073 ARM 036 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 38,  93)
- #    AT0 : Spaehtruppe      (2Lt Harmel          ) RID 00154 UTG 028 EXP 065 MOR 069 SUP 000 RAL 073 INF 082 ART 043 ARM 044 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 50,  87)
- #    AT1 : Spaehtruppe      (Sgt Hummel          ) RID 00155 UTG 028 EXP 077 MOR 082 SUP 000 RAL 068 INF 085 ART 044 ARM 044 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  78)
- #    AT2 : Spaehtruppe      (Sgt Vogel           ) RID 00156 UTG 028 EXP 069 MOR 073 SUP 000 RAL 070 INF 078 ART 040 ARM 050 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  95)
+ #    A0  : GE Kommandeur    (Col Bachman         ) GE Kommandeur    RID 00000 UTG 000 EXP 075 MOR 094 SUP 000 RAL 074 INF 080 ART 058 ARM 053 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 47,  24)
+ #    B0  : Obs Team         (1Lt Flashfyre       ) Obs Team         RID 00001 UTG 001 EXP 084 MOR 094 SUP 000 RAL 080 INF 053 ART 083 ARM 060 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 48,  27)
+ #    C0  : Moerser Grp      (2Lt Stiegel         ) Moerser Grp      RID 00002 UTG 002 EXP 079 MOR 096 SUP 000 RAL 072 INF 058 ART 085 ARM 058 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  26)
+ #    C1  : Moerser Grp      (Sgt Vosse           ) Moerser Grp      RID 00003 UTG 002 EXP 068 MOR 087 SUP 000 RAL 079 INF 052 ART 087 ARM 055 KILL 002 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  26)
+ #    D0  : Moerser Grp      (2Lt Schmidt         ) Moerser Grp      RID 00004 UTG 002 EXP 076 MOR 095 SUP 000 RAL 085 INF 058 ART 085 ARM 058 KILL 003 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  27)
+ #    D1  : Moerser Grp      (Sgt Vebber          ) Moerser Grp      RID 00005 UTG 002 EXP 079 MOR 098 SUP 000 RAL 076 INF 058 ART 082 ARM 058 KILL 004 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  27)
+ #    E0  : Ammo Carrier     (1Lt Bauer           ) Ammo Carrier     RID 00006 UTG 003 EXP 067 MOR 090 SUP 000 RAL 083 INF 055 ART 051 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 48,  26)
+ #    F0  : SPW 251/1 HT     (1Lt Kaptain         ) SPW 251/1 HT     RID 00007 UTG 004 EXP 072 MOR 089 SUP 000 RAL 083 INF 057 ART 055 ARM 083 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 46,  28)
+ #    F1  : SPW 251/1 HT     (Sgt Tost            ) SPW 251/1 HT     RID 00008 UTG 004 EXP 074 MOR 093 SUP 000 RAL 070 INF 043 ART 042 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 45,  25)
+ #  L G0  : Kompanie HQ      (Cpt Kortenhaus      ) Kompanie HQ      RID 00009 UTG 005 EXP 080 MOR 099 SUP 000 RAL 083 INF 079 ART 054 ARM 058 KILL 004 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 73,  45)
+ #    G1  : SPW 251/1 HT     (Sgt Rittenhaus      ) SPW 251/1 HT     RID 00010 UTG 004 EXP 079 MOR 099 SUP 000 RAL 075 INF 047 ART 041 ARM 083 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 73,  45)
+ #    H0  : Zugfuehrer       (2Lt Metzger         ) Zugfuehrer       RID 00011 UTG 006 EXP 075 MOR 093 SUP 000 RAL 080 INF 084 ART 055 ARM 061 KILL 003 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 72,  45)
+ #    H1  : Schuetzengruppe  (Sgt Bruck           ) Schuetzengruppe  RID 00012 UTG 007 EXP 091 MOR 094 SUP 000 RAL 077 INF 085 ART 049 ARM 053 KILL 015 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  45)
+ #    H2  : Schuetzengruppe  (Sgt Hudel           ) Schuetzengruppe  RID 00013 UTG 008 EXP 086 MOR 094 SUP 000 RAL 081 INF 085 ART 054 ARM 049 KILL 008 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 74,  44)
+ #    H3  : Schuetzengruppe  (Sgt Schoen          ) Schuetzengruppe  RID 00014 UTG 008 EXP 086 MOR 098 SUP 000 RAL 084 INF 089 ART 060 ARM 060 KILL 007 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 75,  44)
+ #    H4  : Schuetzengruppe  (Sgt Tychsen         ) Schuetzengruppe  RID 00015 UTG 008 EXP 077 MOR 099 SUP 000 RAL 076 INF 081 ART 053 ARM 043 KILL 001 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 73,  43)
+ #    H5  : Horch Kfz 70     (Sgt Schirmer        ) Horch Kfz 70     RID 00016 UTG 009 EXP 071 MOR 089 SUP 000 RAL 084 INF 056 ART 055 ARM 076 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 72,  43)
+ #    H6  : Krupp Kfz 69     (Sgt Tost            ) Krupp Kfz 69     RID 00017 UTG 010 EXP 072 MOR 090 SUP 000 RAL 074 INF 057 ART 043 ARM 081 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 72,  44)
+ #    H7  : Krupp Kfz 69     (Sgt Krause          ) Krupp Kfz 69     RID 00018 UTG 010 EXP 073 MOR 092 SUP 000 RAL 081 INF 056 ART 056 ARM 085 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 74,  44)
+ #    H8  : Krupp Kfz 69     (Sgt Junger          ) Krupp Kfz 69     RID 00019 UTG 010 EXP 060 MOR 078 SUP 000 RAL 085 INF 064 ART 061 ARM 082 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 75,  44)
+ #    H9  : Krupp Kfz 69     (Sgt Meyer           ) Krupp Kfz 69     RID 00020 UTG 010 EXP 066 MOR 085 SUP 000 RAL 074 INF 057 ART 050 ARM 076 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 73,  43)
+ #    I0  : Zugfuehrer       (2Lt Musser          ) Zugfuehrer       RID 00021 UTG 006 EXP 074 MOR 094 SUP 000 RAL 083 INF 083 ART 054 ARM 059 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 70,  43)
+ #  L I1  : Schuetzengruppe  (Sgt Ziegler         ) Schuetzengruppe  RID 00022 UTG 007 EXP 084 MOR 096 SUP 000 RAL 082 INF 087 ART 055 ARM 053 KILL 003 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
+ #  L I2  : Schuetzengruppe  (Sgt Stemberger      ) Schuetzengruppe  RID 00023 UTG 008 EXP 083 MOR 097 SUP 000 RAL 086 INF 088 ART 054 ARM 060 KILL 004 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  43)
+ #  L I3  : Schuetzengruppe  (Sgt Strauch         ) Schuetzengruppe  RID 00024 UTG 008 EXP 080 MOR 096 SUP 000 RAL 084 INF 088 ART 063 ARM 057 KILL 003 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 71,  41)
+ #  L I4  : Schuetzengruppe  (Sgt Rauch           ) Schuetzengruppe  RID 00025 UTG 008 EXP 087 MOR 095 SUP 000 RAL 076 INF 086 ART 055 ARM 063 KILL 010 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
+ #    I5  : Horch Kfz 70     (Sgt Reichmann       ) Horch Kfz 70     RID 00026 UTG 009 EXP 065 MOR 084 SUP 000 RAL 078 INF 051 ART 049 ARM 078 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 70,  43)
+ #    I6  : Opel Blitz       (Sgt Kronz           ) Opel Blitz       RID 00027 UTG 011 EXP 076 MOR 098 SUP 000 RAL 077 INF 055 ART 054 ARM 085 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
+ #    I7  : Opel Blitz       (Sgt Kuhns           ) Opel Blitz       RID 00028 UTG 011 EXP 075 MOR 093 SUP 000 RAL 081 INF 048 ART 047 ARM 084 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  43)
+ #    I8  : Opel Blitz       (Sgt Weisbach        ) Opel Blitz       RID 00029 UTG 011 EXP 069 MOR 087 SUP 000 RAL 080 INF 044 ART 053 ARM 079 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  41)
+ #    I9  : Opel Blitz       (Sgt Alby            ) Opel Blitz       RID 00030 UTG 011 EXP 070 MOR 089 SUP 000 RAL 079 INF 056 ART 050 ARM 074 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 71,  42)
+    L J0  : Zugfuehrer       (2Lt Briel           ) Zugfuehrer       RID 00031 UTG 006 EXP 079 MOR 095 SUP 000 RAL 078 INF 088 ART 057 ARM 053 KILL 002 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 99,  34)
+ #  L J1  : Schuetzengruppe  (Sgt Falkenberg      ) Schuetzengruppe  RID 00032 UTG 007 EXP 088 MOR 097 SUP 000 RAL 074 INF 080 ART 058 ARM 055 KILL 012 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 94,  35)
+    L J2  : Schuetzengruppe  (Sgt Schneider       ) Schuetzengruppe  RID 00033 UTG 008 EXP 089 MOR 098 SUP 000 RAL 080 INF 086 ART 054 ARM 058 KILL 012 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 96,  39)
+    L J3  : Schuetzengruppe  (Sgt Brandt          ) Schuetzengruppe  RID 00034 UTG 008 EXP 083 MOR 099 SUP 000 RAL 074 INF 082 ART 052 ARM 055 KILL 004 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 96,  40)
+    L J4  : Schuetzengruppe  (Sgt Kuhns           ) Schuetzengruppe  RID 00035 UTG 008 EXP 084 MOR 098 SUP 000 RAL 080 INF 086 ART 061 ARM 059 KILL 006 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 97,  37)
+      J5  : Opel Kommand     (Sgt Schurz          ) Opel Kommand     RID 00036 UTG 012 EXP 064 MOR 082 SUP 000 RAL 083 INF 063 ART 056 ARM 090 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 99,  34)
+ #    J6  : Opel Blitz       (Sgt Rittenhaus      ) Opel Blitz       RID 00037 UTG 011 EXP 067 MOR 085 SUP 000 RAL 084 INF 062 ART 057 ARM 086 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 94,  35)
+      J7  : Opel Blitz       (Sgt Hoffman         ) Opel Blitz       RID 00038 UTG 011 EXP 073 MOR 091 SUP 000 RAL 078 INF 059 ART 060 ARM 082 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 96,  39)
+      J8  : Opel Blitz       (Sgt Eberhart        ) Opel Blitz       RID 00039 UTG 011 EXP 065 MOR 085 SUP 000 RAL 082 INF 046 ART 039 ARM 076 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 96,  40)
+      J9  : Opel Blitz       (Sgt Brors           ) Opel Blitz       RID 00040 UTG 011 EXP 069 MOR 087 SUP 000 RAL 074 INF 051 ART 049 ARM 087 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 97,  37)
+      K0  : Zugfuehrer       (2Lt Naumann         ) Zugfuehrer       RID 00041 UTG 006 EXP 070 MOR 088 SUP 010 RAL 083 INF 077 ART 054 ARM 056 KILL 001 LOSS 000 MEN 006 KIA 000 DMG 000 RDY  62.05 POS ( 50,  43)
+ #-   K1  : LMG Gruppe       (Sgt Kleemann        ) LMG Gruppe       RID 00042 UTG 013 EXP 082 MOR 097 SUP 002 RAL 076 INF 076 ART 046 ARM 046 KILL 000 LOSS 000 MEN 003 KIA 001 DMG 001 RDY  65.29 POS ( 51,  44)
+ #    K2  : LMG Gruppe       (Sgt Eberhart        ) LMG Gruppe       RID 00043 UTG 013 EXP 087 MOR 097 SUP 000 RAL 085 INF 093 ART 053 ARM 053 KILL 011 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 51,  43)
+ #    K3  : Lt Moerser Trp   (Sgt Musser          ) Lt Moerser Trp   RID 00044 UTG 014 EXP 072 MOR 089 SUP 006 RAL 077 INF 053 ART 079 ARM 049 KILL 001 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  93.26 POS ( 51,  41)
+ #-   K4  : Lt Moerser Trp   (Sgt Reichmann       ) Lt Moerser Trp   RID 00045 UTG 014 EXP 073 MOR 093 SUP 000 RAL 071 INF 060 ART 078 ARM 050 KILL 000 LOSS 000 MEN 002 KIA 001 DMG 001 RDY  50.00 POS ( 50,  43)
++ -   K5  : Lt Moerser Trp   (KIA Muller          ) Lt Moerser Trp   RID 00046 UTG 014 EXP 078 MOR 095 SUP 015 RAL 080 INF 053 ART 086 ARM 053 KILL 003 LOSS 001 MEN 002 KIA 002 DMG 017 RDY   0.00 POS (  none  )
+      K8  : SPW 251/1 HT     (Sgt Kaptain         ) SPW 251/1 HT     RID 00049 UTG 004 EXP 064 MOR 062 SUP 000 RAL 076 INF 040 ART 045 ARM 080 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 48,  41)
+ #    K9  : SPW 251/1 HT     (Sgt Remer           ) SPW 251/1 HT     RID 00050 UTG 004 EXP 065 MOR 083 SUP 000 RAL 084 INF 052 ART 048 ARM 089 KILL 001 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  40)
+      L0  : Zugfuehrer       (2Lt Eberbach        ) Zugfuehrer       RID 00051 UTG 006 EXP 070 MOR 090 SUP 000 RAL 076 INF 085 ART 057 ARM 060 KILL 002 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 62,  36)
+      L1  : Panzerpionieres  (Sgt Steiner         ) Panzerpionieres  RID 00052 UTG 016 EXP 097 MOR 095 SUP 000 RAL 087 INF 090 ART 063 ARM 056 KILL 025 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 61,  37)
+ #    L2  : Panzerpionieres  (Sgt Conkling        ) Panzerpionieres  RID 00053 UTG 016 EXP 093 MOR 094 SUP 000 RAL 080 INF 078 ART 047 ARM 055 KILL 008 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 63,  38)
+      L3  : Panzerpionieres  (Sgt Metzger         ) Panzerpionieres  RID 00054 UTG 016 EXP 083 MOR 099 SUP 003 RAL 073 INF 090 ART 048 ARM 050 KILL 005 LOSS 000 MEN 010 KIA 000 DMG 000 RDY  96.97 POS ( 62,  38)
+ #    L4  : LMG Gruppe       (Sgt Bruck           ) LMG Gruppe       RID 00055 UTG 013 EXP 080 MOR 095 SUP 000 RAL 079 INF 075 ART 048 ARM 050 KILL 001 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 62,  37)
+ #    L5  : SPW 251/1 HT     (Sgt Funck           ) SPW 251/1 HT     RID 00056 UTG 004 EXP 077 MOR 098 SUP 000 RAL 080 INF 053 ART 060 ARM 080 KILL 004 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 61,  35)
+      L6  : SPW 251/1 HT     (Sgt Kessler         ) SPW 251/1 HT     RID 00057 UTG 004 EXP 082 MOR 095 SUP 000 RAL 076 INF 063 ART 051 ARM 086 KILL 003 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 62,  33)
+      L7  : SPW 251/1 HT     (Sgt Krause          ) SPW 251/1 HT     RID 00058 UTG 004 EXP 072 MOR 087 SUP 001 RAL 080 INF 049 ART 042 ARM 084 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY  98.85 POS ( 63,  33)
+      L8  : SPW 251/1 HT     (Sgt Stumpf          ) SPW 251/1 HT     RID 00059 UTG 004 EXP 078 MOR 090 SUP 000 RAL 082 INF 042 ART 044 ARM 076 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 64,  32)
+ #    M0  : Spaehgruppe      (2Lt Wirth           ) Spaehgruppe      RID 00060 UTG 017 EXP 066 MOR 085 SUP 000 RAL 079 INF 083 ART 057 ARM 058 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 64,  38)
+    L M1  : Spaehgruppe      (Sgt Wagner          ) Spaehgruppe      RID 00061 UTG 017 EXP 063 MOR 081 SUP 000 RAL 073 INF 076 ART 041 ARM 041 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 41,  46)
+ #  L M2  : Spaehgruppe      (Sgt Spengler        ) Spaehgruppe      RID 00062 UTG 017 EXP 078 MOR 099 SUP 000 RAL 069 INF 074 ART 036 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 43,  50)
+ #  L N0  : Spaehgruppe      (2Lt Stumpf          ) Spaehgruppe      RID 00063 UTG 017 EXP 069 MOR 089 SUP 000 RAL 082 INF 084 ART 051 ARM 048 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 70,  41)
+ #  L N1  : Spaehgruppe      (Sgt Brors           ) Spaehgruppe      RID 00064 UTG 017 EXP 064 MOR 083 SUP 000 RAL 067 INF 077 ART 051 ARM 048 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 89,  50)
+    L N2  : Spaehgruppe      (Sgt Eberhart        ) Spaehgruppe      RID 00065 UTG 017 EXP 067 MOR 091 SUP 000 RAL 078 INF 086 ART 053 ARM 048 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 94,  41)
+ #    O0  : PzKpfw II C      (2Lt Kortenhaus      ) PzKpfw II C      RID 00066 UTG 018 EXP 093 MOR 094 SUP 000 RAL 078 INF 056 ART 056 ARM 084 KILL 021 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 74,  40)
+ #    O1  : PzKpfw II C      (Sgt Rauch           ) PzKpfw II C      RID 00067 UTG 018 EXP 100 MOR 098 SUP 000 RAL 080 INF 051 ART 040 ARM 087 KILL 011 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 72,  46)
+ #    O2  : PzKpfw II C      (Sgt Kramer          ) PzKpfw II C      RID 00068 UTG 018 EXP 099 MOR 094 SUP 000 RAL 078 INF 057 ART 057 ARM 088 KILL 032 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 69,  40)
+ #    O3  : PzKpfw III E     (Sgt Junger          ) PzKpfw III E     RID 00069 UTG 019 EXP 090 MOR 081 SUP 000 RAL 072 INF 039 ART 046 ARM 078 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 72,  46)
+ #    O4  : PzKpfw III E     (Sgt Vosse           ) PzKpfw III E     RID 00070 UTG 019 EXP 093 MOR 099 SUP 000 RAL 072 INF 044 ART 046 ARM 077 KILL 004 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 70,  41)
+ #    P0  : PzKpfw II C      (1Lt Harmel          ) PzKpfw II C      RID 00071 UTG 018 EXP 098 MOR 098 SUP 000 RAL 080 INF 049 ART 061 ARM 085 KILL 027 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 91,  46)
+      P1  : PzKpfw II C      (Sgt Weber           ) PzKpfw II C      RID 00072 UTG 018 EXP 103 MOR 097 SUP 000 RAL 086 INF 049 ART 053 ARM 085 KILL 030 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 91,  48)
+ #    P2  : PzKpfw II C      (Sgt Tychsen         ) PzKpfw II C      RID 00073 UTG 018 EXP 098 MOR 087 SUP 000 RAL 075 INF 043 ART 039 ARM 083 KILL 004 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 88,  49)
+ #    P3  : PzKpfw III E     (Sgt Porsch          ) PzKpfw III E     RID 00074 UTG 019 EXP 092 MOR 081 SUP 000 RAL 074 INF 048 ART 053 ARM 082 KILL 011 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 89,  50)
+ #    P4  : PzKpfw III E     (Sgt Langkeit        ) PzKpfw III E     RID 00075 UTG 019 EXP 091 MOR 089 SUP 000 RAL 066 INF 037 ART 044 ARM 083 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 90,  50)
+ #    Q0  : PzKpfw III E     (2Lt Schwendt        ) PzKpfw III E     RID 00076 UTG 019 EXP 094 MOR 095 SUP 000 RAL 076 INF 048 ART 049 ARM 073 KILL 012 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 49,  39)
+ #    Q1  : PzKpfw IV D      (Sgt Oertzen         ) PzKpfw IV D      RID 00077 UTG 020 EXP 091 MOR 096 SUP 000 RAL 073 INF 052 ART 052 ARM 082 KILL 019 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 43,  50)
+      Q2  : PzKpfw III E     (Sgt Hudel           ) PzKpfw III E     RID 00078 UTG 019 EXP 094 MOR 094 SUP 000 RAL 076 INF 056 ART 059 ARM 078 KILL 021 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 64,  36)
+      Q3  : PzKpfw IV D      (Sgt Falkenberg      ) PzKpfw IV D      RID 00079 UTG 020 EXP 087 MOR 065 SUP 001 RAL 074 INF 043 ART 038 ARM 071 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.46 POS ( 62,  39)
+      Q4  : PzKpfw III E     (Sgt Telner          ) PzKpfw III E     RID 00080 UTG 019 EXP 095 MOR 099 SUP 000 RAL 081 INF 058 ART 060 ARM 086 KILL 027 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 41,  46)
+ #    R0  : PzKpfw IV C      (1Lt Bauer           ) PzKpfw IV C      RID 00081 UTG 021 EXP 091 MOR 095 SUP 000 RAL 075 INF 062 ART 051 ARM 091 KILL 025 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 69,  39)
+      R1  : PzKpfw IV C      (Sgt Klein           ) PzKpfw IV C      RID 00082 UTG 021 EXP 090 MOR 099 SUP 000 RAL 089 INF 061 ART 054 ARM 090 KILL 027 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 94,  41)
+ #  L S0  : Grenadiergruppe  (Sgt Bauman          ) Grenadiergruppe  RID 00083 UTG 015 EXP 076 MOR 098 SUP 000 RAL 067 INF 080 ART 033 ARM 039 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 50,  56)
+ #  L S1  : Grenadiergruppe  (2Lt Zimmerman       ) Grenadiergruppe  RID 00047 UTG 015 EXP 091 MOR 094 SUP 000 RAL 081 INF 084 ART 054 ARM 059 KILL 011 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 49,  56)
+ #  L S2  : Grenadiergruppe  (Sgt Schweitzer      ) Grenadiergruppe  RID 00048 UTG 015 EXP 091 MOR 096 SUP 000 RAL 071 INF 075 ART 060 ARM 054 KILL 018 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 46,  56)
+ #    T0  : Motorrad Grp     (2Lt Schwartz        ) Motorrad Grp     RID 00084 UTG 022 EXP 055 MOR 077 SUP 000 RAL 072 INF 078 ART 045 ARM 036 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 87,  55)
+ #-   T1  : Motorrad Grp     (Sgt Conkling        ) Motorrad Grp     RID 00085 UTG 022 EXP 070 MOR 085 SUP 002 RAL 074 INF 083 ART 046 ARM 045 KILL 000 LOSS 000 MEN 008 KIA 001 DMG 001 RDY  85.44 POS ( 86,  57)
+ #    T2  : Motorrad Grp     (Sgt Krause          ) Motorrad Grp     RID 00086 UTG 022 EXP 073 MOR 089 SUP 007 RAL 080 INF 082 ART 042 ARM 046 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY  92.13 POS ( 83,  56)
+ #-   U0  : Motorrad Grp     (2Lt Kroll           ) Motorrad Grp     RID 00087 UTG 022 EXP 065 MOR 081 SUP 005 RAL 072 INF 074 ART 036 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  75.06 POS ( 55,  38)
+ #    U1  : Motorrad Grp     (Sgt Eberhart        ) Motorrad Grp     RID 00088 UTG 022 EXP 071 MOR 086 SUP 000 RAL 067 INF 079 ART 040 ARM 047 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 50,  55)
+      U2  : Motorrad Grp     (Sgt Rauch           ) Motorrad Grp     RID 00089 UTG 022 EXP 072 MOR 081 SUP 042 RAL 078 INF 077 ART 043 ARM 039 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY   9.63 POS ( 63,  40)
+ #    V0  : Motorrad Grp     (2Lt Oertzen         ) Motorrad Grp     RID 00090 UTG 022 EXP 073 MOR 074 SUP 000 RAL 071 INF 083 ART 045 ARM 039 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 69,  41)
+ #-   V1  : Motorrad Grp     (Sgt Stiegel         ) Motorrad Grp     RID 00091 UTG 022 EXP 057 MOR 090 SUP 000 RAL 073 INF 078 ART 040 ARM 035 KILL 001 LOSS 000 MEN 009 KIA 007 DMG 007 RDY  22.22 POS ( 73,  42)
+      V2  : Motorrad Grp     (Sgt Hartueb         ) Motorrad Grp     RID 00092 UTG 022 EXP 067 MOR 071 SUP 000 RAL 073 INF 070 ART 041 ARM 046 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 68,  40)
+ #    W0  : SPW 251/1 HT     (1Lt NotAToy         ) SPW 251/1 HT     RID 00093 UTG 004 EXP 064 MOR 075 SUP 000 RAL 077 INF 047 ART 032 ARM 075 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 46,  26)
+ #    W1  : SPW 251/1 HT     (Sgt Hoffman         ) SPW 251/1 HT     RID 00094 UTG 004 EXP 064 MOR 068 SUP 000 RAL 070 INF 037 ART 045 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 50,  56)
+ #    W2  : SPW 251/1 HT     (Sgt Albrecht        ) SPW 251/1 HT     RID 00095 UTG 004 EXP 067 MOR 073 SUP 000 RAL 071 INF 046 ART 049 ARM 080 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  56)
+ #    W3  : SPW 251/1 HT     (Sgt Remer           ) SPW 251/1 HT     RID 00096 UTG 004 EXP 076 MOR 075 SUP 000 RAL 072 INF 041 ART 044 ARM 081 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 46,  56)
+ #    X0  : PzJg I B         (1Lt Krafft          ) PzJg I B         RID 00097 UTG 023 EXP 062 MOR 083 SUP 000 RAL 068 INF 041 ART 041 ARM 082 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 75,  37)
+ #    X1  : PzJg I B         (Sgt Bachman         ) PzJg I B         RID 00098 UTG 023 EXP 061 MOR 076 SUP 000 RAL 081 INF 040 ART 040 ARM 079 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 70,  40)
+ #    Y0  : Horch Kfz 70     (1Lt Strauch         ) Horch Kfz 70     RID 00099 UTG 009 EXP 065 MOR 086 SUP 000 RAL 076 INF 032 ART 042 ARM 078 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 46,  23)
+ #    Z0  : HQ III/IR1       (Col Porsch          ) GE Kommandeur    RID 00100 UTG 000 EXP 082 MOR 088 SUP 000 RAL 078 INF 087 ART 046 ARM 043 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 29,  93)
+ #    AA0 : HQ 10/III/IR1    (Cpt Weber           ) Kompanie HQ      RID 00101 UTG 005 EXP 063 MOR 074 SUP 000 RAL 073 INF 079 ART 040 ARM 046 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 36,  91)
+ #    AB0 : Zugfuehrer       (2Lt Becker          ) Zugfuehrer       RID 00102 UTG 006 EXP 068 MOR 081 SUP 000 RAL 075 INF 082 ART 039 ARM 036 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 39,  86)
+ #    AB1 : Schuetzengruppe  (Sgt Ostendorff      ) Schuetzengruppe  RID 00103 UTG 024 EXP 079 MOR 076 SUP 000 RAL 075 INF 078 ART 041 ARM 041 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 40,  85)
+ #    AB2 : Schuetzengruppe  (Sgt Eberhart        ) Schuetzengruppe  RID 00104 UTG 024 EXP 082 MOR 082 SUP 000 RAL 071 INF 080 ART 040 ARM 043 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 41,  85)
+ #    AB3 : Schuetzengruppe  (Sgt Schurz          ) Schuetzengruppe  RID 00105 UTG 024 EXP 077 MOR 078 SUP 000 RAL 077 INF 073 ART 036 ARM 042 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 41,  87)
+ #    AB4 : Schuetzengruppe  (Sgt Meyer           ) Schuetzengruppe  RID 00106 UTG 024 EXP 066 MOR 076 SUP 000 RAL 079 INF 080 ART 039 ARM 037 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 39,  85)
+ #    AC0 : Zugfuehrer       (2Lt Kaptain         ) Zugfuehrer       RID 00107 UTG 006 EXP 077 MOR 072 SUP 000 RAL 071 INF 072 ART 036 ARM 034 KILL 000 LOSS 000 MEN 006 KIA 001 DMG 000 RDY  83.33 POS ( 40,  90)
+ #    AC1 : Schuetzengruppe  (Sgt Kleemann        ) Schuetzengruppe  RID 00108 UTG 024 EXP 072 MOR 072 SUP 000 RAL 076 INF 075 ART 045 ARM 046 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 40,  88)
+ #    AC2 : Schuetzengruppe  (Sgt Gebhart         ) Schuetzengruppe  RID 00109 UTG 024 EXP 066 MOR 064 SUP 000 RAL 066 INF 080 ART 038 ARM 042 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 41,  89)
+ #    AC3 : Schuetzengruppe  (Sgt Riedmuller      ) Schuetzengruppe  RID 00110 UTG 024 EXP 070 MOR 070 SUP 000 RAL 067 INF 087 ART 037 ARM 042 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 41,  90)
+ #    AC4 : Schuetzengruppe  (Sgt Wiedemann       ) Schuetzengruppe  RID 00111 UTG 024 EXP 080 MOR 081 SUP 000 RAL 080 INF 085 ART 037 ARM 047 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 39,  89)
+ #    AD0 : Zugfuehrer       (2Lt Weiss           ) Zugfuehrer       RID 00112 UTG 006 EXP 067 MOR 073 SUP 000 RAL 076 INF 077 ART 038 ARM 042 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 37,  94)
+ #    AD1 : Schuetzengruppe  (Sgt Wagner          ) Schuetzengruppe  RID 00113 UTG 024 EXP 065 MOR 073 SUP 000 RAL 072 INF 081 ART 037 ARM 042 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 38,  94)
+ #    AD2 : Schuetzengruppe  (Sgt Kauffman        ) Schuetzengruppe  RID 00114 UTG 024 EXP 071 MOR 072 SUP 000 RAL 070 INF 079 ART 040 ARM 041 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 40,  94)
+ #    AD3 : Schuetzengruppe  (Sgt Telner          ) Schuetzengruppe  RID 00115 UTG 024 EXP 066 MOR 065 SUP 000 RAL 077 INF 079 ART 040 ARM 039 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 39,  95)
+ #    AD4 : Schuetzengruppe  (Sgt Schmidt         ) Schuetzengruppe  RID 00116 UTG 024 EXP 067 MOR 073 SUP 000 RAL 079 INF 075 ART 033 ARM 038 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 40,  95)
+ #    AE0 : MG Lafette Trp   (2Lt Langkeit        ) MG Lafette Trp   RID 00117 UTG 025 EXP 071 MOR 076 SUP 000 RAL 078 INF 071 ART 035 ARM 047 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 39,  91)
+ #    AF0 : MG Lafette Trp   (2Lt Schirmer        ) MG Lafette Trp   RID 00118 UTG 025 EXP 070 MOR 072 SUP 000 RAL 081 INF 082 ART 040 ARM 040 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 38,  85)
+ #    AG0 : 50mm Moerser     (Sgt Musser          ) Lt Moerser Trp   RID 00119 UTG 014 EXP 081 MOR 080 SUP 000 RAL 076 INF 044 ART 080 ARM 043 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 38,  90)
+ #    AG1 : 50mm Moerser     (Sgt Schumacher      ) Lt Moerser Trp   RID 00120 UTG 014 EXP 080 MOR 078 SUP 000 RAL 081 INF 047 ART 076 ARM 043 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 38,  92)
+ #    AG2 : 50mm Moerser     (Sgt Hartueb         ) Lt Moerser Trp   RID 00121 UTG 014 EXP 079 MOR 073 SUP 000 RAL 070 INF 040 ART 084 ARM 040 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 37,  90)
+ #    AH0 : HQ 11/III/IR1    (Cpt von  Preussen   ) Kompanie HQ      RID 00122 UTG 005 EXP 071 MOR 078 SUP 000 RAL 079 INF 076 ART 039 ARM 037 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 70, 113)
+ #    AI0 : Zugfuehrer       (2Lt Stiegel         ) Zugfuehrer       RID 00123 UTG 006 EXP 076 MOR 075 SUP 000 RAL 072 INF 071 ART 039 ARM 050 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 83, 107)
+ #    AI1 : Schuetzengruppe  (Sgt Stumpf          ) Schuetzengruppe  RID 00124 UTG 024 EXP 073 MOR 063 SUP 000 RAL 070 INF 075 ART 041 ARM 042 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 82, 107)
+ #    AI2 : Schuetzengruppe  (Sgt Kronz           ) Schuetzengruppe  RID 00125 UTG 024 EXP 081 MOR 072 SUP 000 RAL 068 INF 078 ART 043 ARM 037 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 84, 105)
+ #    AI3 : Schuetzengruppe  (Sgt Seibert         ) Schuetzengruppe  RID 00126 UTG 024 EXP 079 MOR 062 SUP 000 RAL 071 INF 074 ART 042 ARM 046 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 84, 104)
+ #    AI4 : Schuetzengruppe  (Sgt Wittman         ) Schuetzengruppe  RID 00127 UTG 024 EXP 065 MOR 083 SUP 000 RAL 075 INF 081 ART 042 ARM 043 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 81, 106)
+ #    AJ0 : Zugfuehrer       (2Lt Heidrich        ) Zugfuehrer       RID 00128 UTG 006 EXP 071 MOR 083 SUP 000 RAL 071 INF 072 ART 043 ARM 042 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 67, 104)
+ #    AJ1 : Schuetzengruppe  (Sgt Eberbach        ) Schuetzengruppe  RID 00129 UTG 024 EXP 077 MOR 066 SUP 000 RAL 081 INF 080 ART 042 ARM 042 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 66, 102)
+ #    AJ2 : Schuetzengruppe  (Sgt Ziegler         ) Schuetzengruppe  RID 00130 UTG 024 EXP 070 MOR 071 SUP 000 RAL 067 INF 076 ART 046 ARM 045 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 66, 103)
+ #    AJ3 : Schuetzengruppe  (Sgt Naumann         ) Schuetzengruppe  RID 00131 UTG 024 EXP 080 MOR 069 SUP 000 RAL 069 INF 083 ART 039 ARM 039 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 68, 104)
+ #    AJ4 : Schuetzengruppe  (Sgt Schoen          ) Schuetzengruppe  RID 00132 UTG 024 EXP 084 MOR 076 SUP 000 RAL 069 INF 079 ART 048 ARM 041 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 68, 105)
+ #    AK0 : Zugfuehrer       (2Lt Weisbach        ) Zugfuehrer       RID 00133 UTG 006 EXP 071 MOR 070 SUP 000 RAL 075 INF 078 ART 043 ARM 043 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 52, 111)
+ #    AK1 : Schuetzengruppe  (Sgt Schwartz        ) Schuetzengruppe  RID 00134 UTG 024 EXP 056 MOR 079 SUP 000 RAL 077 INF 077 ART 039 ARM 039 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 50, 110)
+ #    AK2 : Schuetzengruppe  (Sgt Kroll           ) Schuetzengruppe  RID 00135 UTG 024 EXP 077 MOR 075 SUP 000 RAL 075 INF 081 ART 041 ARM 038 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 51, 110)
+ #    AK3 : Schuetzengruppe  (Sgt Remer           ) Schuetzengruppe  RID 00136 UTG 024 EXP 074 MOR 064 SUP 000 RAL 067 INF 083 ART 039 ARM 038 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 51, 109)
+ #    AK4 : Schuetzengruppe  (Sgt Spengler        ) Schuetzengruppe  RID 00137 UTG 024 EXP 069 MOR 079 SUP 000 RAL 071 INF 084 ART 039 ARM 048 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 52, 107)
+ #    AL0 : MG Lafette Trp   (Cpl Hoernlein       ) MG Lafette Trp   RID 00138 UTG 025 EXP 067 MOR 078 SUP 000 RAL 080 INF 079 ART 041 ARM 038 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 85, 104)
+ #    AM0 : MG Lafette Trp   (2Lt Metzger         ) MG Lafette Trp   RID 00139 UTG 025 EXP 078 MOR 075 SUP 000 RAL 072 INF 077 ART 041 ARM 041 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 50, 111)
+ #    AN0 : 50mm Moerser     (Sgt Bauman          ) Lt Moerser Trp   RID 00140 UTG 014 EXP 074 MOR 073 SUP 000 RAL 075 INF 043 ART 084 ARM 038 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 71, 111)
+ #    AN1 : 50mm Moerser     (Sgt Steiner         ) Lt Moerser Trp   RID 00141 UTG 014 EXP 071 MOR 071 SUP 000 RAL 071 INF 044 ART 074 ARM 040 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 71, 112)
+ #    AN2 : 50mm Moerser     (Sgt Scherer         ) Lt Moerser Trp   RID 00142 UTG 014 EXP 079 MOR 070 SUP 000 RAL 071 INF 042 ART 079 ARM 043 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 71, 113)
+ #    AO0 : 81mm Moerser     (2Lt Stolz           ) Moerser Grp      RID 00143 UTG 002 EXP 068 MOR 070 SUP 000 RAL 071 INF 041 ART 077 ARM 032 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 24,  93)
+ #    AO1 : 81mm Moerser     (Sgt Abt             ) Moerser Grp      RID 00144 UTG 002 EXP 069 MOR 072 SUP 000 RAL 072 INF 037 ART 074 ARM 037 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 23,  94)
+ #    AP0 : 81mm Moerser     (2Lt Tost            ) Moerser Grp      RID 00145 UTG 002 EXP 070 MOR 070 SUP 000 RAL 080 INF 038 ART 076 ARM 046 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 24,  94)
+ #    AP1 : 81mm Moerser     (Sgt Boettcher       ) Moerser Grp      RID 00146 UTG 002 EXP 076 MOR 072 SUP 000 RAL 074 INF 038 ART 077 ARM 041 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 22,  94)
+ #    AQ0 : Zugfuehrer       (2Lt Kessler         ) Zugfuehrer       RID 00147 UTG 006 EXP 070 MOR 072 SUP 000 RAL 072 INF 073 ART 046 ARM 038 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 45,  95)
+ #    AQ1 : 150mm sIG33      (Sgt Brandt          ) 150mm Inf Gun    RID 00148 UTG 026 EXP 082 MOR 071 SUP 000 RAL 072 INF 050 ART 080 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 45,  95)
+ #    AQ2 : 150mm sIG33      (Sgt Albrecht        ) 150mm Inf Gun    RID 00149 UTG 026 EXP 082 MOR 067 SUP 000 RAL 074 INF 047 ART 074 ARM 040 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 46,  95)
+ #    AQ3 : LMG Gruppe       (Sgt Briel           ) LMG Gruppe       RID 00150 UTG 013 EXP 067 MOR 067 SUP 000 RAL 076 INF 082 ART 040 ARM 038 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 46,  95)
+ #    AR0 : Gespann          (1Lt Bauer           ) Gun Team         RID 00151 UTG 027 EXP 075 MOR 069 SUP 000 RAL 073 INF 039 ART 043 ARM 073 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 45,  95)
+ #    AR1 : Gespann          (Sgt Tychsen         ) Gun Team         RID 00152 UTG 027 EXP 073 MOR 073 SUP 000 RAL 078 INF 036 ART 039 ARM 076 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 46,  95)
+ #    AS0 : Vorg Beobachter  (2Lt Letzelder       ) Obs Team         RID 00153 UTG 001 EXP 081 MOR 093 SUP 000 RAL 074 INF 040 ART 073 ARM 036 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 38,  93)
+ #    AT0 : Spaehtruppe      (2Lt Harmel          ) Spaehtruppe      RID 00154 UTG 028 EXP 065 MOR 069 SUP 000 RAL 073 INF 082 ART 043 ARM 044 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 50,  87)
+ #    AT1 : Spaehtruppe      (Sgt Hummel          ) Spaehtruppe      RID 00155 UTG 028 EXP 077 MOR 082 SUP 000 RAL 068 INF 085 ART 044 ARM 044 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  78)
+ #    AT2 : Spaehtruppe      (Sgt Vogel           ) Spaehtruppe      RID 00156 UTG 028 EXP 069 MOR 073 SUP 000 RAL 070 INF 078 ART 040 ARM 050 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 49,  95)
 
 
 
@@ -854,38 +854,38 @@ Crews     : 0
 Total kills        : 1
 Total losses       : 3
 Total readiness    :  86.78 %
-Unit experience    : max:  78 (000: A0: FR HQ (Col Dumas))
-Unit experience    : min:  51 (022: I1: FR Rifle Squad (Sgt Mouton))
+Unit experience    : max:  78 ([  0] A0: FR HQ (Col Dumas))
+Unit experience    : min:  51 ([ 22] I1: FR Rifle Squad (Sgt Mouton))
 Unit experience    : avg:  63.26
 Unit experience    : spr: 27
 Unit experience    : tot: 4555
 Unit experience    : cnt: 72
-Unit readiness     : max: 100.00 (000: A0: FR HQ (Col Dumas))
-Unit readiness     : min:   0.00 (006: D0: Platoon HQ (KIA Corbin))
+Unit readiness     : max: 100.00 ([  0] A0: FR HQ (Col Dumas))
+Unit readiness     : min:   0.00 ([  6] D0: Platoon HQ (KIA Corbin))
 Unit readiness     : avg:  86.78
 Unit readiness     : spr: 100.00
 Unit readiness     : tot: 6247.81
 Unit readiness     : cnt: 72
-Unit kills         : max:   1 (004: C2: FR Rifle Squad (Sgt De Virien))
-Unit kills         : min:   0 (000: A0: FR HQ (Col Dumas))
+Unit kills         : max:   1 ([  4] C2: FR Rifle Squad (Sgt De Virien))
+Unit kills         : min:   0 ([  0] A0: FR HQ (Col Dumas))
 Unit kills         : avg:   0.01
 Unit kills         : spr: 1
 Unit kills         : tot: 1
 Unit kills         : cnt: 72
-Formation readiness: max: 100.00 (000: A: elite recon force HQ)
-Formation readiness: min:   8.68 (003: D: average platoon)
+Formation readiness: max: 100.00 ([  0] A: elite recon force HQ)
+Formation readiness: min:   8.68 ([  3] D: average platoon)
 Formation readiness: avg:  87.54
 Formation readiness: spr:  91.32
 Formation readiness: tot: 2100.94
 Formation readiness: cnt: 24
-Formation kills    : max:   1 (002: C: average platoon)
-Formation kills    : min:   0 (000: A: elite recon force HQ)
+Formation kills    : max:   1 ([  2] C: average platoon)
+Formation kills    : min:   0 ([  0] A: elite recon force HQ)
 Formation kills    : avg:   0.04
 Formation kills    : spr: 1
 Formation kills    : tot: 1
 Formation kills    : cnt: 24
-Formation losses   : max:   3 (003: D: average platoon)
-Formation losses   : min:   0 (000: A: elite recon force HQ)
+Formation losses   : max:   3 ([  3] D: average platoon)
+Formation losses   : min:   0 ([  0] A: elite recon force HQ)
 Formation losses   : avg:   0.13
 Formation losses   : spr: 3
 Formation losses   : tot: 3
@@ -894,7 +894,7 @@ Formation losses   : cnt: 24
 Short formations report:
 ------------------------
 
-A : regular elite recon force HQ
+A : regular elite recon force HQ (French HQ)
 	leader    : A0 FR HQ (Col Dumas)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -904,7 +904,7 @@ A : regular elite recon force HQ
 	unit list :
 		A0 FR HQ
 
-B : regular average platoon
+B : regular average platoon (Voltigeurs Co)
 	leader    : B0 Compagnie HQ (Cpt Marceau)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -914,7 +914,7 @@ B : regular average platoon
 	unit list :
 		B0 Compagnie HQ
 
-C : regular average platoon
+C : regular average platoon (Voltigeurs Plt)
 	leader    : C0 Platoon HQ (2Lt De Pellepoix)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 1
@@ -927,7 +927,7 @@ C : regular average platoon
 		C2 FR Rifle Squad
 		C3 FR Rifle Squad
 
-D : regular average platoon
+D : regular average platoon (Voltigeurs Plt)
 	leader    : D2 FR Rifle Squad (Sgt Boussaquet)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -940,7 +940,7 @@ D : regular average platoon
 		D2 FR Rifle Squad
 		D3 FR Rifle Squad
 
-E : regular average platoon
+E : regular average platoon (Voltigeurs Plt)
 	leader    : E0 Platoon HQ (2Lt Joliet)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -953,7 +953,7 @@ E : regular average platoon
 		E2 FR Rifle Squad
 		E3 FR Rifle Squad
 
-F : regular average platoon
+F : regular average platoon (Voltigeurs Plt)
 	leader    : F0 Platoon HQ (2Lt Denain)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -966,7 +966,7 @@ F : regular average platoon
 		F2 FR Rifle Squad
 		F3 FR Rifle Squad
 
-G : regular average platoon
+G : regular average platoon (Lt Mortar Sec)
 	leader    : G0 60mm Mtr Sqd (2Lt Langlade)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -977,7 +977,7 @@ G : regular average platoon
 		G0 60mm Mtr Sqd
 		G1 60mm Mtr Sqd
 
-H : regular average platoon
+H : regular average platoon (Voltigeurs Co)
 	leader    : H0 Compagnie HQ (Cpt Dejardins)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -987,7 +987,7 @@ H : regular average platoon
 	unit list :
 		H0 Compagnie HQ
 
-I : regular average platoon
+I : regular average platoon (Voltigeurs Plt)
 	leader    : I0 Platoon HQ (2Lt Boudinot)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1000,7 +1000,7 @@ I : regular average platoon
 		I2 FR Rifle Squad
 		I3 FR Rifle Squad
 
-J : regular average platoon
+J : regular average platoon (Voltigeurs Plt)
 	leader    : J0 Platoon HQ (2Lt Beaufre)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1013,7 +1013,7 @@ J : regular average platoon
 		J2 FR Rifle Squad
 		J3 FR Rifle Squad
 
-K : regular average platoon
+K : regular average platoon (Voltigeurs Plt)
 	leader    : K0 Platoon HQ (2Lt Broussard)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1026,7 +1026,7 @@ K : regular average platoon
 		K2 FR Rifle Squad
 		K3 FR Rifle Squad
 
-L : regular average platoon
+L : regular average platoon (Voltigeurs Plt)
 	leader    : L0 Platoon HQ (2Lt Donati)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1039,7 +1039,7 @@ L : regular average platoon
 		L2 FR Rifle Squad
 		L3 FR Rifle Squad
 
-M : regular average platoon
+M : regular average platoon (Lt Mortar Sec)
 	leader    : M0 60mm Mtr Sqd (2Lt Abrial)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1050,7 +1050,7 @@ M : regular average platoon
 		M0 60mm Mtr Sqd
 		M1 60mm Mtr Sqd
 
-N : regular average platoon
+N : regular average platoon (HMG Section)
 	leader    : N0 Hotchkiss HMG (2Lt Lorusso)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1061,7 +1061,7 @@ N : regular average platoon
 		N0 Hotchkiss HMG
 		N1 Hotchkiss HMG
 
-O : regular average platoon
+O : regular average platoon (HMG Section)
 	leader    : O0 Hotchkiss HMG (2Lt Gouraud)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1072,7 +1072,7 @@ O : regular average platoon
 		O0 Hotchkiss HMG
 		O1 Hotchkiss HMG
 
-P : regular average platoon
+P : regular average platoon (HMG Section)
 	leader    : P0 Hotchkiss HMG (2Lt Catroux)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1083,7 +1083,7 @@ P : regular average platoon
 		P0 Hotchkiss HMG
 		P1 Hotchkiss HMG
 
-Q : regular average company
+Q : regular average company (Voltigeurs Plt)
 	leader    : Q0 Platoon HQ (2Lt De Ville)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1096,7 +1096,7 @@ Q : regular average company
 		Q2 Voltigeurs Sqd
 		Q3 Voltigeurs Sqd
 
-R : regular average company
+R : regular average company (Voltigeurs Plt)
 	leader    : R0 Platoon HQ (2Lt Delacroix)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1109,7 +1109,7 @@ R : regular average company
 		R2 Voltigeurs Sqd
 		R3 Voltigeurs Sqd
 
-S : regular average company
+S : regular average company (Voltigeurs Plt)
 	leader    : S0 Platoon HQ (2Lt Lavoie)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1122,7 +1122,7 @@ S : regular average company
 		S2 Voltigeurs Sqd
 		S3 Voltigeurs Sqd
 
-T : regular elite company
+T : regular elite company (AA-Gun Sec)
 	leader    : T0 25mm DCA mle39 (2Lt Requa)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1133,7 +1133,7 @@ T : regular elite company
 		T0 25mm DCA mle39
 		T1 25mm DCA mle39
 
-U : regular dedicated artillery platoon
+U : regular dedicated artillery platoon (Inf Gun Section)
 	leader    : U0 37mm mle 16 TR (2Lt Tessier)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1144,7 +1144,7 @@ U : regular dedicated artillery platoon
 		U0 37mm mle 16 TR
 		U1 37mm mle 16 TR
 
-V : regular elite dedicated artillery platoon
+V : regular elite dedicated artillery platoon (AT-Gun Sec)
 	leader    : V0 25mm mle 34 ATG (2Lt Descartes)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1155,7 +1155,7 @@ V : regular elite dedicated artillery platoon
 		V0 25mm mle 34 ATG
 		V1 25mm mle 34 ATG
 
-Y : regular average platoon
+Y : regular average platoon (DCA Ammo Cars)
 	leader    : Y0 Ammo Boxes (1Lt De Nemours)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1168,7 +1168,7 @@ Y : regular average platoon
 		Y2 Ammo Boxes
 		Y3 Ammo Boxes
 
-AC: regular average platoon
+AC: regular average platoon (Light Tank Trp)
 	leader    : AC0 H-39 (1Lt Fauvelle)
 	higher cmd: A0 FR HQ (Col Dumas)
 	kills     : 0
@@ -1186,78 +1186,78 @@ AC: regular average platoon
 Short units report:
 -------------------
 
- #    A0  : FR HQ            (Col Dumas           ) RID 00157 UTG 029 EXP 078 MOR 076 SUP 000 RAL 043 INF 050 ART 031 ARM 022 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 79,  70)
- #    B0  : Compagnie HQ     (Cpt Marceau         ) RID 00158 UTG 030 EXP 066 MOR 054 SUP 000 RAL 043 INF 045 ART 028 ARM 026 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 61,  51)
- #    C0  : Platoon HQ       (2Lt De Pellepoix    ) RID 00159 UTG 031 EXP 067 MOR 053 SUP 000 RAL 046 INF 053 ART 022 ARM 032 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 56,  46)
- #    C1  : FR Rifle Squad   (Sgt Nicollet        ) RID 00160 UTG 032 EXP 060 MOR 071 SUP 003 RAL 043 INF 055 ART 029 ARM 031 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  95.77 POS ( 57,  45)
- #-   C2  : FR Rifle Squad   (Sgt De Virien       ) RID 00161 UTG 032 EXP 063 MOR 062 SUP 016 RAL 044 INF 053 ART 029 ARM 031 KILL 001 LOSS 000 MEN 010 KIA 006 DMG 006 RDY  14.84 POS ( 55,  47)
- #-   C3  : FR Rifle Squad   (Sgt Comeaux         ) RID 00162 UTG 032 EXP 063 MOR 062 SUP 009 RAL 048 INF 057 ART 020 ARM 023 KILL 000 LOSS 000 MEN 011 KIA 002 DMG 002 RDY  48.96 POS ( 57,  42)
-+ -   D0  : Platoon HQ       (KIA Corbin          ) RID 00163 UTG 031 EXP 062 MOR 063 SUP 024 RAL 042 INF 049 ART 029 ARM 035 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 012 RDY   0.00 POS (  none  )
-+ -   D1  : FR Rifle Squad   (KIA Laurens         ) RID 00164 UTG 032 EXP 065 MOR 075 SUP 082 RAL 040 INF 047 ART 030 ARM 030 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
- #-   D2  : FR Rifle Squad   (Sgt Boussaquet      ) RID 00165 UTG 032 EXP 062 MOR 060 SUP 009 RAL 053 INF 047 ART 026 ARM 033 KILL 000 LOSS 000 MEN 012 KIA 005 DMG 005 RDY  34.71 POS ( 77,  47)
-+ -   D3  : FR Rifle Squad   (KIA Durand          ) RID 00166 UTG 032 EXP 069 MOR 066 SUP 056 RAL 039 INF 052 ART 031 ARM 031 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
- #    E0  : Platoon HQ       (2Lt Joliet          ) RID 00167 UTG 031 EXP 054 MOR 069 SUP 000 RAL 042 INF 055 ART 027 ARM 026 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 60,  49)
- #    E1  : FR Rifle Squad   (Sgt Montagu         ) RID 00168 UTG 032 EXP 062 MOR 065 SUP 000 RAL 043 INF 053 ART 023 ARM 022 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 59,  49)
- #    E2  : FR Rifle Squad   (Sgt Gaston          ) RID 00169 UTG 032 EXP 068 MOR 062 SUP 000 RAL 052 INF 052 ART 026 ARM 024 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 61,  45)
- #    E3  : FR Rifle Squad   (Sgt Dubreuil        ) RID 00170 UTG 032 EXP 071 MOR 064 SUP 000 RAL 044 INF 050 ART 033 ARM 018 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 63,  48)
- #-   F0  : Platoon HQ       (2Lt Denain          ) RID 00171 UTG 031 EXP 064 MOR 063 SUP 008 RAL 053 INF 050 ART 029 ARM 019 KILL 000 LOSS 000 MEN 007 KIA 001 DMG 001 RDY  52.38 POS ( 74,  52)
- #-   F1  : FR Rifle Squad   (Sgt Marquette       ) RID 00172 UTG 032 EXP 064 MOR 077 SUP 015 RAL 051 INF 042 ART 021 ARM 027 KILL 000 LOSS 000 MEN 010 KIA 003 DMG 003 RDY  39.45 POS ( 71,  50)
- #    F2  : FR Rifle Squad   (Sgt Freneau         ) RID 00173 UTG 032 EXP 060 MOR 068 SUP 000 RAL 040 INF 044 ART 026 ARM 028 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 71,  51)
- #    F3  : FR Rifle Squad   (Sgt Dupre           ) RID 00174 UTG 032 EXP 057 MOR 064 SUP 000 RAL 041 INF 052 ART 023 ARM 021 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 76,  49)
- #    G0  : 60mm Mtr Sqd     (2Lt Langlade        ) RID 00175 UTG 033 EXP 065 MOR 055 SUP 000 RAL 046 INF 032 ART 046 ARM 017 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 67,  49)
- #    G1  : 60mm Mtr Sqd     (Sgt Boighut         ) RID 00176 UTG 033 EXP 055 MOR 053 SUP 000 RAL 053 INF 029 ART 053 ARM 023 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 68,  50)
- #    H0  : Compagnie HQ     (Cpt Dejardins       ) RID 00177 UTG 030 EXP 057 MOR 071 SUP 000 RAL 039 INF 053 ART 022 ARM 025 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 72,  66)
- #    I0  : Platoon HQ       (2Lt Boudinot        ) RID 00178 UTG 031 EXP 066 MOR 068 SUP 000 RAL 045 INF 055 ART 031 ARM 025 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 70,  65)
- #    I1  : FR Rifle Squad   (Sgt Mouton          ) RID 00179 UTG 032 EXP 051 MOR 059 SUP 000 RAL 050 INF 053 ART 026 ARM 019 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 70,  64)
- #    I2  : FR Rifle Squad   (Sgt Molines         ) RID 00180 UTG 032 EXP 065 MOR 071 SUP 000 RAL 049 INF 049 ART 026 ARM 030 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 67,  63)
- #    I3  : FR Rifle Squad   (Sgt Besson          ) RID 00181 UTG 032 EXP 069 MOR 065 SUP 000 RAL 045 INF 046 ART 031 ARM 029 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 68,  61)
- #    J0  : Platoon HQ       (2Lt Beaufre         ) RID 00182 UTG 031 EXP 069 MOR 054 SUP 000 RAL 049 INF 053 ART 024 ARM 024 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 84,  64)
- #    J1  : FR Rifle Squad   (Sgt Barthou         ) RID 00183 UTG 032 EXP 069 MOR 079 SUP 000 RAL 046 INF 046 ART 026 ARM 025 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 81,  63)
- #    J2  : FR Rifle Squad   (Sgt Lantaigne       ) RID 00184 UTG 032 EXP 066 MOR 064 SUP 000 RAL 045 INF 042 ART 020 ARM 025 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 85,  62)
- #-   J3  : FR Rifle Squad   (Sgt Boudreau        ) RID 00185 UTG 032 EXP 055 MOR 064 SUP 035 RAL 038 INF 046 ART 025 ARM 028 KILL 000 LOSS 000 MEN 011 KIA 004 DMG 004 RDY   5.77 POS ( 83,  60)
- #    K0  : Platoon HQ       (2Lt Broussard       ) RID 00186 UTG 031 EXP 063 MOR 066 SUP 000 RAL 046 INF 050 ART 024 ARM 023 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 77,  69)
- #    K1  : FR Rifle Squad   (Sgt Beaurain        ) RID 00187 UTG 032 EXP 063 MOR 064 SUP 000 RAL 039 INF 053 ART 027 ARM 020 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 75,  69)
- #    K2  : FR Rifle Squad   (Sgt Faneuil         ) RID 00188 UTG 032 EXP 068 MOR 062 SUP 000 RAL 042 INF 056 ART 027 ARM 027 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 76,  67)
- #    K3  : FR Rifle Squad   (Sgt Baudouin        ) RID 00189 UTG 032 EXP 067 MOR 063 SUP 000 RAL 048 INF 051 ART 024 ARM 022 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 80,  68)
- #    L0  : Platoon HQ       (2Lt Donati          ) RID 00190 UTG 031 EXP 058 MOR 063 SUP 000 RAL 039 INF 046 ART 018 ARM 028 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 70,  71)
- #    L1  : FR Rifle Squad   (Sgt Deveaux         ) RID 00191 UTG 032 EXP 052 MOR 068 SUP 000 RAL 038 INF 045 ART 025 ARM 028 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 69,  73)
- #    L2  : FR Rifle Squad   (Sgt La Roche        ) RID 00192 UTG 032 EXP 069 MOR 057 SUP 000 RAL 042 INF 046 ART 031 ARM 035 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 69,  69)
- #    L3  : FR Rifle Squad   (Sgt Aubriot         ) RID 00193 UTG 032 EXP 072 MOR 059 SUP 000 RAL 038 INF 049 ART 030 ARM 024 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 71,  69)
- #    M0  : 60mm Mtr Sqd     (2Lt Abrial          ) RID 00194 UTG 033 EXP 059 MOR 056 SUP 000 RAL 041 INF 026 ART 044 ARM 032 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 73,  69)
- #    M1  : 60mm Mtr Sqd     (Sgt Massu           ) RID 00195 UTG 033 EXP 056 MOR 071 SUP 000 RAL 047 INF 034 ART 046 ARM 024 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 74,  70)
- #    N0  : Hotchkiss HMG    (2Lt Lorusso         ) RID 00196 UTG 034 EXP 067 MOR 063 SUP 000 RAL 046 INF 047 ART 024 ARM 022 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 75,  91)
- #    N1  : Hotchkiss HMG    (Sgt Boileau         ) RID 00197 UTG 034 EXP 055 MOR 061 SUP 000 RAL 038 INF 045 ART 026 ARM 021 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 84,  90)
- #-   O0  : Hotchkiss HMG    (2Lt Gouraud         ) RID 00198 UTG 034 EXP 058 MOR 058 SUP 014 RAL 044 INF 052 ART 029 ARM 026 KILL 000 LOSS 000 MEN 005 KIA 002 DMG 002 RDY  22.76 POS ( 59,  41)
- #    O1  : Hotchkiss HMG    (Sgt Deveraux        ) RID 00199 UTG 034 EXP 054 MOR 068 SUP 000 RAL 038 INF 058 ART 020 ARM 022 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 57,  47)
- #    P0  : Hotchkiss HMG    (2Lt Catroux         ) RID 00200 UTG 034 EXP 067 MOR 062 SUP 000 RAL 043 INF 042 ART 027 ARM 030 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 77,  71)
- #    P1  : Hotchkiss HMG    (Sgt Dampierre       ) RID 00201 UTG 034 EXP 062 MOR 058 SUP 000 RAL 042 INF 041 ART 026 ARM 027 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 63,  63)
- #    Q0  : Platoon HQ       (2Lt De Ville        ) RID 00202 UTG 031 EXP 057 MOR 064 SUP 000 RAL 039 INF 051 ART 027 ARM 029 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 78,  88)
- #    Q1  : Voltigeurs Sqd   (Sgt Le Moyne        ) RID 00203 UTG 035 EXP 071 MOR 067 SUP 000 RAL 044 INF 054 ART 033 ARM 029 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 82,  90)
- #    Q2  : Voltigeurs Sqd   (Sgt Toussaint       ) RID 00204 UTG 035 EXP 069 MOR 066 SUP 000 RAL 042 INF 053 ART 033 ARM 026 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 74,  85)
- #    Q3  : Voltigeurs Sqd   (Sgt Dubois          ) RID 00205 UTG 035 EXP 067 MOR 062 SUP 000 RAL 050 INF 045 ART 020 ARM 021 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 76,  88)
- #    R0  : Platoon HQ       (2Lt Delacroix       ) RID 00206 UTG 031 EXP 066 MOR 054 SUP 000 RAL 042 INF 046 ART 021 ARM 026 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 57,  67)
- #    R1  : Voltigeurs Sqd   (Sgt Babeaux         ) RID 00207 UTG 035 EXP 069 MOR 066 SUP 000 RAL 041 INF 046 ART 026 ARM 023 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 54,  69)
- #    R2  : Voltigeurs Sqd   (Sgt Moreau          ) RID 00208 UTG 035 EXP 068 MOR 070 SUP 000 RAL 051 INF 053 ART 034 ARM 021 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 58,  63)
- #    R3  : Voltigeurs Sqd   (Sgt Bernhardt       ) RID 00209 UTG 035 EXP 063 MOR 066 SUP 000 RAL 044 INF 047 ART 022 ARM 029 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 58,  59)
- #    S0  : Platoon HQ       (2Lt Lavoie          ) RID 00210 UTG 031 EXP 058 MOR 059 SUP 000 RAL 047 INF 053 ART 023 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 60,  83)
- #    S1  : Voltigeurs Sqd   (Sgt Archambault     ) RID 00211 UTG 035 EXP 062 MOR 067 SUP 000 RAL 047 INF 056 ART 031 ARM 032 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 59,  85)
- #    S2  : Voltigeurs Sqd   (Sgt Guillot         ) RID 00212 UTG 035 EXP 070 MOR 067 SUP 000 RAL 042 INF 048 ART 030 ARM 025 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 59,  87)
- #    S3  : Voltigeurs Sqd   (Sgt Bugeaud         ) RID 00213 UTG 035 EXP 065 MOR 057 SUP 000 RAL 041 INF 053 ART 030 ARM 026 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 55,  85)
- #    T0  : 25mm DCA mle39   (2Lt Requa           ) RID 00214 UTG 036 EXP 068 MOR 061 SUP 000 RAL 041 INF 028 ART 048 ARM 021 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 64,  78)
- #    T1  : 25mm DCA mle39   (Sgt Berhelot        ) RID 00215 UTG 036 EXP 066 MOR 065 SUP 002 RAL 045 INF 022 ART 050 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  96.92 POS ( 79,  64)
- #    U0  : 37mm mle 16 TR   (2Lt Tessier         ) RID 00216 UTG 037 EXP 055 MOR 064 SUP 024 RAL 053 INF 034 ART 047 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  31.25 POS ( 66,  46)
- #    U1  : 37mm mle 16 TR   (Sgt Girard          ) RID 00217 UTG 037 EXP 074 MOR 052 SUP 039 RAL 044 INF 026 ART 053 ARM 029 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY   5.00 POS ( 58,  43)
- #    V0  : 25mm mle 34 ATG  (2Lt Descartes       ) RID 00218 UTG 038 EXP 057 MOR 064 SUP 000 RAL 043 INF 023 ART 050 ARM 027 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 77,  64)
- #    V1  : 25mm mle 34 ATG  (Sgt Argeneau        ) RID 00219 UTG 038 EXP 063 MOR 059 SUP 000 RAL 039 INF 030 ART 047 ARM 029 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 72,  74)
- #    Y0  : Ammo Boxes       (1Lt De Nemours      ) RID 00220 UTG 039 EXP 070 MOR 058 SUP 000 RAL 045 INF 023 ART 028 ARM 041 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 74,  69)
- #    Y1  : Ammo Boxes       (Sgt Bonnet          ) RID 00221 UTG 039 EXP 063 MOR 064 SUP 000 RAL 040 INF 021 ART 029 ARM 049 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 67,  50)
- #    Y2  : Ammo Boxes       (Sgt Meunier         ) RID 00222 UTG 039 EXP 055 MOR 064 SUP 000 RAL 038 INF 026 ART 025 ARM 041 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 72,  68)
- #    Y3  : Ammo Boxes       (Sgt Doumerque       ) RID 00223 UTG 039 EXP 054 MOR 072 SUP 000 RAL 049 INF 027 ART 027 ARM 049 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 77,  66)
- #    AC0 : H-39             (1Lt Fauvelle        ) RID 00224 UTG 040 EXP 056 MOR 058 SUP 000 RAL 041 INF 030 ART 024 ARM 052 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 81,  68)
- #    AC1 : H-39             (Sgt Bellefontaine   ) RID 00225 UTG 040 EXP 062 MOR 062 SUP 000 RAL 040 INF 031 ART 026 ARM 051 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 68,  55)
- #    AC2 : H-39             (Sgt De Clouet       ) RID 00226 UTG 040 EXP 057 MOR 062 SUP 000 RAL 043 INF 028 ART 031 ARM 045 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 64,  74)
- #    AC3 : H-39             (Sgt De Leusse       ) RID 00227 UTG 040 EXP 069 MOR 065 SUP 000 RAL 041 INF 035 ART 034 ARM 051 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 68,  70)
- #    AC4 : H-39             (Sgt Benoit          ) RID 00228 UTG 040 EXP 069 MOR 067 SUP 000 RAL 047 INF 022 ART 026 ARM 049 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 76,  91)
+ #    A0  : FR HQ            (Col Dumas           ) FR Commandant    RID 00157 UTG 029 EXP 078 MOR 076 SUP 000 RAL 043 INF 050 ART 031 ARM 022 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 79,  70)
+ #    B0  : Compagnie HQ     (Cpt Marceau         ) Compagnie HQ     RID 00158 UTG 030 EXP 066 MOR 054 SUP 000 RAL 043 INF 045 ART 028 ARM 026 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 61,  51)
+ #    C0  : Platoon HQ       (2Lt De Pellepoix    ) Platoon HQ       RID 00159 UTG 031 EXP 067 MOR 053 SUP 000 RAL 046 INF 053 ART 022 ARM 032 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 56,  46)
+ #    C1  : FR Rifle Squad   (Sgt Nicollet        ) Fusil Section    RID 00160 UTG 032 EXP 060 MOR 071 SUP 003 RAL 043 INF 055 ART 029 ARM 031 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY  95.77 POS ( 57,  45)
+ #-   C2  : FR Rifle Squad   (Sgt De Virien       ) Fusil Section    RID 00161 UTG 032 EXP 063 MOR 062 SUP 016 RAL 044 INF 053 ART 029 ARM 031 KILL 001 LOSS 000 MEN 010 KIA 006 DMG 006 RDY  14.84 POS ( 55,  47)
+ #-   C3  : FR Rifle Squad   (Sgt Comeaux         ) Fusil Section    RID 00162 UTG 032 EXP 063 MOR 062 SUP 009 RAL 048 INF 057 ART 020 ARM 023 KILL 000 LOSS 000 MEN 011 KIA 002 DMG 002 RDY  48.96 POS ( 57,  42)
++ -   D0  : Platoon HQ       (KIA Corbin          ) Platoon HQ       RID 00163 UTG 031 EXP 062 MOR 063 SUP 024 RAL 042 INF 049 ART 029 ARM 035 KILL 000 LOSS 001 MEN 007 KIA 007 DMG 012 RDY   0.00 POS (  none  )
++ -   D1  : FR Rifle Squad   (KIA Laurens         ) Fusil Section    RID 00164 UTG 032 EXP 065 MOR 075 SUP 082 RAL 040 INF 047 ART 030 ARM 030 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
+ #-   D2  : FR Rifle Squad   (Sgt Boussaquet      ) Fusil Section    RID 00165 UTG 032 EXP 062 MOR 060 SUP 009 RAL 053 INF 047 ART 026 ARM 033 KILL 000 LOSS 000 MEN 012 KIA 005 DMG 005 RDY  34.71 POS ( 77,  47)
++ -   D3  : FR Rifle Squad   (KIA Durand          ) Fusil Section    RID 00166 UTG 032 EXP 069 MOR 066 SUP 056 RAL 039 INF 052 ART 031 ARM 031 KILL 000 LOSS 001 MEN 012 KIA 012 DMG 021 RDY   0.00 POS (  none  )
+ #    E0  : Platoon HQ       (2Lt Joliet          ) Platoon HQ       RID 00167 UTG 031 EXP 054 MOR 069 SUP 000 RAL 042 INF 055 ART 027 ARM 026 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 60,  49)
+ #    E1  : FR Rifle Squad   (Sgt Montagu         ) Fusil Section    RID 00168 UTG 032 EXP 062 MOR 065 SUP 000 RAL 043 INF 053 ART 023 ARM 022 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 59,  49)
+ #    E2  : FR Rifle Squad   (Sgt Gaston          ) Fusil Section    RID 00169 UTG 032 EXP 068 MOR 062 SUP 000 RAL 052 INF 052 ART 026 ARM 024 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 61,  45)
+ #    E3  : FR Rifle Squad   (Sgt Dubreuil        ) Fusil Section    RID 00170 UTG 032 EXP 071 MOR 064 SUP 000 RAL 044 INF 050 ART 033 ARM 018 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 63,  48)
+ #-   F0  : Platoon HQ       (2Lt Denain          ) Platoon HQ       RID 00171 UTG 031 EXP 064 MOR 063 SUP 008 RAL 053 INF 050 ART 029 ARM 019 KILL 000 LOSS 000 MEN 007 KIA 001 DMG 001 RDY  52.38 POS ( 74,  52)
+ #-   F1  : FR Rifle Squad   (Sgt Marquette       ) Fusil Section    RID 00172 UTG 032 EXP 064 MOR 077 SUP 015 RAL 051 INF 042 ART 021 ARM 027 KILL 000 LOSS 000 MEN 010 KIA 003 DMG 003 RDY  39.45 POS ( 71,  50)
+ #    F2  : FR Rifle Squad   (Sgt Freneau         ) Fusil Section    RID 00173 UTG 032 EXP 060 MOR 068 SUP 000 RAL 040 INF 044 ART 026 ARM 028 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 71,  51)
+ #    F3  : FR Rifle Squad   (Sgt Dupre           ) Fusil Section    RID 00174 UTG 032 EXP 057 MOR 064 SUP 000 RAL 041 INF 052 ART 023 ARM 021 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 76,  49)
+ #    G0  : 60mm Mtr Sqd     (2Lt Langlade        ) Mortier Section  RID 00175 UTG 033 EXP 065 MOR 055 SUP 000 RAL 046 INF 032 ART 046 ARM 017 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 67,  49)
+ #    G1  : 60mm Mtr Sqd     (Sgt Boighut         ) Mortier Section  RID 00176 UTG 033 EXP 055 MOR 053 SUP 000 RAL 053 INF 029 ART 053 ARM 023 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 68,  50)
+ #    H0  : Compagnie HQ     (Cpt Dejardins       ) Compagnie HQ     RID 00177 UTG 030 EXP 057 MOR 071 SUP 000 RAL 039 INF 053 ART 022 ARM 025 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS ( 72,  66)
+ #    I0  : Platoon HQ       (2Lt Boudinot        ) Platoon HQ       RID 00178 UTG 031 EXP 066 MOR 068 SUP 000 RAL 045 INF 055 ART 031 ARM 025 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 70,  65)
+ #    I1  : FR Rifle Squad   (Sgt Mouton          ) Fusil Section    RID 00179 UTG 032 EXP 051 MOR 059 SUP 000 RAL 050 INF 053 ART 026 ARM 019 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 70,  64)
+ #    I2  : FR Rifle Squad   (Sgt Molines         ) Fusil Section    RID 00180 UTG 032 EXP 065 MOR 071 SUP 000 RAL 049 INF 049 ART 026 ARM 030 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 67,  63)
+ #    I3  : FR Rifle Squad   (Sgt Besson          ) Fusil Section    RID 00181 UTG 032 EXP 069 MOR 065 SUP 000 RAL 045 INF 046 ART 031 ARM 029 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 68,  61)
+ #    J0  : Platoon HQ       (2Lt Beaufre         ) Platoon HQ       RID 00182 UTG 031 EXP 069 MOR 054 SUP 000 RAL 049 INF 053 ART 024 ARM 024 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 84,  64)
+ #    J1  : FR Rifle Squad   (Sgt Barthou         ) Fusil Section    RID 00183 UTG 032 EXP 069 MOR 079 SUP 000 RAL 046 INF 046 ART 026 ARM 025 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 81,  63)
+ #    J2  : FR Rifle Squad   (Sgt Lantaigne       ) Fusil Section    RID 00184 UTG 032 EXP 066 MOR 064 SUP 000 RAL 045 INF 042 ART 020 ARM 025 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 85,  62)
+ #-   J3  : FR Rifle Squad   (Sgt Boudreau        ) Fusil Section    RID 00185 UTG 032 EXP 055 MOR 064 SUP 035 RAL 038 INF 046 ART 025 ARM 028 KILL 000 LOSS 000 MEN 011 KIA 004 DMG 004 RDY   5.77 POS ( 83,  60)
+ #    K0  : Platoon HQ       (2Lt Broussard       ) Platoon HQ       RID 00186 UTG 031 EXP 063 MOR 066 SUP 000 RAL 046 INF 050 ART 024 ARM 023 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 77,  69)
+ #    K1  : FR Rifle Squad   (Sgt Beaurain        ) Fusil Section    RID 00187 UTG 032 EXP 063 MOR 064 SUP 000 RAL 039 INF 053 ART 027 ARM 020 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 75,  69)
+ #    K2  : FR Rifle Squad   (Sgt Faneuil         ) Fusil Section    RID 00188 UTG 032 EXP 068 MOR 062 SUP 000 RAL 042 INF 056 ART 027 ARM 027 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 76,  67)
+ #    K3  : FR Rifle Squad   (Sgt Baudouin        ) Fusil Section    RID 00189 UTG 032 EXP 067 MOR 063 SUP 000 RAL 048 INF 051 ART 024 ARM 022 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 80,  68)
+ #    L0  : Platoon HQ       (2Lt Donati          ) Platoon HQ       RID 00190 UTG 031 EXP 058 MOR 063 SUP 000 RAL 039 INF 046 ART 018 ARM 028 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 70,  71)
+ #    L1  : FR Rifle Squad   (Sgt Deveaux         ) Fusil Section    RID 00191 UTG 032 EXP 052 MOR 068 SUP 000 RAL 038 INF 045 ART 025 ARM 028 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 69,  73)
+ #    L2  : FR Rifle Squad   (Sgt La Roche        ) Fusil Section    RID 00192 UTG 032 EXP 069 MOR 057 SUP 000 RAL 042 INF 046 ART 031 ARM 035 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 69,  69)
+ #    L3  : FR Rifle Squad   (Sgt Aubriot         ) Fusil Section    RID 00193 UTG 032 EXP 072 MOR 059 SUP 000 RAL 038 INF 049 ART 030 ARM 024 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 71,  69)
+ #    M0  : 60mm Mtr Sqd     (2Lt Abrial          ) Mortier Section  RID 00194 UTG 033 EXP 059 MOR 056 SUP 000 RAL 041 INF 026 ART 044 ARM 032 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 73,  69)
+ #    M1  : 60mm Mtr Sqd     (Sgt Massu           ) Mortier Section  RID 00195 UTG 033 EXP 056 MOR 071 SUP 000 RAL 047 INF 034 ART 046 ARM 024 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 74,  70)
+ #    N0  : Hotchkiss HMG    (2Lt Lorusso         ) HMG Section      RID 00196 UTG 034 EXP 067 MOR 063 SUP 000 RAL 046 INF 047 ART 024 ARM 022 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 75,  91)
+ #    N1  : Hotchkiss HMG    (Sgt Boileau         ) HMG Section      RID 00197 UTG 034 EXP 055 MOR 061 SUP 000 RAL 038 INF 045 ART 026 ARM 021 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 84,  90)
+ #-   O0  : Hotchkiss HMG    (2Lt Gouraud         ) HMG Section      RID 00198 UTG 034 EXP 058 MOR 058 SUP 014 RAL 044 INF 052 ART 029 ARM 026 KILL 000 LOSS 000 MEN 005 KIA 002 DMG 002 RDY  22.76 POS ( 59,  41)
+ #    O1  : Hotchkiss HMG    (Sgt Deveraux        ) HMG Section      RID 00199 UTG 034 EXP 054 MOR 068 SUP 000 RAL 038 INF 058 ART 020 ARM 022 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 57,  47)
+ #    P0  : Hotchkiss HMG    (2Lt Catroux         ) HMG Section      RID 00200 UTG 034 EXP 067 MOR 062 SUP 000 RAL 043 INF 042 ART 027 ARM 030 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 77,  71)
+ #    P1  : Hotchkiss HMG    (Sgt Dampierre       ) HMG Section      RID 00201 UTG 034 EXP 062 MOR 058 SUP 000 RAL 042 INF 041 ART 026 ARM 027 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS ( 63,  63)
+ #    Q0  : Platoon HQ       (2Lt De Ville        ) Platoon HQ       RID 00202 UTG 031 EXP 057 MOR 064 SUP 000 RAL 039 INF 051 ART 027 ARM 029 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 78,  88)
+ #    Q1  : Voltigeurs Sqd   (Sgt Le Moyne        ) Regional Inf     RID 00203 UTG 035 EXP 071 MOR 067 SUP 000 RAL 044 INF 054 ART 033 ARM 029 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 82,  90)
+ #    Q2  : Voltigeurs Sqd   (Sgt Toussaint       ) Regional Inf     RID 00204 UTG 035 EXP 069 MOR 066 SUP 000 RAL 042 INF 053 ART 033 ARM 026 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 74,  85)
+ #    Q3  : Voltigeurs Sqd   (Sgt Dubois          ) Regional Inf     RID 00205 UTG 035 EXP 067 MOR 062 SUP 000 RAL 050 INF 045 ART 020 ARM 021 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 76,  88)
+ #    R0  : Platoon HQ       (2Lt Delacroix       ) Platoon HQ       RID 00206 UTG 031 EXP 066 MOR 054 SUP 000 RAL 042 INF 046 ART 021 ARM 026 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 57,  67)
+ #    R1  : Voltigeurs Sqd   (Sgt Babeaux         ) Regional Inf     RID 00207 UTG 035 EXP 069 MOR 066 SUP 000 RAL 041 INF 046 ART 026 ARM 023 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 54,  69)
+ #    R2  : Voltigeurs Sqd   (Sgt Moreau          ) Regional Inf     RID 00208 UTG 035 EXP 068 MOR 070 SUP 000 RAL 051 INF 053 ART 034 ARM 021 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 58,  63)
+ #    R3  : Voltigeurs Sqd   (Sgt Bernhardt       ) Regional Inf     RID 00209 UTG 035 EXP 063 MOR 066 SUP 000 RAL 044 INF 047 ART 022 ARM 029 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 58,  59)
+ #    S0  : Platoon HQ       (2Lt Lavoie          ) Platoon HQ       RID 00210 UTG 031 EXP 058 MOR 059 SUP 000 RAL 047 INF 053 ART 023 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 60,  83)
+ #    S1  : Voltigeurs Sqd   (Sgt Archambault     ) Regional Inf     RID 00211 UTG 035 EXP 062 MOR 067 SUP 000 RAL 047 INF 056 ART 031 ARM 032 KILL 000 LOSS 000 MEN 011 KIA 000 DMG 000 RDY 100.00 POS ( 59,  85)
+ #    S2  : Voltigeurs Sqd   (Sgt Guillot         ) Regional Inf     RID 00212 UTG 035 EXP 070 MOR 067 SUP 000 RAL 042 INF 048 ART 030 ARM 025 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 59,  87)
+ #    S3  : Voltigeurs Sqd   (Sgt Bugeaud         ) Regional Inf     RID 00213 UTG 035 EXP 065 MOR 057 SUP 000 RAL 041 INF 053 ART 030 ARM 026 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 55,  85)
+ #    T0  : 25mm DCA mle39   (2Lt Requa           ) Canon 25mm CA    RID 00214 UTG 036 EXP 068 MOR 061 SUP 000 RAL 041 INF 028 ART 048 ARM 021 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 64,  78)
+ #    T1  : 25mm DCA mle39   (Sgt Berhelot        ) Canon 25mm CA    RID 00215 UTG 036 EXP 066 MOR 065 SUP 002 RAL 045 INF 022 ART 050 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  96.92 POS ( 79,  64)
+ #    U0  : 37mm mle 16 TR   (2Lt Tessier         ) Canon 37mm Inf   RID 00216 UTG 037 EXP 055 MOR 064 SUP 024 RAL 053 INF 034 ART 047 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  31.25 POS ( 66,  46)
+ #    U1  : 37mm mle 16 TR   (Sgt Girard          ) Canon 37mm Inf   RID 00217 UTG 037 EXP 074 MOR 052 SUP 039 RAL 044 INF 026 ART 053 ARM 029 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY   5.00 POS ( 58,  43)
+ #    V0  : 25mm mle 34 ATG  (2Lt Descartes       ) Canon 25mm AC    RID 00218 UTG 038 EXP 057 MOR 064 SUP 000 RAL 043 INF 023 ART 050 ARM 027 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 77,  64)
+ #    V1  : 25mm mle 34 ATG  (Sgt Argeneau        ) Canon 25mm AC    RID 00219 UTG 038 EXP 063 MOR 059 SUP 000 RAL 039 INF 030 ART 047 ARM 029 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 72,  74)
+ #    Y0  : Ammo Boxes       (1Lt De Nemours      ) Ammo Crates      RID 00220 UTG 039 EXP 070 MOR 058 SUP 000 RAL 045 INF 023 ART 028 ARM 041 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 74,  69)
+ #    Y1  : Ammo Boxes       (Sgt Bonnet          ) Ammo Crates      RID 00221 UTG 039 EXP 063 MOR 064 SUP 000 RAL 040 INF 021 ART 029 ARM 049 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 67,  50)
+ #    Y2  : Ammo Boxes       (Sgt Meunier         ) Ammo Crates      RID 00222 UTG 039 EXP 055 MOR 064 SUP 000 RAL 038 INF 026 ART 025 ARM 041 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 72,  68)
+ #    Y3  : Ammo Boxes       (Sgt Doumerque       ) Ammo Crates      RID 00223 UTG 039 EXP 054 MOR 072 SUP 000 RAL 049 INF 027 ART 027 ARM 049 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 77,  66)
+ #    AC0 : H-39             (1Lt Fauvelle        ) Hotchkiss H39    RID 00224 UTG 040 EXP 056 MOR 058 SUP 000 RAL 041 INF 030 ART 024 ARM 052 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 81,  68)
+ #    AC1 : H-39             (Sgt Bellefontaine   ) Hotchkiss H39    RID 00225 UTG 040 EXP 062 MOR 062 SUP 000 RAL 040 INF 031 ART 026 ARM 051 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 68,  55)
+ #    AC2 : H-39             (Sgt De Clouet       ) Hotchkiss H39    RID 00226 UTG 040 EXP 057 MOR 062 SUP 000 RAL 043 INF 028 ART 031 ARM 045 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 64,  74)
+ #    AC3 : H-39             (Sgt De Leusse       ) Hotchkiss H39    RID 00227 UTG 040 EXP 069 MOR 065 SUP 000 RAL 041 INF 035 ART 034 ARM 051 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 68,  70)
+ #    AC4 : H-39             (Sgt Benoit          ) Hotchkiss H39    RID 00228 UTG 040 EXP 069 MOR 067 SUP 000 RAL 047 INF 022 ART 026 ARM 049 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 76,  91)
 
 
 

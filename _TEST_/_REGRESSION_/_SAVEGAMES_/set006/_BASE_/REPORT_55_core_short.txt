@@ -67,38 +67,38 @@ Crews     : 0
 Total kills        : 7
 Total losses       : 0
 Total readiness    :  83.56 %
-Unit experience    : max:  70 (028: K2: USMC Eng Sec FT (Sgt Udell))
-Unit experience    : min:  43 (014: F0: .30 Cal MMG (2Lt Isaac))
+Unit experience    : max:  70 ([ 28] K2: USMC Eng Sec FT (Sgt Udell))
+Unit experience    : min:  43 ([ 14] F0: .30 Cal MMG (2Lt Isaac))
 Unit experience    : avg:  55.63
 Unit experience    : spr: 27
 Unit experience    : tot: 1780
 Unit experience    : cnt: 32
-Unit readiness     : max: 100.00 (000: A0: USMC HQ (Col Diaz))
-Unit readiness     : min:  23.82 (009: D3: USMC Inf Sqd  (Sgt Palmer))
+Unit readiness     : max: 100.00 ([  0] A0: USMC HQ (Col Diaz))
+Unit readiness     : min:  23.82 ([  9] D3: USMC Inf Sqd  (Sgt Palmer))
 Unit readiness     : avg:  83.56
 Unit readiness     : spr:  76.18
 Unit readiness     : tot: 2673.96
 Unit readiness     : cnt: 32
-Unit kills         : max:   1 (004: C2: USMC Inf Sqd  (Sgt Patton))
-Unit kills         : min:   0 (000: A0: USMC HQ (Col Diaz))
+Unit kills         : max:   1 ([  4] C2: USMC Inf Sqd  (Sgt Patton))
+Unit kills         : min:   0 ([  0] A0: USMC HQ (Col Diaz))
 Unit kills         : avg:   0.22
 Unit kills         : spr: 1
 Unit kills         : tot: 7
 Unit kills         : cnt: 32
-Formation readiness: max: 100.00 (000: A: elite force HQ)
-Formation readiness: min:  59.22 (004: E: average platoon)
+Formation readiness: max: 100.00 ([  0] A: elite force HQ)
+Formation readiness: min:  59.22 ([  4] E: average platoon)
 Formation readiness: avg:  87.87
 Formation readiness: spr:  40.78
 Formation readiness: tot: 1054.49
 Formation readiness: cnt: 12
-Formation kills    : max:   2 (011: L: average platoon)
-Formation kills    : min:   0 (000: A: elite force HQ)
+Formation kills    : max:   2 ([ 11] L: average platoon)
+Formation kills    : min:   0 ([  0] A: elite force HQ)
 Formation kills    : avg:   0.58
 Formation kills    : spr: 2
 Formation kills    : tot: 7
 Formation kills    : cnt: 12
-Formation losses   : max:   0 (000: A: elite force HQ)
-Formation losses   : min:   0 (000: A: elite force HQ)
+Formation losses   : max:   0 ([  0] A: elite force HQ)
+Formation losses   : min:   0 ([  0] A: elite force HQ)
 Formation losses   : avg:   0.00
 Formation losses   : spr: 0
 Formation losses   : tot: 0
@@ -107,7 +107,7 @@ Formation losses   : cnt: 12
 Short formations report:
 ------------------------
 
-A : core elite force HQ
+A : core elite force HQ (US marine HQ)
 	leader    : A0 USMC HQ (Col Diaz)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -117,7 +117,7 @@ A : core elite force HQ
 	unit list :
 		A0 USMC HQ
 
-B : core recon company
+B : core recon company (Infantry Co )
 	leader    : B0 USMC Co HQ (Cpt Perez)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -127,7 +127,7 @@ B : core recon company
 	unit list :
 		B0 USMC Co HQ
 
-C : core average platoon
+C : core average platoon (Infantry Plt )
 	leader    : C0 USMC Plt HQ (2Lt Reynolds)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 1
@@ -140,7 +140,7 @@ C : core average platoon
 		C2 USMC Inf Sqd 
 		C3 USMC Inf Sqd 
 
-D : core average platoon
+D : core average platoon (Infantry Plt )
 	leader    : D0 USMC Plt HQ (2Lt Necaise)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 1
@@ -153,7 +153,7 @@ D : core average platoon
 		D2 USMC Inf Sqd 
 		D3 USMC Inf Sqd 
 
-E : core average platoon
+E : core average platoon (Infantry Plt )
 	leader    : E0 USMC Plt HQ (2Lt Kirby)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 1
@@ -166,7 +166,7 @@ E : core average platoon
 		E2 USMC Inf Sqd 
 		E3 USMC Inf Sqd 
 
-F : core average platoon
+F : core average platoon (MG Platoon)
 	leader    : F0 .30 Cal MMG (2Lt Isaac)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 1
@@ -178,7 +178,7 @@ F : core average platoon
 		F1 .30 Cal MMG
 		F2 .30 Cal MMG
 
-G : core dedicated artillery platoon
+G : core dedicated artillery platoon (Lt Mortar Sec)
 	leader    : G0 M2 60mm Mortar (2Lt Kramer)
 	higher cmd: B0 USMC Co HQ (Cpt Perez)
 	kills     : 0
@@ -189,7 +189,7 @@ G : core dedicated artillery platoon
 		G0 M2 60mm Mortar
 		G1 M2 60mm Mortar
 
-H : core recon platoon
+H : core recon platoon (Engineer Co)
 	leader    : H0 USMC Eng Sec FT (Cpt Jacobs)
 	higher cmd: A0 USMC HQ (Col Diaz)
 	kills     : 0
@@ -199,7 +199,7 @@ H : core recon platoon
 	unit list :
 		H0 USMC Eng Sec FT
 
-I : core elite platoon
+I : core elite platoon (Engineer Plt)
 	leader    : I0 USMC Eng Sec DC (2Lt McKelvey)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 0
@@ -211,7 +211,7 @@ I : core elite platoon
 		I1 USMC Eng Sec DC
 		I2 USMC Eng Sec FT
 
-J : core elite platoon
+J : core elite platoon (Engineer Plt)
 	leader    : J0 USMC Eng Sec DC (2Lt Nino)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 0
@@ -223,7 +223,7 @@ J : core elite platoon
 		J1 USMC Eng Sec DC
 		J2 USMC Eng Sec FT
 
-K : core elite platoon
+K : core elite platoon (Engineer Plt)
 	leader    : K0 USMC Eng Sec DC (2Lt Gallegos)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 1
@@ -235,7 +235,7 @@ K : core elite platoon
 		K1 USMC Eng Sec DC
 		K2 USMC Eng Sec FT
 
-L : core average platoon
+L : core average platoon (HMG Section)
 	leader    : L0 .50 Cal HMG (2Lt Guitierez)
 	higher cmd: H0 USMC Eng Sec FT (Cpt Jacobs)
 	kills     : 2
@@ -251,38 +251,38 @@ L : core average platoon
 Short units report:
 -------------------
 
- #    A0  : USMC HQ          (Col Diaz            ) RID 00000 UTG 000 EXP 063 MOR 076 SUP 000 RAL 067 INF 063 ART 033 ARM 031 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 13,  16)
- #    B0  : USMC Co HQ       (Cpt Perez           ) RID 00001 UTG 001 EXP 044 MOR 067 SUP 000 RAL 062 INF 063 ART 037 ARM 028 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
-  -   C0  : USMC Plt HQ      (2Lt Reynolds        ) RID 00002 UTG 002 EXP 052 MOR 070 SUP 012 RAL 058 INF 061 ART 027 ARM 029 KILL 000 LOSS 000 MEN 007 KIA 003 DMG 003 RDY  33.14 POS ( 34,  15)
- #    C1  : USMC Inf Sqd     (Sgt Emerson         ) RID 00003 UTG 003 EXP 050 MOR 064 SUP 000 RAL 062 INF 057 ART 034 ARM 028 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 35,  14)
-  -   C2  : USMC Inf Sqd     (Sgt Patton          ) RID 00004 UTG 003 EXP 047 MOR 063 SUP 006 RAL 070 INF 064 ART 032 ARM 026 KILL 001 LOSS 000 MEN 009 KIA 002 DMG 002 RDY  70.37 POS ( 34,  16)
- #    C3  : USMC Inf Sqd     (Sgt Hunter          ) RID 00005 UTG 003 EXP 058 MOR 068 SUP 000 RAL 066 INF 060 ART 035 ARM 031 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 35,  13)
- #    D0  : USMC Plt HQ      (2Lt Necaise         ) RID 00006 UTG 002 EXP 067 MOR 061 SUP 000 RAL 070 INF 064 ART 032 ARM 032 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 30,  25)
- #    D1  : USMC Inf Sqd     (Sgt Owens           ) RID 00007 UTG 004 EXP 048 MOR 052 SUP 000 RAL 060 INF 061 ART 023 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 31,  24)
-  -   D2  : USMC Inf Sqd     (Sgt Lopez           ) RID 00008 UTG 004 EXP 061 MOR 058 SUP 000 RAL 072 INF 051 ART 028 ARM 035 KILL 001 LOSS 000 MEN 009 KIA 002 DMG 002 RDY  77.78 POS ( 30,  26)
-  -   D3  : USMC Inf Sqd     (Sgt Palmer          ) RID 00009 UTG 004 EXP 053 MOR 064 SUP 015 RAL 060 INF 052 ART 035 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  23.82 POS ( 31,  23)
-      E0  : USMC Plt HQ      (2Lt Kirby           ) RID 00010 UTG 002 EXP 047 MOR 069 SUP 000 RAL 061 INF 058 ART 032 ARM 031 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 37,  10)
-  -   E1  : USMC Inf Sqd     (Sgt Glussich        ) RID 00011 UTG 004 EXP 051 MOR 073 SUP 000 RAL 060 INF 055 ART 027 ARM 037 KILL 001 LOSS 000 MEN 009 KIA 004 DMG 004 RDY  55.56 POS ( 37,  10)
-  -   E2  : USMC Inf Sqd     (Sgt Radford         ) RID 00012 UTG 004 EXP 047 MOR 068 SUP 008 RAL 063 INF 066 ART 025 ARM 032 KILL 000 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  27.45 POS ( 35,  11)
-  -   E3  : USMC Inf Sqd     (Sgt Smith           ) RID 00013 UTG 004 EXP 050 MOR 066 SUP 002 RAL 066 INF 062 ART 024 ARM 023 KILL 000 LOSS 000 MEN 009 KIA 004 DMG 004 RDY  53.87 POS ( 37,   8)
-      F0  : .30 Cal MMG      (2Lt Isaac           ) RID 00014 UTG 005 EXP 043 MOR 066 SUP 000 RAL 066 INF 054 ART 025 ARM 030 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 27,  30)
-      F1  : .30 Cal MMG      (Sgt Henderson       ) RID 00015 UTG 005 EXP 052 MOR 060 SUP 000 RAL 060 INF 062 ART 034 ARM 035 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 27,  29)
- #    F2  : .30 Cal MMG      (Sgt O'hern          ) RID 00016 UTG 005 EXP 052 MOR 067 SUP 000 RAL 063 INF 055 ART 033 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 27,  31)
- #    G0  : M2 60mm Mortar   (2Lt Kramer          ) RID 00017 UTG 006 EXP 056 MOR 056 SUP 000 RAL 067 INF 023 ART 063 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 21,  15)
- #    G1  : M2 60mm Mortar   (Sgt Ferguson        ) RID 00018 UTG 006 EXP 048 MOR 056 SUP 000 RAL 058 INF 028 ART 053 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 19,  14)
- #    H0  : USMC Eng Sec FT  (Cpt Jacobs          ) RID 00019 UTG 007 EXP 054 MOR 072 SUP 000 RAL 062 INF 061 ART 029 ARM 037 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 38,   6)
- #    I0  : USMC Eng Sec DC  (2Lt McKelvey        ) RID 00020 UTG 008 EXP 060 MOR 071 SUP 000 RAL 068 INF 060 ART 037 ARM 029 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  34)
- #    I1  : USMC Eng Sec DC  (Sgt Collins         ) RID 00021 UTG 008 EXP 069 MOR 082 SUP 000 RAL 061 INF 060 ART 039 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  33)
- #    I2  : USMC Eng Sec FT  (Sgt Amos            ) RID 00022 UTG 007 EXP 065 MOR 075 SUP 000 RAL 061 INF 061 ART 023 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  35)
- #    J0  : USMC Eng Sec DC  (2Lt Nino            ) RID 00023 UTG 008 EXP 065 MOR 078 SUP 000 RAL 067 INF 058 ART 034 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  21)
- #    J1  : USMC Eng Sec DC  (Sgt Reeves          ) RID 00024 UTG 008 EXP 058 MOR 068 SUP 000 RAL 063 INF 060 ART 033 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
- #    J2  : USMC Eng Sec FT  (Sgt Davie           ) RID 00025 UTG 007 EXP 067 MOR 071 SUP 000 RAL 059 INF 062 ART 028 ARM 026 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  22)
- #-   K0  : USMC Eng Sec DC  (2Lt Gallegos        ) RID 00026 UTG 008 EXP 061 MOR 072 SUP 005 RAL 067 INF 051 ART 027 ARM 034 KILL 001 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  74.44 POS ( 34,  16)
-  -   K1  : USMC Eng Sec DC  (Sgt Ellis           ) RID 00027 UTG 008 EXP 069 MOR 073 SUP 001 RAL 070 INF 062 ART 034 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  78.90 POS ( 34,  15)
-  -   K2  : USMC Eng Sec FT  (Sgt Udell           ) RID 00028 UTG 007 EXP 070 MOR 076 SUP 007 RAL 058 INF 056 ART 035 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 004 DMG 004 RDY  54.47 POS ( 34,  17)
-  -   L0  : .50 Cal HMG      (2Lt Guitierez       ) RID 00029 UTG 009 EXP 050 MOR 059 SUP 001 RAL 068 INF 066 ART 032 ARM 033 KILL 001 LOSS 000 MEN 004 KIA 002 DMG 002 RDY  49.15 POS ( 30,  26)
-  -   L1  : .30 Cal HMG      (Sgt Jackson         ) RID 00030 UTG 010 EXP 049 MOR 057 SUP 000 RAL 067 INF 063 ART 036 ARM 022 KILL 000 LOSS 000 MEN 004 KIA 001 DMG 001 RDY  75.00 POS ( 30,  25)
- #    L2  : .30 Cal HMG      (Sgt Mizerak         ) RID 00031 UTG 010 EXP 054 MOR 060 SUP 000 RAL 058 INF 057 ART 029 ARM 038 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 29,  27)
+ #    A0  : USMC HQ          (Col Diaz            ) USMC HQ          RID 00000 UTG 000 EXP 063 MOR 076 SUP 000 RAL 067 INF 063 ART 033 ARM 031 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 13,  16)
+ #    B0  : USMC Co HQ       (Cpt Perez           ) USMC Co HQ       RID 00001 UTG 001 EXP 044 MOR 067 SUP 000 RAL 062 INF 063 ART 037 ARM 028 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
+  -   C0  : USMC Plt HQ      (2Lt Reynolds        ) USMC Plt HQ      RID 00002 UTG 002 EXP 052 MOR 070 SUP 012 RAL 058 INF 061 ART 027 ARM 029 KILL 000 LOSS 000 MEN 007 KIA 003 DMG 003 RDY  33.14 POS ( 34,  15)
+ #    C1  : USMC Inf Sqd     (Sgt Emerson         ) USMC Inf Sqd     RID 00003 UTG 003 EXP 050 MOR 064 SUP 000 RAL 062 INF 057 ART 034 ARM 028 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 35,  14)
+  -   C2  : USMC Inf Sqd     (Sgt Patton          ) USMC Inf Sqd     RID 00004 UTG 003 EXP 047 MOR 063 SUP 006 RAL 070 INF 064 ART 032 ARM 026 KILL 001 LOSS 000 MEN 009 KIA 002 DMG 002 RDY  70.37 POS ( 34,  16)
+ #    C3  : USMC Inf Sqd     (Sgt Hunter          ) USMC Inf Sqd     RID 00005 UTG 003 EXP 058 MOR 068 SUP 000 RAL 066 INF 060 ART 035 ARM 031 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 35,  13)
+ #    D0  : USMC Plt HQ      (2Lt Necaise         ) USMC Plt HQ      RID 00006 UTG 002 EXP 067 MOR 061 SUP 000 RAL 070 INF 064 ART 032 ARM 032 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 30,  25)
+ #    D1  : USMC Inf Sqd     (Sgt Owens           ) USMC Inf Sqd     RID 00007 UTG 004 EXP 048 MOR 052 SUP 000 RAL 060 INF 061 ART 023 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS ( 31,  24)
+  -   D2  : USMC Inf Sqd     (Sgt Lopez           ) USMC Inf Sqd     RID 00008 UTG 004 EXP 061 MOR 058 SUP 000 RAL 072 INF 051 ART 028 ARM 035 KILL 001 LOSS 000 MEN 009 KIA 002 DMG 002 RDY  77.78 POS ( 30,  26)
+  -   D3  : USMC Inf Sqd     (Sgt Palmer          ) USMC Inf Sqd     RID 00009 UTG 004 EXP 053 MOR 064 SUP 015 RAL 060 INF 052 ART 035 ARM 033 KILL 000 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  23.82 POS ( 31,  23)
+      E0  : USMC Plt HQ      (2Lt Kirby           ) USMC Plt HQ      RID 00010 UTG 002 EXP 047 MOR 069 SUP 000 RAL 061 INF 058 ART 032 ARM 031 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 37,  10)
+  -   E1  : USMC Inf Sqd     (Sgt Glussich        ) USMC Inf Sqd     RID 00011 UTG 004 EXP 051 MOR 073 SUP 000 RAL 060 INF 055 ART 027 ARM 037 KILL 001 LOSS 000 MEN 009 KIA 004 DMG 004 RDY  55.56 POS ( 37,  10)
+  -   E2  : USMC Inf Sqd     (Sgt Radford         ) USMC Inf Sqd     RID 00012 UTG 004 EXP 047 MOR 068 SUP 008 RAL 063 INF 066 ART 025 ARM 032 KILL 000 LOSS 000 MEN 009 KIA 005 DMG 005 RDY  27.45 POS ( 35,  11)
+  -   E3  : USMC Inf Sqd     (Sgt Smith           ) USMC Inf Sqd     RID 00013 UTG 004 EXP 050 MOR 066 SUP 002 RAL 066 INF 062 ART 024 ARM 023 KILL 000 LOSS 000 MEN 009 KIA 004 DMG 004 RDY  53.87 POS ( 37,   8)
+      F0  : .30 Cal MMG      (2Lt Isaac           ) .30 Cal MMG      RID 00014 UTG 005 EXP 043 MOR 066 SUP 000 RAL 066 INF 054 ART 025 ARM 030 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 27,  30)
+      F1  : .30 Cal MMG      (Sgt Henderson       ) .30 Cal MMG      RID 00015 UTG 005 EXP 052 MOR 060 SUP 000 RAL 060 INF 062 ART 034 ARM 035 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 27,  29)
+ #    F2  : .30 Cal MMG      (Sgt O'hern          ) .30 Cal MMG      RID 00016 UTG 005 EXP 052 MOR 067 SUP 000 RAL 063 INF 055 ART 033 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 27,  31)
+ #    G0  : M2 60mm Mortar   (2Lt Kramer          ) M2 60mm Mortar   RID 00017 UTG 006 EXP 056 MOR 056 SUP 000 RAL 067 INF 023 ART 063 ARM 032 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 21,  15)
+ #    G1  : M2 60mm Mortar   (Sgt Ferguson        ) M2 60mm Mortar   RID 00018 UTG 006 EXP 048 MOR 056 SUP 000 RAL 058 INF 028 ART 053 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 19,  14)
+ #    H0  : USMC Eng Sec FT  (Cpt Jacobs          ) USMC Eng Sec FT  RID 00019 UTG 007 EXP 054 MOR 072 SUP 000 RAL 062 INF 061 ART 029 ARM 037 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 38,   6)
+ #    I0  : USMC Eng Sec DC  (2Lt McKelvey        ) USMC Eng Sec DC  RID 00020 UTG 008 EXP 060 MOR 071 SUP 000 RAL 068 INF 060 ART 037 ARM 029 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  34)
+ #    I1  : USMC Eng Sec DC  (Sgt Collins         ) USMC Eng Sec DC  RID 00021 UTG 008 EXP 069 MOR 082 SUP 000 RAL 061 INF 060 ART 039 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  33)
+ #    I2  : USMC Eng Sec FT  (Sgt Amos            ) USMC Eng Sec FT  RID 00022 UTG 007 EXP 065 MOR 075 SUP 000 RAL 061 INF 061 ART 023 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 27,  35)
+ #    J0  : USMC Eng Sec DC  (2Lt Nino            ) USMC Eng Sec DC  RID 00023 UTG 008 EXP 065 MOR 078 SUP 000 RAL 067 INF 058 ART 034 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  21)
+ #    J1  : USMC Eng Sec DC  (Sgt Reeves          ) USMC Eng Sec DC  RID 00024 UTG 008 EXP 058 MOR 068 SUP 000 RAL 063 INF 060 ART 033 ARM 034 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 33,  20)
+ #    J2  : USMC Eng Sec FT  (Sgt Davie           ) USMC Eng Sec FT  RID 00025 UTG 007 EXP 067 MOR 071 SUP 000 RAL 059 INF 062 ART 028 ARM 026 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 32,  22)
+ #-   K0  : USMC Eng Sec DC  (2Lt Gallegos        ) USMC Eng Sec DC  RID 00026 UTG 008 EXP 061 MOR 072 SUP 005 RAL 067 INF 051 ART 027 ARM 034 KILL 001 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  74.44 POS ( 34,  16)
+  -   K1  : USMC Eng Sec DC  (Sgt Ellis           ) USMC Eng Sec DC  RID 00027 UTG 008 EXP 069 MOR 073 SUP 001 RAL 070 INF 062 ART 034 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 002 RDY  78.90 POS ( 34,  15)
+  -   K2  : USMC Eng Sec FT  (Sgt Udell           ) USMC Eng Sec FT  RID 00028 UTG 007 EXP 070 MOR 076 SUP 007 RAL 058 INF 056 ART 035 ARM 036 KILL 000 LOSS 000 MEN 010 KIA 004 DMG 004 RDY  54.47 POS ( 34,  17)
+  -   L0  : .50 Cal HMG      (2Lt Guitierez       ) .50 Cal HMG      RID 00029 UTG 009 EXP 050 MOR 059 SUP 001 RAL 068 INF 066 ART 032 ARM 033 KILL 001 LOSS 000 MEN 004 KIA 002 DMG 002 RDY  49.15 POS ( 30,  26)
+  -   L1  : .30 Cal HMG      (Sgt Jackson         ) .30 Cal HMG      RID 00030 UTG 010 EXP 049 MOR 057 SUP 000 RAL 067 INF 063 ART 036 ARM 022 KILL 000 LOSS 000 MEN 004 KIA 001 DMG 001 RDY  75.00 POS ( 30,  25)
+ #    L2  : .30 Cal HMG      (Sgt Mizerak         ) .30 Cal HMG      RID 00031 UTG 010 EXP 054 MOR 060 SUP 000 RAL 058 INF 057 ART 029 ARM 038 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 29,  27)
 
 
 
