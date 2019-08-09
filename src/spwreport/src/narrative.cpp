@@ -78,9 +78,10 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 
 	for (i=0; i<p->formations.cnt; i++) {
 
-		fprintf (rf, "Formation %s: %s %s %s.\n",
+		fprintf (rf, "Formation %s: %s %s %s (%s).\n",
 			p->formations.list[i].strings.name, p->formations.list[i].strings.status,
-			p->formations.list[i].strings.fstatus, p->formations.list[i].strings.type);
+			p->formations.list[i].strings.fstatus, p->formations.list[i].strings.otype,
+			p->formations.list[i].strings.type);
 
 		fprintf (rf, "It is lead by %s %s.\n",
 			p->formations.list[i].data.leader.up->strings.uid, p->formations.list[i].data.leader.up->data.dname);

@@ -158,7 +158,6 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 		SPWAW_SNAP_OOB_FELRAW *p = &(ptr->raw[i]);
 
 		fprintf (rf, "{%4lu} RID       : %4.4x (%u)\n", i, p->RID, p->RID);
-		fprintf (rf, "{%4lu} ID        : %4.4x (%u)\n", i, p->RID, p->RID);
 		fprintf (rf, "{%4lu} FID       : %4.4x (%u)\n", i, p->FID, p->FID);
 		fprintf (rf, "{%4lu} name      : %s\n", i, p->name);
 		fprintf (rf, "{%4lu} leader    : %4.4x (%u)\n", i, p->leader, p->leader);

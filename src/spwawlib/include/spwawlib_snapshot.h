@@ -544,7 +544,7 @@ typedef struct s_SPWAW_SNAP_OOB_FEL_DATA {
 	USHORT			OOBrid;				/* Formation OOB record ID					*/
 	SPWAW_FSTATUS		status;				/* Formation campaign status					*/
 	SPWOOB_FSTAT		fstatus;			/* Formation force status					*/
-	SPWOOB_FTYPE		type;				/* Formation type						*/
+	SPWOOB_FTYPE		otype;				/* Formation organizational type				*/
 	SPWAW_SNAP_OOB_PTR	leader;				/* Formation leader unit record ID or pointer			*/
 	SPWAW_SNAP_OOB_PTR	hcmd;				/* Formation higher command leader unit record ID or pointer	*/
 	USHORT			ucnt;				/* Unit count							*/
@@ -555,11 +555,11 @@ typedef struct s_SPWAW_SNAP_OOB_FEL_DATA {
 
 /* SPWAW formation element info: strings */
 typedef struct s_SPWAW_SNAP_OOB_FEL_STRINGS {
-	char			name[16];			/* Formation ID name					*/
-	char			*status;			/* Formation campaign status string			*/
-	char			*fstatus;			/* Formation force status string			*/
-	char			*type;				/* Formation type string				*/
-	char			*utype;				/* Formation unit type					*/
+	char			name[16];			/* Formation ID name						*/
+	char			*status;			/* Formation campaign status string				*/
+	char			*fstatus;			/* Formation force status string				*/
+	char			*otype;				/* Formation organizational type string				*/
+	char			*type;				/* Formation type string					*/
 } SPWAW_SNAP_OOB_FEL_STRINGS;
 
 /* SPWAW formation element info */
@@ -590,7 +590,6 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	SPWAW_SNAP_OOB_FEL	*formation;
 	BYTE			OOB;				/* Unit OOB country ID					*/
 	USHORT			OOBrid;				/* Unit OOB record ID					*/
-	// TODO: add reporting of unit name?
 	char			*dname;				/* Unit designation					*/
 	char			*uname;				/* Unit name						*/
 	char			*lname;				/* Unit leader name					*/

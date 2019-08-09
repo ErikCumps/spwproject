@@ -142,7 +142,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 
 		snprintf (stat, sizeof (stat) - 1, "%s", p->strings.status);
 		fprintf (rf, "%-4s: %-3s %-32s %-16s %-16s %-4s %5u %6u %6.2f %% %3u\n",
-			p->strings.name, stat, p->strings.fstatus, p->strings.type,
+			p->strings.name, stat, p->strings.fstatus, p->strings.otype,
 			p->data.leader.up->strings.uid, p->data.hcmd.up->strings.uid,
 			p->attr.gen.kills, p->attr.gen.losses, p->attr.gen.ready * 100.0, p->data.ucnt);
 
@@ -171,10 +171,10 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 
 	smart_title (rf, '-', "Table units report:\n");
 
-	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %4s %3s %3s %3s %8s %10s\n",
-		"+", "S", "D", "A", "L", "#", "Unit", "Rank", "Leader", "RID", "UTG", "EXP", "MOR", "SUP", "RAL", "INF", "ART", "ARM", "Kill", "Loss", "Men", "KIA", "Dmg", "Ready", "Position");
-	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %4s %3s %3s %3s %8s %10s\n",
-		"-", "-", "-", "-", "-", "----", "----", "----", "------", "---", "---", "---", "---", "---", "---", "---", "---", "---", "----", "----", "---", "---", "---", "-----", "----------");
+	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %4s %3s %3s %3s %8s %10s\n",
+		"+", "S", "D", "A", "L", "#", "Designation", "Rank", "Leader", "Unit", "RID", "UTG", "EXP", "MOR", "SUP", "RAL", "INF", "ART", "ARM", "Kill", "Loss", "Men", "KIA", "Dmg", "Ready", "Position");
+	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %4s %3s %3s %3s %8s %10s\n",
+		"-", "-", "-", "-", "-", "----", "-----------", "----", "------", "----", "---", "---", "---", "---", "---", "---", "---", "---", "---", "----", "----", "---", "---", "---", "-----", "----------");
 
 	for (i=0; i<ptr->cnt; i++) {
 		SPWAW_SNAP_OOB_UEL *p = &(ptr->list[i]);
@@ -186,14 +186,14 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5u %3u %3u %3u %3u %3u %3u %3u %3u %4u %4u %3u %3u %3u %6.2f %% %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %-16s %5u %3u %3u %3u %3u %3u %3u %3u %3u %4u %4u %3u %3u %3u %6.2f %% %10s\n",
 			//p->data.lost?"+":" ",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
 			p->data.aband?"A":" ",
 			p->data.loaded?"L":" ",
-			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname,
+			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname, p->data.uname,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
 			p->attr.gen.kills, p->attr.gen.losses, p->data.hcnt,
@@ -217,10 +217,10 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 
 	smart_title (rf, '-', "Table crews report:\n");
 
-	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %3s %3s %3s %8s %10s\n",
-		"+", "S", "D", "A", "L", "#", "Unit", "Rank", "Leader", "RID", "UTG", "EXP", "MOR", "SUP", "RAL", "INF", "ART", "ARM", "Kill", "Men", "KIA", "Dmg", "Ready", "Position");
-	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %3s %3s %3s %8s %10s\n",
-		"-", "-", "-", "-", "-", "----", "----", "----", "------", "---", "---", "---", "---", "---", "---", "---", "---", "---", "----", "---", "---", "---", "-----", "----------");
+	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %3s %3s %3s %8s %10s\n",
+		"+", "S", "D", "A", "L", "#", "Designation", "Rank", "Leader", "unit", "RID", "UTG", "EXP", "MOR", "SUP", "RAL", "INF", "ART", "ARM", "Kill", "Men", "KIA", "Dmg", "Ready", "Position");
+	fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %-16s %5s %3s %3s %3s %3s %3s %3s %3s %3s %4s %3s %3s %3s %8s %10s\n",
+		"-", "-", "-", "-", "-", "----", "-----------", "----", "------", "----", "---", "---", "---", "---", "---", "---", "---", "---", "---", "----", "---", "---", "---", "-----", "----------");
 
 	for (i=0; i<ptr->cnt; i++) {
 		SPWAW_SNAP_OOB_UEL *p = &(ptr->list[i]);
@@ -232,14 +232,14 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %5u %3u %3u %3u %3u %3u %3u %3u %3u %4u %3u %3u %3u %6.2f %% %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s %-16s %-4s %-16s %-16s %5u %3u %3u %3u %3u %3u %3u %3u %3u %4u %3u %3u %3u %6.2f %% %10s\n",
 			//p->data.lost?"+":" ",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
 			p->data.aband?"A":" ",
 			p->data.loaded?"L":" ",
-			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname,
+			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname, p->data.uname,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
 			p->attr.gen.kills, p->data.hcnt,

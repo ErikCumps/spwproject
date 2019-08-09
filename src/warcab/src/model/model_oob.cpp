@@ -23,7 +23,7 @@ typedef struct s_MDLO_COLUMN_DEF {
 
 static MDLO_COLUMN_DEF fcoldef[MDLO_COLUMN_CNT] = {
 	{ MDLO_COLUMN_FID,		"#",		MDLO_cmp_fid,	SPWDLT_NONE,	0			},
-	{ MDLO_COLUMN_TYPE,		"Type",		MDLO_cmp_type,	SPWDLT_INT,	FOFFS(data.type)	},
+	{ MDLO_COLUMN_TYPE,		"Type",		MDLO_cmp_type,	SPWDLT_INT,	FOFFS(data.otype)	},
 	{ MDLO_COLUMN_LDR,		"Leader",	MDLO_cmp_ldr,	SPWDLT_NONE,	0			},	/* unstored item */
 	{ MDLO_COLUMN_HCMD,		"HCmd",		MDLO_cmp_hcmd,	SPWDLT_NONE,	0			},	/* pointer item */
 	{ MDLO_COLUMN_STATUS,		"Status",	MDLO_cmp_status,	SPWDLT_INT,	FOFFS(data.fstatus)	},

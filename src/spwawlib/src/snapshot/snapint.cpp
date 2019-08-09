@@ -277,15 +277,15 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 
 		if (form_oobrid != 0) {
 			dat->fstatus	= oob->fdata[form_oobrid].stat;
-			dat->type	= oob->fdata[form_oobrid].type;
+			dat->otype	= oob->fdata[form_oobrid].type;
 		} else {
 			// For special formations we assume it's an average platoon:
 			dat->fstatus	= SPWOOB_FSTAT_D;	// average
-			dat->type	= SPWOOB_FTYPE_PLT;	// platoon
+			dat->otype	= SPWOOB_FTYPE_PLT;	// platoon
 		}
 
 		if (src->name == NULL) {
-			if (dat->type == SPWOOB_FTYPE_FHQ) {
+			if (dat->otype == SPWOOB_FTYPE_FHQ) {
 				memset (buf, 0, sizeof (buf));
 				snprintf (buf, sizeof (buf) - 1, "%s HQ", ptr->people);
 				src->name = STRTAB_add (stab, buf);
@@ -305,7 +305,7 @@ snapint_oob_formations_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPW
 		dat->status	= raw2fstatus (src->status);
 		dat->leader.rid	= src->leader;
 		dat->hcmd.rid	= src->hcmd;
-		str->utype	= src->name;
+		str->type	= src->name;
 	}
 
 	return (SPWERR_OK);
@@ -698,7 +698,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 	/* Determine OOB force leader: it is the first unit of the (first) force HQ formation */
 	for (i=0; i<bp->formations.cnt; i++) {
 		p.fp = &(bp->formations.list[i]);
-		if (p.fp->data.type != SPWOOB_FTYPE_FHQ) continue;
+		if (p.fp->data.otype != SPWOOB_FTYPE_FHQ) continue;
 		bp->leader = p.fp->data.ulist[0];
 		break;
 	}
@@ -836,7 +836,7 @@ snapint_oob_formations_stage2 (SPWAW_SNAP_OOB_FORCE *ptr)
 		FID2str ((BYTE)(dat->FID & 0xFF), str->name, sizeof (str->name));
 		str->status	= fstatus2str (dat->status);
 		str->fstatus	= (char*)SPWOOB_FSTAT_lookup (dat->fstatus);
-		str->type	= (char*)SPWOOB_FTYPE_lookup (dat->type);
+		str->otype	= (char*)SPWOOB_FTYPE_lookup (dat->otype);
 	}
 
 	return (SPWERR_OK);

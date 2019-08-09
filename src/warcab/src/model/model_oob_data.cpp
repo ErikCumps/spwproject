@@ -36,7 +36,7 @@ ModelOob::MDLO_data_form_display (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dlt) 
 			s = fir->snap->strings.name;
 			break;
 		case MDLO_COLUMN_TYPE:
-			s = fir->snap->strings.utype;
+			s = fir->snap->strings.type;
 			break;
 		case MDLO_COLUMN_LDR:
 			s = fir->snap->data.leader.up->strings.uid;
@@ -141,7 +141,7 @@ ModelOob::MDLO_data_form_background (int /*col*/, SPWAW_DOSSIER_FIR *fir, SPWDLT
 			v = QBrush (*RES_color(RID_GMOC_BG_DEFAULT));
 			break;
 		case MDLO_HILITE_TYPE:
-			v = QBrush (*RES_GUI_color (fir->snap->data.type));
+			v = QBrush (*RES_GUI_color (fir->snap->data.otype));
 			break;
 	}
 	return (v);
@@ -360,7 +360,7 @@ MDLO_data_sort_form (SPWAW_DOSSIER_FIR *fir, int col, MDL_CMPDATA &v)
 			v.i = fir->snap->data.FID;
 			break;
 		case MDLO_COLUMN_TYPE:
-			v.s = fir->snap->strings.type;
+			v.s = fir->snap->strings.otype;
 			break;
 		case MDLO_COLUMN_LDR:
 			v.i = fir->snap->data.leader.up->data.RID;

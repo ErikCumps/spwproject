@@ -147,7 +147,8 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 	for (i=0; i<ptr->cnt; i++) {
 		SPWAW_SNAP_OOB_FEL *p = &(ptr->list[i]);
 
-		fprintf (rf, "%-2s: %s %s %s\n", p->strings.name, p->strings.status, p->strings.fstatus, p->strings.type);
+		fprintf (rf, "%-2s: %s %s %s (%s)\n",
+			p->strings.name, p->strings.status, p->strings.fstatus, p->strings.otype, p->strings.type);
 		fprintf (rf, "\tleader    : %s %s (%s %s)\n",
 			p->data.leader.up->strings.uid, p->data.leader.up->data.dname,
 			p->data.leader.up->strings.rank, p->data.leader.up->data.lname);
@@ -202,13 +203,13 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
 			p->data.aband?"A":" ",
 			p->data.loaded?"L":" ",
-			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname,
+			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname, p->data.uname,
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
 			p->attr.gen.kills, p->attr.gen.losses, p->data.hcnt,
@@ -242,13 +243,13 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
 			p->data.aband?"A":" ",
 			p->data.loaded?"L":" ",
-			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname,
+			p->strings.uid, p->data.dname, p->strings.rank, p->data.lname, "",
 			p->data.RID, p->data.UTGidx,
 			p->data.exp, p->data.mor, p->data.sup, p->data.ral, p->data.inf, p->data.art, p->data.arm,
 			p->attr.gen.kills, p->data.hcnt,

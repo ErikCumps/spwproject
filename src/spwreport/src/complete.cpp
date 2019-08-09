@@ -164,8 +164,8 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		fprintf (rf, "\tstatus      : %u (%s)\n", fp->data.status, fp->strings.status);
 		fprintf (rf, "\tforce status: %u (%s)\n", fp->data.fstatus, fp->strings.fstatus);
+		fprintf (rf, "\torg type    : %s\n", fp->strings.otype);
 		fprintf (rf, "\ttype        : %s\n", fp->strings.type);
-		fprintf (rf, "\tunit type   : %s\n", fp->strings.utype);
 		fprintf (rf, "\tunit count  : %u\n", fp->data.ucnt);
 		fprintf (rf, "\tunit list   :\n");
 		for (j=0; j<fp->data.ucnt; j++) {
@@ -226,14 +226,14 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 
 		p = &(ptr->list[i]);
 
-		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s\n",
-			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.dname);
+		fprintf (rf, "#%5.5u (%5.5u:%5.5u,%3.3u) %-4s %s (%s)\n",
+			p->data.RID, p->data.FRID, p->data.FMID, p->data.FSID, p->strings.uid, p->data.dname, p->data.uname);
 
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.lname, p->data.rank, p->strings.rank);
 		// Prevent warning C4244
 		if ((fp = p->data.formation) == NULL) { fp = p->data.aunit.up->data.formation; }
 		fprintf (rf, "\tformation   : %s: %s %s %s\n",
-			fp->strings.name, fp->strings.status, fp->strings.fstatus, fp->strings.type);
+			fp->strings.name, fp->strings.status, fp->strings.fstatus, fp->strings.otype);
 		fprintf (rf, "\tOOB         : %u (%10.10s)\n", p->data.OOB, p->strings.people);
 		fprintf (rf, "\tunit type   : %u (%s)\n", p->data.utype, p->strings.utype);
 		fprintf (rf, "\tunit class  : %u (%s)\n", p->data.uclass, p->strings.uclass);
@@ -329,7 +329,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tleader      : %s, rank %u (%s)\n", p->data.lname, p->data.rank, p->strings.rank);
 		fp = p->data.aunit.up->data.formation;
 		fprintf (rf, "\tformation   : %s: %s %s %s\n",
-			fp->strings.name, fp->strings.status, fp->strings.fstatus, fp->strings.type);
+			fp->strings.name, fp->strings.status, fp->strings.fstatus, fp->strings.otype);
 		fprintf (rf, "\tOOB         : %u (%10.10s)\n", p->data.OOB, p->strings.people);
 		fprintf (rf, "\tunit type   : %u (%s)\n", p->data.utype, p->strings.utype);
 		fprintf (rf, "\tunit class  : %u (%s)\n", p->data.uclass, p->strings.uclass);
