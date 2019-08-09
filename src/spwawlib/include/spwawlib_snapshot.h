@@ -579,14 +579,14 @@ typedef struct s_SPWAW_SNAP_OOB_F {
 /* SPWAW unit element info: data */
 typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	SPWAW_UNIT_TYPE		dutype;				/* Detected unit type					*/
-	USHORT			idx;
-	USHORT			uidx;
-	USHORT			ulidx;
-	USHORT			elidx;
-	USHORT			RID;				/* Unit record ID	*/
-	int			FRID;				/* Formation record ID	*/
-	int			FMID;				/* Formation major ID	*/
-	int			FSID;				/* Formation sub ID	*/
+	USHORT			idx;				/* Unit/Crew index					*/
+	USHORT			uidx;				/* Unit index						*/
+	USHORT			ulidx;				/* Leader index						*/
+	USHORT			elidx;				/* Effective leader index				*/
+	USHORT			RID;				/* Unit record ID					*/
+	int			FRID;				/* Formation record ID					*/
+	int			FMID;				/* Formation major ID					*/
+	int			FSID;				/* Formation sub ID					*/
 	SPWAW_SNAP_OOB_FEL	*formation;
 	BYTE			OOB;				/* Unit OOB country ID					*/
 	USHORT			OOBrid;				/* Unit OOB record ID					*/
