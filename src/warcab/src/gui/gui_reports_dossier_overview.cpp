@@ -143,7 +143,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 			}
 		} else {
 			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.dname, lup->data.lname, lup->strings.rank);
-			idx = nidx = lup->data.uidx; b = d->blast;
+			idx = nidx = lup->data.idx; b = d->blast;
 			while (b->prev) {
 				nidx = b->ra[idx].src;
 				fup = b->info_sob->pbir_core.uir[idx].snap;
