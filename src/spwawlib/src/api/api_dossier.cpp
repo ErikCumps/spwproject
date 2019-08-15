@@ -232,13 +232,27 @@ SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, S
 		if (!HASERROR) {
 			if (snap->OOBp1.core.formations.cnt != dossier->props.fcnt) {
 				ERROR2 ("dossier formation count (%d) != snapshot core formations count (%d)", dossier->props.fcnt, snap->OOBp1.core.formations.cnt);
-				rc = SPWERR_NOMATCH_CORECNT;
+				// However, this is not an error for winSPWW2.
+				switch (dossier->gametype) {
+					case SPWAW_GAME_TYPE_WINSPWW2:
+						break;
+					default:
+						rc = SPWERR_NOMATCH_CORECNT;
+						break;
+				}
 			}
 		}
 		if (!HASERROR) {
 			if (snap->OOBp1.core.units.cnt != dossier->props.ucnt) {
 				ERROR2 ("dossier unit count (%d) != snapshot core units count (%d)", dossier->props.ucnt, snap->OOBp1.core.units.cnt);
-				rc = SPWERR_NOMATCH_CORECNT;
+				// However, this is not an error for winSPWW2.
+				switch (dossier->gametype) {
+					case SPWAW_GAME_TYPE_WINSPWW2:
+						break;
+					default:
+						rc = SPWERR_NOMATCH_CORECNT;
+						break;
+				}
 			}
 		}
 		if (!HASERROR) {
