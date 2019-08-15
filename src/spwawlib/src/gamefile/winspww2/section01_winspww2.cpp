@@ -682,7 +682,7 @@ verify_candidate_units (FULIST &ful)
 				// Units that don't seem to belong to the formation (according to the OOB info) are assumed to be SPAU
 				if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
 					uel->d.type = SPWAW_UNIT_TYPE_SPAU;
-					UFDLOG0 ("ACCEPTED - AUTO SPAU\n");
+					UFDLOG2 ("ACCEPTED - AUTO SPAU (uel->d.FSID (%d) >= (%d) fel->d.unit_cnt\n", uel->d.FSID, fel->d.unit_cnt);
 					goto accept_unit;
 				}
 			}
