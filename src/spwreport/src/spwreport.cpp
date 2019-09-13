@@ -50,13 +50,16 @@ usage (char *app)
 	printf ("Supported report types:\n");
 	printf ("    raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)\n");
 	printf ("    elaborate   an elaborate report (*_complete.txt)\n");
+	printf ("    xml         an elaborate report in XML format (*_complete.xml)\n");
 	printf ("    normal      a normal report (*_short.txt)\n");
 	printf ("    narrative   a normal report in a narrative format (*_narrative.txt)\n");
 	printf ("    table       a normal report in table format (*_table.txt)\n");
+	printf ("    shortxml    a normal report in XML format (*_short.xml)\n");
 	printf ("    map         a map and unit positions dump (*_positions.dump)\n");
 	printf ("\n");
 
-	printf ("Two reports are generate for elaborate, normal, narrative and table reports:\n");
+	printf ("For the elaborate, xml, normal, narrative, table and shortxml report types, two\n");
+	printf ("different reports are generated:\n");
 	printf ("+ a full report covering the full player1 and player2 forces\n");
 	printf ("+ a core report covering the player1 core force only.\n");
 	printf ("\n");
@@ -162,6 +165,42 @@ do_core_complete_report (SPWAW_SNAPSHOT *ptr, char *rbfn)
 	}
 
 	complete_report (ptr, rf, true);
+	fclose (rf);
+}
+
+static void
+do_full_xml_report (SPWAW_SNAPSHOT *ptr, char *rbfn)
+{
+	char		rfn[256];
+	FILE		*rf = NULL;
+
+	memset (rfn, 0, sizeof (rfn));
+	snprintf (rfn, sizeof (rfn) - 1, "%s_full_complete.xml", rbfn);
+	rf = fopen (rfn, "w");
+	if (rf == NULL) {
+		error ("failed to open report file \"%s\" for writing!", rfn);
+		return;
+	}
+
+	xml_report (ptr, rf, false);
+	fclose (rf);
+}
+
+static void
+do_core_xml_report (SPWAW_SNAPSHOT *ptr, char *rbfn)
+{
+	char		rfn[256];
+	FILE		*rf = NULL;
+
+	memset (rfn, 0, sizeof (rfn));
+	snprintf (rfn, sizeof (rfn) - 1, "%s_core_complete.xml", rbfn);
+	rf = fopen (rfn, "w");
+	if (rf == NULL) {
+		error ("failed to open report file \"%s\" for writing!", rfn);
+		return;
+	}
+
+	xml_report (ptr, rf, true);
 	fclose (rf);
 }
 
@@ -274,6 +313,42 @@ do_core_table_report (SPWAW_SNAPSHOT *ptr, char *rbfn)
 }
 
 static void
+do_full_shortxml_report (SPWAW_SNAPSHOT *ptr, char *rbfn)
+{
+	char		rfn[256];
+	FILE		*rf = NULL;
+
+	memset (rfn, 0, sizeof (rfn));
+	snprintf (rfn, sizeof (rfn) - 1, "%s_full_short.xml", rbfn);
+	rf = fopen (rfn, "w");
+	if (rf == NULL) {
+		error ("failed to open report file \"%s\" for writing!", rfn);
+		return;
+	}
+
+	shortxml_report (ptr, rf, false);
+	fclose (rf);
+}
+
+static void
+do_core_shortxml_report (SPWAW_SNAPSHOT *ptr, char *rbfn)
+{
+	char		rfn[256];
+	FILE		*rf = NULL;
+
+	memset (rfn, 0, sizeof (rfn));
+	snprintf (rfn, sizeof (rfn) - 1, "%s_core_short.xml", rbfn);
+	rf = fopen (rfn, "w");
+	if (rf == NULL) {
+		error ("failed to open report file \"%s\" for writing!", rfn);
+		return;
+	}
+
+	shortxml_report (ptr, rf, true);
+	fclose (rf);
+}
+
+static void
 do_map_dump (SPWAW_SNAPSHOT *ptr, char *rbfn)
 {
 	char		rfn[256];
@@ -301,20 +376,24 @@ generate_reports(char *base, char *type, SPWAW_SNAPSHOT *snap)
 
 	bool	raw	  = false;
 	bool	elaborate = false;
+	bool	xml	  = false;
 	bool	normal	  = false;
 	bool	narrative = false;
 	bool	table	  = false;
+	bool	shortxml  = false;
 	bool	map	  = false;
 
 	if (type) {
 		if (strcmp (type, "raw") == 0)		raw	  = true;
 		if (strcmp (type, "elaborate") == 0)	elaborate = true;
+		if (strcmp (type, "xml") == 0)		xml	  = true;
 		if (strcmp (type, "normal") == 0)	normal	  = true;
 		if (strcmp (type, "narrative") == 0)	narrative = true;
 		if (strcmp (type, "table") == 0)	table	  = true;
+		if (strcmp (type, "shortxml") == 0)	shortxml  = true;
 		if (strcmp (type, "map") == 0)		map	  = true;
 	} else {
-		raw = elaborate = normal = narrative = table = map = true;
+		raw = elaborate = xml = normal = narrative = table = shortxml = map = true;
 	}
 
 	if (raw) {
@@ -324,6 +403,10 @@ generate_reports(char *base, char *type, SPWAW_SNAPSHOT *snap)
 	if (elaborate) {
 		do_full_complete_report	(snap, rprtbase);
 		do_core_complete_report	(snap, rprtbase);
+	}
+	if (xml) {
+		do_full_xml_report	(snap, rprtbase);
+		do_core_xml_report	(snap, rprtbase);
 	}
 	if (normal) {
 		do_full_short_report	(snap, rprtbase);
@@ -336,6 +419,10 @@ generate_reports(char *base, char *type, SPWAW_SNAPSHOT *snap)
 	if (table) {
 		do_full_table_report	(snap, rprtbase);
 		do_core_table_report	(snap, rprtbase);
+	}
+	if (shortxml) {
+		do_full_shortxml_report	(snap, rprtbase);
+		do_core_shortxml_report	(snap, rprtbase);
 	}
 	if (map) {
 		do_map_dump		(snap, rprtbase);

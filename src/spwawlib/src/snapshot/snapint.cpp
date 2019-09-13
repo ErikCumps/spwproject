@@ -523,6 +523,7 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		p.fp->data.ucnt = 0;
 		p.fp->data.ucnt_core = 0;
 		p.fp->data.ucnt_support = 0;
+		p.fp->data.ucnt_regular = 0;
 	}
 
 	/* Unit/crew linkage */
@@ -706,6 +707,12 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 	/* Fall back to first force unit if force leader not found */
 	if (!bp->leader) bp->leader = &(bp->units.list[0]);
 
+	/* Calculate regular unit counts */
+	for (i=0; i<bp->formations.cnt; i++) {
+		p.fp = &(bp->formations.list[i]);
+		p.fp->data.ucnt_regular = p.fp->data.ucnt - p.fp->data.ucnt_core - p.fp->data.ucnt_support;
+	}
+
 	return (SPWERR_OK);
 }
 
@@ -767,6 +774,7 @@ OOB_build_subforce (SPWAW_SNAP_OOB_FORCE *bp, SPWAW_SNAP_OOB_FORCE *sp, bool cor
 			p.fp->data.ucnt = p.fp->data.ucnt_support;
 			p.fp->data.ucnt_core = 0;
 		}
+		p.fp->data.ucnt_regular = 0;
 		p.fp->data.ulist = safe_nmalloc (SPWAW_SNAP_OOB_UEL*, p.fp->data.ucnt);
 		COOM (p.fp->data.ulist, "SPWAW_SNAP_OOB_UEL* list");
 		for (idx=j=0; j<sp->units.cnt; j++) {

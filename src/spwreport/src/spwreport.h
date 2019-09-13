@@ -25,6 +25,8 @@ extern void	complete_report		(SPWAW_SNAPSHOT *ptr, FILE *rf, bool core);
 extern void	short_report		(SPWAW_SNAPSHOT *ptr, FILE *rf, bool core);
 extern void	narrative_report	(SPWAW_SNAPSHOT *ptr, FILE *rf, bool core);
 extern void	table_report		(SPWAW_SNAPSHOT *ptr, FILE *rf, bool core);
+extern void	xml_report		(SPWAW_SNAPSHOT *ptr, FILE *rf, bool core);
+extern void	shortxml_report		(SPWAW_SNAPSHOT *ptr, FILE *rf, bool core);
 extern void	map_dump		(SPWAW_SNAPSHOT *ptr, FILE *rf);
 
 #endif	/* INTERNAL_REPORT_H */

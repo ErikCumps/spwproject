@@ -92,14 +92,20 @@ report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
 		fprintf (rf, "It has lost %u units.\n", p->formations.list[i].attr.gen.losses);
 		//fprintf (rf, "It has %u losses.\n", p->formations.list[i].attr.gen.losses);
 		fprintf (rf, "It is %3.0f %% ready.\n", p->formations.list[i].attr.gen.ready * 100.0);
-		fprintf (rf, "This formation contains %u units:\n", p->formations.list[i].data.ucnt);
+		fprintf (rf, "This formation contains %u unit%s (%u core, %u support, %u regular):\n",
+			p->formations.list[i].data.ucnt,
+			(p->formations.list[i].data.ucnt==1)?"":"s",
+			p->formations.list[i].data.ucnt_core,
+			p->formations.list[i].data.ucnt_support,
+			p->formations.list[i].data.ucnt_regular);
 		for (j=0; j<p->formations.list[i].data.ucnt; j++) {
 			fprintf (rf, "\tUnit %s: %s (%s/%s)\n",
-			p->formations.list[i].data.ulist[j]->strings.uid,
-			p->formations.list[i].data.ulist[j]->data.dname,
-			p->formations.list[i].data.ulist[j]->strings.utype,
-			p->formations.list[i].data.ulist[j]->strings.uclass);
+				p->formations.list[i].data.ulist[j]->strings.uid,
+				p->formations.list[i].data.ulist[j]->data.dname,
+				p->formations.list[i].data.ulist[j]->strings.utype,
+				p->formations.list[i].data.ulist[j]->strings.uclass);
 
+			fprintf (rf, "\t\tIt is a %s unit.\n", p->formations.list[i].data.ulist[j]->core ? "core" : "support or regular");
 			fprintf (rf, "\t\tIt is lead by %s %s.\n",
 				p->formations.list[i].data.ulist[j]->strings.rank, p->formations.list[i].data.ulist[j]->data.lname);
 			fprintf (rf, "\t\tIt is an %s unit, and it is %s and %s.\n",

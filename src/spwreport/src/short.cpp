@@ -159,11 +159,14 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_F *ptr)
 		fprintf (rf, "\tkills     : %u\n", p->attr.gen.kills);
 		fprintf (rf, "\tlosses    : %u\n", p->attr.gen.losses);
 		fprintf (rf, "\treadiness : %6.2f %%\n", p->attr.gen.ready * 100.0);
-		fprintf (rf, "\tunit count: %u\n", p->data.ucnt);
+		fprintf (rf, "\tunit count: %u (%u core, %u support, %u regular)\n",
+			p->data.ucnt, p->data.ucnt_core, p->data.ucnt_support, p->data.ucnt_regular);
 		fprintf (rf, "\tunit list :\n");
 		for (j=0; j<p->data.ucnt; j++) {
 			if (p->data.ulist[j]->data.aband == SPWAW_ANONE) {
-				fprintf (rf, "\t\t%s %s\n", p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.dname);
+				fprintf (rf, "\t\t%s %s%s\n",
+					p->data.ulist[j]->strings.uid, p->data.ulist[j]->data.dname,
+					p->data.ulist[j]->core ? " (core)" : "");
 			} else {
 				if (p->data.ulist[j]->data.aunit.up) {
 					fprintf (rf, "\t\t%s %s abandoned by %s %s\n",
@@ -203,7 +206,8 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+		fprintf (rf, "%s%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+			p->core?"C":" ",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
@@ -243,7 +247,8 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 			snprintf (posb, sizeof (posb) - 1, "(%3d, %3d)", p->data.posx, p->data.posy);
 		}
 
-		fprintf (rf, "%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+		fprintf (rf, "%s%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
+			p->core?"C":" ",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",

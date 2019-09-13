@@ -162,11 +162,13 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 			fp->data.hcmd.up->strings.uid, fp->data.hcmd.up->data.dname,
 			fp->data.hcmd.up->strings.rank, fp->data.hcmd.up->data.lname);
 
+		fprintf (rf, "\tOOBrid      : %u\n", fp->data.OOBrid);
 		fprintf (rf, "\tstatus      : %u (%s)\n", fp->data.status, fp->strings.status);
 		fprintf (rf, "\tforce status: %u (%s)\n", fp->data.fstatus, fp->strings.fstatus);
 		fprintf (rf, "\torg type    : %s\n", fp->strings.otype);
 		fprintf (rf, "\ttype        : %s\n", fp->strings.type);
-		fprintf (rf, "\tunit count  : %u\n", fp->data.ucnt);
+		fprintf (rf, "\tunit count  : %u (%u core, %u support, %u regular)\n",
+			fp->data.ucnt, fp->data.ucnt_core, fp->data.ucnt_support, fp->data.ucnt_regular);
 		fprintf (rf, "\tunit list   :\n");
 		for (j=0; j<fp->data.ucnt; j++) {
 			up = fp->data.ulist[j];
@@ -234,14 +236,13 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		if ((fp = p->data.formation) == NULL) { fp = p->data.aunit.up->data.formation; }
 		fprintf (rf, "\tformation   : %s: %s %s %s\n",
 			fp->strings.name, fp->strings.status, fp->strings.fstatus, fp->strings.otype);
+		fprintf (rf, "\tcore        : %s\n", p->core ? "yes" : "no");
+		fprintf (rf, "\tdetected as : %u (%s)\n", p->data.dutype, SPWAW_unittype2str (p->data.dutype));
 		fprintf (rf, "\tOOB         : %u (%10.10s)\n", p->data.OOB, p->strings.people);
+		fprintf (rf, "\tOOBrid      : %u\n", p->data.OOBrid);
 		fprintf (rf, "\tunit type   : %u (%s)\n", p->data.utype, p->strings.utype);
 		fprintf (rf, "\tunit class  : %u (%s)\n", p->data.uclass, p->strings.uclass);
 		fprintf (rf, "\tkills       : %u\n", p->data.kills);
-		//fprintf (rf, "\tstatus      : %u (%s) [%d:%s] [%d:%s] [%d:%s]\n", p->data.status, p->strings.status,
-		//	p->data.alive, p->data.alive ? "alive" : "DEAD",
-		//	p->data.lost, p->data.lost ? "LOST" : "available",
-		//	p->data.spotted, p->data.spotted ? "SPOTTED" : "hidden");
 		fprintf (rf, "\tstatus      : %u (%s) [%d:%s] [%d:%s]\n", p->data.status, p->strings.status,
 			p->data.alive, p->data.alive ? "alive" : "DEAD",
 			p->data.spotted, p->data.spotted ? "SPOTTED" : "hidden");
@@ -290,6 +291,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tfire control: %u\n", p->data.fc);
 		fprintf (rf, "\tinfrared    : %u\n", p->data.iv);
 		fprintf (rf, "\tswim        : %u\n", p->data.swim);
+		fprintf (rf, "\tcost        : %u\n", p->data.cost);
 		fprintf (rf, "\ttype group  : %u\n", p->data.UTGidx);
 		fprintf (rf, "\tposition    : (%d, %d)\n", p->data.posx, p->data.posy);
 		fprintf (rf, "\n");
@@ -330,17 +332,17 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fp = p->data.aunit.up->data.formation;
 		fprintf (rf, "\tformation   : %s: %s %s %s\n",
 			fp->strings.name, fp->strings.status, fp->strings.fstatus, fp->strings.otype);
+		fprintf (rf, "\tcore        : %s\n", p->core ? "yes" : "no");
+		fprintf (rf, "\tdetected as : %u (%s)\n", p->data.dutype, SPWAW_unittype2str (p->data.dutype));
 		fprintf (rf, "\tOOB         : %u (%10.10s)\n", p->data.OOB, p->strings.people);
+		fprintf (rf, "\tOOBrid      : %u\n", p->data.OOBrid);
 		fprintf (rf, "\tunit type   : %u (%s)\n", p->data.utype, p->strings.utype);
 		fprintf (rf, "\tunit class  : %u (%s)\n", p->data.uclass, p->strings.uclass);
 		fprintf (rf, "\tkills       : %u\n", p->data.kills);
-		//fprintf (rf, "\tstatus      : %u (%s) [%d:%s] [%d:%s] [%d:%s]\n", p->data.status, p->strings.status,
-		//	p->data.alive, p->data.alive ? "alive" : "DEAD",
-		//	p->data.lost, p->data.lost ? "LOST" : "available",
-		//	p->data.spotted, p->data.spotted ? "SPOTTED" : "hidden");
 		fprintf (rf, "\tstatus      : %u (%s) [%d:%s] [%d:%s]\n", p->data.status, p->strings.status,
 			p->data.alive, p->data.alive ? "alive" : "DEAD",
 			p->data.spotted, p->data.spotted ? "SPOTTED" : "hidden");
+		fprintf (rf, "\tentrenchment: %u (%s)\n", p->data.entr, p->strings.entr);
 		fprintf (rf, "\thead count  : %u (%u left)\n", p->data.hcnt, p->data.hcnt_left);
 		fprintf (rf, "\tdamage      : %u\n", p->data.damage);
 		fprintf (rf, "\tabandoned   : %u\n", p->data.aband);
@@ -380,7 +382,9 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_FORCE *f)
 		fprintf (rf, "\tfire control: %u\n", p->data.fc);
 		fprintf (rf, "\tinfrared    : %u\n", p->data.iv);
 		fprintf (rf, "\tswim        : %u\n", p->data.swim);
+		fprintf (rf, "\tcost        : %u\n", p->data.cost);
 		fprintf (rf, "\ttype group  : %u\n", p->data.UTGidx);
+		fprintf (rf, "\tposition    : (%d, %d)\n", p->data.posx, p->data.posy);
 		fprintf (rf, "\n");
 
 		/* No attributes for crewmen! */

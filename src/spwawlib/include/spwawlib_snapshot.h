@@ -550,6 +550,7 @@ typedef struct s_SPWAW_SNAP_OOB_FEL_DATA {
 	USHORT			ucnt;				/* Unit count							*/
 	USHORT			ucnt_core;			/* Unit count (core units)					*/
 	USHORT			ucnt_support;			/* Unit count (support units)					*/
+	USHORT			ucnt_regular;			/* Unit count (regular units)					*/
 	SPWAW_SNAP_OOB_UEL	**ulist;			/* Unit pointer list						*/
 } SPWAW_SNAP_OOB_FEL_DATA;
 
