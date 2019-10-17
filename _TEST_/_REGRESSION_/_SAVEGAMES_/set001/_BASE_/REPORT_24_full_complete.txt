@@ -121,11 +121,12 @@ Formation count: 24
 #00000 A (FID 00000)
 	leader      : A0 GE Kommandant (Col Reichmann)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 GE Kommandant (Col Reichmann)
 
@@ -154,11 +155,12 @@ Formation count: 24
 #00001 B (FID 00001)
 	leader      : B0 Sturmpionieres (2Lt Telner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 122
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : Engineer Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		B0 Sturmpionieres (2Lt Telner)
 		B1 Sturmpionieres (Sgt Kramer)
@@ -190,11 +192,12 @@ Formation count: 24
 #00002 C (FID 00002)
 	leader      : C0 SdKfz 251/1 HT (1Lt Harmel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 52
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Halftrack Plt 5
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		C0 SdKfz 251/1 HT (1Lt Harmel)
 		C1 SdKfz 251/1 HT (Sgt Bachman)
@@ -227,11 +230,12 @@ Formation count: 24
 #00003 D (FID 00003)
 	leader      : D0 PzKpfw III E (1Lt Kronz)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		D0 PzKpfw III E (1Lt Kronz)
 		D1 PzKpfw III E (Sgt Kramer)
@@ -264,11 +268,12 @@ Formation count: 24
 #00004 E (FID 00004)
 	leader      : E0 PzKpfw III E (1Lt Metzger)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		E0 PzKpfw III E (1Lt Metzger)
 		E1 PzKpfw III E (Sgt Hitzelberger)
@@ -301,11 +306,12 @@ Formation count: 24
 #00005 F (FID 00005)
 	leader      : F0 PzKpfw IV D (1Lt Bruck)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		F0 PzKpfw IV D (1Lt Bruck)
 		F1 PzKpfw IV C (Sgt Hoffman)
@@ -337,11 +343,12 @@ Formation count: 24
 #00006 G (FID 00006)
 	leader      : G0 PzKpfw IV D (1Lt Wittman)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		G0 PzKpfw IV D (1Lt Wittman)
 		G1 PzKpfw IV C (Sgt Kuhns)
@@ -373,11 +380,12 @@ Formation count: 24
 #00007 H (FID 00007)
 	leader      : H0 PzKpfw IV D (1Lt Wirth)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 20
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		H0 PzKpfw IV D (1Lt Wirth)
 		H1 PzKpfw IV D (Sgt Brandt)
@@ -407,11 +415,12 @@ Formation count: 24
 #00008 I (FID 00008)
 	leader      : I0 Kompanie HQ (Cpt Abt)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 106
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : company
 	type        : SS Mot Kp
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		I0 Kompanie HQ (Cpt Abt)
 		I1 SdKfz 251/1 HT (Sgt Lang)
@@ -441,11 +450,12 @@ Formation count: 24
 #00009 J (FID 00009)
 	leader      : J0 ZugKommandant (2Lt Spengler)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		J0 ZugKommandant (2Lt Spengler)
 		J1 SS-VT Gruppe (Sgt Schurz)
@@ -483,11 +493,12 @@ Formation count: 24
 #00010 K (FID 00010)
 	leader      : K0 ZugKommandant (2Lt Funck)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		K0 ZugKommandant (2Lt Funck)
 		K1 SS-VT Gruppe (Sgt Wiedemann)
@@ -525,11 +536,12 @@ Formation count: 24
 #00011 L (FID 00011)
 	leader      : L0 ZugKommandant (2Lt Vebber)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		L0 ZugKommandant (2Lt Vebber)
 		L1 SS-VT Gruppe (Sgt Steinke)
@@ -567,11 +579,12 @@ Formation count: 24
 #00012 M (FID 00012)
 	leader      : M0 88mm auf Zgkw (2Lt Stiegel)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 168
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot AT Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		M0 88mm auf Zgkw (2Lt Stiegel)
 		M1 88mm auf Zgkw (Sgt Boettcher)
@@ -603,11 +616,12 @@ Formation count: 24
 #00013 N (FID 00013)
 	leader      : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 144
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS MMG Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		N0 SS MMG Truppe (2Lt Schultz)
 		N1 SS MMG Truppe (Sgt Rosenberg)
@@ -637,11 +651,12 @@ Formation count: 24
 #00014 O (FID 00014)
 	leader      : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 153
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Mortar Sec
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		O0 Moerser Grp (2Lt Falkenberg)
 		O1 Moerser Grp (Sgt Letzelder)
@@ -672,11 +687,12 @@ Formation count: 24
 #00015 P (FID 00015)
 	leader      : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 103
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Inf Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		P0 sIG33 auf Pz-I (2Lt Eberbach)
 		P1 sIG33 auf Pz-I (Sgt Ziegler)
@@ -708,11 +724,12 @@ Formation count: 24
 #00016 Q (FID 00016)
 	leader      : Q0 PzJg 1 B (2Lt Haeften)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 184
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Motor Flak Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		Q0 PzJg 1 B (2Lt Haeften)
 		Q1 PzJg 1 B (Sgt Brors)
@@ -744,11 +761,12 @@ Formation count: 24
 #00017 R (FID 00017)
 	leader      : R0 SdKfz 6/2 (1Lt Albrecht)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 69
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : SP Flak Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		R0 SdKfz 6/2 (1Lt Albrecht)
 		R1 SdKfz 6/2 (Sgt Schwendt)
@@ -780,11 +798,12 @@ Formation count: 24
 #00018 S (FID 00018)
 	leader      : S0 Motorradfahrer (2Lt Schneider)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		S0 Motorradfahrer (2Lt Schneider)
 		S1 Motorradfahrer (Sgt Meyer)
@@ -815,11 +834,12 @@ Formation count: 24
 #00019 T (FID 00019)
 	leader      : T0 Motorradfahrer (2Lt Brunner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		T0 Motorradfahrer (2Lt Brunner)
 		T1 Motorradfahrer (Sgt Albrecht)
@@ -850,11 +870,12 @@ Formation count: 24
 #00020 U (FID 00020)
 	leader      : U0 Ju 87B Stuka (1Lt Dittrich)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 49
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Luftwaffe
-	unit count  : 2
+	unit count  : 2 (0 core, 2 support, 0 regular)
 	unit list   :
 		U0 Ju 87B Stuka (1Lt Dittrich)
 		U1 Ju 87B Stuka (2Lt Schaub)
@@ -884,11 +905,12 @@ Formation count: 24
 #00021 V (FID 00021)
 	leader      : V0 Ju 88 A-1 (1Lt Boettcher)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 49
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Luftwaffe
-	unit count  : 2
+	unit count  : 2 (0 core, 2 support, 0 regular)
 	unit list   :
 		V0 Ju 88 A-1 (1Lt Boettcher)
 		V1 Ju 88 A-1 (2Lt Weiss)
@@ -918,11 +940,12 @@ Formation count: 24
 #00022 W (FID 00022)
 	leader      : W0 StuG III B (1Lt Eberbach)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 182
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : Sturm Platoon
-	unit count  : 6
+	unit count  : 6 (0 core, 6 support, 0 regular)
 	unit list   :
 		W0 StuG III B (1Lt Eberbach)
 		W1 StuG III B (Sgt Heidrich)
@@ -956,11 +979,12 @@ Formation count: 24
 #00023 X (FID 00023)
 	leader      : X0 StuG III B (1Lt Vogel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 182
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : Sturm Platoon
-	unit count  : 6
+	unit count  : 6 (0 core, 6 support, 0 regular)
 	unit list   :
 		X0 StuG III B (1Lt Vogel)
 		X1 StuG III B (Sgt Harmel)
@@ -1000,7 +1024,10 @@ Unit count: 105
 #00000 (00000:00000,000) A0   GE Kommandant (GE Kommandant)
 	leader      : Reichmann, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -1027,6 +1054,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 189
 	type group  : 0
 	position    : (49, 31)
 
@@ -1037,7 +1065,10 @@ Unit count: 105
 #00001 (00001:00001,000) B0   Sturmpionieres (Sturmpionieres)
 	leader      : Telner, rank 4 (2Lt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -1064,6 +1095,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (25, 21)
 
@@ -1074,7 +1106,10 @@ Unit count: 105
 #00002 (00001:00001,001) B1   Sturmpionieres (Sturmpionieres)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1100,6 +1135,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (9, 24)
 
@@ -1110,7 +1146,10 @@ Unit count: 105
 #00003 (00001:00001,002) B2   Sturmpionieres (Sturmpionieres)
 	leader      : Zimmerman, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -1136,6 +1175,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (22, 20)
 
@@ -1146,7 +1186,10 @@ Unit count: 105
 #00004 (00001:00001,003) B3   Sturmpionieres (Sturmpionieres)
 	leader      : Hudel, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -1172,6 +1215,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (10, 27)
 
@@ -1182,7 +1226,10 @@ Unit count: 105
 #00005 (00002:00002,000) C0   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Harmel, rank 5 (1Lt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -1208,6 +1255,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (49, 31)
 
@@ -1218,7 +1266,10 @@ Unit count: 105
 #00006 (00002:00002,001) C1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Bachman, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1244,6 +1295,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (25, 21)
 
@@ -1254,7 +1306,10 @@ Unit count: 105
 #00007 (00002:00002,002) C2   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Ostendorff, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1280,6 +1335,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (9, 24)
 
@@ -1290,7 +1346,10 @@ Unit count: 105
 #00008 (00002:00002,003) C3   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Gebhart, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -1316,6 +1375,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 20)
 
@@ -1326,7 +1386,10 @@ Unit count: 105
 #00009 (00002:00002,004) C4   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Dittrich, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1352,6 +1415,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (10, 26)
 
@@ -1362,7 +1426,10 @@ Unit count: 105
 #00010 (00003:00003,000) D0   PzKpfw III E (PzKpfw III E)
 	leader      : Kronz, rank 5 (1Lt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -1388,6 +1455,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (25, 30)
 
@@ -1398,7 +1466,10 @@ Unit count: 105
 #00011 (00003:00003,001) D1   PzKpfw III E (PzKpfw III E)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1424,6 +1495,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (23, 28)
 
@@ -1434,7 +1506,10 @@ Unit count: 105
 #00012 (00003:00003,002) D2   PzKpfw III E (PzKpfw III E)
 	leader      : Oertzen, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1460,6 +1535,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (16, 27)
 
@@ -1470,7 +1546,10 @@ Unit count: 105
 #00013 (00003:00003,003) D3   PzKpfw III E (PzKpfw III E)
 	leader      : Hummel, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1496,6 +1575,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (19, 22)
 
@@ -1506,7 +1586,10 @@ Unit count: 105
 #00014 (00003:00003,004) D4   PzKpfw III E (PzKpfw III E)
 	leader      : Strauch, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 14
@@ -1532,6 +1615,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (17, 24)
 
@@ -1542,7 +1626,10 @@ Unit count: 105
 #00015 (00004:00004,000) E0   PzKpfw III E (PzKpfw III E)
 	leader      : Metzger, rank 5 (1Lt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1568,6 +1655,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (31, 9)
 
@@ -1578,7 +1666,10 @@ Unit count: 105
 #00016 (00004:00004,001) E1   PzKpfw III E (PzKpfw III E)
 	leader      : Hitzelberger, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1604,6 +1695,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (25, 16)
 
@@ -1614,7 +1706,10 @@ Unit count: 105
 #00017 (00004:00004,002) E2   PzKpfw III E (PzKpfw III E)
 	leader      : Schirmer, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 16
@@ -1641,6 +1736,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (-1, -1)
 
@@ -1651,7 +1747,10 @@ Unit count: 105
 #00018 (00004:00004,003) E3   PzKpfw III E (PzKpfw III E)
 	leader      : Eberhart, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 9
@@ -1677,6 +1776,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (25, 13)
 
@@ -1687,7 +1787,10 @@ Unit count: 105
 #00019 (00004:00004,004) E4   PzKpfw III E (PzKpfw III E)
 	leader      : Kortenhaus, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -1713,6 +1816,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (22, 16)
 
@@ -1723,7 +1827,10 @@ Unit count: 105
 #00020 (00005:00005,000) F0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Bruck, rank 5 (1Lt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1749,6 +1856,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (18, 27)
 
@@ -1759,7 +1867,10 @@ Unit count: 105
 #00021 (00005:00005,001) F1   PzKpfw IV C (PzKpfw IV C)
 	leader      : Hoffman, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1785,6 +1896,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 5
 	position    : (12, 24)
 
@@ -1795,7 +1907,10 @@ Unit count: 105
 #00022 (00005:00005,002) F2   PzKpfw IV C (PzKpfw IV C)
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -1821,6 +1936,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 5
 	position    : (13, 26)
 
@@ -1831,7 +1947,10 @@ Unit count: 105
 #00023 (00005:00005,003) F3   PzKpfw IV C (PzKpfw IV C)
 	leader      : Hartueb, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1857,6 +1976,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 5
 	position    : (12, 27)
 
@@ -1867,7 +1987,10 @@ Unit count: 105
 #00024 (00006:00006,000) G0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Wittman, rank 5 (1Lt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1893,6 +2016,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (30, 11)
 
@@ -1903,7 +2027,10 @@ Unit count: 105
 #00025 (00006:00006,001) G1   PzKpfw IV C (PzKpfw IV C)
 	leader      : Kuhns, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1929,6 +2056,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 5
 	position    : (14, 20)
 
@@ -1939,7 +2067,10 @@ Unit count: 105
 #00026 (00006:00006,002) G2   PzKpfw IV C (PzKpfw IV C)
 	leader      : Langkeit, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 15
@@ -1965,6 +2096,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 5
 	position    : (9, 25)
 
@@ -1975,7 +2107,10 @@ Unit count: 105
 #00027 (00006:00006,003) G3   PzKpfw IV C (PzKpfw IV C)
 	leader      : Porsch, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 6
@@ -2001,6 +2136,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 5
 	position    : (26, 10)
 
@@ -2011,7 +2147,10 @@ Unit count: 105
 #00028 (00007:00007,000) H0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Wirth, rank 5 (1Lt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -2037,6 +2176,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (49, 33)
 
@@ -2047,7 +2187,10 @@ Unit count: 105
 #00029 (00007:00007,001) H1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Brandt, rank 3 (Sgt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -2073,6 +2216,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (49, 33)
 
@@ -2083,7 +2227,10 @@ Unit count: 105
 #00030 (00008:00008,000) I0   Kompanie HQ (Kompanie HQ)
 	leader      : Abt, rank 6 (Cpt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 38
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -2110,6 +2257,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 6
 	position    : (49, 31)
 
@@ -2120,7 +2268,10 @@ Unit count: 105
 #00031 (00008:00008,001) I1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Lang, rank 3 (Sgt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2146,6 +2297,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (49, 31)
 
@@ -2156,7 +2308,10 @@ Unit count: 105
 #00032 (00009:00009,000) J0   ZugKommandant (ZugKommandant)
 	leader      : Spengler, rank 4 (2Lt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2183,6 +2338,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (26, 24)
 
@@ -2193,7 +2349,10 @@ Unit count: 105
 #00033 (00009:00009,001) J1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schurz, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 7
@@ -2219,6 +2378,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (20, 28)
 
@@ -2229,7 +2389,10 @@ Unit count: 105
 #00034 (00009:00009,002) J2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 7
@@ -2256,6 +2419,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (20, 31)
 
@@ -2266,7 +2430,10 @@ Unit count: 105
 #00035 (00009:00009,003) J3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Weiss, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2293,6 +2460,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (31, 25)
 
@@ -2303,7 +2471,10 @@ Unit count: 105
 #00036 (00009:00009,004) J4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Krogel, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2330,6 +2501,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (23, 26)
 
@@ -2340,7 +2512,10 @@ Unit count: 105
 #00037 (00009:00009,005) J5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2366,6 +2541,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (26, 24)
 
@@ -2376,7 +2552,10 @@ Unit count: 105
 #00038 (00009:00009,006) J6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Rittenhaus, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2402,6 +2581,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (31, 25)
 
@@ -2412,7 +2592,10 @@ Unit count: 105
 #00039 (00009:00009,007) J7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Tychsen, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2438,6 +2621,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (28, 25)
 
@@ -2448,7 +2632,10 @@ Unit count: 105
 #00040 (00009:00009,008) J8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Krafft, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2474,6 +2661,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (23, 26)
 
@@ -2484,7 +2672,10 @@ Unit count: 105
 #00041 (00009:00009,009) J9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Klein, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2510,6 +2701,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (20, 31)
 
@@ -2520,7 +2712,10 @@ Unit count: 105
 #00042 (00010:00010,000) K0   ZugKommandant (ZugKommandant)
 	leader      : Funck, rank 4 (2Lt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2547,6 +2742,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (18, 24)
 
@@ -2557,7 +2753,10 @@ Unit count: 105
 #00043 (00010:00010,001) K1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Wiedemann, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -2584,6 +2783,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (28, 15)
 
@@ -2594,7 +2794,10 @@ Unit count: 105
 #00044 (00010:00010,002) K2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Conkling, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2621,6 +2824,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (30, 10)
 
@@ -2631,7 +2835,10 @@ Unit count: 105
 #00045 (00010:00010,003) K3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Petereit, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -2658,6 +2865,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (26, 15)
 
@@ -2668,7 +2876,10 @@ Unit count: 105
 #00046 (00010:00010,004) K4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schoen, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2695,6 +2906,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (19, 24)
 
@@ -2705,7 +2917,10 @@ Unit count: 105
 #00047 (00010:00010,005) K5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Schaub, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2731,6 +2946,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (18, 24)
 
@@ -2741,7 +2957,10 @@ Unit count: 105
 #00048 (00010:00010,006) K6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Weisbach, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2767,6 +2986,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (28, 15)
 
@@ -2777,7 +2997,10 @@ Unit count: 105
 #00049 (00010:00010,007) K7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 2
@@ -2803,6 +3026,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (30, 10)
 
@@ -2813,7 +3037,10 @@ Unit count: 105
 #00050 (00010:00010,008) K8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Vogel, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2839,6 +3066,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (26, 15)
 
@@ -2849,7 +3077,10 @@ Unit count: 105
 #00051 (00010:00010,009) K9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Musser, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -2875,6 +3106,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 24)
 
@@ -2885,7 +3117,10 @@ Unit count: 105
 #00052 (00011:00011,000) L0   ZugKommandant (ZugKommandant)
 	leader      : Vebber, rank 4 (2Lt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2912,6 +3147,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (23, 39)
 
@@ -2922,7 +3158,10 @@ Unit count: 105
 #00053 (00011:00011,001) L1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Steinke, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -2949,6 +3188,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (21, 33)
 
@@ -2959,7 +3199,10 @@ Unit count: 105
 #00054 (00011:00011,002) L2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schumacher, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 6
@@ -2985,6 +3228,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (20, 35)
 
@@ -2995,7 +3239,10 @@ Unit count: 105
 #00055 (00011:00011,003) L3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Muller, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -3022,6 +3269,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (23, 36)
 
@@ -3032,7 +3280,10 @@ Unit count: 105
 #00056 (00011:00011,004) L4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Becker, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -3058,6 +3309,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (22, 39)
 
@@ -3068,7 +3320,10 @@ Unit count: 105
 #00057 (00011:00011,005) L5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Seibert, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3094,6 +3349,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (23, 39)
 
@@ -3104,7 +3360,10 @@ Unit count: 105
 #00058 (00011:00011,006) L6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Weber, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 2
@@ -3130,6 +3389,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (21, 33)
 
@@ -3140,7 +3400,10 @@ Unit count: 105
 #00059 (00011:00011,007) L7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Kauffman, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3166,6 +3429,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (21, 36)
 
@@ -3176,7 +3440,10 @@ Unit count: 105
 #00060 (00011:00011,008) L8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Stemberger, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3202,6 +3469,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (23, 36)
 
@@ -3212,7 +3480,10 @@ Unit count: 105
 #00061 (00011:00011,009) L9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Vosse, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -3238,6 +3509,7 @@ Unit count: 105
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 38)
 
@@ -3248,7 +3520,10 @@ Unit count: 105
 #00062 (00012:00012,000) M0   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Stiegel, rank 4 (2Lt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 2
@@ -3274,6 +3549,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (24, 20)
 
@@ -3284,7 +3560,10 @@ Unit count: 105
 #00063 (00012:00012,001) M1   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Boettcher, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -3310,6 +3589,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (21, 23)
 
@@ -3320,7 +3600,10 @@ Unit count: 105
 #00064 (00012:00012,002) M2   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Hoernlein, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3346,6 +3629,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (38, 27)
 
@@ -3356,7 +3640,10 @@ Unit count: 105
 #00065 (00012:00012,003) M3   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Schmidt, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 3
@@ -3382,6 +3669,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (18, 27)
 
@@ -3392,7 +3680,10 @@ Unit count: 105
 #00066 (00013:00013,000) N0   SS MMG Truppe (SS MMG Truppe)
 	leader      : Schultz, rank 4 (2Lt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -3419,6 +3710,7 @@ Unit count: 105
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 10
 	position    : (26, 24)
 
@@ -3429,7 +3721,10 @@ Unit count: 105
 #00067 (00013:00013,001) N1   SS MMG Truppe (SS MMG Truppe)
 	leader      : Rosenberg, rank 3 (Sgt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -3456,6 +3751,7 @@ Unit count: 105
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 10
 	position    : (18, 24)
 
@@ -3466,7 +3762,10 @@ Unit count: 105
 #00068 (00014:00014,000) O0   Moerser Grp (Moerser Grp)
 	leader      : Falkenberg, rank 4 (2Lt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3493,6 +3792,7 @@ Unit count: 105
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 11
 	position    : (49, 32)
 
@@ -3503,7 +3803,10 @@ Unit count: 105
 #00069 (00014:00014,001) O1   Moerser Grp (Moerser Grp)
 	leader      : Letzelder, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3530,6 +3833,7 @@ Unit count: 105
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 11
 	position    : (49, 32)
 
@@ -3540,7 +3844,10 @@ Unit count: 105
 #00070 (00014:00014,002) O2   Krupp Kfz 69 (Krupp Kfz 69)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 94
 	unit type   : 243 (medium truck)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3566,6 +3873,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 12
 	position    : (49, 32)
 
@@ -3576,7 +3884,10 @@ Unit count: 105
 #00071 (00015:00015,000) P0   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Eberbach, rank 4 (2Lt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3602,6 +3913,7 @@ Unit count: 105
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (26, 16)
 
@@ -3612,7 +3924,10 @@ Unit count: 105
 #00072 (00015:00015,001) P1   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Ziegler, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3638,6 +3953,7 @@ Unit count: 105
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (27, 20)
 
@@ -3648,7 +3964,10 @@ Unit count: 105
 #00073 (00015:00015,002) P2   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Tost, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3674,6 +3993,7 @@ Unit count: 105
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (22, 24)
 
@@ -3684,7 +4004,10 @@ Unit count: 105
 #00074 (00015:00015,003) P3   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3710,6 +4033,7 @@ Unit count: 105
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (21, 24)
 
@@ -3720,7 +4044,10 @@ Unit count: 105
 #00075 (00016:00016,000) Q0   PzJg 1 B (PzJg 1 B)
 	leader      : Haeften, rank 4 (2Lt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 39
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -3746,6 +4073,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 14
 	position    : (21, 22)
 
@@ -3756,7 +4084,10 @@ Unit count: 105
 #00076 (00016:00016,001) Q1   PzJg 1 B (PzJg 1 B)
 	leader      : Brors, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 39
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 2
@@ -3782,6 +4113,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 14
 	position    : (31, 13)
 
@@ -3792,7 +4124,10 @@ Unit count: 105
 #00077 (00016:00016,002) Q2   PzJg 1 B (PzJg 1 B)
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 39
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3818,6 +4153,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 14
 	position    : (24, 23)
 
@@ -3828,7 +4164,10 @@ Unit count: 105
 #00078 (00016:00016,003) Q3   PzJg 1 B (PzJg 1 B)
 	leader      : Riedmuller, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 39
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3854,6 +4193,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 14
 	position    : (24, 25)
 
@@ -3864,7 +4204,10 @@ Unit count: 105
 #00079 (00017:00017,000) R0   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Albrecht, rank 5 (1Lt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 1
@@ -3890,6 +4233,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (21, 18)
 
@@ -3900,7 +4244,10 @@ Unit count: 105
 #00080 (00017:00017,001) R1   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Schwendt, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 2
@@ -3926,6 +4273,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (19, 27)
 
@@ -3936,7 +4284,10 @@ Unit count: 105
 #00081 (00017:00017,002) R2   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Wagner, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3962,6 +4313,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (20, 27)
 
@@ -3972,7 +4324,10 @@ Unit count: 105
 #00082 (00017:00017,003) R3   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Scherer, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3998,6 +4353,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (21, 20)
 
@@ -4008,7 +4364,10 @@ Unit count: 105
 #00083 (00018:00018,000) S0   Motorradfahrer (Motorradfahrer)
 	leader      : Schneider, rank 4 (2Lt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 13
@@ -4034,6 +4393,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (9, 23)
 
@@ -4044,7 +4404,10 @@ Unit count: 105
 #00084 (00018:00018,001) S1   Motorradfahrer (Motorradfahrer)
 	leader      : Meyer, rank 3 (Sgt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 9
@@ -4070,6 +4433,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (20, 19)
 
@@ -4080,7 +4444,10 @@ Unit count: 105
 #00085 (00018:00018,002) S2   Motorradfahrer (Motorradfahrer)
 	leader      : Steiner, rank 3 (Sgt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 11
@@ -4106,6 +4473,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (8, 39)
 
@@ -4116,7 +4484,10 @@ Unit count: 105
 #00086 (00019:00019,000) T0   Motorradfahrer (Motorradfahrer)
 	leader      : Brunner, rank 4 (2Lt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 5
@@ -4142,6 +4513,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (16, 11)
 
@@ -4152,7 +4524,10 @@ Unit count: 105
 #00087 (00019:00019,001) T1   Motorradfahrer (Motorradfahrer)
 	leader      : Albrecht, rank 3 (Sgt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 1
@@ -4178,6 +4553,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (18, 10)
 
@@ -4188,7 +4564,10 @@ Unit count: 105
 #00088 (00019:00019,002) T2   Motorradfahrer (Motorradfahrer)
 	leader      : Mittelberg, rank 3 (Sgt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 6
@@ -4214,6 +4593,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (27, 12)
 
@@ -4224,7 +4604,10 @@ Unit count: 105
 #00089 (00020:00020,000) U0   Ju 87B Stuka (Ju 87B Stuka)
 	leader      : Dittrich, rank 5 (1Lt)
 	formation   : U: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 189
 	unit type   : 253 (fighter-bomber)
 	unit class  : 11 (air force)
 	kills       : 2
@@ -4250,6 +4633,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 17
 	position    : (-1, -1)
 
@@ -4260,7 +4644,10 @@ Unit count: 105
 #00090 (00020:00020,001) U1   Ju 87B Stuka (Ju 87B Stuka)
 	leader      : Schaub, rank 4 (2Lt)
 	formation   : U: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 189
 	unit type   : 253 (fighter-bomber)
 	unit class  : 11 (air force)
 	kills       : 17
@@ -4286,6 +4673,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 17
 	position    : (-1, -1)
 
@@ -4296,7 +4684,10 @@ Unit count: 105
 #00091 (00021:00021,000) V0   Ju 88 A-1 (Ju 88 A-1)
 	leader      : Boettcher, rank 5 (1Lt)
 	formation   : V: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 207
 	unit type   : 253 (fighter-bomber)
 	unit class  : 11 (air force)
 	kills       : 5
@@ -4322,6 +4713,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 18
 	position    : (-1, -1)
 
@@ -4332,7 +4724,10 @@ Unit count: 105
 #00092 (00021:00021,001) V1   Ju 88 A-1 (Ju 88 A-1)
 	leader      : Weiss, rank 4 (2Lt)
 	formation   : V: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 207
 	unit type   : 253 (fighter-bomber)
 	unit class  : 11 (air force)
 	kills       : 6
@@ -4358,6 +4753,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 18
 	position    : (-1, -1)
 
@@ -4368,7 +4764,10 @@ Unit count: 105
 #00093 (00022:00022,000) W0   StuG III B (StuG III B)
 	leader      : Eberbach, rank 5 (1Lt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -4394,6 +4793,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 19
 	position    : (20, 33)
 
@@ -4404,7 +4804,10 @@ Unit count: 105
 #00094 (00022:00022,001) W1   StuG III B (StuG III B)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -4430,6 +4833,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 19
 	position    : (24, 30)
 
@@ -4440,7 +4844,10 @@ Unit count: 105
 #00095 (00022:00022,002) W2   StuG III B (StuG III B)
 	leader      : Langkeit, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -4466,6 +4873,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 19
 	position    : (21, 33)
 
@@ -4476,7 +4884,10 @@ Unit count: 105
 #00096 (00022:00022,003) W3   Sturmpionieres (Sturmpionieres)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 162
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 4
@@ -4502,6 +4913,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 20
 	position    : (23, 33)
 
@@ -4512,7 +4924,10 @@ Unit count: 105
 #00097 (00022:00022,004) W4   Sturmpionieres (Sturmpionieres)
 	leader      : Stolz, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 162
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -4538,6 +4953,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 20
 	position    : (24, 31)
 
@@ -4548,7 +4964,10 @@ Unit count: 105
 #00098 (00022:00022,005) W5   Sturmpionieres (Sturmpionieres)
 	leader      : Ostendorff, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -4575,6 +4994,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (24, 30)
 
@@ -4585,7 +5005,10 @@ Unit count: 105
 #00099 (00023:00023,000) X0   StuG III B (StuG III B)
 	leader      : Vogel, rank 5 (1Lt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -4611,6 +5034,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 19
 	position    : (35, 34)
 
@@ -4621,7 +5045,10 @@ Unit count: 105
 #00100 (00023:00023,001) X1   StuG III B (StuG III B)
 	leader      : Harmel, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4647,6 +5074,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 19
 	position    : (34, 33)
 
@@ -4657,7 +5085,10 @@ Unit count: 105
 #00101 (00023:00023,002) X2   StuG III B (StuG III B)
 	leader      : Seibert, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 7
@@ -4683,6 +5114,7 @@ Unit count: 105
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 19
 	position    : (22, 32)
 
@@ -4693,7 +5125,10 @@ Unit count: 105
 #00102 (00023:00023,003) X3   Sturmpionieres (Sturmpionieres)
 	leader      : Letzelder, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 162
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -4719,6 +5154,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 20
 	position    : (29, 34)
 
@@ -4729,7 +5165,10 @@ Unit count: 105
 #00103 (00023:00023,004) X4   Sturmpionieres (Sturmpionieres)
 	leader      : Schaub, rank 0 (KIA)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 162
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -4755,6 +5194,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 20
 	position    : (-1, -1)
 
@@ -4765,7 +5205,10 @@ Unit count: 105
 #00104 (00023:00023,005) X5   Sturmpionieres (Sturmpionieres)
 	leader      : Vosse, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -4791,6 +5234,7 @@ Unit count: 105
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (26, 32)
 
@@ -4807,11 +5251,15 @@ Unit count: 1
 #00105 (00004:00004,052) E52  Crewmen
 	leader      : Schirmer, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 2 (CREW)
 	OOB         : 70 (    German)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 16
 	status      : 0 (ready) [1:alive] [0:hidden]
+	entrenchment: 0 (positioned)
 	head count  : 5 (3 left)
 	damage      : 0
 	abandoned   : 2
@@ -4833,7 +5281,9 @@ Unit count: 1
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 52
+	position    : (35, 15)
 
 
 Complete unit statistics report:
@@ -4913,11 +5363,12 @@ Formation count: 57
 #00100 A (FID 00000)
 	leader      : A0 FR Commandant (Col De Pellepoix)
 	higher cmd  : A0 FR Commandant (Col De Pellepoix)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : French HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 FR Commandant (Col De Pellepoix)
 
@@ -4946,11 +5397,12 @@ Formation count: 57
 #00101 B (FID 00001)
 	leader      : B0 Chef Peloton (2Lt De Ville)
 	higher cmd  : B0 Chef Peloton (2Lt De Ville)
+	OOBrid      : 12
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Inf Command Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		B0 Chef Peloton (2Lt De Ville)
 		B1 Section Fusil (Sgt Besson)
@@ -4981,11 +5433,12 @@ Formation count: 57
 #00102 C (FID 00002)
 	leader      : C3 Section Fusil (KIA Beaufre)
 	higher cmd  : B0 Chef Peloton (2Lt De Ville)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		C0 Chef Peloton (KIA Berhelot)
 		C1 Section Fusil (KIA Donati)
@@ -5017,11 +5470,12 @@ Formation count: 57
 #00103 D (FID 00003)
 	leader      : D1 Section Fusil (KIA Barbin)
 	higher cmd  : B0 Chef Peloton (2Lt De Ville)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		D0 Chef Peloton (KIA Gaston)
 		D1 Section Fusil (KIA Barbin)
@@ -5053,11 +5507,12 @@ Formation count: 57
 #00104 E (FID 00004)
 	leader      : E0 Chef Peloton (KIA De Leusse)
 	higher cmd  : B0 Chef Peloton (2Lt De Ville)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		E0 Chef Peloton (KIA De Leusse)
 		E1 Section Fusil (KIA Langlade)
@@ -5089,11 +5544,12 @@ Formation count: 57
 #00105 F (FID 00005)
 	leader      : F2 Section Fusil (KIA Dupre)
 	higher cmd  : B0 Chef Peloton (2Lt De Ville)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		F0 Chef Peloton (KIA Rivoire)
 		F1 Section Fusil (KIA Laurens)
@@ -5125,11 +5581,12 @@ Formation count: 57
 #00106 G (FID 00006)
 	leader      : G0 Chef Peloton (KIA Nicollet)
 	higher cmd  : B0 Chef Peloton (2Lt De Ville)
+	OOBrid      : 83
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : <AI HV INF PLT>
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		G0 Chef Peloton (KIA Nicollet)
 		G1 Demi Sectn LMG (KIA Montagu)
@@ -5162,11 +5619,12 @@ Formation count: 57
 #00107 H (FID 00007)
 	leader      : H0 Panhard 165 TOE (KIA De Clouet)
 	higher cmd  : A0 FR Commandant (Col De Pellepoix)
+	OOBrid      : 14
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : company
 	type        : <<AI GRP 34-42>
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		H0 Panhard 165 TOE (KIA De Clouet) abandoned by lost crew
 
@@ -5195,11 +5653,12 @@ Formation count: 57
 #00108 I (FID 00008)
 	leader      : I0 Camion DCA 25mm (KIA Jacquot)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 119
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : SPAA Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		I0 Camion DCA 25mm (KIA Jacquot) abandoned by lost crew
 		I1 Camion DCA 25mm (KIA La Rue) abandoned by lost crew
@@ -5229,11 +5688,12 @@ Formation count: 57
 #00109 J (FID 00009)
 	leader      : J0 Renault FT 75BS (KIA Chartier)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 106
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : CS Tank Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		J0 Renault FT 75BS (KIA Chartier)
 		J1 Renault FT 75BS (KIA Deveaux)
@@ -5263,11 +5723,12 @@ Formation count: 57
 #00110 K (FID 00010)
 	leader      : K0 Canon 47mm AC (2Lt Comeaux)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 114
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Mot AT Gun Sec
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		K0 Canon 47mm AC (2Lt Comeaux)
 		K1 Canon 47mm AC (KIA Girard) abandoned by lost crew
@@ -5299,11 +5760,12 @@ Formation count: 57
 #00111 L (FID 00011)
 	leader      : L0 Hotchkiss H35+ (KIA Massu)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 99
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Cav Tanks Plt-
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		L0 Hotchkiss H35+ (KIA Massu)
 		L1 Hotchkiss H35+ (KIA Fauvelle) abandoned by lost crew
@@ -5334,11 +5796,12 @@ Formation count: 57
 #00112 M (FID 00012)
 	leader      : M3 Hotchkiss H35+ (KIA Dubois)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 100
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Cav Tanks Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		M0 AMR 35 ZT3 (KIA Bugeaud) abandoned by lost crew
 		M1 Hotchkiss H35+ (KIA Doumerque)
@@ -5371,11 +5834,12 @@ Formation count: 57
 #00113 N (FID 00013)
 	leader      : N0 Renault D1  (KIA Dromard)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 102
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Char D Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		N0 Renault D1  (KIA Dromard)
 		N1 Renault D1  (KIA Archambault)
@@ -5406,11 +5870,12 @@ Formation count: 57
 #00114 O (FID 00014)
 	leader      : O2 Peugeot 202+ (Sgt Toussaint)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 94
 	status      : 2 (support)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Motor Recon
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		O0 Patrouille Recn (KIA Argeneau)
 		O1 Patrouille Recn (KIA Boussaquet)
@@ -5442,11 +5907,12 @@ Formation count: 57
 #00115 P (FID 00015)
 	leader      : P1 Section Dragons (KIA Benoit)
 	higher cmd  : H0 Panhard 165 TOE (KIA De Clouet)
+	OOBrid      : 38
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Dragons S20 Plt
-	unit count  : 8
+	unit count  : 8 (0 core, 0 support, 8 regular)
 	unit list   :
 		P0 Dragons Scouts (KIA La Roche)
 		P1 Section Dragons (KIA Benoit)
@@ -5482,11 +5948,12 @@ Formation count: 57
 #00116 Q (FID 00016)
 	leader      : Q0 Section Mortier (KIA Molines)
 	higher cmd  : A0 FR Commandant (Col De Pellepoix)
+	OOBrid      : 11
 	status      : 2 (support)
 	force status: 5 (elite dedicated artillery)
 	org type    : platoon
 	type        : Hvy Wpns Pltn
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		Q0 Section Mortier (KIA Molines)
 
@@ -5515,11 +5982,12 @@ Formation count: 57
 #00117 R (FID 00017)
 	leader      : R0 75mm Obusier (KIA Mouton)
 	higher cmd  : A0 FR Commandant (Col De Pellepoix)
+	OOBrid      : 23
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : company
 	type        : <<AI ARTILLERY>
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		R0 75mm Obusier (KIA Mouton)
 
@@ -5548,11 +6016,12 @@ Formation count: 57
 #00118 S (FID 00018)
 	leader      : S1 75mm Obusier (KIA Jonnet)
 	higher cmd  : R0 75mm Obusier (KIA Mouton)
+	OOBrid      : 78
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Light Battery
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		S0 75mm Obusier (KIA Dubreuil)
 		S1 75mm Obusier (KIA Jonnet)
@@ -5584,11 +6053,12 @@ Formation count: 57
 #00119 T (FID 00019)
 	leader      : T0 Canon 75mm AC (2Lt Bonnepas)
 	higher cmd  : R0 75mm Obusier (KIA Mouton)
+	OOBrid      : 79
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : AT Gun Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		T0 Canon 75mm AC (2Lt Bonnepas)
 		T1 Canon 75mm AC (Sgt Abrial)
@@ -5618,11 +6088,12 @@ Formation count: 57
 #00120 U (FID 00020)
 	leader      : U1 Section Mortier (KIA Gouraud)
 	higher cmd  : R0 75mm Obusier (KIA Mouton)
+	OOBrid      : 74
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Med Mortar Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		U0 Section Mortier (KIA Descartes)
 		U1 Section Mortier (KIA Gouraud)
@@ -5652,11 +6123,12 @@ Formation count: 57
 #00121 V (FID 00021)
 	leader      : V3 Section Sapeurs (KIA Bernhardt)
 	higher cmd  : R0 75mm Obusier (KIA Mouton)
+	OOBrid      : 98
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : <<AI ENGINEERS>
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		V0 Section Sapeurs (KIA Deveraux)
 		V1 Section Sapeurs (KIA Beaurain)
@@ -5688,11 +6160,12 @@ Formation count: 57
 #00122 W (FID 00022)
 	leader      : W0 Laffly W15 TCC (1Lt Babeaux)
 	higher cmd  : R0 75mm Obusier (KIA Mouton)
+	OOBrid      : 43
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : <<AI SP-AT SEC>
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		W0 Laffly W15 TCC (1Lt Babeaux) abandoned by W50 Crewmen (1Lt Babeaux)
 		W1 Laffly W15 TCC (Sgt Baril) abandoned by W51 Crewmen (Sgt Baril)
@@ -5722,11 +6195,12 @@ Formation count: 57
 #00123 X (FID 00023)
 	leader      : X0 Section Fusil (2Lt Marion)
 	higher cmd  : X0 Section Fusil (2Lt Marion)
+	OOBrid      : 12
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Inf Command Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		X0 Section Fusil (2Lt Marion)
 		X1 Section Mortier (KIA Clements)
@@ -5756,11 +6230,12 @@ Formation count: 57
 #00124 Y (FID 00024)
 	leader      : Y2 Section Fusil (KIA Denain)
 	higher cmd  : X0 Section Fusil (2Lt Marion)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		Y0 Section Fusil (KIA Barbusse)
 		Y1 Section Fusil (KIA Broussard)
@@ -5791,11 +6266,12 @@ Formation count: 57
 #00125 Z (FID 00025)
 	leader      : Z1 Section Fusil (KIA Aubriot)
 	higher cmd  : X0 Section Fusil (2Lt Marion)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		Z0 Section Fusil (KIA Arquette)
 		Z1 Section Fusil (KIA Aubriot)
@@ -5826,11 +6302,12 @@ Formation count: 57
 #00126 AA (FID 00026)
 	leader      : AA0 Section Fusil (KIA Bruneau)
 	higher cmd  : X0 Section Fusil (2Lt Marion)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AA0 Section Fusil (KIA Bruneau)
 		AA1 Section Fusil (KIA Bellefontaine)
@@ -5861,11 +6338,12 @@ Formation count: 57
 #00127 AB (FID 00027)
 	leader      : AB0 Section Fusil (KIA Le Moyne)
 	higher cmd  : X0 Section Fusil (2Lt Marion)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AB0 Section Fusil (KIA Le Moyne)
 		AB1 Section Fusil (KIA Moreau)
@@ -5896,11 +6374,12 @@ Formation count: 57
 #00128 AC (FID 00028)
 	leader      : AC0 Section Mortier (KIA Tessier)
 	higher cmd  : X0 Section Fusil (2Lt Marion)
+	OOBrid      : 83
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : <AI HV INF PLT>
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AC0 Section Mortier (KIA Tessier)
 		AC1 Equipe AntiChar (KIA Boudinot)
@@ -5930,11 +6409,12 @@ Formation count: 57
 #00129 AD (FID 00029)
 	leader      : AD0 Camion DCA 25mm (1Lt Delacroix)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 119
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : SPAA Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AD0 Camion DCA 25mm (1Lt Delacroix)
 		AD1 Camion DCA 25mm (Sgt Marceau)
@@ -5964,11 +6444,12 @@ Formation count: 57
 #00130 AE (FID 00030)
 	leader      : AE0 Renault FT 75BS (KIA Le Blanc)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 106
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : CS Tank Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AE0 Renault FT 75BS (KIA Le Blanc)
 		AE1 Renault FT 75BS (KIA Lajeaunesse)
@@ -5998,11 +6479,12 @@ Formation count: 57
 #00131 AF (FID 00031)
 	leader      : AF1 Renault UE (Sgt Lorusso)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 114
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Mot AT Gun Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AF0 Renault UE (KIA Dumas) abandoned by lost crew
 		AF1 Renault UE (Sgt Lorusso)
@@ -6032,11 +6514,12 @@ Formation count: 57
 #00132 AG (FID 00032)
 	leader      : AG0 Hotchkiss H35+ (KIA Auriol)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 99
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Cav Tanks Plt-
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		AG0 Hotchkiss H35+ (KIA Auriol)
 
@@ -6065,11 +6548,12 @@ Formation count: 57
 #00133 AH (FID 00033)
 	leader      : AH0 Hotchkiss H35+ (KIA De Nemours)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 100
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Cav Tanks Plt
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		AH0 Hotchkiss H35+ (KIA De Nemours) abandoned by lost crew
 
@@ -6098,11 +6582,12 @@ Formation count: 57
 #00134 AI (FID 00034)
 	leader      : AI1 Renault D2 (KIA Durand)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 102
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Char D Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AI0 Renault D2 (KIA Boileau)
 		AI1 Renault D2 (KIA Durand)
@@ -6133,11 +6618,12 @@ Formation count: 57
 #00135 AJ (FID 00035)
 	leader      : AJ2 Peugeot 202+ (Sgt Jonnet)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 94
 	status      : 2 (support)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Motor Recon
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		AJ0 FF Patrouille (KIA Dubreuil)
 		AJ1 FF Patrouille (KIA Bineau)
@@ -6169,11 +6655,12 @@ Formation count: 57
 #00136 AK (FID 00036)
 	leader      : AK0 Dragons Scouts (KIA Meunier)
 	higher cmd  : AD0 Camion DCA 25mm (1Lt Delacroix)
+	OOBrid      : 38
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Dragons S20 Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AK0 Dragons Scouts (KIA Meunier)
 		AK1 Laffly S20TL (KIA Corbin)
@@ -6206,11 +6693,12 @@ Formation count: 57
 #00137 AL (FID 00037)
 	leader      : AL3 Renault R35 (Sgt Bugeaud)
 	higher cmd  : AL0 Renault R35 (KIA Lenoir)
+	OOBrid      : 104
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Lt Tank Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AL0 Renault R35 (KIA Lenoir)
 		AL1 Renault R35 (KIA Moreau)
@@ -6243,11 +6731,12 @@ Formation count: 57
 #00138 AM (FID 00038)
 	leader      : AM0 Renault D1  (KIA Aubriot)
 	higher cmd  : AL0 Renault R35 (KIA Lenoir)
+	OOBrid      : 102
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Char D Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AM0 Renault D1  (KIA Aubriot) abandoned by lost crew
 		AM1 Renault D1  (KIA Benoit) abandoned by lost crew
@@ -6278,11 +6767,12 @@ Formation count: 57
 #00139 AN (FID 00039)
 	leader      : AN0 Renault D2 (KIA Bonnepas)
 	higher cmd  : AL0 Renault R35 (KIA Lenoir)
+	OOBrid      : 102
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Char D Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AN0 Renault D2 (KIA Bonnepas)
 		AN1 Renault D2 (KIA Joliet) abandoned by lost crew
@@ -6313,11 +6803,12 @@ Formation count: 57
 #00140 AO (FID 00040)
 	leader      : AO1 Renault B1bis (KIA Langlade)
 	higher cmd  : AL0 Renault R35 (KIA Lenoir)
+	OOBrid      : 108
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Char B Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AO0 Renault B1bis (KIA Girard) abandoned by lost crew
 		AO1 Renault B1bis (KIA Langlade)
@@ -6348,11 +6839,12 @@ Formation count: 57
 #00141 AP (FID 00041)
 	leader      : AP1 FF Patrouille (KIA Dupre)
 	higher cmd  : AL0 Renault R35 (KIA Lenoir)
+	OOBrid      : 94
 	status      : 2 (support)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Motor Recon
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AP0 FF Patrouille (KIA Dumas)
 		AP1 FF Patrouille (KIA Dupre)
@@ -6382,11 +6874,12 @@ Formation count: 57
 #00142 AQ (FID 00042)
 	leader      : AQ0 Section Fusil (KIA De Leusse)
 	higher cmd  : AQ0 Section Fusil (KIA De Leusse)
+	OOBrid      : 12
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Inf Command Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AQ0 Section Fusil (KIA De Leusse)
 		AQ1 Section Mortier (KIA Durand)
@@ -6416,11 +6909,12 @@ Formation count: 57
 #00143 AR (FID 00043)
 	leader      : AR0 Section Fusil (KIA Sevigny)
 	higher cmd  : AQ0 Section Fusil (KIA De Leusse)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AR0 Section Fusil (KIA Sevigny)
 		AR1 Section Fusil (KIA Comeaux)
@@ -6451,11 +6945,12 @@ Formation count: 57
 #00144 AS (FID 00044)
 	leader      : AS0 Section Fusil (KIA Argeneau)
 	higher cmd  : AQ0 Section Fusil (KIA De Leusse)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AS0 Section Fusil (KIA Argeneau)
 		AS1 Section Fusil (KIA Fauvelle)
@@ -6486,11 +6981,12 @@ Formation count: 57
 #00145 AT (FID 00045)
 	leader      : AT0 Section Fusil (KIA Beaufre)
 	higher cmd  : AQ0 Section Fusil (KIA De Leusse)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AT0 Section Fusil (KIA Beaufre)
 		AT1 Section Fusil (KIA Boudinot)
@@ -6521,11 +7017,12 @@ Formation count: 57
 #00146 AU (FID 00046)
 	leader      : AU2 Section Fusil (KIA Archambault)
 	higher cmd  : AQ0 Section Fusil (KIA De Leusse)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AU0 Section Fusil (KIA Marquette)
 		AU1 Section Fusil (KIA Argeneau)
@@ -6556,11 +7053,12 @@ Formation count: 57
 #00147 AV (FID 00047)
 	leader      : AV0 Section Mortier (KIA Broussard)
 	higher cmd  : AQ0 Section Fusil (KIA De Leusse)
+	OOBrid      : 83
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : <AI HV INF PLT>
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AV0 Section Mortier (KIA Broussard)
 		AV1 Equipe Fusil AC (KIA Faneuil)
@@ -6590,11 +7088,12 @@ Formation count: 57
 #00148 AW (FID 00048)
 	leader      : AW0 Section Fusil (2Lt De Virien)
 	higher cmd  : AW0 Section Fusil (2Lt De Virien)
+	OOBrid      : 12
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Inf Command Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AW0 Section Fusil (2Lt De Virien)
 		AW1 Section Mortier (KIA Argeneau)
@@ -6624,11 +7123,12 @@ Formation count: 57
 #00149 AX (FID 00049)
 	leader      : AX0 Section Fusil (2Lt Thibodeaux)
 	higher cmd  : AW0 Section Fusil (2Lt De Virien)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AX0 Section Fusil (2Lt Thibodeaux)
 		AX1 Section Fusil (KIA Gaston)
@@ -6659,11 +7159,12 @@ Formation count: 57
 #00150 AY (FID 00050)
 	leader      : AY0 Section Fusil (KIA Benoit)
 	higher cmd  : AW0 Section Fusil (2Lt De Virien)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AY0 Section Fusil (KIA Benoit)
 		AY1 Section Fusil (KIA Aubriot)
@@ -6694,11 +7195,12 @@ Formation count: 57
 #00151 AZ (FID 00051)
 	leader      : AZ0 Section Fusil (KIA Baudouin)
 	higher cmd  : AW0 Section Fusil (2Lt De Virien)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AZ0 Section Fusil (KIA Baudouin)
 		AZ1 Section Fusil (KIA Le Claire)
@@ -6729,11 +7231,12 @@ Formation count: 57
 #00152 BA (FID 00052)
 	leader      : BA1 Section Fusil (KIA Massu)
 	higher cmd  : AW0 Section Fusil (2Lt De Virien)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		BA0 Section Fusil (KIA Besson)
 		BA1 Section Fusil (KIA Massu)
@@ -6764,11 +7267,12 @@ Formation count: 57
 #00153 BB (FID 00053)
 	leader      : BB0 Section Mortier (KIA Laurens)
 	higher cmd  : AW0 Section Fusil (2Lt De Virien)
+	OOBrid      : 83
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : <AI HV INF PLT>
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		BB0 Section Mortier (KIA Laurens)
 		BB1 Equipe AntiChar (KIA Benoit)
@@ -6798,11 +7302,12 @@ Formation count: 57
 #00154 BC (FID 00054)
 	leader      : BC0 Section Fusil (2Lt Aubriot)
 	higher cmd  : BC0 Section Fusil (2Lt Aubriot)
+	OOBrid      : 12
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Inf Command Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		BC0 Section Fusil (2Lt Aubriot)
 		BC1 Section Mortier (KIA La Roche)
@@ -6832,11 +7337,12 @@ Formation count: 57
 #00155 BD (FID 00055)
 	leader      : BD1 Section Fusil (KIA Donati)
 	higher cmd  : BC0 Section Fusil (2Lt Aubriot)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		BD0 Section Fusil (KIA Bineau)
 		BD1 Section Fusil (KIA Donati)
@@ -6867,11 +7373,12 @@ Formation count: 57
 #00156 BE (FID 00056)
 	leader      : BE0 Section Fusil (2Lt Lorusso)
 	higher cmd  : BC0 Section Fusil (2Lt Aubriot)
+	OOBrid      : 5
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infanterie Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		BE0 Section Fusil (2Lt Lorusso)
 		BE1 Section Fusil (Sgt Nicollet)
@@ -6908,7 +7415,10 @@ Unit count: 165
 #00400 (00100:00000,000) A0   FR Commandant (FR Commandant)
 	leader      : De Pellepoix, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 238
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6934,6 +7444,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 187
 	type group  : 21
 	position    : (13, 11)
 
@@ -6944,7 +7455,10 @@ Unit count: 165
 #00401 (00101:00001,000) B0   Chef Peloton (Chef Peloton)
 	leader      : De Ville, rank 4 (2Lt)
 	formation   : B: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 219
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6970,6 +7484,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 22
 	position    : (23, 10)
 
@@ -6980,7 +7495,10 @@ Unit count: 165
 #00402 (00101:00001,001) B1   Section Fusil (Section Fusil)
 	leader      : Besson, rank 3 (Sgt)
 	formation   : B: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7006,6 +7524,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (24, 10)
 
@@ -7016,7 +7535,10 @@ Unit count: 165
 #00403 (00101:00001,002) B2   Section Mortier (Section Mortier)
 	leader      : Faneuil, rank 3 (Sgt)
 	formation   : B: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -7042,6 +7564,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (24, 11)
 
@@ -7052,7 +7575,10 @@ Unit count: 165
 #00404 (00102:00002,000) C0   Chef Peloton (Chef Peloton)
 	leader      : Berhelot, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 219
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7078,6 +7604,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 22
 	position    : (-1, -1)
 
@@ -7088,7 +7615,10 @@ Unit count: 165
 #00405 (00102:00002,001) C1   Section Fusil (Section Fusil)
 	leader      : Donati, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7114,6 +7644,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7124,7 +7655,10 @@ Unit count: 165
 #00406 (00102:00002,002) C2   Section Fusil (Section Fusil)
 	leader      : Bonnet, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7150,6 +7684,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7160,7 +7695,10 @@ Unit count: 165
 #00407 (00102:00002,003) C3   Section Fusil (Section Fusil)
 	leader      : Beaufre, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7186,6 +7724,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7196,7 +7735,10 @@ Unit count: 165
 #00408 (00103:00003,000) D0   Chef Peloton (Chef Peloton)
 	leader      : Gaston, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 219
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7222,6 +7764,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 22
 	position    : (-1, -1)
 
@@ -7232,7 +7775,10 @@ Unit count: 165
 #00409 (00103:00003,001) D1   Section Fusil (Section Fusil)
 	leader      : Barbin, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7258,6 +7804,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7268,7 +7815,10 @@ Unit count: 165
 #00410 (00103:00003,002) D2   Section Fusil (Section Fusil)
 	leader      : La Salle, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7294,6 +7844,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7304,7 +7855,10 @@ Unit count: 165
 #00411 (00103:00003,003) D3   Section Fusil (Section Fusil)
 	leader      : Meunier, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7330,6 +7884,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7340,7 +7895,10 @@ Unit count: 165
 #00412 (00104:00004,000) E0   Chef Peloton (Chef Peloton)
 	leader      : De Leusse, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 219
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7366,6 +7924,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 22
 	position    : (-1, -1)
 
@@ -7376,7 +7935,10 @@ Unit count: 165
 #00413 (00104:00004,001) E1   Section Fusil (Section Fusil)
 	leader      : Langlade, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7402,6 +7964,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7412,7 +7975,10 @@ Unit count: 165
 #00414 (00104:00004,002) E2   Section Fusil (Section Fusil)
 	leader      : Lenoir, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7438,6 +8004,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7448,7 +8015,10 @@ Unit count: 165
 #00415 (00104:00004,003) E3   Section Fusil (Section Fusil)
 	leader      : Freneau, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7474,6 +8044,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7484,7 +8055,10 @@ Unit count: 165
 #00416 (00105:00005,000) F0   Chef Peloton (Chef Peloton)
 	leader      : Rivoire, rank 0 (KIA)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 219
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7510,6 +8084,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 22
 	position    : (-1, -1)
 
@@ -7520,7 +8095,10 @@ Unit count: 165
 #00417 (00105:00005,001) F1   Section Fusil (Section Fusil)
 	leader      : Laurens, rank 0 (KIA)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7546,6 +8124,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7556,7 +8135,10 @@ Unit count: 165
 #00418 (00105:00005,002) F2   Section Fusil (Section Fusil)
 	leader      : Dupre, rank 0 (KIA)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7582,6 +8164,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7592,7 +8175,10 @@ Unit count: 165
 #00419 (00105:00005,003) F3   Section Fusil (Section Fusil)
 	leader      : Joliet, rank 0 (KIA)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7618,6 +8204,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7628,7 +8215,10 @@ Unit count: 165
 #00420 (00106:00006,000) G0   Chef Peloton (Chef Peloton)
 	leader      : Nicollet, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 219
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7654,6 +8244,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 22
 	position    : (-1, -1)
 
@@ -7664,7 +8255,10 @@ Unit count: 165
 #00421 (00106:00006,001) G1   Demi Sectn LMG (Demi Sectn LMG)
 	leader      : Montagu, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 144
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7690,6 +8284,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 25
 	position    : (-1, -1)
 
@@ -7700,7 +8295,10 @@ Unit count: 165
 #00422 (00106:00006,002) G2   Demi Sectn VB (Demi Sectn VB)
 	leader      : Blanchard, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 145
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7726,6 +8324,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 13
 	type group  : 26
 	position    : (-1, -1)
 
@@ -7736,7 +8335,10 @@ Unit count: 165
 #00423 (00106:00006,003) G3   Section Mortier (Section Mortier)
 	leader      : Dejardins, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -7763,6 +8365,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -7773,7 +8376,10 @@ Unit count: 165
 #00424 (00106:00006,004) G4   Equipe AntiChar (Equipe AntiChar)
 	leader      : Boighut, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 30
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7799,6 +8405,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7809,7 +8416,10 @@ Unit count: 165
 #00425 (00107:00007,000) H0   Panhard 165 TOE (Panhard 165 TOE)
 	leader      : De Clouet, rank 0 (KIA)
 	formation   : H: support elite company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 73
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7836,6 +8446,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 33
 	type group  : 28
 	position    : (-1, -1)
 
@@ -7846,7 +8457,10 @@ Unit count: 165
 #00426 (00108:00008,000) I0   Camion DCA 25mm (Camion DCA 25mm)
 	leader      : Jacquot, rank 0 (KIA)
 	formation   : I: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 57
 	unit type   : 191 (AA gun truck)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -7873,6 +8487,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 29
 	position    : (-1, -1)
 
@@ -7883,7 +8498,10 @@ Unit count: 165
 #00427 (00108:00008,001) I1   Camion DCA 25mm (Camion DCA 25mm)
 	leader      : La Rue, rank 0 (KIA)
 	formation   : I: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 57
 	unit type   : 191 (AA gun truck)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -7910,6 +8528,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 29
 	position    : (-1, -1)
 
@@ -7920,7 +8539,10 @@ Unit count: 165
 #00428 (00109:00009,000) J0   Renault FT 75BS (Renault FT 75BS)
 	leader      : Chartier, rank 0 (KIA)
 	formation   : J: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 50
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -7946,6 +8568,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 30
 	position    : (-1, -1)
 
@@ -7956,7 +8579,10 @@ Unit count: 165
 #00429 (00109:00009,001) J1   Renault FT 75BS (Renault FT 75BS)
 	leader      : Deveaux, rank 0 (KIA)
 	formation   : J: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 50
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -7982,6 +8608,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 30
 	position    : (-1, -1)
 
@@ -7992,7 +8619,10 @@ Unit count: 165
 #00430 (00110:00010,000) K0   Canon 47mm AC (Canon 47mm AC)
 	leader      : Comeaux, rank 4 (2Lt)
 	formation   : K: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 20
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8018,6 +8648,7 @@ Unit count: 165
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 31
 	type group  : 31
 	position    : (9, 34)
 
@@ -8028,7 +8659,10 @@ Unit count: 165
 #00431 (00110:00010,001) K1   Canon 47mm AC (Canon 47mm AC)
 	leader      : Girard, rank 0 (KIA)
 	formation   : K: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 20
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8055,6 +8689,7 @@ Unit count: 165
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 31
 	type group  : 31
 	position    : (-1, -1)
 
@@ -8065,7 +8700,10 @@ Unit count: 165
 #00432 (00110:00010,002) K2   Renault UE (Renault UE)
 	leader      : Le Claire, rank 0 (KIA)
 	formation   : K: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 229
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -8091,6 +8729,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 32
 	position    : (-1, -1)
 
@@ -8101,7 +8740,10 @@ Unit count: 165
 #00433 (00110:00010,003) K3   Renault UE (Renault UE)
 	leader      : Lavoie, rank 0 (KIA)
 	formation   : K: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 229
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -8127,6 +8769,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 32
 	position    : (-1, -1)
 
@@ -8137,7 +8780,10 @@ Unit count: 165
 #00434 (00111:00011,000) L0   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Massu, rank 0 (KIA)
 	formation   : L: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8163,6 +8809,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -8173,7 +8820,10 @@ Unit count: 165
 #00435 (00111:00011,001) L1   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Fauvelle, rank 0 (KIA)
 	formation   : L: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8200,6 +8850,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (32, 23)
 
@@ -8210,7 +8861,10 @@ Unit count: 165
 #00436 (00111:00011,002) L2   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Barthou, rank 0 (KIA)
 	formation   : L: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8236,6 +8890,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -8246,7 +8901,10 @@ Unit count: 165
 #00437 (00112:00012,000) M0   AMR 35 ZT3 (AMR 35 ZT3)
 	leader      : Bugeaud, rank 0 (KIA)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 62
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8273,6 +8931,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 34
 	position    : (-1, -1)
 
@@ -8283,7 +8942,10 @@ Unit count: 165
 #00438 (00112:00012,001) M1   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Doumerque, rank 0 (KIA)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8309,6 +8971,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -8319,7 +8982,10 @@ Unit count: 165
 #00439 (00112:00012,002) M2   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Quebre, rank 0 (KIA)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8345,6 +9011,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -8355,7 +9022,10 @@ Unit count: 165
 #00440 (00112:00012,003) M3   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Dubois, rank 0 (KIA)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8381,6 +9051,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -8391,7 +9062,10 @@ Unit count: 165
 #00441 (00112:00012,004) M4   Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Marquette, rank 0 (KIA)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8417,6 +9091,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -8427,7 +9102,10 @@ Unit count: 165
 #00442 (00113:00013,000) N0   Renault D1  (Renault D1 )
 	leader      : Dromard, rank 0 (KIA)
 	formation   : N: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 12
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8453,6 +9131,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 35
 	position    : (-1, -1)
 
@@ -8463,7 +9142,10 @@ Unit count: 165
 #00443 (00113:00013,001) N1   Renault D1  (Renault D1 )
 	leader      : Archambault, rank 0 (KIA)
 	formation   : N: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 12
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8489,6 +9171,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 35
 	position    : (-1, -1)
 
@@ -8499,7 +9182,10 @@ Unit count: 165
 #00444 (00113:00013,002) N2   Renault D1  (Renault D1 )
 	leader      : Lantaigne, rank 0 (KIA)
 	formation   : N: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 12
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8526,6 +9212,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 35
 	position    : (-1, -1)
 
@@ -8536,7 +9223,10 @@ Unit count: 165
 #00445 (00114:00014,000) O0   Patrouille Recn (Patrouille Recn)
 	leader      : Argeneau, rank 0 (KIA)
 	formation   : O: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 240
 	unit type   : 212 (scout)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8562,6 +9252,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 36
 	position    : (-1, -1)
 
@@ -8572,7 +9263,10 @@ Unit count: 165
 #00446 (00114:00014,001) O1   Patrouille Recn (Patrouille Recn)
 	leader      : Boussaquet, rank 0 (KIA)
 	formation   : O: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 240
 	unit type   : 212 (scout)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8598,6 +9292,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 36
 	position    : (-1, -1)
 
@@ -8608,7 +9303,10 @@ Unit count: 165
 #00447 (00114:00014,002) O2   Peugeot 202+ (Peugeot 202+)
 	leader      : Toussaint, rank 3 (Sgt)
 	formation   : O: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 210
 	unit type   : 275 (utility vehicle)
 	unit class  : 14 (other)
 	kills       : 0
@@ -8635,6 +9333,7 @@ Unit count: 165
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 37
 	position    : (-1, -1)
 
@@ -8645,7 +9344,10 @@ Unit count: 165
 #00448 (00114:00014,003) O3   Peugeot 202+ (Peugeot 202+)
 	leader      : De Pasquale, rank 0 (KIA)
 	formation   : O: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 210
 	unit type   : 275 (utility vehicle)
 	unit class  : 14 (other)
 	kills       : 0
@@ -8672,6 +9374,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 37
 	position    : (-1, -1)
 
@@ -8682,7 +9385,10 @@ Unit count: 165
 #00449 (00115:00015,000) P0   Dragons Scouts (Dragons Scouts)
 	leader      : La Roche, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 202
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8708,6 +9414,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 38
 	position    : (-1, -1)
 
@@ -8718,7 +9425,10 @@ Unit count: 165
 #00450 (00115:00015,001) P1   Section Dragons (Section Dragons)
 	leader      : Benoit, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 139
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8744,6 +9454,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 39
 	position    : (-1, -1)
 
@@ -8754,7 +9465,10 @@ Unit count: 165
 #00451 (00115:00015,002) P2   Section Dragons (Section Dragons)
 	leader      : Catroux, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 139
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8780,6 +9494,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 39
 	position    : (-1, -1)
 
@@ -8790,7 +9505,10 @@ Unit count: 165
 #00452 (00115:00015,003) P3   Section Dragons (Section Dragons)
 	leader      : Boudreau, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 139
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8816,6 +9534,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 39
 	position    : (-1, -1)
 
@@ -8826,7 +9545,10 @@ Unit count: 165
 #00453 (00115:00015,004) P4   Laffly S20TL (Laffly S20TL)
 	leader      : Dampierre, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -8852,6 +9574,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -8862,7 +9585,10 @@ Unit count: 165
 #00454 (00115:00015,005) P5   Laffly S20TL (Laffly S20TL)
 	leader      : Corbin, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -8888,6 +9614,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -8898,7 +9625,10 @@ Unit count: 165
 #00455 (00115:00015,006) P6   Laffly S20TL (Laffly S20TL)
 	leader      : Guillot, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -8924,6 +9654,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -8934,7 +9665,10 @@ Unit count: 165
 #00456 (00115:00015,007) P7   Laffly S20TL (Laffly S20TL)
 	leader      : Bineau, rank 0 (KIA)
 	formation   : P: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -8960,6 +9694,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -8970,7 +9705,10 @@ Unit count: 165
 #00457 (00116:00016,000) Q0   Section Mortier (Section Mortier)
 	leader      : Molines, rank 0 (KIA)
 	formation   : Q: support elite dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 18
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -8996,6 +9734,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 27
 	type group  : 41
 	position    : (-1, -1)
 
@@ -9006,7 +9745,10 @@ Unit count: 165
 #00458 (00117:00017,000) R0   75mm Obusier (75mm Obusier)
 	leader      : Mouton, rank 0 (KIA)
 	formation   : R: core elite company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 32
 	unit type   : 163 (howitzer)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9032,6 +9774,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 45
 	type group  : 42
 	position    : (-1, -1)
 
@@ -9042,7 +9785,10 @@ Unit count: 165
 #00459 (00118:00018,000) S0   75mm Obusier (75mm Obusier)
 	leader      : Dubreuil, rank 0 (KIA)
 	formation   : S: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 32
 	unit type   : 163 (howitzer)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9068,6 +9814,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 45
 	type group  : 42
 	position    : (-1, -1)
 
@@ -9078,7 +9825,10 @@ Unit count: 165
 #00460 (00118:00018,001) S1   75mm Obusier (75mm Obusier)
 	leader      : Jonnet, rank 0 (KIA)
 	formation   : S: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 32
 	unit type   : 163 (howitzer)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9104,6 +9854,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 45
 	type group  : 42
 	position    : (-1, -1)
 
@@ -9114,7 +9865,10 @@ Unit count: 165
 #00461 (00118:00018,002) S2   75mm Obusier (75mm Obusier)
 	leader      : De Virien, rank 0 (KIA)
 	formation   : S: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 32
 	unit type   : 163 (howitzer)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9140,6 +9894,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 45
 	type group  : 42
 	position    : (-1, -1)
 
@@ -9150,7 +9905,10 @@ Unit count: 165
 #00462 (00118:00018,003) S3   75mm Obusier (75mm Obusier)
 	leader      : Requa, rank 0 (KIA)
 	formation   : S: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 32
 	unit type   : 163 (howitzer)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9176,6 +9934,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 45
 	type group  : 42
 	position    : (-1, -1)
 
@@ -9186,7 +9945,10 @@ Unit count: 165
 #00463 (00119:00019,000) T0   Canon 75mm AC (Canon 75mm AC)
 	leader      : Bonnepas, rank 4 (2Lt)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 22
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9212,6 +9974,7 @@ Unit count: 165
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 38
 	type group  : 43
 	position    : (6, 29)
 
@@ -9222,7 +9985,10 @@ Unit count: 165
 #00464 (00119:00019,001) T1   Canon 75mm AC (Canon 75mm AC)
 	leader      : Abrial, rank 3 (Sgt)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 22
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9248,6 +10014,7 @@ Unit count: 165
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 38
 	type group  : 43
 	position    : (7, 28)
 
@@ -9258,7 +10025,10 @@ Unit count: 165
 #00465 (00120:00020,000) U0   Section Mortier (Section Mortier)
 	leader      : Descartes, rank 0 (KIA)
 	formation   : U: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 18
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9284,6 +10054,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 27
 	type group  : 41
 	position    : (-1, -1)
 
@@ -9294,7 +10065,10 @@ Unit count: 165
 #00466 (00120:00020,001) U1   Section Mortier (Section Mortier)
 	leader      : Gouraud, rank 0 (KIA)
 	formation   : U: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 18
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9320,6 +10094,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 27
 	type group  : 41
 	position    : (-1, -1)
 
@@ -9330,7 +10105,10 @@ Unit count: 165
 #00467 (00121:00021,000) V0   Section Sapeurs (Section Sapeurs)
 	leader      : Deveraux, rank 0 (KIA)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 117
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9356,6 +10134,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 25
 	type group  : 44
 	position    : (-1, -1)
 
@@ -9366,7 +10145,10 @@ Unit count: 165
 #00468 (00121:00021,001) V1   Section Sapeurs (Section Sapeurs)
 	leader      : Beaurain, rank 0 (KIA)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 117
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9392,6 +10174,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 25
 	type group  : 44
 	position    : (-1, -1)
 
@@ -9402,7 +10185,10 @@ Unit count: 165
 #00469 (00121:00021,002) V2   Section Sapeurs (Section Sapeurs)
 	leader      : Baudouin, rank 0 (KIA)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 117
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9428,6 +10214,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 25
 	type group  : 44
 	position    : (-1, -1)
 
@@ -9438,7 +10225,10 @@ Unit count: 165
 #00470 (00121:00021,003) V3   Section Sapeurs (Section Sapeurs)
 	leader      : Bernhardt, rank 0 (KIA)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 117
 	unit type   : 13 (engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9464,6 +10254,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 25
 	type group  : 44
 	position    : (-1, -1)
 
@@ -9474,7 +10265,10 @@ Unit count: 165
 #00471 (00122:00022,000) W0   Laffly W15 TCC (Laffly W15 TCC)
 	leader      : Babeaux, rank 5 (1Lt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 60
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9501,6 +10295,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 45
 	position    : (-1, -1)
 
@@ -9511,7 +10306,10 @@ Unit count: 165
 #00472 (00122:00022,001) W1   Laffly W15 TCC (Laffly W15 TCC)
 	leader      : Baril, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 60
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9538,6 +10336,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 45
 	position    : (-1, -1)
 
@@ -9548,7 +10347,10 @@ Unit count: 165
 #00473 (00123:00023,000) X0   Section Fusil (Section Fusil)
 	leader      : Marion, rank 4 (2Lt)
 	formation   : X: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9574,6 +10376,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (21, 14)
 
@@ -9584,7 +10387,10 @@ Unit count: 165
 #00474 (00123:00023,001) X1   Section Mortier (Section Mortier)
 	leader      : Clements, rank 0 (KIA)
 	formation   : X: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9610,6 +10416,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -9620,7 +10427,10 @@ Unit count: 165
 #00475 (00124:00024,000) Y0   Section Fusil (Section Fusil)
 	leader      : Barbusse, rank 0 (KIA)
 	formation   : Y: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9646,6 +10456,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9656,7 +10467,10 @@ Unit count: 165
 #00476 (00124:00024,001) Y1   Section Fusil (Section Fusil)
 	leader      : Broussard, rank 0 (KIA)
 	formation   : Y: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9682,6 +10496,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9692,7 +10507,10 @@ Unit count: 165
 #00477 (00124:00024,002) Y2   Section Fusil (Section Fusil)
 	leader      : Denain, rank 0 (KIA)
 	formation   : Y: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -9718,6 +10536,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9728,7 +10547,10 @@ Unit count: 165
 #00478 (00125:00025,000) Z0   Section Fusil (Section Fusil)
 	leader      : Arquette, rank 0 (KIA)
 	formation   : Z: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9754,6 +10576,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9764,7 +10587,10 @@ Unit count: 165
 #00479 (00125:00025,001) Z1   Section Fusil (Section Fusil)
 	leader      : Aubriot, rank 0 (KIA)
 	formation   : Z: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9790,6 +10616,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9800,7 +10627,10 @@ Unit count: 165
 #00480 (00125:00025,002) Z2   Section Fusil (Section Fusil)
 	leader      : Thibodeaux, rank 0 (KIA)
 	formation   : Z: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9826,6 +10656,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9836,7 +10667,10 @@ Unit count: 165
 #00481 (00126:00026,000) AA0  Section Fusil (Section Fusil)
 	leader      : Bruneau, rank 0 (KIA)
 	formation   : AA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9862,6 +10696,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9872,7 +10707,10 @@ Unit count: 165
 #00482 (00126:00026,001) AA1  Section Fusil (Section Fusil)
 	leader      : Bellefontaine, rank 0 (KIA)
 	formation   : AA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9898,6 +10736,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9908,7 +10747,10 @@ Unit count: 165
 #00483 (00126:00026,002) AA2  Section Fusil (Section Fusil)
 	leader      : Arneau, rank 0 (KIA)
 	formation   : AA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9934,6 +10776,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9944,7 +10787,10 @@ Unit count: 165
 #00484 (00127:00027,000) AB0  Section Fusil (Section Fusil)
 	leader      : Le Moyne, rank 0 (KIA)
 	formation   : AB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9970,6 +10816,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9980,7 +10827,10 @@ Unit count: 165
 #00485 (00127:00027,001) AB1  Section Fusil (Section Fusil)
 	leader      : Moreau, rank 0 (KIA)
 	formation   : AB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -10006,6 +10856,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -10016,7 +10867,10 @@ Unit count: 165
 #00486 (00127:00027,002) AB2  Section Fusil (Section Fusil)
 	leader      : Sevigny, rank 0 (KIA)
 	formation   : AB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -10042,6 +10896,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -10052,7 +10907,10 @@ Unit count: 165
 #00487 (00128:00028,000) AC0  Section Mortier (Section Mortier)
 	leader      : Tessier, rank 0 (KIA)
 	formation   : AC: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -10078,6 +10936,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -10088,7 +10947,10 @@ Unit count: 165
 #00488 (00128:00028,001) AC1  Equipe AntiChar (Equipe AntiChar)
 	leader      : Boudinot, rank 0 (KIA)
 	formation   : AC: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 30
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -10114,6 +10976,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 27
 	position    : (-1, -1)
 
@@ -10124,7 +10987,10 @@ Unit count: 165
 #00489 (00129:00029,000) AD0  Camion DCA 25mm (Camion DCA 25mm)
 	leader      : Delacroix, rank 5 (1Lt)
 	formation   : AD: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 57
 	unit type   : 191 (AA gun truck)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -10150,6 +11016,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 29
 	position    : (10, 20)
 
@@ -10160,7 +11027,10 @@ Unit count: 165
 #00490 (00129:00029,001) AD1  Camion DCA 25mm (Camion DCA 25mm)
 	leader      : Marceau, rank 3 (Sgt)
 	formation   : AD: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 57
 	unit type   : 191 (AA gun truck)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -10186,6 +11056,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 29
 	position    : (10, 17)
 
@@ -10196,7 +11067,10 @@ Unit count: 165
 #00491 (00130:00030,000) AE0  Renault FT 75BS (Renault FT 75BS)
 	leader      : Le Blanc, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 50
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10222,6 +11096,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 30
 	position    : (-1, -1)
 
@@ -10232,7 +11107,10 @@ Unit count: 165
 #00492 (00130:00030,001) AE1  Renault FT 75BS (Renault FT 75BS)
 	leader      : Lajeaunesse, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 50
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10258,6 +11136,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 30
 	position    : (-1, -1)
 
@@ -10268,7 +11147,10 @@ Unit count: 165
 #00493 (00131:00031,000) AF0  Renault UE (Renault UE)
 	leader      : Dumas, rank 0 (KIA)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 229
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -10295,6 +11177,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 32
 	position    : (-1, -1)
 
@@ -10305,7 +11188,10 @@ Unit count: 165
 #00494 (00131:00031,001) AF1  Renault UE (Renault UE)
 	leader      : Lorusso, rank 3 (Sgt)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 229
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -10331,6 +11217,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 32
 	position    : (23, 8)
 
@@ -10341,7 +11228,10 @@ Unit count: 165
 #00495 (00132:00032,000) AG0  Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : Auriol, rank 0 (KIA)
 	formation   : AG: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10367,6 +11257,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -10377,7 +11268,10 @@ Unit count: 165
 #00496 (00133:00033,000) AH0  Hotchkiss H35+ (Hotchkiss H35+)
 	leader      : De Nemours, rank 0 (KIA)
 	formation   : AH: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 118
 	unit type   : 111 (main battle tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10404,6 +11298,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 60
 	type group  : 33
 	position    : (-1, -1)
 
@@ -10414,7 +11309,10 @@ Unit count: 165
 #00497 (00134:00034,000) AI0  Renault D2 (Renault D2)
 	leader      : Boileau, rank 0 (KIA)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 64
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10440,6 +11338,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 64
 	type group  : 46
 	position    : (-1, -1)
 
@@ -10450,7 +11349,10 @@ Unit count: 165
 #00498 (00134:00034,001) AI1  Renault D2 (Renault D2)
 	leader      : Durand, rank 0 (KIA)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 64
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -10476,6 +11378,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 64
 	type group  : 46
 	position    : (-1, -1)
 
@@ -10486,7 +11389,10 @@ Unit count: 165
 #00499 (00134:00034,002) AI2  Renault D2 (Renault D2)
 	leader      : Montagu, rank 0 (KIA)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 64
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10512,6 +11418,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 64
 	type group  : 46
 	position    : (-1, -1)
 
@@ -10522,7 +11429,10 @@ Unit count: 165
 #00500 (00135:00035,000) AJ0  FF Patrouille (FF Patrouille)
 	leader      : Dubreuil, rank 0 (KIA)
 	formation   : AJ: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 245
 	unit type   : 212 (scout)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -10548,6 +11458,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 47
 	position    : (-1, -1)
 
@@ -10558,7 +11469,10 @@ Unit count: 165
 #00501 (00135:00035,001) AJ1  FF Patrouille (FF Patrouille)
 	leader      : Bineau, rank 0 (KIA)
 	formation   : AJ: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 245
 	unit type   : 212 (scout)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -10584,6 +11498,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 47
 	position    : (-1, -1)
 
@@ -10594,7 +11509,10 @@ Unit count: 165
 #00502 (00135:00035,002) AJ2  Peugeot 202+ (Peugeot 202+)
 	leader      : Jonnet, rank 3 (Sgt)
 	formation   : AJ: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 210
 	unit type   : 275 (utility vehicle)
 	unit class  : 14 (other)
 	kills       : 0
@@ -10621,6 +11539,7 @@ Unit count: 165
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 37
 	position    : (-1, -1)
 
@@ -10631,7 +11550,10 @@ Unit count: 165
 #00503 (00135:00035,003) AJ3  Peugeot 202+ (Peugeot 202+)
 	leader      : Fauvelle, rank 0 (KIA)
 	formation   : AJ: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 210
 	unit type   : 275 (utility vehicle)
 	unit class  : 14 (other)
 	kills       : 0
@@ -10657,6 +11579,7 @@ Unit count: 165
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 37
 	position    : (-1, -1)
 
@@ -10667,7 +11590,10 @@ Unit count: 165
 #00504 (00136:00036,000) AK0  Dragons Scouts (Dragons Scouts)
 	leader      : Meunier, rank 0 (KIA)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 202
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -10693,6 +11619,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 38
 	position    : (-1, -1)
 
@@ -10703,7 +11630,10 @@ Unit count: 165
 #00505 (00136:00036,001) AK1  Laffly S20TL (Laffly S20TL)
 	leader      : Corbin, rank 0 (KIA)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -10729,6 +11659,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -10739,7 +11670,10 @@ Unit count: 165
 #00506 (00136:00036,002) AK2  Laffly S20TL (Laffly S20TL)
 	leader      : Besson, rank 0 (KIA)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -10765,6 +11699,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -10775,7 +11710,10 @@ Unit count: 165
 #00507 (00136:00036,003) AK3  Laffly S20TL (Laffly S20TL)
 	leader      : Archambault, rank 0 (KIA)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -10802,6 +11740,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -10812,7 +11751,10 @@ Unit count: 165
 #00508 (00136:00036,004) AK4  Laffly S20TL (Laffly S20TL)
 	leader      : Laurens, rank 0 (KIA)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 48
 	unit type   : 136 (wheeled APC)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -10838,6 +11780,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 40
 	position    : (-1, -1)
 
@@ -10848,7 +11791,10 @@ Unit count: 165
 #00509 (00137:00037,000) AL0  Renault R35 (Renault R35)
 	leader      : Lenoir, rank 0 (KIA)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 2
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10874,6 +11820,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 48
 	position    : (-1, -1)
 
@@ -10884,7 +11831,10 @@ Unit count: 165
 #00510 (00137:00037,001) AL1  Renault R35 (Renault R35)
 	leader      : Moreau, rank 0 (KIA)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 2
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10910,6 +11860,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 48
 	position    : (-1, -1)
 
@@ -10920,7 +11871,10 @@ Unit count: 165
 #00511 (00137:00037,002) AL2  Renault R35 (Renault R35)
 	leader      : Auriol, rank 0 (KIA)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 2
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10946,6 +11900,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 48
 	position    : (-1, -1)
 
@@ -10956,7 +11911,10 @@ Unit count: 165
 #00512 (00137:00037,003) AL3  Renault R35 (Renault R35)
 	leader      : Bugeaud, rank 3 (Sgt)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 2
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -10982,6 +11940,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 48
 	position    : (10, 28)
 
@@ -10992,7 +11951,10 @@ Unit count: 165
 #00513 (00137:00037,004) AL4  Renault R35 (Renault R35)
 	leader      : Beaurain, rank 3 (Sgt)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 2
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11018,6 +11980,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 48
 	position    : (11, 31)
 
@@ -11028,7 +11991,10 @@ Unit count: 165
 #00514 (00138:00038,000) AM0  Renault D1  (Renault D1 )
 	leader      : Aubriot, rank 0 (KIA)
 	formation   : AM: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 12
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11055,6 +12021,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 35
 	position    : (-1, -1)
 
@@ -11065,7 +12032,10 @@ Unit count: 165
 #00515 (00138:00038,001) AM1  Renault D1  (Renault D1 )
 	leader      : Benoit, rank 0 (KIA)
 	formation   : AM: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 12
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11092,6 +12062,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 35
 	position    : (-1, -1)
 
@@ -11102,7 +12073,10 @@ Unit count: 165
 #00516 (00138:00038,002) AM2  Renault D1  (Renault D1 )
 	leader      : Boudreau, rank 0 (KIA)
 	formation   : AM: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 12
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11128,6 +12102,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 35
 	position    : (-1, -1)
 
@@ -11138,7 +12113,10 @@ Unit count: 165
 #00517 (00139:00039,000) AN0  Renault D2 (Renault D2)
 	leader      : Bonnepas, rank 0 (KIA)
 	formation   : AN: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 64
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11164,6 +12142,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 64
 	type group  : 46
 	position    : (-1, -1)
 
@@ -11174,7 +12153,10 @@ Unit count: 165
 #00518 (00139:00039,001) AN1  Renault D2 (Renault D2)
 	leader      : Joliet, rank 0 (KIA)
 	formation   : AN: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 64
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11201,6 +12183,7 @@ Unit count: 165
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 64
 	type group  : 46
 	position    : (-1, -1)
 
@@ -11211,7 +12194,10 @@ Unit count: 165
 #00519 (00139:00039,002) AN2  Renault D2 (Renault D2)
 	leader      : De Virien, rank 0 (KIA)
 	formation   : AN: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 64
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11237,6 +12223,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 64
 	type group  : 46
 	position    : (-1, -1)
 
@@ -11247,7 +12234,10 @@ Unit count: 165
 #00520 (00140:00040,000) AO0  Renault B1bis (Renault B1bis)
 	leader      : Girard, rank 0 (KIA)
 	formation   : AO: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 9
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11274,6 +12264,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 113
 	type group  : 49
 	position    : (-1, -1)
 
@@ -11284,7 +12275,10 @@ Unit count: 165
 #00521 (00140:00040,001) AO1  Renault B1bis (Renault B1bis)
 	leader      : Langlade, rank 0 (KIA)
 	formation   : AO: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 9
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11310,6 +12304,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 113
 	type group  : 49
 	position    : (-1, -1)
 
@@ -11320,7 +12315,10 @@ Unit count: 165
 #00522 (00140:00040,002) AO2  Renault B1bis (Renault B1bis)
 	leader      : Bonnet, rank 0 (KIA)
 	formation   : AO: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 9
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -11347,6 +12345,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 113
 	type group  : 49
 	position    : (-1, -1)
 
@@ -11357,7 +12356,10 @@ Unit count: 165
 #00523 (00141:00041,000) AP0  FF Patrouille (FF Patrouille)
 	leader      : Dumas, rank 0 (KIA)
 	formation   : AP: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 245
 	unit type   : 212 (scout)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -11383,6 +12385,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 47
 	position    : (-1, -1)
 
@@ -11393,7 +12396,10 @@ Unit count: 165
 #00524 (00141:00041,001) AP1  FF Patrouille (FF Patrouille)
 	leader      : Dupre, rank 0 (KIA)
 	formation   : AP: support recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 245
 	unit type   : 212 (scout)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -11419,6 +12425,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 47
 	position    : (-1, -1)
 
@@ -11429,7 +12436,10 @@ Unit count: 165
 #00525 (00142:00042,000) AQ0  Section Fusil (Section Fusil)
 	leader      : De Leusse, rank 0 (KIA)
 	formation   : AQ: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11455,6 +12465,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11465,7 +12476,10 @@ Unit count: 165
 #00526 (00142:00042,001) AQ1  Section Mortier (Section Mortier)
 	leader      : Durand, rank 0 (KIA)
 	formation   : AQ: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -11491,6 +12505,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -11501,7 +12516,10 @@ Unit count: 165
 #00527 (00143:00043,000) AR0  Section Fusil (Section Fusil)
 	leader      : Sevigny, rank 0 (KIA)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11527,6 +12545,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11537,7 +12556,10 @@ Unit count: 165
 #00528 (00143:00043,001) AR1  Section Fusil (Section Fusil)
 	leader      : Comeaux, rank 0 (KIA)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11563,6 +12585,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11573,7 +12596,10 @@ Unit count: 165
 #00529 (00143:00043,002) AR2  Section Fusil (Section Fusil)
 	leader      : Donati, rank 0 (KIA)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11599,6 +12625,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11609,7 +12636,10 @@ Unit count: 165
 #00530 (00144:00044,000) AS0  Section Fusil (Section Fusil)
 	leader      : Argeneau, rank 0 (KIA)
 	formation   : AS: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11635,6 +12665,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11645,7 +12676,10 @@ Unit count: 165
 #00531 (00144:00044,001) AS1  Section Fusil (Section Fusil)
 	leader      : Fauvelle, rank 0 (KIA)
 	formation   : AS: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11671,6 +12705,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11681,7 +12716,10 @@ Unit count: 165
 #00532 (00144:00044,002) AS2  Section Fusil (Section Fusil)
 	leader      : Bonnet, rank 0 (KIA)
 	formation   : AS: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11707,6 +12745,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11717,7 +12756,10 @@ Unit count: 165
 #00533 (00145:00045,000) AT0  Section Fusil (Section Fusil)
 	leader      : Beaufre, rank 0 (KIA)
 	formation   : AT: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11743,6 +12785,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11753,7 +12796,10 @@ Unit count: 165
 #00534 (00145:00045,001) AT1  Section Fusil (Section Fusil)
 	leader      : Boudinot, rank 0 (KIA)
 	formation   : AT: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11779,6 +12825,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11789,7 +12836,10 @@ Unit count: 165
 #00535 (00145:00045,002) AT2  Section Fusil (Section Fusil)
 	leader      : Sevigny, rank 0 (KIA)
 	formation   : AT: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11815,6 +12865,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11825,7 +12876,10 @@ Unit count: 165
 #00536 (00146:00046,000) AU0  Section Fusil (Section Fusil)
 	leader      : Marquette, rank 0 (KIA)
 	formation   : AU: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11851,6 +12905,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11861,7 +12916,10 @@ Unit count: 165
 #00537 (00146:00046,001) AU1  Section Fusil (Section Fusil)
 	leader      : Argeneau, rank 0 (KIA)
 	formation   : AU: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11887,6 +12945,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11897,7 +12956,10 @@ Unit count: 165
 #00538 (00146:00046,002) AU2  Section Fusil (Section Fusil)
 	leader      : Archambault, rank 0 (KIA)
 	formation   : AU: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -11923,6 +12985,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -11933,7 +12996,10 @@ Unit count: 165
 #00539 (00147:00047,000) AV0  Section Mortier (Section Mortier)
 	leader      : Broussard, rank 0 (KIA)
 	formation   : AV: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -11959,6 +13025,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -11969,7 +13036,10 @@ Unit count: 165
 #00540 (00147:00047,001) AV1  Equipe Fusil AC (Equipe Fusil AC)
 	leader      : Faneuil, rank 0 (KIA)
 	formation   : AV: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 131
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -11995,6 +13065,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 7
 	type group  : 50
 	position    : (-1, -1)
 
@@ -12005,7 +13076,10 @@ Unit count: 165
 #00541 (00148:00048,000) AW0  Section Fusil (Section Fusil)
 	leader      : De Virien, rank 4 (2Lt)
 	formation   : AW: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12031,6 +13105,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (18, 20)
 
@@ -12041,7 +13116,10 @@ Unit count: 165
 #00542 (00148:00048,001) AW1  Section Mortier (Section Mortier)
 	leader      : Argeneau, rank 0 (KIA)
 	formation   : AW: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -12067,6 +13145,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -12077,7 +13156,10 @@ Unit count: 165
 #00543 (00149:00049,000) AX0  Section Fusil (Section Fusil)
 	leader      : Thibodeaux, rank 4 (2Lt)
 	formation   : AX: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12103,6 +13185,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (18, 33)
 
@@ -12113,7 +13196,10 @@ Unit count: 165
 #00544 (00149:00049,001) AX1  Section Fusil (Section Fusil)
 	leader      : Gaston, rank 0 (KIA)
 	formation   : AX: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12139,6 +13225,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12149,7 +13236,10 @@ Unit count: 165
 #00545 (00149:00049,002) AX2  Section Fusil (Section Fusil)
 	leader      : Thibodeaux, rank 0 (KIA)
 	formation   : AX: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12175,6 +13265,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12185,7 +13276,10 @@ Unit count: 165
 #00546 (00150:00050,000) AY0  Section Fusil (Section Fusil)
 	leader      : Benoit, rank 0 (KIA)
 	formation   : AY: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12211,6 +13305,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12221,7 +13316,10 @@ Unit count: 165
 #00547 (00150:00050,001) AY1  Section Fusil (Section Fusil)
 	leader      : Aubriot, rank 0 (KIA)
 	formation   : AY: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12247,6 +13345,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12257,7 +13356,10 @@ Unit count: 165
 #00548 (00150:00050,002) AY2  Section Fusil (Section Fusil)
 	leader      : Freneau, rank 0 (KIA)
 	formation   : AY: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12283,6 +13385,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12293,7 +13396,10 @@ Unit count: 165
 #00549 (00151:00051,000) AZ0  Section Fusil (Section Fusil)
 	leader      : Baudouin, rank 0 (KIA)
 	formation   : AZ: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12319,6 +13425,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12329,7 +13436,10 @@ Unit count: 165
 #00550 (00151:00051,001) AZ1  Section Fusil (Section Fusil)
 	leader      : Le Claire, rank 0 (KIA)
 	formation   : AZ: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12355,6 +13465,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12365,7 +13476,10 @@ Unit count: 165
 #00551 (00151:00051,002) AZ2  Section Fusil (Section Fusil)
 	leader      : La Rue, rank 0 (KIA)
 	formation   : AZ: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12391,6 +13505,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12401,7 +13516,10 @@ Unit count: 165
 #00552 (00152:00052,000) BA0  Section Fusil (Section Fusil)
 	leader      : Besson, rank 0 (KIA)
 	formation   : BA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -12427,6 +13545,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12437,7 +13556,10 @@ Unit count: 165
 #00553 (00152:00052,001) BA1  Section Fusil (Section Fusil)
 	leader      : Massu, rank 0 (KIA)
 	formation   : BA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12463,6 +13585,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12473,7 +13596,10 @@ Unit count: 165
 #00554 (00152:00052,002) BA2  Section Fusil (Section Fusil)
 	leader      : La Salle, rank 0 (KIA)
 	formation   : BA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12499,6 +13625,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12509,7 +13636,10 @@ Unit count: 165
 #00555 (00153:00053,000) BB0  Section Mortier (Section Mortier)
 	leader      : Laurens, rank 0 (KIA)
 	formation   : BB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -12535,6 +13665,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -12545,7 +13676,10 @@ Unit count: 165
 #00556 (00153:00053,001) BB1  Equipe AntiChar (Equipe AntiChar)
 	leader      : Benoit, rank 0 (KIA)
 	formation   : BB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 30
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -12571,6 +13705,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 27
 	position    : (-1, -1)
 
@@ -12581,7 +13716,10 @@ Unit count: 165
 #00557 (00154:00054,000) BC0  Section Fusil (Section Fusil)
 	leader      : Aubriot, rank 4 (2Lt)
 	formation   : BC: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12607,6 +13745,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (14, 30)
 
@@ -12617,7 +13756,10 @@ Unit count: 165
 #00558 (00154:00054,001) BC1  Section Mortier (Section Mortier)
 	leader      : La Roche, rank 0 (KIA)
 	formation   : BC: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 17
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -12643,6 +13785,7 @@ Unit count: 165
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 24
 	position    : (-1, -1)
 
@@ -12653,7 +13796,10 @@ Unit count: 165
 #00559 (00155:00055,000) BD0  Section Fusil (Section Fusil)
 	leader      : Bineau, rank 0 (KIA)
 	formation   : BD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12679,6 +13825,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12689,7 +13836,10 @@ Unit count: 165
 #00560 (00155:00055,001) BD1  Section Fusil (Section Fusil)
 	leader      : Donati, rank 0 (KIA)
 	formation   : BD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12715,6 +13865,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12725,7 +13876,10 @@ Unit count: 165
 #00561 (00155:00055,002) BD2  Section Fusil (Section Fusil)
 	leader      : Baudouin, rank 0 (KIA)
 	formation   : BD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12751,6 +13905,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12761,7 +13916,10 @@ Unit count: 165
 #00562 (00156:00056,000) BE0  Section Fusil (Section Fusil)
 	leader      : Lorusso, rank 4 (2Lt)
 	formation   : BE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12787,6 +13945,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (18, 33)
 
@@ -12797,7 +13956,10 @@ Unit count: 165
 #00563 (00156:00056,001) BE1  Section Fusil (Section Fusil)
 	leader      : Nicollet, rank 3 (Sgt)
 	formation   : BE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12823,6 +13985,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (18, 31)
 
@@ -12833,7 +13996,10 @@ Unit count: 165
 #00564 (00156:00056,002) BE2  Section Fusil (Section Fusil)
 	leader      : De Virien, rank 0 (KIA)
 	formation   : BE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 76 (    French)
+	OOBrid      : 24
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -12859,6 +14025,7 @@ Unit count: 165
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 23
 	position    : (-1, -1)
 
@@ -12875,11 +14042,15 @@ Unit count: 4
 #00566 (00114:00014,052) O52  Crewmen
 	leader      : Toussaint, rank 3 (Sgt)
 	formation   : O: support recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 76 (    French)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 1 (pinned) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 2 (1 left)
 	damage      : 1
 	abandoned   : 2
@@ -12901,16 +14072,22 @@ Unit count: 4
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 51
+	position    : (12, 29)
 
 #00568 (00122:00022,050) W50  Crewmen
 	leader      : Babeaux, rank 5 (1Lt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 76 (    French)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 6 (4 left)
 	damage      : 0
 	abandoned   : 2
@@ -12932,16 +14109,22 @@ Unit count: 4
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 51
+	position    : (7, 25)
 
 #00565 (00122:00022,051) W51  Crewmen
 	leader      : Baril, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 76 (    French)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 2 (retreating) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 6 (6 left)
 	damage      : 0
 	abandoned   : 2
@@ -12963,16 +14146,22 @@ Unit count: 4
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 51
+	position    : (8, 24)
 
 #00567 (00135:00035,052) AJ52 Crewmen
 	leader      : Jonnet, rank 3 (Sgt)
 	formation   : AJ: support recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 76 (    French)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 0 (ready) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 2 (2 left)
 	damage      : 0
 	abandoned   : 2
@@ -12994,7 +14183,9 @@ Unit count: 4
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 51
+	position    : (15, 30)
 
 
 Complete unit statistics report:

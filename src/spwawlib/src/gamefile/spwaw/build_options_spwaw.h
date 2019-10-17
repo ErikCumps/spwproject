@@ -36,6 +36,9 @@
 /* Set to 1 to assume unverified units to be SPAU */
 #define	EXP_SPWAW_AUTOSPAU	0
 
+/* Set to 1 to assume unverified units in core formations to be core for campaign battles */
+#define	EXP_SPWAW_AUTOCMPCR	0
+
 #include "gamefile/common_gamedata_handling.h"
 
 extern COMMON_HANDLING_OPTIONS	spwaw_handling_options;

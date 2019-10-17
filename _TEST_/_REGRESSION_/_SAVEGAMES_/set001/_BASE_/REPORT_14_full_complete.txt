@@ -121,11 +121,12 @@ Formation count: 24
 #00000 A (FID 00000)
 	leader      : A0 GE Kommandant (Col Reichmann)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 GE Kommandant (Col Reichmann)
 
@@ -154,11 +155,12 @@ Formation count: 24
 #00001 B (FID 00001)
 	leader      : B0 Sturmpionieres (2Lt Telner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 122
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : Engineer Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		B0 Sturmpionieres (2Lt Telner)
 		B1 Sturmpionieres (Sgt Kramer)
@@ -190,11 +192,12 @@ Formation count: 24
 #00002 C (FID 00002)
 	leader      : C0 SdKfz 251/1 HT (1Lt Harmel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 52
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Halftrack Plt 5
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		C0 SdKfz 251/1 HT (1Lt Harmel)
 		C1 SdKfz 251/1 HT (Sgt Bachman)
@@ -227,11 +230,12 @@ Formation count: 24
 #00003 D (FID 00003)
 	leader      : D0 PzKpfw III E (1Lt Kronz)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		D0 PzKpfw III E (1Lt Kronz)
 		D1 PzKpfw III E (Sgt Kramer)
@@ -264,11 +268,12 @@ Formation count: 24
 #00004 E (FID 00004)
 	leader      : E0 PzKpfw III E (1Lt Metzger)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		E0 PzKpfw III E (1Lt Metzger)
 		E1 PzKpfw III E (Sgt Hitzelberger)
@@ -301,11 +306,12 @@ Formation count: 24
 #00005 F (FID 00005)
 	leader      : F0 PzKpfw IV C (1Lt Bruck)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		F0 PzKpfw IV C (1Lt Bruck)
 		F1 PzKpfw IV C (Sgt Hoffman)
@@ -337,11 +343,12 @@ Formation count: 24
 #00006 G (FID 00006)
 	leader      : G0 PzKpfw IV C (1Lt Wittman)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		G0 PzKpfw IV C (1Lt Wittman)
 		G1 PzKpfw IV C (Sgt Kuhns)
@@ -373,11 +380,12 @@ Formation count: 24
 #00007 H (FID 00007)
 	leader      : H0 PzKpfw IV C (1Lt Wirth)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 20
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		H0 PzKpfw IV C (1Lt Wirth)
 		H1 PzKpfw IV C (Sgt Brandt)
@@ -407,11 +415,12 @@ Formation count: 24
 #00008 I (FID 00008)
 	leader      : I0 Kompanie HQ (Cpt Abt)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 106
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : company
 	type        : SS Mot Kp
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		I0 Kompanie HQ (Cpt Abt)
 		I1 SdKfz 251/1 HT (Sgt Lang)
@@ -441,11 +450,12 @@ Formation count: 24
 #00009 J (FID 00009)
 	leader      : J0 ZugKommandant (2Lt Spengler)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		J0 ZugKommandant (2Lt Spengler)
 		J1 SS-VT Gruppe (Sgt Schurz)
@@ -483,11 +493,12 @@ Formation count: 24
 #00010 K (FID 00010)
 	leader      : K0 ZugKommandant (2Lt Funck)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		K0 ZugKommandant (2Lt Funck)
 		K1 SS-VT Gruppe (Sgt Wiedemann)
@@ -525,11 +536,12 @@ Formation count: 24
 #00011 L (FID 00011)
 	leader      : L0 ZugKommandant (2Lt Vebber)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		L0 ZugKommandant (2Lt Vebber)
 		L1 SS-VT Gruppe (Sgt Steinke)
@@ -567,11 +579,12 @@ Formation count: 24
 #00012 M (FID 00012)
 	leader      : M0 88mm auf Zgkw (2Lt Stiegel)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 168
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot AT Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		M0 88mm auf Zgkw (2Lt Stiegel)
 		M1 88mm auf Zgkw (Sgt Boettcher)
@@ -603,11 +616,12 @@ Formation count: 24
 #00013 N (FID 00013)
 	leader      : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 144
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS MMG Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		N0 SS MMG Truppe (2Lt Schultz)
 		N1 SS MMG Truppe (Sgt Rosenberg)
@@ -637,11 +651,12 @@ Formation count: 24
 #00014 O (FID 00014)
 	leader      : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 153
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Mortar Sec
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		O0 Moerser Grp (2Lt Falkenberg)
 		O1 Moerser Grp (Sgt Letzelder)
@@ -672,11 +687,12 @@ Formation count: 24
 #00015 P (FID 00015)
 	leader      : P0 150mm Inf Gun (2Lt Eberbach)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 103
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Inf Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		P0 150mm Inf Gun (2Lt Eberbach)
 		P1 150mm Inf Gun (Sgt Ziegler)
@@ -708,11 +724,12 @@ Formation count: 24
 #00016 Q (FID 00016)
 	leader      : Q0 37mm FlaK Gun (2Lt Haeften)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 184
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Motor Flak Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		Q0 37mm FlaK Gun (2Lt Haeften)
 		Q1 37mm FlaK Gun (Sgt Brors)
@@ -744,11 +761,12 @@ Formation count: 24
 #00017 R (FID 00017)
 	leader      : R0 SdKfz 6/2 (1Lt Albrecht)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 69
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : SP Flak Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		R0 SdKfz 6/2 (1Lt Albrecht)
 		R1 SdKfz 6/2 (Sgt Schwendt)
@@ -780,11 +798,12 @@ Formation count: 24
 #00018 S (FID 00018)
 	leader      : S0 Motorradfahrer (2Lt Schneider)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		S0 Motorradfahrer (2Lt Schneider)
 		S1 Motorradfahrer (Sgt Meyer)
@@ -815,11 +834,12 @@ Formation count: 24
 #00019 T (FID 00019)
 	leader      : T0 Motorradfahrer (2Lt Brunner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		T0 Motorradfahrer (2Lt Brunner)
 		T1 Motorradfahrer (Sgt Albrecht)
@@ -850,11 +870,12 @@ Formation count: 24
 #00020 U (FID 00020)
 	leader      : U0 StuG III B (Cpt Tychsen)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 36
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : company
 	type        : StuG Btn
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		U0 StuG III B (Cpt Tychsen)
 
@@ -883,11 +904,12 @@ Formation count: 24
 #00021 V (FID 00021)
 	leader      : V0 StuG III B (1Lt Dittrich)
 	higher cmd  : U0 StuG III B (Cpt Tychsen)
+	OOBrid      : 35
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : StuG Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 4 support, 0 regular)
 	unit list   :
 		V0 StuG III B (1Lt Dittrich)
 		V1 StuG III B (Sgt Vosse)
@@ -919,11 +941,12 @@ Formation count: 24
 #00022 W (FID 00022)
 	leader      : W0 StuG III B (1Lt Kroll)
 	higher cmd  : U0 StuG III B (Cpt Tychsen)
+	OOBrid      : 35
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : StuG Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 4 support, 0 regular)
 	unit list   :
 		W0 StuG III B (1Lt Kroll)
 		W1 StuG III B (Sgt Kessler)
@@ -955,11 +978,12 @@ Formation count: 24
 #00023 X (FID 00023)
 	leader      : X0 StuG III B (1Lt Rosenberg)
 	higher cmd  : U0 StuG III B (Cpt Tychsen)
+	OOBrid      : 35
 	status      : 2 (support)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : StuG Plt
-	unit count  : 4
+	unit count  : 4 (0 core, 4 support, 0 regular)
 	unit list   :
 		X0 StuG III B (1Lt Rosenberg)
 		X1 StuG III B (Sgt Hoffman)
@@ -997,7 +1021,10 @@ Unit count: 102
 #00000 (00000:00000,000) A0   GE Kommandant (GE Kommandant)
 	leader      : Reichmann, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -1024,6 +1051,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 189
 	type group  : 0
 	position    : (47, 33)
 
@@ -1034,7 +1062,10 @@ Unit count: 102
 #00001 (00001:00001,000) B0   Sturmpionieres (Sturmpionieres)
 	leader      : Telner, rank 4 (2Lt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -1060,6 +1091,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (21, 11)
 
@@ -1070,7 +1102,10 @@ Unit count: 102
 #00002 (00001:00001,001) B1   Sturmpionieres (Sturmpionieres)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1097,6 +1132,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (20, 24)
 
@@ -1107,7 +1143,10 @@ Unit count: 102
 #00003 (00001:00001,002) B2   Sturmpionieres (Sturmpionieres)
 	leader      : Zimmerman, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -1134,6 +1173,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (21, 33)
 
@@ -1144,7 +1184,10 @@ Unit count: 102
 #00004 (00001:00001,003) B3   Sturmpionieres (Sturmpionieres)
 	leader      : Hudel, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1171,6 +1214,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (43, 29)
 
@@ -1181,7 +1225,10 @@ Unit count: 102
 #00005 (00002:00002,000) C0   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Harmel, rank 5 (1Lt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -1207,6 +1254,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (47, 33)
 
@@ -1217,7 +1265,10 @@ Unit count: 102
 #00006 (00002:00002,001) C1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Bachman, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1243,6 +1294,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (21, 10)
 
@@ -1253,7 +1305,10 @@ Unit count: 102
 #00007 (00002:00002,002) C2   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Ostendorff, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1279,6 +1334,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (20, 24)
 
@@ -1289,7 +1345,10 @@ Unit count: 102
 #00008 (00002:00002,003) C3   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Gebhart, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -1315,6 +1374,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (24, 30)
 
@@ -1325,7 +1385,10 @@ Unit count: 102
 #00009 (00002:00002,004) C4   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Dittrich, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -1351,6 +1414,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (43, 29)
 
@@ -1361,7 +1425,10 @@ Unit count: 102
 #00010 (00003:00003,000) D0   PzKpfw III E (PzKpfw III E)
 	leader      : Kronz, rank 5 (1Lt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1387,6 +1454,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (20, 6)
 
@@ -1397,7 +1465,10 @@ Unit count: 102
 #00011 (00003:00003,001) D1   PzKpfw III E (PzKpfw III E)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1423,6 +1494,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (22, 17)
 
@@ -1433,7 +1505,10 @@ Unit count: 102
 #00012 (00003:00003,002) D2   PzKpfw III E (PzKpfw III E)
 	leader      : Oertzen, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1459,6 +1534,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (20, 7)
 
@@ -1469,7 +1545,10 @@ Unit count: 102
 #00013 (00003:00003,003) D3   PzKpfw III E (PzKpfw III E)
 	leader      : Hummel, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1495,6 +1574,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (20, 20)
 
@@ -1505,7 +1585,10 @@ Unit count: 102
 #00014 (00003:00003,004) D4   PzKpfw III E (PzKpfw III E)
 	leader      : Strauch, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1531,6 +1614,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (12, 36)
 
@@ -1541,7 +1625,10 @@ Unit count: 102
 #00015 (00004:00004,000) E0   PzKpfw III E (PzKpfw III E)
 	leader      : Metzger, rank 5 (1Lt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 6
@@ -1567,6 +1654,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (16, 29)
 
@@ -1577,7 +1665,10 @@ Unit count: 102
 #00016 (00004:00004,001) E1   PzKpfw III E (PzKpfw III E)
 	leader      : Hitzelberger, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1603,6 +1694,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (7, 26)
 
@@ -1613,7 +1705,10 @@ Unit count: 102
 #00017 (00004:00004,002) E2   PzKpfw III E (PzKpfw III E)
 	leader      : Schirmer, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 15
@@ -1639,6 +1734,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (9, 30)
 
@@ -1649,7 +1745,10 @@ Unit count: 102
 #00018 (00004:00004,003) E3   PzKpfw III E (PzKpfw III E)
 	leader      : Eberhart, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1675,6 +1774,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (15, 25)
 
@@ -1685,7 +1785,10 @@ Unit count: 102
 #00019 (00004:00004,004) E4   PzKpfw III E (PzKpfw III E)
 	leader      : Kortenhaus, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1711,6 +1814,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 3
 	position    : (44, 27)
 
@@ -1721,7 +1825,10 @@ Unit count: 102
 #00020 (00005:00005,000) F0   PzKpfw IV C (PzKpfw IV C)
 	leader      : Bruck, rank 5 (1Lt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -1747,6 +1854,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (19, 15)
 
@@ -1757,7 +1865,10 @@ Unit count: 102
 #00021 (00005:00005,001) F1   PzKpfw IV C (PzKpfw IV C)
 	leader      : Hoffman, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -1783,6 +1894,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (21, 15)
 
@@ -1793,7 +1905,10 @@ Unit count: 102
 #00022 (00005:00005,002) F2   PzKpfw IV C (PzKpfw IV C)
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1819,6 +1934,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (18, 7)
 
@@ -1829,7 +1945,10 @@ Unit count: 102
 #00023 (00005:00005,003) F3   PzKpfw IV C (PzKpfw IV C)
 	leader      : Hartueb, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -1855,6 +1974,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (7, 28)
 
@@ -1865,7 +1985,10 @@ Unit count: 102
 #00024 (00006:00006,000) G0   PzKpfw IV C (PzKpfw IV C)
 	leader      : Wittman, rank 5 (1Lt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1891,6 +2014,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (18, 23)
 
@@ -1901,7 +2025,10 @@ Unit count: 102
 #00025 (00006:00006,001) G1   PzKpfw IV C (PzKpfw IV C)
 	leader      : Kuhns, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 7
@@ -1927,6 +2054,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (15, 23)
 
@@ -1937,7 +2065,10 @@ Unit count: 102
 #00026 (00006:00006,002) G2   PzKpfw IV C (PzKpfw IV C)
 	leader      : Langkeit, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 13
@@ -1963,6 +2094,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (9, 32)
 
@@ -1973,7 +2105,10 @@ Unit count: 102
 #00027 (00006:00006,003) G3   PzKpfw IV C (PzKpfw IV C)
 	leader      : Porsch, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1999,6 +2134,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (7, 38)
 
@@ -2009,7 +2145,10 @@ Unit count: 102
 #00028 (00007:00007,000) H0   PzKpfw IV C (PzKpfw IV C)
 	leader      : Wirth, rank 5 (1Lt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -2035,6 +2174,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (8, 24)
 
@@ -2045,7 +2185,10 @@ Unit count: 102
 #00029 (00007:00007,001) H1   PzKpfw IV C (PzKpfw IV C)
 	leader      : Brandt, rank 3 (Sgt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 24
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -2071,6 +2214,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 4
 	position    : (43, 28)
 
@@ -2081,7 +2225,10 @@ Unit count: 102
 #00030 (00008:00008,000) I0   Kompanie HQ (Kompanie HQ)
 	leader      : Abt, rank 6 (Cpt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 38
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -2108,6 +2255,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 5
 	position    : (47, 32)
 
@@ -2118,7 +2266,10 @@ Unit count: 102
 #00031 (00008:00008,001) I1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Lang, rank 3 (Sgt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2144,6 +2295,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (47, 32)
 
@@ -2154,7 +2306,10 @@ Unit count: 102
 #00032 (00009:00009,000) J0   ZugKommandant (ZugKommandant)
 	leader      : Spengler, rank 4 (2Lt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2181,6 +2336,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (25, 6)
 
@@ -2191,7 +2347,10 @@ Unit count: 102
 #00033 (00009:00009,001) J1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schurz, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2217,6 +2376,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (18, 1)
 
@@ -2227,7 +2387,10 @@ Unit count: 102
 #00034 (00009:00009,002) J2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 4
@@ -2253,6 +2416,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (18, 2)
 
@@ -2263,7 +2427,10 @@ Unit count: 102
 #00035 (00009:00009,003) J3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Weiss, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2289,6 +2456,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (22, 11)
 
@@ -2299,7 +2467,10 @@ Unit count: 102
 #00036 (00009:00009,004) J4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Krogel, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -2326,6 +2497,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (24, 5)
 
@@ -2336,7 +2508,10 @@ Unit count: 102
 #00037 (00009:00009,005) J5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2362,6 +2537,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (25, 6)
 
@@ -2372,7 +2548,10 @@ Unit count: 102
 #00038 (00009:00009,006) J6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Rittenhaus, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2398,6 +2577,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 1)
 
@@ -2408,7 +2588,10 @@ Unit count: 102
 #00039 (00009:00009,007) J7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Tychsen, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2434,6 +2617,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (20, 5)
 
@@ -2444,7 +2628,10 @@ Unit count: 102
 #00040 (00009:00009,008) J8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Krafft, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2470,6 +2657,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 10)
 
@@ -2480,7 +2668,10 @@ Unit count: 102
 #00041 (00009:00009,009) J9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Klein, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2506,6 +2697,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (24, 5)
 
@@ -2516,7 +2708,10 @@ Unit count: 102
 #00042 (00010:00010,000) K0   ZugKommandant (ZugKommandant)
 	leader      : Funck, rank 4 (2Lt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2543,6 +2738,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (21, 24)
 
@@ -2553,7 +2749,10 @@ Unit count: 102
 #00043 (00010:00010,001) K1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Wiedemann, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2580,6 +2779,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (25, 20)
 
@@ -2590,7 +2790,10 @@ Unit count: 102
 #00044 (00010:00010,002) K2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Conkling, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -2616,6 +2819,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (26, 25)
 
@@ -2626,7 +2830,10 @@ Unit count: 102
 #00045 (00010:00010,003) K3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Petereit, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -2653,6 +2860,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (25, 21)
 
@@ -2663,7 +2871,10 @@ Unit count: 102
 #00046 (00010:00010,004) K4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schoen, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -2690,6 +2901,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (22, 25)
 
@@ -2700,7 +2912,10 @@ Unit count: 102
 #00047 (00010:00010,005) K5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Schaub, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2726,6 +2941,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (21, 24)
 
@@ -2736,7 +2952,10 @@ Unit count: 102
 #00048 (00010:00010,006) K6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Weisbach, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2762,6 +2981,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (25, 20)
 
@@ -2772,7 +2992,10 @@ Unit count: 102
 #00049 (00010:00010,007) K7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Schmeltzer, rank 0 (KIA)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2798,6 +3021,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (-1, -1)
 
@@ -2808,7 +3032,10 @@ Unit count: 102
 #00050 (00010:00010,008) K8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Vogel, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2834,6 +3061,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (25, 21)
 
@@ -2844,7 +3072,10 @@ Unit count: 102
 #00051 (00010:00010,009) K9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Musser, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -2870,6 +3101,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 25)
 
@@ -2880,7 +3112,10 @@ Unit count: 102
 #00052 (00011:00011,000) L0   ZugKommandant (ZugKommandant)
 	leader      : Vebber, rank 4 (2Lt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2907,6 +3142,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (22, 33)
 
@@ -2917,7 +3153,10 @@ Unit count: 102
 #00053 (00011:00011,001) L1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Steinke, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2944,6 +3183,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (17, 32)
 
@@ -2954,7 +3194,10 @@ Unit count: 102
 #00054 (00011:00011,002) L2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schumacher, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -2981,6 +3224,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (22, 35)
 
@@ -2991,7 +3235,10 @@ Unit count: 102
 #00055 (00011:00011,003) L3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Muller, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -3018,6 +3265,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (24, 30)
 
@@ -3028,7 +3276,10 @@ Unit count: 102
 #00056 (00011:00011,004) L4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Becker, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -3054,6 +3305,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 7
 	position    : (8, 34)
 
@@ -3064,7 +3316,10 @@ Unit count: 102
 #00057 (00011:00011,005) L5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Seibert, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3090,6 +3345,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 33)
 
@@ -3100,7 +3356,10 @@ Unit count: 102
 #00058 (00011:00011,006) L6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Weber, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -3126,6 +3385,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (17, 32)
 
@@ -3136,7 +3396,10 @@ Unit count: 102
 #00059 (00011:00011,007) L7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Kauffman, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3162,6 +3425,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 35)
 
@@ -3172,7 +3436,10 @@ Unit count: 102
 #00060 (00011:00011,008) L8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Stemberger, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3198,6 +3465,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (21, 33)
 
@@ -3208,7 +3476,10 @@ Unit count: 102
 #00061 (00011:00011,009) L9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Vosse, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -3234,6 +3505,7 @@ Unit count: 102
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (8, 35)
 
@@ -3244,7 +3516,10 @@ Unit count: 102
 #00062 (00012:00012,000) M0   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Stiegel, rank 4 (2Lt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3270,6 +3545,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 8
 	position    : (24, 12)
 
@@ -3280,7 +3556,10 @@ Unit count: 102
 #00063 (00012:00012,001) M1   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Boettcher, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3306,6 +3585,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 8
 	position    : (20, 29)
 
@@ -3316,7 +3596,10 @@ Unit count: 102
 #00064 (00012:00012,002) M2   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Hoernlein, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3342,6 +3625,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 8
 	position    : (24, 23)
 
@@ -3352,7 +3636,10 @@ Unit count: 102
 #00065 (00012:00012,003) M3   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Schmidt, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3378,6 +3665,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 8
 	position    : (44, 28)
 
@@ -3388,7 +3676,10 @@ Unit count: 102
 #00066 (00013:00013,000) N0   SS MMG Truppe (SS MMG Truppe)
 	leader      : Schultz, rank 4 (2Lt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -3415,6 +3706,7 @@ Unit count: 102
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 9
 	position    : (40, 24)
 
@@ -3425,7 +3717,10 @@ Unit count: 102
 #00067 (00013:00013,001) N1   SS MMG Truppe (SS MMG Truppe)
 	leader      : Rosenberg, rank 3 (Sgt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -3452,6 +3747,7 @@ Unit count: 102
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 9
 	position    : (40, 24)
 
@@ -3462,7 +3758,10 @@ Unit count: 102
 #00068 (00014:00014,000) O0   Moerser Grp (Moerser Grp)
 	leader      : Falkenberg, rank 4 (2Lt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3488,6 +3787,7 @@ Unit count: 102
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 10
 	position    : (46, 28)
 
@@ -3498,7 +3798,10 @@ Unit count: 102
 #00069 (00014:00014,001) O1   Moerser Grp (Moerser Grp)
 	leader      : Letzelder, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3524,6 +3827,7 @@ Unit count: 102
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 10
 	position    : (42, 36)
 
@@ -3534,7 +3838,10 @@ Unit count: 102
 #00070 (00014:00014,002) O2   Krupp Kfz 69 (Krupp Kfz 69)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 94
 	unit type   : 243 (medium truck)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3560,6 +3867,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 11
 	position    : (40, 24)
 
@@ -3570,7 +3878,10 @@ Unit count: 102
 #00071 (00015:00015,000) P0   150mm Inf Gun (150mm Inf Gun)
 	leader      : Eberbach, rank 4 (2Lt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 137
 	unit type   : 159 (infantry gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3597,6 +3908,7 @@ Unit count: 102
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 12
 	position    : (40, 21)
 
@@ -3607,7 +3919,10 @@ Unit count: 102
 #00072 (00015:00015,001) P1   150mm Inf Gun (150mm Inf Gun)
 	leader      : Ziegler, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 137
 	unit type   : 159 (infantry gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3634,6 +3949,7 @@ Unit count: 102
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 12
 	position    : (40, 22)
 
@@ -3644,7 +3960,10 @@ Unit count: 102
 #00073 (00015:00015,002) P2   SdKfz 6 (SdKfz 6)
 	leader      : Tost, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 99
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3670,6 +3989,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 13
 	position    : (40, 22)
 
@@ -3680,7 +4000,10 @@ Unit count: 102
 #00074 (00015:00015,003) P3   SdKfz 6 (SdKfz 6)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 99
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3706,6 +4029,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 13
 	position    : (40, 21)
 
@@ -3716,7 +4040,10 @@ Unit count: 102
 #00075 (00016:00016,000) Q0   37mm FlaK Gun (37mm FlaK Gun)
 	leader      : Haeften, rank 4 (2Lt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 130
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3743,6 +4070,7 @@ Unit count: 102
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 37
 	type group  : 14
 	position    : (46, 27)
 
@@ -3753,7 +4081,10 @@ Unit count: 102
 #00076 (00016:00016,001) Q1   37mm FlaK Gun (37mm FlaK Gun)
 	leader      : Brors, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 130
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3780,6 +4111,7 @@ Unit count: 102
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 37
 	type group  : 14
 	position    : (46, 29)
 
@@ -3790,7 +4122,10 @@ Unit count: 102
 #00077 (00016:00016,002) Q2   SdKfz 6 (SdKfz 6)
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 99
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3816,6 +4151,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 13
 	position    : (46, 27)
 
@@ -3826,7 +4162,10 @@ Unit count: 102
 #00078 (00016:00016,003) Q3   SdKfz 6 (SdKfz 6)
 	leader      : Riedmuller, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 99
 	unit type   : 240 (prime mover)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3852,6 +4191,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 13
 	position    : (46, 29)
 
@@ -3862,7 +4202,10 @@ Unit count: 102
 #00079 (00017:00017,000) R0   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Albrecht, rank 5 (1Lt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3888,6 +4231,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (25, 13)
 
@@ -3898,7 +4242,10 @@ Unit count: 102
 #00080 (00017:00017,001) R1   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Schwendt, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 1
@@ -3924,6 +4271,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (16, 27)
 
@@ -3934,7 +4282,10 @@ Unit count: 102
 #00081 (00017:00017,002) R2   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Wagner, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3960,6 +4311,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (23, 23)
 
@@ -3970,7 +4322,10 @@ Unit count: 102
 #00082 (00017:00017,003) R3   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Scherer, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3996,6 +4351,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (45, 28)
 
@@ -4006,7 +4362,10 @@ Unit count: 102
 #00083 (00018:00018,000) S0   Motorradfahrer (Motorradfahrer)
 	leader      : Schneider, rank 4 (2Lt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 9
@@ -4032,6 +4391,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (19, 2)
 
@@ -4042,7 +4402,10 @@ Unit count: 102
 #00084 (00018:00018,001) S1   Motorradfahrer (Motorradfahrer)
 	leader      : Meyer, rank 3 (Sgt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 7
@@ -4068,6 +4431,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (16, 17)
 
@@ -4078,7 +4442,10 @@ Unit count: 102
 #00085 (00018:00018,002) S2   Motorradfahrer (Motorradfahrer)
 	leader      : Steiner, rank 3 (Sgt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 11
@@ -4104,6 +4471,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (16, 18)
 
@@ -4114,7 +4482,10 @@ Unit count: 102
 #00086 (00019:00019,000) T0   Motorradfahrer (Motorradfahrer)
 	leader      : Brunner, rank 4 (2Lt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 5
@@ -4140,6 +4511,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (13, 34)
 
@@ -4150,7 +4522,10 @@ Unit count: 102
 #00087 (00019:00019,001) T1   Motorradfahrer (Motorradfahrer)
 	leader      : Albrecht, rank 3 (Sgt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -4176,6 +4551,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (37, 34)
 
@@ -4186,7 +4562,10 @@ Unit count: 102
 #00088 (00019:00019,002) T2   Motorradfahrer (Motorradfahrer)
 	leader      : Mittelberg, rank 3 (Sgt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 6
@@ -4212,6 +4591,7 @@ Unit count: 102
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (20, 38)
 
@@ -4222,7 +4602,10 @@ Unit count: 102
 #00089 (00020:00020,000) U0   StuG III B (StuG III B)
 	leader      : Tychsen, rank 6 (Cpt)
 	formation   : U: support elite recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4248,6 +4631,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (43, 27)
 
@@ -4258,7 +4642,10 @@ Unit count: 102
 #00090 (00021:00021,000) V0   StuG III B (StuG III B)
 	leader      : Dittrich, rank 5 (1Lt)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -4284,6 +4671,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (19, 3)
 
@@ -4294,7 +4682,10 @@ Unit count: 102
 #00091 (00021:00021,001) V1   StuG III B (StuG III B)
 	leader      : Vosse, rank 3 (Sgt)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4320,6 +4711,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (20, 15)
 
@@ -4330,7 +4722,10 @@ Unit count: 102
 #00092 (00021:00021,002) V2   StuG III B (StuG III B)
 	leader      : Schultz, rank 3 (Sgt)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -4356,6 +4751,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (20, 2)
 
@@ -4366,7 +4762,10 @@ Unit count: 102
 #00093 (00021:00021,003) V3   StuG III B (StuG III B)
 	leader      : Ziegler, rank 3 (Sgt)
 	formation   : V: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -4392,6 +4791,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (18, 1)
 
@@ -4402,7 +4802,10 @@ Unit count: 102
 #00094 (00022:00022,000) W0   StuG III B (StuG III B)
 	leader      : Kroll, rank 5 (1Lt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -4428,6 +4831,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (8, 36)
 
@@ -4438,7 +4842,10 @@ Unit count: 102
 #00095 (00022:00022,001) W1   StuG III B (StuG III B)
 	leader      : Kessler, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -4464,6 +4871,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (19, 32)
 
@@ -4474,7 +4882,10 @@ Unit count: 102
 #00096 (00022:00022,002) W2   StuG III B (StuG III B)
 	leader      : Haeften, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4500,6 +4911,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (22, 23)
 
@@ -4510,7 +4922,10 @@ Unit count: 102
 #00097 (00022:00022,003) W3   StuG III B (StuG III B)
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : W: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -4536,6 +4951,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (11, 34)
 
@@ -4546,7 +4962,10 @@ Unit count: 102
 #00098 (00023:00023,000) X0   StuG III B (StuG III B)
 	leader      : Rosenberg, rank 5 (1Lt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4572,6 +4991,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (22, 20)
 
@@ -4582,7 +5002,10 @@ Unit count: 102
 #00099 (00023:00023,001) X1   StuG III B (StuG III B)
 	leader      : Hoffman, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -4608,6 +5031,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (23, 19)
 
@@ -4618,7 +5042,10 @@ Unit count: 102
 #00100 (00023:00023,002) X2   StuG III B (StuG III B)
 	leader      : Riedmuller, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4644,6 +5071,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (19, 21)
 
@@ -4654,7 +5082,10 @@ Unit count: 102
 #00101 (00023:00023,003) X3   StuG III B (StuG III B)
 	leader      : Rittenhaus, rank 3 (Sgt)
 	formation   : X: support elite platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 55
 	unit type   : 122 (assault gun)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -4680,6 +5111,7 @@ Unit count: 102
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 66
 	type group  : 17
 	position    : (22, 22)
 
@@ -4765,11 +5197,12 @@ Formation count: 35
 #00100 A (FID 00000)
 	leader      : A0 BR Commander (KIA Heath)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : British HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 BR Commander (KIA Heath)
 
@@ -4798,11 +5231,12 @@ Formation count: 35
 #00101 B (FID 00001)
 	leader      : B0 Company HQ (KIA Palmer)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 131
 	status      : 2 (support)
 	force status: 1 (recon)
 	org type    : company
 	type        : Infantry Co
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		B0 Company HQ (KIA Palmer)
 
@@ -4831,11 +5265,12 @@ Formation count: 35
 #00102 C (FID 00002)
 	leader      : C4 LMG Team (KIA Cheshire)
 	higher cmd  : B0 Company HQ (KIA Palmer)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 6
+	unit count  : 6 (0 core, 0 support, 6 regular)
 	unit list   :
 		C0 Platoon Leader (KIA Wood)
 		C1 Rifle Section (KIA Kelly)
@@ -4869,11 +5304,12 @@ Formation count: 35
 #00103 D (FID 00003)
 	leader      : D3 Rifle Section (KIA Caruthers)
 	higher cmd  : B0 Company HQ (KIA Palmer)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		D0 Platoon Leader (KIA Harpole)
 		D1 Rifle Section (KIA Poole)
@@ -4906,11 +5342,12 @@ Formation count: 35
 #00104 E (FID 00004)
 	leader      : E2 Rifle Section (KIA Sloan)
 	higher cmd  : B0 Company HQ (KIA Palmer)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		E0 Platoon Leader (KIA Underwood)
 		E1 Rifle Section (KIA Abbott)
@@ -4943,11 +5380,12 @@ Formation count: 35
 #00105 F (FID 00005)
 	leader      : F1 40mm AA Gun (KIA Campbell)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 65
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : AA Gun Section
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		F0 40mm AA Gun (KIA Farley)
 		F1 40mm AA Gun (KIA Campbell)
@@ -4977,11 +5415,12 @@ Formation count: 35
 #00106 G (FID 00006)
 	leader      : G1 2pdr AT Gun (KIA Picton)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 74
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : AT Gun Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		G0 2pdr AT Gun (KIA Bufton)
 		G1 2pdr AT Gun (KIA Picton)
@@ -5011,11 +5450,12 @@ Formation count: 35
 #00107 H (FID 00007)
 	leader      : H0 Mortar Section (2Lt Gardner)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 90
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mortar Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		H0 Mortar Section (2Lt Gardner)
 		H1 Mortar Section (KIA Keyworth)
@@ -5045,11 +5485,12 @@ Formation count: 35
 #00108 I (FID 00008)
 	leader      : I0 Platoon Leader (KIA Gilchrist)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 89
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mortar Platoon
-	unit count  : 7
+	unit count  : 7 (0 core, 0 support, 7 regular)
 	unit list   :
 		I0 Platoon Leader (KIA Gilchrist)
 		I1 Mortar Section (KIA Saundby)
@@ -5084,11 +5525,12 @@ Formation count: 35
 #00109 J (FID 00009)
 	leader      : J0 Morris CS9/LAC (KIA Brookes)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 12
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : company
 	type        : Arm Car Sqdn
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		J0 Morris CS9/LAC (KIA Brookes) abandoned by lost crew
 
@@ -5117,11 +5559,12 @@ Formation count: 35
 #00110 K (FID 00010)
 	leader      : K0 Morris CS9/LAC (KIA Rice)
 	higher cmd  : J0 Morris CS9/LAC (KIA Brookes)
+	OOBrid      : 9
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : company
 	type        : Armored Car Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		K0 Morris CS9/LAC (KIA Rice) abandoned by lost crew
 		K1 Morris CS9/LAC (KIA Holmes) abandoned by lost crew
@@ -5151,11 +5594,12 @@ Formation count: 35
 #00111 L (FID 00011)
 	leader      : L0 Daimler Dingo (1Lt Evans)
 	higher cmd  : J0 Morris CS9/LAC (KIA Brookes)
+	OOBrid      : 15
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Scout Car Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		L0 Daimler Dingo (1Lt Evans)
 		L1 Daimler Dingo (Sgt Dobbins)
@@ -5186,11 +5630,12 @@ Formation count: 35
 #00112 M (FID 00012)
 	leader      : M2 Morris CS9/LAC (Sgt Ainsworth)
 	higher cmd  : J0 Morris CS9/LAC (KIA Brookes)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		M0 Morris CS9/LAC (KIA Williamson) abandoned by lost crew
 		M1 Morris CS9/LAC (KIA Ingersoll)
@@ -5221,11 +5666,12 @@ Formation count: 35
 #00113 N (FID 00013)
 	leader      : N1 Morris CS9/LAC (Sgt Gallear)
 	higher cmd  : J0 Morris CS9/LAC (KIA Brookes)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		N0 Morris CS9/LAC (KIA Addington) abandoned by lost crew
 		N1 Morris CS9/LAC (Sgt Gallear) abandoned by N51 Crewmen (Sgt Gallear)
@@ -5256,11 +5702,12 @@ Formation count: 35
 #00114 O (FID 00014)
 	leader      : O2 Morris CS9/LAC (KIA Reid)
 	higher cmd  : J0 Morris CS9/LAC (KIA Brookes)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		O0 Morris CS9/LAC (KIA Crandall)
 		O1 Morris CS9/LAC (KIA Offord)
@@ -5291,11 +5738,12 @@ Formation count: 35
 #00115 P (FID 00015)
 	leader      : P0 Morris CS9/LAC (1Lt Baldwin)
 	higher cmd  : J0 Morris CS9/LAC (KIA Brookes)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		P0 Morris CS9/LAC (1Lt Baldwin) abandoned by P50 Crewmen (1Lt Baldwin)
 		P1 Morris CS9/LAC (Sgt Kirkpatrick) abandoned by P51 Crewmen (Sgt Kirkpatrick)
@@ -5326,11 +5774,12 @@ Formation count: 35
 #00116 Q (FID 00016)
 	leader      : Q0 Company HQ (KIA Greenwood)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 131
 	status      : 2 (support)
 	force status: 1 (recon)
 	org type    : company
 	type        : Infantry Co
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		Q0 Company HQ (KIA Greenwood)
 
@@ -5359,11 +5808,12 @@ Formation count: 35
 #00117 R (FID 00017)
 	leader      : R2 Rifle Section (KIA Fenton)
 	higher cmd  : Q0 Company HQ (KIA Greenwood)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		R0 Platoon Leader (KIA Greenwell)
 		R1 Rifle Section (KIA Webster)
@@ -5396,11 +5846,12 @@ Formation count: 35
 #00118 S (FID 00018)
 	leader      : S3 Rifle Section (KIA Harrington)
 	higher cmd  : Q0 Company HQ (KIA Greenwood)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		S0 Platoon Leader (KIA Moorhead)
 		S1 Rifle Section (KIA Shannon)
@@ -5433,11 +5884,12 @@ Formation count: 35
 #00119 T (FID 00019)
 	leader      : T2 Rifle Section (KIA Vincent)
 	higher cmd  : Q0 Company HQ (KIA Greenwood)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		T0 Platoon Leader (KIA Trayhorn)
 		T1 Rifle Section (KIA Ashby)
@@ -5470,11 +5922,12 @@ Formation count: 35
 #00120 U (FID 00020)
 	leader      : U1 40mm AA Gun (KIA Chadwick)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 65
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : AA Gun Section
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		U0 40mm AA Gun (KIA Ludlow)
 		U1 40mm AA Gun (KIA Chadwick)
@@ -5504,11 +5957,12 @@ Formation count: 35
 #00121 V (FID 00021)
 	leader      : V1 Mortar Section (KIA Trent)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 90
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mortar Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		V0 Mortar Section (KIA Davies)
 		V1 Mortar Section (KIA Trent)
@@ -5538,11 +5992,12 @@ Formation count: 35
 #00122 W (FID 00022)
 	leader      : W0 Morris CS9/LAC (KIA Lambert)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 12
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : company
 	type        : Arm Car Sqdn
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		W0 Morris CS9/LAC (KIA Lambert) abandoned by lost crew
 
@@ -5571,11 +6026,12 @@ Formation count: 35
 #00123 X (FID 00023)
 	leader      : X1 Morris CS9/LAC (KIA Livingston)
 	higher cmd  : W0 Morris CS9/LAC (KIA Lambert)
+	OOBrid      : 9
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : company
 	type        : Armored Car Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		X0 Morris CS9/LAC (KIA Bellamy)
 		X1 Morris CS9/LAC (KIA Livingston)
@@ -5605,11 +6061,12 @@ Formation count: 35
 #00124 Y (FID 00024)
 	leader      : Y0 Daimler Dingo (1Lt Astin)
 	higher cmd  : W0 Morris CS9/LAC (KIA Lambert)
+	OOBrid      : 15
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Scout Car Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		Y0 Daimler Dingo (1Lt Astin)
 		Y1 Daimler Dingo (Sgt Fitzgibbon)
@@ -5640,11 +6097,12 @@ Formation count: 35
 #00125 Z (FID 00025)
 	leader      : Z2 Morris CS9/LAC (Sgt Hackett)
 	higher cmd  : W0 Morris CS9/LAC (KIA Lambert)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		Z0 Morris CS9/LAC (KIA Gifford)
 		Z1 Morris CS9/LAC (KIA Snowdon) abandoned by lost crew
@@ -5675,11 +6133,12 @@ Formation count: 35
 #00126 AA (FID 00026)
 	leader      : AA2 Morris CS9/LAC (KIA Lake)
 	higher cmd  : W0 Morris CS9/LAC (KIA Lambert)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AA0 Morris CS9/LAC (KIA Ennis) abandoned by lost crew
 		AA1 Morris CS9/LAC (KIA Blackwell)
@@ -5710,11 +6169,12 @@ Formation count: 35
 #00127 AB (FID 00027)
 	leader      : AB0 Morris CS9/LAC (KIA Downey)
 	higher cmd  : W0 Morris CS9/LAC (KIA Lambert)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AB0 Morris CS9/LAC (KIA Downey) abandoned by lost crew
 		AB1 Morris CS9/LAC (KIA Ellsworth) abandoned by lost crew
@@ -5745,11 +6205,12 @@ Formation count: 35
 #00128 AC (FID 00028)
 	leader      : AC0 Morris CS9/LAC (KIA Elster)
 	higher cmd  : W0 Morris CS9/LAC (KIA Lambert)
+	OOBrid      : 5
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Armored Car Trp
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AC0 Morris CS9/LAC (KIA Elster) abandoned by lost crew
 		AC1 Morris CS9/LAC (KIA Pringle)
@@ -5780,11 +6241,12 @@ Formation count: 35
 #00129 AD (FID 00029)
 	leader      : AD1 Rifle Section (KIA Higgins)
 	higher cmd  : AD0 Platoon Leader (KIA Kilgore)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AD0 Platoon Leader (KIA Kilgore)
 		AD1 Rifle Section (KIA Higgins)
@@ -5817,11 +6279,12 @@ Formation count: 35
 #00130 AE (FID 00030)
 	leader      : AE0 Platoon Leader (KIA Kimbrough)
 	higher cmd  : AD0 Platoon Leader (KIA Kilgore)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AE0 Platoon Leader (KIA Kimbrough)
 		AE1 Rifle Section (KIA Spanton)
@@ -5854,11 +6317,12 @@ Formation count: 35
 #00131 AF (FID 00031)
 	leader      : AF3 Rifle Section (KIA Kirkpatrick)
 	higher cmd  : AD0 Platoon Leader (KIA Kilgore)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AF0 Platoon Leader (KIA Usher)
 		AF1 Rifle Section (KIA Drake)
@@ -5891,11 +6355,12 @@ Formation count: 35
 #00132 AG (FID 00032)
 	leader      : AG0 Mortar Section (KIA Offord)
 	higher cmd  : A0 BR Commander (KIA Heath)
+	OOBrid      : 90
 	status      : 2 (support)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mortar Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AG0 Mortar Section (KIA Offord)
 		AG1 Mortar Section (KIA Lambert)
@@ -5925,11 +6390,12 @@ Formation count: 35
 #00133 AH (FID 00033)
 	leader      : AH0 Platoon Leader (KIA Trayhorn)
 	higher cmd  : AH0 Platoon Leader (KIA Trayhorn)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AH0 Platoon Leader (KIA Trayhorn)
 		AH1 Lt Mortar Team (KIA Goodwin)
@@ -5959,11 +6425,12 @@ Formation count: 35
 #00134 AI (FID 00034)
 	leader      : AI0 Platoon Leader (KIA Crandall)
 	higher cmd  : AH0 Platoon Leader (KIA Trayhorn)
+	OOBrid      : 130
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AI0 Platoon Leader (KIA Crandall)
 		AI1 Lt Mortar Team (KIA Addington)
@@ -5999,7 +6466,10 @@ Unit count: 108
 #00400 (00100:00000,000) A0   BR Commander (BR Commander)
 	leader      : Heath, rank 0 (KIA)
 	formation   : A: core elite recon force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6025,6 +6495,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 189
 	type group  : 18
 	position    : (-1, -1)
 
@@ -6035,7 +6506,10 @@ Unit count: 108
 #00401 (00101:00001,000) B0   Company HQ (Company HQ)
 	leader      : Palmer, rank 0 (KIA)
 	formation   : B: support recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 89
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6061,6 +6535,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 19
 	position    : (-1, -1)
 
@@ -6071,7 +6546,10 @@ Unit count: 108
 #00402 (00102:00002,000) C0   Platoon Leader (Platoon Leader)
 	leader      : Wood, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6097,6 +6575,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -6107,7 +6586,10 @@ Unit count: 108
 #00403 (00102:00002,001) C1   Rifle Section (Rifle Section)
 	leader      : Kelly, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6133,6 +6615,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6143,7 +6626,10 @@ Unit count: 108
 #00404 (00102:00002,002) C2   Rifle Section (Rifle Section)
 	leader      : Galbraith, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6169,6 +6655,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6179,7 +6666,10 @@ Unit count: 108
 #00405 (00102:00002,003) C3   Rifle Section (Rifle Section)
 	leader      : Valentine, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6205,6 +6695,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6215,7 +6706,10 @@ Unit count: 108
 #00406 (00102:00002,004) C4   LMG Team (LMG Team)
 	leader      : Cheshire, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 162
 	unit type   : 1 (light infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6241,6 +6735,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 5
 	type group  : 22
 	position    : (-1, -1)
 
@@ -6251,7 +6746,10 @@ Unit count: 108
 #00407 (00102:00002,005) C5   Lt Mortar Team (Lt Mortar Team)
 	leader      : Peck, rank 0 (KIA)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6277,6 +6775,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -6287,7 +6786,10 @@ Unit count: 108
 #00408 (00103:00003,000) D0   Platoon Leader (Platoon Leader)
 	leader      : Harpole, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6313,6 +6815,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -6323,7 +6826,10 @@ Unit count: 108
 #00409 (00103:00003,001) D1   Rifle Section (Rifle Section)
 	leader      : Poole, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6349,6 +6855,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6359,7 +6866,10 @@ Unit count: 108
 #00410 (00103:00003,002) D2   Rifle Section (Rifle Section)
 	leader      : Middelton, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6385,6 +6895,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6395,7 +6906,10 @@ Unit count: 108
 #00411 (00103:00003,003) D3   Rifle Section (Rifle Section)
 	leader      : Caruthers, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6421,6 +6935,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6431,7 +6946,10 @@ Unit count: 108
 #00412 (00103:00003,004) D4   Lt Mortar Team (Lt Mortar Team)
 	leader      : Proudfoot, rank 0 (KIA)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6457,6 +6975,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -6467,7 +6986,10 @@ Unit count: 108
 #00413 (00104:00004,000) E0   Platoon Leader (Platoon Leader)
 	leader      : Underwood, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6493,6 +7015,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -6503,7 +7026,10 @@ Unit count: 108
 #00414 (00104:00004,001) E1   Rifle Section (Rifle Section)
 	leader      : Abbott, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6529,6 +7055,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6539,7 +7066,10 @@ Unit count: 108
 #00415 (00104:00004,002) E2   Rifle Section (Rifle Section)
 	leader      : Sloan, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6565,6 +7095,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6575,7 +7106,10 @@ Unit count: 108
 #00416 (00104:00004,003) E3   Rifle Section (Rifle Section)
 	leader      : Doyle, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6601,6 +7135,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -6611,7 +7146,10 @@ Unit count: 108
 #00417 (00104:00004,004) E4   Lt Mortar Team (Lt Mortar Team)
 	leader      : Murray, rank 0 (KIA)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6637,6 +7175,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -6647,7 +7186,10 @@ Unit count: 108
 #00418 (00105:00005,000) F0   40mm AA Gun (40mm AA Gun)
 	leader      : Farley, rank 0 (KIA)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 98
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -6673,6 +7215,7 @@ Unit count: 108
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 42
 	type group  : 24
 	position    : (-1, -1)
 
@@ -6683,7 +7226,10 @@ Unit count: 108
 #00419 (00105:00005,001) F1   40mm AA Gun (40mm AA Gun)
 	leader      : Campbell, rank 0 (KIA)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 98
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -6709,6 +7255,7 @@ Unit count: 108
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 42
 	type group  : 24
 	position    : (-1, -1)
 
@@ -6719,7 +7266,10 @@ Unit count: 108
 #00420 (00106:00006,000) G0   2pdr AT Gun (2pdr AT Gun)
 	leader      : Bufton, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 104
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6745,6 +7295,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 25
 	position    : (-1, -1)
 
@@ -6755,7 +7306,10 @@ Unit count: 108
 #00421 (00106:00006,001) G1   2pdr AT Gun (2pdr AT Gun)
 	leader      : Picton, rank 0 (KIA)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 104
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6781,6 +7335,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 25
 	position    : (-1, -1)
 
@@ -6791,7 +7346,10 @@ Unit count: 108
 #00422 (00107:00007,000) H0   Mortar Section (Mortar Section)
 	leader      : Gardner, rank 4 (2Lt)
 	formation   : H: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6817,6 +7375,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (16, 21)
 
@@ -6827,7 +7386,10 @@ Unit count: 108
 #00423 (00107:00007,001) H1   Mortar Section (Mortar Section)
 	leader      : Keyworth, rank 0 (KIA)
 	formation   : H: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6853,6 +7415,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -6863,7 +7426,10 @@ Unit count: 108
 #00424 (00108:00008,000) I0   Platoon Leader (Platoon Leader)
 	leader      : Gilchrist, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -6889,6 +7455,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -6899,7 +7466,10 @@ Unit count: 108
 #00425 (00108:00008,001) I1   Mortar Section (Mortar Section)
 	leader      : Saundby, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6925,6 +7495,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -6935,7 +7506,10 @@ Unit count: 108
 #00426 (00108:00008,002) I2   Mortar Section (Mortar Section)
 	leader      : Caldwell, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6962,6 +7536,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -6972,7 +7547,10 @@ Unit count: 108
 #00427 (00108:00008,003) I3   Mortar Section (Mortar Section)
 	leader      : Jamison, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6998,6 +7576,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -7008,7 +7587,10 @@ Unit count: 108
 #00428 (00108:00008,004) I4   Mortar Section (Mortar Section)
 	leader      : Warren, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -7034,6 +7616,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -7044,7 +7627,10 @@ Unit count: 108
 #00429 (00108:00008,005) I5   Mortar Section (Mortar Section)
 	leader      : Warwick, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -7070,6 +7656,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -7080,7 +7667,10 @@ Unit count: 108
 #00430 (00108:00008,006) I6   Mortar Section (Mortar Section)
 	leader      : Cochrane, rank 0 (KIA)
 	formation   : I: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -7107,6 +7697,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -7117,7 +7708,10 @@ Unit count: 108
 #00431 (00109:00009,000) J0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Brookes, rank 0 (KIA)
 	formation   : J: core recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7144,6 +7738,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7154,7 +7749,10 @@ Unit count: 108
 #00432 (00110:00010,000) K0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Rice, rank 0 (KIA)
 	formation   : K: core recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7181,6 +7779,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7191,7 +7790,10 @@ Unit count: 108
 #00433 (00110:00010,001) K1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Holmes, rank 0 (KIA)
 	formation   : K: core recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7218,6 +7820,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7228,7 +7831,10 @@ Unit count: 108
 #00434 (00111:00011,000) L0   Daimler Dingo (Daimler Dingo)
 	leader      : Evans, rank 5 (1Lt)
 	formation   : L: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 17
 	unit type   : 213 (scout vehicle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7254,6 +7860,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 28
 	position    : (-1, -1)
 
@@ -7264,7 +7871,10 @@ Unit count: 108
 #00435 (00111:00011,001) L1   Daimler Dingo (Daimler Dingo)
 	leader      : Dobbins, rank 3 (Sgt)
 	formation   : L: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 17
 	unit type   : 213 (scout vehicle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7290,6 +7900,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 28
 	position    : (-1, -1)
 
@@ -7300,7 +7911,10 @@ Unit count: 108
 #00436 (00111:00011,002) L2   Daimler Dingo (Daimler Dingo)
 	leader      : McEwen, rank 3 (Sgt)
 	formation   : L: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 17
 	unit type   : 213 (scout vehicle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7326,6 +7940,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 28
 	position    : (-1, -1)
 
@@ -7336,7 +7951,10 @@ Unit count: 108
 #00437 (00112:00012,000) M0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Williamson, rank 0 (KIA)
 	formation   : M: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7363,6 +7981,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7373,7 +7992,10 @@ Unit count: 108
 #00438 (00112:00012,001) M1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Ingersoll, rank 0 (KIA)
 	formation   : M: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7399,6 +8021,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7409,7 +8032,10 @@ Unit count: 108
 #00439 (00112:00012,002) M2   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Ainsworth, rank 3 (Sgt)
 	formation   : M: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7435,6 +8061,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (17, 3)
 
@@ -7445,7 +8072,10 @@ Unit count: 108
 #00440 (00113:00013,000) N0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Addington, rank 0 (KIA)
 	formation   : N: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7472,6 +8102,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7482,7 +8113,10 @@ Unit count: 108
 #00441 (00113:00013,001) N1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Gallear, rank 3 (Sgt)
 	formation   : N: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7509,6 +8143,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7519,7 +8154,10 @@ Unit count: 108
 #00442 (00113:00013,002) N2   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Grigsby, rank 3 (Sgt)
 	formation   : N: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7546,6 +8184,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7556,7 +8195,10 @@ Unit count: 108
 #00443 (00114:00014,000) O0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Crandall, rank 0 (KIA)
 	formation   : O: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7582,6 +8224,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7592,7 +8235,10 @@ Unit count: 108
 #00444 (00114:00014,001) O1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Offord, rank 0 (KIA)
 	formation   : O: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7618,6 +8264,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7628,7 +8275,10 @@ Unit count: 108
 #00445 (00114:00014,002) O2   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Reid, rank 0 (KIA)
 	formation   : O: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7654,6 +8304,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7664,7 +8315,10 @@ Unit count: 108
 #00446 (00115:00015,000) P0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Baldwin, rank 5 (1Lt)
 	formation   : P: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7691,6 +8345,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7701,7 +8356,10 @@ Unit count: 108
 #00447 (00115:00015,001) P1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Kirkpatrick, rank 3 (Sgt)
 	formation   : P: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7728,6 +8386,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7738,7 +8397,10 @@ Unit count: 108
 #00448 (00115:00015,002) P2   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Sparks, rank 3 (Sgt)
 	formation   : P: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -7765,6 +8427,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -7775,7 +8438,10 @@ Unit count: 108
 #00449 (00116:00016,000) Q0   Company HQ (Company HQ)
 	leader      : Greenwood, rank 0 (KIA)
 	formation   : Q: support recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 89
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7801,6 +8467,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 19
 	position    : (-1, -1)
 
@@ -7811,7 +8478,10 @@ Unit count: 108
 #00450 (00117:00017,000) R0   Platoon Leader (Platoon Leader)
 	leader      : Greenwell, rank 0 (KIA)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7837,6 +8507,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -7847,7 +8518,10 @@ Unit count: 108
 #00451 (00117:00017,001) R1   Rifle Section (Rifle Section)
 	leader      : Webster, rank 0 (KIA)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7873,6 +8547,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -7883,7 +8558,10 @@ Unit count: 108
 #00452 (00117:00017,002) R2   Rifle Section (Rifle Section)
 	leader      : Fenton, rank 0 (KIA)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7909,6 +8587,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -7919,7 +8598,10 @@ Unit count: 108
 #00453 (00117:00017,003) R3   Rifle Section (Rifle Section)
 	leader      : Swales, rank 0 (KIA)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7945,6 +8627,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -7955,7 +8638,10 @@ Unit count: 108
 #00454 (00117:00017,004) R4   Lt Mortar Team (Lt Mortar Team)
 	leader      : Billings, rank 0 (KIA)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -7981,6 +8667,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -7991,7 +8678,10 @@ Unit count: 108
 #00455 (00118:00018,000) S0   Platoon Leader (Platoon Leader)
 	leader      : Moorhead, rank 0 (KIA)
 	formation   : S: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -8017,6 +8707,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -8027,7 +8718,10 @@ Unit count: 108
 #00456 (00118:00018,001) S1   Rifle Section (Rifle Section)
 	leader      : Shannon, rank 0 (KIA)
 	formation   : S: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8053,6 +8747,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -8063,7 +8758,10 @@ Unit count: 108
 #00457 (00118:00018,002) S2   Rifle Section (Rifle Section)
 	leader      : Gilmour, rank 0 (KIA)
 	formation   : S: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8089,6 +8787,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -8099,7 +8798,10 @@ Unit count: 108
 #00458 (00118:00018,003) S3   Rifle Section (Rifle Section)
 	leader      : Harrington, rank 0 (KIA)
 	formation   : S: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8125,6 +8827,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -8135,7 +8838,10 @@ Unit count: 108
 #00459 (00118:00018,004) S4   Lt Mortar Team (Lt Mortar Team)
 	leader      : Trenchard, rank 0 (KIA)
 	formation   : S: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -8161,6 +8867,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -8171,7 +8878,10 @@ Unit count: 108
 #00460 (00119:00019,000) T0   Platoon Leader (Platoon Leader)
 	leader      : Trayhorn, rank 0 (KIA)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -8197,6 +8907,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -8207,7 +8918,10 @@ Unit count: 108
 #00461 (00119:00019,001) T1   Rifle Section (Rifle Section)
 	leader      : Ashby, rank 0 (KIA)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8233,6 +8947,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -8243,7 +8958,10 @@ Unit count: 108
 #00462 (00119:00019,002) T2   Rifle Section (Rifle Section)
 	leader      : Vincent, rank 0 (KIA)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8269,6 +8987,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -8279,7 +8998,10 @@ Unit count: 108
 #00463 (00119:00019,003) T3   Rifle Section (Rifle Section)
 	leader      : Coffey, rank 0 (KIA)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8305,6 +9027,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -8315,7 +9038,10 @@ Unit count: 108
 #00464 (00119:00019,004) T4   Lt Mortar Team (Lt Mortar Team)
 	leader      : Garland, rank 0 (KIA)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -8341,6 +9067,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -8351,7 +9078,10 @@ Unit count: 108
 #00465 (00120:00020,000) U0   40mm AA Gun (40mm AA Gun)
 	leader      : Ludlow, rank 0 (KIA)
 	formation   : U: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 98
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 1
@@ -8377,6 +9107,7 @@ Unit count: 108
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 42
 	type group  : 24
 	position    : (-1, -1)
 
@@ -8387,7 +9118,10 @@ Unit count: 108
 #00466 (00120:00020,001) U1   40mm AA Gun (40mm AA Gun)
 	leader      : Chadwick, rank 0 (KIA)
 	formation   : U: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 98
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -8413,6 +9147,7 @@ Unit count: 108
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 42
 	type group  : 24
 	position    : (-1, -1)
 
@@ -8423,7 +9158,10 @@ Unit count: 108
 #00467 (00121:00021,000) V0   Mortar Section (Mortar Section)
 	leader      : Davies, rank 0 (KIA)
 	formation   : V: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -8449,6 +9187,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -8459,7 +9198,10 @@ Unit count: 108
 #00468 (00121:00021,001) V1   Mortar Section (Mortar Section)
 	leader      : Trent, rank 0 (KIA)
 	formation   : V: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -8485,6 +9227,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -8495,7 +9238,10 @@ Unit count: 108
 #00469 (00122:00022,000) W0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Lambert, rank 0 (KIA)
 	formation   : W: core recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8522,6 +9268,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8532,7 +9279,10 @@ Unit count: 108
 #00470 (00123:00023,000) X0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Bellamy, rank 0 (KIA)
 	formation   : X: core recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8558,6 +9308,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8568,7 +9319,10 @@ Unit count: 108
 #00471 (00123:00023,001) X1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Livingston, rank 0 (KIA)
 	formation   : X: core recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8594,6 +9348,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8604,7 +9359,10 @@ Unit count: 108
 #00472 (00124:00024,000) Y0   Daimler Dingo (Daimler Dingo)
 	leader      : Astin, rank 5 (1Lt)
 	formation   : Y: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 17
 	unit type   : 213 (scout vehicle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8630,6 +9388,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 28
 	position    : (-1, -1)
 
@@ -8640,7 +9399,10 @@ Unit count: 108
 #00473 (00124:00024,001) Y1   Daimler Dingo (Daimler Dingo)
 	leader      : Fitzgibbon, rank 3 (Sgt)
 	formation   : Y: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 17
 	unit type   : 213 (scout vehicle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8666,6 +9428,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 28
 	position    : (-1, -1)
 
@@ -8676,7 +9439,10 @@ Unit count: 108
 #00474 (00124:00024,002) Y2   Daimler Dingo (Daimler Dingo)
 	leader      : Ferris, rank 3 (Sgt)
 	formation   : Y: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 17
 	unit type   : 213 (scout vehicle)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8702,6 +9468,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 28
 	position    : (-1, -1)
 
@@ -8712,7 +9479,10 @@ Unit count: 108
 #00475 (00125:00025,000) Z0   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Gifford, rank 0 (KIA)
 	formation   : Z: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8738,6 +9508,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8748,7 +9519,10 @@ Unit count: 108
 #00476 (00125:00025,001) Z1   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Snowdon, rank 0 (KIA)
 	formation   : Z: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8775,6 +9549,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8785,7 +9560,10 @@ Unit count: 108
 #00477 (00125:00025,002) Z2   Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Hackett, rank 3 (Sgt)
 	formation   : Z: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8811,6 +9589,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (3, 26)
 
@@ -8821,7 +9600,10 @@ Unit count: 108
 #00478 (00126:00026,000) AA0  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Ennis, rank 0 (KIA)
 	formation   : AA: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8848,6 +9630,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8858,7 +9641,10 @@ Unit count: 108
 #00479 (00126:00026,001) AA1  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Blackwell, rank 0 (KIA)
 	formation   : AA: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8884,6 +9670,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8894,7 +9681,10 @@ Unit count: 108
 #00480 (00126:00026,002) AA2  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Lake, rank 0 (KIA)
 	formation   : AA: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8920,6 +9710,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8930,7 +9721,10 @@ Unit count: 108
 #00481 (00127:00027,000) AB0  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Downey, rank 0 (KIA)
 	formation   : AB: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8957,6 +9751,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -8967,7 +9762,10 @@ Unit count: 108
 #00482 (00127:00027,001) AB1  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Ellsworth, rank 0 (KIA)
 	formation   : AB: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -8994,6 +9792,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -9004,7 +9803,10 @@ Unit count: 108
 #00483 (00127:00027,002) AB2  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Thompson, rank 0 (KIA)
 	formation   : AB: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -9031,6 +9833,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -9041,7 +9844,10 @@ Unit count: 108
 #00484 (00128:00028,000) AC0  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Elster, rank 0 (KIA)
 	formation   : AC: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -9068,6 +9874,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -9078,7 +9885,10 @@ Unit count: 108
 #00485 (00128:00028,001) AC1  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Pringle, rank 0 (KIA)
 	formation   : AC: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -9104,6 +9914,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -9114,7 +9925,10 @@ Unit count: 108
 #00486 (00128:00028,002) AC2  Morris CS9/LAC (Morris CS9/LAC)
 	leader      : Rutins, rank 0 (KIA)
 	formation   : AC: core recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 113
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -9141,6 +9955,7 @@ Unit count: 108
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 30
 	type group  : 27
 	position    : (-1, -1)
 
@@ -9151,7 +9966,10 @@ Unit count: 108
 #00487 (00129:00029,000) AD0  Platoon Leader (Platoon Leader)
 	leader      : Kilgore, rank 0 (KIA)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -9177,6 +9995,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -9187,7 +10006,10 @@ Unit count: 108
 #00488 (00129:00029,001) AD1  Rifle Section (Rifle Section)
 	leader      : Higgins, rank 0 (KIA)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9213,6 +10035,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9223,7 +10046,10 @@ Unit count: 108
 #00489 (00129:00029,002) AD2  Rifle Section (Rifle Section)
 	leader      : Ross, rank 0 (KIA)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9249,6 +10075,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9259,7 +10086,10 @@ Unit count: 108
 #00490 (00129:00029,003) AD3  Rifle Section (Rifle Section)
 	leader      : Stevenson, rank 0 (KIA)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9285,6 +10115,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9295,7 +10126,10 @@ Unit count: 108
 #00491 (00129:00029,004) AD4  Lt Mortar Team (Lt Mortar Team)
 	leader      : Tomlin, rank 0 (KIA)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9321,6 +10155,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9331,7 +10166,10 @@ Unit count: 108
 #00492 (00130:00030,000) AE0  Platoon Leader (Platoon Leader)
 	leader      : Kimbrough, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -9357,6 +10195,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -9367,7 +10206,10 @@ Unit count: 108
 #00493 (00130:00030,001) AE1  Rifle Section (Rifle Section)
 	leader      : Spanton, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9393,6 +10235,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9403,7 +10246,10 @@ Unit count: 108
 #00494 (00130:00030,002) AE2  Rifle Section (Rifle Section)
 	leader      : Millis, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9429,6 +10275,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9439,7 +10286,10 @@ Unit count: 108
 #00495 (00130:00030,003) AE3  Rifle Section (Rifle Section)
 	leader      : Goodwin, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9465,6 +10315,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9475,7 +10326,10 @@ Unit count: 108
 #00496 (00130:00030,004) AE4  Lt Mortar Team (Lt Mortar Team)
 	leader      : Langdon, rank 0 (KIA)
 	formation   : AE: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9501,6 +10355,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9511,7 +10366,10 @@ Unit count: 108
 #00497 (00131:00031,000) AF0  Platoon Leader (Platoon Leader)
 	leader      : Usher, rank 0 (KIA)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -9537,6 +10395,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -9547,7 +10406,10 @@ Unit count: 108
 #00498 (00131:00031,001) AF1  Rifle Section (Rifle Section)
 	leader      : Drake, rank 0 (KIA)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9573,6 +10435,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9583,7 +10446,10 @@ Unit count: 108
 #00499 (00131:00031,002) AF2  Rifle Section (Rifle Section)
 	leader      : Murray, rank 0 (KIA)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9609,6 +10475,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9619,7 +10486,10 @@ Unit count: 108
 #00500 (00131:00031,003) AF3  Rifle Section (Rifle Section)
 	leader      : Kirkpatrick, rank 0 (KIA)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 167
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9645,6 +10515,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 21
 	position    : (-1, -1)
 
@@ -9655,7 +10526,10 @@ Unit count: 108
 #00501 (00131:00031,004) AF4  Lt Mortar Team (Lt Mortar Team)
 	leader      : Dobbins, rank 0 (KIA)
 	formation   : AF: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9682,6 +10556,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9692,7 +10567,10 @@ Unit count: 108
 #00502 (00132:00032,000) AG0  Mortar Section (Mortar Section)
 	leader      : Offord, rank 0 (KIA)
 	formation   : AG: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9718,6 +10596,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -9728,7 +10607,10 @@ Unit count: 108
 #00503 (00132:00032,001) AG1  Mortar Section (Mortar Section)
 	leader      : Lambert, rank 0 (KIA)
 	formation   : AG: support dedicated artillery platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 130
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9754,6 +10636,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 26
 	position    : (-1, -1)
 
@@ -9764,7 +10647,10 @@ Unit count: 108
 #00504 (00133:00033,000) AH0  Platoon Leader (Platoon Leader)
 	leader      : Trayhorn, rank 0 (KIA)
 	formation   : AH: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -9790,6 +10676,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -9800,7 +10687,10 @@ Unit count: 108
 #00505 (00133:00033,001) AH1  Lt Mortar Team (Lt Mortar Team)
 	leader      : Goodwin, rank 0 (KIA)
 	formation   : AH: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9826,6 +10716,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9836,7 +10727,10 @@ Unit count: 108
 #00506 (00134:00034,000) AI0  Platoon Leader (Platoon Leader)
 	leader      : Crandall, rank 0 (KIA)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 78
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -9862,6 +10756,7 @@ Unit count: 108
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 20
 	position    : (-1, -1)
 
@@ -9872,7 +10767,10 @@ Unit count: 108
 #00507 (00134:00034,001) AI1  Lt Mortar Team (Lt Mortar Team)
 	leader      : Addington, rank 0 (KIA)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 77 (   British)
+	OOBrid      : 129
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -9898,6 +10796,7 @@ Unit count: 108
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 23
 	position    : (-1, -1)
 
@@ -9914,11 +10813,15 @@ Unit count: 5
 #00510 (00113:00013,051) N51  Crewmen
 	leader      : Gallear, rank 3 (Sgt)
 	formation   : N: core recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 77 (   British)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 3 (1 left)
 	damage      : 0
 	abandoned   : 2
@@ -9940,16 +10843,22 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 29
+	position    : (17, 1)
 
 #00509 (00113:00013,052) N52  Crewmen
 	leader      : Grigsby, rank 3 (Sgt)
 	formation   : N: core recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 77 (   British)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 3 (2 left)
 	damage      : 0
 	abandoned   : 2
@@ -9971,16 +10880,22 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 29
+	position    : (17, 0)
 
 #00512 (00115:00015,050) P50  Crewmen
 	leader      : Baldwin, rank 5 (1Lt)
 	formation   : P: core recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 77 (   British)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 2 (retreating) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 3 (1 left)
 	damage      : 0
 	abandoned   : 2
@@ -10002,16 +10917,22 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 29
+	position    : (19, 11)
 
 #00511 (00115:00015,051) P51  Crewmen
 	leader      : Kirkpatrick, rank 3 (Sgt)
 	formation   : P: core recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 77 (   British)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 2 (retreating) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 3 (1 left)
 	damage      : 0
 	abandoned   : 2
@@ -10033,16 +10954,22 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 29
+	position    : (17, 12)
 
 #00508 (00115:00015,052) P52  Crewmen
 	leader      : Sparks, rank 3 (Sgt)
 	formation   : P: core recon platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 77 (   British)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 3 (3 left)
 	damage      : 0
 	abandoned   : 2
@@ -10064,7 +10991,9 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 2
 	type group  : 29
+	position    : (17, 5)
 
 
 Complete unit statistics report:

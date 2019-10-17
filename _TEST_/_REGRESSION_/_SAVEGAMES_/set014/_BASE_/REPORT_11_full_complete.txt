@@ -100,11 +100,12 @@ Formation count: 2
 #00000 A (FID 00000)
 	leader      : A0 Poste Commande (LtC Du Pontet)
 	higher cmd  : A0 Poste Commande (LtC Du Pontet)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : Free French HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		A0 Poste Commande (LtC Du Pontet)
 
@@ -133,11 +134,12 @@ Formation count: 2
 #00001 B (FID 00001)
 	leader      : B0 Panhard 178 (1Lt De Leusse)
 	higher cmd  : A0 Poste Commande (LtC Du Pontet)
+	OOBrid      : 173
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Pel AMD
-	unit count  : 5
+	unit count  : 5 (0 core, 5 support, 0 regular)
 	unit list   :
 		B0 Panhard 178 (1Lt De Leusse)
 		B1 Panhard 178 (Cpl Xavier)
@@ -176,7 +178,10 @@ Unit count: 6
 #00000 (00000:00000,000) A0   Poste Commande (Poste Commande)
 	leader      : Du Pontet, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -202,6 +207,7 @@ Unit count: 6
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 47
 	type group  : 0
 	position    : (2, 6)
 
@@ -212,7 +218,10 @@ Unit count: 6
 #00001 (00001:00001,000) B0   Panhard 178 (Panhard 178)
 	leader      : De Leusse, rank 5 (1Lt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 17
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -238,6 +247,7 @@ Unit count: 6
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 1
 	position    : (2, 7)
 
@@ -248,7 +258,10 @@ Unit count: 6
 #00002 (00001:00001,001) B1   Panhard 178 (Panhard 178)
 	leader      : Xavier, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 17
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -274,6 +287,7 @@ Unit count: 6
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 1
 	position    : (3, 9)
 
@@ -284,7 +298,10 @@ Unit count: 6
 #00003 (00001:00001,002) B2   Panhard 178 (Panhard 178)
 	leader      : Boussard, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 17
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -310,6 +327,7 @@ Unit count: 6
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 1
 	position    : (2, 8)
 
@@ -320,7 +338,10 @@ Unit count: 6
 #00004 (00001:00001,003) B3   Panhard 178 (Panhard 178)
 	leader      : Boudreau, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 17
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -346,6 +367,7 @@ Unit count: 6
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 1
 	position    : (2, 5)
 
@@ -356,7 +378,10 @@ Unit count: 6
 #00005 (00001:00001,004) B4   Panhard 178 (Panhard 178)
 	leader      : Laurens, rank 3 (Sgt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 17
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -382,6 +407,7 @@ Unit count: 6
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 1
 	position    : (2, 7)
 
@@ -467,11 +493,12 @@ Formation count: 4
 #00002 A (FID 00000)
 	leader      : A0 Belgian HQ (LtC De Caluwe)
 	higher cmd  : A0 Belgian HQ (LtC De Caluwe)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : Belgian HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 Belgian HQ (LtC De Caluwe)
 
@@ -500,11 +527,12 @@ Formation count: 4
 #00003 B (FID 00001)
 	leader      : B0 T.15 (Sgt Delfosse)
 	higher cmd  : A0 Belgian HQ (LtC De Caluwe)
+	OOBrid      : 284
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : section
 	type        : Col Tank Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		B0 T.15 (Sgt Delfosse)
 		B1 T.15 (Cpl LaRock)
@@ -534,11 +562,12 @@ Formation count: 4
 #00004 C (FID 00002)
 	leader      : C0 T.15 (Sgt Maeterlinck)
 	higher cmd  : A0 Belgian HQ (LtC De Caluwe)
+	OOBrid      : 284
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : section
 	type        : Col Tank Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		C0 T.15 (Sgt Maeterlinck)
 		C1 T.15 (Sgt Nahon)
@@ -568,11 +597,12 @@ Formation count: 4
 #00005 D (FID 00003)
 	leader      : D0 T.15 (Sgt Froissart)
 	higher cmd  : A0 Belgian HQ (LtC De Caluwe)
+	OOBrid      : 284
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : section
 	type        : Col Tank Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		D0 T.15 (Sgt Froissart)
 		D1 T.15 (Cpl Elsschot)
@@ -608,7 +638,10 @@ Unit count: 7
 #00006 (00002:00000,000) A0   Belgian HQ (Belgian HQ)
 	leader      : De Caluwe, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -634,6 +667,7 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 40
 	type group  : 2
 	position    : (15, 13)
 
@@ -644,7 +678,10 @@ Unit count: 7
 #00007 (00003:00001,000) B0   T.15 (T.15)
 	leader      : Delfosse, rank 3 (Sgt)
 	formation   : B: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 5
 	unit type   : 102 (cavalry tank)
 	unit class  : 1 (cavalry)
 	kills       : 0
@@ -670,6 +707,7 @@ Unit count: 7
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 3
 	position    : (16, 11)
 
@@ -680,7 +718,10 @@ Unit count: 7
 #00008 (00003:00001,001) B1   T.15 (T.15)
 	leader      : LaRock, rank 2 (Cpl)
 	formation   : B: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 5
 	unit type   : 102 (cavalry tank)
 	unit class  : 1 (cavalry)
 	kills       : 0
@@ -706,6 +747,7 @@ Unit count: 7
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 3
 	position    : (17, 15)
 
@@ -716,7 +758,10 @@ Unit count: 7
 #00009 (00004:00002,000) C0   T.15 (T.15)
 	leader      : Maeterlinck, rank 3 (Sgt)
 	formation   : C: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 5
 	unit type   : 102 (cavalry tank)
 	unit class  : 1 (cavalry)
 	kills       : 0
@@ -742,6 +787,7 @@ Unit count: 7
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 3
 	position    : (16, 15)
 
@@ -752,7 +798,10 @@ Unit count: 7
 #00010 (00004:00002,001) C1   T.15 (T.15)
 	leader      : Nahon, rank 3 (Sgt)
 	formation   : C: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 5
 	unit type   : 102 (cavalry tank)
 	unit class  : 1 (cavalry)
 	kills       : 0
@@ -778,6 +827,7 @@ Unit count: 7
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 3
 	position    : (17, 17)
 
@@ -788,7 +838,10 @@ Unit count: 7
 #00011 (00005:00003,000) D0   T.15 (T.15)
 	leader      : Froissart, rank 3 (Sgt)
 	formation   : D: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 5
 	unit type   : 102 (cavalry tank)
 	unit class  : 1 (cavalry)
 	kills       : 0
@@ -814,6 +867,7 @@ Unit count: 7
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 3
 	position    : (17, 14)
 
@@ -824,7 +878,10 @@ Unit count: 7
 #00012 (00005:00003,001) D1   T.15 (T.15)
 	leader      : Elsschot, rank 2 (Cpl)
 	formation   : D: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 27 (   Belgian)
+	OOBrid      : 5
 	unit type   : 102 (cavalry tank)
 	unit class  : 1 (cavalry)
 	kills       : 0
@@ -850,6 +907,7 @@ Unit count: 7
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 3
 	position    : (17, 13)
 

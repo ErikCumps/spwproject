@@ -15,6 +15,7 @@
 #include "snapshot/index.h"
 #include "utils/ud.h"
 #include "common/internal.h"
+#include "common/types.h"
 
 // The end-of-unitlist detection was not 100% correct.
 //
@@ -601,7 +602,7 @@ find_formation_oobrids (FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
 
 /* Verifies all the candidate units and drops invalid units */
 static SPWAW_ERROR
-verify_candidate_units (FULIST &ful)
+verify_candidate_units (FULIST &ful, bool campaign)
 {
 	UEL	*p;
 	UEL	*uel;
@@ -678,6 +679,13 @@ verify_candidate_units (FULIST &ful)
 				}
 			}
 		} else {
+			if (campaign && winspww2_handling_options.AUTOCMPCR) {
+				if (fel->d.status == F_CORE) {
+					UFDLOG2 ("ACCEPTED - AUTO CORE (uel->d.FSID (%d) >= (%d) fel->d.unit_cnt\n", uel->d.FSID, fel->d.unit_cnt);
+					goto accept_unit;
+				}
+			}
+
 			if (winspww2_handling_options.AUTOSPAU) {
 				// Units that don't seem to belong to the formation (according to the OOB info) are assumed to be SPAU
 				if (fel->d.unit_cnt && (uel->d.FSID >= fel->d.unit_cnt)) {
@@ -875,7 +883,7 @@ verify_candidate_formations (FULIST &ful)
 
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date)
+unitcount (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date, bool campaign)
 {
 	SPWAW_ERROR	rc;
 
@@ -895,7 +903,7 @@ unitcount (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE player, FULIST &
 	ROE ("find_formation_oobrids()");
 
 	// Step 3: verify the candidate units, using the formation OOB info
-	rc = verify_candidate_units (ful);
+	rc = verify_candidate_units (ful, campaign);
 	ROE ("verify_candidate_units()");
 
 	// Step 4: verify the candidate formations, using the verified units (and the formation OOB info?)
@@ -1035,11 +1043,11 @@ section01_winspww2_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, 
 	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
 
 	// Count the available units for player #1
-	rc = unitcount (udata, pdata, PLAYER1, ful1, dst->oobdat, date);
+	rc = unitcount (udata, pdata, PLAYER1, ful1, dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE);
 	ROE ("unitcount(OOBp1)");
 
 	// Count the available units for player #2
-	rc = unitcount (udata, pdata, PLAYER2, ful2, dst->oobdat, date);
+	rc = unitcount (udata, pdata, PLAYER2, ful2, dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE);
 	ROE ("unitcount(OOBp2)");
 
 	// Verify unit detection

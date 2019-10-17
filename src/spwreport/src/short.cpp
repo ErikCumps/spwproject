@@ -207,7 +207,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 		}
 
 		fprintf (rf, "%s%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u LOSS %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
-			p->core?"C":" ",
+			p->core?"c":"s",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",
@@ -248,7 +248,7 @@ report_crews (FILE *rf, SPWAW_SNAP_OOB_U *ptr)
 		}
 
 		fprintf (rf, "%s%s%s%s%s%s %-4s: %-16s (%-3s %-16s) %-16s RID %5.5u UTG %3.3u EXP %3.3u MOR %3.3u SUP %3.3u RAL %3.3u INF %3.3u ART %3.3u ARM %3.3u KILL %3.3u MEN %3.3u KIA %3.3u DMG %3.3u RDY %6.2f POS %10s\n",
-			p->core?"C":" ",
+			p->core?"c":"s",
 			p->data.alive?" ":"+",
 			p->data.spotted?" ":"#",
 			p->data.damage?"-":" ",

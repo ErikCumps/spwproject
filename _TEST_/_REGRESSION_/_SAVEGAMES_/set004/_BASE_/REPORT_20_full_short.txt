@@ -93,7 +93,7 @@ A : regular elite recon force HQ (German HQ)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 1
+	unit count: 1 (0 core, 1 support, 0 regular)
 	unit list :
 		A0 GE Kommandant
 
@@ -103,7 +103,7 @@ B : regular average platoon (Halftrack Sec)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 2
+	unit count: 2 (0 core, 2 support, 0 regular)
 	unit list :
 		B0 SdKfz 251/1 HT
 		B1 SdKfz 251/1 HT
@@ -114,7 +114,7 @@ C : regular elite platoon (SS Panzer Plt)
 	kills     : 9
 	losses    : 0
 	readiness :  99.02 %
-	unit count: 4
+	unit count: 4 (0 core, 4 support, 0 regular)
 	unit list :
 		C0 PzKpfw IV J
 		C1 PzKpfw IV J
@@ -127,7 +127,7 @@ D : regular elite platoon (SS Panzer Plt)
 	kills     : 2
 	losses    : 0
 	readiness :  99.64 %
-	unit count: 4
+	unit count: 4 (0 core, 4 support, 0 regular)
 	unit list :
 		D0 Panther G
 		D1 Panther G
@@ -138,17 +138,17 @@ D : regular elite platoon (SS Panzer Plt)
 Short units report:
 -------------------
 
- #    A0  : GE Kommandant    (Col Stemberger      ) GE Kommandant    RID 00000 UTG 000 EXP 090 MOR 080 SUP 000 RAL 075 INF 075 ART 042 ARM 041 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS (  7,  18)
-      B0  : SdKfz 251/1 HT   (1Lt Wiedemann       ) SdKfz 251/1 HT   RID 00001 UTG 001 EXP 068 MOR 063 SUP 000 RAL 075 INF 038 ART 036 ARM 068 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS (  8,  18)
-      B1  : SdKfz 251/1 HT   (Sgt Petereit        ) SdKfz 251/1 HT   RID 00002 UTG 001 EXP 062 MOR 065 SUP 000 RAL 062 INF 032 ART 043 ARM 067 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS (  7,  19)
-      C0  : PzKpfw IV J      (1Lt Lang            ) PzKpfw IV J      RID 00003 UTG 002 EXP 068 MOR 079 SUP 000 RAL 069 INF 034 ART 034 ARM 062 KILL 005 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 13,   6)
-      C1  : PzKpfw IV J      (Sgt Rauch           ) PzKpfw IV J      RID 00004 UTG 002 EXP 070 MOR 087 SUP 001 RAL 068 INF 043 ART 028 ARM 070 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.85 POS ( 12,   7)
-      C2  : PzKpfw IV J      (Sgt Weiss           ) PzKpfw IV J      RID 00005 UTG 002 EXP 060 MOR 068 SUP 001 RAL 067 INF 043 ART 031 ARM 073 KILL 002 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.53 POS ( 12,   6)
-      C3  : PzKpfw IV J      (Sgt Bachman         ) PzKpfw IV J      RID 00006 UTG 002 EXP 058 MOR 076 SUP 001 RAL 077 INF 039 ART 038 ARM 062 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.68 POS ( 11,   7)
-      D0  : Panther G        (1Lt Remer           ) Panther G        RID 00007 UTG 003 EXP 076 MOR 078 SUP 000 RAL 070 INF 041 ART 035 ARM 070 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 13,  15)
-      D1  : Panther G        (Sgt Brandt          ) Panther G        RID 00008 UTG 003 EXP 074 MOR 070 SUP 001 RAL 069 INF 032 ART 034 ARM 068 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.57 POS ( 13,  16)
-      D2  : Panther G        (Sgt Dittrich        ) Panther G        RID 00009 UTG 003 EXP 081 MOR 078 SUP 000 RAL 066 INF 041 ART 039 ARM 066 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 12,  15)
-      D3  : Panther G        (Sgt Gebhart         ) Panther G        RID 00010 UTG 003 EXP 072 MOR 070 SUP 000 RAL 070 INF 039 ART 033 ARM 066 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 12,  16)
+s #    A0  : GE Kommandant    (Col Stemberger      ) GE Kommandant    RID 00000 UTG 000 EXP 090 MOR 080 SUP 000 RAL 075 INF 075 ART 042 ARM 041 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS (  7,  18)
+s      B0  : SdKfz 251/1 HT   (1Lt Wiedemann       ) SdKfz 251/1 HT   RID 00001 UTG 001 EXP 068 MOR 063 SUP 000 RAL 075 INF 038 ART 036 ARM 068 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS (  8,  18)
+s      B1  : SdKfz 251/1 HT   (Sgt Petereit        ) SdKfz 251/1 HT   RID 00002 UTG 001 EXP 062 MOR 065 SUP 000 RAL 062 INF 032 ART 043 ARM 067 KILL 000 LOSS 000 MEN 003 KIA 000 DMG 000 RDY 100.00 POS (  7,  19)
+s      C0  : PzKpfw IV J      (1Lt Lang            ) PzKpfw IV J      RID 00003 UTG 002 EXP 068 MOR 079 SUP 000 RAL 069 INF 034 ART 034 ARM 062 KILL 005 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 13,   6)
+s      C1  : PzKpfw IV J      (Sgt Rauch           ) PzKpfw IV J      RID 00004 UTG 002 EXP 070 MOR 087 SUP 001 RAL 068 INF 043 ART 028 ARM 070 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.85 POS ( 12,   7)
+s      C2  : PzKpfw IV J      (Sgt Weiss           ) PzKpfw IV J      RID 00005 UTG 002 EXP 060 MOR 068 SUP 001 RAL 067 INF 043 ART 031 ARM 073 KILL 002 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.53 POS ( 12,   6)
+s      C3  : PzKpfw IV J      (Sgt Bachman         ) PzKpfw IV J      RID 00006 UTG 002 EXP 058 MOR 076 SUP 001 RAL 077 INF 039 ART 038 ARM 062 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.68 POS ( 11,   7)
+s      D0  : Panther G        (1Lt Remer           ) Panther G        RID 00007 UTG 003 EXP 076 MOR 078 SUP 000 RAL 070 INF 041 ART 035 ARM 070 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 13,  15)
+s      D1  : Panther G        (Sgt Brandt          ) Panther G        RID 00008 UTG 003 EXP 074 MOR 070 SUP 001 RAL 069 INF 032 ART 034 ARM 068 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.57 POS ( 13,  16)
+s      D2  : Panther G        (Sgt Dittrich        ) Panther G        RID 00009 UTG 003 EXP 081 MOR 078 SUP 000 RAL 066 INF 041 ART 039 ARM 066 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 12,  15)
+s      D3  : Panther G        (Sgt Gebhart         ) Panther G        RID 00010 UTG 003 EXP 072 MOR 070 SUP 000 RAL 070 INF 039 ART 033 ARM 066 KILL 001 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 12,  16)
 
 
 
@@ -210,7 +210,7 @@ A : core elite recon force HQ (Soviet HQ)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 1
+	unit count: 1 (0 core, 0 support, 1 regular)
 	unit list :
 		A0 SO Komander
 
@@ -220,7 +220,7 @@ B : regular recon platoon (Armored Car Sec)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		B0 BA-11
 		B1 BA-11
@@ -231,7 +231,7 @@ C : regular average platoon (TD Sec)
 	kills     : 0
 	losses    : 1
 	readiness :  49.11 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		C0 ZiS-30 abandoned by C50 Crewmen
 		C1 ZiS-30
@@ -242,7 +242,7 @@ D : regular average platoon (Med Tank Sec)
 	kills     : 0
 	losses    : 4
 	readiness :   0.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		D0 T-34 M43 abandoned by lost crew
 		D1 T-34 M43 abandoned by lost crew
@@ -253,7 +253,7 @@ E : regular recon platoon (Recon Tank Sec)
 	kills     : 0
 	losses    : 2
 	readiness :   0.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		E0 T-60E
 		E1 T-60E
@@ -264,7 +264,7 @@ F : regular average platoon (Hvy Tank Sec)
 	kills     : 0
 	losses    : 2
 	readiness :   0.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		F0 KV-1s abandoned by F50 Crewmen
 		F1 KV-1s abandoned by F51 Crewmen
@@ -275,7 +275,7 @@ G : regular average platoon (SPAA Sec)
 	kills     : 0
 	losses    : 1
 	readiness :  50.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		G0 ZSU-37 abandoned by G50 Crewmen
 		G1 ZSU-37
@@ -286,7 +286,7 @@ H : regular average platoon (ATG Sec)
 	kills     : 0
 	losses    : 0
 	readiness :  50.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		H0 57mm ATG M43  abandoned by H50 Crewmen
 		H1 57mm ATG M43 
@@ -297,7 +297,7 @@ I : core average platoon (Howitzer Sec)
 	kills     : 0
 	losses    : 1
 	readiness :   0.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		I0 152mm FH
 		I1 152mm FH abandoned by I51 Crewmen
@@ -308,7 +308,7 @@ J : regular average platoon (Carrier Sec)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		J0 Komsomolets
 		J1 Komsomolets
@@ -319,7 +319,7 @@ K : regular average platoon (Tractors)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 4
+	unit count: 4 (0 core, 0 support, 4 regular)
 	unit list :
 		K0 Stalinets S-80
 		K1 Stalinets S-80
@@ -332,7 +332,7 @@ L : regular average platoon (Fort)
 	kills     : 0
 	losses    : 0
 	readiness :   0.00 %
-	unit count: 1
+	unit count: 1 (0 core, 0 support, 1 regular)
 	unit list :
 		L0 MG Bunker abandoned by L50 Crewmen
 
@@ -342,7 +342,7 @@ M : regular average platoon (Fortifications)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 3
+	unit count: 3 (0 core, 0 support, 3 regular)
 	unit list :
 		M0 Log Rifle Pit
 		M1 Log Rifle Pit
@@ -354,7 +354,7 @@ N : regular recon platoon (Mtcycle Plt)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 3
+	unit count: 3 (0 core, 0 support, 3 regular)
 	unit list :
 		N0 Motorcylisty
 		N1 Motorcylisty
@@ -366,7 +366,7 @@ O : regular average platoon (Med Truck Sec)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 2
+	unit count: 2 (0 core, 0 support, 2 regular)
 	unit list :
 		O0 GAZ-2A
 		O1 GAZ-2A
@@ -377,7 +377,7 @@ P : regular elite platoon (Command Post HQ)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 1
+	unit count: 1 (0 core, 0 support, 1 regular)
 	unit list :
 		P0 Command Post
 
@@ -385,50 +385,50 @@ P : regular elite platoon (Command Post HQ)
 Short units report:
 -------------------
 
- #    A0  : SO Komander      (Col Kashin          ) SO Komander      RID 00400 UTG 004 EXP 071 MOR 073 SUP 000 RAL 059 INF 055 ART 037 ARM 032 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 23,  16)
-      B0  : BA-11            (1Lt Vorobiev        ) BA-11            RID 00401 UTG 005 EXP 055 MOR 056 SUP 000 RAL 065 INF 026 ART 027 ARM 057 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 18,   0)
-      B1  : BA-11            (Sgt Ivanovich       ) BA-11            RID 00402 UTG 005 EXP 064 MOR 067 SUP 000 RAL 066 INF 033 ART 035 ARM 054 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 17,   1)
-+ -A  C0  : ZiS-30           (1Lt Kazimirovich    ) ZiS-30           RID 00403 UTG 006 EXP 057 MOR 069 SUP 005 RAL 063 INF 036 ART 024 ARM 059 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 041 RDY   0.00 POS (  none  )
-      C1  : ZiS-30           (Sgt Antonov         ) ZiS-30           RID 00404 UTG 006 EXP 061 MOR 056 SUP 001 RAL 067 INF 033 ART 025 ARM 059 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.21 POS ( 16,   3)
-+ -A  D0  : T-34 M43         (KIA Blizorukiy      ) T-34 M43         RID 00405 UTG 007 EXP 068 MOR 066 SUP 003 RAL 063 INF 032 ART 034 ARM 060 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 116 RDY   0.00 POS (  none  )
-+ -A  D1  : T-34 M43         (KIA Bogolyubov      ) T-34 M43         RID 00406 UTG 007 EXP 066 MOR 064 SUP 007 RAL 059 INF 031 ART 026 ARM 061 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 116 RDY   0.00 POS (  none  )
-+ -   E0  : T-60E            (KIA Pugovkin        ) T-60E            RID 00407 UTG 008 EXP 069 MOR 070 SUP 019 RAL 062 INF 026 ART 033 ARM 054 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 054 RDY   0.00 POS (  none  )
-+ -   E1  : T-60E            (KIA Samoilov        ) T-60E            RID 00408 UTG 008 EXP 059 MOR 067 SUP 027 RAL 061 INF 028 ART 026 ARM 053 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 054 RDY   0.00 POS (  none  )
-+ -A  F0  : KV-1s            (1Lt Rabinovich      ) KV-1s            RID 00409 UTG 009 EXP 062 MOR 060 SUP 050 RAL 063 INF 030 ART 029 ARM 061 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 118 RDY   0.00 POS (  none  )
-+ -A  F1  : KV-1s            (Sgt Schevchuk       ) KV-1s            RID 00410 UTG 009 EXP 059 MOR 062 SUP 021 RAL 070 INF 039 ART 026 ARM 063 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 118 RDY   0.00 POS (  none  )
-+ -A  G0  : ZSU-37           (1Lt Oistrakh        ) ZSU-37           RID 00411 UTG 010 EXP 064 MOR 061 SUP 005 RAL 059 INF 023 ART 026 ARM 055 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 066 RDY   0.00 POS (  none  )
-      G1  : ZSU-37           (Sgt Plotnikov       ) ZSU-37           RID 00412 UTG 010 EXP 057 MOR 057 SUP 000 RAL 059 INF 035 ART 025 ARM 067 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 18,  11)
- # A  H0  : 57mm ATG M43     (2Lt Bakunin         ) 57mm ATG M43     RID 00413 UTG 011 EXP 066 MOR 060 SUP 000 RAL 062 INF 038 ART 068 ARM 025 KILL 000 LOSS 000 MEN 005 KIA 005 DMG 000 RDY   0.00 POS ( 19,  12)
- #    H1  : 57mm ATG M43     (Sgt Fedorov         ) 57mm ATG M43     RID 00414 UTG 011 EXP 059 MOR 061 SUP 000 RAL 056 INF 030 ART 067 ARM 032 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 19,  13)
-+ -   I0  : 152mm FH         (KIA Ilyin           ) 152mm Howitzer   RID 00415 UTG 012 EXP 053 MOR 057 SUP 099 RAL 064 INF 036 ART 058 ARM 031 KILL 000 LOSS 001 MEN 011 KIA 011 DMG 047 RDY   0.00 POS (  none  )
-   A  I1  : 152mm FH         (Sgt Pashkov         ) 152mm Howitzer   RID 00416 UTG 012 EXP 061 MOR 057 SUP 000 RAL 069 INF 027 ART 058 ARM 027 KILL 000 LOSS 000 MEN 011 KIA 011 DMG 000 RDY   0.00 POS ( 20,  15)
-      J0  : Komsomolets      (1Lt Belinsky        ) Komsomolets      RID 00417 UTG 013 EXP 058 MOR 061 SUP 000 RAL 063 INF 028 ART 023 ARM 063 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 20,  18)
-      J1  : Komsomolets      (Sgt Budeny          ) Komsomolets      RID 00418 UTG 013 EXP 067 MOR 067 SUP 000 RAL 066 INF 038 ART 037 ARM 064 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 19,  19)
-      K0  : Stalinets S-80   (1Lt Kuropatkin      ) Stalinets S-80   RID 00419 UTG 014 EXP 070 MOR 058 SUP 000 RAL 062 INF 030 ART 029 ARM 057 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  20)
-      K1  : Stalinets S-80   (Sgt Ivanov          ) Stalinets S-80   RID 00420 UTG 014 EXP 055 MOR 064 SUP 000 RAL 060 INF 037 ART 035 ARM 054 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  21)
-      K2  : Stalinets S-80   (Sgt Lyutiy          ) Stalinets S-80   RID 00421 UTG 014 EXP 063 MOR 060 SUP 000 RAL 057 INF 031 ART 029 ARM 062 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  22)
-      K3  : Stalinets S-80   (Sgt Arakcheyev      ) Stalinets S-80   RID 00422 UTG 014 EXP 070 MOR 061 SUP 000 RAL 062 INF 032 ART 033 ARM 057 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  23)
- # A  L0  : MG Bunker        (2Lt Rimsky          ) MG Bunker        RID 00423 UTG 015 EXP 083 MOR 085 SUP 000 RAL 075 INF 028 ART 029 ARM 066 KILL 000 LOSS 000 MEN 016 KIA 016 DMG 000 RDY   0.00 POS ( 21,   6)
- #    M0  : Log Rifle Pit    (2Lt Gorky           ) Rifle Pit        RID 00424 UTG 016 EXP 075 MOR 087 SUP 000 RAL 075 INF 029 ART 036 ARM 052 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 21,  16)
- #    M1  : Log Rifle Pit    (Sgt Sidorov         ) Rifle Pit        RID 00425 UTG 016 EXP 073 MOR 092 SUP 000 RAL 075 INF 032 ART 030 ARM 059 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 20,  17)
- #    M2  : Log Rifle Pit    (Sgt Ramazanov       ) Rifle Pit        RID 00426 UTG 016 EXP 076 MOR 094 SUP 000 RAL 079 INF 031 ART 036 ARM 060 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 21,  17)
-      N0  : Motorcylisty     (2Lt Karelin         ) Motorcyclists    RID 00427 UTG 017 EXP 062 MOR 068 SUP 000 RAL 062 INF 061 ART 039 ARM 027 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 20,  24)
-      N1  : Motorcylisty     (Sgt Yelayev         ) Motorcyclists    RID 00428 UTG 017 EXP 062 MOR 064 SUP 000 RAL 065 INF 054 ART 028 ARM 031 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 20,  25)
-      N2  : Motorcylisty     (Sgt Petrenko        ) Motorcyclists    RID 00429 UTG 017 EXP 055 MOR 062 SUP 000 RAL 055 INF 060 ART 027 ARM 032 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 21,  26)
-      O0  : GAZ-2A           (1Lt Bagranyan       ) GAZ-2A           RID 00430 UTG 018 EXP 070 MOR 068 SUP 000 RAL 055 INF 031 ART 036 ARM 056 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 20,  27)
-      O1  : GAZ-2A           (Sgt Dubrovin        ) GAZ-2A           RID 00431 UTG 018 EXP 071 MOR 065 SUP 000 RAL 072 INF 032 ART 030 ARM 054 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 20,  28)
-      P0  : Command Post     (1Lt Shevchenko      ) Command Post     RID 00432 UTG 019 EXP 079 MOR 073 SUP 000 RAL 072 INF 032 ART 022 ARM 060 KILL 000 LOSS 000 MEN 020 KIA 000 DMG 000 RDY 100.00 POS ( 22,  16)
+s #    A0  : SO Komander      (Col Kashin          ) SO Komander      RID 00400 UTG 004 EXP 071 MOR 073 SUP 000 RAL 059 INF 055 ART 037 ARM 032 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS ( 23,  16)
+s      B0  : BA-11            (1Lt Vorobiev        ) BA-11            RID 00401 UTG 005 EXP 055 MOR 056 SUP 000 RAL 065 INF 026 ART 027 ARM 057 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 18,   0)
+s      B1  : BA-11            (Sgt Ivanovich       ) BA-11            RID 00402 UTG 005 EXP 064 MOR 067 SUP 000 RAL 066 INF 033 ART 035 ARM 054 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 17,   1)
+s+ -A  C0  : ZiS-30           (1Lt Kazimirovich    ) ZiS-30           RID 00403 UTG 006 EXP 057 MOR 069 SUP 005 RAL 063 INF 036 ART 024 ARM 059 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 041 RDY   0.00 POS (  none  )
+s      C1  : ZiS-30           (Sgt Antonov         ) ZiS-30           RID 00404 UTG 006 EXP 061 MOR 056 SUP 001 RAL 067 INF 033 ART 025 ARM 059 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY  98.21 POS ( 16,   3)
+s+ -A  D0  : T-34 M43         (KIA Blizorukiy      ) T-34 M43         RID 00405 UTG 007 EXP 068 MOR 066 SUP 003 RAL 063 INF 032 ART 034 ARM 060 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 116 RDY   0.00 POS (  none  )
+s+ -A  D1  : T-34 M43         (KIA Bogolyubov      ) T-34 M43         RID 00406 UTG 007 EXP 066 MOR 064 SUP 007 RAL 059 INF 031 ART 026 ARM 061 KILL 000 LOSS 002 MEN 004 KIA 004 DMG 116 RDY   0.00 POS (  none  )
+s+ -   E0  : T-60E            (KIA Pugovkin        ) T-60E            RID 00407 UTG 008 EXP 069 MOR 070 SUP 019 RAL 062 INF 026 ART 033 ARM 054 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 054 RDY   0.00 POS (  none  )
+s+ -   E1  : T-60E            (KIA Samoilov        ) T-60E            RID 00408 UTG 008 EXP 059 MOR 067 SUP 027 RAL 061 INF 028 ART 026 ARM 053 KILL 000 LOSS 001 MEN 002 KIA 002 DMG 054 RDY   0.00 POS (  none  )
+s+ -A  F0  : KV-1s            (1Lt Rabinovich      ) KV-1s            RID 00409 UTG 009 EXP 062 MOR 060 SUP 050 RAL 063 INF 030 ART 029 ARM 061 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 118 RDY   0.00 POS (  none  )
+s+ -A  F1  : KV-1s            (Sgt Schevchuk       ) KV-1s            RID 00410 UTG 009 EXP 059 MOR 062 SUP 021 RAL 070 INF 039 ART 026 ARM 063 KILL 000 LOSS 001 MEN 005 KIA 005 DMG 118 RDY   0.00 POS (  none  )
+s+ -A  G0  : ZSU-37           (1Lt Oistrakh        ) ZSU-37           RID 00411 UTG 010 EXP 064 MOR 061 SUP 005 RAL 059 INF 023 ART 026 ARM 055 KILL 000 LOSS 001 MEN 004 KIA 004 DMG 066 RDY   0.00 POS (  none  )
+s      G1  : ZSU-37           (Sgt Plotnikov       ) ZSU-37           RID 00412 UTG 010 EXP 057 MOR 057 SUP 000 RAL 059 INF 035 ART 025 ARM 067 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 18,  11)
+s # A  H0  : 57mm ATG M43     (2Lt Bakunin         ) 57mm ATG M43     RID 00413 UTG 011 EXP 066 MOR 060 SUP 000 RAL 062 INF 038 ART 068 ARM 025 KILL 000 LOSS 000 MEN 005 KIA 005 DMG 000 RDY   0.00 POS ( 19,  12)
+s #    H1  : 57mm ATG M43     (Sgt Fedorov         ) 57mm ATG M43     RID 00414 UTG 011 EXP 059 MOR 061 SUP 000 RAL 056 INF 030 ART 067 ARM 032 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 19,  13)
+s+ -   I0  : 152mm FH         (KIA Ilyin           ) 152mm Howitzer   RID 00415 UTG 012 EXP 053 MOR 057 SUP 099 RAL 064 INF 036 ART 058 ARM 031 KILL 000 LOSS 001 MEN 011 KIA 011 DMG 047 RDY   0.00 POS (  none  )
+s   A  I1  : 152mm FH         (Sgt Pashkov         ) 152mm Howitzer   RID 00416 UTG 012 EXP 061 MOR 057 SUP 000 RAL 069 INF 027 ART 058 ARM 027 KILL 000 LOSS 000 MEN 011 KIA 011 DMG 000 RDY   0.00 POS ( 20,  15)
+s      J0  : Komsomolets      (1Lt Belinsky        ) Komsomolets      RID 00417 UTG 013 EXP 058 MOR 061 SUP 000 RAL 063 INF 028 ART 023 ARM 063 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 20,  18)
+s      J1  : Komsomolets      (Sgt Budeny          ) Komsomolets      RID 00418 UTG 013 EXP 067 MOR 067 SUP 000 RAL 066 INF 038 ART 037 ARM 064 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 19,  19)
+s      K0  : Stalinets S-80   (1Lt Kuropatkin      ) Stalinets S-80   RID 00419 UTG 014 EXP 070 MOR 058 SUP 000 RAL 062 INF 030 ART 029 ARM 057 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  20)
+s      K1  : Stalinets S-80   (Sgt Ivanov          ) Stalinets S-80   RID 00420 UTG 014 EXP 055 MOR 064 SUP 000 RAL 060 INF 037 ART 035 ARM 054 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  21)
+s      K2  : Stalinets S-80   (Sgt Lyutiy          ) Stalinets S-80   RID 00421 UTG 014 EXP 063 MOR 060 SUP 000 RAL 057 INF 031 ART 029 ARM 062 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  22)
+s      K3  : Stalinets S-80   (Sgt Arakcheyev      ) Stalinets S-80   RID 00422 UTG 014 EXP 070 MOR 061 SUP 000 RAL 062 INF 032 ART 033 ARM 057 KILL 000 LOSS 000 MEN 001 KIA 000 DMG 000 RDY 100.00 POS ( 19,  23)
+s # A  L0  : MG Bunker        (2Lt Rimsky          ) MG Bunker        RID 00423 UTG 015 EXP 083 MOR 085 SUP 000 RAL 075 INF 028 ART 029 ARM 066 KILL 000 LOSS 000 MEN 016 KIA 016 DMG 000 RDY   0.00 POS ( 21,   6)
+s #    M0  : Log Rifle Pit    (2Lt Gorky           ) Rifle Pit        RID 00424 UTG 016 EXP 075 MOR 087 SUP 000 RAL 075 INF 029 ART 036 ARM 052 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 21,  16)
+s #    M1  : Log Rifle Pit    (Sgt Sidorov         ) Rifle Pit        RID 00425 UTG 016 EXP 073 MOR 092 SUP 000 RAL 075 INF 032 ART 030 ARM 059 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 20,  17)
+s #    M2  : Log Rifle Pit    (Sgt Ramazanov       ) Rifle Pit        RID 00426 UTG 016 EXP 076 MOR 094 SUP 000 RAL 079 INF 031 ART 036 ARM 060 KILL 000 LOSS 000 MEN 005 KIA 000 DMG 000 RDY 100.00 POS ( 21,  17)
+s      N0  : Motorcylisty     (2Lt Karelin         ) Motorcyclists    RID 00427 UTG 017 EXP 062 MOR 068 SUP 000 RAL 062 INF 061 ART 039 ARM 027 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 20,  24)
+s      N1  : Motorcylisty     (Sgt Yelayev         ) Motorcyclists    RID 00428 UTG 017 EXP 062 MOR 064 SUP 000 RAL 065 INF 054 ART 028 ARM 031 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 20,  25)
+s      N2  : Motorcylisty     (Sgt Petrenko        ) Motorcyclists    RID 00429 UTG 017 EXP 055 MOR 062 SUP 000 RAL 055 INF 060 ART 027 ARM 032 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS ( 21,  26)
+s      O0  : GAZ-2A           (1Lt Bagranyan       ) GAZ-2A           RID 00430 UTG 018 EXP 070 MOR 068 SUP 000 RAL 055 INF 031 ART 036 ARM 056 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 20,  27)
+s      O1  : GAZ-2A           (Sgt Dubrovin        ) GAZ-2A           RID 00431 UTG 018 EXP 071 MOR 065 SUP 000 RAL 072 INF 032 ART 030 ARM 054 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 20,  28)
+s      P0  : Command Post     (1Lt Shevchenko      ) Command Post     RID 00432 UTG 019 EXP 079 MOR 073 SUP 000 RAL 072 INF 032 ART 022 ARM 060 KILL 000 LOSS 000 MEN 020 KIA 000 DMG 000 RDY 100.00 POS ( 22,  16)
 
 Short crews report:
 -------------------
 
-  -A  C50 : Crewmen          (1Lt Kazimirovich    )                  RID 00433 UTG 020 EXP 057 MOR 069 SUP 001 RAL 063 INF 036 ART 024 ARM 059 KILL 000 MEN 005 KIA 003 DMG 001 RDY   0.00 POS ( 17,   3)
-  -A  F50 : Crewmen          (1Lt Rabinovich      )                  RID 00434 UTG 020 EXP 062 MOR 060 SUP 012 RAL 063 INF 030 ART 029 ARM 061 KILL 000 MEN 005 KIA 003 DMG 001 RDY   0.00 POS ( 18,   9)
-   A  F51 : Crewmen          (Sgt Schevchuk       )                  RID 00435 UTG 020 EXP 059 MOR 062 SUP 013 RAL 070 INF 039 ART 026 ARM 063 KILL 000 MEN 005 KIA 003 DMG 000 RDY   0.00 POS ( 18,   9)
-   A  G50 : Crewmen          (1Lt Oistrakh        )                  RID 00436 UTG 020 EXP 064 MOR 061 SUP 001 RAL 059 INF 023 ART 026 ARM 055 KILL 000 MEN 004 KIA 003 DMG 000 RDY   0.00 POS ( 18,  10)
- # A  H50 : Crewmen          (2Lt Bakunin         )                  RID 00438 UTG 020 EXP 066 MOR 060 SUP 000 RAL 062 INF 038 ART 068 ARM 025 KILL 000 MEN 005 KIA 000 DMG 000 RDY   0.00 POS ( 19,  12)
-   A  I51 : Crewmen          (Sgt Pashkov         )                  RID 00439 UTG 020 EXP 061 MOR 057 SUP 000 RAL 069 INF 027 ART 058 ARM 027 KILL 000 MEN 011 KIA 000 DMG 000 RDY   0.00 POS ( 20,  15)
- # A  L50 : Crewmen          (2Lt Rimsky          )                  RID 00437 UTG 020 EXP 083 MOR 085 SUP 000 RAL 075 INF 028 ART 029 ARM 066 KILL 000 MEN 016 KIA 000 DMG 000 RDY   0.00 POS ( 21,   6)
+s  -A  C50 : Crewmen          (1Lt Kazimirovich    )                  RID 00433 UTG 020 EXP 057 MOR 069 SUP 001 RAL 063 INF 036 ART 024 ARM 059 KILL 000 MEN 005 KIA 003 DMG 001 RDY   0.00 POS ( 17,   3)
+s  -A  F50 : Crewmen          (1Lt Rabinovich      )                  RID 00434 UTG 020 EXP 062 MOR 060 SUP 012 RAL 063 INF 030 ART 029 ARM 061 KILL 000 MEN 005 KIA 003 DMG 001 RDY   0.00 POS ( 18,   9)
+s   A  F51 : Crewmen          (Sgt Schevchuk       )                  RID 00435 UTG 020 EXP 059 MOR 062 SUP 013 RAL 070 INF 039 ART 026 ARM 063 KILL 000 MEN 005 KIA 003 DMG 000 RDY   0.00 POS ( 18,   9)
+s   A  G50 : Crewmen          (1Lt Oistrakh        )                  RID 00436 UTG 020 EXP 064 MOR 061 SUP 001 RAL 059 INF 023 ART 026 ARM 055 KILL 000 MEN 004 KIA 003 DMG 000 RDY   0.00 POS ( 18,  10)
+s # A  H50 : Crewmen          (2Lt Bakunin         )                  RID 00438 UTG 020 EXP 066 MOR 060 SUP 000 RAL 062 INF 038 ART 068 ARM 025 KILL 000 MEN 005 KIA 000 DMG 000 RDY   0.00 POS ( 19,  12)
+s   A  I51 : Crewmen          (Sgt Pashkov         )                  RID 00439 UTG 020 EXP 061 MOR 057 SUP 000 RAL 069 INF 027 ART 058 ARM 027 KILL 000 MEN 011 KIA 000 DMG 000 RDY   0.00 POS ( 20,  15)
+s # A  L50 : Crewmen          (2Lt Rimsky          )                  RID 00437 UTG 020 EXP 083 MOR 085 SUP 000 RAL 075 INF 028 ART 029 ARM 066 KILL 000 MEN 016 KIA 000 DMG 000 RDY   0.00 POS ( 21,   6)
 
 
 

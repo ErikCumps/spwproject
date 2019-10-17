@@ -120,11 +120,12 @@ Formation count: 12
 #00000 A (FID 00000)
 	leader      : A0 British HQ (LtC Gilchrist)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : British HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 British HQ (LtC Gilchrist)
 
@@ -153,11 +154,12 @@ Formation count: 12
 #00001 B (FID 00001)
 	leader      : B0 FOO Team (1Lt Chadwick)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 159
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : FOO Team
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		B0 FOO Team (1Lt Chadwick)
 
@@ -186,11 +188,12 @@ Formation count: 12
 #00002 C (FID 00002)
 	leader      : C0 3in Mortar Sec (Sgt Vincent)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 94
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : section
 	type        : Mortar Section
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		C0 3in Mortar Sec (Sgt Vincent)
 
@@ -219,11 +222,12 @@ Formation count: 12
 #00003 D (FID 00003)
 	leader      : D0 37mm AT-Gun (Sgt Hazzard)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 31
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : section
 	type        : AT Gun Section
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		D0 37mm AT-Gun (Sgt Hazzard)
 		D1 37mm AT-Gun (Sgt Thompson)
@@ -253,11 +257,12 @@ Formation count: 12
 #00004 E (FID 00004)
 	leader      : E0 Bren AAMG (Sgt Saundby)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 382
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : section
 	type        : AAMGs
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		E0 Bren AAMG (Sgt Saundby)
 		E1 Bren AAMG (KIA Kimbrough)
@@ -287,11 +292,12 @@ Formation count: 12
 #00005 F (FID 00005)
 	leader      : F0 Rifle Section (Cpt Addington)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 4
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : company
 	type        : Rifle Company
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		F0 Rifle Section (Cpt Addington)
 
@@ -320,11 +326,12 @@ Formation count: 12
 #00006 G (FID 00006)
 	leader      : G0 Rifle Section (2Lt Oldridge)
 	higher cmd  : F0 Rifle Section (Cpt Addington)
+	OOBrid      : 38
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Platoon
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		G0 Rifle Section (2Lt Oldridge)
 		G1 Rifle Section (Cpl Webster)
@@ -356,11 +363,12 @@ Formation count: 12
 #00007 H (FID 00007)
 	leader      : H0 Rifle Section (1Lt Farley)
 	higher cmd  : F0 Rifle Section (Cpt Addington)
+	OOBrid      : 38
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Platoon
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		H0 Rifle Section (1Lt Farley)
 		H1 Rifle Section (Cpl Cochrane)
@@ -392,11 +400,12 @@ Formation count: 12
 #00008 I (FID 00008)
 	leader      : I0 Rifle Section (1Lt Garland)
 	higher cmd  : F0 Rifle Section (Cpt Addington)
+	OOBrid      : 38
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Platoon
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		I0 Rifle Section (1Lt Garland)
 		I1 Rifle Section (Cpl Harrington)
@@ -428,11 +437,12 @@ Formation count: 12
 #00009 J (FID 00009)
 	leader      : J0 Patrol (Sgt Ingersoll)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 147
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : section
 	type        : Patrol+
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		J0 Patrol (Sgt Ingersoll)
 		J1 Patrol (Cpl Underwood)
@@ -464,11 +474,12 @@ Formation count: 12
 #00010 K (FID 00010)
 	leader      : K0 Crusader II-CS (Sgt Hackett)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 18
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : section
 	type        : Cruiser CS Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		K0 Crusader II-CS (Sgt Hackett)
 		K1 Crusader II-CS (Sgt Hall)
@@ -498,11 +509,12 @@ Formation count: 12
 #00011 L (FID 00011)
 	leader      : L0 Honey (Sgt Doyle)
 	higher cmd  : A0 British HQ (LtC Gilchrist)
+	OOBrid      : 10
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : section
 	type        : Light Tank Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		L0 Honey (Sgt Doyle)
 		L1 Honey (Sgt Ricketts)
@@ -538,7 +550,10 @@ Unit count: 28
 #00000 (00000:00000,000) A0   British HQ (British HQ)
 	leader      : Gilchrist, rank 8 (LtC)
 	formation   : A: core average force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 244
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -564,6 +579,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 50
 	type group  : 0
 	position    : (5, 26)
 
@@ -574,7 +590,10 @@ Unit count: 28
 #00001 (00001:00001,000) B0   FOO Team (FOO Team)
 	leader      : Chadwick, rank 5 (1Lt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 283
 	unit type   : 203 (forward observer)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -600,6 +619,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 72
 	type group  : 1
 	position    : (4, 24)
 
@@ -610,7 +630,10 @@ Unit count: 28
 #00002 (00002:00002,000) C0   3in Mortar Sec (3in Mortar Sec)
 	leader      : Vincent, rank 3 (Sgt)
 	formation   : C: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 67
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -636,6 +659,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 23
 	type group  : 2
 	position    : (9, 29)
 
@@ -646,7 +670,10 @@ Unit count: 28
 #00003 (00003:00003,000) D0   37mm AT-Gun (37mm AT-Gun)
 	leader      : Hazzard, rank 3 (Sgt)
 	formation   : D: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 384
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -672,6 +699,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 3
 	position    : (28, 13)
 
@@ -682,7 +710,10 @@ Unit count: 28
 #00004 (00003:00003,001) D1   37mm AT-Gun (37mm AT-Gun)
 	leader      : Thompson, rank 3 (Sgt)
 	formation   : D: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 384
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -708,6 +739,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 3
 	position    : (30, 14)
 
@@ -718,7 +750,10 @@ Unit count: 28
 #00005 (00004:00004,000) E0   Bren AAMG (Bren AAMG)
 	leader      : Saundby, rank 3 (Sgt)
 	formation   : E: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 584
 	unit type   : 192 (AA MG infantry)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -744,6 +779,7 @@ Unit count: 28
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 9
 	type group  : 4
 	position    : (18, 17)
 
@@ -754,7 +790,10 @@ Unit count: 28
 #00006 (00004:00004,001) E1   Bren AAMG (Bren AAMG)
 	leader      : Kimbrough, rank 0 (KIA)
 	formation   : E: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 584
 	unit type   : 192 (AA MG infantry)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -780,6 +819,7 @@ Unit count: 28
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 9
 	type group  : 4
 	position    : (-1, -1)
 
@@ -790,7 +830,10 @@ Unit count: 28
 #00007 (00005:00005,000) F0   Rifle Section (Rifle Section)
 	leader      : Addington, rank 6 (Cpt)
 	formation   : F: core average company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 701
 	unit type   : 5 (rifle section)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -816,6 +859,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 5
 	position    : (37, 27)
 
@@ -826,7 +870,10 @@ Unit count: 28
 #00008 (00006:00006,000) G0   Rifle Section (Rifle Section)
 	leader      : Oldridge, rank 4 (2Lt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 479
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -852,6 +899,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 6
 	position    : (38, 28)
 
@@ -862,7 +910,10 @@ Unit count: 28
 #00009 (00006:00006,001) G1   Rifle Section (Rifle Section)
 	leader      : Webster, rank 2 (Cpl)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -888,6 +939,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (35, 28)
 
@@ -898,7 +950,10 @@ Unit count: 28
 #00010 (00006:00006,002) G2   Rifle Section (Rifle Section)
 	leader      : Fitzgibbon, rank 2 (Cpl)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -924,6 +979,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (34, 27)
 
@@ -934,7 +990,10 @@ Unit count: 28
 #00011 (00006:00006,003) G3   Rifle Section (Rifle Section)
 	leader      : Keyworth, rank 2 (Cpl)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -960,6 +1019,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (35, 28)
 
@@ -970,7 +1030,10 @@ Unit count: 28
 #00012 (00007:00007,000) H0   Rifle Section (Rifle Section)
 	leader      : Farley, rank 5 (1Lt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 479
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -996,6 +1059,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 6
 	position    : (31, 27)
 
@@ -1006,7 +1070,10 @@ Unit count: 28
 #00013 (00007:00007,001) H1   Rifle Section (Rifle Section)
 	leader      : Cochrane, rank 2 (Cpl)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1032,6 +1099,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (33, 26)
 
@@ -1042,7 +1110,10 @@ Unit count: 28
 #00014 (00007:00007,002) H2   Rifle Section (Rifle Section)
 	leader      : Davies, rank 2 (Cpl)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1068,6 +1139,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (31, 30)
 
@@ -1078,7 +1150,10 @@ Unit count: 28
 #00015 (00007:00007,003) H3   Rifle Section (Rifle Section)
 	leader      : Jamison, rank 0 (KIA)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1104,6 +1179,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (-1, -1)
 
@@ -1114,7 +1190,10 @@ Unit count: 28
 #00016 (00008:00008,000) I0   Rifle Section (Rifle Section)
 	leader      : Garland, rank 5 (1Lt)
 	formation   : I: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 479
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1140,6 +1219,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 18
 	type group  : 6
 	position    : (27, 44)
 
@@ -1150,7 +1230,10 @@ Unit count: 28
 #00017 (00008:00008,001) I1   Rifle Section (Rifle Section)
 	leader      : Harrington, rank 2 (Cpl)
 	formation   : I: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1176,6 +1259,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (27, 43)
 
@@ -1186,7 +1270,10 @@ Unit count: 28
 #00018 (00008:00008,002) I2   Rifle Section (Rifle Section)
 	leader      : Gilmour, rank 2 (Cpl)
 	formation   : I: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1212,6 +1299,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (27, 45)
 
@@ -1222,7 +1310,10 @@ Unit count: 28
 #00019 (00008:00008,003) I3   Rifle Section (Rifle Section)
 	leader      : Lake, rank 0 (KIA)
 	formation   : I: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 535
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1248,6 +1339,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 7
 	position    : (-1, -1)
 
@@ -1258,7 +1350,10 @@ Unit count: 28
 #00020 (00009:00009,000) J0   Patrol (Patrol)
 	leader      : Ingersoll, rank 3 (Sgt)
 	formation   : J: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 275
 	unit type   : 236 (patrol)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -1284,6 +1379,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 8
 	position    : (43, 21)
 
@@ -1294,7 +1390,10 @@ Unit count: 28
 #00021 (00009:00009,001) J1   Patrol (Patrol)
 	leader      : Underwood, rank 2 (Cpl)
 	formation   : J: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 275
 	unit type   : 236 (patrol)
 	unit class  : 8 (recon)
 	kills       : 2
@@ -1320,6 +1419,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 8
 	position    : (42, 24)
 
@@ -1330,7 +1430,10 @@ Unit count: 28
 #00022 (00009:00009,002) J2   Marksman (Marksman)
 	leader      : Stevenson, rank 2 (Cpl)
 	formation   : J: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 575
 	unit type   : 18 (sniper)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1356,6 +1459,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 9
 	type group  : 9
 	position    : (41, 24)
 
@@ -1366,7 +1470,10 @@ Unit count: 28
 #00023 (00009:00009,003) J3   Boys AT Rifle (Boys AT Rifle)
 	leader      : Ennis, rank 2 (Cpl)
 	formation   : J: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 77
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -1392,6 +1499,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 9
 	type group  : 10
 	position    : (43, 17)
 
@@ -1402,7 +1510,10 @@ Unit count: 28
 #00024 (00010:00010,000) K0   Crusader II-CS (Crusader II-CS)
 	leader      : Hackett, rank 3 (Sgt)
 	formation   : K: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 11
 	unit type   : 118 (CS cruiser tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1428,6 +1539,7 @@ Unit count: 28
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 11
 	position    : (31, 30)
 
@@ -1438,7 +1550,10 @@ Unit count: 28
 #00025 (00010:00010,001) K1   Crusader II-CS (Crusader II-CS)
 	leader      : Hall, rank 3 (Sgt)
 	formation   : K: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 11
 	unit type   : 118 (CS cruiser tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1464,6 +1579,7 @@ Unit count: 28
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 11
 	position    : (32, 16)
 
@@ -1474,7 +1590,10 @@ Unit count: 28
 #00026 (00011:00011,000) L0   Honey (Honey)
 	leader      : Doyle, rank 3 (Sgt)
 	formation   : L: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 3
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1500,6 +1619,7 @@ Unit count: 28
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 53
 	type group  : 12
 	position    : (37, 25)
 
@@ -1510,7 +1630,10 @@ Unit count: 28
 #00027 (00011:00011,001) L1   Honey (Honey)
 	leader      : Ricketts, rank 3 (Sgt)
 	formation   : L: core average section
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 7 (   British)
+	OOBrid      : 3
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -1536,6 +1659,7 @@ Unit count: 28
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 53
 	type group  : 12
 	position    : (37, 26)
 

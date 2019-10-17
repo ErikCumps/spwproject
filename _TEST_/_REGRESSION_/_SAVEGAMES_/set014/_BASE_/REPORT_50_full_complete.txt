@@ -100,11 +100,12 @@ Formation count: 2
 #00000 A (FID 00000)
 	leader      : A0 Kommandeur (LtC Osterloh)
 	higher cmd  : A0 Kommandeur (LtC Osterloh)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		A0 Kommandeur (LtC Osterloh)
 
@@ -133,11 +134,12 @@ Formation count: 2
 #00001 B (FID 00001)
 	leader      : B0 PzKw IIIj/1 (1Lt Krohner)
 	higher cmd  : A0 Kommandeur (LtC Osterloh)
+	OOBrid      : 11
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Zug/4
-	unit count  : 4
+	unit count  : 4 (0 core, 4 support, 0 regular)
 	unit list   :
 		B0 PzKw IIIj/1 (1Lt Krohner)
 		B1 PzKw IIIj/1 (Sgt Schwendt)
@@ -175,7 +177,10 @@ Unit count: 5
 #00000 (00000:00000,000) A0   Kommandeur (Kommandeur)
 	leader      : Osterloh, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 244
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -201,6 +206,7 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 50
 	type group  : 0
 	position    : (18, 1)
 
@@ -211,7 +217,10 @@ Unit count: 5
 #00001 (00001:00001,000) B0   PzKw IIIj/1 (PzKw IIIj/1)
 	leader      : Krohner, rank 5 (1Lt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 851
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -237,6 +246,7 @@ Unit count: 5
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 1
 	position    : (17, 16)
 
@@ -247,7 +257,10 @@ Unit count: 5
 #00002 (00001:00001,001) B1   PzKw IIIj/1 (PzKw IIIj/1)
 	leader      : Schwendt, rank 3 (Sgt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 851
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -273,6 +286,7 @@ Unit count: 5
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 1
 	position    : (17, 1)
 
@@ -283,7 +297,10 @@ Unit count: 5
 #00003 (00001:00001,002) B2   PzKw IIIj/1 (PzKw IIIj/1)
 	leader      : Striezel, rank 3 (Sgt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 851
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -309,6 +326,7 @@ Unit count: 5
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 1
 	position    : (16, 1)
 
@@ -319,7 +337,10 @@ Unit count: 5
 #00004 (00001:00001,003) B3   PzKw IIIj/1 (PzKw IIIj/1)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 851
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -345,6 +366,7 @@ Unit count: 5
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 63
 	type group  : 1
 	position    : (15, 1)
 
@@ -430,11 +452,12 @@ Formation count: 2
 #00002 A (FID 00000)
 	leader      : A0 Poste Commande (LtC Du Pontet)
 	higher cmd  : A0 Poste Commande (LtC Du Pontet)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : Free French HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 Poste Commande (LtC Du Pontet)
 
@@ -463,11 +486,12 @@ Formation count: 2
 #00003 B (FID 00001)
 	leader      : B0 Gpe Inf (1Lt Barbin)
 	higher cmd  : A0 Poste Commande (LtC Du Pontet)
+	OOBrid      : 269
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Sec Inf
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		B0 Gpe Inf (1Lt Barbin)
 		B1 Gpe Inf (Cpl La Salle)
@@ -505,7 +529,10 @@ Unit count: 5
 #00005 (00002:00000,000) A0   Poste Commande (Poste Commande)
 	leader      : Du Pontet, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -531,6 +558,7 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 47
 	type group  : 2
 	position    : (1, 11)
 
@@ -541,7 +569,10 @@ Unit count: 5
 #00006 (00003:00001,000) B0   Gpe Inf (Gpe Inf)
 	leader      : Barbin, rank 5 (1Lt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 118
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -567,6 +598,7 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 3
 	position    : (1, 10)
 
@@ -577,7 +609,10 @@ Unit count: 5
 #00007 (00003:00001,001) B1   Gpe Inf (Gpe Inf)
 	leader      : La Salle, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 118
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -603,6 +638,7 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 3
 	position    : (1, 7)
 
@@ -613,7 +649,10 @@ Unit count: 5
 #00008 (00003:00001,002) B2   Gpe Inf (Gpe Inf)
 	leader      : Berrurier, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 118
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -639,6 +678,7 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 3
 	position    : (3, 7)
 
@@ -649,7 +689,10 @@ Unit count: 5
 #00009 (00003:00001,003) B3   Equipe Bazooka (Equipe Bazooka)
 	leader      : De Ville, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (Free Frenc)
+	OOBrid      : 116
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -675,6 +718,7 @@ Unit count: 5
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 4
 	position    : (2, 11)
 

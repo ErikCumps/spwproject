@@ -113,9 +113,9 @@ A : core elite force HQ (US marine HQ)
 	kills     : 0
 	losses    : 0
 	readiness :  66.67 %
-	unit count: 1
+	unit count: 1 (1 core, 0 support, 0 regular)
 	unit list :
-		A0 USMC HQ
+		A0 USMC HQ (core)
 
 B : core recon company (Infantry Co E)
 	leader    : B0 USMC Co HQ (Cpt Udell)
@@ -123,9 +123,9 @@ B : core recon company (Infantry Co E)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 1
+	unit count: 1 (1 core, 0 support, 0 regular)
 	unit list :
-		B0 USMC Co HQ
+		B0 USMC Co HQ (core)
 
 C : core average platoon (Infantry Plt E)
 	leader    : C0 USMC Plt HQ (2Lt Bryan)
@@ -133,13 +133,13 @@ C : core average platoon (Infantry Plt E)
 	kills     : 0
 	losses    : 0
 	readiness :  96.90 %
-	unit count: 5
+	unit count: 5 (5 core, 0 support, 0 regular)
 	unit list :
-		C0 USMC Plt HQ
-		C1 USMC Inf Sqd E
-		C2 USMC Inf Sqd E
-		C3 USMC Inf Sqd E
-		C4 .30 Cal MMG
+		C0 USMC Plt HQ (core)
+		C1 USMC Inf Sqd E (core)
+		C2 USMC Inf Sqd E (core)
+		C3 USMC Inf Sqd E (core)
+		C4 .30 Cal MMG (core)
 
 D : core average platoon (Infantry Plt E)
 	leader    : D0 USMC Plt HQ (2Lt Dobbs)
@@ -147,13 +147,13 @@ D : core average platoon (Infantry Plt E)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 5
+	unit count: 5 (5 core, 0 support, 0 regular)
 	unit list :
-		D0 USMC Plt HQ
-		D1 USMC Inf Sqd E
-		D2 USMC Inf Sqd E
-		D3 USMC Inf Sqd E
-		D4 .30 Cal MMG
+		D0 USMC Plt HQ (core)
+		D1 USMC Inf Sqd E (core)
+		D2 USMC Inf Sqd E (core)
+		D3 USMC Inf Sqd E (core)
+		D4 .30 Cal MMG (core)
 
 E : core average platoon (Infantry Plt E)
 	leader    : E0 USMC Plt HQ (2Lt Guitierez)
@@ -161,13 +161,13 @@ E : core average platoon (Infantry Plt E)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 5
+	unit count: 5 (5 core, 0 support, 0 regular)
 	unit list :
-		E0 USMC Plt HQ
-		E1 USMC Inf Sqd E
-		E2 USMC Inf Sqd E
-		E3 USMC Inf Sqd E
-		E4 .30 Cal MMG
+		E0 USMC Plt HQ (core)
+		E1 USMC Inf Sqd E (core)
+		E2 USMC Inf Sqd E (core)
+		E3 USMC Inf Sqd E (core)
+		E4 .30 Cal MMG (core)
 
 F : core average platoon (Weapons Plt E)
 	leader    : F0 USMC Plt HQ (2Lt Turner)
@@ -175,16 +175,16 @@ F : core average platoon (Weapons Plt E)
 	kills     : 0
 	losses    : 0
 	readiness : 100.00 %
-	unit count: 8
+	unit count: 8 (8 core, 0 support, 0 regular)
 	unit list :
-		F0 USMC Plt HQ
-		F1 .30 Cal MMG
-		F2 .30 Cal MMG
-		F3 .30 Cal MMG
-		F4 .30 Cal MMG
-		F5 M1 Bazooka Team
-		F6 M1 Bazooka Team
-		F7 M1 Bazooka Team
+		F0 USMC Plt HQ (core)
+		F1 .30 Cal MMG (core)
+		F2 .30 Cal MMG (core)
+		F3 .30 Cal MMG (core)
+		F4 .30 Cal MMG (core)
+		F5 M1 Bazooka Team (core)
+		F6 M1 Bazooka Team (core)
+		F7 M1 Bazooka Team (core)
 
 G : core dedicated artillery platoon (Lt Mortar Plt)
 	leader    : G0 M2 60mm Mortar (2Lt Costa)
@@ -192,44 +192,44 @@ G : core dedicated artillery platoon (Lt Mortar Plt)
 	kills     : 0
 	losses    : 0
 	readiness :  99.08 %
-	unit count: 3
+	unit count: 3 (3 core, 0 support, 0 regular)
 	unit list :
-		G0 M2 60mm Mortar
-		G1 M2 60mm Mortar
-		G2 M2 60mm Mortar
+		G0 M2 60mm Mortar (core)
+		G1 M2 60mm Mortar (core)
+		G2 M2 60mm Mortar (core)
 
 
 Short units report:
 -------------------
 
-  -   A0  : USMC HQ          (Col Cantrell        ) USMC HQ          RID 00000 UTG 000 EXP 071 MOR 074 SUP 000 RAL 073 INF 075 ART 042 ARM 027 KILL 000 LOSS 000 MEN 006 KIA 002 DMG 002 RDY  66.67 POS ( 41,  23)
-    L B0  : USMC Co HQ       (Cpt Udell           ) USMC Co HQ       RID 00001 UTG 001 EXP 063 MOR 067 SUP 000 RAL 074 INF 064 ART 040 ARM 035 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  19)
-  -   C0  : USMC Plt HQ      (2Lt Bryan           ) USMC Plt HQ      RID 00002 UTG 002 EXP 065 MOR 071 SUP 001 RAL 075 INF 068 ART 032 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 001 DMG 001 RDY  84.51 POS ( 43,  13)
- #    C1  : USMC Inf Sqd E   (Sgt Diaz            ) USMC Inf Sqd E   RID 00003 UTG 003 EXP 059 MOR 075 SUP 000 RAL 078 INF 073 ART 032 ARM 035 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 43,  13)
- #  L C2  : USMC Inf Sqd E   (Sgt Smith           ) USMC Inf Sqd E   RID 00004 UTG 003 EXP 066 MOR 072 SUP 000 RAL 074 INF 068 ART 037 ARM 036 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  12)
-      C3  : USMC Inf Sqd E   (Sgt Sampsel         ) USMC Inf Sqd E   RID 00005 UTG 003 EXP 065 MOR 074 SUP 000 RAL 081 INF 061 ART 035 ARM 030 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  14)
- #    C4  : .30 Cal MMG      (Sgt Kelly           ) .30 Cal MMG      RID 00006 UTG 004 EXP 066 MOR 070 SUP 000 RAL 070 INF 067 ART 030 ARM 043 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  14)
-    L D0  : USMC Plt HQ      (2Lt Dobbs           ) USMC Plt HQ      RID 00007 UTG 002 EXP 056 MOR 083 SUP 000 RAL 072 INF 072 ART 038 ARM 033 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 45,  21)
-    L D1  : USMC Inf Sqd E   (Sgt Williams        ) USMC Inf Sqd E   RID 00008 UTG 003 EXP 064 MOR 075 SUP 000 RAL 071 INF 066 ART 038 ARM 040 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 45,  21)
-    L D2  : USMC Inf Sqd E   (Sgt Franco          ) USMC Inf Sqd E   RID 00009 UTG 003 EXP 063 MOR 068 SUP 000 RAL 082 INF 066 ART 040 ARM 038 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  20)
-    L D3  : USMC Inf Sqd E   (Sgt Winslow         ) USMC Inf Sqd E   RID 00010 UTG 003 EXP 064 MOR 079 SUP 000 RAL 073 INF 065 ART 028 ARM 043 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 43,  26)
-    L D4  : .30 Cal MMG      (Sgt Stimpson        ) .30 Cal MMG      RID 00011 UTG 004 EXP 065 MOR 073 SUP 000 RAL 068 INF 072 ART 034 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 43,  26)
- #  L E0  : USMC Plt HQ      (2Lt Guitierez       ) USMC Plt HQ      RID 00012 UTG 002 EXP 064 MOR 078 SUP 000 RAL 080 INF 069 ART 038 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 45,   8)
- #  L E1  : USMC Inf Sqd E   (Sgt Guizar          ) USMC Inf Sqd E   RID 00013 UTG 003 EXP 061 MOR 076 SUP 000 RAL 072 INF 069 ART 043 ARM 037 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 45,   8)
-    L E2  : USMC Inf Sqd E   (Sgt Lewis           ) USMC Inf Sqd E   RID 00014 UTG 003 EXP 071 MOR 072 SUP 000 RAL 082 INF 072 ART 034 ARM 037 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,   7)
-    L E3  : USMC Inf Sqd E   (Sgt Lamantia        ) USMC Inf Sqd E   RID 00015 UTG 003 EXP 071 MOR 079 SUP 000 RAL 073 INF 071 ART 033 ARM 036 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,   9)
-    L E4  : .30 Cal MMG      (Sgt Gallegos        ) .30 Cal MMG      RID 00016 UTG 004 EXP 058 MOR 076 SUP 000 RAL 068 INF 068 ART 030 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,   9)
-    L F0  : USMC Plt HQ      (2Lt Turner          ) USMC Plt HQ      RID 00017 UTG 002 EXP 060 MOR 064 SUP 000 RAL 071 INF 070 ART 041 ARM 030 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 44,  35)
-    L F1  : .30 Cal MMG      (Sgt Henderson       ) .30 Cal MMG      RID 00018 UTG 004 EXP 054 MOR 081 SUP 000 RAL 072 INF 063 ART 044 ARM 036 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  35)
-    L F2  : .30 Cal MMG      (Sgt Vernon          ) .30 Cal MMG      RID 00019 UTG 004 EXP 060 MOR 084 SUP 000 RAL 077 INF 078 ART 042 ARM 039 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  34)
-    L F3  : .30 Cal MMG      (Sgt Jennings        ) .30 Cal MMG      RID 00020 UTG 004 EXP 071 MOR 067 SUP 000 RAL 074 INF 062 ART 038 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  34)
-    L F4  : .30 Cal MMG      (Sgt Mayer           ) .30 Cal MMG      RID 00021 UTG 004 EXP 070 MOR 074 SUP 000 RAL 075 INF 064 ART 036 ARM 028 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  36)
-    L F5  : M1 Bazooka Team  (Sgt Chapman         ) M1 Bazooka Team  RID 00022 UTG 005 EXP 065 MOR 069 SUP 000 RAL 072 INF 072 ART 031 ARM 039 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 47,  36)
-    L F6  : M1 Bazooka Team  (Sgt Shattle         ) M1 Bazooka Team  RID 00023 UTG 005 EXP 057 MOR 067 SUP 000 RAL 073 INF 066 ART 035 ARM 030 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 42,  27)
-    L F7  : M1 Bazooka Team  (Sgt Emerson         ) M1 Bazooka Team  RID 00024 UTG 005 EXP 063 MOR 067 SUP 000 RAL 076 INF 065 ART 041 ARM 035 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 42,  27)
-      G0  : M2 60mm Mortar   (2Lt Costa           ) M2 60mm Mortar   RID 00025 UTG 006 EXP 060 MOR 073 SUP 001 RAL 067 INF 032 ART 072 ARM 039 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  98.63 POS ( 41,  14)
- #    G1  : M2 60mm Mortar   (Sgt Swan            ) M2 60mm Mortar   RID 00026 UTG 006 EXP 067 MOR 071 SUP 000 RAL 079 INF 030 ART 063 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 41,  11)
-      G2  : M2 60mm Mortar   (Sgt Babers          ) M2 60mm Mortar   RID 00027 UTG 006 EXP 071 MOR 072 SUP 001 RAL 076 INF 031 ART 064 ARM 036 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  98.61 POS ( 40,  16)
+c  -   A0  : USMC HQ          (Col Cantrell        ) USMC HQ          RID 00000 UTG 000 EXP 071 MOR 074 SUP 000 RAL 073 INF 075 ART 042 ARM 027 KILL 000 LOSS 000 MEN 006 KIA 002 DMG 002 RDY  66.67 POS ( 41,  23)
+c    L B0  : USMC Co HQ       (Cpt Udell           ) USMC Co HQ       RID 00001 UTG 001 EXP 063 MOR 067 SUP 000 RAL 074 INF 064 ART 040 ARM 035 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  19)
+c  -   C0  : USMC Plt HQ      (2Lt Bryan           ) USMC Plt HQ      RID 00002 UTG 002 EXP 065 MOR 071 SUP 001 RAL 075 INF 068 ART 032 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 001 DMG 001 RDY  84.51 POS ( 43,  13)
+c #    C1  : USMC Inf Sqd E   (Sgt Diaz            ) USMC Inf Sqd E   RID 00003 UTG 003 EXP 059 MOR 075 SUP 000 RAL 078 INF 073 ART 032 ARM 035 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 43,  13)
+c #  L C2  : USMC Inf Sqd E   (Sgt Smith           ) USMC Inf Sqd E   RID 00004 UTG 003 EXP 066 MOR 072 SUP 000 RAL 074 INF 068 ART 037 ARM 036 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  12)
+c      C3  : USMC Inf Sqd E   (Sgt Sampsel         ) USMC Inf Sqd E   RID 00005 UTG 003 EXP 065 MOR 074 SUP 000 RAL 081 INF 061 ART 035 ARM 030 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  14)
+c #    C4  : .30 Cal MMG      (Sgt Kelly           ) .30 Cal MMG      RID 00006 UTG 004 EXP 066 MOR 070 SUP 000 RAL 070 INF 067 ART 030 ARM 043 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  14)
+c    L D0  : USMC Plt HQ      (2Lt Dobbs           ) USMC Plt HQ      RID 00007 UTG 002 EXP 056 MOR 083 SUP 000 RAL 072 INF 072 ART 038 ARM 033 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 45,  21)
+c    L D1  : USMC Inf Sqd E   (Sgt Williams        ) USMC Inf Sqd E   RID 00008 UTG 003 EXP 064 MOR 075 SUP 000 RAL 071 INF 066 ART 038 ARM 040 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 45,  21)
+c    L D2  : USMC Inf Sqd E   (Sgt Franco          ) USMC Inf Sqd E   RID 00009 UTG 003 EXP 063 MOR 068 SUP 000 RAL 082 INF 066 ART 040 ARM 038 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,  20)
+c    L D3  : USMC Inf Sqd E   (Sgt Winslow         ) USMC Inf Sqd E   RID 00010 UTG 003 EXP 064 MOR 079 SUP 000 RAL 073 INF 065 ART 028 ARM 043 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 43,  26)
+c    L D4  : .30 Cal MMG      (Sgt Stimpson        ) .30 Cal MMG      RID 00011 UTG 004 EXP 065 MOR 073 SUP 000 RAL 068 INF 072 ART 034 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 43,  26)
+c #  L E0  : USMC Plt HQ      (2Lt Guitierez       ) USMC Plt HQ      RID 00012 UTG 002 EXP 064 MOR 078 SUP 000 RAL 080 INF 069 ART 038 ARM 034 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 45,   8)
+c #  L E1  : USMC Inf Sqd E   (Sgt Guizar          ) USMC Inf Sqd E   RID 00013 UTG 003 EXP 061 MOR 076 SUP 000 RAL 072 INF 069 ART 043 ARM 037 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 45,   8)
+c    L E2  : USMC Inf Sqd E   (Sgt Lewis           ) USMC Inf Sqd E   RID 00014 UTG 003 EXP 071 MOR 072 SUP 000 RAL 082 INF 072 ART 034 ARM 037 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,   7)
+c    L E3  : USMC Inf Sqd E   (Sgt Lamantia        ) USMC Inf Sqd E   RID 00015 UTG 003 EXP 071 MOR 079 SUP 000 RAL 073 INF 071 ART 033 ARM 036 KILL 000 LOSS 000 MEN 012 KIA 000 DMG 000 RDY 100.00 POS ( 44,   9)
+c    L E4  : .30 Cal MMG      (Sgt Gallegos        ) .30 Cal MMG      RID 00016 UTG 004 EXP 058 MOR 076 SUP 000 RAL 068 INF 068 ART 030 ARM 034 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,   9)
+c    L F0  : USMC Plt HQ      (2Lt Turner          ) USMC Plt HQ      RID 00017 UTG 002 EXP 060 MOR 064 SUP 000 RAL 071 INF 070 ART 041 ARM 030 KILL 000 LOSS 000 MEN 007 KIA 000 DMG 000 RDY 100.00 POS ( 44,  35)
+c    L F1  : .30 Cal MMG      (Sgt Henderson       ) .30 Cal MMG      RID 00018 UTG 004 EXP 054 MOR 081 SUP 000 RAL 072 INF 063 ART 044 ARM 036 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  35)
+c    L F2  : .30 Cal MMG      (Sgt Vernon          ) .30 Cal MMG      RID 00019 UTG 004 EXP 060 MOR 084 SUP 000 RAL 077 INF 078 ART 042 ARM 039 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  34)
+c    L F3  : .30 Cal MMG      (Sgt Jennings        ) .30 Cal MMG      RID 00020 UTG 004 EXP 071 MOR 067 SUP 000 RAL 074 INF 062 ART 038 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 44,  34)
+c    L F4  : .30 Cal MMG      (Sgt Mayer           ) .30 Cal MMG      RID 00021 UTG 004 EXP 070 MOR 074 SUP 000 RAL 075 INF 064 ART 036 ARM 028 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 47,  36)
+c    L F5  : M1 Bazooka Team  (Sgt Chapman         ) M1 Bazooka Team  RID 00022 UTG 005 EXP 065 MOR 069 SUP 000 RAL 072 INF 072 ART 031 ARM 039 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 47,  36)
+c    L F6  : M1 Bazooka Team  (Sgt Shattle         ) M1 Bazooka Team  RID 00023 UTG 005 EXP 057 MOR 067 SUP 000 RAL 073 INF 066 ART 035 ARM 030 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 42,  27)
+c    L F7  : M1 Bazooka Team  (Sgt Emerson         ) M1 Bazooka Team  RID 00024 UTG 005 EXP 063 MOR 067 SUP 000 RAL 076 INF 065 ART 041 ARM 035 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS ( 42,  27)
+c      G0  : M2 60mm Mortar   (2Lt Costa           ) M2 60mm Mortar   RID 00025 UTG 006 EXP 060 MOR 073 SUP 001 RAL 067 INF 032 ART 072 ARM 039 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  98.63 POS ( 41,  14)
+c #    G1  : M2 60mm Mortar   (Sgt Swan            ) M2 60mm Mortar   RID 00026 UTG 006 EXP 067 MOR 071 SUP 000 RAL 079 INF 030 ART 063 ARM 031 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS ( 41,  11)
+c      G2  : M2 60mm Mortar   (Sgt Babers          ) M2 60mm Mortar   RID 00027 UTG 006 EXP 071 MOR 072 SUP 001 RAL 076 INF 031 ART 064 ARM 036 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY  98.61 POS ( 40,  16)
 
 
 

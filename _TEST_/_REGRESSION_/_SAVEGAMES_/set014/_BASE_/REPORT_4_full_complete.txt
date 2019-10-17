@@ -101,11 +101,12 @@ Formation count: 2
 #00000 A (FID 00000)
 	leader      : A0 Kommandeur (LtC Kamin)
 	higher cmd  : A0 Kommandeur (LtC Kamin)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		A0 Kommandeur (LtC Kamin)
 
@@ -134,11 +135,12 @@ Formation count: 2
 #00001 B (FID 00001)
 	leader      : B0 PzKw IIIa/d (1Lt Reichmann)
 	higher cmd  : A0 Kommandeur (LtC Kamin)
+	OOBrid      : 12
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Zug/5
-	unit count  : 5
+	unit count  : 5 (0 core, 5 support, 0 regular)
 	unit list   :
 		B0 PzKw IIIa/d (1Lt Reichmann)
 		B1 PzKw IIIa/d (Cpl Petersbach)
@@ -177,7 +179,10 @@ Unit count: 6
 #00000 (00000:00000,000) A0   Kommandeur (Kommandeur)
 	leader      : Kamin, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 244
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -203,6 +208,7 @@ Unit count: 6
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 53
 	type group  : 0
 	position    : (158, 1)
 
@@ -213,7 +219,10 @@ Unit count: 6
 #00001 (00001:00001,000) B0   PzKw IIIa/d (PzKw IIIa/d)
 	leader      : Reichmann, rank 5 (1Lt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 352
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -239,6 +248,7 @@ Unit count: 6
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 51
 	type group  : 1
 	position    : (158, 2)
 
@@ -249,7 +259,10 @@ Unit count: 6
 #00002 (00001:00001,001) B1   PzKw IIIa/d (PzKw IIIa/d)
 	leader      : Petersbach, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 352
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -275,6 +288,7 @@ Unit count: 6
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 51
 	type group  : 1
 	position    : (158, 3)
 
@@ -285,7 +299,10 @@ Unit count: 6
 #00003 (00001:00001,002) B2   PzKw IIIa/d (PzKw IIIa/d)
 	leader      : Vogel, rank 3 (Sgt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 352
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -311,6 +328,7 @@ Unit count: 6
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 51
 	type group  : 1
 	position    : (158, 4)
 
@@ -321,7 +339,10 @@ Unit count: 6
 #00004 (00001:00001,003) B3   PzKw IIIa/d (PzKw IIIa/d)
 	leader      : Bachmann, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 352
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -347,6 +368,7 @@ Unit count: 6
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 51
 	type group  : 1
 	position    : (158, 5)
 
@@ -357,7 +379,10 @@ Unit count: 6
 #00005 (00001:00001,004) B4   PzKw IIIa/d (PzKw IIIa/d)
 	leader      : Naumann, rank 2 (Cpl)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 352
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -383,6 +408,7 @@ Unit count: 6
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 51
 	type group  : 1
 	position    : (158, 6)
 
@@ -468,11 +494,12 @@ Formation count: 7
 #00002 A (FID 00000)
 	leader      : A0 Poste Commande (LtC Berroyer)
 	higher cmd  : A0 Poste Commande (LtC Berroyer)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : French HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 Poste Commande (LtC Berroyer)
 
@@ -501,11 +528,12 @@ Formation count: 7
 #00003 B (FID 00001)
 	leader      : B0 Gpe Inf (Cpt Guillot)
 	higher cmd  : A0 Poste Commande (LtC Berroyer)
+	OOBrid      : 6
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : company
 	type        : Cie Inf
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		B0 Gpe Inf (Cpt Guillot)
 		B1 Mortier de 60 (Sgt Commans)
@@ -535,11 +563,12 @@ Formation count: 7
 #00004 C (FID 00002)
 	leader      : C0 Gpe Inf (2Lt Baudouin)
 	higher cmd  : B0 Gpe Inf (Cpt Guillot)
+	OOBrid      : 36
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Sec Inf
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		C0 Gpe Inf (2Lt Baudouin)
 		C1 Gpe Inf (Cpl Le Blanc)
@@ -571,11 +600,12 @@ Formation count: 7
 #00005 D (FID 00003)
 	leader      : D0 Gpe Inf (1Lt Berrurier)
 	higher cmd  : B0 Gpe Inf (Cpt Guillot)
+	OOBrid      : 36
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Sec Inf
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		D0 Gpe Inf (1Lt Berrurier)
 		D1 Gpe Inf (Cpl Dejardins)
@@ -607,11 +637,12 @@ Formation count: 7
 #00006 E (FID 00004)
 	leader      : E0 Gpe Inf (1Lt Lavoie)
 	higher cmd  : B0 Gpe Inf (Cpt Guillot)
+	OOBrid      : 36
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Sec Inf
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		E0 Gpe Inf (1Lt Lavoie)
 		E1 Gpe Inf (Cpl Boudinot)
@@ -643,11 +674,12 @@ Formation count: 7
 #00007 F (FID 00005)
 	leader      : F0 Gpe Inf (2Lt Broussard)
 	higher cmd  : B0 Gpe Inf (Cpt Guillot)
+	OOBrid      : 36
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Sec Inf
-	unit count  : 4
+	unit count  : 4 (0 core, 0 support, 4 regular)
 	unit list   :
 		F0 Gpe Inf (2Lt Broussard)
 		F1 Gpe Inf (Cpl Quebre)
@@ -679,11 +711,12 @@ Formation count: 7
 #00008 G (FID 00006)
 	leader      : G0 13.2mm AAMG (Sgt Deveraux)
 	higher cmd  : A0 Poste Commande (LtC Berroyer)
+	OOBrid      : 19
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : section
 	type        : Gpe Mitrai DCA
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		G0 13.2mm AAMG (Sgt Deveraux)
 		G1 13.2mm AAMG (Sgt Bellefont)
@@ -719,7 +752,10 @@ Unit count: 21
 #00006 (00002:00000,000) A0   Poste Commande (Poste Commande)
 	leader      : Berroyer, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 244
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -745,6 +781,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 40
 	type group  : 2
 	position    : (11, 90)
 
@@ -755,7 +792,10 @@ Unit count: 21
 #00007 (00003:00001,000) B0   Gpe Inf (Gpe Inf)
 	leader      : Guillot, rank 6 (Cpt)
 	formation   : B: regular average company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 155
 	unit type   : 4 (rifle squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -781,6 +821,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 3
 	position    : (36, 6)
 
@@ -791,7 +832,10 @@ Unit count: 21
 #00008 (00003:00001,001) B1   Mortier de 60 (Mortier de 60)
 	leader      : Commans, rank 3 (Sgt)
 	formation   : B: regular average company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 179
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -817,6 +861,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 4
 	position    : (36, 5)
 
@@ -827,7 +872,10 @@ Unit count: 21
 #00009 (00004:00002,000) C0   Gpe Inf (Gpe Inf)
 	leader      : Baudouin, rank 4 (2Lt)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 37
 	unit type   : 1 (light infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -853,6 +901,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 5
 	position    : (37, 8)
 
@@ -863,7 +912,10 @@ Unit count: 21
 #00010 (00004:00002,001) C1   Gpe Inf (Gpe Inf)
 	leader      : Le Blanc, rank 2 (Cpl)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -889,6 +941,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (37, 7)
 
@@ -899,7 +952,10 @@ Unit count: 21
 #00011 (00004:00002,002) C2   Gpe Inf (Gpe Inf)
 	leader      : Laurens, rank 2 (Cpl)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -925,6 +981,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (36, 7)
 
@@ -935,7 +992,10 @@ Unit count: 21
 #00012 (00004:00002,003) C3   Gpe Inf (Gpe Inf)
 	leader      : Marquette, rank 2 (Cpl)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -961,6 +1021,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (37, 6)
 
@@ -971,7 +1032,10 @@ Unit count: 21
 #00013 (00005:00003,000) D0   Gpe Inf (Gpe Inf)
 	leader      : Berrurier, rank 5 (1Lt)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 37
 	unit type   : 1 (light infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -997,6 +1061,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 5
 	position    : (35, 10)
 
@@ -1007,7 +1072,10 @@ Unit count: 21
 #00014 (00005:00003,001) D1   Gpe Inf (Gpe Inf)
 	leader      : Dejardins, rank 2 (Cpl)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1033,6 +1101,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (35, 9)
 
@@ -1043,7 +1112,10 @@ Unit count: 21
 #00015 (00005:00003,002) D2   Gpe Inf (Gpe Inf)
 	leader      : Angenaut, rank 2 (Cpl)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1069,6 +1141,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (35, 11)
 
@@ -1079,7 +1152,10 @@ Unit count: 21
 #00016 (00005:00003,003) D3   Gpe Inf (Gpe Inf)
 	leader      : Toussaint, rank 2 (Cpl)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1105,6 +1181,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (35, 8)
 
@@ -1115,7 +1192,10 @@ Unit count: 21
 #00017 (00006:00004,000) E0   Gpe Inf (Gpe Inf)
 	leader      : Lavoie, rank 5 (1Lt)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 37
 	unit type   : 1 (light infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1141,6 +1221,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 5
 	position    : (37, 8)
 
@@ -1151,7 +1232,10 @@ Unit count: 21
 #00018 (00006:00004,001) E1   Gpe Inf (Gpe Inf)
 	leader      : Boudinot, rank 2 (Cpl)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1177,6 +1261,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (37, 7)
 
@@ -1187,7 +1272,10 @@ Unit count: 21
 #00019 (00006:00004,002) E2   Gpe Inf (Gpe Inf)
 	leader      : Arnaud, rank 2 (Cpl)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1213,6 +1301,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (37, 9)
 
@@ -1223,7 +1312,10 @@ Unit count: 21
 #00020 (00006:00004,003) E3   Gpe Inf (Gpe Inf)
 	leader      : Boileau, rank 2 (Cpl)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1249,6 +1341,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (37, 6)
 
@@ -1259,7 +1352,10 @@ Unit count: 21
 #00021 (00007:00005,000) F0   Gpe Inf (Gpe Inf)
 	leader      : Broussard, rank 4 (2Lt)
 	formation   : F: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 37
 	unit type   : 1 (light infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1285,6 +1381,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 5
 	position    : (31, 2)
 
@@ -1295,7 +1392,10 @@ Unit count: 21
 #00022 (00007:00005,001) F1   Gpe Inf (Gpe Inf)
 	leader      : Quebre, rank 2 (Cpl)
 	formation   : F: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1321,6 +1421,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (31, 5)
 
@@ -1331,7 +1432,10 @@ Unit count: 21
 #00023 (00007:00005,002) F2   Gpe Inf (Gpe Inf)
 	leader      : Chartier, rank 2 (Cpl)
 	formation   : F: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1357,6 +1461,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (31, 3)
 
@@ -1367,7 +1472,10 @@ Unit count: 21
 #00024 (00007:00005,003) F3   Gpe Inf (Gpe Inf)
 	leader      : Lantaigne, rank 2 (Cpl)
 	formation   : F: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 36
 	unit type   : 2 (medium infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1393,6 +1501,7 @@ Unit count: 21
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 6
 	position    : (32, 4)
 
@@ -1403,7 +1512,10 @@ Unit count: 21
 #00025 (00008:00006,000) G0   13.2mm AAMG (13.2mm AAMG)
 	leader      : Deveraux, rank 3 (Sgt)
 	formation   : G: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 30
 	unit type   : 192 (AA MG infantry)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -1429,6 +1541,7 @@ Unit count: 21
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 7
 	position    : (40, 57)
 
@@ -1439,7 +1552,10 @@ Unit count: 21
 #00026 (00008:00006,001) G1   13.2mm AAMG (13.2mm AAMG)
 	leader      : Bellefont, rank 3 (Sgt)
 	formation   : G: regular average section
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 6 (    French)
+	OOBrid      : 30
 	unit type   : 192 (AA MG infantry)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -1465,6 +1581,7 @@ Unit count: 21
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 12
 	type group  : 7
 	position    : (38, 56)
 

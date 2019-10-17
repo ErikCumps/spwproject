@@ -120,11 +120,12 @@ Formation count: 20
 #00000 A (FID 00000)
 	leader      : A0 GE Kommandant (Col Reichmann)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 GE Kommandant (Col Reichmann)
 
@@ -153,11 +154,12 @@ Formation count: 20
 #00001 B (FID 00001)
 	leader      : B0 Sturmpionieres (2Lt Telner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 122
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Engineer Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		B0 Sturmpionieres (2Lt Telner)
 		B1 Sturmpionieres (Sgt Kramer)
@@ -189,11 +191,12 @@ Formation count: 20
 #00002 C (FID 00002)
 	leader      : C0 SdKfz 251/1 HT (1Lt Harmel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 52
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Halftrack Plt 5
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		C0 SdKfz 251/1 HT (1Lt Harmel)
 		C1 SdKfz 251/1 HT (Sgt Bachman)
@@ -226,11 +229,12 @@ Formation count: 20
 #00003 D (FID 00003)
 	leader      : D0 PzKpfw III G (1Lt Kronz)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		D0 PzKpfw III G (1Lt Kronz)
 		D1 PzKpfw III G (Sgt Kramer)
@@ -263,11 +267,12 @@ Formation count: 20
 #00004 E (FID 00004)
 	leader      : E0 PzKpfw III G (1Lt Metzger)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		E0 PzKpfw III G (1Lt Metzger)
 		E1 PzKpfw III G (Sgt Hitzelberger)
@@ -300,11 +305,12 @@ Formation count: 20
 #00005 F (FID 00005)
 	leader      : F0 PzKpfw IV D (1Lt Bruck)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		F0 PzKpfw IV D (1Lt Bruck)
 		F1 PzKpfw IV D (Sgt Hoffman)
@@ -336,11 +342,12 @@ Formation count: 20
 #00006 G (FID 00006)
 	leader      : G0 PzKpfw IV D (1Lt Wittman)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		G0 PzKpfw IV D (1Lt Wittman)
 		G1 PzKpfw IV D (Sgt Kuhns)
@@ -372,11 +379,12 @@ Formation count: 20
 #00007 H (FID 00007)
 	leader      : H0 PzKpfw IV D (1Lt Wirth)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 20
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		H0 PzKpfw IV D (1Lt Wirth)
 		H1 PzKpfw IV D (Sgt Brandt)
@@ -406,11 +414,12 @@ Formation count: 20
 #00008 I (FID 00008)
 	leader      : I0 Kompanie HQ (Cpt Abt)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 106
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : company
 	type        : SS Mot Kp
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		I0 Kompanie HQ (Cpt Abt)
 		I1 SdKfz 251/1 HT (Sgt Lang)
@@ -440,11 +449,12 @@ Formation count: 20
 #00009 J (FID 00009)
 	leader      : J0 ZugKommandant (2Lt Spengler)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		J0 ZugKommandant (2Lt Spengler)
 		J1 SS-VT Gruppe (Sgt Schurz)
@@ -482,11 +492,12 @@ Formation count: 20
 #00010 K (FID 00010)
 	leader      : K0 ZugKommandant (2Lt Funck)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		K0 ZugKommandant (2Lt Funck)
 		K1 SS-VT Gruppe (Sgt Wiedemann)
@@ -524,11 +535,12 @@ Formation count: 20
 #00011 L (FID 00011)
 	leader      : L0 ZugKommandant (2Lt Vebber)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		L0 ZugKommandant (2Lt Vebber)
 		L1 SS-VT Gruppe (Sgt Steinke)
@@ -566,11 +578,12 @@ Formation count: 20
 #00012 M (FID 00012)
 	leader      : M0 88mm auf Zgkw (2Lt Stiegel)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 168
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Mot AT Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		M0 88mm auf Zgkw (2Lt Stiegel)
 		M1 88mm auf Zgkw (Sgt Boettcher)
@@ -602,11 +615,12 @@ Formation count: 20
 #00013 N (FID 00013)
 	leader      : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 144
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS MMG Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		N0 SS MMG Truppe (2Lt Schultz)
 		N1 SS MMG Truppe (Sgt Rosenberg)
@@ -636,11 +650,12 @@ Formation count: 20
 #00014 O (FID 00014)
 	leader      : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 153
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Mortar Sec
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		O0 Moerser Grp (2Lt Falkenberg)
 		O1 Moerser Grp (Sgt Letzelder)
@@ -671,11 +686,12 @@ Formation count: 20
 #00015 P (FID 00015)
 	leader      : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 103
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Mot Inf Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		P0 sIG33 auf Pz-I (2Lt Eberbach)
 		P1 sIG33 auf Pz-I (Sgt Ziegler)
@@ -707,11 +723,12 @@ Formation count: 20
 #00016 Q (FID 00016)
 	leader      : Q0 PzJg 35R(f) (2Lt Haeften)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 184
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Motor Flak Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		Q0 PzJg 35R(f) (2Lt Haeften)
 		Q1 PzJg 35R(f) (Sgt Brors)
@@ -743,11 +760,12 @@ Formation count: 20
 #00017 R (FID 00017)
 	leader      : R0 SdKfz 6/2 (1Lt Albrecht)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 69
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : SP Flak Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		R0 SdKfz 6/2 (1Lt Albrecht)
 		R1 SdKfz 6/2 (Sgt Schwendt)
@@ -779,11 +797,12 @@ Formation count: 20
 #00018 S (FID 00018)
 	leader      : S0 Motorradfahrer (2Lt Schneider)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		S0 Motorradfahrer (2Lt Schneider)
 		S1 Motorradfahrer (Sgt Meyer)
@@ -814,11 +833,12 @@ Formation count: 20
 #00019 T (FID 00019)
 	leader      : T0 Motorradfahrer (2Lt Brunner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		T0 Motorradfahrer (2Lt Brunner)
 		T1 Motorradfahrer (Sgt Albrecht)
@@ -855,7 +875,10 @@ Unit count: 89
 #00000 (00000:00000,000) A0   GE Kommandant (GE Kommandant)
 	leader      : Reichmann, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -881,6 +904,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 189
 	type group  : 0
 	position    : (3, 20)
 
@@ -891,7 +915,10 @@ Unit count: 89
 #00001 (00001:00001,000) B0   Sturmpionieres (Sturmpionieres)
 	leader      : Telner, rank 4 (2Lt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -918,6 +945,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (8, 22)
 
@@ -928,7 +956,10 @@ Unit count: 89
 #00002 (00001:00001,001) B1   Sturmpionieres (Sturmpionieres)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -955,6 +986,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (8, 22)
 
@@ -965,7 +997,10 @@ Unit count: 89
 #00003 (00001:00001,002) B2   Sturmpionieres (Sturmpionieres)
 	leader      : Zimmerman, rank 3 (Sgt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -992,6 +1027,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (8, 22)
 
@@ -1002,7 +1038,10 @@ Unit count: 89
 #00004 (00001:00001,003) B3   Sturmpionieres (Sturmpionieres)
 	leader      : Hudel, rank 3 (Sgt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -1029,6 +1068,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (17, 11)
 
@@ -1039,7 +1079,10 @@ Unit count: 89
 #00005 (00002:00002,000) C0   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Harmel, rank 5 (1Lt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -1065,6 +1108,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (3, 21)
 
@@ -1075,7 +1119,10 @@ Unit count: 89
 #00006 (00002:00002,001) C1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Bachman, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -1101,6 +1148,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (8, 22)
 
@@ -1111,7 +1159,10 @@ Unit count: 89
 #00007 (00002:00002,002) C2   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Ostendorff, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1137,6 +1188,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (8, 22)
 
@@ -1147,7 +1199,10 @@ Unit count: 89
 #00008 (00002:00002,003) C3   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Gebhart, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -1173,6 +1228,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (8, 22)
 
@@ -1183,7 +1239,10 @@ Unit count: 89
 #00009 (00002:00002,004) C4   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Dittrich, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1209,6 +1268,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (17, 11)
 
@@ -1219,7 +1279,10 @@ Unit count: 89
 #00010 (00003:00003,000) D0   PzKpfw III G (PzKpfw III G)
 	leader      : Kronz, rank 5 (1Lt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1245,6 +1308,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (12, 21)
 
@@ -1255,7 +1319,10 @@ Unit count: 89
 #00011 (00003:00003,001) D1   PzKpfw III G (PzKpfw III G)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1281,6 +1348,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (13, 22)
 
@@ -1291,7 +1359,10 @@ Unit count: 89
 #00012 (00003:00003,002) D2   PzKpfw III E (PzKpfw III E)
 	leader      : Oertzen, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1317,6 +1388,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (11, 21)
 
@@ -1327,7 +1399,10 @@ Unit count: 89
 #00013 (00003:00003,003) D3   PzKpfw III E (PzKpfw III E)
 	leader      : Hummel, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1353,6 +1428,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (7, 22)
 
@@ -1363,7 +1439,10 @@ Unit count: 89
 #00014 (00003:00003,004) D4   PzKpfw III E (PzKpfw III E)
 	leader      : Strauch, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 19
@@ -1389,6 +1468,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (12, 22)
 
@@ -1399,7 +1479,10 @@ Unit count: 89
 #00015 (00004:00004,000) E0   PzKpfw III G (PzKpfw III G)
 	leader      : Metzger, rank 5 (1Lt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 11
@@ -1425,6 +1508,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (12, 28)
 
@@ -1435,7 +1519,10 @@ Unit count: 89
 #00016 (00004:00004,001) E1   PzKpfw III G (PzKpfw III G)
 	leader      : Hitzelberger, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 7
@@ -1461,6 +1548,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (11, 27)
 
@@ -1471,7 +1559,10 @@ Unit count: 89
 #00017 (00004:00004,002) E2   PzKpfw III E (PzKpfw III E)
 	leader      : Schirmer, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 16
@@ -1497,6 +1588,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (11, 26)
 
@@ -1507,7 +1599,10 @@ Unit count: 89
 #00018 (00004:00004,003) E3   PzKpfw III E (PzKpfw III E)
 	leader      : Eberhart, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1533,6 +1628,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (10, 25)
 
@@ -1543,7 +1639,10 @@ Unit count: 89
 #00019 (00004:00004,004) E4   PzKpfw III E (PzKpfw III E)
 	leader      : Kortenhaus, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1569,6 +1668,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (10, 24)
 
@@ -1579,7 +1679,10 @@ Unit count: 89
 #00020 (00005:00005,000) F0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Bruck, rank 5 (1Lt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 12
@@ -1605,6 +1708,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (20, 28)
 
@@ -1615,7 +1719,10 @@ Unit count: 89
 #00021 (00005:00005,001) F1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Hoffman, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1641,6 +1748,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (18, 29)
 
@@ -1651,7 +1759,10 @@ Unit count: 89
 #00022 (00005:00005,002) F2   PzKpfw IV D (PzKpfw IV D)
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 6
@@ -1677,6 +1788,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (16, 25)
 
@@ -1687,7 +1799,10 @@ Unit count: 89
 #00023 (00005:00005,003) F3   PzKpfw IV D (PzKpfw IV D)
 	leader      : Hartueb, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1713,6 +1828,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (18, 22)
 
@@ -1723,7 +1839,10 @@ Unit count: 89
 #00024 (00006:00006,000) G0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Wittman, rank 5 (1Lt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 13
@@ -1749,6 +1868,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (21, 10)
 
@@ -1759,7 +1879,10 @@ Unit count: 89
 #00025 (00006:00006,001) G1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Kuhns, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 15
@@ -1785,6 +1908,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (21, 7)
 
@@ -1795,7 +1919,10 @@ Unit count: 89
 #00026 (00006:00006,002) G2   PzKpfw IV D (PzKpfw IV D)
 	leader      : Langkeit, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 17
@@ -1821,6 +1948,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (20, 13)
 
@@ -1831,7 +1959,10 @@ Unit count: 89
 #00027 (00006:00006,003) G3   PzKpfw IV D (PzKpfw IV D)
 	leader      : Tost, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -1857,6 +1988,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (19, 15)
 
@@ -1867,7 +1999,10 @@ Unit count: 89
 #00028 (00007:00007,000) H0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Wirth, rank 5 (1Lt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -1893,6 +2028,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (23, 11)
 
@@ -1903,7 +2039,10 @@ Unit count: 89
 #00029 (00007:00007,001) H1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Brandt, rank 3 (Sgt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -1929,6 +2068,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (18, 11)
 
@@ -1939,7 +2079,10 @@ Unit count: 89
 #00030 (00008:00008,000) I0   Kompanie HQ (Kompanie HQ)
 	leader      : Abt, rank 6 (Cpt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 38
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1965,6 +2108,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 6
 	position    : (4, 20)
 
@@ -1975,7 +2119,10 @@ Unit count: 89
 #00031 (00008:00008,001) I1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Lang, rank 3 (Sgt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2001,6 +2148,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (5, 20)
 
@@ -2011,7 +2159,10 @@ Unit count: 89
 #00032 (00009:00009,000) J0   ZugKommandant (ZugKommandant)
 	leader      : Spengler, rank 4 (2Lt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2038,6 +2189,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (14, 25)
 
@@ -2048,7 +2200,10 @@ Unit count: 89
 #00033 (00009:00009,001) J1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schurz, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 10
@@ -2075,6 +2230,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (15, 28)
 
@@ -2085,7 +2241,10 @@ Unit count: 89
 #00034 (00009:00009,002) J2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 8
@@ -2112,6 +2271,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (14, 28)
 
@@ -2122,7 +2282,10 @@ Unit count: 89
 #00035 (00009:00009,003) J3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Weiss, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 5
@@ -2149,6 +2312,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (15, 26)
 
@@ -2159,7 +2323,10 @@ Unit count: 89
 #00036 (00009:00009,004) J4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Krogel, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2186,6 +2353,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (14, 26)
 
@@ -2196,7 +2364,10 @@ Unit count: 89
 #00037 (00009:00009,005) J5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2222,6 +2393,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (14, 25)
 
@@ -2232,7 +2404,10 @@ Unit count: 89
 #00038 (00009:00009,006) J6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Brunner, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2258,6 +2433,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (15, 28)
 
@@ -2268,7 +2444,10 @@ Unit count: 89
 #00039 (00009:00009,007) J7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Tychsen, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2294,6 +2473,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (14, 28)
 
@@ -2304,7 +2484,10 @@ Unit count: 89
 #00040 (00009:00009,008) J8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Krafft, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2330,6 +2513,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (15, 26)
 
@@ -2340,7 +2524,10 @@ Unit count: 89
 #00041 (00009:00009,009) J9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Klein, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2366,6 +2553,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (14, 26)
 
@@ -2376,7 +2564,10 @@ Unit count: 89
 #00042 (00010:00010,000) K0   ZugKommandant (ZugKommandant)
 	leader      : Funck, rank 4 (2Lt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2403,6 +2594,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (20, 8)
 
@@ -2413,7 +2605,10 @@ Unit count: 89
 #00043 (00010:00010,001) K1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Wiedemann, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 6
@@ -2439,6 +2634,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (22, 6)
 
@@ -2449,7 +2645,10 @@ Unit count: 89
 #00044 (00010:00010,002) K2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Conkling, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 5
@@ -2475,6 +2674,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (22, 8)
 
@@ -2485,7 +2685,10 @@ Unit count: 89
 #00045 (00010:00010,003) K3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Petereit, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 5
@@ -2511,6 +2714,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (19, 7)
 
@@ -2521,7 +2725,10 @@ Unit count: 89
 #00046 (00010:00010,004) K4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schoen, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2547,6 +2754,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (20, 9)
 
@@ -2557,7 +2765,10 @@ Unit count: 89
 #00047 (00010:00010,005) K5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Schaub, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2583,6 +2794,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (20, 8)
 
@@ -2593,7 +2805,10 @@ Unit count: 89
 #00048 (00010:00010,006) K6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Hartueb, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2619,6 +2834,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 6)
 
@@ -2629,7 +2845,10 @@ Unit count: 89
 #00049 (00010:00010,007) K7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -2655,6 +2874,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (22, 8)
 
@@ -2665,7 +2885,10 @@ Unit count: 89
 #00050 (00010:00010,008) K8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2691,6 +2914,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 7)
 
@@ -2701,7 +2925,10 @@ Unit count: 89
 #00051 (00010:00010,009) K9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Musser, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -2727,6 +2954,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (20, 9)
 
@@ -2737,7 +2965,10 @@ Unit count: 89
 #00052 (00011:00011,000) L0   ZugKommandant (ZugKommandant)
 	leader      : Vebber, rank 4 (2Lt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2764,6 +2995,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (18, 13)
 
@@ -2774,7 +3006,10 @@ Unit count: 89
 #00053 (00011:00011,001) L1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Steinke, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 4
@@ -2800,6 +3035,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (18, 14)
 
@@ -2810,7 +3046,10 @@ Unit count: 89
 #00054 (00011:00011,002) L2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schumacher, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 6
@@ -2836,6 +3075,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (18, 16)
 
@@ -2846,7 +3086,10 @@ Unit count: 89
 #00055 (00011:00011,003) L3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Muller, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -2872,6 +3115,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (19, 13)
 
@@ -2882,7 +3126,10 @@ Unit count: 89
 #00056 (00011:00011,004) L4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Becker, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2908,6 +3155,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (20, 12)
 
@@ -2918,7 +3166,10 @@ Unit count: 89
 #00057 (00011:00011,005) L5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Seibert, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2944,6 +3195,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (18, 13)
 
@@ -2954,7 +3206,10 @@ Unit count: 89
 #00058 (00011:00011,006) L6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Weber, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 2
@@ -2980,6 +3235,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 15)
 
@@ -2990,7 +3246,10 @@ Unit count: 89
 #00059 (00011:00011,007) L7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Krause, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3016,6 +3275,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 16)
 
@@ -3026,7 +3286,10 @@ Unit count: 89
 #00060 (00011:00011,008) L8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Stemberger, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 2
@@ -3052,6 +3315,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (19, 13)
 
@@ -3062,7 +3326,10 @@ Unit count: 89
 #00061 (00011:00011,009) L9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Vosse, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -3088,6 +3355,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (20, 12)
 
@@ -3098,7 +3366,10 @@ Unit count: 89
 #00062 (00012:00012,000) M0   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Stiegel, rank 4 (2Lt)
 	formation   : M: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 5
@@ -3124,6 +3395,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (9, 22)
 
@@ -3134,7 +3406,10 @@ Unit count: 89
 #00063 (00012:00012,001) M1   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Boettcher, rank 3 (Sgt)
 	formation   : M: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -3160,6 +3435,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (9, 22)
 
@@ -3170,7 +3446,10 @@ Unit count: 89
 #00064 (00012:00012,002) M2   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Hoernlein, rank 3 (Sgt)
 	formation   : M: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3196,6 +3475,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (9, 22)
 
@@ -3206,7 +3486,10 @@ Unit count: 89
 #00065 (00012:00012,003) M3   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Schmidt, rank 3 (Sgt)
 	formation   : M: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 4
@@ -3232,6 +3515,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (9, 22)
 
@@ -3242,7 +3526,10 @@ Unit count: 89
 #00066 (00013:00013,000) N0   SS MMG Truppe (SS MMG Truppe)
 	leader      : Schultz, rank 4 (2Lt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -3268,6 +3555,7 @@ Unit count: 89
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 10
 	position    : (4, 19)
 
@@ -3278,7 +3566,10 @@ Unit count: 89
 #00067 (00013:00013,001) N1   SS MMG Truppe (SS MMG Truppe)
 	leader      : Rosenberg, rank 3 (Sgt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -3304,6 +3595,7 @@ Unit count: 89
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 10
 	position    : (4, 21)
 
@@ -3314,7 +3606,10 @@ Unit count: 89
 #00068 (00014:00014,000) O0   Moerser Grp (Moerser Grp)
 	leader      : Falkenberg, rank 4 (2Lt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3340,6 +3635,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 11
 	position    : (4, 13)
 
@@ -3350,7 +3646,10 @@ Unit count: 89
 #00069 (00014:00014,001) O1   Moerser Grp (Moerser Grp)
 	leader      : Letzelder, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3376,6 +3675,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 11
 	position    : (5, 16)
 
@@ -3386,7 +3686,10 @@ Unit count: 89
 #00070 (00014:00014,002) O2   Krupp Kfz 69 (Krupp Kfz 69)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 94
 	unit type   : 243 (medium truck)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3412,6 +3715,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 12
 	position    : (2, 15)
 
@@ -3422,7 +3726,10 @@ Unit count: 89
 #00071 (00015:00015,000) P0   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Eberbach, rank 4 (2Lt)
 	formation   : P: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 3
@@ -3448,6 +3755,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (11, 24)
 
@@ -3458,7 +3766,10 @@ Unit count: 89
 #00072 (00015:00015,001) P1   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Ziegler, rank 3 (Sgt)
 	formation   : P: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3484,6 +3795,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (13, 27)
 
@@ -3494,7 +3806,10 @@ Unit count: 89
 #00073 (00015:00015,002) P2   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Tost, rank 3 (Sgt)
 	formation   : P: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3520,6 +3835,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (10, 24)
 
@@ -3530,7 +3846,10 @@ Unit count: 89
 #00074 (00015:00015,003) P3   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : P: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3556,6 +3875,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (10, 25)
 
@@ -3566,7 +3886,10 @@ Unit count: 89
 #00075 (00016:00016,000) Q0   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Haeften, rank 4 (2Lt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -3592,6 +3915,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (7, 22)
 
@@ -3602,7 +3926,10 @@ Unit count: 89
 #00076 (00016:00016,001) Q1   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Brors, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 3
@@ -3628,6 +3955,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (7, 22)
 
@@ -3638,7 +3966,10 @@ Unit count: 89
 #00077 (00016:00016,002) Q2   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3664,6 +3995,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (6, 22)
 
@@ -3674,7 +4006,10 @@ Unit count: 89
 #00078 (00016:00016,003) Q3   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Riedmuller, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3700,6 +4035,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (6, 22)
 
@@ -3710,7 +4046,10 @@ Unit count: 89
 #00079 (00017:00017,000) R0   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Albrecht, rank 5 (1Lt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 1
@@ -3736,6 +4075,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (12, 25)
 
@@ -3746,7 +4086,10 @@ Unit count: 89
 #00080 (00017:00017,001) R1   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Schwendt, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 3
@@ -3772,6 +4115,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (13, 24)
 
@@ -3782,7 +4126,10 @@ Unit count: 89
 #00081 (00017:00017,002) R2   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Wagner, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3808,6 +4155,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (12, 27)
 
@@ -3818,7 +4166,10 @@ Unit count: 89
 #00082 (00017:00017,003) R3   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Scherer, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3844,6 +4195,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (11, 27)
 
@@ -3854,7 +4206,10 @@ Unit count: 89
 #00083 (00018:00018,000) S0   Motorradfahrer (Motorradfahrer)
 	leader      : Schneider, rank 4 (2Lt)
 	formation   : S: core recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 14
@@ -3880,6 +4235,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (11, 23)
 
@@ -3890,7 +4246,10 @@ Unit count: 89
 #00084 (00018:00018,001) S1   Motorradfahrer (Motorradfahrer)
 	leader      : Meyer, rank 3 (Sgt)
 	formation   : S: core recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 9
@@ -3916,6 +4275,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (17, 19)
 
@@ -3926,7 +4286,10 @@ Unit count: 89
 #00085 (00018:00018,002) S2   Motorradfahrer (Motorradfahrer)
 	leader      : Steiner, rank 3 (Sgt)
 	formation   : S: core recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 16
@@ -3952,6 +4315,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (15, 34)
 
@@ -3962,7 +4326,10 @@ Unit count: 89
 #00086 (00019:00019,000) T0   Motorradfahrer (Motorradfahrer)
 	leader      : Brunner, rank 4 (2Lt)
 	formation   : T: core recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 5
@@ -3988,6 +4355,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (23, 8)
 
@@ -3998,7 +4366,10 @@ Unit count: 89
 #00087 (00019:00019,001) T1   Motorradfahrer (Motorradfahrer)
 	leader      : Albrecht, rank 3 (Sgt)
 	formation   : T: core recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 2
@@ -4024,6 +4395,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (25, 3)
 
@@ -4034,7 +4406,10 @@ Unit count: 89
 #00088 (00019:00019,002) T2   Motorradfahrer (Motorradfahrer)
 	leader      : Mittelberg, rank 3 (Sgt)
 	formation   : T: core recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 10
@@ -4060,6 +4435,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (19, 16)
 

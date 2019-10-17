@@ -19,6 +19,7 @@ typedef struct s_COMMON_HANDLING_OPTIONS {
 	bool	FILTERGAPF;	/* Filter out big formation list gaps during candidate formation verification	*/
 	bool	VALIDITY;	/* Verify candidate units based on unit validity				*/
 	bool	AUTOSPAU;	/* Assume unverified units to be SPAU						*/
+	bool	AUTOCMPCR;	/* Assume unverified units in core formations to be core for campaign battles	*/
 } COMMON_HANDLING_OPTIONS;
 
 #endif	/* COMMON_GAMEDATA_HANDLING_H */

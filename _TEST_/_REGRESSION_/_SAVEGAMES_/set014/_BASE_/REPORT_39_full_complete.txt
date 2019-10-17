@@ -100,11 +100,12 @@ Formation count: 4
 #00001 A (FID 00000)
 	leader      : A0 Kommandeur (LtC Krogel)
 	higher cmd  : A0 Kommandeur (LtC Krogel)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		A0 Kommandeur (LtC Krogel)
 
@@ -133,11 +134,12 @@ Formation count: 4
 #00014 B (FID 00001)
 	leader      : B0 8.8cm FlaK 36 (2Lt Rossbach)
 	higher cmd  : A0 Kommandeur (LtC Krogel)
+	OOBrid      : 134
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : sw PaK Grp
-	unit count  : 2
+	unit count  : 2 (0 core, 2 support, 0 regular)
 	unit list   :
 		B0 8.8cm FlaK 36 (2Lt Rossbach)
 		B1 8.8cm FlaK 36 (Sgt Wirth)
@@ -167,11 +169,12 @@ Formation count: 4
 #00015 C (FID 00002)
 	leader      : C0 PzKw VI Tiger (1Lt Meyer)
 	higher cmd  : A0 Kommandeur (LtC Krogel)
+	OOBrid      : 70
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : swPanzer Zug(d)
-	unit count  : 4
+	unit count  : 4 (0 core, 4 support, 0 regular)
 	unit list   :
 		C0 PzKw VI Tiger (1Lt Meyer)
 		C1 PzKw III N (Sgt Briel)
@@ -203,11 +206,12 @@ Formation count: 4
 #00016 D (FID 00003)
 	leader      : D0 PzKw VI Tiger (1Lt Kamin)
 	higher cmd  : A0 Kommandeur (LtC Krogel)
+	OOBrid      : 70
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : swPanzer Zug(d)
-	unit count  : 4
+	unit count  : 4 (0 core, 4 support, 0 regular)
 	unit list   :
 		D0 PzKw VI Tiger (1Lt Kamin)
 		D1 PzKw III N (KIA Kramer)
@@ -245,7 +249,10 @@ Unit count: 11
 #00001 (00001:00000,000) A0   Kommandeur (Kommandeur)
 	leader      : Krogel, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 244
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -271,6 +278,7 @@ Unit count: 11
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 50
 	type group  : 1
 	position    : (1, 65)
 
@@ -281,7 +289,10 @@ Unit count: 11
 #00032 (00014:00001,000) B0   8.8cm FlaK 36 (8.8cm FlaK 36)
 	leader      : Rossbach, rank 4 (2Lt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 134
 	unit type   : 176 (heavy AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -307,6 +318,7 @@ Unit count: 11
 	fire control: 10
 	infrared    : 0
 	swim        : 0
+	cost        : 74
 	type group  : 9
 	position    : (15, 59)
 
@@ -317,7 +329,10 @@ Unit count: 11
 #00033 (00014:00001,001) B1   8.8cm FlaK 36 (8.8cm FlaK 36)
 	leader      : Wirth, rank 3 (Sgt)
 	formation   : B: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 134
 	unit type   : 176 (heavy AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -343,6 +358,7 @@ Unit count: 11
 	fire control: 10
 	infrared    : 0
 	swim        : 0
+	cost        : 74
 	type group  : 9
 	position    : (29, 60)
 
@@ -353,7 +369,10 @@ Unit count: 11
 #00034 (00015:00002,000) C0   PzKw VI Tiger (PzKw VI Tiger)
 	leader      : Meyer, rank 5 (1Lt)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 31
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -379,6 +398,7 @@ Unit count: 11
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 148
 	type group  : 10
 	position    : (29, 51)
 
@@ -389,7 +409,10 @@ Unit count: 11
 #00035 (00015:00002,001) C1   PzKw III N (PzKw IIIn)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 277
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -415,6 +438,7 @@ Unit count: 11
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 11
 	position    : (27, 49)
 
@@ -425,7 +449,10 @@ Unit count: 11
 #00036 (00015:00002,002) C2   PzKw VI Tiger (PzKw VI Tiger)
 	leader      : Seidel, rank 3 (Sgt)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 31
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 6
@@ -451,6 +478,7 @@ Unit count: 11
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 148
 	type group  : 10
 	position    : (29, 54)
 
@@ -461,7 +489,10 @@ Unit count: 11
 #00037 (00015:00002,003) C3   PzKw III N (PzKw IIIn)
 	leader      : Boettcher, rank 2 (Cpl)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 277
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -487,6 +518,7 @@ Unit count: 11
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 11
 	position    : (30, 57)
 
@@ -497,7 +529,10 @@ Unit count: 11
 #00038 (00016:00003,000) D0   PzKw VI Tiger (PzKw VI Tiger)
 	leader      : Kamin, rank 5 (1Lt)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 31
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 7
@@ -523,6 +558,7 @@ Unit count: 11
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 148
 	type group  : 10
 	position    : (42, 16)
 
@@ -533,7 +569,10 @@ Unit count: 11
 #00039 (00016:00003,001) D1   PzKw III N (PzKw IIIn)
 	leader      : Kramer, rank 0 (KIA)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 277
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -559,6 +598,7 @@ Unit count: 11
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 11
 	position    : (41, 15)
 
@@ -569,7 +609,10 @@ Unit count: 11
 #00040 (00016:00003,002) D2   PzKw VI Tiger (PzKw VI Tiger)
 	leader      : Ehrhardt, rank 2 (Cpl)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 31
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -595,6 +638,7 @@ Unit count: 11
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 148
 	type group  : 10
 	position    : (41, 11)
 
@@ -605,7 +649,10 @@ Unit count: 11
 #00041 (00016:00003,003) D3   PzKw III N (PzKw IIIn)
 	leader      : Hoffmann, rank 0 (KIA)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 277
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -631,6 +678,7 @@ Unit count: 11
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 55
 	type group  : 11
 	position    : (39, 8)
 
@@ -716,11 +764,12 @@ Formation count: 19
 #00000 A (FID 00000)
 	leader      : A0 Soviet HQ (LtC Demchenko)
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : Soviet HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 Soviet HQ (LtC Demchenko)
 
@@ -749,11 +798,12 @@ Formation count: 19
 #00002 B (FID 00001)
 	leader      : B0 KV-1 M1941 (KIA Rozenbaum)
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 2
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : company
 	type        : Heavy Tank Co
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		B0 KV-1 M1941 (KIA Rozenbaum)
 
@@ -782,11 +832,12 @@ Formation count: 19
 #00003 C (FID 00002)
 	leader      : C2 KV-2 M1941 (Cpl Vasilenko)
 	higher cmd  : B0 KV-1 M1941 (KIA Rozenbaum)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		C0 KV-1 M1939 (KIA Beregovoy ) abandoned by lost crew
 		C1 KV-1c M1942 (KIA Yakovlev)
@@ -817,11 +868,12 @@ Formation count: 19
 #00004 D (FID 00003)
 	leader      : D2 KV-2 (Sgt Petrov )
 	higher cmd  : B0 KV-1 M1941 (KIA Rozenbaum)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		D0 KV-1c M1942 (KIA Potapov )
 		D1 KV-1c M1942 (KIA Golubev)
@@ -852,11 +904,12 @@ Formation count: 19
 #00005 E (FID 00004)
 	leader      : E0 KV-1 M1941 (1Lt Poryvaiko)
 	higher cmd  : B0 KV-1 M1941 (KIA Rozenbaum)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		E0 KV-1 M1941 (1Lt Poryvaiko) abandoned by E50 Crew (1Lt Poryvaiko)
 		E1 KV-1 M1941 (KIA Baranov )
@@ -887,11 +940,12 @@ Formation count: 19
 #00006 F (FID 00005)
 	leader      : F0 KV-2 (Cpt Dolya)
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 2
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : company
 	type        : Heavy Tank Co
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		F0 KV-2 (Cpt Dolya)
 
@@ -920,11 +974,12 @@ Formation count: 19
 #00007 G (FID 00006)
 	leader      : G0 KV-1E (1Lt Dmitriev )
 	higher cmd  : F0 KV-2 (Cpt Dolya)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		G0 KV-1E (1Lt Dmitriev )
 		G1 KV-1E (Cpl Demenchuk)
@@ -955,11 +1010,12 @@ Formation count: 19
 #00008 H (FID 00007)
 	leader      : H1 KV-1 M1940 (Cpl Vladimirov )
 	higher cmd  : F0 KV-2 (Cpt Dolya)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		H0 KV-1 M1940 (KIA Timtich)
 		H1 KV-1 M1940 (Cpl Vladimirov ) abandoned by H51 Crew (Cpl Vladimirov )
@@ -990,11 +1046,12 @@ Formation count: 19
 #00009 I (FID 00008)
 	leader      : I0 KV-1 M1939 (2Lt Zhelyabov)
 	higher cmd  : F0 KV-2 (Cpt Dolya)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		I0 KV-1 M1939 (2Lt Zhelyabov)
 		I1 KV-1 M1939 (KIA Shirvindt)
@@ -1025,11 +1082,12 @@ Formation count: 19
 #00010 J (FID 00009)
 	leader      : J0 KV-1c M1942 (Cpt Dmitrienko)
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 2
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : company
 	type        : Heavy Tank Co
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		J0 KV-1c M1942 (Cpt Dmitrienko)
 
@@ -1058,11 +1116,12 @@ Formation count: 19
 #00011 K (FID 00010)
 	leader      : K0 KV-1c M1942 (1Lt Nalivaiko)
 	higher cmd  : J0 KV-1c M1942 (Cpt Dmitrienko)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		K0 KV-1c M1942 (1Lt Nalivaiko)
 		K1 KV-1c M1942 (Sgt Babkin)
@@ -1093,11 +1152,12 @@ Formation count: 19
 #00012 L (FID 00011)
 	leader      : L0 KV-1c M1942 (1Lt Chuyb)
 	higher cmd  : J0 KV-1c M1942 (Cpt Dmitrienko)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		L0 KV-1c M1942 (1Lt Chuyb) abandoned by L50 Crew (1Lt Chuyb)
 		L1 KV-1c M1942 (Sgt Stepanenko)
@@ -1128,11 +1188,12 @@ Formation count: 19
 #00013 M (FID 00012)
 	leader      : M0 KV-1c M1942 (1Lt Demin )
 	higher cmd  : J0 KV-1c M1942 (Cpt Dmitrienko)
+	OOBrid      : 10
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Heavy Tank Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		M0 KV-1c M1942 (1Lt Demin )
 		M1 KV-1c M1942 (Sgt Makarov )
@@ -1163,11 +1224,12 @@ Formation count: 19
 #00017 N (FID 00013)
 	leader      : N0 KV-8 (1Lt Vyrvich)
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 13
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Hvy Tank Co(10)
-	unit count  : 10
+	unit count  : 10 (0 core, 0 support, 10 regular)
 	unit list   :
 		N0 KV-8 (1Lt Vyrvich) abandoned by N50 Crew (1Lt Vyrvich)
 		N1 KV-2 M1941 (KIA Popitich)
@@ -1205,11 +1267,12 @@ Formation count: 19
 #00018 O (FID 00014)
 	leader      : O0 KV-2 M1941 (Maj Gusev )
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 3
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : company
 	type        : Gds Heavy Tk Co
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		O0 KV-2 M1941 (Maj Gusev )
 
@@ -1238,11 +1301,12 @@ Formation count: 19
 #00019 P (FID 00015)
 	leader      : P0 KV-1c M1942 (1Lt Vatutin)
 	higher cmd  : O0 KV-2 M1941 (Maj Gusev )
+	OOBrid      : 15
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Gds Heavy Tk Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		P0 KV-1c M1942 (1Lt Vatutin)
 		P1 KV-1c M1942 (Sgt Stepin )
@@ -1273,11 +1337,12 @@ Formation count: 19
 #00020 Q (FID 00016)
 	leader      : Q0 KV-1 M1941 (1Lt Popovic )
 	higher cmd  : O0 KV-2 M1941 (Maj Gusev )
+	OOBrid      : 15
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Gds Heavy Tk Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		Q0 KV-1 M1941 (1Lt Popovic )
 		Q1 KV-1 M1941 (Cpl Stupka)
@@ -1308,11 +1373,12 @@ Formation count: 19
 #00021 R (FID 00017)
 	leader      : R1 KV-1E (Sgt Alekseenko)
 	higher cmd  : O0 KV-2 M1941 (Maj Gusev )
+	OOBrid      : 15
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Gds Heavy Tk Pl
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		R0 KV-1E (KIA Pochepko)
 		R1 KV-1E (Sgt Alekseenko) abandoned by R51 Crew (Sgt Alekseenko)
@@ -1343,11 +1409,12 @@ Formation count: 19
 #00022 S (FID 00018)
 	leader      : S0 KV-2 M1941 (2Lt Borisov)
 	higher cmd  : A0 Soviet HQ (LtC Demchenko)
+	OOBrid      : 12
 	status      : 0 (regular)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Hvy Tank Co(7)
-	unit count  : 7
+	unit count  : 7 (0 core, 0 support, 7 regular)
 	unit list   :
 		S0 KV-2 M1941 (2Lt Borisov)
 		S1 KV-1 M1939 (Cpl Antonov )
@@ -1388,7 +1455,10 @@ Unit count: 58
 #00000 (00000:00000,000) A0   Soviet HQ (Soviet HQ)
 	leader      : Demchenko, rank 8 (LtC)
 	formation   : A: regular average force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -1414,6 +1484,7 @@ Unit count: 58
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 47
 	type group  : 0
 	position    : (54, 63)
 
@@ -1424,7 +1495,10 @@ Unit count: 58
 #00002 (00002:00001,000) B0   KV-1 M1941 (KV-1 M1941)
 	leader      : Rozenbaum, rank 0 (KIA)
 	formation   : B: regular average company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1450,6 +1524,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 2
 	position    : (51, 52)
 
@@ -1460,7 +1535,10 @@ Unit count: 58
 #00003 (00003:00002,000) C0   KV-1 M1939 (KV-1 M1939)
 	leader      : Beregovoy , rank 0 (KIA)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1487,6 +1565,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 76
 	type group  : 3
 	position    : (49, 51)
 
@@ -1497,7 +1576,10 @@ Unit count: 58
 #00004 (00003:00002,001) C1   KV-1c M1942 (KV-1c M1942)
 	leader      : Yakovlev, rank 0 (KIA)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1523,6 +1605,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (49, 50)
 
@@ -1533,7 +1616,10 @@ Unit count: 58
 #00005 (00003:00002,002) C2   KV-2 M1941 (KV-IIB M1940)
 	leader      : Vasilenko, rank 2 (Cpl)
 	formation   : C: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 486
 	unit type   : 167 (SP artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -1559,6 +1645,7 @@ Unit count: 58
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 81
 	type group  : 5
 	position    : (52, 52)
 
@@ -1569,7 +1656,10 @@ Unit count: 58
 #00006 (00004:00003,000) D0   KV-1c M1942 (KV-1c M1942)
 	leader      : Potapov , rank 0 (KIA)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1595,6 +1685,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (47, 58)
 
@@ -1605,7 +1696,10 @@ Unit count: 58
 #00007 (00004:00003,001) D1   KV-1c M1942 (KV-1c M1942)
 	leader      : Golubev, rank 0 (KIA)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1631,6 +1725,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (47, 60)
 
@@ -1641,7 +1736,10 @@ Unit count: 58
 #00008 (00004:00003,002) D2   KV-2 (KV-II)
 	leader      : Petrov , rank 3 (Sgt)
 	formation   : D: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 485
 	unit type   : 167 (SP artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -1667,6 +1765,7 @@ Unit count: 58
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 83
 	type group  : 6
 	position    : (53, 55)
 
@@ -1677,7 +1776,10 @@ Unit count: 58
 #00009 (00005:00004,000) E0   KV-1 M1941 (KV-1 M1941)
 	leader      : Poryvaiko, rank 5 (1Lt)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1704,6 +1806,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 2
 	position    : (45, 59)
 
@@ -1714,7 +1817,10 @@ Unit count: 58
 #00010 (00005:00004,001) E1   KV-1 M1941 (KV-1 M1941)
 	leader      : Baranov , rank 0 (KIA)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1740,6 +1846,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 2
 	position    : (48, 58)
 
@@ -1750,7 +1857,10 @@ Unit count: 58
 #00011 (00005:00004,002) E2   KV-1 M1941 (KV-1 M1941)
 	leader      : Didenko, rank 3 (Sgt)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1777,6 +1887,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 2
 	position    : (47, 59)
 
@@ -1787,7 +1898,10 @@ Unit count: 58
 #00012 (00006:00005,000) F0   KV-2 (KV-II)
 	leader      : Dolya, rank 6 (Cpt)
 	formation   : F: regular average company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 485
 	unit type   : 167 (SP artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -1813,6 +1927,7 @@ Unit count: 58
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 83
 	type group  : 6
 	position    : (73, 60)
 
@@ -1823,7 +1938,10 @@ Unit count: 58
 #00013 (00007:00006,000) G0   KV-1E (KV-1 Ekranami)
 	leader      : Dmitriev , rank 5 (1Lt)
 	formation   : G: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 290
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1849,6 +1967,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 98
 	type group  : 7
 	position    : (45, 65)
 
@@ -1859,7 +1978,10 @@ Unit count: 58
 #00014 (00007:00006,001) G1   KV-1E (KV-1 Ekranami)
 	leader      : Demenchuk, rank 2 (Cpl)
 	formation   : G: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 290
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1885,6 +2007,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 98
 	type group  : 7
 	position    : (51, 58)
 
@@ -1895,7 +2018,10 @@ Unit count: 58
 #00015 (00007:00006,002) G2   KV-1E (KV-1 Ekranami)
 	leader      : Ivanov, rank 3 (Sgt)
 	formation   : G: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 290
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1921,6 +2047,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 98
 	type group  : 7
 	position    : (48, 65)
 
@@ -1931,7 +2058,10 @@ Unit count: 58
 #00016 (00008:00007,000) H0   KV-1 M1940 (KV-1 M1940)
 	leader      : Timtich, rank 0 (KIA)
 	formation   : H: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 291
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1957,6 +2087,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 8
 	position    : (52, 60)
 
@@ -1967,7 +2098,10 @@ Unit count: 58
 #00017 (00008:00007,001) H1   KV-1 M1940 (KV-1 M1940)
 	leader      : Vladimirov , rank 2 (Cpl)
 	formation   : H: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 291
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1994,6 +2128,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 8
 	position    : (44, 64)
 
@@ -2004,7 +2139,10 @@ Unit count: 58
 #00018 (00008:00007,002) H2   KV-1 M1940 (KV-1 M1940)
 	leader      : Ryabov , rank 3 (Sgt)
 	formation   : H: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 291
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2030,6 +2168,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 8
 	position    : (48, 61)
 
@@ -2040,7 +2179,10 @@ Unit count: 58
 #00019 (00009:00008,000) I0   KV-1 M1939 (KV-1 M1939)
 	leader      : Zhelyabov, rank 4 (2Lt)
 	formation   : I: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2066,6 +2208,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 76
 	type group  : 3
 	position    : (45, 60)
 
@@ -2076,7 +2219,10 @@ Unit count: 58
 #00020 (00009:00008,001) I1   KV-1 M1939 (KV-1 M1939)
 	leader      : Shirvindt, rank 0 (KIA)
 	formation   : I: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2102,6 +2248,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 76
 	type group  : 3
 	position    : (43, 61)
 
@@ -2112,7 +2259,10 @@ Unit count: 58
 #00021 (00009:00008,002) I2   KV-1 M1939 (KV-1 M1939)
 	leader      : Petrenko, rank 0 (KIA)
 	formation   : I: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2138,6 +2288,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 76
 	type group  : 3
 	position    : (47, 58)
 
@@ -2148,7 +2299,10 @@ Unit count: 58
 #00022 (00010:00009,000) J0   KV-1c M1942 (KV-1c M1942)
 	leader      : Dmitrienko, rank 6 (Cpt)
 	formation   : J: regular average company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2174,6 +2328,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (54, 68)
 
@@ -2184,7 +2339,10 @@ Unit count: 58
 #00023 (00011:00010,000) K0   KV-1c M1942 (KV-1c M1942)
 	leader      : Nalivaiko, rank 5 (1Lt)
 	formation   : K: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2210,6 +2368,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (54, 67)
 
@@ -2220,7 +2379,10 @@ Unit count: 58
 #00024 (00011:00010,001) K1   KV-1c M1942 (KV-1c M1942)
 	leader      : Babkin, rank 3 (Sgt)
 	formation   : K: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2246,6 +2408,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (51, 67)
 
@@ -2256,7 +2419,10 @@ Unit count: 58
 #00025 (00011:00010,002) K2   KV-1c M1942 (KV-1c M1942)
 	leader      : Maloshevich, rank 2 (Cpl)
 	formation   : K: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2282,6 +2448,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (53, 66)
 
@@ -2292,7 +2459,10 @@ Unit count: 58
 #00026 (00012:00011,000) L0   KV-1c M1942 (KV-1c M1942)
 	leader      : Chuyb, rank 5 (1Lt)
 	formation   : L: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2319,6 +2489,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (50, 59)
 
@@ -2329,7 +2500,10 @@ Unit count: 58
 #00027 (00012:00011,001) L1   KV-1c M1942 (KV-1c M1942)
 	leader      : Stepanenko, rank 3 (Sgt)
 	formation   : L: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2355,6 +2529,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (48, 60)
 
@@ -2365,7 +2540,10 @@ Unit count: 58
 #00028 (00012:00011,002) L2   KV-1c M1942 (KV-1c M1942)
 	leader      : Pashkevich, rank 2 (Cpl)
 	formation   : L: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2391,6 +2569,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (49, 60)
 
@@ -2401,7 +2580,10 @@ Unit count: 58
 #00029 (00013:00012,000) M0   KV-1c M1942 (KV-1c M1942)
 	leader      : Demin , rank 5 (1Lt)
 	formation   : M: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2427,6 +2609,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (44, 63)
 
@@ -2437,7 +2620,10 @@ Unit count: 58
 #00030 (00013:00012,001) M1   KV-1c M1942 (KV-1c M1942)
 	leader      : Makarov , rank 3 (Sgt)
 	formation   : M: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2463,6 +2649,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (45, 63)
 
@@ -2473,7 +2660,10 @@ Unit count: 58
 #00031 (00013:00012,002) M2   KV-1c M1942 (KV-1c M1942)
 	leader      : Demchuk, rank 3 (Sgt)
 	formation   : M: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2499,6 +2689,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (46, 64)
 
@@ -2509,7 +2700,10 @@ Unit count: 58
 #00042 (00017:00013,000) N0   KV-8 (KV-8)
 	leader      : Vyrvich, rank 5 (1Lt)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 106
 	unit type   : 126 (flame tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2536,6 +2730,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 99
 	type group  : 12
 	position    : (61, 7)
 
@@ -2546,7 +2741,10 @@ Unit count: 58
 #00043 (00017:00013,001) N1   KV-2 M1941 (KV-IIB M1940)
 	leader      : Popitich, rank 0 (KIA)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 25
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2572,6 +2770,7 @@ Unit count: 58
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 75
 	type group  : 13
 	position    : (77, 16)
 
@@ -2582,7 +2781,10 @@ Unit count: 58
 #00044 (00017:00013,002) N2   KV-1c M1942 (KV-1c M1942)
 	leader      : Shevchuk, rank 0 (KIA)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2608,6 +2810,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (61, 16)
 
@@ -2618,7 +2821,10 @@ Unit count: 58
 #00045 (00017:00013,003) N3   KV-1c M1942 (KV-1c M1942)
 	leader      : Stadnuyk, rank 2 (Cpl)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2644,6 +2850,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 4
 	position    : (53, 5)
 
@@ -2654,7 +2861,10 @@ Unit count: 58
 #00046 (00017:00013,004) N4   KV-1 M1941 (KV-1 M1941)
 	leader      : Lyasota, rank 3 (Sgt)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -2680,6 +2890,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 2
 	position    : (50, 6)
 
@@ -2690,7 +2901,10 @@ Unit count: 58
 #00047 (00017:00013,005) N5   KV-1 M1941 (KV-1 M1941)
 	leader      : Izenshtat, rank 3 (Sgt)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2717,6 +2931,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 2
 	position    : (75, 16)
 
@@ -2727,7 +2942,10 @@ Unit count: 58
 #00048 (00017:00013,006) N6   KV-1 M1940 (KV-1 M1940)
 	leader      : Antonenko, rank 0 (KIA)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 291
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2753,6 +2971,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 8
 	position    : (61, 16)
 
@@ -2763,7 +2982,10 @@ Unit count: 58
 #00049 (00017:00013,007) N7   KV-1 M1940 (KV-1 M1940)
 	leader      : Grigorchuk, rank 0 (KIA)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 291
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2789,6 +3011,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 8
 	position    : (61, 8)
 
@@ -2799,7 +3022,10 @@ Unit count: 58
 #00050 (00017:00013,008) N8   KV-1 M1939 (KV-1 M1939)
 	leader      : Berezin , rank 2 (Cpl)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2825,6 +3051,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 76
 	type group  : 3
 	position    : (51, 8)
 
@@ -2835,7 +3062,10 @@ Unit count: 58
 #00051 (00017:00013,009) N9   KV-1 M1939 (KV-1 M1939)
 	leader      : Sokolov , rank 0 (KIA)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2861,6 +3091,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 76
 	type group  : 3
 	position    : (63, 15)
 
@@ -2871,7 +3102,10 @@ Unit count: 58
 #00052 (00018:00014,000) O0   KV-2 M1941 (KV-IIB M1940)
 	leader      : Gusev , rank 7 (Maj)
 	formation   : O: regular average company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 25
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2897,6 +3131,7 @@ Unit count: 58
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 13
 	position    : (57, 12)
 
@@ -2907,7 +3142,10 @@ Unit count: 58
 #00053 (00019:00015,000) P0   KV-1c M1942 (KV-1c M1942)
 	leader      : Vatutin, rank 5 (1Lt)
 	formation   : P: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -2933,6 +3171,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 112
 	type group  : 4
 	position    : (53, 8)
 
@@ -2943,7 +3182,10 @@ Unit count: 58
 #00054 (00019:00015,001) P1   KV-1c M1942 (KV-1c M1942)
 	leader      : Stepin , rank 3 (Sgt)
 	formation   : P: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 1
@@ -2969,6 +3211,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 112
 	type group  : 4
 	position    : (53, 6)
 
@@ -2979,7 +3222,10 @@ Unit count: 58
 #00055 (00019:00015,002) P2   KV-1c M1942 (KV-1c M1942)
 	leader      : Sidorenko, rank 3 (Sgt)
 	formation   : P: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 545
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3005,6 +3251,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 112
 	type group  : 4
 	position    : (54, 4)
 
@@ -3015,7 +3262,10 @@ Unit count: 58
 #00056 (00020:00016,000) Q0   KV-1 M1941 (KV-1 M1941)
 	leader      : Popovic , rank 5 (1Lt)
 	formation   : Q: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3041,6 +3291,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 83
 	type group  : 2
 	position    : (51, 10)
 
@@ -3051,7 +3302,10 @@ Unit count: 58
 #00057 (00020:00016,001) Q1   KV-1 M1941 (KV-1 M1941)
 	leader      : Stupka, rank 2 (Cpl)
 	formation   : Q: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3077,6 +3331,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 83
 	type group  : 2
 	position    : (50, 8)
 
@@ -3087,7 +3342,10 @@ Unit count: 58
 #00058 (00020:00016,002) Q2   KV-1 M1941 (KV-1 M1941)
 	leader      : Fomenko, rank 2 (Cpl)
 	formation   : Q: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 165
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3113,6 +3371,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 83
 	type group  : 2
 	position    : (51, 10)
 
@@ -3123,7 +3382,10 @@ Unit count: 58
 #00059 (00021:00017,000) R0   KV-1E (KV-1 Ekranami)
 	leader      : Pochepko, rank 0 (KIA)
 	formation   : R: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 290
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3149,6 +3411,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 102
 	type group  : 7
 	position    : (67, 15)
 
@@ -3159,7 +3422,10 @@ Unit count: 58
 #00060 (00021:00017,001) R1   KV-1E (KV-1 Ekranami)
 	leader      : Alekseenko, rank 3 (Sgt)
 	formation   : R: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 290
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3186,6 +3452,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 102
 	type group  : 7
 	position    : (61, 15)
 
@@ -3196,7 +3463,10 @@ Unit count: 58
 #00061 (00021:00017,002) R2   KV-1E (KV-1 Ekranami)
 	leader      : Lysenko, rank 2 (Cpl)
 	formation   : R: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 290
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3222,6 +3492,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 102
 	type group  : 7
 	position    : (54, 11)
 
@@ -3232,7 +3503,10 @@ Unit count: 58
 #00062 (00022:00018,000) S0   KV-2 M1941 (KV-IIB M1940)
 	leader      : Borisov, rank 4 (2Lt)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 486
 	unit type   : 167 (SP artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3258,6 +3532,7 @@ Unit count: 58
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 84
 	type group  : 5
 	position    : (72, 74)
 
@@ -3268,7 +3543,10 @@ Unit count: 58
 #00063 (00022:00018,001) S1   KV-1 M1939 (KV-1 M1939)
 	leader      : Antonov , rank 2 (Cpl)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3294,6 +3572,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 79
 	type group  : 3
 	position    : (62, 73)
 
@@ -3304,7 +3583,10 @@ Unit count: 58
 #00064 (00022:00018,002) S2   KV-1 M1939 (KV-1 M1939)
 	leader      : Gubenko, rank 2 (Cpl)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3330,6 +3612,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 79
 	type group  : 3
 	position    : (64, 77)
 
@@ -3340,7 +3623,10 @@ Unit count: 58
 #00065 (00022:00018,003) S3   KV-1 M1939 (KV-1 M1939)
 	leader      : Romanov, rank 3 (Sgt)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3366,6 +3652,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 79
 	type group  : 3
 	position    : (63, 74)
 
@@ -3376,7 +3663,10 @@ Unit count: 58
 #00066 (00022:00018,004) S4   KV-1 M1939 (KV-1 M1939)
 	leader      : Treshchenko, rank 2 (Cpl)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3402,6 +3692,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 79
 	type group  : 3
 	position    : (63, 72)
 
@@ -3412,7 +3703,10 @@ Unit count: 58
 #00067 (00022:00018,005) S5   KV-1 M1939 (KV-1 M1939)
 	leader      : Safonov, rank 2 (Cpl)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3438,6 +3732,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 79
 	type group  : 3
 	position    : (63, 71)
 
@@ -3448,7 +3743,10 @@ Unit count: 58
 #00068 (00022:00018,006) S6   KV-1 M1939 (KV-1 M1939)
 	leader      : Makarenko, rank 2 (Cpl)
 	formation   : S: regular average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 771
 	unit type   : 114 (heavy tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -3474,6 +3772,7 @@ Unit count: 58
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 79
 	type group  : 3
 	position    : (62, 75)
 
@@ -3490,11 +3789,15 @@ Unit count: 7
 #00071 (00005:00004,050) E50  Crew
 	leader      : Poryvaiko, rank 5 (1Lt)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [0:hidden]
+	entrenchment: 0 (positioned)
 	head count  : 4 (3 left)
 	damage      : 2
 	abandoned   : 2
@@ -3516,16 +3819,22 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 14
+	position    : (49, 56)
 
 #00070 (00005:00004,052) E52  Crew
 	leader      : Didenko, rank 3 (Sgt)
 	formation   : E: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 2 (retreating) [1:alive] [0:hidden]
+	entrenchment: 0 (positioned)
 	head count  : 4 (3 left)
 	damage      : 2
 	abandoned   : 2
@@ -3547,16 +3856,22 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 14
+	position    : (55, 53)
 
 #00074 (00008:00007,051) H51  Crew
 	leader      : Vladimirov , rank 2 (Cpl)
 	formation   : H: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 1 (pinned) [1:alive] [0:hidden]
+	entrenchment: 0 (positioned)
 	head count  : 4 (4 left)
 	damage      : 1
 	abandoned   : 2
@@ -3578,16 +3893,22 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 78
 	type group  : 14
+	position    : (44, 65)
 
 #00075 (00012:00011,050) L50  Crew
 	leader      : Chuyb, rank 5 (1Lt)
 	formation   : L: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 2 (retreating) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 4 (5 left)
 	damage      : 0
 	abandoned   : 2
@@ -3609,16 +3930,22 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 105
 	type group  : 14
+	position    : (50, 59)
 
 #00073 (00017:00013,050) N50  Crew
 	leader      : Vyrvich, rank 5 (1Lt)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 4 (4 left)
 	damage      : 1
 	abandoned   : 2
@@ -3640,16 +3967,22 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 99
 	type group  : 14
+	position    : (63, 7)
 
 #00069 (00017:00013,055) N55  Crew
 	leader      : Izenshtat, rank 3 (Sgt)
 	formation   : N: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [1:SPOTTED]
+	entrenchment: 0 (positioned)
 	head count  : 4 (4 left)
 	damage      : 1
 	abandoned   : 2
@@ -3671,16 +4004,22 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 80
 	type group  : 14
+	position    : (-1, -1)
 
 #00072 (00021:00017,051) R51  Crew
 	leader      : Alekseenko, rank 3 (Sgt)
 	formation   : R: regular average platoon
+	core        : no
+	detected as : 2 (CREW)
 	OOB         : 11 (    Soviet)
+	OOBrid      : 249
 	unit type   : 278 (crew)
 	unit class  : 14 (other)
 	kills       : 0
 	status      : 3 (routed) [1:alive] [0:hidden]
+	entrenchment: 0 (positioned)
 	head count  : 4 (2 left)
 	damage      : 3
 	abandoned   : 2
@@ -3702,7 +4041,9 @@ Unit count: 7
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 102
 	type group  : 14
+	position    : (64, 16)
 
 
 Complete unit statistics report:

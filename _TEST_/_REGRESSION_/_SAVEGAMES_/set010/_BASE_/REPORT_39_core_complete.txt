@@ -101,11 +101,12 @@ Formation count: 1
 #00000 A (FID 00000)
 	leader      : A0 GE HQ (Col Bauer)
 	higher cmd  : A0 GE HQ (Col Bauer)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 GE HQ (Col Bauer)
 
@@ -140,7 +141,10 @@ Unit count: 1
 #00000 (00000:00000,000) A0   GE HQ (GE HQ)
 	leader      : Bauer, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -167,6 +171,7 @@ Unit count: 1
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 200
 	type group  : 0
 	position    : (17, 6)
 

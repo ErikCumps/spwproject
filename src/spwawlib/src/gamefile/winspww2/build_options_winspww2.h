@@ -36,6 +36,9 @@
 /* Set to 1 to assume unverified units to be SPAU */
 #define	EXP_WINSPWW2_AUTOSPAU	1
 
+/* Set to 1 to assume unverified units in core formations to be core for campaign battles */
+#define	EXP_WINSPWW2_AUTOCMPCR	0
+
 #include "gamefile/common_gamedata_handling.h"
 
 extern COMMON_HANDLING_OPTIONS	winspww2_handling_options;

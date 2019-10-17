@@ -121,11 +121,12 @@ Formation count: 20
 #00000 A (FID 00000)
 	leader      : A0 GE Kommandant (Col Reichmann)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 GE Kommandant (Col Reichmann)
 
@@ -154,11 +155,12 @@ Formation count: 20
 #00001 B (FID 00001)
 	leader      : B0 Sturmpionieres (2Lt Telner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 122
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : Engineer Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		B0 Sturmpionieres (2Lt Telner)
 		B1 Sturmpionieres (Sgt Kramer)
@@ -190,11 +192,12 @@ Formation count: 20
 #00002 C (FID 00002)
 	leader      : C0 SdKfz 251/1 HT (1Lt Harmel)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 52
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Halftrack Plt 5
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		C0 SdKfz 251/1 HT (1Lt Harmel)
 		C1 SdKfz 251/1 HT (Sgt Bachman)
@@ -227,11 +230,12 @@ Formation count: 20
 #00003 D (FID 00003)
 	leader      : D0 PzKpfw III G (1Lt Kronz)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		D0 PzKpfw III G (1Lt Kronz)
 		D1 PzKpfw III G (Sgt Kramer)
@@ -264,11 +268,12 @@ Formation count: 20
 #00004 E (FID 00004)
 	leader      : E0 PzKpfw III G (1Lt Metzger)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 7
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Panzer Plt
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		E0 PzKpfw III G (1Lt Metzger)
 		E1 PzKpfw III G (Sgt Hitzelberger)
@@ -301,11 +306,12 @@ Formation count: 20
 #00005 F (FID 00005)
 	leader      : F0 PzKpfw IV D (1Lt Bruck)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		F0 PzKpfw IV D (1Lt Bruck)
 		F1 PzKpfw IV D (Sgt Hoffman)
@@ -337,11 +343,12 @@ Formation count: 20
 #00006 G (FID 00006)
 	leader      : G0 PzKpfw IV D (1Lt Wittman)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 21
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		G0 PzKpfw IV D (1Lt Wittman)
 		G1 PzKpfw IV D (Sgt Kuhns)
@@ -373,11 +380,12 @@ Formation count: 20
 #00007 H (FID 00007)
 	leader      : H0 PzKpfw IV D (1Lt Wirth)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 20
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Support Pz Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		H0 PzKpfw IV D (1Lt Wirth)
 		H1 PzKpfw IV D (Sgt Brandt)
@@ -407,11 +415,12 @@ Formation count: 20
 #00008 I (FID 00008)
 	leader      : I0 Kompanie HQ (Cpt Abt)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 106
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : company
 	type        : SS Mot Kp
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		I0 Kompanie HQ (Cpt Abt)
 		I1 SdKfz 251/1 HT (Sgt Lang)
@@ -441,11 +450,12 @@ Formation count: 20
 #00009 J (FID 00009)
 	leader      : J0 ZugKommandant (2Lt Spengler)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		J0 ZugKommandant (2Lt Spengler)
 		J1 SS-VT Gruppe (Sgt Schurz)
@@ -483,11 +493,12 @@ Formation count: 20
 #00010 K (FID 00010)
 	leader      : K0 ZugKommandant (2Lt Funck)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		K0 ZugKommandant (2Lt Funck)
 		K1 SS-VT Gruppe (Sgt Wiedemann)
@@ -525,11 +536,12 @@ Formation count: 20
 #00011 L (FID 00011)
 	leader      : L0 ZugKommandant (2Lt Vebber)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 104
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS Mot Plt
-	unit count  : 10
+	unit count  : 10 (10 core, 0 support, 0 regular)
 	unit list   :
 		L0 ZugKommandant (2Lt Vebber)
 		L1 SS-VT Gruppe (Sgt Steinke)
@@ -567,11 +579,12 @@ Formation count: 20
 #00012 M (FID 00012)
 	leader      : M0 88mm auf Zgkw (2Lt Stiegel)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 168
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot AT Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		M0 88mm auf Zgkw (2Lt Stiegel)
 		M1 88mm auf Zgkw (Sgt Boettcher)
@@ -603,11 +616,12 @@ Formation count: 20
 #00013 N (FID 00013)
 	leader      : N0 SS MMG Truppe (2Lt Schultz)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 144
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : platoon
 	type        : SS MMG Sec
-	unit count  : 2
+	unit count  : 2 (2 core, 0 support, 0 regular)
 	unit list   :
 		N0 SS MMG Truppe (2Lt Schultz)
 		N1 SS MMG Truppe (Sgt Rosenberg)
@@ -637,11 +651,12 @@ Formation count: 20
 #00014 O (FID 00014)
 	leader      : O0 Moerser Grp (2Lt Falkenberg)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 153
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Mortar Sec
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		O0 Moerser Grp (2Lt Falkenberg)
 		O1 Moerser Grp (Sgt Letzelder)
@@ -672,11 +687,12 @@ Formation count: 20
 #00015 P (FID 00015)
 	leader      : P0 sIG33 auf Pz-I (2Lt Eberbach)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 103
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Mot Inf Gun Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		P0 sIG33 auf Pz-I (2Lt Eberbach)
 		P1 sIG33 auf Pz-I (Sgt Ziegler)
@@ -708,11 +724,12 @@ Formation count: 20
 #00016 Q (FID 00016)
 	leader      : Q0 PzJg 35R(f) (2Lt Haeften)
 	higher cmd  : I0 Kompanie HQ (Cpt Abt)
+	OOBrid      : 184
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Motor Flak Sec
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		Q0 PzJg 35R(f) (2Lt Haeften)
 		Q1 PzJg 35R(f) (Sgt Brors)
@@ -744,11 +761,12 @@ Formation count: 20
 #00017 R (FID 00017)
 	leader      : R0 SdKfz 6/2 (1Lt Albrecht)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 69
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : SP Flak Plt
-	unit count  : 4
+	unit count  : 4 (4 core, 0 support, 0 regular)
 	unit list   :
 		R0 SdKfz 6/2 (1Lt Albrecht)
 		R1 SdKfz 6/2 (Sgt Schwendt)
@@ -780,11 +798,12 @@ Formation count: 20
 #00018 S (FID 00018)
 	leader      : S0 Motorradfahrer (2Lt Schneider)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		S0 Motorradfahrer (2Lt Schneider)
 		S1 Motorradfahrer (Sgt Meyer)
@@ -815,11 +834,12 @@ Formation count: 20
 #00019 T (FID 00019)
 	leader      : T0 Motorradfahrer (2Lt Brunner)
 	higher cmd  : A0 GE Kommandant (Col Reichmann)
+	OOBrid      : 131
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Mtcycle Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		T0 Motorradfahrer (2Lt Brunner)
 		T1 Motorradfahrer (Sgt Albrecht)
@@ -856,7 +876,10 @@ Unit count: 89
 #00000 (00000:00000,000) A0   GE Kommandant (GE Kommandant)
 	leader      : Reichmann, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -882,6 +905,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 189
 	type group  : 0
 	position    : (3, 20)
 
@@ -892,7 +916,10 @@ Unit count: 89
 #00001 (00001:00001,000) B0   Sturmpionieres (Sturmpionieres)
 	leader      : Telner, rank 4 (2Lt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -919,6 +946,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (1, 25)
 
@@ -929,7 +957,10 @@ Unit count: 89
 #00002 (00001:00001,001) B1   Sturmpionieres (Sturmpionieres)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -956,6 +987,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (1, 25)
 
@@ -966,7 +998,10 @@ Unit count: 89
 #00003 (00001:00001,002) B2   Sturmpionieres (Sturmpionieres)
 	leader      : Zimmerman, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -993,6 +1028,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (1, 25)
 
@@ -1003,7 +1039,10 @@ Unit count: 89
 #00004 (00001:00001,003) B3   Sturmpionieres (Sturmpionieres)
 	leader      : Hudel, rank 3 (Sgt)
 	formation   : B: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 163
 	unit type   : 61 (motorized engineers)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -1030,6 +1069,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 36
 	type group  : 1
 	position    : (8, 10)
 
@@ -1040,7 +1080,10 @@ Unit count: 89
 #00005 (00002:00002,000) C0   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Harmel, rank 5 (1Lt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -1066,6 +1109,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (3, 21)
 
@@ -1076,7 +1120,10 @@ Unit count: 89
 #00006 (00002:00002,001) C1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Bachman, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -1102,6 +1149,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (1, 25)
 
@@ -1112,7 +1160,10 @@ Unit count: 89
 #00007 (00002:00002,002) C2   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Ostendorff, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1138,6 +1189,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (1, 25)
 
@@ -1148,7 +1200,10 @@ Unit count: 89
 #00008 (00002:00002,003) C3   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Gebhart, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -1174,6 +1229,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (1, 25)
 
@@ -1184,7 +1240,10 @@ Unit count: 89
 #00009 (00002:00002,004) C4   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Dittrich, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -1210,6 +1269,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (8, 10)
 
@@ -1220,7 +1280,10 @@ Unit count: 89
 #00010 (00003:00003,000) D0   PzKpfw III G (PzKpfw III G)
 	leader      : Kronz, rank 5 (1Lt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1246,6 +1309,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (3, 23)
 
@@ -1256,7 +1320,10 @@ Unit count: 89
 #00011 (00003:00003,001) D1   PzKpfw III G (PzKpfw III G)
 	leader      : Kramer, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1282,6 +1349,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (3, 23)
 
@@ -1292,7 +1360,10 @@ Unit count: 89
 #00012 (00003:00003,002) D2   PzKpfw III E (PzKpfw III E)
 	leader      : Oertzen, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1318,6 +1389,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (3, 23)
 
@@ -1328,7 +1400,10 @@ Unit count: 89
 #00013 (00003:00003,003) D3   PzKpfw III E (PzKpfw III E)
 	leader      : Hummel, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1354,6 +1429,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (3, 23)
 
@@ -1364,7 +1440,10 @@ Unit count: 89
 #00014 (00003:00003,004) D4   PzKpfw III E (PzKpfw III E)
 	leader      : Strauch, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 19
@@ -1390,6 +1469,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (3, 23)
 
@@ -1400,7 +1480,10 @@ Unit count: 89
 #00015 (00004:00004,000) E0   PzKpfw III G (PzKpfw III G)
 	leader      : Metzger, rank 5 (1Lt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 11
@@ -1426,6 +1509,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (3, 25)
 
@@ -1436,7 +1520,10 @@ Unit count: 89
 #00016 (00004:00004,001) E1   PzKpfw III G (PzKpfw III G)
 	leader      : Hitzelberger, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 18
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 7
@@ -1462,6 +1549,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 85
 	type group  : 3
 	position    : (3, 25)
 
@@ -1472,7 +1560,10 @@ Unit count: 89
 #00017 (00004:00004,002) E2   PzKpfw III E (PzKpfw III E)
 	leader      : Schirmer, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 16
@@ -1498,6 +1589,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (3, 25)
 
@@ -1508,7 +1600,10 @@ Unit count: 89
 #00018 (00004:00004,003) E3   PzKpfw III E (PzKpfw III E)
 	leader      : Eberhart, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 10
@@ -1534,6 +1629,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (3, 25)
 
@@ -1544,7 +1640,10 @@ Unit count: 89
 #00019 (00004:00004,004) E4   PzKpfw III E (PzKpfw III E)
 	leader      : Kortenhaus, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 17
 	unit type   : 112 (light tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1570,6 +1669,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 4
 	position    : (3, 25)
 
@@ -1580,7 +1680,10 @@ Unit count: 89
 #00020 (00005:00005,000) F0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Bruck, rank 5 (1Lt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 7
@@ -1606,6 +1709,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (3, 24)
 
@@ -1616,7 +1720,10 @@ Unit count: 89
 #00021 (00005:00005,001) F1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Hoffman, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 5
@@ -1642,6 +1749,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (3, 24)
 
@@ -1652,7 +1760,10 @@ Unit count: 89
 #00022 (00005:00005,002) F2   PzKpfw IV D (PzKpfw IV D)
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 4
@@ -1678,6 +1789,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (3, 24)
 
@@ -1688,7 +1800,10 @@ Unit count: 89
 #00023 (00005:00005,003) F3   PzKpfw IV D (PzKpfw IV D)
 	leader      : Hartueb, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 8
@@ -1714,6 +1829,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (3, 24)
 
@@ -1724,7 +1840,10 @@ Unit count: 89
 #00024 (00006:00006,000) G0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Wittman, rank 5 (1Lt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 13
@@ -1750,6 +1869,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (9, 9)
 
@@ -1760,7 +1880,10 @@ Unit count: 89
 #00025 (00006:00006,001) G1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Kuhns, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 15
@@ -1786,6 +1909,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (10, 8)
 
@@ -1796,7 +1920,10 @@ Unit count: 89
 #00026 (00006:00006,002) G2   PzKpfw IV D (PzKpfw IV D)
 	leader      : Langkeit, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 17
@@ -1822,6 +1949,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (8, 11)
 
@@ -1832,7 +1960,10 @@ Unit count: 89
 #00027 (00006:00006,003) G3   PzKpfw IV D (PzKpfw IV D)
 	leader      : Tost, rank 3 (Sgt)
 	formation   : G: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -1858,6 +1989,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (8, 12)
 
@@ -1868,7 +2000,10 @@ Unit count: 89
 #00028 (00007:00007,000) H0   PzKpfw IV D (PzKpfw IV D)
 	leader      : Wirth, rank 5 (1Lt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 3
@@ -1894,6 +2029,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (6, 10)
 
@@ -1904,7 +2040,10 @@ Unit count: 89
 #00029 (00007:00007,001) H1   PzKpfw IV D (PzKpfw IV D)
 	leader      : Brandt, rank 3 (Sgt)
 	formation   : H: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 25
 	unit type   : 110 (CS tank)
 	unit class  : 2 (armor)
 	kills       : 2
@@ -1930,6 +2069,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 67
 	type group  : 5
 	position    : (5, 10)
 
@@ -1940,7 +2080,10 @@ Unit count: 89
 #00030 (00008:00008,000) I0   Kompanie HQ (Kompanie HQ)
 	leader      : Abt, rank 6 (Cpt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 38
 	unit type   : 60 (motorized infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1966,6 +2109,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 19
 	type group  : 6
 	position    : (4, 20)
 
@@ -1976,7 +2120,10 @@ Unit count: 89
 #00031 (00008:00008,001) I1   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Lang, rank 3 (Sgt)
 	formation   : I: core elite recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2002,6 +2149,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (5, 20)
 
@@ -2012,7 +2160,10 @@ Unit count: 89
 #00032 (00009:00009,000) J0   ZugKommandant (ZugKommandant)
 	leader      : Spengler, rank 4 (2Lt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2039,6 +2190,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (2, 24)
 
@@ -2049,7 +2201,10 @@ Unit count: 89
 #00033 (00009:00009,001) J1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schurz, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 10
@@ -2076,6 +2231,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (2, 24)
 
@@ -2086,7 +2242,10 @@ Unit count: 89
 #00034 (00009:00009,002) J2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schweitzer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 8
@@ -2113,6 +2272,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (2, 24)
 
@@ -2123,7 +2283,10 @@ Unit count: 89
 #00035 (00009:00009,003) J3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Weiss, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 5
@@ -2150,6 +2313,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (2, 24)
 
@@ -2160,7 +2324,10 @@ Unit count: 89
 #00036 (00009:00009,004) J4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Krogel, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2187,6 +2354,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (2, 24)
 
@@ -2197,7 +2365,10 @@ Unit count: 89
 #00037 (00009:00009,005) J5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2223,6 +2394,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (2, 24)
 
@@ -2233,7 +2405,10 @@ Unit count: 89
 #00038 (00009:00009,006) J6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Brunner, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2259,6 +2434,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (2, 24)
 
@@ -2269,7 +2445,10 @@ Unit count: 89
 #00039 (00009:00009,007) J7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Tychsen, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2295,6 +2474,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (2, 24)
 
@@ -2305,7 +2485,10 @@ Unit count: 89
 #00040 (00009:00009,008) J8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Krafft, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2331,6 +2514,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (2, 24)
 
@@ -2341,7 +2525,10 @@ Unit count: 89
 #00041 (00009:00009,009) J9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Klein, rank 3 (Sgt)
 	formation   : J: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 1
@@ -2367,6 +2554,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (2, 24)
 
@@ -2377,7 +2565,10 @@ Unit count: 89
 #00042 (00010:00010,000) K0   ZugKommandant (ZugKommandant)
 	leader      : Funck, rank 4 (2Lt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2404,6 +2595,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (10, 7)
 
@@ -2414,7 +2606,10 @@ Unit count: 89
 #00043 (00010:00010,001) K1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Wiedemann, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 6
@@ -2441,6 +2636,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (11, 6)
 
@@ -2451,7 +2647,10 @@ Unit count: 89
 #00044 (00010:00010,002) K2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Conkling, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 5
@@ -2478,6 +2677,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (9, 8)
 
@@ -2488,7 +2688,10 @@ Unit count: 89
 #00045 (00010:00010,003) K3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Petereit, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 5
@@ -2515,6 +2718,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (11, 5)
 
@@ -2525,7 +2729,10 @@ Unit count: 89
 #00046 (00010:00010,004) K4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schoen, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -2552,6 +2759,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (8, 9)
 
@@ -2562,7 +2770,10 @@ Unit count: 89
 #00047 (00010:00010,005) K5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Schaub, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2588,6 +2799,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (10, 7)
 
@@ -2598,7 +2810,10 @@ Unit count: 89
 #00048 (00010:00010,006) K6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Hartueb, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2624,6 +2839,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (11, 6)
 
@@ -2634,7 +2850,10 @@ Unit count: 89
 #00049 (00010:00010,007) K7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Remer, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -2660,6 +2879,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (9, 8)
 
@@ -2670,7 +2890,10 @@ Unit count: 89
 #00050 (00010:00010,008) K8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2696,6 +2919,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (11, 5)
 
@@ -2706,7 +2930,10 @@ Unit count: 89
 #00051 (00010:00010,009) K9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Musser, rank 3 (Sgt)
 	formation   : K: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -2732,6 +2959,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (8, 9)
 
@@ -2742,7 +2970,10 @@ Unit count: 89
 #00052 (00011:00011,000) L0   ZugKommandant (ZugKommandant)
 	leader      : Vebber, rank 4 (2Lt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 77
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -2769,6 +3000,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 14
 	type group  : 7
 	position    : (6, 15)
 
@@ -2779,7 +3011,10 @@ Unit count: 89
 #00053 (00011:00011,001) L1   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Steinke, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 4
@@ -2806,6 +3041,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (7, 14)
 
@@ -2816,7 +3052,10 @@ Unit count: 89
 #00054 (00011:00011,002) L2   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Schumacher, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 6
@@ -2843,6 +3082,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (7, 13)
 
@@ -2853,7 +3093,10 @@ Unit count: 89
 #00055 (00011:00011,003) L3   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Muller, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 3
@@ -2880,6 +3123,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (7, 12)
 
@@ -2890,7 +3134,10 @@ Unit count: 89
 #00056 (00011:00011,004) L4   SS-VT Gruppe (SS-VT Gruppe)
 	leader      : Becker, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 178
 	unit type   : 15 (elite infantry)
 	unit class  : 0 (infantry)
 	kills       : 2
@@ -2917,6 +3164,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 32
 	type group  : 8
 	position    : (7, 11)
 
@@ -2927,7 +3175,10 @@ Unit count: 89
 #00057 (00011:00011,005) L5   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Seibert, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -2953,6 +3204,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (6, 15)
 
@@ -2963,7 +3215,10 @@ Unit count: 89
 #00058 (00011:00011,006) L6   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Weber, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 2
@@ -2989,6 +3244,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (7, 14)
 
@@ -2999,7 +3255,10 @@ Unit count: 89
 #00059 (00011:00011,007) L7   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Krause, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 0
@@ -3025,6 +3284,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (7, 13)
 
@@ -3035,7 +3295,10 @@ Unit count: 89
 #00060 (00011:00011,008) L8   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Stemberger, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 2
@@ -3061,6 +3324,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (7, 12)
 
@@ -3071,7 +3335,10 @@ Unit count: 89
 #00061 (00011:00011,009) L9   SdKfz 251/1 HT (SdKfz 251/1 HT)
 	leader      : Vosse, rank 3 (Sgt)
 	formation   : L: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 102
 	unit type   : 138 (halftrack)
 	unit class  : 3 (APC)
 	kills       : 3
@@ -3097,6 +3364,7 @@ Unit count: 89
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 2
 	position    : (7, 11)
 
@@ -3107,7 +3375,10 @@ Unit count: 89
 #00062 (00012:00012,000) M0   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Stiegel, rank 4 (2Lt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 5
@@ -3133,6 +3404,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (1, 24)
 
@@ -3143,7 +3415,10 @@ Unit count: 89
 #00063 (00012:00012,001) M1   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Boettcher, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -3169,6 +3444,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (1, 24)
 
@@ -3179,7 +3455,10 @@ Unit count: 89
 #00064 (00012:00012,002) M2   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Hoernlein, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3205,6 +3484,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (1, 24)
 
@@ -3215,7 +3495,10 @@ Unit count: 89
 #00065 (00012:00012,003) M3   88mm auf Zgkw (88mm auf Zgkw)
 	leader      : Schmidt, rank 3 (Sgt)
 	formation   : M: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 213
 	unit type   : 177 (SP AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 4
@@ -3241,6 +3524,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 111
 	type group  : 9
 	position    : (1, 24)
 
@@ -3251,7 +3535,10 @@ Unit count: 89
 #00066 (00013:00013,000) N0   SS MMG Truppe (SS MMG Truppe)
 	leader      : Schultz, rank 4 (2Lt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -3277,6 +3564,7 @@ Unit count: 89
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 10
 	position    : (4, 19)
 
@@ -3287,7 +3575,10 @@ Unit count: 89
 #00067 (00013:00013,001) N1   SS MMG Truppe (SS MMG Truppe)
 	leader      : Rosenberg, rank 3 (Sgt)
 	formation   : N: core elite platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 174
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -3313,6 +3604,7 @@ Unit count: 89
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 10
 	position    : (4, 21)
 
@@ -3323,7 +3615,10 @@ Unit count: 89
 #00068 (00014:00014,000) O0   Moerser Grp (Moerser Grp)
 	leader      : Falkenberg, rank 4 (2Lt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3349,6 +3644,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 11
 	position    : (4, 13)
 
@@ -3359,7 +3655,10 @@ Unit count: 89
 #00069 (00014:00014,001) O1   Moerser Grp (Moerser Grp)
 	leader      : Letzelder, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 134
 	unit type   : 146 (mortar)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3385,6 +3684,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 28
 	type group  : 11
 	position    : (5, 16)
 
@@ -3395,7 +3695,10 @@ Unit count: 89
 #00070 (00014:00014,002) O2   Krupp Kfz 69 (Krupp Kfz 69)
 	leader      : Briel, rank 3 (Sgt)
 	formation   : O: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 94
 	unit type   : 243 (medium truck)
 	unit class  : 10 (transport)
 	kills       : 0
@@ -3421,6 +3724,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 11
 	type group  : 12
 	position    : (2, 15)
 
@@ -3431,7 +3735,10 @@ Unit count: 89
 #00071 (00015:00015,000) P0   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Eberbach, rank 4 (2Lt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 3
@@ -3457,6 +3764,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (2, 25)
 
@@ -3467,7 +3775,10 @@ Unit count: 89
 #00072 (00015:00015,001) P1   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Ziegler, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3493,6 +3804,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (2, 25)
 
@@ -3503,7 +3815,10 @@ Unit count: 89
 #00073 (00015:00015,002) P2   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Tost, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -3529,6 +3844,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (2, 25)
 
@@ -3539,7 +3855,10 @@ Unit count: 89
 #00074 (00015:00015,003) P3   sIG33 auf Pz-I (sIG33 auf Pz-I)
 	leader      : Heidrich, rank 3 (Sgt)
 	formation   : P: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 62
 	unit type   : 157 (SP gun)
 	unit class  : 4 (artillery)
 	kills       : 1
@@ -3565,6 +3884,7 @@ Unit count: 89
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 13
 	position    : (2, 25)
 
@@ -3575,7 +3895,10 @@ Unit count: 89
 #00075 (00016:00016,000) Q0   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Haeften, rank 4 (2Lt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 1
@@ -3601,6 +3924,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (1, 23)
 
@@ -3611,7 +3935,10 @@ Unit count: 89
 #00076 (00016:00016,001) Q1   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Brors, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 3
@@ -3637,6 +3964,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (1, 23)
 
@@ -3647,7 +3975,10 @@ Unit count: 89
 #00077 (00016:00016,002) Q2   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Stumpf, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3673,6 +4004,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (1, 23)
 
@@ -3683,7 +4015,10 @@ Unit count: 89
 #00078 (00016:00016,003) Q3   PzJg 35R(f) (PzJg 35R(f))
 	leader      : Riedmuller, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 40
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -3709,6 +4044,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 68
 	type group  : 14
 	position    : (1, 23)
 
@@ -3719,7 +4055,10 @@ Unit count: 89
 #00079 (00017:00017,000) R0   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Albrecht, rank 5 (1Lt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 1
@@ -3745,6 +4084,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (2, 26)
 
@@ -3755,7 +4095,10 @@ Unit count: 89
 #00080 (00017:00017,001) R1   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Schwendt, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 2
@@ -3781,6 +4124,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (2, 26)
 
@@ -3791,7 +4135,10 @@ Unit count: 89
 #00081 (00017:00017,002) R2   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Wagner, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3817,6 +4164,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (2, 26)
 
@@ -3827,7 +4175,10 @@ Unit count: 89
 #00082 (00017:00017,003) R3   SdKfz 6/2 (SdKfz 6/2)
 	leader      : Scherer, rank 3 (Sgt)
 	formation   : R: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 80
 	unit type   : 189 (SP AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -3853,6 +4204,7 @@ Unit count: 89
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 15
 	position    : (2, 26)
 
@@ -3863,7 +4215,10 @@ Unit count: 89
 #00083 (00018:00018,000) S0   Motorradfahrer (Motorradfahrer)
 	leader      : Schneider, rank 4 (2Lt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 14
@@ -3889,6 +4244,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (3, 24)
 
@@ -3899,7 +4255,10 @@ Unit count: 89
 #00084 (00018:00018,001) S1   Motorradfahrer (Motorradfahrer)
 	leader      : Meyer, rank 3 (Sgt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 9
@@ -3925,6 +4284,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (3, 23)
 
@@ -3935,7 +4295,10 @@ Unit count: 89
 #00085 (00018:00018,002) S2   Motorradfahrer (Motorradfahrer)
 	leader      : Steiner, rank 3 (Sgt)
 	formation   : S: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 16
@@ -3961,6 +4324,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (3, 25)
 
@@ -3971,7 +4335,10 @@ Unit count: 89
 #00086 (00019:00019,000) T0   Motorradfahrer (Motorradfahrer)
 	leader      : Brunner, rank 4 (2Lt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 5
@@ -3997,6 +4364,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (9, 10)
 
@@ -4007,7 +4375,10 @@ Unit count: 89
 #00087 (00019:00019,001) T1   Motorradfahrer (Motorradfahrer)
 	leader      : Albrecht, rank 3 (Sgt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 2
@@ -4033,6 +4404,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (12, 4)
 
@@ -4043,7 +4415,10 @@ Unit count: 89
 #00088 (00019:00019,002) T2   Motorradfahrer (Motorradfahrer)
 	leader      : Mittelberg, rank 3 (Sgt)
 	formation   : T: core elite recon platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 165
 	unit type   : 231 (motorcycle)
 	unit class  : 8 (recon)
 	kills       : 10
@@ -4069,6 +4444,7 @@ Unit count: 89
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 16
 	position    : (7, 16)
 
@@ -4154,11 +4530,12 @@ Formation count: 45
 #00100 A (FID 00000)
 	leader      : A0 SO Komander (Col Gladkov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 1
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : Soviet HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 SO Komander (Col Gladkov)
 
@@ -4187,11 +4564,12 @@ Formation count: 45
 #00101 B (FID 00001)
 	leader      : B0 Lider Vzvoda (2Lt Lyutiy)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 72
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		B0 Lider Vzvoda (2Lt Lyutiy)
 		B1 Pehota Vintovka (Sgt Orskiy)
@@ -4224,11 +4602,12 @@ Formation count: 45
 #00102 C (FID 00002)
 	leader      : C0 Log Rifle Pit (2Lt Lavrenev)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 189
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ++AI Forts++++
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		C0 Log Rifle Pit (2Lt Lavrenev)
 		C1 Log Rifle Pit (Sgt Fedorovsky)
@@ -4259,11 +4638,12 @@ Formation count: 45
 #00103 D (FID 00003)
 	leader      : D0 37mm ATG M30 (2Lt Schevchuk)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		D0 37mm ATG M30 (2Lt Schevchuk)
 		D1 37mm ATG M30 (Sgt Lisichkin)
@@ -4293,11 +4673,12 @@ Formation count: 45
 #00104 E (FID 00004)
 	leader      : E0 SU-45 (1Lt Tebyakin)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 24
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : TD Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		E0 SU-45 (1Lt Tebyakin)
 		E1 SU-45 (Sgt Ivanovich)
@@ -4327,11 +4708,12 @@ Formation count: 45
 #00105 F (FID 00005)
 	leader      : F0 Log Rifle Pit (2Lt Fyodorovich)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 184
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Fortifications
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		F0 Log Rifle Pit (2Lt Fyodorovich)
 		F1 Log MG Bunker (Sgt Blinov)
@@ -4361,11 +4743,12 @@ Formation count: 45
 #00106 G (FID 00006)
 	leader      : G0 Komanda PTRD (2Lt Ivanovich)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		G0 Komanda PTRD (2Lt Ivanovich)
 		G1 Komanda PTRD (Sgt Schemelev)
@@ -4396,11 +4779,12 @@ Formation count: 45
 #00107 H (FID 00007)
 	leader      : H0 Komanda PTRD (2Lt Rimsky)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		H0 Komanda PTRD (2Lt Rimsky)
 		H1 Komanda PTRD (Sgt Bagranyan)
@@ -4431,11 +4815,12 @@ Formation count: 45
 #00108 I (FID 00008)
 	leader      : I0 Komanda HMG (2Lt Petrenko)
 	higher cmd  : C0 Log Rifle Pit (2Lt Lavrenev)
+	OOBrid      : 112
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Hvy MG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		I0 Komanda HMG (2Lt Petrenko)
 		I1 Komanda HMG (Sgt Pleve)
@@ -4465,11 +4850,12 @@ Formation count: 45
 #00109 J (FID 00009)
 	leader      : J0 Snajper (2Lt Bakunin)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 108
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Sniper
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		J0 Snajper (2Lt Bakunin)
 
@@ -4498,11 +4884,12 @@ Formation count: 45
 #00110 K (FID 00010)
 	leader      : K0 Komanda AAMG  (2Lt Kozlov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 177
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Lt AA Gun Sec**
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		K0 Komanda AAMG  (2Lt Kozlov)
 		K1 Komanda AAMG  (Sgt Lyutiy)
@@ -4532,11 +4919,12 @@ Formation count: 45
 #00111 L (FID 00011)
 	leader      : L0 Komanda PTRD (2Lt Sharipov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		L0 Komanda PTRD (2Lt Sharipov)
 		L1 Komanda PTRD (Sgt Ordabkunayte)
@@ -4567,11 +4955,12 @@ Formation count: 45
 #00112 M (FID 00012)
 	leader      : M0 45mm ATG M38+ (2Lt Arakcheyev)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		M0 45mm ATG M38+ (2Lt Arakcheyev)
 		M1 45mm ATG M38+ (Sgt Gorky)
@@ -4601,11 +4990,12 @@ Formation count: 45
 #00113 N (FID 00013)
 	leader      : N0 122mm FH Bty (1Lt Potapov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 123
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Artillery Btry
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		N0 122mm FH Bty (1Lt Potapov)
 
@@ -4634,11 +5024,12 @@ Formation count: 45
 #00114 O (FID 00014)
 	leader      : O0 122mm FH Bty (1Lt Doubice)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 123
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Artillery Btry
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		O0 122mm FH Bty (1Lt Doubice)
 
@@ -4667,11 +5058,12 @@ Formation count: 45
 #00115 P (FID 00015)
 	leader      : P0 122mm FH Bty (Cpt Kulik)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 123
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Artillery Btry
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		P0 122mm FH Bty (Cpt Kulik)
 
@@ -4700,11 +5092,12 @@ Formation count: 45
 #00116 Q (FID 00016)
 	leader      : Q0 T-28 M34 (1Lt Kashin)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 16
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Med Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		Q0 T-28 M34 (1Lt Kashin)
 		Q1 T-28 M34 (Sgt Sidorov)
@@ -4735,11 +5128,12 @@ Formation count: 45
 #00117 R (FID 00017)
 	leader      : R0 Lider Vzvoda (2Lt Pugovkin)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 72
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		R0 Lider Vzvoda (2Lt Pugovkin)
 		R1 Pehota Vintovka (Sgt Kozlov)
@@ -4772,11 +5166,12 @@ Formation count: 45
 #00118 S (FID 00018)
 	leader      : S0 Log Rifle Pit (Cpt Bakunin)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 65
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : company
 	type        : ++AI Defence+++
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		S0 Log Rifle Pit (Cpt Bakunin)
 
@@ -4805,11 +5200,12 @@ Formation count: 45
 #00119 T (FID 00019)
 	leader      : T0 Log MG Bunker (2Lt Herzen)
 	higher cmd  : S0 Log Rifle Pit (Cpt Bakunin)
+	OOBrid      : 189
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ++AI Forts++++
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		T0 Log MG Bunker (2Lt Herzen)
 		T1 76.2mm AA M38 (Sgt Arakcheyev)
@@ -4839,11 +5235,12 @@ Formation count: 45
 #00120 U (FID 00020)
 	leader      : U0 45mm ATG M38+ (2Lt Gapon)
 	higher cmd  : S0 Log Rifle Pit (Cpt Bakunin)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		U0 45mm ATG M38+ (2Lt Gapon)
 		U1 45mm ATG M38+ (Sgt Pugachev)
@@ -4873,11 +5270,12 @@ Formation count: 45
 #00121 V (FID 00021)
 	leader      : V0 Log MG Bunker (2Lt Ivanov)
 	higher cmd  : S0 Log Rifle Pit (Cpt Bakunin)
+	OOBrid      : 184
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Fortifications
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		V0 Log MG Bunker (2Lt Ivanov)
 		V1 Log Rifle Pit (Sgt Vorobiev)
@@ -4907,11 +5305,12 @@ Formation count: 45
 #00122 W (FID 00022)
 	leader      : W0 Komanda PTRD (2Lt Vyazemsky)
 	higher cmd  : S0 Log Rifle Pit (Cpt Bakunin)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		W0 Komanda PTRD (2Lt Vyazemsky)
 		W1 Komanda PTRD (Sgt Lucashenko)
@@ -4942,11 +5341,12 @@ Formation count: 45
 #00123 X (FID 00023)
 	leader      : X0 Komanda PTRD (2Lt Lucashenko)
 	higher cmd  : S0 Log Rifle Pit (Cpt Bakunin)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		X0 Komanda PTRD (2Lt Lucashenko)
 		X1 Komanda PTRD (Sgt Tebyakin)
@@ -4977,11 +5377,12 @@ Formation count: 45
 #00124 Y (FID 00024)
 	leader      : Y0 Komanda HMG (2Lt Bunin)
 	higher cmd  : S0 Log Rifle Pit (Cpt Bakunin)
+	OOBrid      : 112
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Hvy MG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		Y0 Komanda HMG (2Lt Bunin)
 		Y1 Komanda HMG (Sgt Lavrenev)
@@ -5011,11 +5412,12 @@ Formation count: 45
 #00125 Z (FID 00025)
 	leader      : Z0 Snajper (2Lt Gladkov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 108
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Sniper
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		Z0 Snajper (2Lt Gladkov)
 
@@ -5044,11 +5446,12 @@ Formation count: 45
 #00126 AA (FID 00026)
 	leader      : AA0 Komanda AAMG  (2Lt Vorobiev)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 177
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Lt AA Gun Sec**
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AA0 Komanda AAMG  (2Lt Vorobiev)
 		AA1 Komanda AAMG  (Sgt Petrov)
@@ -5078,11 +5481,12 @@ Formation count: 45
 #00127 AB (FID 00027)
 	leader      : AB0 Komanda PTRD (2Lt Gladkov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AB0 Komanda PTRD (2Lt Gladkov)
 		AB1 Komanda PTRD (Sgt Yakovlev)
@@ -5113,11 +5517,12 @@ Formation count: 45
 #00128 AC (FID 00028)
 	leader      : AC0 37mm ATG M30 (2Lt Antonov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AC0 37mm ATG M30 (2Lt Antonov)
 		AC1 37mm ATG M30 (Sgt Ilyin)
@@ -5147,11 +5552,12 @@ Formation count: 45
 #00129 AD (FID 00029)
 	leader      : AD0 37mm ATG M30 (2Lt Budeny)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AD0 37mm ATG M30 (2Lt Budeny)
 		AD1 37mm ATG M30 (Sgt Hohlov)
@@ -5181,11 +5587,12 @@ Formation count: 45
 #00130 AE (FID 00030)
 	leader      : AE0 37mm ATG M30 (Cpt Vasiliev)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 132
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AE0 37mm ATG M30 (Cpt Vasiliev)
 		AE1 37mm ATG M30 (Sgt Pugovkin)
@@ -5215,11 +5622,12 @@ Formation count: 45
 #00131 AF (FID 00031)
 	leader      : AF0 T-28 M38 (1Lt Mikhaylovich)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 16
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Med Tank Plt
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AF0 T-28 M38 (1Lt Mikhaylovich)
 		AF1 T-28 M38 (Sgt Samarin)
@@ -5250,11 +5658,12 @@ Formation count: 45
 #00132 AG (FID 00032)
 	leader      : AG0 Lider Vzvoda (2Lt Kulik)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 72
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AG0 Lider Vzvoda (2Lt Kulik)
 		AG1 Pehota Vintovka (Sgt Rabinovich)
@@ -5287,11 +5696,12 @@ Formation count: 45
 #00133 AH (FID 00033)
 	leader      : AH0 Log MG Bunker (2Lt Kazimirovich)
 	higher cmd  : AH0 Log MG Bunker (2Lt Kazimirovich)
+	OOBrid      : 189
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ++AI Forts++++
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AH0 Log MG Bunker (2Lt Kazimirovich)
 		AH1 Komanda AAMG  (Sgt Larionov)
@@ -5321,11 +5731,12 @@ Formation count: 45
 #00134 AI (FID 00034)
 	leader      : AI0 37mm ATG M30 (2Lt Tatarenko)
 	higher cmd  : AH0 Log MG Bunker (2Lt Kazimirovich)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AI0 37mm ATG M30 (2Lt Tatarenko)
 		AI1 37mm ATG M30 (Sgt Antonov)
@@ -5355,11 +5766,12 @@ Formation count: 45
 #00135 AJ (FID 00035)
 	leader      : AJ0 Log MG Bunker (2Lt Pashkov)
 	higher cmd  : AH0 Log MG Bunker (2Lt Kazimirovich)
+	OOBrid      : 184
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Fortifications
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AJ0 Log MG Bunker (2Lt Pashkov)
 		AJ1 Log Rifle Pit (Sgt Petrenko)
@@ -5389,11 +5801,12 @@ Formation count: 45
 #00136 AK (FID 00036)
 	leader      : AK0 Komanda PTRD (2Lt Plotnikov)
 	higher cmd  : AH0 Log MG Bunker (2Lt Kazimirovich)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AK0 Komanda PTRD (2Lt Plotnikov)
 		AK1 Komanda PTRD (Sgt Tatlin)
@@ -5424,11 +5837,12 @@ Formation count: 45
 #00137 AL (FID 00037)
 	leader      : AL0 Komanda PTRD (2Lt Protokopov)
 	higher cmd  : AH0 Log MG Bunker (2Lt Kazimirovich)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AL0 Komanda PTRD (2Lt Protokopov)
 		AL1 Komanda PTRD (Sgt Oistrakh)
@@ -5459,11 +5873,12 @@ Formation count: 45
 #00138 AM (FID 00038)
 	leader      : AM0 Komanda HMG (2Lt Blinov)
 	higher cmd  : AH0 Log MG Bunker (2Lt Kazimirovich)
+	OOBrid      : 112
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Hvy MG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AM0 Komanda HMG (2Lt Blinov)
 		AM1 Komanda HMG (Sgt Gapon)
@@ -5493,11 +5908,12 @@ Formation count: 45
 #00139 AN (FID 00039)
 	leader      : AN0 Snajper (2Lt Mikhaylovich)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 108
 	status      : 2 (support)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Sniper
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		AN0 Snajper (2Lt Mikhaylovich)
 
@@ -5526,11 +5942,12 @@ Formation count: 45
 #00140 AO (FID 00040)
 	leader      : AO0 Komanda PTRD (2Lt Tatlin)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 109
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Inf-AT Sec
-	unit count  : 3
+	unit count  : 3 (0 core, 0 support, 3 regular)
 	unit list   :
 		AO0 Komanda PTRD (2Lt Tatlin)
 		AO1 Komanda PTRD (Sgt Tebyakin)
@@ -5561,11 +5978,12 @@ Formation count: 45
 #00141 AP (FID 00041)
 	leader      : AP0 37mm ATG M30 (2Lt Lisichkin)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 132
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ATG Sec
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AP0 37mm ATG M30 (2Lt Lisichkin)
 		AP1 37mm ATG M30 (Sgt Antonov)
@@ -5595,11 +6013,12 @@ Formation count: 45
 #00142 AQ (FID 00042)
 	leader      : AQ0 T-34 M41 (1Lt Ivanov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 16
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Med Tank Plt
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AQ0 T-34 M41 (1Lt Ivanov)
 		AQ1 T-34 M41 (Sgt Yelayev)
@@ -5629,11 +6048,12 @@ Formation count: 45
 #00143 AR (FID 00043)
 	leader      : AR0 Lider Vzvoda (2Lt Plotnikov)
 	higher cmd  : A0 SO Komander (Col Gladkov)
+	OOBrid      : 72
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Rifle Plt
-	unit count  : 5
+	unit count  : 5 (0 core, 0 support, 5 regular)
 	unit list   :
 		AR0 Lider Vzvoda (2Lt Plotnikov)
 		AR1 Pehota Vintovka (Sgt Pugachev)
@@ -5666,11 +6086,12 @@ Formation count: 45
 #00144 AS (FID 00044)
 	leader      : AS0 Log Rifle Pit (2Lt Schevchuk)
 	higher cmd  : AS0 Log Rifle Pit (2Lt Schevchuk)
+	OOBrid      : 189
 	status      : 2 (support)
 	force status: 0 (average)
 	org type    : platoon
 	type        : ++AI Forts++++
-	unit count  : 2
+	unit count  : 2 (0 core, 0 support, 2 regular)
 	unit list   :
 		AS0 Log Rifle Pit (2Lt Schevchuk)
 		AS1 76.2mm AA M38 (Sgt Chaadayev)
@@ -5706,7 +6127,10 @@ Unit count: 106
 #00400 (00100:00000,000) A0   SO Komander (SO Komander)
 	leader      : Gladkov, rank 9 (Col)
 	formation   : A: support elite recon force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -5732,6 +6156,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 190
 	type group  : 17
 	position    : (49, 1)
 
@@ -5742,7 +6167,10 @@ Unit count: 106
 #00401 (00101:00001,000) B0   Lider Vzvoda (Lider Vzvoda)
 	leader      : Lyutiy, rank 4 (2Lt)
 	formation   : B: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 154
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -5768,6 +6196,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 18
 	position    : (49, 2)
 
@@ -5778,7 +6207,10 @@ Unit count: 106
 #00402 (00101:00001,001) B1   Pehota Vintovka (Pehota Vintovka)
 	leader      : Orskiy, rank 3 (Sgt)
 	formation   : B: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -5804,6 +6236,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 3)
 
@@ -5814,7 +6247,10 @@ Unit count: 106
 #00403 (00101:00001,002) B2   Pehota Vintovka (Pehota Vintovka)
 	leader      : Sorokin, rank 3 (Sgt)
 	formation   : B: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -5840,6 +6276,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 4)
 
@@ -5850,7 +6287,10 @@ Unit count: 106
 #00404 (00101:00001,003) B3   Pehota Vintovka (Pehota Vintovka)
 	leader      : Protokopov, rank 3 (Sgt)
 	formation   : B: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -5876,6 +6316,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 5)
 
@@ -5886,7 +6327,10 @@ Unit count: 106
 #00405 (00101:00001,004) B4   Pehota Vintovka (Pehota Vintovka)
 	leader      : Milyutin, rank 3 (Sgt)
 	formation   : B: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -5912,6 +6356,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 6)
 
@@ -5922,7 +6367,10 @@ Unit count: 106
 #00406 (00102:00002,000) C0   Log Rifle Pit (Log Rifle Pit)
 	leader      : Lavrenev, rank 4 (2Lt)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -5948,6 +6396,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 7)
 
@@ -5958,7 +6407,10 @@ Unit count: 106
 #00407 (00102:00002,001) C1   Log Rifle Pit (Log Rifle Pit)
 	leader      : Fedorovsky, rank 3 (Sgt)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -5984,6 +6436,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 8)
 
@@ -5994,7 +6447,10 @@ Unit count: 106
 #00408 (00102:00002,002) C2   85mm AA M39 (85mm AA M39)
 	leader      : Lyutiy, rank 3 (Sgt)
 	formation   : C: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 101
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -6020,6 +6476,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 61
 	type group  : 21
 	position    : (49, 9)
 
@@ -6030,7 +6487,10 @@ Unit count: 106
 #00409 (00103:00003,000) D0   37mm ATG M30 (37mm ATG M30)
 	leader      : Schevchuk, rank 4 (2Lt)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6056,6 +6516,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 10)
 
@@ -6066,7 +6527,10 @@ Unit count: 106
 #00410 (00103:00003,001) D1   37mm ATG M30 (37mm ATG M30)
 	leader      : Lisichkin, rank 3 (Sgt)
 	formation   : D: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6092,6 +6556,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 11)
 
@@ -6102,7 +6567,10 @@ Unit count: 106
 #00411 (00104:00004,000) E0   SU-45 (SU-45)
 	leader      : Tebyakin, rank 5 (1Lt)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 189
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6128,6 +6596,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 39
 	type group  : 23
 	position    : (49, 12)
 
@@ -6138,7 +6607,10 @@ Unit count: 106
 #00412 (00104:00004,001) E1   SU-45 (SU-45)
 	leader      : Ivanovich, rank 3 (Sgt)
 	formation   : E: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 189
 	unit type   : 179 (tank destroyer)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6164,6 +6636,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 39
 	type group  : 23
 	position    : (49, 13)
 
@@ -6174,7 +6647,10 @@ Unit count: 106
 #00413 (00105:00005,000) F0   Log Rifle Pit (Log Rifle Pit)
 	leader      : Fyodorovich, rank 4 (2Lt)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -6200,6 +6676,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 14)
 
@@ -6210,7 +6687,10 @@ Unit count: 106
 #00414 (00105:00005,001) F1   Log MG Bunker (Log MG Bunker)
 	leader      : Blinov, rank 3 (Sgt)
 	formation   : F: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 235
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -6236,6 +6716,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 24
 	position    : (49, 15)
 
@@ -6246,7 +6727,10 @@ Unit count: 106
 #00415 (00106:00006,000) G0   Komanda PTRD (Komanda PTRD)
 	leader      : Ivanovich, rank 4 (2Lt)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6272,6 +6756,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 16)
 
@@ -6282,7 +6767,10 @@ Unit count: 106
 #00416 (00106:00006,001) G1   Komanda PTRD (Komanda PTRD)
 	leader      : Schemelev, rank 3 (Sgt)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6308,6 +6796,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 17)
 
@@ -6318,7 +6807,10 @@ Unit count: 106
 #00417 (00106:00006,002) G2   Komanda PTRD (Komanda PTRD)
 	leader      : Petrov, rank 3 (Sgt)
 	formation   : G: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6344,6 +6836,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 18)
 
@@ -6354,7 +6847,10 @@ Unit count: 106
 #00418 (00107:00007,000) H0   Komanda PTRD (Komanda PTRD)
 	leader      : Rimsky, rank 4 (2Lt)
 	formation   : H: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6380,6 +6876,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 19)
 
@@ -6390,7 +6887,10 @@ Unit count: 106
 #00419 (00107:00007,001) H1   Komanda PTRD (Komanda PTRD)
 	leader      : Bagranyan, rank 3 (Sgt)
 	formation   : H: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6416,6 +6916,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 20)
 
@@ -6426,7 +6927,10 @@ Unit count: 106
 #00420 (00107:00007,002) H2   Komanda PTRD (Komanda PTRD)
 	leader      : Ramazanov, rank 3 (Sgt)
 	formation   : H: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6452,6 +6956,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 21)
 
@@ -6462,7 +6967,10 @@ Unit count: 106
 #00421 (00108:00008,000) I0   Komanda HMG (Komanda HMG)
 	leader      : Petrenko, rank 4 (2Lt)
 	formation   : I: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 136
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6488,6 +6996,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 34
 	type group  : 26
 	position    : (49, 22)
 
@@ -6498,7 +7007,10 @@ Unit count: 106
 #00422 (00108:00008,001) I1   Komanda HMG (Komanda HMG)
 	leader      : Pleve, rank 3 (Sgt)
 	formation   : I: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 136
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6524,6 +7036,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 34
 	type group  : 26
 	position    : (49, 23)
 
@@ -6534,7 +7047,10 @@ Unit count: 106
 #00423 (00109:00009,000) J0   Snajper (Snajper)
 	leader      : Bakunin, rank 4 (2Lt)
 	formation   : J: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 133
 	unit type   : 18 (sniper)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -6560,6 +7076,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 27
 	position    : (49, 24)
 
@@ -6570,7 +7087,10 @@ Unit count: 106
 #00424 (00110:00010,000) K0   Komanda AAMG  (Komanda AAMG )
 	leader      : Kozlov, rank 4 (2Lt)
 	formation   : K: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 137
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -6596,6 +7116,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 28
 	position    : (49, 25)
 
@@ -6606,7 +7127,10 @@ Unit count: 106
 #00425 (00110:00010,001) K1   Komanda AAMG  (Komanda AAMG )
 	leader      : Lyutiy, rank 3 (Sgt)
 	formation   : K: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 137
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -6632,6 +7156,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 28
 	position    : (49, 26)
 
@@ -6642,7 +7167,10 @@ Unit count: 106
 #00426 (00111:00011,000) L0   Komanda PTRD (Komanda PTRD)
 	leader      : Sharipov, rank 4 (2Lt)
 	formation   : L: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6668,6 +7196,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 27)
 
@@ -6678,7 +7207,10 @@ Unit count: 106
 #00427 (00111:00011,001) L1   Komanda PTRD (Komanda PTRD)
 	leader      : Ordabkunayte, rank 3 (Sgt)
 	formation   : L: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6704,6 +7236,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 28)
 
@@ -6714,7 +7247,10 @@ Unit count: 106
 #00428 (00111:00011,002) L2   Komanda PTRD (Komanda PTRD)
 	leader      : Pugachev, rank 3 (Sgt)
 	formation   : L: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6740,6 +7276,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 29)
 
@@ -6750,7 +7287,10 @@ Unit count: 106
 #00429 (00112:00012,000) M0   45mm ATG M38+ (45mm ATG M38+)
 	leader      : Arakcheyev, rank 4 (2Lt)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 181
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6776,6 +7316,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 29
 	position    : (49, 30)
 
@@ -6786,7 +7327,10 @@ Unit count: 106
 #00430 (00112:00012,001) M1   45mm ATG M38+ (45mm ATG M38+)
 	leader      : Gorky, rank 3 (Sgt)
 	formation   : M: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 181
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -6812,6 +7356,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 29
 	position    : (49, 31)
 
@@ -6822,7 +7367,10 @@ Unit count: 106
 #00431 (00113:00013,000) N0   122mm FH Bty (122mm FH Bty)
 	leader      : Potapov, rank 5 (1Lt)
 	formation   : N: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 115
 	unit type   : 170 (offboard artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6848,6 +7396,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 88
 	type group  : 30
 	position    : (51, 20)
 
@@ -6858,7 +7407,10 @@ Unit count: 106
 #00432 (00114:00014,000) O0   122mm FH Bty (122mm FH Bty)
 	leader      : Doubice, rank 5 (1Lt)
 	formation   : O: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 115
 	unit type   : 170 (offboard artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6884,6 +7436,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 88
 	type group  : 30
 	position    : (51, 20)
 
@@ -6894,7 +7447,10 @@ Unit count: 106
 #00433 (00115:00015,000) P0   122mm FH Bty (122mm FH Bty)
 	leader      : Kulik, rank 6 (Cpt)
 	formation   : P: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 115
 	unit type   : 170 (offboard artillery)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -6920,6 +7476,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 88
 	type group  : 30
 	position    : (51, 20)
 
@@ -6930,7 +7487,10 @@ Unit count: 106
 #00434 (00116:00016,000) Q0   T-28 M34 (T-28 M34)
 	leader      : Kashin, rank 5 (1Lt)
 	formation   : Q: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 30
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -6956,6 +7516,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 49
 	type group  : 31
 	position    : (49, 32)
 
@@ -6966,7 +7527,10 @@ Unit count: 106
 #00435 (00116:00016,001) Q1   T-28 M34 (T-28 M34)
 	leader      : Sidorov, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 30
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -6992,6 +7556,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 49
 	type group  : 31
 	position    : (49, 33)
 
@@ -7002,7 +7567,10 @@ Unit count: 106
 #00436 (00116:00016,002) Q2   T-28 M34 (T-28 M34)
 	leader      : Chernyshevsky, rank 3 (Sgt)
 	formation   : Q: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 30
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -7028,6 +7596,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 49
 	type group  : 31
 	position    : (49, 34)
 
@@ -7038,7 +7607,10 @@ Unit count: 106
 #00437 (00117:00017,000) R0   Lider Vzvoda (Lider Vzvoda)
 	leader      : Pugovkin, rank 4 (2Lt)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 154
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -7064,6 +7636,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 18
 	position    : (49, 35)
 
@@ -7074,7 +7647,10 @@ Unit count: 106
 #00438 (00117:00017,001) R1   Pehota Vintovka (Pehota Vintovka)
 	leader      : Kozlov, rank 3 (Sgt)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7100,6 +7676,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 36)
 
@@ -7110,7 +7687,10 @@ Unit count: 106
 #00439 (00117:00017,002) R2   Pehota Vintovka (Pehota Vintovka)
 	leader      : Gorky, rank 3 (Sgt)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7136,6 +7716,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 37)
 
@@ -7146,7 +7727,10 @@ Unit count: 106
 #00440 (00117:00017,003) R3   Pehota Vintovka (Pehota Vintovka)
 	leader      : Gapon, rank 3 (Sgt)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7172,6 +7756,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 38)
 
@@ -7182,7 +7767,10 @@ Unit count: 106
 #00441 (00117:00017,004) R4   Pehota Vintovka (Pehota Vintovka)
 	leader      : Gapon, rank 3 (Sgt)
 	formation   : R: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 117
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7208,6 +7796,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 19
 	position    : (49, 1)
 
@@ -7218,7 +7807,10 @@ Unit count: 106
 #00442 (00118:00018,000) S0   Log Rifle Pit (Log Rifle Pit)
 	leader      : Bakunin, rank 6 (Cpt)
 	formation   : S: support elite recon company
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -7244,6 +7836,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 2)
 
@@ -7254,7 +7847,10 @@ Unit count: 106
 #00443 (00119:00019,000) T0   Log MG Bunker (Log MG Bunker)
 	leader      : Herzen, rank 4 (2Lt)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 235
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -7280,6 +7876,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 24
 	position    : (49, 3)
 
@@ -7290,7 +7887,10 @@ Unit count: 106
 #00444 (00119:00019,001) T1   76.2mm AA M38 (76.2mm AA M38)
 	leader      : Arakcheyev, rank 3 (Sgt)
 	formation   : T: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 100
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -7316,6 +7916,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 34
 	type group  : 32
 	position    : (49, 4)
 
@@ -7326,7 +7927,10 @@ Unit count: 106
 #00445 (00120:00020,000) U0   45mm ATG M38+ (45mm ATG M38+)
 	leader      : Gapon, rank 4 (2Lt)
 	formation   : U: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 181
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7352,6 +7956,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 29
 	position    : (49, 5)
 
@@ -7362,7 +7967,10 @@ Unit count: 106
 #00446 (00120:00020,001) U1   45mm ATG M38+ (45mm ATG M38+)
 	leader      : Pugachev, rank 3 (Sgt)
 	formation   : U: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 181
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7388,6 +7996,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 29
 	position    : (49, 6)
 
@@ -7398,7 +8007,10 @@ Unit count: 106
 #00447 (00121:00021,000) V0   Log MG Bunker (Log MG Bunker)
 	leader      : Ivanov, rank 4 (2Lt)
 	formation   : V: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 235
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -7424,6 +8036,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 24
 	position    : (49, 7)
 
@@ -7434,7 +8047,10 @@ Unit count: 106
 #00448 (00121:00021,001) V1   Log Rifle Pit (Log Rifle Pit)
 	leader      : Vorobiev, rank 3 (Sgt)
 	formation   : V: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -7460,6 +8076,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 8)
 
@@ -7470,7 +8087,10 @@ Unit count: 106
 #00449 (00122:00022,000) W0   Komanda PTRD (Komanda PTRD)
 	leader      : Vyazemsky, rank 4 (2Lt)
 	formation   : W: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7496,6 +8116,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 9)
 
@@ -7506,7 +8127,10 @@ Unit count: 106
 #00450 (00122:00022,001) W1   Komanda PTRD (Komanda PTRD)
 	leader      : Lucashenko, rank 3 (Sgt)
 	formation   : W: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7532,6 +8156,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 10)
 
@@ -7542,7 +8167,10 @@ Unit count: 106
 #00451 (00122:00022,002) W2   Komanda PTRD (Komanda PTRD)
 	leader      : Lucashenko, rank 3 (Sgt)
 	formation   : W: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7568,6 +8196,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 11)
 
@@ -7578,7 +8207,10 @@ Unit count: 106
 #00452 (00123:00023,000) X0   Komanda PTRD (Komanda PTRD)
 	leader      : Lucashenko, rank 4 (2Lt)
 	formation   : X: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7604,6 +8236,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 12)
 
@@ -7614,7 +8247,10 @@ Unit count: 106
 #00453 (00123:00023,001) X1   Komanda PTRD (Komanda PTRD)
 	leader      : Tebyakin, rank 3 (Sgt)
 	formation   : X: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7640,6 +8276,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 13)
 
@@ -7650,7 +8287,10 @@ Unit count: 106
 #00454 (00123:00023,002) X2   Komanda PTRD (Komanda PTRD)
 	leader      : Sharipov, rank 3 (Sgt)
 	formation   : X: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7676,6 +8316,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 14)
 
@@ -7686,7 +8327,10 @@ Unit count: 106
 #00455 (00124:00024,000) Y0   Komanda HMG (Komanda HMG)
 	leader      : Bunin, rank 4 (2Lt)
 	formation   : Y: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 135
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7712,6 +8356,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 33
 	position    : (49, 15)
 
@@ -7722,7 +8367,10 @@ Unit count: 106
 #00456 (00124:00024,001) Y1   Komanda HMG (Komanda HMG)
 	leader      : Lavrenev, rank 3 (Sgt)
 	formation   : Y: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 135
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7748,6 +8396,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 33
 	position    : (49, 16)
 
@@ -7758,7 +8407,10 @@ Unit count: 106
 #00457 (00125:00025,000) Z0   Snajper (Snajper)
 	leader      : Gladkov, rank 4 (2Lt)
 	formation   : Z: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 133
 	unit type   : 18 (sniper)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -7784,6 +8436,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 27
 	position    : (49, 17)
 
@@ -7794,7 +8447,10 @@ Unit count: 106
 #00458 (00126:00026,000) AA0  Komanda AAMG  (Komanda AAMG )
 	leader      : Vorobiev, rank 4 (2Lt)
 	formation   : AA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 137
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -7820,6 +8476,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 28
 	position    : (49, 18)
 
@@ -7830,7 +8487,10 @@ Unit count: 106
 #00459 (00126:00026,001) AA1  Komanda AAMG  (Komanda AAMG )
 	leader      : Petrov, rank 3 (Sgt)
 	formation   : AA: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 137
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -7856,6 +8516,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 28
 	position    : (49, 19)
 
@@ -7866,7 +8527,10 @@ Unit count: 106
 #00460 (00127:00027,000) AB0  Komanda PTRD (Komanda PTRD)
 	leader      : Gladkov, rank 4 (2Lt)
 	formation   : AB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7892,6 +8556,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 20)
 
@@ -7902,7 +8567,10 @@ Unit count: 106
 #00461 (00127:00027,001) AB1  Komanda PTRD (Komanda PTRD)
 	leader      : Yakovlev, rank 3 (Sgt)
 	formation   : AB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7928,6 +8596,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 21)
 
@@ -7938,7 +8607,10 @@ Unit count: 106
 #00462 (00127:00027,002) AB2  Komanda PTRD (Komanda PTRD)
 	leader      : Orskiy, rank 3 (Sgt)
 	formation   : AB: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -7964,6 +8636,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 22)
 
@@ -7974,7 +8647,10 @@ Unit count: 106
 #00463 (00128:00028,000) AC0  37mm ATG M30 (37mm ATG M30)
 	leader      : Antonov, rank 4 (2Lt)
 	formation   : AC: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8000,6 +8676,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 23)
 
@@ -8010,7 +8687,10 @@ Unit count: 106
 #00464 (00128:00028,001) AC1  37mm ATG M30 (37mm ATG M30)
 	leader      : Ilyin, rank 3 (Sgt)
 	formation   : AC: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8036,6 +8716,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 24)
 
@@ -8046,7 +8727,10 @@ Unit count: 106
 #00465 (00129:00029,000) AD0  37mm ATG M30 (37mm ATG M30)
 	leader      : Budeny, rank 4 (2Lt)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8072,6 +8756,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 25)
 
@@ -8082,7 +8767,10 @@ Unit count: 106
 #00466 (00129:00029,001) AD1  37mm ATG M30 (37mm ATG M30)
 	leader      : Hohlov, rank 3 (Sgt)
 	formation   : AD: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8108,6 +8796,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 26)
 
@@ -8118,7 +8807,10 @@ Unit count: 106
 #00467 (00130:00030,000) AE0  37mm ATG M30 (37mm ATG M30)
 	leader      : Vasiliev, rank 6 (Cpt)
 	formation   : AE: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8144,6 +8836,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 27)
 
@@ -8154,7 +8847,10 @@ Unit count: 106
 #00468 (00130:00030,001) AE1  37mm ATG M30 (37mm ATG M30)
 	leader      : Pugovkin, rank 3 (Sgt)
 	formation   : AE: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8180,6 +8876,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 28)
 
@@ -8190,7 +8887,10 @@ Unit count: 106
 #00469 (00131:00031,000) AF0  T-28 M38 (T-28 M38)
 	leader      : Mikhaylovich, rank 5 (1Lt)
 	formation   : AF: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 31
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8216,6 +8916,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 34
 	position    : (49, 29)
 
@@ -8226,7 +8927,10 @@ Unit count: 106
 #00470 (00131:00031,001) AF1  T-28 M38 (T-28 M38)
 	leader      : Samarin, rank 3 (Sgt)
 	formation   : AF: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 31
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8252,6 +8956,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 34
 	position    : (49, 30)
 
@@ -8262,7 +8967,10 @@ Unit count: 106
 #00471 (00131:00031,002) AF2  T-28 M38 (T-28 M38)
 	leader      : Fedorovsky, rank 3 (Sgt)
 	formation   : AF: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 31
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -8288,6 +8996,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 57
 	type group  : 34
 	position    : (49, 31)
 
@@ -8298,7 +9007,10 @@ Unit count: 106
 #00472 (00132:00032,000) AG0  Lider Vzvoda (Lider Vzvoda)
 	leader      : Kulik, rank 4 (2Lt)
 	formation   : AG: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 154
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -8324,6 +9036,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 18
 	position    : (49, 32)
 
@@ -8334,7 +9047,10 @@ Unit count: 106
 #00473 (00132:00032,001) AG1  Pehota Vintovka (Pehota Vintovka)
 	leader      : Rabinovich, rank 3 (Sgt)
 	formation   : AG: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8360,6 +9076,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 33)
 
@@ -8370,7 +9087,10 @@ Unit count: 106
 #00474 (00132:00032,002) AG2  Pehota Vintovka (Pehota Vintovka)
 	leader      : Herzen, rank 3 (Sgt)
 	formation   : AG: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8396,6 +9116,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 34)
 
@@ -8406,7 +9127,10 @@ Unit count: 106
 #00475 (00132:00032,003) AG3  Pehota Vintovka (Pehota Vintovka)
 	leader      : Gumilev, rank 3 (Sgt)
 	formation   : AG: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8432,6 +9156,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 35)
 
@@ -8442,7 +9167,10 @@ Unit count: 106
 #00476 (00132:00032,004) AG4  Pehota Vintovka (Pehota Vintovka)
 	leader      : Tatlin, rank 3 (Sgt)
 	formation   : AG: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8468,6 +9196,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 36)
 
@@ -8478,7 +9207,10 @@ Unit count: 106
 #00477 (00133:00033,000) AH0  Log MG Bunker (Log MG Bunker)
 	leader      : Kazimirovich, rank 4 (2Lt)
 	formation   : AH: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 235
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -8504,6 +9236,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 24
 	position    : (49, 37)
 
@@ -8514,7 +9247,10 @@ Unit count: 106
 #00478 (00133:00033,001) AH1  Komanda AAMG  (Komanda AAMG )
 	leader      : Larionov, rank 3 (Sgt)
 	formation   : AH: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 137
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -8540,6 +9276,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 15
 	type group  : 28
 	position    : (49, 38)
 
@@ -8550,7 +9287,10 @@ Unit count: 106
 #00479 (00134:00034,000) AI0  37mm ATG M30 (37mm ATG M30)
 	leader      : Tatarenko, rank 4 (2Lt)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8576,6 +9316,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 1)
 
@@ -8586,7 +9327,10 @@ Unit count: 106
 #00480 (00134:00034,001) AI1  37mm ATG M30 (37mm ATG M30)
 	leader      : Antonov, rank 3 (Sgt)
 	formation   : AI: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8612,6 +9356,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 2)
 
@@ -8622,7 +9367,10 @@ Unit count: 106
 #00481 (00135:00035,000) AJ0  Log MG Bunker (Log MG Bunker)
 	leader      : Pashkov, rank 4 (2Lt)
 	formation   : AJ: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 235
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -8648,6 +9396,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 82
 	type group  : 24
 	position    : (49, 3)
 
@@ -8658,7 +9407,10 @@ Unit count: 106
 #00482 (00135:00035,001) AJ1  Log Rifle Pit (Log Rifle Pit)
 	leader      : Petrenko, rank 3 (Sgt)
 	formation   : AJ: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -8684,6 +9436,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 4)
 
@@ -8694,7 +9447,10 @@ Unit count: 106
 #00483 (00136:00036,000) AK0  Komanda PTRD (Komanda PTRD)
 	leader      : Plotnikov, rank 4 (2Lt)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8720,6 +9476,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 5)
 
@@ -8730,7 +9487,10 @@ Unit count: 106
 #00484 (00136:00036,001) AK1  Komanda PTRD (Komanda PTRD)
 	leader      : Tatlin, rank 3 (Sgt)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8756,6 +9516,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 6)
 
@@ -8766,7 +9527,10 @@ Unit count: 106
 #00485 (00136:00036,002) AK2  Komanda PTRD (Komanda PTRD)
 	leader      : Lyutiy, rank 3 (Sgt)
 	formation   : AK: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8792,6 +9556,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 7)
 
@@ -8802,7 +9567,10 @@ Unit count: 106
 #00486 (00137:00037,000) AL0  Komanda PTRD (Komanda PTRD)
 	leader      : Protokopov, rank 4 (2Lt)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8828,6 +9596,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 8)
 
@@ -8838,7 +9607,10 @@ Unit count: 106
 #00487 (00137:00037,001) AL1  Komanda PTRD (Komanda PTRD)
 	leader      : Oistrakh, rank 3 (Sgt)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8864,6 +9636,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 9)
 
@@ -8874,7 +9647,10 @@ Unit count: 106
 #00488 (00137:00037,002) AL2  Komanda PTRD (Komanda PTRD)
 	leader      : Prokopenko, rank 3 (Sgt)
 	formation   : AL: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -8900,6 +9676,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 10)
 
@@ -8910,7 +9687,10 @@ Unit count: 106
 #00489 (00138:00038,000) AM0  Komanda HMG (Komanda HMG)
 	leader      : Blinov, rank 4 (2Lt)
 	formation   : AM: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 136
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8936,6 +9716,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 34
 	type group  : 26
 	position    : (49, 11)
 
@@ -8946,7 +9727,10 @@ Unit count: 106
 #00490 (00138:00038,001) AM1  Komanda HMG (Komanda HMG)
 	leader      : Gapon, rank 3 (Sgt)
 	formation   : AM: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 136
 	unit type   : 11 (heavy MG squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -8972,6 +9756,7 @@ Unit count: 106
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 34
 	type group  : 26
 	position    : (49, 12)
 
@@ -8982,7 +9767,10 @@ Unit count: 106
 #00491 (00139:00039,000) AN0  Snajper (Snajper)
 	leader      : Mikhaylovich, rank 4 (2Lt)
 	formation   : AN: support elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 133
 	unit type   : 18 (sniper)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9008,6 +9796,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 27
 	position    : (49, 13)
 
@@ -9018,7 +9807,10 @@ Unit count: 106
 #00492 (00140:00040,000) AO0  Komanda PTRD (Komanda PTRD)
 	leader      : Tatlin, rank 4 (2Lt)
 	formation   : AO: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9044,6 +9836,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 14)
 
@@ -9054,7 +9847,10 @@ Unit count: 106
 #00493 (00140:00040,001) AO1  Komanda PTRD (Komanda PTRD)
 	leader      : Tebyakin, rank 3 (Sgt)
 	formation   : AO: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9080,6 +9876,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 15)
 
@@ -9090,7 +9887,10 @@ Unit count: 106
 #00494 (00140:00040,002) AO2  Komanda PTRD (Komanda PTRD)
 	leader      : Sharipov, rank 3 (Sgt)
 	formation   : AO: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 138
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9116,6 +9916,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 17
 	type group  : 25
 	position    : (49, 16)
 
@@ -9126,7 +9927,10 @@ Unit count: 106
 #00495 (00141:00041,000) AP0  37mm ATG M30 (37mm ATG M30)
 	leader      : Lisichkin, rank 4 (2Lt)
 	formation   : AP: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9152,6 +9956,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 17)
 
@@ -9162,7 +9967,10 @@ Unit count: 106
 #00496 (00141:00041,001) AP1  37mm ATG M30 (37mm ATG M30)
 	leader      : Antonov, rank 3 (Sgt)
 	formation   : AP: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 92
 	unit type   : 174 (AT gun)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -9188,6 +9996,7 @@ Unit count: 106
 	fire control: 2
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 22
 	position    : (49, 18)
 
@@ -9198,7 +10007,10 @@ Unit count: 106
 #00497 (00142:00042,000) AQ0  T-34 M41 (T-34 M41)
 	leader      : Ivanov, rank 5 (1Lt)
 	formation   : AQ: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 26
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -9224,6 +10036,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 100
 	type group  : 36
 	position    : (49, 19)
 
@@ -9234,7 +10047,10 @@ Unit count: 106
 #00498 (00142:00042,001) AQ1  T-34 M41 (T-34 M41)
 	leader      : Yelayev, rank 3 (Sgt)
 	formation   : AQ: core average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 26
 	unit type   : 113 (medium tank)
 	unit class  : 2 (armor)
 	kills       : 0
@@ -9260,6 +10076,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 100
 	type group  : 36
 	position    : (49, 20)
 
@@ -9270,7 +10087,10 @@ Unit count: 106
 #00499 (00143:00043,000) AR0  Lider Vzvoda (Lider Vzvoda)
 	leader      : Plotnikov, rank 4 (2Lt)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 154
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -9296,6 +10116,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 18
 	position    : (49, 21)
 
@@ -9306,7 +10127,10 @@ Unit count: 106
 #00500 (00143:00043,001) AR1  Pehota Vintovka (Pehota Vintovka)
 	leader      : Pugachev, rank 3 (Sgt)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9332,6 +10156,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 22)
 
@@ -9342,7 +10167,10 @@ Unit count: 106
 #00501 (00143:00043,002) AR2  Pehota Vintovka (Pehota Vintovka)
 	leader      : Ilyin, rank 3 (Sgt)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9368,6 +10196,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 23)
 
@@ -9378,7 +10207,10 @@ Unit count: 106
 #00502 (00143:00043,003) AR3  Pehota Vintovka (Pehota Vintovka)
 	leader      : Nemov, rank 3 (Sgt)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9404,6 +10236,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 24)
 
@@ -9414,7 +10247,10 @@ Unit count: 106
 #00503 (00143:00043,004) AR4  Pehota Vintovka (Pehota Vintovka)
 	leader      : Vasiliev, rank 3 (Sgt)
 	formation   : AR: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 159
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -9440,6 +10276,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 21
 	type group  : 35
 	position    : (49, 25)
 
@@ -9450,7 +10287,10 @@ Unit count: 106
 #00504 (00144:00044,000) AS0  Log Rifle Pit (Log Rifle Pit)
 	leader      : Schevchuk, rank 4 (2Lt)
 	formation   : AS: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 222
 	unit type   : 270 (fort)
 	unit class  : 13 (fortification)
 	kills       : 0
@@ -9476,6 +10316,7 @@ Unit count: 106
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 46
 	type group  : 20
 	position    : (49, 26)
 
@@ -9486,7 +10327,10 @@ Unit count: 106
 #00505 (00144:00044,001) AS1  76.2mm AA M38 (76.2mm AA M38)
 	leader      : Chaadayev, rank 3 (Sgt)
 	formation   : AS: support average platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 100
 	unit type   : 187 (AA gun)
 	unit class  : 6 (anti-air)
 	kills       : 0
@@ -9512,6 +10356,7 @@ Unit count: 106
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 34
 	type group  : 32
 	position    : (49, 27)
 

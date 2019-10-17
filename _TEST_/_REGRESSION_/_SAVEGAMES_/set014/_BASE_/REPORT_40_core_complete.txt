@@ -121,11 +121,12 @@ Formation count: 2
 #00000 A (FID 00000)
 	leader      : A0 Kommandeur (LtC Schwartz)
 	higher cmd  : A0 Kommandeur (LtC Schwartz)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 Kommandeur (LtC Schwartz)
 
@@ -154,11 +155,12 @@ Formation count: 2
 #00001 B (FID 00001)
 	leader      : B1 SdKfz 222 (Cpt Ulrich)
 	higher cmd  : A0 Kommandeur (LtC Schwartz)
+	OOBrid      : 14
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : PanzerSpaeh Trp
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		B0 SdKfz 222 (Sgt Riedmueller)
 		B1 SdKfz 222 (Cpt Ulrich)
@@ -195,7 +197,10 @@ Unit count: 4
 #00000 (00000:00000,000) A0   Kommandeur (Kommandeur)
 	leader      : Schwartz, rank 8 (LtC)
 	formation   : A: core average force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 244
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -221,6 +226,7 @@ Unit count: 4
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 42
 	type group  : 0
 	position    : (18, 1)
 
@@ -231,7 +237,10 @@ Unit count: 4
 #00001 (00001:00001,000) B0   SdKfz 222 (SdKfz 222)
 	leader      : Riedmueller, rank 3 (Sgt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 68
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -257,6 +266,7 @@ Unit count: 4
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 1
 	position    : (18, 2)
 
@@ -267,7 +277,10 @@ Unit count: 4
 #00002 (00001:00001,001) B1   SdKfz 222 (SdKfz 222)
 	leader      : Ulrich, rank 6 (Cpt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 68
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -293,6 +306,7 @@ Unit count: 4
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 29
 	type group  : 1
 	position    : (18, 3)
 
@@ -303,7 +317,10 @@ Unit count: 4
 #00003 (00001:00001,002) B2   SdKfz 222 (SdKfz 222)
 	leader      : Krohner, rank 3 (Sgt)
 	formation   : B: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 16 (    German)
+	OOBrid      : 68
 	unit type   : 233 (armored car)
 	unit class  : 8 (recon)
 	kills       : 0
@@ -329,6 +346,7 @@ Unit count: 4
 	fire control: 1
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 1
 	position    : (18, 4)
 

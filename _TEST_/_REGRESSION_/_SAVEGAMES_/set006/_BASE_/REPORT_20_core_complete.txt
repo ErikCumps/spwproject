@@ -120,11 +120,12 @@ Formation count: 7
 #00000 A (FID 00000)
 	leader      : A0 USMC HQ (Col Cantrell)
 	higher cmd  : A0 USMC HQ (Col Cantrell)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 3 (elite)
 	org type    : force HQ
 	type        : US marine HQ
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		A0 USMC HQ (Col Cantrell)
 
@@ -153,11 +154,12 @@ Formation count: 7
 #00001 B (FID 00001)
 	leader      : B0 USMC Co HQ (Cpt Udell)
 	higher cmd  : A0 USMC HQ (Col Cantrell)
+	OOBrid      : 98
 	status      : 1 (core)
 	force status: 1 (recon)
 	org type    : company
 	type        : Infantry Co E
-	unit count  : 1
+	unit count  : 1 (1 core, 0 support, 0 regular)
 	unit list   :
 		B0 USMC Co HQ (Cpt Udell)
 
@@ -186,11 +188,12 @@ Formation count: 7
 #00002 C (FID 00002)
 	leader      : C0 USMC Plt HQ (2Lt Bryan)
 	higher cmd  : B0 USMC Co HQ (Cpt Udell)
+	OOBrid      : 96
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt E
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		C0 USMC Plt HQ (2Lt Bryan)
 		C1 USMC Inf Sqd E (Sgt Diaz)
@@ -223,11 +226,12 @@ Formation count: 7
 #00003 D (FID 00003)
 	leader      : D0 USMC Plt HQ (2Lt Dobbs)
 	higher cmd  : B0 USMC Co HQ (Cpt Udell)
+	OOBrid      : 96
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt E
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		D0 USMC Plt HQ (2Lt Dobbs)
 		D1 USMC Inf Sqd E (Sgt Williams)
@@ -260,11 +264,12 @@ Formation count: 7
 #00004 E (FID 00004)
 	leader      : E0 USMC Plt HQ (2Lt Guitierez)
 	higher cmd  : B0 USMC Co HQ (Cpt Udell)
+	OOBrid      : 96
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Infantry Plt E
-	unit count  : 5
+	unit count  : 5 (5 core, 0 support, 0 regular)
 	unit list   :
 		E0 USMC Plt HQ (2Lt Guitierez)
 		E1 USMC Inf Sqd E (Sgt Guizar)
@@ -297,11 +302,12 @@ Formation count: 7
 #00005 F (FID 00005)
 	leader      : F0 USMC Plt HQ (2Lt Turner)
 	higher cmd  : B0 USMC Co HQ (Cpt Udell)
+	OOBrid      : 126
 	status      : 1 (core)
 	force status: 0 (average)
 	org type    : platoon
 	type        : Weapons Plt E
-	unit count  : 8
+	unit count  : 8 (8 core, 0 support, 0 regular)
 	unit list   :
 		F0 USMC Plt HQ (2Lt Turner)
 		F1 .30 Cal MMG (Sgt Henderson)
@@ -337,11 +343,12 @@ Formation count: 7
 #00006 G (FID 00006)
 	leader      : G0 M2 60mm Mortar (2Lt Costa)
 	higher cmd  : B0 USMC Co HQ (Cpt Udell)
+	OOBrid      : 121
 	status      : 1 (core)
 	force status: 2 (dedicated artillery)
 	org type    : platoon
 	type        : Lt Mortar Plt
-	unit count  : 3
+	unit count  : 3 (3 core, 0 support, 0 regular)
 	unit list   :
 		G0 M2 60mm Mortar (2Lt Costa)
 		G1 M2 60mm Mortar (Sgt Swan)
@@ -378,7 +385,10 @@ Unit count: 28
 #00000 (00000:00000,000) A0   USMC HQ (USMC HQ)
 	leader      : Cantrell, rank 9 (Col)
 	formation   : A: core elite force HQ
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 220
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -404,6 +414,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 200
 	type group  : 0
 	position    : (41, 23)
 
@@ -414,7 +425,10 @@ Unit count: 28
 #00001 (00001:00001,000) B0   USMC Co HQ (USMC Co HQ)
 	leader      : Udell, rank 6 (Cpt)
 	formation   : B: core recon company
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 174
 	unit type   : 3 (heavy wpns squad)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -441,6 +455,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 24
 	type group  : 1
 	position    : (47, 19)
 
@@ -451,7 +466,10 @@ Unit count: 28
 #00002 (00002:00002,000) C0   USMC Plt HQ (USMC Plt HQ)
 	leader      : Bryan, rank 4 (2Lt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 173
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -477,6 +495,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 2
 	position    : (44, 13)
 
@@ -487,7 +506,10 @@ Unit count: 28
 #00003 (00002:00002,001) C1   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Diaz, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -513,6 +535,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (44, 13)
 
@@ -523,7 +546,10 @@ Unit count: 28
 #00004 (00002:00002,002) C2   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Smith, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -550,6 +576,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (46, 12)
 
@@ -560,7 +587,10 @@ Unit count: 28
 #00005 (00002:00002,003) C3   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Sampsel, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 1
@@ -586,6 +616,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (45, 14)
 
@@ -596,7 +627,10 @@ Unit count: 28
 #00006 (00002:00002,004) C4   .30 Cal MMG (.30 Cal MMG)
 	leader      : Kelly, rank 3 (Sgt)
 	formation   : C: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -622,6 +656,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (45, 14)
 
@@ -632,7 +667,10 @@ Unit count: 28
 #00007 (00003:00003,000) D0   USMC Plt HQ (USMC Plt HQ)
 	leader      : Dobbs, rank 4 (2Lt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 173
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -659,6 +697,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 2
 	position    : (47, 21)
 
@@ -669,7 +708,10 @@ Unit count: 28
 #00008 (00003:00003,001) D1   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Williams, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -696,6 +738,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (47, 21)
 
@@ -706,7 +749,10 @@ Unit count: 28
 #00009 (00003:00003,002) D2   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Franco, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -733,6 +779,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (47, 20)
 
@@ -743,7 +790,10 @@ Unit count: 28
 #00010 (00003:00003,003) D3   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Winslow, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -770,6 +820,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (44, 26)
 
@@ -780,7 +831,10 @@ Unit count: 28
 #00011 (00003:00003,004) D4   .30 Cal MMG (.30 Cal MMG)
 	leader      : Stimpson, rank 3 (Sgt)
 	formation   : D: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -807,6 +861,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (44, 26)
 
@@ -817,7 +872,10 @@ Unit count: 28
 #00012 (00004:00004,000) E0   USMC Plt HQ (USMC Plt HQ)
 	leader      : Guitierez, rank 4 (2Lt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 173
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -844,6 +902,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 2
 	position    : (48, 8)
 
@@ -854,7 +913,10 @@ Unit count: 28
 #00013 (00004:00004,001) E1   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Guizar, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -881,6 +943,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (48, 8)
 
@@ -891,7 +954,10 @@ Unit count: 28
 #00014 (00004:00004,002) E2   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Lewis, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -918,6 +984,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (47, 7)
 
@@ -928,7 +995,10 @@ Unit count: 28
 #00015 (00004:00004,003) E3   USMC Inf Sqd E (USMC Inf Sqd E)
 	leader      : Lamantia, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 133
 	unit type   : 0 (infantry)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -955,6 +1025,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 26
 	type group  : 3
 	position    : (47, 10)
 
@@ -965,7 +1036,10 @@ Unit count: 28
 #00016 (00004:00004,004) E4   .30 Cal MMG (.30 Cal MMG)
 	leader      : Gallegos, rank 3 (Sgt)
 	formation   : E: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -992,6 +1066,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (47, 10)
 
@@ -1002,7 +1077,10 @@ Unit count: 28
 #00017 (00005:00005,000) F0   USMC Plt HQ (USMC Plt HQ)
 	leader      : Turner, rank 4 (2Lt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 173
 	unit type   : 238 (platoon HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -1029,6 +1107,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 2
 	position    : (47, 35)
 
@@ -1039,7 +1118,10 @@ Unit count: 28
 #00018 (00005:00005,001) F1   .30 Cal MMG (.30 Cal MMG)
 	leader      : Henderson, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1066,6 +1148,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (47, 35)
 
@@ -1076,7 +1159,10 @@ Unit count: 28
 #00019 (00005:00005,002) F2   .30 Cal MMG (.30 Cal MMG)
 	leader      : Vernon, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1103,6 +1189,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (47, 34)
 
@@ -1113,7 +1200,10 @@ Unit count: 28
 #00020 (00005:00005,003) F3   .30 Cal MMG (.30 Cal MMG)
 	leader      : Jennings, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1140,6 +1230,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (47, 34)
 
@@ -1150,7 +1241,10 @@ Unit count: 28
 #00021 (00005:00005,004) F4   .30 Cal MMG (.30 Cal MMG)
 	leader      : Mayer, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 167
 	unit type   : 7 (machine gun)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -1177,6 +1271,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 4
 	position    : (49, 34)
 
@@ -1187,7 +1282,10 @@ Unit count: 28
 #00022 (00005:00005,005) F5   M1 Bazooka Team (M1 Bazooka Team)
 	leader      : Chapman, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 169
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -1214,6 +1312,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 5
 	position    : (49, 34)
 
@@ -1224,7 +1323,10 @@ Unit count: 28
 #00023 (00005:00005,006) F6   M1 Bazooka Team (M1 Bazooka Team)
 	leader      : Shattle, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 169
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -1251,6 +1353,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 5
 	position    : (45, 27)
 
@@ -1261,7 +1364,10 @@ Unit count: 28
 #00024 (00005:00005,007) F7   M1 Bazooka Team (M1 Bazooka Team)
 	leader      : Emerson, rank 3 (Sgt)
 	formation   : F: core average platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 169
 	unit type   : 182 (AT infantry)
 	unit class  : 5 (anti-tank)
 	kills       : 0
@@ -1288,6 +1394,7 @@ Unit count: 28
 	fire control: 3
 	infrared    : 0
 	swim        : 0
+	cost        : 16
 	type group  : 5
 	position    : (45, 27)
 
@@ -1298,7 +1405,10 @@ Unit count: 28
 #00025 (00006:00006,000) G0   M2 60mm Mortar (M2 60mm Mortar)
 	leader      : Costa, rank 4 (2Lt)
 	formation   : G: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 110
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -1324,6 +1434,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 6
 	position    : (42, 14)
 
@@ -1334,7 +1445,10 @@ Unit count: 28
 #00026 (00006:00006,001) G1   M2 60mm Mortar (M2 60mm Mortar)
 	leader      : Swan, rank 3 (Sgt)
 	formation   : G: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 110
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -1360,6 +1474,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 6
 	position    : (42, 11)
 
@@ -1370,7 +1485,10 @@ Unit count: 28
 #00027 (00006:00006,002) G2   M2 60mm Mortar (M2 60mm Mortar)
 	leader      : Babers, rank 3 (Sgt)
 	formation   : G: core dedicated artillery platoon
+	core        : yes
+	detected as : 1 (UNIT)
 	OOB         : 83 ( US marine)
+	OOBrid      : 110
 	unit type   : 148 (light mortar)
 	unit class  : 4 (artillery)
 	kills       : 0
@@ -1396,6 +1514,7 @@ Unit count: 28
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 22
 	type group  : 6
 	position    : (41, 16)
 

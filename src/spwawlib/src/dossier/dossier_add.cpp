@@ -77,6 +77,7 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 	return (SPWERR_OK);
 }
 
+static int
 sort_dossier_campaign (const void *a, const void *b)
 {
 	SPWAW_BATTLE	*fa = *((SPWAW_BATTLE **)a);
