@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    <comment>
+        <title>T6, U.S.Ar vs German, 7/44 </title>
+    </comment>
+    <battle>
+        <date>1944/07/25 12:30</date>
+        <turn>
+            <current>6</current>
+            <max>15</max>
+        </turn>
+        <status>
+            <value>1</value>
+            <description>in progress</description>
+        </status>
+        <location>Countryside, France</location>
+        <terrain>
+            <value>1</value>
+            <description>summer</description>
+        </terrain>
+        <weather>
+            <value>0</value>
+            <description>clear</description>
+        </weather>
+        <visibility>
+            <hexes>15</hexes>
+            <meters>750</meters>
+        </visibility>
+        <player1>
+            <oob>82</oob>
+            <forces>US army</forces>
+            <mission>
+                <value>1</value>
+                <description>advance</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>70</oob>
+            <forces>German</forces>
+            <mission>
+                <value>1</value>
+                <description>advance</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>21</count>
+                <points>3200</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>100</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>5.000</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>82</OOB>
+    <nation>US Army</nation>
+    <people>US army</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>70</OOB>
+    <nation>Germany</nation>
+    <people>German</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

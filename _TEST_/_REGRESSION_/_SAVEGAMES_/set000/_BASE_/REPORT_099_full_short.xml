@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    <comment>
+        <title>test_30x30</title>
+    </comment>
+    <battle>
+        <date>1939/09/23 16:05</date>
+        <turn>
+            <current>1</current>
+            <max>12</max>
+        </turn>
+        <status>in progress</status>
+        <location>Forest</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>28</hexes>
+            <meters>1400</meters>
+        </visibility>
+        <player1>
+            <oob>70</oob>
+            <nation>Germany</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>81</oob>
+            <nation>Soviet Union</nation>
+            <mission>advance</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>14</count>
+                <points>805</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>7</count>
+                <points>700</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>30</width>
+                <height>30</height>
+            </hexes>
+            <kilometers>
+                <width>1.500</width>
+                <height>1.500</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>70</OOB>
+    <nation>Germany</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>GE Kommandant</designation>
+        <rank>Col</rank>
+        <name>Schumacher</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>72</maximum>
+                <minimum>69</minimum>
+                <average>70.500</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>2</count>
+            <left>2</left>
+        </formations>
+        <units>
+            <count>2</count>
+            <left>2</left>
+        </units>
+    </statistics>
+    <formations count="2">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>elite recon</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>German HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>GE Kommandant</designation>
+                    <rank>Col</rank>
+                    <name>Schumacher</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>elite recon</status>
+            <OOB_record_ID>140</OOB_record_ID>
+            <type>Sniper</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Scharfschutze</designation>
+                    <rank>2Lt</rank>
+                    <name>Steinke</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>1</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="2">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>GE Kommandant</designation>
+            <unit>GE Kommandant</unit>
+            <leader>Schumacher</leader>
+            <rank>Col</rank>
+            <formation>A</formation>
+            <OOB>German</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>71</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>36</art_skills>
+            <arm_skills>38</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Scharfschutze</designation>
+            <unit>Scharfschutze</unit>
+            <leader>Steinke</leader>
+            <rank>2Lt</rank>
+            <formation>B</formation>
+            <OOB>German</OOB>
+            <OOBrid>171</OOBrid>
+            <type>sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>72</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>38</art_skills>
+            <arm_skills>34</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>3</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>81</OOB>
+    <nation>Soviet Union</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>SO Komander</designation>
+        <rank>Col</rank>
+        <name>Kulebyaka</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>68</maximum>
+                <minimum>65</minimum>
+                <average>66.500</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>2</count>
+            <left>2</left>
+        </formations>
+        <units>
+            <count>2</count>
+            <left>2</left>
+        </units>
+    </statistics>
+    <formations count="2">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>elite recon</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Soviet HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>SO Komander</designation>
+                    <rank>Col</rank>
+                    <name>Kulebyaka</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>elite recon</status>
+            <OOB_record_ID>108</OOB_record_ID>
+            <type>Sniper</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Snajper</designation>
+                    <rank>2Lt</rank>
+                    <name>Tatlin</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>1</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="2">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>SO Komander</designation>
+            <unit>SO Komander</unit>
+            <leader>Kulebyaka</leader>
+            <rank>Col</rank>
+            <formation>A</formation>
+            <OOB>Soviet</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>62</morale>
+            <suppression>0</suppression>
+            <rally>64</rally>
+            <inf_skills>51</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>28</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Snajper</designation>
+            <unit>Snajper</unit>
+            <leader>Tatlin</leader>
+            <rank>2Lt</rank>
+            <formation>B</formation>
+            <OOB>Soviet</OOB>
+            <OOBrid>133</OOBrid>
+            <type>sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>57</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>51</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>28</x>
+                <y>26</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+

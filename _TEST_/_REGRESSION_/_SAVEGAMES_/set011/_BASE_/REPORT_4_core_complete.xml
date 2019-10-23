@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    <comment>
+        <title>T4, Britai vs France, 5/42 </title>
+    </comment>
+    <battle>
+        <date>1942/05/05 03:20</date>
+        <turn>
+            <current>4</current>
+            <max>28</max>
+        </turn>
+        <status>
+            <value>1</value>
+            <description>in progress</description>
+        </status>
+        <location>Antsirane, Madagasca</location>
+        <terrain>
+            <value>1</value>
+            <description>summer</description>
+        </terrain>
+        <weather>
+            <value>1</value>
+            <description>hazy</description>
+        </weather>
+        <visibility>
+            <hexes>14</hexes>
+            <meters>700</meters>
+        </visibility>
+        <player1>
+            <oob>77</oob>
+            <forces>British</forces>
+            <mission>
+                <value>0</value>
+                <description>assault</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>76</oob>
+            <forces>French</forces>
+            <mission>
+                <value>3</value>
+                <description>defence</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>3</count>
+                <points>220</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>18</count>
+                <points>2100</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>100</width>
+                <height>60</height>
+            </hexes>
+            <kilometers>
+                <width>5.000</width>
+                <height>3.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>77</OOB>
+    <nation>United Kingdom</nation>
+    <people>British</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>76</OOB>
+    <nation>France</nation>
+    <people>French</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

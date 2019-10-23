@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>campaign</battle>
+</type>
+<game>
+    , <!-- contains updated campaign info -->
+    <comment>
+        <title>xxx</title>
+    </comment>
+    <battle>
+        <date>1942/06/22 17:00</date>
+        <turn>
+            <current>0</current>
+            <max>11</max>
+        </turn>
+        <status>
+            <value>0</value>
+            <description>deployment</description>
+        </status>
+        <location>Forest</location>
+        <terrain>
+            <value>1</value>
+            <description>summer</description>
+        </terrain>
+        <weather>
+            <value>0</value>
+            <description>clear</description>
+        </weather>
+        <visibility>
+            <hexes>27</hexes>
+            <meters>1350</meters>
+        </visibility>
+        <player1>
+            <oob>70</oob>
+            <forces>German</forces>
+            <mission>
+                <value>1</value>
+                <description>advance</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>81</oob>
+            <forces>Soviet</forces>
+            <mission>
+                <value>1</value>
+                <description>advance</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>3</count>
+                <points>300</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>14</count>
+                <points>1040</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>4</count>
+                <points>40</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>80</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>4.000</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>70</OOB>
+    <nation>Germany</nation>
+    <people>German</people>
+    <leader>
+        <ID>A0</ID>
+        <designation>GE HQ</designation>
+        <rank>Col</rank>
+        <name>Bauer</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>
+                    <value>0</value>
+                    <formation>
+                        <index>0</index>
+                        <description>A: elite recon force HQ</description>
+                    </formation>
+                </maximum>
+                <minimum>
+                    <value>0</value>
+                    <formation>
+                        <index>0</index>
+                        <description>A: elite recon force HQ</description>
+                    </formation>
+                </minimum>
+                <average>0.000</average>
+                <spread>0</spread>
+                <total>0</total>
+                <count>1</count>
+            </kills>
+            <losses>
+                <maximum>
+                    <value>0</value>
+                    <formation>
+                        <index>0</index>
+                        <description>A: elite recon force HQ</description>
+                    </formation>
+                </maximum>
+                <minimum>
+                    <value>0</value>
+                    <formation>
+                        <index>0</index>
+                        <description>A: elite recon force HQ</description>
+                    </formation>
+                </minimum>
+                <average>0.000</average>
+                <spread>0</spread>
+                <total>0</total>
+                <count>1</count>
+            </losses>
+            <readiness>
+                <maximum>
+                    <value>100.000</value>
+                    <formation>
+                        <index>0</index>
+                        <description>A: elite recon force HQ</description>
+                    </formation>
+                </maximum>
+                <minimum>
+                    <value>100.000</value>
+                    <formation>
+                        <index>0</index>
+                        <description>A: elite recon force HQ</description>
+                    </formation>
+                </minimum>
+                <average>100.000</average>
+                <spread>0.000</spread>
+                <total>100.000</total>
+                <count>1</count>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>
+                    <value>0</value>
+                    <unit>
+                        <index>0</index>
+                        <description>A0: GE HQ (Col Bauer)</description>
+                    </unit>
+                </maximum>
+                <minimum>
+                    <value>0</value>
+                    <unit>
+                        <index>0</index>
+                        <description>A0: GE HQ (Col Bauer)</description>
+                    </unit>
+                </minimum>
+                <average>0.000</average>
+                <spread>0</spread>
+                <total>0</total>
+                <count>1</count>
+            </kills>
+            <experience>
+                <maximum>
+                    <value>88</value>
+                    <unit>
+                        <index>0</index>
+                        <description>A0: GE HQ (Col Bauer)</description>
+                    </unit>
+                </maximum>
+                <minimum>
+                    <value>88</value>
+                    <unit>
+                        <index>0</index>
+                        <description>A0: GE HQ (Col Bauer)</description>
+                    </unit>
+                </minimum>
+                <average>88.000</average>
+                <spread>0</spread>
+                <total>88</total>
+                <count>1</count>
+            </experience>
+            <readiness>
+                <maximum>
+                    <value>100.000</value>
+                    <unit>
+                        <index>0</index>
+                        <description>A0: GE HQ (Col Bauer)</description>
+                    </unit>
+                </maximum>
+                <minimum>
+                    <value>100.000</value>
+                    <unit>
+                        <index>0</index>
+                        <description>A0: GE HQ (Col Bauer)</description>
+                    </unit>
+                </minimum>
+                <average>100.000</average>
+                <spread>0.000</spread>
+                <total>100.000</total>
+                <count>1</count>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>1</count>
+            <left>1</left>
+        </formations>
+        <units>
+            <count>1</count>
+            <left>1</left>
+        </units>
+    </statistics>
+    <formations count="1">
+        <formation core="false">
+            <RID>0</RID>
+            <FID>0</FID>
+            <name>A</name>
+            <leader>
+                <ID>A0</ID>
+                <designation>GE HQ</designation>
+                <rank>Col</rank>
+                <name>Bauer</name>
+            </leader>
+            <higher_command>
+                <ID>A0</ID>
+                <designation>GE HQ</designation>
+                <rank>Col</rank>
+                <name>Bauer</name>
+            </higher_command>
+            <core_status>
+                <value>1</value>
+                <description>core</description>
+            </core_status>
+            <status>
+                <value>4</value>
+                <description>elite recon</description>
+            </status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>German HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <attributes>
+                <kills>0</kills>
+                <losses>0</losses>
+                <readiness>100.000</readiness>
+                <kills>
+                    <maximum>
+                        <value>0</value>
+                        <unit>
+                            <index>0</index>
+                            <description>A0: GE HQ (Col Bauer)</description>
+                        </unit>
+                    </maximum>
+                    <minimum>
+                        <value>0</value>
+                        <unit>
+                            <index>0</index>
+                            <description>A0: GE HQ (Col Bauer)</description>
+                        </unit>
+                    </minimum>
+                    <average>0.000</average>
+                    <spread>0</spread>
+                    <total>0</total>
+                    <count>1</count>
+                </kills>
+                <experience>
+                    <maximum>
+                        <value>88</value>
+                        <unit>
+                            <index>0</index>
+                            <description>A0: GE HQ (Col Bauer)</description>
+                        </unit>
+                    </maximum>
+                    <minimum>
+                        <value>88</value>
+                        <unit>
+                            <index>0</index>
+                            <description>A0: GE HQ (Col Bauer)</description>
+                        </unit>
+                    </minimum>
+                    <average>88.000</average>
+                    <spread>0</spread>
+                    <total>88</total>
+                    <count>1</count>
+                </experience>
+                <readiness>
+                    <maximum>
+                        <value>100.000</value>
+                        <unit>
+                            <index>0</index>
+                            <description>A0: GE HQ (Col Bauer)</description>
+                        </unit>
+                    </maximum>
+                    <minimum>
+                        <value>100.000</value>
+                        <unit>
+                            <index>0</index>
+                            <description>A0: GE HQ (Col Bauer)</description>
+                        </unit>
+                    </minimum>
+                    <average>100.000</average>
+                    <spread>0.000</spread>
+                    <total>100.000</total>
+                    <count>1</count>
+                </readiness>
+            </attributes>
+            <unit_counts>
+                <total>1</total>
+                <core>1</core>
+                <support>0</support>
+            </unit_counts>
+            <units count="1">
+                <unit>
+                    <RID>0</RID>
+                    <ID>A0</ID>
+                    <designation>GE HQ</designation>
+                    <rank>Col</rank>
+                    <name>Bauer</name>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="1">
+        <unit core="true">
+            <RID>0</RID>
+            <FRID>0</FRID>
+            <FMID>0</FMID>
+            <FSID>0</FSID>
+            <ID>A0</ID>
+            <designation>GE HQ</designation>
+            <unit>GE HQ</unit>
+            <leader>Bauer</leader>
+            <rank>
+                <value>9</value>
+                <description>Col</description>
+            </rank>
+            <formation>
+                <name>A</name>
+                <core_status>core</core_status>
+                <status>elite recon</status>
+                <organizational_type>force HQ</organizational_type>
+            </formation>
+            <detected_type>
+                <value>1</value>
+                <description>UNIT</description>
+            </detected_type>
+            <OOB>
+                <value>70</value>
+                <description>German</description>
+            </OOB>
+            <OOBrid>245</OOBrid>
+            <type>
+                <value>237</value>
+                <description>force HQ</description>
+            </type>
+            <class>
+                <value>9</value>
+                <description>C&C</description>
+            </class>
+            <kills>0</kills>
+            <status>
+                <value>0</value>
+                <description>ready</description>
+                <alive>
+                    <value>1</value>
+                    <description>alive</description>
+                </alive>
+                <spotted>
+                    <value>0</value>
+                    <description>hidden</description>
+                </spotted>
+            </status>
+            <entrenchment>
+                <value>0</value>
+                <description>positioned</description>
+            </entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandonment>
+                <value>0</value>
+            </abandonment>
+            <loaded>
+                <value>1</value>
+                <loader>
+                    <ID>H0</ID>
+                    <designation>Krupp L2H143</designation>
+                    <rank>1Lt</rank>
+                    <name>Heidrich</name>
+                </loader>
+            </loaded>
+            <experience>88</experience>
+            <experience_class>
+                <value>3</value>
+                <description>veteran</description>
+            </experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>73</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>39</art_skills>
+            <arm_skills>40</arm_skills>
+            <speed>
+                <value>8</value>
+                <kph>4.800</kph>
+            </speed>
+            <smokedevice>0</smokedevice>
+            <contact>
+                <value>2</value>
+                <description>direct contact</description>
+            </contact>
+            <rate_of_fire>9</rate_of_fire>
+            <targetting>0</targetting>
+            <range_finder>0</range_finder>
+            <fire_control>4</fire_control>
+            <infrared>0</infrared>
+            <swim>0</swim>
+            <cost>200</cost>
+            <type_group>0</type_group>
+            <position>
+                <x>17</x>
+                <y>6</y>
+            </position>
+            <attributes>
+                <kills>0</kills>
+                <losses>0</losses>
+                <readiness>100.000</readiness>
+            </attributes>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>81</OOB>
+    <nation>Soviet Union</nation>
+    <people>Soviet</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

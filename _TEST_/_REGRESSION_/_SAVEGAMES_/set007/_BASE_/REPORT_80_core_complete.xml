@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    <comment>
+        <title>xxx0</title>
+    </comment>
+    <battle>
+        <date>1943/06/24 08:05</date>
+        <turn>
+            <current>1</current>
+            <max>11</max>
+        </turn>
+        <status>
+            <value>1</value>
+            <description>in progress</description>
+        </status>
+        <location>Forest</location>
+        <terrain>
+            <value>1</value>
+            <description>summer</description>
+        </terrain>
+        <weather>
+            <value>1</value>
+            <description>hazy</description>
+        </weather>
+        <visibility>
+            <hexes>21</hexes>
+            <meters>1050</meters>
+        </visibility>
+        <player1>
+            <oob>70</oob>
+            <forces>German</forces>
+            <mission>
+                <value>2</value>
+                <description>delay</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>81</oob>
+            <forces>Soviet</forces>
+            <mission>
+                <value>1</value>
+                <description>advance</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>21</count>
+                <points>630</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>80</width>
+                <height>60</height>
+            </hexes>
+            <kilometers>
+                <width>4.000</width>
+                <height>3.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>70</OOB>
+    <nation>Germany</nation>
+    <people>German</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>81</OOB>
+    <nation>Soviet Union</nation>
+    <people>Soviet</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    <comment>
+        <title>T1, Fra vs Bel, 5/1943 </title>
+    </comment>
+    <battle>
+        <date>1943/05</date>
+        <turn>
+            <current>1</current>
+            <max>27</max>
+        </turn>
+        <status>in progress</status>
+        <location>olapola</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>50</hexes>
+            <meters>2500</meters>
+        </visibility>
+        <player1>
+            <oob>6</oob>
+            <nation>Free France</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>27</oob>
+            <nation>Belgium</nation>
+            <mission>advance</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>21</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>20</width>
+                <height>20</height>
+            </hexes>
+            <kilometers>
+                <width>1.000</width>
+                <height>1.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>6</OOB>
+    <nation>Free France</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Poste Commande</designation>
+        <rank>LtC</rank>
+        <name>Du Pontet</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>70</maximum>
+                <minimum>64</minimum>
+                <average>65.833</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>2</count>
+            <left>2</left>
+        </formations>
+        <units>
+            <count>6</count>
+            <left>6</left>
+        </units>
+    </statistics>
+    <formations count="2">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Free French HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Poste Commande</designation>
+                    <rank>LtC</rank>
+                    <name>Du Pontet</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>173</OOB_record_ID>
+            <type>Pel AMD</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="5">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Panhard 178</designation>
+                    <rank>1Lt</rank>
+                    <name>De Leusse</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>Panhard 178</designation>
+                    <rank>Cpl</rank>
+                    <name>Xavier</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>B2</ID>
+                    <designation>Panhard 178</designation>
+                    <rank>Cpl</rank>
+                    <name>Boussard</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>B3</ID>
+                    <designation>Panhard 178</designation>
+                    <rank>Cpl</rank>
+                    <name>Boudreau</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>B4</ID>
+                    <designation>Panhard 178</designation>
+                    <rank>Sgt</rank>
+                    <name>Laurens</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="6">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>Poste Commande</designation>
+            <unit>Poste Commande</unit>
+            <leader>Du Pontet</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Free French</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>0</suppression>
+            <rally>74</rally>
+            <inf_skills>65</inf_skills>
+            <art_skills>33</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>2</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Panhard 178</designation>
+            <unit>Panhard 178</unit>
+            <leader>De Leusse</leader>
+            <rank>1Lt</rank>
+            <formation>B</formation>
+            <OOB>Free French</OOB>
+            <OOBrid>17</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>77</morale>
+            <suppression>0</suppression>
+            <rally>50</rally>
+            <inf_skills>23</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>68</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>2</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B1</ID>
+            <designation>Panhard 178</designation>
+            <unit>Panhard 178</unit>
+            <leader>Xavier</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Free French</OOB>
+            <OOBrid>17</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>0</suppression>
+            <rally>55</rally>
+            <inf_skills>10</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>74</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>3</x>
+                <y>9</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B2</ID>
+            <designation>Panhard 178</designation>
+            <unit>Panhard 178</unit>
+            <leader>Boussard</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Free French</OOB>
+            <OOBrid>17</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>72</morale>
+            <suppression>0</suppression>
+            <rally>50</rally>
+            <inf_skills>27</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>59</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>2</x>
+                <y>8</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B3</ID>
+            <designation>Panhard 178</designation>
+            <unit>Panhard 178</unit>
+            <leader>Boudreau</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Free French</OOB>
+            <OOBrid>17</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>0</suppression>
+            <rally>49</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>60</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>2</x>
+                <y>5</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B4</ID>
+            <designation>Panhard 178</designation>
+            <unit>Panhard 178</unit>
+            <leader>Laurens</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>Free French</OOB>
+            <OOBrid>17</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>0</suppression>
+            <rally>47</rally>
+            <inf_skills>23</inf_skills>
+            <art_skills>30</art_skills>
+            <arm_skills>68</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>2</x>
+                <y>7</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>27</OOB>
+    <nation>Belgium</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Belgian HQ</designation>
+        <rank>LtC</rank>
+        <name>De Caluwe</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>67</maximum>
+                <minimum>55</minimum>
+                <average>58.714</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>4</count>
+            <left>4</left>
+        </formations>
+        <units>
+            <count>7</count>
+            <left>7</left>
+        </units>
+    </statistics>
+    <formations count="4">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Belgian HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Belgian HQ</designation>
+                    <rank>LtC</rank>
+                    <name>De Caluwe</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>284</OOB_record_ID>
+            <type>Col Tank Sec</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>T.15</designation>
+                    <rank>Sgt</rank>
+                    <name>Delfosse</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>T.15</designation>
+                    <rank>Cpl</rank>
+                    <name>LaRock</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>284</OOB_record_ID>
+            <type>Col Tank Sec</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>T.15</designation>
+                    <rank>Sgt</rank>
+                    <name>Maeterlinck</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>T.15</designation>
+                    <rank>Sgt</rank>
+                    <name>Nahon</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>284</OOB_record_ID>
+            <type>Col Tank Sec</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>T.15</designation>
+                    <rank>Sgt</rank>
+                    <name>Froissart</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>T.15</designation>
+                    <rank>Cpl</rank>
+                    <name>Elsschot</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="7">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>Belgian HQ</designation>
+            <unit>Belgian HQ</unit>
+            <leader>De Caluwe</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>56</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>0</suppression>
+            <rally>68</rally>
+            <inf_skills>65</inf_skills>
+            <art_skills>31</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>15</x>
+                <y>13</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>T.15</designation>
+            <unit>T.15</unit>
+            <leader>Delfosse</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>5</OOBrid>
+            <type>cavalry tank</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>56</experience>
+            <experience_class>average</experience_class>
+            <morale>53</morale>
+            <suppression>0</suppression>
+            <rally>64</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>72</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>16</x>
+                <y>11</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B1</ID>
+            <designation>T.15</designation>
+            <unit>T.15</unit>
+            <leader>LaRock</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>5</OOBrid>
+            <type>cavalry tank</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>55</experience>
+            <experience_class>average</experience_class>
+            <morale>65</morale>
+            <suppression>0</suppression>
+            <rally>52</rally>
+            <inf_skills>17</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>61</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>17</x>
+                <y>15</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C0</ID>
+            <designation>T.15</designation>
+            <unit>T.15</unit>
+            <leader>Maeterlinck</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>5</OOBrid>
+            <type>cavalry tank</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>56</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>18</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>63</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>16</x>
+                <y>15</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C1</ID>
+            <designation>T.15</designation>
+            <unit>T.15</unit>
+            <leader>Nahon</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>5</OOBrid>
+            <type>cavalry tank</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>35</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>66</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>17</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D0</ID>
+            <designation>T.15</designation>
+            <unit>T.15</unit>
+            <leader>Froissart</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>5</OOBrid>
+            <type>cavalry tank</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>59</experience>
+            <experience_class>average</experience_class>
+            <morale>59</morale>
+            <suppression>0</suppression>
+            <rally>39</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>53</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>17</x>
+                <y>14</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D1</ID>
+            <designation>T.15</designation>
+            <unit>T.15</unit>
+            <leader>Elsschot</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Belgian</OOB>
+            <OOBrid>5</OOBrid>
+            <type>cavalry tank</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>61</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>44</rally>
+            <inf_skills>20</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>57</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>17</x>
+                <y>13</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+

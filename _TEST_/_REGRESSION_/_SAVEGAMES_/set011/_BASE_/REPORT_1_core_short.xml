@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    , <!-- contains updated battle statistics -->
+    <comment>
+        <title>Solitaire Autosave, Turn 4</title>
+    </comment>
+    <battle>
+        <date>1942/05/05 03:15</date>
+        <turn>
+            <current>3</current>
+            <max>28</max>
+        </turn>
+        <status>score</status>
+        <location>Antsirane, Madagasca</location>
+        <terrain>summer</terrain>
+        <weather>hazy</weather>
+        <visibility>
+            <hexes>14</hexes>
+            <meters>700</meters>
+        </visibility>
+        <player1>
+            <oob>77</oob>
+            <nation>United Kingdom</nation>
+            <mission>assault</mission>
+        </player1>
+        <player2>
+            <oob>76</oob>
+            <nation>France</nation>
+            <mission>defence</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>3</count>
+                <points>220</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>18</count>
+                <points>2100</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>100</width>
+                <height>60</height>
+            </hexes>
+            <kilometers>
+                <width>5.000</width>
+                <height>3.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>77</OOB>
+    <nation>United Kingdom</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>76</OOB>
+    <nation>France</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    <comment>
+        <title>loader/entrenched</title>
+    </comment>
+    <battle>
+        <date>1943/05</date>
+        <turn>
+            <current>1</current>
+            <max>36</max>
+        </turn>
+        <status>
+            <value>1</value>
+            <description>in progress</description>
+        </status>
+        <location>Tunisia</location>
+        <terrain>
+            <value>1</value>
+            <description>summer</description>
+        </terrain>
+        <weather>
+            <value>0</value>
+            <description>clear</description>
+        </weather>
+        <visibility>
+            <hexes>56</hexes>
+            <meters>2800</meters>
+        </visibility>
+        <player1>
+            <oob>16</oob>
+            <forces>German</forces>
+            <mission>
+                <value>0</value>
+                <description>assault</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>6</oob>
+            <forces>Free French</forces>
+            <mission>
+                <value>3</value>
+                <description>defence</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>21</count>
+                <points>3450</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>20</width>
+                <height>20</height>
+            </hexes>
+            <kilometers>
+                <width>1.000</width>
+                <height>1.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>16</OOB>
+    <nation>Nazi Germany</nation>
+    <people>German</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>6</OOB>
+    <nation>Free France</nation>
+    <people>Free French</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

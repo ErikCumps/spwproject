@@ -1,0 +1,5336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <battle>campaign</battle>
+</type>
+<game>
+    <comment>
+        <title>T26,  GB vs Jap, 2/1942 </title>
+    </comment>
+    <battle>
+        <date>1942/02</date>
+        <turn>
+            <current>26</current>
+            <max>44</max>
+        </turn>
+        <status>in progress</status>
+        <location>Malaya</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>55</hexes>
+            <meters>2750</meters>
+        </visibility>
+        <player1>
+            <oob>7</oob>
+            <nation>Great Britain</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>5</oob>
+            <nation>Japan</nation>
+            <mission>advance</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>14</count>
+                <points>770</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>7</count>
+                <points>385</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>60</width>
+                <height>60</height>
+            </hexes>
+            <kilometers>
+                <width>3.000</width>
+                <height>3.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>1942/02</start>
+            <end>1945/05</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>10</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>0</battle_index>
+        <battle_result>
+            <player1>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player1>
+            <player2>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>7</OOB>
+    <nation>Great Britain</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>British HQ</designation>
+        <rank>LtC</rank>
+        <name>Gilchrist</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>8</kills>
+            <losses>3</losses>
+            <readiness>72.318</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>5</maximum>
+                <minimum>0</minimum>
+                <average>0.571</average>
+            </kills>
+            <losses>
+                <maximum>1</maximum>
+                <minimum>0</minimum>
+                <average>0.214</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>23.128</minimum>
+                <average>81.073</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>3</maximum>
+                <minimum>0</minimum>
+                <average>0.250</average>
+            </kills>
+            <experience>
+                <maximum>80</maximum>
+                <minimum>62</minimum>
+                <average>71.500</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>0.000</minimum>
+                <average>72.318</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>14</count>
+            <left>14</left>
+        </formations>
+        <units>
+            <count>32</count>
+            <left>29</left>
+        </units>
+    </statistics>
+    <formations count="14">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>British HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>British HQ</designation>
+                    <rank>LtC</rank>
+                    <name>Gilchrist</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>159</OOB_record_ID>
+            <type>FOO Team</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>FOO Team</designation>
+                    <rank>1Lt</rank>
+                    <name>Chadwick</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>94</OOB_record_ID>
+            <type>Mortar Section</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>3in Mortar Sec</designation>
+                    <rank>Sgt</rank>
+                    <name>Vincent</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>31</OOB_record_ID>
+            <type>AT Gun Section</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>37mm AT-Gun</designation>
+                    <rank>Sgt</rank>
+                    <name>Hazzard</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>37mm AT-Gun</designation>
+                    <rank>Sgt</rank>
+                    <name>Thompson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>E</name>
+            <leader>E0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>382</OOB_record_ID>
+            <type>AAMGs</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>24.632</readiness>
+            <units count="2">
+                <unit>
+                    <ID>E0</ID>
+                    <designation>Bren AAMG</designation>
+                    <rank>Sgt</rank>
+                    <name>Saundby</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>49.265</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>E1</ID>
+                    <designation>Bren AAMG</designation>
+                    <rank>KIA</rank>
+                    <name>Kimbrough</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>F</name>
+            <leader>F0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>4</OOB_record_ID>
+            <type>Rifle Company</type>
+            <organizational_type>company</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.507</readiness>
+            <units count="1">
+                <unit>
+                    <ID>F0</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpt</rank>
+                    <name>Addington</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.507</readiness>
+                    <headcount>10</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>G</name>
+            <leader>G0</leader>
+            <higher_command>F0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>38</OOB_record_ID>
+            <type>Rifle Platoon</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>5</kills>
+            <losses>0</losses>
+            <readiness>67.154</readiness>
+            <units count="4">
+                <unit>
+                    <ID>G0</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>2Lt</rank>
+                    <name>Oldridge</name>
+                    <status>pinned</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>1</kills>
+                    <losses>0</losses>
+                    <readiness>48.203</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>G1</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Webster</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>3</kills>
+                    <losses>0</losses>
+                    <readiness>98.667</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>G2</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Fitzgibbon</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>28.077</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>G3</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Keyworth</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>1</kills>
+                    <losses>0</losses>
+                    <readiness>93.671</readiness>
+                    <headcount>10</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>H</name>
+            <leader>H0</leader>
+            <higher_command>F0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>38</OOB_record_ID>
+            <type>Rifle Platoon</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>32.355</readiness>
+            <units count="4">
+                <unit>
+                    <ID>H0</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>1Lt</rank>
+                    <name>Farley</name>
+                    <status>pinned</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>26.037</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H1</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Cochrane</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>36.842</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H2</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Davies</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>66.543</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H3</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>KIA</rank>
+                    <name>Jamison</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>I</name>
+            <leader>I0</leader>
+            <higher_command>F0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>38</OOB_record_ID>
+            <type>Rifle Platoon</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>23.128</readiness>
+            <units count="4">
+                <unit>
+                    <ID>I0</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>1Lt</rank>
+                    <name>Garland</name>
+                    <status>pinned</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>39.068</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>I1</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Harrington</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>35.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>I2</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Gilmour</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>18.446</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>I3</ID>
+                    <designation>Rifle Section</designation>
+                    <rank>KIA</rank>
+                    <name>Lake</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>J</name>
+            <leader>J0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>147</OOB_record_ID>
+            <type>Patrol+</type>
+            <organizational_type>section</organizational_type>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>98.686</readiness>
+            <units count="4">
+                <unit>
+                    <ID>J0</ID>
+                    <designation>Patrol</designation>
+                    <rank>Sgt</rank>
+                    <name>Ingersoll</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.684</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>J1</ID>
+                    <designation>Patrol</designation>
+                    <rank>Cpl</rank>
+                    <name>Underwood</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>2</kills>
+                    <losses>0</losses>
+                    <readiness>98.551</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>J2</ID>
+                    <designation>Marksman</designation>
+                    <rank>Cpl</rank>
+                    <name>Stevenson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.701</readiness>
+                    <headcount>1</headcount>
+                </unit>
+                <unit>
+                    <ID>J3</ID>
+                    <designation>Boys AT Rifle</designation>
+                    <rank>Cpl</rank>
+                    <name>Ennis</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.810</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>K</name>
+            <leader>K0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>18</OOB_record_ID>
+            <type>Cruiser CS Sec</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>92.939</readiness>
+            <units count="2">
+                <unit>
+                    <ID>K0</ID>
+                    <designation>Crusader II-CS</designation>
+                    <rank>Sgt</rank>
+                    <name>Hackett</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>94.158</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>K1</ID>
+                    <designation>Crusader II-CS</designation>
+                    <rank>Sgt</rank>
+                    <name>Hall</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>91.721</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>L</name>
+            <leader>L0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>10</OOB_record_ID>
+            <type>Light Tank Sec</type>
+            <organizational_type>section</organizational_type>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>97.619</readiness>
+            <units count="2">
+                <unit>
+                    <ID>L0</ID>
+                    <designation>Honey</designation>
+                    <rank>Sgt</rank>
+                    <name>Doyle</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>96.731</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>L1</ID>
+                    <designation>Honey</designation>
+                    <rank>Sgt</rank>
+                    <name>Ricketts</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>1</kills>
+                    <losses>0</losses>
+                    <readiness>98.507</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>M</name>
+            <leader>M0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>48</OOB_record_ID>
+            <type>Light Battery</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>M0</ID>
+                    <designation>25pdr Troop</designation>
+                    <rank>2Lt</rank>
+                    <name>Ellsworth</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>24</headcount>
+                </unit>
+                <unit>
+                    <ID>M1</ID>
+                    <designation>25pdr Troop</designation>
+                    <rank>2Lt</rank>
+                    <name>Trent</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>24</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>N</name>
+            <leader>N0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>48</OOB_record_ID>
+            <type>Light Battery</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>N0</ID>
+                    <designation>25pdr Troop</designation>
+                    <rank>1Lt</rank>
+                    <name>Gardner</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>24</headcount>
+                </unit>
+                <unit>
+                    <ID>N1</ID>
+                    <designation>25pdr Troop</designation>
+                    <rank>2Lt</rank>
+                    <name>Wright</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>24</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="32">
+        <unit core="true">
+            <ID>A0</ID>
+            <designation>British HQ</designation>
+            <unit>British HQ</unit>
+            <leader>Gilchrist</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>British</OOB>
+            <OOBrid>244</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>72</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>38</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>5</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B0</ID>
+            <designation>FOO Team</designation>
+            <unit>FOO Team</unit>
+            <leader>Chadwick</leader>
+            <rank>1Lt</rank>
+            <formation>B</formation>
+            <OOB>British</OOB>
+            <OOBrid>283</OOBrid>
+            <type>forward observer</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>19</inf_skills>
+            <art_skills>76</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>4</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C0</ID>
+            <designation>3in Mortar Sec</designation>
+            <unit>3in Mortar Sec</unit>
+            <leader>Vincent</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>British</OOB>
+            <OOBrid>67</OOBrid>
+            <type>mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>75</rally>
+            <inf_skills>15</inf_skills>
+            <art_skills>71</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>9</x>
+                <y>29</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D0</ID>
+            <designation>37mm AT-Gun</designation>
+            <unit>37mm AT-Gun</unit>
+            <leader>Hazzard</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>British</OOB>
+            <OOBrid>384</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>0</suppression>
+            <rally>53</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>60</art_skills>
+            <arm_skills>13</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>28</x>
+                <y>13</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D1</ID>
+            <designation>37mm AT-Gun</designation>
+            <unit>37mm AT-Gun</unit>
+            <leader>Thompson</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>British</OOB>
+            <OOBrid>384</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>22</inf_skills>
+            <art_skills>75</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>30</x>
+                <y>14</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>E0</ID>
+            <designation>Bren AAMG</designation>
+            <unit>Bren AAMG</unit>
+            <leader>Saundby</leader>
+            <rank>Sgt</rank>
+            <formation>E</formation>
+            <OOB>British</OOB>
+            <OOBrid>584</OOBrid>
+            <type>AA MG infantry</type>
+            <class>anti-air</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>2</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>1</suppression>
+            <rally>55</rally>
+            <inf_skills>17</inf_skills>
+            <art_skills>70</art_skills>
+            <arm_skills>34</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>49.265</readiness>
+            <position>
+                <x>18</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>E1</ID>
+            <designation>Bren AAMG</designation>
+            <unit>Bren AAMG</unit>
+            <leader>Kimbrough</leader>
+            <rank>KIA</rank>
+            <formation>E</formation>
+            <OOB>British</OOB>
+            <OOBrid>584</OOBrid>
+            <type>AA MG infantry</type>
+            <class>anti-air</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>0</left>
+            </headcount>
+            <damage>9</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>45</suppression>
+            <rally>60</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>73</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>F0</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Addington</leader>
+            <rank>Cpt</rank>
+            <formation>F</formation>
+            <OOB>British</OOB>
+            <OOBrid>701</OOBrid>
+            <type>rifle section</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>1</suppression>
+            <rally>62</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>13</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.507</readiness>
+            <position>
+                <x>37</x>
+                <y>27</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>G0</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Oldridge</leader>
+            <rank>2Lt</rank>
+            <formation>G</formation>
+            <OOB>British</OOB>
+            <OOBrid>479</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>1</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>8</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>11</suppression>
+            <rally>74</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>48.203</readiness>
+            <position>
+                <x>38</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>G1</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Webster</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>3</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>1</suppression>
+            <rally>68</rally>
+            <inf_skills>78</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>3</kills>
+            <losses>0</losses>
+            <readiness>98.667</readiness>
+            <position>
+                <x>35</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>G2</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Fitzgibbon</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>3</left>
+            </headcount>
+            <damage>7</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>5</suppression>
+            <rally>60</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>28.077</readiness>
+            <position>
+                <x>34</x>
+                <y>27</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>G3</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Keyworth</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>1</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>5</suppression>
+            <rally>67</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>93.671</readiness>
+            <position>
+                <x>35</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>H0</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Farley</leader>
+            <rank>1Lt</rank>
+            <formation>H</formation>
+            <OOB>British</OOB>
+            <OOBrid>479</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>5</left>
+            </headcount>
+            <damage>5</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>82</morale>
+            <suppression>21</suppression>
+            <rally>73</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>26.037</readiness>
+            <position>
+                <x>31</x>
+                <y>27</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>H1</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Cochrane</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>4</left>
+            </headcount>
+            <damage>6</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>6</suppression>
+            <rally>69</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>12</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>36.842</readiness>
+            <position>
+                <x>33</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>H2</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Davies</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>7</left>
+            </headcount>
+            <damage>3</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>81</morale>
+            <suppression>4</suppression>
+            <rally>49</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>66.543</readiness>
+            <position>
+                <x>31</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>H3</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Jamison</leader>
+            <rank>KIA</rank>
+            <formation>H</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>0</left>
+            </headcount>
+            <damage>20</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>77</morale>
+            <suppression>30</suppression>
+            <rally>47</rally>
+            <inf_skills>78</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>I0</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Garland</leader>
+            <rank>1Lt</rank>
+            <formation>I</formation>
+            <OOB>British</OOB>
+            <OOBrid>479</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>7</left>
+            </headcount>
+            <damage>3</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>15</suppression>
+            <rally>67</rally>
+            <inf_skills>65</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>39.068</readiness>
+            <position>
+                <x>27</x>
+                <y>44</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>I1</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Harrington</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>6</left>
+            </headcount>
+            <damage>4</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>72</morale>
+            <suppression>12</suppression>
+            <rally>43</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>35.000</readiness>
+            <position>
+                <x>27</x>
+                <y>43</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>I2</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Gilmour</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>3</left>
+            </headcount>
+            <damage>7</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>9</suppression>
+            <rally>69</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>18.446</readiness>
+            <position>
+                <x>27</x>
+                <y>45</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>I3</ID>
+            <designation>Rifle Section</designation>
+            <unit>Rifle Section</unit>
+            <leader>Lake</leader>
+            <rank>KIA</rank>
+            <formation>I</formation>
+            <OOB>British</OOB>
+            <OOBrid>535</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>0</left>
+            </headcount>
+            <damage>20</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>99</suppression>
+            <rally>73</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>25</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>J0</ID>
+            <designation>Patrol</designation>
+            <unit>Patrol</unit>
+            <leader>Ingersoll</leader>
+            <rank>Sgt</rank>
+            <formation>J</formation>
+            <OOB>British</OOB>
+            <OOBrid>275</OOBrid>
+            <type>patrol</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>1</suppression>
+            <rally>49</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>29</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.684</readiness>
+            <position>
+                <x>43</x>
+                <y>21</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>J1</ID>
+            <designation>Patrol</designation>
+            <unit>Patrol</unit>
+            <leader>Underwood</leader>
+            <rank>Cpl</rank>
+            <formation>J</formation>
+            <OOB>British</OOB>
+            <OOBrid>275</OOBrid>
+            <type>patrol</type>
+            <class>recon</class>
+            <kills>2</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>1</suppression>
+            <rally>55</rally>
+            <inf_skills>76</inf_skills>
+            <art_skills>14</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>98.551</readiness>
+            <position>
+                <x>42</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>J2</ID>
+            <designation>Marksman</designation>
+            <unit>Marksman</unit>
+            <leader>Stevenson</leader>
+            <rank>Cpl</rank>
+            <formation>J</formation>
+            <OOB>British</OOB>
+            <OOBrid>575</OOBrid>
+            <type>sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>77</morale>
+            <suppression>1</suppression>
+            <rally>64</rally>
+            <inf_skills>65</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.701</readiness>
+            <position>
+                <x>41</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>J3</ID>
+            <designation>Boys AT Rifle</designation>
+            <unit>Boys AT Rifle</unit>
+            <leader>Ennis</leader>
+            <rank>Cpl</rank>
+            <formation>J</formation>
+            <OOB>British</OOB>
+            <OOBrid>77</OOBrid>
+            <type>AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>84</morale>
+            <suppression>1</suppression>
+            <rally>73</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.810</readiness>
+            <position>
+                <x>43</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>K0</ID>
+            <designation>Crusader II-CS</designation>
+            <unit>Crusader II-CS</unit>
+            <leader>Hackett</leader>
+            <rank>Sgt</rank>
+            <formation>K</formation>
+            <OOB>British</OOB>
+            <OOBrid>11</OOBrid>
+            <type>CS cruiser tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>1</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>79</experience>
+            <experience_class>average</experience_class>
+            <morale>80</morale>
+            <suppression>3</suppression>
+            <rally>58</rally>
+            <inf_skills>17</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>68</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>94.158</readiness>
+            <position>
+                <x>31</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>K1</ID>
+            <designation>Crusader II-CS</designation>
+            <unit>Crusader II-CS</unit>
+            <leader>Hall</leader>
+            <rank>Sgt</rank>
+            <formation>K</formation>
+            <OOB>British</OOB>
+            <OOBrid>11</OOBrid>
+            <type>CS cruiser tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>3</suppression>
+            <rally>61</rally>
+            <inf_skills>23</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>70</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>radio contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>91.721</readiness>
+            <position>
+                <x>32</x>
+                <y>16</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>L0</ID>
+            <designation>Honey</designation>
+            <unit>Honey</unit>
+            <leader>Doyle</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>British</OOB>
+            <OOBrid>3</OOBrid>
+            <type>light tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>1</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>71</morale>
+            <suppression>1</suppression>
+            <rally>63</rally>
+            <inf_skills>27</inf_skills>
+            <art_skills>32</art_skills>
+            <arm_skills>70</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>96.731</readiness>
+            <position>
+                <x>37</x>
+                <y>25</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>L1</ID>
+            <designation>Honey</designation>
+            <unit>Honey</unit>
+            <leader>Ricketts</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>British</OOB>
+            <OOBrid>3</OOBrid>
+            <type>light tank</type>
+            <class>armor</class>
+            <kills>1</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>1</suppression>
+            <rally>70</rally>
+            <inf_skills>27</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>70</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>98.507</readiness>
+            <position>
+                <x>37</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M0</ID>
+            <designation>25pdr Troop</designation>
+            <unit>25pdr Troop</unit>
+            <leader>Ellsworth</leader>
+            <rank>2Lt</rank>
+            <formation>M</formation>
+            <OOB>British</OOB>
+            <OOBrid>119</OOBrid>
+            <type>offboard light artillery</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>24</count>
+                <left>24</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>0</suppression>
+            <rally>64</rally>
+            <inf_skills>26</inf_skills>
+            <art_skills>62</art_skills>
+            <arm_skills>14</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M1</ID>
+            <designation>25pdr Troop</designation>
+            <unit>25pdr Troop</unit>
+            <leader>Trent</leader>
+            <rank>2Lt</rank>
+            <formation>M</formation>
+            <OOB>British</OOB>
+            <OOBrid>119</OOBrid>
+            <type>offboard light artillery</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>24</count>
+                <left>24</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>67</rally>
+            <inf_skills>31</inf_skills>
+            <art_skills>65</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>N0</ID>
+            <designation>25pdr Troop</designation>
+            <unit>25pdr Troop</unit>
+            <leader>Gardner</leader>
+            <rank>1Lt</rank>
+            <formation>N</formation>
+            <OOB>British</OOB>
+            <OOBrid>119</OOBrid>
+            <type>offboard light artillery</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>24</count>
+                <left>24</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>71</rally>
+            <inf_skills>27</inf_skills>
+            <art_skills>77</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>N1</ID>
+            <designation>25pdr Troop</designation>
+            <unit>25pdr Troop</unit>
+            <leader>Wright</leader>
+            <rank>2Lt</rank>
+            <formation>N</formation>
+            <OOB>British</OOB>
+            <OOBrid>119</OOBrid>
+            <type>offboard light artillery</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>24</count>
+                <left>24</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>81</morale>
+            <suppression>0</suppression>
+            <rally>57</rally>
+            <inf_skills>12</inf_skills>
+            <art_skills>72</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>5</OOB>
+    <nation>Japan</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Japanese HQ</designation>
+        <rank>LtC</rank>
+        <name>Nakagawa</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>3</kills>
+            <losses>8</losses>
+            <readiness>44.679</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>1</maximum>
+                <minimum>0</minimum>
+                <average>0.176</average>
+            </kills>
+            <losses>
+                <maximum>3</maximum>
+                <minimum>0</minimum>
+                <average>0.471</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>0.000</minimum>
+                <average>52.030</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>1</maximum>
+                <minimum>0</minimum>
+                <average>0.060</average>
+            </kills>
+            <experience>
+                <maximum>84</maximum>
+                <minimum>66</minimum>
+                <average>75.320</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>0.000</minimum>
+                <average>44.679</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>17</count>
+            <left>16</left>
+        </formations>
+        <units>
+            <count>50</count>
+            <left>42</left>
+        </units>
+    </statistics>
+    <formations count="17">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Japanese HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Japanese HQ</designation>
+                    <rank>LtC</rank>
+                    <name>Nakagawa</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>127</OOB_record_ID>
+            <type>AAMG Section</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>96.571</readiness>
+            <units count="2">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Type 92 AAMG</designation>
+                    <rank>Sgt</rank>
+                    <name>Nakayama</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.143</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>Type 92 AAMG</designation>
+                    <rank>Sgt</rank>
+                    <name>Ota</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>96.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>5</OOB_record_ID>
+            <type>Infantry Co A+</type>
+            <organizational_type>company</organizational_type>
+            <kills>0</kills>
+            <losses>2</losses>
+            <readiness>0.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Kikuchi</name>
+                    <status>destroyed</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Matsuda</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>7</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>C0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>23.422</readiness>
+            <units count="4">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>2Lt</rank>
+                    <name>Fujimoto</name>
+                    <status>routed</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>0.392</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Ando</name>
+                    <status>routed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>1.027</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>D2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Abe</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>90.411</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>D3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Sakai</name>
+                    <status>routed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>1.857</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>E</name>
+            <leader>E0</leader>
+            <higher_command>C0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>3.560</readiness>
+            <units count="4">
+                <unit>
+                    <ID>E0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>1Lt</rank>
+                    <name>Mori</name>
+                    <status>routed</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>E1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Kaneko</name>
+                    <status>routed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>E2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Sugiyama</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>E3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Kojima</name>
+                    <status>retreating</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>14.241</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>F</name>
+            <leader>F0</leader>
+            <higher_command>C0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>50.671</readiness>
+            <units count="4">
+                <unit>
+                    <ID>F0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>1Lt</rank>
+                    <name>Miura</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>73.986</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>F1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Fujiwara</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>78.767</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>F2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Sugawara</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>1</kills>
+                    <losses>0</losses>
+                    <readiness>25.116</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>F3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Hasegawa</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>24.813</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>G</name>
+            <leader>G0</leader>
+            <higher_command>C0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>5</OOB_record_ID>
+            <type>Machinegun Sec</type>
+            <organizational_type>company</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>32.476</readiness>
+            <units count="3">
+                <unit>
+                    <ID>G0</ID>
+                    <designation>Type 92 MMGs</designation>
+                    <rank>Sgt</rank>
+                    <name>Nishimura</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>96.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>G1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Matsumoto</name>
+                    <status>routed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>1.429</readiness>
+                    <headcount>7</headcount>
+                </unit>
+                <unit>
+                    <ID>G2</ID>
+                    <designation>81mm Tp 97 Mtrs</designation>
+                    <rank>Sgt</rank>
+                    <name>Ueno</name>
+                    <status>abandoned</status>
+                    <formation_leader>no</formation_leader>
+                    <abandoned by="crew">
+                        <ID>G52</ID>
+                    </abandoned>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>H</name>
+            <leader>H0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>5</OOB_record_ID>
+            <type>Infantry Co A+</type>
+            <organizational_type>company</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>61.454</readiness>
+            <units count="2">
+                <unit>
+                    <ID>H0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpt</rank>
+                    <name>Fukuda</name>
+                    <status>pinned</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>24.316</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Nakajima</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.592</readiness>
+                    <headcount>7</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>I</name>
+            <leader>I0</leader>
+            <higher_command>H0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>66.841</readiness>
+            <units count="4">
+                <unit>
+                    <ID>I0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>2Lt</rank>
+                    <name>Kobayashi</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>65.863</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>I1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Hamada</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>65.741</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>I2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Nomura</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>82.222</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>I3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Masuda</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>1</kills>
+                    <losses>0</losses>
+                    <readiness>53.539</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>J</name>
+            <leader>J2</leader>
+            <higher_command>H0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>3</losses>
+            <readiness>1.708</readiness>
+            <units count="4">
+                <unit>
+                    <ID>J0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Ishida</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>J1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Takagi</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>J2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Otsuka</name>
+                    <status>retreating</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>6.833</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>J3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Noguchi</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>K</name>
+            <leader>K2</leader>
+            <higher_command>H0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>2</losses>
+            <readiness>1.141</readiness>
+            <units count="4">
+                <unit>
+                    <ID>K0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Ikeda</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>K1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>KIA</rank>
+                    <name>Ogawa</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>K2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Inoue</name>
+                    <status>routed</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>3.213</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>K3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Okamato</name>
+                    <status>routed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>1.351</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>L</name>
+            <leader>L0</leader>
+            <higher_command>H0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>5</OOB_record_ID>
+            <type>Machinegun Sec</type>
+            <organizational_type>company</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>63.849</readiness>
+            <units count="3">
+                <unit>
+                    <ID>L0</ID>
+                    <designation>Type 3 MMGs</designation>
+                    <rank>Sgt</rank>
+                    <name>Maeda</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>L1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Wada</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>31.053</readiness>
+                    <headcount>7</headcount>
+                </unit>
+                <unit>
+                    <ID>L2</ID>
+                    <designation>81mm Tp 97 Mtrs</designation>
+                    <rank>Sgt</rank>
+                    <name>Aoki</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>60.494</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>M</name>
+            <leader>M0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>44</OOB_record_ID>
+            <type>Strike Shotai</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>99.371</readiness>
+            <units count="3">
+                <unit>
+                    <ID>M0</ID>
+                    <designation>Ki-51</designation>
+                    <rank>1Lt</rank>
+                    <name>Sakamoto</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>M1</ID>
+                    <designation>Ki-51</designation>
+                    <rank>2Lt</rank>
+                    <name>Fujita</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>M2</ID>
+                    <designation>Ki-51</designation>
+                    <rank>2Lt</rank>
+                    <name>Tamura</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.113</readiness>
+                    <headcount>0</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>N</name>
+            <leader>N0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>32</OOB_record_ID>
+            <type>Mortar Platoon</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>46.835</readiness>
+            <units count="2">
+                <unit>
+                    <ID>N0</ID>
+                    <designation>81mm Tp 97 Mtrs</designation>
+                    <rank>2Lt</rank>
+                    <name>Yokoyama</name>
+                    <status>abandoned</status>
+                    <formation_leader>yes</formation_leader>
+                    <abandoned by="crew">
+                        <ID>N50</ID>
+                    </abandoned>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>N1</ID>
+                    <designation>81mm Tp 97 Mtrs</designation>
+                    <rank>Sgt</rank>
+                    <name>Yamada</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>93.671</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>O</name>
+            <leader>O0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>46</OOB_record_ID>
+            <type>Light Battery</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>99.333</readiness>
+            <units count="2">
+                <unit>
+                    <ID>O0</ID>
+                    <designation>75mm Platoon</designation>
+                    <rank>1Lt</rank>
+                    <name>Taniguchi</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>16</headcount>
+                </unit>
+                <unit>
+                    <ID>O1</ID>
+                    <designation>75mm Platoon</designation>
+                    <rank>2Lt</rank>
+                    <name>Kinoshita</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.667</readiness>
+                    <headcount>16</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>P</name>
+            <leader>P0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>36</OOB_record_ID>
+            <type>Rifle Platoon A</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>37.270</readiness>
+            <units count="4">
+                <unit>
+                    <ID>P0</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>1Lt</rank>
+                    <name>Sakurai</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>49.324</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>P1</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Uchida</name>
+                    <status>retreating</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>8.676</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>P2</ID>
+                    <designation>Rifle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Matsuo</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>65.801</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>P3</ID>
+                    <designation>Support Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Murakami</name>
+                    <status>pinned</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>25.278</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>Q</name>
+            <leader>Q0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>44</OOB_record_ID>
+            <type>Strike Shotai</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>Q0</ID>
+                    <designation>Ki-43-I Hei</designation>
+                    <rank>1Lt</rank>
+                    <name>Hara</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>Q1</ID>
+                    <designation>Ki-43-I Hei</designation>
+                    <rank>2Lt</rank>
+                    <name>Morita</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>1</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="50">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>Japanese HQ</designation>
+            <unit>Japanese HQ</unit>
+            <leader>Nakagawa</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>252</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>0</suppression>
+            <rally>75</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>40</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>48</x>
+                <y>29</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Type 92 AAMG</designation>
+            <unit>Type 92 AAMG</unit>
+            <leader>Nakayama</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>155</OOBrid>
+            <type>AA MG infantry</type>
+            <class>anti-air</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>70</morale>
+            <suppression>2</suppression>
+            <rally>74</rally>
+            <inf_skills>23</inf_skills>
+            <art_skills>73</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.143</readiness>
+            <position>
+                <x>46</x>
+                <y>14</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B1</ID>
+            <designation>Type 92 AAMG</designation>
+            <unit>Type 92 AAMG</unit>
+            <leader>Ota</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>155</OOBrid>
+            <type>AA MG infantry</type>
+            <class>anti-air</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>3</suppression>
+            <rally>61</rally>
+            <inf_skills>25</inf_skills>
+            <art_skills>74</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>96.000</readiness>
+            <position>
+                <x>46</x>
+                <y>16</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Kikuchi</leader>
+            <rank>KIA</rank>
+            <formation>C</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>340</OOBrid>
+            <type>light infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>0</left>
+            </headcount>
+            <damage>17</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>49</suppression>
+            <rally>56</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Matsuda</leader>
+            <rank>KIA</rank>
+            <formation>C</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>295</OOBrid>
+            <type>rifle section</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>7</count>
+                <left>0</left>
+            </headcount>
+            <damage>12</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>54</suppression>
+            <rally>69</rally>
+            <inf_skills>83</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Fujimoto</leader>
+            <rank>2Lt</rank>
+            <formation>D</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>4</left>
+            </headcount>
+            <damage>8</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>64</suppression>
+            <rally>73</rally>
+            <inf_skills>82</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>0.392</readiness>
+            <position>
+                <x>41</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Ando</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>3</left>
+            </headcount>
+            <damage>9</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>58</suppression>
+            <rally>69</rally>
+            <inf_skills>87</inf_skills>
+            <art_skills>33</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>1.027</readiness>
+            <position>
+                <x>43</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Abe</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>11</left>
+            </headcount>
+            <damage>1</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>1</suppression>
+            <rally>76</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>90.411</readiness>
+            <position>
+                <x>33</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Sakai</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>4</left>
+            </headcount>
+            <damage>8</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>57</suppression>
+            <rally>46</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>1.857</readiness>
+            <position>
+                <x>43</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Mori</leader>
+            <rank>1Lt</rank>
+            <formation>E</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>3</left>
+            </headcount>
+            <damage>9</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>73</suppression>
+            <rally>49</rally>
+            <inf_skills>76</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>45</x>
+                <y>22</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Kaneko</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>6</left>
+            </headcount>
+            <damage>6</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>70</morale>
+            <suppression>99</suppression>
+            <rally>51</rally>
+            <inf_skills>80</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>40</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Sugiyama</leader>
+            <rank>KIA</rank>
+            <formation>E</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>0</left>
+            </headcount>
+            <damage>21</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>19</suppression>
+            <rally>51</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>12</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Kojima</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>retreating</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>5</left>
+            </headcount>
+            <damage>7</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>79</morale>
+            <suppression>25</suppression>
+            <rally>64</rally>
+            <inf_skills>78</inf_skills>
+            <art_skills>13</art_skills>
+            <arm_skills>14</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>14.241</readiness>
+            <position>
+                <x>33</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Miura</leader>
+            <rank>1Lt</rank>
+            <formation>F</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>9</left>
+            </headcount>
+            <damage>3</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>79</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>1</suppression>
+            <rally>64</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>14</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>73.986</readiness>
+            <position>
+                <x>30</x>
+                <y>34</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Fujiwara</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>10</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>4</suppression>
+            <rally>54</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>25</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>78.767</readiness>
+            <position>
+                <x>32</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Sugawara</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>1</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>5</left>
+            </headcount>
+            <damage>7</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>72</morale>
+            <suppression>10</suppression>
+            <rally>77</rally>
+            <inf_skills>72</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>32</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>25.116</readiness>
+            <position>
+                <x>32</x>
+                <y>36</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Hasegawa</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>5</left>
+            </headcount>
+            <damage>7</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>78</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>10</suppression>
+            <rally>69</rally>
+            <inf_skills>72</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>24.813</readiness>
+            <position>
+                <x>30</x>
+                <y>39</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G0</ID>
+            <designation>Type 92 MMGs</designation>
+            <unit>Type 92 HMGs</unit>
+            <leader>Nishimura</leader>
+            <rank>Sgt</rank>
+            <formation>G</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>38</OOBrid>
+            <type>machine gun</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>3</suppression>
+            <rally>73</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>96.000</readiness>
+            <position>
+                <x>36</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Matsumoto</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>295</OOBrid>
+            <type>rifle section</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>7</count>
+                <left>2</left>
+            </headcount>
+            <damage>5</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>51</suppression>
+            <rally>69</rally>
+            <inf_skills>79</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>19</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>1.429</readiness>
+            <position>
+                <x>40</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G2</ID>
+            <designation>81mm Tp 97 Mtrs</designation>
+            <unit>81mm Tp 97 Mors</unit>
+            <leader>Ueno</leader>
+            <rank>Sgt</rank>
+            <formation>G</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>36</OOBrid>
+            <type>mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>abandoned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>0</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="yes">
+                <by>G52</by>
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>79</experience>
+            <experience_class>average</experience_class>
+            <morale>70</morale>
+            <suppression>32</suppression>
+            <rally>66</rally>
+            <inf_skills>11</inf_skills>
+            <art_skills>64</art_skills>
+            <arm_skills>33</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>54</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Fukuda</leader>
+            <rank>Cpt</rank>
+            <formation>H</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>340</OOBrid>
+            <type>light infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>4</left>
+            </headcount>
+            <damage>6</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>78</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>10</suppression>
+            <rally>76</rally>
+            <inf_skills>72</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>24.316</readiness>
+            <position>
+                <x>31</x>
+                <y>43</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Nakajima</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>295</OOBrid>
+            <type>rifle section</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>7</count>
+                <left>7</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>71</morale>
+            <suppression>1</suppression>
+            <rally>64</rally>
+            <inf_skills>78</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>9</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.592</readiness>
+            <position>
+                <x>32</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Kobayashi</leader>
+            <rank>2Lt</rank>
+            <formation>I</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>8</left>
+            </headcount>
+            <damage>4</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>1</suppression>
+            <rally>54</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>65.863</readiness>
+            <position>
+                <x>31</x>
+                <y>36</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Hamada</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>8</left>
+            </headcount>
+            <damage>4</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>72</morale>
+            <suppression>1</suppression>
+            <rally>66</rally>
+            <inf_skills>84</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>31</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>65.741</readiness>
+            <position>
+                <x>29</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Nomura</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>10</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>1</suppression>
+            <rally>47</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>82.222</readiness>
+            <position>
+                <x>32</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Masuda</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>1</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>7</left>
+            </headcount>
+            <damage>5</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>6</suppression>
+            <rally>70</rally>
+            <inf_skills>84</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>53.539</readiness>
+            <position>
+                <x>31</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Ishida</leader>
+            <rank>KIA</rank>
+            <formation>J</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>0</left>
+            </headcount>
+            <damage>21</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>82</suppression>
+            <rally>73</rally>
+            <inf_skills>64</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Takagi</leader>
+            <rank>KIA</rank>
+            <formation>J</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>0</left>
+            </headcount>
+            <damage>21</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>78</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>40</suppression>
+            <rally>54</rally>
+            <inf_skills>80</inf_skills>
+            <art_skills>31</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Otsuka</leader>
+            <rank>Cpl</rank>
+            <formation>J</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>retreating</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>3</left>
+            </headcount>
+            <damage>9</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>34</suppression>
+            <rally>63</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>25</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>6.833</readiness>
+            <position>
+                <x>47</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Noguchi</leader>
+            <rank>KIA</rank>
+            <formation>J</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>0</left>
+            </headcount>
+            <damage>21</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>76</suppression>
+            <rally>79</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>33</art_skills>
+            <arm_skills>31</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Ikeda</leader>
+            <rank>KIA</rank>
+            <formation>K</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>0</left>
+            </headcount>
+            <damage>21</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>99</suppression>
+            <rally>54</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Ogawa</leader>
+            <rank>KIA</rank>
+            <formation>K</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>0</left>
+            </headcount>
+            <damage>21</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>41</suppression>
+            <rally>45</rally>
+            <inf_skills>81</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Inoue</leader>
+            <rank>Cpl</rank>
+            <formation>K</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>292</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>4</left>
+            </headcount>
+            <damage>8</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>43</suppression>
+            <rally>51</rally>
+            <inf_skills>74</inf_skills>
+            <art_skills>36</art_skills>
+            <arm_skills>29</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>3.213</readiness>
+            <position>
+                <x>50</x>
+                <y>21</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Okamato</leader>
+            <rank>Cpl</rank>
+            <formation>K</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>routed</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>4</left>
+            </headcount>
+            <damage>8</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>59</suppression>
+            <rally>62</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>1.351</readiness>
+            <position>
+                <x>42</x>
+                <y>27</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L0</ID>
+            <designation>Type 3 MMGs</designation>
+            <unit>Type 3 HMGs</unit>
+            <leader>Maeda</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>152</OOBrid>
+            <type>machine gun</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>83</experience>
+            <experience_class>veteran</experience_class>
+            <morale>75</morale>
+            <suppression>0</suppression>
+            <rally>63</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>35</x>
+                <y>34</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Wada</leader>
+            <rank>Cpl</rank>
+            <formation>L</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>295</OOBrid>
+            <type>rifle section</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>7</count>
+                <left>4</left>
+            </headcount>
+            <damage>3</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>17</suppression>
+            <rally>57</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>25</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>31.053</readiness>
+            <position>
+                <x>33</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L2</ID>
+            <designation>81mm Tp 97 Mtrs</designation>
+            <unit>81mm Tp 97 Mors</unit>
+            <leader>Aoki</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>36</OOBrid>
+            <type>mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>81</morale>
+            <suppression>11</suppression>
+            <rally>63</rally>
+            <inf_skills>32</inf_skills>
+            <art_skills>64</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>60.494</readiness>
+            <position>
+                <x>52</x>
+                <y>44</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M0</ID>
+            <designation>Ki-51</designation>
+            <unit>Ki-51</unit>
+            <leader>Sakamoto</leader>
+            <rank>1Lt</rank>
+            <formation>M</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>289</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>84</experience>
+            <experience_class>veteran</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>60</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>66</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M1</ID>
+            <designation>Ki-51</designation>
+            <unit>Ki-51</unit>
+            <leader>Fujita</leader>
+            <rank>2Lt</rank>
+            <formation>M</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>289</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>81</morale>
+            <suppression>0</suppression>
+            <rally>50</rally>
+            <inf_skills>23</inf_skills>
+            <art_skills>33</art_skills>
+            <arm_skills>69</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M2</ID>
+            <designation>Ki-51</designation>
+            <unit>Ki-51</unit>
+            <leader>Tamura</leader>
+            <rank>2Lt</rank>
+            <formation>M</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>289</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>2</left>
+            </headcount>
+            <damage>1</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>78</experience>
+            <experience_class>average</experience_class>
+            <morale>82</morale>
+            <suppression>0</suppression>
+            <rally>77</rally>
+            <inf_skills>16</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>85</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.113</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>N0</ID>
+            <designation>81mm Tp 97 Mtrs</designation>
+            <unit>81mm Tp 97 Mors</unit>
+            <leader>Yokoyama</leader>
+            <rank>2Lt</rank>
+            <formation>N</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>36</OOBrid>
+            <type>mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>abandoned</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>0</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="yes">
+                <by>N50</by>
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>83</experience>
+            <experience_class>veteran</experience_class>
+            <morale>69</morale>
+            <suppression>92</suppression>
+            <rally>63</rally>
+            <inf_skills>18</inf_skills>
+            <art_skills>78</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>54</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>N1</ID>
+            <designation>81mm Tp 97 Mtrs</designation>
+            <unit>81mm Tp 97 Mors</unit>
+            <leader>Yamada</leader>
+            <rank>Sgt</rank>
+            <formation>N</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>36</OOBrid>
+            <type>mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>5</suppression>
+            <rally>69</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>75</art_skills>
+            <arm_skills>25</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>radio contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>93.671</readiness>
+            <position>
+                <x>50</x>
+                <y>25</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>O0</ID>
+            <designation>75mm Platoon</designation>
+            <unit>75mm Platoon</unit>
+            <leader>Taniguchi</leader>
+            <rank>1Lt</rank>
+            <formation>O</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>78</OOBrid>
+            <type>offboard light artillery</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>16</count>
+                <left>16</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>77</morale>
+            <suppression>0</suppression>
+            <rally>63</rally>
+            <inf_skills>31</inf_skills>
+            <art_skills>81</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>O1</ID>
+            <designation>75mm Platoon</designation>
+            <unit>75mm Platoon</unit>
+            <leader>Kinoshita</leader>
+            <rank>2Lt</rank>
+            <formation>O</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>78</OOBrid>
+            <type>offboard light artillery</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>16</count>
+                <left>16</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>79</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>1</suppression>
+            <rally>79</rally>
+            <inf_skills>21</inf_skills>
+            <art_skills>71</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.667</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>P0</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Sakurai</leader>
+            <rank>1Lt</rank>
+            <formation>P</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>40</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>6</left>
+            </headcount>
+            <damage>6</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>1</suppression>
+            <rally>63</rally>
+            <inf_skills>87</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>49.324</readiness>
+            <position>
+                <x>34</x>
+                <y>36</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>P1</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Uchida</leader>
+            <rank>Cpl</rank>
+            <formation>P</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>40</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>retreating</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>4</left>
+            </headcount>
+            <damage>8</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>35</suppression>
+            <rally>67</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>30</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>8.676</readiness>
+            <position>
+                <x>32</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>P2</ID>
+            <designation>Rifle Squad</designation>
+            <unit>Rifle Squad</unit>
+            <leader>Matsuo</leader>
+            <rank>Cpl</rank>
+            <formation>P</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>40</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>8</left>
+            </headcount>
+            <damage>4</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>77</morale>
+            <suppression>1</suppression>
+            <rally>57</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>65.801</readiness>
+            <position>
+                <x>32</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>P3</ID>
+            <designation>Support Squad</designation>
+            <unit>Support Squad</unit>
+            <leader>Murakami</leader>
+            <rank>Cpl</rank>
+            <formation>P</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>363</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>pinned</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>5</left>
+            </headcount>
+            <damage>7</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>75</morale>
+            <suppression>10</suppression>
+            <rally>73</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>14</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>25.278</readiness>
+            <position>
+                <x>32</x>
+                <y>44</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>Q0</ID>
+            <designation>Ki-43-I Hei</designation>
+            <unit>Ki-43-I Hei</unit>
+            <leader>Hara</leader>
+            <rank>1Lt</rank>
+            <formation>Q</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>209</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>82</experience>
+            <experience_class>veteran</experience_class>
+            <morale>76</morale>
+            <suppression>0</suppression>
+            <rally>50</rally>
+            <inf_skills>33</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>69</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>Q1</ID>
+            <designation>Ki-43-I Hei</designation>
+            <unit>Ki-43-I Hei</unit>
+            <leader>Morita</leader>
+            <rank>2Lt</rank>
+            <formation>Q</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>209</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>1</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>0</suppression>
+            <rally>49</rally>
+            <inf_skills>32</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>87</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>1</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+    </units>
+    <crews count="2">
+        <crew core="false">
+            <ID>G52</ID>
+            <designation>Crew</designation>
+            <unit>Crew</unit>
+            <leader>Ueno</leader>
+            <rank>Sgt</rank>
+            <formation>G</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>249</OOBrid>
+            <type>crew</type>
+            <class>other</class>
+            <kills>0</kills>
+            <status>retreating</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="yes">
+                <who>G2</who>
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>79</experience>
+            <experience_class>average</experience_class>
+            <morale>70</morale>
+            <suppression>32</suppression>
+            <rally>66</rally>
+            <inf_skills>11</inf_skills>
+            <art_skills>64</art_skills>
+            <arm_skills>33</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <position>
+                <x>55</x>
+                <y>32</y>
+            </position>
+        </crew>
+        <crew core="false">
+            <ID>N50</ID>
+            <designation>Crew</designation>
+            <unit>Crew</unit>
+            <leader>Yokoyama</leader>
+            <rank>2Lt</rank>
+            <formation>N</formation>
+            <OOB>Japanese</OOB>
+            <OOBrid>249</OOBrid>
+            <type>crew</type>
+            <class>other</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="yes">
+                <who>N0</who>
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>83</experience>
+            <experience_class>veteran</experience_class>
+            <morale>69</morale>
+            <suppression>1</suppression>
+            <rally>63</rally>
+            <inf_skills>18</inf_skills>
+            <art_skills>78</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </crew>
+    </crews>
+</OOB>
+
+

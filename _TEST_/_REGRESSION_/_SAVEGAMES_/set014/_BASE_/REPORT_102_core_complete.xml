@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <battle>standalone</battle>
+</type>
+<game>
+    , <!-- contains updated battle statistics -->
+    <comment>
+        <title>T27, Ger vs Rus, 6/1941 </title>
+    </comment>
+    <battle>
+        <date>1941/06</date>
+        <turn>
+            <current>27</current>
+            <max>28</max>
+        </turn>
+        <status>
+            <value>2</value>
+            <description>score</description>
+        </status>
+        <location>Brody</location>
+        <terrain>
+            <value>1</value>
+            <description>summer</description>
+        </terrain>
+        <weather>
+            <value>0</value>
+            <description>clear</description>
+        </weather>
+        <visibility>
+            <hexes>56</hexes>
+            <meters>2800</meters>
+        </visibility>
+        <player1>
+            <oob>16</oob>
+            <forces>German</forces>
+            <mission>
+                <value>0</value>
+                <description>assault</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>11</oob>
+            <forces>Soviet</forces>
+            <mission>
+                <value>3</value>
+                <description>defence</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>21</count>
+                <points>4200</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>110</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>5.500</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>1940/06</start>
+            <end>1945/03</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>20</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>0</battle_index>
+        <battle_result>
+            <player1>
+                <score>5343</score>
+                <result>decisive victory</result>
+            </player1>
+            <player2>
+                <score>341</score>
+                <result>decisive defeat</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>69</men>
+                    <artillery>3</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>1</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>443</men>
+                    <artillery>17</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>22</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>69</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>6</apc>
+                    <afv>1</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>443</men>
+                    <artillery>6</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>22</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>16</OOB>
+    <nation>Nazi Germany</nation>
+    <people>German</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>11</OOB>
+    <nation>Soviet Union</nation>
+    <people>Soviet</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

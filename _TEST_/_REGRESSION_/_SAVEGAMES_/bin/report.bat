@@ -22,6 +22,7 @@ echo Generating reports for %REPORT%...
 
 ..\..\..\bin\spwreport.exe savereport %GAMETYPE% _OOB_ _SAVE_ %1 %REPORT%
 move %REPORT%*.txt _RPT_\		1>nul 2>nul
+move %REPORT%*.xml _RPT_\		1>nul 2>nul
 move %REPORT%*.dump _RPT_\		1>nul 2>nul
 move SPWAWLIB.log _RPT_\SPWAWLIB_%1.log	1>nul 2>nul
 del *.log				1>nul 2>nul
@@ -29,6 +30,7 @@ del *.log				1>nul 2>nul
 ..\..\..\bin\spwreport.exe snapreport snapshot_%1.snap %REPORT%
 del %REPORT%_RAW.txt			1>nul 2>nul
 move %REPORT%*.txt _SNP_\		1>nul 2>nul
+move %REPORT%*.xml _SNP_\		1>nul 2>nul
 move %REPORT%*.dump _SNP_\		1>nul 2>nul
 rem move SPWAWLIB.log _SNP_\SPWAWLIB_%1.log	1>nul 2>nul
 del *.log				1>nul 2>nul
