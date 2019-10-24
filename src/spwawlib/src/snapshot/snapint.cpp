@@ -403,7 +403,7 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->FSID	= src->FSID;
 		dat->OOB	= src->OOB;
 		dat->dname	= src->name;
-		dat->uname	= oob->udata[src->OOBrid].name[0]!='\0' ? strdup(oob->udata[src->OOBrid].name) : src->name;
+		dat->uname	= oob->udata[src->OOBrid].name[0]!='\0' ? strdup(oob->udata[src->OOBrid].name) : strdup(src->name);
 		dat->lname	= ulsrc ? ulsrc->name : NULL;
 		dat->rank	= elsrc ? raw2rank (elsrc->rank) : raw2rank (SPWAW_RKIA);
 		dat->kills	= elsrc ? elsrc->kills : 0;

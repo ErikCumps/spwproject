@@ -64,7 +64,7 @@ snapclean_game (SPWAW_SNAP_GAME *ptr)
 }
 
 static void
-snapclean_oob_force (SPWAW_SNAP_OOB_FORCE *ptr)
+snapclean_oob_force (SPWAW_SNAP_OOB_FORCE *ptr, bool freeall)
 {
 	DWORD	i;
 
@@ -72,16 +72,28 @@ snapclean_oob_force (SPWAW_SNAP_OOB_FORCE *ptr)
 		if (ptr->formations.list[i].data.ulist) safe_free (ptr->formations.list[i].data.ulist);
 	}
 	safe_free (ptr->formations.list);
+
+	if (freeall) {
+		for (i=0; i<ptr->units.cnt; i++) {
+			if (ptr->units.list[i].data.uname) safe_free (ptr->units.list[i].data.uname);
+		}
+	}
 	safe_free (ptr->units.list);
+
+	if (freeall) {
+		for (i=0; i<ptr->crews.cnt; i++) {
+			if (ptr->crews.list[i].data.uname) safe_free (ptr->crews.list[i].data.uname);
+		}
+	}
 	safe_free (ptr->crews.list);
 }
 
 static void
 snapclean_oob (SPWAW_SNAP_OOB *ptr)
 {
-	snapclean_oob_force (&(ptr->battle));
-	snapclean_oob_force (&(ptr->core));
-	snapclean_oob_force (&(ptr->support));
+	snapclean_oob_force (&(ptr->battle), true);
+	snapclean_oob_force (&(ptr->core), false);
+	snapclean_oob_force (&(ptr->support), false);
 }
 
 SPWAW_ERROR
