@@ -584,7 +584,7 @@ FID2str (BYTE id)
 	char	buf[16];
 
 	FID2str (id, buf, sizeof (buf));
-	return (strdup(buf));
+	return (safe_strdup(buf));
 }
 
 void
@@ -606,7 +606,7 @@ UID2str (BYTE id, BYTE subid)
 	char	buf[16];
 
 	UID2str (id, subid, buf, sizeof (buf));
-	return (strdup(buf));
+	return (safe_strdup(buf));
 }
 
 

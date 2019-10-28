@@ -353,7 +353,6 @@ debug_memtrace_realloc (const char *file, unsigned long line, const char *func, 
 		if (ptr) log_alloc (file, line, func, s, ptr, pc, "realloc");
 	}
 	return (ptr);
-
 }
 
 char *

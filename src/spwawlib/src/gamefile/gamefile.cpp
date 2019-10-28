@@ -51,11 +51,11 @@ gamefile_open (SPWAW_GAME_TYPE gametype, const char *dir, int id, GAMEFILE *game
 
 	memset (name, 0, sizeof (name));
 	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.cmt", dir, base, id);
-	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
+	game->cmt_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
 
 	memset (name, 0, sizeof (name));
 	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.dat", dir, base, id);
-	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
+	game->dat_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
 
 	game->cmt_fd = open (game->cmt_name, O_RDONLY|O_BINARY);
 	if (game->cmt_fd == -1) FAILGOTO (SPWERR_FOFAILED, "failed to open game cmt file for reading", error);
@@ -101,11 +101,11 @@ gamefile_create (SPWAW_GAME_TYPE gametype, const char *dir, int id, GAMEFILE *ga
 
 	memset (name, 0, sizeof (name));
 	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.cmt", dir, base, id);
-	game->cmt_name = strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
+	game->cmt_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
 
 	memset (name, 0, sizeof (name));
 	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.dat", dir, base, id);
-	game->dat_name = strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
+	game->dat_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
 
 	game->cmt_fd = open (game->cmt_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
 	if (game->cmt_fd == -1) FAILGOTO (SPWERR_FOFAILED, "failed to open game cmt file for writing", error);

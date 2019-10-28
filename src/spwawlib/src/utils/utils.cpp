@@ -52,6 +52,20 @@ safe_realloc_core (const char *file, unsigned long line, const char *func, void 
 	return (np);
 }
 
+char *
+safe_strdup_core (const char *file, unsigned long line, const char *func, char *ptr)
+{
+	char	*np;
+
+	/* prevent compiler warnings */
+	UNREFERENCED_PARAMETER (file); UNREFERENCED_PARAMETER (line); UNREFERENCED_PARAMETER (func);
+
+	np = MEMTRACE_STRDUP (file, line, func, ptr);
+	if (np == NULL) ERROR1 ("out of memory during strdup of \"%s\"", ptr);
+
+	return (np);
+}
+
 void
 fill_ptr_core (void *ptr, unsigned int size, int val)
 {

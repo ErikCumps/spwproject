@@ -30,7 +30,7 @@ cfg_set (int cnt, SPWAW_OOBCFG *list, bool withUD)
 
 			memset (path, 0, sizeof (path));
 			_fullpath (path, list[i].oobdir, sizeof (path)-1);
-			cfg.oob_lst[i].oobdir = strdup (path);
+			cfg.oob_lst[i].oobdir = safe_strdup (path);
 			COOMGOTO (cfg.oob_lst[i].oobdir, "CFG.oob_lst[i].oobdir", handle_error);
 
 			rc = SPWOOB_new (&(cfg.oob_lst[i].oobptr));

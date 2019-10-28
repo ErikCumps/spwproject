@@ -16,7 +16,8 @@
 #define	safe_nmalloc(type_, cnt_)	(type_ *)safe_malloc_core (__FILE__, __LINE__, __FUNCTION__, cnt_ * sizeof (type_), #type_)
 #define	safe_smalloc(type_, size_)	(type_ *)safe_malloc_core (__FILE__, __LINE__, __FUNCTION__, size_, #type_)
 #define	safe_free(ptr_)			safe_free_core (__FILE__, __LINE__, __FUNCTION__, (void **)&(ptr_))
-#define	safe_realloc(ptr_, size_)	safe_realloc_core (__FILE__, __LINE__, __FUNCTION__, (void *)ptr_, size_);
+#define	safe_realloc(ptr_, size_)	safe_realloc_core (__FILE__, __LINE__, __FUNCTION__, (void *)ptr_, size_)
+#define	safe_strdup(ptr_)		safe_strdup_core (__FILE__, __LINE__, __FUNCTION__, ptr_)
 #define	clear_ptr(ptr_)			fill_ptr_core (ptr_, sizeof (*ptr_), 0)
 #define	fill_ptr(ptr_, val_)		fill_ptr_core (ptr_, sizeof (*ptr_), val_)
 #define	azstrcpy(src_, dst_)		sazscpy (src_,dst_)
@@ -26,6 +27,7 @@
 extern void *	safe_malloc_core	(const char *file, unsigned long line, const char *func, unsigned int size, const char *name);
 extern void	safe_free_core		(const char *file, unsigned long line, const char *func, void **ptr);
 extern void *	safe_realloc_core	(const char *file, unsigned long line, const char *func, void *ptr, unsigned int size);
+extern char *	safe_strdup_core	(const char *file, unsigned long line, const char *func, char *ptr);
 extern void	fill_ptr_core		(void *ptr, unsigned int size, int val);
 extern char *	azstrstab_core		(char *src, unsigned int size, STRTAB *stab);
 

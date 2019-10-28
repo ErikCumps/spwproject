@@ -44,7 +44,7 @@ azsdup (char *azs, DWORD size)
 	if (!azs || !size) return (NULL);
 
 	if (azslen (azs, size) < size) {
-		dup = strdup ((const char *)azs);
+		dup = safe_strdup (azs);
 	} else {
 		dup = safe_nmalloc (char, size+1);
 		if (dup) {
