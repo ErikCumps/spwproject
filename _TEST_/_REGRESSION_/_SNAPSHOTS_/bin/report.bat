@@ -17,6 +17,7 @@ echo Generating reports for %REPORT%...
 
 ..\..\..\bin\spwreport.exe snapreport _SNAP_\snapshot_%1.snap %REPORT%
 move %REPORT%*.txt _RPT_\		1>nul 2>nul
+move %REPORT%*.xml _RPT_\		1>nul 2>nul
 move %REPORT%*.dump _RPT_\		1>nul 2>nul
 move SPWAWLIB.log _RPT_\SPWAWLIB_%1.log	1>nul 2>nul
 del *.log				1>nul 2>nul

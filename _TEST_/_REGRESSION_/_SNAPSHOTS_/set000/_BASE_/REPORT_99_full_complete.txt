@@ -100,11 +100,12 @@ Formation count: 2
 #00000 A (FID 00000)
 	leader      : A0 GE Kommandant (Col Schumacher)
 	higher cmd  : A0 GE Kommandant (Col Schumacher)
+	OOBrid      : 1
 	status      : 0 (regular)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : German HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		A0 GE Kommandant (Col Schumacher)
 
@@ -133,11 +134,12 @@ Formation count: 2
 #00001 B (FID 00001)
 	leader      : B0 Scharfschutze (2Lt Steinke)
 	higher cmd  : A0 GE Kommandant (Col Schumacher)
+	OOBrid      : 140
 	status      : 0 (regular)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Sniper
-	unit count  : 1
+	unit count  : 1 (0 core, 1 support, 0 regular)
 	unit list   :
 		B0 Scharfschutze (2Lt Steinke)
 
@@ -172,7 +174,10 @@ Unit count: 2
 #00000 (00000:00000,000) A0   GE Kommandant (GE Kommandant)
 	leader      : Schumacher, rank 9 (Col)
 	formation   : A: regular elite recon force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -198,6 +203,7 @@ Unit count: 2
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 189
 	type group  : 0
 	position    : (1, 1)
 
@@ -208,7 +214,10 @@ Unit count: 2
 #00001 (00001:00001,000) B0   Scharfschutze (Scharfschutze)
 	leader      : Steinke, rank 4 (2Lt)
 	formation   : B: regular elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 70 (    German)
+	OOBrid      : 171
 	unit type   : 18 (sniper)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -234,6 +243,7 @@ Unit count: 2
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 1
 	position    : (1, 3)
 
@@ -319,11 +329,12 @@ Formation count: 2
 #00100 A (FID 00000)
 	leader      : A0 SO Komander (Col Kulebyaka)
 	higher cmd  : A0 SO Komander (Col Kulebyaka)
+	OOBrid      : 1
 	status      : 1 (core)
 	force status: 4 (elite recon)
 	org type    : force HQ
 	type        : Soviet HQ
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		A0 SO Komander (Col Kulebyaka)
 
@@ -352,11 +363,12 @@ Formation count: 2
 #00101 B (FID 00001)
 	leader      : B0 Snajper (2Lt Tatlin)
 	higher cmd  : A0 SO Komander (Col Kulebyaka)
+	OOBrid      : 108
 	status      : 0 (regular)
 	force status: 4 (elite recon)
 	org type    : platoon
 	type        : Sniper
-	unit count  : 1
+	unit count  : 1 (0 core, 0 support, 1 regular)
 	unit list   :
 		B0 Snajper (2Lt Tatlin)
 
@@ -391,7 +403,10 @@ Unit count: 2
 #00400 (00100:00000,000) A0   SO Komander (SO Komander)
 	leader      : Kulebyaka, rank 9 (Col)
 	formation   : A: core elite recon force HQ
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 245
 	unit type   : 237 (force HQ)
 	unit class  : 9 (C&C)
 	kills       : 0
@@ -417,6 +432,7 @@ Unit count: 2
 	fire control: 0
 	infrared    : 0
 	swim        : 0
+	cost        : 190
 	type group  : 2
 	position    : (28, 28)
 
@@ -427,7 +443,10 @@ Unit count: 2
 #00401 (00101:00001,000) B0   Snajper (Snajper)
 	leader      : Tatlin, rank 4 (2Lt)
 	formation   : B: regular elite recon platoon
+	core        : no
+	detected as : 1 (UNIT)
 	OOB         : 81 (    Soviet)
+	OOBrid      : 133
 	unit type   : 18 (sniper)
 	unit class  : 0 (infantry)
 	kills       : 0
@@ -453,6 +472,7 @@ Unit count: 2
 	fire control: 4
 	infrared    : 0
 	swim        : 0
+	cost        : 20
 	type group  : 3
 	position    : (28, 26)
 

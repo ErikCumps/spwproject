@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>SP:WaW</game>
+    <battle>campaign</battle>
+</type>
+<game>
+    <comment>
+        <title>test_30x30</title>
+    </comment>
+    <battle>
+        <date>1939/09/23 16:05</date>
+        <turn>
+            <current>1</current>
+            <max>12</max>
+        </turn>
+        <status>in progress</status>
+        <location>Forest</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>28</hexes>
+            <meters>1400</meters>
+        </visibility>
+        <player1>
+            <oob>70</oob>
+            <nation>Germany</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>81</oob>
+            <nation>Soviet Union</nation>
+            <mission>advance</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>14</count>
+                <points>805</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>7</count>
+                <points>700</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>30</width>
+                <height>30</height>
+            </hexes>
+            <kilometers>
+                <width>1.500</width>
+                <height>1.500</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>0</flag>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>70</OOB>
+    <nation>Germany</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>81</OOB>
+    <nation>Soviet Union</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
