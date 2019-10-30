@@ -2,7 +2,7 @@
  * The SPWaW Library - utility code: handling AZS strings.
  * (these are max length, possibly zero-terminated, ascii strings)
  *
- * Copyright (C) 2007-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
