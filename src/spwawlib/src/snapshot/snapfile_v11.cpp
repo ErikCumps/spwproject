@@ -97,6 +97,8 @@ raw2tfs (SPWAW_TFS &tfs, BYTE tfs1, BYTE tfs2, BYTE tfs3, BYTE tfs4)
 	SPWAW_TFSBITS3	*tfsbits3 = (SPWAW_TFSBITS3 *)&tfs3;
 	SPWAW_TFSBITS4	*tfsbits4 = (SPWAW_TFSBITS4 *)&tfs4;
 
+	memset (&tfs, 0, sizeof(tfs));
+
 	tfs.tfs.field		= tfsbits1->has_field;
 	tfs.tfs.slope		= tfsbits1->has_slope;
 	tfs.tfs.trees		= tfsbits1->has_trees;

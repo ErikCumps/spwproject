@@ -117,6 +117,7 @@ typedef struct s_SNAP_MAPDATA_V11 {
 	BYTE		conn_road1;		/* Hex primary road connections						*/
 	BYTE		conn_road2;		/* Hex secondary road connections					*/
 	BYTE		conn_rail;		/* Hex railroad connections						*/
+	BYTE		_padding[1];
 } SNAP_MAPDATA_V11;
 
 typedef struct s_SNAP_OOBHDR_V11 {
