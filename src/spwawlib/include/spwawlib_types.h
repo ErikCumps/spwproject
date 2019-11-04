@@ -80,6 +80,14 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date_add		(SPWAW_DATE *base, SPWAW_PERIOD 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_period_delta	(SPWAW_PERIOD *base, SPWAW_PERIOD *item, SPWAW_PERIOD *delta);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_period_add	(SPWAW_PERIOD *base, SPWAW_PERIOD *add, SPWAW_PERIOD *sum);
 
+extern SPWAWLIB_API int		SPWAW_bdate_cmp		(SPWAW_BATTLE_DATE *a, SPWAW_BATTLE_DATE *b);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_bdate2str		(SPWAW_BATTLE_DATE *bdate, char *buf, int len);
+#define	SPWAW_BDATE(d_,v_)	char v_[128]; SPWAW_bdate2str (&(d_), v_, sizeof (v_))
+
+extern SPWAWLIB_API int		SPWAW_tdate_cmp		(SPWAW_TURN_DATE *a, SPWAW_TURN_DATE *b);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_tdate2str		(SPWAW_TURN_DATE *tdate, char *buf, int len);
+#define	SPWAW_TDATE(d_,v_)	char v_[128]; SPWAW_tdate2str (&(d_), v_, sizeof (v_))
+
 /* SPWAW terrain */
 typedef enum e_SPWAW_TERRAIN {
 	SPWAW_TDESERT = 0,

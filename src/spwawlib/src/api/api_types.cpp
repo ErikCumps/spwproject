@@ -448,6 +448,71 @@ isValidPeriod (SPWAW_PERIOD *period)
 	return (period && isValidStamp(&(period->stamp)));
 }
 
+SPWAWLIB_API int
+SPWAW_bdate_cmp (SPWAW_BATTLE_DATE *a, SPWAW_BATTLE_DATE *b)
+{
+	if (!a || !b) {
+		return ((!a&&!b)?0:((a&&!b)?-1:1));
+	}
+
+	SPWAW_TIMESTAMP sa, sb;
+	SPWAW_date2stamp (&(a->date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
+	SPWAW_date2stamp (&(b->date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
+
+	return ((a->btlidx==b->btlidx)?((sa==sb)?0:((sa<sb)?-1:1)):((a->btlidx<b->btlidx)?-1:1));
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_bdate2str (SPWAW_BATTLE_DATE *bdate, char *buf, int len)
+{
+	char	bbdate[64];
+
+	CNULLARG (bdate);
+
+	if (!buf || !len) return (SPWERR_OK);
+	memset (buf, 0, len);
+
+	SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate));
+	snprintf (buf, len - 1, "%s<B>%05u", bbdate, bdate->btlidx);
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API int
+SPWAW_tdate_cmp (SPWAW_TURN_DATE *a, SPWAW_TURN_DATE *b)
+{
+	if (!a || !b) {
+		return ((!a&&!b)?0:((a&&!b)?-1:1));
+	}
+
+	SPWAW_TIMESTAMP sa, sb;
+	SPWAW_date2stamp (&(a->date), &sa); sa = SPWAW_PURE_TIMESTAMP(sa);
+	SPWAW_date2stamp (&(b->date), &sb); sb = SPWAW_PURE_TIMESTAMP(sb);
+
+	if (sa == sb) {
+		return ((a->turn==b->turn)?0:((a->turn<b->turn)?-1:1));
+	} else {
+		return ((sa==sb)?0:((sa<sb)?-1:1));
+	}
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_tdate2str (SPWAW_TURN_DATE *tdate, char *buf, int len)
+{
+	char	btdate[64];
+
+	CNULLARG (tdate);
+
+	if (!buf || !len) return (SPWERR_OK);
+	memset (buf, 0, len);
+
+	SPWAW_date2str (&(tdate->date), btdate, sizeof (btdate));
+	snprintf (buf, len - 1, "%s<T>%05u", btdate, tdate->turn);
+
+	return (SPWERR_OK);
+
+}
+
 SPWAWLIB_API const char *
 SPWAW_rank2str (SPWAW_RANK id)
 {
