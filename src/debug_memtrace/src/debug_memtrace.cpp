@@ -349,7 +349,7 @@ debug_memtrace_realloc (const char *file, unsigned long line, const char *func, 
 	QueryPerformanceCounter (&pc);
 	ptr = realloc (p, s);
 	if (ptr || (p && !s)) {
-		log_free (file, line, func, p, pc, "realloc");
+		if (p) log_free (file, line, func, p, pc, "realloc");
 		if (ptr) log_alloc (file, line, func, s, ptr, pc, "realloc");
 	}
 	return (ptr);
