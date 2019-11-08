@@ -8,7 +8,6 @@
 
 #include "stdafx.h"
 #include <spwawlib_api.h>
-//#include "spwoob/spwoob_list.h"
 #include "dossier/dossier_file_v11.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
@@ -42,11 +41,13 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 	hdr->gametype	= SPWAW_GAME_TYPE_SPWAW;
 
 	hdr->props.OOB		= (BYTE)(hdr_v11->OOB & 0xFF);
-	hdr->props.fcnt		= hdr_v11->fcnt;
-	hdr->props.ucnt		= hdr_v11->ucnt;
 	hdr->props.start	= SPWAW_TIMESTAMP_EMPTY;
 	hdr->props.end		= SPWAW_TIMESTAMP_EMPTY;
 	hdr->props.maxbtlcnt	= 0;
+	hdr->props.ifcnt	= hdr_v11->fcnt;
+	hdr->props.iucnt	= hdr_v11->ucnt;
+	hdr->props.cfcnt	= hdr_v11->fcnt;
+	hdr->props.cucnt	= hdr_v11->ucnt;
 
 
 handle_error:

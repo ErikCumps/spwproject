@@ -130,7 +130,7 @@ GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, char *buf, unsigned int size, 
 	nb = b->next ? b->next : b;
 
 	icnt = 0;
-	for (int i=0; i<b->dossier->props.ucnt; i++) {
+	for (int i=0; i<b->dossier->props.iucnt; i++) {
 		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
 		if (b->ra[i].rpl) {
 			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
@@ -152,7 +152,7 @@ GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, char *buf, unsigned int size,
 	nb = b->next ? b->next : b;
 
 	icnt = 0;
-	for (int i=0; i<b->dossier->props.ucnt; i++) {
+	for (int i=0; i<b->dossier->props.iucnt; i++) {
 		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
 		if ((b->ra[i].dst != i) && !b->ra[i].rpl &&(b->ra[i].src != SPWAW_BADIDX) && (b->ra[i].dst != SPWAW_BADIDX)) {
 			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
@@ -178,7 +178,7 @@ GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, bool promo, char *buf, unsigned 
 
 	icnt = 0;
 
-	for (int i=0; i<b->dossier->props.ucnt; i++) {
+	for (int i=0; i<b->dossier->props.iucnt; i++) {
 		if (b->ra[i].rpl || (b->ra[i].dst == SPWAW_BADIDX)) continue;
 
 		up = b->info_sob->pbir_core.uir[i].snap;
@@ -212,7 +212,7 @@ GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int 
 
 	icnt = 0;
 
-	for (int i=0; i<b->dossier->props.ucnt; i++) {
+	for (int i=0; i<b->dossier->props.iucnt; i++) {
 		idx = i;
 		up = b->info_sob->pbir_core.uir[idx].snap;
 
@@ -293,13 +293,13 @@ GuiRptBtlOvr::refresh (void)
 			SPWAW_HEX2M (p->tfirst->snap->game.battle.data.visibility));
 		str.printf ("\n");
 
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
+		str.printf ("%s force consists of %u units in %u formations (%u men).\n",
 			p->snap->game.battle.strings.people_p1,
-			p->info_sob->pbir_battle.ucnt, p->info_sob->pbir_battle.fcnt,
+			p->props.pb_ucnt, p->props.pb_fcnt,
 			p->snap->OOBp1.battle.stats.hcnt);
-		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
+		str.printf ("%s force consists of %u units in %u formations (%u men).\n",
 			p->snap->game.battle.strings.people_p2,
-			p->info_sob->obir_battle.ucnt, p->info_sob->obir_battle.fcnt,
+			p->props.ob_ucnt, p->props.ob_fcnt,
 			p->snap->OOBp2.battle.stats.hcnt);
 		str.printf ("\n");
 

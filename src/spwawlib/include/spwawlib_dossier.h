@@ -19,9 +19,7 @@
 #include <spwawlib_snaplist.h>
 #include <spwawlib_spwoob_list.h>
 
-/*******************************/
-/***   MAIN DATA STRUCTURE   ***/
-/*******************************/
+/* Forward declarations for convenience */
 
 typedef struct s_SPWAW_DOSSIER_UIR	SPWAW_DOSSIER_UIR;
 typedef struct s_SPWAW_BTURN		SPWAW_BTURN;
@@ -79,6 +77,18 @@ typedef struct s_SPWAW_DOSSIER_BURA {
 	bool			rpl;				/* Unit replacement flag			*/
 } SPWAW_DOSSIER_BURA;
 
+/* SPWAW dossier: battle properties */
+typedef struct s_SPWAW_DOSSIER_BTLPROPS {
+	USHORT			pc_fcnt;			/* Player core force formations count		*/
+	USHORT			pc_ucnt;			/* Player core force units count		*/
+	USHORT			ps_fcnt;			/* Player support force formations count	*/
+	USHORT			ps_ucnt;			/* Player support force units count		*/
+	USHORT			pb_fcnt;			/* Player battle force formations count		*/
+	USHORT			pb_ucnt;			/* Player battle force units count		*/
+	USHORT			ob_fcnt;			/* Player battle force formations count		*/
+	USHORT			ob_ucnt;			/* Player battle force units count		*/
+} SPWAW_DOSSIER_BTLPROPS;
+
 /* SPWAW dossier: battle data */
 struct s_SPWAW_BATTLE {
 	char			*name;				/* Optional battle name				*/
@@ -102,16 +112,19 @@ struct s_SPWAW_BATTLE {
 	SPWAW_DOSSIER_BIRS	*info_eob;			/* Battle info record sets at end of battle	*/
 	SPWAW_DOSSIER_BURA	*ra;				/* Unit reassignment records			*/
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
+	SPWAW_DOSSIER_BTLPROPS	props;				/* Battle properties				*/
 };
 
 /* SPWAW dossier: campaign properties */
 typedef struct s_SPWAW_DOSSIER_CMPPROPS {
 	BYTE			OOB;				/* Player OOB ID				*/
-	USHORT			fcnt;				/* Player core formations count			*/
-	USHORT			ucnt;				/* Player core units count			*/
 	SPWAW_DATE		start;				/* Campaign start date				*/
 	SPWAW_DATE		end;				/* Campaign end date				*/
 	USHORT			maxbtlcnt;			/* Campaign maximum battles count		*/
+	USHORT			ifcnt;				/* Player initial core formations count		*/
+	USHORT			iucnt;				/* Player initial core units count		*/
+	USHORT			cfcnt;				/* Player current core formations count		*/
+	USHORT			cucnt;				/* Player current core units count		*/
 } SPWAW_DOSSIER_CMPPROPS;
 
 /* SPWAW dossier: campaign stats */

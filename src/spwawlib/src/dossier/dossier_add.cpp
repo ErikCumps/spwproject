@@ -304,8 +304,11 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	rc = battle_add_bturn (b, snap, stab, &t);
 	ROE ("battle_add_bturn()");
 
-	// Set dossier data if this was the first battle added
-	if (empty) dossier_set_campaign_props (ptr, b);
+	rc = dossier_set_battle_props (b);
+	ROE ("dossier_set_battle_props()");
+
+	rc = dossier_update_campaign_props (ptr);
+	ROE ("dossier_update_campaign_props()");
 
 	rc = dossier_update_battle_info (b);
 	ROE ("dossier_update_battle_info()");

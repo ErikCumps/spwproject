@@ -12,6 +12,7 @@
 #include "dossier/dossier_file.h"
 #include "dossier/dossier_file_v10.h"
 #include "dossier/dossier_file_v11.h"
+#include "dossier/dossier_file_v12.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
@@ -164,10 +165,12 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		if (p->tcnt) p->snap = p->tlist[0]->snap;
 		p->bdate.btlidx = p->tcnt ? p->tlist[0]->snap->game.btlidx : SPWAW_NOBTLIDX;
 
-		// Set dossier data if this was the first battle loaded
-		if (i == 0) dossier_set_campaign_props (dst, p);
+		rc = dossier_set_battle_props (p);
+		ERRORGOTO ("dossier_set_battle_props()", handle_error);
 
-		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->props.ucnt); COOMGOTO (p->ra, "RA list", handle_error);
+		// FIXME!
+		if (dst->props.iucnt == 0) dst->props.iucnt = p->props.pc_ucnt;
+		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->props.iucnt); COOMGOTO (p->ra, "RA list", handle_error);
 
 		bseekset (fd, pos + hdrs[i].ra.data);
 
@@ -184,8 +187,11 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	dst->bfirst = dst->blist[0];
 	dst->blast  = dst->blist[dst->bcnt-1];
 
+	rc = dossier_update_campaign_props (dst);
+	ERRORGOTO ("dossier_update_campaign_props()", handle_error);
+
 	rc = dossier_update_dossier_stats (dst);
-	ROE ("dossier_update_dossier_stats()");
+	ERRORGOTO ("dossier_update_dossier_stats()", handle_error);
 
 handle_error:
 	// dossier cleanup done by caller
@@ -225,11 +231,13 @@ dossier_load_campaign_props (DOS_CMPPROPS *props, SPWAW_DOSSIER_CMPPROPS *dst)
 	CNULLARG (props); CNULLARG(dst);
 
 	dst->OOB	= props->OOB;
-	dst->fcnt	= props->fcnt;
-	dst->ucnt	= props->ucnt;
 	SPWAW_stamp2date (&(props->start), &(dst->start));
 	SPWAW_stamp2date (&(props->end), &(dst->end));
 	dst->maxbtlcnt	= props->maxbtlcnt;
+	dst->ifcnt	= props->ifcnt;
+	dst->iucnt	= props->iucnt;
+	dst->cfcnt	= props->cfcnt;
+	dst->cucnt	= props->cucnt;
 
 	return (SPWERR_OK);
 }
@@ -260,7 +268,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	/* We are now backwards compatible with versions 10 and 11 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
-		ERRORGOTO ("dossier_load_v10_info_header(dossier hdr)", handle_error);
+		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
 	} else if (mvhdr.version == DOSS_VERSION_V11) {
 		rc = dossier_load_v11_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v11_header(dossier hdr)", handle_error);
@@ -322,13 +330,16 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with versions 10 and 11 */
+	/* We are now backwards compatible with versions 10, 11 and 12 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
 	} else if (mvhdr.version == DOSS_VERSION_V11) {
 		rc = dossier_load_v11_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v11_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V12) {
+		rc = dossier_load_v12_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v12_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);

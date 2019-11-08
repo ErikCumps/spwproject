@@ -192,8 +192,8 @@ report_GMD (MDLD_TREE_ITEM *p)
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] game type    = %s\n", SPWAW_gametype2str(p->data.d->gametype));
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] oobdir       = %s\n", p->data.d->oobdir);
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] OOB          = %u\n", p->data.d->props.OOB);
-				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] fcnt         = %u\n", p->data.d->props.fcnt);
-				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] ucnt         = %u\n", p->data.d->props.ucnt);
+				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] ifcnt/iucnt  = %u/%u\n", p->data.d->props.ifcnt, p->data.d->props.iucnt);
+				DBG_log	("[MDLD_TREE_ITEM_DOSSIER] cfcnt/cucnt  = %u/%u\n", p->data.d->props.cfcnt, p->data.d->props.cucnt);
 				SPWAW_date2str (&(p->data.d->props.start), &s);
 				DBG_log ("[MDLD_TREE_ITEM_DOSSIER] start        = %s\n", s); free(s);
 				SPWAW_date2str (&(p->data.d->props.end), &s);
@@ -209,16 +209,20 @@ report_GMD (MDLD_TREE_ITEM *p)
 		case MDLD_TREE_BATTLE:
 			DBG_log ("[MDLD_TREE_ITEM] BATTLE 0x%8.8x:\n", p->data.b);
 			if (p->data.b) {
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] name     = %s\n", p->data.b->name);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] btlidx   = %d\n", p->data.b->bdate.btlidx);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] name          = %s\n", p->data.b->name);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] btlidx        = %d\n", p->data.b->bdate.btlidx);
 				SPWAW_date2str (&(p->data.b->bdate.date), &s);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] date     = %s\n", s); free (s);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] location = %s\n", p->data.b->location);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p1   = %u\n", p->data.b->OOB_p1);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p2   = %u\n", p->data.b->OOB_p2);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p1  = %s\n", p->data.b->miss_p1);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p2  = %s\n", p->data.b->miss_p2);
-				DBG_log ("[MDLD_TREE_ITEM_BATTLE] turns    = %u\n", p->data.b->tcnt);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] date          = %s\n", s); free (s);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] location      = %s\n", p->data.b->location);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p1        = %u\n", p->data.b->OOB_p1);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] OOB_p2        = %u\n", p->data.b->OOB_p2);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p1       = %s\n", p->data.b->miss_p1);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] miss_p2       = %s\n", p->data.b->miss_p2);
+				DBG_log ("[MDLD_TREE_ITEM_BATTLE] turns         = %u\n", p->data.b->tcnt);
+				DBG_log	("[MDLD_TREE_ITEM_BATTLE] pc fcnt/ucnt  = %u/%u\n", p->data.b->props.pc_fcnt, p->data.b->props.pc_ucnt);
+				DBG_log	("[MDLD_TREE_ITEM_BATTLE] ps fcnt/ucnt  = %u/%u\n", p->data.b->props.ps_fcnt, p->data.b->props.ps_ucnt);
+				DBG_log	("[MDLD_TREE_ITEM_BATTLE] pb fcnt/ucnt  = %u/%u\n", p->data.b->props.pb_fcnt, p->data.b->props.pb_ucnt);
+				DBG_log	("[MDLD_TREE_ITEM_BATTLE] ob fcnt/ucnt  = %u/%u\n", p->data.b->props.ob_fcnt, p->data.b->props.ob_ucnt);
 			}
 			break;
 		case MDLD_TREE_BTURN:

@@ -127,7 +127,8 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		ERRORGOTO ("dossier_save_battle_turns()", handle_error);
 
 		hdrs[idx].ra.data = bseekget (fd) - p0;
-		hdrs[idx].ra.size = src->props.ucnt * sizeof (SPWAW_DOSSIER_BURA);
+		// FIXME!
+		hdrs[idx].ra.size = src->props.iucnt * sizeof (SPWAW_DOSSIER_BURA);
 
 		if (hdrs[idx].ra.size) {
 			cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);
@@ -159,11 +160,13 @@ dossier_save_campaign_props (SPWAW_DOSSIER *src, DOS_CMPPROPS *props)
 	CNULLARG(src); CNULLARG (props);
 
 	props->OOB	 = src->props.OOB;
-	props->fcnt	 = src->props.fcnt;
-	props->ucnt	 = src->props.ucnt;
 	SPWAW_date2stamp (&(src->props.start), &(props->start));
 	SPWAW_date2stamp (&(src->props.end), &(props->end));
 	props->maxbtlcnt = src->props.maxbtlcnt;
+	props->ifcnt	= src->props.ifcnt;
+	props->iucnt	= src->props.iucnt;
+	props->cfcnt	= src->props.cfcnt;
+	props->cucnt	= src->props.cucnt;
 
 	return (SPWERR_OK);
 }

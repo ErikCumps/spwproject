@@ -15,7 +15,7 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	12
+#define	DOSS_VERSION	13
 
 #pragma pack(push, r1, 1)
 
@@ -26,11 +26,13 @@ typedef struct s_DOS_MV_HEADER {
 
 typedef struct s_DOS_CMPPROPS {
 	BYTE		OOB;			/* OOB ID									*/
-	USHORT		fcnt;			/* Player core formations count							*/
-	USHORT		ucnt;			/* Player core units count							*/
 	SPWAW_TIMESTAMP	start;			/* Campaign start date								*/
 	SPWAW_TIMESTAMP	end;			/* Campaign end date								*/
 	USHORT		maxbtlcnt;		/* Campaign maximum battles count						*/
+	USHORT		ifcnt;			/* Player initial core formations count						*/
+	USHORT		iucnt;			/* Player initial core units count						*/
+	USHORT		cfcnt;			/* Player current core formations count						*/
+	USHORT		cucnt;			/* Player current core units count						*/
 } DOS_CMPPROPS;
 
 typedef struct s_DOS_HEADER {

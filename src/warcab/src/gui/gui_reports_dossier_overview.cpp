@@ -111,7 +111,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsign
 
 	icnt = 0;
 
-	for (i=0; i<d->props.ucnt; i++) {
+	for (i=0; i<d->props.iucnt; i++) {
 		USHORT	idx, nidx;
 		bool	skip, report;
 
@@ -171,7 +171,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned
 
 	icnt = 0;
 
-	for (i=0; i<d->props.ucnt; i++) {
+	for (i=0; i<d->props.iucnt; i++) {
 		USHORT	idx, nidx;
 		bool	skip, report;
 
@@ -296,8 +296,11 @@ GuiRptDsrOvr::refresh (bool forced)
 		str.printf ("\n");
 
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
-			str.printf ("%s core force consists of %u units in %u formations.",
-				SPWAW_oob_people (p->gametype, p->props.OOB), p->props.ucnt, p->props.fcnt);
+			str.printf ("Initial %s core force consists of %u units in %u formations.\n",
+				SPWAW_oob_people (p->gametype, p->props.OOB), p->props.iucnt, p->props.ifcnt);
+			str.printf ("Current core force consists of %u units in %u formations.",
+				p->props.cucnt, p->props.cfcnt);
+
 		} else {
 			str.printf ("Campaign tracking is not available for this dossier.");
 		}
