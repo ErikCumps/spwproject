@@ -27,6 +27,7 @@ extern SPWAW_ERROR	dossier_del			(SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle);
 extern SPWAW_ERROR	dossier_savelist		(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
 extern SPWAW_ERROR	dossier_snaplist		(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
 
+extern SPWAW_BATTLE *	dossier_find_battle		(SPWAW_DOSSIER *ptr, SPWAW_BATTLE_DATE *bdate);
 extern SPWAW_BATTLE *	dossier_find_battle		(SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap);
 extern SPWAW_BTURN *	dossier_find_bturn		(SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap);
 extern bool		battle_contains_bturn		(SPWAW_BATTLE *ptr, SPWAW_BTURN *bturn);
@@ -38,5 +39,13 @@ extern SPWAW_ERROR	dossier_update_battle_rainfo	(SPWAW_BATTLE *src, SPWAW_BATTLE
 
 extern SPWAW_ERROR	dossier_set_campaign_props	(SPWAW_DOSSIER *ptr, SPWAW_BATTLE *battle);
 extern SPWAW_ERROR	dossier_update_dossier_stats	(SPWAW_DOSSIER *ptr);
+
+typedef struct s_BIRURR {
+	SPWAW_BATTLE	*b;
+	USHORT		i;
+} BIRURR;
+
+extern SPWAW_ERROR	dossier_search_back	(SPWAW_BATTLE *fb, USHORT fi, BIRURR *rr);
+extern SPWAW_ERROR	dossier_search_back	(SPWAW_BATTLE *fb, USHORT fi, char *name, BIRURR *rr);
 
 #endif	/* DOSSIER_H */

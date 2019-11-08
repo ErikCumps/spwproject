@@ -16,6 +16,17 @@
 #include "common/internal.h"
 
 SPWAW_BATTLE *
+dossier_find_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE_DATE *bdate)
+{
+	DWORD		i;
+
+	for (i=0; i<ptr->bcnt; i++) {
+		if (SPWAW_bdate_cmp (&(ptr->blist[i]->bdate), bdate) == 0) return (ptr->blist[i]);
+	}
+	return (NULL);
+}
+
+SPWAW_BATTLE *
 dossier_find_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap)
 {
 	DWORD		i;
