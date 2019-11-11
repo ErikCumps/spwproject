@@ -21,5 +21,11 @@
 /* Set to 1 to enable unit/formation detection tracing */
 #define	UFDTRACING	1
 
+/* Set to 1 to enable RA tracing */
+#define	RATRACING	0
+
+/* Set to 1 to enable tracing of RA scoring */
+#define	RASCORETRACING	0
+
 #endif	/* BUILD_OPTIONS_H */
 

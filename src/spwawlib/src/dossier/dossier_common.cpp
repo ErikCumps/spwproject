@@ -214,131 +214,209 @@ dossier_update_battle_info (SPWAW_BATTLE *ptr)
 }
 
 static void
-dossier_update_battle_rainfo_simple (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
+prepare_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 {
 	USHORT	i;
 
-	if (src == NULL) {
-		for (i=0; i<dst->props.pc_ucnt; i++) {
-			dst->ra[i].src = SPWAW_BADIDX;
-		}
-	}
-	if (dst == NULL) {
+	if (src != NULL) {
 		for (i=0; i<src->props.pc_ucnt; i++) {
 			src->ra[i].dst = SPWAW_BADIDX;
 			src->ra[i].rpl = false;
 		}
 	}
+
+	if (dst != NULL) {
+		for (i=0; i<dst->props.pc_ucnt; i++) {
+			dst->ra[i].src = SPWAW_BADIDX;
+		}
+	}
+}
+
+static bool
+string_match (char *n1, char *n2)
+{
+	int s1 = strlen (n1);
+	int s2 = strlen (n2);
+
+	if (s1 != s2) return (false);
+
+	while (s1) {
+		s1--;
+		if (n1[s1] != n2[s1]) return (false);
+	}
+
+	return (true);
+}
+
+static int
+rating_worsened (SPWAW_DOSSIER_UIR *sup, SPWAW_DOSSIER_UIR *dup)
+{
+	int	d = 0;
+	int	dp;
+
+	/* Rally */
+	dp = (dup->snap->data.ral - sup->snap->data.ral); if (dp < 0) d += 1;
+
+	/* Infantry, Armour and Artillery */
+	dp = (dup->snap->data.inf - sup->snap->data.inf); if (dp < 0) d += 1;
+	dp = (dup->snap->data.arm - sup->snap->data.arm); if (dp < 0) d += 1;
+	dp = (dup->snap->data.art - sup->snap->data.art); if (dp < 0) d += 1;
+
+	return (d);
+}
+
+static int
+stats_worsened (SPWAW_DOSSIER_UIR *sup, SPWAW_DOSSIER_UIR *dup)
+{
+	int	d = 0;
+	int	dp;
+
+	/* Experience and Morale */
+	dp = (dup->snap->data.exp - sup->snap->data.exp); if (dp < 0) d += 1;
+	dp = (dup->snap->data.mor - sup->snap->data.mor); if (dp < 0) d += 1;
+
+	/* Kills */
+	dp = (dup->snap->attr.gen.kills - sup->snap->attr.gen.kills); if (dp < 0) d += 1;
+
+	return (d);
+}
+
+static double
+match_score (SPWAW_BATTLE *src, USHORT si, SPWAW_BATTLE *dst, USHORT di)
+{
+	SPWAW_DOSSIER_UIR	*sup, *dup;
+	USHORT			sfi, dfi;
+	SPWAW_DOSSIER_FIR	*sfp, *dfp;
+	int			score, w;
+
+	sup = &(src->info_sob->pbir_core.uir[si]);
+	sfi = sup->fptr->snap->data.idx;
+	sfp = &(src->info_sob->pbir_core.fir[sfi]);
+
+	dup = &(dst->info_sob->pbir_core.uir[di]);
+	dfi = dup->fptr->snap->data.idx;
+	dfp = &(dst->info_sob->pbir_core.fir[dfi]);
+
+	RASCORETRACE2 (" \\ calculating match score for si=%05.5d, di=%05.5d\n", si, di);
+	RASCORETRACE2 ("  \\ Dst (%s, %s)\n", dup->snap->strings.uid, dup->snap->data.lname);
+
+	/* Match scoring uses the following heuristics:
+	 *
+	 * If the unit is alive:
+	 *     10 points for lname match
+	 *     10 points for FID match
+	 *     10 points for UID match (? special for winSPWW2 and if FSID==0 ?)
+	 *     deduct worsened ratings (ral/inf/arm/art)
+	 *     deduct worsened stats distance (exp/mor/kills)
+	 *
+	 * If the unit is dead:
+	 *     5 points for FID match
+	 */
+
+	score = 0;
+	if (src->info_eob->pbir_core.uir[si].snap->data.alive) {
+		if (string_match (sup->snap->data.lname, dup->snap->data.lname)) {
+			score += 10;
+			RASCORETRACE1 ("   \\+-- lname match! score: %d\n", score);
+		}
+		if (sup->fptr->snap->data.FID == dup->fptr->snap->data.FID) {
+			score += 10;
+			RASCORETRACE1 ("   \\+-- FID match! score: %d\n", score);
+		}
+		/* special rule for winSPWW2 games */
+		if (src->dossier->gametype == SPWAW_GAME_TYPE_WINSPWW2) {
+			if (sup->snap->data.FSID == 0) {
+				if (string_match (sup->snap->strings.uid, dup->snap->strings.uid)) {
+					score += 10;
+					RASCORETRACE1 ("   \\+-- (winSPWW2) UID match! score: %d\n", score);
+				}
+			}
+		}
+		w = rating_worsened (sup, dup); score -= w;
+		RASCORETRACE2 ("   \\+-- rating worsened: %d - score: %d\n", w, score);
+		w = stats_worsened (sup, dup); score -= w;
+		RASCORETRACE2 ("   \\+-- stats worsened: %d - score: %d\n", w, score);
+	} else {
+		if (sup->fptr->snap->data.FID == dup->fptr->snap->data.FID) {
+			score += 5;
+			RASCORETRACE1 ("   \\+-- FID match! score: %d\n", score);
+		}
+	}
+
+	RASCORETRACE1 ("    +++ final score: %d\n", score);
+	return (score);
 }
 
 // FIXME!!!
 SPWAW_ERROR
 dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 {
-	USHORT			f, u, i, j, k;
-	SPWAW_DOSSIER_FIR	*sfp, *dfp;
+	bool			*srcf, *dstf;
+	USHORT			i, j;
+	double			score, s;
+	USHORT			si;
 	SPWAW_DOSSIER_UIR	*sup;
-	SPWAW_DOSSIER_UIR	*p;
 
 	if ((src == NULL) && (dst == NULL)) RWE (SPWERR_NULLARG, "unexpected NULL values for src and dst arguments");
 
-	if ((src == NULL) || (dst == NULL)) {
-		dossier_update_battle_rainfo_simple (src, dst);
-	} else {
-		log ("### dossier_update_battle_rainfo ###\n");
-		for (i=0; i<src->props.pc_ucnt; i++) {
-			src->ra[i].dst = SPWAW_BADIDX;
-			src->ra[i].rpl = false;
-		}
-		for (i=0; i<dst->props.pc_ucnt; i++) {
-			dst->ra[i].src = SPWAW_BADIDX;
-		}
+	prepare_battle_rainfo (src, dst);
 
-		for (f=0; f<src->props.pc_fcnt; f++) {
-			sfp = &(src->info_sob->pbir_core.fir[f]); dfp = &(dst->info_sob->pbir_core.fir[f]);
-			log ("Src formation #%d: sfp=0x%8.8x = %s\n", f, sfp, sfp->snap->strings.name);
-			log ("Dst formation #%d: dfp=0x%8.8x = %s\n", f, dfp, dfp->snap->strings.name);
+	if ((src == NULL) || (dst == NULL)) return (SPWERR_OK);
 
-			/* first assign live units */
-			log ("/ Assigning live units:\n");
-			for (u=0; u<sfp->snap->data.ucnt; u++) {
-				i = sfp->snap->data.ulist[u]->data.idx;
-				if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
+	RATRACE0 ("### dossier_update_battle_rainfo ###\n");
 
-				sup = &(src->info_sob->pbir_core.uir[i]);
-				log ("| Src unit #%d: (%s, %s), ALIVE\n", i, sup->snap->strings.uid, sup->snap->data.lname);
+	safe_nalloca (srcf, bool, src->props.pc_ucnt); COOM (srcf, "src processing flags");
+	safe_nalloca (dstf, bool, dst->props.pc_ucnt); COOM (dstf, "dst processing flags");
 
-				/* find first unassigned matching unit in dst formation */
-				p = NULL; k = SPWAW_BADIDX;
-				for (j=0; j<dfp->snap->data.ucnt; j++) {
-					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir_core.uir[k]);
+	RATRACE0 ("Assigning live units:\n");
+	for (i=0; i<src->props.pc_ucnt; i++) {
+		if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
 
-					log ("| Checking dst unit #%d: (%s, %s), dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.lname, dst->ra[k].src);
-					if (strcmp (sup->snap->data.lname, p->snap->data.lname) == 0) {
-						if (dst->ra[k].src == SPWAW_BADIDX) {
-							log ("| -> found 1st match!\n");
-							break;
-						} else {
-							log ("| -> found match but target already assigned.\n");
-						}
-					} else {
-						p = NULL;
-					}
-				}
-				if (p) {
-					if (i == k)
-						log ("RESULT: assigned %d -> %d\n", i, k);
-					else
-						log ("RESULT: reassigned %d -> %d\n", i, k);
-					src->ra[i].dst = k;
-					dst->ra[k].src = i;
-				} else {
-					log ("RESULT: no match found, unit considered dead!\n");
-				}
-			}
+		sup = &(src->info_sob->pbir_core.uir[i]);
+		RATRACE3 ("| Src unit #%05.5d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.lname);
 
-			/* next process remaining (dead or assumed dead) units */
-			log ("/ Assigning remaining units:\n");
-			for (u=0; u<sfp->snap->data.ucnt; u++) {
-				i = sfp->snap->data.ulist[u]->data.idx;
-				if (src->ra[i].dst != SPWAW_BADIDX) continue;
+		score = s = -1000000; si = SPWAW_BADIDX;
+		for (j=0; j<dst->props.pc_ucnt; j++) {
+			if (dstf[j]) continue;
 
-				sup = &(src->info_sob->pbir_core.uir[i]);
-				log ("| Src unit #%d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.lname);
-
-				/* find first unassigned unit in dst formation */
-				p = NULL; k = SPWAW_BADIDX;
-				for (j=0; j<dfp->snap->data.ucnt; j++) {
-					k = dfp->snap->data.ulist[j]->data.idx;
-					p = &(dst->info_sob->pbir_core.uir[k]);
-
-					log ("| Checking dst unit #%d: (%s, %s) dst->ra[k].src = %d\n", k, p->snap->strings.uid, p->snap->data.lname, dst->ra[k].src);
-					if (dst->ra[k].src == SPWAW_BADIDX) {
-						log ("| -> found 1st unassigned unit!\n");
-						break;
-					}
-				}
-				if (p) {
-					if (i == k)
-						log ("RESULT: assigned %d -> %d\n", i, k);
-					else
-						log ("RESULT: reassigned %d -> %d\n", i, k);
-					src->ra[i].dst = k;
-					dst->ra[k].src = i;
-					//src->ra[i].rpl = true;
-					dst->ra[i].rpl = true;
-				} else {
-					log ("INTERNAL ERROR: more assigned dst units than src units!!!\n");
-					abort();
-				}
+			s = match_score (src, i, dst, j);
+			if (s > score) {
+				RATRACE3 ("| improved score for %05.5d: %.3f < %.3f\n", j, score, s);
+				score = s; si = j;
 			}
 		}
-		for (i=0; i<src->props.pc_ucnt; i++) {
-			log ("final reassignment result: src->ra[%03.3d].dst = %03.3d, dst->ra[%03.3d].src = %03.3d, src->ra[%03.3d].rpl = %d\n",
-				//i, src->ra[i].dst, i, dst->ra[i].src, i, src->ra[i].rpl);
-				i, src->ra[i].dst, i, dst->ra[i].src, i, dst->ra[i].rpl);
+
+		if (si != SPWAW_BADIDX) {
+			RATRACE2 ("| Assigned %05.5d -> %05.5d\n\n", i, si);
+			src->ra[i].dst = si;
+			dst->ra[si].src = i;
+			srcf[i] = dstf[si] = true;
 		}
+	}
+
+	RATRACE0 ("Assigning remaining dead units:\n");
+	for (i=0; i<src->props.pc_ucnt; i++) {
+		if (srcf[i]) continue;
+
+		for (j=0; j<dst->props.pc_ucnt; j++) {
+			if (dstf[j]) continue;
+
+			RATRACE2 ("| Assigned %05.5d -> %05.5d\n", i, j);
+			src->ra[i].dst = j; src->ra[i].rpl = true;
+			dst->ra[j].src = i;
+			srcf[i] = dstf[j] = true;
+			break;
+		}
+	}
+
+	for (i=0; i<src->props.pc_ucnt; i++) {
+		RATRACE3 ("final reassignment result: src->ra[%03.3d] .dst = %03.3d, .rpl = %d\n",
+			i, src->ra[i].dst, src->ra[i].rpl);
+
+	}
+	for (i=0; i<dst->props.pc_ucnt; i++) {
+		RATRACE2 ("final reassignment result: dst->ra[%03.3d] .src = %03.3d\n",
+			i, dst->ra[i].src);
 	}
 
 	return (SPWERR_OK);

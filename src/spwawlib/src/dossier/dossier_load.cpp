@@ -169,17 +169,24 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		ERRORGOTO ("dossier_set_battle_props()", handle_error);
 
 		// FIXME!
-		if (dst->props.iucnt == 0) dst->props.iucnt = p->props.pc_ucnt;
-		p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, dst->props.iucnt); COOMGOTO (p->ra, "RA list", handle_error);
+		if (0 /* when this is a new dossier, the RA can be loaded */) {
+			if (dst->props.iucnt == 0) dst->props.iucnt = p->props.pc_ucnt;
+			p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, p->props.pc_ucnt); COOMGOTO (p->ra, "RA list", handle_error);
 
-		bseekset (fd, pos + hdrs[i].ra.data);
+			bseekset (fd, pos + hdrs[i].ra.data);
 
-		cbio.data = (char *)(p->ra); cbio.size = hdrs[i].ra.size; cbio.comp = &(hdrs[i].ra.comp);
-		if (!cbread (fd, cbio, "compressed battle unit ra"))
-			FAILGOTO (SPWERR_FRFAILED, "cbread(compressed battle unit ra) failed", handle_error);
+			cbio.data = (char *)(p->ra); cbio.size = hdrs[i].ra.size; cbio.comp = &(hdrs[i].ra.comp);
+			if (!cbread (fd, cbio, "compressed battle unit ra"))
+				FAILGOTO (SPWERR_FRFAILED, "cbread(compressed battle unit ra) failed", handle_error);
+		}
 
 		rc = dossier_update_battle_info (p);
 		ERRORGOTO ("dossier_update_battle_info()", handle_error);
+
+		// FIXME!
+		if (1 /* when this is an old dossiwer, the RA must  be rebuilt */) {
+			dossier_update_battle_rainfo (pp, p);
+		}
 
 		dst->blist[dst->bcnt++] = pp = link_battle (p, pp);
 		p = NULL;

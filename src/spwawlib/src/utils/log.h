@@ -104,4 +104,52 @@ extern void	log_shutdown	(void);
 
 #endif	/* !UFDTRACING */
 
+#if	RATRACING
+
+#define	RATRACE0(m_)					do { log (m_); } while (0)
+#define	RATRACE1(m_,a1_)				do { log (m_, a1_); } while (0)
+#define	RATRACE2(m_,a1_,a2_)				do { log (m_, a1_, a2_); } while (0)
+#define	RATRACE3(m_,a1_,a2_,a3_)			do { log (m_, a1_, a2_, a3_); } while (0)
+#define	RATRACE4(m_,a1_,a2_,a3_,a4_)			do { log (m_, a1_, a2_, a3_, a4_); } while (0)
+#define	RATRACE5(m_,a1_,a2_,a3_,a4_,a5_)		do { log (m_, a1_, a2_, a3_, a4_, a5_); } while (0)
+#define	RATRACE6(m_,a1_,a2_,a3_,a4_,a5_,a6_)		do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_); } while (0)
+#define	RATRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_); } while (0)
+
+#else	/* !RATRACING */
+
+#define	RATRACE0(m_)
+#define	RATRACE1(m_,a1_)
+#define	RATRACE2(m_,a1_,a2_)
+#define	RATRACE3(m_,a1_,a2_,a3_)
+#define	RATRACE4(m_,a1_,a2_,a3_,a4_)
+#define	RATRACE5(m_,a1_,a2_,a3_,a4_,a5_)
+#define	RATRACE6(m_,a1_,a2_,a3_,a4_,a5_,a6_)
+#define	RATRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)
+
+#endif	/* !RATRACING */
+
+#if	RASCORETRACING
+
+#define	RASCORETRACE0(m_)				do { log (m_); } while (0)
+#define	RASCORETRACE1(m_,a1_)				do { log (m_, a1_); } while (0)
+#define	RASCORETRACE2(m_,a1_,a2_)			do { log (m_, a1_, a2_); } while (0)
+#define	RASCORETRACE3(m_,a1_,a2_,a3_)			do { log (m_, a1_, a2_, a3_); } while (0)
+#define	RASCORETRACE4(m_,a1_,a2_,a3_,a4_)		do { log (m_, a1_, a2_, a3_, a4_); } while (0)
+#define	RASCORETRACE5(m_,a1_,a2_,a3_,a4_,a5_)		do { log (m_, a1_, a2_, a3_, a4_, a5_); } while (0)
+#define	RASCORETRACE6(m_,a1_,a2_,a3_,a4_,a5_,a6_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_); } while (0)
+#define	RASCORETRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_); } while (0)
+
+#else	/* !RASCORETRACING */
+
+#define	RASCORETRACE0(m_)
+#define	RASCORETRACE1(m_,a1_)
+#define	RASCORETRACE2(m_,a1_,a2_)
+#define	RASCORETRACE3(m_,a1_,a2_,a3_)
+#define	RASCORETRACE4(m_,a1_,a2_,a3_,a4_)
+#define	RASCORETRACE5(m_,a1_,a2_,a3_,a4_,a5_)
+#define	RASCORETRACE6(m_,a1_,a2_,a3_,a4_,a5_,a6_)
+#define	RASCORETRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)
+
+#endif	/* !RASCORETRACING */
+
 #endif	/* LOG_H */
