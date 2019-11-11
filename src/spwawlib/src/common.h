@@ -24,9 +24,11 @@
 #include <math.h>
 #include <zlib.h>
 #include <errno.h>
+#include <malloc.h>
 
 #define	vsnprintf	_vsnprintf
 #define	snprintf	_snprintf
+#define	alloca		_alloca
 
 #include <debug_memtrace.h>
 
