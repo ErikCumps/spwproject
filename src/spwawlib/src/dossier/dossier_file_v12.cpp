@@ -51,3 +51,34 @@ handle_error:
 	if (hdr_v12) safe_free (hdr_v12);
 	return (rc);
 }
+
+SPWAW_ERROR
+dossier_load_v12_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	DOS_BHEADER_V12	*hdrs_v12;
+	USHORT		i;
+
+	if (!hdrs || !cnt) return (SPWERR_NULLARG);
+
+	hdrs_v12 = safe_nmalloc (DOS_BHEADER_V12, cnt); COOMGOTO (hdrs_v12, "DOS_BHEADER_V12 list", handle_error);
+
+	if (!bread (fd, (char *)hdrs_v12, cnt * sizeof (DOS_BHEADER_V12), false))
+		FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs v12)", handle_error);
+
+	/* A V12 battle header:
+	 * + lacks the battle unit reassignment list element count (at the end)
+	 *
+	 * For V12 dossiers the RA info is no longer loaded.
+	 *
+	 * So a quick copy and fix up is all we need :)
+	 */
+	for (i=0; i<cnt; i++) {
+		memcpy (&(hdrs[i]), &(hdrs_v12[i]), sizeof (DOS_BHEADER_V12));
+		hdrs[i].racnt = 0;
+	}
+
+handle_error:
+	if (hdrs_v12) safe_free (hdrs_v12);
+	return (rc);
+}

@@ -102,6 +102,7 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
 		hdrs[idx].meeting  = p->meeting;
 		hdrs[idx].btlidx   = p->bdate.btlidx;
+		hdrs[idx].racnt    = p->racnt;
 
 		rc = SPWOOB_LIST_spwoob2idx (src->oobdata, p->oobdat, &(hdrs[idx].oobdat));
 		ERRORGOTO ("SPWOOB_LIST_spwoob2idx(battle oob data)", handle_error);
@@ -127,8 +128,7 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		ERRORGOTO ("dossier_save_battle_turns()", handle_error);
 
 		hdrs[idx].ra.data = bseekget (fd) - p0;
-		// FIXME!
-		hdrs[idx].ra.size = src->props.iucnt * sizeof (SPWAW_DOSSIER_BURA);
+		hdrs[idx].ra.size = p->racnt * sizeof (SPWAW_DOSSIER_BURA);
 
 		if (hdrs[idx].ra.size) {
 			cbio.data = (char *)(p->ra); cbio.size = hdrs[idx].ra.size; cbio.comp = &(hdrs[idx].ra.comp);

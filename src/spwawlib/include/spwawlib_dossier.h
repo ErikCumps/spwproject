@@ -110,6 +110,7 @@ struct s_SPWAW_BATTLE {
 	SPWAW_BTURN		*tlast;				/* Pointer to last battle turn			*/
 	SPWAW_DOSSIER_BIRS	*info_sob;			/* Battle info record sets at start of battle	*/
 	SPWAW_DOSSIER_BIRS	*info_eob;			/* Battle info record sets at end of battle	*/
+	USHORT			racnt;				/* Unit reassignment records count		*/
 	SPWAW_DOSSIER_BURA	*ra;				/* Unit reassignment records			*/
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
 	SPWAW_DOSSIER_BTLPROPS	props;				/* Battle properties				*/

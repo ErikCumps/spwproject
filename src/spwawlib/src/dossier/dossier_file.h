@@ -66,6 +66,7 @@ typedef struct s_DOS_BHEADER {
 	ULONG		oobdat;			/* Battle OOB data index in dossier OOB list					*/
 	ULONG		name;			/* optional battle name symbol							*/
 	USHORT		btlidx;			/* Campaign battle index							*/
+	USHORT		racnt;			/* Battle unit reassignment list element count					*/
 } DOS_BHEADER;
 
 typedef struct s_DOS_THEADER {

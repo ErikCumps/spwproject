@@ -202,8 +202,9 @@ dossier_update_battle_info (SPWAW_BATTLE *ptr)
 	ptr->info_eob = &(ptr->tlast->info);
 
 	if (!ptr->ra) {
-		ptr->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, ptr->props.pc_ucnt); COOM (ptr->ra, "RA list");
-		for (i=0; i<ptr->props.pc_ucnt; i++) {
+		ptr->racnt = ptr->props.pc_ucnt;
+		ptr->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, ptr->racnt); COOM (ptr->ra, "RA list");
+		for (i=0; i<ptr->racnt; i++) {
 			ptr->ra[i].src = SPWAW_BADIDX;
 			ptr->ra[i].dst = SPWAW_BADIDX;
 			ptr->ra[i].rpl = false;
@@ -219,14 +220,14 @@ prepare_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 	USHORT	i;
 
 	if (src != NULL) {
-		for (i=0; i<src->props.pc_ucnt; i++) {
+		for (i=0; i<src->racnt; i++) {
 			src->ra[i].dst = SPWAW_BADIDX;
 			src->ra[i].rpl = false;
 		}
 	}
 
 	if (dst != NULL) {
-		for (i=0; i<dst->props.pc_ucnt; i++) {
+		for (i=0; i<dst->racnt; i++) {
 			dst->ra[i].src = SPWAW_BADIDX;
 		}
 	}
@@ -347,7 +348,6 @@ match_score (SPWAW_BATTLE *src, USHORT si, SPWAW_BATTLE *dst, USHORT di)
 	return (score);
 }
 
-// FIXME!!!
 SPWAW_ERROR
 dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 {
@@ -365,18 +365,18 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 
 	RATRACE0 ("### dossier_update_battle_rainfo ###\n");
 
-	safe_nalloca (srcf, bool, src->props.pc_ucnt); COOM (srcf, "src processing flags");
-	safe_nalloca (dstf, bool, dst->props.pc_ucnt); COOM (dstf, "dst processing flags");
+	safe_nalloca (srcf, bool, src->racnt); COOM (srcf, "src processing flags");
+	safe_nalloca (dstf, bool, dst->racnt); COOM (dstf, "dst processing flags");
 
 	RATRACE0 ("Assigning live units:\n");
-	for (i=0; i<src->props.pc_ucnt; i++) {
+	for (i=0; i<src->racnt; i++) {
 		if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
 
 		sup = &(src->info_sob->pbir_core.uir[i]);
 		RATRACE3 ("| Src unit #%05.5d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.lname);
 
 		score = s = -1000000; si = SPWAW_BADIDX;
-		for (j=0; j<dst->props.pc_ucnt; j++) {
+		for (j=0; j<dst->racnt; j++) {
 			if (dstf[j]) continue;
 
 			s = match_score (src, i, dst, j);
@@ -395,10 +395,10 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 	}
 
 	RATRACE0 ("Assigning remaining dead units:\n");
-	for (i=0; i<src->props.pc_ucnt; i++) {
+	for (i=0; i<src->racnt; i++) {
 		if (srcf[i]) continue;
 
-		for (j=0; j<dst->props.pc_ucnt; j++) {
+		for (j=0; j<dst->racnt; j++) {
 			if (dstf[j]) continue;
 
 			RATRACE2 ("| Assigned %05.5d -> %05.5d\n", i, j);
@@ -409,12 +409,12 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 		}
 	}
 
-	for (i=0; i<src->props.pc_ucnt; i++) {
+	for (i=0; i<src->racnt; i++) {
 		RATRACE3 ("final reassignment result: src->ra[%03.3d] .dst = %03.3d, .rpl = %d\n",
 			i, src->ra[i].dst, src->ra[i].rpl);
 
 	}
-	for (i=0; i<dst->props.pc_ucnt; i++) {
+	for (i=0; i<dst->racnt; i++) {
 		RATRACE2 ("final reassignment result: dst->ra[%03.3d] .src = %03.3d\n",
 			i, dst->ra[i].src);
 	}

@@ -128,6 +128,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	} else 	if (version == DOSS_VERSION_V11) {
 		rc = dossier_load_v11_battle_headers (fd, hdrs, cnt);
 		ERRORGOTO ("dossier_load_v11_battle_headers(battle hdrs)", handle_error);
+	} else 	if (version == DOSS_VERSION_V12) {
+		rc = dossier_load_v12_battle_headers (fd, hdrs, cnt);
+		ERRORGOTO ("dossier_load_v12_battle_headers(battle hdrs)", handle_error);
 	} else {
 		if (!bread (fd, (char *)hdrs, cnt * sizeof (DOS_BHEADER), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
@@ -163,15 +166,20 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		ERRORGOTO ("dossier_load_battle_turns()", handle_error);
 
 		if (p->tcnt) p->snap = p->tlist[0]->snap;
-		p->bdate.btlidx = p->tcnt ? p->tlist[0]->snap->game.btlidx : SPWAW_NOBTLIDX;
+
+		if (hdrs[i].btlidx != SPWAW_NOBTLIDX) {
+			p->bdate.btlidx = hdrs[i].btlidx;
+		} else {
+			p->bdate.btlidx = p->tcnt ? p->tlist[0]->snap->game.btlidx : SPWAW_NOBTLIDX;
+		}
 
 		rc = dossier_set_battle_props (p);
 		ERRORGOTO ("dossier_set_battle_props()", handle_error);
 
-		// FIXME!
-		if (0 /* when this is a new dossier, the RA can be loaded */) {
-			if (dst->props.iucnt == 0) dst->props.iucnt = p->props.pc_ucnt;
-			p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, p->props.pc_ucnt); COOMGOTO (p->ra, "RA list", handle_error);
+		if (version > DOSS_VERSION_V12) {
+			/* This is a modern dossier, the RA can be loaded */
+			p->racnt = hdrs[i].racnt;
+			p->ra = safe_nmalloc (SPWAW_DOSSIER_BURA, p->racnt); COOMGOTO (p->ra, "RA list", handle_error);
 
 			bseekset (fd, pos + hdrs[i].ra.data);
 
@@ -183,8 +191,8 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		rc = dossier_update_battle_info (p);
 		ERRORGOTO ("dossier_update_battle_info()", handle_error);
 
-		// FIXME!
-		if (1 /* when this is an old dossiwer, the RA must  be rebuilt */) {
+		if (version <= DOSS_VERSION_V12) {
+			/* This is an old dossier, the RA must be rebuilt */
 			dossier_update_battle_rainfo (pp, p);
 		}
 

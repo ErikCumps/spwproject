@@ -71,14 +71,17 @@ dossier_load_v11_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 
 	/* A V11 battle header:
 	 * + lacks the campaign battle index (at the end)
+	 * + lacks the battle unit reassignment list element count (at the end)
 	 *
 	 * V11 dossiers can only specify an SPWAW_NOBTLIDX (a later override to set the correct btlidx is possible).
+	 * For V11 dossiers the RA info is no longer loaded.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
 	for (i=0; i<cnt; i++) {
 		memcpy (&(hdrs[i]), &(hdrs_v11[i]), sizeof (DOS_BHEADER_V11));
 		hdrs[i].btlidx = SPWAW_NOBTLIDX;
+		hdrs[i].racnt = 0;
 	}
 
 handle_error:
