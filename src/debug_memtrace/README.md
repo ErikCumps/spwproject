@@ -1,7 +1,7 @@
 #debug_memtrace
 This is debug_memtrace, a poor man's heap memory management tracing facility.
 
-Copyright (C) 2008-2017 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2008-2019 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 

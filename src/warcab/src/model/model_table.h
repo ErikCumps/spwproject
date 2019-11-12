@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - tabled data.
  *
- * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */

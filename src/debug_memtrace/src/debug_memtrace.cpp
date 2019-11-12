@@ -1,7 +1,7 @@
 /** \file
  * debug_memtrace: tracing implementation.
  *
- * Copyright (C) 2008-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2008-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */

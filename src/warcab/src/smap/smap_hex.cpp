@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex object.
  *
- * Copyright (C) 2012-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -21,7 +21,7 @@ SmapHex::SmapHex (void)
 	unit_cnt_blue = unit_cnt_red = 0;
 	influence_blue_cnt = influence_red_cnt = 0;
 	influence_blue = influence_red = 0.0;
-	influence = SMAP_HI_NONE;		
+	influence = SMAP_HI_NONE;
 	frontline = 0;
 
 	d.ready = false;
@@ -42,7 +42,7 @@ void
 SmapHex::setHeight	(int raw_height)
 {
 	if (!d.ready) return;
-	
+
 	height = raw2ht (raw_height);
 	actheight = raw_height;
 }

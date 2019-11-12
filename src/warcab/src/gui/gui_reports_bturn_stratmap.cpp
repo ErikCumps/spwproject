@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - strategic map.
  *
- * Copyright (C) 2012-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -44,7 +44,7 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	d.save->setAutoDefault (false);
 
 	GUINEW (d.spacer1, QSpacerItem (1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), ERR_GUI_SMAP_INIT_FAILED, "spacer1");
-	
+
 	d.layout->addWidget (d.grid,		0, 0, 1, 1);
 	d.layout->addWidget (d.vichexes,	0, 1, 1, 1);
 	d.layout->addWidget (d.influence,	0, 2, 1, 1);
@@ -73,7 +73,7 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	GUIERR (d.bdy_table, ERR_GUI_SMAP_INIT_FAILED);
 
 	d.layout->addWidget (d.split,		2, 0, 1, 7);
-	
+
 	setWidget(d.frame);
 	setWidgetResizable (true);
 

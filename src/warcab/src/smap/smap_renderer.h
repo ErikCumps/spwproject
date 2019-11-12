@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - rendering.
  *
- * Copyright (C) 2012-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -85,7 +85,7 @@ private:
 		int	hmove_y;	/*!< The Y step (in pixels) for moving horizontally to a neighbour hex	*/
 		int	vmove_x;	/*!< The X step (in pixels) for moving vertically to a neighbour hex	*/
 		int	vmove_y;	/*!< The Y step (in pixels) for moving vertically to a neighbour hex	*/
-	
+
 		struct s_pm {
 			QPixmap	border;					/*!< Hex border				*/
 			QPixmap	selection;				/*!< Hex selection indicator		*/
@@ -103,12 +103,12 @@ private:
 			QPixmap	inf_neutral[SMAP_HM_CNT];		/*!< Neutral influence colorfields	*/
 			QPixmap	bluedot[16];				/*!< Blue unit indicators		*/
 			QPixmap	reddot[16];				/*!< Red unit indicators		*/
-			QPixmap	vh_blue;				/*!< Victory hex claimed by blue player	*/ 
+			QPixmap	vh_blue;				/*!< Victory hex claimed by blue player	*/
 			QPixmap vh_red;					/*!< Victory hex claimed by blue player	*/
 			QPixmap vh_neutral;				/*!< Victory hex, not yet claimed	*/
 			QPixmap	frontline[SMAP_HRD_CNT];		/*!< Frontline edges			*/
 		} pm;			/*!< The QPixmaps used for rendering					*/
-	
+
 		SmapHexGrid		*hgrid;		/*!< The strategic map hex grid to render		*/
 		SMAP_RENDERER_GRID	rgrid;		/*!< The hex grid in renderer coordinates		*/
 	} d;

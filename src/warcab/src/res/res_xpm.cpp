@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - resource handling - XPM images.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
