@@ -40,10 +40,13 @@
 #define	SPWAW_HEX_NE		0x20	/* hex northeast side	*/
 
 /* Invalid index value */
-#define	SPWAW_BADIDX	((USHORT)0xFFFF)
+#define	SPWAW_BADIDX		((USHORT)0xFFFF)
+
+/* Invalid long index value */
+#define	SPWAW_BADLONGIDX	((DWORD)0xFFFFFFFF)
 
 /* Unset campaign battle index value */
-#define	SPWAW_NOBTLIDX	((USHORT)0xFFFF)
+#define	SPWAW_NOBTLIDX		((USHORT)0xFFFF)
 
 
 #endif	/* SPWAW_LIB_DEFINES_H */

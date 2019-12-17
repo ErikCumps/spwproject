@@ -18,6 +18,7 @@
 #include <spwawlib_savelist.h>
 #include <spwawlib_snaplist.h>
 #include <spwawlib_spwoob_list.h>
+#include <spwawlib_uht.h>
 
 /* Forward declarations for convenience */
 
@@ -150,6 +151,7 @@ struct s_SPWAW_DOSSIER {
 	void			*stab;				/* \internal string table			*/
 	SPWAW_DOSSIER_CMPPROPS	props;				/* Campaign properties				*/
 	SPWAW_DOSSIER_CMPSTATS	stats;				/* Campaign stats				*/
+	SPWAW_UHT		uht;				/* Unit history tracking			*/
 };
 
 /* SPWAW dossier: file info */

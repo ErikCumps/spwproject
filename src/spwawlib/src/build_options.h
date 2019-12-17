@@ -16,16 +16,22 @@
 #define	PACKLOGGING	0
 
 /* Set to 1 to enable unit/formation detection logging */
-#define	UFDLOGGING	1
+#define	UFDLOGGING	0
 
 /* Set to 1 to enable unit/formation detection tracing */
-#define	UFDTRACING	1
+#define	UFDTRACING	0
 
 /* Set to 1 to enable RA tracing */
 #define	RATRACING	0
 
 /* Set to 1 to enable tracing of RA scoring */
 #define	RASCORETRACING	0
+
+/* Set to 1 to enable logging of unit history tracking */
+#define	UHTLOGGING	0
+
+/* Set to 1 to enable tracing of unit history tracking */
+#define	UHTTRACING	0
 
 #endif	/* BUILD_OPTIONS_H */
 

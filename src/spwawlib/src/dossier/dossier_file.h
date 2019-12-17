@@ -46,6 +46,7 @@ typedef struct s_DOS_HEADER {
 	ULONG		type;			/* Dossier type									*/
 	ULONG		gametype;		/* Dossier game type								*/
 	DOS_CMPPROPS	props;			/* Dossier campaign properties							*/
+	ULONG		uht;			/* Dossier UHT data								*/
 } DOS_HEADER;
 
 typedef struct s_DOS_BHEADER {

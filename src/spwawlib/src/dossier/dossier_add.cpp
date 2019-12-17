@@ -12,6 +12,7 @@
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
+#include "uht/uht.h"
 #include "common/internal.h"
 
 #define	LISTINC	8
@@ -276,7 +277,7 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	SPWAW_BATTLE	*b = NULL;
 	SPWAW_BTURN	*t = NULL;
 	STRTAB		*stab = NULL;
-	bool		empty;
+	bool		newb;
 
 	CSPWINIT;
 	CNULLARG (ptr); CNULLARG (snap); CNULLARG (bturn);
@@ -289,10 +290,10 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 
 	stab = (STRTAB *)ptr->stab;
 
-	empty = (ptr->bcnt == 0);
-
+	newb = false;
 	b = dossier_find_battle (ptr, snap);
 	if (!b) {
+		newb = true;
 		rc = dossier_make_battle (ptr, snap, NULL, &b);
 		ROE ("dossier_make_battle()");
 	} else {
@@ -313,11 +314,19 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	rc = dossier_update_battle_info (b);
 	ROE ("dossier_update_battle_info()");
 
-	rc = dossier_update_battle_rainfo (b->prev, b);
-	ROE ("dossier_update_battle_rainfo()");
+	if (newb) {
+		rc = dossier_update_battle_rainfo (b->prev, b);
+		ROE ("dossier_update_battle_rainfo()");
 
-	rc = dossier_update_battle_rainfo (b, b->next);
-	ROE ("dossier_update_battle_rainfo()");
+		rc = dossier_update_battle_rainfo (b, b->next);
+		ROE ("dossier_update_battle_rainfo()");
+
+		if (b == ptr->blast) {
+			rc = UHT_update (&(ptr->uht), b); ROE ("UHT_update()");
+		} else {
+			rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
+		}
+	}
 
 	rc = dossier_update_dossier_stats (ptr);
 	ROE ("dossier_update_dossier_stats()");

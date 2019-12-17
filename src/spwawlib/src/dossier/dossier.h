@@ -46,7 +46,16 @@ typedef struct s_BIRURR {
 	USHORT		i;
 } BIRURR;
 
-extern SPWAW_ERROR	dossier_search_back	(SPWAW_BATTLE *fb, USHORT fi, BIRURR *rr);
-extern SPWAW_ERROR	dossier_search_back	(SPWAW_BATTLE *fb, USHORT fi, char *name, BIRURR *rr);
+typedef struct s_BIRURR_FILTER {
+	char		*lname;
+	char		*UID;
+	char		*uname;
+	SPWAW_RANK	*rank;
+} BIRURR_FILTER;
+
+#define	INIT_BIRURR_FILTER(f_)	BIRURR_FILTER f_; clear_ptr (&f_)
+
+extern SPWAW_ERROR	dossier_search_back	(BIRURR &fr, BIRURR &rr);
+extern SPWAW_ERROR	dossier_search_back	(BIRURR &fr, BIRURR &rr, BIRURR_FILTER &filter);
 
 #endif	/* DOSSIER_H */

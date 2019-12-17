@@ -16,6 +16,7 @@
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
+#include "uht/uht.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "utils/compression.h"
@@ -389,6 +390,18 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	bseekset (fd, pos + hdr.blist);
 	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);
 	ERRORGOTO ("dossier_load_battles()", handle_error);
+
+	if (dst->type == SPWAW_CAMPAIGN_DOSSIER) {
+		/* We are now backwards compatible with version 12 and older */
+		if (mvhdr.version <= DOSS_VERSION_V12) {
+			rc = UHT_rebuild (&(dst->uht));
+			ERRORGOTO ("UHT_rebuild()", handle_error);
+		} else {
+			bseekset (fd, pos + hdr.uht);
+			rc = UHT_load (fd, &(dst->uht));
+			ERRORGOTO ("UHT_load()", handle_error);
+		}
+	}
 
 	SPWOOB_LIST_debug_log (dst->oobdata, __FUNCTION__);
 

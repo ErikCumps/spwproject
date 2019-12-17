@@ -329,7 +329,7 @@ loaded (SPWAW_SNAP_OOB_UELRAW *ptr, bool *flag, SPWAW_SNAP_OOB_PTR *id)
 }
 
 static SPWAW_ERROR
-snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_DATA *oob, STRTAB *stab)
+snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_DATA *oob, STRTAB *stab, SPWAW_GAME_TYPE gametype)
 {
 	SPWAW_ERROR			rc = SPWERR_OK;
 	SPWAW_SNAP_OOB_FORCE		*p;
@@ -402,8 +402,20 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->FMID	= src->FMID;
 		dat->FSID	= src->FSID;
 		dat->OOB	= src->OOB;
+
 		dat->dname	= src->name;
-		dat->uname	= oob->udata[src->OOBrid].name[0]!='\0' ? STRTAB_add(stab, oob->udata[src->OOBrid].name) : STRTAB_add(stab, src->name);
+		switch (gametype) {
+			case SPWAW_GAME_TYPE_SPWAW:
+				dat->uname = STRTAB_add(stab, src->name);
+				break;
+			default:
+				if (oob->udata[src->OOBrid].name[0] != '\0')
+					dat->uname = STRTAB_add(stab, oob->udata[src->OOBrid].name);
+				else
+					dat->uname = STRTAB_add(stab, src->name);
+				break;
+		}
+
 		dat->lname	= ulsrc ? ulsrc->name : NULL;
 		dat->rank	= elsrc ? raw2rank (elsrc->rank) : raw2rank (SPWAW_RKIA);
 		dat->kills	= elsrc ? elsrc->kills : 0;
@@ -467,14 +479,14 @@ handle_error:
 }
 
 static SPWAW_ERROR
-snapint_oob_core_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_DATA *oob, STRTAB *stab)
+snapint_oob_core_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_DATA *oob, STRTAB *stab, SPWAW_GAME_TYPE gametype)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
 	CNULLARG (raw); CNULLARG (ptr);
 
 	rc = snapint_oob_formations_stage1 (raw, ptr, oob, stab);	ROE ("snapint_oob_formations_stage1()");
-	rc = snapint_oob_units_stage1 (raw, ptr, oob, stab);		ROE ("snapint_oob_units_stage1()");
+	rc = snapint_oob_units_stage1 (raw, ptr, oob, stab, gametype);	ROE ("snapint_oob_units_stage1()");
 
 	return (SPWERR_OK);
 }
@@ -1170,7 +1182,7 @@ snapint_oobp1 (SPWAW_SNAPSHOT *ptr)
 	oobdata = spwoob_data (ptr->oobdat, (BYTE)(ptr->OOBp1.OOB & 0xFF));
 	if (!oobdata) RWE (SPWERR_BADOOB, "spwoob_data(OOBp1) failed");
 
-	rc = snapint_oob_core_stage1 (&(ptr->raw.OOBp1), &(ptr->OOBp1), oobdata, stab);
+	rc = snapint_oob_core_stage1 (&(ptr->raw.OOBp1), &(ptr->OOBp1), oobdata, stab, ptr->gametype);
 	ROE ("snapint_oob_core_stage1(OOBp1)");
 
 	qsort (ptr->OOBp1.battle.formations.list, ptr->OOBp1.battle.formations.cnt, sizeof (SPWAW_SNAP_OOB_FEL), sort_fcmp);
@@ -1214,7 +1226,7 @@ snapint_oobp2 (SPWAW_SNAPSHOT *ptr)
 	oobdata = spwoob_data (ptr->oobdat, (BYTE)(ptr->OOBp2.OOB & 0xFF));
 	if (!oobdata) RWE (SPWERR_BADOOB, "spwoob_data(OOBp2) failed");
 
-	rc = snapint_oob_core_stage1 (&(ptr->raw.OOBp2), &(ptr->OOBp2), oobdata, stab);
+	rc = snapint_oob_core_stage1 (&(ptr->raw.OOBp2), &(ptr->OOBp2), oobdata, stab, ptr->gametype);
 	ROE ("snapint_oob_core_stage1(OOBp2)");
 
 	qsort (ptr->OOBp2.battle.formations.list, ptr->OOBp2.battle.formations.cnt, sizeof (SPWAW_SNAP_OOB_FEL), sort_fcmp);

@@ -12,6 +12,8 @@
 #include "common/types.h"
 #include "common/internal.h"
 
+/* --- terrain translation --- */
+
 SPWAW_TERRAIN
 raw2terrain (BYTE id)
 {
@@ -39,6 +41,25 @@ raw2terrain (BYTE id)
 	}
 	return (rc);
 }
+
+static const char *terrain_strings[SPWAW_TLASTCODE+1] = {
+	"desert",
+	"summer",
+	"winter",
+	"jungle",
+	"rough",
+	"???"
+};
+
+char *
+terrain2str (SPWAW_TERRAIN id)
+{
+	return ((char*)terrain_strings[id]);
+}
+
+
+
+/* --- weather translation --- */
 
 SPWAW_WEATHER
 raw2weather (BYTE id)
@@ -69,276 +90,6 @@ raw2weather (BYTE id)
 			break;
 	}
 	return (rc);
-}
-
-SPWAW_MISSION
-raw2mission (BYTE id)
-{
-	SPWAW_MISSION	rc;
-
-	switch (id) {
-		case M_ASSAULT:
-			rc = SPWAW_MASSAULT;
-			break;
-		case M_ADVANCE:
-			rc = SPWAW_MADVANCE;
-			break;
-		case M_DELAY:
-			rc = SPWAW_MDELAY;
-			break;
-		case M_DEFEND:
-			rc = SPWAW_MDEFEND;
-			break;
-		default:
-			rc = SPWAW_MUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-SPWAW_FSTATUS
-raw2fstatus (BYTE id)
-{
-	SPWAW_FSTATUS	rc;
-
-	switch (id) {
-		case F_REG:
-			rc = SPWAW_FREG;
-			break;
-		case F_CORE:
-			rc = SPWAW_FCORE;
-			//TEST to force 0 core formations
-			//rc = SPWAW_FAUX;
-			//TEST
-			break;
-		case F_AUX:
-			rc = SPWAW_FAUX;
-			break;
-		default:
-			rc = SPWAW_FUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-SPWAW_USTATUS
-raw2ustatus (BYTE id)
-{
-	SPWAW_USTATUS	rc;
-
-	switch (id) {
-		case U_READY:
-			rc = SPWAW_UREADY;
-			break;
-		case U_PINNED:
-			rc = SPWAW_UPINNED;
-			break;
-		case U_RETREATING:
-			rc = SPWAW_URETREATING;
-			break;
-		case U_ROUTED:
-			rc = SPWAW_UROUTED;
-			break;
-		case U_ABANDONED:
-			rc = SPWAW_UABANDONED;
-			break;
-		case U_DESTROYED:
-			rc = SPWAW_UDESTROYED;
-			break;
-		case U_BURNING:
-			rc = SPWAW_UBURNING;
-			break;
-		case U_BUTTONED:
-			rc = SPWAW_UBUTTONED;
-			break;
-		case U_IMMOBILIZED:
-			rc = SPWAW_UIMMOBILIZED;
-			break;
-		case U_PASSENGER:
-			rc = SPWAW_UPASSENGER;
-			break;
-		default:
-			rc = SPWAW_UUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-SPWAW_CSTATUS
-raw2cstatus (BYTE id)
-{
-	SPWAW_CSTATUS	rc;
-
-	switch (id) {
-		case C_NONE:
-			rc = SPWAW_CSTATUSNONE;
-			break;
-		case C_RADIO:
-			rc = SPWAW_CSTATUSRADIO;
-			break;
-		case C_DIRECT:
-			rc = SPWAW_CSTATUSDIRECT;
-			break;
-		default:
-			rc = SPWAW_CSTATUSUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-SPWAW_ENTR
-raw2entr (BYTE id)
-{
-	SPWAW_ENTR	rc;
-
-	switch (id) {
-		case E_NONE:
-			rc = SPWAW_ENTRNONE;
-			break;
-		case E_COVER:
-			rc = SPWAW_ENTRCOVER;
-			break;
-		case E_DUGIN:
-			rc = SPWAW_ENTRDUGIN;
-			break;
-		default:
-			rc = SPWAW_ENTRUNKNOWN;
-			break;
-	}
-	return (rc);
-
-}
-
-SPWAW_RANK
-raw2rank (BYTE id)
-{
-	SPWAW_RANK	rc;
-
-	switch (id) {
-		case R_KIA:
-			rc = SPWAW_RKIA;
-			break;
-		case R_PVT:
-			rc = SPWAW_RPVT;
-			break;
-		case R_CPL:
-			rc = SPWAW_RCPL;
-			break;
-		case R_SGT:
-			rc = SPWAW_RSGT;
-			break;
-		case R_2LT:
-			rc = SPWAW_R2LT;
-			break;
-		case R_1LT:
-			rc = SPWAW_R1LT;
-			break;
-		case R_CPT:
-			rc = SPWAW_RCPT;
-			break;
-		case R_MAJ:
-			rc = SPWAW_RMAJ;
-			break;
-		case R_LTC:
-			rc = SPWAW_RLTC;
-			break;
-		case R_COL:
-			rc = SPWAW_RCOL;
-			break;
-		case R_GEN:
-			rc = SPWAW_RGEN;
-			break;
-		default:
-			rc = SPWAW_RUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-SPWAW_EXP
-raw2exp (BYTE exp)
-{
-	SPWAW_EXP	e;
-
-	if (exp < 30)
-		e = SPWAW_ECADET;
-	else if (exp < 50)
-		e = SPWAW_EGREEN;
-	else if (exp < 80)
-		e = SPWAW_EAVERAGE;
-	else if (exp < 100)
-		e = SPWAW_EVETERAN;
-	else	e = SPWAW_EELITE;
-
-	return (e);
-}
-
-SPWAW_VHSTATUS
-raw2vhstatus (BYTE id)
-{
-	SPWAW_VHSTATUS	rc;
-
-	switch (id) {
-		case VH_PLAYER1:
-			rc = SPWAW_VHP1;
-			break;
-		case VH_PLAYER2:
-			rc = SPWAW_VHP2;
-			break;
-		case VH_NEUTRAL:
-			rc = SPWAW_VHN;
-			break;
-		default:
-			rc = SPWAW_VHUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-SPWAW_BRESULT
-raw2bresult (SHORT result)
-{
-	SPWAW_BRESULT	rc;
-
-	switch (result) {
-		case BR_DD:
-			rc = SPWAW_BRDD;
-			break;
-		case BR_MD:
-			rc = SPWAW_BRMD;
-			break;
-		case BR_DB:
-			rc = SPWAW_BRDB;
-			break;
-		case BR_MV:
-			rc = SPWAW_BRMV;
-			break;
-		case BR_DV:
-			rc = SPWAW_BRDV;
-			break;
-		case BR_UNKNOWN:
-		default:
-			rc = SPWAW_BRUNKNOWN;
-			break;
-	}
-	return (rc);
-}
-
-
-
-static const char *terrain_strings[SPWAW_TLASTCODE+1] = {
-	"desert",
-	"summer",
-	"winter",
-	"jungle",
-	"rough",
-	"???"
-};
-
-char *
-terrain2str (SPWAW_TERRAIN id)
-{
-	return ((char*)terrain_strings[id]);
 }
 
 static const char *weather_temperate_strings[SPWAW_WLASTCODE+1] = {
@@ -393,6 +144,35 @@ weather2str (SPWAW_TERRAIN tid, SPWAW_WEATHER wid)
 	return ((char*)table[wid]);
 }
 
+
+
+/* --- mission translation --- */
+
+SPWAW_MISSION
+raw2mission (BYTE id)
+{
+	SPWAW_MISSION	rc;
+
+	switch (id) {
+		case M_ASSAULT:
+			rc = SPWAW_MASSAULT;
+			break;
+		case M_ADVANCE:
+			rc = SPWAW_MADVANCE;
+			break;
+		case M_DELAY:
+			rc = SPWAW_MDELAY;
+			break;
+		case M_DEFEND:
+			rc = SPWAW_MDEFEND;
+			break;
+		default:
+			rc = SPWAW_MUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
 static const char *mission_strings[SPWAW_MLASTCODE+1] = {
 	"assault",
 	"advance",
@@ -407,6 +187,35 @@ mission2str (SPWAW_MISSION id)
 	return ((char*)mission_strings[id]);
 }
 
+
+
+/* --- formation status translation --- */
+
+SPWAW_FSTATUS
+raw2fstatus (BYTE id)
+{
+	SPWAW_FSTATUS	rc;
+
+	switch (id) {
+		case F_REG:
+			rc = SPWAW_FREG;
+			break;
+		case F_CORE:
+			rc = SPWAW_FCORE;
+			//TEST to force 0 core formations
+			//rc = SPWAW_FAUX;
+			//TEST
+			break;
+		case F_AUX:
+			rc = SPWAW_FAUX;
+			break;
+		default:
+			rc = SPWAW_FUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
 static const char *fstatus_strings[SPWAW_FLASTCODE+1] = {
 	"regular",
 	"core",
@@ -418,6 +227,53 @@ char *
 fstatus2str (SPWAW_FSTATUS id)
 {
 	return ((char*)fstatus_strings[id]);
+}
+
+
+
+/* --- unit status translation --- */
+
+SPWAW_USTATUS
+raw2ustatus (BYTE id)
+{
+	SPWAW_USTATUS	rc;
+
+	switch (id) {
+		case U_READY:
+			rc = SPWAW_UREADY;
+			break;
+		case U_PINNED:
+			rc = SPWAW_UPINNED;
+			break;
+		case U_RETREATING:
+			rc = SPWAW_URETREATING;
+			break;
+		case U_ROUTED:
+			rc = SPWAW_UROUTED;
+			break;
+		case U_ABANDONED:
+			rc = SPWAW_UABANDONED;
+			break;
+		case U_DESTROYED:
+			rc = SPWAW_UDESTROYED;
+			break;
+		case U_BURNING:
+			rc = SPWAW_UBURNING;
+			break;
+		case U_BUTTONED:
+			rc = SPWAW_UBUTTONED;
+			break;
+		case U_IMMOBILIZED:
+			rc = SPWAW_UIMMOBILIZED;
+			break;
+		case U_PASSENGER:
+			rc = SPWAW_UPASSENGER;
+			break;
+		default:
+			rc = SPWAW_UUNKNOWN;
+			break;
+	}
+	return (rc);
 }
 
 static const char *ustatus_strings[SPWAW_ULASTCODE+1] = {
@@ -440,6 +296,32 @@ ustatus2str (SPWAW_USTATUS id)
 	return ((char*)ustatus_strings[id]);
 }
 
+
+
+/* --- contact status translation --- */
+
+SPWAW_CSTATUS
+raw2cstatus (BYTE id)
+{
+	SPWAW_CSTATUS	rc;
+
+	switch (id) {
+		case C_NONE:
+			rc = SPWAW_CSTATUSNONE;
+			break;
+		case C_RADIO:
+			rc = SPWAW_CSTATUSRADIO;
+			break;
+		case C_DIRECT:
+			rc = SPWAW_CSTATUSDIRECT;
+			break;
+		default:
+			rc = SPWAW_CSTATUSUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
 static const char *cstatus_strings[SPWAW_CSTATUSLASTCODE+1] = {
 	"no contact",
 	"radio contact",
@@ -453,6 +335,33 @@ cstatus2str (SPWAW_CSTATUS id)
 	return ((char*)cstatus_strings[id]);
 }
 
+
+
+/* --- entrenchment translation --- */
+
+SPWAW_ENTR
+raw2entr (BYTE id)
+{
+	SPWAW_ENTR	rc;
+
+	switch (id) {
+		case E_NONE:
+			rc = SPWAW_ENTRNONE;
+			break;
+		case E_COVER:
+			rc = SPWAW_ENTRCOVER;
+			break;
+		case E_DUGIN:
+			rc = SPWAW_ENTRDUGIN;
+			break;
+		default:
+			rc = SPWAW_ENTRUNKNOWN;
+			break;
+	}
+	return (rc);
+
+}
+
 static const char *entr_strings[SPWAW_ENTRLASTCODE+1] = {
 	"positioned",
 	"in cover",
@@ -464,6 +373,103 @@ char *
 entr2str (SPWAW_ENTR id)
 {
 	return ((char*)entr_strings[id]);
+}
+
+
+
+/* --- rank translation --- */
+
+SPWAW_RANK
+raw2rank (BYTE id)
+{
+	SPWAW_RANK	rc;
+
+	switch (id) {
+		case R_KIA:
+			rc = SPWAW_RKIA;
+			break;
+		case R_PVT:
+			rc = SPWAW_RPVT;
+			break;
+		case R_CPL:
+			rc = SPWAW_RCPL;
+			break;
+		case R_SGT:
+			rc = SPWAW_RSGT;
+			break;
+		case R_2LT:
+			rc = SPWAW_R2LT;
+			break;
+		case R_1LT:
+			rc = SPWAW_R1LT;
+			break;
+		case R_CPT:
+			rc = SPWAW_RCPT;
+			break;
+		case R_MAJ:
+			rc = SPWAW_RMAJ;
+			break;
+		case R_LTC:
+			rc = SPWAW_RLTC;
+			break;
+		case R_COL:
+			rc = SPWAW_RCOL;
+			break;
+		case R_GEN:
+			rc = SPWAW_RGEN;
+			break;
+		default:
+			rc = SPWAW_RUNKNOWN;
+			break;
+	}
+	return (rc);
+}
+
+BYTE
+rank2raw (SPWAW_RANK rank)
+{
+	BYTE	b;
+
+	switch (rank) {
+		case SPWAW_RKIA:
+			b = R_KIA;
+			break;
+		case SPWAW_RPVT:
+			b = R_PVT;
+			break;
+		case SPWAW_RCPL:
+			b = R_CPL;
+			break;
+		case SPWAW_RSGT:
+			b = R_SGT;
+			break;
+		case SPWAW_R2LT:
+			b = R_2LT;
+			break;
+		case SPWAW_R1LT:
+			b = R_1LT;
+			break;
+		case SPWAW_RCPT:
+			b = R_CPT;
+			break;
+		case SPWAW_RMAJ:
+			b = R_MAJ;
+			break;
+		case SPWAW_RLTC:
+			b = R_LTC;
+			break;
+		case SPWAW_RCOL:
+			b = R_COL;
+			break;
+		case SPWAW_RGEN:
+			b = R_GEN;
+			break;
+		default:
+			b = SPWAW_RUNKNOWN;
+			break;
+	}
+	return (b);
+
 }
 
 static const char *rank_strings[SPWAW_RLASTCODE+1] = {
@@ -487,6 +493,28 @@ rank2str (SPWAW_RANK id)
 	return ((char*)rank_strings[id]);
 }
 
+
+
+/* --- experience translation --- */
+
+SPWAW_EXP
+raw2exp (BYTE exp)
+{
+	SPWAW_EXP	e;
+
+	if (exp < 30)
+		e = SPWAW_ECADET;
+	else if (exp < 50)
+		e = SPWAW_EGREEN;
+	else if (exp < 80)
+		e = SPWAW_EAVERAGE;
+	else if (exp < 100)
+		e = SPWAW_EVETERAN;
+	else	e = SPWAW_EELITE;
+
+	return (e);
+}
+
 static const char *exp_strings[SPWAW_ELASTCODE+1] = {
 	"cadet",
 	"green",
@@ -501,22 +529,30 @@ exp2str (SPWAW_EXP exp)
 	return ((char*)exp_strings[exp]);
 }
 
-static const char *aband_strings[SPWAW_ALASTCODE+1] = {
-	"not abandoned",
-	"abandoned unit",
-	"abandoned crew"
-};
 
-static const char *btstatus_strings[SPWAW_BTLASTCODE+1] = {
-	"deployment",
-	"in progress",
-	"score"
-};
 
-char *
-btstatus2str (SPWAW_BTSTATUS id)
+/* --- victory hex status translation --- */
+
+SPWAW_VHSTATUS
+raw2vhstatus (BYTE id)
 {
-	return ((char*)btstatus_strings[id]);
+	SPWAW_VHSTATUS	rc;
+
+	switch (id) {
+		case VH_PLAYER1:
+			rc = SPWAW_VHP1;
+			break;
+		case VH_PLAYER2:
+			rc = SPWAW_VHP2;
+			break;
+		case VH_NEUTRAL:
+			rc = SPWAW_VHN;
+			break;
+		default:
+			rc = SPWAW_VHUNKNOWN;
+			break;
+	}
+	return (rc);
 }
 
 static const char *vhstatus_strings[SPWAW_VHLASTCODE+1] = {
@@ -530,6 +566,39 @@ char *
 vhstatus2str (SPWAW_VHSTATUS id)
 {
 	return ((char*)vhstatus_strings[id]);
+}
+
+
+
+/* --- battle result translation --- */
+
+SPWAW_BRESULT
+raw2bresult (SHORT result)
+{
+	SPWAW_BRESULT	rc;
+
+	switch (result) {
+		case BR_DD:
+			rc = SPWAW_BRDD;
+			break;
+		case BR_MD:
+			rc = SPWAW_BRMD;
+			break;
+		case BR_DB:
+			rc = SPWAW_BRDB;
+			break;
+		case BR_MV:
+			rc = SPWAW_BRMV;
+			break;
+		case BR_DV:
+			rc = SPWAW_BRDV;
+			break;
+		case BR_UNKNOWN:
+		default:
+			rc = SPWAW_BRUNKNOWN;
+			break;
+	}
+	return (rc);
 }
 
 static const char *bresult_strings[SPWAW_BRLASTCODE+1] = {
@@ -547,6 +616,25 @@ bresult2str (SPWAW_BRESULT result)
 	return ((char*)bresult_strings[result]);
 }
 
+
+
+/* --- battle status translation --- */
+
+static const char *btstatus_strings[SPWAW_BTLASTCODE+1] = {
+	"deployment",
+	"in progress",
+	"score"
+};
+
+char *
+btstatus2str (SPWAW_BTSTATUS id)
+{
+	return ((char*)btstatus_strings[id]);
+}
+
+
+
+/* --- formation and unit ID translation --- */
 
 void
 FID2str (BYTE id, char *buf, int len)
@@ -611,11 +699,7 @@ UID2str (BYTE id, BYTE subid)
 
 
 
-char *
-aband2str (SPWAW_ABAND id)
-{
-	return ((char*)aband_strings[id]);
-}
+/* --- abandonment status translation --- */
 
 SPWAW_ABAND
 raw2aband (BYTE aband)
@@ -657,7 +741,21 @@ aband2raw (SPWAW_ABAND aband)
 	return (b);
 }
 
+static const char *aband_strings[SPWAW_ALASTCODE+1] = {
+	"not abandoned",
+	"abandoned unit",
+	"abandoned crew"
+};
 
+char *
+aband2str (SPWAW_ABAND id)
+{
+	return ((char*)aband_strings[id]);
+}
+
+
+
+/* --- unit type translation --- */
 
 SPWAW_UNIT_TYPE
 raw2unittype (BYTE type)

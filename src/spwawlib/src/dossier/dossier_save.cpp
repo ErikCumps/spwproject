@@ -13,6 +13,7 @@
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
+#include "uht/uht.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 #include "utils/compression.h"
@@ -218,6 +219,12 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	hdr.stab = bseekget (fd) - p0;
 	rc = STRTAB_fdsave (stab, fd, compress);
 	ROE ("STRTAB_fdsave()");
+
+	if (src->type == SPWAW_CAMPAIGN_DOSSIER) {
+		hdr.uht = bseekget (fd) - p0;
+		rc = UHT_save (&(src->uht), fd, compress);
+		ROE ("UHT_fdsave()");
+	}
 
 	p1 = bseekget (fd); bseekset (fd, p0);
 	if (!bwrite (fd, (char *)&mvhdr, sizeof (mvhdr)))

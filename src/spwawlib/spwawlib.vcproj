@@ -166,6 +166,9 @@
 				<File
 					RelativePath=".\src\api\api_types.cpp">
 				</File>
+				<File
+					RelativePath=".\src\api\api_uht.cpp">
+				</File>
 			</Filter>
 			<Filter
 				Name="cfg"
@@ -490,6 +493,34 @@
 				</File>
 				<File
 					RelativePath=".\src\dossier\dossier_search.cpp">
+				</File>
+			</Filter>
+			<Filter
+				Name="uht"
+				Filter="">
+				<File
+					RelativePath=".\src\uht\uht_clear.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_common.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_debug_dump.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_init.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_load.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_rebuild.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_save.cpp">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_update.cpp">
 				</File>
 			</Filter>
 		</Filter>
@@ -1036,6 +1067,19 @@
 					RelativePath=".\src\fileio\fileio.h">
 				</File>
 			</Filter>
+			<Filter
+				Name="uht"
+				Filter="">
+				<File
+					RelativePath=".\src\uht\uht.h">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_common.h">
+				</File>
+				<File
+					RelativePath=".\src\uht\uht_file.h">
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -1086,6 +1130,9 @@
 			</File>
 			<File
 				RelativePath=".\include\spwawlib_ud.h">
+			</File>
+			<File
+				RelativePath=".\include\spwawlib_uht.h">
 			</File>
 		</Filter>
 	</Files>

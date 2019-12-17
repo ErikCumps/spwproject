@@ -12,6 +12,7 @@
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "strtab/strtab.h"
+#include "uht/uht.h"
 #include "common/internal.h"
 
 static void
@@ -58,6 +59,10 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 		ptr->bfirst = ptr->blist[0];
 		ptr->blast  = ptr->blist[ptr->bcnt-1];
 		dossier_update_battle_rainfo (bb, ba);
+	}
+
+	if (ptr->type == SPWAW_CAMPAIGN_DOSSIER) {
+		UHT_rebuild (&(ptr->uht));
 	}
 
 	dossier_update_dossier_stats (ptr);

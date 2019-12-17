@@ -54,6 +54,7 @@ extern void	log_shutdown	(void);
 #define	PACKLOG6(m_,a1_,a2_,a3_,a4_,a5_,a6_)
 
 #endif	/* !PACKLOGGING */
+
 #if	UFDLOGGING
 
 #define	UFDLOG0(m_)					do { log (m_); } while (0)
@@ -151,5 +152,55 @@ extern void	log_shutdown	(void);
 #define	RASCORETRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)
 
 #endif	/* !RASCORETRACING */
+
+#if	UHTLOGGING
+
+#define	UHTLOG0(m_)					do { log (m_); } while (0)
+#define	UHTLOG1(m_,a1_)					do { log (m_, a1_); } while (0)
+#define	UHTLOG2(m_,a1_,a2_)				do { log (m_, a1_, a2_); } while (0)
+#define	UHTLOG3(m_,a1_,a2_,a3_)				do { log (m_, a1_, a2_, a3_); } while (0)
+#define	UHTLOG4(m_,a1_,a2_,a3_,a4_)			do { log (m_, a1_, a2_, a3_, a4_); } while (0)
+#define	UHTLOG5(m_,a1_,a2_,a3_,a4_,a5_)			do { log (m_, a1_, a2_, a3_, a4_, a5_); } while (0)
+#define	UHTLOG6(m_,a1_,a2_,a3_,a4_,a5_,a6_)		do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_); } while (0)
+#define	UHTLOG7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)		do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_); } while (0)
+#define	UHTLOG8(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_,a8_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_, a8_); } while (0)
+
+#else	/* !UHTLOGGING */
+
+#define	UHTLOG0(m_)
+#define	UHTLOG1(m_,a1_)
+#define	UHTLOG2(m_,a1_,a2_)
+#define	UHTLOG3(m_,a1_,a2_,a3_)
+#define	UHTLOG4(m_,a1_,a2_,a3_,a4_)
+#define	UHTLOG5(m_,a1_,a2_,a3_,a4_,a5_)
+#define	UHTLOG6(m_,a1_,a2_,a3_,a4_,a5_,a6_)
+#define	UHTLOG7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)
+#define	UHTLOG8(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_,a8_)
+
+#endif	/* !UHTLOGGING */
+
+#if	UHTTRACING
+
+#define	UHTTRACE0(m_)					do { log (m_); } while (0)
+#define	UHTTRACE1(m_,a1_)				do { log (m_, a1_); } while (0)
+#define	UHTTRACE2(m_,a1_,a2_)				do { log (m_, a1_, a2_); } while (0)
+#define	UHTTRACE3(m_,a1_,a2_,a3_)			do { log (m_, a1_, a2_, a3_); } while (0)
+#define	UHTTRACE4(m_,a1_,a2_,a3_,a4_)			do { log (m_, a1_, a2_, a3_, a4_); } while (0)
+#define	UHTTRACE5(m_,a1_,a2_,a3_,a4_,a5_)		do { log (m_, a1_, a2_, a3_, a4_, a5_); } while (0)
+#define	UHTTRACE6(m_,a1_,a2_,a3_,a4_,a5_,a6_)		do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_); } while (0)
+#define	UHTTRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_); } while (0)
+
+#else	/* !UHTTRACING */
+
+#define	UHTTRACE0(m_)
+#define	UHTTRACE1(m_,a1_)
+#define	UHTTRACE2(m_,a1_,a2_)
+#define	UHTTRACE3(m_,a1_,a2_,a3_)
+#define	UHTTRACE4(m_,a1_,a2_,a3_,a4_)
+#define	UHTTRACE5(m_,a1_,a2_,a3_,a4_,a5_)
+#define	UHTTRACE6(m_,a1_,a2_,a3_,a4_,a5_,a6_)
+#define	UHTTRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)
+
+#endif	/* !UHTTRACING */
 
 #endif	/* LOG_H */
