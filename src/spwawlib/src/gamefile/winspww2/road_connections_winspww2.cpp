@@ -97,12 +97,12 @@ detect_winspww2_road_connection (MAP_TILE &tile, BYTE &conn_road1, BYTE &conn_ro
 			if (tid < WINSPWW2_TILE_SET) {
 				rc = winspww2_tile_rc_map[tid].rc;
 				id = winspww2_tile_rc_map[tid].id;
-				log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "road2", tid, id, rc);
+				//log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "road2", tid, id, rc);
 				conn_road2 = winspww2_tile_rc_map[tid].rc;
 			} else {
 				rc = winspww2_tile_rc_map[tid-WINSPWW2_TILE_SET].rc;
 				id = winspww2_tile_rc_map[tid-WINSPWW2_TILE_SET].id;
-				log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "road1", tid, id, rc);
+				//log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "road1", tid, id, rc);
 				conn_road1 = winspww2_tile_rc_map[tid-WINSPWW2_TILE_SET].rc;
 			}
 			break;
@@ -111,12 +111,12 @@ detect_winspww2_road_connection (MAP_TILE &tile, BYTE &conn_road1, BYTE &conn_ro
 			if (tid < WINSPWW2_TILE_SET) {
 				rc = winspww2_tile_rc_map[tid].rc;
 				id = winspww2_tile_rc_map[tid].id;
-				log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "rail ", tid, id, rc);
+				//log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "rail ", tid, id, rc);
 				conn_rail = winspww2_tile_rc_map[tid].rc;
 			} else {
 				rc = winspww2_tile_rc_map[tid-WINSPWW2_TILE_SET].rc;
 				id = winspww2_tile_rc_map[tid-WINSPWW2_TILE_SET].id;
-				log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "tram ", tid, id, rc);
+				//log ("%s: [%s] %2.2u -> id=%2.2u, rc=0x%2.2x\n", __FUNCTION__, "tram ", tid, id, rc);
 				conn_tram = winspww2_tile_rc_map[tid-WINSPWW2_TILE_SET].rc;
 			}
 			break;

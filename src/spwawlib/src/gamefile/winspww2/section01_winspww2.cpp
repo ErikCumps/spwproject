@@ -943,7 +943,7 @@ add_unit (WINSPWW2_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, S
 
 	rc = SPWAW_oob_data (OOB, p->d.OOB, &OOBdata); ROE ("SPWAW_oob_data()");
 
-	log ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
+	UFDTRACE3 ("add_unit: idx=%u, RID=%u, type=%s\n", *idx, p->d.RID, SPWAW_unittype2str(p->d.type));
 
 	ptr->RID	= p->d.RID;
 	ptr->dutype	= p->d.type;
