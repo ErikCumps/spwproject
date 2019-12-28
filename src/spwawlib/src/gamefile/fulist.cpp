@@ -41,6 +41,8 @@ dump_ULIST (ULIST &ul)
 void
 dump_UEL (UEL *uel, char *prefix)
 {
+	UFDTRACED(uel); UFDTRACED(prefix);
+
 	UFDTRACE1 ("%s", prefix ? prefix : "    ");
 
 	UFDTRACE3 ("[%5.5u] (%16.16s) %4.4s",
@@ -165,6 +167,8 @@ dump_FLIST (FLIST &fl)
 void
 dump_FEL (FEL *fel, char *prefix)
 {
+	UFDTRACED (fel); UFDTRACED (prefix);
+
 	UFDTRACE1 ("%s", prefix ? prefix : "    ");
 
 	UFDTRACE7 ("[%5.5u] (%16.16s) P<%3.3u> L<%5.5u> H<%5.5u> status=%3.3u units=%3.3u",

@@ -100,6 +100,8 @@ find_candidate_units (WINSPWW2_UNIT *udata, WINSPWW2_UNIT_POS *pdata, BYTE playe
 	UEL	*uel;
 	FEL	*fel;
 
+	UFDLOGGED (player);
+
 	UFDLOG1 ("find_candidate_units: player #%u\n", player);
 
 	init_ULIST (ful.ul);

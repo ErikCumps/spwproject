@@ -57,6 +57,8 @@ extern void	log_shutdown	(void);
 
 #if	UFDLOGGING
 
+#define	UFDLOGGED(x_)
+
 #define	UFDLOG0(m_)					do { log (m_); } while (0)
 #define	UFDLOG1(m_,a1_)					do { log (m_, a1_); } while (0)
 #define	UFDLOG2(m_,a1_,a2_)				do { log (m_, a1_, a2_); } while (0)
@@ -68,6 +70,8 @@ extern void	log_shutdown	(void);
 #define	UFDLOG8(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_,a8_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_, a8_); } while (0)
 
 #else	/* !UFDLOGGING */
+
+#define	UFDLOGGED(x_)	(x_)
 
 #define	UFDLOG0(m_)
 #define	UFDLOG1(m_,a1_)
@@ -83,6 +87,8 @@ extern void	log_shutdown	(void);
 
 #if	UFDTRACING
 
+#define	UFDTRACED(x_)
+
 #define	UFDTRACE0(m_)					do { log (m_); } while (0)
 #define	UFDTRACE1(m_,a1_)				do { log (m_, a1_); } while (0)
 #define	UFDTRACE2(m_,a1_,a2_)				do { log (m_, a1_, a2_); } while (0)
@@ -93,6 +99,8 @@ extern void	log_shutdown	(void);
 #define	UFDTRACE7(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_); } while (0)
 
 #else	/* !UFDTRACING */
+
+#define	UFDTRACED(x_)	(x_)
 
 #define	UFDTRACE0(m_)
 #define	UFDTRACE1(m_,a1_)
