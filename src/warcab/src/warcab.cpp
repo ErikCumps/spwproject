@@ -205,6 +205,7 @@ WARCABState::save (void)
 	if (!is_loaded()) RETURN_OK;
 
 	gp.setRange (0, 1);
+	GUI_FIXME;
 
 	if (d.filename[0] == '\0') {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_SAVE_NONAME, "empty filename");
@@ -214,6 +215,9 @@ WARCABState::save (void)
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_SAVE_FAILED, "SPWAW_dossier_save() failed: %s", SPWAW_errstr (arc));
 	}
+
+	gp.inc();
+	GUI_FIXME;
 
 	set_dirty (false);
 
@@ -225,6 +229,7 @@ SL_ERROR
 WARCABState::saveas (char *file)
 {
 	SPWAW_ERROR	arc;
+	GuiProgress	gp ("Saving dossier...", 0);
 
 	if (!file) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_SAVE_FAILED, "NULL filename argument");
@@ -232,16 +237,23 @@ WARCABState::saveas (char *file)
 
 	if (!is_loaded()) RETURN_OK;
 
+	gp.setRange (0, 1);
+	GUI_FIXME;
+
 	arc = SPWAW_dossier_save (&d.dossier, file, CFG_compress());
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_SAVE_FAILED, "SPWAW_dossier_save() failed: %s", SPWAW_errstr (arc));
 	}
+
+	gp.inc();
+	GUI_FIXME;
 
 	memset (d.filename, 0, sizeof (d.filename));
 	snprintf (d.filename, sizeof (d.filename) - 1, "%s", file);
 
 	set_dirty (false);
 
+	gp.done();
 	RETURN_OK;
 }
 
