@@ -18,6 +18,7 @@
 /* Forward declarations for convenience */
 typedef struct s_SPWAW_DOSSIER		SPWAW_DOSSIER;
 typedef struct s_SPWAW_DOSSIER_UIR	SPWAW_DOSSIER_UIR;
+typedef struct s_SPWAW_BATTLE		SPWAW_BATTLE;
 typedef struct s_SPWAW_UHTE		SPWAW_UHTE;
 typedef struct s_SPWAW_UHT		SPWAW_UHT;
 
@@ -65,13 +66,28 @@ typedef struct s_SPWAW_UHTE {
 	SPWAW_UHTE		*next;			/* Pointer to next element in unit history list				*/
 } SPWAW_UHTE;
 
-/* SPWAW unit history tracking structure */
+/* SPWAW unit history tracking battle info */
+typedef struct s_SPWAW_UHT_BINFO {
+	SPWAW_BATTLE_DATE	bdate;			/* Battle date								*/
+	USHORT			cnt;			/* Number of UHT element pointers in the list				*/
+	SPWAW_UHTE		**list;			/* UHT element pointers list						*/
+} SPWAW_UHT_BINFO;
+
+/* SPWAW unit history tracking battle info list */
+typedef struct s_SPWAW_UHT_BLIST {
+	unsigned int		cnt;			/* Number of used elements in the UHT_BINFO list			*/
+	SPWAW_UHT_BINFO		**info;			/* UHT_BINFO list							*/
+	unsigned int		len;			/* Total length (in elements) of the UHT_BINFO list			*/
+} SPWAW_UHT_BLIST;
+
+/* SPWAW unit history tracking */
 typedef struct s_SPWAW_UHT {
-	unsigned int		cnt;			/* Number of used UHT elements in the list				*/
-	SPWAW_UHTE		**list;			/* Pointer to UHT element list						*/
-	SPWAW_UHTE		**smap;			/* Pointer to UHT element sort map					*/
-	unsigned int		len;			/* Lentgh (in elements) of the UHT elements list			*/
+	unsigned int		cnt;			/* Number of used elements in the UHTE list				*/
+	SPWAW_UHTE		**list;			/* UHTE list								*/
+	SPWAW_UHTE		**smap;			/* UHTE sort map							*/
+	unsigned int		len;			/* Total length (in elements) of the UHTE list				*/
 	SPWAW_DOSSIER		*dossier;		/* Pointer to parent dossier						*/
+	SPWAW_UHT_BLIST		blist;			/* Battle info list							*/
 } SPWAW_UHT;
 
 /*** API ***/
@@ -84,6 +100,7 @@ SPWAW_UHT_is_initial (SPWAW_UHTE *uhte) {
 
 extern SPWAWLIB_API bool		SPWAW_UHT_is_active		(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
 extern SPWAWLIB_API bool		SPWAW_UHT_is_commissioned	(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
+extern SPWAWLIB_API bool		SPWAW_UHT_is_decommissioned	(SPWAW_UHTE *uhte);
 extern SPWAWLIB_API bool		SPWAW_UHT_is_decommissioned	(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
 
 extern SPWAWLIB_API bool		SPWAW_UHT_is			(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate, USHORT status);
@@ -96,13 +113,13 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_last			(SPWAW_UHTE *uhte, USHORT stat
 extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_next			(SPWAW_UHTE *uhte, USHORT status);
 extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT status);
 
-#define	SPWAW_UHT_is_renamed(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_RENAMED)
-#define	SPWAW_UHT_is_replaced(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_REPLACED)
-#define	SPWAW_UHT_is_reassigned(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_REASSIGNED)
-#define	SPWAW_UHT_is_upgraded(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_UPGRADED)
-#define	SPWAW_UHT_is_promoted(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_PROMOTED)
-#define	SPWAW_UHT_is_demoted(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_DEMOTED)
-#define	SPWAW_UHT_is_reranked(u_,b_)		SPWAW_UHT_is(u_, bd_, UHT_RERANKED)
+#define	SPWAW_UHT_is_renamed(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_RENAMED)
+#define	SPWAW_UHT_is_replaced(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_REPLACED)
+#define	SPWAW_UHT_is_reassigned(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_REASSIGNED)
+#define	SPWAW_UHT_is_upgraded(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_UPGRADED)
+#define	SPWAW_UHT_is_promoted(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_PROMOTED)
+#define	SPWAW_UHT_is_demoted(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_DEMOTED)
+#define	SPWAW_UHT_is_reranked(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_RERANKED)
 
 #define	SPWAW_UHT_has_rename(u_)		SPWAW_UHT_is(u_, UHT_RENAMED)
 #define	SPWAW_UHT_has_replacement(u_)		SPWAW_UHT_is(u_, UHT_REPLACED)

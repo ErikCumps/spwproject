@@ -78,6 +78,15 @@ SPWAW_UHT_is_decommissioned (SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate)
 	return ((SPWAW_bdate_cmp(bdate, &(uptr->LBI)) == 0) && !uptr->next && (bptr != uptr->uht->dossier->blast));
 }
 
+SPWAWLIB_API bool
+SPWAW_UHT_is_decommissioned (SPWAW_UHTE *uhte)
+{
+	SPWAW_UHTE *uptr = SPWAW_UHT_last (uhte);
+	if (!uptr) return (true);
+
+	return (SPWAW_bdate_cmp (&(uptr->uht->dossier->blast->bdate), &(uptr->LBI)) != 0);
+}
+
 SPWAWLIB_API SPWAW_UHTE *
 SPWAW_UHT_first (SPWAW_UHTE *uhte)
 {

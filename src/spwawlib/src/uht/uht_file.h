@@ -18,10 +18,12 @@
 typedef struct s_UHT_HEADER {
 	char		magic[UHT_MGCLEN];	/* UHT data magic string						*/
 	ULONG		version;		/* UHT data file format version						*/
-	ULONG		cnt;			/* element count							*/
-	ULONG		data;			/* data offset, relative to start of header				*/
-	ULONG		size;			/* data size								*/
-	ULONG		comp;			/* compressed data size (0 if no compression)				*/
+	ULONG		ucnt;			/* UHTE list element count						*/
+	ULONG		udata;			/* UHTE list data offset, relative to start of header			*/
+	ULONG		usize;			/* UHTE list data size							*/
+	ULONG		ucomp;			/* UHTE list compressed data size (0 if no compression)			*/
+	ULONG		bcnt;			/* UHT_BINFO list element count						*/
+	ULONG		bdata;			/* UHT_BINFO list data offset, relative to start of header		*/
 } UHT_HEADER;
 
 typedef struct s_UHT_ELEMENT {
@@ -41,6 +43,19 @@ typedef struct s_UHT_ELEMENT {
 	ULONG		prev;			/* Index of previous element in unit history list			*/
 	ULONG		next;			/* Index of next element in unit history list				*/
 } UHT_ELEMENT;
+
+typedef struct s_UHT_BATTLE_INFO {
+	USHORT		bdi;			/* Battle index for the battle associated with this UHT_BINFO		*/
+	SPWAW_TIMESTAMP	bdd;			/* Battle date for the battle associated with this UHT_BINFO		*/
+	USHORT		cnt;			/* UHTE pointer list element count					*/
+	ULONG		data;			/* UHTE pointer list data offset, relative to start of header		*/
+	ULONG		size;			/* UHTE pointer list data size						*/
+	ULONG		comp;			/* UHTE pointer list compressed data size (0 if no compression)		*/
+} UHT_BATTLE_INFO;
+
+typedef struct s_UHT_ELEMENT_PTR {
+	ULONG		idx;			/* UHT element index							*/
+} UHT_ELEMENT_PTR;
 
 #pragma pack(pop, r1)
 

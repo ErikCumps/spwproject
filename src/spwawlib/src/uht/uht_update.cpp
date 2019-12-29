@@ -14,6 +14,8 @@
 SPWAW_ERROR
 UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 {
+	SPWAW_ERROR	rc;
+	SPWAW_UHT_BINFO	*info;
 	SPWAW_BATTLE	*pb, *nb;
 	USHORT		status;
 	char		buf[16];
@@ -22,6 +24,8 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 	SPWAW_BDATE(b->bdate, bdate);
 	UHTLOG1 ("UHT_update: \"%s\"\n", bdate);
+
+	rc = UHT_battle_info (uht, b, &info); ROE ("UHT_battle_info");
 
 	pb = b->prev; nb = b->next;
 
@@ -33,7 +37,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			UHTTRACE0 ("src/dst = NO/NO ");
 
 			UHTTRACE0 ("-> fresh commission\n");
-			uht_commission (uht, rr);
+			info->list[i] = uht_commission (uht, rr);
 
 			continue;
 		}
@@ -50,7 +54,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 					buf,
 					pbdate, pr.i, pr.b->info_sob->pbir_core.uir[pr.i].snap->data.lname,
 					bdate, rr.i, rr.b->info_sob->pbir_core.uir[rr.i].snap->data.lname);
-				uht_commission (uht, rr);
+				info->list[i] = uht_commission (uht, rr);
 				INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
 				dossier_search_back (pr, pr, f);
 				uht_link (uht, pr, rr, status);
@@ -59,7 +63,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 				INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
 				dossier_search_back (pr, pr, f);
-				uht_adjust_decommission (uht, pr, rr);
+				info->list[i] = uht_adjust_decommission (uht, pr, rr);
 			}
 
 			continue;
@@ -77,13 +81,13 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 					buf,
 					bdate, rr.i, rr.b->info_sob->pbir_core.uir[rr.i].snap->data.lname,
 					nbdate, nr.i, nr.b->info_sob->pbir_core.uir[nr.i].snap->data.lname);
-				uht_commission (uht, rr);
+				info->list[i] = uht_commission (uht, rr);
 				uht_link (uht, rr, nr, status);
 			} else {
 				UHTTRACE0 ("-> adjust commission\n");
 				rr.b = rr.b->next; rr.i = rr.b->ra[rr.i].dst;
 				nr.b = b; nr.i = i;
-				uht_adjust_commission (uht, rr, nr);
+				info->list[i] = uht_adjust_commission (uht, rr, nr);
 			}
 
 			continue;
@@ -100,12 +104,13 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 		if ((pstatus == UHT_NOSTATUS) && (nstatus == UHT_NOSTATUS)) {
 			UHTTRACE0 ("pchange/nchange = NO/NO\n");
 			UHTTRACE0 ("-> existing unit - NOP\n");
+			info->list[i] = pr.b->uhtinfo->list[pr.i];
 		} else if ((pstatus != UHT_NOSTATUS) && (nstatus == UHT_NOSTATUS)) {
 			UHTTRACE0 ("pchange/nchange = YES/NO\n");
 
 			UHTTRACE0 ("-> adjust commission (dst)\n");
 			BIRURR cr; cr.b = rr.b->next; cr.i = rr.b->ra[rr.i].dst;
-			uht_adjust_commission (uht, cr, rr);
+			info->list[i] = uht_adjust_commission (uht, cr, rr);
 
 			UHTTRACE0 ("-> adjust src link\n");
 			INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
@@ -118,6 +123,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
 			dossier_search_back (pr, pr, f);
 			uht_link (uht, pr, nr, nstatus);
+			info->list[i] = pr.b->uhtinfo->list[pr.i];
 		} else {
 			UHTTRACE0 ("pchange/nchange = YES/YES\n");
 
@@ -127,11 +133,11 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			USHORT status = uht_detect_changes (pr, nr, pr.b->ra[pr.i].rpl);
 			if (status == UHT_NOSTATUS) {
 				UHTTRACE0 ("-> break chain\n");
-				uht_split_commission (uht, pr, nr);
+				nr.b->uhtinfo->list[nr.i] = uht_split_commission (uht, pr, nr);
 			}
 
 			UHTTRACE0 ("-> fresh commission\n");
-			uht_commission (uht, rr);
+			info->list[i] = uht_commission (uht, rr);
 
 			{
 				SPWAW_BDATE(pr.b->bdate, prbdate); SPWAW_BDATE(rr.b->bdate, bdate);
@@ -182,7 +188,10 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 	uht_sort (uht);
 
+#if UHTDBGDUMP
+	UHT_debug_dump (b->uhtinfo);
 	UHT_debug_dump (uht);
+#endif	/* UHTDBGDUMP */
 
 	return (SPWERR_OK);
 }

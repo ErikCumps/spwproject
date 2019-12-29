@@ -115,6 +115,7 @@ struct s_SPWAW_BATTLE {
 	SPWAW_DOSSIER_BURA	*ra;				/* Unit reassignment records			*/
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
 	SPWAW_DOSSIER_BTLPROPS	props;				/* Battle properties				*/
+	SPWAW_UHT_BINFO		*uhtinfo;			/* Pointer to UHT battle info (if present)	*/
 };
 
 /* SPWAW dossier: campaign properties */

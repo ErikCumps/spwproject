@@ -37,37 +37,25 @@ prep_uhte_data (SPWAW_UHTE *uhte, UHT_ELEMENT &data, STRTAB *stab)
 	data.next	= uhte->next?uhte->next->idx:SPWAW_BADLONGIDX;
 }
 
-SPWAW_ERROR
-UHT_save (SPWAW_UHT *src, int fd, bool compress)
+static SPWAW_ERROR
+UHT_save_uhte_list (SPWAW_UHT *src, int fd, bool compress, UHT_HEADER &hdr)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	STRTAB		*stab = NULL;
-	UHT_HEADER	hdr;
-	long		p0, p1;
+	long		p0;
 	SBW		*sbw = NULL;
 	UHT_ELEMENT	uhte;
 	char		*data = NULL;
 	long		size;
 	CBIO		cbio;
 
-	CNULLARG (src);
 	stab = (STRTAB *)src->dossier->stab;
-
 	p0 = bseekget (fd);
-	bseekmove (fd, sizeof (hdr));
-
-	sbw = sbwrite_init (NULL, 0);
-	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
-
-	/* Prepare header */
-	memset (&hdr, 0, sizeof (hdr));
-
-	memcpy (hdr.magic, UHT_MAGIC, strlen (UHT_MAGIC));
-	hdr.version = UHT_VERSION;
-	hdr.cnt = src->cnt;
 
 	/* Collect uhte data in a single buffer, replacing pointers by indexes */
-	for (ULONG i=0; i<hdr.cnt; i++) {
+	sbw = sbwrite_init (NULL, 0);
+	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
+	for (ULONG i=0; i<hdr.ucnt; i++) {
 		prep_uhte_data (src->list[i], uhte, stab);
 		if (sbwrite (sbw, (char *)&uhte, sizeof (uhte)) != sizeof (uhte))
 			FAILGOTO (SPWERR_FWFAILED, "sbwrite(uhte data)", handle_error);
@@ -75,23 +63,152 @@ UHT_save (SPWAW_UHT *src, int fd, bool compress)
 	sbwrite_stop (sbw, &data, &size); sbw = NULL;
 
 	/* Update header and write uhte data buffer */
-	hdr.size = size;
-	hdr.data = bseekget (fd) - p0;
+	hdr.usize = size;
 
-	cbio.data = data; cbio.size = size; cbio.comp = &(hdr.comp);
+	cbio.data = data; cbio.size = size; cbio.comp = &(hdr.ucomp);
 	if (!cbwrite (fd, cbio, "uhte data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(uhte data)", handle_error);
 	safe_free (data);
-
-	/* Write header */
-	p1 = bseekget (fd); bseekset (fd, p0);
-	if (!bwrite (fd, (char *)&hdr, sizeof (hdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(uht hdr) failed", handle_error);
-	bseekset (fd, p1);
 
 	return (SPWERR_OK);
 
 handle_error:
 	if (data) safe_free (data);
 	if (sbw) sbwrite_stop (sbw);
+	bseekset (fd, p0);
+	return (rc);
+}
+
+static void
+prep_binfo_data (SPWAW_UHTE *uhte, UHT_ELEMENT_PTR &data)
+{
+	memset (&data, 0, sizeof(data));
+
+	data.idx	= uhte?uhte->idx:SPWAW_BADLONGIDX;
+}
+
+static SPWAW_ERROR
+UHT_save_binfo (SPWAW_UHT_BINFO *info, int fd, bool compress, UHT_BATTLE_INFO &hdr)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	long		p0;
+	SBW		*sbw = NULL;
+	UHT_ELEMENT_PTR	uep;
+	char		*data = NULL;
+	long		size;
+	CBIO		cbio;
+
+	p0 = bseekget (fd);
+
+	/* Collect BINFO data in a single buffer, replacing pointers by indexes */
+	sbw = sbwrite_init (NULL, 0);
+	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
+	for (ULONG i=0; i<hdr.cnt; i++) {
+		prep_binfo_data (info->list[i], uep);
+		if (sbwrite (sbw, (char *)&uep, sizeof (uep)) != sizeof (uep))
+			FAILGOTO (SPWERR_FWFAILED, "sbwrite(BINFO data)", handle_error);
+	}
+	sbwrite_stop (sbw, &data, &size); sbw = NULL;
+
+	/* Update header and write BINFO data buffer */
+	hdr.size = size;
+
+	cbio.data = data; cbio.size = size; cbio.comp = &(hdr.comp);
+	if (!cbwrite (fd, cbio, "uhte pointer data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(BINFO data)", handle_error);
+        safe_free (data);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (data) safe_free (data);
+	if (sbw) sbwrite_stop (sbw);
+	bseekset (fd, p0);
+	return (rc);
+}
+
+static void
+prep_binfo_data (SPWAW_UHT_BINFO *info, UHT_BATTLE_INFO &data, ULONG pos)
+{
+	memset (&data, 0, sizeof(data));
+
+	data.bdi	= info->bdate.btlidx;
+	SPWAW_date2stamp (&(info->bdate.date), &(data.bdd));
+	data.cnt	= info->cnt;
+	data.data	= pos;
+}
+
+static SPWAW_ERROR
+UHT_save_binfo_list (SPWAW_UHT *src, int fd, bool compress, UHT_HEADER &hdr)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	long		p0, p1;
+	unsigned long	isize;
+	UHT_BATTLE_INFO	*ihdrs;
+
+	p0 = bseekget (fd);
+
+	/* Allocate storage for BINFO headers */
+	isize = sizeof (UHT_BATTLE_INFO) * hdr.bcnt;
+	ihdrs = safe_nmalloc (UHT_BATTLE_INFO, hdr.bcnt); COOMGOTO (ihdrs, "BINFO list", handle_error);
+	bseekmove (fd, isize);
+
+	/* Save BINFO data and update BINFO headers */
+	for (ULONG i=0; i<hdr.bcnt; i++) {
+		prep_binfo_data (src->blist.info[i], ihdrs[i], bseekget(fd) - p0);
+		rc = UHT_save_binfo (src->blist.info[i], fd, compress, ihdrs[i]); ERRORGOTO ("UHT_save_binfo()", handle_error);
+	}
+
+	/* Write BINFO headers */
+	p1 = bseekget (fd); bseekset (fd, p0);
+	if (!bwrite (fd, (char *)ihdrs, isize)) FAILGOTO (SPWERR_FWFAILED, "bwrite(BINFO list) failed", handle_error);
+	safe_free (ihdrs);
+	bseekset (fd, p1);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (ihdrs) safe_free (ihdrs);
+	bseekset (fd, p0);
+	return (rc);
+}
+
+
+SPWAW_ERROR
+UHT_save (SPWAW_UHT *src, int fd, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	STRTAB		*stab = NULL;
+	UHT_HEADER	hdr;
+	long		p0, p1;
+
+	CNULLARG (src);
+	stab = (STRTAB *)src->dossier->stab;
+
+	p0 = bseekget (fd);
+	bseekmove (fd, sizeof (hdr));
+
+	/* Prepare header */
+	memset (&hdr, 0, sizeof (hdr));
+	memcpy (hdr.magic, UHT_MAGIC, strlen (UHT_MAGIC));
+	hdr.version = UHT_VERSION;
+
+	/* Save UHTE list */
+	hdr.ucnt  = src->cnt;
+	hdr.udata = bseekget (fd) - p0;
+	rc = UHT_save_uhte_list (src, fd, compress, hdr); ERRORGOTO ("UHT_save_uhte_list()", handle_error);
+
+	/* Save UHTE_BINFO list */
+	hdr.bcnt  = src->blist.cnt;
+	hdr.bdata = bseekget (fd) - p0;
+	rc = UHT_save_binfo_list (src, fd, compress, hdr); ERRORGOTO ("UHT_save_binfo_list()", handle_error);
+
+	/* Write header */
+	p1 = bseekget (fd); bseekset (fd, p0);
+	if (!bwrite (fd, (char *)&hdr, sizeof (hdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(UHT hdr) failed", handle_error);
+	bseekset (fd, p1);
+
+	return (SPWERR_OK);
+
+handle_error:
 	bseekset (fd, p0);
 	return (rc);
 }

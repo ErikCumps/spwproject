@@ -33,5 +33,8 @@
 /* Set to 1 to enable tracing of unit history tracking */
 #define	UHTTRACING	0
 
+/* Set to 1 to enable debug dumping of unit history tracking */
+#define	UHTDBGDUMP	0
+
 #endif	/* BUILD_OPTIONS_H */
 

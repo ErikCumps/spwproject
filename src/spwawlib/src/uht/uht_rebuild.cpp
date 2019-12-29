@@ -14,6 +14,8 @@
 static SPWAW_ERROR
 UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 {
+	SPWAW_ERROR	rc;
+	SPWAW_UHT_BINFO	*info;
 	SPWAW_BATTLE	*pb;
 	USHORT		status;
 	char		buf[16];
@@ -23,6 +25,8 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 	SPWAW_BDATE(b->bdate, bdate);
 	UHTLOG1 ("UHT_update_for_rebuild: \"%s\"\n", bdate);
 
+	rc = UHT_battle_info (uht, b, &info); ROE ("UHT_battle_info");
+
 	pb = b->prev;
 
 	for (USHORT i=0; i<b->racnt; i++) {
@@ -31,7 +35,7 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 		if (rr.b->ra[rr.i].src == SPWAW_BADIDX) {
 			UHTTRACE0 ("src=NO -> fresh commission\n");
-			uht_commission (uht, rr);
+			info->list[i] = uht_commission (uht, rr);
 
 			continue;
 		}
@@ -46,7 +50,7 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 				buf,
 				pbdate, pr.i, pr.b->info_sob->pbir_core.uir[pr.i].snap->data.lname,
 				bdate,  rr.i, rr.b->info_sob->pbir_core.uir[rr.i].snap->data.lname);
-			uht_commission (uht, rr);
+			info->list[i] = uht_commission (uht, rr);
 			INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
 			dossier_search_back (pr, pr, f);
 			uht_link (uht, pr, rr, status);
@@ -54,7 +58,7 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			UHTTRACE0 ("src=YES -> adjust decommission\n");
 			INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
 			dossier_search_back (pr, pr, f);
-			uht_adjust_decommission (uht, pr, rr);
+			info->list[i] = uht_adjust_decommission (uht, pr, rr);
 		}
 	}
 
@@ -89,10 +93,14 @@ UHT_rebuild (SPWAW_UHT *uht)
 
 	for (USHORT i=0; i<uht->dossier->bcnt; i++) {
 		rc = UHT_update_for_rebuild (uht, uht->dossier->blist[i]); ROE ("UHT_update_for_rebuild()");
-		UHT_debug_dump (uht);
+#if UHTDBGDUMP
+		UHT_debug_dump (uht->dossier->blist[i]->uhtinfo);
+#endif	/* UHTDBGDUMP */
 	}
 
+#if UHTDBGDUMP
 	UHT_debug_dump (uht);
+#endif	/* UHTDBGDUMP */
 
 	return (SPWERR_OK);
 }

@@ -11,6 +11,8 @@
 #include "uht/uht.h"
 #include "common/internal.h"
 
+#define	UHT_LISTCNT_GROW	128
+
 SPWAW_UHTE *
 uht_new_element (SPWAW_UHT *uht)
 {
@@ -68,14 +70,14 @@ find_uhte (SPWAW_UHT *uht, BIRURR &rr)
 	return (uptr);
 }
 
-void
+SPWAW_UHTE *
 uht_commission (SPWAW_UHT *uht, BIRURR &rr)
 {
 	SPWAW_DOSSIER_UIR	*uir = NULL;
 	SPWAW_UHTE		*uhte = NULL;
 
-	if (!uht) return;
-	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return;
+	if (!uht) return (NULL);
+	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return (NULL);
 
 	uir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
 
@@ -84,7 +86,7 @@ uht_commission (SPWAW_UHT *uht, BIRURR &rr)
 		bdate, rr.i, uir->snap->strings.uid, uir->snap->data.lname);
 
 	uhte = uht_new_element (uht);
-	if (!uhte) return;
+	if (!uhte) return (NULL);
 
 	uhte->uht	= uht;
 
@@ -104,17 +106,19 @@ uht_commission (SPWAW_UHT *uht, BIRURR &rr)
 
 	uhte->prev	= NULL;
 	uhte->next	= NULL;
+
+	return (uhte);
 }
 
-void
+SPWAW_UHTE *
 uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 {
 	SPWAW_DOSSIER_UIR	*nuir = NULL;
 	SPWAW_UHTE		*uptr = NULL;
 	SPWAW_UHTE		*uhte = NULL;
 
-	if (!uht) return;
-	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return;
+	if (!uht) return (NULL);
+	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return (NULL);
 
 	nuir = &(nrr.b->info_sob->pbir_core.uir[nrr.i]);
 
@@ -125,7 +129,7 @@ uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 	uptr = find_uhte (uht, rr);
 
 	uhte = uht_new_element (uht);
-	if (!uhte) return;
+	if (!uhte) return (NULL);
 
 	uhte->uht	= uht;
 
@@ -150,16 +154,18 @@ uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 		uhte->prev	= NULL;
 		uhte->next	= NULL;
 	}
+
+	return (uhte);
 }
 
-void
+SPWAW_UHTE *
 uht_adjust_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 {
 	SPWAW_DOSSIER_UIR	*nuir = NULL;
 	SPWAW_UHTE		*uptr = NULL;
 
-	if (!uht) return;
-	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return;
+	if (!uht) return (NULL);
+	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return (NULL);
 
 	nuir = &(nrr.b->info_sob->pbir_core.uir[nrr.i]);
 
@@ -183,16 +189,18 @@ uht_adjust_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 		uptr->FBI	= nrr.b->bdate;
 		uptr->FUI	= nrr.i;
 	}
+
+	return (uptr);
 }
 
-void
+SPWAW_UHTE *
 uht_decommission (SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db)
 {
 	SPWAW_DOSSIER_UIR	*uir = NULL;
 	SPWAW_UHTE		*uptr = NULL;
 
-	if (!uht || !db) return;
-	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return;
+	if (!uht || !db) return (NULL);
+	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return (NULL);
 
 	uir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
 
@@ -209,16 +217,18 @@ uht_decommission (SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db)
 			uptr->next	 = NULL;
 		}
 	}
+
+	return (uptr);
 }
 
-void
+SPWAW_UHTE *
 uht_adjust_decommission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 {
 	SPWAW_DOSSIER_UIR	*nuir = NULL;
 	SPWAW_UHTE		*uptr = NULL;
 
-	if (!uht) return;
-	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return;
+	if (!uht) return (NULL);
+	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return (NULL);
 
 	nuir = &(nrr.b->info_sob->pbir_core.uir[nrr.i]);
 
@@ -230,6 +240,8 @@ uht_adjust_decommission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 	if (uptr) {
 		uptr->LBI = nrr.b->bdate;
 	}
+
+	return (uptr);
 }
 
 void

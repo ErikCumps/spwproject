@@ -394,9 +394,11 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	if (dst->type == SPWAW_CAMPAIGN_DOSSIER) {
 		/* We are now backwards compatible with version 12 and older */
 		if (mvhdr.version <= DOSS_VERSION_V12) {
+			/* This is an old dossier, the UHT must be rebuilt */
 			rc = UHT_rebuild (&(dst->uht));
 			ERRORGOTO ("UHT_rebuild()", handle_error);
 		} else {
+			/* This is a modern dossier, the UHT can be loaded */
 			bseekset (fd, pos + hdr.uht);
 			rc = UHT_load (fd, &(dst->uht));
 			ERRORGOTO ("UHT_load()", handle_error);

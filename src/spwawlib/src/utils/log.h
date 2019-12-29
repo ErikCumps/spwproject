@@ -163,6 +163,8 @@ extern void	log_shutdown	(void);
 
 #if	UHTLOGGING
 
+#define	UHTLOGGED(x_)
+
 #define	UHTLOG0(m_)					do { log (m_); } while (0)
 #define	UHTLOG1(m_,a1_)					do { log (m_, a1_); } while (0)
 #define	UHTLOG2(m_,a1_,a2_)				do { log (m_, a1_, a2_); } while (0)
@@ -174,6 +176,8 @@ extern void	log_shutdown	(void);
 #define	UHTLOG8(m_,a1_,a2_,a3_,a4_,a5_,a6_,a7_,a8_)	do { log (m_, a1_, a2_, a3_, a4_, a5_, a6_, a7_, a8_); } while (0)
 
 #else	/* !UHTLOGGING */
+
+#define	UHTLOGGED(x_)	(x_)
 
 #define	UHTLOG0(m_)
 #define	UHTLOG1(m_,a1_)
