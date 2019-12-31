@@ -53,70 +53,70 @@ handle_error:
 static SPWAW_UHTE *
 find_uhte (SPWAW_UHT *uht, BIRURR &rr)
 {
-	SPWAW_UHTE	*uptr = NULL;
-
 	if (!uht) return (NULL);
+	if (rr.u) return (rr.u);
 
 	for (unsigned int i=0; i<uht->cnt; i++) {
 		if (SPWAW_bdate_cmp (&(uht->list[i]->FBI), &(rr.b->bdate)) != 0) continue;
 		if (uht->list[i]->FUI != rr.i) continue;
 
-		uptr = uht->list[i];
+		rr.u = uht->list[i];
 		break;
 	}
 
-	if (!uptr) { UHTLOG0 ("warning: failed to find UHTE!\n"); }
+	if (!rr.u) { UHTLOG0 ("warning: failed to find UHTE!\n"); }
 
-	return (uptr);
+	return (rr.u);
 }
 
 SPWAW_UHTE *
-uht_commission (SPWAW_UHT *uht, BIRURR &rr)
+uht_commission (SPWAW_UHT *uht, BIRURR &rr, USHORT status)
 {
 	SPWAW_DOSSIER_UIR	*uir = NULL;
-	SPWAW_UHTE		*uhte = NULL;
+	char			buf[16];
 
+	rr.u = NULL;
 	if (!uht) return (NULL);
 	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return (NULL);
 
 	uir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
 
 	SPWAW_BDATE(rr.b->bdate, bdate);
-	UHTLOG4 ("| uht_commission [%s:%05u] %s: %s\n",
-		bdate, rr.i, uir->snap->strings.uid, uir->snap->data.lname);
+	uht_status_log (status, buf, sizeof(buf));
+	UHTLOG6 ("| uht_commission [%s:%05u] %s: %s, status=0x%4.4x (%s)\n",
+		bdate, rr.i, uir->snap->strings.uid, uir->snap->data.lname, status, buf);
 
-	uhte = uht_new_element (uht);
-	if (!uhte) return (NULL);
+	rr.u = rr.u = uht_new_element (uht);
+	if (!rr.u) return (NULL);
 
-	uhte->uht	= uht;
+	rr.u->uht	= uht;
 
-	uhte->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->data.lname);
-	uhte->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->strings.uid);
-	uhte->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->data.uname);
-	uhte->rank	= uir->snap->data.rank;
-	uhte->FMID	= uir->snap->data.FMID;
-	uhte->FSID	= uir->snap->data.FSID;
+	rr.u->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->data.lname);
+	rr.u->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->strings.uid);
+	rr.u->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->data.uname);
+	rr.u->rank	= uir->snap->data.rank;
+	rr.u->FMID	= uir->snap->data.FMID;
+	rr.u->FSID	= uir->snap->data.FSID;
 
-	uhte->FBI	= rr.b->bdate;
-	uhte->FUI	= rr.i;
+	rr.u->FBI	= rr.b->bdate;
+	rr.u->FUI	= rr.i;
 
-	uhte->LBI	= rr.b->bdate;
+	rr.u->LBI	= rr.b->bdate;
 
-	uhte->status	= UHT_NOSTATUS;
+	rr.u->status	= status;
 
-	uhte->prev	= NULL;
-	uhte->next	= NULL;
+	rr.u->prev	= NULL;
+	rr.u->next	= NULL;
 
-	return (uhte);
+	return (rr.u);
 }
 
 SPWAW_UHTE *
 uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 {
 	SPWAW_DOSSIER_UIR	*nuir = NULL;
-	SPWAW_UHTE		*uptr = NULL;
-	SPWAW_UHTE		*uhte = NULL;
 
+	nrr.u = NULL;
 	if (!uht) return (NULL);
 	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return (NULL);
 
@@ -126,44 +126,43 @@ uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 	UHTLOG6 ("| uht_split_commission [%s:%05u] %s: %s from [%s:%05u]\n",
 		nbdate, nrr.i, nuir->snap->strings.uid, nuir->snap->data.lname, bdate, rr.i);
 
-	uptr = find_uhte (uht, rr);
+	nrr.u = uht_new_element (uht);
+	if (!nrr.u) return (NULL);
 
-	uhte = uht_new_element (uht);
-	if (!uhte) return (NULL);
+	nrr.u->uht	= uht;
 
-	uhte->uht	= uht;
+	nrr.u->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.lname);
+	nrr.u->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->strings.uid);
+	nrr.u->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.uname);
+	nrr.u->rank	= nuir->snap->data.rank;
+	nrr.u->FMID	= nuir->snap->data.FMID;
+	nrr.u->FSID	= nuir->snap->data.FSID;
 
-	uhte->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.lname);
-	uhte->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->strings.uid);
-	uhte->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.uname);
-	uhte->rank	= nuir->snap->data.rank;
-	uhte->FMID	= nuir->snap->data.FMID;
-	uhte->FSID	= nuir->snap->data.FSID;
+	nrr.u->FBI	= nrr.b->bdate;
+	nrr.u->FUI	= nrr.i;
 
-	uhte->FBI	= nrr.b->bdate;
-	uhte->FUI	= nrr.i;
-
-	if (uptr != NULL) {
-		uhte->LBI	= uptr->LBI;
-		uhte->status	= uptr->status;
-		uhte->prev	= uptr->prev;
-		uhte->next	= uptr->next;
+	find_uhte (uht, rr);
+	if (rr.u != NULL) {
+		nrr.u->LBI	= rr.u->LBI;
+		nrr.u->status	= rr.u->status;
+		nrr.u->prev	= rr.u->prev;
+		nrr.u->next	= rr.u->next;
 	} else {
-		uhte->LBI	= nrr.b->bdate;
-		uhte->status	= UHT_NOSTATUS;
-		uhte->prev	= NULL;
-		uhte->next	= NULL;
+		nrr.u->LBI	= nrr.b->bdate;
+		nrr.u->status	= UHT_NOSTATUS;
+		nrr.u->prev	= NULL;
+		nrr.u->next	= NULL;
 	}
 
-	return (uhte);
+	return (nrr.u);
 }
 
 SPWAW_UHTE *
 uht_adjust_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 {
 	SPWAW_DOSSIER_UIR	*nuir = NULL;
-	SPWAW_UHTE		*uptr = NULL;
 
+	nrr.u = NULL;
 	if (!uht) return (NULL);
 	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return (NULL);
 
@@ -173,32 +172,32 @@ uht_adjust_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 	UHTLOG6 ("| uht_adjust_commission [%s:%05u] -> [%s:%05u] %s: %s\n",
 		 bdate, rr.i, nbdate, nrr.i, nuir->snap->strings.uid, nuir->snap->data.lname);
 
-	uptr = find_uhte (uht, rr);
-	if (uptr) {
-		if (uptr->lname) STRTAB_del ((STRTAB*)uht->dossier->stab, uptr->lname);
-		if (uptr->UID) STRTAB_del ((STRTAB*)uht->dossier->stab, uptr->UID);
-		if (uptr->uname) STRTAB_del ((STRTAB*)uht->dossier->stab, uptr->uname);
+	nrr.u = find_uhte (uht, rr);
+	if (nrr.u) {
+		if (nrr.u->lname) STRTAB_del ((STRTAB*)uht->dossier->stab, nrr.u->lname);
+		if (nrr.u->UID) STRTAB_del ((STRTAB*)uht->dossier->stab, nrr.u->UID);
+		if (nrr.u->uname) STRTAB_del ((STRTAB*)uht->dossier->stab, nrr.u->uname);
 
-		uptr->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.lname);
-		uptr->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->strings.uid);
-		uptr->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.uname);
-		uptr->rank	= nuir->snap->data.rank;
-		uptr->FMID	= nuir->snap->data.FMID;
-		uptr->FSID	= nuir->snap->data.FSID;
+		nrr.u->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.lname);
+		nrr.u->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->strings.uid);
+		nrr.u->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, nuir->snap->data.uname);
+		nrr.u->rank	= nuir->snap->data.rank;
+		nrr.u->FMID	= nuir->snap->data.FMID;
+		nrr.u->FSID	= nuir->snap->data.FSID;
 
-		uptr->FBI	= nrr.b->bdate;
-		uptr->FUI	= nrr.i;
+		nrr.u->FBI	= nrr.b->bdate;
+		nrr.u->FUI	= nrr.i;
 	}
 
-	return (uptr);
+	return (nrr.u);
 }
 
 SPWAW_UHTE *
 uht_decommission (SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db)
 {
 	SPWAW_DOSSIER_UIR	*uir = NULL;
-	SPWAW_UHTE		*uptr = NULL;
 
+	rr.u = NULL;
 	if (!uht || !db) return (NULL);
 	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return (NULL);
 
@@ -208,25 +207,25 @@ uht_decommission (SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db)
 	UHTLOG3 ("| uht_decommission [%s:%05u] %s\n",
 		 bdate, rr.i, dbdate);
 
-	uptr = find_uhte (uht, rr);
-	if (uptr) {
-		uptr->LBI = db->bdate;
+	find_uhte (uht, rr);
+	if (rr.u) {
+		rr.u->LBI = db->bdate;
 
-		if (uptr->next) {
-			uptr->next->prev = false;
-			uptr->next	 = NULL;
+		if (rr.u->next) {
+			rr.u->next->prev = NULL;
+			rr.u->next	 = NULL;
 		}
 	}
 
-	return (uptr);
+	return (rr.u);
 }
 
 SPWAW_UHTE *
 uht_adjust_decommission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 {
 	SPWAW_DOSSIER_UIR	*nuir = NULL;
-	SPWAW_UHTE		*uptr = NULL;
 
+	nrr.u = NULL;
 	if (!uht) return (NULL);
 	if (nrr.i >= nrr.b->info_sob->pbir_core.ucnt) return (NULL);
 
@@ -236,12 +235,12 @@ uht_adjust_decommission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 	UHTLOG4 ("| uht_adjust_decommission [%s:%05u] -> [%s:%05u]\n",
 		 bdate, rr.i, nbdate, nrr.i);
 
-	uptr = find_uhte (uht, rr);
-	if (uptr) {
-		uptr->LBI = nrr.b->bdate;
+	nrr.u = find_uhte (uht, rr);
+	if (nrr.u) {
+		nrr.u->LBI = nrr.b->bdate;
 	}
 
-	return (uptr);
+	return (nrr.u);
 }
 
 void
@@ -270,10 +269,10 @@ uht_link (SPWAW_UHT *uht, BIRURR &frr, BIRURR &trr, USHORT status)
 			fptr->LBI = b->prev->bdate;
 			fptr->next = tptr;
 			fptr->next->prev = fptr;
+			// Fix target uhte status (it may have been updated)
 			fptr->next->status = status;
 		} else {
 			UHTLOG0 ("! warning: re-linking is not allowed!\n");
-
 		}
 	} else {
 		UHTLOG0 ("| warning: can not link unknown UHTE!\n");
@@ -314,13 +313,40 @@ uht_status_log (USHORT status, char *buf, int len)
 	if (!buf || !len) return;
 	memset (buf, 0, len);
 
-	snprintf (buf, len - 1, "%c%c%c%c%c%c",
-		(status&UHT_RENAMED)?'r':'_',
-		(status&UHT_REPLACED)?'R':'_',
-		(status&UHT_REASSIGNED)?'A':'_',
-		(status&UHT_UPGRADED)?'U':'_',
-		(status&UHT_PROMOTED)?'P':'_',
-		(status&UHT_DEMOTED)?'D':'_');
+	snprintf (buf, len - 1, "%c%c%c%c%c%c%c%c%c",
+		(status & UHT_RENAMED	) ? 'N' : '_',
+		(status & UHT_REPLACED	) ? 'R' : '_',
+		(status & UHT_REASSIGNED) ? 'A' : '_',
+		(status & UHT_UPGRADED	) ? 'U' : '_',
+		(status & UHT_PROMOTED	) ? 'P' : '_',
+		(status & UHT_DEMOTED	) ? 'D' : '_',
+		(status & UHT_DAMAGED	) ? 'd' : '_',
+		(status & UHT_ABANDONED	) ? 'a' : '_',
+		(status & UHT_DESTROYED	) ? 'x' : '_'
+		);
+}
+
+USHORT
+uht_detect_status (BIRURR &rr)
+{
+	SPWAW_DOSSIER_UIR	*uir;
+	USHORT			status = UHT_NOSTATUS;
+
+	uir = &(rr.b->info_eob->pbir_core.uir[rr.i]);
+
+	if (uir->snap->data.damage && uir->snap->data.alive && (uir->snap->data.aband == SPWAW_ANONE)) {
+		status |= UHT_DAMAGED;
+	}
+
+	if (uir->snap->data.aband != SPWAW_ANONE) {
+		status |= UHT_ABANDONED;
+	}
+
+	if (!uir->snap->data.alive) {
+		status |= UHT_DESTROYED;
+	}
+
+	return (status);
 }
 
 USHORT
@@ -356,18 +382,7 @@ uht_detect_changes (BIRURR &orr, BIRURR &nrr, bool rpl)
 		}
 	}
 
+	status |= uht_detect_status (nrr);
+
 	return (status);
-}
-
-void
-uht_set_filter (BIRURR &rr, BIRURR_FILTER &f)
-{
-	SPWAW_DOSSIER_UIR	*uir;
-
-	uir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
-
-	f.lname	= uir->snap->data.lname;
-	f.UID	= uir->snap->strings.uid;
-	f.uname	= uir->snap->data.uname;
-	f.rank	= &uir->snap->data.rank;
 }

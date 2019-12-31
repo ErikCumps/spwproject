@@ -27,26 +27,35 @@ typedef struct s_SPWAW_UHT		SPWAW_UHT;
 /* Unit has no status */
 #define	UHT_NOSTATUS	0x0000
 
-/* Unit was renamed */
+/* Unit was renamed after previous battle */
 #define	UHT_RENAMED	0x0001
 
-/* Unit was killed and replaced */
+/* Unit was killed and replaced after previous battle */
 #define	UHT_REPLACED	0x0002
 
-/* Unit was reassigned or cross-attached */
+/* Unit was reassigned or cross-attached after previous battle */
 #define	UHT_REASSIGNED	0x0004
 
-/* Unit was upgraded */
+/* Unit was upgraded after previous battle */
 #define	UHT_UPGRADED	0x0008
 
-/* Unit was promoted */
+/* Unit was promoted after previous battle */
 #define	UHT_PROMOTED	0x0010
 
-/* Unit was demoted */
+/* Unit was demoted after previous battle */
 #define	UHT_DEMOTED	0x0020
 
-/* Unit was promoted or demoted */
+/* Unit was promoted or demoted after previous battle */
 #define	UHT_RERANKED	(UHT_PROMOTED|UHT_DEMOTED)
+
+/* Unit was damaged during previous battle */
+#define	UHT_DAMAGED	0x0040
+
+/* Unit was abandoned during previous battle */
+#define	UHT_ABANDONED	0x0080
+
+/* Unit was destroyed during previous battle */
+#define	UHT_DESTROYED	0x0100
 
 /* SPWAW unit history tracking element */
 typedef struct s_SPWAW_UHTE {
@@ -120,6 +129,9 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_is_promoted(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_PROMOTED)
 #define	SPWAW_UHT_is_demoted(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_DEMOTED)
 #define	SPWAW_UHT_is_reranked(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_RERANKED)
+#define	SPWAW_UHT_is_damaged(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_DAMAGED)
+#define	SPWAW_UHT_is_abandoned(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_ABANDONED)
+#define	SPWAW_UHT_is_destroyed(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_DESTROYED)
 
 #define	SPWAW_UHT_has_rename(u_)		SPWAW_UHT_is(u_, UHT_RENAMED)
 #define	SPWAW_UHT_has_replacement(u_)		SPWAW_UHT_is(u_, UHT_REPLACED)
@@ -128,6 +140,9 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_has_promotion(u_)		SPWAW_UHT_is(u_, UHT_PROMOTED)
 #define	SPWAW_UHT_has_demotion(u_)		SPWAW_UHT_is(u_, UHT_DEMOTED)
 #define	SPWAW_UHT_has_rerank(u_)		SPWAW_UHT_is(u_, UHT_RERANKED)
+#define	SPWAW_UHT_has_damaged(u_)		SPWAW_UHT_is(u_, UHT_DAMAGED)
+#define	SPWAW_UHT_has_abandoned(u_)		SPWAW_UHT_is(u_, UHT_ABANDONED)
+#define	SPWAW_UHT_has_destroyed(u_)		SPWAW_UHT_is(u_, UHT_DESTROYED)
 
 #define	SPWAW_UHT_first_rename(u_)		SPWAW_UHT_first(u_, UHT_RENAMED)
 #define	SPWAW_UHT_first_replacement(u_)		SPWAW_UHT_first(u_, UHT_REPLACED)
@@ -136,6 +151,9 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_first_promotion(u_)		SPWAW_UHT_first(u_, UHT_PROMOTED)
 #define	SPWAW_UHT_first_demotion(u_)		SPWAW_UHT_first(u_, UHT_DEMOTED)
 #define	SPWAW_UHT_first_rerank(u_)		SPWAW_UHT_first(u_, UHT_RERANKED)
+#define	SPWAW_UHT_first_damaged(u_)		SPWAW_UHT_first(u_, UHT_DAMAGED)
+#define	SPWAW_UHT_first_abandoned(u_)		SPWAW_UHT_first(u_, UHT_ABANDONED)
+#define	SPWAW_UHT_first_destroyed(u_)		SPWAW_UHT_first(u_, UHT_DESTROYED)
 
 #define	SPWAW_UHT_next_rename(u_)		SPWAW_UHT_next(u_, UHT_RENAMED)
 #define	SPWAW_UHT_next_replacement(u_)		SPWAW_UHT_next(u_, UHT_REPLACED)
@@ -144,6 +162,9 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_next_promotion(u_)		SPWAW_UHT_next(u_, UHT_PROMOTED)
 #define	SPWAW_UHT_next_demotion(u_)		SPWAW_UHT_next(u_, UHT_DEMOTED)
 #define	SPWAW_UHT_next_rerank(u_)		SPWAW_UHT_next(u_, UHT_RERANKED)
+#define	SPWAW_UHT_next_damaged(u_)		SPWAW_UHT_next(u_, UHT_DAMAGED)
+#define	SPWAW_UHT_next_abandoned(u_)		SPWAW_UHT_next(u_, UHT_ABANDONED)
+#define	SPWAW_UHT_next_destroyed(u_)		SPWAW_UHT_next(u_, UHT_DESTROYED)
 
 #define	SPWAW_UHT_last_rename(u_)		SPWAW_UHT_last(u_, UHT_RENAMED)
 #define	SPWAW_UHT_last_replacement(u_)		SPWAW_UHT_last(u_, UHT_REPLACED)
@@ -152,6 +173,9 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_last_promotion(u_)		SPWAW_UHT_last(u_, UHT_PROMOTED)
 #define	SPWAW_UHT_last_demotion(u_)		SPWAW_UHT_last(u_, UHT_DEMOTED)
 #define	SPWAW_UHT_last_rerank(u_)		SPWAW_UHT_last(u_, UHT_RERANKED)
+#define	SPWAW_UHT_last_damaged(u_)		SPWAW_UHT_last(u_, UHT_DAMAGED)
+#define	SPWAW_UHT_last_abandoned(u_)		SPWAW_UHT_last(u_, UHT_ABANDONED)
+#define	SPWAW_UHT_last_destroyed(u_)		SPWAW_UHT_last(u_, UHT_DESTROYED)
 
 #define	SPWAW_UHT_prev_rename(u_)		SPWAW_UHT_prev(u_, UHT_RENAMED)
 #define	SPWAW_UHT_prev_replacement(u_)		SPWAW_UHT_prev(u_, UHT_REPLACED)
@@ -160,6 +184,9 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_prev_promotion(u_)		SPWAW_UHT_prev(u_, UHT_PROMOTED)
 #define	SPWAW_UHT_prev_demotion(u_)		SPWAW_UHT_prev(u_, UHT_DEMOTED)
 #define	SPWAW_UHT_prev_rerank(u_)		SPWAW_UHT_prev(u_, UHT_RERANKED)
+#define	SPWAW_UHT_prev_damaged(u_)		SPWAW_UHT_prev(u_, UHT_DAMAGED)
+#define	SPWAW_UHT_prev_abandoned(u_)		SPWAW_UHT_prev(u_, UHT_ABANDONED)
+#define	SPWAW_UHT_prev_destroyed(u_)		SPWAW_UHT_prev(u_, UHT_DESTROYED)
 
 #endif	/* SPWAW_LIB_UHT_H */
 

@@ -12,7 +12,7 @@
 #include "dossier/dossier.h"
 
 extern SPWAW_UHTE *	uht_new_element		(SPWAW_UHT *uht);
-extern SPWAW_UHTE *	uht_commission		(SPWAW_UHT *uht, BIRURR &rr);
+extern SPWAW_UHTE *	uht_commission		(SPWAW_UHT *uht, BIRURR &rr, USHORT status);
 extern SPWAW_UHTE *	uht_split_commission	(SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr);
 extern SPWAW_UHTE *	uht_adjust_commission	(SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr);
 extern SPWAW_UHTE *	uht_decommission	(SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db);
@@ -23,7 +23,7 @@ extern void		uht_sort_on_index	(SPWAW_UHT *uht);
 
 extern void		uht_status_log		(USHORT status, char *buf, int len);
 
+extern USHORT		uht_detect_status	(BIRURR &rr);
 extern USHORT		uht_detect_changes	(BIRURR &orr, BIRURR &nrr, bool rpl);
-extern void		uht_set_filter		(BIRURR &rr, BIRURR_FILTER &f);
 
 #endif	/* UHT_COMMON_H */

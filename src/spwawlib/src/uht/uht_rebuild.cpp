@@ -23,55 +23,62 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 	CNULLARG (uht); CNULLARG (b);
 
 	SPWAW_BDATE(b->bdate, bdate);
-	UHTLOG1 ("UHT_update_for_rebuild: \"%s\"\n", bdate);
+	UHTLOG1 ("\n### UHT_update_for_rebuild: \"%s\"\n", bdate);
 
 	rc = UHT_battle_info (uht, b, &info); ROE ("UHT_battle_info");
 
 	pb = b->prev;
+	if (!pb) {
+		UHTLOG0 ("No previous battle -> all fresh commissions...\n");
+		for (USHORT i=0; i<b->racnt; i++) {
+			UHTLOG4 ("RA[%05u] src=%05u dst=%05u rpl=%u | ", i, b->ra[i].src, b->ra[i].dst, b->ra[i].rpl);
+			BIRURR rr; rr.b = b; rr.i = i;
 
-	for (USHORT i=0; i<b->racnt; i++) {
-		UHTLOG4 ("RA[%05u] src=%05u dst=%05u rpl=%u | ", i, b->ra[i].src, b->ra[i].dst, b->ra[i].rpl);
-		BIRURR rr; rr.b = b; rr.i = i;
+			if (rr.b->ra[rr.i].src != SPWAW_BADIDX) {
+				UHTLOG0 ("==> warning: DETECTED UNEXPECTED RA SRC\n");
+			}
 
-		if (rr.b->ra[rr.i].src == SPWAW_BADIDX) {
-			UHTTRACE0 ("src=NO -> fresh commission\n");
-			info->list[i] = uht_commission (uht, rr);
+			info->list[i] = uht_commission (uht, rr, uht_detect_status (rr));
+		}
+	} else {
+		UHTLOG0 ("Tracking from previous battle...\n");
+		for (USHORT i=0; i<b->racnt; i++) {
+			UHTLOG4 ("RA[%05u] src=%05u dst=%05u rpl=%u | ", i, b->ra[i].src, b->ra[i].dst, b->ra[i].rpl);
+			BIRURR rr; rr.b = b; rr.i = i;
 
-			continue;
+			if (rr.b->ra[rr.i].src == SPWAW_BADIDX) {
+				UHTTRACE0 ("src=NO -> fresh commission\n");
+				info->list[i] = uht_commission (uht, rr, uht_detect_status (rr));
+				continue;
+			}
+
+			BIRURR pr; pr.b = pb; pr.i = b->ra[i].src; pr.u = pr.b->uhtinfo->list[pr.i];
+
+			status = uht_detect_changes (pr, rr, pr.b->ra[pr.i].rpl);
+			if (status != UHT_NOSTATUS) {
+				SPWAW_BDATE(pr.b->bdate, pbdate); SPWAW_BDATE(rr.b->bdate, bdate);
+				uht_status_log (status, buf, sizeof(buf));
+				UHTTRACE7 ("src=YES -> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
+					buf,
+					pbdate, pr.i, pr.u->lname,
+					bdate,  rr.i, rr.b->info_sob->pbir_core.uir[rr.i].snap->data.lname);
+				info->list[i] = uht_commission (uht, rr, status);
+				uht_link (uht, pr, rr, status);
+			} else {
+				UHTTRACE0 ("src=YES -> adjust decommission\n");
+				info->list[i] = uht_adjust_decommission (uht, pr, rr);
+			}
 		}
 
-		BIRURR pr; pr.b = pb; pr.i = b->ra[i].src;
+		if (pb) {
+			for (USHORT i=0; i<pb->racnt; i++) {
+				BIRURR pr; pr.b = pb; pr.i = i; pr.u = pr.b->uhtinfo->list[pr.i];
 
-		status = uht_detect_changes (pr, rr, pr.b->ra[pr.i].rpl);
-		if (status != UHT_NOSTATUS) {
-			SPWAW_BDATE(pr.b->bdate, pbdate); SPWAW_BDATE(rr.b->bdate, bdate);
-			uht_status_log (status, buf, sizeof(buf));
-			UHTTRACE7 ("src=YES -> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
-				buf,
-				pbdate, pr.i, pr.b->info_sob->pbir_core.uir[pr.i].snap->data.lname,
-				bdate,  rr.i, rr.b->info_sob->pbir_core.uir[rr.i].snap->data.lname);
-			info->list[i] = uht_commission (uht, rr);
-			INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
-			dossier_search_back (pr, pr, f);
-			uht_link (uht, pr, rr, status);
-		} else {
-			UHTTRACE0 ("src=YES -> adjust decommission\n");
-			INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
-			dossier_search_back (pr, pr, f);
-			info->list[i] = uht_adjust_decommission (uht, pr, rr);
-		}
-	}
-
-	if (pb) {
-		for (USHORT i=0; i<pb->racnt; i++) {
-			BIRURR pr; pr.b = pb; pr.i = i;
-
-			if (pr.b->ra[pr.i].dst == SPWAW_BADIDX) {
-				SPWAW_BDATE(pr.b->bdate, pbdate);
-				UHTLOG2 ("--> detected lost unit [%s:%05u]\n", pbdate, pr.i);
-				INIT_BIRURR_FILTER (f); uht_set_filter (pr, f);
-				dossier_search_back (pr, pr, f);
-				uht_decommission (uht, pr, pb);
+				if (pr.b->ra[pr.i].dst == SPWAW_BADIDX) {
+					SPWAW_BDATE(pr.b->bdate, pbdate);
+					UHTLOG2 ("--> detected lost unit [%s:%05u]\n", pbdate, pr.i);
+					uht_decommission (uht, pr, pb);
+				}
 			}
 		}
 	}
@@ -93,14 +100,10 @@ UHT_rebuild (SPWAW_UHT *uht)
 
 	for (USHORT i=0; i<uht->dossier->bcnt; i++) {
 		rc = UHT_update_for_rebuild (uht, uht->dossier->blist[i]); ROE ("UHT_update_for_rebuild()");
-#if UHTDBGDUMP
 		UHT_debug_dump (uht->dossier->blist[i]->uhtinfo);
-#endif	/* UHTDBGDUMP */
 	}
 
-#if UHTDBGDUMP
 	UHT_debug_dump (uht);
-#endif	/* UHTDBGDUMP */
 
 	return (SPWERR_OK);
 }

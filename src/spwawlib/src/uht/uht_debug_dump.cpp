@@ -11,6 +11,8 @@
 #include "uht/uht_common.h"
 #include "common/internal.h"
 
+#if UHTDBGDUMP
+
 void
 UHT_debug_dump (SPWAW_UHT *uht)
 {
@@ -105,3 +107,10 @@ UHT_debug_dump (SPWAW_UHT_BINFO *info)
 			uhte->prev, uhte->next);
 	}
 }
+
+#else  /* !UHTDBGDUMP */
+
+void UHT_debug_dump (SPWAW_UHT *uht) { UNREFERENCED_PARAMETER (uht); }
+void UHT_debug_dump (SPWAW_UHT_BINFO *info) { UNREFERENCED_PARAMETER (info); }
+
+#endif /* !UHTDBGDUMP */

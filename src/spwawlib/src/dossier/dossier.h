@@ -44,18 +44,7 @@ extern SPWAW_ERROR	dossier_update_dossier_stats	(SPWAW_DOSSIER *ptr);
 typedef struct s_BIRURR {
 	SPWAW_BATTLE	*b;
 	USHORT		i;
+	SPWAW_UHTE	*u;
 } BIRURR;
-
-typedef struct s_BIRURR_FILTER {
-	char		*lname;
-	char		*UID;
-	char		*uname;
-	SPWAW_RANK	*rank;
-} BIRURR_FILTER;
-
-#define	INIT_BIRURR_FILTER(f_)	BIRURR_FILTER f_; clear_ptr (&f_)
-
-extern SPWAW_ERROR	dossier_search_back	(BIRURR &fr, BIRURR &rr);
-extern SPWAW_ERROR	dossier_search_back	(BIRURR &fr, BIRURR &rr, BIRURR_FILTER &filter);
 
 #endif	/* DOSSIER_H */
