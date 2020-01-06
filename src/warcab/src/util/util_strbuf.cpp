@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - utility functions - simple buffered IO class.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,13 +10,14 @@
 #include "util_strbuf.h"
 
 #define	MAXLINELEN	512
+#define	BUFFERGROW	4096
 
 UtilStrbuf::UtilStrbuf (char *buf, unsigned long len, bool init, bool nl)
 {
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	d.buf = buf; d.size = len; d.eot_nl = nl;
+	d.grow = false; d.buf = buf; d.size = len; d.eot_nl = nl; d.reserved = (d.eot_nl)?2:1;
 	if (!d.buf || !d.size) return;
 
 	if (init) memset (d.buf, 0, d.size);
@@ -29,33 +30,40 @@ UtilStrbuf::UtilStrbuf (char *buf, unsigned long len, bool init, bool nl)
 	}
 }
 
+UtilStrbuf::UtilStrbuf (bool nl)
+{
+	/* Initialize */
+	memset (&d, 0, sizeof (d));
+
+	d.grow = true; d.eot_nl = nl; d.reserved = (d.eot_nl)?2:1;
+
+	d.size = BUFFERGROW;
+	SL_SAFE_CALLOC (d.buf, d.size, 1);
+	d.ptr = d.buf;
+	d.left = d.size;
+}
+
 UtilStrbuf::~UtilStrbuf (void)
 {
+	if (d.grow) SL_SAFE_FREE (d.buf);
 }
 
 bool
 UtilStrbuf::full (void)
 {
-	return (d.left == 0);
+	return (d.grow?false:(d.left == 0));
 }
 
 void
 UtilStrbuf::add (char *string)
 {
-	unsigned long	min = (d.eot_nl)?2:1;
-	unsigned long	max;
-	unsigned long	len;
+	if (!string || (string[0] == '\0')) return;
 
-	if (!d.buf || (d.left == 0)) return;
-
-	max = (d.left>min)?(d.left-min):0;
-	if ((len = strlen (string)) > max) len = max;
-	if (len) {
-		memcpy (d.ptr, string, len);
-		d.ptr += len;
-		d.left -= len;
+	if (d.grow) {
+		growing_add (string, strlen (string));
+	} else {
+		limited_add (string, strlen (string));
 	}
-	if (d.left <= min) d.left = 0;
 }
 
 void
@@ -94,4 +102,56 @@ UtilStrbuf::clear (void)
 
 	memset (d.buf, 0, d.size);
 	d.ptr = d.buf; d.left = d.size;
+}
+
+char *
+UtilStrbuf::data (void)
+{
+	return (d.buf);
+}
+
+void
+UtilStrbuf::limited_add (char *str, unsigned long len)
+{
+	unsigned long	min = (d.eot_nl)?2:1;
+	unsigned long	max;
+
+	if (!d.buf || (d.left == 0)) return;
+
+	max = (d.left>min)?(d.left-min):0;
+	if (len > max) len = max;
+	if (len) {
+		memcpy (d.ptr, str, len);
+		d.ptr += len;
+		d.left -= len;
+	}
+	if (d.left <= min) d.left = 0;
+}
+
+void
+UtilStrbuf::growing_add (char *str, unsigned long len)
+{
+	unsigned long	min = (d.eot_nl)?2:1;
+	unsigned long	max;
+	unsigned long	offset, nsize, nleft;
+
+	max = (d.left>min)?(d.left-min):0;
+	if (len > max) {
+		offset = d.ptr - d.buf; nsize = d.size; nleft = d.left;
+		while (len > max) {
+			nsize += BUFFERGROW; nleft += BUFFERGROW;
+			max = nleft-min;
+		}
+		SL_SAFE_REALLOC (d.buf, nsize);
+		d.size = nsize;
+		d.ptr = d.buf + offset;
+		d.left = d.size - offset;
+		memset (d.ptr, 0, d.left);
+	}
+
+	memcpy (d.ptr, str, len);
+	d.ptr += len;
+	d.left -= len;
+
+	if (d.left <= min) d.left = 0;
 }
