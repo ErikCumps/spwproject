@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -67,8 +67,8 @@ extern SPWAWLIB_API bool	SPWAW_isMonthOnlyDate	(SPWAW_DATE *date);
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2stamp	(SPWAW_DATE *date, SPWAW_TIMESTAMP *stamp);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_stamp2date	(SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2str		(SPWAW_DATE *date, char *buf, int len);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2str		(SPWAW_DATE *date, char **str);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2str		(SPWAW_DATE *date, char *buf, int len, bool full=true);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_date2str		(SPWAW_DATE *date, char **str, bool full=true);
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_period2stamp	(SPWAW_PERIOD *period, SPWAW_TIMESTAMP *stamp);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_stamp2period	(SPWAW_TIMESTAMP *stamp, SPWAW_PERIOD *period);
@@ -81,8 +81,8 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_period_delta	(SPWAW_PERIOD *base, SPWAW_PE
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_period_add	(SPWAW_PERIOD *base, SPWAW_PERIOD *add, SPWAW_PERIOD *sum);
 
 extern SPWAWLIB_API int		SPWAW_bdate_cmp		(SPWAW_BATTLE_DATE *a, SPWAW_BATTLE_DATE *b);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_bdate2str		(SPWAW_BATTLE_DATE *bdate, char *buf, int len);
-#define	SPWAW_BDATE(d_,v_)	char v_[128]; SPWAW_bdate2str (&(d_), v_, sizeof (v_))
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_bdate2str		(SPWAW_BATTLE_DATE *bdate, char *buf, int len, bool tolog=false);
+#define	SPWAW_BDATE(d_,v_,l_)	char v_[128]; SPWAW_bdate2str (&(d_), v_, sizeof (v_), l_)
 
 extern SPWAWLIB_API int		SPWAW_tdate_cmp		(SPWAW_TURN_DATE *a, SPWAW_TURN_DATE *b);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_tdate2str		(SPWAW_TURN_DATE *tdate, char *buf, int len);

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types implementation.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -125,7 +125,7 @@ SPWAW_stamp2date (SPWAW_TIMESTAMP *stamp, SPWAW_DATE *date)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_date2str (SPWAW_DATE *date, char *buf, int len)
+SPWAW_date2str (SPWAW_DATE *date, char *buf, int len, bool full)
 {
 	CNULLARG (date);
 
@@ -140,7 +140,11 @@ SPWAW_date2str (SPWAW_DATE *date, char *buf, int len)
 	if (!isValidDate (date)) RWE (SPWERR_BADSTAMP, "invalid SPWAW date");
 
 	if (date->day > 0) {
-		snprintf (buf, len - 1, "%04d/%02d/%02d %02d:%02d", date->year, date->month, date->day, date->hour, date->minute);
+		if (full) {
+			snprintf (buf, len - 1, "%04d/%02d/%02d %02d:%02d", date->year, date->month, date->day, date->hour, date->minute);
+		} else {
+			snprintf (buf, len - 1, "%04d/%02d/%02d", date->year, date->month, date->day);
+		}
 	} else if (date->month > 0) {
 		snprintf (buf, len - 1, "%04d/%02d", date->year, date->month);
 	} else {
@@ -151,7 +155,7 @@ SPWAW_date2str (SPWAW_DATE *date, char *buf, int len)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_date2str (SPWAW_DATE *date, char **str)
+SPWAW_date2str (SPWAW_DATE *date, char **str, bool full)
 {
 	SPWAW_ERROR	rc;
 	char		buf[64];
@@ -159,7 +163,7 @@ SPWAW_date2str (SPWAW_DATE *date, char **str)
 	CNULLARG (date); CNULLARG (str);
 	*str = NULL;
 
-	rc = SPWAW_date2str (date, buf, sizeof (buf));
+	rc = SPWAW_date2str (date, buf, sizeof (buf), full);
 	ROE ("SPWAW_date2str(core)");
 
 	*str = strdup (buf);
@@ -463,7 +467,7 @@ SPWAW_bdate_cmp (SPWAW_BATTLE_DATE *a, SPWAW_BATTLE_DATE *b)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_bdate2str (SPWAW_BATTLE_DATE *bdate, char *buf, int len)
+SPWAW_bdate2str (SPWAW_BATTLE_DATE *bdate, char *buf, int len, bool tolog)
 {
 	char	bbdate[64];
 
@@ -472,8 +476,17 @@ SPWAW_bdate2str (SPWAW_BATTLE_DATE *bdate, char *buf, int len)
 	if (!buf || !len) return (SPWERR_OK);
 	memset (buf, 0, len);
 
-	SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate));
-	snprintf (buf, len - 1, "%s<B>%05u", bbdate, bdate->btlidx);
+	if (tolog) {
+		SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate), true);
+		snprintf (buf, len - 1, "%s<B>%05u", bbdate, bdate->btlidx);
+	} else {
+		SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate), false);
+		if (bdate->btlidx == SPWAW_NOBTLIDX) {
+			snprintf (buf, len - 1, "%s", bbdate);
+		} else {
+			snprintf (buf, len - 1, "%s #%u", bbdate, bdate->btlidx);
+		}
+	}
 
 	return (SPWERR_OK);
 }
