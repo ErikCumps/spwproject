@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,7 +19,6 @@ extern SPWAW_UHTE *	uht_decommission	(SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *
 extern SPWAW_UHTE *	uht_adjust_decommission	(SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr);
 extern void		uht_link		(SPWAW_UHT *uht, BIRURR &frr, BIRURR &trr, USHORT status);
 extern void		uht_sort		(SPWAW_UHT *uht);
-extern void		uht_sort_on_index	(SPWAW_UHT *uht);
 
 extern void		uht_status_log		(USHORT status, char *buf, int len);
 

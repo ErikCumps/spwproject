@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -22,7 +22,7 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 	CNULLARG (uht); CNULLARG (b);
 
-	SPWAW_BDATE(b->bdate, bdate);
+	SPWAW_BDATE(b->bdate, bdate, true);
 	UHTLOG1 ("\n### UHT_update_for_rebuild: \"%s\"\n", bdate);
 
 	rc = UHT_battle_info (uht, b, &info); ROE ("UHT_battle_info");
@@ -56,7 +56,7 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 			status = uht_detect_changes (pr, rr, pr.b->ra[pr.i].rpl);
 			if (status != UHT_NOSTATUS) {
-				SPWAW_BDATE(pr.b->bdate, pbdate); SPWAW_BDATE(rr.b->bdate, bdate);
+				SPWAW_BDATE(pr.b->bdate, pbdate, true); SPWAW_BDATE(rr.b->bdate, bdate, true);
 				uht_status_log (status, buf, sizeof(buf));
 				UHTTRACE7 ("src=YES -> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
 					buf,
@@ -75,7 +75,7 @@ UHT_update_for_rebuild (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 				BIRURR pr; pr.b = pb; pr.i = i; pr.u = pr.b->uhtinfo->list[pr.i];
 
 				if (pr.b->ra[pr.i].dst == SPWAW_BADIDX) {
-					SPWAW_BDATE(pr.b->bdate, pbdate);
+					SPWAW_BDATE(pr.b->bdate, pbdate, true);
 					UHTLOG2 ("--> detected lost unit [%s:%05u]\n", pbdate, pr.i);
 					uht_decommission (uht, pr, pb);
 				}

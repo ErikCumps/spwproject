@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -72,31 +72,33 @@ find_uhte (SPWAW_UHT *uht, BIRURR &rr)
 SPWAW_UHTE *
 uht_commission (SPWAW_UHT *uht, BIRURR &rr, USHORT status)
 {
-	SPWAW_DOSSIER_UIR	*uir = NULL;
+	SPWAW_DOSSIER_UIR	*suir = NULL;
+	SPWAW_DOSSIER_UIR	*euir = NULL;
 	char			buf[16];
 
 	rr.u = NULL;
 	if (!uht) return (NULL);
 	if (rr.i >= rr.b->info_sob->pbir_core.ucnt) return (NULL);
 
-	uir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
+	suir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
+	euir = &(rr.b->info_eob->pbir_core.uir[rr.i]);
 
-	SPWAW_BDATE(rr.b->bdate, bdate);
+	SPWAW_BDATE(rr.b->bdate, bdate, true);
 	uht_status_log (status, buf, sizeof(buf));
 	UHTLOG6 ("| uht_commission [%s:%05u] %s: %s, status=0x%4.4x (%s)\n",
-		bdate, rr.i, uir->snap->strings.uid, uir->snap->data.lname, status, buf);
+		bdate, rr.i, suir->snap->strings.uid, suir->snap->data.lname, status, buf);
 
 	rr.u = rr.u = uht_new_element (uht);
 	if (!rr.u) return (NULL);
 
 	rr.u->uht	= uht;
 
-	rr.u->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->data.lname);
-	rr.u->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->strings.uid);
-	rr.u->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, uir->snap->data.uname);
-	rr.u->rank	= uir->snap->data.rank;
-	rr.u->FMID	= uir->snap->data.FMID;
-	rr.u->FSID	= uir->snap->data.FSID;
+	rr.u->lname	= STRTAB_add ((STRTAB*)uht->dossier->stab, suir->snap->data.lname);
+	rr.u->UID	= STRTAB_add ((STRTAB*)uht->dossier->stab, suir->snap->strings.uid);
+	rr.u->uname	= STRTAB_add ((STRTAB*)uht->dossier->stab, suir->snap->data.uname);
+	rr.u->rank	= suir->snap->data.rank;
+	rr.u->FMID	= suir->snap->data.FMID;
+	rr.u->FSID	= suir->snap->data.FSID;
 
 	rr.u->FBI	= rr.b->bdate;
 	rr.u->FUI	= rr.i;
@@ -107,6 +109,10 @@ uht_commission (SPWAW_UHT *uht, BIRURR &rr, USHORT status)
 
 	rr.u->prev	= NULL;
 	rr.u->next	= NULL;
+
+	if (status & UHT_DAMAGED) {
+		rr.u->v_damage = euir->snap->data.damage;
+	}
 
 	return (rr.u);
 }
@@ -122,7 +128,7 @@ uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 
 	nuir = &(nrr.b->info_sob->pbir_core.uir[nrr.i]);
 
-	SPWAW_BDATE(rr.b->bdate, bdate); SPWAW_BDATE(nrr.b->bdate, nbdate);
+	SPWAW_BDATE(rr.b->bdate, bdate, true); SPWAW_BDATE(nrr.b->bdate, nbdate, true);
 	UHTLOG6 ("| uht_split_commission [%s:%05u] %s: %s from [%s:%05u]\n",
 		nbdate, nrr.i, nuir->snap->strings.uid, nuir->snap->data.lname, bdate, rr.i);
 
@@ -168,7 +174,7 @@ uht_adjust_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 
 	nuir = &(nrr.b->info_sob->pbir_core.uir[nrr.i]);
 
-	SPWAW_BDATE(rr.b->bdate, bdate); SPWAW_BDATE(nrr.b->bdate, nbdate);
+	SPWAW_BDATE(rr.b->bdate, bdate, true); SPWAW_BDATE(nrr.b->bdate, nbdate, true);
 	UHTLOG6 ("| uht_adjust_commission [%s:%05u] -> [%s:%05u] %s: %s\n",
 		 bdate, rr.i, nbdate, nrr.i, nuir->snap->strings.uid, nuir->snap->data.lname);
 
@@ -203,7 +209,7 @@ uht_decommission (SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db)
 
 	uir = &(rr.b->info_sob->pbir_core.uir[rr.i]);
 
-	SPWAW_BDATE(rr.b->bdate, bdate); SPWAW_BDATE(db->bdate, dbdate);
+	SPWAW_BDATE(rr.b->bdate, bdate, true); SPWAW_BDATE(db->bdate, dbdate, true);
 	UHTLOG3 ("| uht_decommission [%s:%05u] %s\n",
 		 bdate, rr.i, dbdate);
 
@@ -231,7 +237,7 @@ uht_adjust_decommission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 
 	nuir = &(nrr.b->info_sob->pbir_core.uir[nrr.i]);
 
-	SPWAW_BDATE(rr.b->bdate, bdate); SPWAW_BDATE(nrr.b->bdate, nbdate);
+	SPWAW_BDATE(rr.b->bdate, bdate, true); SPWAW_BDATE(nrr.b->bdate, nbdate, true);
 	UHTLOG4 ("| uht_adjust_decommission [%s:%05u] -> [%s:%05u]\n",
 		 bdate, rr.i, nbdate, nrr.i);
 
@@ -252,7 +258,7 @@ uht_link (SPWAW_UHT *uht, BIRURR &frr, BIRURR &trr, USHORT status)
 
 	if (!uht) return;
 
-	SPWAW_BDATE(frr.b->bdate, fbdate); SPWAW_BDATE(trr.b->bdate, tbdate);
+	SPWAW_BDATE(frr.b->bdate, fbdate, true); SPWAW_BDATE(trr.b->bdate, tbdate, true);
 	uht_status_log (status, buf, sizeof(buf));
 	UHTLOG5 ("| uht_link [%s:%05u] -> [%s:%05u] (%s)\n",
 		fbdate, frr.i, tbdate, trr.i, buf);
@@ -305,6 +311,12 @@ uht_sort (SPWAW_UHT *uht)
 	if (!uht || (uht->cnt <= 1)) return;
 
 	qsort (uht->smap, uht->cnt, sizeof (SPWAW_UHTE *), sort_uht);
+
+	/* Count initial UHTE */
+	uht->icnt = 0;
+	for (unsigned int i=0; i<uht->cnt; i++) {
+		if (SPWAW_UHT_is_initial (uht->smap[i])) uht->icnt++;
+	}
 }
 
 void
@@ -338,7 +350,7 @@ uht_detect_status (BIRURR &rr)
 		status |= UHT_DAMAGED;
 	}
 
-	if (uir->snap->data.aband != SPWAW_ANONE) {
+	if ((uir->snap->data.aband != SPWAW_ANONE) && uir->snap->data.alive) {
 		status |= UHT_ABANDONED;
 	}
 

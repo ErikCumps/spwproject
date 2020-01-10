@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -38,8 +38,10 @@ UHT_debug_dump (SPWAW_UHT *uht)
 		uht_status_log (uhte->status, buf, sizeof(buf));
 		UHTLOG2 ("status=0x%4.4x (%s), ",
 			uhte->status, buf);
-		UHTLOG2 ("prev=0x%8.8x, next=0x%8.8x\n",
+		UHTLOG2 ("prev=0x%8.8x, next=0x%8.8x, ",
 			uhte->prev, uhte->next);
+		UHTLOG1 ("v_damage=%d\n",
+			uhte->v_damage);
 
 		if (uhte->next) {
 			SPWAW_UHTE *uhte = uht->smap[i]->next;
@@ -103,8 +105,11 @@ UHT_debug_dump (SPWAW_UHT_BINFO *info)
 		uht_status_log (uhte->status, buf, sizeof(buf));
 		UHTLOG2 ("status=0x%4.4x (%s), ",
 			uhte->status, buf);
-		UHTLOG2 ("prev=0x%8.8x, next=0x%8.8x\n",
+		UHTLOG2 ("prev=0x%8.8x, next=0x%8.8x, ",
 			uhte->prev, uhte->next);
+		UHTLOG1 ("v_damage=%d\n",
+			uhte->v_damage);
+
 	}
 }
 

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -22,7 +22,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 	CNULLARG (uht); CNULLARG (b);
 
-	SPWAW_BDATE(b->bdate, bdate);
+	SPWAW_BDATE(b->bdate, bdate, true);
 	UHTLOG1 ("\n### UHT_update: \"%s\"\n", bdate);
 
 	rc = UHT_battle_info (uht, b, &info); ROE ("UHT_battle_info");
@@ -48,7 +48,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 			status = uht_detect_changes (pr, rr, pr.b->ra[pr.i].rpl);
 			if (status != UHT_NOSTATUS) {
-				SPWAW_BDATE(pr.b->bdate, pbdate); SPWAW_BDATE(rr.b->bdate, bdate);
+				SPWAW_BDATE(pr.b->bdate, pbdate, true); SPWAW_BDATE(rr.b->bdate, bdate, true);
 				uht_status_log (status, buf, sizeof(buf));
 				UHTTRACE7 ("-> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
 					buf,
@@ -70,7 +70,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 
 			status = uht_detect_changes (rr, nr, rr.b->ra[rr.i].rpl);
 			if (status != UHT_NOSTATUS) {
-				SPWAW_BDATE(rr.b->bdate, bdate); SPWAW_BDATE(nr.b->bdate, nbdate);
+				SPWAW_BDATE(rr.b->bdate, bdate, true); SPWAW_BDATE(nr.b->bdate, nbdate, true);
 				uht_status_log (status, buf, sizeof(buf));
 				UHTTRACE7 ("-> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
 					buf,
@@ -128,7 +128,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			info->list[i] = uht_commission (uht, rr, pstatus);
 
 			{
-				SPWAW_BDATE(pr.b->bdate, prbdate); SPWAW_BDATE(rr.b->bdate, bdate);
+				SPWAW_BDATE(pr.b->bdate, prbdate, true); SPWAW_BDATE(rr.b->bdate, bdate, true);
 				uht_status_log (pstatus, buf, sizeof(buf));
 				UHTTRACE7 ("-> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
 					buf,
@@ -138,7 +138,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			uht_link (uht, pr, rr, pstatus);
 
 			{
-				SPWAW_BDATE(rr.b->bdate, bdate); SPWAW_BDATE(nr.b->bdate, nbdate);
+				SPWAW_BDATE(rr.b->bdate, bdate, true); SPWAW_BDATE(nr.b->bdate, nbdate, true);
 				uht_status_log (nstatus, buf, sizeof(buf));
 				UHTTRACE7 ("-> (%s) [%s:%05u] %s -> [%s:%05u] %s\n",
 					buf,
@@ -154,7 +154,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			BIRURR pr; pr.b = pb; pr.i = i; pr.u = pr.b->uhtinfo->list[pr.i];
 
 			if (pr.b->ra[pr.i].dst == SPWAW_BADIDX) {
-				SPWAW_BDATE(pr.b->bdate, bdate);
+				SPWAW_BDATE(pr.b->bdate, bdate, true);
 				UHTLOG2 ("--> detected lost unit [%s:%05u]\n", bdate, pr.i);
 				uht_decommission (uht, pr, pb);
 			}
@@ -166,7 +166,7 @@ UHT_update (SPWAW_UHT *uht, SPWAW_BATTLE *b)
 			BIRURR nr; nr.b = nb; nr.i = i; nr.u = nr.b->uhtinfo->list[nr.i];
 
 			if (nr.b->ra[nr.i].src == SPWAW_BADIDX) {
-				SPWAW_BDATE(nr.b->bdate, nbdate);
+				SPWAW_BDATE(nr.b->bdate, nbdate, true);
 				UHTLOG2 ("==> warning: LOST TRACK OF UNIT [%s:%05u]\n", nbdate, nr.i);
 			}
 		}
