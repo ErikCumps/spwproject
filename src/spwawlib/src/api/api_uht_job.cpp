@@ -157,7 +157,7 @@ static SPWAW_ERROR
 perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
-	SPWAW_UHTE		*uhte, *uptr;
+	SPWAW_UHTE		*uhte, *uptr, *nuptr;
 	SPWAW_UHT_LISTEL	*ulle;
 	bool			first;
 
@@ -170,21 +170,85 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 		if (!SPWAW_UHT_is_initial (uhte)) continue;
 		if (SPWAW_UHT_is_decommissioned (uhte)) continue;
 
-		uptr = SPWAW_UHT_first (uhte, job.status);
-		if (!uptr) continue;
+		if (!job.reversed) {
+			uptr = SPWAW_UHT_first (uhte, job.status);
+			if (!uptr) continue;
 
-		rc = SPWAW_UHT_list_add (job.dst, SPWAW_UHT_last (uhte), &ulle); ROE ("SPWAW_UHT_list_add()");
-
-		first = true;
-		while (uptr) {
-			ulle->count++;
+			rc = SPWAW_UHT_list_add (job.dst, SPWAW_UHT_last (uhte), &ulle); ROE ("SPWAW_UHT_list_add()");
 
 			if (job.data_cb) {
-				job.data_cb (uptr, &(uptr->FBI), SPWAW_UHT_lookup (uptr, &(uptr->FBI)), first, &(ulle->data));
+				SPWAW_UHT_LIST_CBCTX cbctx = {
+					uhte,
+					&(uhte->FBI),
+					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
+					true,
+					false,
+					&(ulle->data),
+					job.extra_cb
+				};
+				job.data_cb (cbctx);
 			}
 
-			uptr = SPWAW_UHT_next (uptr, job.status);
-			first = false;
+			while (uptr) {
+				ulle->count++;
+
+				nuptr = SPWAW_UHT_next (uptr, job.status);
+
+				if (job.data_cb) {
+					SPWAW_UHT_LIST_CBCTX cbctx = {
+						uptr,
+						&(uptr->FBI),
+						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
+						false,
+						!nuptr,
+						&(ulle->data),
+						job.extra_cb
+					};
+					job.data_cb (cbctx);
+				}
+
+				uptr = nuptr;
+			}
+		} else {
+			uptr = SPWAW_UHT_last (uhte, job.status);
+			if (!uptr) continue;
+
+			rc = SPWAW_UHT_list_add (job.dst, uptr, &ulle); ROE ("SPWAW_UHT_list_add()");
+
+			first = true;
+			while (uptr) {
+				ulle->count++;
+
+				nuptr = SPWAW_UHT_prev (uptr, job.status);
+
+				if (job.data_cb) {
+					SPWAW_UHT_LIST_CBCTX cbctx = {
+						uptr,
+						&(uptr->FBI),
+						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
+						first,
+						false,
+						&(ulle->data),
+						job.extra_cb
+					};
+					job.data_cb (cbctx);
+				}
+
+				uptr = nuptr;
+				first = false;
+			}
+			if (job.data_cb) {
+				SPWAW_UHT_LIST_CBCTX cbctx = {
+					uhte,
+					&(uhte->FBI),
+					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
+					false,
+					true,
+					&(ulle->data),
+					job.extra_cb
+				};
+				job.data_cb (cbctx);
+			}
 		}
 	}
 
@@ -209,7 +273,16 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 		ulle->count = 1;
 
 		if (job.data_cb) {
-			job.data_cb (uhte, &(job.src.bid->bdate), SPWAW_UHT_lookup (uhte, &(job.src.bid->bdate)), true, &(ulle->data));
+			SPWAW_UHT_LIST_CBCTX cbctx = {
+				uhte,
+				&(job.src.bid->bdate),
+				SPWAW_UHT_lookup (uhte, &(job.src.bid->bdate)),
+				true,
+				true,
+				&(ulle->data),
+				job.extra_cb
+			};
+			job.data_cb (cbctx);
 		}
 
 	}

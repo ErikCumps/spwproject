@@ -58,8 +58,22 @@ typedef enum e_SPWAW_UHT_LIST_SORT_TYPE {
 /* SPWAW UHT list sort comparison function. Arguments are pointers to *SPWAW_UHT_LISTEL. */
 typedef int (*SPWAW_UHT_list_cmp) (const void *a, const void *b);
 
+/* SPWAW UHT list job detection private data helper callback */
+typedef char *(* SPWAW_UHT_list_extra_cb)(SPWAW_DOSSIER_UIR *uir);
+
+/* SPWAW UHT list job detection data callback context structure */
+typedef struct s_SPWAW_UHT_LIST_CBCTX {
+	SPWAW_UHTE		*uhte;		/* Detection: UHTE								*/
+	SPWAW_BATTLE_DATE	*bdate;		/* Detection: battle date							*/
+	SPWAW_DOSSIER_UIR	*uir;		/* UIR for detected UHTE at battle date						*/
+	bool			first;		/* Is this the first detection in the chain?					*/
+	bool			last;		/* Is this the last detection in the chain?					*/
+	void			**data;		/* Pointer to storage for pointer to private data				*/
+	SPWAW_UHT_list_extra_cb	extra;		/* Optional extra private helper callback						*/
+} SPWAW_UHT_LIST_CBCTX;
+
 /* SPWAW UHT list job detection data callback */
-typedef void (*SPWAW_UHT_list_data_cb) (SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate, SPWAW_DOSSIER_UIR *uir, bool first, void **ctx);
+typedef void (*SPWAW_UHT_list_data_cb) (SPWAW_UHT_LIST_CBCTX &context);
 
 /* SPWAW UHT list job descriptor */
 typedef struct s_SPWAW_UHT_LIST_JOB {
@@ -69,7 +83,9 @@ typedef struct s_SPWAW_UHT_LIST_JOB {
 		SPWAW_UHT_BINFO	*bid;		/* Data source: battle info data						*/
 	}	src;				/* UHT data source to perform the list job on					*/
 	USHORT			status;		/* Unit history status to detect						*/
-	SPWAW_UHT_list_data_cb	data_cb;	/* Detection data callback (can be NULL)					*/
+	bool			reversed;	/* Reversed detection direction? (newest to oldest)				*/
+	SPWAW_UHT_list_data_cb	data_cb;	/* Optional detection data callback (can be NULL)				*/
+	SPWAW_UHT_list_extra_cb	extra_cb;	/* Optional private data helper callback (can be NULL)				*/
 	SPWAW_UHT_LIST		*dst;		/* Storage for job result							*/
 } SPWAW_UHT_LIST_JOB;
 
