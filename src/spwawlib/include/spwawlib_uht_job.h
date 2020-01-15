@@ -16,7 +16,7 @@
 
 /* Forward declarations for convenience */
 typedef struct s_SPWAW_DOSSIER_UIR	SPWAW_DOSSIER_UIR;
-typedef struct s_SPWAW_BATTLE_DATE		SPWAW_BATTLE_DATE;
+typedef struct s_SPWAW_BATTLE_DATE	SPWAW_BATTLE_DATE;
 typedef struct s_SPWAW_UHTE		SPWAW_UHTE;
 typedef struct s_SPWAW_UHT		SPWAW_UHT;
 typedef struct s_SPWAW_UHT_BINFO	SPWAW_UHT_BINFO;
@@ -49,11 +49,11 @@ typedef struct s_SPWAW_UHT_LIST {
 } SPWAW_UHT_LIST;
 
 /* SPWAW UHT list sort type */
-typedef enum e_SPWAW_UHT_LIST_SORT_TYPE {
+typedef enum e_SPWAW_UHT_LIST_SORT {
 	SPWAW_UHT_SORT_UID = 0,			/* Sort SPWAW_UHT_LISTEL on UHTE UID						*/
 	SPWAW_UHT_SORT_COUNT,			/* Sort SPWAW_UHT_LISTEL on UHTE detection count				*/
 	SPWAW_UHT_SORT_USER,			/* Sort SPWAW_UHT_LISTEL using user-provided comparison function		*/
-} SPWAW_UHT_LIST_SORT_TYPE;
+} SPWAW_UHT_LIST_SORT;
 
 /* SPWAW UHT list sort comparison function. Arguments are pointers to *SPWAW_UHT_LISTEL. */
 typedef int (*SPWAW_UHT_list_cmp) (const void *a, const void *b);
@@ -66,10 +66,12 @@ typedef struct s_SPWAW_UHT_LIST_CBCTX {
 	SPWAW_UHTE		*uhte;		/* Detection: UHTE								*/
 	SPWAW_BATTLE_DATE	*bdate;		/* Detection: battle date							*/
 	SPWAW_DOSSIER_UIR	*uir;		/* UIR for detected UHTE at battle date						*/
+	SPWAW_BATTLE_DATE	*nbdate;	/* Battle date of next battle							*/
+	SPWAW_DOSSIER_UIR	*nuir;		/* UIR for detected UHTE at next battle						*/
 	bool			first;		/* Is this the first detection in the chain?					*/
 	bool			last;		/* Is this the last detection in the chain?					*/
 	void			**data;		/* Pointer to storage for pointer to private data				*/
-	SPWAW_UHT_list_extra_cb	extra;		/* Optional extra private helper callback						*/
+	void			*extra;		/* Optional caller-provided extra callback context data (can be NULL)		*/
 } SPWAW_UHT_LIST_CBCTX;
 
 /* SPWAW UHT list job detection data callback */
@@ -80,12 +82,15 @@ typedef struct s_SPWAW_UHT_LIST_JOB {
 	SPWAW_UHT_LIST_JOB_TYPE	type;		/* The SPWAW UHT list job type							*/
 	union u_src {
 		SPWAW_UHT	*uht;		/* Data source: UHT								*/
-		SPWAW_UHT_BINFO	*bid;		/* Data source: battle info data						*/
+		struct s_bid {			/* Data source: battle info							*/
+			SPWAW_UHT_BINFO		*bid;	/* Battle info data							*/
+			SPWAW_BATTLE_DATE	*nbd;	/* Date of next battle							*/
+		}	bid;
 	}	src;				/* UHT data source to perform the list job on					*/
 	USHORT			status;		/* Unit history status to detect						*/
 	bool			reversed;	/* Reversed detection direction? (newest to oldest)				*/
 	SPWAW_UHT_list_data_cb	data_cb;	/* Optional detection data callback (can be NULL)				*/
-	SPWAW_UHT_list_extra_cb	extra_cb;	/* Optional private data helper callback (can be NULL)				*/
+	void			*extra;		/* Optional caller-provided extra callback context data (can be NULL)		*/
 	SPWAW_UHT_LIST		*dst;		/* Storage for job result							*/
 } SPWAW_UHT_LIST_JOB;
 
@@ -95,13 +100,13 @@ typedef struct s_SPWAW_UHT_LIST_JOB {
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_init	(SPWAW_UHT_LIST_JOB_TYPE type, unsigned int len, SPWAW_UHT_LIST **list);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_free	(SPWAW_UHT_LIST **list);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_add	(SPWAW_UHT_LIST *list, SPWAW_UHTE *uhte, SPWAW_UHT_LISTEL **listel);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_sort	(SPWAW_UHT_LIST *list, SPWAW_UHT_LIST_SORT_TYPE type, bool ascending, SPWAW_UHT_list_cmp cmp);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_sort	(SPWAW_UHT_LIST *list, SPWAW_UHT_LIST_SORT type, bool ascending, SPWAW_UHT_list_cmp cmp);
 
 /* Perform an SPWAW UHT list job */
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_job	(SPWAW_UHT_LIST_JOB &job);
 
 /* Sort the SPWAW UHT list in a list job */
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_job_sort	(SPWAW_UHT_LIST_JOB &job, SPWAW_UHT_LIST_SORT_TYPE type, bool ascending, SPWAW_UHT_list_cmp cmp);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_UHT_list_job_sort	(SPWAW_UHT_LIST_JOB &job, SPWAW_UHT_LIST_SORT type, bool ascending, SPWAW_UHT_list_cmp cmp);
 
 /* Predefined SPWAW UHT list comparison functions */
 extern SPWAWLIB_API int	SPWAW_UHT_list_cmp_UID_ascending	(const void *a, const void *b);

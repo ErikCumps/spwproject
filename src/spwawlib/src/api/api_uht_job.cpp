@@ -123,7 +123,7 @@ SPWAW_UHT_list_cmp_CNT_descending (const void *a, const void *b)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_UHT_list_sort (SPWAW_UHT_LIST *list, SPWAW_UHT_LIST_SORT_TYPE type, bool ascending, SPWAW_UHT_list_cmp cmp)
+SPWAW_UHT_list_sort (SPWAW_UHT_LIST *list, SPWAW_UHT_LIST_SORT type, bool ascending, SPWAW_UHT_list_cmp cmp)
 {
 	SPWAW_UHT_list_cmp	cmpfunc;
 
@@ -181,10 +181,12 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 					uhte,
 					&(uhte->FBI),
 					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
+					NULL,
+					NULL,
 					true,
 					false,
 					&(ulle->data),
-					job.extra_cb
+					job.extra
 				};
 				job.data_cb (cbctx);
 			}
@@ -199,10 +201,12 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 						uptr,
 						&(uptr->FBI),
 						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
+						NULL,
+						NULL,
 						false,
 						!nuptr,
 						&(ulle->data),
-						job.extra_cb
+						job.extra
 					};
 					job.data_cb (cbctx);
 				}
@@ -226,10 +230,12 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 						uptr,
 						&(uptr->FBI),
 						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
+						NULL,
+						NULL,
 						first,
 						false,
 						&(ulle->data),
-						job.extra_cb
+						job.extra
 					};
 					job.data_cb (cbctx);
 				}
@@ -242,10 +248,12 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 					uhte,
 					&(uhte->FBI),
 					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
+					NULL,
+					NULL,
 					false,
 					true,
 					&(ulle->data),
-					job.extra_cb
+					job.extra
 				};
 				job.data_cb (cbctx);
 			}
@@ -254,20 +262,28 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 
 	return (SPWERR_OK);
 }
+
 static SPWAW_ERROR
 perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
+	bool			post = false;
 	SPWAW_UHTE		*uhte;
 	SPWAW_UHT_LISTEL	*ulle;
 
-	CNULLARG (job.src.bid);
+	CNULLARG (job.src.bid.bid); CNULLARG (job.src.bid.nbd);
 
-	rc = SPWAW_UHT_list_init (job.type, job.src.bid->cnt, &(job.dst)); ROE ("SPWAW_UHT_list_init()");
+	post = ((job.status & UHT_POST_BATTLE) != 0);
 
-	for (unsigned int i=0; i<job.src.bid->cnt; i++) {
-		uhte = job.src.bid->list[i];
-		if (!SPWAW_UHT_is (uhte, &(job.src.bid->bdate), job.status)) continue;
+	rc = SPWAW_UHT_list_init (job.type, job.src.bid.bid->cnt, &(job.dst)); ROE ("SPWAW_UHT_list_init()");
+
+	for (unsigned int i=0; i<job.src.bid.bid->cnt; i++) {
+		uhte = job.src.bid.bid->list[i];
+		if (post) {
+			if (!SPWAW_UHT_is (uhte, job.src.bid.nbd, job.status)) continue;
+		} else {
+			if (!SPWAW_UHT_is (uhte, &(job.src.bid.bid->bdate), job.status)) continue;
+		}
 
 		rc = SPWAW_UHT_list_add (job.dst, uhte, &ulle); ROE ("SPWAW_UHT_list_add()");
 		ulle->count = 1;
@@ -275,13 +291,19 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 		if (job.data_cb) {
 			SPWAW_UHT_LIST_CBCTX cbctx = {
 				uhte,
-				&(job.src.bid->bdate),
-				SPWAW_UHT_lookup (uhte, &(job.src.bid->bdate)),
+				&(job.src.bid.bid->bdate),
+				SPWAW_UHT_lookup (uhte, &(job.src.bid.bid->bdate)),
+				NULL,
+				NULL,
 				true,
 				true,
 				&(ulle->data),
-				job.extra_cb
+				job.extra
 			};
+			if (post) {
+				cbctx.nbdate = job.src.bid.nbd;
+				cbctx.nuir = SPWAW_UHT_lookup (uhte, job.src.bid.nbd);
+			}
 			job.data_cb (cbctx);
 		}
 
@@ -309,7 +331,7 @@ SPWAW_UHT_list_job (SPWAW_UHT_LIST_JOB &job)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_UHT_list_job_sort (SPWAW_UHT_LIST_JOB &job, SPWAW_UHT_LIST_SORT_TYPE type, bool ascending, SPWAW_UHT_list_cmp cmp)
+SPWAW_UHT_list_job_sort (SPWAW_UHT_LIST_JOB &job, SPWAW_UHT_LIST_SORT type, bool ascending, SPWAW_UHT_list_cmp cmp)
 {
 	return (SPWAW_UHT_list_sort (job.dst, type, ascending, cmp));
 }
