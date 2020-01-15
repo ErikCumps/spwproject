@@ -27,6 +27,9 @@ typedef struct s_SPWAW_UHT		SPWAW_UHT;
 /* Unit has no status */
 #define	UHT_NOSTATUS	0x0000
 
+/* Post-battle history status changes */
+#define	UHT_POST_BATTLE	0x00ff
+
 /* Unit was renamed after previous battle */
 #define	UHT_RENAMED	0x0001
 
@@ -48,14 +51,17 @@ typedef struct s_SPWAW_UHT		SPWAW_UHT;
 /* Unit was promoted or demoted after previous battle */
 #define	UHT_RERANKED	(UHT_PROMOTED|UHT_DEMOTED)
 
+/* In-battle history status changes */
+#define	UHT_IN_BATTLE	0xff00
+
 /* Unit was damaged during this battle */
-#define	UHT_DAMAGED	0x0040
+#define	UHT_DAMAGED	0x0100
 
 /* Unit was abandoned during this battle */
-#define	UHT_ABANDONED	0x0080
+#define	UHT_ABANDONED	0x0200
 
 /* Unit was destroyed during this battle */
-#define	UHT_DESTROYED	0x0100
+#define	UHT_DESTROYED	0x0400
 
 /* SPWAW unit history tracking element */
 typedef struct s_SPWAW_UHTE {
