@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - winSPWW2 build options.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -37,7 +37,7 @@
 #define	EXP_WINSPWW2_AUTOSPAU	1
 
 /* Set to 1 to assume unverified units in core formations to be core for campaign battles */
-#define	EXP_WINSPWW2_AUTOCMPCR	0
+#define	EXP_WINSPWW2_AUTOCMPCR	1
 
 #include "gamefile/common_gamedata_handling.h"
 
