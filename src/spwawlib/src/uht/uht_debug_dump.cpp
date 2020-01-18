@@ -30,7 +30,7 @@ UHT_debug_dump (SPWAW_UHT *uht)
 
 		UHTLOG2 ("[%5u] 0x%8.8x ", i, uhte);
 
-		SPWAW_BDATE(uhte->FBI, FBIdate); SPWAW_BDATE(uhte->LBI, LBIdate);
+		SPWAW_BDATE(uhte->FBI, FBIdate, true); SPWAW_BDATE(uhte->LBI, LBIdate, true);
 		UHTLOG4 ("lname=\"%-16s\", UID=%-4s, uname=\"%-16s\", rank=%-3s, ",
 			uhte->lname, uhte->UID, uhte->uname, SPWAW_rank2str(uhte->rank));
 		UHTLOG3 ("F=[%s:%05u], L=[%s], ",
@@ -56,7 +56,7 @@ UHT_debug_dump (SPWAW_UHT *uht)
 	UHTLOG3 ("UHT battle info list: cnt=%u, len=%u, list=0x%8.8x\n", uht->blist.cnt, uht->blist.len, uht->blist.info);
 	for (unsigned int i=0; i<uht->blist.cnt; i++) {
 		SPWAW_UHT_BINFO *info = uht->blist.info[i];
-		SPWAW_BDATE(info->bdate, bdate);
+		SPWAW_BDATE(info->bdate, bdate, true);
 		UHTTRACE5 ("[%5u] 0x%8.8x [%s] cnt=%u, list=0x%8.8x\n", i, info, bdate, info->cnt, info->list);
 
 		for (USHORT j=0; j<info->cnt; j++) {
@@ -65,7 +65,7 @@ UHT_debug_dump (SPWAW_UHT *uht)
 			UHTTRACE2 ("    [%5u] 0x%8.8x ", j, uhte);
 			if (!uhte) continue;
 
-			SPWAW_BDATE(uhte->FBI, FBIdate); SPWAW_BDATE(uhte->LBI, LBIdate);
+			SPWAW_BDATE(uhte->FBI, FBIdate, true); SPWAW_BDATE(uhte->LBI, LBIdate, true);
 			UHTTRACE4 ("lname=\"%-16s\", UID=%-4s, uname=\"%-16s\", rank=%-3s, ",
 				uhte->lname, uhte->UID, uhte->uname, SPWAW_rank2str(uhte->rank));
 			UHTTRACE3 ("F=[%s:%05u], L=[%s], ",
@@ -89,7 +89,7 @@ UHT_debug_dump (SPWAW_UHT_BINFO *info)
 	UHTLOG1 ("SPWAW_UHT_BINFO[0x%8.8x]\n", info);
 	if (!info) return;
 
-	SPWAW_BDATE(info->bdate, bdate);
+	SPWAW_BDATE(info->bdate, bdate, true);
 	UHTLOG3 ("[%s] cnt=%u, list=0x%8.8x\n", bdate, info->cnt, info->list);
 
 	for (USHORT i=0; i<info->cnt; i++) {
@@ -97,7 +97,7 @@ UHT_debug_dump (SPWAW_UHT_BINFO *info)
 		UHTLOG2 ("[%5u] 0x%8.8x ", i, uhte);
 		if (!uhte) continue;
 
-		SPWAW_BDATE(uhte->FBI, FBIdate); SPWAW_BDATE(uhte->LBI, LBIdate);
+		SPWAW_BDATE(uhte->FBI, FBIdate, true); SPWAW_BDATE(uhte->LBI, LBIdate, true);
 		UHTLOG4 ("lname=\"%-16s\", UID=%-4s, uname=\"%-16s\", rank=%-3s, ",
 			uhte->lname, uhte->UID, uhte->uname, SPWAW_rank2str(uhte->rank));
 		UHTLOG3 ("F=[%s:%05u], L=[%s], ",
