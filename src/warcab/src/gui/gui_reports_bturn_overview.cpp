@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - overview.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -138,6 +138,10 @@ GuiRptTrnOvr::refresh (void)
 			p->battle->snap->game.battle.strings.people_p1,
 			p->info.pbir_battle.ucnt, p->info.pbir_battle.fcnt,
 			p->snap->OOBp1.battle.stats.hcnt);
+		if (p->info.pbir_support.ucnt != 0) {
+			str.printf ("\tCore force   : %u units in %u formations\n", p->info.pbir_core.ucnt, p->info.pbir_core.fcnt);
+			str.printf ("\tSupport force: %u units in %u formations\n", p->info.pbir_support.ucnt, p->info.pbir_support.fcnt);
+		}
 		str.printf ("%s start force consists of %u units in %u formations (%u men).\n",
 			p->battle->snap->game.battle.strings.people_p2,
 			p->info.obir_battle.ucnt, p->info.obir_battle.fcnt,
