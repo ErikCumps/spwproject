@@ -67,6 +67,15 @@ SPWAW_UHT_is_commissioned (SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate)
 	return ((SPWAW_bdate_cmp(bdate, &(uptr->FBI)) == 0) && !uptr->prev);
 }
 
+SPWAWLIB_API bool
+SPWAW_UHT_is_commissioned (SPWAW_UHTE *uhte)
+{
+	SPWAW_UHTE *uptr = SPWAW_UHT_first (uhte);
+	if (!uptr) return (false);
+
+	return (SPWAW_bdate_cmp (&(uptr->uht->dossier->bfirst->bdate), &(uptr->FBI)) != 0);
+}
+
 SPWAWLIB_API bool	
 SPWAW_UHT_is_decommissioned (SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate)
 {
@@ -111,6 +120,14 @@ SPWAW_UHT_is (SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate, USHORT status)
 	SPWAW_UHTE *uptr = uht_lookup (uhte, bdate);
 	if (!uptr) return (false);
 
+	if (status & UHT_COMMISSIONED) {
+		return (SPWAW_UHT_is_commissioned(uhte, bdate));
+	}
+
+	if (status & UHT_DECOMMISSIONED) {
+		return (SPWAW_UHT_is_decommissioned(uhte, bdate));
+	}
+
 	return ((SPWAW_bdate_cmp(bdate, &(uptr->FBI)) == 0) && (uptr->status & status));
 }
 
@@ -119,13 +136,33 @@ SPWAW_UHT_is (SPWAW_UHTE *uhte, USHORT status)
 {
 	if (!uhte) return (false);
 
+	if (status & UHT_COMMISSIONED) {
+		return (SPWAW_UHT_is_commissioned(uhte));
+	}
+
+	if (status & UHT_DECOMMISSIONED) {
+		return (SPWAW_UHT_is_decommissioned(uhte));
+	}
+
 	return ((uhte->status & status) != 0);
 }
 
 SPWAWLIB_API SPWAW_UHTE *
 SPWAW_UHT_first (SPWAW_UHTE *uhte, USHORT status)
 {
-	SPWAW_UHTE *uptr = SPWAW_UHT_first (uhte);
+	SPWAW_UHTE *uptr;
+
+	if (status & UHT_COMMISSIONED) {
+		SPWAW_UHTE *uptr = SPWAW_UHT_first (uhte);
+		return (SPWAW_UHT_is_commissioned(uptr)?uptr:NULL);
+	}
+
+	if (status & UHT_DECOMMISSIONED) {
+		SPWAW_UHTE *uptr = SPWAW_UHT_last (uhte);
+		return (SPWAW_UHT_is_decommissioned(uptr)?uptr:NULL);
+	}
+
+	uptr = SPWAW_UHT_first (uhte);
 
 	while (uptr && !(uptr->status & status)) uptr = uptr->next;
 	return (uptr);
@@ -134,7 +171,19 @@ SPWAW_UHT_first (SPWAW_UHTE *uhte, USHORT status)
 SPWAWLIB_API SPWAW_UHTE *
 SPWAW_UHT_last (SPWAW_UHTE *uhte, USHORT status)
 {
-	SPWAW_UHTE *uptr = SPWAW_UHT_last (uhte);
+	SPWAW_UHTE *uptr;
+
+	if (status & UHT_COMMISSIONED) {
+		SPWAW_UHTE *uptr = SPWAW_UHT_first (uhte);
+		return (SPWAW_UHT_is_commissioned(uptr)?uptr:NULL);
+	}
+
+	if (status & UHT_DECOMMISSIONED) {
+		SPWAW_UHTE *uptr = SPWAW_UHT_last (uhte);
+		return (SPWAW_UHT_is_decommissioned(uptr)?uptr:NULL);
+	}
+
+	uptr = SPWAW_UHT_last (uhte);
 
 	while (uptr && !(uptr->status & status)) uptr = uptr->prev;
 	return (uptr);
@@ -145,6 +194,8 @@ SPWAW_UHT_next (SPWAW_UHTE *uhte, USHORT status)
 {
 	SPWAW_UHTE *uptr = uhte->next;
 
+	if (status & (UHT_COMMISSIONED|UHT_DECOMMISSIONED)) return (NULL);
+
 	while (uptr && !(uptr->status & status)) uptr = uptr->next;
 	return (uptr);
 }
@@ -153,6 +204,8 @@ SPWAWLIB_API SPWAW_UHTE *
 SPWAW_UHT_prev (SPWAW_UHTE *uhte, USHORT status)
 {
 	SPWAW_UHTE *uptr = uhte->prev;
+
+	if (status & (UHT_COMMISSIONED|UHT_DECOMMISSIONED)) return (NULL);
 
 	while (uptr && !(uptr->status & status)) uptr = uptr->prev;
 	return (uptr);

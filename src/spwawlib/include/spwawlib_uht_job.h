@@ -68,6 +68,7 @@ typedef struct s_SPWAW_UHT_LIST_CBCTX {
 	SPWAW_DOSSIER_UIR	*uir;		/* UIR for detected UHTE at battle date						*/
 	SPWAW_BATTLE_DATE	*nbdate;	/* Battle date of next battle							*/
 	SPWAW_DOSSIER_UIR	*nuir;		/* UIR for detected UHTE at next battle						*/
+	bool			decommisioned;	/* Is this is a decommissioned UHTE?						*/
 	bool			first;		/* Is this the first detection in the chain?					*/
 	bool			last;		/* Is this the last detection in the chain?					*/
 	void			**data;		/* Pointer to storage for pointer to private data				*/
@@ -89,6 +90,7 @@ typedef struct s_SPWAW_UHT_LIST_JOB {
 	}	src;				/* UHT data source to perform the list job on					*/
 	USHORT			status;		/* Unit history status to detect						*/
 	bool			reversed;	/* Reversed detection direction? (newest to oldest)				*/
+	bool			allow_decomm;	/* Allow decommissioned units to be detected					*/
 	SPWAW_UHT_list_data_cb	data_cb;	/* Optional detection data callback (can be NULL)				*/
 	void			*extra;		/* Optional caller-provided extra callback context data (can be NULL)		*/
 	SPWAW_UHT_LIST		*dst;		/* Storage for job result							*/

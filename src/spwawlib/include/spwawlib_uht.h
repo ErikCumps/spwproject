@@ -25,43 +25,49 @@ typedef struct s_SPWAW_UHT		SPWAW_UHT;
 /* --- Unit history flags --- */
 
 /* Unit has no status */
-#define	UHT_NOSTATUS	0x0000
+#define	UHT_NOSTATUS		0x0000
 
 /* Post-battle history status changes */
-#define	UHT_POST_BATTLE	0x00ff
+#define	UHT_POST_BATTLE		0x00ff
+
+/* Unit was decommissioned after previous battle */
+#define	UHT_DECOMMISSIONED	0x0001
 
 /* Unit was renamed after previous battle */
-#define	UHT_RENAMED	0x0001
+#define	UHT_RENAMED		0x0002
 
 /* Unit was killed and replaced after previous battle */
-#define	UHT_REPLACED	0x0002
+#define	UHT_REPLACED		0x0004
 
 /* Unit was reassigned or cross-attached after previous battle */
-#define	UHT_REASSIGNED	0x0004
+#define	UHT_REASSIGNED		0x0008
 
 /* Unit was upgraded after previous battle */
-#define	UHT_UPGRADED	0x0008
+#define	UHT_UPGRADED		0x0010
 
 /* Unit was promoted after previous battle */
-#define	UHT_PROMOTED	0x0010
+#define	UHT_PROMOTED		0x0020
 
 /* Unit was demoted after previous battle */
-#define	UHT_DEMOTED	0x0020
+#define	UHT_DEMOTED		0x0040
 
 /* Unit was promoted or demoted after previous battle */
-#define	UHT_RERANKED	(UHT_PROMOTED|UHT_DEMOTED)
+#define	UHT_RERANKED		(UHT_PROMOTED|UHT_DEMOTED)
 
 /* In-battle history status changes */
-#define	UHT_IN_BATTLE	0xff00
+#define	UHT_IN_BATTLE		0xff00
+
+/* Unit was commissioned during this battle */
+#define	UHT_COMMISSIONED	0x0100
 
 /* Unit was damaged during this battle */
-#define	UHT_DAMAGED	0x0100
+#define	UHT_DAMAGED		0x0200
 
 /* Unit was abandoned during this battle */
-#define	UHT_ABANDONED	0x0200
+#define	UHT_ABANDONED		0x0400
 
 /* Unit was destroyed during this battle */
-#define	UHT_DESTROYED	0x0400
+#define	UHT_DESTROYED		0x0800
 
 /* SPWAW unit history tracking element */
 typedef struct s_SPWAW_UHTE {
@@ -119,6 +125,9 @@ SPWAW_UHT_is_initial (SPWAW_UHTE *uhte) { return (uhte && !uhte->prev); }
 
 /* Checks if the unit of specified UHTE was active at the specified battle date */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_active		(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
+
+/* Checks if the unit of specified UHTE was commissioned during the campaign */
+extern SPWAWLIB_API bool		SPWAW_UHT_is_commissioned	(SPWAW_UHTE *uhte);
 
 /* Checks if the unit of specified UHTE was commissioned at the specified battle date */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_commissioned	(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);

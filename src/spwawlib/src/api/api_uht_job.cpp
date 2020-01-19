@@ -168,7 +168,8 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 	for (unsigned int i=0; i<job.src.uht->cnt; i++) {
 		uhte = job.src.uht->smap[i];
 		if (!SPWAW_UHT_is_initial (uhte)) continue;
-		if (SPWAW_UHT_is_decommissioned (uhte)) continue;
+		bool is_decommissioned = SPWAW_UHT_is_decommissioned (uhte);
+		if (is_decommissioned && !job.allow_decomm) continue;
 
 		if (!job.reversed) {
 			uptr = SPWAW_UHT_first (uhte, job.status);
@@ -183,6 +184,7 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
 					NULL,
 					NULL,
+					is_decommissioned,
 					true,
 					false,
 					&(ulle->data),
@@ -203,6 +205,7 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
 						NULL,
 						NULL,
+						is_decommissioned,
 						false,
 						!nuptr,
 						&(ulle->data),
@@ -232,6 +235,7 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
 						NULL,
 						NULL,
+						is_decommissioned,
 						first,
 						false,
 						&(ulle->data),
@@ -250,6 +254,7 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
 					NULL,
 					NULL,
+					is_decommissioned,
 					false,
 					true,
 					&(ulle->data),
@@ -279,6 +284,8 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 
 	for (unsigned int i=0; i<job.src.bid.bid->cnt; i++) {
 		uhte = job.src.bid.bid->list[i];
+		bool is_decommissioned = SPWAW_UHT_is_decommissioned (uhte);
+		if (is_decommissioned && !job.allow_decomm) continue;
 		if (post) {
 			if (!SPWAW_UHT_is (uhte, job.src.bid.nbd, job.status)) continue;
 		} else {
@@ -295,6 +302,7 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 				SPWAW_UHT_lookup (uhte, &(job.src.bid.bid->bdate)),
 				NULL,
 				NULL,
+				is_decommissioned,
 				true,
 				true,
 				&(ulle->data),
