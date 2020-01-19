@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -121,123 +121,213 @@ GuiRptBtlOvr::set_parent (GuiRptBtl *p)
 	d.parent = p;
 }
 
-void
-GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt)
+static void
+record_replacement (SPWAW_UHT_LIST_CBCTX &context)
 {
-	UtilStrbuf	str(buf, size, true, true);
-	SPWAW_BATTLE	*nb;
+	UtilStrbuf	*sb;
 
-	nb = b->next ? b->next : b;
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
 
-	icnt = 0;
-	for (int i=0; i<b->dossier->props.iucnt; i++) {
-		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
-		if (b->ra[i].rpl) {
-			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
-			str.printf ("\t%s %s: %s %s -> %s %s\n",
-				up->strings.uid, up->data.dname,
-				up->strings.rank, up->data.lname,
-				nup->strings.rank, nup->data.lname);
-			icnt++;
-		}
-	}
+	sb->printf ("%s %s: %s %s -> %s %s",
+		context.uir->snap->strings.uid, context.uir->snap->data.dname,
+		context.uir->snap->strings.rank, context.uir->snap->data.lname,
+		context.nuir->snap->strings.rank, context.nuir->snap->data.lname);
 }
 
 void
-GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt)
+GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 {
-	UtilStrbuf	str(buf, size, true, true);
-	SPWAW_BATTLE	*nb;
+	UHT_LIST_JOB job = { };
 
-	nb = b->next ? b->next : b;
+	job.what		= "Replacements";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_REPLACED;
+	job.dext.data		= record_replacement;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
 
-	icnt = 0;
-	for (int i=0; i<b->dossier->props.iucnt; i++) {
-		SPWAW_SNAP_OOB_UEL *up = &(b->snap->OOBp1.core.units.list[i]);
-		if ((b->ra[i].dst != i) && !b->ra[i].rpl &&(b->ra[i].src != SPWAW_BADIDX) && (b->ra[i].dst != SPWAW_BADIDX)) {
-			SPWAW_SNAP_OOB_UEL *nup = &(nb->snap->OOBp1.core.units.list[b->ra[i].dst]);
-			str.printf ("\t%s %s: %s -> %s\n",
-				up->data.dname, up->data.lname,
-				up->strings.uid,
-				nup->strings.uid);
-			icnt++;
-		}
-	}
+	UHT_list_job (job);
+}
+
+static void
+record_reassignment (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	sb->printf ("%s %s: %s -> %s",
+		context.uir->snap->data.dname, context.uir->snap->data.lname,
+		context.uir->snap->strings.uid,
+		context.nuir->snap->strings.uid);
 }
 
 void
-GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, bool promo, char *buf, unsigned int size, int &icnt)
+GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	char			tbuf[4096];
-	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
-	SPWAW_BATTLE		*nb;
-	SPWAW_SNAP_OOB_UEL	*up, *nup;
+	UHT_LIST_JOB job = { };
 
-	nb = b->next ? b->next : b;
+	job.what		= "Reassignments";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_REASSIGNED;
+	job.dext.data		= record_reassignment;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
 
-	icnt = 0;
+	UHT_list_job (job);
+}
 
-	for (int i=0; i<b->dossier->props.iucnt; i++) {
-		if (b->ra[i].rpl || (b->ra[i].dst == SPWAW_BADIDX)) continue;
+static void
+record_upgrade (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
 
-		up = b->info_sob->pbir_core.uir[i].snap;
-		nup = nb->info_sob->pbir_core.uir[b->ra[i].dst].snap;
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
 
-		if (up->data.rank == nup->data.rank) continue;
-
-		if (promo) {
-			if (up->data.rank > nup->data.rank) continue;
-		} else {
-			if (up->data.rank < nup->data.rank) continue;
-		}
-
-		str.printf ("\t%s %s %s: %s -> %s (%s)\n",
-			up->strings.uid, up->data.dname, up->data.lname, up->strings.rank, nup->strings.rank, nup->strings.uid);
-		icnt++;
-	}
+	sb->printf ("%s %s %s: %s -> %s",
+		context.uir->snap->strings.uid, context.uir->snap->strings.rank, context.uir->snap->data.lname,
+		context.uir->snap->data.dname,
+		context.nuir->snap->data.dname);
 }
 
 void
-GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt)
+GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_BATTLE		*nb;
-	USHORT			idx, nidx;
-	SPWAW_SNAP_OOB_UEL	*up, *nup;
+	UHT_LIST_JOB job = { };
 
-	if (!b->next) return;
+	job.what		= "Upgrades";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_UPGRADED;
+	job.dext.data		= record_upgrade;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
 
-	nb = b->next;
-
-	icnt = 0;
-
-	for (int i=0; i<b->dossier->props.iucnt; i++) {
-		idx = i;
-		up = b->info_sob->pbir_core.uir[idx].snap;
-
-		nidx = b->ra[idx].dst;
-		if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) continue;
-
-		nup = nb->info_sob->pbir_core.uir[nidx].snap;
-		if (up->data.OOBrid == nup->data.OOBrid) continue;
-
-		str.printf ("\t%s %s %s: %s -> %s\n",
-			up->strings.uid, up->strings.rank, up->data.lname, up->data.dname, nup->data.dname);
-		icnt++;
-	}
+	UHT_list_job (job);
 }
+
+static void
+record_rerank (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	sb->printf ("%s %s %s: %s -> %s",
+		context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname,
+		context.uir->snap->strings.rank,
+		context.nuir->snap->strings.rank, context.nuir->snap->strings.uid);
+}
+
+
+void
+GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Promotions";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_PROMOTED;
+	job.dext.data		= record_rerank;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+void
+GuiRptBtlOvr::list_demotions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Demotions";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_DEMOTED;
+	job.dext.data		= record_rerank;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+void
+GuiRptBtlOvr::list_commissions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Commissions";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_COMMISSIONED;
+	//job.dext.data		= record_rerank;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+void
+GuiRptBtlOvr::list_decommissions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Decommissions";
+	job.type		= UHT_LIST_BATTLE;
+	job.in.b.battle		= b;
+	job.how.status		= UHT_DECOMMISSIONED;
+	job.how.allow_decomm	= true;
+	//job.dext.data		= record_rerank;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
 
 void
 GuiRptBtlOvr::refresh (void)
 {
 	MDLD_TREE_ITEM		*item;
 	SPWAW_BATTLE		*p = NULL;
-	char			date[32], buf[32768], buf2[32768];
+	char			date[32], buf[65536];
 	UtilStrbuf		str(buf, sizeof (buf), true, true);
-	UtilStrbuf		str2(buf2, sizeof (buf2), true, true);
 	SPWAW_PERIOD		span;
-	int			cnt;
 
 	DBG_TRACE_FENTER;
 
@@ -297,6 +387,10 @@ GuiRptBtlOvr::refresh (void)
 			p->snap->game.battle.strings.people_p1,
 			p->props.pb_ucnt, p->props.pb_fcnt,
 			p->snap->OOBp1.battle.stats.hcnt);
+		if (p->props.ps_ucnt != 0) {
+			str.printf ("\tCore force   : %u units in %u formations\n", p->props.pc_ucnt, p->props.pc_fcnt);
+			str.printf ("\tSupport force: %u units in %u formations\n", p->props.ps_ucnt, p->props.ps_fcnt);
+		}
 		str.printf ("%s force consists of %u units in %u formations (%u men).\n",
 			p->snap->game.battle.strings.people_p2,
 			p->props.ob_ucnt, p->props.ob_fcnt,
@@ -431,46 +525,13 @@ GuiRptBtlOvr::refresh (void)
 				break;
 		}
 
-
-		list_replacements (p, buf2, sizeof (buf2), cnt);
-		if (cnt) {
-			str.printf ("<pre>");
-			str.printf ("<h3>Replacements:</h3>");
-			str.add (buf2);
-			str.printf ("</pre>");
-		}
-
-		list_reassignments (p, buf2, sizeof (buf2), cnt);
-		if (cnt) {
-			str.printf ("<pre>");
-			str.printf ("<h3>Reassignments:</h3>");
-			str.add (buf2);
-			str.printf ("</pre>");
-		}
-
-		list_promotions (p, true, buf2, sizeof (buf2), cnt);
-		if (cnt) {
-			str.printf ("<pre>");
-			str.printf ("<h3>Promotions:</h3>");
-			str.add (buf2);
-			str.printf ("</pre>");
-		}
-
-		list_promotions (p, false, buf2, sizeof (buf2), cnt);
-		if (cnt) {
-			str.printf ("<pre>");
-			str.printf ("<h3>Demotions:</h3>");
-			str.add (buf2);
-			str.printf ("</pre>");
-		}
-
-		list_upgrades (p, buf2, sizeof (buf2), cnt);
-		if (cnt) {
-			str.printf ("<pre>");
-			str.printf ("<h3>Upgrades:</h3>");
-			str.add (buf2);
-			str.printf ("</pre>");
-		}
+		list_replacements (p, str);
+		list_reassignments (p, str);
+		list_upgrades (p, str);
+		list_promotions (p, str);
+		list_demotions (p, str);
+		list_commissions (p, str);
+		list_decommissions (p, str);
 
 		d.changes->setText (buf);
 	}

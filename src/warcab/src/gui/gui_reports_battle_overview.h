@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -62,11 +62,13 @@ private:
 	} d;
 
 private:
-	void	list_replacements	(SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt);
-	void	list_reassignments	(SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt);
-	void	list_promotions		(SPWAW_BATTLE *b, bool promo, char *buf, unsigned int size, int &icnt);
-	void	list_upgrades		(SPWAW_BATTLE *b, char *buf, unsigned int size, int &icnt);
-
+	void	list_replacements	(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
+	void	list_reassignments	(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
+	void	list_upgrades		(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
+	void	list_promotions		(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
+	void	list_demotions		(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
+	void	list_commissions	(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
+	void	list_decommissions	(SPWAW_BATTLE *b, UtilStrbuf &strbuf);
 };
 
 #endif	/* GUI_REPORTS_BATTLE_OVERVIEW_H */
