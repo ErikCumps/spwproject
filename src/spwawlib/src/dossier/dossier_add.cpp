@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -320,13 +320,13 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 
 		rc = dossier_update_battle_rainfo (b, b->next);
 		ROE ("dossier_update_battle_rainfo()");
-
-		if (b == ptr->blast) {
-			rc = UHT_update (&(ptr->uht), b); ROE ("UHT_update()");
-		} else {
-			rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
-		}
 	}
+
+	/* UHT now also considers in-battle status, which means that adding a turn to an existing battle
+	 * can also result in a different final in-battle status, so a rebuild is always required.
+	 * Maybe this can be optimized later?
+	 */
+	rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
 
 	rc = dossier_update_dossier_stats (ptr);
 	ROE ("dossier_update_dossier_stats()");
