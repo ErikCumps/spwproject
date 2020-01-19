@@ -1,6 +1,6 @@
 # The SPWaW war cabinet.
 #
-# Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL V2.
 
@@ -40,6 +40,7 @@ HEADERS +=					\
 	util/util_seqnum.h			\
 	util/util_mdltree_reftrack.h		\
 	util/util_valtrack.h			\
+	util/util_uht_list_job.h		\
 	cfg/cfg.h				\
 	cfg/cfg_dlg.h				\
 	res/res.h				\
@@ -165,6 +166,7 @@ SOURCES +=					\
 	util/util_numhash.cpp			\
 	util/util_seqnum.cpp			\
 	util/util_mdltree_reftrack.cpp		\
+	util/util_uht_list_job.cpp		\
 	cfg/cfg.cpp				\
 	cfg/cfg_dlg.cpp				\
 	res/res.cpp				\

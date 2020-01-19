@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - utility functions.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,6 +14,7 @@
 #include <util/util_strhash.h>
 #include <util/util_numhash.h>
 #include <util/util_seqnum.h>
+#include <util/util_uht_list_job.h>
 
 extern void	UTIL_fmt_longspan	(SPWAW_PERIOD *span, char *buf, int len);
 extern void	UTIL_fmt_longspan	(SPWAW_PERIOD *span, UtilStrbuf *buf);
