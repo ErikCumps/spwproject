@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - overview.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -59,9 +59,13 @@ private:
 	} d;
 
 private:
-	void	list_promotions	(SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned int size, int &icnt);
-	void	list_upgrades	(SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned int size, int &icnt);
-
+	void	list_replacements	(SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf);
+	void	list_reassignments	(SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf);
+	void	list_upgrades		(SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf);
+	void	list_promotions		(SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf);
+	void	list_demotions		(SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf);
+	void	list_commissions	(SPWAW_DOSSIER *d, UtilStrbuf &strbuf);
+	void	list_decommissions	(SPWAW_DOSSIER *d, UtilStrbuf &strbuf);
 };
 
 #endif	/* GUI_REPORTS_DOSSIER_OVERVIEW_H */

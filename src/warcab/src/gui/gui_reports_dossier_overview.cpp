@@ -1,12 +1,13 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - overview.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "gui_reports_dossier.h"
+#include <spwawlib_uht_job.h>
 
 // TODO: consider externalizing
 #define	LISTMAX	5
@@ -101,124 +102,241 @@ GuiRptDsrOvr::set_parent (GuiRptDsr *p)
 	d.parent = p;
 }
 
-void
-GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned int size, int &icnt)
+typedef char *(* extra_cb)(SPWAW_DOSSIER_UIR *uir);
+
+static void
+record_battle_date_info_inorder (SPWAW_UHT_LIST_CBCTX &context)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_BATTLE		*b;
-	int			i;
-	SPWAW_SNAP_OOB_UEL	*fup, *lup, *up;
+	UtilStrbuf	*sb;
 
-	icnt = 0;
+	if (!context.extra) return;
 
-	for (i=0; i<d->props.iucnt; i++) {
-		USHORT	idx, nidx;
-		bool	skip, report;
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
 
-		idx = nidx = i; b = d->bfirst; skip = false; report = false;
-		up = fup = b->info_sob->pbir_core.uir[idx].snap;
-		while (b->next) {
-			nidx = b->ra[idx].dst;
-			if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) { skip = true; break; }
+	SPWAW_BDATE (*context.bdate, bd, false);
 
-			lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-			if (up->data.rank != lup->data.rank) report = true;
+	if (context.first) {
+		sb->printf ("%s %s %s: ", context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname);
+		sb->printf ("%s", ((extra_cb)(context.extra))(context.uir));
+	} else {
+		sb->printf (" -&gt; <small>(%s)</small> %s", bd, ((extra_cb)context.extra)(context.uir));
 
-			idx = nidx; up = lup; b = b->next;
-		}
-		if (skip || !report) continue;
+	}
+}
 
-		if (!reverse) {
-			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.dname, lup->data.lname, fup->strings.rank);
-			idx = nidx = i; b = d->bfirst;
-			while (b->next) {
-				nidx = b->ra[idx].dst;
-				fup = b->info_sob->pbir_core.uir[idx].snap;
-				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-				if (fup->data.rank != lup->data.rank) {
-					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s (%s)",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank, lup->strings.uid);
-				}
-				idx = nidx; b = b->next;
-			}
-		} else {
-			str.printf ("%s %s %s: %s", lup->strings.uid, lup->data.dname, lup->data.lname, lup->strings.rank);
-			idx = nidx = lup->data.idx; b = d->blast;
-			while (b->prev) {
-				nidx = b->ra[idx].src;
-				fup = b->info_sob->pbir_core.uir[idx].snap;
-				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
-				if (fup->data.rank != lup->data.rank) {
-					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s (%s)",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->strings.rank, lup->strings.uid);
-				}
-				idx = nidx; b = b->prev;
-			}
-		}
-		str.printf ("\n");
+static void
+record_battle_date_info_reverse (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
 
-		icnt++;
+	if (!context.extra) return;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	SPWAW_BDATE (*context.bdate, bd, false);
+
+	if (context.first) {
+		sb->printf ("%s %s %s: ", context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname);
+	}
+	if (!context.last) {
+		sb->printf ("%s <small>(%s)</small> &lt;- ", ((extra_cb)context.extra)(context.uir), bd);
+
+	} else {
+		sb->printf ("%s", ((extra_cb)context.extra)(context.uir));
+	}
+}
+
+static char *
+uir_data_lname (SPWAW_DOSSIER_UIR *uir)
+{
+	return (uir->snap->data.lname);
+}
+
+void
+GuiRptDsrOvr::list_replacements (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Replacements";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_REPLACED;
+	job.how.reversed	= reverse;
+	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
+	job.dext.extra		= uir_data_lname;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+static char *
+uir_strings_uid (SPWAW_DOSSIER_UIR *uir)
+{
+	return (uir->snap->strings.uid);
+}
+
+void
+GuiRptDsrOvr::list_reassignments (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Reassignments";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_REASSIGNED;
+	job.how.reversed	= reverse;
+	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
+	job.dext.extra		= uir_strings_uid;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+static char *
+uir_data_uname (SPWAW_DOSSIER_UIR *uir)
+{
+	return (uir->snap->data.uname);
+}
+
+void
+GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Upgrades";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_UPGRADED;
+	job.how.reversed	= reverse;
+	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
+	job.dext.extra		= uir_data_uname;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+static char *
+uir_strings_rank (SPWAW_DOSSIER_UIR *uir)
+{
+	return (uir->snap->strings.rank);
+}
+
+void
+GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Promotions";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_PROMOTED;
+	job.how.reversed	= reverse;
+	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
+	job.dext.extra		= uir_strings_rank;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+void
+GuiRptDsrOvr::list_demotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Demotions";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_DEMOTED;
+	job.how.reversed	= reverse;
+	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
+	job.dext.extra		= uir_strings_rank;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
+
+	UHT_list_job (job);
+}
+
+static void
+record_battle_date_info (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	SPWAW_BDATE (*context.bdate, bd, false);
+
+	if (context.first) {
+		sb->printf ("%s %s %s <small>(%s)</small>",
+			context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname, bd);
 	}
 }
 
 void
-GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, char *buf, unsigned int size, int &icnt)
+GuiRptDsrOvr::list_commissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	int			i;
-	SPWAW_BATTLE		*b;
-	SPWAW_SNAP_OOB_UEL	*fup, *lup, *up;
+	UHT_LIST_JOB job = { };
 
-	icnt = 0;
+	job.what		= "Additional commissioned units";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_COMMISSIONED;
+	job.dext.data		= record_battle_date_info;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
 
-	for (i=0; i<d->props.iucnt; i++) {
-		USHORT	idx, nidx;
-		bool	skip, report;
+	UHT_list_job (job);
+}
 
-		idx = nidx = i; b = d->bfirst; skip = false; report = false;
-		up = fup = b->info_sob->pbir_core.uir[idx].snap;
-		while (b->next) {
-			nidx = b->ra[idx].dst;
-			if (b->ra[idx].rpl || (nidx == SPWAW_BADIDX)) { skip = true; break; }
+void
+GuiRptDsrOvr::list_decommissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
+{
+	UHT_LIST_JOB job = { };
 
-			lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-			if (up->data.OOBrid != lup->data.OOBrid) report = true;
+	job.what		= "Decommissioned units";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d;
+	job.how.status		= UHT_DECOMMISSIONED;
+	job.how.allow_decomm	= true;
+	job.dext.data		= record_battle_date_info;
+	job.out.skip_if_empty	= true;
+	job.out.hdrpre		= "<pre><h3>";
+	job.out.hdrpst		= "</h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.strbuf		= &strbuf;
 
-			idx = nidx; up = lup; b = b->next;
-		}
-		if (skip || !report) continue;
-
-		if (!reverse) {
-			str.printf ("%s %s: %s", lup->strings.uid, lup->data.lname, fup->data.dname);
-			idx = nidx = i; b = d->bfirst;
-			while (b->next) {
-				nidx = b->ra[idx].dst;
-				fup = b->info_sob->pbir_core.uir[idx].snap;
-				lup = b->next->info_sob->pbir_core.uir[nidx].snap;
-				if (fup->data.OOBrid != lup->data.OOBrid) {
-					str.printf (" -&gt; <small>(%02.2d/%2.2d)</small> %s",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.dname);
-				}
-				idx = nidx; b = b->next;
-			}
-		} else {
-			str.printf ("%s %s: %s", lup->strings.uid, lup->data.lname, lup->data.dname);
-			idx = nidx = lup->data.idx; b = d->blast;
-			while (b->prev) {
-				nidx = b->ra[idx].src;
-				fup = b->info_sob->pbir_core.uir[idx].snap;
-				lup = b->prev->info_sob->pbir_core.uir[nidx].snap;
-				if (fup->data.OOBrid != lup->data.OOBrid) {
-					str.printf (" <small>(%02.2d/%2.2d)</small> &lt;- %s",
-						b->bdate.date.month, b->bdate.date.year - 1900, lup->data.dname);
-				}
-				idx = nidx; b = b->prev;
-			}
-		}
-		str.printf ("\n");
-
-		icnt++;
-	}
+	UHT_list_job (job);
 }
 
 void
@@ -226,7 +344,7 @@ GuiRptDsrOvr::refresh (bool forced)
 {
 	MDLD_TREE_ITEM	*item;
 	SPWAW_DOSSIER	*p = NULL;
-	char		buf[32768], buf2[32768];
+	char		buf[65536];
 	UtilStrbuf	str(buf, sizeof (buf), true, true);
 	SPWAW_PERIOD	span;
 
@@ -291,16 +409,21 @@ GuiRptDsrOvr::refresh (bool forced)
 			for (int i=0; i<ARRAYCOUNT(p->stats.results)-1; i++) {
 				str.printf ("  <b>%s</b>:\t%u\n", SPWAW_bresult2str((SPWAW_BRESULT)i), p->stats.results[i]);
 			}
-			str.printf ("\n");
+			//str.printf ("\n");
 		}
-		str.printf ("\n");
 
+		str.printf ("<h3>Core force:</h3>");
 		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
-			str.printf ("Initial %s core force consists of %u units in %u formations.\n",
-				SPWAW_oob_people (p->gametype, p->props.OOB), p->props.iucnt, p->props.ifcnt);
-			str.printf ("Current core force consists of %u units in %u formations.",
-				p->props.cucnt, p->props.cfcnt);
+			if ((p->props.iucnt != p->props.cucnt) || (p->props.ifcnt != p->props.cfcnt)) {
+				str.printf ("Initial %s core force consists of %u units in %u formations.\n",
+					SPWAW_oob_people (p->gametype, p->props.OOB), p->props.iucnt, p->props.ifcnt);
+				str.printf ("Current core force consists of %u units in %u formations.",
+					p->props.cucnt, p->props.cfcnt);
+			} else {
+				str.printf ("%s core force consists of %u units in %u formations.\n",
+					SPWAW_oob_people (p->gametype, p->props.OOB), p->props.iucnt, p->props.ifcnt);
 
+			}
 		} else {
 			str.printf ("Campaign tracking is not available for this dossier.");
 		}
@@ -339,21 +462,14 @@ GuiRptDsrOvr::refresh (bool forced)
 			}
 
 			if (p->bcnt) {
-				int	cnt = 0;
-
-				list_promotions (p, true, buf2, sizeof (buf2), cnt);
-				if (cnt) {
-					str.printf ("<pre><h3>Promotions:</h3>");
-					str.add (buf2);
-					str.printf ("</pre>");
-				}
-
-				list_upgrades (p, true, buf2, sizeof (buf2), cnt);
-				if (cnt) {
-					str.printf ("<pre><h3>Upgrades:</h3>");
-					str.add (buf2);
-					str.printf ("</pre>");
-				}
+				bool reverse = true;
+				list_replacements (p, reverse, str);
+				list_reassignments (p, reverse, str);
+				list_upgrades (p, reverse, str);
+				list_promotions (p, reverse, str);
+				list_demotions (p, reverse, str);
+				list_commissions (p, str);
+				list_decommissions (p, str);
 			}
 
 			d.changes->setText (buf);
