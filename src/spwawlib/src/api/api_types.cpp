@@ -484,7 +484,7 @@ SPWAW_bdate2str (SPWAW_BATTLE_DATE *bdate, char *buf, int len, bool tolog)
 		if (bdate->btlidx == SPWAW_NOBTLIDX) {
 			snprintf (buf, len - 1, "%s", bbdate);
 		} else {
-			snprintf (buf, len - 1, "%s #%u", bbdate, bdate->btlidx);
+			snprintf (buf, len - 1, "%s #%u", bbdate, bdate->btlidx+1);
 		}
 	}
 
