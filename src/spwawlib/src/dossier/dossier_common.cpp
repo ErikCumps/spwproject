@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -283,7 +283,7 @@ stats_worsened (SPWAW_DOSSIER_UIR *sup, SPWAW_DOSSIER_UIR *dup)
 }
 
 static double
-match_score (SPWAW_BATTLE *src, USHORT si, SPWAW_BATTLE *dst, USHORT di)
+match_score (SPWAW_BATTLE *src, USHORT si, SPWAW_BATTLE *dst, USHORT di, bool &lname_matched)
 {
 	SPWAW_DOSSIER_UIR	*sup, *dup;
 	USHORT			sfi, dfi;
@@ -314,10 +314,11 @@ match_score (SPWAW_BATTLE *src, USHORT si, SPWAW_BATTLE *dst, USHORT di)
 	 *     5 points for FID match
 	 */
 
-	score = 0;
+	score = 0; lname_matched = false;
 	if (src->info_eob->pbir_core.uir[si].snap->data.alive) {
 		if (string_match (sup->snap->data.lname, dup->snap->data.lname)) {
 			score += 10;
+			lname_matched = true;
 			RASCORETRACE1 ("   \\+-- lname match! score: %d\n", score);
 		}
 		if (sup->fptr->snap->data.FID == dup->fptr->snap->data.FID) {
@@ -354,6 +355,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 	bool			*srcf, *dstf;
 	USHORT			i, j;
 	double			score, s;
+	bool			lnm;
 	USHORT			si;
 	SPWAW_DOSSIER_UIR	*sup;
 
@@ -368,9 +370,39 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 	safe_nalloca (srcf, bool, src->racnt); COOM (srcf, "src processing flags");
 	safe_nalloca (dstf, bool, dst->racnt); COOM (dstf, "dst processing flags");
 
-	RATRACE0 ("Assigning live units:\n");
+	RATRACE0 ("Assigning units, stage #1, continuation:\n");
 	for (i=0; i<src->racnt; i++) {
-		if (!src->info_eob->pbir_core.uir[i].snap->data.alive) continue;
+		sup = &(src->info_sob->pbir_core.uir[i]);
+		RATRACE3 ("| Src unit #%05.5d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.lname);
+
+		score = s = -1000000; si = SPWAW_BADIDX;
+		for (j=0; j<dst->racnt; j++) {
+			if (dstf[j]) continue;
+
+			s = match_score (src, i, dst, j, lnm);
+			if (lnm && (s > score)) {
+				RATRACE3 ("| improved score for %05.5d: %.3f < %.3f\n", j, score, s);
+				score = s; si = j;
+			}
+		}
+
+		if (score <= 0) {
+			RATRACE1 ("| Ignoring bad score (%.3f)!\n\n", score);
+		} else {
+			if (si != SPWAW_BADIDX) {
+				RATRACE2 ("| Assigned %05.5d -> %05.5d\n\n", i, si);
+				src->ra[i].dst = si;
+				dst->ra[si].src = i;
+				srcf[i] = dstf[si] = true;
+			} else  {
+				RATRACE0 ("| No assignment found\n\n");
+			}
+		}
+	}
+
+	RATRACE0 ("Assigning units, stage #2, replacements:\n");
+	for (i=0; i<src->racnt; i++) {
+		if (srcf[i]) continue;
 
 		sup = &(src->info_sob->pbir_core.uir[i]);
 		RATRACE3 ("| Src unit #%05.5d: (%s, %s)\n", i, sup->snap->strings.uid, sup->snap->data.lname);
@@ -379,22 +411,28 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 		for (j=0; j<dst->racnt; j++) {
 			if (dstf[j]) continue;
 
-			s = match_score (src, i, dst, j);
+			s = match_score (src, i, dst, j, lnm);
 			if (s > score) {
 				RATRACE3 ("| improved score for %05.5d: %.3f < %.3f\n", j, score, s);
 				score = s; si = j;
 			}
 		}
 
-		if (si != SPWAW_BADIDX) {
-			RATRACE2 ("| Assigned %05.5d -> %05.5d\n\n", i, si);
-			src->ra[i].dst = si;
-			dst->ra[si].src = i;
-			srcf[i] = dstf[si] = true;
+		if (score <= 0) {
+			RATRACE1 ("| Ignoring bad score (%.3f)!\n\n", score);
+		} else {
+			if (si != SPWAW_BADIDX) {
+				RATRACE2 ("| Assigned %05.5d -> %05.5d (replacement)\n\n", i, si);
+				src->ra[i].dst = si; src->ra[i].rpl = true;
+				dst->ra[si].src = i;
+				srcf[i] = dstf[si] = true;
+			} else  {
+				RATRACE0 ("| No assignment found\n\n");
+			}
 		}
 	}
 
-	RATRACE0 ("Assigning remaining dead units:\n");
+	RATRACE0 ("Assigning remaining units:\n");
 	for (i=0; i<src->racnt; i++) {
 		if (srcf[i]) continue;
 
