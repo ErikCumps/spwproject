@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main window.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -277,6 +277,8 @@ GuiMainWindow::action_app_prefs (void)
 					req);
 			}
 		}
+
+		d.report->update();
 	}
 }
 
