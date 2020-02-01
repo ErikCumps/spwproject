@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier API implementation.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -487,6 +487,17 @@ SPWAW_dossier_snaplist (SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list)
 
 	rc = dossier_snaplist (dossier, list);
 	ROE ("dossier_snaplist()");
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_dossier_find_battle (SPWAW_DOSSIER *dossier, SPWAW_BATTLE_DATE *bdate, SPWAW_BATTLE **battle)
+{
+	CSPWINIT;
+	CNULLARG (dossier); CNULLARG (bdate); CNULLARG (battle);
+
+	*battle = dossier_find_battle (dossier, bdate);
 
 	return (SPWERR_OK);
 }

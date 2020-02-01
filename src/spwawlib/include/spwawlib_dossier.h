@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier API.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -183,6 +183,8 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_del		(SPWAW_DOSSIER *dossier, SPWA
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist		(SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist		(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
+
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_find_battle	(SPWAW_DOSSIER *dossier, SPWAW_BATTLE_DATE *bdate, SPWAW_BATTLE **battle);
 
 #endif	/* SPWAW_LIB_DOSSIER_H */
 
