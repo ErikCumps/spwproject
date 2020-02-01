@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration dialog.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -52,17 +52,23 @@
 #define	STR_SNP_WHATSTHIS1	"This is the folder where warcab saves dossiers and stratmap images."
 #define	STR_SNP_WHATSTHIS2	"Press this button to browse to the Warcab save folder."
 
-#define	STR_COMPRESS_TOOLTIP	"Configure dossier compression."
+#define	STR_COMPRESS_TOOLTIP		"Configure dossier compression."
 #define	STR_COMPRESS_WHATSTHIS							\
 	"Select this to enable compression when saving files.\n"		\
 	"Disable this if you would like easier file inspection\n"		\
 	"of *.warcab files."
 
-#define	STR_AUTOLOAD_TOOLTIP	"Configure reloading last dossier at startup."
+#define	STR_AUTOLOAD_TOOLTIP		"Configure reloading last dossier at startup."
 #define	STR_AUTOLOAD_WHATSTHIS							\
 	"Select this to automatically reload the last open dossier at\n"	\
 	"startup. Disable this if you would like to start Warcab with\n"	\
 	"no open dossier."
+
+#define	STR_FULL_HISTORY_TOOLTIP	"Configure dossier history mode."
+#define	STR_FULL_HISTORY_WHATSTHIS						\
+	"Select this to enable full campaign history, which also shows\n"	\
+	"data for decommissioned units on the following Dossier tabs:\n"	\
+	"Status, Progress, Kills, Losses and Roster."				\
 
 CfgDlg::CfgDlg (CfgDlgData *data)
 	: QDialog (0, Qt::Dialog)
@@ -177,6 +183,19 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.autoload_edit,	row, 1, 1, 1);
 	row++;
 
+	/* Create "fhistory" config ui */
+	d.fhistory_label = new QLabel (d.body);
+	d.fhistory_label->setText ("Dossier full campaign history:");
+	d.fhistory_label->setToolTip (STR_FULL_HISTORY_TOOLTIP);
+
+	d.fhistory_edit = new QCheckBox (d.body);
+	d.fhistory_edit->setToolTip (STR_FULL_HISTORY_TOOLTIP);
+	d.fhistory_edit->setWhatsThis (STR_FULL_HISTORY_WHATSTHIS);
+
+	d.layout->addWidget (d.fhistory_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.fhistory_edit,	row, 1, 1, 1);
+	row++;
+
 	/* Add spacer */
 	d.layout->setRowStretch (row, 1);
 	row++;
@@ -257,7 +276,8 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	setTabOrder (d.snp_edit, d.snp_browse);
 	setTabOrder (d.snp_browse, d.compress_edit);
 	setTabOrder (d.compress_edit, d.autoload_edit);
-	setTabOrder (d.autoload_edit, d.dgt_select);
+	setTabOrder (d.autoload_edit, d.fhistory_edit);
+	setTabOrder (d.fhistory_edit, d.dgt_select);
 	setTabOrder (d.dgt_select, (*d.games_gui)[0].oob_edit);
 	for (int i=0; i<(*d.games_gui).size(); i++) {
 		if (i>0) setTabOrder ((*d.games_gui)[i-1].sve_browse, (*d.games_gui)[i].oob_edit);
@@ -300,6 +320,7 @@ CfgDlg::prepare(void)
 	d.snp_edit->setText (d.dlg_data->snp);
 	d.compress_edit->setCheckState (d.dlg_data->compress ? Qt::Checked : Qt::Unchecked);
 	d.autoload_edit->setCheckState (d.dlg_data->autoload ? Qt::Checked : Qt::Unchecked);
+	d.fhistory_edit->setCheckState (d.dlg_data->fhistory ? Qt::Checked : Qt::Unchecked);
 	for (int i=0; i<d.dlg_data->types.size(); i++) {
 		if (d.dlg_data->types[i].type == d.dlg_data->def_game) {
 			d.dgt_select->setCurrentIndex (i);
@@ -321,6 +342,7 @@ CfgDlg::update (void)
 	d.dlg_data->snp = d.snp_edit->text().replace('/', '\\');
 	d.dlg_data->compress = (d.compress_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->autoload = (d.autoload_edit->checkState() == Qt::Checked) ? true : false;
+	d.dlg_data->fhistory = (d.fhistory_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->def_game = (SPWAW_GAME_TYPE)(d.dgt_select->itemData (d.dgt_select->currentIndex()).toUInt());
 	for (int i=0; i<d.dlg_data->games.size(); i++) {
 		d.dlg_data->games[i]->oob = (*d.games_gui)[i].oob_edit->text().replace('/', '\\');

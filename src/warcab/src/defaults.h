@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - default settings.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -18,6 +18,7 @@
 
 #define	DEFAULT_SNAPPATH	"%s\\save"
 #define	DEFAULT_COMPRESSION	true
+#define	DEFAULT_FULL_HISTORY	false
 #define	DEFAULT_AUTOLOAD	true
 
 #define	DEFAULT_GUI_STATE	Qt::WindowNoState

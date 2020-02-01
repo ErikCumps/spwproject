@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration dialog.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -34,8 +34,8 @@ public:
 class CfgDlgData
 {
 public:
-	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload) :
-		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload)
+	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool fhistory, bool autoload) :
+		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory)
 	{
 		types.append(CfgGuiGameType(SPWAW_GAME_TYPE_UNKNOWN, "none"));
 	}
@@ -54,6 +54,7 @@ public:
 	QString			snp;
 	bool			compress;
 	bool			autoload;
+	bool			fhistory;
 };
 
 typedef struct s_CfgDlgGuiGame {
@@ -94,6 +95,8 @@ private:
 		QCheckBox		*compress_edit;
 		QLabel			*autoload_label;
 		QCheckBox		*autoload_edit;
+		QLabel			*fhistory_label;
+		QCheckBox		*fhistory_edit;
 		QLabel			*dgt_label;
 		QComboBox		*dgt_select;
 		QVector<CfgDlgGuiGame>	*games_gui;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration handling.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -41,6 +41,7 @@ typedef struct s_CFGDATA {
 	bool		compress;		/*!< Dossier compression flag		*/
 	bool		autoload;		/*!< Dossier autoload flag		*/
 	char		*lastdoss;		/*!< Last opened dossier		*/
+	bool		fhistory;		/*!< Campaign full history flag		*/
 	GUI_STATE	gui_state;		/*!< GUI state				*/
 } CFGDATA;
 
@@ -49,7 +50,7 @@ typedef struct s_CFGDATA {
 /* --- private macros  --- */
 
 /*! Configuration version */
-#define	CFG_REVISION	3
+#define	CFG_REVISION	4
 
 /* Convenience macro */
 #define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
@@ -179,6 +180,13 @@ config_load (QSettings *storage)
 		if (!strlen (cfg.lastdoss)) SL_SAFE_FREE (cfg.lastdoss);
 	}
 
+	data = storage->value ("FullCampaignHistory");
+	if (data.isNull ()) {
+		cfg.fhistory = DEFAULT_FULL_HISTORY;
+	} else {
+		cfg.fhistory = data.toBool();
+	}
+
 	storage->beginGroup("GUI");
 
 	data = storage->value ("State");
@@ -259,6 +267,9 @@ config_save (QSettings *storage)
 
 	data.setValue (QString (cfg.lastdoss));
 	storage->setValue ("LastDossier", data);
+
+	data.setValue (cfg.fhistory);
+	storage->setValue ("FullCampaignHistory", data);
 
 	storage->beginGroup("GUI");
 
@@ -576,6 +587,20 @@ CFG_autoload_set (char *file)
 	if (file && strlen (file)) SL_SAFE_STRDUP (cfg.lastdoss, file);
 }
 
+bool
+CFG_full_history (void)
+{
+	return (initialized ? cfg.fhistory : false);
+}
+
+static void
+CFG_SET_full_history (bool b)
+{
+	if (!initialized) return;
+
+	cfg.fhistory = b;
+}
+
 GUI_STATE *
 CFG_gui_state_get (void)
 {
@@ -624,7 +649,8 @@ CFG_DLG (bool isfirstrun)
 		CFG_default_gametype (),
 		CFG_snap_path (),
 		CFG_compress (),
-		CFG_autoload ());
+		CFG_autoload (),
+		CFG_full_history ());
 
 	CfgDlgGame	spwaw (
 		SPWAW_GAME_TYPE_SPWAW,
@@ -653,6 +679,7 @@ CFG_DLG (bool isfirstrun)
 		CFG_SET_snp_path ((char *)qPrintable (data.snp));
 		CFG_SET_compress (data.compress);
 		CFG_SET_autoload (data.autoload);
+		CFG_SET_full_history (data.fhistory);
 		config_update_oobcfg ();
 	}
 
@@ -688,6 +715,7 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tcompression         = %s\n", cfg.compress?"enabled":"disabled");
 		SAYSTATE1 ("\tautoload            = %s\n", cfg.autoload?"enabled":"disabled");
 		SAYSTATE1 ("\tlast dossier        = %s\n", cfg.lastdoss);
+		SAYSTATE1 ("\tfull history        = %s\n", cfg.fhistory?"enabled":"disabled");
 		SAYSTATE1 ("\tGUI state           = %u\n", cfg.gui_state.state);
 		SAYSTATE2 ("\tGUI size            = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
 		SAYSTATE2 ("\tGUI position        = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());

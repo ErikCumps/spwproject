@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration handling.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -29,6 +29,8 @@ extern bool		CFG_compress		(void);
 
 extern char *		CFG_autoload_get	(void);
 extern void		CFG_autoload_set	(char *file);
+
+extern bool		CFG_full_history	(void);
 
 extern GUI_STATE *	CFG_gui_state_get	(void);
 extern void		CFG_gui_state_set	(GUI_STATE &state);
