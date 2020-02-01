@@ -34,7 +34,7 @@ public:
 class CfgDlgData
 {
 public:
-	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool fhistory, bool autoload) :
+	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload, bool fhistory) :
 		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory)
 	{
 		types.append(CfgGuiGameType(SPWAW_GAME_TYPE_UNKNOWN, "none"));

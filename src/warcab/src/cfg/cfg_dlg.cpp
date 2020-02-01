@@ -64,11 +64,11 @@
 	"startup. Disable this if you would like to start Warcab with\n"	\
 	"no open dossier."
 
-#define	STR_FULL_HISTORY_TOOLTIP	"Configure dossier history mode."
+#define	STR_FULL_HISTORY_TOOLTIP	"Configure campaign history mode."
 #define	STR_FULL_HISTORY_WHATSTHIS						\
 	"Select this to enable full campaign history, which also shows\n"	\
 	"data for decommissioned units on the following Dossier tabs:\n"	\
-	"Status, Progress, Kills, Losses and Roster."				\
+	"Overview, Status, Progress, Kills, Losses and Roster."			\
 
 CfgDlg::CfgDlg (CfgDlgData *data)
 	: QDialog (0, Qt::Dialog)
@@ -185,7 +185,7 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 
 	/* Create "fhistory" config ui */
 	d.fhistory_label = new QLabel (d.body);
-	d.fhistory_label->setText ("Dossier full campaign history:");
+	d.fhistory_label->setText ("Full campaign history:");
 	d.fhistory_label->setToolTip (STR_FULL_HISTORY_TOOLTIP);
 
 	d.fhistory_edit = new QCheckBox (d.body);
