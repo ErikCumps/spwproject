@@ -79,9 +79,9 @@ typedef struct s_SPWAW_UHTE {
 	SPWAW_RANK		rank;			/* Unit identity: rank							*/
 	int			FMID;			/* Unit identity: formation major ID					*/
 	int			FSID;			/* Unit identity: formation sub ID					*/
-	SPWAW_BATTLE_DATE	FBI;			/* Battle date for the battle the unit was first seen in		*/
+	SPWAW_BATTLE_DATE	FBD;			/* Battle date for the battle the unit was first seen in		*/
 	USHORT			FUI;			/* Unit index for the battle the unit was first seen in			*/
-	SPWAW_BATTLE_DATE	LBI;			/* Battle date for the battle the unit was last seen in			*/
+	SPWAW_BATTLE_DATE	LBD;			/* Battle date for the battle the unit was last seen in			*/
 	USHORT			status;			/* Unit history status							*/
 	SPWAW_UHTE		*prev;			/* Pointer to previous element in unit history chain			*/
 	SPWAW_UHTE		*next;			/* Pointer to next element in unit history chain			*/
@@ -116,32 +116,60 @@ typedef struct s_SPWAW_UHT {
 
 /*** API ***/
 
-/* Returns the UIR (if found) for the specified base UHTE and battle date */
-extern SPWAWLIB_API SPWAW_DOSSIER_UIR *	SPWAW_UHT_lookup		(SPWAW_UHTE *base, SPWAW_BATTLE_DATE *bdate);
+/* Returns the UHTE and/or UIR for the specified base UHTE and battle date.
+ * For battle dates outside the commission range of the UHTE, the strict mode determines the result:
+ * + strict mode disabled: returns true and sets the initial commission or final decommission UHTE/UIR
+ * + strict mode enabled: returns false and sets NULL values
+ */
+extern SPWAWLIB_API bool		SPWAW_UHT_lookup		(SPWAW_UHTE *base, SPWAW_BATTLE_DATE *bdate, bool strict, SPWAW_UHTE **uhte, SPWAW_DOSSIER_UIR **sobuir, SPWAW_DOSSIER_UIR **eobuir);
+
+/* Returns the UHTE for the specified base UHTE and battle date.
+ * For battle dates outside the commission range of the UHTE, the strict mode determines the result:
+ * + strict mode disabled: return the initial commission or final decommission UHTE
+ * + strict mode enabled: return NULL
+ */
+extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_lookup_UHTE		(SPWAW_UHTE *base, SPWAW_BATTLE_DATE *bdate, bool strict);
+
+/* Returns the UIR for the specified base UHTE and battle date, at the beginning of the battle.
+ * For battle dates outside the commission range of the UHTE, the strict mode determines the result:
+ * + strict mode disabled: return the initial commission or final decommission UIR
+ * + strict mode enabled: return NULL
+ */
+extern SPWAWLIB_API SPWAW_DOSSIER_UIR *	SPWAW_UHT_lookup_SOBUIR		(SPWAW_UHTE *base, SPWAW_BATTLE_DATE *bdate, bool strict);
+
+/* Returns the UIR for the specified base UHTE and battle date, at the end of the battle.
+ * For battle dates outside the commission range of the UHTE, the strict mode determines the result:
+ * + strict mode disabled: return the initial commission or final decommission UIR
+ * + strict mode enabled: return NULL
+ */
+extern SPWAWLIB_API SPWAW_DOSSIER_UIR *	SPWAW_UHT_lookup_EOBBUIR		(SPWAW_UHTE *base, SPWAW_BATTLE_DATE *bdate, bool strict);
 
 /* Checks if the specified UHTE is the initial UHTE of a UHTE chain */
 static inline bool
 SPWAW_UHT_is_initial (SPWAW_UHTE *uhte) { return (uhte && !uhte->prev); }
 
-/* Checks if the unit of specified UHTE was active at the specified battle date */
+/* Checks if the unit of the specified UHTE was active at the specified battle date */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_active		(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
 
-/* Checks if the unit of specified UHTE was commissioned during the campaign */
+/* Checks if the unit of the specified UHTE was commissioned during the campaign */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_commissioned	(SPWAW_UHTE *uhte);
 
-/* Checks if the unit of specified UHTE was commissioned at the specified battle date */
+/* Checks if the unit of the specified UHTE was commissioned at the specified battle date */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_commissioned	(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
 
-/* Checks if the unit of specified UHTE was decommissioned during the campaign */
+/* Checks if the unit of the specified UHTE was decommissioned during the campaign */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_decommissioned	(SPWAW_UHTE *uhte);
 
-/* Checks if the unit of specified UHTE was decommissioned at the specified battle date */
+/* Checks if the unit of the specified UHTE was decommissioned at the specified battle date */
 extern SPWAWLIB_API bool		SPWAW_UHT_is_decommissioned	(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate);
 
-/* Checks if the unit of specified UHTE has the specified status at the specified battle date */
+/* Checks if the unit of the specified UHTE has the specified status at the specified battle date */
 extern SPWAWLIB_API bool		SPWAW_UHT_is			(SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate, USHORT status);
 
-/* Checks if the unit of specified UHTE has the specified status during the campaign */
+/* Checks if the unit of the specified UHTE has the specified status anywhere during the campaign */
+extern SPWAWLIB_API bool		SPWAW_UHT_has			(SPWAW_UHTE *uhte, USHORT status);
+
+/* Checks if the unit of the specified UHTE has the specified status */
 extern SPWAWLIB_API bool		SPWAW_UHT_is			(SPWAW_UHTE *uhte, USHORT status);
 
 /* Returns the initial UHTE of the chain containing the specified UHTE */
@@ -175,16 +203,16 @@ extern SPWAWLIB_API SPWAW_UHTE *	SPWAW_UHT_prev			(SPWAW_UHTE *uhte, USHORT stat
 #define	SPWAW_UHT_is_destroyed(u_,bd_)		SPWAW_UHT_is(u_, bd_, UHT_DESTROYED)
 
 /* --- Convenience macros: status check (for entire campaign) --- */
-#define	SPWAW_UHT_has_rename(u_)		SPWAW_UHT_is(u_, UHT_RENAMED)
-#define	SPWAW_UHT_has_replacement(u_)		SPWAW_UHT_is(u_, UHT_REPLACED)
-#define	SPWAW_UHT_has_reassignment(u_)		SPWAW_UHT_is(u_, UHT_REASSIGNED)
-#define	SPWAW_UHT_has_upgrade(u_)		SPWAW_UHT_is(u_, UHT_UPGRADED)
-#define	SPWAW_UHT_has_promotion(u_)		SPWAW_UHT_is(u_, UHT_PROMOTED)
-#define	SPWAW_UHT_has_demotion(u_)		SPWAW_UHT_is(u_, UHT_DEMOTED)
-#define	SPWAW_UHT_has_rerank(u_)		SPWAW_UHT_is(u_, UHT_RERANKED)
-#define	SPWAW_UHT_has_damaged(u_)		SPWAW_UHT_is(u_, UHT_DAMAGED)
-#define	SPWAW_UHT_has_abandoned(u_)		SPWAW_UHT_is(u_, UHT_ABANDONED)
-#define	SPWAW_UHT_has_destroyed(u_)		SPWAW_UHT_is(u_, UHT_DESTROYED)
+#define	SPWAW_UHT_has_rename(u_)		SPWAW_UHT_has(u_, UHT_RENAMED)
+#define	SPWAW_UHT_has_replacement(u_)		SPWAW_UHT_has(u_, UHT_REPLACED)
+#define	SPWAW_UHT_has_reassignment(u_)		SPWAW_UHT_has(u_, UHT_REASSIGNED)
+#define	SPWAW_UHT_has_upgrade(u_)		SPWAW_UHT_has(u_, UHT_UPGRADED)
+#define	SPWAW_UHT_has_promotion(u_)		SPWAW_UHT_has(u_, UHT_PROMOTED)
+#define	SPWAW_UHT_has_demotion(u_)		SPWAW_UHT_has(u_, UHT_DEMOTED)
+#define	SPWAW_UHT_has_rerank(u_)		SPWAW_UHT_has(u_, UHT_RERANKED)
+#define	SPWAW_UHT_has_damaged(u_)		SPWAW_UHT_has(u_, UHT_DAMAGED)
+#define	SPWAW_UHT_has_abandoned(u_)		SPWAW_UHT_has(u_, UHT_ABANDONED)
+#define	SPWAW_UHT_has_destroyed(u_)		SPWAW_UHT_has(u_, UHT_DESTROYED)
 
 /* --- Convenience macros: first status access (for entire campaign) --- */
 #define	SPWAW_UHT_first_rename(u_)		SPWAW_UHT_first(u_, UHT_RENAMED)

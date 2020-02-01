@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -27,11 +27,11 @@ prep_uhte_data (SPWAW_UHTE *uhte, UHT_ELEMENT &data, STRTAB *stab)
 	data.rank	= rank2raw (uhte->rank);
 	data.FMID	= (USHORT)uhte->FMID;
 	data.FSID	= (BYTE)uhte->FSID;
-	data.FBIi	= uhte->FBI.btlidx;
-	SPWAW_date2stamp (&(uhte->FBI.date), &(data.FBId));
+	data.FBDi	= uhte->FBD.btlidx;
+	SPWAW_date2stamp (&(uhte->FBD.date), &(data.FBDd));
 	data.FUI	= uhte->FUI;
-	data.LBIi	= uhte->LBI.btlidx;
-	SPWAW_date2stamp (&(uhte->LBI.date), &(data.LBId));
+	data.LBDi	= uhte->LBD.btlidx;
+	SPWAW_date2stamp (&(uhte->LBD.date), &(data.LBDd));
 	data.status	= uhte->status;
 	data.prev	= uhte->prev?uhte->prev->idx:SPWAW_BADLONGIDX;
 	data.next	= uhte->next?uhte->next->idx:SPWAW_BADLONGIDX;

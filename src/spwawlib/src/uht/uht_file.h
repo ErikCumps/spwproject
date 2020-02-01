@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -34,11 +34,11 @@ typedef struct s_UHT_ELEMENT {
 	BYTE		rank;			/* Unit identity: rank							*/
 	USHORT		FMID;			/* Unit identity: formation major ID					*/
 	BYTE		FSID;			/* Unit identity: formation sub ID					*/
-	USHORT		FBIi;			/* Battle index for the battle the unit was first seen in		*/
-	SPWAW_TIMESTAMP	FBId;			/* Battle date for the battle the unit was first seen in		*/
+	USHORT		FBDi;			/* Battle index for the battle the unit was first seen in		*/
+	SPWAW_TIMESTAMP	FBDd;			/* Battle date for the battle the unit was first seen in		*/
 	USHORT		FUI;			/* Unit index for the battle the unit was first seen in			*/
-	USHORT		LBIi;			/* Battle index for the battle the unit was last seen in		*/
-	SPWAW_TIMESTAMP	LBId;			/* Battle date for the battle the unit was last seen in			*/
+	USHORT		LBDi;			/* Battle index for the battle the unit was last seen in		*/
+	SPWAW_TIMESTAMP	LBDd;			/* Battle date for the battle the unit was last seen in			*/
 	USHORT		status;			/* Unit history status							*/
 	ULONG		prev;			/* Index of previous element in unit history list			*/
 	ULONG		next;			/* Index of next element in unit history list				*/

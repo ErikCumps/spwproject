@@ -57,7 +57,7 @@ find_uhte (SPWAW_UHT *uht, BIRURR &rr)
 	if (rr.u) return (rr.u);
 
 	for (unsigned int i=0; i<uht->cnt; i++) {
-		if (SPWAW_bdate_cmp (&(uht->list[i]->FBI), &(rr.b->bdate)) != 0) continue;
+		if (SPWAW_bdate_cmp (&(uht->list[i]->FBD), &(rr.b->bdate)) != 0) continue;
 		if (uht->list[i]->FUI != rr.i) continue;
 
 		rr.u = uht->list[i];
@@ -100,10 +100,10 @@ uht_commission (SPWAW_UHT *uht, BIRURR &rr, USHORT status)
 	rr.u->FMID	= suir->snap->data.FMID;
 	rr.u->FSID	= suir->snap->data.FSID;
 
-	rr.u->FBI	= rr.b->bdate;
+	rr.u->FBD	= rr.b->bdate;
 	rr.u->FUI	= rr.i;
 
-	rr.u->LBI	= rr.b->bdate;
+	rr.u->LBD	= rr.b->bdate;
 
 	rr.u->status	= status;
 
@@ -144,17 +144,17 @@ uht_split_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 	nrr.u->FMID	= nuir->snap->data.FMID;
 	nrr.u->FSID	= nuir->snap->data.FSID;
 
-	nrr.u->FBI	= nrr.b->bdate;
+	nrr.u->FBD	= nrr.b->bdate;
 	nrr.u->FUI	= nrr.i;
 
 	find_uhte (uht, rr);
 	if (rr.u != NULL) {
-		nrr.u->LBI	= rr.u->LBI;
+		nrr.u->LBD	= rr.u->LBD;
 		nrr.u->status	= rr.u->status;
 		nrr.u->prev	= rr.u->prev;
 		nrr.u->next	= rr.u->next;
 	} else {
-		nrr.u->LBI	= nrr.b->bdate;
+		nrr.u->LBD	= nrr.b->bdate;
 		nrr.u->status	= UHT_NOSTATUS;
 		nrr.u->prev	= NULL;
 		nrr.u->next	= NULL;
@@ -191,7 +191,7 @@ uht_adjust_commission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 		nrr.u->FMID	= nuir->snap->data.FMID;
 		nrr.u->FSID	= nuir->snap->data.FSID;
 
-		nrr.u->FBI	= nrr.b->bdate;
+		nrr.u->FBD	= nrr.b->bdate;
 		nrr.u->FUI	= nrr.i;
 	}
 
@@ -215,7 +215,7 @@ uht_decommission (SPWAW_UHT *uht, BIRURR &rr, SPWAW_BATTLE *db)
 
 	find_uhte (uht, rr);
 	if (rr.u) {
-		rr.u->LBI = db->bdate;
+		rr.u->LBD = db->bdate;
 
 		if (rr.u->next) {
 			rr.u->next->prev = NULL;
@@ -243,7 +243,7 @@ uht_adjust_decommission (SPWAW_UHT *uht, BIRURR &rr, BIRURR &nrr)
 
 	nrr.u = find_uhte (uht, rr);
 	if (nrr.u) {
-		nrr.u->LBI = nrr.b->bdate;
+		nrr.u->LBD = nrr.b->bdate;
 	}
 
 	return (nrr.u);
@@ -271,8 +271,8 @@ uht_link (SPWAW_UHT *uht, BIRURR &frr, BIRURR &trr, USHORT status)
 	if ((fptr != NULL) && (tptr != NULL)) {
 		UHTTRACE1 ("| -> next=0x%8.8x\n", fptr->next);
 		if (!fptr->next || (fptr->next == tptr)) {
-			SPWAW_BATTLE *b = dossier_find_battle (uht->dossier, &(tptr->FBI));
-			fptr->LBI = b->prev->bdate;
+			SPWAW_BATTLE *b = dossier_find_battle (uht->dossier, &(tptr->FBD));
+			fptr->LBD = b->prev->bdate;
 			fptr->next = tptr;
 			fptr->next->prev = fptr;
 			// Fix target uhte status (it may have been updated)
@@ -291,8 +291,8 @@ sort_uht (const void *a, const void *b)
 	SPWAW_UHTE	*fa = *((SPWAW_UHTE **)a);
 	SPWAW_UHTE	*fb = *((SPWAW_UHTE **)b);
 
-	SPWAW_BATTLE_DATE *cba = &(fa->FBI);
-	SPWAW_BATTLE_DATE *cbb = &(fb->FBI);
+	SPWAW_BATTLE_DATE *cba = &(fa->FBD);
+	SPWAW_BATTLE_DATE *cbb = &(fb->FBD);
 
 	int fma = fa->FMID;
 	int fmb = fb->FMID;

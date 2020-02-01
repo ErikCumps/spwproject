@@ -180,8 +180,8 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 			if (job.data_cb) {
 				SPWAW_UHT_LIST_CBCTX cbctx = {
 					uhte,
-					&(uhte->FBI),
-					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
+					&(uhte->FBD),
+					SPWAW_UHT_lookup_SOBUIR (uhte, &(uhte->FBD), true),
 					NULL,
 					NULL,
 					is_decommissioned,
@@ -201,8 +201,8 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 				if (job.data_cb) {
 					SPWAW_UHT_LIST_CBCTX cbctx = {
 						uptr,
-						&(uptr->FBI),
-						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
+						&(uptr->FBD),
+						SPWAW_UHT_lookup_SOBUIR (uptr, &(uptr->FBD), true),
 						NULL,
 						NULL,
 						is_decommissioned,
@@ -231,8 +231,8 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 				if (job.data_cb) {
 					SPWAW_UHT_LIST_CBCTX cbctx = {
 						uptr,
-						&(uptr->FBI),
-						SPWAW_UHT_lookup (uptr, &(uptr->FBI)),
+						&(uptr->FBD),
+						SPWAW_UHT_lookup_SOBUIR (uptr, &(uptr->FBD), true),
 						NULL,
 						NULL,
 						is_decommissioned,
@@ -250,8 +250,8 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 			if (job.data_cb) {
 				SPWAW_UHT_LIST_CBCTX cbctx = {
 					uhte,
-					&(uhte->FBI),
-					SPWAW_UHT_lookup (uhte, &(uhte->FBI)),
+					&(uhte->FBD),
+					SPWAW_UHT_lookup_SOBUIR (uhte, &(uhte->FBD), true),
 					NULL,
 					NULL,
 					is_decommissioned,
@@ -299,7 +299,7 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 			SPWAW_UHT_LIST_CBCTX cbctx = {
 				uhte,
 				&(job.src.bid.bid->bdate),
-				SPWAW_UHT_lookup (uhte, &(job.src.bid.bid->bdate)),
+				SPWAW_UHT_lookup_SOBUIR (uhte, &(job.src.bid.bid->bdate), true),
 				NULL,
 				NULL,
 				is_decommissioned,
@@ -310,7 +310,7 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 			};
 			if (post) {
 				cbctx.nbdate = job.src.bid.nbd;
-				cbctx.nuir = SPWAW_UHT_lookup (uhte, job.src.bid.nbd);
+				cbctx.nuir = SPWAW_UHT_lookup_SOBUIR (uhte, job.src.bid.nbd, true);
 			}
 			job.data_cb (cbctx);
 		}
