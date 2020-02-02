@@ -105,6 +105,18 @@ GuiRptDsrOvr::set_parent (GuiRptDsr *p)
 typedef char *(* extra_cb)(SPWAW_DOSSIER_UIR *uir);
 
 static void
+report_decommissioned (SPWAW_UHT_LIST_CBCTX &context, UtilStrbuf *sb)
+{
+	if (context.last) {
+		if (context.decommisioned) {
+			SPWAW_UHTE *dcu = SPWAW_UHT_last(context.uhte, UHT_DECOMMISSIONED);
+			SPWAW_BDATE (dcu->FBD, bd, false);
+			sb->printf (" <small>(decommisioned after %s)</small>", bd);
+		}
+	}
+}
+
+static void
 record_battle_date_info_inorder (SPWAW_UHT_LIST_CBCTX &context)
 {
 	UtilStrbuf	*sb;
@@ -121,8 +133,8 @@ record_battle_date_info_inorder (SPWAW_UHT_LIST_CBCTX &context)
 		sb->printf ("%s", ((extra_cb)(context.extra))(context.uir));
 	} else {
 		sb->printf (" -&gt; <small>(%s)</small> %s", bd, ((extra_cb)context.extra)(context.uir));
-
 	}
+	report_decommissioned (context, sb);
 }
 
 static void
@@ -146,6 +158,7 @@ record_battle_date_info_reverse (SPWAW_UHT_LIST_CBCTX &context)
 	} else {
 		sb->printf ("%s", ((extra_cb)context.extra)(context.uir));
 	}
+	report_decommissioned (context, sb);
 }
 
 static char *
@@ -164,6 +177,7 @@ GuiRptDsrOvr::list_replacements (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &str
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_REPLACED;
 	job.how.reversed	= reverse;
+	job.how.allow_decomm	= CFG_full_history();
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_data_lname;
 	job.out.skip_if_empty	= true;
@@ -192,6 +206,7 @@ GuiRptDsrOvr::list_reassignments (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &st
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_REASSIGNED;
 	job.how.reversed	= reverse;
+	job.how.allow_decomm	= CFG_full_history();
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_strings_uid;
 	job.out.skip_if_empty	= true;
@@ -220,6 +235,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_UPGRADED;
 	job.how.reversed	= reverse;
+	job.how.allow_decomm	= CFG_full_history();
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_data_uname;
 	job.out.skip_if_empty	= true;
@@ -248,6 +264,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbu
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_PROMOTED;
 	job.how.reversed	= reverse;
+	job.how.allow_decomm	= CFG_full_history();
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_strings_rank;
 	job.out.skip_if_empty	= true;
@@ -270,6 +287,7 @@ GuiRptDsrOvr::list_demotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_DEMOTED;
 	job.how.reversed	= reverse;
+	job.how.allow_decomm	= CFG_full_history();
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_strings_rank;
 	job.out.skip_if_empty	= true;
@@ -283,7 +301,24 @@ GuiRptDsrOvr::list_demotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf
 }
 
 static void
-record_battle_date_info (SPWAW_UHT_LIST_CBCTX &context)
+record_battle_date_info_for_commissions (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	SPWAW_BDATE (*context.bdate, bd, false);
+
+	if (context.first) {
+		sb->printf ("%s %s %s <small>(%s)</small>",
+			context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname, bd);
+	}
+	report_decommissioned (context, sb);
+}
+
+static void
+record_battle_date_info_for_decommissions (SPWAW_UHT_LIST_CBCTX &context)
 {
 	UtilStrbuf	*sb;
 
@@ -301,13 +336,16 @@ record_battle_date_info (SPWAW_UHT_LIST_CBCTX &context)
 void
 GuiRptDsrOvr::list_commissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 {
+	if (!CFG_full_history()) return;
+
 	UHT_LIST_JOB job = { };
 
 	job.what		= "Additional commissioned units";
 	job.type		= UHT_LIST_DOSSIER;
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_COMMISSIONED;
-	job.dext.data		= record_battle_date_info;
+	job.how.allow_decomm	= true;
+	job.dext.data		= record_battle_date_info_for_commissions;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
 	job.out.hdrpst		= "</h3></pre>";
@@ -321,6 +359,8 @@ GuiRptDsrOvr::list_commissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 void
 GuiRptDsrOvr::list_decommissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 {
+	if (!CFG_full_history()) return;
+
 	UHT_LIST_JOB job = { };
 
 	job.what		= "Decommissioned units";
@@ -328,7 +368,7 @@ GuiRptDsrOvr::list_decommissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_DECOMMISSIONED;
 	job.how.allow_decomm	= true;
-	job.dext.data		= record_battle_date_info;
+	job.dext.data		= record_battle_date_info_for_decommissions;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
 	job.out.hdrpst		= "</h3></pre>";
@@ -374,8 +414,9 @@ GuiRptDsrOvr::refresh (bool forced)
 		str.printf ("<pre>");
 
 		str.printf ("<h1>%s</h1>", p->name);
-		str.printf ("<h2>%s</h2>", p->comment);
+		str.printf ("<h2>%s", p->comment);
 		if (p->comment[strlen (p->comment) - 1] == '\n') str.del (1);
+		str.printf ("</h2>");
 
 		switch (p->bcnt) {
 			case 0:
