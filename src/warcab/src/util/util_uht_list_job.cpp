@@ -64,7 +64,7 @@ UHT_list_job (UHT_LIST_JOB &job)
 		}
 		for (unsigned int i=0; i<uljob.dst->cnt; i++) {
 			if (job.out.visitor) {
-				SPWAW_DOSSIER_UIR *uir = SPWAW_UHT_lookup (uljob.dst->smap[i]->uhte, &(uljob.dst->smap[i]->uhte->FBI));
+				SPWAW_DOSSIER_UIR *uir = SPWAW_UHT_lookup_SOBUIR (uljob.dst->smap[i]->uhte, &(uljob.dst->smap[i]->uhte->FBD), true);
 				job.out.visitor (uljob.dst->smap[i], uir, &lsb);
 			} else {
 				if (uljob.dst->smap[i]->data) {
