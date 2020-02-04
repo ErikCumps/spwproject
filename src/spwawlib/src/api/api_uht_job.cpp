@@ -272,13 +272,10 @@ static SPWAW_ERROR
 perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
-	bool			post = false;
 	SPWAW_UHTE		*uhte;
 	SPWAW_UHT_LISTEL	*ulle;
 
-	CNULLARG (job.src.bid.bid); CNULLARG (job.src.bid.nbd);
-
-	post = ((job.status & UHT_POST_BATTLE) != 0);
+	CNULLARG (job.src.bid.bid); CNULLARG (job.src.bid.pbd);
 
 	rc = SPWAW_UHT_list_init (job.type, job.src.bid.bid->cnt, &(job.dst)); ROE ("SPWAW_UHT_list_init()");
 
@@ -286,11 +283,7 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 		uhte = job.src.bid.bid->list[i];
 		bool is_decommissioned = SPWAW_UHT_is_decommissioned (uhte);
 		if (is_decommissioned && !job.allow_decomm) continue;
-		if (post) {
-			if (!SPWAW_UHT_is (uhte, job.src.bid.nbd, job.status)) continue;
-		} else {
-			if (!SPWAW_UHT_is (uhte, &(job.src.bid.bid->bdate), job.status)) continue;
-		}
+		if (!SPWAW_UHT_is (uhte, &(job.src.bid.bid->bdate), job.status)) continue;
 
 		rc = SPWAW_UHT_list_add (job.dst, uhte, &ulle); ROE ("SPWAW_UHT_list_add()");
 		ulle->count = 1;
@@ -308,10 +301,9 @@ perform_uht_binfo_list_job (SPWAW_UHT_LIST_JOB &job)
 				&(ulle->data),
 				job.extra
 			};
-			if (post) {
-				cbctx.nbdate = job.src.bid.nbd;
-				cbctx.nuir = SPWAW_UHT_lookup_SOBUIR (uhte, job.src.bid.nbd, true);
-			}
+			cbctx.pbdate = job.src.bid.pbd;
+			cbctx.puir = SPWAW_UHT_lookup_SOBUIR (SPWAW_UHT_first(uhte), job.src.bid.pbd, true);
+
 			job.data_cb (cbctx);
 		}
 
