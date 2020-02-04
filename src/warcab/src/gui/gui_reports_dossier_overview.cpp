@@ -20,8 +20,6 @@ GuiRptDsrOvr::GuiRptDsrOvr (QWidget *P)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	GUINEW (d.model, ModelRoster (), ERR_GUI_REPORTS_INIT_FAILED, "data model");
-
 	GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_INIT_FAILED, "font");
 
 	GUINEW (d.frame, QFrame (this), ERR_GUI_REPORTS_INIT_FAILED, "frame");
@@ -87,7 +85,6 @@ GuiRptDsrOvr::~GuiRptDsrOvr (void)
 
 	// QT deletes child widgets
 	delete d.font;
-	delete d.model;
 }
 
 void
@@ -110,8 +107,8 @@ report_decommissioned (SPWAW_UHT_LIST_CBCTX &context, UtilStrbuf *sb)
 	if (context.last) {
 		if (context.decommisioned) {
 			SPWAW_UHTE *dcu = SPWAW_UHT_last(context.uhte, UHT_DECOMMISSIONED);
-			SPWAW_BDATE (dcu->FBD, bd, false);
-			sb->printf (" <small>(decommisioned after %s)</small>", bd);
+			SPWAW_BDATE (dcu->LBD, bd, false);
+			sb->printf (" <i><small>(decommisioned after %s)</small></i>", bd);
 		}
 	}
 }
@@ -172,7 +169,7 @@ GuiRptDsrOvr::list_replacements (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &str
 {
 	UHT_LIST_JOB job = { };
 
-	job.what		= "Replacements";
+	job.what		= "Replaced units";
 	job.type		= UHT_LIST_DOSSIER;
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_REPLACED;
@@ -201,7 +198,7 @@ GuiRptDsrOvr::list_reassignments (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &st
 {
 	UHT_LIST_JOB job = { };
 
-	job.what		= "Reassignments";
+	job.what		= "Reassigned units";
 	job.type		= UHT_LIST_DOSSIER;
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_REASSIGNED;
@@ -230,7 +227,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
 {
 	UHT_LIST_JOB job = { };
 
-	job.what		= "Upgrades";
+	job.what		= "Upgraded units";
 	job.type		= UHT_LIST_DOSSIER;
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_UPGRADED;
@@ -259,7 +256,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbu
 {
 	UHT_LIST_JOB job = { };
 
-	job.what		= "Promotions";
+	job.what		= "Promoted units";
 	job.type		= UHT_LIST_DOSSIER;
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_PROMOTED;
@@ -282,7 +279,7 @@ GuiRptDsrOvr::list_demotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf
 {
 	UHT_LIST_JOB job = { };
 
-	job.what		= "Demotions";
+	job.what		= "Demoted units";
 	job.type		= UHT_LIST_DOSSIER;
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_DEMOTED;
@@ -317,22 +314,6 @@ record_battle_date_info_for_commissions (SPWAW_UHT_LIST_CBCTX &context)
 	report_decommissioned (context, sb);
 }
 
-static void
-record_battle_date_info_for_decommissions (SPWAW_UHT_LIST_CBCTX &context)
-{
-	UtilStrbuf	*sb;
-
-	if (!*context.data) *context.data = new UtilStrbuf (true);
-	sb = (UtilStrbuf *)(*context.data);
-
-	SPWAW_BDATE (*context.bdate, bd, false);
-
-	if (context.first) {
-		sb->printf ("%s %s %s <small>(%s)</small>",
-			context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname, bd);
-	}
-}
-
 void
 GuiRptDsrOvr::list_commissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 {
@@ -354,6 +335,22 @@ GuiRptDsrOvr::list_commissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 	job.out.strbuf		= &strbuf;
 
 	UHT_list_job (job);
+}
+
+static void
+record_battle_date_info_for_decommissions (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	SPWAW_BDATE (context.uhte->LBD, bd, false);
+
+	if (context.last) {
+		sb->printf ("%s %s %s <small>(after %s)</small>",
+			context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname, bd);
+	}
 }
 
 void

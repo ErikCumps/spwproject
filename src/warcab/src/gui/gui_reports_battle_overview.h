@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,8 +36,6 @@ signals:
 
 private:
 	struct s_data {
-		ModelRoster		*model;
-
 		QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;

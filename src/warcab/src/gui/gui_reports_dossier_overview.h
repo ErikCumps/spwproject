@@ -37,8 +37,6 @@ signals:
 
 private:
 	struct s_data {
-		ModelRoster		*model;
-		
 		QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;

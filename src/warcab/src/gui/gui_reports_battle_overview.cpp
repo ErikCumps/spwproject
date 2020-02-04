@@ -20,8 +20,6 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	GUINEW (d.model, ModelRoster (), ERR_GUI_REPORTS_INIT_FAILED, "data model");
-
 	GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_INIT_FAILED, "font");
 
 	GUINEW (d.frame, QFrame (this), ERR_GUI_REPORTS_INIT_FAILED, "frame");
@@ -106,7 +104,6 @@ GuiRptBtlOvr::~GuiRptBtlOvr (void)
 
 	// QT deletes child widgets
 	delete d.font;
-	delete d.model;
 }
 
 void
@@ -131,8 +128,8 @@ record_replacement (SPWAW_UHT_LIST_CBCTX &context)
 
 	sb->printf ("%s %s: %s %s -> %s %s",
 		context.uir->snap->strings.uid, context.uir->snap->data.dname,
-		context.uir->snap->strings.rank, context.uir->snap->data.lname,
-		context.nuir->snap->strings.rank, context.nuir->snap->data.lname);
+		context.puir->snap->strings.rank, context.puir->snap->data.lname,
+		context.uir->snap->strings.rank, context.uir->snap->data.lname);
 }
 
 void
@@ -144,6 +141,7 @@ GuiRptBtlOvr::list_replacements (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.type		= UHT_LIST_BATTLE;
 	job.in.b.battle		= b;
 	job.how.status		= UHT_REPLACED;
+	job.how.allow_decomm	= true;
 	job.dext.data		= record_replacement;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
@@ -165,8 +163,8 @@ record_reassignment (SPWAW_UHT_LIST_CBCTX &context)
 
 	sb->printf ("%s %s: %s -> %s",
 		context.uir->snap->data.dname, context.uir->snap->data.lname,
-		context.uir->snap->strings.uid,
-		context.nuir->snap->strings.uid);
+		context.puir->snap->strings.uid,
+		context.uir->snap->strings.uid);
 }
 
 void
@@ -178,6 +176,7 @@ GuiRptBtlOvr::list_reassignments (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.type		= UHT_LIST_BATTLE;
 	job.in.b.battle		= b;
 	job.how.status		= UHT_REASSIGNED;
+	job.how.allow_decomm	= true;
 	job.dext.data		= record_reassignment;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
@@ -199,8 +198,8 @@ record_upgrade (SPWAW_UHT_LIST_CBCTX &context)
 
 	sb->printf ("%s %s %s: %s -> %s",
 		context.uir->snap->strings.uid, context.uir->snap->strings.rank, context.uir->snap->data.lname,
-		context.uir->snap->data.dname,
-		context.nuir->snap->data.dname);
+		context.puir->snap->data.dname,
+		context.uir->snap->data.dname);
 }
 
 void
@@ -212,6 +211,7 @@ GuiRptBtlOvr::list_upgrades (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.type		= UHT_LIST_BATTLE;
 	job.in.b.battle		= b;
 	job.how.status		= UHT_UPGRADED;
+	job.how.allow_decomm	= true;
 	job.dext.data		= record_upgrade;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
@@ -233,10 +233,9 @@ record_rerank (SPWAW_UHT_LIST_CBCTX &context)
 
 	sb->printf ("%s %s %s: %s -> %s",
 		context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname,
-		context.uir->snap->strings.rank,
-		context.nuir->snap->strings.rank, context.nuir->snap->strings.uid);
+		context.puir->snap->strings.rank,
+		context.uir->snap->strings.rank);
 }
-
 
 void
 GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
@@ -247,6 +246,7 @@ GuiRptBtlOvr::list_promotions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.type		= UHT_LIST_BATTLE;
 	job.in.b.battle		= b;
 	job.how.status		= UHT_PROMOTED;
+	job.how.allow_decomm	= true;
 	job.dext.data		= record_rerank;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
@@ -267,6 +267,7 @@ GuiRptBtlOvr::list_demotions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.type		= UHT_LIST_BATTLE;
 	job.in.b.battle		= b;
 	job.how.status		= UHT_DEMOTED;
+	job.how.allow_decomm	= true;
 	job.dext.data		= record_rerank;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
@@ -278,6 +279,18 @@ GuiRptBtlOvr::list_demotions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	UHT_list_job (job);
 }
 
+static void
+record_commission (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	sb->printf ("%s %s %s",
+		context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname);
+}
+
 void
 GuiRptBtlOvr::list_commissions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 {
@@ -287,7 +300,8 @@ GuiRptBtlOvr::list_commissions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.type		= UHT_LIST_BATTLE;
 	job.in.b.battle		= b;
 	job.how.status		= UHT_COMMISSIONED;
-	//job.dext.data		= record_rerank;
+	job.how.allow_decomm	= true;
+	job.dext.data		= record_commission;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
 	job.out.hdrpst		= "</h3></pre>";
@@ -296,6 +310,18 @@ GuiRptBtlOvr::list_commissions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.out.strbuf		= &strbuf;
 
 	UHT_list_job (job);
+}
+
+static void
+record_decommission (SPWAW_UHT_LIST_CBCTX &context)
+{
+	UtilStrbuf	*sb;
+
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
+
+	sb->printf ("%s %s %s",
+		context.uir->snap->strings.uid, context.uir->snap->data.dname, context.uir->snap->data.lname);
 }
 
 void
@@ -308,7 +334,7 @@ GuiRptBtlOvr::list_decommissions (SPWAW_BATTLE *b, UtilStrbuf &strbuf)
 	job.in.b.battle		= b;
 	job.how.status		= UHT_DECOMMISSIONED;
 	job.how.allow_decomm	= true;
-	//job.dext.data		= record_rerank;
+	job.dext.data		= record_decommission;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
 	job.out.hdrpst		= "</h3></pre>";
@@ -359,8 +385,6 @@ GuiRptBtlOvr::refresh (void)
 		} else {
 			d.name->clear(); d.name->hide();
 		}
-
-		d.model->load (p->next ? p->next : p, p, true, true);
 
 		d.player1->setPixmap (*RES_flagbyid (p->snap->game.battle.strings.flagid_p1));
 		d.mission->setPixmap (*RES_mission (p->snap->game.battle.data.miss_p1, p->meeting));
@@ -520,7 +544,10 @@ GuiRptBtlOvr::refresh (void)
 			case SPWAW_BTBUSY:
 			case SPWAW_BTDEPLOY:
 			default:
-				d.losses.plr->clear();
+				str.printf ("<pre><h3>Battle losses:</h3>\tnone recorded yet\n</pre>");
+				d.losses.plr->setText (buf);
+				str.clear();
+
 				d.losses.opp->clear();
 				break;
 		}
