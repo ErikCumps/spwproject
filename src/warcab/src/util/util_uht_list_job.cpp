@@ -36,10 +36,10 @@ UHT_list_job (UHT_LIST_JOB &job)
 			uljob.reversed	= job.how.reversed;
 			break;
 		case UHT_LIST_BATTLE:
-			if (!job.in.b.battle || !job.in.b.battle->uhtinfo || !job.in.b.battle->next) return;
+			if (!job.in.b.battle || !job.in.b.battle->uhtinfo || !job.in.b.battle->prev) return;
 			uljob.type	  = SPWAW_UHT_LIST_BINFO;
 			uljob.src.bid.bid = job.in.b.battle->uhtinfo;
-			uljob.src.bid.nbd = &(job.in.b.battle->next->bdate);
+			uljob.src.bid.pbd = job.in.b.battle->prev?&(job.in.b.battle->prev->bdate):NULL;
 			uljob.reversed	  = false;
 			break;
 		default:
