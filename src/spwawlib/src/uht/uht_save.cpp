@@ -35,6 +35,7 @@ prep_uhte_data (SPWAW_UHTE *uhte, UHT_ELEMENT &data, STRTAB *stab)
 	data.status	= uhte->status;
 	data.prev	= uhte->prev?uhte->prev->idx:SPWAW_BADLONGIDX;
 	data.next	= uhte->next?uhte->next->idx:SPWAW_BADLONGIDX;
+	data.v_damage	= uhte->v_damage;
 }
 
 static SPWAW_ERROR

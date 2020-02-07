@@ -42,6 +42,8 @@ typedef struct s_UHT_ELEMENT {
 	USHORT		status;			/* Unit history status							*/
 	ULONG		prev;			/* Index of previous element in unit history list			*/
 	ULONG		next;			/* Index of next element in unit history list				*/
+						/* Status specific values:						*/
+	LONG		v_damage;		/* UHT_DAMAGED: damage							*/
 } UHT_ELEMENT;
 
 typedef struct s_UHT_BATTLE_INFO {

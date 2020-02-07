@@ -38,6 +38,7 @@ load_uhte_data (UHT_ELEMENT &data, SPWAW_UHT *uht, STRTAB *stab)
 	uhte->status	 = data.status;
 	uhte->prev	 = (SPWAW_UHTE *)data.prev;
 	uhte->next	 = (SPWAW_UHTE *)data.next;
+	uhte->v_damage	= data.v_damage;
 
 	return (true);
 }
