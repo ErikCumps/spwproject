@@ -159,7 +159,7 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 	SPWAW_ERROR		rc = SPWERR_OK;
 	SPWAW_UHTE		*uhte, *uptr, *nuptr;
 	SPWAW_UHT_LISTEL	*ulle;
-	bool			first;
+	bool			first, last;
 
 	CNULLARG (job.src.uht);
 
@@ -176,8 +176,9 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 			if (!uptr) continue;
 
 			rc = SPWAW_UHT_list_add (job.dst, SPWAW_UHT_last (uhte), &ulle); ROE ("SPWAW_UHT_list_add()");
+			first = true; last = false;
 
-			if (job.data_cb) {
+			if (job.inc_terminal && job.data_cb) {
 				SPWAW_UHT_LIST_CBCTX cbctx = {
 					uhte,
 					&(uhte->FBD),
@@ -185,48 +186,20 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 					NULL,
 					NULL,
 					is_decommissioned,
-					true,
-					false,
+					first,
+					last,
 					&(ulle->data),
 					job.extra
 				};
 				job.data_cb (cbctx);
+				first = false;
 			}
 
 			while (uptr) {
 				ulle->count++;
 
 				nuptr = SPWAW_UHT_next (uptr, job.status);
-
-				if (job.data_cb) {
-					SPWAW_UHT_LIST_CBCTX cbctx = {
-						uptr,
-						&(uptr->FBD),
-						SPWAW_UHT_lookup_SOBUIR (uptr, &(uptr->FBD), true),
-						NULL,
-						NULL,
-						is_decommissioned,
-						false,
-						!nuptr,
-						&(ulle->data),
-						job.extra
-					};
-					job.data_cb (cbctx);
-				}
-
-				uptr = nuptr;
-			}
-		} else {
-			uptr = SPWAW_UHT_last (uhte, job.status);
-			if (!uptr) continue;
-
-			rc = SPWAW_UHT_list_add (job.dst, uptr, &ulle); ROE ("SPWAW_UHT_list_add()");
-
-			first = true;
-			while (uptr) {
-				ulle->count++;
-
-				nuptr = SPWAW_UHT_prev (uptr, job.status);
+				last = !nuptr;
 
 				if (job.data_cb) {
 					SPWAW_UHT_LIST_CBCTX cbctx = {
@@ -237,17 +210,50 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 						NULL,
 						is_decommissioned,
 						first,
-						false,
+						last,
 						&(ulle->data),
 						job.extra
 					};
 					job.data_cb (cbctx);
+					first = false;
 				}
 
 				uptr = nuptr;
-				first = false;
 			}
-			if (job.data_cb) {
+		} else {
+			uptr = SPWAW_UHT_last (uhte, job.status);
+			if (!uptr) continue;
+
+			rc = SPWAW_UHT_list_add (job.dst, uptr, &ulle); ROE ("SPWAW_UHT_list_add()");
+			first = true; last = false;
+
+			while (uptr) {
+				ulle->count++;
+
+				nuptr = SPWAW_UHT_prev (uptr, job.status);
+				if (!job.inc_terminal) last = !nuptr;
+
+				if (job.data_cb) {
+					SPWAW_UHT_LIST_CBCTX cbctx = {
+						uptr,
+						&(uptr->FBD),
+						SPWAW_UHT_lookup_SOBUIR (uptr, &(uptr->FBD), true),
+						NULL,
+						NULL,
+						is_decommissioned,
+						first,
+						last,
+						&(ulle->data),
+						job.extra
+					};
+					job.data_cb (cbctx);
+					first = false;
+				}
+
+				uptr = nuptr;
+			}
+			if (job.inc_terminal && job.data_cb) {
+				last = true;
 				SPWAW_UHT_LIST_CBCTX cbctx = {
 					uhte,
 					&(uhte->FBD),
@@ -255,8 +261,8 @@ perform_uht_chain_list_job (SPWAW_UHT_LIST_JOB &job)
 					NULL,
 					NULL,
 					is_decommissioned,
-					false,
-					true,
+					first,
+					last,
 					&(ulle->data),
 					job.extra
 				};

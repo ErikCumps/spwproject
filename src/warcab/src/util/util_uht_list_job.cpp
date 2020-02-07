@@ -48,6 +48,7 @@ UHT_list_job (UHT_LIST_JOB &job)
 
 	uljob.status		= job.how.status;
 	uljob.allow_decomm	= job.how.allow_decomm;
+	uljob.inc_terminal	= job.how.terminal;
 	uljob.data_cb		= job.dext.data;
 	uljob.extra		= job.dext.extra;
 	uljob.dst		= NULL;

@@ -175,6 +175,7 @@ GuiRptDsrOvr::list_replacements (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &str
 	job.how.status		= UHT_REPLACED;
 	job.how.reversed	= reverse;
 	job.how.allow_decomm	= CFG_full_history();
+	job.how.terminal	= true;
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_data_lname;
 	job.out.skip_if_empty	= true;
@@ -204,6 +205,7 @@ GuiRptDsrOvr::list_reassignments (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &st
 	job.how.status		= UHT_REASSIGNED;
 	job.how.reversed	= reverse;
 	job.how.allow_decomm	= CFG_full_history();
+	job.how.terminal	= true;
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_strings_uid;
 	job.out.skip_if_empty	= true;
@@ -233,6 +235,7 @@ GuiRptDsrOvr::list_upgrades (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf)
 	job.how.status		= UHT_UPGRADED;
 	job.how.reversed	= reverse;
 	job.how.allow_decomm	= CFG_full_history();
+	job.how.terminal	= true;
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_data_uname;
 	job.out.skip_if_empty	= true;
@@ -262,6 +265,7 @@ GuiRptDsrOvr::list_promotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbu
 	job.how.status		= UHT_PROMOTED;
 	job.how.reversed	= reverse;
 	job.how.allow_decomm	= CFG_full_history();
+	job.how.terminal	= true;
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_strings_rank;
 	job.out.skip_if_empty	= true;
@@ -285,6 +289,7 @@ GuiRptDsrOvr::list_demotions (SPWAW_DOSSIER *d, bool reverse, UtilStrbuf &strbuf
 	job.how.status		= UHT_DEMOTED;
 	job.how.reversed	= reverse;
 	job.how.allow_decomm	= CFG_full_history();
+	job.how.terminal	= true;
 	job.dext.data		= reverse?record_battle_date_info_reverse:record_battle_date_info_inorder;
 	job.dext.extra		= uir_strings_rank;
 	job.out.skip_if_empty	= true;
@@ -326,6 +331,7 @@ GuiRptDsrOvr::list_commissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_COMMISSIONED;
 	job.how.allow_decomm	= true;
+	job.how.terminal	= true;
 	job.dext.data		= record_battle_date_info_for_commissions;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";
@@ -365,6 +371,7 @@ GuiRptDsrOvr::list_decommissions (SPWAW_DOSSIER *d, UtilStrbuf &strbuf)
 	job.in.d.dossier	= d;
 	job.how.status		= UHT_DECOMMISSIONED;
 	job.how.allow_decomm	= true;
+	job.how.terminal	= true;
 	job.dext.data		= record_battle_date_info_for_decommissions;
 	job.out.skip_if_empty	= true;
 	job.out.hdrpre		= "<pre><h3>";

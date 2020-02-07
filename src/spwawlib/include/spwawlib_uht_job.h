@@ -91,6 +91,7 @@ typedef struct s_SPWAW_UHT_LIST_JOB {
 	USHORT			status;		/* Unit history status to detect						*/
 	bool			reversed;	/* Reversed detection direction? (newest to oldest)				*/
 	bool			allow_decomm;	/* Allow decommissioned units to be detected					*/
+	bool			inc_terminal;	/* Include terminal UHTE (chain head or tail)					*/
 	SPWAW_UHT_list_data_cb	data_cb;	/* Optional detection data callback (can be NULL)				*/
 	void			*extra;		/* Optional caller-provided extra callback context data (can be NULL)		*/
 	SPWAW_UHT_LIST		*dst;		/* Storage for job result							*/

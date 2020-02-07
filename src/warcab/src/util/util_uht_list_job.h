@@ -33,6 +33,7 @@ typedef struct s_UHT_LIST_JOB {
 		USHORT			status;		/* Job parameters: UHT status to detect				*/
 		bool			reversed;	/* Job parameters: process UHT chain from newer to older	*/
 		bool			allow_decomm;	/* Job parameters: allow detetcing decommissioned units?	*/
+		bool			terminal;	/* Job parameters: include terminal UHTE (chain head or tail)	*/
 	}	how;
 	struct s_dext {
 		SPWAW_UHT_list_data_cb	data;		/* Job data extraction: data callback				*/
