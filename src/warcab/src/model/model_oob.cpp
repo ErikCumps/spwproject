@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - order of battle data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -353,14 +353,6 @@ ModelOob::freeModelData (bool all)
 		if (d.tree) SL_SAFE_FREE (d.tree); d.tree_cnt = 0;
 	}
 	d.row_cnt = 0;
-}
-
-void
-ModelOob::smap_swap (int i1, int i2)
-{
-	MDLO_SMAP	t;
-
-	t = d.smap[i1]; d.smap[i1] = d.smap[i2]; d.smap[i2] = t;
 }
 
 void

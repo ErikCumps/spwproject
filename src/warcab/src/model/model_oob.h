@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - order of battle data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -79,7 +79,6 @@ private:
 	void		setupModelData	(void);
 	void		freeModelData	(bool all);
 	int		find		(MDLO_DATA *f)	const;
-	void		smap_swap	(int i1, int i2);
 
 	QVariant	MDLO_data			(int role, int col, MDLO_DATA *p)				const;
 	QVariant	MDLO_data_form			(int role, int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dlt)	const;
