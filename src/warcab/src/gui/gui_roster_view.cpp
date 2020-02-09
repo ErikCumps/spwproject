@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit roster view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,7 +13,7 @@
 #include "gui_reports_dossier.h"
 
 #define	BASE_SIZE	40
-#define	NUMBER_SIZE	(BASE_SIZE * 4 / 3)
+#define	NUMBER_SIZE	(BASE_SIZE * 5 / 3)
 
 // TODO: rename NUMBER_SIZE to something more appropriate
 
