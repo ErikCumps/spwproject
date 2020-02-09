@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - force.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -86,7 +86,7 @@ GuiRptBtlFrc::set_enabled (bool flag)
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.cnd, "Status");
 		if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
-			addTab (d.prg, "Progress");
+			if (d.pflag && d.cflag)	addTab (d.prg, "Progress");
 		}
 		addTab (d.kill, "Kills");
 		addTab (d.loss, "Losses");
@@ -122,8 +122,6 @@ GuiRptBtlFrc::set_parent (GuiRptBtl *parent, bool pflag, bool cflag)
 	d.rst->set_parent  (parent, pflag, cflag);
 	d.hst->set_parent  (parent, pflag, cflag);
 	d.mmas->set_parent (parent, pflag, cflag);
-
-	if (!pflag || !cflag) removeTab (indexOf (d.prg));
 
 	d.parent = parent;
 	d.pflag = pflag;
