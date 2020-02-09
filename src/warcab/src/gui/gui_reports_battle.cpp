@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -98,7 +98,7 @@ GuiRptBtl::set_enabled (bool flag)
 		addTab (d.overview, "Overview");
 		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
 			addTab (d.force_core, "Core force");
-			addTab (d.force_spt, "Support force");
+			if (d.item->data.b->snap->OOBp1.support.formations.cnt != 0) addTab (d.force_spt, "Support force");
 		} else {
 			addTab (d.force_spt, "Support force");
 		}
