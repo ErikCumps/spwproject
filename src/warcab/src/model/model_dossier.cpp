@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -157,7 +157,11 @@ ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			snprintf (buf, sizeof (buf) - 1, "%s", p->data.b->location);
+			if (p->data.b->dossier->gametype == SPWAW_GAME_TYPE_SPWAW) {
+				snprintf (buf, sizeof (buf) - 1, "%s", p->data.b->location);
+			} else {
+				snprintf (buf, sizeof (buf) - 1, "%s #%u", p->data.b->location, p->data.b->bdate.btlidx+1);
+			}
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
