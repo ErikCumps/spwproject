@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,6 +15,7 @@
 
 typedef struct s_MDLR_DATA {
 	int			idx;
+	SPWAW_UHTE		*uhte;
 	SPWAW_DOSSIER_UIR	*uir;
 	SPWDLT			*dlt;
 	bool			*dltsort;

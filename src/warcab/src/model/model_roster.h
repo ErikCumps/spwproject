@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -47,6 +47,7 @@ extern const char *MDLR_HILITE_lookup (MDLR_HILITE e);
 
 typedef struct s_ModelRosterRawData {
 	int			idx;
+	SPWAW_UHTE		*uhte;
 	SPWAW_DOSSIER_UIR	*uir;
 	SPWDLT			*dlt;
 } ModelRosterRawData;
@@ -70,8 +71,8 @@ public:
 
 public:
 	void	clear		(void);
+	void	load		(SPWAW_DOSSIER *dossier, bool fch);
 	void	load		(SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore);
-	void	load		(SPWAW_BATTLE *battle, int current, int start, bool isplayer, bool iscore);
 	void	load		(SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore);
 	void	highlight	(MDLR_HILITE h);
 	int	max_width	(int column);
@@ -86,19 +87,24 @@ private:
 		int			col_cnt;
 		SPWAW_DOSSIER_BIR	*birs;
 		int			birs_cnt;
-		SPWAW_DOSSIER_BIR	*base;
-		int			base_cnt;
-		bool			pflag;
+		SPWAW_DOSSIER_BIR	*cbrs;
+		int			cbrs_cnt;
+		SPWAW_DOSSIER_BIR	*rbrs;
+		int			rbrs_cnt;
 		SPWAW_DOSSIER		*d;
+		bool			fchflag;
 		SPWAW_BATTLE		*cb;
-		SPWAW_BATTLE		*sb;
+		SPWAW_BATTLE		*bb;
+		bool			tflag;
+		bool			pflag;
+		bool			cflag;
 		int			row_cnt;
 		MDLR_DATA		*list;
 		int			list_cnt;
+		int			list_use;
 		SPWDLT			*dlts;
 		MDLR_SMAP		*smap;
 		int			smap_cnt;
-
 		MDLR_HILITE		hilite;
 		bool			dltsort;
 		bool			revsort;
@@ -107,9 +113,12 @@ private:
 	} d;
 
 private:
-	void		setupModelData	(void);
-	void		freeModelData	(bool all);
-	void		smap_swap	(int i1, int i2);
+	void		setupModelDataStorage	(void);
+	void		freeModelDataStorage	(void);
+	void		sortModelData		(void);
+	void		addModelData		(SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSIER_UIR *cuir, SPWAW_DOSSIER_UIR *ruir);
+	void		setupModelData		(void);
+	void		freeModelData		(bool all);
 
 	QVariant	MDLR_data		(int role, int row, int col)				const;
 	QVariant	MDLR_data_display	(int row, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt)	const;

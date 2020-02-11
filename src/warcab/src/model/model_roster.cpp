@@ -1,16 +1,18 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "model_roster.h"
+#include <spwawlib_uht.h>
 
 typedef struct s_MDLR_COLUMN_DEF {
 	MDLR_COLUMN	id;
 	const char	*name;
+	bool		biv;
 	MDL_CMP		cmp;
 	SPWDLT_TYPE	dtype;
 	unsigned int	doffs;
@@ -19,30 +21,30 @@ typedef struct s_MDLR_COLUMN_DEF {
 #define	OFFS(m_)	offsetof(SPWAW_SNAP_OOB_UEL,m_)
 
 static MDLR_COLUMN_DEF coldef[MDLR_COLUMN_CNT] = {
-	{ MDLR_COLUMN_UID,		"#",		MDLR_cmp_uid,	SPWDLT_NONE,	0			},
-	{ MDLR_COLUMN_UNIT,		"Unit",		MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.dname)	}, // FIXME: designation, actually
-	{ MDLR_COLUMN_RNK,		"Rank",		MDLR_cmp_rnk,	SPWDLT_INT,	OFFS(data.brank)	},
-	{ MDLR_COLUMN_LDR,		"Leader",	MDLR_cmp_ldr,	SPWDLT_STR,	OFFS(data.lname)	},
-	{ MDLR_COLUMN_STATUS,		"Status",	MDLR_cmp_status,SPWDLT_INT,	OFFS(data.status)	},
-	{ MDLR_COLUMN_KILL,		"Kills",	MDLR_cmp_kill,	SPWDLT_INT,	OFFS(attr.gen.kills)	},
-	{ MDLR_COLUMN_EXP,		"Exp",		MDLR_cmp_exp,	SPWDLT_INT,	OFFS(data.exp)		},
-	{ MDLR_COLUMN_MOR,		"Mor",		MDLR_cmp_mor,	SPWDLT_INT,	OFFS(data.mor)		},
-	{ MDLR_COLUMN_SUP,		"Sup",		MDLR_cmp_sup,	SPWDLT_INT,	OFFS(data.sup)		},
-	{ MDLR_COLUMN_RAL,		"Ral",		MDLR_cmp_ral,	SPWDLT_INT,	OFFS(data.ral)		},
-	{ MDLR_COLUMN_INF,		"Inf",		MDLR_cmp_inf,	SPWDLT_INT,	OFFS(data.inf)		},
-	{ MDLR_COLUMN_ARM,		"Arm",		MDLR_cmp_arm,	SPWDLT_INT,	OFFS(data.arm)		},
-	{ MDLR_COLUMN_ART,		"Art",		MDLR_cmp_art,	SPWDLT_INT,	OFFS(data.art)		},
-	{ MDLR_COLUMN_MEN,		"Men",		MDLR_cmp_men,	SPWDLT_INT,	OFFS(data.hcnt)		},
-	{ MDLR_COLUMN_RDY,		"Ready",	MDLR_cmp_rdy,	SPWDLT_DBL,	OFFS(attr.gen.ready)	},
-	{ MDLR_COLUMN_KIA,		"KIA",		MDLR_cmp_kia,	SPWDLT_NONE,	0			},	/* unstored item */
-	{ MDLR_COLUMN_DMG,		"Dmg",		MDLR_cmp_dmg,	SPWDLT_INT,	OFFS(data.damage)	},
-	{ MDLR_COLUMN_SEEN,		"Spotted",	MDLR_cmp_seen,	SPWDLT_BOOL,	OFFS(data.spotted)	},
-	{ MDLR_COLUMN_ABAND,		"Abandoned",	MDLR_cmp_aband,	SPWDLT_INT,	OFFS(data.aband)	},
-	{ MDLR_COLUMN_LOADED,		"Loaded",	MDLR_cmp_loaded,SPWDLT_BOOL,	OFFS(data.loaded)	},
-	{ MDLR_COLUMN_TYPE,		"Type",		MDLR_cmp_type,	SPWDLT_INT,	OFFS(data.utype)	},
-	{ MDLR_COLUMN_CLASS,		"Class",	MDLR_cmp_class,	SPWDLT_INT,	OFFS(data.uclass)	},
-	{ MDLR_COLUMN_COST,		"Cost",		MDLR_cmp_cost,	SPWDLT_INT,	OFFS(data.cost)		},
-	{ MDLR_COLUMN_SPEED,		"Speed",	MDLR_cmp_speed,	SPWDLT_INT,	OFFS(data.speed)	},
+	{ MDLR_COLUMN_UID,		"#",		true,	MDLR_cmp_uid,	SPWDLT_NONE,	0			},
+	{ MDLR_COLUMN_UNIT,		"Unit",		true,	MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.dname)	}, // FIXME: designation, actually
+	{ MDLR_COLUMN_RNK,		"Rank",		true,	MDLR_cmp_rnk,	SPWDLT_INT,	OFFS(data.brank)	},
+	{ MDLR_COLUMN_LDR,		"Leader",	true,	MDLR_cmp_ldr,	SPWDLT_STR,	OFFS(data.lname)	},
+	{ MDLR_COLUMN_STATUS,		"Status",	false,	MDLR_cmp_status,SPWDLT_INT,	OFFS(data.status)	},
+	{ MDLR_COLUMN_KILL,		"Kills",	true,	MDLR_cmp_kill,	SPWDLT_INT,	OFFS(attr.gen.kills)	},
+	{ MDLR_COLUMN_EXP,		"Exp",		true,	MDLR_cmp_exp,	SPWDLT_INT,	OFFS(data.exp)		},
+	{ MDLR_COLUMN_MOR,		"Mor",		true,	MDLR_cmp_mor,	SPWDLT_INT,	OFFS(data.mor)		},
+	{ MDLR_COLUMN_SUP,		"Sup",		false,	MDLR_cmp_sup,	SPWDLT_INT,	OFFS(data.sup)		},
+	{ MDLR_COLUMN_RAL,		"Ral",		true,	MDLR_cmp_ral,	SPWDLT_INT,	OFFS(data.ral)		},
+	{ MDLR_COLUMN_INF,		"Inf",		true,	MDLR_cmp_inf,	SPWDLT_INT,	OFFS(data.inf)		},
+	{ MDLR_COLUMN_ARM,		"Arm",		true,	MDLR_cmp_arm,	SPWDLT_INT,	OFFS(data.arm)		},
+	{ MDLR_COLUMN_ART,		"Art",		true,	MDLR_cmp_art,	SPWDLT_INT,	OFFS(data.art)		},
+	{ MDLR_COLUMN_MEN,		"Men",		true,	MDLR_cmp_men,	SPWDLT_INT,	OFFS(data.hcnt)		},
+	{ MDLR_COLUMN_RDY,		"Ready",	false,	MDLR_cmp_rdy,	SPWDLT_DBL,	OFFS(attr.gen.ready)	},
+	{ MDLR_COLUMN_KIA,		"KIA",		false,	MDLR_cmp_kia,	SPWDLT_NONE,	0			},	/* unstored item */
+	{ MDLR_COLUMN_DMG,		"Dmg",		false,	MDLR_cmp_dmg,	SPWDLT_INT,	OFFS(data.damage)	},
+	{ MDLR_COLUMN_SEEN,		"Spotted",	false,	MDLR_cmp_seen,	SPWDLT_BOOL,	OFFS(data.spotted)	},
+	{ MDLR_COLUMN_ABAND,		"Abandoned",	false,	MDLR_cmp_aband,	SPWDLT_INT,	OFFS(data.aband)	},
+	{ MDLR_COLUMN_LOADED,		"Loaded",	false,	MDLR_cmp_loaded,SPWDLT_BOOL,	OFFS(data.loaded)	},
+	{ MDLR_COLUMN_TYPE,		"Type",		true,	MDLR_cmp_type,	SPWDLT_INT,	OFFS(data.utype)	},
+	{ MDLR_COLUMN_CLASS,		"Class",	true,	MDLR_cmp_class,	SPWDLT_INT,	OFFS(data.uclass)	},
+	{ MDLR_COLUMN_COST,		"Cost",		true,	MDLR_cmp_cost,	SPWDLT_INT,	OFFS(data.cost)		},
+	{ MDLR_COLUMN_SPEED,		"Speed",	false,	MDLR_cmp_speed,	SPWDLT_INT,	OFFS(data.speed)	},
 };
 
 static MDLR_COLUMN_DEF *coldef_cache[MDLR_COLUMN_CNT] = { 0 };
@@ -123,24 +125,17 @@ ModelRoster::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelRoster::setupModelData (void)
+ModelRoster::setupModelDataStorage (void)
 {
-	int			i, j, bidx;
+	int			i;
 	MDLR_DATA		*u;
-	SPWDLT			*dlt;
-	SPWAW_SNAP_OOB_UEL	*cs, *bs;
-
-	DBG_TRACE_FENTER;
-
-	freeModelData (false);
-	if (!d.birs || !d.base) return;
-	if (!(d.row_cnt = d.birs_cnt)) return;
 
 	/* Check current unit count to see if data storage reallocation is required */
 	if (d.list_cnt != d.row_cnt) {
 		/* Free previously allocated data storage */
 		if (d.list) SL_SAFE_FREE (d.list);
 		if (d.dlts) SL_SAFE_FREE (d.dlts);
+		if (d.smap) SL_SAFE_FREE (d.smap); d.smap_cnt = 0;
 
 		/* Allocate new data storage */
 		d.list_cnt = d.row_cnt;
@@ -157,29 +152,25 @@ ModelRoster::setupModelData (void)
 			u->revsort = &(d.revsort);
 		}
 	}
+	d.list_use = 0;
+}
 
-	/* Update unit data */
-	for (i=0; i<d.list_cnt; i++) {
-		u = &(d.list[i]);
+void
+ModelRoster::freeModelDataStorage (void)
+{
+	if (d.smap) SL_SAFE_FREE (d.smap); d.smap_cnt = 0;
+	if (d.dlts) SL_SAFE_FREE (d.dlts);
+	if (d.list) SL_SAFE_FREE (d.list); d.list_cnt = d.list_use = 0;
 
-		u->uir = &(d.birs->uir[i]);
+	d.row_cnt = 0;
+}
 
-		bidx = i;
-		if (d.d && (d.cb != d.sb) && (d.cb != NULL) && (d.sb != NULL)) {
-			SPWAW_BATTLE *p = d.cb;
-			while (p != d.sb) {
-				bidx = p->ra[bidx].src;
-				p = p->prev;
-			}
-		}
+void
+ModelRoster::sortModelData (void)
+{
+	int	i;
 
-		for (j=0; j<d.col_cnt; j++) {
-			dlt = &(d.dlts[i*d.col_cnt+j]);
-			cs = u->uir->snap;
-			bs = (bidx < d.base_cnt) ? d.base->uir[bidx].snap : NULL;
-			SPWDLT_prep (dlt, MDLR_coldef(j)->dtype, cs, bs, MDLR_coldef(j)->doffs);
-		}
-	}
+	DBG_TRACE_FENTER;
 
 	if (d.smap_cnt != d.row_cnt) {
 		/* Create new sort map */
@@ -200,23 +191,115 @@ ModelRoster::setupModelData (void)
 }
 
 void
-ModelRoster::freeModelData (bool all)
+ModelRoster::addModelData (SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSIER_UIR *cuir, SPWAW_DOSSIER_UIR *ruir)
 {
-	if (all) {
-		if (d.smap) SL_SAFE_FREE (d.smap); d.smap_cnt = 0;
-		if (d.dlts) SL_SAFE_FREE (d.dlts);
-		if (d.list) SL_SAFE_FREE (d.list); d.list_cnt = 0;
-	}
+	unsigned int		idx;
+	MDLR_DATA		*u;
+	SPWAW_SNAP_OOB_UEL	*s, *cs, *rs;
+	SPWDLT			*dlt;
 
-	d.row_cnt = 0;
+	/* don't overflow the data list! */
+	if (d.list_use >= d.list_cnt) return;
+
+	idx = d.list_use++;
+
+	u = &(d.list[idx]);
+
+	u->uhte = uhte; u->uir = uir;
+
+	s = uir->snap;
+	cs = cuir ? cuir->snap : NULL;
+	rs = ruir ? ruir->snap : NULL;
+
+	for (int j=0; j<d.col_cnt; j++) {
+		dlt = &(d.dlts[idx*d.col_cnt+j]);
+		if (MDLR_coldef(j)->biv) {
+			SPWDLT_prep (dlt, MDLR_coldef(j)->dtype, s, rs, MDLR_coldef(j)->doffs);
+		} else {
+			SPWDLT_prep (dlt, MDLR_coldef(j)->dtype, s, cs, MDLR_coldef(j)->doffs);
+		}
+	}
 }
 
 void
-ModelRoster::smap_swap (int i1, int i2)
+ModelRoster::setupModelData (void)
 {
-	MDLR_SMAP	t;
+	bool			dossier_mode;
+	SPWAW_UHTE		*cuhte, *ruhte;
+	SPWAW_DOSSIER_UIR	*cuir, *buir, *ruir;
 
-	t = d.smap[i1]; d.smap[i1] = d.smap[i2]; d.smap[i2] = t;
+	DBG_TRACE_FENTER;
+
+	freeModelData (false);
+
+	dossier_mode = (d.d != NULL);
+
+	if (dossier_mode) {
+		if (!(d.row_cnt = d.d->uht.icnt)) return;
+	} else {
+		if (!d.birs || !d.cbrs || !d.rbrs) return;
+		if (!(d.row_cnt = d.birs_cnt)) return;
+	}
+
+	setupModelDataStorage();
+
+	/* Update unit data */
+	if (dossier_mode) {
+		for (unsigned int i=0; i<d.d->uht.cnt; i++) {
+			SPWAW_BATTLE *cb, *bb;
+
+			SPWAW_UHTE *uhte = d.d->uht.smap[i];
+			if (!SPWAW_UHT_is_initial (uhte)) continue;
+			if (!d.fchflag && SPWAW_UHT_is_decommissioned (uhte)) continue;
+
+			SPWAW_UHT_lookup (SPWAW_UHT_last (uhte), &(d.d->blast->bdate), false, &cuhte, NULL, &cuir);
+			SPWAW_dossier_find_battle (d.d, &(cuhte->LBD), &cb);
+			if (!cb) continue;
+
+			SPWAW_UHT_lookup (SPWAW_UHT_first (uhte), &(d.d->bfirst->bdate), false, &ruhte, &ruir, NULL);
+			SPWAW_dossier_find_battle (d.d, &(ruhte->FBD), &bb);
+			if (!bb) continue;
+
+			buir = ruir;
+
+			addModelData (cuhte, cuir, buir, ruir);
+		}
+	} else {
+		for (int i=0; i<d.list_cnt; i++) {
+			if (!d.tflag && d.pflag && d.cflag && d.cb != NULL) {
+				cuhte = d.cb->uhtinfo->list[i];
+				SPWAW_UHT_lookup (cuhte, &(d.cb->bdate), true, NULL, &buir, &cuir);
+				if (d.bb && (d.bb != d.cb)) {
+					SPWAW_UHT_lookup (SPWAW_UHT_first(cuhte), &(d.bb->bdate), true, NULL, NULL, &ruir);
+					if (!ruir) ruir = buir;
+				} else {
+					ruir = buir;
+				}
+			} else {
+				cuhte = NULL;
+				cuir = &(d.birs->uir[i]);
+				buir = &(d.cbrs->uir[i]);
+				ruir = &(d.rbrs->uir[i]);
+			}
+
+			addModelData (cuhte, cuir, buir, ruir);
+		}
+	}
+
+	/* Update final list and row counts */
+	d.row_cnt = d.list_use;
+
+	sortModelData();
+
+	DBG_TRACE_FLEAVE;
+}
+
+void
+ModelRoster::freeModelData (bool all)
+{
+	if (all) freeModelDataStorage();
+
+	d.row_cnt = 0;
 }
 
 void
@@ -252,9 +335,23 @@ ModelRoster::resort (void)
 void
 ModelRoster::clear (void)
 {
-	d.base = d.birs = NULL; d.pflag = true; d.d = NULL;
-	d.cb = d.sb = NULL;
-	d.scol = d.sord = -1;
+	d.birs = d.cbrs = d.rbrs = NULL;
+	d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+	d.d = NULL; d.cb = d.bb = NULL;
+	d.pflag = true; d.cflag = true;	d.scol = d.sord = -1;
+
+	setupModelData();
+	reset();
+}
+
+void
+ModelRoster::load (SPWAW_DOSSIER *dossier, bool fch)
+{
+	d.birs = d.cbrs = d.rbrs = NULL;
+	d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+	d.d = dossier; d.cb = d.bb = NULL;
+
+	d.fchflag = fch; d.tflag = false; d.pflag = true; d.cflag = true; d.scol = d.sord = -1;
 
 	setupModelData();
 	reset();
@@ -263,72 +360,40 @@ ModelRoster::clear (void)
 void
 ModelRoster::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore)
 {
-	SPWAW_DOSSIER_BIR	*nbirs, *nbase;
+	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
 
 	if (!current || !start) {
-		d.d = NULL;
-		d.birs = d.base = NULL;
-		d.birs_cnt = d.base_cnt = 0;
+		d.birs = d.cbrs = d.rbrs = NULL;
+		d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+		d.d = NULL; d.cb = d.bb = NULL;
 	} else {
-		if (current == start) {
-			nbirs = isplayer
-				? (iscore ? &(current->info_eob->pbir_core) : &(current->info_eob->pbir_support))
-				: &(current->info_eob->obir_battle);
-		} else {
-			nbirs = isplayer
-				? (iscore ? &(current->info_sob->pbir_core) : &(current->info_sob->pbir_support))
-				: &(current->info_sob->obir_battle);
-		}
-		nbase = isplayer
-			? (iscore ? &(start->info_sob->pbir_core) : &(start->info_sob->pbir_support))
-			: &(start->info_sob->obir_battle);
+		d.d = NULL; d.cb = current; d.bb = start;
 
-		/* Early bailout if attempting to reload same data */
-		if ((d.birs == nbirs) && (d.base == nbase)) return;
-		d.birs = nbirs; d.base = nbase;
+		if (!isplayer || !iscore) { d.bb = d.cb; }
 
-		d.d = NULL;
-		if (isplayer && iscore) {
-			d.d = current->dossier;
-			d.cb = current;
-			d.sb = start;
-		}
-		d.birs_cnt = d.birs->ucnt;
-		d.base_cnt = d.base->ucnt;
-	}
-
-	d.pflag = isplayer; d.scol = d.sord = -1;
-	setupModelData();
-	reset();
-}
-
-void
-ModelRoster::load (SPWAW_BATTLE *battle, int current, int start, bool isplayer, bool iscore)
-{
-	SPWAW_DOSSIER_BIR	*nbirs, *nbase;
-
-	if (!battle || (current < 0) || (start < 0) || (current < start) || (current >= battle->tcnt) || (start >= battle->tcnt)) {
-		d.d = NULL;
-		d.birs = d.base = NULL;
-		d.birs_cnt = d.base_cnt = 0;
-	} else {
 		nbirs = isplayer
-			? (iscore ? &(battle->tlist[current]->info.pbir_core) : &(battle->tlist[current]->info.pbir_support))
-			: &(battle->tlist[current]->info.obir_battle);
-		nbase = isplayer
-			? (iscore ? &(battle->tlist[start]->info.pbir_core) : &(battle->tlist[start]->info.pbir_support))
-			: &(battle->tlist[start]->info.obir_battle);
+			? (iscore ? &(d.cb->info_eob->pbir_core) : &(d.cb->info_eob->pbir_support))
+			: &(d.cb->info_eob->obir_battle);
+
+		ncbrs = isplayer
+			? (iscore ? &(d.cb->info_sob->pbir_core) : &(d.cb->info_sob->pbir_support))
+			: &(d.cb->info_sob->obir_battle);
+
+		if (d.bb == d.cb) {
+			nrbrs = ncbrs;
+		} else {
+			nrbrs = (isplayer && iscore) ? &(d.bb->info_eob->pbir_core) : ncbrs;
+		}
 
 		/* Early bailout if attempting to reload same data */
-		if ((d.birs == nbirs) && (d.base == nbase)) return;
-		d.birs = nbirs; d.base = nbase;
-
-		d.d = NULL;
-		d.birs_cnt = d.birs->ucnt;
-		d.base_cnt = d.base->ucnt;
+		if ((d.birs == nbirs) && (d.cbrs == ncbrs) && (d.rbrs == nrbrs)) return;
+		d.birs = nbirs; d.birs_cnt = d.birs->ucnt;
+		d.cbrs = ncbrs; d.cbrs_cnt = d.cbrs->ucnt;
+		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->ucnt;
 	}
 
-	d.pflag = isplayer; d.scol = d.sord = -1;
+	d.fchflag = false; d.tflag = false; d.pflag = isplayer; d.cflag = iscore; d.scol = d.sord = -1;
+
 	setupModelData();
 	reset();
 }
@@ -336,31 +401,31 @@ ModelRoster::load (SPWAW_BATTLE *battle, int current, int start, bool isplayer, 
 void
 ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore)
 {
-	SPWAW_DOSSIER_BIR	*nbirs, *nbase;
+	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
 
 	if (!current || !start) {
-		d.d = NULL;
-		d.birs = d.base = NULL;
-		d.birs_cnt = d.base_cnt = 0;
+		d.birs = d.cbrs = d.rbrs = NULL;
+		d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+		d.d = NULL; d.cb = d.bb = NULL;
 	} else {
+		d.d = NULL; d.cb = d.bb = current->battle;
 		nbirs = isplayer
 			? (iscore ? &(current->info.pbir_core) : &(current->info.pbir_support))
 			: &(current->info.obir_battle);
-		nbase = isplayer
+		ncbrs = isplayer
 			? (iscore ? &(start->info.pbir_core) : &(start->info.pbir_support))
 			: &(start->info.obir_battle);
-
+		nrbrs = ncbrs;
 
 		/* Early bailout if attempting to reload same data */
-		if ((d.birs == nbirs) && (d.base == nbase)) return;
-		d.birs = nbirs; d.base = nbase;
-
-		d.d = NULL;
-		d.birs_cnt = d.birs->ucnt;
-		d.base_cnt = d.base->ucnt;
+		if ((d.birs == nbirs) && (d.cbrs == ncbrs) && (d.rbrs == nrbrs)) return;
+		d.birs = nbirs; d.birs_cnt = d.birs->ucnt;
+		d.cbrs = ncbrs; d.cbrs_cnt = d.cbrs->ucnt;
+		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->ucnt;
 	}
 
-	d.pflag = isplayer; d.scol = d.sord = -1;
+	d.fchflag = false; d.tflag = true; d.pflag = isplayer; d.cflag = iscore; d.scol = d.sord = -1;
+
 	setupModelData();
 	reset();
 }
@@ -409,9 +474,10 @@ ModelRoster::rawdata (int row, MDLR_COLUMN col, ModelRosterRawData *data, int cn
 
 	r = row; i = 0;
 	while (r < d.row_cnt) {
-		data[i].idx = d.smap[r].data->idx;
-		data[i].uir = d.smap[r].data->uir;
-		data[i].dlt = &(d.smap[r].data->dlt[col]);
+		data[i].idx  = d.smap[r].data->idx;
+		data[i].uhte = d.smap[r].data->uhte;
+		data[i].uir  = d.smap[r].data->uir;
+		data[i].dlt  = &(d.smap[r].data->dlt[col]);
 		r++; i++;
 		if (i >= cnt) break;
 	}
