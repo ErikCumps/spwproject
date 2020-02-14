@@ -1,11 +1,12 @@
 /** \file
  * The SPWaW war cabinet - GUI - force kills report.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
+#include "resource.h"
 #include "gui_report_kills.h"
 #include "model/model_roster.h"
 #include "gui_reports_dossier.h"
@@ -106,14 +107,13 @@ GuiRptKill::set_parent (GuiRptTrn *parent, bool player, bool core)
 }
 
 bool
-GuiRptKill::update (void)
+GuiRptKill::update (bool forced)
 {
 	bool		skip;
-	MDLD_TREE_ITEM	*pcurr, *pbase;
 
 	DBG_TRACE_FENTER;
 
-	pcurr = pbase = NULL;
+	d.pcurr = d.pbase = NULL;
 	switch (d.ptype) {
 		case MDLD_TREE_DOSSIER:
 			d.pdata = d.pptr.d ? d.pptr.d->current() : NULL;
@@ -137,7 +137,8 @@ GuiRptKill::update (void)
 			break;
 	}
 
-	skip =  !d.reftrack.changed (d.pdata);
+	skip  = !d.reftrack.changed (d.pdata);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -145,46 +146,46 @@ GuiRptKill::update (void)
 	if (d.pdata) {
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
-				pcurr = d.pdata->clast;
-				pbase = d.pdata->cfirst;
-				d.model->load (pcurr->data.b, pbase->data.b, d.pflag, true);
+				d.pcurr = d.pdata->clast;
+				d.pbase = d.pdata->cfirst;
+				d.model->load (d.pdata->data.d, CFG_full_history());
 				break;
 			case MDLD_TREE_BATTLE:
-				pcurr = pbase = d.pdata;
-				d.model->load (pcurr->data.b, pbase->data.b, d.pflag, d.cflag);
+				d.pcurr = d.pbase = d.pdata;
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
 				break;
 			case MDLD_TREE_BTURN:
-				pcurr = d.pdata;
+				d.pcurr = d.pdata;
 				if (d.pdata->prev) {
-					pbase = d.pdata->prev;
-					d.model->load (pcurr->data.t, pbase->data.t, d.pflag, d.cflag);
+					d.pbase = d.pdata->prev;
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
 				} else {
-					pbase = d.pdata->parent;
-					d.model->load (pcurr->data.t, pcurr->data.t, d.pflag, d.cflag);
+					d.pbase = d.pdata->parent;
+					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
 				}
 				break;
 			default:
 				break;
 		}
 	} else {
-		pbase = pcurr = NULL;
+		d.pbase = d.pcurr = NULL;
 		d.model->clear();
 	}
 
 skip_data_update:
 	/* Only emit these signals when widget is visible */
 	if (isVisible()) {
-		emit cmpcurr (pcurr);
-		emit cmpbase (pbase);
+		emit cmpcurr (d.pcurr);
+		emit cmpbase (d.pbase);
 	}
 
 	DBG_TRACE_FLEAVE;
 
-	return (!skip);
+	return (skip);
 }
 
 void
-GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
+GuiRptKill::list_kills (char *buf, unsigned int size, int &kcnt, bool dossier)
 {
 	UtilStrbuf		str(buf, size, true, true);
 	char			tbuf[4096];
@@ -193,11 +194,11 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 	int			idx, i;
 	bool			stop;
 
-	icnt = kcnt = 0;
+	kcnt = 0;
 
 	str.clear();
 
-	d.model->set_dltsort (true);
+	d.model->set_dltsort (!dossier);
 	d.model->sort (MDLR_COLUMN_KILL, Qt::AscendingOrder);
 
 	idx = 0; stop = false;
@@ -209,11 +210,23 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 		for (i=0; i<cnt; i++) {
 			if (SPWDLT_getint (data[i].dlt) <= 0) { stop = true; break; }
 
-			tstr.printf ("%3.3s %s %s %s (%d)<br>",
+			bool dc = data[i].uhte?SPWAW_UHT_is_decommissioned (data[i].uhte):false;
+
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			}
+			tstr.printf ("%3.3s %s %s %s (%d)",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
 				SPWDLT_getint (data[i].dlt));
-			icnt++; kcnt += SPWDLT_getint (data[i].dlt);
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+				tstr.printf ("</font>");
+			}
+			tstr.printf ("<br>");
+
+			kcnt += SPWDLT_getint (data[i].dlt);
 		}
 		str.add (tbuf);
 
@@ -223,16 +236,18 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &icnt, int &kcnt)
 }
 
 void
-GuiRptKill::refresh (void)
+GuiRptKill::refresh (bool forced)
 {
+	bool		skip;
 	bool		nodata;
 	char		buf[32768];
 	UtilStrbuf	str(buf, sizeof (buf), true, true);
-	int		icnt, kcnt;
+	int		kcnt;
 
 	DBG_TRACE_FENTER;
 
-	if (!update()) goto leave;
+	skip = update(forced);
+	if (skip) goto leave;
 
 	nodata = !d.pdata;
 	d.label_nodata->setHidden (!nodata);
@@ -240,7 +255,7 @@ GuiRptKill::refresh (void)
 	d.label_klist->setHidden (nodata);
 	if (nodata) goto leave;
 
-	list_kills (buf, sizeof (buf), icnt, kcnt);
+	list_kills (buf, sizeof (buf), kcnt, d.ptype == MDLD_TREE_DOSSIER);
 	d.label_klist->setText (buf);
 
 	str.clear();

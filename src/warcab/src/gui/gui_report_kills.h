@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force kills report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -26,7 +26,7 @@ public:
 	void	set_parent	(GuiRptDsr *parent, bool player);
 	void	set_parent	(GuiRptBtl *parent, bool player, bool core = false);
 	void	set_parent	(GuiRptTrn *parent, bool player, bool core = false);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
@@ -54,12 +54,15 @@ private:
 		bool			cflag;
 		MDLD_TREE_ITEM		*pdata;
 
+		MDLD_TREE_ITEM		*pcurr;
+		MDLD_TREE_ITEM		*pbase;
+
 		UtilMdlTreeReftrack	reftrack;
 	} d;
 
 private:
-	bool	update		(void);
-	void	list_kills	(char *buf, unsigned int size, int &icnt, int &kcnt);
+	bool	update		(bool forced);
+	void	list_kills	(char *buf, unsigned int size, int &kcnt, bool dossier);
 };
 
 #endif	/* GUI_REPORT_KILLS_H */

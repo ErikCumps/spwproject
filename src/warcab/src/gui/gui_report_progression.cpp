@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force progression report.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -161,26 +161,25 @@ GuiRptPrg::set_parent (GuiRptTrn *parent, bool player, bool core)
 	d.label_art->hide();
 }
 
-void
-GuiRptPrg::update (void)
+bool
+GuiRptPrg::update (bool forced)
 {
 	bool		skip;
-	MDLD_TREE_ITEM	*pcurr, *pbase;
 
 	DBG_TRACE_FENTER;
 
-	pcurr = pbase = NULL;
+	d.pcurr = d.pbase = NULL;
 	switch (d.ptype) {
 		case MDLD_TREE_DOSSIER:
 			d.pdata = d.pptr.d ? d.pptr.d->current() : NULL;
 			if (d.pdata) {
-				if (!d.pdata->data.d || (d.pdata->children.size() <= 1)) d.pdata = NULL;
+				if (!d.pdata->data.d || !d.pdata->children.size()) d.pdata = NULL;
 			}
 			break;
 		case MDLD_TREE_BATTLE:
 			d.pdata = d.pptr.b ? d.pptr.b->current() : NULL;
 			if (d.pdata) {
-				if (!d.pdata->data.b || (d.pdata->children.size() <= 1)) d.pdata = NULL;
+				if (!d.pdata->data.b || !d.pdata->data.b->prev || !d.pdata->children.size()) d.pdata = NULL;
 			}
 			break;
 		case MDLD_TREE_BTURN:
@@ -193,7 +192,8 @@ GuiRptPrg::update (void)
 			break;
 	}
 
-	skip =  !d.reftrack.changed (d.pdata);
+	skip  = !d.reftrack.changed (d.pdata);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -201,40 +201,42 @@ GuiRptPrg::update (void)
 	if (d.pdata) {
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
-				pcurr = d.pdata->clast;
-				pbase = d.pdata->cfirst;
-				d.model->load (pcurr->data.b, pbase->data.b, d.pflag, true);
+				d.pcurr = d.pdata->clast;
+				d.pbase = d.pdata->cfirst;
+				d.model->load (d.pdata->data.d, CFG_full_history());
 				break;
 			case MDLD_TREE_BATTLE:
-				pcurr = d.pdata->next ? d.pdata->next : d.pdata;
-				pbase = d.pdata;
-				d.model->load (pcurr->data.b, pbase->data.b, d.pflag, d.cflag);
+				d.pcurr = d.pdata;
+				d.pbase = d.pdata->prev ? d.pdata->prev : d.pdata;
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
 				break;
 			case MDLD_TREE_BTURN:
-				pcurr = d.pdata;
+				d.pcurr = d.pdata;
 				if (d.pdata->prev) {
-					pbase = d.pdata->prev;
-					d.model->load (pcurr->data.t, pbase->data.t, d.pflag, d.cflag);
+					d.pbase = d.pdata->prev;
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
 				} else {
-					pbase = d.pdata->parent;
-					d.model->load (pcurr->data.t, pcurr->data.t, d.pflag, d.cflag);
+					d.pbase = d.pdata->parent;
+					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
 				}
 			default:
 				break;
 		}
 	} else {
-		pbase = pcurr = NULL;
+		d.pbase = d.pcurr = NULL;
 		d.model->clear();
 	}
 
 skip_data_update:
 	/* Only emit these signals when widget is visible */
 	if (isVisible()) {
-		emit cmpcurr (pcurr);
-		emit cmpbase (pbase);
+		emit cmpcurr (d.pcurr);
+		emit cmpbase (d.pbase);
 	}
 
 	DBG_TRACE_FLEAVE;
+
+	return (skip);
 }
 
 static inline unsigned long
@@ -267,48 +269,72 @@ GuiRptPrg::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 
 	str.printf ("Best progression:<br>");
 
-	tstr.clear();
-	for (i=0; i<pcnt; i++) {
-		if (SPWDLT_getint (pdata[i].dlt) == 0) break;
+	if (pcnt) {
+		tstr.clear();
+		for (i=0; i<pcnt; i++) {
+			bool dc = pdata[i].uhte?SPWAW_UHT_is_decommissioned (pdata[i].uhte):false;
 
-		tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (dlt_color (SPWDLT_getint (pdata[i].dlt)))));
-		tstr.printf ("%3.3s %s %s %s (%+d)",
-			pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.dname,
-			pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
-			SPWDLT_getint (pdata[i].dlt));
-		tstr.printf ("</font><br>");
-	}
-	if (!i) {
-		str.printf ("none<br>");
-	} else {
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			} else {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (dlt_color (SPWDLT_getint (pdata[i].dlt)))));
+			}
+			tstr.printf ("%3.3s %s %s %s (%+d)",
+				pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.dname,
+				pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
+				SPWDLT_getint (pdata[i].dlt));
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+			}
+			tstr.printf ("</font><br>");
+		}
 		str.add (tbuf);
+	} else {
+		str.printf ("none<br>");
 	}
 
 	str.printf ("<br>");
 
 	str.printf ("Worst progression:<br>");
 
-	tstr.clear();
-	for (i=0; i<ncnt; i++) {
-		tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (dlt_color (SPWDLT_getint (ndata[i].dlt)))));
-		tstr.printf ("%3.3s %s %s %s (%+d)",
-			ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.dname,
-			ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
-			SPWDLT_getint (ndata[i].dlt));
-		tstr.printf ("</font><br>");
+	if (ncnt) {
+		tstr.clear();
+		for (i=0; i<ncnt; i++) {
+			bool dc = pdata[i].uhte?SPWAW_UHT_is_decommissioned (pdata[i].uhte):false;
+
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			} else {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (dlt_color (SPWDLT_getint (ndata[i].dlt)))));
+			}
+			tstr.printf ("%3.3s %s %s %s (%+d)",
+				ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.dname,
+				ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
+				SPWDLT_getint (ndata[i].dlt));
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+			}
+			tstr.printf ("</font><br>");
+		}
+		str.add (tbuf);
+	} else {
+		str.printf ("none<br>");
 	}
-	str.add (tbuf);
 }
 
 void
-GuiRptPrg::refresh (void)
+GuiRptPrg::refresh (bool forced)
 {
+	bool	skip;
 	bool	nodata;
 	char	buf[4096];
 
 	DBG_TRACE_FENTER;
 
-	update();
+	skip = update(forced);
+	if (skip) goto leave;
 
 	nodata = !d.pdata || (d.ptype == MDLD_TREE_BTURN);
 	d.label_nodata->setHidden (!nodata);

@@ -1,19 +1,23 @@
 /** \file
  * The SPWaW war cabinet - GUI - force losses report.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
+#include "resource.h"
 #include "gui_report_losses.h"
 #include "model/model_roster.h"
 #include "gui_reports_dossier.h"
 #include "gui_reports_battle.h"
 #include "gui_reports_bturn.h"
+#include <spwawlib_uht_job.h>
 
 // TODO: consider externalizing
 #define	LISTMAX	5
+
+#define	RECORD_DETAILS	0
 
 GuiRptLoss::GuiRptLoss (QWidget *P)
 	: QScrollArea (P)
@@ -73,18 +77,14 @@ GuiRptLoss::GuiRptLoss (QWidget *P)
 
 	GUINEW (d.spacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "spacer");
 
-	d.layout->addWidget (d.label_nodata,	0, 0, 1, 3);
-	d.layout->addWidget (d.label_khdr,	1, 0, 1, 1);
-	d.layout->addWidget (d.label_ahdr,	1, 1, 1, 1);
-	d.layout->addWidget (d.label_dhdr,	1, 2, 1, 1);
-	d.layout->addWidget (d.label_klist,	2, 0, 1, 1);
-	d.layout->addWidget (d.label_alist,	2, 1, 1, 1);
-	d.layout->addWidget (d.label_dlist,	2, 2, 1, 1);
-	d.layout->addItem   (d.spacer,		3, 0, 1, 3);
-
-	d.layout->setColumnStretch (0, 1);
-	d.layout->setColumnStretch (1, 1);
-	d.layout->setColumnStretch (2, 1);
+	d.layout->addWidget (d.label_nodata,	0, 0);
+	d.layout->addWidget (d.label_khdr,	1, 0);
+	d.layout->addWidget (d.label_klist,	2, 0);
+	d.layout->addWidget (d.label_ahdr,	3, 0);
+	d.layout->addWidget (d.label_alist,	4, 0);
+	d.layout->addWidget (d.label_dhdr,	5, 0);
+	d.layout->addWidget (d.label_dlist,	6, 0);
+	d.layout->addItem   (d.spacer,		7, 0);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -136,8 +136,8 @@ GuiRptLoss::set_parent (GuiRptTrn *parent, bool player, bool core)
 	d.cflag	 = core;
 }
 
-void
-GuiRptLoss::update (void)
+bool
+GuiRptLoss::update (bool forced)
 {
 	bool	skip;
 
@@ -167,7 +167,8 @@ GuiRptLoss::update (void)
 			break;
 	}
 
-	skip =  !d.reftrack.changed (d.pdata);
+	skip  = !d.reftrack.changed (d.pdata);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -177,10 +178,12 @@ GuiRptLoss::update (void)
 			case MDLD_TREE_DOSSIER:
 				d.pcurr = d.pdata->clast;
 				d.pbase = d.pdata->cfirst;
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, true);
+				d.model->load (d.pdata->data.d, CFG_full_history());
 				break;
 			case MDLD_TREE_BATTLE:
 				d.pcurr = d.pbase = d.pdata;
+				//d.pcurr = d.pdata;
+				//d.pbase = d.pdata->prev ? d.pdata->prev : d.pdata;
 				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
 				break;
 			case MDLD_TREE_BTURN:
@@ -208,300 +211,430 @@ skip_data_update:
 	}
 
 	DBG_TRACE_FLEAVE;
+
+	return (skip);
 }
 
-void
-GuiRptLoss::list_killed_dossier (char *buf, unsigned int size, int &icnt)
+static void
+record_battle_date (SPWAW_UHT_LIST_CBCTX &context)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_DOSSIER		*p;
-	SPWAW_BATTLE		*b;
-	SPWAW_SNAP_OOB_UEL	*up;
+	UtilStrbuf	*sb;
 
-	icnt = 0;
-	if ((d.pdata == NULL) || ((p = d.pdata->data.d) == NULL)) return;
+	if (!*context.data) *context.data = new UtilStrbuf (true);
+	sb = (UtilStrbuf *)(*context.data);
 
-	str.clear();
+	SPWAW_BDATE (*context.bdate, bd, false);
 
-	for (int i=0; i<p->props.iucnt; i++) {
-		USHORT	idx, nidx;
+	if (!context.first) sb->printf (", ");
+	sb->printf ("%s", bd);
+}
 
-		idx = nidx = i; b = p->bfirst;
-		while (b) {
-			up = b->info_eob->pbir_core.uir[idx].snap;
+static void simple_reporter (SPWAW_UHT_LISTEL *listel, SPWAW_DOSSIER_UIR *uir, UtilStrbuf *sb)
+{
+	if (!listel || !uir || !sb) return;
 
-			if (!up->data.alive) {
-				str.printf ("%3.3s %s, %s %s<br>",
-					up->strings.uid, up->data.dname, up->strings.rank, up->data.lname);
-				icnt++;
-			}
+	bool dc = listel->uhte?SPWAW_UHT_is_decommissioned (listel->uhte):false;
 
-			if ((nidx = b->ra[idx].dst) == SPWAW_BADIDX) break;
-			idx = nidx; b = b->next;
-		}
+	if (dc) {
+		sb->printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+		sb->printf ("<i>");
 	}
+
+	sb->printf ("%3.3s %s, %s %s (%u)",
+		uir->snap->strings.uid, uir->snap->data.dname,
+		uir->snap->strings.rank, uir->snap->data.lname,
+		listel->count);
+
+#if	RECORD_DETAILS
+	if (listel->data) {
+		sb->printf (" <i><small>{%s}</small></i>", ((UtilStrbuf *)(listel->data))->data());
+		delete (UtilStrbuf *)(listel->data);
+	}
+#endif	/* RECORD_DETAILS */
+
+	if (dc) {
+		sb->printf (" <small>decommissioned</small></i>");
+		sb->printf ("</font>");
+	}
+
+	sb->add ("\n");
 }
 
 void
-GuiRptLoss::list_killed (char *buf, unsigned int size, int &icnt)
+GuiRptLoss::list_killed_dossier (bool sort)
 {
-	UtilStrbuf		str(buf, size, true, true);
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Destroyed units";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d.pdata->data.d;
+	job.how.status		= UHT_DESTROYED;
+	job.how.allow_decomm	= CFG_full_history();
+	job.dext.data		= record_battle_date;
+	job.dext.counted	= true;
+	job.sort.sorted		= sort;
+	if (job.sort.sorted) {
+		job.sort.type		= SPWAW_UHT_SORT_UID;
+		job.sort.ascending	= true;
+		job.sort.cmp		= NULL;
+	}
+	job.out.visitor		= simple_reporter;
+	job.out.hdrpre		= "<pre><h3><u>";
+	job.out.hdrpst		= "</u></h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.hdr		= d.label_khdr;
+	job.out.lst		= d.label_klist;
+
+	UHT_list_job (job);
+}
+
+void
+GuiRptLoss::list_abandoned_dossier (bool sort)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Abandoned units, but not destroyed";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d.pdata->data.d;
+	job.how.status		= UHT_ABANDONED;
+	job.how.allow_decomm	= CFG_full_history();
+	job.dext.data		= record_battle_date;
+	job.dext.counted	= true;
+	job.sort.sorted		= sort;
+	if (job.sort.sorted) {
+		job.sort.type		= SPWAW_UHT_SORT_COUNT;
+		job.sort.ascending	= false;
+		job.sort.cmp		= NULL;
+	}
+	job.out.visitor		= simple_reporter;
+	job.out.hdrpre		= "<pre><h3><u>";
+	job.out.hdrpst		= "</u></h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.hdr		= d.label_ahdr;
+	job.out.lst		= d.label_alist;
+
+	UHT_list_job (job);
+}
+
+class DamageData {
+public:
+	DamageData () { memset (&d, 0, sizeof (d)); d.sb = new UtilStrbuf (true); }
+	~DamageData() { delete d.sb; }
+
+	struct s_data {
+		UtilStrbuf	*sb;
+		unsigned long	dmg;
+	} d;
+};
+
+static void
+record_damage_data (SPWAW_UHT_LIST_CBCTX &context)
+{
+	DamageData	*data;
+
+	if (!*context.data) *context.data = new DamageData();
+	data = (DamageData *)(*context.data);
+
+	data->d.dmg += context.uhte->v_damage;
+
+	SPWAW_BDATE (*context.bdate, bd, false);
+
+#if	RECORD_DETAILS
+	if (!context.first) data->d.sb->printf (", ");
+	data->d.sb->printf ("%d in %s", context.uhte->v_damage, bd);
+#endif	/* RECORD_DETAILS */
+}
+
+static int
+cmp_damage (const void *a, const void *b)
+{
+	SPWAW_UHT_LISTEL	*ea = *((SPWAW_UHT_LISTEL **)a);
+	SPWAW_UHT_LISTEL	*eb = *((SPWAW_UHT_LISTEL **)b);
+
+	DamageData	*da = (DamageData *)(ea->data);
+	DamageData	*db = (DamageData *)(eb->data);
+
+	if (da->d.dmg == db->d.dmg) return (SPWAW_UHT_list_cmp_UID_ascending(a,b));
+	return ((da->d.dmg < db->d.dmg)?+1:-1);
+}
+
+static void damage_data_reporter (SPWAW_UHT_LISTEL *listel, SPWAW_DOSSIER_UIR *uir, UtilStrbuf *sb)
+{
+	if (!listel || !uir || !sb) return;
+
+	DamageData *data = (DamageData *)(listel->data); listel->data = NULL;
+	if (data) {
+		bool dc = listel->uhte?SPWAW_UHT_is_decommissioned (listel->uhte):false;
+
+		if (dc) {
+			sb->printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+			sb->printf ("<i>");
+		}
+
+		sb->printf ("%3.3s %s, %s %s (%u)",
+			uir->snap->strings.uid, uir->snap->data.dname,
+			uir->snap->strings.rank, uir->snap->data.lname,
+			data->d.dmg);
+
+#if	RECORD_DETAILS
+		sb->printf (" <i>{<small>%s</small>}</i>", data->d.sb->data());
+#endif	/* RECORD_DETAILS */
+
+		if (dc) {
+			sb->printf (" <small>decommissioned</small></i>");
+			sb->printf ("</font>");
+		}
+
+		delete data;
+	}
+	sb->add ("\n");
+}
+
+void
+GuiRptLoss::list_damaged_dossier (bool sort)
+{
+	UHT_LIST_JOB job = { };
+
+	job.what		= "Damaged units, but not abandoned or destroyed";
+	job.type		= UHT_LIST_DOSSIER;
+	job.in.d.dossier	= d.pdata->data.d;
+	job.how.status		= UHT_DAMAGED;
+	job.how.allow_decomm	= CFG_full_history();
+	job.dext.data		= record_damage_data;
+	job.dext.counted	= false;
+	job.sort.sorted		= sort;
+	if (job.sort.sorted) {
+		job.sort.type		= SPWAW_UHT_SORT_USER;
+		job.sort.ascending	= true;
+		job.sort.cmp		= cmp_damage;
+	}
+	job.out.visitor		= damage_data_reporter;
+	job.out.hdrpre		= "<pre><h3><u>";
+	job.out.hdrpst		= "</u></h3></pre>";
+	job.out.lstpre		= "<pre>";
+	job.out.lstpst		= "</pre>";
+	job.out.hdr		= d.label_dhdr;
+	job.out.lst		= d.label_dlist;
+
+	UHT_list_job (job);
+}
+
+void
+GuiRptLoss::list_killed (void)
+{
+	char			buf[32768];
+	UtilStrbuf		str(buf, sizeof(buf), true, true);
+	int			cnt, idx;
+	bool			stop;
+	ModelRosterRawData	data[LISTMAX];
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
-	ModelRosterRawData	data[LISTMAX];
-	int			idx, i;
-	bool			stop;
 	bool			lostunit, lostcrew;
-
-	if (d.ptype == MDLD_TREE_DOSSIER) return (list_killed_dossier (buf, size, icnt));
-
-	icnt = 0;
 
 	str.clear();
 
 	d.model->set_dltsort (false);
 	d.model->sort (MDLR_COLUMN_STATUS, Qt::DescendingOrder);
 
-	idx = 0; stop = false;
+	cnt = idx = 0; stop = false;
 	while (1) {
-		int cnt = d.model->rawdata (idx, MDLR_COLUMN_STATUS, data, LISTMAX);
-		if (!cnt) break;
+		int dcnt = d.model->rawdata (idx, MDLR_COLUMN_STATUS, data, LISTMAX);
+		if (!dcnt) break;
 
 		tstr.clear();
-		for (i=0; i<cnt; i++) {
+		for (int i=0; i<dcnt; i++) {
 			if (SPWDLT_int (data[i].dlt) == SPWAW_UREADY) { stop = true; break; }
 			if (!data[i].uir->snap->attr.gen.losses) continue;
+
+			bool dc = data[i].uhte?SPWAW_UHT_is_decommissioned (data[i].uhte):false;
 
 			lostunit = !data[i].uir->snap->data.alive;
 			lostcrew = data[i].uir->snap->data.crew
 				   && (!data[i].uir->snap->data.aunit.up || !data[i].uir->snap->data.aunit.up->data.alive);
 
-			tstr.printf ("%3.3s %s, %s (%s%s%s)<br>",
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			}
+			tstr.printf ("%3.3s %s, %s %s (%s%s%s)",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
-				data[i].uir->snap->strings.rank,
+				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
 				lostunit?"unit":"",
 				(lostunit && lostcrew) ? " and " : "",
 				lostcrew?"crew":"");
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+				tstr.printf ("</font>");
+			}
+			tstr.printf ("<br>");
 
-			icnt += data[i].uir->snap->attr.gen.losses;
+
+			cnt += data[i].uir->snap->attr.gen.losses;
 		}
 		str.add (tbuf);
 
 		if (stop) break;
-		idx += cnt;
+		idx += dcnt;
+	}
+
+	if (cnt) {
+		d.label_klist->setText (buf);
+
+		tstr.clear();
+		tstr.printf ("<h3><u>Destroyed units: %d</u></h3>", cnt);
+		d.label_khdr->setText (tbuf);
+	} else {
+		d.label_klist->setText ("-");
+
+		tstr.clear();
+		tstr.printf ("<h3><u>Destroyed units: none</u></h3>");
+		d.label_khdr->setText (tbuf);
 	}
 }
 
 void
-GuiRptLoss::list_abandoned_dossier (char *buf, unsigned int size, int &icnt)
+GuiRptLoss::list_abandoned (void)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_DOSSIER		*p;
-	SPWAW_BATTLE		*b;
-	SPWAW_SNAP_OOB_UEL	*up;
-
-	icnt = 0;
-	if ((d.pdata == NULL) || ((p = d.pdata->data.d) == NULL)) return;
-
-	str.clear();
-
-	for (int i=0; i<p->props.iucnt; i++) {
-		USHORT	idx, nidx;
-
-		idx = nidx = i; b = p->bfirst;
-		while (b) {
-			up = b->info_eob->pbir_core.uir[idx].snap;
-			if (up->data.aband != SPWAW_ANONE) {
-				str.printf ("%3.3s %s, %s %s<br>",
-					up->strings.uid, up->data.dname, up->strings.rank, up->data.lname);
-				icnt++;
-			}
-
-			if ((nidx = b->ra[idx].dst) == SPWAW_BADIDX) break;
-			idx = nidx; b = b->next;
-		}
-	}
-}
-
-void
-GuiRptLoss::list_abandoned (char *buf, unsigned int size, int &icnt)
-{
-	UtilStrbuf		str(buf, size, true, true);
+	char			buf[32768];
+	UtilStrbuf		str(buf, sizeof(buf), true, true);
+	int			cnt, idx;
+	bool			stop;
+	ModelRosterRawData	data[LISTMAX];
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
-	ModelRosterRawData	data[LISTMAX];
-	int			idx, i;
-	bool			stop;
-
-	if (d.ptype == MDLD_TREE_DOSSIER) return (list_abandoned_dossier (buf, size, icnt));
-
-	icnt = 0;
 
 	str.clear();
 
 	d.model->set_dltsort (false);
 	d.model->sort (MDLR_COLUMN_ABAND, Qt::AscendingOrder);
 
-	idx = 0; stop = false;
+	cnt = idx = 0; stop = false;
 	while (1) {
-		int cnt = d.model->rawdata (idx, MDLR_COLUMN_ABAND, data, LISTMAX);
-		if (!cnt) break;
+		int dcnt = d.model->rawdata (idx, MDLR_COLUMN_ABAND, data, LISTMAX);
+		if (!dcnt) break;
 
 		tstr.clear();
-		for (i=0; i<cnt; i++) {
+		for (int i=0; i<dcnt; i++) {
 			if (SPWDLT_int (data[i].dlt) == SPWAW_ANONE) { stop = true; break; }
+			if (!data[i].uir->snap->data.alive) continue;
 
-			tstr.printf ("%3.3s %s, %s<br>",
+			bool dc = data[i].uhte?SPWAW_UHT_is_decommissioned (data[i].uhte):false;
+
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			}
+			tstr.printf ("%3.3s %s, %s %s",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
-				data[i].uir->snap->strings.rank);
+				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname);
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+				tstr.printf ("</font>");
+			}
+			tstr.printf ("<br>");
 
-			icnt++;
+			cnt++;
 		}
 		str.add (tbuf);
 
 		if (stop) break;
-		idx += cnt;
-	}
-}
-
-typedef struct s_DMGRPT {
-	SPWAW_BATTLE	*ptr;
-	USHORT		idx;
-	unsigned long	dmg;
-} DMGRPT;
-
-static int
-dmgrpt_cmp (const void *a, const void *b)
-{
-	DMGRPT	*va;
-	DMGRPT	*vb;
-	int	cmp;
-
-	DEVASSERT (a != NULL); DEVASSERT (b != NULL);
-	va = (DMGRPT *)a; vb = (DMGRPT *)b;
-
-	if ((va->ptr == NULL) || (vb->ptr == NULL)) return (-1);
-
-	cmp = ((va->dmg > vb->dmg) ? -1 : ((va->dmg < vb->dmg) ? 1 : 0));
-
-	if (cmp == 0) {
-		USHORT usa = va->ptr->info_sob->pbir_core.uir[va->idx].snap->data.uidx;
-		USHORT usb = vb->ptr->info_sob->pbir_core.uir[vb->idx].snap->data.uidx;
-		cmp = ((usa < usb) ? -1 : ((usa > usb) ? 1 : 0));
+		idx += dcnt;
 	}
 
-	return (cmp);
+	if (cnt) {
+		d.label_alist->setText (buf);
+
+		tstr.clear();
+		tstr.printf ("<h3><u>Abandoned units, but not destroyed: %d</u></h3>", cnt);
+		d.label_ahdr->setText (tbuf);
+	} else {
+		d.label_alist->setText ("-");
+
+		tstr.clear();
+		tstr.printf ("<h3><u>Abandoned units, but not destroyed: none</u></h3>");
+		d.label_ahdr->setText (tbuf);
+	}
 }
 
 void
-GuiRptLoss::list_damaged_dossier (char *buf, unsigned int size, int &icnt)
+GuiRptLoss::list_damaged (void)
 {
-	UtilStrbuf		str(buf, size, true, true);
-	SPWAW_DOSSIER		*p;
-	DMGRPT			*rpt;
-	SPWAW_BATTLE		*b;
-	SPWAW_SNAP_OOB_UEL	*up;
-
-	icnt = 0;
-	if ((d.pdata == NULL) || ((p = d.pdata->data.d) == NULL)) return;
-
-	str.clear();
-
-	SL_SAFE_CALLOC (rpt, p->props.iucnt, sizeof (DMGRPT));
-	for (int i=0; i<p->props.iucnt; i++) {
-		USHORT		idx, nidx;
-		unsigned long	dmg;
-
-		idx = nidx = i; b = p->bfirst; dmg = 0;
-		while (b) {
-			up = b->info_eob->pbir_core.uir[idx].snap;
-
-			if (up->data.damage && up->data.alive && (up->data.aband == SPWAW_ANONE)) {
-				dmg += up->data.damage;
-			}
-
-			if ((nidx = b->ra[idx].dst) == SPWAW_BADIDX) break;
-			idx = nidx; b = b->next;
-		}
-		if (!dmg) continue;
-
-		rpt[i].ptr = b;
-		rpt[i].idx = idx;
-		rpt[i].dmg = dmg;
-	}
-
-	qsort (rpt, p->props.iucnt, sizeof (DMGRPT), dmgrpt_cmp);
-
-	for (int i=0; i<p->props.iucnt; i++) {
-		if (rpt[i].dmg == 0) continue;
-
-		up = rpt[i].ptr->info_sob->pbir_core.uir[rpt[i].idx].snap;
-
-		str.printf ("%3.3s %s, %s %s (%ld)<br>",
-			up->strings.uid, up->data.dname, up->strings.rank, up->data.lname, rpt[i].dmg);
-
-		icnt++;
-	}
-
-	SL_SAFE_FREE (rpt);
-}
-
-void
-GuiRptLoss::list_damaged (char *buf, unsigned int size, int &icnt)
-{
-	UtilStrbuf		str(buf, size, true, true);
+	char			buf[32768];
+	UtilStrbuf		str(buf, sizeof(buf), true, true);
+	int			cnt, idx;
+	bool			stop;
+	ModelRosterRawData	data[LISTMAX];
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
-	ModelRosterRawData	data[LISTMAX];
-	int			idx, i;
-	bool			stop;
-
-	if (d.ptype == MDLD_TREE_DOSSIER) return (list_damaged_dossier (buf, size, icnt));
-
-	icnt = 0;
 
 	str.clear();
 
 	d.model->set_dltsort (true);
 	d.model->sort (MDLR_COLUMN_DMG, Qt::AscendingOrder);
 
-	idx = 0; stop = false;
+	cnt = idx = 0; stop = false;
 	while (1) {
-		int cnt = d.model->rawdata (idx, MDLR_COLUMN_DMG, data, LISTMAX);
-		if (!cnt) break;
+		int dcnt = d.model->rawdata (idx, MDLR_COLUMN_DMG, data, LISTMAX);
+		if (!dcnt) break;
 
 		tstr.clear();
-		for (i=0; i<cnt; i++) {
-			if (SPWDLT_int (data[i].dlt) <= 0) { stop = true; break; }
-			if (data[i].uir->snap->data.aband != SPWAW_ANONE) continue;
+		for (int i=0; i<dcnt; i++) {
+			if (SPWDLT_getint (data[i].dlt) <= 0) { stop = true; break; }
 			if (!data[i].uir->snap->data.alive) continue;
+			if (data[i].uir->snap->data.aband != SPWAW_ANONE) continue;
 
-			tstr.printf ("%3.3s %s, %s (%d)<br>",
+			bool dc = data[i].uhte?SPWAW_UHT_is_decommissioned (data[i].uhte):false;
+
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			}
+			tstr.printf ("%3.3s %s, %s %s (%d)",
 				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
-				data[i].uir->snap->strings.rank,
-				SPWDLT_int (data[i].dlt));
+				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
+				SPWDLT_getint (data[i].dlt));
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+				tstr.printf ("</font>");
+			}
+			tstr.printf ("<br>");
 
-			icnt++;
+			cnt++;
 		}
 		str.add (tbuf);
 
 		if (stop) break;
-		idx += cnt;
+		idx += dcnt;
+	}
+
+	if (cnt) {
+		d.label_dlist->setText (buf);
+
+		tstr.clear();
+		tstr.printf ("<h3><u>Damaged units, but not abandoned or destroyed: %d</u></h3>", cnt);
+		d.label_dhdr->setText (tbuf);
+	} else {
+		d.label_dlist->setText ("-");
+
+		tstr.clear();
+		tstr.printf ("<h3><u>Damaged units, but not abandoned or destroyed: none</u></h3>");
+		d.label_dhdr->setText (tbuf);
 	}
 }
 
 void
-GuiRptLoss::refresh (void)
+GuiRptLoss::refresh (bool forced)
 {
+	bool		skip;
 	bool		nodata;
-	char		buf[32768];
-	UtilStrbuf	str(buf, sizeof (buf), true, true);
-	int		cnt;
 	int		mw[2];
 
 	DBG_TRACE_FENTER;
 
-	update();
+	skip = update(forced);
+	if (skip) goto leave;
 
 	nodata = !d.pdata;
 	d.label_nodata->setHidden (!nodata);
@@ -510,26 +643,15 @@ GuiRptLoss::refresh (void)
 	d.label_dlist->setHidden (nodata);
 	if (nodata) goto leave;
 
-	list_killed (buf, sizeof (buf), cnt);
-	d.label_klist->setText (buf);
-
-	str.clear();
-	str.printf ("<h3><u>Destroyed units: %d</u></h3>", cnt);
-	d.label_khdr->setText (buf);
-
-	list_abandoned (buf, sizeof (buf), cnt);
-	d.label_alist->setText (buf);
-
-	str.clear();
-	str.printf ("<h3><u>Abandoned units: %d</u></h3>", cnt);
-	d.label_ahdr->setText (buf);
-
-	list_damaged (buf, sizeof (buf), cnt);
-	d.label_dlist->setText (buf);
-
-	str.clear();
-	str.printf ("<h3><u>Damaged units: %d</u></h3>", cnt);
-	d.label_dhdr->setText (buf);
+	if (d.ptype == MDLD_TREE_DOSSIER) {
+		list_killed_dossier (false);
+		list_abandoned_dossier (true);
+		list_damaged_dossier (true);
+	} else {
+		list_killed ();
+		list_abandoned ();
+		list_damaged ();
+	}
 
 	mw[0] = 0;
 	mw[1] = d.label_klist->minimumSizeHint().width(); if (mw[1] > mw[0]) mw[0] = mw[1];

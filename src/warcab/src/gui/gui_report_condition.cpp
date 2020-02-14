@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force condition report.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -156,9 +156,11 @@ GuiRptCnd::set_parent (GuiRptTrn *parent, bool player, bool core)
 }
 
 bool
-GuiRptCnd::update (void)
+GuiRptCnd::update (bool forced)
 {
 	bool	skip;
+
+	DBG_TRACE_FENTER
 
 	d.pcurr = d.pbase = NULL;
 	switch (d.ptype) {
@@ -184,7 +186,8 @@ GuiRptCnd::update (void)
 			break;
 	}
 
-	skip = !d.reftrack.changed (d.pdata);
+	skip  = !d.reftrack.changed (d.pdata);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -194,7 +197,7 @@ GuiRptCnd::update (void)
 			case MDLD_TREE_DOSSIER:
 				d.pcurr = d.pdata->clast;
 				d.pbase = d.pdata->cfirst;
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, true);
+				d.model->load (d.pdata->data.d, CFG_full_history());
 				break;
 			case MDLD_TREE_BATTLE:
 				d.pcurr = d.pbase = d.pdata;
@@ -226,6 +229,8 @@ skip_data_update:
 		emit cmpbase (d.pbase);
 	}
 
+	DBG_TRACE_FLEAVE;
+
 	return (skip);
 }
 
@@ -253,41 +258,73 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 
 	if (worst) {
 		str.printf ("Best:<br>");
-		str.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_POS)));
 	}
 
-	tstr.clear();
-	for (i=0; i<pcnt; i++) {
-		tstr.printf ("%3.3s %s %s %s (%d)<br>",
-			pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.dname,
-			pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
-			SPWDLT_int (pdata[i].dlt));
-	}
-	str.add (tbuf);
+	if (pcnt) {
+		tstr.clear();
+		for (i=0; i<pcnt; i++) {
+			bool dc = pdata[i].uhte?SPWAW_UHT_is_decommissioned (pdata[i].uhte):false;
 
-	if (worst) {
-		str.printf ("</font><br>");
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			} else {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_POS)));
+			}
+			tstr.printf ("%3.3s %s %s %s (%d)",
+				pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.dname,
+				pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
+				SPWDLT_int (pdata[i].dlt));
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+				tstr.printf ("</font>");
+			} else {
+				tstr.printf ("</font>");
+			}
+			tstr.printf ("<br>");
+		}
+		str.add (tbuf);
+	} else {
+		str.printf ("none<br>");
 	}
 
 	if (!worst) return;
 
+	str.printf ("<br>");
+
 	str.printf ("Worst:<br>");
 
-	tstr.clear();
-	for (i=0; i<ncnt; i++) {
-		tstr.printf ("%3.3s %s %s %s (%d)<br>",
-			ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.dname,
-			ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
-			SPWDLT_int (ndata[i].dlt));
-	}
-	str.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_NEG)));
-	str.add (tbuf);
-	str.printf ("</font>");
+	if (ncnt) {
+		tstr.clear();
+		for (i=0; i<ncnt; i++) {
+			bool dc = pdata[i].uhte?SPWAW_UHT_is_decommissioned (pdata[i].uhte):false;
 
+			if (dc) {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
+				tstr.printf ("<i>");
+			} else {
+				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_NEG)));
+			}
+			tstr.printf ("%3.3s %s %s %s (%d)",
+				ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.dname,
+				ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
+				SPWDLT_int (ndata[i].dlt));
+			if (dc) {
+				tstr.printf (" <small>decommissioned</small></i>");
+				tstr.printf ("</font>");
+			} else {
+				tstr.printf ("</font>");
+			}
+			tstr.printf ("<br>");
+		}
+		str.add (tbuf);
+	} else {
+		str.printf ("none<br>");
+	}
 }
 
 void
-GuiRptCnd::refresh (void)
+GuiRptCnd::refresh (bool forced)
 {
 	bool	skip;
 	bool	nodata;
@@ -295,7 +332,7 @@ GuiRptCnd::refresh (void)
 
 	DBG_TRACE_FENTER;
 
-	skip = update();
+	skip = update(forced);
 	if (skip) goto leave;
 
 	nodata = !d.pdata || (d.ptype == MDLD_TREE_BTURN);

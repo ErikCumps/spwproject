@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force progression report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -26,7 +26,7 @@ public:
 	void	set_parent	(GuiRptDsr *parent, bool player);
 	void	set_parent	(GuiRptBtl *parent, bool player, bool core = false);
 	void	set_parent	(GuiRptTrn *parent, bool player, bool core = false);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
@@ -58,11 +58,14 @@ private:
 		bool			cflag;
 		MDLD_TREE_ITEM		*pdata;
 
+		MDLD_TREE_ITEM		*pcurr;
+		MDLD_TREE_ITEM		*pbase;
+
 		UtilMdlTreeReftrack	reftrack;
 	} d;
 
 private:
-	void	update		(void);
+	bool	update		(bool forced);
 	void	mkshortlist	(char *title, MDLR_COLUMN col, bool up, char *buf, unsigned int size);
 };
 
