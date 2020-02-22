@@ -1591,64 +1591,64 @@ find_formation_oobrids: FORMATION: P<0> ID<00018> L<00063> H<00005> O<00045> (  
 find_formation_oobrids: FORMATION: P<0> ID<00019> L<00064> H<00005> O<00045> (     Mit Art Btr) OOBrid=00045
 verify_candidate_units: [00000] UNIT: F<00000,000> LO<65535> (      Kommandeur) ACCEPTED - LEADER
 verify_candidate_units: [00001] UNIT: F<00001,000> LO<65535> (   Artillerie VB) ACCEPTED - LEADER
-verify_candidate_units: [00002] UNIT: F<00001,001> LO<65535> (      Kubelwagen) ACCEPTED
+verify_candidate_units: [00002] UNIT: F<00001,001> LO<65535> (      Kubelwagen) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00003] UNIT: F<00002,000> LO<65535> (  SdKfz 7/1 FlaK) ACCEPTED - LEADER
-verify_candidate_units: [00004] UNIT: F<00002,001> LO<65535> (  SdKfz 7/1 FlaK) ACCEPTED
+verify_candidate_units: [00004] UNIT: F<00002,001> LO<65535> (  SdKfz 7/1 FlaK) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00005] UNIT: F<00003,000> LO<65535> ( StuG III Ausf.E) ACCEPTED - LEADER
-verify_candidate_units: [00006] UNIT: F<00004,000> LO<65535> ( StuG III Ausf.E) ACCEPTED
+verify_candidate_units: [00006] UNIT: F<00004,000> LO<65535> ( StuG III Ausf.E) ACCEPTED - AUTO CORE (uel->d.FSID (0) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00007] UNIT: F<00004,001> LO<65535> ( StuG III Ausf.E) ACCEPTED - LEADER
-verify_candidate_units: [00008] UNIT: F<00005,000> LO<65535> ( StuG III Ausf.E) ACCEPTED
-verify_candidate_units: [00009] UNIT: F<00005,001> LO<65535> ( StuG III Ausf.E) ACCEPTED
+verify_candidate_units: [00008] UNIT: F<00005,000> LO<65535> ( StuG III Ausf.E) ACCEPTED - AUTO CORE (uel->d.FSID (0) >= (2) fel->d.unit_cnt
+verify_candidate_units: [00009] UNIT: F<00005,001> LO<65535> ( StuG III Ausf.E) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00010] UNIT: F<00006,000> LO<65535> ( StuG III Ausf.E) ACCEPTED - LEADER
-verify_candidate_units: [00011] UNIT: F<00006,001> LO<65535> ( StuG III Ausf.E) ACCEPTED
+verify_candidate_units: [00011] UNIT: F<00006,001> LO<65535> ( StuG III Ausf.E) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00012] UNIT: F<00007,000> LO<65535> (       Jpz 35(f)) ACCEPTED - LEADER
-verify_candidate_units: [00013] UNIT: F<00007,001> LO<65535> (       Jpz 35(f)) ACCEPTED
-verify_candidate_units: [00014] UNIT: F<00007,002> LO<65535> (       Jpz 35(f)) ACCEPTED
+verify_candidate_units: [00013] UNIT: F<00007,001> LO<65535> (       Jpz 35(f)) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00014] UNIT: F<00007,002> LO<65535> (       Jpz 35(f)) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (3) fel->d.unit_cnt
 verify_candidate_units: [00015] UNIT: F<00008,000> LO<65535> (  Infanterie Grp) ACCEPTED - LEADER
 verify_candidate_units: [00016] UNIT: F<00009,000> LO<65535> (  Infanterie Grp) ACCEPTED - LEADER
-verify_candidate_units: [00017] UNIT: F<00009,001> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00018] UNIT: F<00009,002> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00019] UNIT: F<00009,003> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00020] UNIT: F<00009,004> LO<65535> (    5cm LeGrW 36) ACCEPTED
+verify_candidate_units: [00017] UNIT: F<00009,001> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00018] UNIT: F<00009,002> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00019] UNIT: F<00009,003> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00020] UNIT: F<00009,004> LO<65535> (    5cm LeGrW 36) ACCEPTED - AUTO CORE (uel->d.FSID (4) >= (5) fel->d.unit_cnt
 verify_candidate_units: [00021] UNIT: F<00010,000> LO<65535> (  Infanterie Grp) ACCEPTED - LEADER
-verify_candidate_units: [00022] UNIT: F<00010,001> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00023] UNIT: F<00010,002> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00024] UNIT: F<00010,003> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00025] UNIT: F<00010,004> LO<65535> (    5cm LeGrW 36) ACCEPTED
+verify_candidate_units: [00022] UNIT: F<00010,001> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00023] UNIT: F<00010,002> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00024] UNIT: F<00010,003> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00025] UNIT: F<00010,004> LO<65535> (    5cm LeGrW 36) ACCEPTED - AUTO CORE (uel->d.FSID (4) >= (5) fel->d.unit_cnt
 verify_candidate_units: [00026] UNIT: F<00011,000> LO<65535> (  Infanterie Grp) ACCEPTED - LEADER
-verify_candidate_units: [00027] UNIT: F<00011,001> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00028] UNIT: F<00011,002> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00029] UNIT: F<00011,003> LO<65535> (  Infanterie Grp) ACCEPTED
-verify_candidate_units: [00030] UNIT: F<00011,004> LO<65535> (    5cm LeGrW 36) ACCEPTED
+verify_candidate_units: [00027] UNIT: F<00011,001> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00028] UNIT: F<00011,002> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00029] UNIT: F<00011,003> LO<65535> (  Infanterie Grp) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00030] UNIT: F<00011,004> LO<65535> (    5cm LeGrW 36) ACCEPTED - AUTO CORE (uel->d.FSID (4) >= (5) fel->d.unit_cnt
 verify_candidate_units: [00031] UNIT: F<00012,000> LO<65535> (     Pzb M.SS.41) ACCEPTED - LEADER
-verify_candidate_units: [00032] UNIT: F<00012,001> LO<65535> (     Pzb M.SS.41) ACCEPTED
-verify_candidate_units: [00033] UNIT: F<00012,002> LO<65535> (     Pzb M.SS.41) ACCEPTED
-verify_candidate_units: [00034] UNIT: F<00013,000> LO<65535> ( PzKw III F+ 5cm) ACCEPTED
-verify_candidate_units: [00035] UNIT: F<00013,001> LO<65535> ( PzKw III F+ 5cm) ACCEPTED
-verify_candidate_units: [00036] UNIT: F<00013,002> LO<65535> ( PzKw III F+ 5cm) ACCEPTED
-verify_candidate_units: [00037] UNIT: F<00013,003> LO<65535> ( PzKw III F+ 5cm) ACCEPTED
-verify_candidate_units: [00038] UNIT: F<00013,004> LO<65535> ( PzKw III F+ 5cm) ACCEPTED
+verify_candidate_units: [00032] UNIT: F<00012,001> LO<65535> (     Pzb M.SS.41) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00033] UNIT: F<00012,002> LO<65535> (     Pzb M.SS.41) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00034] UNIT: F<00013,000> LO<65535> ( PzKw III F+ 5cm) ACCEPTED - AUTO CORE (uel->d.FSID (0) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00035] UNIT: F<00013,001> LO<65535> ( PzKw III F+ 5cm) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00036] UNIT: F<00013,002> LO<65535> ( PzKw III F+ 5cm) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00037] UNIT: F<00013,003> LO<65535> ( PzKw III F+ 5cm) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (5) fel->d.unit_cnt
+verify_candidate_units: [00038] UNIT: F<00013,004> LO<65535> ( PzKw III F+ 5cm) ACCEPTED - AUTO CORE (uel->d.FSID (4) >= (5) fel->d.unit_cnt
 verify_candidate_units: [00039] UNIT: F<00014,000> LO<65535> (  PzGren SMG Grp) ACCEPTED - LEADER
-verify_candidate_units: [00040] UNIT: F<00014,001> LO<65535> (      PzGren Grp) ACCEPTED
-verify_candidate_units: [00041] UNIT: F<00014,002> LO<65535> (      PzGren Grp) ACCEPTED
-verify_candidate_units: [00042] UNIT: F<00014,003> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00043] UNIT: F<00014,004> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00044] UNIT: F<00014,005> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00045] UNIT: F<00014,006> LO<65535> ( SdKfz 251/1 PzB) ACCEPTED
+verify_candidate_units: [00040] UNIT: F<00014,001> LO<65535> (      PzGren Grp) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (7) fel->d.unit_cnt
+verify_candidate_units: [00041] UNIT: F<00014,002> LO<65535> (      PzGren Grp) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (7) fel->d.unit_cnt
+verify_candidate_units: [00042] UNIT: F<00014,003> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (7) fel->d.unit_cnt
+verify_candidate_units: [00043] UNIT: F<00014,004> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (4) >= (7) fel->d.unit_cnt
+verify_candidate_units: [00044] UNIT: F<00014,005> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (5) >= (7) fel->d.unit_cnt
+verify_candidate_units: [00045] UNIT: F<00014,006> LO<65535> ( SdKfz 251/1 PzB) ACCEPTED - AUTO CORE (uel->d.FSID (6) >= (7) fel->d.unit_cnt
 verify_candidate_units: [00046] UNIT: F<00015,000> LO<65535> (  Pionier Gruppe) ACCEPTED - LEADER
-verify_candidate_units: [00047] UNIT: F<00015,001> LO<65535> (  Pionier Gruppe) ACCEPTED
-verify_candidate_units: [00048] UNIT: F<00015,002> LO<65535> (  Pionier Gruppe) ACCEPTED
-verify_candidate_units: [00049] UNIT: F<00015,003> LO<65535> (  Pionier Gruppe) ACCEPTED
-verify_candidate_units: [00050] UNIT: F<00015,004> LO<65535> (     Pionier LMG) ACCEPTED
-verify_candidate_units: [00051] UNIT: F<00015,005> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00052] UNIT: F<00015,006> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00053] UNIT: F<00015,007> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00054] UNIT: F<00015,008> LO<65535> (     SdKfz 251/1) ACCEPTED
-verify_candidate_units: [00055] UNIT: F<00015,009> LO<65535> (     SdKfz 251/1) ACCEPTED
+verify_candidate_units: [00047] UNIT: F<00015,001> LO<65535> (  Pionier Gruppe) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00048] UNIT: F<00015,002> LO<65535> (  Pionier Gruppe) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00049] UNIT: F<00015,003> LO<65535> (  Pionier Gruppe) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00050] UNIT: F<00015,004> LO<65535> (     Pionier LMG) ACCEPTED - AUTO CORE (uel->d.FSID (4) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00051] UNIT: F<00015,005> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (5) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00052] UNIT: F<00015,006> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (6) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00053] UNIT: F<00015,007> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (7) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00054] UNIT: F<00015,008> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (8) >= (10) fel->d.unit_cnt
+verify_candidate_units: [00055] UNIT: F<00015,009> LO<65535> (     SdKfz 251/1) ACCEPTED - AUTO CORE (uel->d.FSID (9) >= (10) fel->d.unit_cnt
 verify_candidate_units: [00056] UNIT: F<00016,000> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED - LEADER
-verify_candidate_units: [00057] UNIT: F<00016,001> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED
-verify_candidate_units: [00058] UNIT: F<00016,002> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED
-verify_candidate_units: [00059] UNIT: F<00016,003> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED
+verify_candidate_units: [00057] UNIT: F<00016,001> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00058] UNIT: F<00016,002> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00059] UNIT: F<00016,003> LO<65535> ( SdKfz 251/2 GrW) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (4) fel->d.unit_cnt
 verify_candidate_units: [00060] UNIT: F<00017,000> LO<65535> ( 10.5cm Batterie) ACCEPTED - LEADER
 verify_candidate_units: [00061] UNIT: F<00017,001> LO<65535> ( 10.5cm Batterie) ACCEPTED
 verify_candidate_units: [00062] UNIT: F<00017,002> LO<65535> ( 10.5cm Batterie) ACCEPTED

@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <battle>campaign</battle>
+</type>
+<game>
+    , <!-- contains updated battle statistics -->
+    <comment>
+        <title>lcxab2t8</title>
+    </comment>
+    <battle>
+        <date>1939/09</date>
+        <turn>
+            <current>8</current>
+            <max>20</max>
+        </turn>
+        <status>score</status>
+        <location>Poland</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>52</hexes>
+            <meters>2600</meters>
+        </visibility>
+        <player1>
+            <oob>16</oob>
+            <nation>Nazi Germany</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>2</oob>
+            <nation>Poland</nation>
+            <mission>advance</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>21</count>
+                <points>2470</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>20</width>
+                <height>20</height>
+            </hexes>
+            <kilometers>
+                <width>1.000</width>
+                <height>1.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>1939/09</start>
+            <end>1945/05</end>
+        </dates>
+        <battles>
+            <fought>1</fought>
+            <max>60</max>
+        </battles>
+        <results>
+            <decisive_victories>1</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>1</battle_index>
+        <battle_result>
+            <player1>
+                <score>2752</score>
+                <result>decisive victory</result>
+            </player1>
+            <player2>
+                <score>46</score>
+                <result>decisive defeat</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>8</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>1</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>165</men>
+                    <artillery>4</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>3</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>8</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>1</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>206</men>
+                    <artillery>3</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>5</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>16</OOB>
+    <nation>Nazi Germany</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Kommandeur</designation>
+        <rank>LtC</rank>
+        <name>Keltner</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>21</kills>
+            <losses>1</losses>
+            <readiness>72.846</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>10</maximum>
+                <minimum>2</minimum>
+                <average>5.250</average>
+            </kills>
+            <losses>
+                <maximum>1</maximum>
+                <minimum>0</minimum>
+                <average>0.250</average>
+            </losses>
+            <readiness>
+                <maximum>99.398</maximum>
+                <minimum>52.593</minimum>
+                <average>80.999</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>5</maximum>
+                <minimum>0</minimum>
+                <average>1.909</average>
+            </kills>
+            <experience>
+                <maximum>86</maximum>
+                <minimum>71</minimum>
+                <average>78.545</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>0.000</minimum>
+                <average>72.846</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>4</count>
+            <left>4</left>
+        </formations>
+        <units>
+            <count>11</count>
+            <left>10</left>
+        </units>
+    </statistics>
+    <formations count="4">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>German HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>99.398</readiness>
+            <units count="2">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Kommandeur</designation>
+                    <rank>LtC</rank>
+                    <name>Keltner</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+                <unit>
+                    <ID>A1</ID>
+                    <designation>SdKfz 222</designation>
+                    <rank>Cpl</rank>
+                    <name>Braun</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>2</kills>
+                    <losses>0</losses>
+                    <readiness>98.795</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>14</OOB_record_ID>
+            <type>PanzerSpaeh Trp</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>7</kills>
+            <losses>1</losses>
+            <readiness>52.593</readiness>
+            <units count="4">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>SdKfz 222</designation>
+                    <rank>2Lt</rank>
+                    <name>Schwendt</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>3</kills>
+                    <losses>0</losses>
+                    <readiness>32.937</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>SdKfz 222</designation>
+                    <rank>KIA</rank>
+                    <name>Steiner</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>B2</ID>
+                    <designation>PzKw III A</designation>
+                    <rank>Cpl</rank>
+                    <name>Bauer</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>2</kills>
+                    <losses>0</losses>
+                    <readiness>78.824</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>B3</ID>
+                    <designation>PzKw III A</designation>
+                    <rank>Cpl</rank>
+                    <name>Sprengler</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>2</kills>
+                    <losses>0</losses>
+                    <readiness>98.611</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>88</OOB_record_ID>
+            <type>CS Panzer Grp</type>
+            <organizational_type>section</organizational_type>
+            <kills>10</kills>
+            <losses>0</losses>
+            <readiness>73.377</readiness>
+            <units count="4">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>PzKw IV C</designation>
+                    <rank>2Lt</rank>
+                    <name>Ulrich</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>5</kills>
+                    <losses>0</losses>
+                    <readiness>79.036</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>PzKw IV C</designation>
+                    <rank>Sgt</rank>
+                    <name>Metzger</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>3</kills>
+                    <losses>0</losses>
+                    <readiness>98.734</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>C2</ID>
+                    <designation>PzKw III A</designation>
+                    <rank>Cpl</rank>
+                    <name>Vogel</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>2</kills>
+                    <losses>0</losses>
+                    <readiness>59.167</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>C3</ID>
+                    <designation>PzKw III A</designation>
+                    <rank>Sgt</rank>
+                    <name>Klein</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>56.571</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>12</OOB_record_ID>
+            <type>Panzer Zug/5</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>98.630</readiness>
+            <units count="1">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>PzKw III A</designation>
+                    <rank>1Lt</rank>
+                    <name>Schneider</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>2</kills>
+                    <losses>0</losses>
+                    <readiness>98.630</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="11">
+        <unit core="true">
+            <ID>A0</ID>
+            <designation>Kommandeur</designation>
+            <unit>Kommandeur</unit>
+            <leader>Keltner</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>German</OOB>
+            <OOBrid>244</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>81</experience>
+            <experience_class>veteran</experience_class>
+            <morale>81</morale>
+            <suppression>0</suppression>
+            <rally>69</rally>
+            <inf_skills>78</inf_skills>
+            <art_skills>38</art_skills>
+            <arm_skills>35</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>10</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>A1</ID>
+            <designation>SdKfz 222</designation>
+            <unit>SdKfz 222</unit>
+            <leader>Braun</leader>
+            <rank>Cpl</rank>
+            <formation>A</formation>
+            <OOB>German</OOB>
+            <OOBrid>68</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>2</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>83</morale>
+            <suppression>1</suppression>
+            <rally>71</rally>
+            <inf_skills>14</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>66</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>98.795</readiness>
+            <position>
+                <x>18</x>
+                <y>9</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B0</ID>
+            <designation>SdKfz 222</designation>
+            <unit>SdKfz 222</unit>
+            <leader>Schwendt</leader>
+            <rank>2Lt</rank>
+            <formation>B</formation>
+            <OOB>German</OOB>
+            <OOBrid>68</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>3</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>1</left>
+            </headcount>
+            <damage>5</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>86</experience>
+            <experience_class>veteran</experience_class>
+            <morale>84</morale>
+            <suppression>1</suppression>
+            <rally>52</rally>
+            <inf_skills>26</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>71</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>3</kills>
+            <losses>0</losses>
+            <readiness>32.937</readiness>
+            <position>
+                <x>12</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B1</ID>
+            <designation>SdKfz 222</designation>
+            <unit>SdKfz 222</unit>
+            <leader>Steiner</leader>
+            <rank>KIA</rank>
+            <formation>B</formation>
+            <OOB>German</OOB>
+            <OOBrid>68</OOBrid>
+            <type>armored car</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>0</left>
+            </headcount>
+            <damage>27</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>81</experience>
+            <experience_class>veteran</experience_class>
+            <morale>84</morale>
+            <suppression>24</suppression>
+            <rally>43</rally>
+            <inf_skills>22</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>77</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>13</x>
+                <y>15</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B2</ID>
+            <designation>PzKw III A</designation>
+            <unit>PzKw III A</unit>
+            <leader>Bauer</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>German</OOB>
+            <OOBrid>352</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>2</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>4</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>1</suppression>
+            <rally>53</rally>
+            <inf_skills>25</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>85</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>78.824</readiness>
+            <position>
+                <x>16</x>
+                <y>8</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B3</ID>
+            <designation>PzKw III A</designation>
+            <unit>PzKw III A</unit>
+            <leader>Sprengler</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>German</OOB>
+            <OOBrid>352</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>2</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>72</morale>
+            <suppression>1</suppression>
+            <rally>67</rally>
+            <inf_skills>14</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>79</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>98.611</readiness>
+            <position>
+                <x>16</x>
+                <y>13</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C0</ID>
+            <designation>PzKw IV C</designation>
+            <unit>PzKw IV C</unit>
+            <leader>Ulrich</leader>
+            <rank>2Lt</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>20</OOBrid>
+            <type>CS tank</type>
+            <class>armor</class>
+            <kills>5</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>4</left>
+            </headcount>
+            <damage>2</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>1</suppression>
+            <rally>83</rally>
+            <inf_skills>25</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>67</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>5</kills>
+            <losses>0</losses>
+            <readiness>79.036</readiness>
+            <position>
+                <x>16</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C1</ID>
+            <designation>PzKw IV C</designation>
+            <unit>PzKw IV C</unit>
+            <leader>Metzger</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>20</OOBrid>
+            <type>CS tank</type>
+            <class>armor</class>
+            <kills>3</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>1</suppression>
+            <rally>57</rally>
+            <inf_skills>32</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>84</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>3</kills>
+            <losses>0</losses>
+            <readiness>98.734</readiness>
+            <position>
+                <x>18</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C2</ID>
+            <designation>PzKw III A</designation>
+            <unit>PzKw III A</unit>
+            <leader>Vogel</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>352</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>2</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>3</left>
+            </headcount>
+            <damage>4</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>81</experience>
+            <experience_class>veteran</experience_class>
+            <morale>72</morale>
+            <suppression>1</suppression>
+            <rally>69</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>74</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>59.167</readiness>
+            <position>
+                <x>18</x>
+                <y>10</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C3</ID>
+            <designation>PzKw III A</designation>
+            <unit>PzKw III A</unit>
+            <leader>Klein</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>352</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>3</left>
+            </headcount>
+            <damage>6</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>78</experience>
+            <experience_class>average</experience_class>
+            <morale>70</morale>
+            <suppression>4</suppression>
+            <rally>43</rally>
+            <inf_skills>21</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>66</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>56.571</readiness>
+            <position>
+                <x>15</x>
+                <y>14</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D0</ID>
+            <designation>PzKw III A</designation>
+            <unit>PzKw III A</unit>
+            <leader>Schneider</leader>
+            <rank>1Lt</rank>
+            <formation>D</formation>
+            <OOB>German</OOB>
+            <OOBrid>352</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>2</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>1</suppression>
+            <rally>78</rally>
+            <inf_skills>30</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>64</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>2</kills>
+            <losses>0</losses>
+            <readiness>98.630</readiness>
+            <position>
+                <x>18</x>
+                <y>12</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>2</OOB>
+    <nation>Poland</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

@@ -1402,34 +1402,34 @@ verify_candidate_units: [00000] UNIT: F<00000,000> LO<65535> (          USA HQ) 
 verify_candidate_units: [00001] UNIT: F<00001,000> LO<65535> (    Fwd Observer) ACCEPTED - LEADER
 verify_candidate_units: [00002] UNIT: F<00002,000> LO<65535> ( 81mm Mortar Sec) ACCEPTED - LEADER
 verify_candidate_units: [00003] UNIT: F<00003,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00004] UNIT: F<00003,001> LO<65535> ( 50/30cal MG Sec) ACCEPTED
+verify_candidate_units: [00004] UNIT: F<00003,001> LO<65535> ( 50/30cal MG Sec) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00005] UNIT: F<00004,000> LO<65535> (    60mm Mor Sec) ACCEPTED - LEADER
 verify_candidate_units: [00006] UNIT: F<00005,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00007] UNIT: F<00005,001> LO<65535> (     Rifle Squad) ACCEPTED
-verify_candidate_units: [00008] UNIT: F<00005,002> LO<65535> (     Rifle Squad) ACCEPTED
-verify_candidate_units: [00009] UNIT: F<00005,003> LO<65535> (    Bazooka Team) ACCEPTED
+verify_candidate_units: [00007] UNIT: F<00005,001> LO<65535> (     Rifle Squad) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00008] UNIT: F<00005,002> LO<65535> (     Rifle Squad) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00009] UNIT: F<00005,003> LO<65535> (    Bazooka Team) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (4) fel->d.unit_cnt
 verify_candidate_units: [00010] UNIT: F<00006,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00011] UNIT: F<00006,001> LO<65535> (     Rifle Squad) ACCEPTED
-verify_candidate_units: [00012] UNIT: F<00006,002> LO<65535> (     Rifle Squad) ACCEPTED
-verify_candidate_units: [00013] UNIT: F<00006,003> LO<65535> (    Bazooka Team) ACCEPTED
+verify_candidate_units: [00011] UNIT: F<00006,001> LO<65535> (     Rifle Squad) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00012] UNIT: F<00006,002> LO<65535> (     Rifle Squad) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00013] UNIT: F<00006,003> LO<65535> (    Bazooka Team) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (4) fel->d.unit_cnt
 verify_candidate_units: [00014] UNIT: F<00007,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00015] UNIT: F<00007,001> LO<65535> (     Rifle Squad) ACCEPTED
-verify_candidate_units: [00016] UNIT: F<00007,002> LO<65535> (     Rifle Squad) ACCEPTED
-verify_candidate_units: [00017] UNIT: F<00007,003> LO<65535> (    Bazooka Team) ACCEPTED
+verify_candidate_units: [00015] UNIT: F<00007,001> LO<65535> (     Rifle Squad) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00016] UNIT: F<00007,002> LO<65535> (     Rifle Squad) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00017] UNIT: F<00007,003> LO<65535> (    Bazooka Team) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (4) fel->d.unit_cnt
 verify_candidate_units: [00018] UNIT: F<00008,000> LO<65535> ( M18 GMC Hellcat) ACCEPTED - LEADER
-verify_candidate_units: [00019] UNIT: F<00008,001> LO<65535> ( M18 GMC Hellcat) ACCEPTED
+verify_candidate_units: [00019] UNIT: F<00008,001> LO<65535> ( M18 GMC Hellcat) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00020] UNIT: F<00009,000> LO<65535> (      M4A3 (105)) ACCEPTED - LEADER
-verify_candidate_units: [00021] UNIT: F<00009,001> LO<65535> (      M4A3 (105)) ACCEPTED
+verify_candidate_units: [00021] UNIT: F<00009,001> LO<65535> (      M4A3 (105)) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00022] UNIT: F<00010,000> LO<65535> (       M4A3 (76)) ACCEPTED - LEADER
-verify_candidate_units: [00023] UNIT: F<00010,001> LO<65535> (       M4A3 (76)) ACCEPTED
-verify_candidate_units: [00024] UNIT: F<00010,002> LO<65535> (       M4A3 (76)) ACCEPTED
+verify_candidate_units: [00023] UNIT: F<00010,001> LO<65535> (       M4A3 (76)) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00024] UNIT: F<00010,002> LO<65535> (       M4A3 (76)) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (3) fel->d.unit_cnt
 verify_candidate_units: [00025] UNIT: F<00011,000> LO<65535> (    Engineer Sqd) ACCEPTED - LEADER
-verify_candidate_units: [00026] UNIT: F<00011,001> LO<65535> (    Engineer Sqd) ACCEPTED
-verify_candidate_units: [00027] UNIT: F<00011,002> LO<65535> (    Engineer Sqd) ACCEPTED
+verify_candidate_units: [00026] UNIT: F<00011,001> LO<65535> (    Engineer Sqd) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00027] UNIT: F<00011,002> LO<65535> (    Engineer Sqd) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (3) fel->d.unit_cnt
 verify_candidate_units: [00028] UNIT: F<00012,000> LO<65535> ( Fighting Patrol) ACCEPTED - LEADER
-verify_candidate_units: [00029] UNIT: F<00012,001> LO<65535> ( Fighting Patrol) ACCEPTED
-verify_candidate_units: [00030] UNIT: F<00012,002> LO<65535> ( Fighting Patrol) ACCEPTED
-verify_candidate_units: [00031] UNIT: F<00012,003> LO<65535> (    Bazooka Team) ACCEPTED
+verify_candidate_units: [00029] UNIT: F<00012,001> LO<65535> ( Fighting Patrol) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00030] UNIT: F<00012,002> LO<65535> ( Fighting Patrol) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (4) fel->d.unit_cnt
+verify_candidate_units: [00031] UNIT: F<00012,003> LO<65535> (    Bazooka Team) ACCEPTED - AUTO CORE (uel->d.FSID (3) >= (4) fel->d.unit_cnt
 verify_candidate_units: [00032] UNIT: F<00013,000> LO<65535> (   P-51D Mustang) ACCEPTED - LEADER
 verify_candidate_units: [00033] UNIT: F<00013,001> LO<65535> (   P-51D Mustang) ACCEPTED
 verify_candidate_units: [00034] UNIT: F<00014,000> LO<65535> (    4.5in M1 Bty) ACCEPTED - LEADER

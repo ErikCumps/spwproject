@@ -938,8 +938,8 @@ find_formation_oobrids: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00014> ( P
 find_formation_oobrids: FORMATION: P<0> ID<00002> L<00004> H<00000> O<00029> ( Utility Vehicle) OOBrid=00029
 verify_candidate_units: [00000] UNIT: F<00000,000> LO<65535> (      Kommandeur) ACCEPTED - LEADER
 verify_candidate_units: [00001] UNIT: F<00001,000> LO<65535> (       SdKfz 222) ACCEPTED - LEADER
-verify_candidate_units: [00002] UNIT: F<00001,001> LO<65535> (       SdKfz 222) ACCEPTED
-verify_candidate_units: [00003] UNIT: F<00001,002> LO<65535> (       SdKfz 222) ACCEPTED
+verify_candidate_units: [00002] UNIT: F<00001,001> LO<65535> (       SdKfz 222) ACCEPTED - AUTO CORE (uel->d.FSID (1) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00003] UNIT: F<00001,002> LO<65535> (       SdKfz 222) ACCEPTED - AUTO CORE (uel->d.FSID (2) >= (3) fel->d.unit_cnt
 verify_candidate_units: [00004] UNIT: F<00002,000> LO<65535> (          Kfz 15) ACCEPTED - LEADER
 verify_candidate_formations: FORMATION: P<0> ID<00000> L<00000> H<00000> O<00001> (      Kommandeur) ACCEPTED
 verify_candidate_formations: FORMATION: P<0> ID<00001> L<00001> H<00000> O<00014> ( PanzerSpaeh Trp) ACCEPTED
