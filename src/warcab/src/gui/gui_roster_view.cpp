@@ -14,6 +14,7 @@
 
 #define	BASE_SIZE	40
 #define	NUMBER_SIZE	(BASE_SIZE * 5 / 3)
+#define	ICON_SIZE	16
 
 // TODO: rename NUMBER_SIZE to something more appropriate
 
@@ -40,7 +41,7 @@ GuiRosterView::GuiRosterView (bool hdr, GuiRoster *roster, QWidget *P)
 	setSortingEnabled (true);
 	setAlternatingRowColors (false);
 	setDragEnabled (false);
-	setIconSize (QSize(8,8));
+	setIconSize (QSize(ICON_SIZE,ICON_SIZE));
 	setSelectionBehavior (QAbstractItemView::SelectRows);
 	setSelectionMode (QAbstractItemView::SingleSelection);
 	//setTabKeyNavigation (true);
@@ -65,46 +66,17 @@ GuiRosterView::GuiRosterView (bool hdr, GuiRoster *roster, QWidget *P)
 	if (d.ishdr) {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 		horizontalHeader()->setStretchLastSection (true);
-
-		for (int i=0; i<MDLR_COLUMN_CNT; i++) setColumnHidden (i, true);
-		setColumnHidden (MDLR_COLUMN_UID, false);
-		setColumnHidden (MDLR_COLUMN_UNIT, false);
-
-		setColumnWidth (MDLR_COLUMN_UID,	BASE_SIZE);
-		setColumnWidth (MDLR_COLUMN_UNIT,	BASE_SIZE * 3);
-
-		setMinimumWidth (BASE_SIZE * 4 + 5);
-		setMaximumWidth (BASE_SIZE * 4 + 5);
 	} else {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
 		horizontalHeader()->setStretchLastSection (true);
-
-		for (int i=0; i<MDLR_COLUMN_CNT; i++) setColumnHidden (i, false);
-		setColumnHidden (MDLR_COLUMN_UID, true);
-		setColumnHidden (MDLR_COLUMN_UNIT, true);
-
-		setColumnWidth (MDLR_COLUMN_RNK,	BASE_SIZE * 2);
-		setColumnWidth (MDLR_COLUMN_LDR,	BASE_SIZE * 3);
-		setColumnWidth (MDLR_COLUMN_STATUS,	BASE_SIZE * 3);
-		setColumnWidth (MDLR_COLUMN_KILL,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_EXP,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_MOR,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_SUP,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_RAL,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_INF,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_ARM,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_ART,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_MEN,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_RDY,	BASE_SIZE * 3);
-		setColumnWidth (MDLR_COLUMN_KIA,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_DMG,	NUMBER_SIZE);
-		setColumnWidth (MDLR_COLUMN_SEEN,	BASE_SIZE * 2);
-		setColumnWidth (MDLR_COLUMN_ABAND,	BASE_SIZE * 2);
-		setColumnWidth (MDLR_COLUMN_LOADED,	BASE_SIZE * 2);
-		setColumnWidth (MDLR_COLUMN_TYPE,	BASE_SIZE * 4);
-		setColumnWidth (MDLR_COLUMN_CLASS,	BASE_SIZE * 3);
 	}
 	setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOn);
+
+	build_rlayout();
+	build_mlayout();
+
+	d.mflag = false;
+	apply_layout (true);
 
 	horizontalHeader()->setResizeMode (MDLR_COLUMN_LDR, QHeaderView::Interactive);
 	horizontalHeader()->setResizeMode (MDLR_COLUMN_TYPE, QHeaderView::Interactive);
@@ -188,10 +160,14 @@ GuiRosterView::contextMenuEvent (QContextMenuEvent *event)
 #endif	/* EXPERIMENTAL */
 
 void
-GuiRosterView::reload (bool sort)
+GuiRosterView::reload (bool sort, bool mflag)
 {
 	if (!d.parent->d.pcurr || !d.parent->d.pbase) return;
 
+	if (d.mflag != mflag) {
+		d.mflag = mflag;
+		apply_layout (false);
+	}
 	if (d.sidx < 0) { d.sidx = 0; d.sord = Qt::AscendingOrder; }
 	if (sort || d.parent->d.Vautosort) sortByColumn (d.sidx, d.sord);
 	refresh();
@@ -259,4 +235,85 @@ GuiRosterView::refresh (void)
 
 leave:
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiRosterView::build_rlayout (void)
+{
+	d.rlayout[MDLR_COLUMN_UID]	= BASE_SIZE;
+	d.rlayout[MDLR_COLUMN_UNIT]	= (BASE_SIZE * 3);
+	d.rlayout[MDLR_COLUMN_RNK]	= (BASE_SIZE * 2);
+	d.rlayout[MDLR_COLUMN_LDR]	= (BASE_SIZE * 3);
+	d.rlayout[MDLR_COLUMN_STATUS]	= (BASE_SIZE * 3);
+	d.rlayout[MDLR_COLUMN_KILL]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_EXP]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_MOR]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_SUP]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_RAL]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_INF]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_ARM]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_ART]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_MEN]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_RDY]	= (BASE_SIZE * 3);
+	d.rlayout[MDLR_COLUMN_KIA]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_DMG]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_SEEN]	= (BASE_SIZE * 2);
+	d.rlayout[MDLR_COLUMN_ABAND]	= (BASE_SIZE * 2);
+	d.rlayout[MDLR_COLUMN_LOADED]	= (BASE_SIZE * 2);
+	d.rlayout[MDLR_COLUMN_TYPE]	= (BASE_SIZE * 4);
+	d.rlayout[MDLR_COLUMN_CLASS]	= (BASE_SIZE * 3);
+}
+
+void
+GuiRosterView::build_mlayout (void)
+{
+	d.mlayout[MDLR_COLUMN_UID]	= ((BASE_SIZE * 1) + ICON_SIZE);
+	d.mlayout[MDLR_COLUMN_UNIT]	= ((BASE_SIZE * 3) + ICON_SIZE);
+	d.mlayout[MDLR_COLUMN_RNK]	= ((BASE_SIZE * 2) + ICON_SIZE);
+	d.mlayout[MDLR_COLUMN_LDR]	= ((BASE_SIZE * 3) + ICON_SIZE);
+	d.mlayout[MDLR_COLUMN_STATUS]	= ((BASE_SIZE * 3) + ICON_SIZE);
+	d.mlayout[MDLR_COLUMN_KILL]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_EXP]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_MOR]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_SUP]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_RAL]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_INF]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_ARM]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_ART]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_MEN]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_RDY]	= (BASE_SIZE * 3);
+	d.mlayout[MDLR_COLUMN_KIA]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_DMG]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_SEEN]	= (BASE_SIZE * 2);
+	d.mlayout[MDLR_COLUMN_ABAND]	= (BASE_SIZE * 2);
+	d.mlayout[MDLR_COLUMN_LOADED]	= (BASE_SIZE * 2);
+	d.mlayout[MDLR_COLUMN_TYPE]	= (BASE_SIZE * 4);
+	d.mlayout[MDLR_COLUMN_CLASS]	= (BASE_SIZE * 3);
+}
+
+void
+GuiRosterView::apply_layout (bool reset)
+{
+	int	*layout = d.mflag ? d.mlayout : d.rlayout;
+
+	if (d.ishdr) {
+		for (int i=0; i<=MDLR_COLUMN_UNIT; i++) {
+			setColumnWidth (i,  layout[i]);
+			setColumnHidden (i, false);
+		}
+		for (int i=(MDLR_COLUMN_UNIT+1); i<MDLR_COLUMN_CNT; i++) {
+			setColumnHidden (i, true);
+		}
+
+		setMinimumWidth (layout[MDLR_COLUMN_UID] + layout[MDLR_COLUMN_UNIT] + 5);
+		setMaximumWidth (layout[MDLR_COLUMN_UID] + layout[MDLR_COLUMN_UNIT] + 5);
+	} else {
+		for (int i=0; i<=MDLR_COLUMN_UNIT; i++) {
+			setColumnHidden (i, true);
+		}
+		for (int i=(MDLR_COLUMN_UNIT+1); i<MDLR_COLUMN_CNT; i++) {
+			if (reset || (columnWidth (i) < layout[i])) setColumnWidth (i, layout[i]);
+			setColumnHidden (i, false);
+		}
+	}
 }

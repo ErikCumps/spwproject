@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit roster widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -126,6 +126,7 @@ GuiRoster::GuiRoster (QWidget *P)
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "failed to connect <hdr_roster:selected> to <selected>");
 
 	d.pflag = d.cflag = true;
+	d.mflag = false;
 	d.Vautosort = true;
 
 #if	EXPERIMENTAL
@@ -159,8 +160,8 @@ GuiRoster::set_parent (GuiRptDsr *parent, bool player)
 	d.pflag	 = player;
 	d.cflag	 = true;
 
-	d.prevcmp->setText ("Last battle only?");
-	d.prevcmp->setHidden (false);
+	d.prevcmp->setText ("-unused-");
+	d.prevcmp->setHidden (true);
 
 	d.hl_array = hilite_dossier;
 	d.hl_count = ARRAYCOUNT(hilite_dossier);
@@ -191,8 +192,8 @@ GuiRoster::set_parent (GuiRptTrn *parent, bool player, bool core)
 	d.pflag	 = player;
 	d.cflag	 = core;
 
-	d.prevcmp->setText ("-unused-");
-	d.prevcmp->setHidden (true);
+	d.prevcmp->setText ("Last turn only?");
+	d.prevcmp->setHidden (false);
 
 	d.hl_array = hilite_battle;
 	d.hl_count = ARRAYCOUNT(hilite_battle);
@@ -207,8 +208,8 @@ GuiRoster::setup_highlight (void)
 		d.highlight->addItem (QString ("Highlight: ") + QString (MDLR_HILITE_lookup (d.hl_array[i])));
 }
 
-void
-GuiRoster::update (void)
+bool
+GuiRoster::update (bool forced)
 {
 	MDLD_TREE_ITEM	*item = NULL;
 	bool		skip;
@@ -221,14 +222,17 @@ GuiRoster::update (void)
 		case MDLD_TREE_DOSSIER:
 			item = d.pptr.d ? d.pptr.d->current() : NULL;
 			if (item && d.pdata) d.psort = false;
+			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
 			break;
 		case MDLD_TREE_BATTLE:
 			item = d.pptr.b ? d.pptr.b->current() : NULL;
 			if (item && d.pdata) d.psort = (item->data.b != d.pdata->data.b);
+			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
 			break;
 		case MDLD_TREE_BTURN:
 			item = d.pptr.t ? d.pptr.t->current() : NULL;
 			if (item && d.pdata) d.psort = (item->data.t->battle != d.pdata->data.t->battle);
+			d.mflag = false;
 			break;
 		default:
 			break;
@@ -238,6 +242,7 @@ GuiRoster::update (void)
 	skip &= !GUIVALCHANGED (Vdltsort);
 	skip &= !GUIVALCHANGED (Vprevcmp);
 	skip &= !GUIVALCHANGED (Vautosort);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -247,39 +252,25 @@ GuiRoster::update (void)
 		idx = d.hdr_roster->currentIndex();
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
-				if (!d.pdata->data.d) return;
-				if (!d.pdata->clast) return;
+				if (!d.pdata->data.d) return (skip);
 
-				if (d.Vprevcmp) {
-					d.pcurr = d.pdata->clast;
-					d.pbase = d.pcurr->prev ? d.pcurr->prev : d.pcurr;
-				} else {
-					d.pcurr = d.pdata->clast;
-					d.pbase = d.pdata->cfirst;
-				}
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, true);
+				d.model->load (d.pdata->data.d, CFG_full_history());
 				break;
 			case MDLD_TREE_BATTLE:
-				if (!d.pdata->data.b) return;
+				if (!d.pdata->data.b) return (skip);
 
 				d.pcurr = d.pdata;
-				if (d.Vprevcmp && d.pdata->prev) {
-					d.pbase = d.pdata->prev;
-				} else {
-					d.pbase = d.pdata;
-				}
+				d.pbase = d.pdata->prev ? d.pdata->prev : d.pdata;
 				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
 				break;
 			case MDLD_TREE_BTURN:
-				if (!d.pdata->data.t) return;
+				if (!d.pdata->data.t) return (skip);
 
 				d.pcurr = d.pdata;
 				if (d.Vprevcmp && d.pdata->prev) {
 					d.pbase = d.pdata->prev;
 					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
 				} else {
-					//d.pbase = d.pdata->parent;
-					//d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
 					d.pbase = d.pdata->parent->cfirst;
 					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
 				}
@@ -292,6 +283,7 @@ GuiRoster::update (void)
 		d.pbase = d.pcurr = NULL;
 		d.model->clear();
 	}
+	d.model->set_marking (d.mflag);
 
 skip_data_update:
 	/* Only emit these signals when widget is visible */
@@ -301,19 +293,26 @@ skip_data_update:
 	}
 
 	DBG_TRACE_FLEAVE;
+
+	return (skip);
 }
 
 void
-GuiRoster::refresh (void)
+GuiRoster::refresh (bool forced)
 {
+	bool	skip;
+
 	DBG_TRACE_FENTER;
 
-	update();
-	d.hdr_roster->reload (d.psort || d.Vautosort);
-	d.bdy_roster->reload (d.psort || d.Vautosort);
+	skip = update(forced);
+	if (skip) goto leave;
+
+	d.hdr_roster->reload (d.psort || d.Vautosort, d.mflag);
+	d.bdy_roster->reload (d.psort || d.Vautosort, d.mflag);
 
 	d.psort = false;
 
+leave:
 	DBG_TRACE_FLEAVE;
 }
 
@@ -335,8 +334,8 @@ GuiRoster::prevcmp_change (int state)
 	d.Vprevcmp = (state != Qt::Unchecked);
 
 	refresh();
-	d.hdr_roster->reload (false);
-	d.bdy_roster->reload (false);
+	d.hdr_roster->reload (false, d.mflag);
+	d.bdy_roster->reload (false, d.mflag);
 }
 
 void
@@ -346,8 +345,8 @@ GuiRoster::autosort_change (int state)
 
 	if (d.Vautosort) {
 		refresh();
-		d.hdr_roster->reload(false);
-		d.bdy_roster->reload(false);
+		d.hdr_roster->reload(false, d.mflag);
+		d.bdy_roster->reload(false, d.mflag);
 	}
 }
 

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -49,12 +49,14 @@ MDLR_HILITE_lookup (MDLR_HILITE e)
 }
 
 QVariant
-ModelRoster::MDLR_data_display (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) const
+ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *dlt) const
 {
-	QVariant	v = QVariant();
-	QString		s, d;
+	QVariant		v = QVariant();
+	SPWAW_DOSSIER_UIR	*uir;
+	QString			s, d;
 
-	if (!uir) return (v);
+	if (!data) return (v);
+	uir = data->uir;
 
 	switch (col) {
 		case MDLR_COLUMN_UID:
@@ -169,13 +171,31 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir, SP
 }
 
 QVariant
-ModelRoster::MDLR_data_foreground (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) const
+ModelRoster::MDLR_data_font (int /*row*/, int /*col*/, MDLR_DATA *data, SPWDLT * /*dlt*/) const
 {
 	QVariant	v = QVariant();
 
-	if (!uir) return (v);
+	if (!data) return (v);
 
-	if (SPWDLT_check (dlt)) {
+	if (data->decomm) {
+		// TODO: this should be parameterized?
+		v = QFont ("Courier", 8, QFont::Normal, true);
+	}
+	return (v);
+}
+
+QVariant
+ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT *dlt) const
+{
+	QVariant		v = QVariant();
+	SPWAW_DOSSIER_UIR	*uir;
+
+	if (!data) return (v);
+	uir = data->uir;
+
+	if (data->decomm) {
+		v = QBrush (*RES_color(RID_GM_DLT_INA));
+	} else if (SPWDLT_check (dlt)) {
 		switch (col) {
 			case MDLR_COLUMN_RNK:
 			case MDLR_COLUMN_KILL:
@@ -209,11 +229,13 @@ ModelRoster::MDLR_data_foreground (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir,
 }
 
 QVariant
-ModelRoster::MDLR_data_background (int /*row*/, int /*col*/, SPWAW_DOSSIER_UIR *uir, SPWDLT * /*dlt*/) const
+ModelRoster::MDLR_data_background (int /*row*/, int /*col*/, MDLR_DATA *data, SPWDLT * /*dlt*/) const
 {
-	QVariant	v = QVariant();
+	QVariant		v = QVariant();
+	SPWAW_DOSSIER_UIR	*uir;
 
-	if (!uir) return (v);
+	if (!data) return (v);
+	uir = data->uir;
 
 	switch (d.hilite) {
 		case MDLR_HILITE_NONE:
@@ -237,16 +259,66 @@ ModelRoster::MDLR_data_background (int /*row*/, int /*col*/, SPWAW_DOSSIER_UIR *
 }
 
 QVariant
-ModelRoster::MDLR_data_decoration (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT * /*dlt*/) const
+ModelRoster::MDLR_data_decoration (int /*row*/, int col, MDLR_DATA *data, SPWDLT * /*dlt*/) const
 {
-	QVariant	v = QVariant();
+	QVariant		v = QVariant();
+	SPWAW_DOSSIER_UIR	*uir;
 
-	if (!uir) return (v);
+	if (!data) return (v);
+	uir = data->uir;
 
 	switch (col) {
+		case MDLR_COLUMN_UID:
+			if (d.mflag && !d.tflag) {
+				if (d.cb && SPWAW_UHT_is_commissioned (data->uhte, &(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_COMMISSIONED)));
+				else if (d.cb && SPWAW_UHT_is_reassigned (data->uhte, &(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REASSIGNED)));
+				else if (!d.cb && SPWAW_UHT_has_reassignment (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REASSIGNED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		case MDLR_COLUMN_UNIT:
+			if (d.mflag && !d.tflag) {
+				if (d.cb && SPWAW_UHT_is_upgraded (data->uhte, &(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_UPGRADED)));
+				else if (!d.cb && SPWAW_UHT_has_upgrade (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_UPGRADED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
 		case MDLR_COLUMN_RNK:
+			if (d.mflag && !d.tflag) {
+				if (d.cb && SPWAW_UHT_is_promoted (data->uhte,&(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_PROMOTED)));
+				else if (!d.cb && SPWAW_UHT_has_promotion (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_PROMOTED)));
+				else if (d.cb && SPWAW_UHT_is_demoted (data->uhte,&(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_DEMOTED)));
+				else if (!d.cb && SPWAW_UHT_has_demotion (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_DEMOTED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		case MDLR_COLUMN_LDR:
+			if (d.mflag && !d.tflag) {
+				if (d.cb && SPWAW_UHT_is_replaced (data->uhte,&(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REPLACED)));
+				else if (!d.cb && SPWAW_UHT_has_replacement (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REPLACED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		case MDLR_COLUMN_STATUS:
 			if (uir->snap->data.rank == SPWAW_RKIA)
-				v = QVariant (QIcon (*RES_pixmap (RID_ICON_KIA)));
+				v = QVariant (QIcon (*RES_pixmap (RID_ICON_UHT_DESTROYED)));
+			else
+				v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
 			break;
 		default:
 			break;
@@ -257,28 +329,29 @@ ModelRoster::MDLR_data_decoration (int /*row*/, int col, SPWAW_DOSSIER_UIR *uir,
 QVariant
 ModelRoster::MDLR_data (int role, int row, int col) const
 {
-	SPWAW_DOSSIER_UIR	*uir = NULL;
-	SPWDLT			*dlt = NULL;
-	QVariant		v = QVariant();
+	QVariant	v = QVariant();
 
 	if ((row < 0) || (row >= d.row_cnt)) return (v);
 
-	uir = d.smap[row].data->uir;
-	dlt = &(d.smap[row].data->dlt[col]);
-	if (!uir) return (v);
-
 	switch (role) {
 		case Qt::DisplayRole:
-			v = MDLR_data_display (row, col, uir, dlt);
+			v = MDLR_data_display (row, col, d.smap[row].data, &(d.smap[row].data->dlt[col]));
+			break;
+		case Qt::FontRole:
+			v= MDLR_data_font (row, col, d.smap[row].data, &(d.smap[row].data->dlt[col]));
 			break;
 		case Qt::ForegroundRole:
-			v = MDLR_data_foreground (row, col, uir, dlt);
+			v = MDLR_data_foreground (row, col, d.smap[row].data, &(d.smap[row].data->dlt[col]));
 			break;
 		case Qt::BackgroundRole:
-			v = MDLR_data_background (row, col, uir, dlt);
+			v = MDLR_data_background (row, col, d.smap[row].data, &(d.smap[row].data->dlt[col]));
 			break;
 		case Qt::DecorationRole:
-			v = MDLR_data_decoration (row, col, uir, dlt);
+			v = MDLR_data_decoration (row, col, d.smap[row].data, &(d.smap[row].data->dlt[col]));
+			break;
+		case Qt::TextAlignmentRole:
+			//v = QVariant (Qt::AlignVCenter | Qt::AlignRight);
+			v = QVariant (Qt::AlignVCenter);
 			break;
 		default:
 			break;

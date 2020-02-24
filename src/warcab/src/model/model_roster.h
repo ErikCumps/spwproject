@@ -48,6 +48,7 @@ extern const char *MDLR_HILITE_lookup (MDLR_HILITE e);
 typedef struct s_ModelRosterRawData {
 	int			idx;
 	SPWAW_UHTE		*uhte;
+	bool			decomm;
 	SPWAW_DOSSIER_UIR	*uir;
 	SPWDLT			*dlt;
 } ModelRosterRawData;
@@ -74,6 +75,7 @@ public:
 	void	load		(SPWAW_DOSSIER *dossier, bool fch);
 	void	load		(SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore);
 	void	load		(SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore);
+	void	set_marking	(bool mark);
 	void	highlight	(MDLR_HILITE h);
 	int	max_width	(int column);
 	void	refresh		(void);
@@ -98,6 +100,7 @@ private:
 		bool			tflag;
 		bool			pflag;
 		bool			cflag;
+		bool			mflag;
 		int			row_cnt;
 		MDLR_DATA		*list;
 		int			list_cnt;
@@ -121,10 +124,11 @@ private:
 	void		freeModelData		(bool all);
 
 	QVariant	MDLR_data		(int role, int row, int col)				const;
-	QVariant	MDLR_data_display	(int row, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt)	const;
-	QVariant	MDLR_data_foreground	(int row, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt)	const;
-	QVariant	MDLR_data_background	(int row, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt)	const;
-	QVariant	MDLR_data_decoration	(int row, int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt)	const;
+	QVariant	MDLR_data_display	(int row, int col, MDLR_DATA *data, SPWDLT *dlt)	const;
+	QVariant	MDLR_data_font		(int row, int col, MDLR_DATA *data, SPWDLT *dlt)	const;
+	QVariant	MDLR_data_foreground	(int row, int col, MDLR_DATA *data, SPWDLT *dlt)	const;
+	QVariant	MDLR_data_background	(int row, int col, MDLR_DATA *data, SPWDLT *dlt)	const;
+	QVariant	MDLR_data_decoration	(int row, int col, MDLR_DATA *data, SPWDLT *dlt)	const;
 };
 
 #endif	/* MODEL_ROSTER_H */

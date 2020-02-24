@@ -16,6 +16,7 @@
 typedef struct s_MDLR_DATA {
 	int			idx;
 	SPWAW_UHTE		*uhte;
+	bool			decomm;
 	SPWAW_DOSSIER_UIR	*uir;
 	SPWDLT			*dlt;
 	bool			*dltsort;

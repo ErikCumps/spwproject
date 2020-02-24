@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit roster report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -51,11 +51,11 @@ GuiRptRst::set_parent (GuiRptTrn *parent, bool pflag, bool core)
 }
 
 void
-GuiRptRst::refresh (void)
+GuiRptRst::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
-	d.roster->refresh();
+	d.roster->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

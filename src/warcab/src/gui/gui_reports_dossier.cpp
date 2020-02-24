@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -165,15 +165,15 @@ GuiRptDsr::refresh (bool forced)
 
 	d.overview->refresh(forced);
 	if (d.item && (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
-		d.cnd->refresh();
-		d.prg->refresh();
-		d.kill->refresh();
-		d.loss->refresh();
-		d.oob->refresh();
-		d.rst->refresh();
-		d.hst->refresh();
-		d.mmas->refresh();
-		d.graphs->refresh();
+		d.cnd->refresh(forced);
+		d.prg->refresh(forced);
+		d.kill->refresh(forced);
+		d.loss->refresh(forced);
+		d.oob->refresh();	//FIXME?
+		d.rst->refresh(forced);
+		d.hst->refresh();	//FIXME?
+		d.mmas->refresh();	//FIXME?
+		d.graphs->refresh();	//FIXME?
 	}
 
 	DBG_TRACE_FLEAVE;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit roster view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #define	GUI_ROSTER_VIEW_H	1
 
 #include "gui_private.h"
+#include "model/model_roster_data.h"
 
 class GuiRosterView	: public QTableView
 {
@@ -28,7 +29,7 @@ public:
 #endif	/* EXPERIMENTAL */
 
 public:
-	void	reload		(bool sort);
+	void	reload		(bool sort, bool mflag);
 	void	resort		(void);
 	void	refresh		(void);
 
@@ -53,9 +54,19 @@ private:
 		GuiRoster	*parent;
 		QFont		*font;
 
+		int		rlayout[MDLR_COLUMN_CNT];
+		int		mlayout[MDLR_COLUMN_CNT];
+
 		int		sidx;
 		Qt::SortOrder	sord;
+
+		bool		mflag;
 	} d;
+
+private:
+	void	build_rlayout	(void);
+	void	build_mlayout	(void);
+	void	apply_layout	(bool reset);
 };
 
 #endif	/* GUI_ROSTER_VIEW_H */

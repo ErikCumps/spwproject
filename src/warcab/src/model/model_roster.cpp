@@ -206,6 +206,7 @@ ModelRoster::addModelData (SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSI
 	u = &(d.list[idx]);
 
 	u->uhte = uhte; u->uir = uir;
+	u->decomm = u->uhte?SPWAW_UHT_is_decommissioned (u->uhte):false;
 
 	s = uir->snap;
 	cs = cuir ? cuir->snap : NULL;
@@ -431,6 +432,12 @@ ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool
 }
 
 void
+ModelRoster::set_marking (bool mark)
+{
+	d.mflag = mark;
+}
+
+void
 ModelRoster::highlight (MDLR_HILITE h)
 {
 	d.hilite = h;
@@ -474,10 +481,11 @@ ModelRoster::rawdata (int row, MDLR_COLUMN col, ModelRosterRawData *data, int cn
 
 	r = row; i = 0;
 	while (r < d.row_cnt) {
-		data[i].idx  = d.smap[r].data->idx;
-		data[i].uhte = d.smap[r].data->uhte;
-		data[i].uir  = d.smap[r].data->uir;
-		data[i].dlt  = &(d.smap[r].data->dlt[col]);
+		data[i].idx    = d.smap[r].data->idx;
+		data[i].uhte   = d.smap[r].data->uhte;
+		data[i].decomm = d.smap[r].data->decomm;
+		data[i].uir    = d.smap[r].data->uir;
+		data[i].dlt    = &(d.smap[r].data->dlt[col]);
 		r++; i++;
 		if (i >= cnt) break;
 	}
