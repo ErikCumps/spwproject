@@ -197,7 +197,6 @@ ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 		v = QBrush (*RES_color(RID_GM_DLT_INA));
 	} else if (SPWDLT_check (dlt)) {
 		switch (col) {
-			case MDLR_COLUMN_RNK:
 			case MDLR_COLUMN_KILL:
 			case MDLR_COLUMN_EXP:
 			case MDLR_COLUMN_MOR:
