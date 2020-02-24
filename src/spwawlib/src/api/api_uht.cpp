@@ -115,6 +115,7 @@ SPWAW_UHT_is_commissioned (SPWAW_UHTE *uhte, SPWAW_BATTLE_DATE *bdate)
 {
 	SPWAW_UHTE *uptr = uht_lookup (uhte, bdate);
 	if (!uptr) return (false);
+	if (SPWAW_bdate_cmp (&(uptr->uht->dossier->bfirst->bdate), bdate) == 0) return (false);
 
 	return ((SPWAW_bdate_cmp(bdate, &(uptr->FBD)) == 0) && !uptr->prev);
 }
