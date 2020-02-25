@@ -30,11 +30,11 @@ UHT_debug_dump (SPWAW_UHT *uht)
 
 		UHTLOG2 ("[%5u] 0x%8.8x ", i, uhte);
 
-		SPWAW_BDATE(uhte->FBI, FBIdate, true); SPWAW_BDATE(uhte->LBI, LBIdate, true);
+		SPWAW_BDATE(uhte->FBD, FBdate, true); SPWAW_BDATE(uhte->LBD, LBdate, true);
 		UHTLOG4 ("lname=\"%-16s\", UID=%-4s, uname=\"%-16s\", rank=%-3s, ",
 			uhte->lname, uhte->UID, uhte->uname, SPWAW_rank2str(uhte->rank));
 		UHTLOG3 ("F=[%s:%05u], L=[%s], ",
-			FBIdate, uhte->FUI, LBIdate);
+			FBdate, uhte->FUI, LBdate);
 		uht_status_log (uhte->status, buf, sizeof(buf));
 		UHTLOG2 ("status=0x%4.4x (%s), ",
 			uhte->status, buf);
@@ -65,11 +65,11 @@ UHT_debug_dump (SPWAW_UHT *uht)
 			UHTTRACE2 ("    [%5u] 0x%8.8x ", j, uhte);
 			if (!uhte) continue;
 
-			SPWAW_BDATE(uhte->FBI, FBIdate, true); SPWAW_BDATE(uhte->LBI, LBIdate, true);
+			SPWAW_BDATE(uhte->FBD, FBdate, true); SPWAW_BDATE(uhte->LBD, LBdate, true);
 			UHTTRACE4 ("lname=\"%-16s\", UID=%-4s, uname=\"%-16s\", rank=%-3s, ",
 				uhte->lname, uhte->UID, uhte->uname, SPWAW_rank2str(uhte->rank));
 			UHTTRACE3 ("F=[%s:%05u], L=[%s], ",
-				FBIdate, uhte->FUI, LBIdate);
+				FBdate, uhte->FUI, LBdate);
 			uht_status_log (uhte->status, buf, sizeof(buf));
 			UHTTRACE2 ("status=0x%4.4x (%s), ",
 				uhte->status, buf);
@@ -97,11 +97,11 @@ UHT_debug_dump (SPWAW_UHT_BINFO *info)
 		UHTLOG2 ("[%5u] 0x%8.8x ", i, uhte);
 		if (!uhte) continue;
 
-		SPWAW_BDATE(uhte->FBI, FBIdate, true); SPWAW_BDATE(uhte->LBI, LBIdate, true);
+		SPWAW_BDATE(uhte->FBD, FBdate, true); SPWAW_BDATE(uhte->LBD, LBdate, true);
 		UHTLOG4 ("lname=\"%-16s\", UID=%-4s, uname=\"%-16s\", rank=%-3s, ",
 			uhte->lname, uhte->UID, uhte->uname, SPWAW_rank2str(uhte->rank));
 		UHTLOG3 ("F=[%s:%05u], L=[%s], ",
-			FBIdate, uhte->FUI, LBIdate);
+			FBdate, uhte->FUI, LBdate);
 		uht_status_log (uhte->status, buf, sizeof(buf));
 		UHTLOG2 ("status=0x%4.4x (%s), ",
 			uhte->status, buf);

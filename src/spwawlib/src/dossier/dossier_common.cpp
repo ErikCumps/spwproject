@@ -380,7 +380,7 @@ dossier_update_battle_rainfo (SPWAW_BATTLE *src, SPWAW_BATTLE *dst)
 			if (dstf[j]) continue;
 
 			s = match_score (src, i, dst, j, lnm);
-			if (lnm && (s > score)) {
+			if ((lnm || ((src->dossier->gametype != SPWAW_GAME_TYPE_SPWAW) && (i == j))) && (s > score)) {
 				RATRACE3 ("| improved score for %05.5d: %.3f < %.3f\n", j, score, s);
 				score = s; si = j;
 			}
