@@ -162,8 +162,6 @@ GuiRosterView::contextMenuEvent (QContextMenuEvent *event)
 void
 GuiRosterView::reload (bool sort, bool mflag)
 {
-	if (!d.parent->d.pcurr || !d.parent->d.pbase) return;
-
 	if (d.mflag != mflag) {
 		d.mflag = mflag;
 		apply_layout (false);
