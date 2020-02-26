@@ -320,6 +320,7 @@ ModelRoster::resort (void)
 	MDLR_COLUMN_DEF	*p = NULL;
 
 	if (!d.row_cnt) return;
+	if (d.scol < 0) return;
 
 	p = MDLR_coldef (d.scol); DEVASSERT (p != NULL);
 	if (!p->cmp) return;
