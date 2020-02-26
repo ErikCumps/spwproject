@@ -340,7 +340,7 @@ ModelRoster::clear (void)
 	d.birs = d.cbrs = d.rbrs = NULL;
 	d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
 	d.d = NULL; d.cb = d.bb = NULL;
-	d.pflag = true; d.cflag = true;	d.scol = d.sord = -1;
+	d.fchflag = false; d.tflag = false; d.pflag = true; d.cflag = true; d.scol = d.sord = -1;
 
 	setupModelData();
 	reset();
