@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit list view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -35,7 +35,7 @@ GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 	setViewMode (QListView::ListMode);
 	setFlow (QListView::TopToBottom);
 	setWrapping (false);
-	setModelColumn (MDLUL_COLUMN_ID);
+	setModelColumn (MDLU_COLUMN_ID);
 	setMovement (QListView::Static);
 	setResizeMode (QListView::Fixed);
 

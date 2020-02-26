@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit history widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -30,7 +30,7 @@ public:
 	void	set_parent	(GuiRptDsr *parent, bool player);
 	void	set_parent	(GuiRptBtl *parent, bool player, bool core = false);
 	void	set_parent	(GuiRptTrn *parent, bool player);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
@@ -76,7 +76,7 @@ private:
 
 private:
 	void	setup_highlight	(void);
-	void	update	(void);
+	bool	update	(bool forced);
 };
 
 #endif	/* GUI_HISTORY_H */

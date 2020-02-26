@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - force history report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -51,11 +51,11 @@ GuiRptHst::set_parent (GuiRptTrn *parent, bool pflag)
 }
 
 void
-GuiRptHst::refresh (void)
+GuiRptHst::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
-	d.history->refresh();
+	d.history->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

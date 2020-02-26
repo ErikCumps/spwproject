@@ -171,7 +171,7 @@ GuiRptDsr::refresh (bool forced)
 		d.loss->refresh(forced);
 		d.oob->refresh();	//FIXME?
 		d.rst->refresh(forced);
-		d.hst->refresh();	//FIXME?
+		d.hst->refresh(forced);
 		d.mmas->refresh();	//FIXME?
 		d.graphs->refresh();	//FIXME?
 	}

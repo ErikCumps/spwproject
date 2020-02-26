@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit history widget.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -166,8 +166,8 @@ GuiHistory::setup_highlight (void)
 		d.highlight->addItem (QString ("Highlight: ") + QString (MDLH_HILITE_lookup (d.hl_array[i])));
 }
 
-void
-GuiHistory::update (void)
+bool
+GuiHistory::update (bool forced)
 {
 	MDLD_TREE_ITEM	*item = NULL;
 	bool		skip;
@@ -191,6 +191,7 @@ GuiHistory::update (void)
 	skip =  !d.reftrack.changed (item);
 	skip &= !GUIVALCHANGED (uidx);
 	skip &= !GUIVALCHANGED (Vprevcmp);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -201,11 +202,13 @@ GuiHistory::update (void)
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
 				d.hmodel->load (item->data.d, d.Vprevcmp, d.uidx);
+				d.lmodel->load (item->data.d, CFG_full_history());
 				d.hdr_history->battleview (false);
 				d.bdy_history->battleview (false);
 				break;
 			case MDLD_TREE_BATTLE:
 				d.hmodel->load (item->data.b, d.pflag, d.cflag, d.Vprevcmp, d.uidx);
+				d.lmodel->load (item->data.b);
 				d.hdr_history->battleview (true);
 				d.bdy_history->battleview (true);
 				break;
@@ -217,7 +220,6 @@ GuiHistory::update (void)
 		d.hmodel->info (info);
 
 		idx = d.unitlist->currentIndex();
-		d.lmodel->load (info.bir, info.bir_cnt);
 		d.unitlist->select (idx);
 	} else {
 		d.hmodel->clear();
@@ -232,18 +234,25 @@ skip_data_update:
 	}
 
 	DBG_TRACE_FLEAVE;
+
+	return (skip);
 }
 
 void
-GuiHistory::refresh (void)
+GuiHistory::refresh (bool forced)
 {
+	bool	skip;
+
 	DBG_TRACE_FENTER;
 
-	update();
+	skip = update(forced);
+	if (skip) goto leave;
+
 	d.unitlist->reload();
 	d.hdr_history->reload();
 	d.bdy_history->reload();
 
+leave:
 	DBG_TRACE_FLEAVE;
 }
 

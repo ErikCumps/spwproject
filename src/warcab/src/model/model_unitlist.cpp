@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit list.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -27,10 +27,10 @@ ModelUnitlist::~ModelUnitlist (void)
 QVariant
 ModelUnitlist::data (const QModelIndex &index, int role) const
 {
-	if (!d.data_bir || !d.data_cnt) return (QVariant());
+	if (!d.row_cnt) return (QVariant());
 	if (!index.isValid()) return (QVariant());
 
-	return (MDLUL_data (role, index.row(), index.column()));
+	return (MDLU_data (role, index.row(), index.column()));
 }
 
 Qt::ItemFlags
@@ -52,7 +52,7 @@ ModelUnitlist::headerData (int section, Qt::Orientation orientation, int role) c
 int
 ModelUnitlist::rowCount (const QModelIndex &/*parent*/) const
 {
-	return (d.data_bir ? d.data_cnt : 0);
+	return (d.row_cnt);
 }
 
 int
@@ -62,20 +62,137 @@ ModelUnitlist::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelUnitlist::load (SPWAW_DOSSIER_BIR *bir, int cnt)
+ModelUnitlist::setupModelDataStorage (void)
 {
-	d.data_bir = bir;
-	d.data_cnt = cnt;
+	int			i;
+	MDLU_DATA		*u;
 
-	reset();
+	/* Check current unit count to see if data storage reallocation is required */
+	if (d.list_cnt != d.row_cnt) {
+		/* Free previously allocated data storage */
+		if (d.list) SL_SAFE_FREE (d.list);
+
+		/* Allocate new data storage */
+		d.list_cnt = d.row_cnt;
+		SL_SAFE_CALLOC (d.list, d.list_cnt, sizeof (MDLU_DATA));
+
+		/* Fill data */
+		for (i=0; i<d.list_cnt; i++) {
+			u = &(d.list[i]);
+
+			u->idx     = i;
+		}
+	}
+	d.list_use = 0;
 }
+
+void
+ModelUnitlist::freeModelDataStorage (void)
+{
+	if (d.list) SL_SAFE_FREE (d.list); d.list_cnt = d.list_use = 0;
+
+	d.row_cnt = 0;
+}
+
+void
+ModelUnitlist::addModelData (SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir)
+{
+	unsigned int		idx;
+	MDLU_DATA		*u;
+
+	/* don't overflow the data list! */
+	if (d.list_use >= d.list_cnt) return;
+
+	idx = d.list_use++;
+
+	u = &(d.list[idx]);
+
+	u->uhte = uhte; u->uir = uir;
+	u->decomm = u->uhte?SPWAW_UHT_is_decommissioned (u->uhte):false;
+}
+
+void
+ModelUnitlist::setupModelData (void)
+{
+	bool			dossier_mode;
+	SPWAW_UHTE		*uhte;
+	SPWAW_DOSSIER_UIR	*uir;
+
+	DBG_TRACE_FENTER;
+
+	freeModelData (false);
+
+	dossier_mode = (d.d != NULL);
+
+	if (dossier_mode) {
+		if (!(d.row_cnt = d.d->uht.icnt)) return;
+	} else {
+		if (!d.b) return;
+		if (!(d.row_cnt = d.b->uhtinfo->cnt)) return;
+	}
+
+	setupModelDataStorage();
+
+	/* Update unit data */
+	if (dossier_mode) {
+		for (unsigned int i=0; i<d.d->uht.cnt; i++) {
+			uhte = d.d->uht.smap[i];
+
+			if (!SPWAW_UHT_is_initial (uhte)) continue;
+			if (!d.fchflag && SPWAW_UHT_is_decommissioned (uhte)) continue;
+			if (!SPWAW_UHT_lookup (uhte, &(uhte->FBD), true, NULL, &uir, NULL)) continue;
+
+			addModelData (uhte, uir);
+		}
+	} else {
+		for (int i=0; i<d.b->uhtinfo->cnt; i++) {
+			uhte = d.b->uhtinfo->list[i];
+
+			SPWAW_UHT_lookup (uhte, &(d.b->bdate), true, NULL, &uir, NULL);
+
+			addModelData (uhte, uir);
+		}
+	}
+
+	/* Update final list and row counts */
+	d.row_cnt = d.list_use;
+
+	DBG_TRACE_FLEAVE;
+}
+
+void
+ModelUnitlist::freeModelData (bool all)
+{
+	if (all) freeModelDataStorage();
+
+	d.row_cnt = 0;
+}
+
 
 void
 ModelUnitlist::clear (void)
 {
-	d.data_bir = NULL;
-	d.data_cnt = 0;
+	d.d = NULL; d.b = NULL; d.fchflag = false;
 
+	setupModelData();
+	reset();
+}
+
+void
+ModelUnitlist::load (SPWAW_DOSSIER *dossier, bool fch)
+{
+	d.d = dossier; d.b = NULL; d.fchflag = fch;
+
+	setupModelData();
+	reset();
+}
+
+void
+ModelUnitlist::load (SPWAW_BATTLE *battle)
+{
+	d.d = NULL; d.b = battle; d.fchflag = false;
+
+	setupModelData();
 	reset();
 }
 
@@ -84,10 +201,8 @@ ModelUnitlist::max_width (void)
 {
 	int	max = 0;
 
-	if (!d.data_bir) return (0);
-
-	for (int i=0; i<d.data_cnt; i++) {
-		int w = (MDLUL_data (Qt::DisplayRole, i, MDLUL_COLUMN_ID)).toString().length();
+	for (int i=0; i<d.row_cnt; i++) {
+		int w = (MDLU_data (Qt::DisplayRole, i, MDLU_COLUMN_ID)).toString().length();
 		if (w > max) max = w;
 	}
 	return (max);

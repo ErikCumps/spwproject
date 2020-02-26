@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit list.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,20 +28,37 @@ public:
 	int		columnCount	(const QModelIndex &parent = QModelIndex())				const;
 
 public:
-	void	load		(SPWAW_DOSSIER_BIR *bir, int cnt);
 	void	clear		(void);
+	void	load		(SPWAW_DOSSIER *dossier, bool fch);
+	void	load		(SPWAW_BATTLE *battle);
+
 	int	max_width	(void);
 	void	refresh		(void);
 
 private:
 	QList<QVariant>		header;
 	struct s_data {
-		SPWAW_DOSSIER_BIR	*data_bir;
-		int			data_cnt;
+		SPWAW_DOSSIER	*d;
+		bool		fchflag;
+		SPWAW_BATTLE	*b;
+		int		row_cnt;
+		MDLU_DATA	*list;
+		int		list_cnt;
+		int		list_use;
 	} d;
 
 private:
-	QVariant	MDLUL_data	(int role, int row, int col)	const;
+	void		setupModelDataStorage	(void);
+	void		freeModelDataStorage	(void);
+	void		addModelData		(SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir);
+	void		setupModelData		(void);
+	void		freeModelData		(bool all);
+
+	QVariant	MDLU_data		(int role, int row, int col)		const;
+	QVariant	MDLU_data_display	(int row, int col, MDLU_DATA *data)	const;
+	QVariant	MDLU_data_font		(int row, int col, MDLU_DATA *data)	const;
+	QVariant	MDLU_data_foreground	(int row, int col, MDLU_DATA *data)	const;
+	QVariant	MDLU_data_background	(int row, int col, MDLU_DATA *data)	const;
 };
 
 #endif	/* MODEL_UNITLIST_H */
