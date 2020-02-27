@@ -110,6 +110,12 @@ GuiUnitlistView::currentChanged (const QModelIndex &current, const QModelIndex &
 void
 GuiUnitlistView::refresh (void)
 {
+	int		w;
+	QFontMetrics	fm(*d.font);
+
 	//DBG_TRACE_FENTER;
+	w = (d.parent->d.lmodel->max_width() * (fm.maxWidth()+1)) + 5;
+	setMinimumWidth (w);
+	setMaximumWidth (w);
 	//DBG_TRACE_FLEAVE;
 }
