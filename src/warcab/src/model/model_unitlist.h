@@ -30,7 +30,7 @@ public:
 public:
 	void	clear		(void);
 	void	load		(SPWAW_DOSSIER *dossier, bool fch);
-	void	load		(SPWAW_BATTLE *battle);
+	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore);
 
 	int	max_width	(void);
 	void	refresh		(void);
@@ -38,13 +38,17 @@ public:
 private:
 	QList<QVariant>		header;
 	struct s_data {
-		SPWAW_DOSSIER	*d;
-		bool		fchflag;
-		SPWAW_BATTLE	*b;
-		int		row_cnt;
-		MDLU_DATA	*list;
-		int		list_cnt;
-		int		list_use;
+		SPWAW_DOSSIER		*d;
+		bool			fchflag;
+		SPWAW_BATTLE		*b;
+		bool			pflag;
+		bool			cflag;
+		SPWAW_DOSSIER_BIR	*birs;
+		int			birs_cnt;
+		int			row_cnt;
+		MDLU_DATA		*list;
+		int			list_cnt;
+		int			list_use;
 	} d;
 
 private:

@@ -128,7 +128,11 @@ ModelUnitlist::setupModelData (void)
 		if (!(d.row_cnt = d.d->uht.icnt)) return;
 	} else {
 		if (!d.b) return;
-		if (!(d.row_cnt = d.b->uhtinfo->cnt)) return;
+		if (d.pflag && d.cflag) {
+			if (!(d.row_cnt = d.b->uhtinfo->cnt)) return;
+		} else {
+			if (!(d.row_cnt = d.birs_cnt)) return;
+		}
 	}
 
 	setupModelDataStorage();
@@ -145,12 +149,18 @@ ModelUnitlist::setupModelData (void)
 			addModelData (uhte, uir);
 		}
 	} else {
-		for (int i=0; i<d.b->uhtinfo->cnt; i++) {
-			uhte = d.b->uhtinfo->list[i];
+		if (d.pflag && d.cflag) {
+			for (int i=0; i<d.b->uhtinfo->cnt; i++) {
+				uhte = d.b->uhtinfo->list[i];
 
-			SPWAW_UHT_lookup (uhte, &(d.b->bdate), true, NULL, &uir, NULL);
+				SPWAW_UHT_lookup (uhte, &(d.b->bdate), true, NULL, &uir, NULL);
 
-			addModelData (uhte, uir);
+				addModelData (uhte, uir);
+			}
+		} else {
+			for (int i=0; i<d.birs_cnt; i++) {
+				addModelData (NULL, &(d.birs->uir[i]));
+			}
 		}
 	}
 
@@ -181,16 +191,32 @@ ModelUnitlist::clear (void)
 void
 ModelUnitlist::load (SPWAW_DOSSIER *dossier, bool fch)
 {
-	d.d = dossier; d.b = NULL; d.fchflag = fch;
+	d.d = dossier; d.b = NULL; d.birs = NULL;
+
+	d.fchflag = fch; d.pflag = d.cflag = false;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelUnitlist::load (SPWAW_BATTLE *battle)
+ModelUnitlist::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore)
 {
-	d.d = NULL; d.b = battle; d.fchflag = false;
+	d.d = NULL;
+
+	if (!battle) {
+		d.b = NULL;
+		d.birs = NULL;
+		d.birs_cnt = 0;
+	} else {
+		d.b = battle;
+		d.birs = isplayer
+			? (iscore ? &(d.b->info_sob->pbir_core) : &(d.b->info_sob->pbir_support))
+			: &(d.b->info_sob->obir_battle);
+		d.birs_cnt = d.birs->ucnt;
+	}
+
+	d.fchflag = false; d.pflag = isplayer; d.cflag = iscore;
 
 	setupModelData();
 	reset();
