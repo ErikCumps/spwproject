@@ -11,7 +11,10 @@
 #include "model/model_unitlist.h"
 #include "model/model_unitlist_data.h"
 
-#define	BASE_SIZE	160
+#define	BASE_SIZE	40
+#define	ICON_SIZE	16
+#define	VSB_WIDTH	16
+#define	SPACING		2
 
 GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 	: QListView (P)
@@ -41,7 +44,7 @@ GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 
 	setAlternatingRowColors (false);
 	setDragEnabled (false);
-	setIconSize (QSize(8,8));
+	setIconSize (QSize(ICON_SIZE,ICON_SIZE));
 	setSelectionBehavior (QAbstractItemView::SelectItems);
 	setSelectionMode (QAbstractItemView::SingleSelection);
 	//setTabKeyNavigation (true);
@@ -49,6 +52,7 @@ GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 	setTextElideMode (Qt::ElideRight);
 	setHorizontalScrollMode (QAbstractItemView::ScrollPerPixel);
 	setVerticalScrollMode (QAbstractItemView::ScrollPerItem);
+	setSpacing (SPACING);
 
 	/* Fix highlight palette for inactive items */
 	pal = palette();
@@ -60,7 +64,7 @@ GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 	setMaximumWidth (BASE_SIZE + 5);
 
 	setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
-	setHorizontalScrollBarPolicy (Qt::ScrollBarAsNeeded);
+	setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 
 	if (!connect (this, SIGNAL(activated(const QModelIndex&)), SLOT(select(const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_UNITLIST_INIT_FAILED, "failed to connect <activated> to <select>");
@@ -98,7 +102,7 @@ GuiUnitlistView::select (const QModelIndex &index)
 {
 	setCurrentIndex (index);
 	scrollTo (index);
-	emit selected (index.row());
+	emit selected (d.parent->d.lmodel->data(index, MDLU_UIDX_ROLE).toInt());
 }
 
 void
@@ -110,12 +114,15 @@ GuiUnitlistView::currentChanged (const QModelIndex &current, const QModelIndex &
 void
 GuiUnitlistView::refresh (void)
 {
-	int		w;
+	int		mmw, fmw, w;
 	QFontMetrics	fm(*d.font);
 
 	//DBG_TRACE_FENTER;
-	w = (d.parent->d.lmodel->max_width() * (fm.maxWidth()+1)) + 5;
-	setMinimumWidth (w);
-	setMaximumWidth (w);
+	mmw = d.parent->d.lmodel->max_width() + 1;
+	fmw = fm.maxWidth() + 1;
+	w = (mmw * fmw) + VSB_WIDTH + 5;
+	if (d.parent->d.lmodel->dossier_mode()) w += ICON_SIZE;
+
+	setMinimumWidth (w); setMaximumWidth (w);
 	//DBG_TRACE_FLEAVE;
 }

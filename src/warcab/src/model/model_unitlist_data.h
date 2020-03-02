@@ -14,9 +14,10 @@
 
 typedef struct s_MDLU_DATA {
 	int			idx;
+	int			uidx;
 	SPWAW_UHTE		*uhte;
-	bool			decomm;
 	SPWAW_DOSSIER_UIR	*uir;
+	bool			decomm;
 } MDLU_DATA;
 
 typedef enum e_MDLU_COLUMN {

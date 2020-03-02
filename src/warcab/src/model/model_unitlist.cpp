@@ -95,7 +95,7 @@ ModelUnitlist::freeModelDataStorage (void)
 }
 
 void
-ModelUnitlist::addModelData (SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir)
+ModelUnitlist::addModelData (int uidx, SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir)
 {
 	unsigned int		idx;
 	MDLU_DATA		*u;
@@ -107,7 +107,9 @@ ModelUnitlist::addModelData (SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir)
 
 	u = &(d.list[idx]);
 
-	u->uhte = uhte; u->uir = uir;
+	u->uidx = uidx;
+	u->uhte = uhte;
+	u->uir = uir;
 	u->decomm = u->uhte?SPWAW_UHT_is_decommissioned (u->uhte):false;
 }
 
@@ -146,7 +148,7 @@ ModelUnitlist::setupModelData (void)
 			if (!d.fchflag && SPWAW_UHT_is_decommissioned (uhte)) continue;
 			if (!SPWAW_UHT_lookup (uhte, &(uhte->FBD), true, NULL, &uir, NULL)) continue;
 
-			addModelData (uhte, uir);
+			addModelData (i, uhte, uir);
 		}
 	} else {
 		if (d.pflag && d.cflag) {
@@ -155,11 +157,11 @@ ModelUnitlist::setupModelData (void)
 
 				SPWAW_UHT_lookup (uhte, &(d.b->bdate), true, NULL, &uir, NULL);
 
-				addModelData (uhte, uir);
+				addModelData (i, uhte, uir);
 			}
 		} else {
 			for (int i=0; i<d.birs_cnt; i++) {
-				addModelData (NULL, &(d.birs->uir[i]));
+				addModelData (i, NULL, &(d.birs->uir[i]));
 			}
 		}
 	}
@@ -220,6 +222,12 @@ ModelUnitlist::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore)
 
 	setupModelData();
 	reset();
+}
+
+bool
+ModelUnitlist::dossier_mode (void)
+{
+	return (d.d != NULL);
 }
 
 int

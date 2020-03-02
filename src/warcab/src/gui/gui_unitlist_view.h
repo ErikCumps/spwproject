@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit list view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -34,7 +34,6 @@ public slots:
 
 private:
 	struct s_data {
-		bool		ishdr;
 		GuiHistory	*parent;
 		QFont		*font;
 	} d;

@@ -24,7 +24,10 @@ ModelUnitlist::MDLU_data_display (int /*row*/, int col, MDLU_DATA *data) const
 
 	switch (col) {
 		case MDLU_COLUMN_ID:
-			s.sprintf ("%s: %s", uir->snap->strings.uid, uir->snap->data.lname);
+			if (d.d != NULL)
+				s.sprintf ("%s", uir->snap->strings.uid);
+			else
+				s.sprintf ("%s: %s", uir->snap->strings.uid, uir->snap->data.lname);
 			break;
 		default:
 			break;
@@ -51,10 +54,8 @@ QVariant
 ModelUnitlist::MDLU_data_foreground (int /*row*/, int /*col*/, MDLU_DATA *data) const
 {
 	QVariant		v = QVariant();
-	SPWAW_DOSSIER_UIR	*uir;
 
 	if (!data) return (v);
-	uir = data->uir;
 
 	if (data->decomm) {
 		v = QBrush (*RES_color(RID_GM_DLT_INA));
@@ -69,6 +70,30 @@ ModelUnitlist::MDLU_data_background (int /*row*/, int /*col*/, MDLU_DATA *data) 
 {
 	if (!data) return (QVariant());
 	return (QBrush (*RES_color(RID_GMRC_BG_DEFAULT)));
+}
+
+QVariant
+ModelUnitlist::MDLU_data_decoration (int /*row*/, int col, MDLU_DATA *data) const
+{
+	QVariant		v = QVariant();
+
+	if (!data) return (v);
+
+	switch (col) {
+		case MDLU_COLUMN_ID:
+			if (d.d != NULL) {
+				if (data->decomm)
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_DECOMMISSIONED)));
+				else if (SPWAW_UHT_is_commissioned (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_COMMISSIONED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		default:
+			break;
+	}
+	return (v);
 }
 
 QVariant
@@ -91,8 +116,14 @@ ModelUnitlist::MDLU_data (int role, int row, int col) const
 		case Qt::BackgroundRole:
 			v = MDLU_data_background (row, col, &(d.list[row]));
 			break;
+		case Qt::DecorationRole:
+			v = MDLU_data_decoration (row, col, &(d.list[row]));
+			break;
 		case Qt::TextAlignmentRole:
 			v = QVariant (Qt::AlignVCenter);
+			break;
+		case MDLU_UIDX_ROLE:
+			v = QVariant (d.list[row].uidx);
 			break;
 		default:
 			break;

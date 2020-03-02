@@ -12,6 +12,8 @@
 #include "model.h"
 #include "model/model_unitlist_data.h"
 
+#define	MDLU_UIDX_ROLE	Qt::UserRole
+
 class ModelUnitlist	: public QAbstractTableModel
 {
 	Q_OBJECT
@@ -31,6 +33,7 @@ public:
 	void	clear		(void);
 	void	load		(SPWAW_DOSSIER *dossier, bool fch);
 	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore);
+	bool	dossier_mode	(void);
 
 	int	max_width	(void);
 	void	refresh		(void);
@@ -54,7 +57,7 @@ private:
 private:
 	void		setupModelDataStorage	(void);
 	void		freeModelDataStorage	(void);
-	void		addModelData		(SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir);
+	void		addModelData		(int uidx, SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir);
 	void		setupModelData		(void);
 	void		freeModelData		(bool all);
 
@@ -63,6 +66,7 @@ private:
 	QVariant	MDLU_data_font		(int row, int col, MDLU_DATA *data)	const;
 	QVariant	MDLU_data_foreground	(int row, int col, MDLU_DATA *data)	const;
 	QVariant	MDLU_data_background	(int row, int col, MDLU_DATA *data)	const;
+	QVariant	MDLU_data_decoration	(int row, int col, MDLU_DATA *data)	const;
 };
 
 #endif	/* MODEL_UNITLIST_H */
