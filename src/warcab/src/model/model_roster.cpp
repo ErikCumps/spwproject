@@ -21,6 +21,7 @@ typedef struct s_MDLR_COLUMN_DEF {
 #define	OFFS(m_)	offsetof(SPWAW_SNAP_OOB_UEL,m_)
 
 static MDLR_COLUMN_DEF coldef[MDLR_COLUMN_CNT] = {
+	{ MDLR_COLUMN_CDSTATUS,		"",		true,	NULL,		SPWDLT_NONE,	0			},
 	{ MDLR_COLUMN_UID,		"#",		true,	MDLR_cmp_uid,	SPWDLT_NONE,	0			},
 	{ MDLR_COLUMN_UNIT,		"Unit",		true,	MDLR_cmp_unit,	SPWDLT_STR,	OFFS(data.dname)	}, // FIXME: designation, actually
 	{ MDLR_COLUMN_RNK,		"Rank",		true,	MDLR_cmp_rnk,	SPWDLT_INT,	OFFS(data.brank)	},
@@ -166,7 +167,7 @@ ModelRoster::freeModelDataStorage (void)
 }
 
 void
-ModelRoster::sortModelData (void)
+ModelRoster::setupSortMap (void)
 {
 	int	i;
 
@@ -290,7 +291,7 @@ ModelRoster::setupModelData (void)
 	/* Update final list and row counts */
 	d.row_cnt = d.list_use;
 
-	sortModelData();
+	setupSortMap();
 
 	DBG_TRACE_FLEAVE;
 }

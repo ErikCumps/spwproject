@@ -389,6 +389,8 @@ GuiRoster::set_filter_tgt (int idx)
 void
 GuiRoster::sort (GuiRosterView *who, int idx, Qt::SortOrder order)
 {
+	if (idx == MDLR_COLUMN_CDSTATUS) return;
+
 	d.model->sort (idx, order);
 
 	if (who != d.bdy_roster) d.bdy_roster->sort (idx, order);

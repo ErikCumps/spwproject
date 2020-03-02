@@ -267,11 +267,23 @@ ModelRoster::MDLR_data_decoration (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 	uir = data->uir;
 
 	switch (col) {
+		case MDLR_COLUMN_CDSTATUS:
+			if (!d.tflag) {
+				if (d.cb && SPWAW_UHT_is_decommissioned (data->uhte, &(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_DECOMMISSIONED)));
+				else if (d.cb && SPWAW_UHT_is_commissioned (data->uhte, &(d.cb->bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_COMMISSIONED)));
+				else if (!d.cb && data->decomm)
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_DECOMMISSIONED)));
+				else if (!d.cb && SPWAW_UHT_is_commissioned (data->uhte))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_COMMISSIONED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
 		case MDLR_COLUMN_UID:
 			if (d.mflag && !d.tflag) {
-				if (d.cb && SPWAW_UHT_is_commissioned (data->uhte, &(d.cb->bdate)))
-					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_COMMISSIONED)));
-				else if (d.cb && SPWAW_UHT_is_reassigned (data->uhte, &(d.cb->bdate)))
+				if (d.cb && SPWAW_UHT_is_reassigned (data->uhte, &(d.cb->bdate)))
 					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REASSIGNED)));
 				else if (!d.cb && SPWAW_UHT_has_reassignment (data->uhte))
 					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REASSIGNED)));

@@ -118,7 +118,7 @@ private:
 private:
 	void		setupModelDataStorage	(void);
 	void		freeModelDataStorage	(void);
-	void		sortModelData		(void);
+	void		setupSortMap		(void);
 	void		addModelData		(SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSIER_UIR *cuir, SPWAW_DOSSIER_UIR *ruir);
 	void		setupModelData		(void);
 	void		freeModelData		(bool all);

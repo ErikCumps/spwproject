@@ -166,7 +166,7 @@ GuiRosterView::reload (bool sort, bool mflag)
 		d.mflag = mflag;
 		apply_layout (false);
 	}
-	if (d.sidx < 0) { d.sidx = 0; d.sord = Qt::AscendingOrder; }
+	if (d.sidx < 0) { d.sidx = MDLR_COLUMN_UID; d.sord = Qt::AscendingOrder; }
 	if (sort || d.parent->d.Vautosort) sortByColumn (d.sidx, d.sord);
 	refresh();
 }
@@ -238,6 +238,7 @@ leave:
 void
 GuiRosterView::build_rlayout (void)
 {
+	d.rlayout[MDLR_COLUMN_CDSTATUS]	= ICON_SIZE + 7;
 	d.rlayout[MDLR_COLUMN_UID]	= BASE_SIZE;
 	d.rlayout[MDLR_COLUMN_UNIT]	= (BASE_SIZE * 3);
 	d.rlayout[MDLR_COLUMN_RNK]	= (BASE_SIZE * 2);
@@ -265,6 +266,7 @@ GuiRosterView::build_rlayout (void)
 void
 GuiRosterView::build_mlayout (void)
 {
+	d.mlayout[MDLR_COLUMN_CDSTATUS]	= ICON_SIZE + 7;
 	d.mlayout[MDLR_COLUMN_UID]	= ((BASE_SIZE * 1) + ICON_SIZE);
 	d.mlayout[MDLR_COLUMN_UNIT]	= ((BASE_SIZE * 3) + ICON_SIZE);
 	d.mlayout[MDLR_COLUMN_RNK]	= ((BASE_SIZE * 2) + ICON_SIZE);
@@ -293,6 +295,7 @@ void
 GuiRosterView::apply_layout (bool reset)
 {
 	int	*layout = d.mflag ? d.mlayout : d.rlayout;
+	int	w;
 
 	if (d.ishdr) {
 		for (int i=0; i<=MDLR_COLUMN_UNIT; i++) {
@@ -303,8 +306,15 @@ GuiRosterView::apply_layout (bool reset)
 			setColumnHidden (i, true);
 		}
 
-		setMinimumWidth (layout[MDLR_COLUMN_UID] + layout[MDLR_COLUMN_UNIT] + 5);
-		setMaximumWidth (layout[MDLR_COLUMN_UID] + layout[MDLR_COLUMN_UNIT] + 5);
+		w = layout[MDLR_COLUMN_UID] + layout[MDLR_COLUMN_UNIT] + 5;
+		if (d.mflag) {
+			setColumnHidden (MDLR_COLUMN_CDSTATUS, false);
+			w += layout[MDLR_COLUMN_CDSTATUS];
+		} else {
+			setColumnHidden (MDLR_COLUMN_CDSTATUS, true);
+		}
+
+		setMinimumWidth (w); setMaximumWidth (w);
 	} else {
 		for (int i=0; i<=MDLR_COLUMN_UNIT; i++) {
 			setColumnHidden (i, true);
