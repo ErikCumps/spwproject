@@ -120,8 +120,10 @@ GuiUnitlistView::refresh (void)
 	//DBG_TRACE_FENTER;
 	mmw = d.parent->d.lmodel->max_width() + 1;
 	fmw = fm.maxWidth() + 1;
-	w = (mmw * fmw) + VSB_WIDTH + 5;
+	w = (mmw * fmw) + VSB_WIDTH + 6;
 	if (d.parent->d.lmodel->dossier_mode()) w += ICON_SIZE;
+
+	DBG_log ("GuiUnitlistView: mmw=%d, fmw=%d, VSB=%d, dossier=%d, w=%d\n", mmw, fmw, VSB_WIDTH, d.parent->d.lmodel->dossier_mode(), w);
 
 	setMinimumWidth (w); setMaximumWidth (w);
 	//DBG_TRACE_FLEAVE;
