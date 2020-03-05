@@ -12,6 +12,13 @@
 #include "gui_private.h"
 #include "model/model_roster_data.h"
 
+typedef enum e_GRV_MODE {
+	GRV_MODE_DOSSIER = 0,
+	GRV_MODE_BATTLE,
+	GRV_MODE_TURN,
+	GRV_MODE_LIMIT
+} GRV_MODE;
+
 class GuiRosterView	: public QTableView
 {
 	Q_OBJECT
@@ -29,7 +36,7 @@ public:
 #endif	/* EXPERIMENTAL */
 
 public:
-	void	reload		(bool sort, bool mflag);
+	void	reload		(GRV_MODE grvm, bool sort, bool mflag);
 	void	resort		(void);
 	void	refresh		(void);
 
@@ -60,10 +67,12 @@ private:
 		int		sidx;
 		Qt::SortOrder	sord;
 
+		GRV_MODE	grvm;
 		bool		mflag;
 	} d;
 
 private:
+	void	apply_grvmode	(void);
 	void	build_rlayout	(void);
 	void	build_mlayout	(void);
 	void	apply_layout	(bool reset);

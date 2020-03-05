@@ -10,6 +10,7 @@
 #define GUI_ROSTER_H	1
 
 #include "gui_private.h"
+#include "gui_roster_view.h"
 #include "model/model_filter.h"
 #include "model/model_dossier.h"
 #include "model/model_roster.h"
@@ -79,6 +80,7 @@ private:
 		bool			cflag;
 		bool			mflag;
 		bool			psort;
+		GRV_MODE		grvmode;
 
 		MDLR_HILITE		*hl_array;
 		int			hl_count;

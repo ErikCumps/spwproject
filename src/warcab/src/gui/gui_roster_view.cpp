@@ -18,6 +18,38 @@
 
 // TODO: rename NUMBER_SIZE to something more appropriate
 
+typedef bool GRV_VISIBILITY[GRV_MODE_LIMIT];
+
+GRV_VISIBILITY	grvmode[MDLR_COLUMN_CNT] = {
+	{ true,  true, false },	/* MDLR_COLUMN_CDSTATUS	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_UID	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_UNIT	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_RNK	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_LDR	*/
+	{ false, true, true  },	/* MDLR_COLUMN_STATUS	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_KILL	*/
+	{ true,  true, false },	/* MDLR_COLUMN_EXP	*/
+	{ true,  true, false },	/* MDLR_COLUMN_MOR	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_SUP	*/
+	{ true,  true, false },	/* MDLR_COLUMN_RAL	*/
+	{ true,  true, false },	/* MDLR_COLUMN_INF	*/
+	{ true,  true, false },	/* MDLR_COLUMN_ARM	*/
+	{ true,  true, false },	/* MDLR_COLUMN_ART	*/
+	{ true,  true, true  },	/* MDLR_COLUMN_MEN	*/
+	{ false, true, true  },	/* MDLR_COLUMN_RDY	*/
+	{ false, true, true  },	/* MDLR_COLUMN_KIA	*/
+	{ false, true, true  },	/* MDLR_COLUMN_DMG	*/
+	{ false, true, true  },	/* MDLR_COLUMN_SEEN	*/
+	{ false, true, true  },	/* MDLR_COLUMN_ABAND	*/
+	{ false, true, true  },	/* MDLR_COLUMN_LOADED	*/
+	{ true,  true, false },	/* MDLR_COLUMN_TYPE	*/
+	{ true,  true, false },	/* MDLR_COLUMN_CLASS	*/
+	{ true,  true, false },	/* MDLR_COLUMN_COST	*/
+	{ true,  true, false },	/* MDLR_COLUMN_SPEED	*/
+};
+
+MDLR_COLUMN HDR_LIMIT = MDLR_COLUMN_UNIT;
+
 GuiRosterView::GuiRosterView (bool hdr, GuiRoster *roster, QWidget *P)
 	: QTableView (P)
 {
@@ -74,6 +106,9 @@ GuiRosterView::GuiRosterView (bool hdr, GuiRoster *roster, QWidget *P)
 
 	build_rlayout();
 	build_mlayout();
+
+	d.grvm = GRV_MODE_DOSSIER;
+	apply_grvmode();
 
 	d.mflag = false;
 	apply_layout (true);
@@ -160,10 +195,20 @@ GuiRosterView::contextMenuEvent (QContextMenuEvent *event)
 #endif	/* EXPERIMENTAL */
 
 void
-GuiRosterView::reload (bool sort, bool mflag)
+GuiRosterView::reload (GRV_MODE grvm, bool sort, bool mflag)
 {
+	bool	apply = false;
+
+	if (d.grvm != grvm) {
+		d.grvm = grvm;
+		apply = true;
+	}
 	if (d.mflag != mflag) {
 		d.mflag = mflag;
+		apply = true;
+	}
+	if (apply) {
+		apply_grvmode ();
 		apply_layout (false);
 	}
 	if (d.sidx < 0) { d.sidx = MDLR_COLUMN_UID; d.sord = Qt::AscendingOrder; }
@@ -236,6 +281,28 @@ leave:
 }
 
 void
+GuiRosterView::apply_grvmode (void)
+{
+	grvmode[MDLR_COLUMN_CDSTATUS][GRV_MODE_BATTLE] = d.mflag;
+
+	if (d.ishdr) {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnHidden (i, !grvmode[i][d.grvm]);
+		}
+		for (int i=(HDR_LIMIT+1); i<MDLR_COLUMN_CNT; i++) {
+			setColumnHidden (i, true);
+		}
+	} else {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnHidden (i, true);
+		}
+		for (int i=(HDR_LIMIT+1); i<MDLR_COLUMN_CNT; i++) {
+			setColumnHidden (i, !grvmode[i][d.grvm]);
+		}
+	}
+}
+
+void
 GuiRosterView::build_rlayout (void)
 {
 	d.rlayout[MDLR_COLUMN_CDSTATUS]	= ICON_SIZE + 7;
@@ -261,6 +328,8 @@ GuiRosterView::build_rlayout (void)
 	d.rlayout[MDLR_COLUMN_LOADED]	= (BASE_SIZE * 2);
 	d.rlayout[MDLR_COLUMN_TYPE]	= (BASE_SIZE * 4);
 	d.rlayout[MDLR_COLUMN_CLASS]	= (BASE_SIZE * 3);
+	d.rlayout[MDLR_COLUMN_COST]	= NUMBER_SIZE;
+	d.rlayout[MDLR_COLUMN_SPEED]	= NUMBER_SIZE;
 }
 
 void
@@ -289,39 +358,26 @@ GuiRosterView::build_mlayout (void)
 	d.mlayout[MDLR_COLUMN_LOADED]	= (BASE_SIZE * 2);
 	d.mlayout[MDLR_COLUMN_TYPE]	= (BASE_SIZE * 4);
 	d.mlayout[MDLR_COLUMN_CLASS]	= (BASE_SIZE * 3);
+	d.mlayout[MDLR_COLUMN_COST]	= NUMBER_SIZE;
+	d.mlayout[MDLR_COLUMN_SPEED]	= NUMBER_SIZE;
 }
 
 void
 GuiRosterView::apply_layout (bool reset)
 {
 	int	*layout = d.mflag ? d.mlayout : d.rlayout;
-	int	w;
 
 	if (d.ishdr) {
-		for (int i=0; i<=MDLR_COLUMN_UNIT; i++) {
-			setColumnWidth (i,  layout[i]);
-			setColumnHidden (i, false);
-		}
-		for (int i=(MDLR_COLUMN_UNIT+1); i<MDLR_COLUMN_CNT; i++) {
-			setColumnHidden (i, true);
-		}
-
-		w = layout[MDLR_COLUMN_UID] + layout[MDLR_COLUMN_UNIT] + 5;
-		if (d.mflag) {
-			setColumnHidden (MDLR_COLUMN_CDSTATUS, false);
-			w += layout[MDLR_COLUMN_CDSTATUS];
-		} else {
-			setColumnHidden (MDLR_COLUMN_CDSTATUS, true);
+		int w = 0;
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnWidth (i, layout[i]);
+			if (!isColumnHidden(i)) w += layout[i];
 		}
 
 		setMinimumWidth (w); setMaximumWidth (w);
 	} else {
-		for (int i=0; i<=MDLR_COLUMN_UNIT; i++) {
-			setColumnHidden (i, true);
-		}
-		for (int i=(MDLR_COLUMN_UNIT+1); i<MDLR_COLUMN_CNT; i++) {
+		for (int i=(HDR_LIMIT+1); i<MDLR_COLUMN_CNT; i++) {
 			if (reset || (columnWidth (i) < layout[i])) setColumnWidth (i, layout[i]);
-			setColumnHidden (i, false);
 		}
 	}
 }

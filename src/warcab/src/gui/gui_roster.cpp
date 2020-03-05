@@ -7,7 +7,6 @@
  */
 
 #include "gui_roster.h"
-#include "gui_roster_view.h"
 #include "gui_reports_dossier.h"
 #include "gui_reports_battle.h"
 #include "gui_reports_bturn.h"
@@ -255,6 +254,7 @@ GuiRoster::update (bool forced)
 				if (!d.pdata->data.d) return (skip);
 
 				d.model->load (d.pdata->data.d, CFG_full_history());
+				d.grvmode = GRV_MODE_DOSSIER;
 				break;
 			case MDLD_TREE_BATTLE:
 				if (!d.pdata->data.b) return (skip);
@@ -262,6 +262,7 @@ GuiRoster::update (bool forced)
 				d.pcurr = d.pdata;
 				d.pbase = d.pdata->prev ? d.pdata->prev : d.pdata;
 				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
+				d.grvmode = GRV_MODE_BATTLE;
 				break;
 			case MDLD_TREE_BTURN:
 				if (!d.pdata->data.t) return (skip);
@@ -274,6 +275,7 @@ GuiRoster::update (bool forced)
 					d.pbase = d.pdata->parent->cfirst;
 					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
 				}
+				d.grvmode = GRV_MODE_TURN;
 				break;
 			default:
 				break;
@@ -307,8 +309,8 @@ GuiRoster::refresh (bool forced)
 	skip = update(forced);
 	if (skip) goto leave;
 
-	d.hdr_roster->reload (d.psort || d.Vautosort, d.mflag);
-	d.bdy_roster->reload (d.psort || d.Vautosort, d.mflag);
+	d.hdr_roster->reload (d.grvmode, d.psort || d.Vautosort, d.mflag);
+	d.bdy_roster->reload (d.grvmode, d.psort || d.Vautosort, d.mflag);
 
 	d.psort = false;
 
@@ -334,8 +336,8 @@ GuiRoster::prevcmp_change (int state)
 	d.Vprevcmp = (state != Qt::Unchecked);
 
 	refresh();
-	d.hdr_roster->reload (false, d.mflag);
-	d.bdy_roster->reload (false, d.mflag);
+	d.hdr_roster->reload (d.grvmode, false, d.mflag);
+	d.bdy_roster->reload (d.grvmode, false, d.mflag);
 }
 
 void
@@ -345,8 +347,8 @@ GuiRoster::autosort_change (int state)
 
 	if (d.Vautosort) {
 		refresh();
-		d.hdr_roster->reload(false, d.mflag);
-		d.bdy_roster->reload(false, d.mflag);
+		d.hdr_roster->reload(d.grvmode, false, d.mflag);
+		d.bdy_roster->reload(d.grvmode, false, d.mflag);
 	}
 }
 
