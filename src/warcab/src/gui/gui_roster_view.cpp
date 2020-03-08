@@ -223,6 +223,23 @@ GuiRosterView::resort (void)
 }
 
 void
+GuiRosterView::refresh (void)
+{
+	QModelIndex	idx;
+
+	DBG_TRACE_FENTER;
+
+	if (!d.ishdr) goto leave;
+
+	int p = verticalScrollBar()->value ();
+
+	emit wantscroll (p);
+
+leave:
+	DBG_TRACE_FLEAVE;
+}
+
+void
 GuiRosterView::scroll (int d)
 {
 	this->verticalScrollBar()->setValue (d);
@@ -261,23 +278,6 @@ void
 GuiRosterView::currentChanged (const QModelIndex &current, const QModelIndex &/*previous*/)
 {
 	emit selected (this, current);
-}
-
-void
-GuiRosterView::refresh (void)
-{
-	QModelIndex	idx;
-
-	DBG_TRACE_FENTER;
-
-	if (!d.ishdr) goto leave;
-
-	int p = verticalScrollBar()->value ();
-
-	emit wantscroll (p);
-
-leave:
-	DBG_TRACE_FLEAVE;
 }
 
 void
@@ -373,6 +373,7 @@ GuiRosterView::apply_layout (bool reset)
 			setColumnWidth (i, layout[i]);
 			if (!isColumnHidden(i)) w += layout[i];
 		}
+		w += 5;
 
 		setMinimumWidth (w); setMaximumWidth (w);
 	} else {
