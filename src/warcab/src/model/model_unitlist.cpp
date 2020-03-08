@@ -131,7 +131,11 @@ ModelUnitlist::setupModelData (void)
 	} else {
 		if (!d.b) return;
 		if (d.pflag && d.cflag) {
-			if (!(d.row_cnt = d.b->uhtinfo->cnt)) return;
+			if (d.b->uhtinfo) {
+				if (!(d.row_cnt = d.b->uhtinfo->cnt)) return;
+			} else {
+				if (!(d.row_cnt = d.birs_cnt)) return;
+			}
 		} else {
 			if (!(d.row_cnt = d.birs_cnt)) return;
 		}
