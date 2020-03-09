@@ -72,23 +72,13 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 		case MDLR_COLUMN_LDR:
 			s = uir->snap->data.lname;
 			break;
-		case MDLR_COLUMN_TYPE:
-			s = uir->snap->strings.utype;
-			break;
-		case MDLR_COLUMN_CLASS:
-			s = uir->snap->strings.uclass;
-			break;
-		case MDLR_COLUMN_KILL:
-			s.setNum (uir->snap->attr.gen.kills);
-			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
-			break;
 		case MDLR_COLUMN_STATUS:
 			s = uir->snap->strings.status;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
-		case MDLR_COLUMN_SEEN:
-			s = uir->snap->data.spotted ? "spotted" : "hidden";
-			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
+		case MDLR_COLUMN_KILL:
+			s.setNum (uir->snap->attr.gen.kills);
+			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_EXP:
 			s.setNum (uir->snap->data.exp);
@@ -122,6 +112,10 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 			s.setNum (uir->snap->data.hcnt);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
+		case MDLR_COLUMN_RDY:
+			s.sprintf ("%6.2f %%", uir->snap->attr.gen.ready * 100.0);
+			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
+			break;
 		case MDLR_COLUMN_KIA:
 			s.setNum (uir->snap->data.hcnt - uir->snap->data.hcnt_left);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
@@ -130,9 +124,9 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 			s.setNum (uir->snap->data.damage);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
-		case MDLR_COLUMN_RDY:
-			s.sprintf ("%6.2f %%", uir->snap->attr.gen.ready * 100.0);
-			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
+		case MDLR_COLUMN_SEEN:
+			s = uir->snap->data.spotted ? "spotted" : "hidden";
+			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_ABAND:
 			switch (uir->snap->data.aband) {
@@ -154,6 +148,12 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 		case MDLR_COLUMN_LOADED:
 			s = uir->snap->data.loaded ? "yes" : "no";
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
+			break;
+		case MDLR_COLUMN_TYPE:
+			s = uir->snap->strings.utype;
+			break;
+		case MDLR_COLUMN_CLASS:
+			s = uir->snap->strings.uclass;
 			break;
 		case MDLR_COLUMN_COST:
 			s.setNum (uir->snap->data.cost);
@@ -197,6 +197,7 @@ ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 		v = QBrush (*RES_color(RID_GM_DLT_INA));
 	} else if (SPWDLT_check (dlt)) {
 		switch (col) {
+			case MDLR_COLUMN_RNK:
 			case MDLR_COLUMN_KILL:
 			case MDLR_COLUMN_EXP:
 			case MDLR_COLUMN_MOR:
@@ -210,10 +211,10 @@ ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 				v = QBrush (*RES_color((SPWDLT_summary (dlt)<0) ? RID_GM_DLT_NEG : RID_GM_DLT_POS));
 				break;
 			case MDLR_COLUMN_STATUS:
-			case MDLR_COLUMN_SEEN:
 			case MDLR_COLUMN_SUP:
 			case MDLR_COLUMN_KIA:
 			case MDLR_COLUMN_DMG:
+			case MDLR_COLUMN_SEEN:
 			case MDLR_COLUMN_ABAND:
 				v = QBrush (*RES_color((SPWDLT_summary (dlt)<0) ? RID_GM_DLT_POS : RID_GM_DLT_NEG));
 				break;
@@ -361,7 +362,6 @@ ModelRoster::MDLR_data (int role, int row, int col) const
 			v = MDLR_data_decoration (row, col, d.smap[row].data, &(d.smap[row].data->dlt[col]));
 			break;
 		case Qt::TextAlignmentRole:
-			//v = QVariant (Qt::AlignVCenter | Qt::AlignRight);
 			v = QVariant (Qt::AlignVCenter);
 			break;
 		default:
