@@ -14,7 +14,6 @@
 #define	BASE_SIZE	40
 #define	ICON_SIZE	16
 #define	VSB_WIDTH	16
-#define	SPACING		2
 
 GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 	: QListView (P)
@@ -52,7 +51,6 @@ GuiUnitlistView::GuiUnitlistView (GuiHistory *history, QWidget *P)
 	setTextElideMode (Qt::ElideRight);
 	setHorizontalScrollMode (QAbstractItemView::ScrollPerPixel);
 	setVerticalScrollMode (QAbstractItemView::ScrollPerItem);
-	setSpacing (SPACING);
 
 	/* Fix highlight palette for inactive items */
 	pal = palette();
