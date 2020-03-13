@@ -476,11 +476,10 @@ SPWAW_bdate2str (SPWAW_BATTLE_DATE *bdate, char *buf, int len, bool tolog)
 	if (!buf || !len) return (SPWERR_OK);
 	memset (buf, 0, len);
 
+	SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate), tolog);
 	if (tolog) {
-		SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate), true);
 		snprintf (buf, len - 1, "%s<B>%05u", bbdate, bdate->btlidx);
 	} else {
-		SPWAW_date2str (&(bdate->date), bbdate, sizeof (bbdate), false);
 		if (bdate->btlidx == SPWAW_NOBTLIDX) {
 			snprintf (buf, len - 1, "%s", bbdate);
 		} else {
@@ -510,7 +509,7 @@ SPWAW_tdate_cmp (SPWAW_TURN_DATE *a, SPWAW_TURN_DATE *b)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_tdate2str (SPWAW_TURN_DATE *tdate, char *buf, int len)
+SPWAW_tdate2str (SPWAW_TURN_DATE *tdate, char *buf, int len, bool tolog)
 {
 	char	btdate[64];
 
@@ -519,8 +518,16 @@ SPWAW_tdate2str (SPWAW_TURN_DATE *tdate, char *buf, int len)
 	if (!buf || !len) return (SPWERR_OK);
 	memset (buf, 0, len);
 
-	SPWAW_date2str (&(tdate->date), btdate, sizeof (btdate));
-	snprintf (buf, len - 1, "%s<T>%05u", btdate, tdate->turn);
+	SPWAW_date2str (&(tdate->date), btdate, sizeof (btdate), tolog);
+	if (tolog) {
+		snprintf (buf, len - 1, "%s<T>%05u", btdate, tdate->turn);
+	} else {
+		if (SPWAW_isMonthOnlyDate(&(tdate->date))) {
+			snprintf (buf, len - 1, "%s, turn %u", btdate, tdate->turn);
+		} else {
+			snprintf (buf, len - 1, "%s", btdate);
+		}
+	}
 
 	return (SPWERR_OK);
 

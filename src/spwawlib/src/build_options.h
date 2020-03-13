@@ -16,10 +16,10 @@
 #define	PACKLOGGING	0
 
 /* Set to 1 to enable unit/formation detection logging */
-#define	UFDLOGGING	0
+#define	UFDLOGGING	1
 
 /* Set to 1 to enable unit/formation detection tracing */
-#define	UFDTRACING	0
+#define	UFDTRACING	1
 
 /* Set to 1 to enable RA tracing */
 #define	RATRACING	0
