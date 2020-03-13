@@ -24,6 +24,8 @@ ModelUnitlist::ModelUnitlist (QFont *rgfont, QFont *dcfont, QObject *parent)
 ModelUnitlist::~ModelUnitlist (void)
 {
 	DBG_TRACE_DESTRUCT;
+
+	freeModelData(true);
 }
 
 QVariant
