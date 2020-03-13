@@ -147,12 +147,12 @@ ModelHistory::setupModelDataStorage (void)
 	if (d.campaign) {
 		if (d.dref != d.dptr.d) {
 			d.dref = d.dptr.d;
-			fill =true;
+			fill = true;
 		}
 	} else {
 		if (d.dref != d.dptr.b) {
 			d.dref = d.dptr.b;
-			fill =true;
+			fill = true;
 		}
 	}
 
@@ -314,6 +314,7 @@ void
 ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int uidx)
 {
 	d.dptr.d	= dossier;
+	d.dref		= NULL;
 	d.campaign	= true;
 	d.pflag		= true;
 	d.cflag		= true;
@@ -328,6 +329,7 @@ void
 ModelHistory::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx)
 {
 	d.dptr.b	= battle;
+	d.dref		= NULL;
 	d.campaign	= false;
 	d.pflag		= isplayer;
 	d.cflag		= iscore;
