@@ -8,13 +8,15 @@
 
 #include "model_unitlist.h"
 
-ModelUnitlist::ModelUnitlist (QObject *parent)
+ModelUnitlist::ModelUnitlist (QFont *rgfont, QFont *dcfont, QObject *parent)
 	: QAbstractTableModel (parent)
 {
 	DBG_TRACE_CONSTRUCT;
 
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
+
+	d.rgfont = rgfont; d.dcfont = dcfont;
 
 	header << "Unit";
 }

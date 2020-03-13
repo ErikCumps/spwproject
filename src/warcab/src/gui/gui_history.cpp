@@ -32,11 +32,12 @@ GuiHistory::GuiHistory (QWidget *P)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	GUINEW (d.lmodel, ModelUnitlist(), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "unitlist data model");
+	GUINEW (d.rgfont, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "rgfont");
+	GUINEW (d.dcfont, QFont ("Courier", 8, QFont::Normal, true) , ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "dcfont");
 
-	GUINEW (d.hmodel, ModelHistory(), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "history data model");
+	GUINEW (d.lmodel, ModelUnitlist(d.rgfont, d.dcfont), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "unitlist data model");
 
-	GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "font");
+	GUINEW (d.hmodel, ModelHistory(d.rgfont, d.dcfont), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "history data model");
 
 	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "layout");
 
@@ -48,7 +49,16 @@ GuiHistory::GuiHistory (QWidget *P)
 
 	GUINEW (d.spacer, QSpacerItem (1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), ERR_GUI_SMAP_INIT_FAILED, "spacer");
 
-	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "split");
+	GUINEW (d.separator, QFrame (this), ERR_GUI_REPORTS_INIT_FAILED, "separator");
+	d.separator->setFrameStyle (QFrame::HLine);
+
+	GUINEW (d.dfont, QFont (), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "detail font");
+
+	GUINEW (d.detail, QLabel (this), ERR_GUI_REPORTS_INIT_FAILED, "detail label");
+	d.detail->setSizePolicy (QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+	d.detail->setFont (*d.dfont);
+
+	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "master split");
 	d.split->setChildrenCollapsible (false);
 
 	GUINEW (d.unitlist, GuiUnitlistView (this, d.split), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "unitlist");
@@ -63,7 +73,9 @@ GuiHistory::GuiHistory (QWidget *P)
 	d.layout->addWidget (d.highlight,	0, 0, 1, 1);
 	d.layout->addWidget (d.prevcmp,		0, 1, 1, 1);
 	d.layout->addItem   (d.spacer,		0, 1, 1, 2);
-	d.layout->addWidget (d.split,		1, 0, 1, 4);
+	d.layout->addWidget (d.separator,	1, 0, 1, 4);
+	d.layout->addWidget (d.detail,		2, 0, 1, 4);
+	d.layout->addWidget (d.split,		3, 0, 1, 4);
 
 	if (!connect (d.prevcmp, SIGNAL(stateChanged(int)), SLOT (prevcmp_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "failed to connect <prevcmp:stateChanged> to <prevcmp_change>");
@@ -96,6 +108,7 @@ GuiHistory::GuiHistory (QWidget *P)
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "failed to connect <hdr_history:selected> to <selected>");
 
 	d.pflag = d.cflag = true;
+	d.mflag = false;
 
 	SET_GUICLS_NOERR;
 }
@@ -105,9 +118,12 @@ GuiHistory::~GuiHistory (void)
 	DBG_TRACE_DESTRUCT;
 
 	// QT deletes child widgets
-	delete d.font;
 	delete d.lmodel;
 	delete d.hmodel;
+
+	delete d.rgfont;
+	delete d.dcfont;
+	delete d.dfont;
 }
 
 void
@@ -118,7 +134,7 @@ GuiHistory::set_parent (GuiRptDsr *parent, bool player)
 	d.pflag	 = player;
 	d.cflag	 = true;
 
-	d.prevcmp->setText ("Last battle only?");
+	d.prevcmp->setText ("Compare with previous battle?");
 	d.prevcmp->setHidden (false);
 
 	d.hl_array = hilite_dossier;
@@ -143,22 +159,6 @@ GuiHistory::set_parent (GuiRptBtl *parent, bool player, bool core)
 }
 
 void
-GuiHistory::set_parent (GuiRptTrn *parent, bool player)
-{
-	d.ptype	 = MDLD_TREE_BTURN;
-	d.pptr.t = parent;
-	d.pflag	 = player;
-	d.cflag	 = false;
-
-	d.prevcmp->setText ("This turn only?");
-	d.prevcmp->setHidden (false);
-
-	d.hl_array = hilite_battle;
-	d.hl_count = ARRAYCOUNT(hilite_battle);
-	setup_highlight();
-}
-
-void
 GuiHistory::setup_highlight (void)
 {
 	d.highlight->clear();
@@ -171,8 +171,8 @@ GuiHistory::update (bool forced)
 {
 	MDLD_TREE_ITEM	*item = NULL;
 	bool		skip;
-	QModelIndex	idx;
-	MDLH_INFO	info;
+	QModelIndex	lidx;
+	QModelIndex	hidx;
 	QString		s;
 
 	DBG_TRACE_FENTER;
@@ -180,9 +180,11 @@ GuiHistory::update (bool forced)
 	switch (d.ptype) {
 		case MDLD_TREE_DOSSIER:
 			item = d.pptr.d ? d.pptr.d->current() : NULL;
+			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
 			break;
 		case MDLD_TREE_BATTLE:
 			item = d.pptr.b ? d.pptr.b->current() : NULL;
+			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
 			break;
 		default:
 			break;
@@ -198,33 +200,29 @@ GuiHistory::update (bool forced)
 
 	d.pdata = item;
 	if (d.pdata) {
-		idx = d.hdr_history->currentIndex();
+		lidx = d.unitlist->currentIndex();
+		hidx = d.hdr_history->currentIndex();
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
 				d.hmodel->load (item->data.d, d.Vprevcmp, d.uidx);
 				d.lmodel->load (item->data.d, CFG_full_history());
-				d.hdr_history->battleview (false);
-				d.bdy_history->battleview (false);
+				d.ghvmode = GHV_MODE_DOSSIER;
 				break;
 			case MDLD_TREE_BATTLE:
 				d.hmodel->load (item->data.b, d.pflag, d.cflag, d.Vprevcmp, d.uidx);
-				d.lmodel->load (item->data.b);
-				d.hdr_history->battleview (true);
-				d.bdy_history->battleview (true);
+				d.lmodel->load (item->data.b, d.pflag, d.cflag);
+				d.ghvmode = GHV_MODE_BATTLE;
 				break;
 			default:
 				break;
 		}
-		d.hdr_history->select (idx);
-
-		d.hmodel->info (info);
-
-		idx = d.unitlist->currentIndex();
-		d.unitlist->select (idx);
+		d.unitlist->select (lidx);
+		d.hdr_history->select (hidx);
 	} else {
 		d.hmodel->clear();
 		d.lmodel->clear();
 	}
+	d.hmodel->set_marking (d.mflag);
 
 skip_data_update:
 	/* Only emit these signals when widget is visible */
@@ -249,8 +247,8 @@ GuiHistory::refresh (bool forced)
 	if (skip) goto leave;
 
 	d.unitlist->reload();
-	d.hdr_history->reload();
-	d.bdy_history->reload();
+	d.hdr_history->reload(d.ghvmode, d.mflag);
+	d.bdy_history->reload(d.ghvmode, d.mflag);
 
 leave:
 	DBG_TRACE_FLEAVE;
@@ -267,8 +265,27 @@ GuiHistory::prevcmp_change (int state)
 void
 GuiHistory::set_select (int idx)
 {
+	MDLH_IDENTITY		id;
+	char			buf[1024];
+	UtilStrbuf		str(buf, sizeof (buf), true, true);
+
 	d.uidx = (idx < 0) ? 0 : (USHORT)idx;
 	d.hmodel->select (d.uidx);
+	d.hmodel->identity (id);
+
+	str.printf ("%s history", (d.ghvmode == GHV_MODE_DOSSIER) ? "Campaign" : "Battle");
+	if (id.uir) {
+		str.printf (" for: <b>%s %s %s %s</b>",
+			id.uir->snap->strings.uid, id.uir->snap->data.dname,
+			id.uir->snap->strings.rank, id.uir->snap->data.lname);
+		if (id.uhte) {
+			SPWAW_BDATE (id.uhte->FBD, CD, false);
+			SPWAW_BDATE (SPWAW_UHT_last (id.uhte)->LBD, DD, false);
+			str.printf ("&nbsp;&nbsp;&nbsp;[%s -> %s]", CD, DD);
+		}
+	}
+	d.detail->setText (buf);
+
 	d.hdr_history->refresh();
 	d.bdy_history->refresh();
 }

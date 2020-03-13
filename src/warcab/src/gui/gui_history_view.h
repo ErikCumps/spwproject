@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit history view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,13 @@
 #define	GUI_HISTORY_VIEW_H	1
 
 #include "gui_private.h"
+#include "model/model_history_data.h"
+
+typedef enum e_GHV_MODE {
+	GHV_MODE_DOSSIER = 0,
+	GHV_MODE_BATTLE,
+	GHV_MODE_LIMIT
+} GHV_MODE;
 
 class GuiHistoryView	: public QTableView
 {
@@ -22,11 +29,11 @@ public:
 	SL_ERROR	error_code;
 
 public:
-	void	reload		(void);
-	void	refresh		(void);
+	void	wheelEvent	(QWheelEvent *e);
 
 public:
-	void	wheelEvent	(QWheelEvent *e);
+	void	reload		(GHV_MODE ghvm, bool mflag);
+	void	refresh		(void);
 
 signals:
 	void	scrolled	(int dx, int dy);
@@ -39,14 +46,25 @@ public slots:
 	void	wheel		(QWheelEvent *e);
 	void	select		(const QModelIndex &index);
 	void	currentChanged	(const QModelIndex &current, const QModelIndex &previous);
-	void	battleview	(bool set);
 
 private:
 	struct s_data {
 		bool		ishdr;
 		GuiHistory	*parent;
 		QFont		*font;
+
+		int		rlayout[MDLH_COLUMN_CNT];
+		int		mlayout[MDLH_COLUMN_CNT];
+
+		GHV_MODE	ghvm;
+		bool		mflag;
 	} d;
+
+private:
+	void	apply_ghvmode	(void);
+	void	build_rlayout	(void);
+	void	build_mlayout	(void);
+	void	apply_layout	(bool reset);
 };
 
 #endif	/* GUI_HISTORY_VIEW_H */

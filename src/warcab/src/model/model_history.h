@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -22,18 +22,17 @@ typedef enum e_MDLH_HILITE {
 } MDLH_HILITE;
 extern const char *MDLH_HILITE_lookup (MDLH_HILITE e);
 
-typedef struct s_MDLH_INFO {
-	int			uidx;
-	SPWAW_DOSSIER_BIR	*bir;
-	int			bir_cnt;
-} MDLH_INFO;
+typedef struct s_MDLH_IDENTITY {
+	SPWAW_DOSSIER_UIR	*uir;
+	SPWAW_UHTE		*uhte;
+} MDLH_IDENTITY;
 
 class ModelHistory	: public QAbstractTableModel
 {
 	Q_OBJECT
 
 public:
-	ModelHistory	(QObject *parent = 0);
+	ModelHistory	(QFont *rgfont, QFont *dcfont, QObject *parent = 0);
 	~ModelHistory	(void);
 
 public:
@@ -45,10 +44,11 @@ public:
 
 public:
 	void	clear		(void);
-	void	load		(SPWAW_DOSSIER *dossier, bool prevcmp, int unit);
-	void	load		(SPWAW_BATTLE *battle, bool player, bool iscore, bool prevcmp, int unit);
-	void	info		(MDLH_INFO &info);
+	void	load		(SPWAW_DOSSIER *dossier, bool prevcmp, int uidx);
+	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx);
+	void	set_marking	(bool mark);
 	void	select		(USHORT uidx);
+	void	identity	(MDLH_IDENTITY &id);
 	void	highlight	(MDLH_HILITE h);
 	int	max_width	(int column);
 	void	refresh		(void);
@@ -56,6 +56,8 @@ public:
 private:
 	QList<QVariant>		header;
 	struct s_data {
+		QFont			*rgfont;
+		QFont			*dcfont;
 		int			col_cnt;
 		union u_dptr {
 			SPWAW_DOSSIER	*d;
@@ -64,27 +66,28 @@ private:
 		bool			campaign;
 		bool			pflag;
 		bool			cflag;
+		bool			mflag;
 		bool			pvcmp;
-		USHORT			uidx;
+		void			*dref;
+		unsigned int		uidx;
+		MDLH_IDENTITY		id;
 		int			row_cnt;
-		SPWAW_DOSSIER_BIR	*bbir;
-		int			bbir_cnt;
-		SPWAW_BATTLE		*list_ref;
 		MDLH_DATA		*list;
 		int			list_cnt;
 		SPWDLT			*dlts;
-
 		MDLH_HILITE		hilite;
 	} d;
 
 private:
+	void		setupModelDataStorage	(void);
+	void		freeModelDataStorage	(void);
+	void		addModelData		(unsigned int idx, SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSIER_UIR *buir);
 	void		setupModelData		(void);
-	void		setupModelData_campaign	(void);
-	void		setupModelData_battle	(void);
 	void		freeModelData		(bool all);
 
-	QVariant	MDLH_data		(int role, int row, int col)			const;
+	QVariant	MDLH_data		(int role, int row, int col)				const;
 	QVariant	MDLH_data_display	(int row, int col, MDLH_DATA *data, SPWDLT *dlt)	const;
+	QVariant	MDLH_data_font		(int row, int col, MDLH_DATA *data, SPWDLT *dlt)	const;
 	QVariant	MDLH_data_foreground	(int row, int col, MDLH_DATA *data, SPWDLT *dlt)	const;
 	QVariant	MDLH_data_background	(int row, int col, MDLH_DATA *data, SPWDLT *dlt)	const;
 	QVariant	MDLH_data_decoration	(int row, int col, MDLH_DATA *data, SPWDLT *dlt)	const;

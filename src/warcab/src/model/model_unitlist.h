@@ -19,7 +19,7 @@ class ModelUnitlist	: public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	ModelUnitlist	(QObject *parent = 0);
+	ModelUnitlist	(QFont *rgfont, QFont *dcfont, QObject *parent = 0);
 	~ModelUnitlist	(void);
 
 public:
@@ -41,6 +41,8 @@ public:
 private:
 	QList<QVariant>		header;
 	struct s_data {
+		QFont			*rgfont;
+		QFont			*dcfont;
 		SPWAW_DOSSIER		*d;
 		bool			fchflag;
 		SPWAW_BATTLE		*b;

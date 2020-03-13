@@ -68,7 +68,7 @@
 #define	STR_FULL_HISTORY_WHATSTHIS						\
 	"Select this to enable full campaign history, which also shows\n"	\
 	"data for decommissioned units on the following Dossier tabs:\n"	\
-	"Overview, Status, Progress, Kills, Losses and Roster."			\
+	"Overview, Status, Progress, Kills, Losses, Roster and History."	\
 
 CfgDlg::CfgDlg (CfgDlgData *data)
 	: QDialog (0, Qt::Dialog)

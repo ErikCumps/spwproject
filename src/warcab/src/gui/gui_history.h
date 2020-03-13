@@ -10,6 +10,7 @@
 #define GUI_HISTORY_H	1
 
 #include "gui_private.h"
+#include "gui_history_view.h"
 #include "model/model_dossier.h"
 #include "model/model_history.h"
 
@@ -29,7 +30,6 @@ public:
 public:
 	void	set_parent	(GuiRptDsr *parent, bool player);
 	void	set_parent	(GuiRptBtl *parent, bool player, bool core = false);
-	void	set_parent	(GuiRptTrn *parent, bool player);
 	void	refresh		(bool forced = false);
 
 signals:
@@ -44,14 +44,18 @@ public slots:
 
 private:
 	struct s_data {
+		QFont			*rgfont;
+		QFont			*dcfont;
 		ModelUnitlist		*lmodel;
 		ModelHistory		*hmodel;
 
-		QFont			*font;
 		QGridLayout		*layout;
 		QComboBox		*highlight;
 		QCheckBox		*prevcmp;
 		QSpacerItem		*spacer;
+		QFrame			*separator;
+		QFont			*dfont;
+		QLabel			*detail;
 		QSplitter		*split;
 		GuiUnitlistView		*unitlist;
 		GuiHistoryView		*hdr_history;
@@ -61,11 +65,13 @@ private:
 		union u_pptr {
 			GuiRptDsr	*d;
 			GuiRptBtl	*b;
-			GuiRptTrn	*t;
 		}	pptr;
 		MDLD_TREE_ITEM		*pdata;
 		bool			pflag;
 		bool			cflag;
+		bool			mflag;
+		GHV_MODE		ghvmode;
+
 		MDLH_HILITE		*hl_array;
 		int			hl_count;
 
@@ -76,7 +82,7 @@ private:
 
 private:
 	void	setup_highlight	(void);
-	bool	update	(bool forced);
+	bool	update		(bool forced);
 };
 
 #endif	/* GUI_HISTORY_H */

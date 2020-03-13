@@ -25,7 +25,6 @@ public:
 public:
 	void	set_parent	(GuiRptDsr *parent, bool pflag);
 	void	set_parent	(GuiRptBtl *parent, bool pflag, bool core = false);
-	void	set_parent	(GuiRptTrn *parent, bool pflag);
 	void	refresh		(bool forced = false);
 
 private:

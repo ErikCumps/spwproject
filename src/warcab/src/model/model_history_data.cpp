@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -35,39 +35,19 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 
 	if (!data || !dlt) return (v);
 
-	switch (col) {
-		case MDLH_COLUMN_DATE:
+	if (col == MDLH_COLUMN_DATE) {
 			if (this->d.campaign) {
-				SPWAW_date2str (&(data->date.bdate.date), buf, sizeof (buf));
-				if (SPWAW_isMonthOnlyDate(&(data->date.bdate.date))) {
-					s.sprintf ("#%d %s", data->date.bdate.btlidx+1, buf);
-				} else {
-					s.sprintf ("%s", buf);
-				}
+				SPWAW_bdate2str (&(data->date.bdate), buf, sizeof (buf), false);
 			} else {
-				SPWAW_date2str (&(data->date.tdate.date), buf, sizeof (buf));
-				if (SPWAW_isMonthOnlyDate(&(data->date.tdate.date))) {
-					s.sprintf ("%s, turn %u", buf, data->date.tdate.turn);
-				} else {
-					s.sprintf ("%s", buf);
-				}
+				SPWAW_tdate2str (&(data->date.tdate), buf, sizeof (buf), false);
 			}
-			break;
-		case MDLH_COLUMN_CFLAG:
-			switch (data->cflag) {
-				case MDLH_CFLAG_REPLACED:
-					s = "N";
-					break;
-				case MDLH_CFLAG_REASSIGNED:
-					s = "R";
-					break;
-				case MDLH_CFLAG_PROMOTED:
-					s = "P";
-					break;
-				default:
-					break;
-			}
-			break;
+			s.sprintf ("%s", buf);
+			return (QVariant (s));
+	}
+
+	if (!data->uir) return (v);
+
+	switch (col) {
 		case MDLH_COLUMN_UID:
 			s = data->uir->snap->strings.uid;
 			break;
@@ -81,6 +61,10 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 		case MDLH_COLUMN_LDR:
 			s = data->uir->snap->data.lname;
 			break;
+		case MDLH_COLUMN_STATUS:
+			s = data->uir->snap->strings.status;
+			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
+			break;
 		case MDLH_COLUMN_KILL:
 			s.setNum (data->uir->snap->attr.gen.kills);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
@@ -91,6 +75,10 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			break;
 		case MDLH_COLUMN_MOR:
 			s.setNum (data->uir->snap->data.mor);
+			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
+			break;
+		case MDLH_COLUMN_SUP:
+			s.setNum (data->uir->snap->data.sup);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_RAL:
@@ -109,22 +97,20 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			s.setNum (data->uir->snap->data.art);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
-		case MDLH_COLUMN_TYPE:
-			s = data->uir->snap->strings.utype;
-			break;
-		case MDLH_COLUMN_CLASS:
-			s = data->uir->snap->strings.uclass;
+		case MDLH_COLUMN_MEN:
+			s.setNum (data->uir->snap->data.hcnt);
+			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_RDY:
 			s.sprintf ("%6.2f %%", data->uir->snap->attr.gen.ready * 100.0);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
 			break;
-		case MDLH_COLUMN_SUP:
-			s.setNum (data->uir->snap->data.sup);
+		case MDLH_COLUMN_KIA:
+			s.setNum (data->uir->snap->data.hcnt - data->uir->snap->data.hcnt_left);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
-		case MDLH_COLUMN_STATUS:
-			s = data->uir->snap->strings.status;
+		case MDLH_COLUMN_DMG:
+			s.setNum (data->uir->snap->data.damage);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_SEEN:
@@ -152,9 +138,11 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			s = data->uir->snap->data.loaded ? "yes" : "no";
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
 			break;
-		case MDLH_COLUMN_DMG:
-			s.setNum (data->uir->snap->data.damage);
-			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
+		case MDLH_COLUMN_TYPE:
+			s = data->uir->snap->strings.utype;
+			break;
+		case MDLH_COLUMN_CLASS:
+			s = data->uir->snap->strings.uclass;
 			break;
 		case MDLH_COLUMN_COST:
 			s.setNum (data->uir->snap->data.cost);
@@ -164,10 +152,26 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			s.setNum (data->uir->snap->data.speed);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
+		case MDLH_COLUMN_DATE:
 		default:
 			break;
 	}
 	if (!s.isNull()) v = QVariant (s);
+	return (v);
+}
+
+QVariant
+ModelHistory::MDLH_data_font (int /*row*/, int /*col*/, MDLH_DATA *data, SPWDLT * /*dlt*/) const
+{
+	QVariant	v = QVariant();
+
+	if (!data) return (v);
+
+	if (!data->decomm) {
+		if (d.rgfont) v = *d.rgfont;
+	} else {
+		if (d.dcfont) v = *d.dcfont;
+	}
 	return (v);
 }
 
@@ -178,7 +182,9 @@ ModelHistory::MDLH_data_foreground (int /*row*/, int col, MDLH_DATA *data, SPWDL
 
 	if (!data || !dlt) return (v);
 
-	if (SPWDLT_check (dlt)) {
+	if (data->decomm) {
+		v = QBrush (*RES_color(RID_GM_DLT_INA));
+	} else  if (SPWDLT_check (dlt)) {
 		switch (col) {
 			case MDLH_COLUMN_RNK:
 			case MDLH_COLUMN_KILL:
@@ -188,15 +194,17 @@ ModelHistory::MDLH_data_foreground (int /*row*/, int col, MDLH_DATA *data, SPWDL
 			case MDLH_COLUMN_INF:
 			case MDLH_COLUMN_ARM:
 			case MDLH_COLUMN_ART:
+			case MDLH_COLUMN_MEN:
 			case MDLH_COLUMN_RDY:
 			case MDLH_COLUMN_SPEED:
 				v = QBrush (*RES_color((SPWDLT_summary (dlt)<0) ? RID_GM_DLT_NEG : RID_GM_DLT_POS));
 				break;
-			case MDLH_COLUMN_SUP:
 			case MDLH_COLUMN_STATUS:
+			case MDLH_COLUMN_SUP:
+			case MDLH_COLUMN_KIA:
+			case MDLH_COLUMN_DMG:
 			case MDLH_COLUMN_SEEN:
 			case MDLH_COLUMN_ABAND:
-			case MDLH_COLUMN_DMG:
 				v = QBrush (*RES_color((SPWDLT_summary (dlt)<0) ? RID_GM_DLT_POS : RID_GM_DLT_NEG));
 				break;
 			default:
@@ -205,28 +213,6 @@ ModelHistory::MDLH_data_foreground (int /*row*/, int col, MDLH_DATA *data, SPWDL
 		}
 	} else {
 		v = QBrush (*RES_color(RID_GMRC_FG_DEFAULT));
-		switch (col) {
-			case MDLH_COLUMN_CFLAG:
-				switch (data->cflag) {
-					case MDLH_CFLAG_NONE:
-						v = QBrush (*RES_color(RID_GMRC_FG_DEFAULT));
-						break;
-					case MDLH_CFLAG_REPLACED:
-						v = QBrush (*RES_color(RID_GM_DLT_NEG));
-						break;
-					case MDLH_CFLAG_PROMOTED:
-						v = QBrush (*RES_color(RID_GM_DLT_POS));
-						break;
-					default:
-						v = QBrush (*RES_color(RID_GM_DLT_NTR));
-						break;
-				}
-				break;
-
-			default:
-				v = QBrush (*RES_color(RID_GMRC_FG_DEFAULT));
-				break;
-		}
 	}
 	return (v);
 }
@@ -241,7 +227,10 @@ ModelHistory::MDLH_data_background (int /*row*/, int /*col*/, MDLH_DATA *data, S
 	switch (d.hilite) {
 		case MDLH_HILITE_NONE:
 		default:
-			v = QBrush (*RES_color(RID_GMRC_BG_DEFAULT));
+			if (data->uir != NULL)
+				v = QBrush (*RES_color(RID_GMRC_BG_DEFAULT));
+			else
+				v = QBrush (*RES_color(RID_RGB_GRAY_75));
 			break;
 		case MDLH_HILITE_RANK:
 			v = QBrush (*RES_GUI_color (data->uir->snap->data.rank));
@@ -260,16 +249,54 @@ ModelHistory::MDLH_data_background (int /*row*/, int /*col*/, MDLH_DATA *data, S
 }
 
 QVariant
-ModelHistory::MDLH_data_decoration (int /*row*/, int col, MDLH_DATA *data, SPWDLT *dlt) const
+ModelHistory::MDLH_data_decoration (int /*row*/, int col, MDLH_DATA *data, SPWDLT * /*dlt*/) const
 {
 	QVariant	v = QVariant();
 
-	if (!data || !dlt) return (v);
+	if (!data) return (v);
 
 	switch (col) {
+		case MDLH_COLUMN_UID:
+			if (d.mflag && data->uhte) {
+				if (SPWAW_UHT_is_reassigned (data->uhte, &(data->date.bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REASSIGNED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		case MDLH_COLUMN_UNIT:
+			if (d.mflag && data->uhte) {
+				if (SPWAW_UHT_is_upgraded (data->uhte, &(data->date.bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_UPGRADED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
 		case MDLH_COLUMN_RNK:
-			if (data->uir->snap->data.rank == SPWAW_RKIA)
-				v = QVariant (QIcon (*RES_PIXMAP_NONE));
+			if (d.mflag && data->uhte) {
+				if (SPWAW_UHT_is_promoted (data->uhte, &(data->date.bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_PROMOTED)));
+				else if (SPWAW_UHT_is_demoted (data->uhte, &(data->date.bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_DEMOTED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		case MDLH_COLUMN_LDR:
+			if (d.mflag && data->uhte) {
+				if (SPWAW_UHT_is_replaced (data->uhte, &(data->date.bdate)))
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_REPLACED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
+			break;
+		case MDLH_COLUMN_STATUS:
+			if (data->uir) {
+				if (data->uir->snap->data.rank == SPWAW_RKIA)
+					v = QVariant (QIcon (*RES_pixmap (RID_ICON_UHT_DESTROYED)));
+				else
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));
+			}
 			break;
 		default:
 			break;
@@ -287,12 +314,15 @@ ModelHistory::MDLH_data (int role, int row, int col) const
 	if ((row < 0) || (row >= d.row_cnt)) return (v);
 
 	data = &(d.list[row]);
-	if (!data->uir || !data->dlt) return (v);
+	if (!data->dlt) return (v);
 	dlt = &(data->dlt[col]);
 
 	switch (role) {
 		case Qt::DisplayRole:
 			v = MDLH_data_display (row, col, data, dlt);
+			break;
+		case Qt::FontRole:
+			v = MDLH_data_font (row, col, data, dlt);
 			break;
 		case Qt::ForegroundRole:
 			v = MDLH_data_foreground (row, col, data, dlt);

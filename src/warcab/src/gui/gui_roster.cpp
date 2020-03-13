@@ -29,9 +29,10 @@ GuiRoster::GuiRoster (QWidget *P)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	GUINEW (d.model, ModelRoster (), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "data model");
+	GUINEW (d.rgfont, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "rgfont");
+	GUINEW (d.dcfont, QFont ("Courier", 8, QFont::Normal, true) , ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "dcfont");
 
-	GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "font");
+	GUINEW (d.model, ModelRoster (d.rgfont, d.dcfont), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "data model");
 
 	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "layout");
 
@@ -144,11 +145,13 @@ GuiRoster::~GuiRoster (void)
 	DBG_TRACE_DESTRUCT;
 
 	// QT deletes child widgets
-	delete d.font;
-	delete d.model;
+
 #if	EXPERIMENTAL
 	for (int h=MDLR_FILTER_NONE; h<=MDLR_FILTER_LIMIT; h++) xMDL_FILTER_free (&(d.Vftgts[h].list));
 #endif	/* EXPERIMENTAL */
+	delete d.model;
+	delete d.rgfont;
+	delete d.dcfont;
 }
 
 void

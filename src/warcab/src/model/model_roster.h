@@ -58,7 +58,7 @@ class ModelRoster	: public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	ModelRoster	(QObject *parent = 0);
+	ModelRoster	(QFont *rgfont = NULL, QFont *dcfont = NULL, QObject *parent = 0);
 	~ModelRoster	(void);
 
 public:
@@ -86,6 +86,8 @@ public:
 private:
 	QList<QVariant>		header;
 	struct s_data {
+		QFont			*rgfont;
+		QFont			*dcfont;
 		int			col_cnt;
 		SPWAW_DOSSIER_BIR	*birs;
 		int			birs_cnt;

@@ -65,13 +65,15 @@ MDLR_coldef (int col)
 	return (coldef_cache[col] = p);
 }
 
-ModelRoster::ModelRoster (QObject *parent)
+ModelRoster::ModelRoster (QFont *rgfont, QFont *dcfont, QObject *parent)
 	: QAbstractTableModel (parent)
 {
 	DBG_TRACE_CONSTRUCT;
 
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
+
+	d.rgfont = rgfont; d.dcfont = dcfont;
 
 	d.col_cnt = MDLR_COLUMN_CNT;
 	for (int i=0; i<d.col_cnt; i++) header << MDLR_coldef(i)->name;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,27 +19,28 @@ typedef struct s_MDLH_COLUMN_DEF {
 
 static MDLH_COLUMN_DEF coldef[MDLH_COLUMN_CNT] = {
 	{ MDLH_COLUMN_DATE,	"Date",		SPWDLT_NONE,	0			},
-	{ MDLH_COLUMN_CFLAG,	"",		SPWDLT_NONE,	0			},
 	{ MDLH_COLUMN_UID,	"#",		SPWDLT_CHR,	OFFS(strings.uid)	},
 	{ MDLH_COLUMN_UNIT,	"Unit",		SPWDLT_STR,	OFFS(data.dname)	}, // FIXME: designation, actually
 	{ MDLH_COLUMN_RNK,	"Rank",		SPWDLT_INT,	OFFS(data.brank)	},
 	{ MDLH_COLUMN_LDR,	"Leader",	SPWDLT_STR,	OFFS(data.lname)	},
+	{ MDLH_COLUMN_STATUS,	"Status",	SPWDLT_INT,	OFFS(data.status)	},
 	{ MDLH_COLUMN_KILL,	"Kills",	SPWDLT_INT,	OFFS(attr.gen.kills)	},
 	{ MDLH_COLUMN_EXP,	"Exp",		SPWDLT_INT,	OFFS(data.exp)		},
 	{ MDLH_COLUMN_MOR,	"Mor",		SPWDLT_INT,	OFFS(data.mor)		},
+	{ MDLH_COLUMN_SUP,	"Sup",		SPWDLT_INT,	OFFS(data.sup)		},
 	{ MDLH_COLUMN_RAL,	"Ral",		SPWDLT_INT,	OFFS(data.ral)		},
 	{ MDLH_COLUMN_INF,	"Inf",		SPWDLT_INT,	OFFS(data.inf)		},
 	{ MDLH_COLUMN_ARM,	"Arm",		SPWDLT_INT,	OFFS(data.arm)		},
 	{ MDLH_COLUMN_ART,	"Art",		SPWDLT_INT,	OFFS(data.art)		},
-	{ MDLH_COLUMN_TYPE,	"Type",		SPWDLT_INT,	OFFS(data.utype)	},
-	{ MDLH_COLUMN_CLASS,	"Class",	SPWDLT_INT,	OFFS(data.uclass)	},
+	{ MDLH_COLUMN_MEN,	"Men",		SPWDLT_INT,	OFFS(data.hcnt)		},
 	{ MDLH_COLUMN_RDY,	"Ready",	SPWDLT_DBL,	OFFS(attr.gen.ready)	},
-	{ MDLH_COLUMN_SUP,	"Sup",		SPWDLT_INT,	OFFS(data.sup)		},
-	{ MDLH_COLUMN_STATUS,	"Status",	SPWDLT_INT,	OFFS(data.status)	},
+	{ MDLH_COLUMN_KIA,	"KIA",		SPWDLT_NONE,	0			},	/* unstored item */
+	{ MDLH_COLUMN_DMG,	"Dmg",		SPWDLT_INT,	OFFS(data.damage)	},
 	{ MDLH_COLUMN_SEEN,	"Spotted",	SPWDLT_BOOL,	OFFS(data.spotted)	},
 	{ MDLH_COLUMN_ABAND,	"Abandoned",	SPWDLT_INT,	OFFS(data.aband)	},
 	{ MDLH_COLUMN_LOADED,	"Loaded",	SPWDLT_BOOL,	OFFS(data.loaded)	},
-	{ MDLH_COLUMN_DMG,	"Dmg",		SPWDLT_INT,	OFFS(data.damage)	},
+	{ MDLH_COLUMN_TYPE,	"Type",		SPWDLT_INT,	OFFS(data.utype)	},
+	{ MDLH_COLUMN_CLASS,	"Class",	SPWDLT_INT,	OFFS(data.uclass)	},
 	{ MDLH_COLUMN_COST,	"Cost",		SPWDLT_INT,	OFFS(data.cost)		},
 	{ MDLH_COLUMN_SPEED,	"Speed",	SPWDLT_INT,	OFFS(data.speed)	},
 };
@@ -61,13 +62,15 @@ MDLH_coldef (int col)
 	return (coldef_cache[col] = p);
 }
 
-ModelHistory::ModelHistory (QObject *parent)
+ModelHistory::ModelHistory (QFont *rgfont, QFont *dcfont, QObject *parent)
 	: QAbstractTableModel (parent)
 {
 	DBG_TRACE_CONSTRUCT;
 
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
+
+	d.rgfont = rgfont; d.dcfont = dcfont;
 
 	d.col_cnt = MDLH_COLUMN_CNT;
 	for (int i=0; i<d.col_cnt; i++) header << MDLH_coldef(i)->name;
@@ -122,162 +125,169 @@ ModelHistory::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelHistory::setupModelData_campaign (void)
+ModelHistory::setupModelDataStorage (void)
 {
-	int			i, j;
-	MDLH_DATA		*hd;
-	SPWAW_DOSSIER_BIR	*bir, *base;
-	SPWAW_DOSSIER_UIR	*buir;
-	int			cidx, bidx, pidx;
+	bool		fill = false;
+	MDLH_DATA	*hd;
 
-	/* Check data availability */
-	if (!d.dptr.d || (!(d.row_cnt = d.dptr.d->bcnt))) return;
-
-	/* Setup bbir */
-	d.bbir = &(d.dptr.d->bfirst->info_sob->pbir_core);
-	d.bbir_cnt = d.dptr.d->props.iucnt;
-
-	/* Check start unit index */
-	if (d.uidx >= d.bbir_cnt) { d.uidx = (USHORT)-1; d.row_cnt = 0; return; }
-
-	/* Free and/or allocate data storage if required */
 	if (d.list_cnt != d.row_cnt) {
+		/* Free previously allocated data storage */
 		if (d.list) SL_SAFE_FREE (d.list);
 		if (d.dlts) SL_SAFE_FREE (d.dlts);
-	}
-	if (!d.list) {
-		d.list_ref = NULL; d.list_cnt = d.row_cnt;
+
+		/* Allocate new data storage */
+		d.list_cnt = d.row_cnt;
 		SL_SAFE_CALLOC (d.list, d.list_cnt, sizeof (MDLH_DATA));
 		SL_SAFE_CALLOC (d.dlts, d.list_cnt * d.col_cnt, sizeof (SPWDLT));
 
-		/* Fill data */
-		for (i=0; i<d.list_cnt; i++) {
-			hd = &(d.list[i]);
+		fill = true;
+	}
 
-			hd->idx		= i;
-			hd->date.bdate	= d.dptr.d->blist[i]->bdate;
-			hd->dlt		= &(d.dlts[i*d.col_cnt]);
-			hd->cflag	= MDLH_CFLAG_NONE;
+	/* Update reference */
+	if (d.campaign) {
+		if (d.dref != d.dptr.d) {
+			d.dref = d.dptr.d;
+			fill =true;
+		}
+	} else {
+		if (d.dref != d.dptr.b) {
+			d.dref = d.dptr.b;
+			fill =true;
 		}
 	}
 
-	/* Update data */
-	base = NULL; cidx = d.uidx;
-	for (i=0; i<d.list_cnt; i++) {
-		hd = &(d.list[i]);
+	if (fill) {
+		/* Fill data */
+		for (int i=0; i<d.list_cnt; i++) {
+			hd = &(d.list[i]);
 
-		bir = &(d.dptr.d->blist[i]->info_sob->pbir_core);
-		hd->uir = (cidx != SPWAW_BADIDX) ? &(bir->uir[cidx]) : NULL;
-
-		if (!base) base = bir;
-		bidx = cidx;
-		if ((i != 0) && (bidx != SPWAW_BADIDX)) {
-			if (d.pvcmp) {
-				bidx = d.dptr.d->blist[i]->ra[cidx].src;
+			if (d.campaign) {
+				hd->date.bdate	= d.dptr.d->blist[i]->bdate;
 			} else {
-				j = i; bidx = d.dptr.d->blist[j]->ra[cidx].src;
-				while (j>1) bidx = d.dptr.d->blist[--j]->ra[bidx].src;
+				hd->date.tdate	= d.dptr.b->tlist[i]->tdate;
 			}
-		}
-		buir = (bidx != SPWAW_BADIDX) ? &(base->uir[bidx]) : NULL;
 
-		for (j=0; j<d.col_cnt; j++)
-			SPWDLT_prep (&(hd->dlt[j]), MDLH_coldef(j)->dtype, hd->uir ? hd->uir->snap : NULL, buir ? buir->snap : NULL, MDLH_coldef(j)->doffs);
-
-		if (d.pvcmp) {
-			base = bir;
-		}
-
-		if (i != 0) {
-			pidx = (cidx != SPWAW_BADIDX) ? d.dptr.d->blist[i]->ra[cidx].src : SPWAW_BADIDX;
-			if ((pidx != SPWAW_BADIDX) && d.dptr.d->blist[i-1]->ra[pidx].rpl) {
-				hd->cflag = MDLH_CFLAG_REPLACED;
-			} else if (pidx != cidx) {
-				hd->cflag = MDLH_CFLAG_REASSIGNED;
-			} else if ((pidx != SPWAW_BADIDX) && (d.dptr.d->blist[i-1]->info_sob->pbir_core.uir[pidx].snap->data.rank != hd->uir->snap->data.rank)) {
-				hd->cflag = MDLH_CFLAG_PROMOTED;
-			} else {
-				hd->cflag = MDLH_CFLAG_NONE;
-			}
-			cidx = (cidx != SPWAW_BADIDX) ? d.dptr.d->blist[i]->ra[cidx].dst : SPWAW_BADIDX;
-			//DEVASSERT ((cidx >= 0) && (cidx < d.dptr.d->ucnt));
+			hd->idx		= i;
+			hd->dlt		= &(d.dlts[i*d.col_cnt]);
 		}
 	}
 }
 
 void
-ModelHistory::setupModelData_battle (void)
+ModelHistory::freeModelDataStorage (void)
 {
-	int			i, j;
-	MDLH_DATA		*hd;
-	SPWAW_DOSSIER_BIR	*bir, *base;
-	SPWAW_DOSSIER_UIR	*buir;
+	d.dref = NULL;
+	if (d.list) SL_SAFE_FREE (d.list); d.list_cnt = 0;
+	if (d.dlts) SL_SAFE_FREE (d.dlts);
+}
 
-	/* Check data availability */
-	if (!d.dptr.b || (!(d.row_cnt = d.dptr.b->tcnt))) return;
+void
+ModelHistory::addModelData (unsigned int idx, SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSIER_UIR *buir)
+{
+	MDLH_DATA		*u;
+	SPWAW_SNAP_OOB_UEL	*s, *bs;
+	SPWDLT			*dlt;
 
-	/* Setup bbir */
-	d.bbir = d.pflag
-		? ( d.cflag ? &(d.dptr.b->info_sob->pbir_core) : &(d.dptr.b->info_sob->pbir_support))
-		: &(d.dptr.b->info_sob->obir_battle);
-	d.bbir_cnt = d.bbir->ucnt;
+	u = &(d.list[idx]);
 
-	/* Check start unit index */
-	if (d.uidx >= d.bbir_cnt) { d.uidx = (USHORT)-1; d.row_cnt = 0; return; }
+	u->uhte = uhte; u->uir = uir;
+	u->decomm = u->uhte?SPWAW_UHT_is_decommissioned (u->uhte):false;
 
-	/* Free and/or allocate data storage if required */
-	if ((d.list_ref != d.dptr.b) || (d.list_cnt != d.row_cnt)) {
-		if (d.list) SL_SAFE_FREE (d.list);
-		if (d.dlts) SL_SAFE_FREE (d.dlts);
-	}
-	if (!d.list) {
-		d.list_ref = d.dptr.b; d.list_cnt = d.row_cnt;
-		SL_SAFE_CALLOC (d.list, d.list_cnt, sizeof (MDLH_DATA));
-		SL_SAFE_CALLOC (d.dlts, d.list_cnt * d.col_cnt, sizeof (SPWDLT));
+	s = uir ? uir->snap : NULL;
+	bs = buir ? buir->snap : NULL;
 
-		/* Fill data */
-		for (i=0; i<d.list_cnt; i++) {
-			hd = &(d.list[i]);
-
-			hd->idx		= i;
-			hd->date.tdate	= d.dptr.b->tlist[i]->tdate;
-			hd->dlt		= &(d.dlts[i*d.col_cnt]);
-			hd->cflag	= MDLH_CFLAG_NONE;
-		}
-	}
-
-	/* Update data */
-	base = NULL;
-	for (i=0; i<d.list_cnt; i++) {
-		hd = &(d.list[i]);
-
-		bir = d.pflag
-			? ( d.cflag ? &(d.dptr.b->tlist[i]->info.pbir_core) : &(d.dptr.b->tlist[i]->info.pbir_support))
-			: &(d.dptr.b->tlist[i]->info.obir_battle);
-		hd->uir = &(bir->uir[d.uidx]);
-
-		if (!base) base = bir;
-		buir = &(base->uir[d.uidx]);
-
-		for (j=0; j<d.col_cnt; j++)
-			SPWDLT_prep (&(hd->dlt[j]), MDLH_coldef(j)->dtype, hd->uir->snap, buir->snap, MDLH_coldef(j)->doffs);
-
-		if (d.pvcmp) {
-			base = bir;
-		}
+	for (int j=0; j<d.col_cnt; j++) {
+		dlt = &(d.dlts[idx*d.col_cnt+j]);
+		SPWDLT_prep (dlt, MDLH_coldef(j)->dtype, s, bs, MDLH_coldef(j)->doffs);
 	}
 }
 
 void
 ModelHistory::setupModelData (void)
 {
+	bool			bad_uidx = false;
+	SPWAW_UHTE		*uhte = NULL;
+
 	DBG_TRACE_FENTER;
 
 	freeModelData (false);
-	if (d.campaign)
-		setupModelData_campaign();
-	else
-		setupModelData_battle();
+
+	if (d.campaign) {
+		/* Check data availability */
+		if (!d.dptr.d || (!(d.row_cnt = d.dptr.d->bcnt))) return;
+
+		/* Check selected UHTE index */
+		if (d.uidx >= d.dptr.d->uht.cnt) {
+			bad_uidx = true;
+		} else {
+			/* Record UIR */
+			uhte = d.dptr.d->uht.smap[d.uidx];
+			d.id.uir = SPWAW_UHT_lookup_SOBUIR (uhte, &(uhte->FBD), true);
+			d.id.uhte = uhte;
+		}
+	} else {
+		SPWAW_DOSSIER_BIR	*bbir = NULL;
+		unsigned int		bbir_cnt = 0;
+
+		/* Check data availability */
+		if (!d.dptr.b || (!(d.row_cnt = d.dptr.b->tcnt))) return;
+
+		/* Setup bbir */
+		bbir = d.pflag
+			? ( d.cflag ? &(d.dptr.b->info_sob->pbir_core) : &(d.dptr.b->info_sob->pbir_support))
+			: &(d.dptr.b->info_sob->obir_battle);
+		bbir_cnt = bbir->ucnt;
+
+		/* Check selected unit index */
+		if (d.uidx >= bbir_cnt) {
+			bad_uidx = true;
+		} else {
+			/* Record UIR */
+			d.id.uir = &(bbir->uir[d.uidx]);
+			d.id.uhte = NULL;
+		}
+	}
+
+	/* Early exit if invalid uhte or unit index */
+	if (bad_uidx) {
+		d.dref = NULL;
+		d.uidx = (unsigned int)-1; d.id.uir = NULL; d.id.uhte = NULL;
+		d.row_cnt = 0;
+		return;
+	}
+
+	setupModelDataStorage();
+
+	if (d.campaign) {
+		SPWAW_DOSSIER_UIR *base = NULL;
+		for (int i=0; i<d.list_cnt; i++) {
+			SPWAW_UHTE *buhte; SPWAW_DOSSIER_UIR *sobuir, *eobuir;
+			SPWAW_UHT_lookup (uhte, &(d.dptr.d->blist[i]->bdate), true, &buhte, &sobuir, &eobuir);
+
+			if (!base) base = eobuir ? d.id.uir : NULL;
+
+			addModelData (i, buhte, eobuir, base);
+
+			if (d.pvcmp) {
+				base = eobuir;
+			}
+		}
+	} else {
+		SPWAW_DOSSIER_BIR *base = NULL;
+		for (int i=0; i<d.list_cnt; i++) {
+			SPWAW_DOSSIER_BIR *bir = d.pflag
+				? ( d.cflag ? &(d.dptr.b->tlist[i]->info.pbir_core) : &(d.dptr.b->tlist[i]->info.pbir_support))
+				: &(d.dptr.b->tlist[i]->info.obir_battle);
+
+			if (!base) base = bir;
+
+			addModelData (i, NULL, &(bir->uir[d.uidx]), &(base->uir[d.uidx]));
+
+			if (d.pvcmp) {
+				base = bir;
+			}
+		}
+	}
 
 	DBG_TRACE_FLEAVE;
 }
@@ -285,13 +295,10 @@ ModelHistory::setupModelData (void)
 void
 ModelHistory::freeModelData (bool all)
 {
-	if (all) {
-		if (d.dlts) SL_SAFE_FREE (d.dlts);
-		if (d.list) SL_SAFE_FREE (d.list); d.list_cnt = 0;
-	}
+	if (all) freeModelDataStorage();
 
+	d.id.uir = NULL; d.id.uhte = NULL;
 	d.row_cnt = 0;
-	d.bbir = NULL; d.bbir_cnt = 0;
 }
 
 void
@@ -304,39 +311,37 @@ ModelHistory::clear (void)
 }
 
 void
-ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int unit)
+ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int uidx)
 {
 	d.dptr.d	= dossier;
 	d.campaign	= true;
 	d.pflag		= true;
 	d.cflag		= true;
 	d.pvcmp		= prevcmp;
-	d.uidx		= unit;
+	d.uidx		= uidx;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelHistory::load (SPWAW_BATTLE *battle, bool player, bool iscore, bool prevcmp, int unit)
+ModelHistory::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx)
 {
 	d.dptr.b	= battle;
 	d.campaign	= false;
-	d.pflag		= player;
+	d.pflag		= isplayer;
 	d.cflag		= iscore;
 	d.pvcmp		= prevcmp;
-	d.uidx		= unit;
+	d.uidx		= uidx;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelHistory::info (MDLH_INFO &info)
+ModelHistory::set_marking (bool mark)
 {
-	info.uidx    = d.uidx;
-	info.bir     = d.bbir;
-	info.bir_cnt = d.bbir_cnt;
+	d.mflag = mark;
 }
 
 void
@@ -346,6 +351,12 @@ ModelHistory::select (USHORT uidx)
 
 	setupModelData();
 	reset();
+}
+
+void
+ModelHistory::identity (MDLH_IDENTITY &id)
+{
+	id = d.id;
 }
 
 void

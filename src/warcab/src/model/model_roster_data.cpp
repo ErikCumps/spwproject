@@ -177,9 +177,10 @@ ModelRoster::MDLR_data_font (int /*row*/, int /*col*/, MDLR_DATA *data, SPWDLT *
 
 	if (!data) return (v);
 
-	if (data->decomm) {
-		// TODO: this should be parameterized?
-		v = QFont ("Courier", 8, QFont::Normal, true);
+	if (!data->decomm) {
+		if (d.rgfont) v = *d.rgfont;
+	} else {
+		if (d.dcfont) v = *d.dcfont;
 	}
 	return (v);
 }
@@ -262,10 +263,8 @@ QVariant
 ModelRoster::MDLR_data_decoration (int /*row*/, int col, MDLR_DATA *data, SPWDLT * /*dlt*/) const
 {
 	QVariant		v = QVariant();
-	SPWAW_DOSSIER_UIR	*uir;
 
 	if (!data) return (v);
-	uir = data->uir;
 
 	switch (col) {
 		case MDLR_COLUMN_CDSTATUS:
@@ -327,7 +326,7 @@ ModelRoster::MDLR_data_decoration (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 			}
 			break;
 		case MDLR_COLUMN_STATUS:
-			if (uir->snap->data.rank == SPWAW_RKIA)
+			if (data->uir->snap->data.rank == SPWAW_RKIA)
 				v = QVariant (QIcon (*RES_pixmap (RID_ICON_UHT_DESTROYED)));
 			else
 				v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));

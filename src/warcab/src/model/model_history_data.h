@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,47 +12,42 @@
 #include "../common.h"
 #include "model.h"
 
-typedef enum e_MDLH_CFLAG {
-	MDLH_CFLAG_NONE = 0,
-	MDLH_CFLAG_REPLACED,
-	MDLH_CFLAG_REASSIGNED,
-	MDLH_CFLAG_PROMOTED
-} MDLH_CFLAG;
-
 typedef struct s_MDLH_DATA {
-	int			idx;
 	union u_date {
 		SPWAW_BATTLE_DATE	bdate;
 		SPWAW_TURN_DATE		tdate;
 	} date;
+	int			idx;
+	SPWAW_UHTE		*uhte;
+	bool			decomm;
 	SPWAW_DOSSIER_UIR	*uir;
 	SPWDLT			*dlt;
-	MDLH_CFLAG		cflag;
 } MDLH_DATA;
 
 typedef enum e_MDLH_COLUMN {
 	MDLH_COLUMN_DATE = 0,
-	MDLH_COLUMN_CFLAG,
 	MDLH_COLUMN_UID,
 	MDLH_COLUMN_UNIT,
 	MDLH_COLUMN_RNK,
 	MDLH_COLUMN_LDR,
+	MDLH_COLUMN_STATUS,
 	MDLH_COLUMN_KILL,
 	MDLH_COLUMN_EXP,
 	MDLH_COLUMN_MOR,
+	MDLH_COLUMN_SUP,
 	MDLH_COLUMN_RAL,
 	MDLH_COLUMN_INF,
 	MDLH_COLUMN_ARM,
 	MDLH_COLUMN_ART,
-	MDLH_COLUMN_TYPE,
-	MDLH_COLUMN_CLASS,
+	MDLH_COLUMN_MEN,
 	MDLH_COLUMN_RDY,
-	MDLH_COLUMN_SUP,
-	MDLH_COLUMN_STATUS,
+	MDLH_COLUMN_KIA,
+	MDLH_COLUMN_DMG,
 	MDLH_COLUMN_SEEN,
 	MDLH_COLUMN_ABAND,
 	MDLH_COLUMN_LOADED,
-	MDLH_COLUMN_DMG,
+	MDLH_COLUMN_TYPE,
+	MDLH_COLUMN_CLASS,
 	MDLH_COLUMN_COST,
 	MDLH_COLUMN_SPEED,
 	MDLH_COLUMN_LAST = MDLH_COLUMN_SPEED

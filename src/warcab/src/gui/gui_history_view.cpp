@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit history view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,9 +12,42 @@
 #include "model/model_history_data.h"
 
 #define	BASE_SIZE	40
-#define	NUMBER_SIZE	(BASE_SIZE * 6 / 4)
+#define	NUMBER_SIZE	(BASE_SIZE * 5 / 3)
+#define	ICON_SIZE	16
 
 // TODO: rename NUMBER_SIZE to something more appropriate
+
+typedef bool GHV_VISIBILITY[GHV_MODE_LIMIT];
+
+GHV_VISIBILITY	ghvmode[MDLH_COLUMN_CNT] = {
+	{ true , true  },	/* MDLH_COLUMN_DATE	*/
+	{ true , false },	/* MDLH_COLUMN_UID	*/
+	{ true , false },	/* MDLH_COLUMN_UNIT	*/
+	{ true , false },	/* MDLH_COLUMN_RNK	*/
+	{ true , false },	/* MDLH_COLUMN_LDR	*/
+	{ false, true  },	/* MDLH_COLUMN_STATUS	*/
+	{ true , true  },	/* MDLH_COLUMN_KILL	*/
+	{ true , false },	/* MDLH_COLUMN_EXP	*/
+	{ true , false },	/* MDLH_COLUMN_MOR	*/
+	{ false, true  },	/* MDLH_COLUMN_SUP	*/
+	{ true , false },	/* MDLH_COLUMN_RAL	*/
+	{ true , false },	/* MDLH_COLUMN_INF	*/
+	{ true , false },	/* MDLH_COLUMN_ARM	*/
+	{ true , false },	/* MDLH_COLUMN_ART	*/
+	{ true , false },	/* MDLH_COLUMN_MEN	*/
+	{ false, true  },	/* MDLH_COLUMN_RDY	*/
+	{ true , true  },	/* MDLH_COLUMN_KIA	*/
+	{ true , true  },	/* MDLH_COLUMN_DMG	*/
+	{ false, true  },	/* MDLH_COLUMN_SEEN	*/
+	{ false, true  },	/* MDLH_COLUMN_ABAND	*/
+	{ false, true  },	/* MDLH_COLUMN_LOADED	*/
+	{ true , false },	/* MDLH_COLUMN_TYPE	*/
+	{ true , false },	/* MDLH_COLUMN_CLASS	*/
+	{ true , false },	/* MDLH_COLUMN_COST	*/
+	{ false, true  },	/* MDLH_COLUMN_SPEED	*/
+};
+
+MDLH_COLUMN HDR_LIMIT = MDLH_COLUMN_DATE;
 
 GuiHistoryView::GuiHistoryView (bool hdr, GuiHistory *history, QWidget *P)
 	: QTableView (P)
@@ -39,7 +72,7 @@ GuiHistoryView::GuiHistoryView (bool hdr, GuiHistory *history, QWidget *P)
 	setSortingEnabled (false);
 	setAlternatingRowColors (false);
 	setDragEnabled (false);
-	setIconSize (QSize(8,8));
+	setIconSize (QSize(ICON_SIZE,ICON_SIZE));
 	setSelectionBehavior (QAbstractItemView::SelectRows);
 	setSelectionMode (QAbstractItemView::SingleSelection);
 	//setTabKeyNavigation (true);
@@ -64,47 +97,20 @@ GuiHistoryView::GuiHistoryView (bool hdr, GuiHistory *history, QWidget *P)
 	if (d.ishdr) {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 		horizontalHeader()->setStretchLastSection (true);
-
-		for (int i=0; i<MDLH_COLUMN_CNT; i++) setColumnHidden (i, true);
-		setColumnHidden (MDLH_COLUMN_DATE, false);
-
-		setColumnWidth (MDLH_COLUMN_DATE,	BASE_SIZE * 3);
-
-		setMinimumWidth (BASE_SIZE * 3 + 5);
-		setMaximumWidth (BASE_SIZE * 3 + 5);
 	} else {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
 		horizontalHeader()->setStretchLastSection (true);
-
-		for (int i=0; i<MDLH_COLUMN_CNT; i++) setColumnHidden (i, false);
-		setColumnHidden (MDLH_COLUMN_DATE, true);
-		setColumnHidden (MDLH_COLUMN_LDR,  true);
-
-		setColumnWidth (MDLH_COLUMN_CFLAG,	BASE_SIZE / 2);
-		setColumnWidth (MDLH_COLUMN_UID,	BASE_SIZE);
-		setColumnWidth (MDLH_COLUMN_UNIT,	BASE_SIZE * 3);
-		setColumnWidth (MDLH_COLUMN_RNK,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_LDR,	BASE_SIZE * 3);
-		setColumnWidth (MDLH_COLUMN_KILL,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_EXP,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_MOR,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_RAL,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_INF,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_ARM,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_ART,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_TYPE,	BASE_SIZE * 4);
-		setColumnWidth (MDLH_COLUMN_CLASS,	BASE_SIZE * 3);
-		setColumnWidth (MDLH_COLUMN_RDY,	BASE_SIZE * 3);
-		setColumnWidth (MDLH_COLUMN_SUP,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_STATUS,	BASE_SIZE * 3);
-		setColumnWidth (MDLH_COLUMN_SEEN,	BASE_SIZE * 2);
-		setColumnWidth (MDLH_COLUMN_ABAND,	BASE_SIZE * 3 / 2);
-		setColumnWidth (MDLH_COLUMN_LOADED,	BASE_SIZE * 2);
-		setColumnWidth (MDLH_COLUMN_DMG,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_COST,	NUMBER_SIZE);
-		setColumnWidth (MDLH_COLUMN_SPEED,	NUMBER_SIZE);
 	}
 	setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOn);
+
+	build_rlayout();
+	build_mlayout();
+
+	d.ghvm = GHV_MODE_DOSSIER;
+	apply_ghvmode();
+
+	d.mflag = false;
+	apply_layout (true);
 
 	horizontalHeader()->setResizeMode (MDLH_COLUMN_LDR, QHeaderView::Interactive);
 	horizontalHeader()->setResizeMode (MDLH_COLUMN_TYPE, QHeaderView::Interactive);
@@ -125,14 +131,6 @@ GuiHistoryView::~GuiHistoryView (void)
 }
 
 void
-GuiHistoryView::reload (void)
-{
-	if (!d.parent->d.pdata) return;
-
-	refresh();
-}
-
-void
 GuiHistoryView::wheelEvent (QWheelEvent *e)
 {
 	if (!e) return;
@@ -142,6 +140,43 @@ GuiHistoryView::wheelEvent (QWheelEvent *e)
 	} else {
 		QAbstractScrollArea::wheelEvent (e);
 	}
+}
+
+void
+GuiHistoryView::reload (GHV_MODE ghvm, bool mflag)
+{
+	bool	apply = false;
+
+	if (d.ghvm != ghvm) {
+		d.ghvm = ghvm;
+		apply = true;
+	}
+	if (d.mflag != mflag) {
+		d.mflag = mflag;
+		apply = true;
+	}
+	if (apply) {
+		apply_ghvmode ();
+		apply_layout (false);
+	}
+	refresh();
+}
+
+void
+GuiHistoryView::refresh (void)
+{
+	QModelIndex	idx;
+
+	DBG_TRACE_FENTER;
+
+	if (!d.ishdr) goto leave;
+
+	int p = verticalScrollBar()->value ();
+
+	emit wantscroll (p);
+
+leave:
+	DBG_TRACE_FLEAVE;
 }
 
 void
@@ -169,47 +204,103 @@ GuiHistoryView::currentChanged (const QModelIndex &current, const QModelIndex &/
 }
 
 void
-GuiHistoryView::battleview (bool set)
+GuiHistoryView::apply_ghvmode (void)
 {
-	if (d.ishdr) return;
-
-	setColumnHidden (MDLH_COLUMN_CFLAG,	set);
-	setColumnHidden (MDLH_COLUMN_UID,	set);
-	setColumnHidden (MDLH_COLUMN_RNK,	set);
-	setColumnHidden (MDLH_COLUMN_LDR,	set);
-	setColumnHidden (MDLH_COLUMN_EXP,	set);
-	setColumnHidden (MDLH_COLUMN_MOR,	set);
-	setColumnHidden (MDLH_COLUMN_RAL,	set);
-	setColumnHidden (MDLH_COLUMN_INF,	set);
-	setColumnHidden (MDLH_COLUMN_ARM,	set);
-	setColumnHidden (MDLH_COLUMN_ART,	set);
-	setColumnHidden (MDLH_COLUMN_TYPE,	set);
-	setColumnHidden (MDLH_COLUMN_CLASS,	set);
-	setColumnHidden (MDLH_COLUMN_COST,	set);
-	setColumnHidden (MDLH_COLUMN_SPEED,	set);
-
-	setColumnHidden (MDLH_COLUMN_RDY,	!set);
-	setColumnHidden (MDLH_COLUMN_SUP,	!set);
-	setColumnHidden (MDLH_COLUMN_STATUS,	!set);
-	setColumnHidden (MDLH_COLUMN_SEEN,	!set);
-	setColumnHidden (MDLH_COLUMN_ABAND,	!set);
-	setColumnHidden (MDLH_COLUMN_LOADED,	!set);
-	setColumnHidden (MDLH_COLUMN_DMG,	!set);
+	if (d.ishdr) {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnHidden (i, !ghvmode[i][d.ghvm]);
+		}
+		for (int i=(HDR_LIMIT+1); i<MDLH_COLUMN_CNT; i++) {
+			setColumnHidden (i, true);
+		}
+	} else {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnHidden (i, true);
+		}
+		for (int i=(HDR_LIMIT+1); i<MDLH_COLUMN_CNT; i++) {
+			setColumnHidden (i, !ghvmode[i][d.ghvm]);
+		}
+	}
 }
 
 void
-GuiHistoryView::refresh (void)
+GuiHistoryView::build_rlayout (void)
 {
-	QModelIndex	idx;
+	d.rlayout[MDLH_COLUMN_DATE]	= (BASE_SIZE * 3);
+	d.rlayout[MDLH_COLUMN_UID]	= BASE_SIZE;
+	d.rlayout[MDLH_COLUMN_UNIT]	= (BASE_SIZE * 3);
+	d.rlayout[MDLH_COLUMN_RNK]	= (BASE_SIZE * 2);
+	d.rlayout[MDLH_COLUMN_LDR]	= (BASE_SIZE * 3);
+	d.rlayout[MDLH_COLUMN_STATUS]	= (BASE_SIZE * 3);
+	d.rlayout[MDLH_COLUMN_KILL]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_EXP]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_MOR]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_SUP]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_RAL]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_INF]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_ARM]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_ART]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_MEN]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_RDY]	= (BASE_SIZE * 3);
+	d.rlayout[MDLH_COLUMN_KIA]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_DMG]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_SEEN]	= (BASE_SIZE * 2);
+	d.rlayout[MDLH_COLUMN_ABAND]	= (BASE_SIZE * 2);
+	d.rlayout[MDLH_COLUMN_LOADED]	= (BASE_SIZE * 2);
+	d.rlayout[MDLH_COLUMN_TYPE]	= (BASE_SIZE * 4);
+	d.rlayout[MDLH_COLUMN_CLASS]	= (BASE_SIZE * 3);
+	d.rlayout[MDLH_COLUMN_COST]	= NUMBER_SIZE;
+	d.rlayout[MDLH_COLUMN_SPEED]	= NUMBER_SIZE;
+}
 
-	DBG_TRACE_FENTER;
+void
+GuiHistoryView::build_mlayout (void)
+{
+	d.mlayout[MDLH_COLUMN_DATE]	= (BASE_SIZE * 3);
+	d.mlayout[MDLH_COLUMN_UID]	= ((BASE_SIZE * 1) + ICON_SIZE);
+	d.mlayout[MDLH_COLUMN_UNIT]	= ((BASE_SIZE * 3) + ICON_SIZE);
+	d.mlayout[MDLH_COLUMN_RNK]	= ((BASE_SIZE * 2) + ICON_SIZE);
+	d.mlayout[MDLH_COLUMN_LDR]	= ((BASE_SIZE * 3) + ICON_SIZE);
+	d.mlayout[MDLH_COLUMN_STATUS]	= ((BASE_SIZE * 3) + ICON_SIZE);
+	d.mlayout[MDLH_COLUMN_KILL]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_EXP]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_MOR]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_SUP]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_RAL]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_INF]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_ARM]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_ART]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_MEN]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_RDY]	= (BASE_SIZE * 3);
+	d.mlayout[MDLH_COLUMN_KIA]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_DMG]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_SEEN]	= (BASE_SIZE * 2);
+	d.mlayout[MDLH_COLUMN_ABAND]	= (BASE_SIZE * 2);
+	d.mlayout[MDLH_COLUMN_LOADED]	= (BASE_SIZE * 2);
+	d.mlayout[MDLH_COLUMN_TYPE]	= (BASE_SIZE * 4);
+	d.mlayout[MDLH_COLUMN_CLASS]	= (BASE_SIZE * 3);
+	d.mlayout[MDLH_COLUMN_COST]	= NUMBER_SIZE;
+	d.mlayout[MDLH_COLUMN_SPEED]	= NUMBER_SIZE;
+}
 
-	if (!d.ishdr) goto leave;
+void
+GuiHistoryView::apply_layout (bool reset)
+{
+	int	*layout = d.mflag ? d.mlayout : d.rlayout;
 
-	int p = verticalScrollBar()->value ();
+	if (d.ishdr) {
+		int w = 0;
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnWidth (i, layout[i]);
+			if (!isColumnHidden(i)) w += layout[i];
+		}
+		w += 5;
 
-	emit wantscroll (p);
+		setMinimumWidth (w); setMaximumWidth (w);
+	} else {
+		for (int i=(HDR_LIMIT+1); i<MDLH_COLUMN_CNT; i++) {
+			if (reset || (columnWidth (i) < layout[i])) setColumnWidth (i, layout[i]);
+		}
+	}
 
-leave:
-	DBG_TRACE_FLEAVE;
 }

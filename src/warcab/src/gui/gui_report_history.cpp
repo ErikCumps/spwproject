@@ -45,12 +45,6 @@ GuiRptHst::set_parent (GuiRptBtl *parent, bool pflag, bool core)
 }
 
 void
-GuiRptHst::set_parent (GuiRptTrn *parent, bool pflag)
-{
-	d.history->set_parent (parent, pflag);
-}
-
-void
 GuiRptHst::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;

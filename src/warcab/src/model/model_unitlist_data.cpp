@@ -43,9 +43,10 @@ ModelUnitlist::MDLU_data_font (int /*row*/, int /*col*/, MDLU_DATA *data) const
 
 	if (!data) return (v);
 
-	if (data->decomm) {
-		// TODO: this should be parameterized?
-		v = QFont ("Courier", 8, QFont::Normal, true);
+	if (!data->decomm) {
+		if (d.rgfont) v = *d.rgfont;
+	} else {
+		if (d.dcfont) v = *d.dcfont;
 	}
 	return (v);
 }

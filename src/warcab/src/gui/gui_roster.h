@@ -51,9 +51,10 @@ public slots:
 
 private:
 	struct s_data {
+		QFont			*rgfont;
+		QFont			*dcfont;
 		ModelRoster		*model;
 
-		QFont			*font;
 		QGridLayout		*layout;
 #if	EXPERIMENTAL
 		QComboBox		*filter_spec;
