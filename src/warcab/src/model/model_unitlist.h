@@ -34,6 +34,7 @@ public:
 	void	load		(SPWAW_DOSSIER *dossier, bool fch);
 	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore);
 	bool	dossier_mode	(void);
+	bool	cd_mode		(void);
 
 	int	max_width	(void);
 	void	refresh		(void);
@@ -48,6 +49,7 @@ private:
 		SPWAW_BATTLE		*b;
 		bool			pflag;
 		bool			cflag;
+		bool			cdflag;
 		SPWAW_DOSSIER_BIR	*birs;
 		int			birs_cnt;
 		int			row_cnt;

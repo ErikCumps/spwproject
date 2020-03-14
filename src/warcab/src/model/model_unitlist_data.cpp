@@ -82,11 +82,11 @@ ModelUnitlist::MDLU_data_decoration (int /*row*/, int col, MDLU_DATA *data) cons
 
 	switch (col) {
 		case MDLU_COLUMN_ID:
-			if (d.d != NULL) {
-				if (data->decomm)
-					v = QVariant (QIcon (*RES_pixmap(RID_ICON_ULV_DECOMMISSIONED)));
-				else if (SPWAW_UHT_is_commissioned (data->uhte))
+			if (d.cdflag) {
+				if (data->comm)
 					v = QVariant (QIcon (*RES_pixmap(RID_ICON_ULV_COMMISSIONED)));
+				else if (data->decomm)
+					v = QVariant (QIcon (*RES_pixmap(RID_ICON_ULV_DECOMMISSIONED)));
 				else
 					v = QVariant (QIcon (*RES_pixmap(RID_ICON_ULV_EMPTY)));
 			}

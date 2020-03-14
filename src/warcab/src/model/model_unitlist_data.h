@@ -17,6 +17,7 @@ typedef struct s_MDLU_DATA {
 	int			uidx;
 	SPWAW_UHTE		*uhte;
 	SPWAW_DOSSIER_UIR	*uir;
+	bool			comm;
 	bool			decomm;
 } MDLU_DATA;
 

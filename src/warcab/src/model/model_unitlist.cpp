@@ -114,6 +114,7 @@ ModelUnitlist::addModelData (int uidx, SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir)
 	u->uidx = uidx;
 	u->uhte = uhte;
 	u->uir = uir;
+	u->comm = u->uhte?SPWAW_UHT_is_commissioned (u->uhte):false;
 	u->decomm = u->uhte?SPWAW_UHT_is_decommissioned (u->uhte):false;
 }
 
@@ -157,6 +158,15 @@ ModelUnitlist::setupModelData (void)
 			if (!SPWAW_UHT_lookup (uhte, &(uhte->FBD), true, NULL, &uir, NULL)) continue;
 
 			addModelData (i, uhte, uir);
+		}
+		if (d.cdflag) {
+			d.cdflag = false;
+			for (int i=0; i<d.list_use; i++) {
+				if (d.list[i].comm || d.list[i].decomm) {
+					d.cdflag = true;
+					break;
+				}
+			}
 		}
 	} else {
 		if (d.pflag && d.cflag) {
@@ -205,6 +215,17 @@ ModelUnitlist::load (SPWAW_DOSSIER *dossier, bool fch)
 
 	d.fchflag = fch; d.pflag = d.cflag = false;
 
+	switch (dossier->gametype) {
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			d.cdflag = true;
+			break;
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			d.cdflag = false;
+			break;
+	}
+
+
 	setupModelData();
 	reset();
 }
@@ -226,7 +247,7 @@ ModelUnitlist::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore)
 		d.birs_cnt = d.birs->ucnt;
 	}
 
-	d.fchflag = false; d.pflag = isplayer; d.cflag = iscore;
+	d.fchflag = false; d.pflag = isplayer; d.cflag = iscore; d.cdflag = false;
 
 	setupModelData();
 	reset();
@@ -236,6 +257,12 @@ bool
 ModelUnitlist::dossier_mode (void)
 {
 	return (d.d != NULL);
+}
+
+bool
+ModelUnitlist::cd_mode (void)
+{
+	return (d.cdflag);
 }
 
 int
