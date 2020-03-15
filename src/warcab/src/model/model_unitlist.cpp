@@ -159,13 +159,11 @@ ModelUnitlist::setupModelData (void)
 
 			addModelData (i, uhte, uir);
 		}
-		if (d.cdflag) {
-			d.cdflag = false;
-			for (int i=0; i<d.list_use; i++) {
-				if (d.list[i].comm || d.list[i].decomm) {
-					d.cdflag = true;
-					break;
-				}
+		d.cdflag = false;
+		for (int i=0; i<d.list_use; i++) {
+			if (d.list[i].comm || d.list[i].decomm) {
+				d.cdflag = true;
+				break;
 			}
 		}
 	} else {
@@ -213,18 +211,7 @@ ModelUnitlist::load (SPWAW_DOSSIER *dossier, bool fch)
 {
 	d.d = dossier; d.b = NULL; d.birs = NULL;
 
-	d.fchflag = fch; d.pflag = d.cflag = false;
-
-	switch (dossier->gametype) {
-		case SPWAW_GAME_TYPE_WINSPWW2:
-			d.cdflag = true;
-			break;
-		case SPWAW_GAME_TYPE_SPWAW:
-		default:
-			d.cdflag = false;
-			break;
-	}
-
+	d.fchflag = fch; d.pflag = d.cflag = false; d.cdflag = false;
 
 	setupModelData();
 	reset();
