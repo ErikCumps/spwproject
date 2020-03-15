@@ -38,14 +38,14 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\ZLIB\lib\zdll.lib"
-				OutputFile="$(OutDir)/spwawlib.dll"
+				OutputFile="$(OutDir)/spwawlibd.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				AdditionalLibraryDirectories="..\..\bin\Debug"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/spwawlib.pdb"
+				ProgramDatabaseFile="$(OutDir)/spwawlibd.pdb"
 				SubSystem="2"
-				ImportLibrary="$(OutDir)/spwawlib.lib"
+				ImportLibrary="$(OutDir)/spwawlibd.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>

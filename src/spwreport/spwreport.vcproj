@@ -37,7 +37,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="../spwawlib/Debug/spwawlib.lib ../debug_memtrace/Debug/debug_memtrace.lib"
+				AdditionalDependencies="../spwawlib/Debug/spwawlibd.lib ../debug_memtrace/Debug/debug_memtraced.lib"
 				OutputFile="$(OutDir)/spwreport.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
@@ -92,7 +92,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="../spwawlib/Debug/spwawlib.lib ../debug_memtrace/Debug/debug_memtrace.lib"
+				AdditionalDependencies="../spwawlib/Release/spwawlib.lib ../debug_memtrace/Release/debug_memtrace.lib"
 				OutputFile="$(OutDir)/spwreport.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"

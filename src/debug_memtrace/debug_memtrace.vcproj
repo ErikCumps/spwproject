@@ -40,19 +40,19 @@
 			<Tool
 				Name="VCCustomBuildTool"
 				Description="Deploying dll.."
-				CommandLine="copy $(OutDir)\debug_memtrace.dll ..\..\bin
+				CommandLine="copy $(OutDir)\debug_memtraced.dll ..\..\bin
 "
-				AdditionalDependencies="$(OutDir)\debug_memtrace.dll"
-				Outputs="..\..\bin\debug_memtrace.dll"/>
+				AdditionalDependencies="$(OutDir)\debug_memtraced.dll"
+				Outputs="..\..\bin\debug_memtraced.dll"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)\debug_memtrace.dll"
+				OutputFile="$(OutDir)\debug_memtraced.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)\debug_memtrace.pdb"
+				ProgramDatabaseFile="$(OutDir)\debug_memtraced.pdb"
 				SubSystem="2"
-				ImportLibrary="$(OutDir)\debug_memtrace.lib"
+				ImportLibrary="$(OutDir)\debug_memtraced.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>

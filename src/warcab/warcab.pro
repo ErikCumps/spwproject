@@ -290,11 +290,11 @@ PREBUILD_COMMAND	= prebuild
 		DEFINES	+= DEBUG _DEBUG DEBUG_MEMTRACE DEBUG_MEMTRACE_CPP
 		CONFIG	+= sl_debug warn_on qwt_debug
 		LIBS	+=						\
-			../ad_api/Debug/ad_api.lib			\
-			../resarchv/Debug/resarchv.lib			\
-			../SL/Debug/SL.lib				\
-			../spwawlib/Debug/spwawlib.lib			\
-			../debug_memtrace/Debug/debug_memtrace.lib
+			../ad_api/Debug/ad_apid.lib			\
+			../resarchv/Debug/resarchvd.lib			\
+			../SL/Debug/SLd.lib				\
+			../spwawlib/Debug/spwawlibd.lib			\
+			../debug_memtrace/Debug/debug_memtraced.lib
 	}
 	CONFIG(release, debug|release) {
 		CONFIG	+= sl_release qwt_release
