@@ -18,7 +18,7 @@
 
 #define	DEFAULT_SNAPPATH	"%s\\save"
 #define	DEFAULT_COMPRESSION	true
-#define	DEFAULT_FULL_HISTORY	false
+#define	DEFAULT_FULL_HISTORY	true
 #define	DEFAULT_AUTOLOAD	true
 
 #define	DEFAULT_GUI_STATE	Qt::WindowNoState
