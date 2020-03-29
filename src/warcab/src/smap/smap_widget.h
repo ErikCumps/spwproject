@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - widget.
  *
- * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,7 +28,7 @@ public:
 	QSize	sizeHint() const;
 
 public:
-	void	load			(SPWAW_SNAPSHOT *snap);
+	void	load			(SPWAW_BTURN *turn);
 	void	clear			(void);
 	void	reset_cursor		(void);
 
@@ -75,8 +75,10 @@ public:
 
 	typedef struct s_BATTLE_INFO {
 		char		*location;
-		SPWAW_DATE	date;
-		int		turn;
+		SPWAW_TURN_DATE	date;
+		SPWAW_GAME_TYPE	gametype;
+		SPWAW_TERRAIN	terrain;
+		SMAP_HH		max_height;
 	} BATTLE_INFO;
 
 private:
@@ -99,6 +101,7 @@ private:
 		ModelTable	*model;
 		MDLT_DEF	*model_def;
 
+		SMAP_RENDERDATA	rdlist[ZOOM_LIMIT];
 		SmapRenderer	*renderlist[ZOOM_LIMIT];
 		ZOOMLEVEL	zoom;
 		SmapRenderer	*rptr;

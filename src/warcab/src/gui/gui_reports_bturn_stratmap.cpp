@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - strategic map.
  *
- * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -220,7 +220,6 @@ GuiRptTrnSMap::refresh (void)
 {
 	MDLD_TREE_ITEM	*item;
 	bool		skip_data, skip_render;
-	SPWAW_BTURN	*p = NULL;
 
 	DBG_TRACE_FENTER;
 
@@ -231,14 +230,12 @@ GuiRptTrnSMap::refresh (void)
 
 	DBG_TRACE_UPDATE;
 
-	p = (item != NULL) ? item->data.t : NULL;
-
-	if (!p) {
+	if (!item) {
 		d.smap->clear();
 	} else {
 		d.battle = item->parent;
 		if (GUIVALCHANGED(battle)) d.smap->reset_cursor();
-		d.smap->load (p->snap);
+		d.smap->load (item->data.t);
 	}
 
 skip_data_update:

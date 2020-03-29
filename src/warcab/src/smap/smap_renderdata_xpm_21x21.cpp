@@ -1,5 +1,12 @@
-#include "smap_renderdata.h"
-#include "smap_renderer.h"
+/** \file
+ * The SPWaW war cabinet - strategic map - render data - 11x11 XPM data.
+ *
+ * Copyright (C) 2020 Erik Cumps <erik.cumps@gmail.com>
+ *
+ * License: GPL v2
+ */
+
+#include "smap_renderdata_xpm.h"
 
 #include "xpm_21x21/hexborder_21x21.xpm"
 #include "xpm_21x21/hexmask_NONE_21x21.xpm"
@@ -97,7 +104,7 @@
 #include "xpm_21x21/frontline_NW_21x21.xpm"
 #include "xpm_21x21/frontline_NE_21x21.xpm"
 
-static SMAP_RENDERDATA_XPMS xpms = {
+SMAP_RENDERDATA_XPMS xpms_21x21 = {
 	HEXBORDER_21X21,
 	HEXMASK_C_21X21,
 	HEXMASK_LE_21X21,
@@ -107,15 +114,6 @@ static SMAP_RENDERDATA_XPMS xpms = {
 	HEXMASK_BR_21X21,
 	HEXSEL_21X21,
 	HEXSELMASK_21X21,
-	HNEG_21X21,
-	H000_21X21,
-	H005_21X21,
-	H010_21X21,
-	H015_21X21,
-	H020_21X21,
-	H025_21X21,
-	H030_21X21,
-	H035_21X21,
 	WATER_21X21,
 	BRIDGE_EE_21X21,
 	BRIDGE_SE_21X21,
@@ -194,4 +192,14 @@ static SMAP_RENDERDATA_XPMS xpms = {
 	FRONTLINE_NE_21X21,
 };
 
-SMAP_RENDERDATA renderdata_21x21 = { "zoomX2", 21, 21, 10, xpms };
+SMAP_RENDERDATA_HCFXPMS hcfxpms_21x21 = {
+	HNEG_21X21,
+	H000_21X21,
+	H005_21X21,
+	H010_21X21,
+	H015_21X21,
+	H020_21X21,
+	H025_21X21,
+	H030_21X21,
+	H035_21X21,
+};

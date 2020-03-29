@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - widget.
  *
- * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -115,9 +115,12 @@ SmapWidget::SmapWidget (ModelTable *model, QWidget *P)
 
 	setMouseTracking (true);
 	setFocusPolicy (Qt::WheelFocus);
-	
-	RENDERNEW (d.renderlist[ZOOM_1X], SmapRenderer (renderdata_11x11), ERR_GUI_SMAP_INIT_FAILED, "zoom1x");
-	RENDERNEW (d.renderlist[ZOOM_2X], SmapRenderer (renderdata_21x21), ERR_GUI_SMAP_INIT_FAILED, "zoom2x");
+
+	SMAP_RENDERDATA_create (d.rdlist[ZOOM_1X], "zoom1x", 11);
+	RENDERNEW (d.renderlist[ZOOM_1X], SmapRenderer (d.rdlist[ZOOM_1X]), ERR_GUI_SMAP_INIT_FAILED, "zoom1x");
+
+	SMAP_RENDERDATA_create (d.rdlist[ZOOM_2X], "zoom2x", 21);
+	RENDERNEW (d.renderlist[ZOOM_2X], SmapRenderer (d.rdlist[ZOOM_2X]), ERR_GUI_SMAP_INIT_FAILED, "zoom2x");
 
 	d.comp_cfg.grid		= false;
 	d.comp_cfg.influence	= false;
@@ -140,6 +143,8 @@ SmapWidget::~SmapWidget (void)
 	// QT deletes child widgets
 	delete d.renderlist[ZOOM_1X];
 	delete d.renderlist[ZOOM_2X];
+	SMAP_RENDERDATA_destroy (d.rdlist[ZOOM_1X]);
+	SMAP_RENDERDATA_destroy (d.rdlist[ZOOM_2X]);
 
 	free_MDLT_DEF (d.model_def);
 }
@@ -151,7 +156,7 @@ SmapWidget::sizeHint() const
 }
 
 void
-SmapWidget::load (SPWAW_SNAPSHOT *snap)
+SmapWidget::load (SPWAW_BTURN *turn)
 {
 	SPWAW_SNAP_MAP_DATA	*hdata;
 	SPWAW_SNAP_VHEX		*vdata;
@@ -163,23 +168,29 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 	int			i;
 
 	clear();
+	if (!turn) return;
 
-	SL_SAFE_STRDUP (d.battle.location, snap->game.battle.data.location);
-	d.battle.date = snap->game.battle.data.tdate.date;
-	d.battle.turn = snap->game.battle.data.tdate.turn;
+	SL_SAFE_STRDUP (d.battle.location, turn->battle->location);
+	d.battle.date = turn->tdate;
+	d.battle.gametype = turn->snap->gametype;
+	d.battle.terrain = turn->snap->game.battle.data.terrain;
+	d.battle.max_height = SMAP_gametype2maxheight (d.battle.gametype);
 
-	d.grid.setup (snap->game.map.width, snap->game.map.height);
+	d.grid.setup (turn->snap->game.map.width, turn->snap->game.map.height);
 
 	d.renderlist[ZOOM_1X]->forGrid (MARGIN_X, MARGIN_Y, d.grid);
-	d.renderlist[ZOOM_2X]->forGrid (MARGIN_X, MARGIN_Y, d.grid);
+	d.renderlist[ZOOM_1X]->selectHCF (d.battle.gametype, d.battle.terrain);
 
-	hdata = snap->game.map.data;
-	for (x=0; x<snap->game.map.width; x++) {
-		for (y=0; y<snap->game.map.height; y++) {
+	d.renderlist[ZOOM_2X]->forGrid (MARGIN_X, MARGIN_Y, d.grid);
+	d.renderlist[ZOOM_2X]->selectHCF (d.battle.gametype, d.battle.terrain);
+
+	hdata = turn->snap->game.map.data;
+	for (x=0; x<d.grid.width; x++) {
+		for (y=0; y<d.grid.height; y++) {
 			pos.set(x, y);
 			hex = d.grid.grid2hex (pos); hex->setPos (pos);
 
-			idx = y*snap->game.map.width+x;
+			idx = y*d.grid.width+x;
 			hex->setHeight	(hdata[idx].h);
 			hex->setWater	(hdata[idx].water);
 			hex->setBridge	(hdata[idx].bridge);
@@ -187,14 +198,14 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 		}
 	}
 
-	vdata = snap->game.battle.data.vhex;
+	vdata = turn->snap->game.battle.data.vhex;
 	for (i=0; i<SPWAW_VHEXCNT; i++) {
 		hex = d.grid.grid2hex (pos.set(vdata[i].x, vdata[i].y));
 
 		hex->setVicHex (vdata[i].status);
 	}
 
-	udata = &snap->OOBp1.battle.units;
+	udata = &turn->snap->OOBp1.battle.units;
 	if (udata->cnt) {
 		d.b_info = new UNIT_INFO[udata->cnt];
 		d.b_cnt = 0;
@@ -217,7 +228,7 @@ SmapWidget::load (SPWAW_SNAPSHOT *snap)
 		}
 	}
 
-	udata = &snap->OOBp2.battle.units;
+	udata = &turn->snap->OOBp2.battle.units;
 	if (udata->cnt) {
 		d.r_info = new UNIT_INFO[udata->cnt];
 		d.r_cnt = 0;
@@ -487,12 +498,12 @@ distance (int c1x, int c1y, int c2x, int c2y)
 #define	HEIGHTWEIGHT	1
 
 static inline double
-height_weight (SMAP_HH tgt_height, SMAP_HH src_height)
+height_weight (SMAP_HH tgt_height, SMAP_HH src_height, SMAP_HH max_height)
 {
 #if	!HEIGHTWEIGHT
 	return (1.0);
 #else	/* HEIGHTWEIGHT */
-	static int range = SMAP_HH_LAST - SMAP_HH_START;
+	int range = max_height - SMAP_HH_START; if (!range) return (1.0);
 	static double scale = 0.75;
 
 	int delta = src_height - tgt_height;
@@ -530,7 +541,7 @@ SmapWidget::calc_influence (void)
 					iv = LOCAL_INFLUENCE / dv / dv;
 				}
 				iv *= d.b_info[i].ready;
-				iv *= height_weight (d.grid.map[idx].height, d.grid.grid2hex (d.b_info[i].pos)->height);
+				iv *= height_weight (d.grid.map[idx].height, d.grid.grid2hex (d.b_info[i].pos)->height, d.battle.max_height);
 				if (dv < DISTANCE_THRESHOLD) {
 					d.grid.map[idx].influence_blue += iv;
 					d.grid.map[idx].influence_blue_cnt++;
@@ -558,7 +569,7 @@ SmapWidget::calc_influence (void)
 					iv = LOCAL_INFLUENCE / dv / dv;
 				}
 				iv *= d.r_info[i].ready;
-				iv *= height_weight (d.grid.map[idx].height, d.grid.grid2hex (d.r_info[i].pos)->height);
+				iv *= height_weight (d.grid.map[idx].height, d.grid.grid2hex (d.r_info[i].pos)->height, d.battle.max_height);
 				if (dv < DISTANCE_THRESHOLD) {
 					d.grid.map[idx].influence_red += iv;
 					d.grid.map[idx].influence_red_cnt++;
@@ -783,10 +794,10 @@ smap_save_basename (SmapWidget::BATTLE_INFO &info, SmapRenderer *rptr, SmapWidge
 
 	/* Determine the filename of the image to be saved */
 	snprintf (dst, len - 1, fmt,
-		info.date.year, info.date.month, info.date.day,
+		info.date.date.year, info.date.date.month, info.date.date.day,
 		qPrintable(location),
-		info.date.hour, info.date.minute,
-		info.turn,
+		info.date.date.hour, info.date.date.minute,
+		info.date.turn,
 		rptr->description(),
 		cfg.grid, cfg.influence, cfg.vhex, cfg.frontline);
 }

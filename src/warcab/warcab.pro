@@ -93,6 +93,9 @@ HEADERS +=					\
 	smap/smap_hex.h				\
 	smap/smap_hexgrid.h			\
 	smap/smap_renderdata.h			\
+	smap/smap_renderdata_pmc.h		\
+	smap/smap_renderdata_hpmc.h		\
+	smap/smap_renderdata_xpm.h		\
 	smap/smap_renderer.h			\
 	smap/smap_widget.h			\
 	gui/gui_qt.h				\
@@ -217,8 +220,11 @@ SOURCES +=					\
 	smap/smap_hexpos.cpp			\
 	smap/smap_hex.cpp			\
 	smap/smap_hexgrid.cpp			\
-	smap/smap_renderdata_11x11.cpp		\
-	smap/smap_renderdata_21x21.cpp		\
+	smap/smap_renderdata_xpm_11x11.cpp	\
+	smap/smap_renderdata_xpm_21x21.cpp	\
+	smap/smap_renderdata_pmc.cpp		\
+	smap/smap_renderdata_hpmc.cpp		\
+	smap/smap_renderdata.cpp		\
 	smap/smap_renderer.cpp			\
 	smap/smap_widget.cpp			\
 	gui/gui.cpp				\

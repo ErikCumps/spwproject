@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - rendering.
  *
- * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,15 +14,15 @@
 
 /*! Hex position in renderer coordinates */
 typedef struct s_SMAP_RENDERER_HEX {
-	int		posx;		/*!< The x pixel coordinate in renderer space		*/
-	int		posy;		/*!< The y pixel coordinate in renderer space		*/
+	int			posx;		/*!< The x pixel coordinate in renderer space		*/
+	int			posy;		/*!< The y pixel coordinate in renderer space		*/
 } SMAP_RENDERER_HEX;
 
 /*! Hex grid with positions in renderer coordinates */
 typedef struct s_SMAP_RENDERER_GRID {
-	int			width;	/*!< The width of the grid				*/
-	int			height;	/*!< The height of the grid				*/
-	SMAP_RENDERER_HEX	*map;	/*!< The array containing the hex positions of the grid	*/
+	int			width;		/*!< The width of the grid				*/
+	int			height;		/*!< The height of the grid				*/
+	SMAP_RENDERER_HEX	*map;		/*!< The array containing the hex positions of the grid	*/
 } SMAP_RENDERER_GRID;
 
 /*! This class renders the strategic map for diaplay by the SmapWidget */
@@ -39,6 +39,9 @@ public:
 
 	/*! Prepares the renderer for rendering the specified strategic map hex grid */
 	void		forGrid	(int marginx, int marginy, SmapHexGrid &smap);
+
+	/*! Selects an apropriate height colorfield */
+	void		selectHCF (SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain);
 
 	/*! Stops rendering and releases all resources */
 	void		cleanup	(void);
@@ -86,31 +89,11 @@ private:
 		int	vmove_x;	/*!< The X step (in pixels) for moving vertically to a neighbour hex	*/
 		int	vmove_y;	/*!< The Y step (in pixels) for moving vertically to a neighbour hex	*/
 
-		struct s_pm {
-			QPixmap	border;					/*!< Hex border				*/
-			QPixmap	selection;				/*!< Hex selection indicator		*/
-			QPixmap	hexmask[SMAP_HM_CNT];			/*!< Hex render masks			*/
-			QPixmap	transparent;				/*!< Transparency mask			*/
-			QPixmap	height[SMAP_HH_CNT*SMAP_HM_CNT];	/*!< Height map colorfields		*/
-			QPixmap	water[SMAP_HM_CNT];			/*!< Water feature colorfields		*/
-			QPixmap	bridge[SMAP_HRD_CNT];			/*!< Bridge feature sections		*/
-			QPixmap	road1[SMAP_HRD_CNT];			/*!< Primary road feature sections	*/
-			QPixmap	road2[SMAP_HRD_CNT];			/*!< Secondary road feature sections	*/
-			QPixmap	railr[SMAP_HRD_CNT];			/*!< Reilroad feature sections		*/
-			QPixmap	traml[SMAP_HRD_CNT];			/*!< Tramline feature sections		*/
-			QPixmap	inf_blue[SMAP_HM_CNT];			/*!< Blue influence colorfields		*/
-			QPixmap	inf_red[SMAP_HM_CNT];			/*!< Red influence colorfields		*/
-			QPixmap	inf_neutral[SMAP_HM_CNT];		/*!< Neutral influence colorfields	*/
-			QPixmap	bluedot[16];				/*!< Blue unit indicators		*/
-			QPixmap	reddot[16];				/*!< Red unit indicators		*/
-			QPixmap	vh_blue;				/*!< Victory hex claimed by blue player	*/
-			QPixmap vh_red;					/*!< Victory hex claimed by blue player	*/
-			QPixmap vh_neutral;				/*!< Victory hex, not yet claimed	*/
-			QPixmap	frontline[SMAP_HRD_CNT];		/*!< Frontline edges			*/
-		} pm;			/*!< The QPixmaps used for rendering					*/
+		SMAP_RENDERDATA		*rd;	/*!< The QPixmap renderdata					*/
+		SMAP_RENDERDATA_HPMC	*hpmc;	/*!< The current height pixmap collection			*/
 
-		SmapHexGrid		*hgrid;		/*!< The strategic map hex grid to render		*/
-		SMAP_RENDERER_GRID	rgrid;		/*!< The hex grid in renderer coordinates		*/
+		SmapHexGrid		*hgrid;	/*!< The strategic map hex grid to render			*/
+		SMAP_RENDERER_GRID	rgrid;	/*!< The hex grid in renderer coordinates			*/
 	} d;
 
 private:
@@ -136,13 +119,6 @@ private:
 		}
 
 		return (hm);
-	}
-
-	/*! Returns the height map hex render mask index for the specified height and mask index */
-	inline int
-	hthm2idx (int h, int m)
-	{
-		return (h*SMAP_HM_CNT+m);
 	}
 };
 
