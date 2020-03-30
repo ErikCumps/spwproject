@@ -124,6 +124,8 @@ raw2ht (int h)
 {
 	SMAP_HH	ht;
 
+	if (h < 0) return (SMAP_HH_NEG);
+
 	switch (h/5) {
 		case 30:
 			ht = SMAP_HH_150;
@@ -219,12 +221,8 @@ raw2ht (int h)
 			ht = SMAP_HH_000;
 			break;
 		default:
-			if (h < 0)
-				ht = SMAP_HH_NEG;
-			else
-				ht = SMAP_HH_150;
+			ht = SMAP_HH_150;
 			break;
-
 	}
 
 	return (ht);
