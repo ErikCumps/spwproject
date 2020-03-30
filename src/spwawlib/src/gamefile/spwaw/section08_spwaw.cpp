@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - SPWaW game data.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -50,7 +50,7 @@ raw2tfs (SPWAW_TFS &tfs, SPWAW_TFSBITS1 tfsbits1, SPWAW_TFSBITS2 tfsbits2, SPWAW
 	tfs.tfs.rough		= tfsbits2.has_rough;
 
 	tfs.tfs.railroad	= tfsbits3.has_railroad;
-	tfs.tfs.water_shallow	= tfsbits3.has_shwater;
+	//tfs.tfs.water_shallow	= tfsbits3.has_shwater;		// fixme: this doesn't seem to be right?
 	tfs.tfs.water_deep	= tfsbits3.has_dpwater;
 	tfs.tfs.orchard		= tfsbits3.has_orchard;
 
