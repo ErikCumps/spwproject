@@ -34,10 +34,10 @@ extern void	SMAP_RENDERDATA_HPMC_destroy	(SMAP_RENDERDATA_HPMC &hpmc);
 
 /*! Returns the height map colorfields pixmap index for the specified height and mask index */
 static inline int
-SMAP_hthm2idx (int h, int m, int limit)
+SMAP_hthm2idx (SMAP_RENDERDATA_HPMC &hpmc, int h, int m)
 {
 	if (h<SMAP_HH_START) h = SMAP_HH_START;
-	if (h>limit) h = limit;
+	if (h>hpmc.limit) h = hpmc.limit;
 	return (h*SMAP_HM_CNT+m);
 }
 

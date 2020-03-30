@@ -40,22 +40,22 @@ SMAP_RENDERDATA_HPMC_create (SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpm
 
 	if (!hpmc.pixmaps) goto handle_error;
 
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_NEG, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->hneg;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_000, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h000;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_005, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h005;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_010, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h010;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_015, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h015;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_020, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h020;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_025, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h025;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_030, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h030;
-	hpmc.pixmaps[SMAP_hthm2idx(SMAP_HH_035, SMAP_HM_START, SMAP_HH_LAST_SPWAW)] = hcfxpms->h035;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_NEG, SMAP_HM_START)] = hcfxpms->hneg;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_000, SMAP_HM_START)] = hcfxpms->h000;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_005, SMAP_HM_START)] = hcfxpms->h005;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_010, SMAP_HM_START)] = hcfxpms->h010;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_015, SMAP_HM_START)] = hcfxpms->h015;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_020, SMAP_HM_START)] = hcfxpms->h020;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_025, SMAP_HM_START)] = hcfxpms->h025;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_030, SMAP_HM_START)] = hcfxpms->h030;
+	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_035, SMAP_HM_START)] = hcfxpms->h035;
 	// FIXME: winSPWW2 has a much greater range of heights!
 
-	for (int hidx=SMAP_HH_START; hidx<=SMAP_HH_LAST_SPWAW; hidx++) {
+	for (int hidx=SMAP_HH_START; hidx<=hpmc.limit; hidx++) {
 		for (int midx=SMAP_HM_START; midx<=SMAP_HM_LAST; midx++) {
-			int idx = SMAP_hthm2idx(hidx, midx, SMAP_HH_LAST_SPWAW);
+			int idx = SMAP_hthm2idx(hpmc, hidx, midx);
 			if (midx != SMAP_HM_START) {
-				hpmc.pixmaps[idx] = hpmc.pixmaps[SMAP_hthm2idx(hidx, SMAP_HM_START, SMAP_HH_LAST_SPWAW)];
+				hpmc.pixmaps[idx] = hpmc.pixmaps[SMAP_hthm2idx(hpmc, hidx, SMAP_HM_START)];
 			}
 			hpmc.pixmaps[idx].setAlphaChannel (pmc.hexmask[midx]);
 		}

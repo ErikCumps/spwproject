@@ -168,7 +168,7 @@ SmapRenderer::render (void)
 	for (iy=0; iy<d.hgrid->height; iy++) {
 		for (ix=0; ix<d.hgrid->width; ix++) {
 			ixy = d.hgrid->grid2idx (pos.set(ix, iy));
-			pmidx = SMAP_hthm2idx (d.hgrid->map[ixy].height, grid2hm (ix, iy), d.hpmc->limit);
+			pmidx = SMAP_hthm2idx (*d.hpmc, d.hgrid->map[ixy].height, grid2hm (ix, iy));
 			
 			paint->drawPixmap (
 				d.rgrid.map[ixy].posx - map.x(),
