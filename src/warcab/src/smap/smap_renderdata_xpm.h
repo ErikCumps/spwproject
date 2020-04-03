@@ -98,17 +98,4 @@ typedef struct s_SMAP_RENDERDATA_XPMS {
 	const char **frontlineNE;	/*!< Front line running on the north east edge of the hex		*/
 } SMAP_RENDERDATA_XPMS;
 
-/*! Render data: height colorfield XPM image container */
-typedef struct s_SMAP_RENDERDATA_HCFXPMS {
-	const char **hneg;		/*!< Color field for negative height					*/
-	const char **h000;		/*!< Color field for height between 0 and 5 meters (exclusive)		*/
-	const char **h005;		/*!< Color field for height between 5 and 10 meters (exclusive)		*/
-	const char **h010;		/*!< Color field for height between 10 and 15 meters (exclusive)	*/
-	const char **h015;		/*!< Color field for height between 15 and 20 meters (exclusive)	*/
-	const char **h020;		/*!< Color field for height between 20 and 25 meters (exclusive)	*/
-	const char **h025;		/*!< Color field for height between 25 and 30 meters (exclusive)	*/
-	const char **h030;		/*!< Color field for height between 30 and 35 meters (exclusive)	*/
-	const char **h035;		/*!< Color field for 35 meters height or higher				*/
-} SMAP_RENDERDATA_HCFXPMS;
-
 #endif	/* STRATMAP_RENDERDATA_XPM_H */

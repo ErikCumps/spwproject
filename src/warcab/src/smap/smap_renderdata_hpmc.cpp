@@ -7,49 +7,84 @@
  */
 
 #include "smap_renderdata_hpmc.h"
-#include "smap_renderdata_xpm.h"
+#include <util/util.h>
 
-/*! Height colorfield XPM data for hexes of size 11x11 pixels */
-extern SMAP_RENDERDATA_HCFXPMS hcfxpms_11x11;
+typedef struct s_COLOR {
+	int	red;
+	int	blue;
+	int	green;
+} COLOR;
 
-/*! Height colorfield XPM data for hexes of size 21x21 pixels */
-extern SMAP_RENDERDATA_HCFXPMS hcfxpms_21x21;
+typedef struct s_COLORFIELDS {
+	int	cnt;
+	COLOR	*list;
+} COLORFIELDS;
 
-bool
-SMAP_RENDERDATA_HPMC_create (SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpmc, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain)
+static COLOR default_color = { 32, 32, 32 };
+
+static COLOR spwaw_grey_colors[] = {
+	{  32,  32,  32 },
+	{  48,  48,  48 },
+	{  73,  73,  73 },
+	{  98,  98,  98 },
+	{ 123, 123, 123 },
+	{ 148, 148, 148 },
+	{ 173, 173, 173 },
+	{ 198, 198, 198 },
+	{ 224, 224, 224 },
+};
+static COLORFIELDS spwaw_grey = { ARRAYCOUNT(spwaw_grey_colors), spwaw_grey_colors };
+
+static COLOR winspww2_grey_colors[] = {
+	 {  32,  32,  32 },
+	 {  48,  48,  48 },
+	 {  54,  54,  54 },
+	 {  60,  60,  60 },
+	 {  66,  66,  66 },
+	 {  72,  72,  72 },
+	 {  78,  78,  78 },
+	 {  84,  84,  84 },
+	 {  90,  90,  90 },
+	 {  96,  96,  96 },
+	 { 102, 102, 102 },
+	 { 108, 108, 108 },
+	 { 114, 114, 114 },
+	 { 120, 120, 120 },
+	 { 126, 126, 126 },
+	 { 132, 132, 132 },
+	 { 138, 138, 138 },
+	 { 144, 144, 144 },
+	 { 150, 150, 150 },
+	 { 156, 156, 156 },
+	 { 162, 162, 162 },
+	 { 168, 168, 168 },
+	 { 174, 174, 174 },
+	 { 180, 180, 180 },
+	 { 186, 186, 186 },
+	 { 192, 192, 192 },
+	 { 198, 198, 198 },
+	 { 204, 204, 204 },
+	 { 210, 210, 210 },
+	 { 216, 216, 216 },
+	 { 222, 222, 222 },
+	 { 228, 228, 228 },
+};
+static COLORFIELDS winspww2_grey = { ARRAYCOUNT(winspww2_grey_colors), winspww2_grey_colors };
+
+static bool
+create_hpmc (SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpmc, COLORFIELDS *cfptr)
 {
-	SMAP_RENDERDATA_HCFXPMS	*hcfxpms;
+	QColor color = QColor(default_color.red, default_color.green, default_color.blue);
 
-	memset (&hpmc, 0, sizeof(hpmc));
+	if (!cfptr) return (false);
 
-	switch (pmc.width) {
-		case 11:
-			hcfxpms = &hcfxpms_11x11;
-			break;
-		case 21:
-			hcfxpms = &hcfxpms_21x21;
-			break;
-		default:
-			return (false);
-			break;
+	for (int i=0; i<hpmc.cfcnt; i++) {
+		if (i < cfptr->cnt) {
+			color = QColor(cfptr->list[i].red, cfptr->list[i].blue, cfptr->list[i].green);
+		}
+		hpmc.pixmaps[SMAP_hthm2idx(hpmc, i, SMAP_HM_START)] = QPixmap (pmc.width, pmc.height);
+		hpmc.pixmaps[SMAP_hthm2idx(hpmc, i, SMAP_HM_START)].fill (color);
 	}
-
-	hpmc.limit = SMAP_HH_LAST_SPWAW;
-	hpmc.cnt = (hpmc.limit - SMAP_HH_START + 1) * SMAP_HM_CNT;
-	hpmc.pixmaps = new QPixmap[hpmc.cnt];
-
-	if (!hpmc.pixmaps) goto handle_error;
-
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_NEG, SMAP_HM_START)] = hcfxpms->hneg;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_000, SMAP_HM_START)] = hcfxpms->h000;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_005, SMAP_HM_START)] = hcfxpms->h005;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_010, SMAP_HM_START)] = hcfxpms->h010;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_015, SMAP_HM_START)] = hcfxpms->h015;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_020, SMAP_HM_START)] = hcfxpms->h020;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_025, SMAP_HM_START)] = hcfxpms->h025;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_030, SMAP_HM_START)] = hcfxpms->h030;
-	hpmc.pixmaps[SMAP_hthm2idx(hpmc, SMAP_HH_035, SMAP_HM_START)] = hcfxpms->h035;
-	// FIXME: winSPWW2 has a much greater range of heights!
 
 	for (int hidx=SMAP_HH_START; hidx<=hpmc.limit; hidx++) {
 		for (int midx=SMAP_HM_START; midx<=SMAP_HM_LAST; midx++) {
@@ -62,6 +97,34 @@ SMAP_RENDERDATA_HPMC_create (SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpm
 	}
 
 	return (true);
+}
+
+bool
+SMAP_RENDERDATA_HPMC_create (SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpmc, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN /*terrain*/)
+{
+	COLORFIELDS	*cfdef = NULL;
+
+	memset (&hpmc, 0, sizeof(hpmc));
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			cfdef = &spwaw_grey;
+			hpmc.limit = SMAP_HH_LAST_SPWAW;
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			cfdef = &winspww2_grey;
+			hpmc.limit = SMAP_HH_LAST_WINSPWW2;
+			break;
+	}
+
+	hpmc.cfcnt = hpmc.limit - SMAP_HH_START + 1;
+	hpmc.pmcnt = hpmc.cfcnt * SMAP_HM_CNT;
+	hpmc.pixmaps = new QPixmap[hpmc.pmcnt];
+
+	if (!hpmc.pixmaps) goto handle_error;
+
+	return (create_hpmc (pmc, hpmc, cfdef));
 
 handle_error:
 	SMAP_RENDERDATA_HPMC_destroy (hpmc);

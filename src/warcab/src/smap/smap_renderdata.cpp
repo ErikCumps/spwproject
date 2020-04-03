@@ -29,16 +29,10 @@ SMAP_RENDERDATA_create (SMAP_RENDERDATA &rd, const char *desc, int size)
 	if (!SMAP_RENDERDATA_PMC_create (rd.pmc, size))
 		goto handle_error;
 
-	if (!SMAP_RENDERDATA_HPMC_create (rd.pmc, rd.hpmc_spwaw.normal, SPWAW_GAME_TYPE_SPWAW, SPWAW_TUNKNOWN))
+	if (!SMAP_RENDERDATA_HPMC_create (rd.pmc, rd.hpmc_spwaw.grey, SPWAW_GAME_TYPE_SPWAW, SPWAW_TUNKNOWN))
 		goto handle_error;
 
-	if (!SMAP_RENDERDATA_HPMC_create (rd.pmc, rd.hpmc_spwaw.desert, SPWAW_GAME_TYPE_SPWAW, SPWAW_TDESERT))
-		goto handle_error;
-
-	if (!SMAP_RENDERDATA_HPMC_create (rd.pmc, rd.hpmc_winspww2.normal, SPWAW_GAME_TYPE_WINSPWW2, SPWAW_TUNKNOWN))
-		goto handle_error;
-
-	if (!SMAP_RENDERDATA_HPMC_create (rd.pmc, rd.hpmc_winspww2.desert, SPWAW_GAME_TYPE_WINSPWW2, SPWAW_TDESERT))
+	if (!SMAP_RENDERDATA_HPMC_create (rd.pmc, rd.hpmc_winspww2.grey, SPWAW_GAME_TYPE_WINSPWW2, SPWAW_TUNKNOWN))
 		goto handle_error;
 
 	return (true);
@@ -51,10 +45,8 @@ handle_error:
 void
 SMAP_RENDERDATA_destroy (SMAP_RENDERDATA &rd)
 {
-	SMAP_RENDERDATA_HPMC_destroy (rd.hpmc_spwaw.normal);
-	SMAP_RENDERDATA_HPMC_destroy (rd.hpmc_spwaw.desert);
-	SMAP_RENDERDATA_HPMC_destroy (rd.hpmc_winspww2.normal);
-	SMAP_RENDERDATA_HPMC_destroy (rd.hpmc_winspww2.desert);
+	SMAP_RENDERDATA_HPMC_destroy (rd.hpmc_spwaw.grey);
+	SMAP_RENDERDATA_HPMC_destroy (rd.hpmc_winspww2.grey);
 	SMAP_RENDERDATA_PMC_destroy (rd.pmc);
 	memset (&rd, 0, sizeof(rd));
 }
@@ -62,5 +54,13 @@ SMAP_RENDERDATA_destroy (SMAP_RENDERDATA &rd)
 SMAP_RENDERDATA_HPMC *
 SMAP_RENDERDATA_hpmc (SMAP_RENDERDATA &rd, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain)
 {
-	return (&(rd.hpmc_spwaw.normal));
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			return (&(rd.hpmc_spwaw.grey));
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			return (&(rd.hpmc_winspww2.grey));
+			break;
+	}
 }

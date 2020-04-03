@@ -18,15 +18,6 @@
 #include "xpm_21x21/hexmask_BR_21x21.xpm"
 #include "xpm_21x21/hexsel_21x21.xpm"
 #include "xpm_21x21/hexselmask_21x21.xpm"
-#include "xpm_21x21/hneg_21x21.xpm"
-#include "xpm_21x21/h000_21x21.xpm"
-#include "xpm_21x21/h005_21x21.xpm"
-#include "xpm_21x21/h010_21x21.xpm"
-#include "xpm_21x21/h015_21x21.xpm"
-#include "xpm_21x21/h020_21x21.xpm"
-#include "xpm_21x21/h025_21x21.xpm"
-#include "xpm_21x21/h030_21x21.xpm"
-#include "xpm_21x21/h035_21x21.xpm"
 #include "xpm_21x21/water_21x21.xpm"
 #include "xpm_21x21/new_bridge_EE_21x21.xpm"
 #include "xpm_21x21/new_bridge_SE_21x21.xpm"
@@ -190,16 +181,4 @@ SMAP_RENDERDATA_XPMS xpms_21x21 = {
 	FRONTLINE_WW_21X21,
 	FRONTLINE_NW_21X21,
 	FRONTLINE_NE_21X21,
-};
-
-SMAP_RENDERDATA_HCFXPMS hcfxpms_21x21 = {
-	HNEG_21X21,
-	H000_21X21,
-	H005_21X21,
-	H010_21X21,
-	H015_21X21,
-	H020_21X21,
-	H025_21X21,
-	H030_21X21,
-	H035_21X21,
 };

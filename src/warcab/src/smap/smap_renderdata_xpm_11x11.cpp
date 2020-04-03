@@ -18,15 +18,6 @@
 #include "xpm_11x11/hexmask_BR_11x11.xpm"
 #include "xpm_11x11/hexsel_11x11.xpm"
 #include "xpm_11x11/hexselmask_11x11.xpm"
-#include "xpm_11x11/hneg_11x11.xpm"
-#include "xpm_11x11/h000_11x11.xpm"
-#include "xpm_11x11/h005_11x11.xpm"
-#include "xpm_11x11/h010_11x11.xpm"
-#include "xpm_11x11/h015_11x11.xpm"
-#include "xpm_11x11/h020_11x11.xpm"
-#include "xpm_11x11/h025_11x11.xpm"
-#include "xpm_11x11/h030_11x11.xpm"
-#include "xpm_11x11/h035_11x11.xpm"
 #include "xpm_11x11/water_11x11.xpm"
 #include "xpm_11x11/bridge_EE_11x11.xpm"
 #include "xpm_11x11/bridge_SE_11x11.xpm"
@@ -164,16 +155,4 @@ SMAP_RENDERDATA_XPMS xpms_11x11 = {
 	FRONTLINE_WW_11X11,
 	FRONTLINE_NW_11X11,
 	FRONTLINE_NE_11X11,
-};
-
-SMAP_RENDERDATA_HCFXPMS hcfxpms_11x11 = {
-	HNEG_11X11,
-	H000_11X11,
-	H005_11X11,
-	H010_11X11,
-	H015_11X11,
-	H020_11X11,
-	H025_11X11,
-	H030_11X11,
-	H035_11X11,
 };

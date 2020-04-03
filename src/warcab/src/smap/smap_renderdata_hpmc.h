@@ -21,9 +21,10 @@
  * indexing: (row,col) -> row*SMAP_HM_CNT + col
  */
 typedef struct s_SMAP_RENDERDATA_HPMC {
-	SMAP_HH			limit;		/*!< The highest height supported by this collection	*/
-	int			cnt;		/*!< Total number of pixmaps in this collection		*/
-	QPixmap			*pixmaps;	/*!< Pointer to the pixmaps collection array		*/
+	SMAP_HH			limit;		/*!< The highest height supported by this collection		*/
+	int			cfcnt;		/*!< The number of height colorfields in this collection	*/
+	int			pmcnt;		/*!< Total number of pixmaps in this collection			*/
+	QPixmap			*pixmaps;	/*!< Pointer to the pixmaps collection array			*/
 } SMAP_RENDERDATA_HPMC;
 
 /* forward declaration */

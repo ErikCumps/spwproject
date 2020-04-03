@@ -21,12 +21,10 @@ typedef struct s_SMAP_RENDERDATA {
 	int			side;		/*!< hex side, in pixels					*/
 	SMAP_RENDERDATA_PMC	pmc;		/*!< Pixmap container						*/
 	struct s_hpmc_spwaw {			/*!< height colorfield pixmap collections for SP:WaW		*/
-		SMAP_RENDERDATA_HPMC	normal;		/*!< for SP:WaW normal terrain				*/
-		SMAP_RENDERDATA_HPMC	desert;		/*!< for SP:WaW desert terrain				*/
+		SMAP_RENDERDATA_HPMC	grey;		/*!< regular grey colorfields for SP:WaW		*/
 	}			hpmc_spwaw;
 	struct s_hpmc_winspww2 {		/*!< height colorfield pixmap collections for winSPWW2		*/
-		SMAP_RENDERDATA_HPMC	normal;		/*!< for winSPWW2 normal terrain			*/
-		SMAP_RENDERDATA_HPMC	desert;		/*!< for winSPWW2 desert terrain			*/
+		SMAP_RENDERDATA_HPMC	grey;		/*!< regular grey colorfields for winSPWW2		*/
 	}			hpmc_winspww2;
 } SMAP_RENDERDATA;
 
