@@ -614,7 +614,7 @@ SPWAW_btstatus2str (SPWAW_BTSTATUS id)
 SPWAWLIB_API bool
 SPWAW_tfs2water (SPWAW_TFS tfs)
 {
-	return (tfs.tfs.stream || tfs.tfs.swamp || tfs.tfs.water || tfs.tfs.water_shallow || tfs.tfs.water_deep);
+	return (tfs.tfs.stream || tfs.tfs.water || tfs.tfs.water_deep);
 }
 
 SPWAWLIB_API bool
