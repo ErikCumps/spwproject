@@ -41,7 +41,7 @@ public:
 	void		forGrid	(int marginx, int marginy, SmapHexGrid &smap);
 
 	/*! Selects an apropriate height colorfield */
-	void		selectHCF (SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain);
+	void		selectHCF (SMAP_HPMC_TYPE type, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain);
 
 	/*! Stops rendering and releases all resources */
 	void		cleanup	(void);

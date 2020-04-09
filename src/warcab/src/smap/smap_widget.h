@@ -37,6 +37,7 @@ public:
 	void	enable_victoryhexes	(bool enable, bool paint);
 	void	enable_influence	(bool enable, bool paint);
 	void	enable_frontline	(bool enable, bool paint);
+	void	select_hcf		(SMAP_HPMC_TYPE type, bool paint);
 	void	save_smap		(void);
 
 public:
@@ -71,6 +72,7 @@ public:
 		bool		influence;
 		bool		vhex;
 		bool		frontline;
+		SMAP_HPMC_TYPE	hcf;
 	} COMPOSITOR_CFG;
 
 	typedef struct s_BATTLE_INFO {

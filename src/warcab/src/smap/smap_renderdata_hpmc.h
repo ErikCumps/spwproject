@@ -30,7 +30,17 @@ typedef struct s_SMAP_RENDERDATA_HPMC {
 /* forward declaration */
 typedef struct s_SMAP_RENDERDATA SMAP_RENDERDATA;
 
-extern bool	SMAP_RENDERDATA_HPMC_create	(SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpmc, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain);
+/*! HPMC ID */
+typedef enum e_SMAP_HPMC_ID {
+	SMAP_HPMC_UNKNOWN = 0,
+	SMAP_HPMC_ID_GREY,
+	SMAP_HPMC_ID_TOPO,
+	SMAP_HPMC_ID_NORMAL,
+	SMAP_HPMC_ID_JUNGLE,
+	SMAP_HPMC_ID_DESERT,
+} SMAP_HPMC_ID;
+
+extern bool	SMAP_RENDERDATA_HPMC_create	(SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpmc, SPWAW_GAME_TYPE gametype, SMAP_HPMC_ID id);
 extern void	SMAP_RENDERDATA_HPMC_destroy	(SMAP_RENDERDATA_HPMC &hpmc);
 
 /*! Returns the height map colorfields pixmap index for the specified height and mask index */

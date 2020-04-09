@@ -30,7 +30,7 @@ SmapRenderer::SmapRenderer (SMAP_RENDERDATA &renderdata)
 	d.vmove_y = d.hex_top + ((d.pm_height - 1) / 2) - 1;
 
 	d.rd = &renderdata;
-	d.hpmc = SMAP_RENDERDATA_hpmc (*d.rd, SPWAW_GAME_TYPE_SPWAW, SPWAW_TUNKNOWN);
+	d.hpmc = SMAP_RENDERDATA_hpmc (*d.rd, SMAP_HPMC_GREY, SPWAW_GAME_TYPE_SPWAW);
 
 	layer.hmap = layer.features = layer.vhex = layer.influence = layer.frontline = layer.grid = layer.dots = NULL;
 
@@ -124,9 +124,9 @@ handle_oom:
 }
 
 void
-SmapRenderer::selectHCF (SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain)
+SmapRenderer::selectHCF (SMAP_HPMC_TYPE type, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain)
 {
-	d.hpmc = SMAP_RENDERDATA_hpmc (*d.rd, gametype, terrain);
+	d.hpmc = SMAP_RENDERDATA_hpmc (*d.rd, type, gametype, terrain);
 }
 
 void
