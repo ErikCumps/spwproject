@@ -156,7 +156,7 @@ SmapWidget::sizeHint() const
 }
 
 void
-SmapWidget::load (SPWAW_BTURN *turn)
+SmapWidget::load (SPWAW_BTURN *turn, SMAP_HPMC_TYPE type)
 {
 	SPWAW_SNAP_MAP_DATA	*hdata;
 	SPWAW_SNAP_VHEX		*vdata;
@@ -179,10 +179,10 @@ SmapWidget::load (SPWAW_BTURN *turn)
 	d.grid.setup (turn->snap->game.map.width, turn->snap->game.map.height);
 
 	d.renderlist[ZOOM_1X]->forGrid (MARGIN_X, MARGIN_Y, d.grid);
-	d.renderlist[ZOOM_1X]->selectHCF (SMAP_HPMC_GREY, d.battle.gametype, d.battle.terrain);
+	d.renderlist[ZOOM_1X]->selectHCF (type, d.battle.gametype, d.battle.terrain);
 
 	d.renderlist[ZOOM_2X]->forGrid (MARGIN_X, MARGIN_Y, d.grid);
-	d.renderlist[ZOOM_2X]->selectHCF (SMAP_HPMC_GREY, d.battle.gametype, d.battle.terrain);
+	d.renderlist[ZOOM_2X]->selectHCF (type, d.battle.gametype, d.battle.terrain);
 
 	hdata = turn->snap->game.map.data;
 	for (x=0; x<d.grid.width; x++) {

@@ -28,7 +28,7 @@ public:
 	QSize	sizeHint() const;
 
 public:
-	void	load			(SPWAW_BTURN *turn);
+	void	load			(SPWAW_BTURN *turn, SMAP_HPMC_TYPE type = SMAP_HPMC_GREY);
 	void	clear			(void);
 	void	reset_cursor		(void);
 

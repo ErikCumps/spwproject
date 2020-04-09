@@ -40,6 +40,12 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	GUINEW (d.zoom2x, QCheckBox ("Zoom 2X", d.frame), ERR_GUI_SMAP_INIT_FAILED, "zoom2x");
 	d.zoom2x->setCheckState (Qt::Unchecked);
 
+	GUINEW (d.hcftype, QComboBox (this), ERR_GUI_REPORTS_INIT_FAILED, "hcftype");
+	d.hcftype->addItem (QString ("height colorfield: grey"));
+	d.hcftype->addItem (QString ("height colorfield: topographic"));
+	d.hcftype->addItem (QString ("height colorfield: terrain"));
+	d.hcftype->setEditable (false);
+
 	GUINEW (d.save, QPushButton ("Save image", d.frame), ERR_GUI_SMAP_INIT_FAILED, "save");
 	d.save->setAutoDefault (false);
 
@@ -50,8 +56,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	d.layout->addWidget (d.influence,	0, 2, 1, 1);
 	d.layout->addWidget (d.frontline,	0, 3, 1, 1);
 	d.layout->addWidget (d.zoom2x,		0, 4, 1, 1);
-	d.layout->addItem   (d.spacer1,		0, 5, 1, 1);
-	d.layout->addWidget (d.save,		0, 6, 1, 1);
+	d.layout->addWidget (d.hcftype,		0, 5, 1, 1);
+	d.layout->addItem   (d.spacer1,		0, 6, 1, 1);
+	d.layout->addWidget (d.save,		0, 7, 1, 1);
 
 	GUINEW (d.smap, SmapWidget (d.model, d.frame), ERR_GUI_SMAP_INIT_FAILED, "strategic map");
 	d.smap->setSizePolicy (QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -91,6 +98,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 
 	if (!connect (d.zoom2x, SIGNAL(stateChanged(int)), SLOT (zoom2x_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_SMAP_INIT_FAILED, "failed to connect <zoom2x:stateChanged> to <zoom2x_change>");
+
+	if (!connect (d.hcftype, SIGNAL (activated(int)), SLOT (hcftype_change(int))))
+		SET_GUICLS_ERROR (ERR_GUI_SMAP_INIT_FAILED, "failed to connect <hcftype:activated> to <hcftype_change>");
 
 	if (!connect (d.save, SIGNAL(clicked(bool)), SLOT (save_clicked(bool))))
 		SET_GUICLS_ERROR (ERR_GUI_SMAP_INIT_FAILED, "failed to connect <save:clicked> to <save_clicked>");
@@ -189,6 +199,24 @@ GuiRptTrnSMap::zoom2x_change (int state)
 }
 
 void
+GuiRptTrnSMap::hcftype_change (int state)
+{
+	switch (state) {
+		case 0:
+		default:
+			d.Vhcftype = SMAP_HPMC_GREY;
+			break;
+		case 1:
+			d.Vhcftype = SMAP_HPMC_TOPO;
+			break;
+		case 2:
+			d.Vhcftype = SMAP_HPMC_TERRAIN;
+			break;
+	}
+	refresh();
+}
+
+void
 GuiRptTrnSMap::save_clicked (bool /*checked*/)
 {
 	d.smap->save_smap();
@@ -235,7 +263,7 @@ GuiRptTrnSMap::refresh (void)
 	} else {
 		d.battle = item->parent;
 		if (GUIVALCHANGED(battle)) d.smap->reset_cursor();
-		d.smap->load (item->data.t);
+		d.smap->load (item->data.t, d.Vhcftype);
 	}
 
 skip_data_update:
@@ -244,6 +272,7 @@ skip_data_update:
 	skip_render &= !GUIVALCHANGED (Vinfluence);
 	skip_render &= !GUIVALCHANGED (Vfrontline);
 	skip_render &= !GUIVALCHANGED (Vzoom2x);
+	skip_render &= !GUIVALCHANGED (Vhcftype);
 	if (skip_render) goto skip_render_update;
 
 	d.smap->enable_grid (d.Vgrid, false);
@@ -251,6 +280,7 @@ skip_data_update:
 	d.smap->enable_influence (d.Vinfluence, false);
 	d.smap->enable_frontline (d.Vfrontline, false);
 	d.smap->set_zoom (d.Vzoom2x ? SmapWidget::ZOOM_2X : SmapWidget::ZOOM_1X, false);
+	d.smap->select_hcf (d.Vhcftype, false);
 	d.smap->trigger_repaint();
 
 skip_render_update:

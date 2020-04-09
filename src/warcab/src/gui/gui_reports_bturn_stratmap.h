@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - strategic map.
  *
- * Copyright (C) 2012-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -43,6 +43,7 @@ public slots:
 	void	influence_change	(int state);
 	void	frontline_change	(int state);
 	void	zoom2x_change		(int state);
+	void	hcftype_change		(int state);
 	void	save_clicked		(bool checked);
 	void	scrollsmap		(int x, int y);
 	void	selected		(GuiTableView *who, const QModelIndex &index);
@@ -51,7 +52,6 @@ private:
 	struct s_data {
 		ModelTable		*model;
 
-		//QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;
 		QCheckBox		*grid;
@@ -59,6 +59,7 @@ private:
 		QCheckBox		*influence;
 		QCheckBox		*frontline;
 		QCheckBox		*zoom2x;
+		QComboBox		*hcftype;
 		QPushButton		*save;
 		QSpacerItem		*spacer1;
 		QScrollArea		*scroller;
@@ -76,6 +77,7 @@ private:
 		GUIVALTRACK (bool, Vinfluence);
 		GUIVALTRACK (bool, Vfrontline);
 		GUIVALTRACK (bool, Vzoom2x);
+		GUIVALTRACK (SMAP_HPMC_TYPE, Vhcftype);
 	} d;
 };
 
