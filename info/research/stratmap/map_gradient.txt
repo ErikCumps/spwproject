@@ -1,0 +1,30 @@
+Current SPWAW gradient:
+
+9 levels:
+	 -0	#202020	 32, 32, 32
+	 0+	#303030	 48, 48, 48
+	 5+	#494949	 73, 73, 73
+	10+	#626262	 98, 98, 98
+	15+	#7b7b7b	123,123,123
+	20+	#949494	148,148,148
+	25+	#adadad	173,173,173
+	30+	#c6c6c6	198,198,198
+	35+	#e0e0e0	224,224,224
+
+----------
+
+See gradient files. These have a range of 0 -> 126.
+
+We need max 31 levels (0 -> 150) + negative.
+So we can use a stepsize of 4 in the gradient maps.
+
+----------
+
+As well as contour lines, the Discovery Series of maps also use colour and
+shading to tell us how high the ground is above sea level.
+
+The higher the ground rises, the darker the colour gets.
+
+The green colour is very low ground, next is pale yellow, then there are roughly
+three shades of brown. The darker the brown, the higher the elevation of the
+ground above sea level .
