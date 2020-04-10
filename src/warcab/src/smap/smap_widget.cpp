@@ -210,6 +210,7 @@ SmapWidget::load (SPWAW_BTURN *turn, SMAP_HPMC_TYPE type)
 		d.b_info = new UNIT_INFO[udata->cnt];
 		d.b_cnt = 0;
 		for (i=0; i<udata->cnt; i++) {
+			if (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY)) continue;
 			if ((udata->list[i].data.posx < 0) || (udata->list[i].data.posy < 0)) continue;
 			hex = d.grid.grid2hex (d.b_info[d.b_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
 			hex->addUnit (SMAP_HI_BLUE);
@@ -233,6 +234,7 @@ SmapWidget::load (SPWAW_BTURN *turn, SMAP_HPMC_TYPE type)
 		d.r_info = new UNIT_INFO[udata->cnt];
 		d.r_cnt = 0;
 		for (i=0; i<udata->cnt; i++) {
+			if (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY)) continue;
 			if ((udata->list[i].data.posx < 0) || (udata->list[i].data.posy < 0)) continue;
 			hex = d.grid.grid2hex (d.r_info[d.r_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
 			hex->addUnit (SMAP_HI_RED);
@@ -425,22 +427,77 @@ SmapWidget::contextMenuEvent (QContextMenuEvent *event)
 	menu->addSeparator ();
 	s.sprintf ("Cursor position: (%d,%d)", px, py);
 	menu->addAction (QString(s));
+
 	menu->addSeparator ();
 	s.sprintf ("Hex position: (%d, %d)", x, y);
 	menu->addAction (QString(s));
-	s.sprintf ("Hex height  : %d meter", d.grid.map[idx].actheight);
+	s.sprintf ("Hex height: %d meter (bin #%d)", d.grid.map[idx].actheight, d.grid.map[idx].height);
 	menu->addAction (QString(s));
+	if (d.grid.map[idx].water) {
+		s.sprintf ("* has water");
+		menu->addAction (QString(s));
+	}
+	if (d.grid.map[idx].bridge) {
+		s.sprintf ("* has bridge");
+		menu->addAction (QString(s));
+	}
+	if (d.grid.map[idx].conn_road1) {
+		s.sprintf ("* has primary road");
+		menu->addAction (QString(s));
+	}
+	if (d.grid.map[idx].conn_road2) {
+		s.sprintf ("* has secondary road");
+		menu->addAction (QString(s));
+	}
+	if (d.grid.map[idx].conn_railr) {
+		s.sprintf ("* has railroad");
+		menu->addAction (QString(s));
+	}
+	if (d.grid.map[idx].conn_traml) {
+		s.sprintf ("* has tramline");
+		menu->addAction (QString(s));
+	}
+
+	menu->addSeparator ();
+	if (d.grid.map[idx].vic_hex) {
+		switch (d.grid.map[idx].vic_hex_owner) {
+			case SMAP_HI_BLUE:
+				s.sprintf ("Victory hex owner: blue");
+				break;
+			case SMAP_HI_RED:
+				s.sprintf ("Victory hex owner: red");
+				break;
+			case SMAP_HI_NONE:
+			default:
+				s.sprintf ("Victory hex owner: neutral");
+				break;
+		}
+		menu->addAction (QString(s));
+	}
+
 	menu->addSeparator ();
 	s.sprintf ("Unit count: %d blue unit(s)", d.grid.map[idx].unit_cnt_blue);
 	menu->addAction (QString(s));
 	s.sprintf ("Unit count: %d red unit(s)", d.grid.map[idx].unit_cnt_red);
 	menu->addAction (QString(s));
+
 	menu->addSeparator ();
-	s.sprintf ("Influence       : %d", d.grid.map[idx].influence);
+	switch (d.grid.map[idx].influence) {
+		case SMAP_HI_BLUE:
+			s.sprintf ("Influence: blue");
+			break;
+		case SMAP_HI_RED:
+			s.sprintf ("Influence: red");
+			break;
+		case SMAP_HI_NONE:
+		default:
+			s.sprintf ("Influence: contested");
+			break;
+	}
 	menu->addAction (QString(s));
-	s.sprintf ("Influence values: %.6f/%.6f", d.grid.map[idx].influence_blue, d.grid.map[idx].influence_red);
+	s.sprintf ("Influence values: %.6f/%.6f (blue/red)", d.grid.map[idx].influence_blue, d.grid.map[idx].influence_red);
 	menu->addAction (QString(s));
-	s.sprintf ("Influence counts: %d/%d", d.grid.map[idx].influence_blue_cnt, d.grid.map[idx].influence_red_cnt);
+	s.sprintf ("Influence counts: %d/%d (blue/red)", d.grid.map[idx].influence_blue_cnt, d.grid.map[idx].influence_red_cnt);
 	menu->addAction (QString(s));
 
 	menu->exec(event->globalPos());
