@@ -331,7 +331,6 @@ void
 SmapWidget::select_hcf (SMAP_HPMC_TYPE type, bool paint)
 {
 	if (d.comp_cfg.hcf != type) {
-		DBG_log ("type: %d, gametype: %s, terrain: %s\n", type, SPWAW_gametype2str (d.battle.gametype), SPWAW_terrain2str (d.battle.terrain));
 		d.comp_cfg.hcf = type;
 		d.renderlist[ZOOM_1X]->selectHCF (d.comp_cfg.hcf, d.battle.gametype, d.battle.terrain);
 		d.renderlist[ZOOM_1X]->render();
