@@ -41,7 +41,13 @@ typedef enum e_SMAP_HPMC_TYPE {
 	SMAP_HPMC_GREY = 0,	/*!< Regular grey colorfield	*/
 	SMAP_HPMC_TOPO,		/*!< Topographic colorfield	*/
 	SMAP_HPMC_TERRAIN,	/*!< Terrain-based colorfield	*/
+	SMAP_HPMCSTART = SMAP_HPMC_GREY,	/*!< \internal	*/
+	SMAP_HPMCLAST = SMAP_HPMC_TERRAIN,	/*!< \internal	*/
 } SMAP_HPMC_TYPE;
+
+#define	SMAP_HPMC_TYPE_CNT	(SMAP_HPMCLAST - SMAP_HPMCSTART + 1)
+
+extern const char *		SMAP_hpmctype2str	(SMAP_HPMC_TYPE type);
 
 /*! Create Renderdata for rendering hexes of the specified size in pixels */
 extern bool			SMAP_RENDERDATA_create	(SMAP_RENDERDATA &rd, const char *desc, int size);

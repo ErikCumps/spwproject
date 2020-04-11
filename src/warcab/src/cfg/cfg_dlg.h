@@ -34,8 +34,8 @@ public:
 class CfgDlgData
 {
 public:
-	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload, bool fhistory) :
-		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory)
+	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload, bool fhistory, int hcftype) :
+		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory), hcftype(hcftype)
 	{
 		types.append(CfgGuiGameType(SPWAW_GAME_TYPE_UNKNOWN, "none"));
 	}
@@ -55,6 +55,7 @@ public:
 	bool			compress;
 	bool			autoload;
 	bool			fhistory;
+	int			hcftype;
 };
 
 typedef struct s_CfgDlgGuiGame {
@@ -97,6 +98,9 @@ private:
 		QCheckBox		*autoload_edit;
 		QLabel			*fhistory_label;
 		QCheckBox		*fhistory_edit;
+		QLabel			*hcftype_label;
+		QComboBox		*hcftype_edit;
+
 		QLabel			*dgt_label;
 		QComboBox		*dgt_select;
 		QVector<CfgDlgGuiGame>	*games_gui;

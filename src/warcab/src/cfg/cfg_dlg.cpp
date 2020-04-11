@@ -9,6 +9,7 @@
 #include "resource.h"
 #include "../common.h"
 #include "res/res.h"
+#include "smap/smap_renderdata.h"
 #include "cfg_dlg.h"
 
 #define	BOX_WIDTH	600
@@ -69,6 +70,10 @@
 	"Select this to enable full campaign history, which also shows\n"	\
 	"data for decommissioned units on the following Dossier tabs:\n"	\
 	"Overview, Status, Progress, Kills, Losses, Roster and History."	\
+
+#define	STR_HCFTYPE_NAME		"Default strategic map height colorfield type:"
+#define	STR_HCFTYPE_TOOLTIP		"Configure the default strategic map height colorfield type."
+#define	STR_HCFTYPE_WHATSTHIS		"This sets the default height colorfield type for the strategic map."
 
 CfgDlg::CfgDlg (CfgDlgData *data)
 	: QDialog (0, Qt::Dialog)
@@ -196,6 +201,23 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.fhistory_edit,	row, 1, 1, 1);
 	row++;
 
+	/* Create "hcftype" config ui */
+	d.hcftype_label = new QLabel (d.body);
+	d.hcftype_label->setText (STR_HCFTYPE_NAME);
+	d.hcftype_label->setToolTip (STR_HCFTYPE_TOOLTIP);
+
+	d.hcftype_edit = new QComboBox (d.body);
+	for (int i=0; i<SMAP_HPMC_TYPE_CNT; i++) {
+		d.hcftype_edit->addItem (QString (SMAP_hpmctype2str((SMAP_HPMC_TYPE)i)));
+	}
+	d.hcftype_edit->setEditable (false);
+	d.hcftype_edit->setToolTip (STR_HCFTYPE_TOOLTIP);
+	d.hcftype_edit->setWhatsThis (STR_HCFTYPE_WHATSTHIS);
+
+	d.layout->addWidget (d.hcftype_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.hcftype_edit,	row, 1, 1, 1);
+	row++;
+
 	/* Add spacer */
 	d.layout->setRowStretch (row, 1);
 	row++;
@@ -321,6 +343,8 @@ CfgDlg::prepare(void)
 	d.compress_edit->setCheckState (d.dlg_data->compress ? Qt::Checked : Qt::Unchecked);
 	d.autoload_edit->setCheckState (d.dlg_data->autoload ? Qt::Checked : Qt::Unchecked);
 	d.fhistory_edit->setCheckState (d.dlg_data->fhistory ? Qt::Checked : Qt::Unchecked);
+	d.hcftype_edit->setCurrentIndex (d.dlg_data->hcftype);
+
 	for (int i=0; i<d.dlg_data->types.size(); i++) {
 		if (d.dlg_data->types[i].type == d.dlg_data->def_game) {
 			d.dgt_select->setCurrentIndex (i);
@@ -343,6 +367,8 @@ CfgDlg::update (void)
 	d.dlg_data->compress = (d.compress_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->autoload = (d.autoload_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->fhistory = (d.fhistory_edit->checkState() == Qt::Checked) ? true : false;
+	d.dlg_data->hcftype = d.hcftype_edit->currentIndex();
+
 	d.dlg_data->def_game = (SPWAW_GAME_TYPE)(d.dgt_select->itemData (d.dgt_select->currentIndex()).toUInt());
 	for (int i=0; i<d.dlg_data->games.size(); i++) {
 		d.dlg_data->games[i]->oob = (*d.games_gui)[i].oob_edit->text().replace('/', '\\');

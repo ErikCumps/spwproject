@@ -42,6 +42,7 @@ typedef struct s_CFGDATA {
 	bool		autoload;		/*!< Dossier autoload flag		*/
 	char		*lastdoss;		/*!< Last opened dossier		*/
 	bool		fhistory;		/*!< Campaign full history flag		*/
+	int		hcftype;		/*!< Height colorfield type		*/
 	GUI_STATE	gui_state;		/*!< GUI state				*/
 } CFGDATA;
 
@@ -50,7 +51,7 @@ typedef struct s_CFGDATA {
 /* --- private macros  --- */
 
 /*! Configuration version */
-#define	CFG_REVISION	4
+#define	CFG_REVISION	5
 
 /* Convenience macro */
 #define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
@@ -187,6 +188,13 @@ config_load (QSettings *storage)
 		cfg.fhistory = data.toBool();
 	}
 
+	data = storage->value ("HeightColorfieldType");
+	if (data.isNull ()) {
+		cfg.hcftype = DEFAULT_HCFTYPE;
+	} else {
+		cfg.hcftype = data.toInt();
+	}
+
 	storage->beginGroup("GUI");
 
 	data = storage->value ("State");
@@ -270,6 +278,9 @@ config_save (QSettings *storage)
 
 	data.setValue (cfg.fhistory);
 	storage->setValue ("FullCampaignHistory", data);
+
+	data.setValue (cfg.hcftype);
+	storage->setValue ("HeightColorfieldType", data);
 
 	storage->beginGroup("GUI");
 
@@ -601,6 +612,20 @@ CFG_SET_full_history (bool b)
 	cfg.fhistory = b;
 }
 
+int
+CFG_hcftype (void)
+{
+	return (initialized ? cfg.hcftype : 0);
+}
+
+static void
+CFG_SET_hcftype (int i)
+{
+	if (!initialized) return;
+
+	cfg.hcftype = i;
+}
+
 GUI_STATE *
 CFG_gui_state_get (void)
 {
@@ -650,7 +675,8 @@ CFG_DLG (bool isfirstrun)
 		CFG_snap_path (),
 		CFG_compress (),
 		CFG_autoload (),
-		CFG_full_history ());
+		CFG_full_history (),
+		CFG_hcftype ());
 
 	CfgDlgGame	spwaw (
 		SPWAW_GAME_TYPE_SPWAW,
@@ -680,6 +706,7 @@ CFG_DLG (bool isfirstrun)
 		CFG_SET_compress (data.compress);
 		CFG_SET_autoload (data.autoload);
 		CFG_SET_full_history (data.fhistory);
+		CFG_SET_hcftype (data.hcftype);
 		config_update_oobcfg ();
 	}
 
@@ -716,6 +743,7 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tautoload            = %s\n", cfg.autoload?"enabled":"disabled");
 		SAYSTATE1 ("\tlast dossier        = %s\n", cfg.lastdoss);
 		SAYSTATE1 ("\tfull history        = %s\n", cfg.fhistory?"enabled":"disabled");
+		SAYSTATE1 ("\thcf type            = %d\n", cfg.hcftype);
 		SAYSTATE1 ("\tGUI state           = %u\n", cfg.gui_state.state);
 		SAYSTATE2 ("\tGUI size            = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
 		SAYSTATE2 ("\tGUI position        = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());

@@ -8,6 +8,28 @@
 
 #include "smap_renderdata.h"
 
+const char *
+SMAP_hpmctype2str (SMAP_HPMC_TYPE type)
+{
+	const char	*p;
+
+	switch (type) {
+		case SMAP_HPMC_GREY:
+			p = "grey";
+			break;
+		case SMAP_HPMC_TOPO:
+			p = "topographic";
+			break;
+		case SMAP_HPMC_TERRAIN:
+			p = "terrain";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
+
 bool
 SMAP_RENDERDATA_create (SMAP_RENDERDATA &rd, const char *desc, int size)
 {

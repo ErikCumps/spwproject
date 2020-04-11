@@ -41,9 +41,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	d.zoom2x->setCheckState (Qt::Unchecked);
 
 	GUINEW (d.hcftype, QComboBox (this), ERR_GUI_REPORTS_INIT_FAILED, "hcftype");
-	d.hcftype->addItem (QString ("height colorfield: grey"));
-	d.hcftype->addItem (QString ("height colorfield: topographic"));
-	d.hcftype->addItem (QString ("height colorfield: terrain"));
+	for (int i=0; i<SMAP_HPMC_TYPE_CNT; i++) {
+		d.hcftype->addItem (QString ("height colorfield: ") + QString (SMAP_hpmctype2str((SMAP_HPMC_TYPE)i)));
+	}
 	d.hcftype->setEditable (false);
 
 	GUINEW (d.save, QPushButton ("Save image", d.frame), ERR_GUI_SMAP_INIT_FAILED, "save");
@@ -145,6 +145,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 
 	if (!connect (d.hdr_table, SIGNAL (selected(GuiTableView*,const QModelIndex&)), this, SLOT (selected(GuiTableView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <hdr_table:selected> to <selected>");
+
+	d.hcftype->setCurrentIndex (CFG_hcftype());
+	hcftype_change (CFG_hcftype());
 
 	SET_GUICLS_NOERR;
 }
