@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main window.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -40,11 +40,11 @@ public slots:
 	void	action_dossier_saveAs			(void);
 	bool	action_dossier_edit			(void);
 
-	void	action_file_add_campaign_savegame	(void);
-	void	action_file_add_battle_savegame		(void);
+	void	action_game_add_campaign_savegame	(void);
+	void	action_game_add_battle_savegame		(void);
 #if	ALLOW_SNAPSHOTS_LOAD
-	void	action_file_add_campaign_snapshot	(void);
-	void	action_file_add_battle_snapshot		(void);
+	void	action_game_add_campaign_snapshot	(void);
+	void	action_game_add_battle_snapshot		(void);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	void	action_add_battle_savegame		(void);

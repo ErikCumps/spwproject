@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - actions.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,12 +36,12 @@ public:
 		QAction		*dossier_saveAs;
 		QAction		*dossier_edit;
 
-		QAction		*file_add_campaign_savegame;
-		QAction		*file_add_battle_savegame;
+		QAction		*game_add_campaign_savegame;
+		QAction		*game_add_battle_savegame;
 		QAction		*add_battle_savegame;
 #if	ALLOW_SNAPSHOTS_LOAD
-		QAction		*file_add_campaign_snapshot;
-		QAction		*file_add_battle_snapshot;
+		QAction		*game_add_campaign_snapshot;
+		QAction		*game_add_battle_snapshot;
 		QAction		*add_battle_snapshot;
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 

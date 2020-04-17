@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - tool bar.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -23,9 +23,7 @@ public:
 
 private:
 	struct s_data {
-		QToolBar	*dossier;
-		QToolBar	*file;
-		QToolBar	*nav;
+		QToolBar	*toolbar;
 	} d;
 };
 

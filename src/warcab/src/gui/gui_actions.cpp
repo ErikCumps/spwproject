@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - actions.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -55,18 +55,18 @@ GuiActions::GuiActions (void)
 	/* Dossier edit action */
 	ACTION (dossier_edit, "Edit dossier...", 0, RID_EDIT_DOSSIER, true);
 
-	/* File|Add campaign savegame action */
-	ACTION (file_add_campaign_savegame, "Add savegame to campaign...", Qt::CTRL+Qt::Key_A, RID_GUI_ICON_ADD_CAMPAIGN_SAVEGAME, true);
+	/* Game|Add campaign savegame action */
+	ACTION (game_add_campaign_savegame, "Add savegame to campaign...", Qt::CTRL+Qt::Key_A, RID_GUI_ICON_ADD_CAMPAIGN_SAVEGAME, true);
 
-	/* File|Add standalone battle savegame action */
-	ACTION (file_add_battle_savegame, "Add standalone battle from savegame...", Qt::CTRL+Qt::Key_B, RID_GUI_ICON_ADD_BATTLE_SAVEGAME, true);
+	/* Game|Add standalone battle savegame action */
+	ACTION (game_add_battle_savegame, "Add standalone battle from savegame...", Qt::CTRL+Qt::Key_B, RID_GUI_ICON_ADD_BATTLE_SAVEGAME, true);
 
 #if	ALLOW_SNAPSHOTS_LOAD
-	/* File|Add campaign snapshot action */
-	ACTION (file_add_campaign_snapshot, "Add snapshot to campaign...", Qt::CTRL+Qt::ALT+Qt::Key_A, RID_GUI_ICON_ADD_CAMPAIGN_SNAPSHOT, true);
+	/* Game|Add campaign snapshot action */
+	ACTION (game_add_campaign_snapshot, "Add snapshot to campaign...", Qt::CTRL+Qt::ALT+Qt::Key_A, RID_GUI_ICON_ADD_CAMPAIGN_SNAPSHOT, true);
 
-	/* File|Add standalone battle snapshot action */
-	ACTION (file_add_battle_snapshot, "Add standalone battle from snapshot...", Qt::CTRL+Qt::ALT+Qt::Key_B, RID_GUI_ICON_ADD_BATTLE_SNAPSHOT, true);
+	/* Game|Add standalone battle snapshot action */
+	ACTION (game_add_battle_snapshot, "Add standalone battle from snapshot...", Qt::CTRL+Qt::ALT+Qt::Key_B, RID_GUI_ICON_ADD_BATTLE_SNAPSHOT, true);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	/* Context menu actions */
@@ -113,11 +113,11 @@ GuiActions::~GuiActions (void)
 	delete p.dossier_saveAs;
 	delete p.dossier_edit;
 
-	delete p.file_add_campaign_savegame;
-	delete p.file_add_battle_savegame;
+	delete p.game_add_campaign_savegame;
+	delete p.game_add_battle_savegame;
 #if	ALLOW_SNAPSHOTS_LOAD
-	delete p.file_add_campaign_snapshot;
-	delete p.file_add_battle_snapshot;
+	delete p.game_add_campaign_snapshot;
+	delete p.game_add_battle_snapshot;
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	delete p.add_battle_savegame;
@@ -137,16 +137,19 @@ GuiActions::~GuiActions (void)
 void
 GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t)
 {
+	p.app_exit->setEnabled (true);
+	p.app_prefs->setEnabled (true);
+
 	p.dossier_close->setEnabled (b);
 	p.dossier_save->setEnabled (b);
 	p.dossier_saveAs->setEnabled (b);
 	p.dossier_edit->setEnabled (b);
 
-	p.file_add_campaign_savegame->setEnabled (b && t != SPWAW_STDALONE_DOSSIER);
-	p.file_add_battle_savegame->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
+	p.game_add_campaign_savegame->setEnabled (b && t != SPWAW_STDALONE_DOSSIER);
+	p.game_add_battle_savegame->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
 #if	ALLOW_SNAPSHOTS_LOAD
-	p.file_add_campaign_snapshot->setEnabled (b && t != SPWAW_STDALONE_DOSSIER);
-	p.file_add_battle_snapshot->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
+	p.game_add_campaign_snapshot->setEnabled (b && t != SPWAW_STDALONE_DOSSIER);
+	p.game_add_battle_snapshot->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 	p.add_battle_savegame->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);

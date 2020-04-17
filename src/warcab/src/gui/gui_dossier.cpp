@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier treeview.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -104,9 +104,9 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 	menu->addSeparator ();
 
 	if (d.actionitem->dossier_type != SPWAW_STDALONE_DOSSIER) {
-		menu->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
+		menu->addAction (GUI_ACTIONS->p.game_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-		menu->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
+		menu->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	} else {
 		menu->addAction (GUI_ACTIONS->p.add_battle_savegame);
@@ -115,9 +115,9 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 		menu->addSeparator ();
 
-		menu->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+		menu->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-		menu->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
+		menu->addAction (GUI_ACTIONS->p.game_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	}
 	menu->addSeparator ();

@@ -437,7 +437,7 @@ GuiMainWindow::action_dossier_edit (void)
 }
 
 void
-GuiMainWindow::action_file_add_campaign_savegame (void)
+GuiMainWindow::action_game_add_campaign_savegame (void)
 {
 	SPWAW_ERROR			arc;
 	SPWAW_SAVELIST			*data = NULL;
@@ -471,7 +471,7 @@ GuiMainWindow::action_file_add_campaign_savegame (void)
 
 #if	ALLOW_SNAPSHOTS_LOAD
 void
-GuiMainWindow::action_file_add_campaign_snapshot (void)
+GuiMainWindow::action_game_add_campaign_snapshot (void)
 {
 	SPWAW_ERROR			arc;
 	SPWAW_SNAPLIST			*data = NULL;
@@ -505,7 +505,7 @@ GuiMainWindow::action_file_add_campaign_snapshot (void)
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
 void
-GuiMainWindow::action_file_add_battle_savegame (void)
+GuiMainWindow::action_game_add_battle_savegame (void)
 {
 	SPWAW_ERROR		arc;
 	SPWAW_SAVELIST		*list = NULL;
@@ -542,7 +542,7 @@ GuiMainWindow::action_file_add_battle_savegame (void)
 
 #if	ALLOW_SNAPSHOTS_LOAD
 void
-GuiMainWindow::action_file_add_battle_snapshot (void)
+GuiMainWindow::action_game_add_battle_snapshot (void)
 {
 	SPWAW_ERROR		arc;
 	SPWAW_SNAPLIST		*list = NULL;

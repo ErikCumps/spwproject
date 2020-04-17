@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main menu.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,6 +19,15 @@ GuiMainMenu::GuiMainMenu (void)
 	/* Create menu bar */
 	d.menu = GUI_WIN->menuBar (); DEVASSERT (d.menu != NULL);
 
+	/* Create and hook application menu */
+	GUINEW (d.app, QMenu ("Application", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<app> menu");
+
+	d.app->addAction (GUI_ACTIONS->p.app_prefs);
+	d.app->addSeparator ();
+	d.app->addAction (GUI_ACTIONS->p.app_exit);
+
+	d.menu->addMenu (d.app);
+
 	/* Create and hook dossier menu */
 	GUINEW (d.dossier, QMenu ("Dossier", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<dossier> menu");
 
@@ -30,27 +39,23 @@ GuiMainMenu::GuiMainMenu (void)
 	d.dossier->addAction (GUI_ACTIONS->p.dossier_saveAs);
 	d.dossier->addSeparator ();
 	d.dossier->addAction (GUI_ACTIONS->p.dossier_edit);
-	d.dossier->addSeparator ();
-	d.dossier->addAction (GUI_ACTIONS->p.app_prefs);
-	d.dossier->addSeparator ();
-	d.dossier->addAction (GUI_ACTIONS->p.app_exit);
 
 	d.menu->addMenu (d.dossier);
 
 	/* Create and hook file menu */
-	GUINEW (d.file, QMenu ("File", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<file> menu");
+	GUINEW (d.game, QMenu ("Game", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<game> menu");
 
-	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_savegame);
+	d.game->addAction (GUI_ACTIONS->p.game_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.file->addAction (GUI_ACTIONS->p.file_add_campaign_snapshot);
+	d.ame->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
-	d.file->addAction (GUI_ACTIONS->p.file_add_battle_savegame);
+	d.game->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.file->addAction (GUI_ACTIONS->p.file_add_battle_snapshot);
+	d.game->addAction (GUI_ACTIONS->p.game_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
-	d.menu->addMenu (d.file);
+	d.menu->addMenu (d.game);
 
 	/* Create and hook navigation menu */
 	GUINEW (d.nav, QMenu ("Navigation", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<nav> menu");
@@ -73,10 +78,12 @@ GuiMainMenu::GuiMainMenu (void)
 	d.menu->addMenu (d.help);
 
 	/* Menu status connections */
+	if (!connect (d.app, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
+		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <app> menu status connection");
 	if (!connect (d.dossier, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
 		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <dossier> menu status connection");
-	if (!connect (d.file, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <file> menu status connection");
+	if (!connect (d.game, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
+		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <game> menu status connection");
 	if (!connect (d.nav, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
 		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <nav> menu status connection");
 	if (!connect (d.help, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
@@ -90,8 +97,9 @@ GuiMainMenu::~GuiMainMenu (void)
 	DBG_TRACE_DESTRUCT;
 
 	// QT does not delete our child widgets
+	delete d.app;
 	delete d.dossier;
-	delete d.file;
+	delete d.game;
 	delete d.nav;
 	delete d.help;
 }
