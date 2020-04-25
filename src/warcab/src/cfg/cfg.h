@@ -10,6 +10,7 @@
 #define	CFG_COMMON_H	1
 
 #include "gui/gui_state.h"
+#include "intel_mode.h"
 
 extern SL_ERROR		CFG_init		(void);
 extern void		CFG_shutdown		(void);
@@ -31,6 +32,7 @@ extern char *		CFG_autoload_get	(void);
 extern void		CFG_autoload_set	(char *file);
 
 extern bool		CFG_full_history	(void);
+extern INTEL_MODE	CFG_intel_mode		(void);
 extern int		CFG_hcftype		(void);
 
 extern GUI_STATE *	CFG_gui_state_get	(void);

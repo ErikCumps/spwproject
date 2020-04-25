@@ -16,7 +16,7 @@ class GuiMainMenu	:public QObject
 	Q_OBJECT
 
 public:
-	GuiMainMenu	(void);
+	GuiMainMenu	(QFont &font);
 	~GuiMainMenu	(void);
 
 	SL_ERROR	error_code;

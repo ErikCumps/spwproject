@@ -39,23 +39,23 @@ GuiMainWindow::GuiMainWindow (void)
 
 	/* Set application font */
 	GUINEW (d.main_font, QFont (font()), ERR_GUI_MAINWINDOW_INIT_FAILED, "font");
-	d.main_font->setFamily ("Tahoma");
+	//d.main_font->setFamily ("Tahoma");
 	setFont (*d.main_font);
 
 	/* Create actions */
-	GUINEW (d.actions, GuiActions (), ERR_GUI_MAINWINDOW_INIT_FAILED, "actions");
+	GUINEW (d.actions, GuiActions (*d.main_font), ERR_GUI_MAINWINDOW_INIT_FAILED, "actions");
 	GUIERR (d.actions, ERR_GUI_MAINWINDOW_INIT_FAILED);
 
 	/* Create menubar */
-	GUINEW (d.menu, GuiMainMenu (), ERR_GUI_MAINWINDOW_INIT_FAILED, "menu");
+	GUINEW (d.menu, GuiMainMenu (*d.main_font), ERR_GUI_MAINWINDOW_INIT_FAILED, "menu");
 	GUIERR (d.menu, ERR_GUI_MAINWINDOW_INIT_FAILED);
 
 	/* Create toolbar */
-	GUINEW (d.toolbar, GuiToolbar (), ERR_GUI_MAINWINDOW_INIT_FAILED, "toolbar");
+	GUINEW (d.toolbar, GuiToolbar (*d.main_font), ERR_GUI_MAINWINDOW_INIT_FAILED, "toolbar");
 	GUIERR (d.toolbar, ERR_GUI_MAINWINDOW_INIT_FAILED);
 
 	/* Create status bar */
-	GUINEW (d.status, GuiStatus (), ERR_GUI_MAINWINDOW_INIT_FAILED, "status");
+	GUINEW (d.status, GuiStatus (*d.main_font), ERR_GUI_MAINWINDOW_INIT_FAILED, "status");
 	GUIERR (d.status, ERR_GUI_MAINWINDOW_INIT_FAILED);
 
 	/* Create central widget */
@@ -93,6 +93,20 @@ GuiMainWindow::GuiMainWindow (void)
 	installEventFilter (this);
 
 	setUpdatesEnabled(true);
+
+	/* Set intel mode from default config */
+	switch (CFG_intel_mode()) {
+		case INTEL_MODE_FULL:
+		default:
+			action_app_intel_full (true);
+			break;
+		case INTEL_MODE_LMTD:
+			action_app_intel_lmtd (true);
+			break;
+		case INTEL_MODE_NONE:
+			action_app_intel_none (true);
+			break;
+	}
 
 	SET_GUICLS_NOERR;
 }
@@ -280,6 +294,27 @@ GuiMainWindow::action_app_prefs (void)
 
 		d.report->update();
 	}
+}
+
+void
+GuiMainWindow::action_app_intel_full (bool /*checked*/)
+{
+	d.actions->select_intel_action (INTEL_MODE_FULL);
+	emit selected_intel_mode (INTEL_MODE_FULL);
+}
+
+void
+GuiMainWindow::action_app_intel_lmtd (bool /*checked*/)
+{
+	d.actions->select_intel_action (INTEL_MODE_LMTD);
+	emit selected_intel_mode (INTEL_MODE_LMTD);
+}
+
+void
+GuiMainWindow::action_app_intel_none (bool /*checked*/)
+{
+	d.actions->select_intel_action (INTEL_MODE_NONE);
+	emit selected_intel_mode (INTEL_MODE_NONE);
 }
 
 void

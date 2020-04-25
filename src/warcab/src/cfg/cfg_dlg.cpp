@@ -13,7 +13,7 @@
 #include "cfg_dlg.h"
 
 #define	BOX_WIDTH	600
-#define	BOX_HEIGHT	400
+#define	BOX_HEIGHT	450
 #define	BOX_MARGIN	 10
 
 #define	STR_LOCPRF_TOOLTIP	"Store preferences locally."
@@ -70,6 +70,10 @@
 	"Select this to enable full campaign history, which also shows\n"	\
 	"data for decommissioned units on the following Dossier tabs:\n"	\
 	"Overview, Status, Progress, Kills, Losses, Roster and History."	\
+
+#define	STR_IMODE_NAME			"Default intel mode:"
+#define	STR_IMODE_TOOLTIP		"Configure the default intel mode."
+#define	STR_IMODE_WHATSTHIS		"This sets the default intel mode."
 
 #define	STR_HCFTYPE_NAME		"Default strategic map height colorfield type:"
 #define	STR_HCFTYPE_TOOLTIP		"Configure the default strategic map height colorfield type."
@@ -141,6 +145,12 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->setRowStretch (row, 1);
 	row++;
 
+	/* Create and add separator1 */
+	d.separator1 = new QFrame (this);
+	d.separator1->setFrameStyle (QFrame::HLine);
+	d.layout->addWidget (d.separator1,	row, 0, 1, 3);
+	row++;
+
 	/* Create "snap" config ui */
 	d.snp_label = new QLabel (d.body);
 	d.snp_label->setText ("Warcab saves folder:");
@@ -201,6 +211,23 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.fhistory_edit,	row, 1, 1, 1);
 	row++;
 
+	/* Create "imode" config ui */
+	d.imode_label = new QLabel (d.body);
+	d.imode_label->setText (STR_IMODE_NAME);
+	d.imode_label->setToolTip (STR_IMODE_TOOLTIP);
+
+	d.imode_edit = new QComboBox (d.body);
+	for (int i=0; i<INTEL_MODE_CNT; i++) {
+		d.imode_edit->addItem (QString (intelmode2str((INTEL_MODE)i)));
+	}
+	d.imode_edit->setEditable (false);
+	d.imode_edit->setToolTip (STR_IMODE_TOOLTIP);
+	d.imode_edit->setWhatsThis (STR_IMODE_WHATSTHIS);
+
+	d.layout->addWidget (d.imode_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.imode_edit,	row, 1, 1, 1);
+	row++;
+
 	/* Create "hcftype" config ui */
 	d.hcftype_label = new QLabel (d.body);
 	d.hcftype_label->setText (STR_HCFTYPE_NAME);
@@ -220,6 +247,12 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 
 	/* Add spacer */
 	d.layout->setRowStretch (row, 1);
+	row++;
+
+	/* Create and add separator2 */
+	d.separator2 = new QFrame (this);
+	d.separator2->setFrameStyle (QFrame::HLine);
+	d.layout->addWidget (d.separator2,	row, 0, 1, 3);
 	row++;
 
 	/* Create "default game type" config ui */
@@ -299,7 +332,9 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	setTabOrder (d.snp_browse, d.compress_edit);
 	setTabOrder (d.compress_edit, d.autoload_edit);
 	setTabOrder (d.autoload_edit, d.fhistory_edit);
-	setTabOrder (d.fhistory_edit, d.dgt_select);
+	setTabOrder (d.fhistory_edit, d.imode_edit);
+	setTabOrder (d.imode_edit, d.hcftype_edit);
+	setTabOrder (d.hcftype_edit, d.dgt_select);
 	setTabOrder (d.dgt_select, (*d.games_gui)[0].oob_edit);
 	for (int i=0; i<(*d.games_gui).size(); i++) {
 		if (i>0) setTabOrder ((*d.games_gui)[i-1].sve_browse, (*d.games_gui)[i].oob_edit);
@@ -343,6 +378,7 @@ CfgDlg::prepare(void)
 	d.compress_edit->setCheckState (d.dlg_data->compress ? Qt::Checked : Qt::Unchecked);
 	d.autoload_edit->setCheckState (d.dlg_data->autoload ? Qt::Checked : Qt::Unchecked);
 	d.fhistory_edit->setCheckState (d.dlg_data->fhistory ? Qt::Checked : Qt::Unchecked);
+	d.imode_edit->setCurrentIndex (d.dlg_data->imode);
 	d.hcftype_edit->setCurrentIndex (d.dlg_data->hcftype);
 
 	for (int i=0; i<d.dlg_data->types.size(); i++) {
@@ -367,6 +403,7 @@ CfgDlg::update (void)
 	d.dlg_data->compress = (d.compress_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->autoload = (d.autoload_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->fhistory = (d.fhistory_edit->checkState() == Qt::Checked) ? true : false;
+	d.dlg_data->imode = d.imode_edit->currentIndex();
 	d.dlg_data->hcftype = d.hcftype_edit->currentIndex();
 
 	d.dlg_data->def_game = (SPWAW_GAME_TYPE)(d.dgt_select->itemData (d.dgt_select->currentIndex()).toUInt());

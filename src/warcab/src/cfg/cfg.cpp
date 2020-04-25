@@ -42,7 +42,8 @@ typedef struct s_CFGDATA {
 	bool		autoload;		/*!< Dossier autoload flag		*/
 	char		*lastdoss;		/*!< Last opened dossier		*/
 	bool		fhistory;		/*!< Campaign full history flag		*/
-	int		hcftype;		/*!< Height colorfield type		*/
+	INTEL_MODE	intel_mode;		/*!< Default intel mode			*/
+	int		hcftype;		/*!< Default height colorfield type	*/
 	GUI_STATE	gui_state;		/*!< GUI state				*/
 } CFGDATA;
 
@@ -51,7 +52,7 @@ typedef struct s_CFGDATA {
 /* --- private macros  --- */
 
 /*! Configuration version */
-#define	CFG_REVISION	5
+#define	CFG_REVISION	6
 
 /* Convenience macro */
 #define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
@@ -127,7 +128,7 @@ config_load (QSettings *storage)
 
 	data = storage->value ("DefGameType");
 	if (data.isNull ()) {
-		cfg.def_gametype = SPWAW_GAME_TYPE_UNKNOWN;
+		cfg.def_gametype = DEFAULT_GAMETYPE;
 	} else {
 		cfg.def_gametype = (SPWAW_GAME_TYPE)data.toInt();
 	}
@@ -188,7 +189,14 @@ config_load (QSettings *storage)
 		cfg.fhistory = data.toBool();
 	}
 
-	data = storage->value ("HeightColorfieldType");
+	data = storage->value ("DefaultIntelMode");
+	if (data.isNull ()) {
+		cfg.intel_mode = DEFAULT_INTEL_MODE;
+	} else {
+		cfg.intel_mode = raw2intelmode(data.toInt());
+	}
+
+	data = storage->value ("DefaultHeightColorfieldType");
 	if (data.isNull ()) {
 		cfg.hcftype = DEFAULT_HCFTYPE;
 	} else {
@@ -279,8 +287,11 @@ config_save (QSettings *storage)
 	data.setValue (cfg.fhistory);
 	storage->setValue ("FullCampaignHistory", data);
 
+	data.setValue (intelmode2raw (cfg.intel_mode));
+	storage->setValue ("DefaultIntelMode", data);
+
 	data.setValue (cfg.hcftype);
-	storage->setValue ("HeightColorfieldType", data);
+	storage->setValue ("DefaultHeightColorfieldType", data);
 
 	storage->beginGroup("GUI");
 
@@ -441,7 +452,7 @@ CFG_usr_path (void)
 SPWAW_GAME_TYPE
 CFG_default_gametype (void)
 {
-	return (initialized ? cfg.def_gametype : SPWAW_GAME_TYPE_UNKNOWN);
+	return (initialized ? cfg.def_gametype : DEFAULT_GAMETYPE);
 }
 
 static void
@@ -557,7 +568,7 @@ CFG_SET_snp_path (char *str)
 bool
 CFG_compress (void)
 {
-	return (initialized ? cfg.compress : false);
+	return (initialized ? cfg.compress : DEFAULT_COMPRESSION);
 }
 
 static void
@@ -571,7 +582,7 @@ CFG_SET_compress (bool b)
 static bool
 CFG_autoload (void)
 {
-	return (initialized ? cfg.autoload : false);
+	return (initialized ? cfg.autoload : DEFAULT_AUTOLOAD);
 }
 
 static void
@@ -601,7 +612,7 @@ CFG_autoload_set (char *file)
 bool
 CFG_full_history (void)
 {
-	return (initialized ? cfg.fhistory : false);
+	return (initialized ? cfg.fhistory : DEFAULT_FULL_HISTORY);
 }
 
 static void
@@ -612,10 +623,24 @@ CFG_SET_full_history (bool b)
 	cfg.fhistory = b;
 }
 
+INTEL_MODE
+CFG_intel_mode (void)
+{
+	return (initialized ? cfg.intel_mode : DEFAULT_INTEL_MODE);
+}
+
+static void
+CFG_SET_intel_mode (INTEL_MODE mode)
+{
+	if (!initialized) return;
+
+	cfg.intel_mode = mode;
+}
+
 int
 CFG_hcftype (void)
 {
-	return (initialized ? cfg.hcftype : 0);
+	return (initialized ? cfg.hcftype : DEFAULT_HCFTYPE);
 }
 
 static void
@@ -676,20 +701,24 @@ CFG_DLG (bool isfirstrun)
 		CFG_compress (),
 		CFG_autoload (),
 		CFG_full_history (),
-		CFG_hcftype ());
+		intelmode2raw(CFG_intel_mode ()),
+		CFG_hcftype ()
+	);
 
 	CfgDlgGame	spwaw (
 		SPWAW_GAME_TYPE_SPWAW,
 		SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW),
 		CFG_oob_path (SPWAW_GAME_TYPE_SPWAW),
-		CFG_save_path (SPWAW_GAME_TYPE_SPWAW));
+		CFG_save_path (SPWAW_GAME_TYPE_SPWAW)
+	);
 	data.add (&spwaw);
 
 	CfgDlgGame	winspww2 (
 		SPWAW_GAME_TYPE_WINSPWW2,
 		SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2),
 		CFG_oob_path (SPWAW_GAME_TYPE_WINSPWW2),
-		CFG_save_path (SPWAW_GAME_TYPE_WINSPWW2));
+		CFG_save_path (SPWAW_GAME_TYPE_WINSPWW2)
+	);
 	data.add (&winspww2);
 
 	dlg = new CfgDlg (&data);
@@ -706,6 +735,7 @@ CFG_DLG (bool isfirstrun)
 		CFG_SET_compress (data.compress);
 		CFG_SET_autoload (data.autoload);
 		CFG_SET_full_history (data.fhistory);
+		CFG_SET_intel_mode (raw2intelmode(data.imode));
 		CFG_SET_hcftype (data.hcftype);
 		config_update_oobcfg ();
 	}
@@ -743,7 +773,8 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tautoload            = %s\n", cfg.autoload?"enabled":"disabled");
 		SAYSTATE1 ("\tlast dossier        = %s\n", cfg.lastdoss);
 		SAYSTATE1 ("\tfull history        = %s\n", cfg.fhistory?"enabled":"disabled");
-		SAYSTATE1 ("\thcf type            = %d\n", cfg.hcftype);
+		SAYSTATE1 ("\tdefault intel mode  = %s\n", intelmode2str (cfg.intel_mode));
+		SAYSTATE1 ("\tdefault hcf type    = %d\n", cfg.hcftype);
 		SAYSTATE1 ("\tGUI state           = %u\n", cfg.gui_state.state);
 		SAYSTATE2 ("\tGUI size            = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
 		SAYSTATE2 ("\tGUI position        = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());

@@ -10,24 +10,33 @@
 #define GUI_ACTIONS_H	1
 
 #include "gui_private.h"
+#include "intel_mode.h"
 
 class GuiActions	: public QObject
 {
 	Q_OBJECT
 
 public:
-	GuiActions	(void);
+	GuiActions	(QFont &font);
 	~GuiActions	(void);
 
 	SL_ERROR	error_code;
 
 public:
-	void		enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t);
+	void		enable_dossier_actions	(bool b, SPWAW_DOSSIER_TYPE t);
+	void		select_intel_action	(INTEL_MODE mode);
 
 public:
 	struct s_data {
+		QFont		*reg_font;
+		QFont		*sel_font;
+
 		QAction		*app_exit;
 		QAction		*app_prefs;
+		QActionGroup	*app_intel;
+		QAction		*app_intel_full;
+		QAction		*app_intel_lmtd;
+		QAction		*app_intel_none;
 
 		QAction		*dossier_new;
 		QAction		*dossier_open;

@@ -8,7 +8,7 @@
 
 #include "gui_mainmenu.h"
 
-GuiMainMenu::GuiMainMenu (void)
+GuiMainMenu::GuiMainMenu (QFont &font)
 	: QObject()
 {
 	DBG_TRACE_CONSTRUCT;
@@ -18,11 +18,16 @@ GuiMainMenu::GuiMainMenu (void)
 
 	/* Create menu bar */
 	d.menu = GUI_WIN->menuBar (); DEVASSERT (d.menu != NULL);
+	d.menu->setFont (font);
 
 	/* Create and hook application menu */
 	GUINEW (d.app, QMenu ("Application", GUI_WIN), ERR_GUI_MAINMENU_INIT_FAILED, "<app> menu");
 
 	d.app->addAction (GUI_ACTIONS->p.app_prefs);
+	d.app->addSeparator ();
+	d.app->addAction (GUI_ACTIONS->p.app_intel_full);
+	d.app->addAction (GUI_ACTIONS->p.app_intel_lmtd);
+	d.app->addAction (GUI_ACTIONS->p.app_intel_none);
 	d.app->addSeparator ();
 	d.app->addAction (GUI_ACTIONS->p.app_exit);
 

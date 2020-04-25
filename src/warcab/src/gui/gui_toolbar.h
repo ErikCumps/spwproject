@@ -16,7 +16,7 @@ class GuiToolbar	: public QObject
 	Q_OBJECT
 
 public:
-	GuiToolbar	(void);
+	GuiToolbar	(QFont &font);
 	~GuiToolbar	(void);
 
 	SL_ERROR	error_code;

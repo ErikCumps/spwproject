@@ -29,9 +29,15 @@ public:
 	GuiDossier *	get_dossier	(void);
 	GuiMainRpt *	get_report	(void);
 
+signals:
+	void	selected_intel_mode	(INTEL_MODE mode);
+
 public slots:
 	void	action_app_exit				(void);
 	void	action_app_prefs			(void);
+	void	action_app_intel_full			(bool checked);
+	void	action_app_intel_lmtd			(bool checked);
+	void	action_app_intel_none			(bool checked);
 
 	void	action_dossier_new			(void);
 	void	action_dossier_open			(void);

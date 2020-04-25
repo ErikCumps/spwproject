@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - status bar.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@ class GuiStatus		: public QObject
 	Q_OBJECT
 
 public:
-	GuiStatus	(void);
+	GuiStatus	(QFont &font);
 	~GuiStatus	(void);
 
 	SL_ERROR	error_code;

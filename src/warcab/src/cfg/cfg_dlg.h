@@ -9,6 +9,8 @@
 #ifndef	CFG_DLG_H
 #define	CFG_DLG_H	1
 
+#include "intel_mode.h"
+
 class CfgGuiGameType
 {
 public:
@@ -34,8 +36,8 @@ public:
 class CfgDlgData
 {
 public:
-	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload, bool fhistory, int hcftype) :
-		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory), hcftype(hcftype)
+	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload, bool fhistory, int imode, int hcftype) :
+		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory), imode(imode), hcftype(hcftype)
 	{
 		types.append(CfgGuiGameType(SPWAW_GAME_TYPE_UNKNOWN, "none"));
 	}
@@ -55,6 +57,7 @@ public:
 	bool			compress;
 	bool			autoload;
 	bool			fhistory;
+	int			imode;
 	int			hcftype;
 };
 
@@ -89,6 +92,7 @@ private:
 		QGridLayout		*layout;
 		QLabel			*locprf_label;
 		QCheckBox		*locprf_edit;
+		QFrame			*separator1;
 		QLabel			*snp_label;
 		QLineEdit		*snp_edit;
 		QPushButton		*snp_browse;
@@ -98,9 +102,11 @@ private:
 		QCheckBox		*autoload_edit;
 		QLabel			*fhistory_label;
 		QCheckBox		*fhistory_edit;
+		QLabel			*imode_label;
+		QComboBox		*imode_edit;
 		QLabel			*hcftype_label;
 		QComboBox		*hcftype_edit;
-
+		QFrame			*separator2;
 		QLabel			*dgt_label;
 		QComboBox		*dgt_select;
 		QVector<CfgDlgGuiGame>	*games_gui;

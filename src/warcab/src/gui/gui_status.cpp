@@ -1,14 +1,14 @@
 /** \file
  * The SPWaW war cabinet - GUI - status bar.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "gui_status.h"
 
-GuiStatus::GuiStatus (void)
+GuiStatus::GuiStatus (QFont &font)
 	: QObject()
 {
 	DBG_TRACE_CONSTRUCT;
@@ -18,6 +18,7 @@ GuiStatus::GuiStatus (void)
 
 	/* Create status bar */
 	d.status = GUI_WIN->statusBar(); DEVASSERT (d.status != NULL);
+	d.status->setFont (font);
 	d.status->setSizeGripEnabled (FALSE);
 
 	GUINEW (d.infoFrame, QFrame (d.status), ERR_GUI_STATUS_INIT_FAILED, "info frame");

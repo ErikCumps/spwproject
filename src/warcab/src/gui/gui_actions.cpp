@@ -8,10 +8,12 @@
 
 #include "resource.h"
 #include "gui_actions.h"
+#include "intel_mode.h"
 
 #define	ACTION(a,t,k,i,g)											\
 	do {													\
 		GUINEW (p.a, QAction (t, GUI_WIN), ERR_GUI_ACTION_INIT_FAILED, "<" #a "> action");		\
+		p.a->setFont (*p.reg_font);									\
 		p.a->setShortcut (k);										\
 		if (g) p.a->setShortcutContext (Qt::ApplicationShortcut);					\
 		if (i) p.a->setIcon (QIcon (*(RES_pixmap (i))));						\
@@ -19,13 +21,30 @@
 		SET_GUICLS_ERROR (ERR_GUI_ACTION_INIT_FAILED, "failed to create <" #a "> action connection");	\
 	} while (0)
 
-GuiActions::GuiActions (void)
+#define	CHKACTION(a,t,k,i,g)											\
+	do {													\
+		GUINEW (p.a, QAction (t, GUI_WIN), ERR_GUI_ACTION_INIT_FAILED, "<" #a "> action");		\
+		p.a->setFont (*p.reg_font);									\
+		p.a->setShortcut (k);										\
+		if (g) p.a->setShortcutContext (Qt::ApplicationShortcut);					\
+		if (i) p.a->setIcon (QIcon (*(RES_pixmap (i))));						\
+		p.a->setCheckable (true);									\
+		if (!connect (p.a, SIGNAL (triggered(bool)), GUI_WIN, SLOT (action_##a(bool))))			\
+		SET_GUICLS_ERROR (ERR_GUI_ACTION_INIT_FAILED, "failed to create <" #a "> triggered connection");\
+	} while (0)
+
+GuiActions::GuiActions (QFont &font)
 	: QObject()
 {
 	DBG_TRACE_CONSTRUCT;
 
 	/* Initialization */
 	memset (&p, 0, sizeof (p));
+
+	/* Fonts */
+	GUINEW (p.reg_font, QFont (font), ERR_GUI_ACTION_INIT_FAILED, "failed to create regular font");
+	GUINEW (p.sel_font, QFont (font), ERR_GUI_ACTION_INIT_FAILED, "failed to create selection font");
+	p.sel_font->setWeight (QFont::Bold);
 
 	/* NOTE: icon appearance on menu is dictated by style!
 	 * We can't control it here... */
@@ -36,6 +55,24 @@ GuiActions::GuiActions (void)
 
 	/* Application preferences action */
 	ACTION (app_prefs, "Preferences...", 0, RID_GUI_ICONS_1_Preferences, true);
+
+	/* Application intel actions group */
+	GUINEW (p.app_intel, QActionGroup(this), ERR_GUI_ACTION_INIT_FAILED, "failed to create <app_intel> action group");
+	QString intelstr("Intel mode: ");
+
+	/* Application full intel action */
+	CHKACTION (app_intel_full, intelstr + QString(intelmode2str(INTEL_MODE_FULL)), 0, RID_ICON_INTEL_FULL, true);
+
+	/* Application limited intel action */
+	CHKACTION (app_intel_lmtd, intelstr + QString(intelmode2str(INTEL_MODE_LMTD)), 0, RID_ICON_INTEL_LMTD, true);
+
+	/* Application no intel action */
+	CHKACTION (app_intel_none, intelstr + QString(intelmode2str(INTEL_MODE_NONE)), 0, RID_ICON_INTEL_NONE, true);
+
+	/* Populate application intel actions group */
+	p.app_intel->addAction(p.app_intel_full);
+	p.app_intel->addAction(p.app_intel_lmtd);
+	p.app_intel->addAction(p.app_intel_none);
 
 	/* Dossier new action */
 	ACTION (dossier_new, "New dossier...", Qt::CTRL+Qt::Key_N, RID_GUI_ICONS_1_New, true);
@@ -105,6 +142,9 @@ GuiActions::~GuiActions (void)
 
 	delete p.app_exit;
 	delete p.app_prefs;
+	delete p.app_intel_full;
+	delete p.app_intel_lmtd;
+	delete p.app_intel_none;
 
 	delete p.dossier_new;
 	delete p.dossier_open;
@@ -139,6 +179,9 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t)
 {
 	p.app_exit->setEnabled (true);
 	p.app_prefs->setEnabled (true);
+	p.app_intel_full->setEnabled (true);
+	p.app_intel_lmtd->setEnabled (true);
+	p.app_intel_none->setEnabled (true);
 
 	p.dossier_close->setEnabled (b);
 	p.dossier_save->setEnabled (b);
@@ -166,4 +209,20 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t)
 	p.nav_next->setEnabled (b);
 	p.nav_last->setEnabled (b);
 	p.nav_lower->setEnabled (b);
+}
+
+void
+GuiActions::select_intel_action (INTEL_MODE mode)
+{
+	QAction*actns[INTEL_MODE_CNT] = { p.app_intel_full, p.app_intel_lmtd, p.app_intel_none };
+	QFont*	fonts[INTEL_MODE_CNT] = { p.reg_font,       p.reg_font,       p.reg_font       };
+	bool	check[INTEL_MODE_CNT] = { false,            false,            false            };
+
+	fonts[mode] = p.sel_font;
+	check[mode] = true;
+
+	for (int i=0; i<INTEL_MODE_CNT; i++) {
+		actns[i]->setChecked(check[i]);
+		actns[i]->setFont (*fonts[i]);
+	}
 }
