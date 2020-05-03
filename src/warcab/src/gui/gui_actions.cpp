@@ -172,6 +172,9 @@ GuiActions::~GuiActions (void)
 	delete p.nav_previous;
 	delete p.nav_next;
 	delete p.nav_last;
+
+	delete p.reg_font;
+	delete p.sel_font;
 }
 
 void
