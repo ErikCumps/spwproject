@@ -19,6 +19,7 @@ public:
 
 public:
 	bool	full	(void);
+	bool	empty	(void);
 	void	add	(char *string);
 	void	del	(unsigned long cnt);
 	void	printf	(char *fmt, ...);

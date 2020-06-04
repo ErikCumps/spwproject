@@ -54,6 +54,12 @@ UtilStrbuf::full (void)
 	return (d.grow?false:(d.left == 0));
 }
 
+bool
+UtilStrbuf::empty (void)
+{
+	return (d.left == d.size);
+}
+
 void
 UtilStrbuf::add (char *string)
 {
