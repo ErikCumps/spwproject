@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - tabled data.
  *
- * Copyright (C) 2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -182,6 +182,7 @@ ModelTable::MDLT_data_display (QVariant *item, MDLT_DATA_TYPE type) const
 	QString		s;
 
 	if (!item) return (v);
+	if (item->isNull()) return (v);
 
 	switch (type) {
 			case MDLT_DATA_INT:

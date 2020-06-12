@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex object.
  *
- * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,6 +11,7 @@
 
 #include "smap_hexdata.h"
 #include "smap_hexpos.h"
+#include "intel_mode.h"
 
 /*! This class represents a hex in a strategic map */
 class SmapHex
@@ -36,7 +37,7 @@ public:
 	void	setRoadConn	(int road1, int road2, int railr, int traml);
 
 	/*! Set the victory hex status of this hex */
-	void	setVicHex	(SPWAW_VHSTATUS owner);
+	void	setVicHex	(SPWAW_VHSTATUS owner, INTEL_MODE mode);
 
 	/*! Increment the unit count for this hex */
 	void	addUnit		(SMAP_HI influence);
@@ -62,7 +63,9 @@ public:
 	bool		vic_hex;		/*!< True if this hex is a victory hex						*/
 	SMAP_HI		vic_hex_owner;		/*!< The owner of the victory hex						*/
 	int		unit_cnt_blue;		/*!< The number of blue units in this hex					*/
+	bool		all_KIA_blue;		/*!< All blue units in this hex are KIA						*/
 	int		unit_cnt_red;		/*!< The number of red units in this hex					*/
+	bool		all_KIA_red;		/*!< All red units in this hex are KIA						*/
 	int		influence_blue_cnt;	/*!< The number of blue units contributing to the blue influence in this hex	*/
 	int		influence_red_cnt;	/*!< The number of red units contributing to the red influence in this hex	*/
 	double		influence_blue;		/*!< The blue influence in this hex						*/

@@ -164,17 +164,15 @@ GuiRptDsr::refresh (bool forced)
 	DBG_TRACE_FENTER;
 
 	d.overview->refresh(forced);
-	if (d.item && (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
-		d.cnd->refresh(forced);
-		d.prg->refresh(forced);
-		d.kill->refresh(forced);
-		d.loss->refresh(forced);
-		d.oob->refresh();	//FIXME?
-		d.rst->refresh(forced);
-		d.hst->refresh(forced);
-		d.mmas->refresh();	//FIXME?
-		d.graphs->refresh();	//FIXME?
-	}
+	d.cnd->refresh(forced);
+	d.prg->refresh(forced);
+	d.kill->refresh(forced);
+	d.loss->refresh(forced);
+	d.oob->refresh();	//FIXME?
+	d.rst->refresh(forced);
+	d.hst->refresh(forced);
+	d.mmas->refresh();	//FIXME?
+	d.graphs->refresh();	//FIXME?
 
 	DBG_TRACE_FLEAVE;
 }

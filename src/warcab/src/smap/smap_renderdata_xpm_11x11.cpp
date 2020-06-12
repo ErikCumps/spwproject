@@ -52,22 +52,32 @@
 #include "xpm_11x11/blue_11x11.xpm"
 #include "xpm_11x11/red_11x11.xpm"
 #include "xpm_11x11/neutral_11x11.xpm"
+#include "xpm_11x11/contested_11x11.xpm"
 #include "xpm_11x11/mask_033_11x11.xpm"
 #include "xpm_11x11/bluedot_1_11x11.xpm"
 #include "xpm_11x11/bluedot_2_11x11.xpm"
 #include "xpm_11x11/bluedot_3_11x11.xpm"
+#include "xpm_11x11/bluesplat_11x11.xpm"
 #include "xpm_11x11/reddot_1_11x11.xpm"
 #include "xpm_11x11/reddot_2_11x11.xpm"
 #include "xpm_11x11/reddot_3_11x11.xpm"
+#include "xpm_11x11/redsplat_11x11.xpm"
 #include "xpm_11x11/vhex_blue_11x11.xpm"
 #include "xpm_11x11/vhex_red_11x11.xpm"
 #include "xpm_11x11/vhex_neutral_11x11.xpm"
+#include "xpm_11x11/vhex_contested_11x11.xpm"
 #include "xpm_11x11/frontline_EE_11x11.xpm"
 #include "xpm_11x11/frontline_SE_11x11.xpm"
 #include "xpm_11x11/frontline_SW_11x11.xpm"
 #include "xpm_11x11/frontline_WW_11x11.xpm"
 #include "xpm_11x11/frontline_NW_11x11.xpm"
 #include "xpm_11x11/frontline_NE_11x11.xpm"
+#include "xpm_11x11/frontline_dotted_EE_11x11.xpm"
+#include "xpm_11x11/frontline_dotted_SE_11x11.xpm"
+#include "xpm_11x11/frontline_dotted_SW_11x11.xpm"
+#include "xpm_11x11/frontline_dotted_WW_11x11.xpm"
+#include "xpm_11x11/frontline_dotted_NW_11x11.xpm"
+#include "xpm_11x11/frontline_dotted_NE_11x11.xpm"
 
 SMAP_RENDERDATA_XPMS xpms_11x11 = {
 	HEXBORDER_11X11,
@@ -113,6 +123,7 @@ SMAP_RENDERDATA_XPMS xpms_11x11 = {
 	BLUE_11X11,
 	RED_11X11,
 	NEUTRAL_11X11,
+	CONTESTED_11X11,
 	MASK_033_11X11,
 	BLUEDOT_1_11X11,
 	BLUEDOT_2_11X11,
@@ -130,6 +141,7 @@ SMAP_RENDERDATA_XPMS xpms_11x11 = {
 	BLUEDOT_3_11X11,
 	BLUEDOT_3_11X11,
 	BLUEDOT_3_11X11,
+	BLUESPLAT_11X11,
 	REDDOT_1_11X11,
 	REDDOT_2_11X11,
 	REDDOT_3_11X11,
@@ -146,13 +158,21 @@ SMAP_RENDERDATA_XPMS xpms_11x11 = {
 	REDDOT_3_11X11,
 	REDDOT_3_11X11,
 	REDDOT_3_11X11,
+	REDSPLAT_11X11,
 	VHEX_BLUE_11X11,
 	VHEX_RED_11X11,
 	VHEX_NEUTRAL_11X11,
+	VHEX_CONTESTED_11X11,
 	FRONTLINE_EE_11X11,
 	FRONTLINE_SE_11X11,
 	FRONTLINE_SW_11X11,
 	FRONTLINE_WW_11X11,
 	FRONTLINE_NW_11X11,
 	FRONTLINE_NE_11X11,
+	FRONTLINE_DOTTED_EE_11X11,
+	FRONTLINE_DOTTED_SE_11X11,
+	FRONTLINE_DOTTED_SW_11X11,
+	FRONTLINE_DOTTED_WW_11X11,
+	FRONTLINE_DOTTED_NW_11X11,
+	FRONTLINE_DOTTED_NE_11X11,
 };

@@ -36,7 +36,7 @@ public:
 #endif	/* EXPERIMENTAL */
 
 public:
-	void	reload		(GRV_MODE grvm, bool sort, bool mflag);
+	void	reload		(GRV_MODE grvm, bool sort, bool mflag, bool pflag, INTEL_MODE mode);
 	void	resort		(void);
 	void	refresh		(void);
 
@@ -54,6 +54,7 @@ public slots:
 	void	sort		(int idx, Qt::SortOrder order);
 	void	select		(const QModelIndex &index);
 	void	currentChanged	(const QModelIndex &current, const QModelIndex &previous);
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -69,13 +70,17 @@ private:
 
 		GRV_MODE	grvm;
 		bool		mflag;
+		bool		pflag;
+		INTEL_MODE	intel_mode;
 	} d;
 
 private:
 	void	apply_grvmode	(void);
+	void	apply_imdmode	(void);
+	void	apply_mode	(void);
 	void	build_rlayout	(void);
 	void	build_mlayout	(void);
-	void	apply_layout	(bool reset);
+	void	apply_layout	(void);
 };
 
 #endif	/* GUI_ROSTER_VIEW_H */

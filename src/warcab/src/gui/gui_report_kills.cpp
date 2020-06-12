@@ -39,6 +39,10 @@ GuiRptKill::GuiRptKill (QWidget *P)
 	d.label_nodata->setFont (*d.font);
 	d.label_nodata->setText ("No information available yet.");
 
+	GUINEW (d.label_intel, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label_intel");
+	d.label_intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.label_intel->setWordWrap (true);
+
 	GUINEW (d.label_khdr, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label_khdr");
 	d.label_khdr->setAlignment (Qt::AlignLeft|Qt::AlignTop);
 	d.label_khdr->setWordWrap (true);
@@ -52,9 +56,10 @@ GuiRptKill::GuiRptKill (QWidget *P)
 	GUINEW (d.spacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "spacer");
 
 	d.layout->addWidget (d.label_nodata,	0, 0, 1, 1);
-	d.layout->addWidget (d.label_khdr,	1, 0, 1, 1);
-	d.layout->addWidget (d.label_klist,	2, 0, 1, 1);
-	d.layout->addItem   (d.spacer,		3, 0, 1, 1);
+	d.layout->addWidget (d.label_intel,	1, 0, 1, 1);
+	d.layout->addWidget (d.label_khdr,	2, 0, 1, 1);
+	d.layout->addWidget (d.label_klist,	3, 0, 1, 1);
+	d.layout->addItem   (d.spacer,		4, 0, 1, 1);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -64,6 +69,9 @@ GuiRptKill::GuiRptKill (QWidget *P)
 
 	if (!connect (this, SIGNAL (cmpbase(MDLD_TREE_ITEM*)), GUI_WIN->get_dossier(), SLOT (set_cmpbase(MDLD_TREE_ITEM*))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_OOB_INIT_FAILED, "failed to connect <cmpbase> to <dossier:set_cmpbase>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
 
 	d.pflag = d.cflag = true;
 
@@ -148,20 +156,20 @@ GuiRptKill::update (bool forced)
 			case MDLD_TREE_DOSSIER:
 				d.pcurr = d.pdata->clast;
 				d.pbase = d.pdata->cfirst;
-				d.model->load (d.pdata->data.d, CFG_full_history());
+				d.model->load (d.pdata->data.d, CFG_full_history(), d.Vintel_mode);
 				break;
 			case MDLD_TREE_BATTLE:
 				d.pcurr = d.pbase = d.pdata;
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag, d.Vintel_mode);
 				break;
 			case MDLD_TREE_BTURN:
 				d.pcurr = d.pdata;
 				if (d.pdata->prev) {
 					d.pbase = d.pdata->prev;
-					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				} else {
 					d.pbase = d.pdata->parent;
-					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				}
 				break;
 			default:
@@ -216,8 +224,11 @@ GuiRptKill::list_kills (char *buf, unsigned int size, int &kcnt, bool dossier)
 				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
 				tstr.printf ("<i>");
 			}
-			tstr.printf ("%3.3s %s %s %s (%d)",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
+			if (d.pflag || (d.Vintel_mode != INTEL_MODE_NONE)) {
+				tstr.printf ("%3.3s", data[i].uir->snap->strings.uid);
+			}
+			tstr.printf (" %s %s %s (%d)",
+				data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
 				SPWDLT_getint (data[i].dlt));
 			if (dc) {
@@ -251,9 +262,12 @@ GuiRptKill::refresh (bool forced)
 
 	nodata = !d.pdata;
 	d.label_nodata->setHidden (!nodata);
+	d.label_intel->setHidden (nodata);
 	d.label_khdr->setHidden (nodata);
 	d.label_klist->setHidden (nodata);
 	if (nodata) goto leave;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.label_intel);
 
 	list_kills (buf, sizeof (buf), kcnt, d.ptype == MDLD_TREE_DOSSIER);
 	d.label_klist->setText (buf);
@@ -264,4 +278,12 @@ GuiRptKill::refresh (bool forced)
 
 leave:
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiRptKill::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	refresh (!d.pflag);
 }

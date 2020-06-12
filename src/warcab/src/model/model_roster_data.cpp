@@ -48,6 +48,18 @@ MDLR_HILITE_lookup (MDLR_HILITE e)
 	return (MDLR_HILITE_names[e]);
 }
 
+#define	IF_NOT_FULL_INTEL(v_)							\
+	do {									\
+		if (!this->d.pflag && (this->d.intel_mode != INTEL_MODE_FULL))	\
+			return ((v_));						\
+	} while (0)
+
+#define	IF_NOT_LMTD_INTEL(v_)							\
+	do {									\
+		if (!this->d.pflag && (this->d.intel_mode == INTEL_MODE_NONE))	\
+			return ((v_));						\
+	} while (0)
+
 QVariant
 ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *dlt) const
 {
@@ -60,6 +72,7 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 
 	switch (col) {
 		case MDLR_COLUMN_UID:
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->strings.uid;
 			break;
 		case MDLR_COLUMN_UNIT: // FIXME: designation, actually
@@ -73,62 +86,77 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 			s = uir->snap->data.lname;
 			break;
 		case MDLR_COLUMN_STATUS:
+			IF_NOT_FULL_INTEL(v);
 			s = uir->snap->strings.status;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_KILL:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->attr.gen.kills);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_EXP:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.exp);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_MOR:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.mor);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_SUP:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.sup);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_RAL:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.ral);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_INF:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.inf);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_ARM:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.arm);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_ART:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.art);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_MEN:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.hcnt);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_RDY:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%6.2f %%", uir->snap->attr.gen.ready * 100.0);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
 			break;
 		case MDLR_COLUMN_KIA:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.hcnt - uir->snap->data.hcnt_left);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_DMG:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.damage);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_SEEN:
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->data.spotted ? "spotted" : "hidden";
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_ABAND:
+			IF_NOT_LMTD_INTEL(v);
 			switch (uir->snap->data.aband) {
 				case SPWAW_ANONE:
 					s = "no";
@@ -146,20 +174,25 @@ ModelRoster::MDLR_data_display (int /*row*/, int col, MDLR_DATA *data, SPWDLT *d
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_LOADED:
+			IF_NOT_FULL_INTEL(v);
 			s = uir->snap->data.loaded ? "yes" : "no";
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_TYPE:
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->strings.utype;
 			break;
 		case MDLR_COLUMN_CLASS:
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->strings.uclass;
 			break;
 		case MDLR_COLUMN_COST:
+			IF_NOT_LMTD_INTEL(v);
 			s.setNum (uir->snap->data.cost);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLR_COLUMN_SPEED:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.speed);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
@@ -175,11 +208,12 @@ ModelRoster::MDLR_data_font (int /*row*/, int /*col*/, MDLR_DATA *data, SPWDLT *
 {
 	QVariant	v = QVariant();
 
-	if (!data) return (v);
+	if (d.rgfont) v = *d.rgfont;
 
-	if (!data->decomm) {
-		if (d.rgfont) v = *d.rgfont;
-	} else {
+	if (!data) return (v);
+	IF_NOT_FULL_INTEL(v);
+
+	if (data->decomm) {
 		if (d.dcfont) v = *d.dcfont;
 	}
 	return (v);
@@ -188,11 +222,10 @@ ModelRoster::MDLR_data_font (int /*row*/, int /*col*/, MDLR_DATA *data, SPWDLT *
 QVariant
 ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT *dlt) const
 {
-	QVariant		v = QVariant();
-	SPWAW_DOSSIER_UIR	*uir;
+	QVariant		v = QVariant(QBrush (*RES_color(RID_GMRC_FG_DEFAULT)));
 
 	if (!data) return (v);
-	uir = data->uir;
+	IF_NOT_FULL_INTEL(v);
 
 	if (data->decomm) {
 		v = QBrush (*RES_color(RID_GM_DLT_INA));
@@ -223,8 +256,6 @@ ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 				v = QBrush (*RES_color(RID_GM_DLT_NTR));
 				break;
 		}
-	} else {
-		v = QBrush (*RES_color(RID_GMRC_FG_DEFAULT));
 	}
 	return (v);
 }
@@ -232,28 +263,30 @@ ModelRoster::MDLR_data_foreground (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 QVariant
 ModelRoster::MDLR_data_background (int /*row*/, int /*col*/, MDLR_DATA *data, SPWDLT * /*dlt*/) const
 {
-	QVariant		v = QVariant();
+	QVariant		v = QVariant(QBrush (*RES_color(RID_GMRC_BG_DEFAULT)));
 	SPWAW_DOSSIER_UIR	*uir;
 
 	if (!data) return (v);
 	uir = data->uir;
 
 	switch (d.hilite) {
-		case MDLR_HILITE_NONE:
-		default:
-			v = QBrush (*RES_color(RID_GMRC_BG_DEFAULT));
-			break;
 		case MDLR_HILITE_RANK:
 			v = QBrush (*RES_GUI_color (uir->snap->data.brank));
 			break;
 		case MDLR_HILITE_USTATUS:
+			IF_NOT_FULL_INTEL(v);
 			v = QBrush (*RES_GUI_color (uir->snap->data.status));
 			break;
 		case MDLR_HILITE_ENTR:
+			IF_NOT_FULL_INTEL(v);
 			v = QBrush (*RES_GUI_color (uir->snap->data.entr));
 			break;
 		case MDLR_HILITE_EXP:
+			IF_NOT_FULL_INTEL(v);
 			v = QBrush (*RES_GUI_color (uir->snap->data.eclass));
+			break;
+		default:
+			/* v already set */
 			break;
 	}
 	return (v);
@@ -326,7 +359,7 @@ ModelRoster::MDLR_data_decoration (int /*row*/, int col, MDLR_DATA *data, SPWDLT
 			}
 			break;
 		case MDLR_COLUMN_STATUS:
-			if (data->uir->snap->data.rank == SPWAW_RKIA)
+			if (!data->uir->snap->data.alive)
 				v = QVariant (QIcon (*RES_pixmap (RID_ICON_UHT_DESTROYED)));
 			else
 				v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));

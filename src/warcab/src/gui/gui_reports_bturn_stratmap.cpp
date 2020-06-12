@@ -23,7 +23,13 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	//GUINEW (d.font, QFont ("Courier", 8, QFont::Normal, false), ERR_GUI_SMAP_INIT_FAILED, "font");
 
 	GUINEW (d.frame, QFrame (this), ERR_GUI_SMAP_INIT_FAILED, "frame");
+
 	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_SMAP_INIT_FAILED, "layout");
+
+	GUINEW (d.intel, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "intel");
+	d.intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.intel->setWordWrap (true);
+	d.intel->setSizePolicy (QSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed));
 
 	GUINEW (d.grid, QCheckBox ("show Grid", d.frame), ERR_GUI_SMAP_INIT_FAILED, "grid");
 	d.grid->setCheckState (Qt::Unchecked);
@@ -51,14 +57,15 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 
 	GUINEW (d.spacer1, QSpacerItem (1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), ERR_GUI_SMAP_INIT_FAILED, "spacer1");
 
-	d.layout->addWidget (d.grid,		0, 0, 1, 1);
-	d.layout->addWidget (d.vichexes,	0, 1, 1, 1);
-	d.layout->addWidget (d.influence,	0, 2, 1, 1);
-	d.layout->addWidget (d.frontline,	0, 3, 1, 1);
-	d.layout->addWidget (d.zoom2x,		0, 4, 1, 1);
-	d.layout->addWidget (d.hcftype,		0, 5, 1, 1);
-	d.layout->addItem   (d.spacer1,		0, 6, 1, 1);
-	d.layout->addWidget (d.save,		0, 7, 1, 1);
+	d.layout->addWidget (d.intel,		0, 0, 1, 8);
+	d.layout->addWidget (d.grid,		1, 0, 1, 1);
+	d.layout->addWidget (d.vichexes,	1, 1, 1, 1);
+	d.layout->addWidget (d.influence,	1, 2, 1, 1);
+	d.layout->addWidget (d.frontline,	1, 3, 1, 1);
+	d.layout->addWidget (d.zoom2x,		1, 4, 1, 1);
+	d.layout->addWidget (d.hcftype,		1, 5, 1, 1);
+	d.layout->addItem   (d.spacer1,		1, 6, 1, 1);
+	d.layout->addWidget (d.save,		1, 7, 1, 1);
 
 	GUINEW (d.smap, SmapWidget (d.model, d.frame), ERR_GUI_SMAP_INIT_FAILED, "strategic map");
 	d.smap->setSizePolicy (QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -68,7 +75,7 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	d.scroller->setPalette (*RES_color(RID_SMAP_BG));
 	d.scroller->setAutoFillBackground (true);
 
-	d.layout->addWidget (d.scroller,	1, 0, 1, 7);
+	d.layout->addWidget (d.scroller,	2, 0, 1, 8);
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, d.frame), ERR_GUI_SMAP_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
@@ -79,7 +86,7 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 	GUINEW (d.bdy_table, GuiTableView (false, d.model, 2, d.split), ERR_GUI_SMAP_INIT_FAILED, "bdy_table");
 	GUIERR (d.bdy_table, ERR_GUI_SMAP_INIT_FAILED);
 
-	d.layout->addWidget (d.split,		2, 0, 1, 7);
+	d.layout->addWidget (d.split,		3, 0, 1, 8);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -145,6 +152,9 @@ GuiRptTrnSMap::GuiRptTrnSMap (QWidget *P)
 
 	if (!connect (d.hdr_table, SIGNAL (selected(GuiTableView*,const QModelIndex&)), this, SLOT (selected(GuiTableView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <hdr_table:selected> to <selected>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
 
 	d.hcftype->setCurrentIndex (CFG_hcftype());
 	hcftype_change (CFG_hcftype());
@@ -276,6 +286,7 @@ skip_data_update:
 	skip_render &= !GUIVALCHANGED (Vfrontline);
 	skip_render &= !GUIVALCHANGED (Vzoom2x);
 	skip_render &= !GUIVALCHANGED (Vhcftype);
+	skip_render &= !GUIVALCHANGED (Vintel_mode);
 	if (skip_render) goto skip_render_update;
 
 	d.smap->enable_grid (d.Vgrid, false);
@@ -284,6 +295,7 @@ skip_data_update:
 	d.smap->enable_frontline (d.Vfrontline, false);
 	d.smap->set_zoom (d.Vzoom2x ? SmapWidget::ZOOM_2X : SmapWidget::ZOOM_1X, false);
 	d.smap->select_hcf (d.Vhcftype, false);
+	d.smap->set_intel_mode (d.Vintel_mode, false);
 	d.smap->trigger_repaint();
 
 skip_render_update:
@@ -299,4 +311,14 @@ skip_render_update:
 	d.layout->update();
 
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiRptTrnSMap::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	intelmode2label (d.Vintel_mode, d.intel);
+
+	refresh();
 }

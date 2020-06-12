@@ -41,9 +41,9 @@ public:
 
 public:
 	void	clear		(void);
-	void	load		(SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore);
-	void	load		(SPWAW_BATTLE *battle, int current, int start, bool isplayer, bool iscore);
-	void	load		(SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore);
+	void	load		(SPWAW_DOSSIER *dossier, INTEL_MODE mode);
+	void	load		(SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore, INTEL_MODE mode);
+	void	load		(SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore, INTEL_MODE mode);
 	void	highlight	(MDLO_HILITE h);
 	int	max_width	(int column);
 	void	refresh		(void);
@@ -51,15 +51,25 @@ public:
 	bool	is_expanded	(const QModelIndex &index);
 	void	set_dltsort	(bool sort);
 
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
+
 private:
 	QList<QVariant>		header;
 	struct s_data {
 		int			col_cnt;
 		SPWAW_DOSSIER_BIR	*birs;
 		int			birs_cnt;
-		SPWAW_DOSSIER_BIR	*base;
-		int			base_cnt;
+		SPWAW_DOSSIER_BIR	*cbrs;
+		int			cbrs_cnt;
+		SPWAW_DOSSIER_BIR	*rbrs;
+		int			rbrs_cnt;
+		SPWAW_DOSSIER		*d;
+		SPWAW_BATTLE		*cb;
+		SPWAW_BATTLE		*bb;
+		bool			tflag;
 		bool			pflag;
+		bool			cflag;
 		int			row_cnt;
 		MDLO_DATA		*tree;
 		int			tree_cnt;
@@ -71,6 +81,7 @@ private:
 		int			hilite;
 		bool			dltsort;
 		bool			revsort;
+		INTEL_MODE		intel_mode;
 		int			scol;
 		int			sord;
 	} d;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - min-max-average-spread data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -221,6 +221,19 @@ ModelMMAS::headerData (int section, Qt::Orientation orientation, int role) const
 	return (header.value (section));
 }
 
+QModelIndex
+ModelMMAS::index (int row, int column, const QModelIndex &parent) const
+{
+	QModelIndex	idx = QModelIndex();
+
+	if (!d.pflag && (d.intel_mode != INTEL_MODE_FULL) && (column != MDLMMAS_COLUMN_DATE)) return (QModelIndex());
+
+	if (!hasIndex (row, column, parent)) return (QModelIndex());
+
+	if (row < d.row_cnt) idx = createIndex (row, column, &(d.list[row]));
+	return (idx);
+}
+
 int
 ModelMMAS::rowCount (const QModelIndex &/*parent*/) const
 {
@@ -245,7 +258,7 @@ ModelMMAS::setupModelData (void)
 
 	DBG_TRACE_FENTER;
 
-	freeModelData (false);
+	freeModelData (true);
 	if (d.campaign) {
 		if (!d.dptr.d || !d.pflag) return;
 		if (!(d.row_cnt = d.dptr.d->bcnt)) return;
@@ -343,7 +356,7 @@ ModelMMAS::clear (void)
 }
 
 void
-ModelMMAS::load (SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool prevcmp)
+ModelMMAS::load (SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool prevcmp, INTEL_MODE mode)
 {
 	d.dptr.d	= dossier;
 	d.tflag		= type;
@@ -351,13 +364,14 @@ ModelMMAS::load (SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool pr
 	d.pflag		= player;
 	d.cflag		= true;
 	d.pvcmp		= prevcmp;
+	d.intel_mode	= mode;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelMMAS::load (SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool iscore, bool prevcmp)
+ModelMMAS::load (SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool iscore, bool prevcmp, INTEL_MODE mode)
 {
 	d.dptr.b	= battle;
 	d.tflag		= type;
@@ -365,6 +379,7 @@ ModelMMAS::load (SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool isco
 	d.pflag		= player;
 	d.cflag		= iscore;
 	d.pvcmp		= prevcmp;
+	d.intel_mode	= mode;
 
 	setupModelData();
 	reset();
@@ -511,4 +526,12 @@ bool
 ModelMMAS::filtered (void)
 {
 	return (d.filter_id != 0);
+}
+
+void
+ModelMMAS::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+
+	reset();
 }

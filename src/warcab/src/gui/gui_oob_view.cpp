@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - order of battle view.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,13 +9,54 @@
 #include "gui_oob_view.h"
 #include "gui_oob.h"
 #include "model/model_oob.h"
-#include "model/model_oob_data.h"
 #include "model/model_sanity.h"
 
 #define	BASE_SIZE	40
 #define	NUMBER_SIZE	(BASE_SIZE * 3 / 2)
 
 // TODO: rename NUMBER_SIZE to something more appropriate
+
+typedef bool GOV_VISIBILITY[GOV_MODE_LIMIT];
+
+static GOV_VISIBILITY	govmode[MDLO_COLUMN_CNT] = {
+	{ true,  true,  true  },	/* MDLO_COLUMN_FID	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_TYPE	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_LDR	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_HCMD	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_STATUS	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_KILLS	*/
+	{ true,  false, false },	/* MDLO_COLUMN_RDY	*/
+	{ false, false, false },	/* MDLO_COLUMN_COUNT	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_EXP	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_MOR	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_SUP	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_RAL	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_INF	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_ARM	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_ART	*/
+};
+
+typedef bool IMD_VISIBILITY[INTEL_MODE_CNT];
+
+static IMD_VISIBILITY imdmode[MDLO_COLUMN_CNT] = {
+	{ true,  true,  true  },	/* MDLO_COLUMN_FID	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_TYPE	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_LDR	*/
+	{ true,  true,  true  },	/* MDLO_COLUMN_HCMD	*/
+	{ true,  false, false },	/* MDLO_COLUMN_STATUS	*/
+	{ true,  false, false },	/* MDLO_COLUMN_KILLS	*/
+	{ true,  false, false },	/* MDLO_COLUMN_RDY	*/
+	{ false, false, false },	/* MDLO_COLUMN_COUNT	*/
+	{ true,  false, false },	/* MDLO_COLUMN_EXP	*/
+	{ true,  false, false },	/* MDLO_COLUMN_MOR	*/
+	{ true,  false, false },	/* MDLO_COLUMN_SUP	*/
+	{ true,  false, false },	/* MDLO_COLUMN_RAL	*/
+	{ true,  false, false },	/* MDLO_COLUMN_INF	*/
+	{ true,  false, false },	/* MDLO_COLUMN_ARM	*/
+	{ true,  false, false },	/* MDLO_COLUMN_ART	*/
+};
+
+MDLO_COLUMN HDR_LIMIT = MDLO_COLUMN_TYPE;
 
 static void report_MDLO (MDLO_DATA *p);
 
@@ -66,40 +107,18 @@ GuiOobView::GuiOobView	(bool hdr, GuiOob *oob, QWidget *P)
 	if (d.ishdr) {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
 		header()->setStretchLastSection (true);
-
-		for (int i=0; i<d.parent->d.model->columnCount(); i++) setColumnHidden (i, true);
-		setColumnHidden (MDLO_COLUMN_FID, false);
-		setColumnHidden (MDLO_COLUMN_TYPE, false);
-
-		setColumnWidth (MDLO_COLUMN_FID,	BASE_SIZE * 2);
-		setColumnWidth (MDLO_COLUMN_TYPE,	BASE_SIZE * 3);
-
-		setMinimumWidth (BASE_SIZE * 5 + 5);
-		setMaximumWidth (BASE_SIZE * 5 + 5);
 	} else {
 		setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
 		header()->setStretchLastSection (true);
-
-		for (int i=0; i<d.parent->d.model->columnCount(); i++) setColumnHidden (i, false);
-		setColumnHidden (MDLO_COLUMN_FID, true);
-		setColumnHidden (MDLO_COLUMN_TYPE, true);
-
-		setColumnWidth (MDLO_COLUMN_LDR,	BASE_SIZE * 3);
-		setColumnWidth (MDLO_COLUMN_HCMD,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_STATUS,	BASE_SIZE * 4);
-		setColumnWidth (MDLO_COLUMN_KILLS,	BASE_SIZE * 7 / 4);
-		setColumnWidth (MDLO_COLUMN_RDY,	BASE_SIZE * 3);
-		setColumnWidth (MDLO_COLUMN_EXP,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_MOR,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_SUP,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_RAL,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_INF,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_ARM,	BASE_SIZE);
-		setColumnWidth (MDLO_COLUMN_ART,	BASE_SIZE);
 	}
 	setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOn);
 
-	setColumnHidden (MDLO_COLUMN_COUNT, true);
+	build_rlayout();
+	build_dlayout();
+
+	d.govm = GOV_MODE_DOSSIER;
+	apply_mode();
+	apply_layout();
 
 	if (!connect (header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), SLOT(savesort(int,Qt::SortOrder))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_OOB_INIT_FAILED, "failed to connect header <sortIndicatorChanged> to <savesort>");
@@ -127,70 +146,28 @@ GuiOobView::reparented (void)
 {
 	if (d.ishdr) return;
 
-	switch (d.parent->d.ptype) {
-		case MDLD_TREE_DOSSIER:
-			setColumnHidden (MDLO_COLUMN_RDY, true);
-			setColumnHidden (MDLO_COLUMN_SUP, true);
-
-			setColumnWidth (MDLO_COLUMN_EXP,	BASE_SIZE * 3);
-			setColumnWidth (MDLO_COLUMN_MOR,	BASE_SIZE * 3);
-			setColumnWidth (MDLO_COLUMN_RAL,	BASE_SIZE * 3);
-			setColumnWidth (MDLO_COLUMN_INF,	BASE_SIZE * 3);
-			setColumnWidth (MDLO_COLUMN_ARM,	BASE_SIZE * 3);
-			setColumnWidth (MDLO_COLUMN_ART,	BASE_SIZE * 3);
-
-			break;
-		case MDLD_TREE_BATTLE:
-			setColumnHidden (MDLO_COLUMN_RDY, false);
-
-			setColumnWidth (MDLO_COLUMN_RDY,	BASE_SIZE * 3);
-
-			if (d.parent->d.Vprevcmp) {
-				setColumnHidden (MDLO_COLUMN_SUP, true);
-
-				setColumnWidth (MDLO_COLUMN_EXP,	BASE_SIZE * 3);
-				setColumnWidth (MDLO_COLUMN_MOR,	BASE_SIZE * 3);
-				setColumnWidth (MDLO_COLUMN_RAL,	BASE_SIZE * 3);
-				setColumnWidth (MDLO_COLUMN_INF,	BASE_SIZE * 3);
-				setColumnWidth (MDLO_COLUMN_ARM,	BASE_SIZE * 3);
-				setColumnWidth (MDLO_COLUMN_ART,	BASE_SIZE * 3);
-			} else {
-				setColumnHidden (MDLO_COLUMN_SUP, false);
-
-				setColumnWidth (MDLO_COLUMN_EXP,	NUMBER_SIZE);
-				setColumnWidth (MDLO_COLUMN_MOR,	NUMBER_SIZE);
-				setColumnWidth (MDLO_COLUMN_SUP,	NUMBER_SIZE);
-				setColumnWidth (MDLO_COLUMN_RAL,	NUMBER_SIZE);
-				setColumnWidth (MDLO_COLUMN_INF,	NUMBER_SIZE);
-				setColumnWidth (MDLO_COLUMN_ARM,	NUMBER_SIZE);
-				setColumnWidth (MDLO_COLUMN_ART,	NUMBER_SIZE);
-			}
-
-			break;
-		case MDLD_TREE_BTURN:
-			setColumnHidden (MDLO_COLUMN_RDY, false);
-			setColumnHidden (MDLO_COLUMN_SUP, false);
-
-			setColumnWidth (MDLO_COLUMN_RDY,	BASE_SIZE * 3);
-			setColumnWidth (MDLO_COLUMN_EXP,	NUMBER_SIZE);
-			setColumnWidth (MDLO_COLUMN_MOR,	NUMBER_SIZE);
-			setColumnWidth (MDLO_COLUMN_SUP,	NUMBER_SIZE);
-			setColumnWidth (MDLO_COLUMN_RAL,	NUMBER_SIZE);
-			setColumnWidth (MDLO_COLUMN_INF,	NUMBER_SIZE);
-			setColumnWidth (MDLO_COLUMN_ARM,	NUMBER_SIZE);
-			setColumnWidth (MDLO_COLUMN_ART,	NUMBER_SIZE);
-
-			break;
-		default:
-			break;
-	}
-	//header()->setStretchLastSection (true);
+	apply_layout();
 }
 
 void
-GuiOobView::reload (bool sort)
+GuiOobView::reload (GOV_MODE govm, bool sort, bool pflag, INTEL_MODE mode)
 {
-	if (!d.parent->d.pcurr || !d.parent->d.pbase) return;
+	bool	apply = false;
+
+	if (d.govm != govm) {
+		d.govm = govm;
+		apply = true;
+	}
+	if (d.pflag != pflag) {
+		d.pflag = pflag;
+		apply = true;
+	}
+	if (d.intel_mode != mode) {
+		d.intel_mode = mode;
+		apply = true;
+	}
+
+	if (apply) apply_mode();
 
 	if (d.sidx < 0) { d.sidx = 0; d.sord = Qt::AscendingOrder; }
 	if (sort || d.parent->d.Vautosort) sortByColumn (d.sidx, d.sord);
@@ -316,6 +293,19 @@ GuiOobView::currentChanged (const QModelIndex &current, const QModelIndex &/*pre
 }
 
 void
+GuiOobView::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+	if (!d.pflag && d.intel_mode != INTEL_MODE_FULL) {
+		sortByColumn (0, Qt::AscendingOrder);
+		setSortingEnabled (false);
+	} else {
+		setSortingEnabled (true);
+	}
+	apply_mode();
+}
+
+void
 GuiOobView::refresh (void)
 {
 	int		i;
@@ -336,4 +326,119 @@ GuiOobView::refresh (void)
 
 leave:
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiOobView::apply_govmode (void)
+{
+	govmode[MDLO_COLUMN_SUP][GOV_MODE_BATTLE] = d.parent->d.Vprevcmp;
+
+	if (d.ishdr) {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnHidden (i, !govmode[i][d.govm]);
+		}
+		for (int i=(HDR_LIMIT+1); i<MDLO_COLUMN_CNT; i++) {
+			setColumnHidden (i, true);
+		}
+	} else {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnHidden (i, true);
+		}
+		for (int i=(HDR_LIMIT+1); i<MDLO_COLUMN_CNT; i++) {
+			setColumnHidden (i, !govmode[i][d.govm]);
+		}
+	}
+}
+
+void
+GuiOobView::apply_imdmode (void)
+{
+	if (d.pflag) return;
+
+	if (d.ishdr) {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			if (!imdmode[i][d.intel_mode]) setColumnHidden (i, true);
+		}
+	} else {
+		for (int i=(HDR_LIMIT+1); i<MDLO_COLUMN_CNT; i++) {
+			if (!imdmode[i][d.intel_mode]) setColumnHidden (i, true);
+		}
+	}
+}
+
+void
+GuiOobView::apply_mode (void)
+{
+	apply_govmode();
+	apply_imdmode();
+	apply_layout();
+}
+
+void
+GuiOobView::build_rlayout (void)
+{
+	d.rlayout[MDLO_COLUMN_FID]	= (BASE_SIZE * 1);
+	d.rlayout[MDLO_COLUMN_TYPE]	= (BASE_SIZE * 3);
+	d.rlayout[MDLO_COLUMN_LDR]	= (BASE_SIZE * 3);
+	d.rlayout[MDLO_COLUMN_HCMD]	= (BASE_SIZE * 4 / 3);
+	d.rlayout[MDLO_COLUMN_STATUS]	= (BASE_SIZE * 9 / 2);
+	d.rlayout[MDLO_COLUMN_KILLS]	= (BASE_SIZE * 7 / 4);
+	d.rlayout[MDLO_COLUMN_RDY]	= (BASE_SIZE * 3);
+	d.rlayout[MDLO_COLUMN_COUNT]	= (BASE_SIZE * 3);
+	d.rlayout[MDLO_COLUMN_EXP]	= NUMBER_SIZE;
+	d.rlayout[MDLO_COLUMN_MOR]	= NUMBER_SIZE;
+	d.rlayout[MDLO_COLUMN_SUP]	= NUMBER_SIZE;
+	d.rlayout[MDLO_COLUMN_RAL]	= NUMBER_SIZE;
+	d.rlayout[MDLO_COLUMN_INF]	= NUMBER_SIZE;
+	d.rlayout[MDLO_COLUMN_ARM]	= NUMBER_SIZE;
+	d.rlayout[MDLO_COLUMN_ART]	= NUMBER_SIZE;
+}
+
+void
+GuiOobView::build_dlayout (void)
+{
+	d.dlayout[MDLO_COLUMN_FID]	= (BASE_SIZE * 1);
+	d.dlayout[MDLO_COLUMN_TYPE]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_LDR]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_HCMD]	= (BASE_SIZE * 4 / 3);
+	d.dlayout[MDLO_COLUMN_STATUS]	= (BASE_SIZE * 9 / 2);
+	d.dlayout[MDLO_COLUMN_KILLS]	= (BASE_SIZE * 7 / 4);
+	d.dlayout[MDLO_COLUMN_RDY]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_COUNT]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_EXP]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_MOR]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_SUP]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_RAL]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_INF]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_ARM]	= (BASE_SIZE * 3);
+	d.dlayout[MDLO_COLUMN_ART]	= (BASE_SIZE * 3);
+}
+
+void
+GuiOobView::apply_layout (void)
+{
+	int	*layout;
+
+	if (d.parent->d.ptype == MDLD_TREE_DOSSIER) {
+		layout = d.dlayout;
+	} else if ((d.parent->d.ptype == MDLD_TREE_BATTLE) && d.parent->d.Vprevcmp) {
+		layout = d.dlayout;
+	} else {
+		layout = d.rlayout;
+	}
+
+	if (d.ishdr) {
+		int w = 0;
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			setColumnWidth (i, layout[i]);
+			if (!isColumnHidden(i)) w += layout[i];
+		}
+		w += 5;
+
+		setMinimumWidth (w); setMaximumWidth (w);
+	} else {
+		for (int i=(HDR_LIMIT+1); i<MDLO_COLUMN_CNT; i++) {
+			setColumnWidth (i, layout[i]);
+		}
+	}
 }

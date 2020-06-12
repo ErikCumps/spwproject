@@ -34,12 +34,16 @@ signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
 	void	cmpbase		(MDLD_TREE_ITEM *base);
 
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
+
 private:
 	struct s_data {
 		QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;
 		QLabel			*name;
+		QLabel			*intel;
 		QLabel			*player1;
 		QLabel			*mission;
 		QLabel			*player2;
@@ -57,6 +61,7 @@ private:
 		GuiRptBtl		*parent;
 
 		UtilMdlTreeReftrack	reftrack;
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 
 private:

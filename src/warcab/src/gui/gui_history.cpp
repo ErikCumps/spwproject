@@ -41,6 +41,11 @@ GuiHistory::GuiHistory (QWidget *P)
 
 	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "layout");
 
+	GUINEW (d.intel, QLabel (this), ERR_GUI_REPORTS_INIT_FAILED, "intel");
+	d.intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.intel->setWordWrap (true);
+	d.intel->setSizePolicy (QSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed));
+
 	GUINEW (d.highlight, QComboBox (this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "highlight");
 	d.highlight->setEditable (false);
 
@@ -60,6 +65,7 @@ GuiHistory::GuiHistory (QWidget *P)
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "master split");
 	d.split->setChildrenCollapsible (false);
+	d.split->setSizePolicy (QSizePolicy (QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding));
 
 	GUINEW (d.unitlist, GuiUnitlistView (this, d.split), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "unitlist");
 	GUIERR (d.unitlist, ERR_GUI_REPORTS_HISTORY_INIT_FAILED);
@@ -70,12 +76,13 @@ GuiHistory::GuiHistory (QWidget *P)
 	GUINEW (d.bdy_history, GuiHistoryView (false, this, d.split), ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "bdy_history");
 	GUIERR (d.bdy_history, ERR_GUI_REPORTS_HISTORY_INIT_FAILED);
 
-	d.layout->addWidget (d.highlight,	0, 0, 1, 1);
-	d.layout->addWidget (d.prevcmp,		0, 1, 1, 1);
-	d.layout->addItem   (d.spacer,		0, 1, 1, 2);
-	d.layout->addWidget (d.separator,	1, 0, 1, 4);
-	d.layout->addWidget (d.detail,		2, 0, 1, 4);
-	d.layout->addWidget (d.split,		3, 0, 1, 4);
+	d.layout->addWidget (d.intel,		0, 0, 1, 4);
+	d.layout->addWidget (d.highlight,	1, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		1, 1, 1, 1);
+	d.layout->addItem   (d.spacer,		1, 1, 1, 2);
+	d.layout->addWidget (d.separator,	2, 0, 1, 4);
+	d.layout->addWidget (d.detail,		3, 0, 1, 4);
+	d.layout->addWidget (d.split,		4, 0, 1, 4);
 
 	if (!connect (d.prevcmp, SIGNAL(stateChanged(int)), SLOT (prevcmp_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "failed to connect <prevcmp:stateChanged> to <prevcmp_change>");
@@ -106,6 +113,21 @@ GuiHistory::GuiHistory (QWidget *P)
 
 	if (!connect (d.hdr_history, SIGNAL (selected(GuiHistoryView*,const QModelIndex&)), this, SLOT (selected(GuiHistoryView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_HISTORY_INIT_FAILED, "failed to connect <hdr_history:selected> to <selected>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.lmodel, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <lmodel:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.hmodel, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <hmodel:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.hdr_history, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <hdr_history:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.bdy_history, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <bdy_history:intel_mode_set>");
 
 	d.pflag = d.cflag = true;
 	d.mflag = false;
@@ -204,13 +226,13 @@ GuiHistory::update (bool forced)
 		hidx = d.hdr_history->currentIndex();
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
-				d.hmodel->load (item->data.d, d.Vprevcmp, d.uidx);
-				d.lmodel->load (item->data.d, CFG_full_history());
+				d.hmodel->load (item->data.d, d.Vprevcmp, d.uidx, d.Vintel_mode);
+				d.lmodel->load (item->data.d, CFG_full_history(), d.Vintel_mode);
 				d.ghvmode = GHV_MODE_DOSSIER;
 				break;
 			case MDLD_TREE_BATTLE:
-				d.hmodel->load (item->data.b, d.pflag, d.cflag, d.Vprevcmp, d.uidx);
-				d.lmodel->load (item->data.b, d.pflag, d.cflag);
+				d.hmodel->load (item->data.b, d.pflag, d.cflag, d.Vprevcmp, d.uidx, d.Vintel_mode);
+				d.lmodel->load (item->data.b, d.pflag, d.cflag, d.Vintel_mode);
 				d.ghvmode = GHV_MODE_BATTLE;
 				break;
 			default:
@@ -247,8 +269,8 @@ GuiHistory::refresh (bool forced)
 	if (skip) goto leave;
 
 	d.unitlist->reload();
-	d.hdr_history->reload(d.ghvmode, d.mflag);
-	d.bdy_history->reload(d.ghvmode, d.mflag);
+	d.hdr_history->reload(d.ghvmode, d.mflag, d.pflag, d.Vintel_mode);
+	d.bdy_history->reload(d.ghvmode, d.mflag, d.pflag, d.Vintel_mode);
 
 leave:
 	DBG_TRACE_FLEAVE;
@@ -305,4 +327,18 @@ GuiHistory::selected (GuiHistoryView *who, const QModelIndex &index)
 	if (who != d.bdy_history) d.bdy_history->select (index);
 	d.hdr_history->scrollTo (index);
 	d.hdr_history->refresh();
+}
+
+void
+GuiHistory::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.intel);
+
+	if (!d.pflag && d.Vintel_mode == INTEL_MODE_NONE) {
+		d.detail->clear();
+	} else {
+		set_select (d.uidx);
+	}
 }

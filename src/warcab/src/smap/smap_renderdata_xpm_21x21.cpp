@@ -52,6 +52,7 @@
 #include "xpm_21x21/blue_21x21.xpm"
 #include "xpm_21x21/red_21x21.xpm"
 #include "xpm_21x21/neutral_21x21.xpm"
+#include "xpm_21x21/contested_21x21.xpm"
 #include "xpm_21x21/mask_033_21x21.xpm"
 #include "xpm_21x21/bluedot_01_21x21.xpm"
 #include "xpm_21x21/bluedot_02_21x21.xpm"
@@ -69,6 +70,7 @@
 #include "xpm_21x21/bluedot_14_21x21.xpm"
 #include "xpm_21x21/bluedot_15_21x21.xpm"
 #include "xpm_21x21/bluedot_16_21x21.xpm"
+#include "xpm_21x21/bluesplat_21x21.xpm"
 #include "xpm_21x21/reddot_01_21x21.xpm"
 #include "xpm_21x21/reddot_02_21x21.xpm"
 #include "xpm_21x21/reddot_03_21x21.xpm"
@@ -85,15 +87,23 @@
 #include "xpm_21x21/reddot_14_21x21.xpm"
 #include "xpm_21x21/reddot_15_21x21.xpm"
 #include "xpm_21x21/reddot_16_21x21.xpm"
+#include "xpm_21x21/redsplat_21x21.xpm"
 #include "xpm_21x21/vhex_blue_21x21.xpm"
 #include "xpm_21x21/vhex_red_21x21.xpm"
 #include "xpm_21x21/vhex_neutral_21x21.xpm"
+#include "xpm_21x21/vhex_contested_21x21.xpm"
 #include "xpm_21x21/frontline_EE_21x21.xpm"
 #include "xpm_21x21/frontline_SE_21x21.xpm"
 #include "xpm_21x21/frontline_SW_21x21.xpm"
 #include "xpm_21x21/frontline_WW_21x21.xpm"
 #include "xpm_21x21/frontline_NW_21x21.xpm"
 #include "xpm_21x21/frontline_NE_21x21.xpm"
+#include "xpm_21x21/frontline_dotted_EE_21x21.xpm"
+#include "xpm_21x21/frontline_dotted_SE_21x21.xpm"
+#include "xpm_21x21/frontline_dotted_SW_21x21.xpm"
+#include "xpm_21x21/frontline_dotted_WW_21x21.xpm"
+#include "xpm_21x21/frontline_dotted_NW_21x21.xpm"
+#include "xpm_21x21/frontline_dotted_NE_21x21.xpm"
 
 SMAP_RENDERDATA_XPMS xpms_21x21 = {
 	HEXBORDER_21X21,
@@ -139,6 +149,7 @@ SMAP_RENDERDATA_XPMS xpms_21x21 = {
 	BLUE_21X21,
 	RED_21X21,
 	NEUTRAL_21X21,
+	CONTESTED_21X21,
 	MASK_033_21X21,
 	BLUEDOT_1_21X21,
 	BLUEDOT_2_21X21,
@@ -156,6 +167,7 @@ SMAP_RENDERDATA_XPMS xpms_21x21 = {
 	BLUEDOT_14_21X21,
 	BLUEDOT_15_21X21,
 	BLUEDOT_16_21X21,
+	BLUESPLAT_21X21,
 	REDDOT_1_21X21,
 	REDDOT_2_21X21,
 	REDDOT_3_21X21,
@@ -172,13 +184,21 @@ SMAP_RENDERDATA_XPMS xpms_21x21 = {
 	REDDOT_14_21X21,
 	REDDOT_15_21X21,
 	REDDOT_16_21X21,
+	REDSPLAT_21X21,
 	VHEX_BLUE_21X21,
 	VHEX_RED_21X21,
 	VHEX_NEUTRAL_21X21,
+	VHEX_CONTESTED_21X21,
 	FRONTLINE_EE_21X21,
 	FRONTLINE_SE_21X21,
 	FRONTLINE_SW_21X21,
 	FRONTLINE_WW_21X21,
 	FRONTLINE_NW_21X21,
 	FRONTLINE_NE_21X21,
+	FRONTLINE_DOTTED_EE_21X21,
+	FRONTLINE_DOTTED_SE_21X21,
+	FRONTLINE_DOTTED_SW_21X21,
+	FRONTLINE_DOTTED_WW_21X21,
+	FRONTLINE_DOTTED_NW_21X21,
+	FRONTLINE_DOTTED_NE_21X21,
 };

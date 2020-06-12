@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex grid object.
  *
- * Copyright (C) 2012-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -24,12 +24,18 @@ public:
 	 */
 	void	setup	(int width, int height);
 
+	/*! Setup a grid, based on another grid.
+	 * Any previous grid will be destroyed first!
+	 */
+	void	setup	(SmapHexGrid &grid);
+
 	/*! Cleanup a grid, releasing allocated memory */
 	void	cleanup	(void);
 
 public:
 	int	width;		/*!< The width of the grid			*/
 	int	height;		/*!< The height of the grid			*/
+	bool	dotted;		/*!< Render grid with dotted frontlines?	*/
 	SmapHex	*map;		/*!< The array containing the hexes of the grid	*/
 
 public:

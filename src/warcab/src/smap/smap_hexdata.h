@@ -90,8 +90,9 @@ typedef enum e_SMAP_HI {
 	SMAP_HI_NONE = 0,	/*!< No influence registered				*/
 	SMAP_HI_BLUE,		/*!< Blue player					*/
 	SMAP_HI_RED,		/*!< Red player (Opponent)				*/
-	SMAP_HI_START = SMAP_HI_NONE,	/*!< \internal */
-	SMAP_HI_LAST  = SMAP_HI_RED	/*!< \internal */
+	SMAP_HI_CONTESTED,	/*!< Contested ownership				*/
+	SMAP_HI_START = SMAP_HI_NONE,		/*!< \internal */
+	SMAP_HI_LAST  = SMAP_HI_CONTESTED	/*!< \internal */
 } SMAP_HI;
 
 /*! Strategic Map: total number of Hex Influence Types */

@@ -29,12 +29,17 @@ typedef struct s_SMAP_RENDERDATA_PMC {
 	QPixmap	inf_blue[SMAP_HM_CNT];		/*!< Blue influence colorfields					*/
 	QPixmap	inf_red[SMAP_HM_CNT];		/*!< Red influence colorfields					*/
 	QPixmap	inf_neutral[SMAP_HM_CNT];	/*!< Neutral influence colorfields				*/
+	QPixmap	inf_contested[SMAP_HM_CNT];	/*!< Contested influence colorfields				*/
 	QPixmap	bluedot[16];			/*!< Blue unit indicators					*/
+	QPixmap	bluesplat;			/*!< Blue dead/abandoned unit(s) indicator			*/
 	QPixmap	reddot[16];			/*!< Red unit indicators					*/
+	QPixmap	redsplat;			/*!< Red dead/abandoned unit(s) indicator			*/
 	QPixmap	vh_blue;			/*!< Victory hex claimed by blue player				*/
-	QPixmap vh_red;				/*!< Victory hex claimed by blue player				*/
+	QPixmap vh_red;				/*!< Victory hex claimed by red player				*/
 	QPixmap vh_neutral;			/*!< Victory hex, not yet claimed				*/
+	QPixmap vh_contested;			/*!< Victory hex, contested by all players			*/
 	QPixmap	frontline[SMAP_HRD_CNT];	/*!< Frontline edges						*/
+	QPixmap	dottedfrontline[SMAP_HRD_CNT];	/*!< Dotted frontline edges					*/
 } SMAP_RENDERDATA_PMC;
 
 /*! Create Renderdata for rendering hexes of the specified size in pixels */

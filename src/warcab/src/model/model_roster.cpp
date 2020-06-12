@@ -127,6 +127,16 @@ ModelRoster::columnCount (const QModelIndex &/*parent*/) const
 	return (d.col_cnt);
 }
 
+QModelIndex
+ModelRoster::index (int row, int column, const QModelIndex &parent) const
+{
+	QModelIndex	idx = QModelIndex();
+
+	if (!hasIndex (row, column, parent)) return (QModelIndex());
+
+	if (row < d.row_cnt) idx = createIndex (row, column, d.smap[row].data);
+	return (idx);
+}
 void
 ModelRoster::setupModelDataStorage (void)
 {
@@ -138,7 +148,9 @@ ModelRoster::setupModelDataStorage (void)
 		/* Free previously allocated data storage */
 		if (d.list) SL_SAFE_FREE (d.list);
 		if (d.dlts) SL_SAFE_FREE (d.dlts);
-		if (d.smap) SL_SAFE_FREE (d.smap); d.smap_cnt = 0;
+		if (d.fsmap) SL_SAFE_FREE (d.fsmap); d.fsmap_cnt = 0;
+		if (d.ksmap) SL_SAFE_FREE (d.ksmap); d.ksmap_cnt = 0;
+		d.smap = NULL; d.smap_cnt = 0;
 
 		/* Allocate new data storage */
 		d.list_cnt = d.row_cnt;
@@ -161,7 +173,10 @@ ModelRoster::setupModelDataStorage (void)
 void
 ModelRoster::freeModelDataStorage (void)
 {
-	if (d.smap) SL_SAFE_FREE (d.smap); d.smap_cnt = 0;
+	if (d.fsmap) SL_SAFE_FREE (d.fsmap); d.fsmap_cnt = 0;
+	if (d.ksmap) SL_SAFE_FREE (d.ksmap); d.ksmap_cnt = 0;
+	d.smap = NULL; d.smap_cnt = 0;
+
 	if (d.dlts) SL_SAFE_FREE (d.dlts);
 	if (d.list) SL_SAFE_FREE (d.list); d.list_cnt = d.list_use = 0;
 
@@ -171,26 +186,61 @@ ModelRoster::freeModelDataStorage (void)
 void
 ModelRoster::setupSortMap (void)
 {
-	int	i;
+	int	i, kcnt, kidx;
 
 	DBG_TRACE_FENTER;
 
-	if (d.smap_cnt != d.row_cnt) {
-		/* Create new sort map */
-		if (d.smap) SL_SAFE_FREE (d.smap);
+	if (d.fsmap_cnt != d.list_cnt) {
+		/* Create new full sort map */
+		if (d.fsmap) SL_SAFE_FREE (d.fsmap);
 
-		d.smap_cnt = d.row_cnt; SL_SAFE_CALLOC (d.smap, d.smap_cnt, sizeof (MDLR_SMAP));
-		for (i=0; i<d.smap_cnt; i++) {
-			d.smap[i].data = &(d.list[i]);
+		d.fsmap_cnt = d.list_cnt; SL_SAFE_CALLOC (d.fsmap, d.fsmap_cnt, sizeof (MDLR_SMAP));
+		for (i=0; i<d.fsmap_cnt; i++) {
+			d.fsmap[i].data = &(d.list[i]);
 		}
 	} else {
-		/* Update sort map */
-		for (i=0; i<d.smap_cnt; i++) {
-			d.smap[i].data = &(d.list[d.smap[i].data->idx]);
+		/* Update full sort map */
+		for (i=0; i<d.fsmap_cnt; i++) {
+			d.fsmap[i].data = &(d.list[d.fsmap[i].data->idx]);
 		}
 	}
 
+	/* Calculate number of killed units */
+	kcnt = 0;
+	for (i=0; i<d.list_cnt; i++) {
+		if (!d.list[i].uir->snap->data.alive) kcnt++;
+	}
+	if (kcnt != d.ksmap_cnt) {
+		/* Create new kill sort map */
+		if (d.ksmap) SL_SAFE_FREE (d.ksmap);
+
+		d.ksmap_cnt = kcnt; SL_SAFE_CALLOC (d.ksmap, d.ksmap_cnt, sizeof (MDLR_SMAP));
+	}
+	/* Update kill sort map */
+	kidx = 0;
+	for (i=0; i<d.list_cnt; i++) {
+		if (!d.list[i].uir->snap->data.alive) {
+			d.ksmap[kidx++].data = &(d.list[i]);
+		}
+	}
+
+	selectSortMap();
+
 	DBG_TRACE_FLEAVE;
+}
+
+void
+ModelRoster::selectSortMap (void)
+{
+	/* Select correct sort map for intel mode */
+	if (d.pflag || (d.intel_mode != INTEL_MODE_NONE)) {
+		d.smap = d.fsmap;
+		d.smap_cnt = d.fsmap_cnt;
+	} else {
+		d.smap = d.ksmap;
+		d.smap_cnt = d.ksmap_cnt;
+	}
+	d.row_cnt = d.smap_cnt;
 }
 
 void
@@ -234,7 +284,7 @@ ModelRoster::setupModelData (void)
 
 	DBG_TRACE_FENTER;
 
-	freeModelData (false);
+	freeModelData (true);
 
 	dossier_mode = (d.d != NULL);
 
@@ -350,22 +400,24 @@ ModelRoster::clear (void)
 }
 
 void
-ModelRoster::load (SPWAW_DOSSIER *dossier, bool fch)
+ModelRoster::load (SPWAW_DOSSIER *dossier, bool fch, INTEL_MODE mode)
 {
 	d.birs = d.cbrs = d.rbrs = NULL;
 	d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
 	d.d = dossier; d.cb = d.bb = NULL;
 
-	d.fchflag = fch; d.tflag = false; d.pflag = true; d.cflag = true; d.scol = d.sord = -1;
+	d.fchflag = fch; d.tflag = false; d.pflag = true; d.cflag = true; d.intel_mode = mode; d.scol = d.sord = -1;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelRoster::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore)
+ModelRoster::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore, INTEL_MODE mode)
 {
 	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
+
+	d.fchflag = false; d.tflag = false; d.pflag = isplayer; d.cflag = iscore; d.intel_mode = mode; d.scol = d.sord = -1;
 
 	if (!current || !start) {
 		d.birs = d.cbrs = d.rbrs = NULL;
@@ -397,16 +449,16 @@ ModelRoster::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bo
 		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->ucnt;
 	}
 
-	d.fchflag = false; d.tflag = false; d.pflag = isplayer; d.cflag = iscore; d.scol = d.sord = -1;
-
 	setupModelData();
 	reset();
 }
 
 void
-ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore)
+ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore, INTEL_MODE mode)
 {
 	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
+
+	d.fchflag = false; d.tflag = true; d.pflag = isplayer; d.cflag = iscore; d.intel_mode = mode; d.scol = d.sord = -1;
 
 	if (!current || !start) {
 		d.birs = d.cbrs = d.rbrs = NULL;
@@ -414,6 +466,7 @@ ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool
 		d.d = NULL; d.cb = d.bb = NULL;
 	} else {
 		d.d = NULL; d.cb = d.bb = current->battle;
+
 		nbirs = isplayer
 			? (iscore ? &(current->info.pbir_core) : &(current->info.pbir_support))
 			: &(current->info.obir_battle);
@@ -428,8 +481,6 @@ ModelRoster::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool
 		d.cbrs = ncbrs; d.cbrs_cnt = d.cbrs->ucnt;
 		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->ucnt;
 	}
-
-	d.fchflag = false; d.tflag = true; d.pflag = isplayer; d.cflag = iscore; d.scol = d.sord = -1;
 
 	setupModelData();
 	reset();
@@ -513,4 +564,13 @@ ModelRoster::filter_targets (MDLR_FILTER spec, xMDL_FILTER_LIST *tgt)
 		default:
 			break;
 	}
+}
+
+void
+ModelRoster::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+
+	selectSortMap();
+	reset();
 }

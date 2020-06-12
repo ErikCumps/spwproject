@@ -39,6 +39,10 @@ GuiRptCnd::GuiRptCnd (QWidget *P)
 	d.label_nodata->setFont (*d.font);
 	d.label_nodata->setText ("No information available yet.");
 
+	GUINEW (d.label_intel, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label_intel");
+	d.label_intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.label_intel->setWordWrap (true);
+
 	GUINEW (d.label_exp, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label_exp");
 	d.label_exp->setAlignment (Qt::AlignLeft|Qt::AlignTop);
 	d.label_exp->setWordWrap (true);
@@ -72,13 +76,14 @@ GuiRptCnd::GuiRptCnd (QWidget *P)
 	GUINEW (d.spacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "spacer");
 
 	d.layout->addWidget (d.label_nodata,	0, 0, 1, 3);
-	d.layout->addWidget (d.label_exp,	1, 0, 1, 1);
-	d.layout->addWidget (d.label_mor,	1, 1, 1, 1);
-	d.layout->addWidget (d.label_ral,	1, 2, 1, 1);
-	d.layout->addWidget (d.label_inf,	2, 0, 1, 1);
-	d.layout->addWidget (d.label_arm,	2, 1, 1, 1);
-	d.layout->addWidget (d.label_art,	2, 2, 1, 1);
-	d.layout->addItem   (d.spacer,		3, 0, 1, 3);
+	d.layout->addWidget (d.label_intel,	1, 0, 1, 3);
+	d.layout->addWidget (d.label_exp,	2, 0, 1, 1);
+	d.layout->addWidget (d.label_mor,	2, 1, 1, 1);
+	d.layout->addWidget (d.label_ral,	2, 2, 1, 1);
+	d.layout->addWidget (d.label_inf,	3, 0, 1, 1);
+	d.layout->addWidget (d.label_arm,	3, 1, 1, 1);
+	d.layout->addWidget (d.label_art,	3, 2, 1, 1);
+	d.layout->addItem   (d.spacer,		4, 0, 1, 3);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -88,6 +93,9 @@ GuiRptCnd::GuiRptCnd (QWidget *P)
 
 	if (!connect (this, SIGNAL (cmpbase(MDLD_TREE_ITEM*)), GUI_WIN->get_dossier(), SLOT (set_cmpbase(MDLD_TREE_ITEM*))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_OOB_INIT_FAILED, "failed to connect <cmpbase> to <dossier:set_cmpbase>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
 
 	d.pflag = d.cflag = true;
 
@@ -160,7 +168,7 @@ GuiRptCnd::update (bool forced)
 {
 	bool	skip;
 
-	DBG_TRACE_FENTER
+	DBG_TRACE_FENTER;
 
 	d.pcurr = d.pbase = NULL;
 	switch (d.ptype) {
@@ -197,20 +205,20 @@ GuiRptCnd::update (bool forced)
 			case MDLD_TREE_DOSSIER:
 				d.pcurr = d.pdata->clast;
 				d.pbase = d.pdata->cfirst;
-				d.model->load (d.pdata->data.d, CFG_full_history());
+				d.model->load (d.pdata->data.d, CFG_full_history(), d.Vintel_mode);
 				break;
 			case MDLD_TREE_BATTLE:
 				d.pcurr = d.pbase = d.pdata;
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag, d.Vintel_mode);
 				break;
 			case MDLD_TREE_BTURN:
 				d.pcurr = d.pdata;
 				if (d.pdata->prev) {
 					d.pbase = d.pdata->prev;
-					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				} else {
 					d.pbase = d.pdata->parent;
-					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				}
 				break;
 			default:
@@ -247,6 +255,11 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 	str.clear();
 	str.printf ("<pre><h3><u>%s:</u></h3><br><br>", title);
 
+	if (!d.pflag && (d.Vintel_mode != INTEL_MODE_FULL)) {
+		str.printf ("Not available.");
+		return;
+	}
+
 	d.model->set_dltsort (false);
 	d.model->sort (col, up ? Qt::AscendingOrder : Qt::DescendingOrder);
 	pcnt = d.model->rawdata (0, col, pdata, LISTMAX);
@@ -271,10 +284,12 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 			} else {
 				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_POS)));
 			}
-			tstr.printf ("%3.3s %s %s %s (%d)",
+			tstr.printf ("%3.3s %s %s %s",
 				pdata[i].uir->snap->strings.uid, pdata[i].uir->snap->data.dname,
-				pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname,
-				SPWDLT_int (pdata[i].dlt));
+				pdata[i].uir->snap->strings.rank, pdata[i].uir->snap->data.lname);
+			if (d.pflag || (d.Vintel_mode != INTEL_MODE_LMTD)) {
+				tstr.printf (" (%d)", SPWDLT_int (pdata[i].dlt));
+			}
 			if (dc) {
 				tstr.printf (" <small>decommissioned</small></i>");
 				tstr.printf ("</font>");
@@ -305,10 +320,12 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 			} else {
 				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_NEG)));
 			}
-			tstr.printf ("%3.3s %s %s %s (%d)",
+			tstr.printf ("%3.3s %s %s %s",
 				ndata[i].uir->snap->strings.uid, ndata[i].uir->snap->data.dname,
-				ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname,
-				SPWDLT_int (ndata[i].dlt));
+				ndata[i].uir->snap->strings.rank, ndata[i].uir->snap->data.lname);
+			if (d.pflag|| (d.Vintel_mode != INTEL_MODE_LMTD)) {
+				tstr.printf (" (%d)", SPWDLT_int (ndata[i].dlt));
+			}
 			if (dc) {
 				tstr.printf (" <small>decommissioned</small></i>");
 				tstr.printf ("</font>");
@@ -326,9 +343,10 @@ GuiRptCnd::mkshortlist (char *title, MDLR_COLUMN col, bool up, char *buf, unsign
 void
 GuiRptCnd::refresh (bool forced)
 {
-	bool	skip;
-	bool	nodata;
-	char	buf[4096];
+	bool		skip;
+	bool		nodata;
+	char		buf[4096];
+	UtilStrbuf	str(buf, sizeof (buf), true, true);
 
 	DBG_TRACE_FENTER;
 
@@ -337,6 +355,7 @@ GuiRptCnd::refresh (bool forced)
 
 	nodata = !d.pdata || (d.ptype == MDLD_TREE_BTURN);
 	d.label_nodata->setHidden (!nodata);
+	d.label_intel->setHidden (nodata);
 	d.label_exp->setHidden (nodata);
 	d.label_mor->setHidden (nodata);
 	d.label_ral->setHidden (nodata);
@@ -344,6 +363,8 @@ GuiRptCnd::refresh (bool forced)
 	d.label_arm->setHidden (nodata);
 	d.label_art->setHidden (nodata);
 	if (nodata) goto leave;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.label_intel);
 
 	mkshortlist ("Experience", MDLR_COLUMN_EXP, true, buf, sizeof (buf), true);
 	d.label_exp->setText (buf);
@@ -365,4 +386,12 @@ GuiRptCnd::refresh (bool forced)
 
 leave:
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiRptCnd::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	refresh (!d.pflag);
 }

@@ -119,6 +119,12 @@ SMAP_RENDERDATA_PMC_create (SMAP_RENDERDATA_PMC &pmc, int size)
 		pmc.inf_neutral[midx].setAlphaChannel (pmc.transparent);
 	}
 
+	for (midx=SMAP_HM_START; midx<=SMAP_HM_LAST; midx++) {
+		pmc.inf_contested[midx] = xpms->contested;
+		pmc.inf_contested[midx].setAlphaChannel (pmc.hexmask[midx]);
+		pmc.inf_contested[midx].setAlphaChannel (pmc.transparent);
+	}
+
 	/* Blue unit pixmaps */
 	pmc.bluedot[ 0] = xpms->bluedot1;
 	pmc.bluedot[ 1] = xpms->bluedot2;
@@ -136,6 +142,7 @@ SMAP_RENDERDATA_PMC_create (SMAP_RENDERDATA_PMC &pmc, int size)
 	pmc.bluedot[13] = xpms->bluedot14;
 	pmc.bluedot[14] = xpms->bluedot15;
 	pmc.bluedot[15] = xpms->bluedot16;
+	pmc.bluesplat   = xpms->bluesplat;
 
 	/* Red unit pixmaps */
 	pmc.reddot[ 0] = xpms->reddot1;
@@ -154,11 +161,13 @@ SMAP_RENDERDATA_PMC_create (SMAP_RENDERDATA_PMC &pmc, int size)
 	pmc.reddot[13] = xpms->reddot14;
 	pmc.reddot[14] = xpms->reddot15;
 	pmc.reddot[15] = xpms->reddot16;
+	pmc.redsplat   = xpms->redsplat;
 
 	/* Victory hex pixmaps */
-	pmc.vh_blue    = xpms->vhexblue;
-	pmc.vh_red     = xpms->vhexred;
-	pmc.vh_neutral = xpms->vhexneutral;
+	pmc.vh_blue      = xpms->vhexblue;
+	pmc.vh_red       = xpms->vhexred;
+	pmc.vh_neutral   = xpms->vhexneutral;
+	pmc.vh_contested = xpms->vhexcontested;
 
 	/* Frontline pixmaps */
 	pmc.frontline[0] = xpms->frontlineEE;
@@ -167,6 +176,14 @@ SMAP_RENDERDATA_PMC_create (SMAP_RENDERDATA_PMC &pmc, int size)
 	pmc.frontline[3] = xpms->frontlineWW;
 	pmc.frontline[4] = xpms->frontlineNW;
 	pmc.frontline[5] = xpms->frontlineNE;
+
+	/* Dotted frontline pixmaps */
+	pmc.dottedfrontline[0] = xpms->dottedfrontlineEE;
+	pmc.dottedfrontline[1] = xpms->dottedfrontlineSE;
+	pmc.dottedfrontline[2] = xpms->dottedfrontlineSW;
+	pmc.dottedfrontline[3] = xpms->dottedfrontlineWW;
+	pmc.dottedfrontline[4] = xpms->dottedfrontlineNW;
+	pmc.dottedfrontline[5] = xpms->dottedfrontlineNE;
 
 	return (true);
 }

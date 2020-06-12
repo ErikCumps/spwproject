@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - force.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -118,12 +118,10 @@ GuiRptTrnFrc::refresh (void)
 
 	set_enabled (enable);
 
-	if (enable) {
-		d.kill->refresh();
-		d.loss->refresh();
-		d.oob->refresh();
-		d.rst->refresh();
-	}
+	d.kill->refresh();
+	d.loss->refresh();
+	d.oob->refresh();
+	d.rst->refresh();
 
 	DBG_TRACE_FLEAVE;
 }

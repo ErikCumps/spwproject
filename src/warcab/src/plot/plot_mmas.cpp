@@ -418,3 +418,9 @@ PlotMMAS::show (QwtPlotItem *item, bool on)
 	enable_curve (item, on);
 	replot();
 }
+
+void
+PlotMMAS::intel_mode_set (INTEL_MODE /*mode*/)
+{
+	refresh();
+}

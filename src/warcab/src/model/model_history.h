@@ -39,19 +39,23 @@ public:
 	QVariant	data		(const QModelIndex &index, int role)					const;
 	Qt::ItemFlags	flags		(const QModelIndex &index)						const;
 	QVariant	headerData	(int section, Qt::Orientation orientation, int role = Qt::DisplayRole)	const;
+	QModelIndex	index		(int row, int column, const QModelIndex &parent = QModelIndex())	const;
 	int		rowCount	(const QModelIndex &parent = QModelIndex())				const;
 	int		columnCount	(const QModelIndex &parent = QModelIndex())				const;
 
 public:
 	void	clear		(void);
-	void	load		(SPWAW_DOSSIER *dossier, bool prevcmp, int uidx);
-	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx);
+	void	load		(SPWAW_DOSSIER *dossier, bool prevcmp, int uidx, INTEL_MODE mode);
+	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx, INTEL_MODE mode);
 	void	set_marking	(bool mark);
 	void	select		(USHORT uidx);
 	void	identity	(MDLH_IDENTITY &id);
 	void	highlight	(MDLH_HILITE h);
 	int	max_width	(int column);
 	void	refresh		(void);
+
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	QList<QVariant>		header;
@@ -76,6 +80,7 @@ private:
 		int			list_cnt;
 		SPWDLT			*dlts;
 		MDLH_HILITE		hilite;
+		INTEL_MODE		intel_mode;
 	} d;
 
 private:

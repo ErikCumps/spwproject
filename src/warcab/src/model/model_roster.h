@@ -65,6 +65,7 @@ public:
 	QVariant	data		(const QModelIndex &index, int role)					const;
 	Qt::ItemFlags	flags		(const QModelIndex &index)						const;
 	QVariant	headerData	(int section, Qt::Orientation orientation, int role = Qt::DisplayRole)	const;
+	QModelIndex	index		(int row, int column, const QModelIndex &parent = QModelIndex())	const;
 	int		rowCount	(const QModelIndex &parent = QModelIndex())				const;
 	int		columnCount	(const QModelIndex &parent = QModelIndex())				const;
 	void		sort		(int column, Qt::SortOrder order = Qt::AscendingOrder);
@@ -72,9 +73,9 @@ public:
 
 public:
 	void	clear		(void);
-	void	load		(SPWAW_DOSSIER *dossier, bool fch);
-	void	load		(SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore);
-	void	load		(SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore);
+	void	load		(SPWAW_DOSSIER *dossier, bool fch, INTEL_MODE mode);
+	void	load		(SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore, INTEL_MODE mode);
+	void	load		(SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore, INTEL_MODE mode);
 	void	set_marking	(bool mark);
 	void	highlight	(MDLR_HILITE h);
 	int	max_width	(int column);
@@ -82,6 +83,9 @@ public:
 	void	set_dltsort	(bool sort);
 	int	rawdata		(int row, MDLR_COLUMN col, ModelRosterRawData *data, int cnt = 1);
 	void	filter_targets	(MDLR_FILTER spec, xMDL_FILTER_LIST *tgt);
+
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	QList<QVariant>		header;
@@ -108,11 +112,16 @@ private:
 		int			list_cnt;
 		int			list_use;
 		SPWDLT			*dlts;
+		MDLR_SMAP		*fsmap;
+		int			fsmap_cnt;
+		MDLR_SMAP		*ksmap;
+		int			ksmap_cnt;
 		MDLR_SMAP		*smap;
 		int			smap_cnt;
 		MDLR_HILITE		hilite;
 		bool			dltsort;
 		bool			revsort;
+		INTEL_MODE		intel_mode;
 		int			scol;
 		int			sord;
 	} d;
@@ -121,6 +130,7 @@ private:
 	void		setupModelDataStorage	(void);
 	void		freeModelDataStorage	(void);
 	void		setupSortMap		(void);
+	void		selectSortMap		(void);
 	void		addModelData		(SPWAW_UHTE *uhte, SPWAW_DOSSIER_UIR *uir, SPWAW_DOSSIER_UIR *cuir, SPWAW_DOSSIER_UIR *ruir);
 	void		setupModelData		(void);
 	void		freeModelData		(bool all);

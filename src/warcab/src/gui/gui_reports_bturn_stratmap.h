@@ -47,6 +47,7 @@ public slots:
 	void	save_clicked		(bool checked);
 	void	scrollsmap		(int x, int y);
 	void	selected		(GuiTableView *who, const QModelIndex &index);
+	void	intel_mode_set		(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -54,6 +55,7 @@ private:
 
 		QFrame			*frame;
 		QGridLayout		*layout;
+		QLabel			*intel;
 		QCheckBox		*grid;
 		QCheckBox		*vichexes;
 		QCheckBox		*influence;
@@ -78,6 +80,7 @@ private:
 		GUIVALTRACK (bool, Vfrontline);
 		GUIVALTRACK (bool, Vzoom2x);
 		GUIVALTRACK (SMAP_HPMC_TYPE, Vhcftype);
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 };
 

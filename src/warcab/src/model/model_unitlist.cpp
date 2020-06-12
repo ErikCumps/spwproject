@@ -56,6 +56,8 @@ ModelUnitlist::headerData (int section, Qt::Orientation orientation, int role) c
 int
 ModelUnitlist::rowCount (const QModelIndex &/*parent*/) const
 {
+	if (!d.pflag && (d.intel_mode == INTEL_MODE_NONE)) return (0);
+
 	return (d.row_cnt);
 }
 
@@ -63,6 +65,19 @@ int
 ModelUnitlist::columnCount (const QModelIndex &/*parent*/) const
 {
 	return (1);
+}
+
+QModelIndex
+ModelUnitlist::index (int row, int column, const QModelIndex &parent) const
+{
+	QModelIndex	idx = QModelIndex();
+
+	if (!d.pflag && (d.intel_mode == INTEL_MODE_NONE)) return (QModelIndex());
+
+	if (!hasIndex (row, column, parent)) return (QModelIndex());
+
+	if (row < d.row_cnt) idx = createIndex (row, column, &(d.list[row]));
+	return (idx);
 }
 
 void
@@ -127,7 +142,7 @@ ModelUnitlist::setupModelData (void)
 
 	DBG_TRACE_FENTER;
 
-	freeModelData (false);
+	freeModelData (true);
 
 	dossier_mode = (d.d != NULL);
 
@@ -207,20 +222,22 @@ ModelUnitlist::clear (void)
 }
 
 void
-ModelUnitlist::load (SPWAW_DOSSIER *dossier, bool fch)
+ModelUnitlist::load (SPWAW_DOSSIER *dossier, bool fch, INTEL_MODE mode)
 {
 	d.d = dossier; d.b = NULL; d.birs = NULL;
 
-	d.fchflag = fch; d.pflag = d.cflag = false; d.cdflag = false;
+	d.fchflag = fch; d.pflag = d.cflag = true; d.cdflag = false; d.intel_mode = mode;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelUnitlist::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore)
+ModelUnitlist::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore, INTEL_MODE mode)
 {
 	d.d = NULL;
+
+	d.fchflag = false; d.pflag = isplayer; d.cflag = iscore; d.cdflag = false; d.intel_mode = mode;
 
 	if (!battle) {
 		d.b = NULL;
@@ -233,8 +250,6 @@ ModelUnitlist::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore)
 			: &(d.b->info_sob->obir_battle);
 		d.birs_cnt = d.birs->ucnt;
 	}
-
-	d.fchflag = false; d.pflag = isplayer; d.cflag = iscore; d.cdflag = false;
 
 	setupModelData();
 	reset();
@@ -269,4 +284,12 @@ ModelUnitlist::refresh (void)
 {
 	//DBG_TRACE_FENTER;
 	//DBG_TRACE_FLEAVE;
+}
+
+void
+ModelUnitlist::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+
+	reset();
 }

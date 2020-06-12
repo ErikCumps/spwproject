@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - order of battle widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #define GUI_OOB_H	1
 
 #include "gui_private.h"
+#include "gui_oob_view.h"
 #include "model/model_dossier.h"
 
 class GuiOob	: public QFrame
@@ -43,6 +44,7 @@ public slots:
 	void	collapse	(GuiOobView *who, const QModelIndex &index);
 	void	expand		(GuiOobView *who, const QModelIndex &index);
 	void	selected	(GuiOobView *who, const QModelIndex &index);
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -50,6 +52,7 @@ private:
 
 		QFont			*font;
 		QGridLayout		*layout;
+		QLabel			*intel;
 		QComboBox		*highlight;
 		QCheckBox		*dltsort;
 		QCheckBox		*prevcmp;
@@ -70,11 +73,13 @@ private:
 		bool			pflag;
 		bool			cflag;
 		bool			psort;
+		GOV_MODE		govmode;
 
 		UtilMdlTreeReftrack	reftrack;
 		GUIVALTRACK (bool, Vdltsort);
 		GUIVALTRACK (bool, Vprevcmp);
 		GUIVALTRACK (bool, Vautosort);
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 
 private:

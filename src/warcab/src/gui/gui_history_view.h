@@ -32,7 +32,7 @@ public:
 	void	wheelEvent	(QWheelEvent *e);
 
 public:
-	void	reload		(GHV_MODE ghvm, bool mflag);
+	void	reload		(GHV_MODE ghvm, bool mflag, bool pflag, INTEL_MODE mode);
 	void	refresh		(void);
 
 signals:
@@ -46,6 +46,7 @@ public slots:
 	void	wheel		(QWheelEvent *e);
 	void	select		(const QModelIndex &index);
 	void	currentChanged	(const QModelIndex &current, const QModelIndex &previous);
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -56,15 +57,19 @@ private:
 		int		rlayout[MDLH_COLUMN_CNT];
 		int		mlayout[MDLH_COLUMN_CNT];
 
+		bool		pflag;
 		GHV_MODE	ghvm;
 		bool		mflag;
+		INTEL_MODE	intel_mode;
 	} d;
 
 private:
 	void	apply_ghvmode	(void);
+	void	apply_imdmode	(void);
+	void	apply_mode	(void);
 	void	build_rlayout	(void);
 	void	build_mlayout	(void);
-	void	apply_layout	(bool reset);
+	void	apply_layout	(void);
 };
 
 #endif	/* GUI_HISTORY_VIEW_H */

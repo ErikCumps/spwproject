@@ -48,6 +48,7 @@ public slots:
 #endif	/* EXPERIMENTAL */
 	void	sort		(GuiRosterView *who, int idx, Qt::SortOrder order);
 	void	selected	(GuiRosterView *who, const QModelIndex &index);
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -56,6 +57,7 @@ private:
 		ModelRoster		*model;
 
 		QGridLayout		*layout;
+		QLabel			*intel;
 #if	EXPERIMENTAL
 		QComboBox		*filter_spec;
 		QComboBox		*filter_tgt;
@@ -90,6 +92,7 @@ private:
 		GUIVALTRACK (bool, Vdltsort);
 		GUIVALTRACK (bool, Vprevcmp);
 		GUIVALTRACK (bool, Vautosort);
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 
 #if	EXPERIMENTAL
 		MDLR_FILTER		Vfspec;

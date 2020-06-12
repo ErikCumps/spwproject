@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - plot handling - min-max-average-spread plot handling.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -41,9 +41,12 @@ public:
 	SL_ERROR	error_code;
 
 public:
-	void		refresh		(void);
 	virtual bool	eventFilter	(QObject *obj, QEvent *e);
+	void		refresh		(void);
 	void		set_axistype	(AXIS_TYPE type);
+
+public slots:
+	void		intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {

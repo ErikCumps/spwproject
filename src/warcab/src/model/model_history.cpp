@@ -115,6 +115,8 @@ ModelHistory::headerData (int section, Qt::Orientation orientation, int role) co
 int
 ModelHistory::rowCount (const QModelIndex &/*parent*/) const
 {
+	if (!d.pflag && (d.intel_mode == INTEL_MODE_NONE)) return (0);
+
 	return (d.row_cnt);
 }
 
@@ -122,6 +124,19 @@ int
 ModelHistory::columnCount (const QModelIndex &/*parent*/) const
 {
 	return (d.col_cnt);
+}
+
+QModelIndex
+ModelHistory::index (int row, int column, const QModelIndex &parent) const
+{
+	QModelIndex	idx = QModelIndex();
+
+	if (!d.pflag && (d.intel_mode == INTEL_MODE_NONE)) return (QModelIndex());
+
+	if (!hasIndex (row, column, parent)) return (QModelIndex());
+
+	if (row < d.row_cnt) idx = createIndex (row, column, &(d.list[row]));
+	return (idx);
 }
 
 void
@@ -210,7 +225,7 @@ ModelHistory::setupModelData (void)
 
 	DBG_TRACE_FENTER;
 
-	freeModelData (false);
+	freeModelData (true);
 
 	if (d.campaign) {
 		/* Check data availability */
@@ -311,7 +326,7 @@ ModelHistory::clear (void)
 }
 
 void
-ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int uidx)
+ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int uidx, INTEL_MODE mode)
 {
 	d.dptr.d	= dossier;
 	d.dref		= NULL;
@@ -320,13 +335,14 @@ ModelHistory::load (SPWAW_DOSSIER *dossier,  bool prevcmp, int uidx)
 	d.cflag		= true;
 	d.pvcmp		= prevcmp;
 	d.uidx		= uidx;
+	d.intel_mode	= mode;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelHistory::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx)
+ModelHistory::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevcmp, int uidx, INTEL_MODE mode)
 {
 	d.dptr.b	= battle;
 	d.dref		= NULL;
@@ -335,6 +351,7 @@ ModelHistory::load (SPWAW_BATTLE *battle, bool isplayer, bool iscore, bool prevc
 	d.cflag		= iscore;
 	d.pvcmp		= prevcmp;
 	d.uidx		= uidx;
+	d.intel_mode	= mode;
 
 	setupModelData();
 	reset();
@@ -385,4 +402,12 @@ ModelHistory::refresh (void)
 {
 	//DBG_TRACE_FENTER;
 	//DBG_TRACE_FLEAVE;
+}
+
+void
+ModelHistory::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+
+	reset();
 }

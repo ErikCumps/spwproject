@@ -19,32 +19,62 @@
 
 typedef bool GHV_VISIBILITY[GHV_MODE_LIMIT];
 
-GHV_VISIBILITY	ghvmode[MDLH_COLUMN_CNT] = {
-	{ true , true  },	/* MDLH_COLUMN_DATE	*/
-	{ true , false },	/* MDLH_COLUMN_UID	*/
-	{ true , false },	/* MDLH_COLUMN_UNIT	*/
-	{ true , false },	/* MDLH_COLUMN_RNK	*/
-	{ true , false },	/* MDLH_COLUMN_LDR	*/
+static GHV_VISIBILITY	ghvmode[MDLH_COLUMN_CNT] = {
+	{ true,  true  },	/* MDLH_COLUMN_DATE	*/
+	{ true,  false },	/* MDLH_COLUMN_UID	*/
+	{ true,  false },	/* MDLH_COLUMN_UNIT	*/
+	{ true,  false },	/* MDLH_COLUMN_RNK	*/
+	{ true,  false },	/* MDLH_COLUMN_LDR	*/
 	{ false, true  },	/* MDLH_COLUMN_STATUS	*/
-	{ true , true  },	/* MDLH_COLUMN_KILL	*/
-	{ true , false },	/* MDLH_COLUMN_EXP	*/
-	{ true , false },	/* MDLH_COLUMN_MOR	*/
+	{ true,  true  },	/* MDLH_COLUMN_KILL	*/
+	{ true,  false },	/* MDLH_COLUMN_EXP	*/
+	{ true,  false },	/* MDLH_COLUMN_MOR	*/
 	{ false, true  },	/* MDLH_COLUMN_SUP	*/
-	{ true , false },	/* MDLH_COLUMN_RAL	*/
-	{ true , false },	/* MDLH_COLUMN_INF	*/
-	{ true , false },	/* MDLH_COLUMN_ARM	*/
-	{ true , false },	/* MDLH_COLUMN_ART	*/
-	{ true , false },	/* MDLH_COLUMN_MEN	*/
+	{ true,  false },	/* MDLH_COLUMN_RAL	*/
+	{ true,  false },	/* MDLH_COLUMN_INF	*/
+	{ true,  false },	/* MDLH_COLUMN_ARM	*/
+	{ true,  false },	/* MDLH_COLUMN_ART	*/
+	{ true,  false },	/* MDLH_COLUMN_MEN	*/
 	{ false, true  },	/* MDLH_COLUMN_RDY	*/
-	{ true , true  },	/* MDLH_COLUMN_KIA	*/
-	{ true , true  },	/* MDLH_COLUMN_DMG	*/
+	{ true,  true  },	/* MDLH_COLUMN_KIA	*/
+	{ true,  true  },	/* MDLH_COLUMN_DMG	*/
 	{ false, true  },	/* MDLH_COLUMN_SEEN	*/
 	{ false, true  },	/* MDLH_COLUMN_ABAND	*/
 	{ false, true  },	/* MDLH_COLUMN_LOADED	*/
-	{ true , false },	/* MDLH_COLUMN_TYPE	*/
-	{ true , false },	/* MDLH_COLUMN_CLASS	*/
-	{ true , false },	/* MDLH_COLUMN_COST	*/
+	{ true,  false },	/* MDLH_COLUMN_TYPE	*/
+	{ true,  false },	/* MDLH_COLUMN_CLASS	*/
+	{ true,  false },	/* MDLH_COLUMN_COST	*/
 	{ false, true  },	/* MDLH_COLUMN_SPEED	*/
+};
+
+typedef bool IMD_VISIBILITY[INTEL_MODE_CNT];
+
+static IMD_VISIBILITY imdmode[MDLH_COLUMN_CNT] = {
+	{ true,  true,  true  },	/* MDLH_COLUMN_DATE	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_UID	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_UNIT	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_RNK	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_LDR	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_STATUS	*/
+	{ true,  false, false },	/* MDLH_COLUMN_KILL	*/
+	{ true,  false, false },	/* MDLH_COLUMN_EXP	*/
+	{ true,  false, false },	/* MDLH_COLUMN_MOR	*/
+	{ true,  false, false },	/* MDLH_COLUMN_SUP	*/
+	{ true,  false, false },	/* MDLH_COLUMN_RAL	*/
+	{ true,  false, false },	/* MDLH_COLUMN_INF	*/
+	{ true,  false, false },	/* MDLH_COLUMN_ARM	*/
+	{ true,  false, false },	/* MDLH_COLUMN_ART	*/
+	{ true,  false, false },	/* MDLH_COLUMN_MEN	*/
+	{ true,  false, false },	/* MDLH_COLUMN_RDY	*/
+	{ true,  false, false },	/* MDLH_COLUMN_KIA	*/
+	{ true,  false, false },	/* MDLH_COLUMN_DMG	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_SEEN	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_ABAND	*/
+	{ true,  false, false },	/* MDLH_COLUMN_LOADED	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_TYPE	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_CLASS	*/
+	{ true,  true,  false },	/* MDLH_COLUMN_COST	*/
+	{ true,  false, false },	/* MDLH_COLUMN_SPEED	*/
 };
 
 MDLH_COLUMN HDR_LIMIT = MDLH_COLUMN_DATE;
@@ -107,15 +137,10 @@ GuiHistoryView::GuiHistoryView (bool hdr, GuiHistory *history, QWidget *P)
 	build_mlayout();
 
 	d.ghvm = GHV_MODE_DOSSIER;
-	apply_ghvmode();
+	apply_mode();
 
 	d.mflag = false;
-	apply_layout (true);
-
-	horizontalHeader()->setResizeMode (MDLH_COLUMN_LDR, QHeaderView::Interactive);
-	horizontalHeader()->setResizeMode (MDLH_COLUMN_TYPE, QHeaderView::Interactive);
-	horizontalHeader()->setResizeMode (MDLH_COLUMN_CLASS, QHeaderView::Interactive);
-	horizontalHeader()->setResizeMode (MDLH_COLUMN_STATUS, QHeaderView::Interactive);
+	apply_layout();
 
 	//setContextMenuPolicy (Qt::DefaultContextMenu);
 
@@ -143,7 +168,7 @@ GuiHistoryView::wheelEvent (QWheelEvent *e)
 }
 
 void
-GuiHistoryView::reload (GHV_MODE ghvm, bool mflag)
+GuiHistoryView::reload (GHV_MODE ghvm, bool mflag, bool pflag, INTEL_MODE mode)
 {
 	bool	apply = false;
 
@@ -155,10 +180,17 @@ GuiHistoryView::reload (GHV_MODE ghvm, bool mflag)
 		d.mflag = mflag;
 		apply = true;
 	}
-	if (apply) {
-		apply_ghvmode ();
-		apply_layout (false);
+	if (d.pflag != pflag) {
+		d.pflag = pflag;
+		apply = true;
 	}
+	if (d.intel_mode != mode) {
+		d.intel_mode = mode;
+		apply = true;
+	}
+
+	if (apply) apply_mode();
+
 	refresh();
 }
 
@@ -204,6 +236,19 @@ GuiHistoryView::currentChanged (const QModelIndex &current, const QModelIndex &/
 }
 
 void
+GuiHistoryView::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+	if (!d.pflag && d.intel_mode != INTEL_MODE_FULL) {
+		sortByColumn (0, Qt::AscendingOrder);
+		setSortingEnabled (false);
+	} else {
+		setSortingEnabled (true);
+	}
+	apply_mode();
+}
+
+void
 GuiHistoryView::apply_ghvmode (void)
 {
 	if (d.ishdr) {
@@ -221,6 +266,30 @@ GuiHistoryView::apply_ghvmode (void)
 			setColumnHidden (i, !ghvmode[i][d.ghvm]);
 		}
 	}
+}
+
+void
+GuiHistoryView::apply_imdmode (void)
+{
+	if (d.pflag) return;
+
+	if (d.ishdr) {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			if (!imdmode[i][d.intel_mode]) setColumnHidden (i, true);
+		}
+	} else {
+		for (int i=(HDR_LIMIT+1); i<MDLH_COLUMN_CNT; i++) {
+			if (!imdmode[i][d.intel_mode]) setColumnHidden (i, true);
+		}
+	}
+}
+
+void
+GuiHistoryView::apply_mode (void)
+{
+	apply_ghvmode();
+	apply_imdmode();
+	apply_layout();
 }
 
 void
@@ -284,7 +353,7 @@ GuiHistoryView::build_mlayout (void)
 }
 
 void
-GuiHistoryView::apply_layout (bool reset)
+GuiHistoryView::apply_layout (void)
 {
 	int	*layout = d.mflag ? d.mlayout : d.rlayout;
 
@@ -299,7 +368,7 @@ GuiHistoryView::apply_layout (bool reset)
 		setMinimumWidth (w); setMaximumWidth (w);
 	} else {
 		for (int i=(HDR_LIMIT+1); i<MDLH_COLUMN_CNT; i++) {
-			if (reset || (columnWidth (i) < layout[i])) setColumnWidth (i, layout[i]);
+			setColumnWidth (i, layout[i]);
 		}
 	}
 

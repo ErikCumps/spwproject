@@ -54,6 +54,7 @@ typedef struct s_SMAP_RENDERDATA_XPMS {
 	const char **blue;		/*!< Color field for blue influence					*/
 	const char **red;		/*!< Color field for red influence					*/
 	const char **neutral;		/*!< Color field for neutral influence					*/
+	const char **contested;		/*!< Color field for contested influence				*/
 	const char **mask;		/*!< Transparency mask							*/
 	const char **bluedot1;		/*!< Blue unit indicator (1 unit)					*/
 	const char **bluedot2;		/*!< Blue unit indicator (2 units)					*/
@@ -71,6 +72,7 @@ typedef struct s_SMAP_RENDERDATA_XPMS {
 	const char **bluedot14;		/*!< Blue unit indicator (14 units)					*/
 	const char **bluedot15;		/*!< Blue unit indicator (15 units)					*/
 	const char **bluedot16;		/*!< Blue unit indicator (16 units)					*/
+	const char **bluesplat;		/*!< Blue dead/abandoned unit(s) indicator				*/
 	const char **reddot1;		/*!< Red unit indicator (1 unit)					*/
 	const char **reddot2;		/*!< Red unit indicator (2 units)					*/
 	const char **reddot3;		/*!< Red unit indicator (3 units)					*/
@@ -87,15 +89,24 @@ typedef struct s_SMAP_RENDERDATA_XPMS {
 	const char **reddot14;		/*!< Red unit indicator (14 units)					*/
 	const char **reddot15;		/*!< Red unit indicator (15 units)					*/
 	const char **reddot16;		/*!< Red unit indicator (16 units)					*/
+	const char **redsplat;		/*!< Red dead/abandoned unit(s) indicator				*/
 	const char **vhexblue;		/*!< Victory hex claimed by blue player					*/
 	const char **vhexred;		/*!< Victory hex claimed by red player					*/
 	const char **vhexneutral;	/*!< Victory hex, not yet claimed					*/
+	const char **vhexcontested;	/*!< Victory hex, contested by all players				*/
 	const char **frontlineEE;	/*!< Front line running on the east edge of the hex			*/
 	const char **frontlineSE;	/*!< Front line running on the south east edge of the hex		*/
 	const char **frontlineSW;	/*!< Front line running on the south west edge of the hex		*/
 	const char **frontlineWW;	/*!< Front line running on the west edge of the hex			*/
 	const char **frontlineNW;	/*!< Front line running on the north west edge of the hex		*/
 	const char **frontlineNE;	/*!< Front line running on the north east edge of the hex		*/
+	const char **dottedfrontlineEE;	/*!< Dotted front line running on the east edge of the hex		*/
+	const char **dottedfrontlineSE;	/*!< Dotted front line running on the south east edge of the hex	*/
+	const char **dottedfrontlineSW;	/*!< Dotted front line running on the south west edge of the hex	*/
+	const char **dottedfrontlineWW;	/*!< Dotted front line running on the west edge of the hex		*/
+	const char **dottedfrontlineNW;	/*!< Dotted front line running on the north west edge of the hex	*/
+	const char **dottedfrontlineNE;	/*!< Dotted front line running on the north east edge of the hex	*/
+
 } SMAP_RENDERDATA_XPMS;
 
 #endif	/* STRATMAP_RENDERDATA_XPM_H */

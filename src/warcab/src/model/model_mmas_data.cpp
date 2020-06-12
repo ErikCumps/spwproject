@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - min-max-average-spread data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -30,6 +30,12 @@ MDLMMAS_TYPE_lookup (MDLMMAS_TYPE e)
 {
 	return (MDLMMAS_TYPE_names[e]);
 }
+
+#define	IF_NOT_FULL_INTEL(v_)							\
+	do {									\
+		if (!this->d.pflag && (this->d.intel_mode != INTEL_MODE_FULL))	\
+			return ((v_));						\
+	} while (0)
 
 QVariant
 ModelMMAS::MDLMMAS_data_display (int /*row*/, int col, MDLMMAS_DATA *data, SPWDLT *dlt) const
@@ -64,6 +70,7 @@ ModelMMAS::MDLMMAS_data_display (int /*row*/, int col, MDLMMAS_DATA *data, SPWDL
 		case MDLMMAS_COLUMN_MINID:
 			break;
 		default:
+			IF_NOT_FULL_INTEL(v);
 			switch (cd->dtype) {
 				case SPWDLT_INT:
 					s.setNum (SPWDLT_int (dlt));
@@ -85,9 +92,10 @@ ModelMMAS::MDLMMAS_data_display (int /*row*/, int col, MDLMMAS_DATA *data, SPWDL
 QVariant
 ModelMMAS::MDLMMAS_data_foreground (int /*row*/, int col, MDLMMAS_DATA *data, SPWDLT *dlt) const
 {
-	QVariant	v = QVariant();
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMSC_FG_DEFAULT)));
 
 	if (!data || !dlt) return (v);
+	IF_NOT_FULL_INTEL(v);
 
 	if (SPWDLT_check (dlt)) {
 		switch (col) {
@@ -103,20 +111,14 @@ ModelMMAS::MDLMMAS_data_foreground (int /*row*/, int col, MDLMMAS_DATA *data, SP
 				v = QBrush (*RES_color(RID_GM_DLT_NTR));
 				break;
 		}
-	} else {
-		v = QBrush (*RES_color(RID_GMSC_FG_DEFAULT));
 	}
 	return (v);
 }
 
 QVariant
-ModelMMAS::MDLMMAS_data_background (int /*row*/, int /*col*/, MDLMMAS_DATA *data, SPWDLT *dlt) const
+ModelMMAS::MDLMMAS_data_background (int /*row*/, int /*col*/, MDLMMAS_DATA * /*data*/, SPWDLT * /*dlt*/) const
 {
-	QVariant	v = QVariant();
-
-	if (!data || !dlt) return (v);
-
-	v = QBrush (*RES_color(RID_GMSC_BG_DEFAULT));
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMSC_BG_DEFAULT)));
 
 	return (v);
 }
@@ -170,6 +172,7 @@ ModelMMAS::MDLMMAS_data_plot (int /*row*/, int col, MDLMMAS_DATA *data, SPWDLT *
 		case MDLMMAS_COLUMN_AVG:
 		case MDLMMAS_COLUMN_SPR:
 		case MDLMMAS_COLUMN_COUNT:
+			IF_NOT_FULL_INTEL(v);
 			switch ((MDLMMAS_coldef(col))->dtype) {
 				case SPWDLT_INT:
 					v = SPWDLT_int (dlt);
@@ -194,6 +197,7 @@ ModelMMAS::MDLMMAS_data_id (int /*row*/, int col, MDLMMAS_DATA *data, SPWDLT *dl
 	int			i = -1;
 
 	if (!data || !dlt) return (v);
+	IF_NOT_FULL_INTEL(v);
 
 	switch (col) {
 		case MDLMMAS_COLUMN_MAXID:

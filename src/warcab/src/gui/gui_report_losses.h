@@ -31,6 +31,9 @@ signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
 	void	cmpbase		(MDLD_TREE_ITEM *base);
 
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
+
 private:
 	struct s_data {
 		ModelRoster		*model;
@@ -39,6 +42,7 @@ private:
 		QFrame			*frame;
 		QGridLayout		*layout;
 		QLabel			*label_nodata;
+		QLabel			*label_intel;
 		QLabel			*label_khdr;
 		QLabel			*label_klist;
 		QLabel			*label_ahdr;
@@ -61,6 +65,7 @@ private:
 		MDLD_TREE_ITEM		*pbase;
 
 		UtilMdlTreeReftrack	reftrack;
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 
 private:

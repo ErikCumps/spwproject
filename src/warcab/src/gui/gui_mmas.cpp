@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - min-max-average-spread widget.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,6 +11,8 @@
 #include "model/model_mmas.h"
 #include "gui_reports_dossier.h"
 #include "gui_reports_battle.h"
+
+#define	PLOT_MARGIN	5
 
 static MDLMMAS_TYPE typemap_dossier[] = {
 	MDLMMAS_TYPE_EXP, MDLMMAS_TYPE_MOR,
@@ -37,6 +39,11 @@ GuiMMAS::GuiMMAS (QWidget *P)
 
 	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "layout");
 
+	GUINEW (d.intel, QLabel (this), ERR_GUI_REPORTS_INIT_FAILED, "intel");
+	d.intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.intel->setWordWrap (true);
+	d.intel->setSizePolicy (QSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed));
+
 	GUINEW (d.type, QComboBox (this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "type");
 	d.type->setEditable (false);
 
@@ -55,7 +62,11 @@ GuiMMAS::GuiMMAS (QWidget *P)
 
 	GUINEW (d.plot, PlotMMAS (d.model, this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "plot");
 	GUIERR (d.plot, ERR_GUI_REPORTS_MMAS_INIT_FAILED);
-	d.plot->setMargin (5);
+	d.plot->setMargin (PLOT_MARGIN);
+
+	GUINEW (d.scroller, QScrollArea (this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "scroller");
+	d.scroller->setWidget (d.plot);
+	d.scroller->setWidgetResizable (true);
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
@@ -66,13 +77,14 @@ GuiMMAS::GuiMMAS (QWidget *P)
 	GUINEW (d.bdy_mmas, GuiMMASView (false, this, d.split), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "bdy_mmas");
 	GUIERR (d.bdy_mmas, ERR_GUI_REPORTS_MMAS_INIT_FAILED);
 
-	d.layout->addWidget (d.type,		0, 0, 1, 2);
-	d.layout->addWidget (d.filter,		0, 2, 1, 1);
-	d.layout->addWidget (d.timeline,	1, 0, 1, 1);
-	d.layout->addWidget (d.prevcmp,		1, 1, 1, 1);
-	d.layout->addWidget (d.target,		1, 2, 1, 1);
-	d.layout->addWidget (d.plot,		2, 0, 1, 3);
-	d.layout->addWidget (d.split,		3, 0, 1, 3);
+	d.layout->addWidget (d.intel,		0, 0, 1, 3);
+	d.layout->addWidget (d.type,		1, 0, 1, 2);
+	d.layout->addWidget (d.filter,		1, 2, 1, 1);
+	d.layout->addWidget (d.timeline,	2, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		2, 1, 1, 1);
+	d.layout->addWidget (d.target,		2, 2, 1, 1);
+	d.layout->addWidget (d.scroller,	3, 0, 1, 3);
+	d.layout->addWidget (d.split,		4, 0, 1, 3);
 
 	if (!connect (d.type, SIGNAL (activated(int)), SLOT (set_type(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_MMAS_INIT_FAILED, "failed to connect <type:activated> to <set_type>");
@@ -109,6 +121,15 @@ GuiMMAS::GuiMMAS (QWidget *P)
 
 	if (!connect (d.hdr_mmas, SIGNAL (selected(GuiMMASView*,const QModelIndex&)), this, SLOT (selected(GuiMMASView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_MMAS_INIT_FAILED, "failed to connect <hdr_mmas:selected> to <selected>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.model, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <model:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.plot, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <plot:intel_mode_set>");
 
 	d.filters = d.model->filters();
 	if (d.filters) {
@@ -236,10 +257,10 @@ GuiMMAS::update (void)
 		idx = d.hdr_mmas->currentIndex();
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
-				d.model->load (item->data.d, d.Vtype, d.pflag, d.Vprevcmp);
+				d.model->load (item->data.d, d.Vtype, d.pflag, d.Vprevcmp, d.Vintel_mode);
 				break;
 			case MDLD_TREE_BATTLE:
-				d.model->load (item->data.b, d.Vtype, d.pflag, d.cflag, d.Vprevcmp);
+				d.model->load (item->data.b, d.Vtype, d.pflag, d.cflag, d.Vprevcmp, d.Vintel_mode);
 				break;
 			default:
 				break;
@@ -268,6 +289,9 @@ GuiMMAS::refresh (void)
 	d.plot->refresh();
 	d.hdr_mmas->reload();
 	d.bdy_mmas->reload();
+
+	/* Force the QScrollArea to resize the plot widget */
+	d.scroller->setWidgetResizable(false); d.scroller->setWidgetResizable(true);
 
 	DBG_TRACE_FLEAVE;
 }
@@ -349,4 +373,12 @@ GuiMMAS::selected (GuiMMASView *who, const QModelIndex &index)
 	if (who != d.bdy_mmas) d.bdy_mmas->select (index);
 	d.hdr_mmas->scrollTo (index);
 	d.hdr_mmas->refresh();
+}
+
+void
+GuiMMAS::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.intel);
 }

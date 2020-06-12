@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - min-max-average-spread data.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -43,13 +43,14 @@ public:
 	QVariant	data		(const QModelIndex &index, int role)					const;
 	Qt::ItemFlags	flags		(const QModelIndex &index)						const;
 	QVariant	headerData	(int section, Qt::Orientation orientation, int role = Qt::DisplayRole)	const;
+	QModelIndex	index		(int row, int column, const QModelIndex &parent = QModelIndex())	const;
 	int		rowCount	(const QModelIndex &parent = QModelIndex())				const;
 	int		columnCount	(const QModelIndex &parent = QModelIndex())				const;
 
 public:
 	void			clear		(void);
-	void			load		(SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool prevcmp);
-	void			load		(SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool iscore, bool prevcmp);
+	void			load		(SPWAW_DOSSIER *dossier, MDLMMAS_TYPE type, bool player, bool prevcmp, INTEL_MODE mode);
+	void			load		(SPWAW_BATTLE *battle, MDLMMAS_TYPE type, bool player, bool iscore, bool prevcmp, INTEL_MODE mode);
 	int			max_width	(int column);
 	void			refresh		(void);
 	char *			title		(void);
@@ -59,6 +60,9 @@ public:
 	MDL_MF_TGTLST *		targets		(MDL_MFID id);
 	void			filter		(MDL_MFID fid, MDL_MF_TGTID tid);
 	bool			filtered	(void);
+
+public slots:
+	void		intel_mode_set	(INTEL_MODE mode);
 
 private:
 	QList<QVariant>		header;
@@ -83,6 +87,8 @@ private:
 		MDLMMAS_DATA		*list;
 		int			list_cnt;
 		SPWDLT			*dlts;
+
+		INTEL_MODE		intel_mode;
 	} d;
 
 private:

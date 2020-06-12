@@ -281,6 +281,9 @@ SmapRenderer::render (void)
 				case SMAP_HI_RED:
 					p = &d.rd->pmc.vh_red;
 					break;
+				case SMAP_HI_CONTESTED:
+					p = &d.rd->pmc.vh_contested;
+					break;
 				case SMAP_HI_NONE:
 				default:
 					p = &d.rd->pmc.vh_neutral;
@@ -312,6 +315,9 @@ SmapRenderer::render (void)
 				case SMAP_HI_RED:
 					p = d.rd->pmc.inf_red;
 					break;
+				case SMAP_HI_CONTESTED:
+					p = d.rd->pmc.inf_contested;
+					break;
 				case SMAP_HI_NONE:
 				default:
 					p = d.rd->pmc.inf_neutral;
@@ -337,6 +343,7 @@ SmapRenderer::render (void)
 	delete paint;
 
 	/* paint frontlines */
+	QPixmap	*fls = !d.hgrid->dotted ? d.rd->pmc.frontline : d.rd->pmc.dottedfrontline;
 	layer.frontline->fill (Qt::transparent);
 	paint = new QPainter (layer.frontline);
 	paint->setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
@@ -348,7 +355,7 @@ SmapRenderer::render (void)
 
 			for (i=0; i<=5; i++) {
 				if (d.hgrid->map[idx].frontline & (1<<i)) {
-					paint->drawPixmap (d.rgrid.map[idx].posx - map.x(), d.rgrid.map[idx].posy - map.y(), d.rd->pmc.frontline[i]);
+					paint->drawPixmap (d.rgrid.map[idx].posx - map.x(), d.rgrid.map[idx].posy - map.y(), fls[i]);
 				}
 			}
 
@@ -367,17 +374,25 @@ SmapRenderer::render (void)
 
 			idx = d.hgrid->grid2idx (pos.set(ix, iy));
 
-			if (d.hgrid->map[idx].influence == SMAP_HI_NONE) continue;
-
 			if ((d.hgrid->map[idx].unit_cnt_blue != 0) && (d.hgrid->map[idx].unit_cnt_red != 0)) {
 				switch (d.hgrid->map[idx].influence) {
 					case SMAP_HI_BLUE:
-						p = d.rd->pmc.bluedot;
-						cnt = d.hgrid->map[idx].unit_cnt_blue;
+						if (d.hgrid->map[idx].all_KIA_blue) {
+							p = &d.rd->pmc.bluesplat;
+							cnt = -1;
+						} else {
+							p = d.rd->pmc.bluedot;
+							cnt = d.hgrid->map[idx].unit_cnt_blue;
+						}
 						break;
 					case SMAP_HI_RED:
-						p = d.rd->pmc.reddot;
-						cnt = d.hgrid->map[idx].unit_cnt_red;
+						if (d.hgrid->map[idx].all_KIA_red) {
+							p = &d.rd->pmc.redsplat;
+							cnt = -1;
+						} else {
+							p = d.rd->pmc.reddot;
+							cnt = d.hgrid->map[idx].unit_cnt_red;
+						}
 						break;
 					case SMAP_HI_NONE:
 					default:
@@ -386,15 +401,29 @@ SmapRenderer::render (void)
 						break;
 				}
 			} else if (d.hgrid->map[idx].unit_cnt_blue != 0) {
-				p = d.rd->pmc.bluedot;
-				cnt = d.hgrid->map[idx].unit_cnt_blue;
-			} else {
-				p = d.rd->pmc.reddot;
-				cnt = d.hgrid->map[idx].unit_cnt_red;
+				if (d.hgrid->map[idx].all_KIA_blue) {
+					p = &d.rd->pmc.bluesplat;
+					cnt = -1;
+				} else {
+					p = d.rd->pmc.bluedot;
+					cnt = d.hgrid->map[idx].unit_cnt_blue;
+				}
+			} else if (d.hgrid->map[idx].unit_cnt_red != 0) {
+				if (d.hgrid->map[idx].all_KIA_red) {
+					p = &d.rd->pmc.redsplat;
+					cnt = -1;
+				} else {
+					p = d.rd->pmc.reddot;
+					cnt = d.hgrid->map[idx].unit_cnt_red;
+				}
 			}
 			if (p && cnt) {
-				int n = (cnt >= 16) ? 15 : (cnt-1);
-				paint->drawPixmap (d.rgrid.map[idx].posx - map.x(), d.rgrid.map[idx].posy - map.y(), p[n]);
+				if (cnt < 0) {
+					paint->drawPixmap (d.rgrid.map[idx].posx - map.x(), d.rgrid.map[idx].posy - map.y(), *p);
+				} else {
+					int n = (cnt >= 16) ? 15 : (cnt-1);
+					paint->drawPixmap (d.rgrid.map[idx].posx - map.x(), d.rgrid.map[idx].posy - map.y(), p[n]);
+				}
 			}
 		}
 	}

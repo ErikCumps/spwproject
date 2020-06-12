@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - order of battle data.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -23,6 +23,18 @@ MDLO_HILITE_lookup (MDLO_HILITE e)
 	return (MDLO_HILITE_names[e]);
 }
 
+#define	IF_NOT_FULL_INTEL(v_)							\
+	do {									\
+		if (!this->d.pflag && (this->d.intel_mode != INTEL_MODE_FULL))	\
+			return ((v_));						\
+	} while (0)
+
+#define	IF_NOT_LMTD_INTEL(v_)							\
+	do {									\
+		if (!this->d.pflag && (this->d.intel_mode == INTEL_MODE_NONE))	\
+			return ((v_));						\
+	} while (0)
+
 QVariant
 ModelOob::MDLO_data_form_display (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dlt) const
 {
@@ -33,58 +45,73 @@ ModelOob::MDLO_data_form_display (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dlt) 
 
 	switch (col) {
 		case MDLO_COLUMN_FID:
+			IF_NOT_LMTD_INTEL(v);
 			s = fir->snap->strings.name;
 			break;
 		case MDLO_COLUMN_TYPE:
+			IF_NOT_LMTD_INTEL(v);
 			s = fir->snap->strings.type;
 			break;
 		case MDLO_COLUMN_LDR:
+			IF_NOT_LMTD_INTEL(v);
 			s = fir->snap->data.leader.up->strings.uid;
 			break;
 		case MDLO_COLUMN_HCMD:
+			IF_NOT_LMTD_INTEL(v);
 			s = fir->snap->data.hcmd.up->strings.uid;
 			break;
 		case MDLO_COLUMN_STATUS:
+			IF_NOT_FULL_INTEL(v);
 			s = fir->snap->strings.fstatus;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_KILLS:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (fir->snap->attr.gen.kills);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_RDY:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%6.2f %%", fir->snap->attr.gen.ready * 100.0);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
 			break;
 		case MDLO_COLUMN_COUNT:
+			IF_NOT_LMTD_INTEL(v);
 			s.setNum (fir->snap->data.ucnt);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_EXP:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_exp.avg);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_MOR:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_mor.avg);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_SUP:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_sup.avg);
 			//if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_RAL:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_ral.avg);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_INF:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_inf.avg);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_ARM:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_arm.avg);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_ART:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%.2f", fir->snap->attr.mmas_art.avg);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+.2f", SPWDLT_getdbl (dlt)); s += d; }
 			break;
@@ -98,9 +125,10 @@ ModelOob::MDLO_data_form_display (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dlt) 
 QVariant
 ModelOob::MDLO_data_form_foreground (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dlt) const
 {
-	QVariant	v = QVariant();
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMOC_FG_DEFAULT)));
 
 	if (!fir) return (v);
+	IF_NOT_FULL_INTEL(v);
 
 	if (SPWDLT_check (dlt)) {
 		switch (col) {
@@ -122,8 +150,6 @@ ModelOob::MDLO_data_form_foreground (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dl
 				v = QBrush (*RES_color(RID_GM_DLT_NTR));
 				break;
 		}
-	} else {
-		v = QBrush (*RES_color(RID_GMOC_FG_DEFAULT));
 	}
 	return (v);
 }
@@ -131,17 +157,17 @@ ModelOob::MDLO_data_form_foreground (int col, SPWAW_DOSSIER_FIR *fir, SPWDLT *dl
 QVariant
 ModelOob::MDLO_data_form_background (int /*col*/, SPWAW_DOSSIER_FIR *fir, SPWDLT * /*dlt*/) const
 {
-	QVariant	v = QVariant();
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMOC_BG_DEFAULT)));
 
 	if (!fir) return (v);
+	IF_NOT_FULL_INTEL(v);
 
 	switch (d.hilite) {
-		case MDLO_HILITE_NONE:
-		default:
-			v = QBrush (*RES_color(RID_GMOC_BG_DEFAULT));
-			break;
 		case MDLO_HILITE_TYPE:
 			v = QBrush (*RES_GUI_color (fir->snap->data.otype));
+			break;
+		default:
+			/* v already set */
 			break;
 	}
 	return (v);
@@ -191,58 +217,73 @@ ModelOob::MDLO_data_unit_display (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) 
 
 	switch (col) {
 		case MDLO_COLUMN_FID:
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->strings.uid;
 			break;
 		case MDLO_COLUMN_TYPE: // FIXME: designation, actually
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->data.dname;
 			break;
 		case MDLO_COLUMN_LDR:
+			IF_NOT_LMTD_INTEL(v);
 			s = uir->snap->data.lname;
 			break;
 		case MDLO_COLUMN_HCMD:
+			IF_NOT_LMTD_INTEL(v);
 			s = (uir->snap->data.RID == uir->snap->data.formation->data.leader.up->data.RID) ? "*" : "";
 			break;
 		case MDLO_COLUMN_STATUS:
+			IF_NOT_FULL_INTEL(v);
 			s = uir->snap->strings.status;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_KILLS:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->attr.gen.kills);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_RDY:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%6.2f %%", uir->snap->attr.gen.ready * 100.0);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
 			break;
 		case MDLO_COLUMN_COUNT:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.hcnt);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_EXP:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.exp);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_MOR:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.mor);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_SUP:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.sup);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_RAL:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.ral);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_INF:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.inf);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_ARM:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.arm);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLO_COLUMN_ART:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (uir->snap->data.art);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
@@ -256,9 +297,10 @@ ModelOob::MDLO_data_unit_display (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) 
 QVariant
 ModelOob::MDLO_data_unit_foreground (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dlt) const
 {
-	QVariant	v = QVariant();
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMOC_FG_DEFAULT)));
 
 	if (!uir) return (v);
+	IF_NOT_FULL_INTEL(v);
 
 	if (SPWDLT_check (dlt)) {
 		switch (col) {
@@ -280,8 +322,6 @@ ModelOob::MDLO_data_unit_foreground (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dl
 				v = QBrush (*RES_color(RID_GM_DLT_NTR));
 				break;
 		}
-	} else {
-		v = QBrush (*RES_color(RID_GMOC_FG_DEFAULT));
 	}
 	return (v);
 }
@@ -289,9 +329,7 @@ ModelOob::MDLO_data_unit_foreground (int col, SPWAW_DOSSIER_UIR *uir, SPWDLT *dl
 QVariant
 ModelOob::MDLO_data_unit_background (int /*col*/, SPWAW_DOSSIER_UIR * /*uir*/, SPWDLT * /*dlt*/) const
 {
-	QVariant	v = QVariant();
-
-	v = QBrush (*RES_color(RID_GMOC_BG_DEFAULT));
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMOC_BG_DEFAULT)));
 
 	return (v);
 }

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - order of battle widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,6 +36,11 @@ GuiOob::GuiOob (QWidget *P)
 
 	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "layout");
 
+	GUINEW (d.intel, QLabel (this), ERR_GUI_REPORTS_INIT_FAILED, "intel");
+	d.intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.intel->setWordWrap (true);
+	d.intel->setSizePolicy (QSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed));
+
 	GUINEW (d.highlight, QComboBox (this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "highlight");
 	for (int h=MDLO_HILITE_NONE; h<=MDLO_HILITE_LIMIT; h++)
 		d.highlight->addItem (QString ("Highlight: ") + QString (MDLO_HILITE_lookup ((MDLO_HILITE)h)));
@@ -52,6 +57,7 @@ GuiOob::GuiOob (QWidget *P)
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_OOB_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
+	d.split->setSizePolicy (QSizePolicy (QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding));
 
 	GUINEW (d.hdr_oob, GuiOobView (true, this, d.split), ERR_GUI_REPORTS_OOB_INIT_FAILED, "hdr_oob");
 	GUIERR (d.hdr_oob, ERR_GUI_REPORTS_OOB_INIT_FAILED);
@@ -59,10 +65,11 @@ GuiOob::GuiOob (QWidget *P)
 	GUINEW (d.bdy_oob, GuiOobView (false, this, d.split), ERR_GUI_REPORTS_OOB_INIT_FAILED, "bdy_oob");
 	GUIERR (d.bdy_oob, ERR_GUI_REPORTS_OOB_INIT_FAILED);
 
-	d.layout->addWidget (d.highlight,	0, 0, 1, 1);
-	d.layout->addWidget (d.prevcmp,		0, 1, 1, 1);
-	d.layout->addWidget (d.dltsort,		0, 2, 1, 1);
-	d.layout->addWidget (d.autosort,	0, 3, 1, 1);
+	d.layout->addWidget (d.intel,		0, 0, 1, 4);
+	d.layout->addWidget (d.highlight,	1, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		1, 1, 1, 1);
+	d.layout->addWidget (d.dltsort,		1, 2, 1, 1);
+	d.layout->addWidget (d.autosort,	1, 3, 1, 1);
 	d.layout->addWidget (d.split,		2, 0, 1, 4);
 
 	if (!connect (d.dltsort, SIGNAL(stateChanged(int)), SLOT (dltsort_change(int))))
@@ -110,6 +117,18 @@ GuiOob::GuiOob (QWidget *P)
 	if (!connect (d.hdr_oob, SIGNAL (selected(GuiOobView*,const QModelIndex&)), SLOT (selected(GuiOobView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_OOB_INIT_FAILED, "failed to connect <hdr_oob:selected> to <selected>");
 
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.model, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <model:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.hdr_oob, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <hdr_oob:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.bdy_oob, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <bdy_oob:intel_mode_set>");
+
 	d.pflag = d.cflag = true;
 	d.Vautosort = true;
 
@@ -133,8 +152,8 @@ GuiOob::set_parent (GuiRptDsr *parent, bool player)
 	d.pflag	 = player;
 	d.cflag	 = true;
 
-	d.prevcmp->setText ("Last battle only?");
-	d.prevcmp->setHidden (false);
+	d.prevcmp->setText ("-unused-");
+	d.prevcmp->setHidden (true);
 
 	d.hdr_oob->reparented();
 	d.bdy_oob->reparented();
@@ -209,18 +228,9 @@ GuiOob::update (void)
 		switch (d.ptype) {
 			case MDLD_TREE_DOSSIER:
 				if (!d.pdata->data.d) return;
-				if (!d.pdata->clast) return;
 
-				if (pidx != QModelIndex()) idx = pidx;
-
-				if (d.Vprevcmp) {
-					d.pcurr = d.pdata->clast;
-					d.pbase = d.pcurr->prev ? d.pcurr->prev : d.pcurr;
-				} else {
-					d.pcurr = d.pdata->clast;
-					d.pbase = d.pdata->cfirst;
-				}
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, true);
+				d.model->load (d.pdata->data.d,  d.Vintel_mode);
+				d.govmode = GOV_MODE_DOSSIER;
 				break;
 			case MDLD_TREE_BATTLE:
 				if (!d.pdata->data.b) return;
@@ -231,7 +241,8 @@ GuiOob::update (void)
 				} else {
 					d.pbase = d.pdata;
 				}
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag, d.Vintel_mode);
+				d.govmode = GOV_MODE_BATTLE;
 				break;
 			case MDLD_TREE_BTURN:
 				if (!d.pdata->data.t) return;
@@ -239,11 +250,12 @@ GuiOob::update (void)
 				d.pcurr = d.pdata;
 				if (d.Vprevcmp && d.pdata->prev) {
 					d.pbase = d.pdata->prev;
-					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				} else {
 					d.pbase = d.pdata->parent;
-					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				}
+				d.govmode = GOV_MODE_TURN;
 				break;
 			default:
 				break;
@@ -268,8 +280,8 @@ GuiOob::refresh (void)
 	DBG_TRACE_FENTER;
 
 	update();
-	d.hdr_oob->reload (d.psort || d.Vautosort);
-	d.bdy_oob->reload (d.psort || d.Vautosort);
+	d.hdr_oob->reload (d.govmode, d.psort || d.Vautosort, d.pflag, d.Vintel_mode);
+	d.bdy_oob->reload (d.govmode, d.psort || d.Vautosort, d.pflag, d.Vintel_mode);
 
 	d.psort = false;
 
@@ -294,8 +306,8 @@ GuiOob::prevcmp_change (int state)
 	d.Vprevcmp = (state != Qt::Unchecked);
 
 	update(); d.psort = false;
-	d.hdr_oob->reload (d.Vautosort); d.hdr_oob->reparented();
-	d.bdy_oob->reload (d.Vautosort); d.bdy_oob->reparented();
+	d.hdr_oob->reload (d.govmode, d.Vautosort, d.pflag, d.Vintel_mode); d.hdr_oob->reparented();
+	d.bdy_oob->reload (d.govmode, d.Vautosort, d.pflag, d.Vintel_mode); d.bdy_oob->reparented();
 }
 
 void
@@ -305,8 +317,8 @@ GuiOob::autosort_change (int state)
 
 	if (d.Vautosort) {
 		refresh();
-		d.hdr_oob->reload(false);
-		d.bdy_oob->reload(false);
+		d.hdr_oob->reload (d.govmode, false, d.pflag, d.Vintel_mode);
+		d.bdy_oob->reload (d.govmode, false, d.pflag, d.Vintel_mode);
 	}
 }
 
@@ -350,4 +362,12 @@ GuiOob::selected (GuiOobView *who, const QModelIndex &index)
 	if (who != d.bdy_oob) d.bdy_oob->select (index);
 	d.hdr_oob->scrollTo (index);
 	d.hdr_oob->refresh();
+}
+
+void
+GuiOob::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.intel);
 }

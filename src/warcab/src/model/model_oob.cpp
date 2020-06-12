@@ -13,6 +13,7 @@
 typedef struct s_MDLO_COLUMN_DEF {
 	MDLO_COLUMN	id;
 	const char	*name;
+	bool		biv;
 	MDL_CMP		cmp;
 	SPWDLT_TYPE	dtype;
 	unsigned int	doffs;
@@ -22,41 +23,41 @@ typedef struct s_MDLO_COLUMN_DEF {
 #define	UOFFS(m_)	offsetof(SPWAW_SNAP_OOB_UEL,m_)
 
 static MDLO_COLUMN_DEF fcoldef[MDLO_COLUMN_CNT] = {
-	{ MDLO_COLUMN_FID,		"#",		MDLO_cmp_fid,	SPWDLT_NONE,	0			},
-	{ MDLO_COLUMN_TYPE,		"Type",		MDLO_cmp_type,	SPWDLT_INT,	FOFFS(data.otype)	},
-	{ MDLO_COLUMN_LDR,		"Leader",	MDLO_cmp_ldr,	SPWDLT_NONE,	0			},	/* unstored item */
-	{ MDLO_COLUMN_HCMD,		"HCmd",		MDLO_cmp_hcmd,	SPWDLT_NONE,	0			},	/* pointer item */
-	{ MDLO_COLUMN_STATUS,		"Status",	MDLO_cmp_status,	SPWDLT_INT,	FOFFS(data.fstatus)	},
-	{ MDLO_COLUMN_KILLS,		"Kills",	MDLO_cmp_kills,	SPWDLT_INT,	FOFFS(attr.gen.kills)	},
-	{ MDLO_COLUMN_RDY,		"Ready",	MDLO_cmp_rdy,	SPWDLT_DBL,	FOFFS(attr.gen.ready)	},
-	{ MDLO_COLUMN_COUNT,		"Count",	MDLO_cmp_cnt,	SPWDLT_INT,	FOFFS(data.ucnt)	},
-	{ MDLO_COLUMN_EXP,		"Exp",		MDLO_cmp_exp,	SPWDLT_DBL,	FOFFS(attr.mmas_exp.avg)},
-	{ MDLO_COLUMN_MOR,		"Mor",		MDLO_cmp_mor,	SPWDLT_DBL,	FOFFS(attr.mmas_mor.avg)},
-	{ MDLO_COLUMN_SUP,		"Sup",		MDLO_cmp_sup,	SPWDLT_DBL,	FOFFS(attr.mmas_sup.avg)},
-	{ MDLO_COLUMN_RAL,		"Ral",		MDLO_cmp_ral,	SPWDLT_DBL,	FOFFS(attr.mmas_ral.avg)},
-	{ MDLO_COLUMN_INF,		"Inf",		MDLO_cmp_inf,	SPWDLT_DBL,	FOFFS(attr.mmas_inf.avg)},
-	{ MDLO_COLUMN_ARM,		"Arm",		MDLO_cmp_arm,	SPWDLT_DBL,	FOFFS(attr.mmas_arm.avg)},
-	{ MDLO_COLUMN_ART,		"Art",		MDLO_cmp_art,	SPWDLT_DBL,	FOFFS(attr.mmas_art.avg)},
+	{ MDLO_COLUMN_FID,		"#",		true,	MDLO_cmp_fid,		SPWDLT_NONE,	0			},
+	{ MDLO_COLUMN_TYPE,		"Type",		true,	MDLO_cmp_type,		SPWDLT_INT,	FOFFS(data.otype)	},
+	{ MDLO_COLUMN_LDR,		"Leader",	true,	MDLO_cmp_ldr,		SPWDLT_NONE,	0			},	/* unstored item */
+	{ MDLO_COLUMN_HCMD,		"HCmd",		true,	MDLO_cmp_hcmd,		SPWDLT_NONE,	0			},	/* pointer item */
+	{ MDLO_COLUMN_STATUS,		"Status",	true,	MDLO_cmp_status,	SPWDLT_INT,	FOFFS(data.fstatus)	},
+	{ MDLO_COLUMN_KILLS,		"Kills",	false,	MDLO_cmp_kills,		SPWDLT_INT,	FOFFS(attr.gen.kills)	},
+	{ MDLO_COLUMN_RDY,		"Ready",	false,	MDLO_cmp_rdy,		SPWDLT_DBL,	FOFFS(attr.gen.ready)	},
+	{ MDLO_COLUMN_COUNT,		"Count",	true,	MDLO_cmp_cnt,		SPWDLT_INT,	FOFFS(data.ucnt)	},
+	{ MDLO_COLUMN_EXP,		"Exp",		true,	MDLO_cmp_exp,		SPWDLT_DBL,	FOFFS(attr.mmas_exp.avg)},
+	{ MDLO_COLUMN_MOR,		"Mor",		true,	MDLO_cmp_mor,		SPWDLT_DBL,	FOFFS(attr.mmas_mor.avg)},
+	{ MDLO_COLUMN_SUP,		"Sup",		false,	MDLO_cmp_sup,		SPWDLT_DBL,	FOFFS(attr.mmas_sup.avg)},
+	{ MDLO_COLUMN_RAL,		"Ral",		true,	MDLO_cmp_ral,		SPWDLT_DBL,	FOFFS(attr.mmas_ral.avg)},
+	{ MDLO_COLUMN_INF,		"Inf",		true,	MDLO_cmp_inf,		SPWDLT_DBL,	FOFFS(attr.mmas_inf.avg)},
+	{ MDLO_COLUMN_ARM,		"Arm",		true,	MDLO_cmp_arm,		SPWDLT_DBL,	FOFFS(attr.mmas_arm.avg)},
+	{ MDLO_COLUMN_ART,		"Art",		true,	MDLO_cmp_art,		SPWDLT_DBL,	FOFFS(attr.mmas_art.avg)},
 };
 
 static MDLO_COLUMN_DEF *fcoldef_cache[MDLO_COLUMN_CNT] = { 0 };
 
 static MDLO_COLUMN_DEF ucoldef[MDLO_COLUMN_CNT] = {
-	{ MDLO_COLUMN_FID,		NULL,	NULL,	SPWDLT_NONE,	0			},
-	{ MDLO_COLUMN_TYPE,		NULL,	NULL,	SPWDLT_STR,	UOFFS(data.dname)	}, // FIXME: designation, actually
-	{ MDLO_COLUMN_LDR,		NULL,	NULL,	SPWDLT_NONE,	0			},	/* unstored item */
-	{ MDLO_COLUMN_HCMD,		NULL,	NULL,	SPWDLT_NONE,	0			},	/* pointer item */
-	{ MDLO_COLUMN_STATUS,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.status)	},
-	{ MDLO_COLUMN_KILLS,		NULL,	NULL,	SPWDLT_INT,	UOFFS(attr.gen.kills)	},
-	{ MDLO_COLUMN_RDY,		NULL,	NULL,	SPWDLT_DBL,	UOFFS(attr.gen.ready)	},
-	{ MDLO_COLUMN_COUNT,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.hcnt)	},
-	{ MDLO_COLUMN_EXP,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.exp)		},
-	{ MDLO_COLUMN_MOR,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.mor)		},
-	{ MDLO_COLUMN_SUP,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.sup)		},
-	{ MDLO_COLUMN_RAL,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.ral)		},
-	{ MDLO_COLUMN_INF,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.inf)		},
-	{ MDLO_COLUMN_ARM,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.arm)		},
-	{ MDLO_COLUMN_ART,		NULL,	NULL,	SPWDLT_INT,	UOFFS(data.art)		},
+	{ MDLO_COLUMN_FID,		NULL,	true,	NULL,	SPWDLT_NONE,	0			},
+	{ MDLO_COLUMN_TYPE,		NULL,	true,	NULL,	SPWDLT_STR,	UOFFS(data.dname)	}, // FIXME: designation, actually
+	{ MDLO_COLUMN_LDR,		NULL,	true,	NULL,	SPWDLT_NONE,	0			},	/* unstored item */
+	{ MDLO_COLUMN_HCMD,		NULL,	true,	NULL,	SPWDLT_NONE,	0			},	/* pointer item */
+	{ MDLO_COLUMN_STATUS,		NULL,	false,	NULL,	SPWDLT_INT,	UOFFS(data.status)	},
+	{ MDLO_COLUMN_KILLS,		NULL,	false,	NULL,	SPWDLT_INT,	UOFFS(attr.gen.kills)	},
+	{ MDLO_COLUMN_RDY,		NULL,	false,	NULL,	SPWDLT_DBL,	UOFFS(attr.gen.ready)	},
+	{ MDLO_COLUMN_COUNT,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.hcnt)	},
+	{ MDLO_COLUMN_EXP,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.exp)		},
+	{ MDLO_COLUMN_MOR,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.mor)		},
+	{ MDLO_COLUMN_SUP,		NULL,	false,	NULL,	SPWDLT_INT,	UOFFS(data.sup)		},
+	{ MDLO_COLUMN_RAL,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.ral)		},
+	{ MDLO_COLUMN_INF,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.inf)		},
+	{ MDLO_COLUMN_ARM,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.arm)		},
+	{ MDLO_COLUMN_ART,		NULL,	true,	NULL,	SPWDLT_INT,	UOFFS(data.art)		},
 };
 
 static MDLO_COLUMN_DEF *ucoldef_cache[MDLO_COLUMN_CNT] = { 0 };
@@ -151,6 +152,8 @@ ModelOob::rowCount (const QModelIndex &parent) const
 	int		cnt = d.row_cnt;
 	MDLO_DATA	*p;
 
+	if (!d.pflag && (d.intel_mode == INTEL_MODE_NONE)) return (0);
+
 	if (parent.isValid()) {
 		p = (MDLO_DATA *)parent.internalPointer();
 		cnt = p->ccnt;
@@ -169,6 +172,8 @@ QModelIndex
 ModelOob::index (int row, int column, const QModelIndex &parent) const
 {
 	QModelIndex	idx = QModelIndex();
+
+	if (!d.pflag && (d.intel_mode == INTEL_MODE_NONE)) return (QModelIndex());
 
 	if (!hasIndex (row, column, parent)) return (QModelIndex());
 
@@ -237,13 +242,13 @@ ModelOob::setupModelData ()
 	int			i, j, k;
 	MDLO_DATA		*f, *u;
 	SPWDLT			*dlt;
-	SPWAW_DOSSIER_UIR	*uir, *buir;
-	SPWAW_SNAP_OOB_FEL	*cs, *bs;
+	SPWAW_DOSSIER_UIR	*cuir, *buir, *ruir;
+	SPWAW_SNAP_OOB_FEL	*cs, *bs, *rs;
 
 	DBG_TRACE_FENTER;
 
-	freeModelData (false);
-	if (!d.birs || !d.base) return;
+	freeModelData (true);
+	if (!d.birs || !d.cbrs || !d.rbrs) return;
 	if (!(d.row_cnt = d.birs_cnt)) return;
 
 	/* Check current formation count to see if data storage reallocation is required */
@@ -279,8 +284,13 @@ ModelOob::setupModelData ()
 		for (j=0; j<d.col_cnt; j++) {
 			dlt = &(d.dlts[i*d.col_cnt+j]);
 			cs = d.birs->fir[i].snap;
-			bs = (i < d.base_cnt) ? d.base->fir[i].snap : NULL;
-			SPWDLT_prep (dlt, MDLO_fcoldef(j)->dtype, cs, bs, MDLO_fcoldef(j)->doffs);
+			bs = (i < d.cbrs_cnt) ? d.cbrs->fir[i].snap : NULL;
+			rs = (i < d.rbrs_cnt) ? d.rbrs->fir[i].snap : NULL;
+			if (MDLO_fcoldef(j)->biv) {
+				SPWDLT_prep (dlt, MDLO_fcoldef(j)->dtype, cs, rs, MDLO_fcoldef(j)->doffs);
+			} else {
+				SPWDLT_prep (dlt, MDLO_fcoldef(j)->dtype, cs, bs, MDLO_fcoldef(j)->doffs);
+			}
 		}
 	}
 
@@ -292,23 +302,28 @@ ModelOob::setupModelData ()
 		SL_SAFE_CALLOC (f->cdlt, f->ccnt * d.col_cnt, sizeof (SPWDLT));
 		for (j=0; j<f->ccnt; j++) {
 			u = &(f->clst[j]);
-			uir = find_uir (d.birs, d.birs_cnt, i, j);
-			if (!uir) {
-				uir = find_uir (d.birs, d.birs_cnt, i, j);
+			cuir = find_uir (d.birs, d.birs_cnt, i, j);
+			if (!cuir) {
+				cuir = find_uir (d.birs, d.birs_cnt, i, j);
 			}
 
 			u->type   = MDLO_DATA_UNIT;
 			u->parent = f;
 			u->idx    = -1;
-			u->data.u = uir;
+			u->data.u = cuir;
 			u->dlt    = &(f->cdlt[j*d.col_cnt]);
 			u->dltsort = &(d.dltsort);
 			u->revsort = &(d.revsort);
 
 			for (k=0; k<d.col_cnt; k++) {
 				dlt  = &(f->cdlt[j*d.col_cnt+k]);
-				buir = find_uir (d.base, d.base_cnt, i, j);
-				SPWDLT_prep (dlt, MDLO_ucoldef(k)->dtype, uir->snap, buir ? buir->snap : NULL, MDLO_ucoldef(k)->doffs);
+				buir = find_uir (d.cbrs, d.cbrs_cnt, i, j);
+				ruir = find_uir (d.rbrs, d.rbrs_cnt, i, j);
+				if (MDLO_ucoldef(j)->biv) {
+					SPWDLT_prep (dlt, MDLO_ucoldef(k)->dtype, cuir->snap, ruir ? ruir->snap : NULL, MDLO_ucoldef(k)->doffs);
+				} else {
+					SPWDLT_prep (dlt, MDLO_ucoldef(k)->dtype, cuir->snap, buir ? buir->snap : NULL, MDLO_ucoldef(k)->doffs);
+				}
 			}
 		}
 	}
@@ -328,9 +343,9 @@ ModelOob::setupModelData ()
 		}
 	}
 
-	if ((d.explist.ref != d.base) || (d.explist.cnt != d.row_cnt)) {
+	if ((d.explist.ref != d.cbrs) || (d.explist.cnt != d.row_cnt)) {
 		if (d.explist.lst) SL_SAFE_FREE (d.explist.lst);
-		d.explist.ref = d.base;
+		d.explist.ref = d.cbrs;
 		d.explist.cnt = d.row_cnt;
 		if (d.explist.cnt) SL_SAFE_CALLOC (d.explist.lst, d.explist.cnt, sizeof (bool));
 	}
@@ -388,102 +403,120 @@ ModelOob::resort (void)
 void
 ModelOob::clear (void)
 {
-	d.base = d.birs = NULL; d.pflag = true;
-	d.scol = d.sord = -1;
+	d.birs = d.cbrs = d.rbrs = NULL;
+	d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+	d.d = NULL; d.cb = d.bb = NULL;
+	d.tflag = false; d.pflag = true; d.cflag = true; d.scol = d.sord = -1;
 
 	setupModelData();
 	reset();
 }
 
 void
-ModelOob::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore)
+ModelOob::load (SPWAW_DOSSIER *dossier, INTEL_MODE mode)
 {
-	SPWAW_DOSSIER_BIR	*nbirs, *nbase;
+	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
 
-	if (!current || !start) {
-		d.birs = d.base = NULL;
-		d.birs_cnt = d.base_cnt = 0;
-	} else {
-		if (current == start) {
-			nbirs = isplayer
-				? (iscore ? &(current->info_eob->pbir_core) : &(current->info_eob->pbir_support))
-				: &(current->info_eob->obir_battle);
+	d.tflag = false; d.pflag = true; d.cflag = true; d.intel_mode = mode; d.scol = d.sord = -1;
+
+	d.birs = d.cbrs = d.rbrs = NULL;
+	d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+	d.d = dossier; d.cb = d.bb = NULL;
+
+	if (dossier->bfirst && dossier->blast) {
+		d.cb = dossier->blast; d.bb = dossier->bfirst;
+
+		nbirs = &(d.cb->info_eob->pbir_core);
+
+		ncbrs = &(d.cb->info_sob->pbir_core);
+
+		if (d.bb == d.cb) {
+			nrbrs = ncbrs;
 		} else {
-			nbirs = isplayer
-				? (iscore ? &(current->info_sob->pbir_core) : &(current->info_sob->pbir_support))
-				: &(current->info_sob->obir_battle);
+			nrbrs = &(d.bb->info_eob->pbir_core);
 		}
-		nbase = isplayer
-			? (iscore ? &(start->info_sob->pbir_core) : &(start->info_sob->pbir_support))
-			: &(start->info_sob->obir_battle);
 
 		/* Early bailout if attempting to reload same data */
-		if ((d.birs == nbirs) && (d.base == nbase)) return;
-		d.birs = nbirs; d.base = nbase;
-
-		d.birs_cnt = d.birs->fcnt;
-		d.base_cnt = d.base->fcnt;
+		if ((d.birs == nbirs) && (d.cbrs == ncbrs) && (d.rbrs == nrbrs)) return;
+		d.birs = nbirs; d.birs_cnt = d.birs->fcnt;
+		d.cbrs = ncbrs; d.cbrs_cnt = d.cbrs->fcnt;
+		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->fcnt;
 	}
 
-	d.pflag = isplayer; d.scol = d.sord = -1;
 	setupModelData();
 	reset();
 }
 
 void
-ModelOob::load (SPWAW_BATTLE *battle, int current, int start, bool isplayer, bool iscore)
+ModelOob::load (SPWAW_BATTLE *current, SPWAW_BATTLE *start, bool isplayer, bool iscore, INTEL_MODE mode)
 {
-	SPWAW_DOSSIER_BIR	*nbirs, *nbase;
+	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
 
-	if (!battle || (current < 0) || (start < 0) || (current < start) || (current >= battle->tcnt) || (start >= battle->tcnt)) {
-		d.birs = d.base = NULL;
-		d.birs_cnt = d.base_cnt = 0;
-	} else {
-		nbirs = isplayer
-			? (iscore ? &(battle->tlist[current]->info.pbir_core) : &(battle->tlist[current]->info.pbir_support))
-			: &(battle->tlist[current]->info.obir_battle);
-		nbase = isplayer
-			? (iscore ? &(battle->tlist[start]->info.pbir_core) : &(battle->tlist[start]->info.pbir_support))
-			: &(battle->tlist[start]->info.obir_battle);
-
-		/* Early bailout if attempting to reload same data */
-		if ((d.birs == nbirs) && (d.base == nbase)) return;
-		d.birs = nbirs; d.base = nbase;
-
-		d.birs_cnt = d.birs->fcnt;
-		d.base_cnt = d.base->fcnt;
-	}
-
-	d.pflag = isplayer; d.scol = d.sord = -1;
-	setupModelData();
-	reset();
-}
-
-void
-ModelOob::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore)
-{
-	SPWAW_DOSSIER_BIR	*nbirs, *nbase;
+	d.tflag = false; d.pflag = isplayer; d.cflag = iscore; d.intel_mode = mode; d.scol = d.sord = -1;
 
 	if (!current || !start) {
-		d.birs = d.base = NULL;
-		d.birs_cnt = d.base_cnt = 0;
+		d.birs = d.cbrs = d.rbrs = NULL;
+		d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+		d.d = NULL; d.cb = d.bb = NULL;
 	} else {
+		d.d = NULL; d.cb = current; d.bb = start;
+
+		if (!isplayer || !iscore) { d.bb = d.cb; }
+
+		nbirs = isplayer
+			? (iscore ? &(d.cb->info_eob->pbir_core) : &(d.cb->info_eob->pbir_support))
+			: &(d.cb->info_eob->obir_battle);
+
+		ncbrs = isplayer
+			? (iscore ? &(d.cb->info_sob->pbir_core) : &(d.cb->info_sob->pbir_support))
+			: &(d.cb->info_sob->obir_battle);
+
+		if (d.bb == d.cb) {
+			nrbrs = ncbrs;
+		} else {
+			nrbrs = (isplayer && iscore) ? &(d.bb->info_eob->pbir_core) : ncbrs;
+		}
+
+		/* Early bailout if attempting to reload same data */
+		if ((d.birs == nbirs) && (d.cbrs == ncbrs) && (d.rbrs == nrbrs)) return;
+		d.birs = nbirs; d.birs_cnt = d.birs->fcnt;
+		d.cbrs = ncbrs; d.cbrs_cnt = d.cbrs->fcnt;
+		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->fcnt;
+	}
+
+	setupModelData();
+	reset();
+}
+
+void
+ModelOob::load (SPWAW_BTURN *current, SPWAW_BTURN *start, bool isplayer, bool iscore, INTEL_MODE mode)
+{
+	SPWAW_DOSSIER_BIR	*nbirs, *ncbrs, *nrbrs;
+
+	d.tflag = true; d.pflag = isplayer; d.cflag = iscore; d.intel_mode = mode; d.scol = d.sord = -1;
+
+	if (!current || !start) {
+		d.birs = d.cbrs = d.rbrs = NULL;
+		d.birs_cnt = d.cbrs_cnt = d.rbrs_cnt = 0;
+		d.d = NULL; d.cb = d.bb = NULL;
+	} else {
+		d.d = NULL; d.cb = d.bb = current->battle;
+
 		nbirs = isplayer
 			? (iscore ? &(current->info.pbir_core) : &(current->info.pbir_support))
 			: &(current->info.obir_battle);
-		nbase = isplayer
+		ncbrs = isplayer
 			? (iscore ? &(start->info.pbir_core) : &(start->info.pbir_support))
 			: &(start->info.obir_battle);
+		nrbrs = ncbrs;
 
 		/* Early bailout if attempting to reload same data */
-		if ((d.birs == nbirs) && (d.base == nbase)) return;
-		d.birs = nbirs; d.base = nbase;
-
-		d.birs_cnt = d.birs->fcnt;
-		d.base_cnt = d.base->fcnt;
+		if ((d.birs == nbirs) && (d.cbrs == ncbrs) && (d.rbrs == nrbrs)) return;
+		d.birs = nbirs; d.birs_cnt = d.birs->fcnt;
+		d.cbrs = ncbrs; d.cbrs_cnt = d.cbrs->fcnt;
+		d.rbrs = nrbrs; d.rbrs_cnt = d.rbrs->fcnt;
 	}
 
-	d.pflag = isplayer; d.scol = d.sord = -1;
 	setupModelData();
 	reset();
 }
@@ -547,4 +580,10 @@ ModelOob::set_dltsort (bool sort)
 	d.dltsort = sort;
 }
 
+void
+ModelOob::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
 
+	reset();
+}

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - min-max-average-spread widget.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -42,6 +42,7 @@ public slots:
 	void	timeline_change	(int state);
 	void	prevcmp_change	(int state);
 	void	selected	(GuiMMASView *who, const QModelIndex &index);
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -49,11 +50,13 @@ private:
 
 		QFont			*font;
 		QGridLayout		*layout;
+		QLabel			*intel;
 		QComboBox		*type;
 		QComboBox		*filter;
 		QComboBox		*target;
 		QCheckBox		*timeline;
 		QCheckBox		*prevcmp;
+		QScrollArea		*scroller;
 		PlotMMAS		*plot;
 		QSplitter		*split;
 		GuiMMASView		*hdr_mmas;
@@ -82,6 +85,7 @@ private:
 		GUIVALTRACK (bool, Vtimeline);
 		GUIVALTRACK (bool, Vprevcmp);
 		GUIVALTRACK (MDLMMAS_TYPE, Vtype);
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 
 private:

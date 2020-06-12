@@ -41,6 +41,7 @@ public slots:
 	void	set_select	(int idx);
 	void	set_highlight	(int idx);
 	void	selected	(GuiHistoryView *who, const QModelIndex &index);
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	struct s_data {
@@ -50,6 +51,7 @@ private:
 		ModelHistory		*hmodel;
 
 		QGridLayout		*layout;
+		QLabel			*intel;
 		QComboBox		*highlight;
 		QCheckBox		*prevcmp;
 		QSpacerItem		*spacer;
@@ -78,6 +80,7 @@ private:
 		UtilMdlTreeReftrack	reftrack;
 		GUIVALTRACK (int, uidx);
 		GUIVALTRACK (bool, Vprevcmp);
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 
 private:

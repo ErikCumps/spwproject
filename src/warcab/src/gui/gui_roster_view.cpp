@@ -20,32 +20,62 @@
 
 typedef bool GRV_VISIBILITY[GRV_MODE_LIMIT];
 
-GRV_VISIBILITY	grvmode[MDLR_COLUMN_CNT] = {
-	{ true,  true, false },	/* MDLR_COLUMN_CDSTATUS	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_UID	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_UNIT	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_RNK	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_LDR	*/
-	{ false, true, true  },	/* MDLR_COLUMN_STATUS	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_KILL	*/
-	{ true,  true, false },	/* MDLR_COLUMN_EXP	*/
-	{ true,  true, false },	/* MDLR_COLUMN_MOR	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_SUP	*/
-	{ true,  true, false },	/* MDLR_COLUMN_RAL	*/
-	{ true,  true, false },	/* MDLR_COLUMN_INF	*/
-	{ true,  true, false },	/* MDLR_COLUMN_ARM	*/
-	{ true,  true, false },	/* MDLR_COLUMN_ART	*/
-	{ true,  true, true  },	/* MDLR_COLUMN_MEN	*/
-	{ false, true, true  },	/* MDLR_COLUMN_RDY	*/
-	{ false, true, true  },	/* MDLR_COLUMN_KIA	*/
-	{ false, true, true  },	/* MDLR_COLUMN_DMG	*/
-	{ false, true, true  },	/* MDLR_COLUMN_SEEN	*/
-	{ false, true, true  },	/* MDLR_COLUMN_ABAND	*/
-	{ false, true, true  },	/* MDLR_COLUMN_LOADED	*/
-	{ true,  true, false },	/* MDLR_COLUMN_TYPE	*/
-	{ true,  true, false },	/* MDLR_COLUMN_CLASS	*/
-	{ true,  true, false },	/* MDLR_COLUMN_COST	*/
-	{ true,  true, false },	/* MDLR_COLUMN_SPEED	*/
+static GRV_VISIBILITY	grvmode[MDLR_COLUMN_CNT] = {
+	{ true,  true,  false }, /* MDLR_COLUMN_CDSTATUS	*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_UID		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_UNIT		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_RNK		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_LDR		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_STATUS		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_KILL		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_EXP		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_MOR		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_SUP		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_RAL		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_INF		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_ARM		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_ART		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_MEN		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_RDY		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_KIA		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_DMG		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_SEEN		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_ABAND		*/
+	{ false, true,  true  }, /* MDLR_COLUMN_LOADED		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_TYPE		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_CLASS		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_COST		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_SPEED		*/
+};
+
+typedef bool IMD_VISIBILITY[INTEL_MODE_CNT];
+
+static IMD_VISIBILITY imdmode[MDLR_COLUMN_CNT] = {
+	{ true,  false, false }, /* MDLR_COLUMN_CDSTATUS	*/
+	{ true,  true,  false }, /* MDLR_COLUMN_UID		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_UNIT		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_RNK		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_LDR		*/
+	{ true,  true,  true  }, /* MDLR_COLUMN_STATUS		*/
+	{ true,  false, false }, /* MDLR_COLUMN_KILL		*/
+	{ true,  false, false }, /* MDLR_COLUMN_EXP		*/
+	{ true,  false, false }, /* MDLR_COLUMN_MOR		*/
+	{ true,  false, false }, /* MDLR_COLUMN_SUP		*/
+	{ true,  false, false }, /* MDLR_COLUMN_RAL		*/
+	{ true,  false, false }, /* MDLR_COLUMN_INF		*/
+	{ true,  false, false }, /* MDLR_COLUMN_ARM		*/
+	{ true,  false, false }, /* MDLR_COLUMN_ART		*/
+	{ true,  false, false }, /* MDLR_COLUMN_MEN		*/
+	{ true,  false, false }, /* MDLR_COLUMN_RDY		*/
+	{ true,  false, false }, /* MDLR_COLUMN_KIA		*/
+	{ true,  false, false }, /* MDLR_COLUMN_DMG		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_SEEN		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_ABAND		*/
+	{ true,  false, false }, /* MDLR_COLUMN_LOADED		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_TYPE		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_CLASS		*/
+	{ true,  true,  false }, /* MDLR_COLUMN_COST		*/
+	{ true,  false, false }, /* MDLR_COLUMN_SPEED		*/
 };
 
 MDLR_COLUMN HDR_LIMIT = MDLR_COLUMN_UNIT;
@@ -108,15 +138,10 @@ GuiRosterView::GuiRosterView (bool hdr, GuiRoster *roster, QWidget *P)
 	build_mlayout();
 
 	d.grvm = GRV_MODE_DOSSIER;
-	apply_grvmode();
+	apply_mode();
 
 	d.mflag = false;
-	apply_layout (true);
-
-	horizontalHeader()->setResizeMode (MDLR_COLUMN_LDR, QHeaderView::Interactive);
-	horizontalHeader()->setResizeMode (MDLR_COLUMN_TYPE, QHeaderView::Interactive);
-	horizontalHeader()->setResizeMode (MDLR_COLUMN_CLASS, QHeaderView::Interactive);
-	horizontalHeader()->setResizeMode (MDLR_COLUMN_STATUS, QHeaderView::Interactive);
+	apply_layout();
 
 	//setContextMenuPolicy (Qt::DefaultContextMenu);
 
@@ -195,7 +220,7 @@ GuiRosterView::contextMenuEvent (QContextMenuEvent *event)
 #endif	/* EXPERIMENTAL */
 
 void
-GuiRosterView::reload (GRV_MODE grvm, bool sort, bool mflag)
+GuiRosterView::reload (GRV_MODE grvm, bool sort, bool mflag, bool pflag, INTEL_MODE mode)
 {
 	bool	apply = false;
 
@@ -207,10 +232,17 @@ GuiRosterView::reload (GRV_MODE grvm, bool sort, bool mflag)
 		d.mflag = mflag;
 		apply = true;
 	}
-	if (apply) {
-		apply_grvmode ();
-		apply_layout (false);
+	if (d.pflag != pflag) {
+		d.pflag = pflag;
+		apply = true;
 	}
+	if (d.intel_mode != mode) {
+		d.intel_mode = mode;
+		apply = true;
+	}
+
+	if (apply) apply_mode();
+
 	if (d.sidx < 0) { d.sidx = MDLR_COLUMN_UID; d.sord = Qt::AscendingOrder; }
 	if (sort || d.parent->d.Vautosort) sortByColumn (d.sidx, d.sord);
 	refresh();
@@ -281,6 +313,20 @@ GuiRosterView::currentChanged (const QModelIndex &current, const QModelIndex &/*
 }
 
 void
+GuiRosterView::intel_mode_set (INTEL_MODE mode)
+{
+	d.intel_mode = mode;
+	if (!d.pflag && d.intel_mode != INTEL_MODE_FULL) {
+		sortByColumn (MDLR_COLUMN_UID, Qt::AscendingOrder);
+		refresh();
+		setSortingEnabled (false);
+	} else {
+		setSortingEnabled (true);
+	}
+	apply_mode();
+}
+
+void
 GuiRosterView::apply_grvmode (void)
 {
 	grvmode[MDLR_COLUMN_CDSTATUS][GRV_MODE_BATTLE] = d.mflag;
@@ -300,6 +346,30 @@ GuiRosterView::apply_grvmode (void)
 			setColumnHidden (i, !grvmode[i][d.grvm]);
 		}
 	}
+}
+
+void
+GuiRosterView::apply_imdmode (void)
+{
+	if (d.pflag) return;
+
+	if (d.ishdr) {
+		for (int i=0; i<=HDR_LIMIT; i++) {
+			if (!imdmode[i][d.intel_mode]) setColumnHidden (i, true);
+		}
+	} else {
+		for (int i=(HDR_LIMIT+1); i<MDLR_COLUMN_CNT; i++) {
+			if (!imdmode[i][d.intel_mode]) setColumnHidden (i, true);
+		}
+	}
+}
+
+void
+GuiRosterView::apply_mode (void)
+{
+	apply_grvmode();
+	apply_imdmode();
+	apply_layout();
 }
 
 void
@@ -363,7 +433,7 @@ GuiRosterView::build_mlayout (void)
 }
 
 void
-GuiRosterView::apply_layout (bool reset)
+GuiRosterView::apply_layout (void)
 {
 	int	*layout = d.mflag ? d.mlayout : d.rlayout;
 
@@ -378,7 +448,7 @@ GuiRosterView::apply_layout (bool reset)
 		setMinimumWidth (w); setMaximumWidth (w);
 	} else {
 		for (int i=(HDR_LIMIT+1); i<MDLR_COLUMN_CNT; i++) {
-			if (reset || (columnWidth (i) < layout[i])) setColumnWidth (i, layout[i]);
+			setColumnWidth (i, layout[i]);
 		}
 	}
 }

@@ -42,6 +42,10 @@ GuiRptLoss::GuiRptLoss (QWidget *P)
 	d.label_nodata->setFont (*d.font);
 	d.label_nodata->setText ("No information available yet.");
 
+	GUINEW (d.label_intel, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label_intel");
+	d.label_intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.label_intel->setWordWrap (true);
+
 	GUINEW (d.label_khdr, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "label_khdr");
 	d.label_khdr->setAlignment (Qt::AlignLeft|Qt::AlignTop);
 	//d.label_khdr->setWordWrap (true);
@@ -78,13 +82,14 @@ GuiRptLoss::GuiRptLoss (QWidget *P)
 	GUINEW (d.spacer, QSpacerItem (0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding), ERR_GUI_REPORTS_INIT_FAILED, "spacer");
 
 	d.layout->addWidget (d.label_nodata,	0, 0);
-	d.layout->addWidget (d.label_khdr,	1, 0);
-	d.layout->addWidget (d.label_klist,	2, 0);
-	d.layout->addWidget (d.label_ahdr,	3, 0);
-	d.layout->addWidget (d.label_alist,	4, 0);
-	d.layout->addWidget (d.label_dhdr,	5, 0);
-	d.layout->addWidget (d.label_dlist,	6, 0);
-	d.layout->addItem   (d.spacer,		7, 0);
+	d.layout->addWidget (d.label_intel,	1, 0);
+	d.layout->addWidget (d.label_khdr,	2, 0);
+	d.layout->addWidget (d.label_klist,	3, 0);
+	d.layout->addWidget (d.label_ahdr,	4, 0);
+	d.layout->addWidget (d.label_alist,	5, 0);
+	d.layout->addWidget (d.label_dhdr,	6, 0);
+	d.layout->addWidget (d.label_dlist,	7, 0);
+	d.layout->addItem   (d.spacer,		8, 0);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -94,6 +99,9 @@ GuiRptLoss::GuiRptLoss (QWidget *P)
 
 	if (!connect (this, SIGNAL (cmpbase(MDLD_TREE_ITEM*)), GUI_WIN->get_dossier(), SLOT (set_cmpbase(MDLD_TREE_ITEM*))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_OOB_INIT_FAILED, "failed to connect <cmpbase> to <dossier:set_cmpbase>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
 
 	d.pflag = d.cflag = true;
 
@@ -178,22 +186,22 @@ GuiRptLoss::update (bool forced)
 			case MDLD_TREE_DOSSIER:
 				d.pcurr = d.pdata->clast;
 				d.pbase = d.pdata->cfirst;
-				d.model->load (d.pdata->data.d, CFG_full_history());
+				d.model->load (d.pdata->data.d, CFG_full_history(), d.Vintel_mode);
 				break;
 			case MDLD_TREE_BATTLE:
 				d.pcurr = d.pbase = d.pdata;
 				//d.pcurr = d.pdata;
 				//d.pbase = d.pdata->prev ? d.pdata->prev : d.pdata;
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag, d.Vintel_mode);
 				break;
 			case MDLD_TREE_BTURN:
 				d.pcurr = d.pdata;
 				if (d.pdata->prev) {
 					d.pbase = d.pdata->prev;
-					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				} else {
 					d.pbase = d.pdata->parent;
-					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pcurr->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				}
 			default:
 				break;
@@ -458,8 +466,11 @@ GuiRptLoss::list_killed (void)
 				tstr.printf ("<font color=%s>", qPrintable(RES_htmlcolor (RID_GM_DLT_INA)));
 				tstr.printf ("<i>");
 			}
-			tstr.printf ("%3.3s %s, %s %s (%s%s%s)",
-				data[i].uir->snap->strings.uid, data[i].uir->snap->data.dname,
+			if (d.pflag || (d.Vintel_mode != INTEL_MODE_NONE)) {
+				tstr.printf ("%3.3s", data[i].uir->snap->strings.uid);
+			}
+			tstr.printf (" %s, %s %s (%s%s%s)",
+				data[i].uir->snap->data.dname,
 				data[i].uir->snap->strings.rank, data[i].uir->snap->data.lname,
 				lostunit?"unit":"",
 				(lostunit && lostcrew) ? " and " : "",
@@ -505,6 +516,17 @@ GuiRptLoss::list_abandoned (void)
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
 
+	if (!d.pflag && (d.Vintel_mode == INTEL_MODE_NONE)) {
+		str.clear();
+		str.printf ("<h3><u>Abandoned units, but not destroyed:</u></h3>");
+		d.label_ahdr->setText (buf);
+
+		str.clear();
+		str.printf ("Not available.");
+		d.label_alist->setText (buf);
+		return;
+	}
+
 	str.clear();
 
 	d.model->set_dltsort (false);
@@ -544,6 +566,10 @@ GuiRptLoss::list_abandoned (void)
 	}
 
 	if (cnt) {
+		if (!d.pflag && (d.Vintel_mode == INTEL_MODE_LMTD)) {
+			str.clear();
+			str.printf ("Details not available.");
+		}
 		d.label_alist->setText (buf);
 
 		tstr.clear();
@@ -568,6 +594,17 @@ GuiRptLoss::list_damaged (void)
 	ModelRosterRawData	data[LISTMAX];
 	char			tbuf[4096];
 	UtilStrbuf		tstr(tbuf, sizeof (tbuf), true, true);
+
+	if (!d.pflag && (d.Vintel_mode == INTEL_MODE_NONE)) {
+		str.clear();
+		str.printf ("<h3><u>Damaged units, but not abandoned or destroyed:</u></h3>");
+		d.label_dhdr->setText (buf);
+
+		str.clear();
+		str.printf ("Not available.");
+		d.label_dlist->setText (buf);
+		return;
+	}
 
 	str.clear();
 
@@ -610,6 +647,10 @@ GuiRptLoss::list_damaged (void)
 	}
 
 	if (cnt) {
+		if (!d.pflag && (d.Vintel_mode == INTEL_MODE_LMTD)) {
+			str.clear();
+			str.printf ("Details not available.");
+		}
 		d.label_dlist->setText (buf);
 
 		tstr.clear();
@@ -629,6 +670,8 @@ GuiRptLoss::refresh (bool forced)
 {
 	bool		skip;
 	bool		nodata;
+	char		buf[256];
+	UtilStrbuf	str(buf, sizeof (buf), true, true);
 	int		mw[2];
 
 	DBG_TRACE_FENTER;
@@ -638,10 +681,13 @@ GuiRptLoss::refresh (bool forced)
 
 	nodata = !d.pdata;
 	d.label_nodata->setHidden (!nodata);
+	d.label_intel->setHidden (nodata);
 	d.label_klist->setHidden (nodata);
 	d.label_alist->setHidden (nodata);
 	d.label_dlist->setHidden (nodata);
 	if (nodata) goto leave;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.label_intel);
 
 	if (d.ptype == MDLD_TREE_DOSSIER) {
 		list_killed_dossier (false);
@@ -661,4 +707,12 @@ GuiRptLoss::refresh (bool forced)
 
 leave:
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiRptLoss::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	refresh (!d.pflag);
 }

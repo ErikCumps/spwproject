@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - overview.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -35,12 +35,16 @@ signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
 	void	cmpbase		(MDLD_TREE_ITEM *base);
 
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
+
 private:
 	struct s_data {
 		QFont			*font;
 		QFrame			*frame;
 		QGridLayout		*layout;
 		QLabel			*name;
+		QLabel			*intel;
 		QLabel			*player1;
 		QLabel			*mission;
 		QLabel			*player2;
@@ -51,6 +55,7 @@ private:
 		GuiRptTrn		*parent;
 		
 		UtilMdlTreeReftrack	reftrack;
+		GUIVALTRACK (INTEL_MODE, Vintel_mode);
 	} d;
 };
 

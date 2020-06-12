@@ -31,6 +31,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 
 	d.layout->addWidget (d.name, 0, 0, 1, 4);
 
+	GUINEW (d.intel, QLabel(d.frame), ERR_GUI_REPORTS_INIT_FAILED, "intel mode label");
+
+	d.layout->addWidget (d.intel, 1, 0, 1, 4);
+
 	GUINEW (d.player1, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player1 label");
 	GUINEW (d.mission, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "mission label");
 	GUINEW (d.player2, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "player2 label");
@@ -46,10 +50,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.player2->setAlignment (Qt::AlignLeft);
 	d.player2->setSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed);
 
-	d.layout->addWidget (d.player1,	1, 0, 1, 1);
-	d.layout->addWidget (d.mission,	1, 1, 1, 1);
-	d.layout->addWidget (d.player2,	1, 2, 1, 1);
-	d.layout->addItem   (d.rspacer,	1, 3, 1, 1);
+	d.layout->addWidget (d.player1,	2, 0, 1, 1);
+	d.layout->addWidget (d.mission,	2, 1, 1, 1);
+	d.layout->addWidget (d.player2,	2, 2, 1, 1);
+	d.layout->addItem   (d.rspacer,	2, 3, 1, 1);
 
 	GUINEW (d.overview, QLabel (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "overview");
 	d.overview->setAlignment (Qt::AlignLeft|Qt::AlignTop);
@@ -81,10 +85,10 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	d.losses.layout->addWidget (d.losses.opp,	0, 1, 1, 1);
 	d.losses.layout->addItem   (d.losses.spacer,	0, 2, 1, 1);
 
-	d.layout->addWidget (d.overview,	2, 0, 1, 4);
-	d.layout->addLayout (d.losses.layout,	3, 0, 1, 4);
-	d.layout->addWidget (d.changes,		4, 0, 1, 4);
-	d.layout->addItem   (d.bspacer,		5, 0, 1, 4);
+	d.layout->addWidget (d.overview,	3, 0, 1, 4);
+	d.layout->addLayout (d.losses.layout,	4, 0, 1, 4);
+	d.layout->addWidget (d.changes,		5, 0, 1, 4);
+	d.layout->addItem   (d.bspacer,		6, 0, 1, 4);
 
 	setWidget(d.frame);
 	setWidgetResizable (true);
@@ -94,6 +98,9 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 
 	if (!connect (this, SIGNAL (cmpbase(MDLD_TREE_ITEM*)), GUI_WIN->get_dossier(), SLOT (set_cmpbase(MDLD_TREE_ITEM*))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <cmpbase> to <dossier:set_cmpbase>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
 
 	SET_GUICLS_NOERR;
 }
@@ -350,6 +357,7 @@ void
 GuiRptBtlOvr::refresh (void)
 {
 	MDLD_TREE_ITEM		*item;
+	bool			skip_data;
 	SPWAW_BATTLE		*p = NULL;
 	char			date[32], buf[65536];
 	UtilStrbuf		str(buf, sizeof (buf), true, true);
@@ -358,7 +366,10 @@ GuiRptBtlOvr::refresh (void)
 	DBG_TRACE_FENTER;
 
 	item = (d.parent != NULL) ? d.parent->current() : NULL;
-	if (!d.reftrack.changed (item)) goto skip_data_update;
+
+	skip_data  = !d.reftrack.changed (item);
+	skip_data &= !GUIVALCHANGED (Vintel_mode);
+	if (skip_data) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
 
@@ -366,6 +377,7 @@ GuiRptBtlOvr::refresh (void)
 
 	if (!p) {
 		d.name->clear(); d.name->hide();
+		d.intel->clear(); d.intel->hide();
 		d.player1->setPixmap (*RES_flag (SPWAW_GAME_TYPE_SPWAW, SPWOOB_UNKNOWN));
 		d.mission->setPixmap (*RES_pixmap (RID_MSSN_UNKNOWN));
 		d.mission->setToolTip (QString());
@@ -385,6 +397,8 @@ GuiRptBtlOvr::refresh (void)
 		} else {
 			d.name->clear(); d.name->hide();
 		}
+
+		intelmode2label (d.Vintel_mode, d.intel);
 
 		d.player1->setPixmap (*RES_flagbyid (p->snap->game.battle.strings.flagid_p1));
 		d.mission->setPixmap (*RES_mission (p->snap->game.battle.data.miss_p1, p->meeting));
@@ -415,10 +429,22 @@ GuiRptBtlOvr::refresh (void)
 			str.printf ("\tCore force   : %u units in %u formations\n", p->props.pc_ucnt, p->props.pc_fcnt);
 			str.printf ("\tSupport force: %u units in %u formations\n", p->props.ps_ucnt, p->props.ps_fcnt);
 		}
-		str.printf ("%s force consists of %u units in %u formations (%u men).\n",
-			p->snap->game.battle.strings.people_p2,
-			p->props.ob_ucnt, p->props.ob_fcnt,
-			p->snap->OOBp2.battle.stats.hcnt);
+		str.printf ("\n");
+
+		str.printf ("%s force", p->snap->game.battle.strings.people_p2);
+		switch (d.Vintel_mode) {
+			case INTEL_MODE_FULL:
+			case INTEL_MODE_LMTD:
+			default:
+				str.printf (" consists of %u units in %u formations (%u men).\n",
+					p->props.ob_ucnt, p->props.ob_fcnt,
+					p->snap->OOBp2.battle.stats.hcnt);
+				break;
+			case INTEL_MODE_NONE:
+				str.printf (": number of units and formations unknown.\n");
+				break;
+		}
+		str.printf ("\n");
 		str.printf ("\n");
 
 		if (p->tcnt > 1) {
@@ -475,17 +501,38 @@ GuiRptBtlOvr::refresh (void)
 					);
 
 				str.printf ("<h3>%s force:</h3>", p->snap->game.battle.strings.people_p2);
-				str.printf ("\toverall readiness is %.0f %%.\n",
-					p->tlast->snap->OOBp2.battle.attr.gen.ready * 100.0);
-				str.printf ("\tachieved %u kills with %u losses.\n",
-					p->tlast->snap->OOBp2.battle.attr.gen.kills - p->tlast->battle->snap->OOBp2.battle.attr.gen.kills,
-					p->tlast->snap->OOBp2.battle.attr.gen.losses - p->tlast->battle->snap->OOBp2.battle.attr.gen.losses);
-				str.printf ("\thas %u units left in %u formations. (%u men, %u crews).",
-					p->tlast->snap->OOBp2.battle.stats.ustats.cnt_left,
-					p->tlast->snap->OOBp2.battle.stats.fstats.cnt_left,
-					p->tlast->snap->OOBp2.battle.stats.hcnt_left,
-					p->tlast->snap->OOBp2.battle.crews.cnt
-					);
+				switch (d.Vintel_mode) {
+					case INTEL_MODE_FULL:
+					default:
+						str.printf ("\toverall readiness is %.0f %%.\n",
+							p->tlast->snap->OOBp2.battle.attr.gen.ready * 100.0);
+						str.printf ("\tachieved %u kills with %u losses.\n",
+							p->tlast->snap->OOBp2.battle.attr.gen.kills - p->tlast->battle->snap->OOBp2.battle.attr.gen.kills,
+							p->tlast->snap->OOBp2.battle.attr.gen.losses - p->tlast->battle->snap->OOBp2.battle.attr.gen.losses
+							);
+						str.printf ("\thas %u units left in %u formations. (%u men, %u crews)",
+							p->tlast->snap->OOBp2.battle.stats.ustats.cnt_left,
+							p->tlast->snap->OOBp2.battle.stats.fstats.cnt_left,
+							p->tlast->snap->OOBp2.battle.stats.hcnt_left,
+							p->tlast->snap->OOBp2.battle.crews.cnt
+							);
+						break;
+					case INTEL_MODE_LMTD:
+						str.printf ("\tachieved %u kills with %u losses.\n",
+							p->tlast->snap->OOBp2.battle.attr.gen.kills - p->tlast->battle->snap->OOBp2.battle.attr.gen.kills,
+							p->tlast->snap->OOBp2.battle.attr.gen.losses - p->tlast->battle->snap->OOBp2.battle.attr.gen.losses
+							);
+						str.printf ("\thas %u units left in %u formations.",
+							p->tlast->snap->OOBp2.battle.stats.ustats.cnt_left,
+							p->tlast->snap->OOBp2.battle.stats.fstats.cnt_left
+							);
+						break;
+					case INTEL_MODE_NONE:
+						str.printf ("\tachieved %u kills with %u losses.",
+							p->tlast->snap->OOBp2.battle.attr.gen.kills - p->tlast->battle->snap->OOBp2.battle.attr.gen.kills,
+							p->tlast->snap->OOBp2.battle.attr.gen.losses - p->tlast->battle->snap->OOBp2.battle.attr.gen.losses);
+						break;
+				}
 
 				str.printf ("</pre>");
 				break;
@@ -500,13 +547,27 @@ GuiRptBtlOvr::refresh (void)
 			p->snap->game.battle.strings.people_p1,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].count,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].value);
-		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			p->snap->game.battle.strings.people_p2,
-			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
-			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
-		str.printf ("\tNeutral:\t\t%2u occupied (worth %u points)\n",
-			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].count,
-			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].value);
+		switch (d.Vintel_mode) {
+			case INTEL_MODE_FULL:
+			case INTEL_MODE_LMTD:
+			default:
+				str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
+					p->snap->game.battle.strings.people_p2,
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
+				str.printf ("\tNeutral:\t\t%2u unoccupied (worth %u points)\n",
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].count,
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].value);
+				break;
+			case INTEL_MODE_NONE:
+				str.printf ("\tOther:\t\t%2u contested (worth %u points)\n",
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count +
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].count,
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value +
+					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].value);
+
+				break;
+		}
 		str.printf ("</pre>");
 
 		d.overview->setText (buf);
@@ -573,4 +634,12 @@ skip_data_update:
 	d.player1->updateGeometry();
 
 	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiRptBtlOvr::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	refresh();
 }

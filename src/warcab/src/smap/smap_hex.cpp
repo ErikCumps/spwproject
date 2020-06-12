@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex object.
  *
- * Copyright (C) 2012-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,6 +19,7 @@ SmapHex::SmapHex (void)
 	vic_hex = false;
 	vic_hex_owner = SMAP_HI_NONE;
 	unit_cnt_blue = unit_cnt_red = 0;
+	all_KIA_blue = all_KIA_red = true;
 	influence_blue_cnt = influence_red_cnt = 0;
 	influence_blue = influence_red = 0.0;
 	influence = SMAP_HI_NONE;
@@ -76,7 +77,7 @@ SmapHex::setRoadConn (int road1, int road2, int railr, int traml)
 }
 
 void
-SmapHex:: setVicHex (SPWAW_VHSTATUS owner)
+SmapHex:: setVicHex (SPWAW_VHSTATUS owner, INTEL_MODE mode)
 {
 	if (!d.ready) return;
 
@@ -86,11 +87,11 @@ SmapHex:: setVicHex (SPWAW_VHSTATUS owner)
 			vic_hex_owner = SMAP_HI_BLUE;
 			break;
 		case SPWAW_VHP2:
-			vic_hex_owner = SMAP_HI_RED;
+			vic_hex_owner = (mode != INTEL_MODE_NONE) ? SMAP_HI_RED : SMAP_HI_CONTESTED;
 			break;
 		case SPWAW_VHN:
 		default:
-			vic_hex_owner = SMAP_HI_NONE;
+			vic_hex_owner = (mode != INTEL_MODE_NONE) ? SMAP_HI_NONE : SMAP_HI_CONTESTED;
 			break;
 	}
 }

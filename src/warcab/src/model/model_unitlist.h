@@ -26,18 +26,22 @@ public:
 	QVariant	data		(const QModelIndex &index, int role)					const;
 	Qt::ItemFlags	flags		(const QModelIndex &index)						const;
 	QVariant	headerData	(int section, Qt::Orientation orientation, int role = Qt::DisplayRole)	const;
+	QModelIndex	index		(int row, int column, const QModelIndex &parent = QModelIndex())	const;
 	int		rowCount	(const QModelIndex &parent = QModelIndex())				const;
 	int		columnCount	(const QModelIndex &parent = QModelIndex())				const;
 
 public:
 	void	clear		(void);
-	void	load		(SPWAW_DOSSIER *dossier, bool fch);
-	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore);
+	void	load		(SPWAW_DOSSIER *dossier, bool fch, INTEL_MODE mode);
+	void	load		(SPWAW_BATTLE *battle, bool isplayer, bool iscore, INTEL_MODE mode);
 	bool	dossier_mode	(void);
 	bool	cd_mode		(void);
 
 	int	max_width	(void);
 	void	refresh		(void);
+
+public slots:
+	void	intel_mode_set	(INTEL_MODE mode);
 
 private:
 	QList<QVariant>		header;
@@ -56,6 +60,7 @@ private:
 		MDLU_DATA		*list;
 		int			list_cnt;
 		int			list_use;
+		INTEL_MODE		intel_mode;
 	} d;
 
 private:

@@ -136,25 +136,27 @@ GuiRptBtlFrc::refresh (void)
 
 	DBG_TRACE_FENTER;
 
-	if (d.pflag && !d.cflag && d.parent && d.parent->current() && (p = d.parent->current()->data.b))
+	if (d.parent && !d.parent->current())
+	{
+		enable = false;
+	}
+	else if (d.pflag && !d.cflag && d.parent && d.parent->current() && (p = d.parent->current()->data.b))
 	{
 		enable = (p->snap->OOBp1.support.formations.cnt != 0);
 	}
 
 	set_enabled (enable);
 
-	if (enable) {
-		d.cnd->refresh();
-		if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
-			d.prg->refresh();
-		}
-		d.kill->refresh();
-		d.loss->refresh();
-		d.oob->refresh();
-		d.rst->refresh();
-		d.hst->refresh();
-		d.mmas->refresh();
+	d.cnd->refresh();
+	if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
+		if (d.pflag && d.cflag)	d.prg->refresh();
 	}
+	d.kill->refresh();
+	d.loss->refresh();
+	d.oob->refresh();
+	d.rst->refresh();
+	d.hst->refresh();
+	d.mmas->refresh();
 
 	DBG_TRACE_FLEAVE;
 }

@@ -26,6 +26,12 @@ MDLH_HILITE_lookup (MDLH_HILITE e)
 	return (MDLH_HILITE_names[e]);
 }
 
+#define	IF_NOT_FULL_INTEL(v_)							\
+	do {									\
+		if (!this->d.pflag && (this->d.intel_mode != INTEL_MODE_FULL))	\
+			return ((v_));						\
+	} while (0)
+
 QVariant
 ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *dlt) const
 {
@@ -62,54 +68,67 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			s = data->uir->snap->data.lname;
 			break;
 		case MDLH_COLUMN_STATUS:
+			IF_NOT_FULL_INTEL(v);
 			s = data->uir->snap->strings.status;
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_KILL:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->attr.gen.kills);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_EXP:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.exp);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_MOR:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.mor);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_SUP:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.sup);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_RAL:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.ral);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_INF:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.inf);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_ARM:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.arm);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_ART:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.art);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_MEN:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.hcnt);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_RDY:
+			IF_NOT_FULL_INTEL(v);
 			s.sprintf ("%6.2f %%", data->uir->snap->attr.gen.ready * 100.0);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+6.2f", SPWDLT_getdbl (dlt) * 100.0); s += d; }
 			break;
 		case MDLH_COLUMN_KIA:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.hcnt - data->uir->snap->data.hcnt_left);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_DMG:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.damage);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
@@ -135,6 +154,7 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_LOADED:
+			IF_NOT_FULL_INTEL(v);
 			s = data->uir->snap->data.loaded ? "yes" : "no";
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getbool (dlt)); s += d; }
 			break;
@@ -149,6 +169,7 @@ ModelHistory::MDLH_data_display (int /*row*/, int col, MDLH_DATA *data, SPWDLT *
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
 		case MDLH_COLUMN_SPEED:
+			IF_NOT_FULL_INTEL(v);
 			s.setNum (data->uir->snap->data.speed);
 			if (SPWDLT_check (dlt)) { d.sprintf (" %+d", SPWDLT_getint (dlt)); s += d; }
 			break;
@@ -165,11 +186,12 @@ ModelHistory::MDLH_data_font (int /*row*/, int /*col*/, MDLH_DATA *data, SPWDLT 
 {
 	QVariant	v = QVariant();
 
-	if (!data) return (v);
+	if (d.rgfont) v = *d.rgfont;
 
-	if (!data->decomm) {
-		if (d.rgfont) v = *d.rgfont;
-	} else {
+	if (!data) return (v);
+	IF_NOT_FULL_INTEL(v);
+
+	if (data->decomm) {
 		if (d.dcfont) v = *d.dcfont;
 	}
 	return (v);
@@ -178,9 +200,10 @@ ModelHistory::MDLH_data_font (int /*row*/, int /*col*/, MDLH_DATA *data, SPWDLT 
 QVariant
 ModelHistory::MDLH_data_foreground (int /*row*/, int col, MDLH_DATA *data, SPWDLT *dlt) const
 {
-	QVariant	v = QVariant();
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMRC_FG_DEFAULT)));
 
 	if (!data || !dlt) return (v);
+	IF_NOT_FULL_INTEL(v);
 
 	if (data->decomm) {
 		v = QBrush (*RES_color(RID_GM_DLT_INA));
@@ -211,8 +234,6 @@ ModelHistory::MDLH_data_foreground (int /*row*/, int col, MDLH_DATA *data, SPWDL
 				v = QBrush (*RES_color(RID_GM_DLT_NTR));
 				break;
 		}
-	} else {
-		v = QBrush (*RES_color(RID_GMRC_FG_DEFAULT));
 	}
 	return (v);
 }
@@ -220,28 +241,28 @@ ModelHistory::MDLH_data_foreground (int /*row*/, int col, MDLH_DATA *data, SPWDL
 QVariant
 ModelHistory::MDLH_data_background (int /*row*/, int /*col*/, MDLH_DATA *data, SPWDLT *dlt) const
 {
-	QVariant	v = QVariant();
+	QVariant	v = QVariant(QBrush (*RES_color(RID_GMRC_BG_DEFAULT)));
 
 	if (!data || !dlt) return (v);
 
 	switch (d.hilite) {
 		case MDLH_HILITE_NONE:
 		default:
-			if (data->uir != NULL)
-				v = QBrush (*RES_color(RID_GMRC_BG_DEFAULT));
-			else
-				v = QBrush (*RES_color(RID_RGB_GRAY_75));
+			if (data->uir == NULL) v = QBrush (*RES_color(RID_RGB_GRAY_75));
 			break;
 		case MDLH_HILITE_RANK:
 			v = QBrush (*RES_GUI_color (data->uir->snap->data.rank));
 			break;
 		case MDLH_HILITE_USTATUS:
+			IF_NOT_FULL_INTEL(v);
 			v = QBrush (*RES_GUI_color (data->uir->snap->data.status));
 			break;
 		case MDLH_HILITE_ENTR:
+			IF_NOT_FULL_INTEL(v);
 			v = QBrush (*RES_GUI_color (data->uir->snap->data.entr));
 			break;
 		case MDLH_HILITE_EXP:
+			IF_NOT_FULL_INTEL(v);
 			v = QBrush (*RES_GUI_color (data->uir->snap->data.eclass));
 			break;
 	}
@@ -292,7 +313,7 @@ ModelHistory::MDLH_data_decoration (int /*row*/, int col, MDLH_DATA *data, SPWDL
 			break;
 		case MDLH_COLUMN_STATUS:
 			if (data->uir) {
-				if (data->uir->snap->data.rank == SPWAW_RKIA)
+				if (!data->uir->snap->data.alive)
 					v = QVariant (QIcon (*RES_pixmap (RID_ICON_UHT_DESTROYED)));
 				else
 					v = QVariant (QIcon (*RES_pixmap(RID_ICON_UHT_EMPTY)));

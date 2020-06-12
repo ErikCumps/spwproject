@@ -36,6 +36,11 @@ GuiRoster::GuiRoster (QWidget *P)
 
 	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "layout");
 
+	GUINEW (d.intel, QLabel (this), ERR_GUI_REPORTS_INIT_FAILED, "intel");
+	d.intel->setAlignment (Qt::AlignLeft|Qt::AlignTop);
+	d.intel->setWordWrap (true);
+	d.intel->setSizePolicy (QSizePolicy (QSizePolicy::Minimum, QSizePolicy::Fixed));
+
 #if	EXPERIMENTAL
 	GUINEW (d.filter_spec, QComboBox (this), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "filter_spec");
 	for (int h=MDLR_FILTER_NONE; h<=MDLR_FILTER_LIMIT; h++)
@@ -61,6 +66,7 @@ GuiRoster::GuiRoster (QWidget *P)
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
+	d.split->setSizePolicy (QSizePolicy (QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding));
 
 	GUINEW (d.hdr_roster, GuiRosterView (true, this, d.split), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "hdr_roster");
 	GUIERR (d.hdr_roster, ERR_GUI_REPORTS_ROSTER_INIT_FAILED);
@@ -68,15 +74,16 @@ GuiRoster::GuiRoster (QWidget *P)
 	GUINEW (d.bdy_roster, GuiRosterView (false, this, d.split), ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "bdy_roster");
 	GUIERR (d.bdy_roster, ERR_GUI_REPORTS_ROSTER_INIT_FAILED);
 
+	d.layout->addWidget (d.intel,		0, 0, 1, 4);
 #if	EXPERIMENTAL
-	d.layout->addWidget (d.filter_spec,	0, 0, 1, 2);
-	d.layout->addWidget (d.filter_tgt,	0, 2, 1, 2);
+	d.layout->addWidget (d.filter_spec,	1, 0, 1, 2);
+	d.layout->addWidget (d.filter_tgt,	1, 2, 1, 2);
 #endif	/* EXPERIMENTAL */
-	d.layout->addWidget (d.highlight,	1, 0, 1, 1);
-	d.layout->addWidget (d.prevcmp,		1, 1, 1, 1);
-	d.layout->addWidget (d.dltsort,		1, 2, 1, 1);
-	d.layout->addWidget (d.autosort,	1, 3, 1, 1);
-	d.layout->addWidget (d.split,		2, 0, 1, 4);
+	d.layout->addWidget (d.highlight,	2, 0, 1, 1);
+	d.layout->addWidget (d.prevcmp,		2, 1, 1, 1);
+	d.layout->addWidget (d.dltsort,		2, 2, 1, 1);
+	d.layout->addWidget (d.autosort,	2, 3, 1, 1);
+	d.layout->addWidget (d.split,		3, 0, 1, 4);
 
 	if (!connect (d.dltsort, SIGNAL(stateChanged(int)), SLOT (dltsort_change(int))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "failed to connect <dltsort:stateChanged> to <dltsort_change>");
@@ -124,6 +131,18 @@ GuiRoster::GuiRoster (QWidget *P)
 
 	if (!connect (d.hdr_roster, SIGNAL (selected(GuiRosterView*,const QModelIndex&)), this, SLOT (selected(GuiRosterView*,const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "failed to connect <hdr_roster:selected> to <selected>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.model, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <model:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.hdr_roster, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <hdr_roster:intel_mode_set>");
+
+	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), d.bdy_roster, SLOT (intel_mode_set(INTEL_MODE))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <bdy_roster:intel_mode_set>");
 
 	d.pflag = d.cflag = true;
 	d.mflag = false;
@@ -256,7 +275,7 @@ GuiRoster::update (bool forced)
 			case MDLD_TREE_DOSSIER:
 				if (!d.pdata->data.d) return (skip);
 
-				d.model->load (d.pdata->data.d, CFG_full_history());
+				d.model->load (d.pdata->data.d, CFG_full_history(), d.Vintel_mode);
 				d.grvmode = GRV_MODE_DOSSIER;
 				break;
 			case MDLD_TREE_BATTLE:
@@ -264,7 +283,7 @@ GuiRoster::update (bool forced)
 
 				d.pcurr = d.pdata;
 				d.pbase = d.pdata->prev ? d.pdata->prev : d.pdata;
-				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag);
+				d.model->load (d.pcurr->data.b, d.pbase->data.b, d.pflag, d.cflag, d.Vintel_mode);
 				d.grvmode = GRV_MODE_BATTLE;
 				break;
 			case MDLD_TREE_BTURN:
@@ -273,10 +292,10 @@ GuiRoster::update (bool forced)
 				d.pcurr = d.pdata;
 				if (d.Vprevcmp && d.pdata->prev) {
 					d.pbase = d.pdata->prev;
-					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				} else {
 					d.pbase = d.pdata->parent->cfirst;
-					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag);
+					d.model->load (d.pcurr->data.t, d.pbase->data.t, d.pflag, d.cflag, d.Vintel_mode);
 				}
 				d.grvmode = GRV_MODE_TURN;
 				break;
@@ -312,8 +331,8 @@ GuiRoster::refresh (bool forced)
 	skip = update(forced);
 	if (skip) goto leave;
 
-	d.hdr_roster->reload (d.grvmode, d.psort || d.Vautosort, d.mflag);
-	d.bdy_roster->reload (d.grvmode, d.psort || d.Vautosort, d.mflag);
+	d.hdr_roster->reload (d.grvmode, d.psort || d.Vautosort, d.mflag, d.pflag, d.Vintel_mode);
+	d.bdy_roster->reload (d.grvmode, d.psort || d.Vautosort, d.mflag, d.pflag, d.Vintel_mode);
 
 	d.psort = false;
 
@@ -339,8 +358,8 @@ GuiRoster::prevcmp_change (int state)
 	d.Vprevcmp = (state != Qt::Unchecked);
 
 	refresh();
-	d.hdr_roster->reload (d.grvmode, false, d.mflag);
-	d.bdy_roster->reload (d.grvmode, false, d.mflag);
+	d.hdr_roster->reload (d.grvmode, false, d.mflag, d.pflag, d.Vintel_mode);
+	d.bdy_roster->reload (d.grvmode, false, d.mflag, d.pflag, d.Vintel_mode);
 }
 
 void
@@ -350,8 +369,8 @@ GuiRoster::autosort_change (int state)
 
 	if (d.Vautosort) {
 		refresh();
-		d.hdr_roster->reload(d.grvmode, false, d.mflag);
-		d.bdy_roster->reload(d.grvmode, false, d.mflag);
+		d.hdr_roster->reload(d.grvmode, false, d.mflag, d.pflag, d.Vintel_mode);
+		d.bdy_roster->reload(d.grvmode, false, d.mflag, d.pflag, d.Vintel_mode);
 	}
 }
 
@@ -409,4 +428,12 @@ GuiRoster::selected (GuiRosterView *who, const QModelIndex &index)
 	if (who != d.bdy_roster) d.bdy_roster->select (index);
 	d.hdr_roster->scrollTo (index);
 	d.hdr_roster->refresh();
+}
+
+void
+GuiRoster::intel_mode_set (INTEL_MODE mode)
+{
+	d.Vintel_mode = mode;
+
+	intelmode2label (d.Vintel_mode, d.pflag, d.intel);
 }
