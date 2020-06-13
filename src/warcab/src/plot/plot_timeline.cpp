@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - plot handling - axis timeline labels.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -144,7 +144,6 @@ PLOT_decodeBtlidx (double timeline, short year, char month)
 	tl = floor(timeline);
 	tl -= ((long long int)year * 12 * 31 * 3000);
 	tl -= ((long long int)(month -1) * 31 * 3000);
-	DEVASSERT ((tl < 0xffff) && (tl >= 0));
 
 	return ((USHORT)(tl & 0xffff));
 }
