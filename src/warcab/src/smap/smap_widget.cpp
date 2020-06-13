@@ -706,6 +706,8 @@ SmapWidget::load_info_lmtd (SPWAW_BTURN *turn)
 			info->r_info[info->r_cnt].KIA		= kia;
 			info->r_cnt++;
 		}
+		/* Clean up if no units found */
+		if (!info->r_cnt) delete[] info->r_info;
 	}
 }
 
@@ -792,6 +794,8 @@ SmapWidget::load_info_none (SPWAW_BTURN *turn)
 			info->r_info[info->r_cnt].KIA		= kia;
 			info->r_cnt++;
 		}
+		/* Clean up if no units found */
+		if (!info->r_cnt) delete[] info->r_info;
 	}
 }
 
