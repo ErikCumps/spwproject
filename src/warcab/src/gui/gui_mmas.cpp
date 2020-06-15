@@ -250,6 +250,18 @@ GuiMMAS::update (void)
 
 	DBG_TRACE_UPDATE;
 
+	if (item && d.ptype == MDLD_TREE_DOSSIER) {
+		switch (item->data.d->gametype) {
+			case SPWAW_GAME_TYPE_WINSPWW2:
+				d.timeline->setCheckState (Qt::Unchecked);
+				d.timeline->setHidden (true);
+				break;
+			default:
+				d.timeline->setHidden (false);
+				break;
+		}
+	}
+
 	d.plot->set_axistype (d.Vtimeline ? AXIS_TIME : AXIS_INDEX);
 
 	d.pdata = item;

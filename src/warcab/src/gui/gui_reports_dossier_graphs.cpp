@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - graphs.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -183,6 +183,16 @@ GuiRptDsrPlt::refresh (void)
 
 	ptr = item->data.d;
 
+	switch (ptr->gametype) {
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			d.axis_timeline->setCheckState (Qt::Unchecked);
+			d.axis_timeline->setHidden (true);
+			break;
+		default:
+			d.axis_timeline->setHidden (false);
+			break;
+	}
+
 	d.model->setup (&d.ptr->definition);
 	cnt = d.ptr->definition.col_cnt;
 
@@ -209,7 +219,9 @@ GuiRptDsrPlt::refresh (void)
 	// Update GUI state elements
 	d.plot_type->setCurrentIndex ((int)d.ptr->definition.plot_type);
 	d.plot_stacked->setCheckState (d.ptr->definition.plot_stacked ? Qt::Checked : Qt::Unchecked);
-	d.axis_timeline->setCheckState ((d.ptr->definition.axis_type == AXIS_TIME) ? Qt::Checked : Qt::Unchecked);
+	if (!d.axis_timeline->isHidden()) {
+		d.axis_timeline->setCheckState ((d.ptr->definition.axis_type == AXIS_TIME) ? Qt::Checked : Qt::Unchecked);
+	}
 
 skip_data_update:
 	DBG_TRACE_FLEAVE;
