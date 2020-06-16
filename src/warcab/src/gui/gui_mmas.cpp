@@ -199,7 +199,7 @@ GuiMMAS::set_parent (GuiRptBtl *parent, bool player, bool core)
 
 	set_type (0);
 
-	d.timeline->setHidden (true);
+	d.timeline->setHidden (false);
 }
 
 void
