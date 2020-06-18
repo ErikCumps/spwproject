@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -536,6 +536,14 @@ OOB_link (SPWAW_SNAP_OOB *oob, bool prepsf)
 		p.fp->data.ucnt_core = 0;
 		p.fp->data.ucnt_support = 0;
 		p.fp->data.ucnt_regular = 0;
+	}
+
+	/* Reset unit/crew indexes */
+	for (i=0; i<bp->units.cnt; i++) {
+		bp->units.list[i].data.idx = (USHORT)i;
+	}
+	for (i=0; i<bp->crews.cnt; i++) {
+		bp->crews.list[i].data.idx = (USHORT)i;
 	}
 
 	/* Unit/crew linkage */
