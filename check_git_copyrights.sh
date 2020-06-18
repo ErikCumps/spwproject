@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ -z "${GIT_DIR}" ]; then
-	echo "Please run this script from with a git bash shell!"
+	echo "Please run this script from within a git bash shell!"
 	echo
-	exit 2
+	#exit 2
 fi
 
 FILE="$1"
@@ -18,7 +18,7 @@ if [ -z "${FILE}" -o -z "${YEAR}" ]; then
 fi
 
 for f in $(<"${FILE}"); do
-	git log -n 1 --format=%ad "${f}" | grep -q 2019
+	git log -n 1 --format=%ad "${f}" | grep -q ${YEAR}
 	if [ $? -eq 0 ]; then
 		echo "${f}"
 	fi
