@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - plot handling - min-max-average-spread plot handling.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
