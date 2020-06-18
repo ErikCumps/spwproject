@@ -190,11 +190,11 @@ ModelRoster::setupSortMap (void)
 
 	DBG_TRACE_FENTER;
 
-	if (d.fsmap_cnt != d.list_cnt) {
+	if (d.fsmap_cnt != d.list_use) {
 		/* Create new full sort map */
 		if (d.fsmap) SL_SAFE_FREE (d.fsmap);
 
-		d.fsmap_cnt = d.list_cnt; SL_SAFE_CALLOC (d.fsmap, d.fsmap_cnt, sizeof (MDLR_SMAP));
+		d.fsmap_cnt = d.list_use; SL_SAFE_CALLOC (d.fsmap, d.fsmap_cnt, sizeof (MDLR_SMAP));
 		for (i=0; i<d.fsmap_cnt; i++) {
 			d.fsmap[i].data = &(d.list[i]);
 		}
@@ -207,7 +207,7 @@ ModelRoster::setupSortMap (void)
 
 	/* Calculate number of killed units */
 	kcnt = 0;
-	for (i=0; i<d.list_cnt; i++) {
+	for (i=0; i<d.list_use; i++) {
 		if (!d.list[i].uir->snap->data.alive) kcnt++;
 	}
 	if (kcnt != d.ksmap_cnt) {
@@ -218,7 +218,7 @@ ModelRoster::setupSortMap (void)
 	}
 	/* Update kill sort map */
 	kidx = 0;
-	for (i=0; i<d.list_cnt; i++) {
+	for (i=0; i<d.list_use; i++) {
 		if (!d.list[i].uir->snap->data.alive) {
 			d.ksmap[kidx++].data = &(d.list[i]);
 		}
