@@ -445,7 +445,6 @@ GuiRptBtlOvr::refresh (void)
 				break;
 		}
 		str.printf ("\n");
-		str.printf ("\n");
 
 		if (p->tcnt > 1) {
 			SPWAW_date_delta (&(p->tfirst->tdate.date), &(p->tlast->tdate.date), &span);

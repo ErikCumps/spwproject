@@ -465,7 +465,7 @@ GuiRptDsrOvr::refresh (bool forced)
 				str.printf ("Current core force consists of %u units in %u formations.",
 					p->props.cucnt, p->props.cfcnt);
 			} else {
-				str.printf ("%s core force consists of %u units in %u formations.\n",
+				str.printf ("%s core force consists of %u units in %u formations.",
 					SPWAW_oob_people (p->gametype, p->props.OOB), p->props.iucnt, p->props.ifcnt);
 
 			}
