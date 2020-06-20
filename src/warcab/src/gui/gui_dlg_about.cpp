@@ -35,8 +35,6 @@ build_info (void)
 	UtilStrbuf		str(buf, sizeof (buf), true, true);
 
 	str.clear();
-	str.printf ("<h2>This is a BETA version!</h2>\n");
-	str.printf ("<b>");
 	str.printf ("<br>%s - %s", SL_APP_name(), SL_APP_description());
 	str.printf ("<br>");
 	str.printf ("<br>Version %s (build %s)", SL_APP_version(), SL_APP_build_number());

@@ -1,20 +1,54 @@
 Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.0.
 
-Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
 ChangeLog
 ---------
 
-2019-07-19, version 0.8.0
+2020-06-20, version 0.8.0
 
     * Added support for multiple game types (currently SP:WaW and winSPWW2)
         + date-specific OOB nation info and flags
-        + map hex connection detection and tramlines
+        + map hex connection and tramlines detection
+        + map hex height range expanded and unified
         + unified unit and formation types
-        + formations can contain core units as well as support units
-        + month-only battle/turn dates
+        + (SP:WaW) formations can contain core units as well as support units
+        + (winSPWW2) month-only battle/turn dates
+        + (winSPWW2) Disabled time-based axis for dossier graphs.
+
+    * New feature - Unit History Tracking
+    The entire history of units in a campaign is now tracked. This includes
+    additional units commissioned after the start of the campaign, units
+    decomissioned before the end of the campaign and units cross-attached to
+    different formations during the campaign.
+
+    * New feature - full campaign history preference
+    This preference enables full campaign history, which also shows data for
+    decommissioned units on the following Dossier tabs: Overview, Status,
+    Progress, Kills, Losses, Roster and History.
+
+    * New feature - intel mode
+    Three intel modes are available (full, limited and none) to select the
+    amount of information about the opponent forces that should be available.
+        + full: all information is available
+        + limited: limited information is available:
+            + The opponent's OOB is available, but the battle status is not.
+            + The stratmap shows the uncertainty of the frontline.
+            + Only destroyed, abandoned or spotted opponent units are indicated.
+        + none: no information is available:
+            + Victory hex ownership by the opponent is not available.
+            + The opponent's OOB is not available.
+            + The opponent's unit history is not available.
+            + The stratmap shows the uncertainty of the contested map.
+            + Only destroyed, abandoned or spotted opponent units are indicated.
+
+    * New feature - additional height color fields for stratmap
+    To liven up the stratmap a bit, additional height color fields are provided:
+        + grey: the original greyish colors.
+        + topographic: washed out colors, derived from topographic maps
+        + terrain: washed out colors, based on the map terrain type
 
     * New feature - campaign battle results
     The results of a campaign battle (Decisive Victory, Marginal Victory, Drawn
@@ -22,22 +56,13 @@ ChangeLog
     Note: they are not reported for older dossiers (when battle results were not
     yet recorded).
 
-    * New feature - victory hex statistics reporting
-    The occupation status of the victory hexes is now reported for each battle
-    turn.
-
-    * New feature - campaign battle index
-    The campaign battle index tracks the position of the battle in the campaign,
-    compared to other battles. It is used to distinguish and sort the different
-    battles of a campaign, replacing the date-based mechanism which did no
-    longer function with month-only dates.
-
-    * New feature - tramlines to stratmap
-    The stratmap now also shows tramlines.
-
-    * New feature - support local and global configuration storage
+    * New feature - local and global preferences
     Warcab preferences can now be stored globally (in the registry), or locally
     (in a warcab.ini file).
+
+    * New feature - XML reporting
+    The spwreport tool now also supports reporting savegame information using
+    the XML file format.
 
     * Improvement - much improved unit detection for SP:WaW
     Based on information learned from winSPWW2, the SP:WaW unit detection has
@@ -57,14 +82,38 @@ ChangeLog
     For the position of a loaded unit, the position of the loading unit is
     recorded.
 
-    * Improvement - only report battle losses and force turn status when relevant
+    * Improvement - victory hex statistics reporting
+    The occupation status of the victory hexes is now reported for each battle
+    turn.
+
+    * Improvement - only show the force progress tab when relevant
+    The tab is only shown for the player core force during a campaign.
+
+    * Improvement - only show the support force tab when relevant
+    The tab is not shown when there is no support force present.
+
+    * Improvement - only report battle losses/force turn status when relevant
     These are now only reported for the final (score) turns of campaign battles.
+
+    * Improvement - overall improvements for all reports
+
+    * Improvement - campaign battle index
+    The campaign battle index tracks the position of the battle in the campaign,
+    compared to other battles. It is used to distinguish and sort the different
+    battles of a campaign, replacing the date-based mechanism which did no
+    longer function with month-only dates.
 
     * Improvement - improved savegame unpacked data handling
     When the size of the savegame section is not fixed (or unknown), buffers are
     auto-allocated to load the uncompressed section data in.
 
     * Improvement - some cosmetic improvements
+
+    * Improvement - better separation of Debug and Release deliverables
+    This allows deploying both in same target directory.
+
+    * Fixed issue #7:
+    MMAS bad min/max unit reporting
 
     * Fix - dossier/snapshot saving
     Don't destroy existing file if saving fails.
@@ -78,12 +127,25 @@ ChangeLog
     regenerated when the number of items on the axis did not change between
     battles.
 
+    * Fix - fixed terrain height mapping and water hex detection
+    Some hexes were incorrectly detected to be below 0 meter or to contain
+    water.
+
+    * Fix - fixed (re)sorting bug
+    Do not (re)sort if no column is selected for sorting.
+
+    * Fix - fixed ModelHistory
+    Fixed bug causing ModelHistory to incorrectly keep using data from previous
+    dossier when no data is available for the current dossier. (e.g. when the
+    old dossier contained support forces but the new dossier does not)
+
     * Fix - fixed some crashes and memory corruptions/leaks
 
     * Documentation:
         + added SP:WaW and winSPWW2 OOB file format documentation
         + updated SP:WaW save file sections format documentation
         + added winSPWW2 save file sections format documentation
+        + updated existing and added some new demo dossiers
 
 2018-10-03, version 0.7.0
 

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,8 +16,8 @@ static SL_APP_INFO	app_info = {
 	{
 		"Warcab",
 		"The SP:WaW and winSPWW2 war cabinet",
-		"0.8.0-BETA#7",
-		"2005-2019",
+		"0.8.0",
+		"2005-2020",
 		"Erik Cumps",
 		"erik.cumps@gmail.com"
 	},

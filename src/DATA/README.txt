@@ -1,6 +1,6 @@
 Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.0.
 
-Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
