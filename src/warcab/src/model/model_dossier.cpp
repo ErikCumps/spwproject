@@ -87,7 +87,7 @@ QVariant
 ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 {
 	QVariant	v = QVariant();
-	char		buf[256];
+	char		buf[512];
 
 	if (!p || (p->type != MDLD_TREE_DOSSIER) || (!p->data.d)) return (v);
 	memset (buf, 0, sizeof (buf));
@@ -122,7 +122,7 @@ QVariant
 ModelDossier::data_standalone (int role, MDLD_TREE_ITEM *p) const
 {
 	QVariant	v = QVariant();
-	char		buf[256];
+	char		buf[512];
 
 	if (!p || (p->type != MDLD_TREE_STDALONE) || (!p->data.b)) return (v);
 	memset (buf, 0, sizeof (buf));
@@ -150,7 +150,7 @@ QVariant
 ModelDossier::data_battle (int role, MDLD_TREE_ITEM *p) const
 {
 	QVariant	v = QVariant();
-	char		buf[256];
+	char		buf[512];
 
 	if (!p || (p->type != MDLD_TREE_BATTLE) || (!p->data.b)) return (v);
 	memset (buf, 0, sizeof (buf));
@@ -181,7 +181,7 @@ QVariant
 ModelDossier::data_bturn (int role, MDLD_TREE_ITEM *p) const
 {
 	QVariant	v = QVariant();
-	char		buf[256];
+	char		buf[512];
 
 	if (!p || (p->type != MDLD_TREE_BTURN) || (!p->data.t)) return (v);
 	memset (buf, 0, sizeof (buf));

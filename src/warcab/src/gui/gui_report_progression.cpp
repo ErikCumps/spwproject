@@ -346,7 +346,7 @@ GuiRptPrg::refresh (bool forced)
 {
 	bool		skip;
 	bool		nodata;
-	char		buf[256];
+	char		buf[1024];
 	UtilStrbuf	str(buf, sizeof (buf), true, true);
 
 	DBG_TRACE_FENTER;
