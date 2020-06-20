@@ -670,8 +670,6 @@ GuiRptLoss::refresh (bool forced)
 {
 	bool		skip;
 	bool		nodata;
-	char		buf[256];
-	UtilStrbuf	str(buf, sizeof (buf), true, true);
 	int		mw[2];
 
 	DBG_TRACE_FENTER;

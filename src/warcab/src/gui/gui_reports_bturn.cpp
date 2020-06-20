@@ -97,10 +97,6 @@ GuiRptTrn::set_enabled (bool flag)
 
 	if (!hidden) hide();
 	if (flag) {
-		char	buf[256];
-
-		memset (buf, 0, sizeof (buf));
-
 		removeTab (indexOf (d.disabled_label));
 
 		addTab (d.overview, "Overview");

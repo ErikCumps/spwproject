@@ -90,10 +90,6 @@ GuiRptBtl::set_enabled (bool flag)
 	d.enabled = flag;
 	if (!hidden) hide();
 	if (flag) {
-		char	buf[256];
-
-		memset (buf, 0, sizeof (buf));
-
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.overview, "Overview");
 		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
