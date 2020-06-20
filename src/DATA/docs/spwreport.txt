@@ -58,14 +58,17 @@ This tool can generate multiple types of savegame reports:
   Supported report types:
     raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)
     elaborate   an elaborate report (*_complete.txt)
+    xml         an elaborate report in XML format (*_complete.xml)
     normal      a normal report (*_short.txt)
     narrative   a normal report in a narrative format (*_narrative.txt)
     table       a normal report in table format (*_table.txt)
+    shortxml    a normal report in XML format (*_short.xml)
     map         a map and unit positions dump (*_positions.dump)
 
-  Two reports are generate for elaborate, normal, narrative and table reports:
+  For the elaborate, xml, normal, narrative, table and shortxml report types,
+  two different reports are generated:
   + a full report covering the full player1 and player2 forces
-  + a core report covering the player1 core force only.
+  + a core report covering the player1 core force only
 
 The report files of the requested types are created in the current directory,
 all report files share the same BASE prefix.
@@ -100,14 +103,17 @@ This tool can generate multiple types of snapshot reports:
   Supported report types:
     raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)
     elaborate   an elaborate report (*_complete.txt)
+    xml         an elaborate report in XML format (*_complete.xml)
     normal      a normal report (*_short.txt)
     narrative   a normal report in a narrative format (*_narrative.txt)
     table       a normal report in table format (*_table.txt)
+    shortxml    a normal report in XML format (*_short.xml)
     map         a map and unit positions dump (*_positions.dump)
 
-  Two reports are generate for elaborate, normal, narrative and table reports:
+  For the elaborate, xml, normal, narrative, table and shortxml report types,
+  two different reports are generated:
   + a full report covering the full player1 and player2 forces
-  + a core report covering the player1 core force only.
+  + a core report covering the player1 core force only
 
 The report files of the requested types are created in the current directory,
 all report files share the same BASE prefix.

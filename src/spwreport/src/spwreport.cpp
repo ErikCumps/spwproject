@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -15,7 +15,7 @@ usage (char *app)
 	printf ("Welcome to spwreport.exe, the multi-purpose spwawlib tool:\n");
 	printf ("\n");
 
-	printf ("*** Generate an OOB dump in CSV format (spwoobdump_*.csv files).\n");
+	printf ("*** Generate an OOB dump in CSV format (spwoobdump_*.csv files)\n");
 	printf ("\n");
 	printf ("    Usage: %s oobdump GAME OOB [raw]\n", app);
 	printf ("    Where: GAME    game type\n");
@@ -23,7 +23,7 @@ usage (char *app)
 	printf ("           raw     specify \"raw\" for a raw oob data dump\n");
 	printf ("\n");
 
-	printf ("*** Generate savegame reports:\n");
+	printf ("*** Generate savegame reports\n");
 	printf ("\n");
 	printf ("    Usage: %s savereport GAME OOB DIR INDEX BASE [TYPE]\n", app);
 	printf ("    Where: GAME    game type\n");
@@ -34,7 +34,7 @@ usage (char *app)
 	printf ("           TYPE    optional type of report to generate (defaults to ALL reports)\n");
 	printf ("\n");
 
-	printf ("*** Generate snapshot reports:\n");
+	printf ("*** Generate snapshot reports\n");
 	printf ("\n");
 	printf ("    Usage: %s snapreport SNAP BASE [TYPE]\n", app);
 	printf ("    Where: SNAP    filename of snapshot to generate report for\n");
@@ -61,7 +61,7 @@ usage (char *app)
 	printf ("For the elaborate, xml, normal, narrative, table and shortxml report types, two\n");
 	printf ("different reports are generated:\n");
 	printf ("+ a full report covering the full player1 and player2 forces\n");
-	printf ("+ a core report covering the player1 core force only.\n");
+	printf ("+ a core report covering the player1 core force only\n");
 	printf ("\n");
 
 	exit (1);
