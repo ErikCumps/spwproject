@@ -202,7 +202,7 @@ reserve_FEL (FLIST &fl)
 
 /* Commits the (currently reserved) element to the formation list */
 bool
-commit_FEL (FLIST &fl, FEL *fel)
+commit_FEL (FLIST &fl, FEL *fel, USHORT formpcount)
 {
 	FEL	*prev;
 
@@ -216,8 +216,8 @@ commit_FEL (FLIST &fl, FEL *fel)
 
 	if (!fl.head) fl.head = fel;
 
-	// Compensate for raw formation IDs that are offset by a multiple of FORMPCOUNT
-	fel->d.FID = (fel->d.rawFID % FORMPCOUNT) - (fl.head->d.rawFID % FORMPCOUNT);
+	// Compensate for raw formation IDs that are offset by a multiple of formpcount
+	fel->d.FID = (fel->d.rawFID % formpcount) - (fl.head->d.rawFID % formpcount);
 
 	fl.s.nidx++;
 	fl.cnt++;

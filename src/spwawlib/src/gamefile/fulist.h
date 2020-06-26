@@ -104,7 +104,7 @@ void	init_FLIST	(FLIST &fl);
 void	dump_FLIST	(FLIST &fl);
 void	dump_FEL	(FEL *fel, char *prefix);
 FEL *	reserve_FEL	(FLIST &fl);
-bool	commit_FEL	(FLIST &fl, FEL *fel);
+bool	commit_FEL	(FLIST &fl, FEL *fel, USHORT formpcount);
 FEL *	lookup_FLIST	(FLIST &fl, USHORT frid);
 
 

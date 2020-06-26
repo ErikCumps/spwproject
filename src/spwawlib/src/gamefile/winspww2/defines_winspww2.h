@@ -76,7 +76,7 @@
 #define	WINSPWW2_UNITCOUNT	1000
 #define	WINSPWW2_UNITPOSCOUNT	32000
 #define	WINSPWW2_FORMCOUNT	400
-#define	WINSPWW2_FORMPCOUNT	100
+#define	WINSPWW2_FORMPCOUNT	200
 #define	WINSPWW2_VHEXCOUNT	21
 
 // Assumed winSPWW2 battle date day: the first day of the month

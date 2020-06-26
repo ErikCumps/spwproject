@@ -103,7 +103,7 @@ build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 		UFDLOG3 ("find_formations: [%5.5u] FORMATION: P<%1.1u> rawFID<%5.5u>",
 			i, fel->d.player, fel->d.rawFID);
 
-		if (!commit_FEL (fl, fel)) {
+		if (!commit_FEL (fl, fel, SPWAW_FORMPCOUNT)) {
 			RWE (SPWERR_FAILED, "commit_fel() failed");
 		}
 
