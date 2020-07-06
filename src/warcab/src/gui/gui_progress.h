@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - progress dialog box.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -32,9 +32,5 @@ private:
 		int	v;
 	} d;
 };
-
-extern void	GUI_fixme	(char *caller);
-
-#define	GUI_FIXME	do { GUI_fixme (__FUNCTION__); } while (0)
 
 #endif	/* GUI_PROGRESS_H */

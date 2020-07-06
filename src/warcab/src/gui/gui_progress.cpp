@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - progress dialog box.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -99,12 +99,4 @@ GuiProgress::done (void)
 	setValue (d.v = d.max);
 
 	GUI_FIXME;
-}
-
-void
-GUI_fixme (char *caller)
-{
-	DBG_log ("[%s] %s: calling processEvents()\n", __FUNCTION__, caller);
-	QApplication::processEvents();
-	DBG_log ("[%s] %s: DONE\n", __FUNCTION__, caller);
 }

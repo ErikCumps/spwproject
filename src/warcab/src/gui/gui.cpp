@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI.
  *
- * Copyright (C) 2005-2017 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -41,6 +41,9 @@ static const char	*MODULE = "GUI";
 
 /*! Initialization status flag */
 static SL_BOOL		initialized = SL_false;
+
+/*! GUI_FIXME enable flag */
+static SL_BOOL		fixme_enabled = SL_true;
 
 /*! QT application object */
 QApplication		*GUI_APP = NULL;
@@ -169,6 +172,7 @@ statereport (SL_STDBG_INFO_LEVEL level)
 	/* basic information */
 	if (level >= SL_STDBG_LEVEL_BAS) {
 		SAYSTATE1 ("\tinitialized = %s\n", SL_BOOL_tostr (initialized));
+		SAYSTATE1 ("\tGUIX_FIXME  = %s\n", SL_BOOL_tostr (fixme_enabled));
 	}
 
 	/* extended information */
@@ -379,4 +383,20 @@ SL_ERROR_REQUEST
 GUI_EVT_error (SL_ERROR_DATA *stack)
 {
 	return (GUI_error (stack));
+}
+
+void
+GUI_fixme (char *caller)
+{
+	if (!fixme_enabled) return;
+
+	DBG_log ("[%s] %s: calling processEvents()\n", __FUNCTION__, caller);
+	QApplication::processEvents();
+	DBG_log ("[%s] %s: DONE\n", __FUNCTION__, caller);
+}
+
+void
+GUI_prep_exit (void)
+{
+	fixme_enabled = SL_false;
 }

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -55,6 +55,10 @@ extern int		GUI_exec	(void);
 extern SL_EVT_RC	GUI_EVT_abort	(const char *file, unsigned long line, const char *func, const char *msg);
 extern void		GUI_HOOK_exit	(unsigned int ec, char *msg, SL_BOOL dump);
 extern SL_ERROR_REQUEST	GUI_EVT_error	(SL_ERROR_DATA *stack);
+
+extern void		GUI_prep_exit	(void);
+extern void		GUI_fixme	(char *caller);
+#define	GUI_FIXME	do { GUI_fixme (__FUNCTION__); } while (0)
 
 #endif	/* GUI_COMMON_H */
 

@@ -239,6 +239,8 @@ GuiMainWindow::action_app_exit (void)
 {
 	DBG_log ("[%s]", __FUNCTION__);
 
+	GUI_prep_exit();
+
 #ifdef	_DEBUG
 	SL_STDBG_report (SL_STDBG_LEVEL_DEEP);
 #endif	/* _DEBUG */
