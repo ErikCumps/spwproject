@@ -320,7 +320,7 @@ ModelRoster::setupModelData (void)
 		}
 	} else {
 		for (int i=0; i<d.list_cnt; i++) {
-			if (!d.tflag && d.pflag && d.cflag && d.cb != NULL) {
+			if (!d.tflag && d.pflag && d.cflag && d.cb != NULL && i < d.cb->uhtinfo->cnt) {
 				cuhte = d.cb->uhtinfo->list[i];
 				SPWAW_UHT_lookup (cuhte, &(d.cb->bdate), true, NULL, &buir, &cuir);
 				if (d.bb && (d.bb != d.cb)) {
@@ -332,8 +332,8 @@ ModelRoster::setupModelData (void)
 			} else {
 				cuhte = NULL;
 				cuir = &(d.birs->uir[i]);
-				buir = &(d.cbrs->uir[i]);
-				ruir = &(d.rbrs->uir[i]);
+				buir = (i < d.cbrs_cnt) ? &(d.cbrs->uir[i]) : NULL;
+				ruir = (i < d.rbrs_cnt) ? &(d.rbrs->uir[i]) : NULL;
 			}
 
 			addModelData (cuhte, cuir, buir, ruir);
