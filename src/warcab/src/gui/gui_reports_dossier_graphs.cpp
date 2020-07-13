@@ -161,7 +161,7 @@ GuiRptDsrPlt::set_parent (GuiRptDsr *parent)
 #define	DATE2TIME(d_,t_)	PLOT_date2timeline (d_, t_)
 
 void
-GuiRptDsrPlt::refresh (void)
+GuiRptDsrPlt::refresh (bool forced)
 {
 	MDLD_TREE_ITEM	*item;
 	SPWAW_DOSSIER	*ptr = NULL;
@@ -177,6 +177,7 @@ GuiRptDsrPlt::refresh (void)
 	skip =  !d.reftrack.changed (item);
 	skip &= !GUIVALCHANGED (idx);
 	skip &= !d.ptr->changed();
+	skip &= !forced;
 	if (skip || !item) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;

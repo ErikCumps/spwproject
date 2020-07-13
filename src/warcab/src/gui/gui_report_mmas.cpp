@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - min-max-average-spread report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -51,11 +51,11 @@ GuiRptMMAS::set_parent (GuiRptTrn *parent, bool pflag)
 }
 
 void
-GuiRptMMAS::refresh (void)
+GuiRptMMAS::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
-	d.mmas->refresh();
+	d.mmas->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

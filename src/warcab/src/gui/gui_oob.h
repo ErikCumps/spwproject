@@ -29,7 +29,7 @@ public:
 	void	set_parent	(GuiRptDsr *parent, bool player);
 	void	set_parent	(GuiRptBtl *parent, bool player, bool core = false);
 	void	set_parent	(GuiRptTrn *parent, bool player, bool core = false);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);
@@ -83,7 +83,7 @@ private:
 	} d;
 
 private:
-	void	update	(void);
+	void	update	(bool forced);
 };
 
 #endif	/* GUI_OOB_H */

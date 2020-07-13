@@ -25,7 +25,7 @@ public:
 
 public:
 	void	set_parent (GuiRptBtl *p);
-	void	refresh	(void);
+	void	refresh	(bool forced = false);
 
 public:
 	void	resizeEvent	(QResizeEvent * event);

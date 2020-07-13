@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,7 +28,7 @@ public:
 public:
 	void		enable		(bool flag);
 	void		select		(MDLD_TREE_ITEM *item);
-	void		refresh		(void);
+	void		refresh		(bool forced = false);
 	MDLD_TREE_ITEM *current		(void);
 	void		will_delete	(MDLD_TREE_ITEM *item);
 

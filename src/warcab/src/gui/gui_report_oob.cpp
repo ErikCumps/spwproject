@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - order of battle report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -51,11 +51,11 @@ GuiRptOob::set_parent (GuiRptTrn *parent, bool pflag, bool core)
 }
 
 void
-GuiRptOob::refresh (void)
+GuiRptOob::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
-	d.oob->refresh();
+	d.oob->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

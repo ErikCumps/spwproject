@@ -31,7 +31,7 @@ public:
 
 public:
 	void	set_parent	(GuiRptBtl *parent, bool pflag, bool cflag);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 public slots:
 	void	selectedCurrentIndex	(int index);

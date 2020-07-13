@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - comparisons.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -25,7 +25,7 @@ public:
 
 public:
 	void	set_parent	(GuiRptBtl *p);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 signals:
 	void	cmpcurr		(MDLD_TREE_ITEM *base);

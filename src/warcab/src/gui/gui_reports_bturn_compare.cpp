@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - comparisons.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -56,7 +56,7 @@ GuiRptTrnCmp::set_parent (GuiRptTrn *p)
 }
 
 void
-GuiRptTrnCmp::refresh (void)
+GuiRptTrnCmp::refresh (bool /*forced*/)
 {
 	DBG_TRACE_FENTER;
 

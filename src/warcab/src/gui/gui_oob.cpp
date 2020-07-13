@@ -190,7 +190,7 @@ GuiOob::set_parent (GuiRptTrn *parent, bool player, bool core)
 }
 
 void
-GuiOob::update (void)
+GuiOob::update (bool forced)
 {
 	MDLD_TREE_ITEM	*item = NULL;
 	bool		skip;
@@ -218,6 +218,7 @@ GuiOob::update (void)
 	skip &= !GUIVALCHANGED (Vdltsort);
 	skip &= !GUIVALCHANGED (Vprevcmp);
 	skip &= !GUIVALCHANGED (Vautosort);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -275,11 +276,11 @@ skip_data_update:
 }
 
 void
-GuiOob::refresh (void)
+GuiOob::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
-	update();
+	update(forced);
 	d.hdr_oob->reload (d.govmode, d.psort || d.Vautosort, d.pflag, d.Vintel_mode);
 	d.bdy_oob->reload (d.govmode, d.psort || d.Vautosort, d.pflag, d.Vintel_mode);
 
@@ -305,7 +306,7 @@ GuiOob::prevcmp_change (int state)
 {
 	d.Vprevcmp = (state != Qt::Unchecked);
 
-	update(); d.psort = false;
+	update(true); d.psort = false;
 	d.hdr_oob->reload (d.govmode, d.Vautosort, d.pflag, d.Vintel_mode); d.hdr_oob->reparented();
 	d.bdy_oob->reload (d.govmode, d.Vautosort, d.pflag, d.Vintel_mode); d.bdy_oob->reparented();
 }

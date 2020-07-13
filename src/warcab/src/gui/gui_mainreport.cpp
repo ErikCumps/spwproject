@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main report widget.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -100,6 +100,8 @@ GuiMainRpt::update (void)
 	DEVASSERT (d.dossier != 0);
 
 	d.dossier->refresh(true);
+	d.battle->refresh(true);
+	d.bturn->refresh(true);
 }
 
 void

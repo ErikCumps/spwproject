@@ -98,7 +98,7 @@ GuiRptTrnOvr::set_parent (GuiRptTrn *p)
 }
 
 void
-GuiRptTrnOvr::refresh (void)
+GuiRptTrnOvr::refresh (bool forced)
 {
 	MDLD_TREE_ITEM	*item;
 	bool		skip_data;
@@ -112,6 +112,7 @@ GuiRptTrnOvr::refresh (void)
 
 	skip_data  = !d.reftrack.changed (item);
 	skip_data &= !GUIVALCHANGED (Vintel_mode);
+	skip_data &= !forced;
 	if (skip_data) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;

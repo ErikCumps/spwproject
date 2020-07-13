@@ -69,7 +69,7 @@
 #define	STR_FULL_HISTORY_WHATSTHIS						\
 	"Select this to enable full campaign history, which also shows\n"	\
 	"data for decommissioned units on the following Dossier tabs:\n"	\
-	"Overview, Status, Progress, Kills, Losses, Roster and History."	\
+	"Overview, Status, Progress, Kills, Losses, Roster and History."
 
 #define	STR_IMODE_NAME			"Default intel mode:"
 #define	STR_IMODE_TOOLTIP		"Configure the default intel mode."
@@ -78,6 +78,12 @@
 #define	STR_HCFTYPE_NAME		"Default strategic map height colorfield type:"
 #define	STR_HCFTYPE_TOOLTIP		"Configure the default strategic map height colorfield type."
 #define	STR_HCFTYPE_WHATSTHIS		"This sets the default height colorfield type for the strategic map."
+
+#define	STR_GERMAN_CROSS_TOOLTIP	"Configure German Cross flag."
+#define	STR_GERMAN_CROSS_WHATSTHIS						\
+	"Select this if you do not want War Cabinet to display the\n"		\
+	"historic German Flag from WWII for personal reasons or to\n"		\
+	"satisfy the requirements of German Law."
 
 CfgDlg::CfgDlg (CfgDlgData *data)
 	: QDialog (0, Qt::Dialog)
@@ -245,6 +251,19 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.hcftype_edit,	row, 1, 1, 1);
 	row++;
 
+	/* Create "gecross" config ui */
+	d.gecross_label = new QLabel (d.body);
+	d.gecross_label->setText ("German Cross flag:");
+	d.gecross_label->setToolTip (STR_GERMAN_CROSS_TOOLTIP);
+
+	d.gecross_edit = new QCheckBox (d.body);
+	d.gecross_edit->setToolTip (STR_GERMAN_CROSS_TOOLTIP);
+	d.gecross_edit->setWhatsThis (STR_GERMAN_CROSS_WHATSTHIS);
+
+	d.layout->addWidget (d.gecross_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.gecross_edit,	row, 1, 1, 1);
+	row++;
+
 	/* Add spacer */
 	d.layout->setRowStretch (row, 1);
 	row++;
@@ -334,7 +353,8 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	setTabOrder (d.autoload_edit, d.fhistory_edit);
 	setTabOrder (d.fhistory_edit, d.imode_edit);
 	setTabOrder (d.imode_edit, d.hcftype_edit);
-	setTabOrder (d.hcftype_edit, d.dgt_select);
+	setTabOrder (d.hcftype_edit, d.gecross_edit);
+	setTabOrder (d.gecross_edit, d.dgt_select);
 	setTabOrder (d.dgt_select, (*d.games_gui)[0].oob_edit);
 	for (int i=0; i<(*d.games_gui).size(); i++) {
 		if (i>0) setTabOrder ((*d.games_gui)[i-1].sve_browse, (*d.games_gui)[i].oob_edit);
@@ -380,6 +400,7 @@ CfgDlg::prepare(void)
 	d.fhistory_edit->setCheckState (d.dlg_data->fhistory ? Qt::Checked : Qt::Unchecked);
 	d.imode_edit->setCurrentIndex (d.dlg_data->imode);
 	d.hcftype_edit->setCurrentIndex (d.dlg_data->hcftype);
+	d.gecross_edit->setCheckState (d.dlg_data->gecross ? Qt::Checked : Qt::Unchecked);
 
 	for (int i=0; i<d.dlg_data->types.size(); i++) {
 		if (d.dlg_data->types[i].type == d.dlg_data->def_game) {
@@ -405,6 +426,7 @@ CfgDlg::update (void)
 	d.dlg_data->fhistory = (d.fhistory_edit->checkState() == Qt::Checked) ? true : false;
 	d.dlg_data->imode = d.imode_edit->currentIndex();
 	d.dlg_data->hcftype = d.hcftype_edit->currentIndex();
+	d.dlg_data->gecross = (d.gecross_edit->checkState() == Qt::Checked) ? true : false;
 
 	d.dlg_data->def_game = (SPWAW_GAME_TYPE)(d.dgt_select->itemData (d.dgt_select->currentIndex()).toUInt());
 	for (int i=0; i<d.dlg_data->games.size(); i++) {

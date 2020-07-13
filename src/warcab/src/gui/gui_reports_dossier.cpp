@@ -168,11 +168,11 @@ GuiRptDsr::refresh (bool forced)
 	d.prg->refresh(forced);
 	d.kill->refresh(forced);
 	d.loss->refresh(forced);
-	d.oob->refresh();	//FIXME?
+	d.oob->refresh(forced);
 	d.rst->refresh(forced);
 	d.hst->refresh(forced);
-	d.mmas->refresh();	//FIXME?
-	d.graphs->refresh();	//FIXME?
+	d.mmas->refresh(forced);
+	d.graphs->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

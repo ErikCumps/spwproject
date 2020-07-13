@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - graphs.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,7 +28,7 @@ public:
 
 public:
 	void	set_parent	(GuiRptDsr *parent);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 public slots:
 	void	selected	(GuiPlotTableView *who, const QModelIndex &index);

@@ -104,7 +104,7 @@ GuiRptTrnFrc::set_parent (GuiRptTrn *parent, bool pflag, bool cflag)
 }
 
 void
-GuiRptTrnFrc::refresh (void)
+GuiRptTrnFrc::refresh (bool forced)
 {
 	SPWAW_BTURN	*p;
 	bool		enable = true;
@@ -118,10 +118,10 @@ GuiRptTrnFrc::refresh (void)
 
 	set_enabled (enable);
 
-	d.kill->refresh();
-	d.loss->refresh();
-	d.oob->refresh();
-	d.rst->refresh();
+	d.kill->refresh(forced);
+	d.loss->refresh(forced);
+	d.oob->refresh(forced);
+	d.rst->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

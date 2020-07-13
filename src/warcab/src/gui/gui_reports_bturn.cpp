@@ -140,7 +140,7 @@ GuiRptTrn::select (MDLD_TREE_ITEM *item)
 }
 
 void
-GuiRptTrn::refresh (void)
+GuiRptTrn::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
@@ -162,14 +162,14 @@ GuiRptTrn::refresh (void)
 		setTabIcon (indexOf (d.force_opp), *RES_flagbyid (d.item->data.t->battle->snap->game.battle.strings.flagid_p2));
 	}
 
-	d.overview->refresh();
-	d.force_core->refresh();
-	d.force_spt->refresh();
-	d.force_opp->refresh();
+	d.overview->refresh(forced);
+	d.force_core->refresh(forced);
+	d.force_spt->refresh(forced);
+	d.force_opp->refresh(forced);
 #if	EXPERIMENTAL
-	d.compare->refresh();
+	d.compare->refresh(forced);
 #endif	/* EXPERIMENTAL */
-	d.stratmap->refresh();
+	d.stratmap->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

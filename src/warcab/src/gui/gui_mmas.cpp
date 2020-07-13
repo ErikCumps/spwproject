@@ -222,7 +222,7 @@ GuiMMAS::set_parent (GuiRptTrn *parent, bool player)
 }
 
 void
-GuiMMAS::update (void)
+GuiMMAS::update (bool forced)
 {
 	MDLD_TREE_ITEM	*item = NULL;
 	bool		skip;
@@ -246,6 +246,7 @@ GuiMMAS::update (void)
 	skip &= !GUIVALCHANGED (Vtimeline);
 	skip &= !GUIVALCHANGED (Vprevcmp);
 	skip &= !GUIVALCHANGED(Vtype);
+	skip &= !forced;
 	if (skip) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;
@@ -293,11 +294,11 @@ skip_data_update:
 }
 
 void
-GuiMMAS::refresh (void)
+GuiMMAS::refresh (bool forced)
 {
 	DBG_TRACE_FENTER;
 
-	update();
+	update(forced);
 	d.plot->refresh();
 	d.hdr_mmas->reload();
 	d.bdy_mmas->reload();

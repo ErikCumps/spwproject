@@ -123,9 +123,13 @@ GuiRptCnd::contextMenuEvent (QContextMenuEvent *event)
 	DBG_log ("[%s] global pos: x=%d, y=%d\n", __FUNCTION__, event->globalX(), event->globalY());
 	DBG_log ("[%s] widget pos: x=%d, y=%d\n", __FUNCTION__, event->x(), event->y());
 
-	menu->addAction (GUI_ACTIONS->p.file_add_game);
+	menu->addAction (GUI_ACTIONS->p.game_add_campaign_savegame);
+	menu->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
+	menu->addAction (GUI_ACTIONS->p.add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	menu->addAction (GUI_ACTIONS->p.file_add_snap);
+	menu->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
+	menu->addAction (GUI_ACTIONS->p.game_add_battle_snapshot);
+	menu->addAction (GUI_ACTIONS->p.add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	menu->addSeparator ();
 	// TODO: only show this if there is an open dossier!

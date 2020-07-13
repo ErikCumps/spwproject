@@ -34,6 +34,7 @@ extern void		CFG_autoload_set	(char *file);
 extern bool		CFG_full_history	(void);
 extern INTEL_MODE	CFG_intel_mode		(void);
 extern int		CFG_hcftype		(void);
+extern bool		CFG_german_cross	(void);
 
 extern GUI_STATE *	CFG_gui_state_get	(void);
 extern void		CFG_gui_state_set	(GUI_STATE &state);

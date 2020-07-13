@@ -44,6 +44,7 @@ typedef struct s_CFGDATA {
 	bool		fhistory;		/*!< Campaign full history flag		*/
 	INTEL_MODE	intel_mode;		/*!< Default intel mode			*/
 	int		hcftype;		/*!< Default height colorfield type	*/
+	bool		german_cross;		/*!< German Cross flag			*/
 	GUI_STATE	gui_state;		/*!< GUI state				*/
 } CFGDATA;
 
@@ -52,7 +53,7 @@ typedef struct s_CFGDATA {
 /* --- private macros  --- */
 
 /*! Configuration version */
-#define	CFG_REVISION	6
+#define	CFG_REVISION	7
 
 /* Convenience macro */
 #define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
@@ -203,6 +204,13 @@ config_load (QSettings *storage)
 		cfg.hcftype = data.toInt();
 	}
 
+	data = storage->value ("GermanCross");
+	if (data.isNull ()) {
+		cfg.german_cross = DEFAULT_GERMAN_CROSS;
+	} else {
+		cfg.german_cross = data.toBool();
+	}
+
 	storage->beginGroup("GUI");
 
 	data = storage->value ("State");
@@ -292,6 +300,9 @@ config_save (QSettings *storage)
 
 	data.setValue (cfg.hcftype);
 	storage->setValue ("DefaultHeightColorfieldType", data);
+
+	data.setValue (cfg.german_cross);
+	storage->setValue ("GermanCross", data);
 
 	storage->beginGroup("GUI");
 
@@ -651,6 +662,20 @@ CFG_SET_hcftype (int i)
 	cfg.hcftype = i;
 }
 
+bool
+CFG_german_cross (void)
+{
+	return (initialized ? cfg.german_cross : DEFAULT_GERMAN_CROSS);
+}
+
+static void
+CFG_SET_german_cross (bool b)
+{
+	if (!initialized) return;
+
+	cfg.german_cross = b;
+}
+
 GUI_STATE *
 CFG_gui_state_get (void)
 {
@@ -702,7 +727,8 @@ CFG_DLG (bool isfirstrun)
 		CFG_autoload (),
 		CFG_full_history (),
 		intelmode2raw(CFG_intel_mode ()),
-		CFG_hcftype ()
+		CFG_hcftype (),
+		CFG_german_cross ()
 	);
 
 	CfgDlgGame	spwaw (
@@ -737,6 +763,7 @@ CFG_DLG (bool isfirstrun)
 		CFG_SET_full_history (data.fhistory);
 		CFG_SET_intel_mode (raw2intelmode(data.imode));
 		CFG_SET_hcftype (data.hcftype);
+		CFG_SET_german_cross (data.gecross);
 		config_update_oobcfg ();
 	}
 
@@ -775,6 +802,7 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tfull history        = %s\n", cfg.fhistory?"enabled":"disabled");
 		SAYSTATE1 ("\tdefault intel mode  = %s\n", intelmode2str (cfg.intel_mode));
 		SAYSTATE1 ("\tdefault hcf type    = %d\n", cfg.hcftype);
+		SAYSTATE1 ("\tGerman Cross        = %s\n", cfg.german_cross?"enabled":"disabled");
 		SAYSTATE1 ("\tGUI state           = %u\n", cfg.gui_state.state);
 		SAYSTATE2 ("\tGUI size            = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
 		SAYSTATE2 ("\tGUI position        = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());

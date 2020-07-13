@@ -257,7 +257,7 @@ GuiRptTrnSMap::set_parent (GuiRptTrn *p)
 }
 
 void
-GuiRptTrnSMap::refresh (void)
+GuiRptTrnSMap::refresh (bool forced)
 {
 	MDLD_TREE_ITEM	*item;
 	bool		skip_data, skip_render;
@@ -266,7 +266,8 @@ GuiRptTrnSMap::refresh (void)
 
 	item = (d.parent != NULL) ? d.parent->current() : NULL;
 
-	skip_data = !d.reftrack.changed (item);
+	skip_data =  !d.reftrack.changed (item);
+	skip_data &= !forced;
 	if (skip_data) goto skip_data_update;
 
 	DBG_TRACE_UPDATE;

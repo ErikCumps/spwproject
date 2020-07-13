@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle turn report - force.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -29,7 +29,7 @@ public:
 
 public:
 	void	set_parent	(GuiRptTrn *parent, bool pflag, bool cflag);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 public slots:
 	void	selectedCurrentIndex	(int index);

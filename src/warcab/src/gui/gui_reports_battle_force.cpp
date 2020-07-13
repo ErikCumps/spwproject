@@ -129,7 +129,7 @@ GuiRptBtlFrc::set_parent (GuiRptBtl *parent, bool pflag, bool cflag)
 }
 
 void
-GuiRptBtlFrc::refresh (void)
+GuiRptBtlFrc::refresh (bool forced)
 {
 	SPWAW_BATTLE	*p;
 	bool		enable = true;
@@ -147,16 +147,16 @@ GuiRptBtlFrc::refresh (void)
 
 	set_enabled (enable);
 
-	d.cnd->refresh();
+	d.cnd->refresh(forced);
 	if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
-		if (d.pflag && d.cflag)	d.prg->refresh();
+		if (d.pflag && d.cflag)	d.prg->refresh(forced);
 	}
-	d.kill->refresh();
-	d.loss->refresh();
-	d.oob->refresh();
-	d.rst->refresh();
-	d.hst->refresh();
-	d.mmas->refresh();
+	d.kill->refresh(forced);
+	d.loss->refresh(forced);
+	d.oob->refresh(forced);
+	d.rst->refresh(forced);
+	d.hst->refresh(forced);
+	d.mmas->refresh(forced);
 
 	DBG_TRACE_FLEAVE;
 }

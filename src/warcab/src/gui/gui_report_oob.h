@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - order of battle report.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -26,7 +26,7 @@ public:
 	void	set_parent	(GuiRptDsr *parent, bool pflag);
 	void	set_parent	(GuiRptBtl *parent, bool pflag, bool core = false);
 	void	set_parent	(GuiRptTrn *parent, bool pflag, bool core = false);
-	void	refresh		(void);
+	void	refresh		(bool forced = false);
 
 private:
 	struct s_data {
