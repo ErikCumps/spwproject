@@ -443,7 +443,7 @@ GuiRptLoss::list_killed (void)
 
 	str.clear();
 
-	d.model->set_dltsort (false);
+	d.model->set_dltsort (true);
 	d.model->sort (MDLR_COLUMN_STATUS, Qt::DescendingOrder);
 
 	cnt = idx = 0; stop = false;
@@ -453,8 +453,8 @@ GuiRptLoss::list_killed (void)
 
 		tstr.clear();
 		for (int i=0; i<dcnt; i++) {
-			if (SPWDLT_int (data[i].dlt) == SPWAW_UREADY) { stop = true; break; }
-			if (!data[i].uir->snap->attr.gen.losses) continue;
+			if (SPWDLT_getint (data[i].dlt) <= 0) { stop = true; break; }
+			if (data[i].uir->snap->data.alive) continue;
 
 			bool dc = data[i].uhte?SPWAW_UHT_is_decommissioned (data[i].uhte):false;
 
@@ -529,7 +529,7 @@ GuiRptLoss::list_abandoned (void)
 
 	str.clear();
 
-	d.model->set_dltsort (false);
+	d.model->set_dltsort (true);
 	d.model->sort (MDLR_COLUMN_ABAND, Qt::AscendingOrder);
 
 	cnt = idx = 0; stop = false;
@@ -539,8 +539,8 @@ GuiRptLoss::list_abandoned (void)
 
 		tstr.clear();
 		for (int i=0; i<dcnt; i++) {
-			if (SPWDLT_int (data[i].dlt) == SPWAW_ANONE) { stop = true; break; }
-			if (!data[i].uir->snap->data.alive) continue;
+			if (SPWDLT_getint (data[i].dlt) <= 0) { stop = true; break; }
+			if (SPWDLT_int (data[i].dlt) == SPWAW_ANONE) { continue; }
 
 			bool dc = data[i].uhte?SPWAW_UHT_is_decommissioned (data[i].uhte):false;
 
