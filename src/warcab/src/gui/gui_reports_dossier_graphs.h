@@ -16,7 +16,7 @@
 #include "gui_battle_graph.h"
 #include "gui_plot_table_view.h"
 
-class GuiRptDsrPlt	: public QScrollArea
+class GuiRptDsrPlt	: public QFrame
 {
 	Q_OBJECT
 
@@ -40,12 +40,12 @@ private:
 	struct s_data {
 		ModelPlotTable		*model;
 		
-		QFrame			*frame;
 		QGridLayout		*layout;
 		QComboBox		*graph_type;
 		QComboBox		*plot_type;
 		QCheckBox		*plot_stacked;
 		QCheckBox		*axis_timeline;
+		QScrollArea		*scroller;
 		PlotTable		*plot;
 		QSplitter		*split;
 		GuiPlotTableView	*hdr_table;

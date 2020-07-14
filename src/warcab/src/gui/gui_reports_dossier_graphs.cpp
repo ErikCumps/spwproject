@@ -11,20 +11,26 @@
 #include "gui_plot_table_view.h"
 #include "../plot/plot_table.h"
 
+#define	PLOT_MARGIN	5
+
 GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
-	: QScrollArea (P)
+	: QFrame (P)
 {
 	DBG_TRACE_CONSTRUCT;
 
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
+	/* Fix the QFrame look */
+	setPalette (GUI_APP->palette());
+	setAutoFillBackground (true);
+	setFrameStyle (QFrame::Panel|QFrame::Plain);
+
 	GUINEW (d.model, ModelPlotTable (), ERR_GUI_REPORTS_INIT_FAILED, "data model");
 
 	graphs_setup();
 
-	GUINEW (d.frame, QFrame (this), ERR_GUI_REPORTS_INIT_FAILED, "frame");
-	GUINEW (d.layout, QGridLayout (d.frame), ERR_GUI_REPORTS_INIT_FAILED, "layout");
+	GUINEW (d.layout, QGridLayout (this), ERR_GUI_REPORTS_INIT_FAILED, "layout");
 
 	GUINEW (d.graph_type, QComboBox (this), ERR_GUI_REPORTS_INIT_FAILED, "graph_type");
 	for (int i=0; i<d.cnt; i++) {
@@ -44,10 +50,13 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	GUINEW (d.axis_timeline, QCheckBox ("Time-based axis?", this), ERR_GUI_REPORTS_INIT_FAILED, "axis_timeline");
 	d.axis_timeline->setCheckState (Qt::Checked);
 
-	GUINEW (d.plot, PlotTable (d.model, d.frame), ERR_GUI_REPORTS_INIT_FAILED, "plot");
+	GUINEW (d.plot, PlotTable (d.model, this), ERR_GUI_REPORTS_INIT_FAILED, "plot");
 	GUIERR (d.plot, ERR_GUI_REPORTS_INIT_FAILED);
-	d.plot->setTitle ("plot");
-	d.plot->setMargin (5);
+	d.plot->setMargin (PLOT_MARGIN);
+
+	GUINEW (d.scroller, QScrollArea (this), ERR_GUI_REPORTS_MMAS_INIT_FAILED, "scroller");
+	d.scroller->setWidget (d.plot);
+	d.scroller->setWidgetResizable (true);
 
 	GUINEW (d.split, QSplitter (Qt::Horizontal, this), ERR_GUI_REPORTS_INIT_FAILED, "split");
 	d.split->setChildrenCollapsible (false);
@@ -62,11 +71,8 @@ GuiRptDsrPlt::GuiRptDsrPlt (QWidget *P)
 	d.layout->addWidget (d.axis_timeline,	1, 0, 1, 1);
 	d.layout->addWidget (d.plot_type,	1, 1, 1, 1);
 	d.layout->addWidget (d.plot_stacked,	1, 2, 1, 1);
-	d.layout->addWidget (d.plot,		2, 0, 1, 3);
+	d.layout->addWidget (d.scroller,	2, 0, 1, 3);
 	d.layout->addWidget (d.split,		3, 0, 1, 3);
-
-	setWidget (d.frame);
-	setWidgetResizable (true);
 
 	if (!connect (d.model, SIGNAL (model_updated(void)), d.plot, SLOT(commit(void))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_ROSTER_INIT_FAILED, "failed to connect <model:model_updated> to <plot:commit>");
@@ -223,6 +229,9 @@ GuiRptDsrPlt::refresh (bool forced)
 	if (!d.axis_timeline->isHidden()) {
 		d.axis_timeline->setCheckState ((d.ptr->definition.axis_type == AXIS_TIME) ? Qt::Checked : Qt::Unchecked);
 	}
+
+	/* Force the QScrollArea to resize the plot widget */
+	d.scroller->setWidgetResizable(false); d.scroller->setWidgetResizable(true);
 
 skip_data_update:
 	DBG_TRACE_FLEAVE;
