@@ -7,6 +7,26 @@ License: GPL V2.
 ChangeLog
 ---------
 
+2020-07-20, version 0.8.1
+
+    * New feature - German Cross Flag
+    This new preference can be selected if you do not want War Cabinet to
+    display the historic German Flag from WWII for personal reasons or to
+    satisfy the requirements of German Law.
+
+    * Improvement - report actual turn battle losses
+    List the actual losses during the turn, instead of all losses up to the
+    turn.
+
+    * Fixed issue #10:
+    Save on exit does not save.
+
+    * Fixed issue #11:
+    Be robust against formation or unit count mismatches during battle.
+
+    * Fix - fixed crash
+    Crash caused by incorrect formation detection handling.
+
 2020-06-20, version 0.8.0
 
     * Added support for multiple game types (currently SP:WaW and winSPWW2)
