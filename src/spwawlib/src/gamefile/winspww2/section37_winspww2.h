@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - winSPWW2 gamefile handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -69,39 +69,41 @@ typedef struct s_WINSPWW2_GAME_DATA {
 	DWORD		P1TLart;			/* P1 Total losses: ART						*/
 	char		__data12[8];
 	DWORD		P1TLsoft;			/* P1 Total losses: soft vehicles				*/
-	DWORD		P1TLaircraft;			/* P1 Total losses: aircraft					*/
+	DWORD		P2TLsoft;			/* P2 Total losses: soft vehicles				*/
 	DWORD		P1TLairtpt;			/* P1 Total losses: air transport				*/
-	char		__data13[8];
+	DWORD		P1TLaircraft;			/* P1 Total losses: aircraft					*/
+	char		__data13[4];
 	DWORD		P2TLafv;			/* P2 Total losses: AFV						*/
 	DWORD		P2TLapc;			/* P2 Total losses: APC						*/
 	DWORD		P2TLart;			/* P2 Total losses: ART						*/
-	char		__data14[8];
-	DWORD		P2TLsoft;			/* P2 Total losses: soft vehicles				*/
+	char		__data14[12];
+	DWORD		P2TLairtpt;			/* P2 Total losses: air transport				*/	
 	DWORD		P2TLaircraft;			/* P2 Total losses: aircraft					*/
-	DWORD		P2TLairtpt;			/* P2 Total losses: air transport				*/
 	char		__data15[4];
 	DWORD		P1BLmen;			/* P1 Battle losses: men					*/
 	DWORD		P2BLmen;			/* P2 Battle losses: men					*/
-	DWORD		P1BLapc;			/* P1 Battle losses: APC					*/
-	DWORD		P1BLafv;			/* P1 Battle losses: AFV					*/
-	DWORD		P1BLaircraft;			/* P1 Battle losses: aircraft?					*/
-	DWORD		P1BLairtpt;			/* P1 Battle losses: air transport?				*/
-	DWORD		P1BLart;			/* P1 Battle losses: ART					*/
 	char		__data16[4];
+	DWORD		P1BLafv;			/* P1 Battle losses: AFV					*/
+	DWORD		P1BLapc;			/* P1 Battle losses: APC					*/
+	DWORD		P1BLart;			/* P1 Battle losses: ART					*/
+	char		__data17[8];
 	DWORD		P1BLsoft;			/* P1 Battle losses: soft vehicles				*/
 	DWORD		P2BLsoft;			/* P2 Battle losses: soft vehicles				*/
-	char		__data17[8];
-	DWORD		P2BLapc;			/* P2 Battle losses: APC					*/
+	DWORD		P1BLairtpt;			/* P1 Battle losses: air transport?				*/
+	DWORD		P1BLaircraft;			/* P1 Battle losses: aircraft?					*/
+	char		__data18[4];
 	DWORD		P2BLafv;			/* P2 Battle losses: AFV					*/
-	DWORD		P2BLaircraft;			/* P2 Battle losses: aircraft?					*/
-	DWORD		P2BLairtpt;			/* P2 Battle losses: air transport?				*/
+	DWORD		P2BLapc;			/* P2 Battle losses: APC					*/
 	DWORD		P2BLart;			/* P2 Battle losses: ART					*/
-	char		__data18[20];
+	char		__data19[12];
+	DWORD		P2BLairtpt;			/* P2 Battle losses: air transport?				*/
+	DWORD		P2BLaircraft;			/* P2 Battle losses: aircraft?					*/
+	char		__data20[4];
 	USHORT		busy;				/* Inverted battle busy flag					*/
-	char		__data19[2];
+	char		__data21[2];
 	DWORD		P1score;			/* P1 battle score						*/
 	DWORD		P2score;			/* P2 battle score						*/
-	char		__data20[135];
+	char		__data22[135];
 } WINSPWW2_GAME_DATA;
 
 typedef struct s_WINSPWW2_SECTION37 {

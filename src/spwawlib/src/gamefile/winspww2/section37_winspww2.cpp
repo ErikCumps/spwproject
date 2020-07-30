@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - winSPWW2 game data.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -77,30 +77,30 @@ section37_winspww2_save_snapshot (GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *st
 	cp->P1BLsoft    = data->P1BLsoft;
 	cp->P1BLapc     = data->P1BLapc;
 	cp->P1BLafv     = data->P1BLafv;
-	cp->P1BLgliders = 0;			// FIXME!
-	cp->P1BLair     = 0;			// FIXME!
+	cp->P1BLgliders = data->P1BLairtpt;	// FIXME: winSPWW2 records glider losses as aircraft losses!
+	cp->P1BLair     = data->P1BLaircraft;
 	cp->P2BLmen     = data->P2BLmen;
 	cp->P2BLart     = data->P2BLart;
 	cp->P2BLsoft    = data->P2BLsoft;
 	cp->P2BLapc     = data->P2BLapc;
 	cp->P2BLafv     = data->P2BLafv;
-	cp->P2BLgliders = 0;			// FIXME!
-	cp->P2BLair     = 0;			// FIXME!
+	cp->P2BLgliders = data->P2BLairtpt;	// FIXME: winSPWW2 records glider losses as aircraft losses!
+	cp->P2BLair     = data->P2BLaircraft;
 
 	cp->P1TLmen     = data->P1TLmen;
 	cp->P1TLart     = data->P1TLart;
 	cp->P1TLsoft    = data->P1TLsoft;
 	cp->P1TLapc     = data->P1TLapc;
 	cp->P1TLafv     = data->P1TLafv;
-	cp->P1TLgliders = 0;			// FIXME!
-	cp->P1TLair     = 0;			// FIXME!
+	cp->P1TLgliders = data->P1TLairtpt;	// FIXME: winSPWW2 records glider losses as aircraft losses!
+	cp->P1TLair     = data->P1TLaircraft;
 	cp->P2TLmen     = data->P2TLmen;
 	cp->P2TLart     = data->P2TLart;
 	cp->P2TLsoft    = data->P2TLsoft;
 	cp->P2TLapc     = data->P2TLapc;
 	cp->P2TLafv     = data->P2TLafv;
-	cp->P2TLgliders = 0;			// FIXME!
-	cp->P2TLair     = 0;			// FIXME!
+	cp->P2TLgliders = data->P2TLairtpt;	// FIXME: winSPWW2 records glider losses as aircraft losses!
+	cp->P2TLair     = data->P2TLaircraft;
 
 	cp->busy = data->busy;
 

@@ -793,34 +793,36 @@ offset	size	type	description
 0x0123	4	UINT4	Campaign P1 total ART losses
 0x0127	8	???	???
 0x012F	4	UINT4	Campaign P1 total soft vehicle losses
-0x0133	4	UINT4	Campaign P1 total aircraft losses
+0x0133	4	UINT4	Campaign P2 total soft vehicle losses
 0x0137	4	UINT4	Campaign P1 total air transport losses
-0x013B	8	???	???
+0x013B	4	UINT4	Campaign P1 total aircraft losses
+0x013F	4	???	???
 0x0143	4	UINT4	Campaign P2 total AFV losses
 0x0147	4	UINT4	Campaign P2 total APC losses
 0x014B	4	UINT4	Campaign P2 total ART losses
-0x014F	8	???	???
-0x0157	4	UINT4	Campaign P2 total soft vehicle losses
-0x015B	4	UINT4	Campaign P2 total aircraft losses
-0x015F	4	UINT4	Campaign P2 total air transport losses
+0x014F	12	???	???
+0x015B	4	UINT4	Campaign P2 total air transport losses
+0x015F	4	UINT4	Campaign P2 total aircraft losses
 0x0163	4	???	???
 0x0167	4	UINT4	Campaign P1 battle men losses
 0x016B	4	UINT4	Campaign P2 battle men losses
-0x016F	4	UINT4	Campaign P1 battle APC losses
+0x016F	4	???	???
 0x0173	4	UINT4	Campaign P1 battle AFV losses
-0x0177	4	UINT4	Campaign P1 battle ?? losses
-0x017B	4	UINT4	Campaign P1 battle ?? losses
-0x017F	4	UINT4	Campaign P1 battle ART losses
-0x0183	4	???	???
+0x0177	4	UINT4	Campaign P1 battle APC losses
+0x017B	4	UINT4	Campaign P1 battle ART losses
+0x017F	8	???	???
 0x0187	4	UINT4	Campaign P1 battle soft vehicle losses
 0x018B	4	UINT4	Campaign P2 battle soft vehicle losses
-0x018F	8	???	???
-0x0197	4	UINT4	Campaign P2 battle APC losses
+0x018F	4	UINT4	Campaign P1 battle air transport losses
+0x0193	4	UINT4	Campaign P1 battle aircraft losses
+0x0197	4	???	???
 0x019B	4	UINT4	Campaign P2 battle AFV losses
-0x019F	4	UINT4	Campaign P2 battle ?? losses
-0x01A3	4	UINT4	Campaign P2 battle ?? losses
-0x01A7	4	UINT4	Campaign P2 battle ART losses
-0x01AB	20	???	???
+0x019F	4	UINT4	Campaign P2 battle APC losses
+0x01A3	4	UINT4	Campaign P2 battle ART losses
+0x01A7	12	???	???
+0x01B3	4	UINT4	Campaign P2 battle air transport losses
+0x01B7	4	UINT4	Campaign P2 battle aircraft losses
+0x01BB	4	???	???
 0x01BF	2	UINT2	Inverted battle busy flag
 0x01C1	2	???	???
 0x01C3	4	UINT4	Campaign P1 battle score
