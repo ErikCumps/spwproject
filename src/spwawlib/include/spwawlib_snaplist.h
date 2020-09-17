@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot list API.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -27,8 +27,15 @@ typedef struct s_SPWAW_SNAPLIST_NODE {
 	SPWAW_SNAPSHOT_INFO	info;				/*!< snapshot info struct		*/
 } SPWAW_SNAPLIST_NODE;
 
+/* SPWAW snapshot list target */
+typedef struct s_SPWAW_SNAPLIST_TARGET {
+	SPWAW_GAME_TYPE			gametype;		/*!< game type				*/
+	SPWAW_DOSSIER_TYPE		type;			/*!< game dossier type			*/
+} SPWAW_SNAPLIST_TARGET;
+
 /* SPWAW snapshot list */
 typedef struct s_SPWAW_SNAPLIST {
+	SPWAW_SNAPLIST_TARGET	target;				/*!< snapshot list target purpose	*/
 	unsigned long		cnt;				/*!< number of nodes in list		*/
 	SPWAW_SNAPLIST_NODE	**list;				/*!< pointer to list array		*/
 	unsigned long		len;				/*!< number of available nodes		*/
@@ -38,9 +45,9 @@ typedef struct s_SPWAW_SNAPLIST {
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST **list);
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_new	(SPWAW_SNAPLIST **list);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist		(SPWAW_SNAPLIST_TARGET *target, const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list);
+
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_new	(SPWAW_SNAPLIST_TARGET *target, SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_free	(SPWAW_SNAPLIST **list);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_add	(SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap);
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_snaplist_addcpy	(SPWAW_SNAPLIST *list, SPWAW_SNAPLIST_NODE *node); 

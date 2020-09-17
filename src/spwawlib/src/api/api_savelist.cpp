@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame list API implementation.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,69 +19,124 @@ static SPWAW_ERROR SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE
 static bool
 id_from_name (SPWAW_GAME_TYPE gametype, char *name, unsigned int *id)
 {
-	const char	*base = NULL;
+	GAMEFILE_META	gfm;
 	char		match[MAX_PATH+1];
 
 	if (!name || !id) return (false);
-	if (!gamefile_basename (gametype, &base)) return (false);
+	if (!gamefile_info (gametype, SPWAW_SAVE_TYPE_REGULAR, &gfm)) return (false);
+	if (!gfm.base) return (false);
 
 	memset (match, 0, sizeof (match));
-	snprintf (match, sizeof (match) - 1, "%s%%u.dat", base);
+	snprintf (match, sizeof (match) - 1, "%s%%u.%s", gfm.base, gfm.ext_data);
 
 	*id = 0;
 	return (sscanf (name, match, id) == 1);
 }
 
+static void
+basename_from_name (char *name, char *dst, unsigned int len)
+{
+	char		*p;
+	unsigned int	todo;
+
+	if (!dst || !len) return;
+	memset (dst, 0, len);
+
+	if (!name) return;
+
+	p = strrchr (name, '.');
+	todo = p ? (p - name) : strlen (name);
+	if (todo >= len) todo = len-1;
+	memcpy (dst, name, todo);
+}
+
 static bool
-file_on_list (SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE *node)
+file_on_list (SPWAW_SAVELIST_TARGET &target, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE *node)
 {
 	unsigned long		i;
-	SPWAW_SAVELIST_NODE	*p = NULL;
+	bool			matched = false;
 
 	if (!ignore) return (false);
 
 	for (i=0; i<ignore->cnt; i++) {
-		p = ignore->list[i];
+		SPWAW_SAVELIST_NODE *p = ignore->list[i];
+		matched = false;
 
-		if (	(strcmp (p->info.stamp, node->info.stamp) == 0) &&
-			(strcmp (p->info.location, node->info.location) == 0)
-			)
-		{
-			if (CompareFileTime (&(p->filedate), &(node->filedate)) >= 0) break;
+		switch (target.type) {
+			case SPWAW_CAMPAIGN_DOSSIER:
+			case SPWAW_MEGACAM_DOSSIER:
+				// match on battle timestamp
+				if (	strcmp (p->info.stamp, node->info.stamp) == 0
+					) matched = true;
+				break;
+			case SPWAW_STDALONE_DOSSIER:
+			default:
+				// match on filename and not-newer file
+				if (	(strcmp (p->filepath, node->filepath) == 0) &&
+					(CompareFileTime (&(p->filedate), &(node->filedate)) >= 0)
+					) matched = true;
+				break;
 		}
 
-		p = NULL;
+		if (matched) break;
 	}
-	return (p != NULL);
+	return (matched);
 }
 
 static bool
-handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST_NODE **p)
+handle_file (SPWAW_SAVELIST_TARGET &target, SPWAW_SAVE_TYPE savetype, const char *dir, WIN32_FIND_DATA f, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST_NODE **p)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
 	unsigned int		id;
+	char			base[MAX_PATH+1];
 	SPWAW_SAVELIST_NODE	*ptr = NULL;
 	SYSTEMTIME		mt_utc, mt_local;
 	GAMEINFO		info;
 
 	if (!p) return (false); *p = NULL;
 
-	/* skip file if no id detected */
-	if (!id_from_name (gametype, f.cFileName, &id)) goto handle_error;
-
 	ptr = safe_malloc (SPWAW_SAVELIST_NODE); COOMGOTO (ptr, "SPWAW_SAVELIST_NODE", handle_error);
 
-	/* id */
-	ptr->id = id;
+	if (savetype == SPWAW_SAVE_TYPE_REGULAR) {
+		/* skip file if no id detected */
+		if (!id_from_name (target.gametype, f.cFileName, &id)) goto handle_error;
 
-	/* file directory */
-	_fullpath (ptr->dir, dir, sizeof (ptr->dir)-1);
+		rc = SPWAW_savegame_descriptor_init (ptr->sgd, target.gametype, savetype, dir, id);
+		ERRORGOTO ("SPWAW_savegame_descriptor_init()", handle_error);
+	} else {
+		/* Non-regular save type games have no id */
+		basename_from_name (f.cFileName, base, sizeof (base));
+
+		rc = SPWAW_savegame_descriptor_init (ptr->sgd, target.gametype, savetype, dir, base);
+		ERRORGOTO ("SPWAW_savegame_descriptor_init()", handle_error);
+	}
+
+	/* obtain game info */
+	if (game_load_info (&ptr->sgd, &info)) {
+		memcpy (ptr->info.stamp, info.stamp, sizeof (info.stamp));
+		memcpy (ptr->info.location, info.location, sizeof (info.location));
+		memcpy (ptr->info.title, info.title, sizeof (info.title));
+		ptr->info.type = info.type;
+		ptr->info.gametype = info.gametype;
+		ptr->info.savetype = info.savetype;
+	}
+
+	/* skip file if wrong battle type */
+	switch (target.type) {
+		case SPWAW_CAMPAIGN_DOSSIER:
+		case SPWAW_MEGACAM_DOSSIER:
+			if (ptr->info.type != target.type) goto skip_file;
+			break;
+		case SPWAW_STDALONE_DOSSIER:
+		default:
+			break;
+	}
 
 	/* file name */
 	snprintf (ptr->filename, sizeof (ptr->filename) - 1, "%s", f.cFileName);
 
 	/* file path */
-	snprintf (ptr->filepath, sizeof (ptr->filepath) - 1, "%s\\%s", ptr->dir, ptr->filename);
+	snprintf (ptr->filepath, sizeof (ptr->filepath) - 1, "%s\\%s", ptr->sgd.path, ptr->filename);
 
 	/* file size */
 	ptr->filesize = f.nFileSizeLow;
@@ -93,27 +148,9 @@ handle_file (SPWAW_GAME_TYPE gametype, const char *dir, WIN32_FIND_DATA f, SPWAW
 	snprintf (ptr->filestamp, sizeof (ptr->filestamp) - 1, "%4.4d/%02d/%02d %02d:%02d:%02d",
 		mt_local.wYear, mt_local.wMonth, mt_local.wDay, mt_local.wHour, mt_local.wMinute, mt_local.wSecond);
 
-	/* obtain game info */
-	if (game_load_info (gametype, dir, id, &info)) {
-		memcpy (ptr->info.stamp, info.stamp, sizeof (info.stamp));
-		memcpy (ptr->info.location, info.location, sizeof (info.location));
-		memcpy (ptr->info.comment, info.comment, sizeof (info.comment));
-		ptr->info.type = info.type;
-		ptr->info.gametype = info.gametype;
-	}
-
-	/* skip file if wrong battle type */
-	switch (battletype) {
-		case SPWAW_CAMPAIGN_BATTLE:
-		case SPWAW_STDALONE_BATTLE:
-			if (ptr->info.type != battletype) goto skip_file;
-			break;
-		default:
-			break;
-	}
 
 	/* skip file if on ignore list */
-	if (file_on_list (ignore, ptr)) goto skip_file;
+	if (file_on_list (target, ignore, ptr)) goto skip_file;
 
 	*p = ptr;
 	return (true);
@@ -125,25 +162,29 @@ handle_error:
 }
 
 static void
-list_files (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST *list)
+list_files (SPWAW_SAVE_TYPE savetype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST *list)
 {
-	const char		*base = NULL;
+	GAMEFILE_META	gfm;
 	char			buffer[MAX_PATH+1];
 	HANDLE			h;
 	WIN32_FIND_DATA		f;
 	BOOL			stop = false;
 	SPWAW_SAVELIST_NODE	*p;
 
-	if (!gamefile_basename (gametype, &base)) return;
+	if (!gamefile_info (list->target.gametype, savetype, &gfm)) return;
 
 	memset (buffer, 0, sizeof (buffer));
-	snprintf (buffer, sizeof (buffer) - 1, "%s\\%s*.dat", dir, base);
+	if (gfm.base) {
+		snprintf (buffer, sizeof (buffer) - 1, "%s\\%s*.%s", dir, gfm.base, gfm.ext_data);
+	} else {
+		snprintf (buffer, sizeof (buffer) - 1, "%s\\*.%s", dir, gfm.ext_data);
+	}
 
 	h = FindFirstFile (buffer, &f);
 	if (h == INVALID_HANDLE_VALUE) return;	// TODO: flag error!
 
 	while (!stop) {
-		if (handle_file (gametype, dir, f, ignore, battletype, &p)) {
+		if (handle_file (list->target, savetype, dir, f, ignore, &p)) {
 			/* put on list */
 			SPWAW_savelist_add (list, p);
 		}
@@ -154,39 +195,46 @@ list_files (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, S
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savelist (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
+SPWAW_savelist (SPWAW_SAVELIST_TARGET *target, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
 {
 	SPWAW_ERROR	rc;
+	SPWAW_SAVE_TYPE	types[2];
 
-	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");
+	CSPWINIT;
+	CNULLARG (target); CNULLARG (dir); CNULLARG (list);
 
-	list_files (gametype, dir, ignore, SPWAW_UNKNOWN_BATTLE, *list);
+	rc = SPWAW_savelist_new (target, list); ROE ("SPWAW_savelist_new()");
+
+	memset (types, 0, sizeof (types));
+	switch (target->type) {
+		case SPWAW_CAMPAIGN_DOSSIER:
+		case SPWAW_STDALONE_DOSSIER:
+			types[0] = SPWAW_SAVE_TYPE_REGULAR;
+			types[1] = SPWAW_SAVE_TYPE_MEGACAM;
+			break;
+		case SPWAW_MEGACAM_DOSSIER:
+			types[0] = SPWAW_SAVE_TYPE_MEGACAM;
+			break;
+	}
+
+	for (int i=0; i<ARRAYCOUNT(types); i++) {
+		list_files (types[i], dir, ignore, *list);
+	}
 
 	return (SPWERR_OK);
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savelist (SPWAW_GAME_TYPE gametype, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SAVELIST **list)
-{
-	SPWAW_ERROR	rc;
-
-	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");
-
-	list_files (gametype, dir, ignore, battletype, *list);
-
-	return (SPWERR_OK);
-}
-
-SPWAWLIB_API SPWAW_ERROR
-SPWAW_savelist_new (SPWAW_SAVELIST **list)
+SPWAW_savelist_new (SPWAW_SAVELIST_TARGET *target, SPWAW_SAVELIST **list)
 {
 	SPWAW_SAVELIST	*p = NULL;
 
 	CSPWINIT;
-	CNULLARG (list);
+	CNULLARG (target); CNULLARG (list);
 	*list = NULL;
 
 	p = safe_malloc (SPWAW_SAVELIST); COOM (p, "SPWAW_SAVELIST");
+	p->target = *target;
 
 	*list = p;
 
@@ -240,6 +288,7 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node)
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 {
+	SPWAW_ERROR		rc;
 	SPWAW_SAVELIST_NODE	**p;
 	unsigned long		idx;
 
@@ -249,7 +298,9 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 	SPWAW_SAVELIST_NODE *node = safe_malloc (SPWAW_SAVELIST_NODE);
 	COOM (node, "SPWAW_SAVELIST_NODE element");
 
-	snprintf (node->dir, sizeof (node->dir) - 1, "%s", snap->src.path);
+	rc = SPWAW_savegame_descriptor_init (node->sgd, snap->gametype, snap->savetype, snap->src.path, SPWAW_BADLONGIDX);
+	ROE ("SPWAW_savegame_descriptor_init()");
+
 	snprintf (node->filename, sizeof (node->filename) - 1, "%s", snap->src.file);
 	snprintf (node->filepath, sizeof (node->filepath) - 1, "%s\\%s", snap->src.path, snap->src.file);
 	node->filedate = snap->src.date;
@@ -257,9 +308,10 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 	snprintf (node->info.stamp, sizeof (node->info.stamp) - 1, "%s, turn %u",
 		snap->game.battle.strings.date, snap->game.battle.data.tdate.turn);
 	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s", snap->raw.game.battle.location);
-	snprintf (node->info.comment, sizeof (node->info.comment) - 1, "%s", snap->raw.game.cmt.title);
+	snprintf (node->info.title, sizeof (node->info.title) - 1, "%s", snap->raw.game.cmt.title);
 	node->info.type = snap->type;
 	node->info.gametype = snap->gametype;
+	node->info.savetype = snap->savetype;
 
 	if (list->cnt >= list->len) {
 		list->len += LISTINC;

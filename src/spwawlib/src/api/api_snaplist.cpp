@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot list API implementation.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -40,7 +40,7 @@ file_on_list (SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST_NODE *node)
 }
 
 static bool
-handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST_NODE **p)
+handle_file (SPWAW_SNAPLIST_TARGET &target, const char *dir, WIN32_FIND_DATA f, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST_NODE **p)
 {
 	SPWAW_ERROR		rc;
 	SPWAW_SNAPLIST_NODE	*ptr = NULL;
@@ -74,11 +74,12 @@ handle_file (const char *dir, WIN32_FIND_DATA f, SPWAW_SNAPLIST *ignore, SPWAW_B
 	if (rc != SPWERR_OK) goto handle_error;
 
 	/* skip file if wrong battle type */
-	switch (battletype) {
-		case SPWAW_CAMPAIGN_BATTLE:
-		case SPWAW_STDALONE_BATTLE:
-			if (ptr->info.type != battletype) goto skip_file;
+	switch (target.type) {
+		case SPWAW_CAMPAIGN_DOSSIER:
+		case SPWAW_MEGACAM_DOSSIER:
+			if (ptr->info.type != target.type) goto skip_file;
 			break;
+		case SPWAW_STDALONE_DOSSIER:
 		default:
 			break;
 	}
@@ -96,7 +97,7 @@ handle_error:
 }
 
 static void
-list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST *list)
+list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST *list)
 {
 	char			buffer[MAX_PATH+1];
 	HANDLE			h;
@@ -111,7 +112,7 @@ list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletyp
 	if (h == INVALID_HANDLE_VALUE) return;	// TODO: flag error!
 
 	while (!stop) {
-		if (handle_file (dir, f, ignore, battletype, &p)) {
+		if (handle_file (list->target, dir, f, ignore, &p)) {
 			/* put on list */
 			SPWAW_snaplist_add (list, p);
 		}
@@ -122,43 +123,22 @@ list_files (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletyp
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_snaplist (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list)
+SPWAW_snaplist (SPWAW_SNAPLIST_TARGET *target, const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST **list)
 {
-	SPWAW_SNAPLIST	*p = NULL;
+	SPWAW_ERROR	rc;
 
 	CSPWINIT;
-	CNULLARG (dir); CNULLARG (list);
-	*list = NULL;
+	CNULLARG (target); CNULLARG (dir); CNULLARG (list);
 
-	p = safe_malloc (SPWAW_SNAPLIST); COOM (p, "SPWAW_SNAPLIST");
+	rc = SPWAW_snaplist_new (target, list); ROE ("SPWAW_snaplist_new()");
 
-	list_files (dir, ignore, SPWAW_UNKNOWN_BATTLE, p);
-
-	*list = p;
+	list_files (dir, ignore, *list);
 
 	return (SPWERR_OK);
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_snaplist (const char *dir, SPWAW_SNAPLIST *ignore, SPWAW_BATTLE_TYPE battletype, SPWAW_SNAPLIST **list)
-{
-	SPWAW_SNAPLIST	*p = NULL;
-
-	CSPWINIT;
-	CNULLARG (dir); CNULLARG (list);
-	*list = NULL;
-
-	p = safe_malloc (SPWAW_SNAPLIST); COOM (p, "SPWAW_SNAPLIST");
-
-	list_files (dir, ignore, battletype, p);
-
-	*list = p;
-
-	return (SPWERR_OK);
-}
-
-SPWAWLIB_API SPWAW_ERROR
-SPWAW_snaplist_new (SPWAW_SNAPLIST **list)
+SPWAW_snaplist_new (SPWAW_SNAPLIST_TARGET *target, SPWAW_SNAPLIST **list)
 {
 	SPWAW_SNAPLIST	*p = NULL;
 
@@ -167,6 +147,7 @@ SPWAW_snaplist_new (SPWAW_SNAPLIST **list)
 	*list = NULL;
 
 	p = safe_malloc (SPWAW_SNAPLIST); COOM (p, "SPWAW_SNAPLIST");
+	p->target = *target;
 
 	*list = p;
 
