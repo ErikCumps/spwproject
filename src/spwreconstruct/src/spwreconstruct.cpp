@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War savegame reconstruction tool.
  *
- * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -15,9 +15,11 @@ usage (char *app)
 	printf ("\n");
 
 	printf ("Usage: %s GAME DIR INDEX\n", app);
+	printf ("    or %s GAME DIR NAME\n", app);
 	printf ("Where: GAME    game type\n");
 	printf ("       DIR     path to savegame dir\n");
-	printf ("       INDEX   index of savegame to reconstruct\n");
+	printf ("       INDEX   numerical index of savegame to decompose\n");
+	printf ("       NAME    basename of savegame to decompose\n");
 	printf ("\n");
 
 	printf ("Supported game types:\n");
@@ -90,15 +92,23 @@ read_data (char *fn, void **data, DWORD *size)
 int
 main (int argc, char** argv)
 {
-	SPWAW_GAME_TYPE	gametype;
-	SPWAW_OOBCFG	oobcfg[1];
-	SPWAW_ERROR	rc;
-	SPWAW_SAVEGAME	*game = NULL;
-	char		fn[256];
+	SPWAW_GAME_TYPE			gametype;
+	SPWAW_OOBCFG			oobcfg[1];
+	SPWAW_SAVE_TYPE			savetype;
+	SPWAW_SAVEGAME_DESCRIPTOR	sgd;
+	SPWAW_ERROR			rc;
+	SPWAW_SAVEGAME			*game = NULL;
+	char				fn[256];
 
 	if (argc < 4) usage (argv[0]);
 
+	/* Determine game and save types */
 	gametype = SPWAW_str2gametype (argv[1]);
+	if ((argv[3][0] >= '0') && (argv[3][0] <= '9')) {
+		savetype = SPWAW_SAVE_TYPE_REGULAR;
+	} else {
+		savetype = (gametype == SPWAW_GAME_TYPE_SPWAW) ? SPWAW_SAVE_TYPE_MEGACAM : SPWAW_SAVE_TYPE_REGULAR;
+	}
 
 	memset (fn, 0, sizeof (fn));
 
@@ -109,12 +119,12 @@ main (int argc, char** argv)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Create new, empty, savegame data structure */
-	if ((rc = SPWAW_savegame_new (gametype, &game)) != SPWERR_OK)
+	if ((rc = SPWAW_savegame_new (gametype, savetype, &game)) != SPWERR_OK)
 		error ("failed to create new, empty, savegame data structure: %s", SPWAW_errstr (rc));
 
-	/* Read savegame comment data */
-	snprintf (fn, sizeof (fn) - 1, "comment.sect");
-	read_data (fn, &(game->comment.data), &(game->comment.size));
+	/* Read savegame metadata */
+	snprintf (fn, sizeof (fn) - 1, "metadata.sect");
+	read_data (fn, &(game->metadata.data), &(game->metadata.size));
 	
 	/* Read savegame sections data */
 	for (int i = 0; i < game->seccnt; i++) {
@@ -123,8 +133,18 @@ main (int argc, char** argv)
 	}
 
 	/* Write savegame data */
-	if ((rc = SPWAW_savegame_save (&game, argv[2], atoi(argv[3]))) != SPWERR_OK)
-		error ("failed to write savegame: %s", SPWAW_errstr (rc));
+	if ((argv[3][0] >= '0') && (argv[3][0] <= '9')) {
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[2], atoi(argv[3]));
+	} else {
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[2], argv[3]);
+	}
+	if (rc != SPWERR_OK) {
+		error ("failed to prepare savegame descriptor for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_savegame_save (&game, &sgd)) != SPWERR_OK) {
+		error ("failed to write savegame for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
+	}
 
 	/* Clean up */
 	SPWAW_savegame_free (&game);

@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War savegame decomposition tool.
  *
- * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -15,9 +15,11 @@ usage (char *app)
 	printf ("\n");
 
 	printf ("Usage: %s GAME DIR INDEX\n", app);
+	printf ("    or %s GAME DIR NAME\n", app);
 	printf ("Where: GAME    game type\n");
 	printf ("       DIR     path to savegame dir\n");
-	printf ("       INDEX   index of savegame to decompose\n");
+	printf ("       INDEX   numerical index of savegame to decompose\n");
+	printf ("       NAME    basename of savegame to decompose\n");
 	printf ("\n");
 
 	printf ("Supported game types:\n");
@@ -65,11 +67,13 @@ write_data (char *fn, void *data, DWORD size)
 int
 main (int argc, char** argv)
 {
-	SPWAW_GAME_TYPE	gametype;
-	SPWAW_OOBCFG	oobcfg[1];
-	SPWAW_ERROR	rc;
-	SPWAW_SAVEGAME	*game = NULL;
-	char		fn[256];
+	SPWAW_GAME_TYPE			gametype;
+	SPWAW_OOBCFG			oobcfg[1];
+	SPWAW_SAVE_TYPE			savetype;
+	SPWAW_SAVEGAME_DESCRIPTOR	sgd;
+	SPWAW_ERROR			rc;
+	SPWAW_SAVEGAME			*game = NULL;
+	char				fn[256];
 	
 	if (argc < 4) usage (argv[0]);
 
@@ -84,12 +88,24 @@ main (int argc, char** argv)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 
 	/* Load savegame data */
-	if ((rc = SPWAW_savegame_load (gametype, argv[2], atoi(argv[3]), &game)) != SPWERR_OK)
-		error ("failed to load savegame: %s", SPWAW_errstr (rc));
+	if ((argv[3][0] >= '0') && (argv[3][0] <= '9')) {
+		savetype = SPWAW_SAVE_TYPE_REGULAR;
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[2], atoi(argv[3]));
+	} else {
+		savetype = (gametype == SPWAW_GAME_TYPE_SPWAW) ? SPWAW_SAVE_TYPE_MEGACAM : SPWAW_SAVE_TYPE_REGULAR;
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[2], argv[3]);
+	}
+	if (rc != SPWERR_OK) {
+		error ("failed to prepare savegame descriptor for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
+	}
 
-	/* Write savegame comment data */
-	snprintf (fn, sizeof (fn) - 1, "comment.sect");
-	write_data (fn, game->comment.data, game->comment.size);
+	if ((rc = SPWAW_savegame_load (&sgd, &game)) != SPWERR_OK) {
+		error ("failed to load savegame for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
+	}
+
+	/* Write savegame metadata */
+	snprintf (fn, sizeof (fn) - 1, "metadata.sect");
+	write_data (fn, game->metadata.data, game->metadata.size);
 	
 	/* Write savegame sections data */
 	for (int i = 0; i < game->seccnt; i++) {

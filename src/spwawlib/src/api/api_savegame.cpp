@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame API implementation.
  *
- * Copyright (C) 2016-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,7 +13,7 @@
 
 /*! Creates a new, empty, savegame content structure */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **savegame)
+SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, SPWAW_SAVEGAME **savegame)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_SAVEGAME	*p = NULL;
@@ -29,6 +29,7 @@ SPWAW_savegame_new (SPWAW_GAME_TYPE gametype, SPWAW_SAVEGAME **savegame)
 	p = safe_malloc (SPWAW_SAVEGAME); COOM (p, "SPWAW_SAVEGAME");
 
 	p->gametype = gametype;
+	p->savetype = savetype;
 	p->seccnt = map->cnt;
 	p->seclst = safe_nmalloc (SPWAW_SAVEGAME_SECTION, p->seccnt); COOMGOTO (p->seclst, "SPWAW_SAVEGAME_SECTION list", handle_error);
 
@@ -55,7 +56,7 @@ SPWAW_savegame_free (SPWAW_SAVEGAME **savegame)
 
 	p = *savegame; *savegame = NULL;
 	if (p) {
-		if (p->comment.data) safe_free (p->comment.data);
+		if (p->metadata.data) safe_free (p->metadata.data);
 		if (p->seclst) {
 			for (int i=0; i<p->seccnt; i++) {
 				if (p->seclst[i].data) safe_free (p->seclst[i].data);
@@ -71,28 +72,29 @@ SPWAW_savegame_free (SPWAW_SAVEGAME **savegame)
 
 /*! Creates a new savegame content structure from an existing savegame */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SAVEGAME **savegame)
+SPWAW_savegame_load (SPWAW_SAVEGAME_DESCRIPTOR *sgd, SPWAW_SAVEGAME **savegame)
 {
+	GAMEDATA	*data;
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SAVEGAME	*p;
-	GAMEDATA	*data;
 	int		i;
 
 	CSPWINIT;
-	CNULLARG (dir); CNULLARG (savegame);
+	CNULLARG (sgd); CNULLARG (savegame);
 	*savegame = NULL;
 
-	rc = SPWAW_savegame_new (gametype, &p);
+	data = game_load_full (sgd, NULL);
+	if (!data) RWE(SPWERR_BADSAVEGAME, "game_load_full() failed");
+
+	rc = SPWAW_savegame_new (data->gametype, data->savetype, &p);
 	ERRORGOTO ("SPWAW_savegame_new()", handle_error);
 
-	data = game_load_full (gametype, dir, id, NULL);
-	if (!data) FAILGOTO (SPWERR_BADSAVEGAME, "game_load_full()", handle_error);
+	p->metadata.size = data->metadata.used;
 
-	p->comment.size = sizeof (data->cmt);
+	p->metadata.data = safe_smalloc (char, p->metadata.size);
+	COOMGOTO (p->metadata.data, "SPWAW_SAVEGAME metadata", handle_error);
 
-	p->comment.data = safe_smalloc (char, p->comment.size);
-	COOMGOTO (p->comment.data, "SPWAW_SAVEGAME comment data", handle_error);
-	memcpy (p->comment.data, &(data->cmt), p->comment.size);
+	memcpy (p->metadata.data, data->metadata.data, p->metadata.size);
 
 	for (i=0; i<p->seccnt; i++) {
 		p->seclst[i].idx = data->map.list[i].idx;
@@ -111,29 +113,32 @@ SPWAW_savegame_load (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SA
 handle_error:
 	SPWAW_savegame_free (&p);
 	return (rc);
+
 }
 
 /*! Creates a new savegame from an existing savegame content structure */
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_save (SPWAW_SAVEGAME **savegame, const char *dir, int id)
+SPWAW_savegame_save (SPWAW_SAVEGAME **savegame, SPWAW_SAVEGAME_DESCRIPTOR *sgd)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SAVEGAME	*p;
 	GAMEDATA	*data;
 	int		i, j;
+	bool		b;
 
 	CSPWINIT;
-	CNULLARG (savegame); CNULLARG (*savegame);  CNULLARG (dir);
+	CNULLARG (savegame); CNULLARG (*savegame);  CNULLARG (sgd);
+
 	p = *savegame;
 
-	data = gamedata_new(p->gametype);
+	data = gamedata_new (p->gametype, p->savetype);
 	COOMGOTO (data, "GAMEDATA", handle_error);
 
-	if (!p->comment.data)
-		FAILGOTO (SPWERR_FAILED, "missing comment data in SPWAW_SAVEGAME", handle_error);
-	if (p->comment.size != sizeof(data->cmt))
-		FAILGOTO (SPWERR_FAILED, "invalid comment data in SPWAW_SAVEGAME", handle_error);
-	memcpy (&(data->cmt), p->comment.data, p->comment.size);
+	if (!p->metadata.data || !p->metadata.size)
+		FAILGOTO (SPWERR_FAILED, "missing metadata in SPWAW_SAVEGAME", handle_error);
+
+	memcpy (data->metadata.data, p->metadata.data, p->metadata.size);
+	data->metadata.used = p->metadata.size;
 
 	for (i=0; i<data->map.cnt; i++) {
 		SPWAW_SAVEGAME_SECTION *sp = NULL;
@@ -165,14 +170,14 @@ SPWAW_savegame_save (SPWAW_SAVEGAME **savegame, const char *dir, int id)
 		}
 	}
 
-	if (!game_save_full (data, dir, id))
-		FAILGOTO (SPWERR_FAILED, "failed to create savegame", handle_error);
-
+	b = game_save_full (data, sgd);
 	gamedata_free (&data);
+
+	if (!b) RWE (SPWERR_FAILED, "failed to create savegame");
+
 	return (SPWERR_OK);
 
 handle_error:
 	gamedata_free (&data);
 	return (rc);
 }
-
