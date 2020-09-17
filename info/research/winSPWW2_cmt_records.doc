@@ -1,0 +1,51 @@
+winSPWW2 ".cmt" save file sections format:
+==========================================
+
+
+
+### VARIANT #1 ###
+
+Overview:
+
+section	size	info
+
+0	200	data
+
+
+
+----------------------------------------------------------------------------------------------
+section # 0	<offset=0x00000000, size=0x000000C8>	 (offset=0, size=200)
+----------------------------------------------------------------------------------------------
+
+Description:	savegame comment data, varant #1
+Type:		BLOCK
+
+offset	size	type	description
+
+0x0000	200	ASCIIZ	Savegame title
+
+
+
+
+
+### VARIANT #2 ###
+
+Overview:
+
+section	size	info
+
+0	120	data
+
+
+
+----------------------------------------------------------------------------------------------
+section # 0	<offset=0x00000000, size=0x00000078>	 (offset=0, size=120)
+----------------------------------------------------------------------------------------------
+
+Description:	savegame comment data, varant #2
+Type:		BLOCK
+
+offset	size	type	description
+
+0x0000	20	ASCIIZ	Savegame title
+0x0014	100	???	???

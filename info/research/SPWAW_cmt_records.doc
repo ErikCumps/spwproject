@@ -1,0 +1,22 @@
+SPWAW ".cmt" save file sections format:
+=======================================
+
+Overview:
+
+section	size	info
+
+0	250	data
+
+
+
+----------------------------------------------------------------------------------------------
+section # 0	<offset=0x00000000, size=0x000000FA>	 (offset=0, size=250)
+----------------------------------------------------------------------------------------------
+
+Description:	savegame comment data
+Type:		BLOCK
+
+offset	size	type	description
+
+0x0000	200	ASCIIZ	Savegame title
+0x00C8	50	ASCIIZ	Savegame map source
