@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20
-#define	SNAP_VERSION	12
+#define	SNAP_VERSION	13
 #define	SNAP_VHEXCNT	SPWAW_VHEXCNT
 
 #pragma pack(push, r1, 1)
@@ -52,6 +52,7 @@ typedef struct s_SNAP_INFO {
 	ULONG		location;		/* Battle location symbol						*/
 	ULONG		type;			/* Snapshot battle type							*/
 	ULONG		gametype;		/* Snapshot game type							*/
+	ULONG		savetype;		/* Snapshot save type							*/
 } SNAP_INFO;
 
 typedef struct s_SNAP_CMT {

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API implementation.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,32 +13,23 @@
 #include "common/internal.h"
 #include "utils/filecheck.h"
 
-/*! Create snapshot from SPWAW savegame */
-SPWAWLIB_API SPWAW_ERROR
-SPWAW_snap_make (SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSHOT **snap)
+/* Create snapshot from game data */
+static SPWAW_ERROR
+snap_make (GAMEDATA *data, GAMEINFO *info, SPWAW_SNAPSHOT **snap)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_SNAPSHOT	*ptr = NULL;
 	STRTAB		*stab = NULL;
-	GAMEDATA	*data = NULL;
-	GAMEINFO	info;
-
-	CSPWINIT;
-	CNULLARG (dir); CNULLARG (snap);
 
 	/* Create snapshot structure and string table */
-	rc = snapnew (&ptr, cfg_oobptr (gametype), NULL);
+	rc = snapnew (&ptr, cfg_oobptr (data->gametype), NULL);
 	ERRORGOTO ("snapnew()", handle_error);
 	stab = (STRTAB *)ptr->stab;
 
-	/* Open savegame, load and decompress data */
-	data = game_load_full (gametype, dir, id, &info);
-	if (!data) FAILGOTO (SPWERR_BADSAVEGAME, "game_load_full()", handle_error);
-
 	/* Record source game data */
-	ptr->src.path = STRTAB_add (stab, info.path);
-	ptr->src.file = STRTAB_add (stab, info.file);
-	ptr->src.date = info.date;
+	ptr->src.path = STRTAB_add (stab, info->path);
+	ptr->src.file = STRTAB_add (stab, info->file);
+	ptr->src.date = info->date;
 
 	/* Extract and interprete data from savegame data */
 	rc = load_from_game (data, ptr);
@@ -60,6 +51,25 @@ handle_error:
 	if (data) gamedata_free (&data);
 	SPWAW_snap_free (&ptr);
 	return (rc);
+}
+
+/*! Create snapshot from savegame */
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_snap_make	(SPWAW_SAVEGAME_DESCRIPTOR *sgd, SPWAW_SNAPSHOT **snap)
+{
+	GAMEDATA	*data = NULL;
+	GAMEINFO	info;
+
+	CSPWINIT;
+	CNULLARG (sgd); CNULLARG (snap);
+	*snap = NULL;
+
+	/* Open savegame, load and decompress data */
+	data = game_load_full (sgd, &info);
+	if (!data) RWE (SPWERR_BADSAVEGAME, "game_load_full()");
+
+	/* Create snapshot */
+	return (snap_make (data, &info, snap));
 }
 
 /*! Obtain snapshot info from file */

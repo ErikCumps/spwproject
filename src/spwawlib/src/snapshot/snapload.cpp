@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,6 +14,7 @@
 #include "snapshot/translate.h"
 #include "snapshot/snapfile_v10.h"
 #include "snapshot/snapfile_v11.h"
+#include "snapshot/snapfile_v12.h"
 #include "snapshot/index.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -514,6 +515,9 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNA
 	} else if (mhdr->version == SNAP_VERSION_V11) {
 		rc = snapshot_load_v11_info_header (fd, ihdr);
 		ROE ("snapshot_load_v11_info_header(snapshot info hdr)");
+	} else if (mhdr->version == SNAP_VERSION_V12) {
+		rc = snapshot_load_v12_info_header (fd, ihdr);
+		ROE ("snapshot_load_v12_info_header(snapshot info hdr)");
 	} else {
 		if (!bread (fd, (char *)ihdr, sizeof (*ihdr), false))
 			RWE (SPWERR_FRFAILED, "bread(ihdr) failed");
@@ -573,6 +577,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 
 	info->type = (SPWAW_BATTLE_TYPE)ihdr.type;
 	info->gametype = (SPWAW_GAME_TYPE)ihdr.gametype;
+	info->savetype = (SPWAW_SAVE_TYPE)ihdr.savetype;
 
 	STRTAB_free (&stab);
 
@@ -651,6 +656,7 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 
 	dst->type = (SPWAW_BATTLE_TYPE)ihdr.type;
 	dst->gametype = (SPWAW_GAME_TYPE)ihdr.gametype;
+	dst->savetype = (SPWAW_SAVE_TYPE)ihdr.savetype;
 
 	return (SPWERR_OK);
 

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -394,6 +394,7 @@ snapsave (SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress)
 	ERRORGOTO ("SPWAW_date2stamp(turn date)", handle_error);
 	ihdr.type       = src->type;
 	ihdr.gametype	= src->gametype;
+	ihdr.savetype	= src->savetype;
 
 	mhdr.info = bseekget (fd) - p0;
 	if (!bwrite (fd, (char *)&ihdr, sizeof (ihdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(ihdr) failed", handle_error);

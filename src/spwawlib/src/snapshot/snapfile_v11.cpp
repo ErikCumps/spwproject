@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling - backwards compatibility with the V11 snapshot.
  *
- * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -25,12 +25,14 @@ snapshot_load_v11_info_header (int fd, SNAP_INFO *hdr)
 	if (!bread (fd, (char *)&hdr_v11, sizeof (SNAP_INFO_V11), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot info hdr v11) failed", handle_error);
 
-	/* A V11 snapshot info header only lacks the game type at the end.
+	/* A V11 snapshot info header only lacks the game and save types at the end.
 	 * The only supported game type for V11 snapshots is the SPWAW_GAME_TYPE_SPWAW,
+	 * the only supported save type for V12 snapshots is the SPWAW_SAVE_TYPE_REGULAR,
 	 * so a quick copy and fix up is all we need :)
 	 */
 	memcpy (hdr, &hdr_v11, sizeof (SNAP_INFO_V11));
 	hdr->gametype = SPWAW_GAME_TYPE_SPWAW;
+	hdr->savetype = SPWAW_SAVE_TYPE_REGULAR;
 
 handle_error:
 	return (rc);

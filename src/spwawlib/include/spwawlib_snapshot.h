@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -734,6 +734,7 @@ typedef struct s_SPWAW_SNAPSHOT {
 	void			*stab;				/* \internal string table				*/
 	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 	SPWAW_GAME_TYPE		gametype;			/* Snapshot game type					*/
+	SPWAW_SAVE_TYPE		savetype;			/* Snapshot save type					*/
 } SPWAW_SNAPSHOT;
 
 /* SPWAW game snapshot file info */
@@ -747,13 +748,14 @@ typedef struct s_SPWAW_SNAPSHOT_INFO {
 	FILETIME		filedate;			/* Snapshot source game filedate			*/
 	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 	SPWAW_GAME_TYPE		gametype;			/* Snapshot game type					*/
+	SPWAW_SAVE_TYPE		savetype;			/* Snapshot save type					*/
 } SPWAW_SNAPSHOT_INFO;
 
 
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_make	(SPWAW_GAME_TYPE gametype, const char *dir, int id, SPWAW_SNAPSHOT **snap);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_make	(SPWAW_SAVEGAME_DESCRIPTOR *sgd, SPWAW_SNAPSHOT **snap);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_info	(const char *file, SPWAW_SNAPSHOT_INFO *info);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_load	(const char *file, SPWAW_SNAPSHOT **snap);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_save	(SPWAW_SNAPSHOT **snap, const char *file, bool compress);

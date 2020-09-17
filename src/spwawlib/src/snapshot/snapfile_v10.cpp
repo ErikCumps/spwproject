@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling - backwards compatibility with the V10 snapshot.
  *
- * Copyright (C) 2018-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -25,14 +25,16 @@ snapshot_load_v10_info_header (int fd, SNAP_INFO *hdr)
 	if (!bread (fd, (char *)&hdr_v10, sizeof (SNAP_INFO_V10), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(snapshot info hdr v10) failed", handle_error);
 
-	/* The V10 snapshot info header only lacks the battle and game types at the end.
+	/* The V10 snapshot info header only lacks the battle, game and save types at the end.
 	 * The only supported battle type for V10 snapshots is the SPWAW_CAMPAIGN_BATTLE,
 	 * the only supported game type for V10 snapshots is the SPWAW_GAME_TYPE_SPWAW,
+	 * the only supported save type for V12 snapshots is the SPWAW_SAVE_TYPE_REGULAR,
 	 * so a quick copy and fix up is all we need :)
 	 */
 	memcpy (hdr, &hdr_v10, sizeof (SNAP_INFO_V10));
 	hdr->type = SPWAW_CAMPAIGN_BATTLE;
 	hdr->gametype = SPWAW_GAME_TYPE_SPWAW;
+	hdr->savetype = SPWAW_SAVE_TYPE_REGULAR;
 
 handle_error:
 	return (rc);
