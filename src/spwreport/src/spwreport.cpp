@@ -26,10 +26,12 @@ usage (char *app)
 	printf ("*** Generate savegame reports\n");
 	printf ("\n");
 	printf ("    Usage: %s savereport GAME OOB DIR INDEX BASE [TYPE]\n", app);
+	printf ("        or %s savereport GAME OOB DIR NAME  BASE [TYPE]\n", app);
 	printf ("    Where: GAME    game type\n");
 	printf ("           OOB     path to oob dir\n");
 	printf ("           DIR     path to savegame dir\n");
-	printf ("           INDEX   index of savegame to generate report for\n");
+	printf ("           INDEX   numerical index of savegame to generate report for\n");
+	printf ("           NAME    basename of savegame to generate report for\n");
 	printf ("           BASE    basename for report files\n");
 	printf ("           TYPE    optional type of report to generate (defaults to ALL reports)\n");
 	printf ("\n");
@@ -432,11 +434,13 @@ generate_reports(char *base, char *type, SPWAW_SNAPSHOT *snap)
 void
 generate_savegame_report(int argc, char** argv)
 {
-	SPWAW_GAME_TYPE	gametype;
-	SPWAW_OOBCFG	oobcfg[1];
-	SPWAW_ERROR	rc;
-	SPWAW_SNAPSHOT	*snap;
-	char		savename[MAX_PATH+1];
+	SPWAW_GAME_TYPE			gametype;
+	SPWAW_OOBCFG			oobcfg[1];
+	SPWAW_SAVE_TYPE			savetype;
+	SPWAW_SAVEGAME_DESCRIPTOR	sgd;
+	SPWAW_ERROR			rc;
+	SPWAW_SNAPSHOT			*snap;
+	char				savename[MAX_PATH+1];
 
 	gametype = SPWAW_str2gametype (argv[2]);
 
@@ -447,9 +451,21 @@ generate_savegame_report(int argc, char** argv)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_snap_make (gametype, argv[4], atoi(argv[5]), &snap)) != SPWERR_OK) {
+	if ((argv[5][0] >= '0') && (argv[5][0] <= '9')) {
+		savetype = SPWAW_SAVE_TYPE_REGULAR;
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[4], atoi(argv[5]));
+	} else {
+		savetype = (gametype == SPWAW_GAME_TYPE_SPWAW) ? SPWAW_SAVE_TYPE_MEGACAM : SPWAW_SAVE_TYPE_REGULAR;
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[4], argv[5]);
+	}
+	if (rc != SPWERR_OK) {
+		error ("failed to prepare savegame descriptor for \"%s:%s\": %s", argv[4], argv[5], SPWAW_errstr (rc));
+	}
+
+	if ((rc = SPWAW_snap_make (&sgd, &snap)) != SPWERR_OK) {
 		error ("failed to create snapshot for \"%s:%s\": %s", argv[4], argv[5], SPWAW_errstr (rc));
 	}
+	SPWAW_savegame_descriptor_clear (sgd);
 
 	generate_reports (argv[6], (argc>7)?argv[7]:NULL, snap);
 

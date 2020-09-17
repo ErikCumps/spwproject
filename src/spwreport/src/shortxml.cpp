@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -571,6 +571,7 @@ shortxml_report (SPWAW_SNAPSHOT *ptr, FILE *rf, bool core)
 	{
 		XmlScope scope(xml, "type");
 		xml.item ("game", SPWAW_gametype2str (ptr->gametype));
+		xml.item ("save", SPWAW_savetype2str (ptr->savetype));
 		xml.item ("battle", SPWAW_battletype2str (ptr->type));
 	}
 
