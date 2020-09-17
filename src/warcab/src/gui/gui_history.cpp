@@ -202,11 +202,11 @@ GuiHistory::update (bool forced)
 	switch (d.ptype) {
 		case MDLD_TREE_DOSSIER:
 			item = d.pptr.d ? d.pptr.d->current() : NULL;
-			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
+			d.mflag = (d.pflag && d.cflag && item && (item->dossier_type != SPWAW_STDALONE_DOSSIER));
 			break;
 		case MDLD_TREE_BATTLE:
 			item = d.pptr.b ? d.pptr.b->current() : NULL;
-			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
+			d.mflag = (d.pflag && d.cflag && item && (item->dossier_type != SPWAW_STDALONE_DOSSIER));
 			break;
 		default:
 			break;

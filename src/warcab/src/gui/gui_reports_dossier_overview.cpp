@@ -408,7 +408,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		d.losses.opp->clear();
 		d.changes->clear();
 	} else {
-		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (p->type != SPWAW_STDALONE_DOSSIER) {
 			d.flag->setPixmap (*RES_flag (p->gametype, p->props.OOB));
 			d.flag->setHidden(false);
 		} else {
@@ -432,7 +432,7 @@ GuiRptDsrOvr::refresh (bool forced)
 			default:
 				SPWAW_date_delta (&(p->bfirst->bdate.date), &(p->blast->bdate.date), &span);
 				str.printf ("%u battles recorded", p->bcnt);
-				if ((p->type == SPWAW_CAMPAIGN_DOSSIER) && span.stamp) {
+				if ((p->type != SPWAW_STDALONE_DOSSIER) && span.stamp) {
 					str.printf (", spanning ");
 					UTIL_fmt_longspan (&span, &str);
 				}
@@ -458,7 +458,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		}
 
 		str.printf ("<h3>Core force:</h3>");
-		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (p->type != SPWAW_STDALONE_DOSSIER) {
 			if ((p->props.iucnt != p->props.cucnt) || (p->props.ifcnt != p->props.cfcnt)) {
 				str.printf ("Initial %s core force consists of %u units in %u formations.\n",
 					SPWAW_oob_people (p->gametype, p->props.OOB), p->props.iucnt, p->props.ifcnt);
@@ -477,7 +477,7 @@ GuiRptDsrOvr::refresh (bool forced)
 		d.overview->setText (buf);
 		str.clear();
 
-		if (p->type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (p->type != SPWAW_STDALONE_DOSSIER) {
 			if (p->bcnt) {
 				str.printf ("<pre>");
 				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->gametype, p->props.OOB));

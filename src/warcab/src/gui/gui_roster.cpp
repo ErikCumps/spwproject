@@ -243,12 +243,12 @@ GuiRoster::update (bool forced)
 		case MDLD_TREE_DOSSIER:
 			item = d.pptr.d ? d.pptr.d->current() : NULL;
 			if (item && d.pdata) d.psort = false;
-			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
+			d.mflag = (d.pflag && d.cflag && item && item->dossier_type != SPWAW_STDALONE_DOSSIER);
 			break;
 		case MDLD_TREE_BATTLE:
 			item = d.pptr.b ? d.pptr.b->current() : NULL;
 			if (item && d.pdata) d.psort = (item->data.b != d.pdata->data.b);
-			d.mflag = (d.pflag && d.cflag && item && item->dossier_type == SPWAW_CAMPAIGN_DOSSIER);
+			d.mflag = (d.pflag && d.cflag && item && item->dossier_type != SPWAW_STDALONE_DOSSIER);
 			break;
 		case MDLD_TREE_BTURN:
 			item = d.pptr.t ? d.pptr.t->current() : NULL;

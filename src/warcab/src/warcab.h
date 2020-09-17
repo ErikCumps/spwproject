@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -87,7 +87,7 @@ private:
 	SL_ERROR	refresh_savelists	(void);
 	void		setup_tree		(void);
 	//void		setup_tree_data		(MDLD_TREE_ITEM *tree, bool campaign);
-	void		setup_tree_data		(MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type);
+	void		setup_tree_data		(MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type, SPWAW_GAME_TYPE gametype);
 	void		refresh_tree		(void);
 	//void		refresh_tree_data	(MDLD_TREE_ITEM *tree, bool campaign);
 	void		refresh_tree_data	(MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type);

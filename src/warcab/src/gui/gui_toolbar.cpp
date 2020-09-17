@@ -42,6 +42,7 @@ GuiToolbar::GuiToolbar (QFont &font)
 #if	ALLOW_SNAPSHOTS_LOAD
 	d.toolbar->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
+	d.toolbar->addAction (GUI_ACTIONS->p.game_start_megacam_tracking);
 	d.toolbar->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
 	d.toolbar->addAction (GUI_ACTIONS->p.game_add_battle_snapshot);

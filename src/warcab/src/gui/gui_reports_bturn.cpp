@@ -100,7 +100,7 @@ GuiRptTrn::set_enabled (bool flag)
 		removeTab (indexOf (d.disabled_label));
 
 		addTab (d.overview, "Overview");
-		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (d.item->dossier_type != SPWAW_STDALONE_DOSSIER) {
 			addTab (d.force_core, "Core force");
 			if (d.item->data.t->snap->OOBp1.support.formations.cnt != 0) addTab (d.force_spt, "Support force");
 		} else {
@@ -149,7 +149,7 @@ GuiRptTrn::refresh (bool forced)
 
 		memset (buf, 0, sizeof (buf));
 
-		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (d.item->dossier_type != SPWAW_STDALONE_DOSSIER) {
 			setTabIcon (indexOf (d.force_core), *RES_flagbyid (d.item->data.t->battle->snap->game.battle.strings.flagid_p1));
 			setTabIcon (indexOf (d.force_spt), *RES_flagbyid (d.item->data.t->battle->snap->game.battle.strings.flagid_p1));
 		} else {

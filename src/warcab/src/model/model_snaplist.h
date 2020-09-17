@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - snapshot list.
  *
- * Copyright (C) 2005-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@ class ModelSnapList	: public QAbstractItemModel
 	Q_OBJECT
 
 public:
-	ModelSnapList	(char *path, SPWAW_SNAPLIST *ignore, QObject *parent = 0);
+	ModelSnapList	(SPWAW_SNAPLIST_TARGET &target, char *path, SPWAW_SNAPLIST *ignore, QObject *parent = 0);
 	~ModelSnapList	(void);
 
 public:
@@ -45,6 +45,7 @@ private:
 	struct s_data {
 		unsigned long		row_cnt;
 		unsigned long		col_cnt;
+		SPWAW_SNAPLIST_TARGET	target;
 		SPWAW_SNAPLIST		*snap_list;
 	} d;
 

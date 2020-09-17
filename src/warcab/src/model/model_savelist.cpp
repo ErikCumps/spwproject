@@ -1,14 +1,14 @@
 /** \file
  * The SPWaW war cabinet - data model handling - savegame list.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "model_savelist.h"
 
-ModelSaveList::ModelSaveList (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, QObject *parent)
+ModelSaveList::ModelSaveList (SPWAW_SAVELIST_TARGET &target, char *path, SPWAW_SAVELIST *ignore, QObject *parent)
 	: QAbstractItemModel (parent)
 {
 	DBG_TRACE_CONSTRUCT;
@@ -19,21 +19,9 @@ ModelSaveList::ModelSaveList (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELI
 	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
 	d.col_cnt = 6;
 
-	setupModelData (gametype, path, ignore, SPWAW_UNKNOWN_BATTLE);
-}
+	d.target = target;
 
-ModelSaveList::ModelSaveList (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype, QObject *parent)
-	: QAbstractItemModel (parent)
-{
-	DBG_TRACE_CONSTRUCT;
-
-	/* Initialize */
-	memset (&d, 0, sizeof (d));
-
-	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
-	d.col_cnt = 6;
-
-	setupModelData (gametype, path, ignore, battletype);
+	setupModelData (path, ignore);
 }
 
 ModelSaveList::~ModelSaveList (void)
@@ -107,7 +95,7 @@ ModelSaveList::columnCount (const QModelIndex &/*parent*/) const
 }
 
 void
-ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, SPWAW_BATTLE_TYPE battletype)
+ModelSaveList::setupModelData (char *path, SPWAW_SAVELIST *ignore)
 {
 	SPWAW_ERROR		rc;
 	unsigned long		i;
@@ -117,7 +105,7 @@ ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVEL
 
 	freeModelData();
 
-	rc = SPWAW_savelist (gametype, path, ignore, battletype, &(d.save_list));
+	rc = SPWAW_savelist (&(d.target), path, ignore, &(d.save_list));
 	if (rc != SPWERR_OK) return;
 
 	d.row_cnt = d.save_list->cnt;
@@ -134,7 +122,7 @@ ModelSaveList::setupModelData (SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVEL
 				<< SPWAW_battletype2str(p->info.type)
 				<< p->info.stamp
 				<< p->info.location
-				<< p->info.comment;
+				<< p->info.title;
 		node.node = p;
 
 		data_list.append (node);

@@ -112,7 +112,7 @@ GuiRptDsr::set_enabled (bool flag)
 	if (flag) {
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.overview, "Overview");
-		if (d.item->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+		if (d.item->dossier_type != SPWAW_STDALONE_DOSSIER) {
 			addTab (d.cnd, "Status");
 			addTab (d.prg, "Progress");
 			addTab (d.kill, "Kills");

@@ -95,6 +95,9 @@ GuiActions::GuiActions (QFont &font)
 	/* Game|Add campaign savegame action */
 	ACTION (game_add_campaign_savegame, "Add savegame to campaign...", Qt::CTRL+Qt::Key_A, RID_GUI_ICON_ADD_CAMPAIGN_SAVEGAME, true);
 
+	/* Game|Start Mega Campaign tracking action */
+	ACTION (game_start_megacam_tracking, "Start Mega Campaign savegame tracking...", Qt::CTRL+Qt::Key_M, RID_GUI_ICON_START_MEGACAM_TRACK, true);
+
 	/* Game|Add standalone battle savegame action */
 	ACTION (game_add_battle_savegame, "Add standalone battle from savegame...", Qt::CTRL+Qt::Key_B, RID_GUI_ICON_ADD_BATTLE_SAVEGAME, true);
 
@@ -131,7 +134,7 @@ GuiActions::GuiActions (QFont &font)
 	ACTION (help_about, "About Warcab...", 0, RID_GUI_ICON_INFO, true);
 
 	/* Set initial enabled/disabled states */
-	enable_dossier_actions (false, SPWAW_EMPTY_DOSSIER);
+	enable_dossier_actions (false, SPWAW_EMPTY_DOSSIER, SPWAW_GAME_TYPE_UNKNOWN);
 
 	SET_GUICLS_NOERR;
 }
@@ -154,6 +157,7 @@ GuiActions::~GuiActions (void)
 	delete p.dossier_edit;
 
 	delete p.game_add_campaign_savegame;
+	delete p.game_start_megacam_tracking;
 	delete p.game_add_battle_savegame;
 #if	ALLOW_SNAPSHOTS_LOAD
 	delete p.game_add_campaign_snapshot;
@@ -178,8 +182,13 @@ GuiActions::~GuiActions (void)
 }
 
 void
-GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t)
+GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TYPE gt)
 {
+	bool	ed = false;
+	bool	ec = false;
+	bool	em = false;
+	bool	eb = false;
+
 	p.app_exit->setEnabled (true);
 	p.app_prefs->setEnabled (true);
 	p.app_intel_full->setEnabled (true);
@@ -191,16 +200,24 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE t)
 	p.dossier_saveAs->setEnabled (b);
 	p.dossier_edit->setEnabled (b);
 
-	p.game_add_campaign_savegame->setEnabled (b && t != SPWAW_STDALONE_DOSSIER);
-	p.game_add_battle_savegame->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
+	ed = (dt == SPWAW_EMPTY_DOSSIER);
+
+	if (b && (ed || (dt == SPWAW_CAMPAIGN_DOSSIER))) ec = true;
+	if (b && (ed && (gt == SPWAW_GAME_TYPE_SPWAW ))) em = true;
+	if (b && (ed || (dt == SPWAW_STDALONE_DOSSIER))) eb = true;
+
+	p.game_add_campaign_savegame->setEnabled (ec);
+	p.game_start_megacam_tracking->setEnabled (em);
+	p.game_add_battle_savegame->setEnabled (eb);
+
 #if	ALLOW_SNAPSHOTS_LOAD
-	p.game_add_campaign_snapshot->setEnabled (b && t != SPWAW_STDALONE_DOSSIER);
-	p.game_add_battle_snapshot->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
+	p.game_add_campaign_snapshot->setEnabled (ec);
+	p.game_add_battle_snapshot->setEnabled (eb);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
-	p.add_battle_savegame->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
+	p.add_battle_savegame->setEnabled (b && dt == SPWAW_STDALONE_DOSSIER);
 #if	ALLOW_SNAPSHOTS_LOAD
-	p.add_battle_snapshot->setEnabled (b && t != SPWAW_CAMPAIGN_DOSSIER);
+	p.add_battle_snapshot->setEnabled (b && dt == SPWAW_STDALONE_DOSSIER);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	p.delete_turn->setEnabled (b);
 	p.delete_battle->setEnabled (b);

@@ -52,8 +52,10 @@ GuiMainMenu::GuiMainMenu (QFont &font)
 
 	d.game->addAction (GUI_ACTIONS->p.game_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-	d.ame->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
+	d.game->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
+
+	d.game->addAction (GUI_ACTIONS->p.game_start_megacam_tracking);
 
 	d.game->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "dossier load" dialog box.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,7 +9,7 @@
 #include "resource.h"
 #include "gui_dlg_load_dossier.h"
 
-#define	BOX_WIDTH	600
+#define	BOX_WIDTH	1000
 #define	BOX_HEIGHT	400
 #define	BOX_MARGIN	 10
 

@@ -47,6 +47,7 @@ public slots:
 	bool	action_dossier_edit			(void);
 
 	void	action_game_add_campaign_savegame	(void);
+	void	action_game_start_megacam_tracking	(void);
 	void	action_game_add_battle_savegame		(void);
 #if	ALLOW_SNAPSHOTS_LOAD
 	void	action_game_add_campaign_snapshot	(void);

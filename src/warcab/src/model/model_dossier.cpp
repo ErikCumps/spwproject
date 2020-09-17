@@ -37,10 +37,17 @@ ModelDossier::update_header (void)
 	if (d.tree) {
 		QString gametype = SPWAW_gametype2str(d.tree->data.d->gametype);
 
-		if (d.tree->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
-			header[0] = gametype + " campaign dossier";
-		} else {
-			header[0] = gametype + " battle dossier";
+		switch (d.tree->dossier_type) {
+			case SPWAW_CAMPAIGN_DOSSIER:
+				header[0] = gametype + " campaign dossier";
+				break;
+			case SPWAW_MEGACAM_DOSSIER:
+				header[0] = gametype + " Mega Campaign dossier";
+				break;
+			case SPWAW_STDALONE_DOSSIER:
+			default:
+				header[0] = gametype + " battle dossier";
+				break;
 		}
 	} else {
 		header[0] = "Empty dossier";
@@ -94,7 +101,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 
 	switch (role) {
 		case Qt::DisplayRole:
-			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+			if (p->dossier_type != SPWAW_STDALONE_DOSSIER) {
 				snprintf (buf, sizeof (buf) - 1, "%s (%s forces)",
 					p->data.d->name, SPWAW_oob_people (p->data.d->gametype, p->data.d->props.OOB));
 			} else {
@@ -104,7 +111,7 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 			v = QVariant (buf);
 			break;
 		case Qt::DecorationRole:
-			if (p->dossier_type == SPWAW_CAMPAIGN_DOSSIER) {
+			if (p->dossier_type != SPWAW_STDALONE_DOSSIER) {
 				v = QVariant (QIcon (*RES_flag (p->data.d->gametype, p->data.d->props.OOB)));
 			}
 			break;

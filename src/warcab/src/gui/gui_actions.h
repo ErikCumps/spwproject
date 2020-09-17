@@ -23,7 +23,7 @@ public:
 	SL_ERROR	error_code;
 
 public:
-	void		enable_dossier_actions	(bool b, SPWAW_DOSSIER_TYPE t);
+	void		enable_dossier_actions	(bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TYPE gt);
 	void		select_intel_action	(INTEL_MODE mode);
 
 public:
@@ -46,6 +46,7 @@ public:
 		QAction		*dossier_edit;
 
 		QAction		*game_add_campaign_savegame;
+		QAction		*game_start_megacam_tracking;
 		QAction		*game_add_battle_savegame;
 		QAction		*add_battle_savegame;
 #if	ALLOW_SNAPSHOTS_LOAD

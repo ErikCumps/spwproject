@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - MDLD_TREE handling.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -49,12 +49,13 @@ MDLD_TREE_new_battle (SPWAW_BATTLE *data, MDLD_TREE_ITEM *tree)
 	MDLD_TREE_ITEM	*p = tree;
 	MDLD_TREE_ITEM	*b;
 
-	if (tree->dossier_type != SPWAW_CAMPAIGN_DOSSIER) {
+	if (tree->dossier_type == SPWAW_STDALONE_DOSSIER) {
 		p = new MDLD_TREE_ITEM;
 		p->parent	= tree;
 		p->type		= MDLD_TREE_STDALONE;
 		p->data.b	= data;
 		p->dossier_type	= tree->dossier_type;
+		p->game_type	= tree->game_type;
 
 		p->cfirst = p->clast = NULL;
 
@@ -66,6 +67,7 @@ MDLD_TREE_new_battle (SPWAW_BATTLE *data, MDLD_TREE_ITEM *tree)
 	b->type		= MDLD_TREE_BATTLE;
 	b->data.b	= data;
 	b->dossier_type	= tree->dossier_type;
+	b->game_type	= tree->game_type;
 
 	b->cfirst = b->clast = NULL;
 
@@ -81,7 +83,7 @@ MDLD_TREE_delete_battle (MDLD_TREE_ITEM *b)
 
 	MDLD_TREE_update_seqnums (b);
 
-	if (b->dossier_type != SPWAW_CAMPAIGN_DOSSIER) {
+	if (b->dossier_type == SPWAW_STDALONE_DOSSIER) {
 		 b = b->cfirst;
 		 delete (b->parent);
 	}
@@ -104,6 +106,7 @@ MDLD_TREE_new_bturn (SPWAW_BTURN *data, MDLD_TREE_ITEM *tree)
 	t->type		= MDLD_TREE_BTURN;
 	t->data.t	= data;
 	t->dossier_type	= tree->dossier_type;
+	t->game_type	= tree->game_type;
 
 	t->cfirst = t->clast = NULL;
 

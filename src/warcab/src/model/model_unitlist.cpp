@@ -182,7 +182,7 @@ ModelUnitlist::setupModelData (void)
 			}
 		}
 	} else {
-		if (d.pflag && d.cflag) {
+		if (d.pflag && d.cflag && d.b->uhtinfo) {
 			for (int i=0; i<d.b->uhtinfo->cnt; i++) {
 				uhte = d.b->uhtinfo->list[i];
 

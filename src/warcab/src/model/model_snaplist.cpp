@@ -1,14 +1,14 @@
 /** \file
  * The SPWaW war cabinet - data model handling - snapshot list.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "model_snaplist.h"
 
-ModelSnapList::ModelSnapList (char *path, SPWAW_SNAPLIST *ignore, QObject *parent)
+ModelSnapList::ModelSnapList (SPWAW_SNAPLIST_TARGET &target, char *path, SPWAW_SNAPLIST *ignore, QObject *parent)
 	: QAbstractItemModel (parent)
 {
 	DBG_TRACE_CONSTRUCT;
@@ -18,6 +18,8 @@ ModelSnapList::ModelSnapList (char *path, SPWAW_SNAPLIST *ignore, QObject *paren
 
 	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
 	d.col_cnt = 6;
+
+	d.target = target;
 
 	setupModelData (path, ignore);
 }
@@ -103,7 +105,7 @@ ModelSnapList::setupModelData (char *path, SPWAW_SNAPLIST *ignore)
 
 	freeModelData();
 
-	rc = SPWAW_snaplist (path, ignore, &(d.snap_list));
+	rc = SPWAW_snaplist (&(d.target), path, ignore, &(d.snap_list));
 	if (rc != SPWERR_OK) return;
 
 	d.row_cnt = d.snap_list->cnt;

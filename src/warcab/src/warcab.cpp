@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -301,7 +301,7 @@ WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress
 		SPWAW_BTURN	*t;
 
 		if (list.savelist) {
-			arc = SPWAW_snap_make (list.gametype, list.list.save->list[i]->dir, list.list.save->list[i]->id, &s);
+			arc = SPWAW_snap_make (&(list.list.save->list[i]->sgd), &s);
 		} else {
 			arc = SPWAW_snap_load (list.list.snap->list[i]->filepath, &s);
 		}
@@ -422,7 +422,7 @@ WARCABState::add_stdalone (char *name, SPWAW_SAVELIST *list)
 	GuiProgress gp ("Adding standalone battle and savegame(s)...", 0);
 	gp.setRange (0, (2*list->cnt) + 3);
 
-	arc = SPWAW_snap_make (d.dossier->gametype, list->list[0]->dir, list->list[0]->id, &s);
+	arc = SPWAW_snap_make (&(list->list[0]->sgd), &s);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_ADD_SAVE_FAILED, "initial SPWAW_snap_make() failed!");
 	}
@@ -711,7 +711,7 @@ WARCABState::refresh_savelists (void)
 }
 
 void
-WARCABState::setup_tree_data (MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type)
+WARCABState::setup_tree_data (MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type, SPWAW_GAME_TYPE gametype)
 {
 	DWORD		i, j;
 	MDLD_TREE_ITEM	*b, *t;
@@ -721,6 +721,7 @@ WARCABState::setup_tree_data (MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type)
 	DBG_log ("[%s]", __FUNCTION__);
 
 	tree->dossier_type = type;
+	tree->game_type = gametype;
 
 	for (i=0; i<tree->data.d->bcnt; i++) {
 		if (!tree->data.d->blist[i]) continue;
@@ -751,7 +752,7 @@ WARCABState::setup_tree (void)
 	d.tree->prev = d.tree->next = NULL;
 	d.tree->cfirst = d.tree->clast = NULL;
 
-	setup_tree_data (d.tree, d.tree->data.d->type);
+	setup_tree_data (d.tree, d.tree->data.d->type, d.tree->data.d->gametype);
 }
 
 void

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - MDLD_TREE handling.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -38,6 +38,7 @@ struct s_MDLD_TREE_ITEM {
 	MDLD_TREE_ITEM		*clast;
 	UtilSeqnum		seqnum;
 	SPWAW_DOSSIER_TYPE	dossier_type;	/*!< Dossier type	*/
+	SPWAW_GAME_TYPE		game_type;	/*!< Dossier game type	*/
 };
 
 static inline MDLD_TREE_ITEM *

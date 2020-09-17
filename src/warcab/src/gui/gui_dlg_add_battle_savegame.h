@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "add standalone battle savegame" dialog box.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -21,9 +21,9 @@ class GuiDlgAddBattleSavegame	: public QDialog
 	Q_OBJECT
 
 public:
-	GuiDlgAddBattleSavegame		(SPWAW_GAME_TYPE gametype, char *path, SPWAW_SAVELIST *ignore, char *name = NULL);
+	GuiDlgAddBattleSavegame		(SPWAW_SAVELIST_TARGET &target, char *path, SPWAW_SAVELIST *ignore, char *name = NULL);
 #if	ALLOW_SNAPSHOTS_LOAD
-	GuiDlgAddBattleSavegame		(char *path, SPWAW_SNAPLIST *ignore, char *name = NULL);
+	GuiDlgAddBattleSavegame		(SPWAW_SNAPLIST_TARGET &target, char *path, SPWAW_SNAPLIST *ignore, char *name = NULL);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	~GuiDlgAddBattleSavegame	(void);
 

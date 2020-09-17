@@ -85,7 +85,7 @@ GuiRptBtlFrc::set_enabled (bool flag)
 	if (flag) {
 		removeTab (indexOf (d.disabled_label));
 		addTab (d.cnd, "Status");
-		if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
+		if (d.parent && d.parent->current() && (d.parent->current()->dossier_type != SPWAW_STDALONE_DOSSIER)) {
 			if (d.pflag && d.cflag)	addTab (d.prg, "Progress");
 		}
 		addTab (d.kill, "Kills");
@@ -148,7 +148,7 @@ GuiRptBtlFrc::refresh (bool forced)
 	set_enabled (enable);
 
 	d.cnd->refresh(forced);
-	if (d.parent && d.parent->current() && (d.parent->current()->dossier_type == SPWAW_CAMPAIGN_DOSSIER)) {
+	if (d.parent && d.parent->current() && (d.parent->current()->dossier_type != SPWAW_STDALONE_DOSSIER)) {
 		if (d.pflag && d.cflag)	d.prg->refresh(forced);
 	}
 	d.kill->refresh(forced);
