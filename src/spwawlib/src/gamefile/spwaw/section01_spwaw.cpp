@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - SP:WaW game data.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #include <spwawlib_api.h>
 #include "gamefile/gamedata.h"
 #include "gamefile/spwaw/gamedata_spwaw.h"
+#include "gamefile/spwaw/megacam_spwaw.h"
 #include "gamefile/spwaw/build_options_spwaw.h"
 #include "gamefile/fulist.h"
 #include "snapshot/index.h"
@@ -881,9 +882,34 @@ verify_candidate_formations (FULIST &ful)
 	return (SPWERR_OK);
 }
 
+/* Applies mega campaign core unit overrides */
+static SPWAW_ERROR
+apply_megacam_overrides (FULIST &ful, MEGACAM_COREFLAGS *mccf)
+{
+	UEL	*p;
+	UEL	*uel;
+	FEL	*fel;
+
+	if (mccf) {
+		p = ful.ul.head;
+		while (p)
+		{
+			uel = p; p = p->l.next;
+			// Skip CREWs
+			if (uel->d.type == SPWAW_UNIT_TYPE_CREW) continue;
+			// Skip units without a formation reference
+			fel = uel->d.formation; if (!fel) continue;
+
+			if ((*mccf)[uel->d.RID]) fel->d.status = F_CORE;
+		}
+	}
+
+	return (SPWERR_OK);
+}
+
 /* Builds a list of all the valid units in the savegame data */
 static SPWAW_ERROR
-unitcount (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date, bool campaign)
+unitcount (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FULIST &ful, SPWOOB *OOB, SPWAW_DATE &date, bool campaign, MEGACAM_COREFLAGS *mccf)
 {
 	SPWAW_ERROR	rc;
 
@@ -909,6 +935,10 @@ unitcount (SPWAW_UNIT *udata, SPWAW_UNIT_POS *pdata, BYTE player, FULIST &ful, S
 	// Step 4: verify the candidate formations, using the verified units (and the formation OOB info?)
 	rc = verify_candidate_formations (ful);
 	ROE ("verify_candidate_formations()");
+
+	// Step 5: apply optional General's Edition megacampaign core unit overrides
+	rc = apply_megacam_overrides (ful, mccf);
+	ROE ("apply_megacam_overrides()");
 
 	// Report the results
 	UFDLOG1 ("unitcount: ul.cnt=%u\n", ful.ul.cnt);
@@ -1031,27 +1061,24 @@ add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRT
 	return (SPWERR_OK);
 }
 
-SPWAW_ERROR
-section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FULIST &ful2)
+static SPWAW_ERROR
+section01_spwaw_detection_core (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, bool campaign, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_UNIT	*udata;
 	SPWAW_UNIT_POS	*pdata;
-	SPWAW_DATE	date;
 
-	CNULLARG (src); CNULLARG (dst);
+	CNULLARG (usrc); CNULLARG (psrc); CNULLARG(OOB);
 
-	udata = GDSPWAW(src)->sec01.u.d.units;
-	pdata = GDSPWAW(src)->sec17.u.d.pos;
-
-	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);
+	udata = usrc->u.d.units;
+	pdata = psrc->u.d.pos;
 
 	// Count the available units for player #1
-	rc = unitcount (udata, pdata, PLAYER1, ful1, dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE);
+	rc = unitcount (udata, pdata, PLAYER1, ful1, OOB, date, campaign, mccf);
 	ROE ("unitcount(OOBp1)");
 
 	// Count the available units for player #2
-	rc = unitcount (udata, pdata, PLAYER2, ful2, dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE);
+	rc = unitcount (udata, pdata, PLAYER2, ful2, OOB, date, campaign, NULL);
 	ROE ("unitcount(OOBp2)");
 
 	// Verify unit detection
@@ -1059,6 +1086,22 @@ section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FUL
 		RWE (SPWERR_BADSAVEDATA, "failed to detect units");
 
 	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
+section01_spwaw_detection (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2)
+{
+	return (section01_spwaw_detection_core (usrc, psrc,OOB, date, false, mccf, ful1, ful2));
+}
+
+SPWAW_ERROR
+section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2)
+{
+	SPWAW_DATE	date;
+
+	CNULLARG (src); CNULLARG (dst);
+
+	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);	return (section01_spwaw_detection_core (&(GDSPWAW(src)->sec01), &(GDSPWAW(src)->sec17), dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE, mccf, ful1, ful2));
 }
 
 SPWAW_ERROR

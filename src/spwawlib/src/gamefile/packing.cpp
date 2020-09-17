@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile block compression handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -61,7 +61,7 @@
  *	the N data bytes can be copied as-is
  */
 
-#define	GAMEINFO	0
+#define	GAMEINFOSECTION	0
 
 #define	ISCRLC(b_)	((unsigned char)b_ & 0x80)
 #define	ISURLC(b_)	(!ISCRLC(b_))
@@ -409,10 +409,10 @@ load_packed (GAMEFILE *file, GAMEDATA *dst)
 	if (!file || !dst) return (false);
 	if (file->gametype != dst->gametype) return (false);
 
-	bseekset (file->dat_fd, 0);
+	bseekset (file->data.fd, 0);
 
-	sp = gamedata_section (&(dst->map), GAMEINFO);
-	if (bread (file->dat_fd, (char *)sp->ptr, sp->size, false)) {
+	sp = gamedata_section (&(dst->map), GAMEINFOSECTION);
+	if (bread (file->data.fd, (char *)sp->ptr, sp->size, false)) {
 		log ("# load_packed: START<");
 		for (DWORD i=0; i<sp->size; i++) log ("%c", ((char *)sp->ptr)[i]);
 		log (">\n");
@@ -421,19 +421,19 @@ load_packed (GAMEFILE *file, GAMEDATA *dst)
 		return (false);
 	}
 
-	pos = bseekget(file->dat_fd);
+	pos = bseekget(file->data.fd);
 
-	while (load_block (file->gametype, file->dat_fd, block)) {
+	while (load_block (file->gametype, file->data.fd, block)) {
 		log ("### load_packed: 0x%8.8x BLOCK #%lu (0x%8.8x) <size=%lu (0x%8.8x), flag=0x%8.8x>\n", pos, block.section, block.section, block.size, block.size, block.flag);
 
 		sp = gamedata_section (&(dst->map), block.section);
 		if (!sp) {
 			ERROR1 ("skipping unknown gamedata section %d", block.section);
-			bseekset (file->dat_fd, bseekget(file->dat_fd)+block.size);
+			bseekset (file->data.fd, bseekget(file->data.fd)+block.size);
 		} else {
-			if (!unpack_section (file->dat_fd, block, &(sp->ptr), &(sp->size))) return (false);
+			if (!unpack_section (file->data.fd, block, &(sp->ptr), &(sp->size))) return (false);
 		}
-		pos = bseekget(file->dat_fd);
+		pos = bseekget(file->data.fd);
 	}
 
 	return (true);
@@ -450,10 +450,10 @@ save_packed (GAMEDATA *src, GAMEFILE *file)
 	if (!src || !file) return (false);
 	if (src->gametype != file->gametype) return (false);
 
-	bseekset (file->dat_fd, 0);
+	bseekset (file->data.fd, 0);
 
-	SECMAPEL *sp = gamedata_section (&(src->map), GAMEINFO);
-	if (bwrite (file->dat_fd, (char *)sp->ptr, sp->size)) {
+	SECMAPEL *sp = gamedata_section (&(src->map), GAMEINFOSECTION);
+	if (bwrite (file->data.fd, (char *)sp->ptr, sp->size)) {
 		log ("# save_packed: START\n");
 	} else {
 		ERROR0 ("failed to write game info section");
@@ -474,11 +474,11 @@ save_packed (GAMEDATA *src, GAMEFILE *file)
 			block.size = size;
 			block.flag = FLAG_COMPRESSED;
 
-			if (!save_block (file->gametype, file->dat_fd, block)) {
+			if (!save_block (file->gametype, file->data.fd, block)) {
 				ERROR1 ("failed to write block header for section %d", block.section);
 				return (false);
 			}
-			if (!bwrite (file->dat_fd, (char *)(dst), size)) {
+			if (!bwrite (file->data.fd, (char *)(dst), size)) {
 				ERROR2 ("failed to write section %d (%lu bytes)", block.section, block.size);
 				return (false);
 			}
@@ -487,11 +487,11 @@ save_packed (GAMEDATA *src, GAMEFILE *file)
 			block.size = src->map.list[i].size;
 			block.flag = 0;
 
-			if (!save_block (file->gametype, file->dat_fd, block)) {
+			if (!save_block (file->gametype, file->data.fd, block)) {
 				ERROR1 ("failed to write block header for section %d", block.section);
 				return (false);
 			}
-			if (!bwrite (file->dat_fd, (char *)(src->map.list[i].ptr), src->map.list[i].size)) {
+			if (!bwrite (file->data.fd, (char *)(src->map.list[i].ptr), src->map.list[i].size)) {
 				ERROR2 ("failed to write section %d (%lu bytes)", block.section, block.size);
 				return (false);
 			}
@@ -514,7 +514,7 @@ load_packed_section (GAMEFILE *file, DWORD sec, void **dst, unsigned long *len)
 
 	map = gamedata_SECMAP (file->gametype);
 
-	spinfo = gamedata_section (map, GAMEINFO);
+	spinfo = gamedata_section (map, GAMEINFOSECTION);
 	if (!spinfo) {
 		ERROR0 ("no game info section present in section map");
 		return (false);
@@ -529,22 +529,22 @@ load_packed_section (GAMEFILE *file, DWORD sec, void **dst, unsigned long *len)
 	*len = sp->size;
 	*dst = safe_smalloc (char, *len); COOMRET (dst, "gamedata section data buffer", false);
 
-	bseekset (file->dat_fd, 0);
+	bseekset (file->data.fd, 0);
 
-	if (sec == GAMEINFO) {
-		if (!bread (file->dat_fd, (char *)(*dst), *len, false)) {
+	if (sec == GAMEINFOSECTION) {
+		if (!bread (file->data.fd, (char *)(*dst), *len, false)) {
 			ERROR0 ("failed to read game info section");
 			return (false);
 		}
 	} else {
-		bseekmove (file->dat_fd, spinfo->size);
+		bseekmove (file->data.fd, spinfo->size);
 
-		while (load_block (file->gametype, file->dat_fd, block)) {
+		while (load_block (file->gametype, file->data.fd, block)) {
 			if (sec == block.section) {
-				if (!unpack_section (file->dat_fd, block, dst, len)) return (false);
+				if (!unpack_section (file->data.fd, block, dst, len)) return (false);
 				break;
 			} else {
-				bseekmove (file->dat_fd, block.size);
+				bseekmove (file->data.fd, block.size);
 			}
 		}
 	}

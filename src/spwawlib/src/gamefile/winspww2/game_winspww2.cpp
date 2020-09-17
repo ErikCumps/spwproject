@@ -1,28 +1,54 @@
 /** \file
  * The SPWaW Library - savegame handling - winSPWW2 game data.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "stdafx.h"
 
+#include "gamefile/game.h"
 #include "gamefile/winspww2/game_winspww2.h"
-#include "gamefile/winspww2/defines_winspww2.h"
+#include "gamefile/winspww2/cmt_winspww2.h"
 #include "gamefile/winspww2/section_common_winspww2.h"
 #include "gamefile/winspww2/road_connections_winspww2.h"
 #include "gamefile/fulist.h"
 #include "common/internal.h"
 #include "common/types.h"
 
+typedef struct s_TITLE {
+	const char	*ptr;
+	DWORD		size;
+} TITLE;
+
+static bool
+metadata_title (METADATA *metadata, TITLE &title)
+{
+	bool	ok = true;
+
+	if (metadata->used == sizeof(CMTDATA_WINSPWW2)) {
+		CMTDATA_WINSPWW2 *p = (CMTDATA_WINSPWW2 *)metadata->data;
+		title.ptr  = p->title;
+		title.size = sizeof(p->title);
+	} else if (metadata->used == sizeof(CMTDATA_WINSPWW2_ALT)) {
+		CMTDATA_WINSPWW2_ALT *p = (CMTDATA_WINSPWW2_ALT *)metadata->data;
+		title.ptr  = p->title;
+		title.size = sizeof(p->title);
+	} else {
+		ok = false;
+	}
+	return (ok);
+}
+
 static void
-setup_winspww2_info (GAMEINFO *info, char *filename, FILETIME filedate, WINSPWW2_SECTION37 *sec37, CMTDATA *gamecmt, WINSPWW2_SECTION35 *sec35)
+setup_winspww2_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, WINSPWW2_SECTION37 *sec37, WINSPWW2_SECTION35 *sec35)
 {
 	WINSPWW2_SECTION37	*gamedata = sec37;
 	WINSPWW2_SECTION35	*formdata = sec35;
 	char			*p, *q;
 	SPWAW_DATE		date;
+	TITLE			title;
 	SPWAW_ERROR		rc;
 	FULIST			ful1, ful2;
 	USHORT			cfcnt;
@@ -30,22 +56,23 @@ setup_winspww2_info (GAMEINFO *info, char *filename, FILETIME filedate, WINSPWW2
 	if (!info) return;
 	clear_ptr (info);
 
-	info->gametype = SPWAW_GAME_TYPE_WINSPWW2;
+	info->gametype = file->gametype;
+	info->savetype = file->savetype;
 
 	section37_winspww2_prepare (gamedata);
 
-	p = strrchr (filename, '\\');
+	p = strrchr (file->data.name, '\\');
 	if (p) {
 		*p = '\0';
-		_fullpath (info->path, filename, sizeof (info->path) - 1);
+		_fullpath (info->path, file->data.name, sizeof (info->path) - 1);
 		*p = '\\';
 		q = p + 1;
 	} else {
 		_fullpath (info->path, ".", sizeof (info->path) - 1);
-		q = filename;
+		q = file->data.name;
 	}
 	snprintf (info->file, sizeof (info->file) - 1, "%s", q);
-	info->date = filedate;
+	info->date = file->data.date;
 
 	// winSPWW2 games do not have a battle day and hour!
 	SPWAW_set_date (date, gamedata->u.d.data.Ygame + SPWAW_STARTYEAR, gamedata->u.d.data.Mgame);
@@ -53,7 +80,9 @@ setup_winspww2_info (GAMEINFO *info, char *filename, FILETIME filedate, WINSPWW2
 		date.year, date.month, gamedata->u.d.data.turn);
 
 	memcpy (info->location, gamedata->u.d.data.location, sizeof (gamedata->u.d.data.location));
-	memcpy (info->comment, gamecmt->title, sizeof (gamecmt->title));
+	if (metadata_title (metadata, title)) {
+		memcpy (info->title, title.ptr, title.size);
+	}
 
 	log_disable();
 	rc = section35_winspww2_detection (formdata, ful1, ful2);
@@ -81,26 +110,35 @@ setup_winspww2_info (GAMEINFO *info, GAMEFILE *file, GAMEDATA *game)
 {
 	if (!info || !file || !game) return;
 
-	setup_winspww2_info (info, file->dat_name, file->dat_date, &(GDWINSPWW2(game)->sec37), &(game->cmt), &(GDWINSPWW2(game)->sec35));
+	setup_winspww2_info (info, file, &(game->metadata), &(GDWINSPWW2(game)->sec37), &(GDWINSPWW2(game)->sec35));
 }
 
 bool
-game_load_winspww2_info (const char *dir, unsigned int id, GAMEINFO *info)
+game_load_winspww2_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 {
 	GAMEFILE		game;
+	GAMEDATA		*data;
 	bool			grc = true, rc;
 	WINSPWW2_SECTION37	*sec37;
 	unsigned long		len37;
 	WINSPWW2_SECTION35	*sec35;
 	unsigned long		len35;
-	CMTDATA			cmt;
 
-	if (!info) return (false);
+	if (!sgd || !info) return (false);
+	if (sgd->gametype != SPWAW_GAME_TYPE_WINSPWW2) return (false);
+
 	clear_ptr (info);
 
-	if (!gamefile_open (SPWAW_GAME_TYPE_WINSPWW2, dir, id, &game)) {
+	if (!gamefile_open (sgd, &game)) {
 		ERROR0 ("failed to open gamefiles");
 		return (false);
+	}
+
+	data = gamedata_new (game.gametype, game.savetype); COOMRET (data, "GAMEDATA", false);
+
+	rc = gamedata_load_metadata (&game, data); grc = grc && rc;
+	if (!rc) {
+		ERROR0 ("failed to load game metadata");
 	}
 
 	rc = gamedata_load_section (&game, 37, (void **)&sec37, &len37); grc = grc && rc;
@@ -113,13 +151,7 @@ game_load_winspww2_info (const char *dir, unsigned int id, GAMEINFO *info)
 		ERROR0 ("failed to load section #35 game data");
 	}
 
-	rc = gamedata_load_cmt (&game, &cmt); grc = grc && rc;
-	if (!rc) {
-		ERROR0 ("failed to load game comment");
-		memset (&cmt, 0, sizeof (cmt));
-	}
-
-	setup_winspww2_info (info, game.dat_name, game.dat_date, sec37, &cmt, sec35);
+	setup_winspww2_info (info, &game, &(data->metadata), sec37, sec35);
 
 	if (sec35) safe_free (sec35);
 	if (sec37) safe_free (sec37);
@@ -135,6 +167,7 @@ load_from_winspww2_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 {
 	SPWAW_ERROR	rc;
 	STRTAB		*stab = NULL;
+	TITLE		title;
 	FULIST		ful1, ful2;
 
 	CNULLARG (src); CNULLARG (dst);
@@ -143,10 +176,13 @@ load_from_winspww2_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	} else {
 		dst->gametype = SPWAW_GAME_TYPE_WINSPWW2;
 	}
+	dst->savetype = src->savetype;
 
 	stab = (STRTAB *)(dst->stab);
 
-	dst->raw.game.cmt.title = azstrstab (src->cmt.title, stab);
+	if (metadata_title (&(src->metadata), title)) {
+		dst->raw.game.cmt.title = aznstrstab (title.ptr, title.size, stab);
+	}
 	// winSPWW2 games do not have map source data
 
 	rc = section37_winspww2_save_snapshot (src, dst, stab);			ROE ("section37_winspww2_save_snapshot()");

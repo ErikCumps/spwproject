@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - winSPWW2 savegame defines.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -74,6 +74,7 @@
 
 #define	WINSPWW2_LEADERCOUNT	1000
 #define	WINSPWW2_UNITCOUNT	1000
+#define	WINSPWW2_UNITPCOUNT	500
 #define	WINSPWW2_UNITPOSCOUNT	32000
 #define	WINSPWW2_FORMCOUNT	400
 #define	WINSPWW2_FORMPCOUNT	200

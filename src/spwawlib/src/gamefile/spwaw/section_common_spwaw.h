@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW gamefile handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,8 @@
 #include "gamefile/fulist.h"
 #include "strtab/strtab.h"
 
-extern SPWAW_ERROR	section01_spwaw_detection	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	section01_spwaw_detection	(SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	section01_spwaw_detection	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2);
 extern SPWAW_ERROR	section01_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
 extern SPWAW_ERROR	section08_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab);

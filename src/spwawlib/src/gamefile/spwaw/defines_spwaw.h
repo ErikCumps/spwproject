@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW savegame defines.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,7 +12,10 @@
 #define	SPWAW_AZSTITLE		200
 #define	SPWAW_AZSMAPSRC		50
 #define	SPWAW_AZSNAME		16
+#define	SPWAW_AZSANAME		15
 #define	SPWAW_AZSLOCATION	116
+#define	SPWAW_AZSGECAMPAIGN	34
+#define	SPWAW_AZSGECAMTITLE	34
 
 #define	SPWAW_SECTION_COUNT	50	/*!< total number of sections in a savegame	*/
 
@@ -72,6 +75,7 @@
 
 #define	SPWAW_LEADERCOUNT	800
 #define	SPWAW_UNITCOUNT		800
+#define	SPWAW_UNITPCOUNT	400
 #define	SPWAW_UNITPOSCOUNT	5400
 #define	SPWAW_FORMCOUNT		400
 #define	SPWAW_FORMPCOUNT	100

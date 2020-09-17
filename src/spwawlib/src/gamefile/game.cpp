@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,34 +12,52 @@
 #include "gamefile/winspww2/game_winspww2.h"
 #include "common/internal.h"
 
+static void
+log_savegame_descriptor (SPWAW_SAVEGAME_DESCRIPTOR *sgd, const char *caller)
+{
+	if (sgd->numeric_id) {
+		log ("%s (sgd = {gametype=\"%s\", savetype=\"%s\", path=\"%s\", numeric_id=true, id=%u})\n",
+			caller,
+			SPWAW_gametype2str(sgd->gametype), SPWAW_savetype2str(sgd->savetype),
+			sgd->path, sgd->id.number);
+	} else {
+		log ("%s (sgd = {gametype=\"%s\", savetype=\"%s\", path=\"%s\", numeric_id=false, id=\"%s\"})\n",
+			caller,
+			SPWAW_gametype2str(sgd->gametype), SPWAW_savetype2str(sgd->savetype),
+			sgd->path, sgd->id.name);
+	}
+
+}
+
 GAMEDATA *
-game_load_full (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAMEINFO *info)
+game_load_full (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 {
 	GAMEFILE	game;
 	GAMEDATA	*data = NULL;
-	bool		cmt_rc, dat_rc;
+	bool		mt_rc, dt_rc;
 
-	log ("game_load_full (gametype=\"%s\" (%d), dir=\"%s\", id=%u)\n", SPWAW_gametype2str(gametype), gametype, dir, id);
+	if (!sgd) return (NULL);
+	log_savegame_descriptor (sgd, __FUNCTION__);
 
 	if (info) clear_ptr (info);
 
-	if (!gamefile_open (gametype, dir, id, &game)) return (NULL);
+	if (!gamefile_open (sgd, &game)) return (NULL);
 
-	data = gamedata_new(gametype); COOMRET (data, "GAMEDATA", NULL);
+	data = gamedata_new (game.gametype, game.savetype); COOMRET (data, "GAMEDATA", NULL);
 
-	cmt_rc = gamedata_load_cmt (&game, &(data->cmt));
-	dat_rc = gamedata_load_all (&game, data);
+	mt_rc = gamedata_load_metadata (&game, data);
+	dt_rc = gamedata_load_data (&game, data);
 
-	if (!cmt_rc) {
-		ERROR0 ("failed to read game comment data");
+	if (!mt_rc) {
+		ERROR0 ("failed to load game metadata");
 		gamedata_free (&data);
-	} else if (!dat_rc) {
-		ERROR0 ("failed to decompress game data");
+	} else if (!dt_rc) {
+		ERROR0 ("failed to load game data");
 		gamedata_free (&data);
 	}
 
 	if (data && info) {
-		switch (gametype) {
+		switch (game.gametype) {
 			case SPWAW_GAME_TYPE_SPWAW:
 				setup_spwaw_info (info, &game, data);
 				break;
@@ -51,6 +69,7 @@ game_load_full (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAME
 				ERROR0 ("unsupported game type");
 				break;
 		}
+		data->savetype = info->savetype;
 		data->type = info->type;
 	}
 
@@ -60,14 +79,17 @@ game_load_full (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAME
 }
 
 bool
-game_load_info (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAMEINFO *info)
+game_load_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 {
-	switch (gametype) {
+	if (!sgd || !info) return (false);
+	log_savegame_descriptor (sgd, __FUNCTION__);
+
+	switch (sgd->gametype) {
 		case SPWAW_GAME_TYPE_SPWAW:
-			return (game_load_spwaw_info(dir, id, info));
+			return (game_load_spwaw_info(sgd, info));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
-			return (game_load_winspww2_info(dir, id, info));
+			return (game_load_winspww2_info(sgd, info));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
@@ -78,25 +100,28 @@ game_load_info (SPWAW_GAME_TYPE gametype, const char *dir, unsigned int id, GAME
 }
 
 bool
-game_save_full (GAMEDATA *src, const char *dir, unsigned int id)
+game_save_full (GAMEDATA *src, SPWAW_SAVEGAME_DESCRIPTOR *sgd)
 {
 	GAMEFILE	game;
-	bool		cmt_rc, dat_rc;
+	bool		mt_rc, dt_rc;
 
-	log ("game_save_full (src=0x%8.8x, dir=\"%s\", id=%u)\n", src, dir, id);
+	if (!src || !sgd) return (false);
+	if (src->gametype != sgd->gametype) return (false);
+	if (src->savetype != sgd->savetype) return (false);
+	log_savegame_descriptor (sgd, __FUNCTION__);
 
-	if (!gamefile_create (src->gametype, dir, id, &game)) return false;
+	if (!gamefile_create (sgd, &game)) return false;
 
-	cmt_rc = gamedata_save_cmt (&(src->cmt), &game);
-	dat_rc = gamedata_save_all (src, &game);
+	mt_rc = gamedata_save_metadata (src, &game);
+	dt_rc = gamedata_save_data (src, &game);
 
 	gamefile_close (&game);
 
-	if (!cmt_rc) {
-		ERROR0 ("failed to write game comment data");
+	if (!mt_rc) {
+		ERROR0 ("failed to save game metadata");
 		return (false);
-	} else if (!dat_rc) {
-		ERROR0 ("failed to write game data");
+	} else if (!dt_rc) {
+		ERROR0 ("failed to save game data");
 		return (false);
 	}
 

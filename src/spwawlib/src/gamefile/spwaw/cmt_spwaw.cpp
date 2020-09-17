@@ -1,73 +1,89 @@
 /** \file
  * The SPWaW Library - gamefile handling - SPWaW comment data.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "stdafx.h"
 #include "gamefile/spwaw/cmt_spwaw.h"
-#include "gamefile/spwaw/defines_spwaw.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 
-typedef struct s_CMTDATA_SPWAW {
-	char	title[SPWAW_AZSTITLE];		/* Savegame title	*/
-	char	mapsrc[SPWAW_AZSMAPSRC];	/* Savegame map source	*/
-} CMTDATA_SPWAW;
+bool
+gamedata_init_spwaw_cmt (METADATA *data)
+{
+	if (!data) return (false);
+
+	data->savetype = SPWAW_SAVE_TYPE_REGULAR;
+	data->size = sizeof (CMTDATA_SPWAW);
+	data->data = (void *)safe_malloc (CMTDATA_SPWAW);
+	data->used = 0;
+
+	if (!data->data) {
+		clear_ptr (data);
+		return (false);
+	}
+
+	return (true);
+}
+
+void
+gamedata_free_spwaw_cmt (METADATA *data)
+{
+	if (!data) return;
+
+	if (data->data) safe_free (data->data);
+	clear_ptr (data);
+}
 
 bool
-gamedata_load_spwaw_cmt (GAMEFILE *file, CMTDATA *dst)
+gamedata_load_spwaw_cmt (GAMEFILE *file, METADATA *dst)
 {
-	CMTDATA_SPWAW	cmt;
+	CMTDATA_SPWAW	*p;
 	bool		rc;
-	unsigned int	todo, i;
+	unsigned int	i;
 
 	if (!file || !dst) return (false);
+	if (file->gametype != SPWAW_GAME_TYPE_SPWAW) return (false);
+	if (file->savetype != SPWAW_SAVE_TYPE_REGULAR) return (false);
+	if (dst->savetype != SPWAW_SAVE_TYPE_REGULAR) return (false);
+	if (!dst->size || !dst->data) return (false);
 
-	clear_ptr (dst);
-
-	rc = bread (file->cmt_fd, (char *)&cmt, sizeof (cmt), false);
+	p = (CMTDATA_SPWAW *)dst->data; dst->used = sizeof (CMTDATA_SPWAW);
+	rc = bread (file->metadata.fd, (char *)p, dst->used, false);
 
 	if (rc) {
 		/* Fix unprintable characters */
-		todo = sizeof (dst->title); if (sizeof(cmt.title) < todo) todo = sizeof(cmt.title);
-		for (i = 0; i < todo; i++) {
-			if (cmt.title[i] != '\0' && !isprint(cmt.title[i]))
-				dst->title[i] = ' ';
-			else
-				dst->title[i] = cmt.title[i];
+		for (i = 0; i < sizeof (p->title); i++) {
+			if (p->title[i] != '\0' && !isprint(p->title[i]))
+				p->title[i] = ' ';
 		}
 
 		/* Fix unprintable characters */
-		todo = sizeof (dst->mapsrc); if (sizeof(cmt.mapsrc) < todo) todo = sizeof(cmt.mapsrc);
-		for (i = 0; i < todo; i++) {
-			if (cmt.mapsrc[i] != '\0' && !isprint(cmt.mapsrc[i]))
-				dst->mapsrc[i] = ' ';
-			else
-				dst->mapsrc[i] = cmt.mapsrc[i];
+		for (i = 0; i < sizeof (p->mapsrc); i++) {
+			if (p->mapsrc[i] != '\0' && !isprint(p->mapsrc[i]))
+				p->mapsrc[i] = ' ';
 		}
+	} else {
+		memset (dst->data, 0, dst->size);
 	}
 
 	return (rc);
 }
 
 bool
-gamedata_save_spwaw_cmt (CMTDATA *src, GAMEFILE *file)
+gamedata_save_spwaw_cmt (METADATA *src, GAMEFILE *file)
 {
-	CMTDATA_SPWAW	cmt;
-	unsigned int	todo;
+	CMTDATA_SPWAW	*p;
 
 	if (!src || !file) return (false);
+	if (src->savetype != SPWAW_SAVE_TYPE_REGULAR) return (false);
+	if (file->gametype != SPWAW_GAME_TYPE_SPWAW) return (false);
+	if (file->savetype != SPWAW_SAVE_TYPE_REGULAR) return (false);
+	if (!src->size || !src->data) return (false);
 
-	memset (&cmt, 0, sizeof(cmt));
-
-	todo = sizeof(cmt.title); if (sizeof(src->title) < todo) todo = sizeof(src->title);
-	memcpy (cmt.title, src->title, todo);
-
-	todo = sizeof(cmt.mapsrc); if (sizeof(src->mapsrc) < todo) todo = sizeof(src->mapsrc);
-	memcpy (cmt.mapsrc, src->mapsrc, todo);
-
-	return (bwrite (file->cmt_fd, (char *)&cmt, sizeof (cmt)));
+	p = (CMTDATA_SPWAW *)src;
+	return (bwrite (file->metadata.fd, (char *)p, src->used));
 }

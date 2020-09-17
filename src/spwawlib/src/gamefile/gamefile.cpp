@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,125 +11,178 @@
 #include "common/internal.h"
 
 bool
-gamefile_basename (SPWAW_GAME_TYPE type, const char **base)
+gamefile_info (SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, GAMEFILE_META *meta)
 {
-	if (!base) return (false);
-	*base = NULL;
+	if (!meta) return (false);
+	meta->base = meta->ext_data = meta->ext_metadata = NULL;
 
-	switch (type) {
+	switch (gametype) {
 		case SPWAW_GAME_TYPE_SPWAW:
-			*base = "save";
+			switch (savetype) {
+				case SPWAW_SAVE_TYPE_REGULAR:
+					meta->base         = "save";
+					meta->ext_data     = "dat";
+					meta->ext_metadata = "cmt";
+					break;
+				case SPWAW_SAVE_TYPE_MEGACAM:
+					meta->base         = NULL;
+					meta->ext_data     = "sav";
+					meta->ext_metadata = "cam";
+					break;
+				default:
+					/* unsupported save type */
+					break;
+			}
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
-			*base = "SpSv";
+			switch (savetype) {
+				case SPWAW_SAVE_TYPE_REGULAR:
+					meta->base         = "SpSv";
+					meta->ext_data     = "dat";
+					meta->ext_metadata = "cmt";
+					break;
+				default:
+					/* unsupported save type */
+					break;
+			}
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
-			ERROR0 ("unsupported game type");
-			return (false);
+			RWE (false, "unsupported game type");
 			break;
 	}
 
 	return (true);
 }
 
-bool
-gamefile_open (SPWAW_GAME_TYPE gametype, const char *dir, int id, GAMEFILE *game)
+static void
+gamefile_file_init (GAMEFILE_FILE &file)
 {
-	SPWAW_ERROR	rc;
-	const char	*base = NULL;
-	char		name[MAX_PATH+1];
+	clear_ptr (&file);
+	file.fd = -1;
+}
+
+static void
+gamefile_file_init (GAMEFILE_FILE &file, char *name, const char *description)
+{
+	clear_ptr (&file);
+	file.fd = -1;
+	snprintf (file.name, sizeof(file.name) - 1, "%s", name);
+	snprintf (file.description, sizeof (file.description) - 1, "game %s filename", description);
+}
+
+static SPWAW_ERROR
+gamefile_file_open (GAMEFILE_FILE &file, const char *goal, int mode, int perm)
+{
+	const char	*fmt = "failed to open %s for %s";
+	char		buf[256];
 	HANDLE		hfd;
 
-	if (!dir || !game) return (false);
+	if (perm == -1) {
+		file.fd = open (file.name, mode);
+	} else {
+		file.fd = open (file.name, mode, perm);
+	}
+	if (file.fd == -1) {
+		memset (buf, 0, sizeof(buf));
+		snprintf (buf, sizeof(buf) - 1, fmt, file.description, goal);
+		RWE (SPWERR_FOFAILED, buf);
+	}
+	log ("gamefile_file_open: name=\"%s\", description=\"%s\", fd=%d\n", file.name, file.description, file.fd);
 
-	if (!gamefile_basename (gametype, &base)) return (false);
+	hfd = (void *)_get_osfhandle (file.fd);
+	if (hfd != INVALID_HANDLE_VALUE) GetFileTime (hfd, NULL, NULL, &(file.date));
+
+	return (SPWERR_OK);
+}
+
+static void
+gamefile_file_close (GAMEFILE_FILE &file)
+{
+	if (file.fd != -1) close (file.fd);
+	gamefile_file_init (file);
+}
+
+static void
+gamefile_init (GAMEFILE *game, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype)
+{
+	if (!game) return;
 
 	clear_ptr (game);
 	game->gametype = gametype;
-	game->cmt_fd = game->dat_fd = -1;
+	game->savetype = savetype;
+}
 
-	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.cmt", dir, base, id);
-	game->cmt_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
+static bool
+gamefile_prepare (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEFILE *game)
+{
+	GAMEFILE_META	gfm;
+	char		name[MAX_PATH+1];
 
-	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.dat", dir, base, id);
-	game->dat_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
+	if (!sgd || !game) return (false);
+	if (!sgd->path) return (false);
+	if (!gamefile_info (sgd->gametype, sgd->savetype, &gfm)) return (false);
 
-	game->cmt_fd = open (game->cmt_name, O_RDONLY|O_BINARY);
-	if (game->cmt_fd == -1) FAILGOTO (SPWERR_FOFAILED, "failed to open game cmt file for reading", error);
-	log ("gamefile_open: comment: name=\"%s\", fd=%d\n", game->cmt_name, game->cmt_fd);
+	gamefile_init (game, sgd->gametype, sgd->savetype);
 
-	hfd = (void *)_get_osfhandle (game->cmt_fd);
-	if (hfd != INVALID_HANDLE_VALUE) GetFileTime (hfd, NULL, NULL, &(game->cmt_date));
+	if (sgd->numeric_id) {
+		memset (name, 0, sizeof (name));
+		snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.%s", sgd->path, gfm.base, sgd->id.number, gfm.ext_metadata);
+		gamefile_file_init (game->metadata, name, "metadata");
 
-	game->dat_fd = open (game->dat_name, O_RDONLY|O_BINARY);
-	if (game->dat_fd == -1) FAILGOTO (SPWERR_FOFAILED, "failed to open game dat file for reading", error);
-	log ("gamefile_open: data: name=\"%s\", fd=%d\n", game->dat_name, game->dat_fd);
+		memset (name, 0, sizeof (name));
+		snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.%s", sgd->path, gfm.base, sgd->id.number, gfm.ext_data);
+		gamefile_file_init (game->data, name, "data");
+	} else {
+		memset (name, 0, sizeof (name));
+		snprintf (name, sizeof (name) - 1, "%s\\%s.%s", sgd->path, sgd->id.name, gfm.ext_metadata);
+		gamefile_file_init (game->metadata, name, "metadata");
 
-	hfd = (void *)_get_osfhandle (game->dat_fd);
-	if (hfd != INVALID_HANDLE_VALUE)
-		GetFileTime (hfd, NULL, NULL, &(game->dat_date));
+		memset (name, 0, sizeof (name));
+		snprintf (name, sizeof (name) - 1, "%s\\%s.%s", sgd->path, sgd->id.name, gfm.ext_data);
+		gamefile_file_init (game->data, name, "data");
+	}
+
+	return (true);
+}
+
+bool
+gamefile_open (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEFILE *game)
+{
+	SPWAW_ERROR	rc;
+
+	if (!gamefile_prepare (sgd, game)) return (false);
+
+	rc = gamefile_file_open (game->metadata, "reading", O_RDONLY|O_BINARY, -1);
+	ERRORGOTO ("gamefile_file_open(metadata)", error);
+
+	rc = gamefile_file_open (game->data, "reading", O_RDONLY|O_BINARY, -1);
+	ERRORGOTO ("gamefile_file_open(data)", error);
 
 	return (true);
 
 error:
-	if (game->dat_fd != -1) close (game->dat_fd);
-	if (game->cmt_fd != -1) close (game->cmt_fd);
-	if (game->dat_name) free (game->dat_name);
-	if (game->cmt_name) free (game->cmt_name);
-	clear_ptr (game);
+	gamefile_close (game);
 	return (false);
 }
 
 bool
-gamefile_create (SPWAW_GAME_TYPE gametype, const char *dir, int id, GAMEFILE *game)
+gamefile_create (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEFILE *game)
 {
 	SPWAW_ERROR	rc;
-	const char	*base = NULL;
-	char		name[MAX_PATH+1];
-	HANDLE		hfd;
 
-	if (!dir || !game) return (false);
+	if (!gamefile_prepare (sgd, game)) return (false);
 
-	if (!gamefile_basename (gametype, &base)) return (false);
+	rc = gamefile_file_open (game->metadata, "writing", O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
+	ERRORGOTO ("gamefile_file_open(metadata)", error);
 
-	clear_ptr (game);
-	game->gametype = gametype;
-	game->cmt_fd = game->dat_fd = -1;
-
-	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.cmt", dir, base, id);
-	game->cmt_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game cmt filename", error);
-
-	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "%s\\%s%03.3d.dat", dir, base, id);
-	game->dat_name = safe_strdup (name); COOMGOTO (game->cmt_name, "game dat filename", error);
-
-	game->cmt_fd = open (game->cmt_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
-	if (game->cmt_fd == -1) FAILGOTO (SPWERR_FOFAILED, "failed to open game cmt file for writing", error);
-	log ("gamefile_create: comment: name=\"%s\", fd=%d\n", game->cmt_name, game->cmt_fd);
-
-	hfd = (void *)_get_osfhandle (game->cmt_fd);
-	if (hfd != INVALID_HANDLE_VALUE) GetFileTime (hfd, NULL, NULL, &(game->cmt_date));
-
-	game->dat_fd = open (game->dat_name, O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
-	if (game->dat_fd == -1) FAILGOTO (SPWERR_FOFAILED, "failed to open game dat file for writing", error);
-	log ("gamefile_create: data: name=\"%s\", fd=%d\n", game->dat_name, game->dat_fd);
-
-	hfd = (void *)_get_osfhandle (game->dat_fd);
-	if (hfd != INVALID_HANDLE_VALUE)
-		GetFileTime (hfd, NULL, NULL, &(game->dat_date));
+	rc = gamefile_file_open (game->data, "writing", O_WRONLY|O_BINARY|O_CREAT|O_TRUNC, 0666);
+	ERRORGOTO ("gamefile_file_open(data)", error);
 
 	return (true);
 
 error:
-	if (game->dat_fd != -1) close (game->dat_fd);
-	if (game->cmt_fd != -1) close (game->cmt_fd);
-	if (game->dat_name) free (game->dat_name);
-	if (game->cmt_name) free (game->cmt_name);
-	clear_ptr (game);
+	gamefile_close (game);
 	return (false);
 }
 
@@ -138,12 +191,11 @@ gamefile_close (GAMEFILE *game)
 {
 	if (!game) return (false);
 
-	if (game->dat_fd != -1) close (game->dat_fd);
-	if (game->cmt_fd != -1) close (game->cmt_fd);
-	if (game->dat_name) free (game->dat_name);
-	if (game->cmt_name) free (game->cmt_name);
+	gamefile_file_close (game->metadata);
+	gamefile_file_close (game->data);
 	clear_ptr (game);
-	game->cmt_fd = game->dat_fd = -1;
+	gamefile_file_init (game->metadata);
+	gamefile_file_init (game->data);
 
 	return (true);
 }

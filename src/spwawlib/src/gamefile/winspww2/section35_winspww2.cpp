@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - winSPWW2 game data.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */

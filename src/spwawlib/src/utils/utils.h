@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - utility code.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -25,6 +25,7 @@
 #define	fill_ptr(ptr_, val_)		fill_ptr_core (ptr_, sizeof (*ptr_), val_)
 #define	azstrcpy(src_, dst_)		sazscpy (src_,dst_)
 #define	azstrstab(src_, stab_)		azstrstab_core ((char *)src_, sizeof (src_), stab_)
+#define	aznstrstab(src_, sze_, stab_)	azstrstab_core ((char *)src_, sze_, stab_)
 
 
 extern void *	safe_malloc_core	(const char *file, unsigned long line, const char *func, unsigned int size, const char *name);
@@ -62,5 +63,8 @@ private:
 	unsigned long	left;
 	bool		eot_nl;
 };
+
+/*! Simple macro to calculate the length of a (statically initialized) array */
+#define	ARRAYCOUNT(arr_) (sizeof(arr_)/sizeof(arr_[0]))
 
 #endif	/* UTILS_H */
