@@ -213,7 +213,7 @@ SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, S
 	if (bturn) *bturn = NULL;
 
 	/* Apply snapshot type eligibility rules */
-	if (snap->type != SPWAW_CAMPAIGN_BATTLE) {
+	if (snap->type == SPWAW_STDALONE_BATTLE) {
 		RWE (SPWERR_BADBTYPE, "this snapshot does not allow campaign tracking");
 	}
 
@@ -292,7 +292,11 @@ SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, S
 
 	/* Set dossier type (if not already set) */
 	if (dossier->type == SPWAW_EMPTY_DOSSIER) {
-		dossier->type = SPWAW_CAMPAIGN_DOSSIER;
+		if ((snap->gametype == SPWAW_GAME_TYPE_SPWAW) && (snap->savetype == SPWAW_SAVE_TYPE_MEGACAM)) {
+			dossier->type = SPWAW_MEGACAM_DOSSIER;
+		} else {
+			dossier->type = SPWAW_CAMPAIGN_DOSSIER;
+		}
 	}
 
 	rc = dossier_add_to_campaign (dossier, snap, &p);

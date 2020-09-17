@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -14,13 +14,17 @@
 SPWAW_ERROR
 dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 {
-	SPWAW_ERROR	rc = SPWERR_OK;
-	DWORD		i, j;
-	SPWAW_BATTLE	*b = NULL;
+	SPWAW_ERROR		rc = SPWERR_OK;
+	SPWAW_SAVELIST_TARGET	target;
+	DWORD			i, j;
+	SPWAW_BATTLE		*b = NULL;
 
 	CNULLARG (dossier); CNULLARG (list);
 
-	rc = SPWAW_savelist_new (list); ROE ("SPWAW_savelist_new()");
+	target.gametype = dossier->gametype;
+	target.type = dossier->type;
+
+	rc = SPWAW_savelist_new (&target, list); ROE ("SPWAW_savelist_new()");
 
 	if (dossier->blist) {
 		for (i=0; i<dossier->bcnt; i++) {
@@ -42,13 +46,17 @@ dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 SPWAW_ERROR
 dossier_snaplist (SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list)
 {
-	SPWAW_ERROR	rc = SPWERR_OK;
-	DWORD		i, j;
-	SPWAW_BATTLE	*b = NULL;
+	SPWAW_ERROR		rc = SPWERR_OK;
+	SPWAW_SNAPLIST_TARGET	target;
+	DWORD			i, j;
+	SPWAW_BATTLE		*b = NULL;
 
 	CNULLARG (dossier); CNULLARG (list);
 
-	rc = SPWAW_snaplist_new (list); ROE ("SPWAW_snaplist_new()");
+	target.gametype = dossier->gametype;
+	target.type = dossier->type;
+
+	rc = SPWAW_snaplist_new (&target, list); ROE ("SPWAW_snaplist_new()");
 
 	if (dossier->blist) {
 		for (i=0; i<dossier->bcnt; i++) {

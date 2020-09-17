@@ -58,7 +58,7 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 		p->name	= NULL;
 	}
 
-	if (type == SPWAW_CAMPAIGN_DOSSIER) {
+	if (type != SPWAW_STDALONE_DOSSIER) {
 		p->bdate.btlidx = p->snap->game.btlidx;
 	} else {
 		p->bdate.btlidx = SPWAW_NOBTLIDX;
@@ -134,7 +134,7 @@ dossier_add_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b)
 	ptr->blist[ptr->bcnt++] = b;
 
 	qsort (ptr->blist, ptr->bcnt, sizeof (SPWAW_BATTLE *),
-		(ptr->type == SPWAW_CAMPAIGN_DOSSIER) ? sort_dossier_campaign : sort_dossier_stdalone);
+		(ptr->type != SPWAW_STDALONE_DOSSIER) ? sort_dossier_campaign : sort_dossier_stdalone);
 
 	pp=NULL;
 	for (idx=0; idx<ptr->bcnt; idx++) {
@@ -284,7 +284,7 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	*bturn = NULL;
 
 	// Validate dossier type
-	if (ptr->type != SPWAW_CAMPAIGN_DOSSIER) {
+	if ((ptr->type != SPWAW_CAMPAIGN_DOSSIER) && (ptr->type != SPWAW_MEGACAM_DOSSIER)) {
 		RWE (SPWERR_BADDTYPE, "this dossier does not allow adding campaign snapshots");
 	}
 

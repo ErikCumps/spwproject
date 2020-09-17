@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -61,7 +61,7 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 		dossier_update_battle_rainfo (bb, ba);
 	}
 
-	if (ptr->type == SPWAW_CAMPAIGN_DOSSIER) {
+	if (ptr->type != SPWAW_STDALONE_DOSSIER) {
 		UHT_rebuild (&(ptr->uht));
 	}
 
