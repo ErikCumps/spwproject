@@ -658,6 +658,9 @@ SPWAW_battletype2str (SPWAW_BATTLE_TYPE type)
 		case SPWAW_STDALONE_BATTLE:
 			p = "standalone";
 			break;
+		case SPWAW_MEGACAM_BATTLE:
+			p = "Mega Campaign";
+			break;
 		default:
 			p = "???";
 			break;
@@ -679,6 +682,9 @@ SPWAW_dossiertype2str (SPWAW_DOSSIER_TYPE type)
 			break;
 		case SPWAW_STDALONE_DOSSIER:
 			p = "standalone";
+			break;
+		case SPWAW_MEGACAM_DOSSIER:
+			p = "megacampaign";
 			break;
 		default:
 			p = "???";
@@ -712,6 +718,9 @@ SPWAW_unittype2str (SPWAW_UNIT_TYPE type)
 	return (p);
 }
 
+/* Convenience macro */
+#define	STREQ(a_,b_)	strnicmp(a_, b_, strlen(b_)) == 0
+
 SPWAWLIB_API const char *
 SPWAW_gametype2str (SPWAW_GAME_TYPE gametype)
 {
@@ -734,9 +743,6 @@ SPWAW_gametype2str (SPWAW_GAME_TYPE gametype)
 	return (p);
 }
 
-/* Convenience macro */
-#define	STREQ(a_,b_)	strnicmp(a_, b_, strlen(b_)) == 0
-
 SPWAWLIB_API SPWAW_GAME_TYPE
 SPWAW_str2gametype (char * gametype)
 {
@@ -749,4 +755,85 @@ SPWAW_str2gametype (char * gametype)
 	} else {
 		return (SPWAW_GAME_TYPE_UNKNOWN);
 	}
+}
+
+SPWAWLIB_API const char *
+SPWAW_savetype2str (SPWAW_SAVE_TYPE savetype)
+{
+	const char	*p;
+
+	switch (savetype) {
+		case SPWAW_SAVE_TYPE_UNKNOWN:
+			p = "unknown";
+			break;
+		case SPWAW_SAVE_TYPE_REGULAR:
+			p = "regular";
+			break;
+		case SPWAW_SAVE_TYPE_MEGACAM:
+			p = "SP:WaW Mega Campaign";
+			break;
+		default:
+			p = "???";
+			break;
+	}
+	return (p);
+}
+
+SPWAWLIB_API SPWAW_SAVE_TYPE
+SPWAW_str2savetype (char * savetype)
+{
+	if (STREQ(savetype, "regular")) {
+		return (SPWAW_SAVE_TYPE_REGULAR);
+	} else if (STREQ (savetype, "SP:WaW - General's Edition Campaign")) {
+		return (SPWAW_SAVE_TYPE_MEGACAM);
+	} else {
+		return (SPWAW_SAVE_TYPE_UNKNOWN);
+	}
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, unsigned int id)
+{
+	SPWAW_ERROR	rc;
+
+	memset (&sgd, 0, sizeof (sgd));
+	sgd.gametype	= gametype;
+	sgd.savetype	= savetype;
+	sgd.path	= safe_strdup ((char *)path);	COOMGOTO (sgd.path, "savegame descriptor path", handle_error);
+	sgd.numeric_id	= true;
+	sgd.id.number	= id;
+
+	return (SPWERR_OK);
+
+handle_error:
+	SPWAW_savegame_descriptor_clear (sgd);
+	return (rc);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, const char * id)
+{
+	SPWAW_ERROR	rc;
+
+	memset (&sgd, 0, sizeof (sgd));
+	sgd.gametype	= gametype;
+	sgd.savetype	= savetype;
+	sgd.path	= safe_strdup ((char *)path);	COOMGOTO (sgd.path, "savegame descriptor path", handle_error);
+
+	sgd.numeric_id	= false;
+	sgd.id.name	= safe_strdup ((char *)id);	COOMGOTO (sgd.id.name, "savegame descriptor ID name", handle_error);
+
+	return (SPWERR_OK);
+
+handle_error:
+	SPWAW_savegame_descriptor_clear (sgd);
+	return (rc);
+}
+
+SPWAWLIB_API void
+SPWAW_savegame_descriptor_clear (SPWAW_SAVEGAME_DESCRIPTOR &sgd)
+{
+	if (sgd.path) safe_free (sgd.path);
+	if (!sgd.numeric_id) safe_free (sgd.id.name);
+	memset (&sgd, 0, sizeof (sgd));
 }

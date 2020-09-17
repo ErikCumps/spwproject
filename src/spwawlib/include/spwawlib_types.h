@@ -345,7 +345,8 @@ extern SPWAWLIB_API const char *SPWAW_bresult2str (SPWAW_BRESULT result);
 typedef enum e_SPWAW_BATTLE_TYPE {
 	SPWAW_UNKNOWN_BATTLE = 0,	/* The type of this battle is unknown			*/
 	SPWAW_CAMPAIGN_BATTLE,		/* A campaign battle (allows campaign tracking)		*/
-	SPWAW_STDALONE_BATTLE		/* A standalone battle (no campaign tracking)		*/
+	SPWAW_STDALONE_BATTLE,		/* A standalone battle (no campaign tracking)		*/
+	SPWAW_MEGACAM_BATTLE		/* An SP:WaW Mega Campaign battle (tracking savegame)	*/
 } SPWAW_BATTLE_TYPE;
 
 extern SPWAWLIB_API const char *SPWAW_battletype2str	(SPWAW_BATTLE_TYPE type);
@@ -354,7 +355,8 @@ extern SPWAWLIB_API const char *SPWAW_battletype2str	(SPWAW_BATTLE_TYPE type);
 typedef enum e_SPWAW_DOSSIER_TYPE {
 	SPWAW_EMPTY_DOSSIER = 0,	/* An empty dossier (type not yet determined)		*/
 	SPWAW_CAMPAIGN_DOSSIER,		/* A campaign dossier (tracks a campaign)		*/
-	SPWAW_STDALONE_DOSSIER		/* A standalone dossier (no campaign tracking)		*/
+	SPWAW_STDALONE_DOSSIER,		/* A standalone dossier (no campaign tracking)		*/
+	SPWAW_MEGACAM_DOSSIER		/* An SP:WaW Mega Campaign dossier (tracking savegame)	*/
 } SPWAW_DOSSIER_TYPE;
 
 extern SPWAWLIB_API const char *SPWAW_dossiertype2str	(SPWAW_DOSSIER_TYPE type);
@@ -382,6 +384,32 @@ extern SPWAWLIB_API SPWAW_GAME_TYPE	SPWAW_str2gametype	(char * gametype);
 /* SPWAW formation type */
 #define	SPWAW_FORMATION_TYPE_CORE	0x01	/* Formation contains core units	*/
 #define	SPWAW_FORMATION_TYPE_SUPPORT	0x02	/* Formation contains support units	*/
+
+/* SPWAW save type */
+typedef enum e_SPWAW_SAVE_TYPE {
+	SPWAW_SAVE_TYPE_UNKNOWN = 0,	/* Unknown save type				*/
+	SPWAW_SAVE_TYPE_REGULAR,	/* Regular save type				*/
+	SPWAW_SAVE_TYPE_MEGACAM,	/* SP:WaW General's Edition Mega Campaign	*/
+} SPWAW_SAVE_TYPE;
+
+extern SPWAWLIB_API const char *	SPWAW_savetype2str	(SPWAW_SAVE_TYPE savetype);
+extern SPWAWLIB_API SPWAW_SAVE_TYPE	SPWAW_str2savetype	(char * savetype);
+
+/* SPWAW savegame descriptor */
+typedef struct s_SPWAW_SAVEGAME_DESCRIPTOR {
+	SPWAW_GAME_TYPE		gametype;
+	SPWAW_SAVE_TYPE		savetype;
+	char			*path;
+	bool			numeric_id;
+	union {
+		unsigned int	number;
+		char		*name;
+	}			id;
+} SPWAW_SAVEGAME_DESCRIPTOR;
+
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, unsigned int id);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, const char * id);
+extern SPWAWLIB_API void	SPWAW_savegame_descriptor_clear	(SPWAW_SAVEGAME_DESCRIPTOR &sgd);
 
 #endif	/* SPWAW_LIB_TYPES_H */
 
