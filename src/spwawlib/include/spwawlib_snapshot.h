@@ -744,8 +744,9 @@ typedef struct s_SPWAW_SNAPSHOT_INFO {
 	SPWAW_TURN_DATE		tdate;				/* Snapshot battle turn date				*/
 	char			stamp[32];			/* snapshot battle date/turn string			*/
 	char			location[SPWAW_AZSLOCATION+1];	/* Snapshot battle location				*/
-	char			filename[MAX_PATH+1];		/* Snapshot source game filename			*/
-	FILETIME		filedate;			/* Snapshot source game filedate			*/
+	char			path[MAX_PATH+1];		/* Snapshot source game file path			*/
+	char			file[MAX_PATH+1];		/* Snapshot source game file name			*/
+	FILETIME		filedate;			/* Snapshot source game file date			*/
 	SPWAW_BATTLE_TYPE	type;				/* Snapshot battle type					*/
 	SPWAW_GAME_TYPE		gametype;			/* Snapshot game type					*/
 	SPWAW_SAVE_TYPE		savetype;			/* Snapshot save type					*/
@@ -757,6 +758,7 @@ typedef struct s_SPWAW_SNAPSHOT_INFO {
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_make	(SPWAW_SAVEGAME_DESCRIPTOR *sgd, SPWAW_SNAPSHOT **snap);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_info	(const char *file, SPWAW_SNAPSHOT_INFO *info);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_info	(SPWAW_SNAPSHOT **snap, SPWAW_SNAPSHOT_INFO *info);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_load	(const char *file, SPWAW_SNAPSHOT **snap);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_save	(SPWAW_SNAPSHOT **snap, const char *file, bool compress);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_snap_free (SPWAW_SNAPSHOT **snap);

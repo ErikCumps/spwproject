@@ -101,6 +101,39 @@ SPWAW_snap_info (const char *file, SPWAW_SNAPSHOT_INFO *info)
 	return (SPWERR_OK);
 }
 
+/*! Obtain snapshot info from snapshot */
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_snap_info (SPWAW_SNAPSHOT **snap, SPWAW_SNAPSHOT_INFO *info)
+{
+	char		*date = NULL;
+
+	CSPWINIT;
+	CNULLARG (snap); CNULLARG (*snap); CNULLARG (info);
+	clear_ptr (info);
+
+	snprintf (info->title, sizeof (info->title) - 1, "%s", (*snap)->raw.game.meta.title);
+
+	info->start	= (*snap)->game.battle.data.bdate.date;
+	info->tdate	= (*snap)->game.battle.data.tdate;
+
+	SPWAW_date2str (&(info->tdate.date), &date);
+	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->tdate.turn);
+
+	info->location;
+	snprintf (info->location, sizeof (info->location) - 1, "%s", (*snap)->raw.game.battle.location);
+
+	snprintf (info->path, sizeof (info->path) - 1, "%s", (*snap)->src.path);
+	snprintf (info->file, sizeof (info->file) - 1, "%s", (*snap)->src.file);
+	info->filedate	= (*snap)->src.date;
+
+	info->type	= (*snap)->type;
+	info->gametype	= (*snap)->gametype;
+	info->savetype	= (*snap)->savetype;
+
+	return (SPWERR_OK);
+}
+
+
 /*! Load snapshot from file */
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_snap_load	(const char *file, SPWAW_SNAPSHOT **snap)

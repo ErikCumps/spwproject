@@ -572,7 +572,8 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->tdate.turn);
 	free (date);
 
-	snprintf (info->filename, sizeof (info->filename) - 1, "%s\\%s", STRTAB_getstr (stab, shdr.path), STRTAB_getstr (stab, shdr.file));
+	snprintf (info->path, sizeof (info->path) - 1, "%s", STRTAB_getstr (stab, shdr.path));
+	snprintf (info->file, sizeof (info->file) - 1, "%s", STRTAB_getstr (stab, shdr.file));
 	info->filedate = *((FILETIME *)&(shdr.date));
 
 	info->type = (SPWAW_BATTLE_TYPE)ihdr.type;

@@ -55,6 +55,30 @@ gamefile_info (SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, GAMEFILE_META
 	return (true);
 }
 
+bool
+gamefile_basename (SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, char *filename, char *dst, unsigned int len)
+{
+	GAMEFILE_META	meta;
+	size_t		todo;
+	char		*p;
+
+	if (!filename) return (false);
+	if (!dst || !len) return (false);
+	memset (dst, 0, len);
+	todo = strlen(filename) + 1;
+
+	if (!gamefile_info (gametype, savetype, &meta)) return (false);
+	p = strrchr (filename, '.');
+	if (p) {
+		if (memcmp (p+1, meta.ext_data, strlen(meta.ext_data)+1) != 0) return (false);
+		todo -= (strlen(meta.ext_data)+1);
+	}
+	if (todo > len) return (false);
+	memcpy (dst, filename, todo);
+
+	return (true);
+}
+
 static void
 gamefile_file_init (GAMEFILE_FILE &file)
 {

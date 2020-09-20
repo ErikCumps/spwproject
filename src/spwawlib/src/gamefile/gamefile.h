@@ -32,6 +32,7 @@ typedef struct s_GAMEFILE_META {
 } GAMEFILE_META;
 
 extern bool	gamefile_info		(SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, GAMEFILE_META *meta);
+extern bool	gamefile_basename	(SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, char *filename, char *dst, unsigned int len);
 
 extern bool	gamefile_open		(SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEFILE *game);
 extern bool	gamefile_create		(SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEFILE *game);
