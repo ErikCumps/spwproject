@@ -181,7 +181,7 @@ load_from_winspww2_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	stab = (STRTAB *)(dst->stab);
 
 	if (metadata_title (&(src->metadata), title)) {
-		dst->raw.game.cmt.title = aznstrstab (title.ptr, title.size, stab);
+		dst->raw.game.meta.title = aznstrstab (title.ptr, title.size, stab);
 	}
 	// winSPWW2 games do not have map source data
 

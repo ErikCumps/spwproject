@@ -214,7 +214,7 @@ SPWAW_snaplist_add (SPWAW_SNAPLIST *list, SPWAW_SNAPSHOT *snap)
 	snprintf (node->filepath, sizeof (node->filepath) - 1, "%s\\%s", snap->src.path, snap->src.file);
 	node->filedate = snap->src.date;
 
-	snprintf (node->info.title, sizeof (node->info.title) - 1, "%s", snap->raw.game.cmt.title);
+	snprintf (node->info.title, sizeof (node->info.title) - 1, "%s", snap->raw.game.meta.title);
 	node->info.start = snap->game.campaign.data.start;
 	node->info.tdate = snap->game.battle.data.tdate;
 	snprintf (node->info.stamp, sizeof (node->info.stamp) - 1, "%s, turn %u",

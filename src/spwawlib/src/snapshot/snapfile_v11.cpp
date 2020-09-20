@@ -38,7 +38,7 @@ handle_error:
 	return (rc);
 }
 
-#define	copyCMT(name)	snap->cmt.##name = snap_v11.cmt.##name
+#define	copyMETA(name)	snap->meta.##name = snap_v11.meta.##name
 #define	copyB(name)	snap->b.##name = snap_v11.b.##name
 #define	copyBVH(i,name)	snap->b.vhex[i].##name = snap_v11.b.vhex[i].##name
 #define	copyC(name)	snap->c.##name = snap_v11.c.##name
@@ -58,8 +58,8 @@ snapshot_load_v11_snap (int fd, SNAP_HEADER *hdr, SNAP *snap)
 
 	/* The V11 snapshot data storage uses data types with different widths. */
 
-	/* Copy SNAP_CMT data */
-	copyCMT (title); copyCMT (mapsrc);
+	/* Copy SNAP_META data */
+	copyMETA (title); copyMETA (mapsrc);
 
 	/* Copy SNAP_BATTLE data */
 	copyB (year); copyB (month); copyB (day); copyB (hour); copyB (location);

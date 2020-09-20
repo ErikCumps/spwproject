@@ -11,9 +11,9 @@
 #include "utils.h"
 
 static void
-report_comment (Xml &xml, SPWAW_SNAP_CMT *ptr)
+report_metadata (Xml &xml, SPWAW_SNAP_META *ptr)
 {
-	XmlScope scope (xml, "comment");
+	XmlScope scope (xml, "metadata");
 
 	xml.item ("title", ptr->title);
 }
@@ -210,7 +210,7 @@ report_game (Xml &xml, SPWAW_SNAP_GAME *ptr)
 			break;
 	}
 
-	report_comment	(xml, &(ptr->cmt));
+	report_metadata	(xml, &(ptr->meta));
 	report_battle	(xml, &(ptr->battle));
 	report_map	(xml, &(ptr->map));
 	report_campaign	(xml, &(ptr->campaign), ptr);

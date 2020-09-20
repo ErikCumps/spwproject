@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -18,8 +18,8 @@ fixup_snap (SPWAW_SNAPSHOT *src, STRTAB *stab)
 	src->src.path = STRTAB_getstr (stab, STRTAB_getidx (stab, src->src.path));
 	src->src.file = STRTAB_getstr (stab, STRTAB_getidx (stab, src->src.file));
 
-	src->raw.game.cmt.title = STRTAB_getstr (stab, STRTAB_getidx (stab, src->raw.game.cmt.title));
-	src->raw.game.cmt.mapsrc = STRTAB_getstr (stab, STRTAB_getidx (stab, src->raw.game.cmt.mapsrc));
+	src->raw.game.meta.title = STRTAB_getstr (stab, STRTAB_getidx (stab, src->raw.game.meta.title));
+	src->raw.game.meta.mapsrc = STRTAB_getstr (stab, STRTAB_getidx (stab, src->raw.game.meta.mapsrc));
 	src->raw.game.battle.location = STRTAB_getstr (stab, STRTAB_getidx (stab, src->raw.game.battle.location));
 }
 
@@ -100,8 +100,8 @@ remove_snap (SPWAW_SNAPSHOT *src, STRTAB *stab)
 	STRTAB_del (stab, src->src.path);
 	STRTAB_del (stab, src->src.file);
 
-	STRTAB_del (stab, src->raw.game.cmt.title);
-	STRTAB_del (stab, src->raw.game.cmt.mapsrc);
+	STRTAB_del (stab, src->raw.game.meta.title);
+	STRTAB_del (stab, src->raw.game.meta.mapsrc);
 	STRTAB_del (stab, src->raw.game.battle.location);
 }
 

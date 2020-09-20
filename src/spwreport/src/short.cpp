@@ -10,7 +10,7 @@
 #include "utils.h"
 
 static void
-report_comment (FILE *rf, SPWAW_SNAP_CMT *ptr)
+report_metadata (FILE *rf, SPWAW_SNAP_META *ptr)
 {
 	fprintf (rf, "Title: \"%s\"\n", ptr->title);
 	fprintf (rf, "\n");
@@ -116,7 +116,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 
 	smart_title (rf, '=', "Short game data report:\n");
 
-	report_comment	(rf, &(ptr->cmt));
+	report_metadata	(rf, &(ptr->meta));
 	report_battle	(rf, &(ptr->battle));
 	report_campaign	(rf, &(ptr->campaign), ptr);
 	report_map	(rf, &(ptr->map));

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -48,13 +48,13 @@ snapcopy_source (SPWAW_SNAP_SOURCE *src, SPWAW_SNAP_SOURCE *dst, STRTAB *stab)
 static SPWAW_ERROR
 snapcopy_raw_game (SPWAW_SNAP_GAME_RAW *src, SPWAW_SNAP_GAME_RAW *dst, STRTAB *stab)
 {
-	memcpy (&(dst->cmt),	  &(src->cmt),	    sizeof (dst->cmt));
+	memcpy (&(dst->meta),	  &(src->meta),	    sizeof (dst->meta));
 	memcpy (&(dst->battle),	  &(src->battle),   sizeof (dst->battle));
 	memcpy (&(dst->campaign), &(src->campaign), sizeof (dst->campaign));
 	memcpy (&(dst->map),	  &(src->map),	    sizeof (dst->map));
 
-	STABCPY (cmt.title, stab);
-	STABCPY (cmt.mapsrc, stab);
+	STABCPY (meta.title, stab);
+	STABCPY (meta.mapsrc, stab);
 	STABCPY (battle.location, stab);
 
 	return (SPWERR_OK);
@@ -187,7 +187,7 @@ snapcopy_raw (SPWAW_SNAP_RAW *src, SPWAW_SNAP_RAW *dst, STRTAB *stab)
 }
 
 static SPWAW_ERROR
-snapcopy_game_cmt (SPWAW_SNAP_CMT *src, SPWAW_SNAP_CMT *dst, STRTAB *stab)
+snapcopy_game_meta (SPWAW_SNAP_META *src, SPWAW_SNAP_META *dst, STRTAB *stab)
 {
 	STABCPY (title, stab);
 
@@ -226,7 +226,7 @@ snapcopy_game (SPWAW_SNAP_GAME *src, SPWAW_SNAP_GAME *dst, STRTAB *stab)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 
-	rc = snapcopy_game_cmt		(&(src->cmt),		&(dst->cmt),		stab);	ROE ("snapcopy_game_cmt()");
+	rc = snapcopy_game_meta		(&(src->meta),		&(dst->meta),		stab);	ROE ("snapcopy_game_meta()");
 	rc = snapcopy_game_battle	(&(src->battle),	&(dst->battle),		stab);	ROE ("snapcopy_game_battle()");
 	rc = snapcopy_game_campaign	(&(src->campaign),	&(dst->campaign),	stab);	ROE ("snapcopy_game_campaign()");
 	rc = snapcopy_game_map		(&(src->map),		&(dst->map),		stab);	ROE ("snapcopy_game_map()");

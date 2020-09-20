@@ -24,8 +24,8 @@ prep_snap (SPWAW_SNAPSHOT *src, SNAP *dst, STRTAB *stab)
 {
 	int	i;
 
-	dst->cmt.title = STRTAB_getidx (stab, src->raw.game.cmt.title);
-	dst->cmt.mapsrc = STRTAB_getidx (stab, src->raw.game.cmt.mapsrc);
+	dst->meta.title = STRTAB_getidx (stab, src->raw.game.meta.title);
+	dst->meta.mapsrc = STRTAB_getidx (stab, src->raw.game.meta.mapsrc);
 
 	setB (year); setB (month); setB (day); setB (hour);
 	dst->b.location = STRTAB_getidx (stab, src->raw.game.battle.location);
@@ -384,7 +384,7 @@ snapsave (SPWAW_SNAPSHOT *src, int fd, bool do_oob, bool do_stab, bool compress)
 		ERRORGOTO ("SPWOOB_save()", handle_error);
 	}
 
-	ihdr.title	= STRTAB_getidx (stab, src->raw.game.cmt.title);
+	ihdr.title	= STRTAB_getidx (stab, src->raw.game.meta.title);
 	ihdr.location	= STRTAB_getidx (stab, src->raw.game.battle.location);
 	// TODO: this isn't perfect, it would be better if idhr.turn used a wider data type...
 	ihdr.turn	= (BYTE)(src->game.battle.data.tdate.turn & 0xff);

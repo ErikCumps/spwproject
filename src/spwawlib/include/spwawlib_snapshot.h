@@ -22,11 +22,11 @@
 /***   RAW DATA STRUCTURES   ***/
 /*******************************/
 
-/* SPWAW comment info: raw data */
-typedef struct s_SPWAW_SNAP_CMT_RAW {
+/* SPWAW meta data: raw data */
+typedef struct s_SPWAW_SNAP_META_RAW {
 	char			*title;				/* Savegame title					*/
 	char			*mapsrc;			/* Savegame map source					*/
-}SPWAW_SNAP_CMT_RAW;
+}SPWAW_SNAP_META_RAW;
 
 /* SPWAW battle info: raw victory hex data */
 typedef struct s_SPWAW_SNAP_VHEX_RAW {
@@ -128,7 +128,7 @@ typedef struct s_SPWAW_SNAP_MAP_RAW {
 
 /* SPWAW game info: raw data */
 typedef struct s_SPWAW_SNAP_GAME_RAW {
-	SPWAW_SNAP_CMT_RAW	cmt;				/* Raw comment data					*/
+	SPWAW_SNAP_META_RAW	meta;				/* Raw meta data					*/
 	SPWAW_SNAP_BATTLE_RAW	battle;				/* Raw battle data					*/
 	SPWAW_SNAP_CAMPAIGN_RAW	campaign;			/* Raw campaign data					*/
 	SPWAW_SNAP_MAP_RAW	map;				/* Raw map data						*/
@@ -280,10 +280,10 @@ typedef struct s_SPWAW_SNAP_RAW {
 /***   INTERPRETED DATA STRUCTURES   ***/
 /***************************************/
 
-/* SPWAW comment info: interpreted data */
-typedef struct s_SPWAW_SNAP_CMT {
+/* SPWAW meta data: interpreted data */
+typedef struct s_SPWAW_SNAP_META {
 	char			*title;				/* Savegame title					*/
-}SPWAW_SNAP_CMT;
+}SPWAW_SNAP_META;
 
 /* SPWAW battle info: interpreted victory hex data */
 typedef struct s_SPWAW_SNAP_VHEX {
@@ -424,7 +424,7 @@ typedef struct s_SPWAW_SNAP_MAP {
 
 /* SPWAW game info */
 typedef struct s_SPWAW_SNAP_GAME {
-	SPWAW_SNAP_CMT		cmt;				/* Comment info						*/
+	SPWAW_SNAP_META		meta;				/* Meta data						*/
 	SPWAW_SNAP_BATTLE	battle;				/* Battle info						*/
 	SPWAW_SNAP_CAMPAIGN	campaign;			/* Campaign info					*/
 	SPWAW_SNAP_MAP		map;				/* Map info						*/

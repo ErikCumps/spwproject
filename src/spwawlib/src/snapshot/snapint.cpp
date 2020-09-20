@@ -220,7 +220,7 @@ snapint_game (SPWAW_SNAPSHOT *ptr)
 
 	CNULLARG (ptr);
 
-	ptr->game.cmt.title = ptr->raw.game.cmt.title;
+	ptr->game.meta.title = ptr->raw.game.meta.title;
 
 	rc = snapint_game_battle (ptr);		ROE ("snapint_game_battle()");
 	rc = snapint_game_campaign (ptr);	ROE ("snapint_game_campaign()");

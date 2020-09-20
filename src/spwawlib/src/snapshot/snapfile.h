@@ -55,10 +55,10 @@ typedef struct s_SNAP_INFO {
 	ULONG		savetype;		/* Snapshot save type							*/
 } SNAP_INFO;
 
-typedef struct s_SNAP_CMT {
+typedef struct s_SNAP_META {
 	ULONG		title;			/* Savegame title symbol						*/
 	ULONG		mapsrc;			/* Savegame map source symbol						*/
-} SNAP_CMT;
+} SNAP_META;
 
 typedef struct s_SNAP_VHEX {
 	BYTE		x;			/* Victory hex x-coord							*/
@@ -134,7 +134,7 @@ typedef struct s_SNAP_CAMPAIGN {
 } SNAP_CAMPAIGN;
 
 typedef struct s_SNAP {
-	SNAP_CMT	cmt;			/* Snapshot comment data						*/
+	SNAP_META	meta;			/* Snapshot meta data							*/
 	SNAP_BATTLE	b;			/* Snapshot battle data							*/
 	SNAP_CAMPAIGN	c;			/* Snapshot campaign data						*/
 } SNAP;

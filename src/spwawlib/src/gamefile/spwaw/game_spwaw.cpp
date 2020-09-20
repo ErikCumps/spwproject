@@ -267,10 +267,10 @@ load_from_spwaw_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 	stab = (STRTAB *)(dst->stab);
 
 	if (metadata_title (&(src->metadata), str)) {
-		dst->raw.game.cmt.title = aznstrstab (str.ptr, str.size, stab);
+		dst->raw.game.meta.title = aznstrstab (str.ptr, str.size, stab);
 	}
 	if (metadata_mapsrc (&(src->metadata), str)) {
-		dst->raw.game.cmt.mapsrc = aznstrstab (str.ptr, str.size, stab);
+		dst->raw.game.meta.mapsrc = aznstrstab (str.ptr, str.size, stab);
 	}
 
 	rc = section37_spwaw_save_snapshot (src, dst, stab);		ROE ("section37_spwaw_save_snapshot()");

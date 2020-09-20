@@ -14,7 +14,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 {
 	if (!ptr) return;
 
-	smart_title (rf, '-', "Status report for \"%s\"\n", ptr->cmt.title);
+	smart_title (rf, '-', "Status report for \"%s\"\n", ptr->meta.title);
 
 	fprintf (rf, "Battle at %s, %s %s against %s %s.\n",
 		ptr->battle.data.location,

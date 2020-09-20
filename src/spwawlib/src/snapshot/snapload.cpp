@@ -30,8 +30,8 @@ load_snap (SNAP *src, STRTAB *stab, SPWAW_SNAPSHOT *dst)
 {
 	int	i;
 
-	dst->raw.game.cmt.title = STRTAB_getstr (stab, src->cmt.title);
-	dst->raw.game.cmt.mapsrc = STRTAB_getstr (stab, src->cmt.mapsrc);
+	dst->raw.game.meta.title = STRTAB_getstr (stab, src->meta.title);
+	dst->raw.game.meta.mapsrc = STRTAB_getstr (stab, src->meta.mapsrc);
 
 	getB (year); getB (month); getB (day); getB (hour);
 	dst->raw.game.battle.location = STRTAB_getstr (stab, src->b.location);
@@ -567,7 +567,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	ERRORGOTO ("STRTAB_stamp2date(ihdr.date)", handle_error);
 
 	rc = SPWAW_date2str (&(info->tdate.date), &date);
-	ERRORGOTO ("SPWAW_date2str(info->date)", handle_error);
+	ERRORGOTO ("SPWAW_date2str(info->tdate.date)", handle_error);
 
 	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->tdate.turn);
 	free (date);
