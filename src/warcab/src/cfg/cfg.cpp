@@ -58,6 +58,16 @@ typedef struct s_CFGDATA {
 /* Convenience macro */
 #define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
 
+/* Strip trailing backslash from path */
+#define STRIPPATHSEP(p_)				\
+	do {						\
+		size_t l = strlen(p_);			\
+		if (l > 0) {				\
+			char *p = &(p_[l-1]);		\
+			if (*p == '\\') *p = '\0';	\
+		}					\
+	} while (0);
+
 
 /* --- private variables --- */
 
@@ -503,6 +513,7 @@ CFG_SET_oob_path (SPWAW_GAME_TYPE gametype, char *str)
 			if (strlen(str)) {
 				SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, str);
 				DEVASSERT (cfg.cfg_spwaw.oob_path != NULL);
+				STRIPPATHSEP (cfg.cfg_spwaw.oob_path);
 			}
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
@@ -510,6 +521,7 @@ CFG_SET_oob_path (SPWAW_GAME_TYPE gametype, char *str)
 			if (strlen(str)) {
 				SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, str);
 				DEVASSERT (cfg.cfg_winspww2.oob_path != NULL);
+				STRIPPATHSEP (cfg.cfg_winspww2.oob_path);
 			}
 			break;
 		default:
@@ -545,11 +557,13 @@ CFG_SET_sve_path (SPWAW_GAME_TYPE gametype, char *str)
 			if (cfg.cfg_spwaw.sve_path) SL_SAFE_FREE (cfg.cfg_spwaw.sve_path);
 			SL_SAFE_STRDUP (cfg.cfg_spwaw.sve_path, str);
 			DEVASSERT (cfg.cfg_spwaw.sve_path != NULL);
+			STRIPPATHSEP (cfg.cfg_spwaw.sve_path);
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			if (cfg.cfg_winspww2.sve_path) SL_SAFE_FREE (cfg.cfg_winspww2.sve_path);
 			SL_SAFE_STRDUP (cfg.cfg_winspww2.sve_path, str);
 			DEVASSERT (cfg.cfg_winspww2.sve_path != NULL);
+			STRIPPATHSEP (cfg.cfg_winspww2.sve_path);
 			break;
 		default:
 			break;
@@ -571,6 +585,7 @@ CFG_SET_snp_path (char *str)
 	if (cfg.snp_path) SL_SAFE_FREE (cfg.snp_path);
 	SL_SAFE_STRDUP (cfg.snp_path, str);
 	DEVASSERT (cfg.snp_path != NULL);
+	STRIPPATHSEP (cfg.snp_path);
 
 	// Try to make sure the directory exists, but ignore any errors for now
 	QDir::root().mkpath(cfg.snp_path);
