@@ -71,7 +71,7 @@ gamefile_basename (SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, char *fil
 	p = strrchr (filename, '.');
 	if (p) {
 		if (memcmp (p+1, meta.ext_data, strlen(meta.ext_data)+1) != 0) return (false);
-		todo -= (strlen(meta.ext_data)+1);
+		todo -= (strlen(meta.ext_data)+1+1); /* extension + dot + \0 */
 	}
 	if (todo > len) return (false);
 	memcpy (dst, filename, todo);
