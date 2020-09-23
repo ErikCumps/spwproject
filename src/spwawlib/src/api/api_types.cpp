@@ -10,6 +10,7 @@
 #include <spwawlib_types.h>
 #include "common/internal.h"
 #include "snapshot/translate.h"
+#include "gamefile/savegame_descriptor.h"
 
 #define	MD	31
 
@@ -794,46 +795,17 @@ SPWAW_str2savetype (char * savetype)
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, unsigned int id)
 {
-	SPWAW_ERROR	rc;
-
-	memset (&sgd, 0, sizeof (sgd));
-	sgd.gametype	= gametype;
-	sgd.savetype	= savetype;
-	sgd.path	= safe_strdup ((char *)path);	COOMGOTO (sgd.path, "savegame descriptor path", handle_error);
-	sgd.numeric_id	= true;
-	sgd.id.number	= id;
-
-	return (SPWERR_OK);
-
-handle_error:
-	SPWAW_savegame_descriptor_clear (sgd);
-	return (rc);
+	return (savegame_descriptor_init (sgd, gametype, savetype, path, id));
 }
 
 SPWAWLIB_API SPWAW_ERROR
 SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, const char * id)
 {
-	SPWAW_ERROR	rc;
-
-	memset (&sgd, 0, sizeof (sgd));
-	sgd.gametype	= gametype;
-	sgd.savetype	= savetype;
-	sgd.path	= safe_strdup ((char *)path);	COOMGOTO (sgd.path, "savegame descriptor path", handle_error);
-
-	sgd.numeric_id	= false;
-	sgd.id.name	= safe_strdup ((char *)id);	COOMGOTO (sgd.id.name, "savegame descriptor ID name", handle_error);
-
-	return (SPWERR_OK);
-
-handle_error:
-	SPWAW_savegame_descriptor_clear (sgd);
-	return (rc);
+	return (savegame_descriptor_init (sgd, gametype, savetype, path, id));
 }
 
 SPWAWLIB_API void
 SPWAW_savegame_descriptor_clear (SPWAW_SAVEGAME_DESCRIPTOR &sgd)
 {
-	if (sgd.path) safe_free (sgd.path);
-	if (!sgd.numeric_id) safe_free (sgd.id.name);
-	memset (&sgd, 0, sizeof (sgd));
+	return (savegame_descriptor_clear (sgd));
 }

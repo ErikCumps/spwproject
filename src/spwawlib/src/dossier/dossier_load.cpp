@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,8 +13,10 @@
 #include "dossier/dossier_file_v10.h"
 #include "dossier/dossier_file_v11.h"
 #include "dossier/dossier_file_v12.h"
+#include "dossier/dossier_file_v13.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
+#include "gamefile/savegame_descriptor.h"
 #include "strtab/strtab.h"
 #include "uht/uht.h"
 #include "fileio/fileio.h"
@@ -122,7 +124,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	dst->blen = cnt;
 	dst->blist = safe_nmalloc (SPWAW_BATTLE *, cnt); COOMGOTO (dst->blist, "SPWAW_BATTLE* list", handle_error);
 
-	/* We are now backwards compatible with version 10 and 11 */
+	/* We are now backwards compatible with version 10, 11 and 12 */
 	if (version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_battle_headers (fd, hdrs, cnt);
 		ERRORGOTO ("dossier_load_v10_battle_headers(battle hdrs)", handle_error);
@@ -258,6 +260,18 @@ dossier_load_campaign_props (DOS_CMPPROPS *props, SPWAW_DOSSIER_CMPPROPS *dst)
 	return (SPWERR_OK);
 }
 
+static SPWAW_ERROR
+dossier_load_tracking (DOS_TRACKING *tracking, SPWAW_DOSSIER_TRACKING *dst, STRTAB *stab)
+{
+	CNULLARG (tracking); CNULLARG(dst); CNULLARG (stab);
+
+	savegame_descriptor_init (dst->sgd, tracking->gametype, tracking->savetype, tracking->path, tracking->base, stab);
+	dst->filename	= STRTAB_getstr (stab, tracking->filename);
+	dst->filedate	= *((FILETIME *)&(tracking->filedate));
+
+	return (SPWERR_OK);
+}
+
 SPWAW_ERROR
 dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 {
@@ -281,13 +295,19 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with versions 10 and 11 */
+	/* We are now backwards compatible with versions 10, 11, 12 and 13 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
 	} else if (mvhdr.version == DOSS_VERSION_V11) {
 		rc = dossier_load_v11_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v11_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V12) {
+		rc = dossier_load_v12_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v12_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V13) {
+		rc = dossier_load_v13_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v13_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
@@ -312,6 +332,11 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
 
 	dst->btlcnt = hdr.bcnt;
+
+	if (dst->type == SPWAW_MEGACAM_DOSSIER) {
+		rc = dossier_load_tracking (&(hdr.tracking), &(dst->tracking), stab);
+		ERRORGOTO ("dossier_load_tracking()", handle_error);
+	}
 
 	STRTAB_free (&stab);
 
@@ -346,7 +371,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with versions 10, 11 and 12 */
+	/* We are now backwards compatible with versions 10, 11, 12 and 13 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
@@ -356,6 +381,9 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	} else if (mvhdr.version == DOSS_VERSION_V12) {
 		rc = dossier_load_v12_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v12_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V13) {
+		rc = dossier_load_v13_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v13_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
@@ -403,6 +431,11 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 			rc = UHT_load (fd, &(dst->uht));
 			ERRORGOTO ("UHT_load()", handle_error);
 		}
+	}
+
+	if (dst->type == SPWAW_MEGACAM_DOSSIER) {
+		rc = dossier_load_tracking (&(hdr.tracking), &(dst->tracking), stab);
+		ERRORGOTO ("dossier_load_tracking()", handle_error);
 	}
 
 	SPWOOB_LIST_debug_log (dst->oobdata, __FUNCTION__);

@@ -136,6 +136,13 @@ typedef struct s_SPWAW_DOSSIER_CMPSTATS {
 	USHORT	results[SPWAW_BRLASTCODE+1];			/* Counts for each battle result		*/
 } SPWAW_DOSSIER_CMPSTATS;
 
+/* SPWAW dossier: savegame tracking info */
+typedef struct s_SPWAW_DOSSIER_TRACKING {
+	SPWAW_SAVEGAME_DESCRIPTOR	sgd;			/* Savegame descriptor				*/
+	char				*filename;		/* Savegame absolute filename			*/
+	FILETIME			filedate;		/* Savegame file date				*/
+} SPWAW_DOSSIER_TRACKING;
+
 /* SPWAW dossier: data */
 struct s_SPWAW_DOSSIER {
 	SPWAW_GAME_TYPE		gametype;			/* Dossier game type				*/
@@ -153,6 +160,7 @@ struct s_SPWAW_DOSSIER {
 	SPWAW_DOSSIER_CMPPROPS	props;				/* Campaign properties				*/
 	SPWAW_DOSSIER_CMPSTATS	stats;				/* Campaign stats				*/
 	SPWAW_UHT		uht;				/* Unit history tracking			*/
+	SPWAW_DOSSIER_TRACKING	tracking;			/* Savegame tracking info			*/
 };
 
 /* SPWAW dossier: file info */
@@ -163,6 +171,7 @@ typedef struct s_SPWAW_DOSSIER_INFO {
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
 	USHORT			btlcnt;				/* Dossier battle count				*/
 	SPWAW_DOSSIER_CMPPROPS	props;				/* Campaign properties				*/
+	SPWAW_DOSSIER_TRACKING	tracking;			/* Savegame tracking info			*/
 } SPWAW_DOSSIER_INFO;
 
 /*** API ***/

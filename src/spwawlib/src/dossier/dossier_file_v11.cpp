@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling - backwards compatibility with the V11 dossier.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,7 +28,13 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 	/* A V11 dossier header:
 	 * + lacks the dossier game type
 	 * + lacks the campaign properties
+	 * + lacks the UHT data
+	 * + lacks the savegame tracking info
 	 * + but contains player OOB and core formation and unit counts
+	 *
+	 * V11 dossiers only support the SPWAW_GAME_TYPE_SPWAW game type.
+	 * V11 dossiers only support the SPWAW_SAVE_TYPE_REGULAR save type.
+	 * V11 dossiers do not support savegame tracking.
 	 */
 	hdr->name	= hdr_v11->name;
 	hdr->comment	= hdr_v11->comment;
@@ -49,6 +55,14 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 	hdr->props.cfcnt	= hdr_v11->fcnt;
 	hdr->props.cucnt	= hdr_v11->ucnt;
 
+	hdr->uht	= 0;
+
+	hdr->tracking.gametype	= SPWAW_GAME_TYPE_UNKNOWN;
+	hdr->tracking.savetype	= SPWAW_SAVE_TYPE_UNKNOWN;
+	hdr->tracking.path	= BADSTRIDX;
+	hdr->tracking.base	= BADSTRIDX;
+	hdr->tracking.filename	= BADSTRIDX;
+	hdr->tracking.filedate	= 0;
 
 handle_error:
 	if (hdr_v11) safe_free (hdr_v11);

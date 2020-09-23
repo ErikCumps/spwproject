@@ -11,6 +11,7 @@
 #include "dossier/dossier.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
+#include "gamefile/savegame_descriptor.h"
 #include "strtab/strtab.h"
 #include "uht/uht.h"
 #include "common/internal.h"
@@ -273,11 +274,14 @@ dossier_make_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, const char *name,
 SPWAW_ERROR
 dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
 {
-	SPWAW_ERROR	rc = SPWERR_OK;
-	SPWAW_BATTLE	*b = NULL;
-	SPWAW_BTURN	*t = NULL;
-	STRTAB		*stab = NULL;
-	bool		newb;
+	SPWAW_ERROR		rc = SPWERR_OK;
+	SPWAW_BATTLE		*b = NULL;
+	SPWAW_BTURN		*t = NULL;
+	STRTAB			*stab = NULL;
+	bool			newb;
+	SPWAW_SNAPSHOT_INFO	info;
+	char			base[MAX_PATH+1];
+	char			filename[MAX_PATH+1];
 
 	CSPWINIT;
 	CNULLARG (ptr); CNULLARG (snap); CNULLARG (bturn);
@@ -330,6 +334,30 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 
 	rc = dossier_update_dossier_stats (ptr);
 	ROE ("dossier_update_dossier_stats()");
+
+	if (ptr->type == SPWAW_MEGACAM_DOSSIER) {
+		/* Cleanup, if needed */
+		savegame_descriptor_clear (ptr->tracking.sgd, stab);
+		if (ptr->tracking.filename) {
+			STRTAB_del (stab, ptr->tracking.filename); ptr->tracking.filename = NULL;
+		}
+
+		/* Obtain snaphot information */
+		rc = SPWAW_snap_info (&snap, &info);
+		ROE ("SPWAW_snap_info()");
+
+		if (!gamefile_basename (info.gametype, info.savetype, info.file, base, sizeof(base))) {
+			RWE (SPWERR_FAILED, "failed to determine savegame basename");
+		}
+
+		/* Update savegame tracking information */
+		rc = savegame_descriptor_init (ptr->tracking.sgd, info.gametype, info.savetype, info.path, base, stab);
+		ROE ("SPWAW_savegame_descriptor_init()");
+
+		clear_ptr (filename); snprintf (filename, sizeof (filename) - 1, "%s\\%s", info.path, info.file);
+		ptr->tracking.filename = STRTAB_add (stab, filename);
+		ptr->tracking.filedate = info.filedate;
+	}
 
 	*bturn = t;
 

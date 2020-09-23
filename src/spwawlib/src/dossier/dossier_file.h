@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,7 +15,7 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	13
+#define	DOSS_VERSION	14
 
 #pragma pack(push, r1, 1)
 
@@ -35,6 +35,15 @@ typedef struct s_DOS_CMPPROPS {
 	USHORT		cucnt;			/* Player current core units count						*/
 } DOS_CMPPROPS;
 
+typedef struct s_DOS_TRACKING {
+	ULONG		gametype;		/* Tracked savegame game type							*/
+	ULONG		savetype;		/* Tracked savegame save type							*/
+	ULONG		path;			/* Tracked savegame path symbol							*/
+	ULONG		base;			/* Tracked savegame basename symbol						*/
+	ULONG		filename;		/* Tracked savegame absolute filename symbol					*/
+	LONGLONG	filedate;		/* Tracked savegame file date							*/
+} DOS_TRACKING;
+
 typedef struct s_DOS_HEADER {
 	ULONG		name;			/* Dossier name	symbol								*/
 	ULONG		comment;		/* Dossier comment symbol							*/
@@ -47,6 +56,7 @@ typedef struct s_DOS_HEADER {
 	ULONG		gametype;		/* Dossier game type								*/
 	DOS_CMPPROPS	props;			/* Dossier campaign properties							*/
 	ULONG		uht;			/* Dossier UHT data								*/
+	DOS_TRACKING	tracking;		/* Dossier savegame tracking info						*/
 } DOS_HEADER;
 
 typedef struct s_DOS_BHEADER {

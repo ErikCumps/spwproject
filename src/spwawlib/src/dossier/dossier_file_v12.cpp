@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling - backwards compatibility with the V12 dossier.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -27,6 +27,10 @@ dossier_load_v12_header (int fd, DOS_HEADER *hdr)
 
 	/* A V12 dossier header:
 	 * + lacks the initial and current core force campaign properties
+	 * + lacks the UHT data
+	 * + lacks the savegame tracking info
+	 *
+	 * V12 dossiers do not support savegame tracking.
 	 */
 	hdr->name	= hdr_v12->name;
 	hdr->comment	= hdr_v12->comment;
@@ -46,6 +50,15 @@ dossier_load_v12_header (int fd, DOS_HEADER *hdr)
 	hdr->props.iucnt	= hdr_v12->props.ucnt;
 	hdr->props.cfcnt	= hdr->props.ifcnt;
 	hdr->props.cucnt	= hdr->props.iucnt;
+
+	hdr->uht	= 0;
+
+	hdr->tracking.gametype	= SPWAW_GAME_TYPE_UNKNOWN;
+	hdr->tracking.savetype	= SPWAW_SAVE_TYPE_UNKNOWN;
+	hdr->tracking.path	= BADSTRIDX;
+	hdr->tracking.base	= BADSTRIDX;
+	hdr->tracking.filename	= BADSTRIDX;
+	hdr->tracking.filedate	= 0;
 
 handle_error:
 	if (hdr_v12) safe_free (hdr_v12);

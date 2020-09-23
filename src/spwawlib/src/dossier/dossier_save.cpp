@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -172,6 +172,29 @@ dossier_save_campaign_props (SPWAW_DOSSIER *src, DOS_CMPPROPS *props)
 	return (SPWERR_OK);
 }
 
+static SPWAW_ERROR
+dossier_save_tracking (SPWAW_DOSSIER *src, DOS_TRACKING *tracking)
+{
+	STRTAB	*stab = NULL;
+
+	CNULLARG(src); CNULLARG (tracking);
+
+	stab = (STRTAB *)src->stab;
+
+	clear_ptr (tracking);
+
+	if ((src->type == SPWAW_MEGACAM_DOSSIER) && !src->tracking.sgd.numeric_id) {
+		tracking->gametype	= (ULONG)src->tracking.sgd.gametype;
+		tracking->savetype	= (ULONG)src->tracking.sgd.savetype;
+		tracking->path		= STRTAB_getidx (stab, src->tracking.sgd.path);
+		tracking->base		= STRTAB_getidx (stab, src->tracking.sgd.id.name);
+		tracking->filename	=  STRTAB_getidx (stab, src->tracking.filename);
+		tracking->filedate	= *((LONGLONG *)&(src->tracking.filedate));
+	}
+
+	return (SPWERR_OK);
+}
+
 SPWAW_ERROR
 dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 {
@@ -225,6 +248,8 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 		rc = UHT_save (&(src->uht), fd, compress);
 		ROE ("UHT_fdsave()");
 	}
+
+	rc = dossier_save_tracking (src, &(hdr.tracking));	ROE ("dossier_save_tracking()");
 
 	p1 = bseekget (fd); bseekset (fd, p0);
 	if (!bwrite (fd, (char *)&mvhdr, sizeof (mvhdr)))
