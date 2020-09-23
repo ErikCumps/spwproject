@@ -1,7 +1,7 @@
 /** \file
  * debug_memtrace: main interface.
  *
- * Copyright (C) 2008-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2008-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -43,7 +43,7 @@
 #define	MEMTRACE_MARK(mark_)			debug_memtrace_mark		(mark_)
 
 #define	MEMTRACE_MALLOC(fi_,li_,fu_,s_)		debug_memtrace_malloc		(fi_, li_, fu_, s_)
-#define	MEMTRACE_CALLOC(fi_,li_,fu_,n_,s_)	debug_memtrace_malloc		(fi_, li_, fu_, n_, s_)
+#define	MEMTRACE_CALLOC(fi_,li_,fu_,n_,s_)	debug_memtrace_calloc		(fi_, li_, fu_, n_, s_)
 #define	MEMTRACE_FREE(fi_,li_,fu_,p_)		debug_memtrace_free		(fi_, li_, fu_, p_)
 #define	MEMTRACE_REALLOC(fi_,li_,fu_,p_,s_)	debug_memtrace_realloc		(fi_, li_, fu_, p_, s_)
 #define	MEMTRACE_STRDUP(fi_,li_,fu_,p_)		debug_memtrace_strdup		(fi_, li_, fu_, p_)
