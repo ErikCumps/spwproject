@@ -419,7 +419,9 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);
 	ERRORGOTO ("dossier_load_battles()", handle_error);
 
-	if (dst->type == SPWAW_CAMPAIGN_DOSSIER) {
+	if (dst->type != SPWAW_STDALONE_DOSSIER) {
+		log ("[%s] UHT handling\n", __FUNCTION__);
+
 		/* We are now backwards compatible with version 12 and older */
 		if (mvhdr.version <= DOSS_VERSION_V12) {
 			/* This is an old dossier, the UHT must be rebuilt */

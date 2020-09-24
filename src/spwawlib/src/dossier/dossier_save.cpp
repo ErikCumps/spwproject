@@ -243,7 +243,7 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	rc = STRTAB_fdsave (stab, fd, compress);
 	ROE ("STRTAB_fdsave()");
 
-	if (src->type == SPWAW_CAMPAIGN_DOSSIER) {
+	if (src->type != SPWAW_STDALONE_DOSSIER) {
 		hdr.uht = bseekget (fd) - p0;
 		rc = UHT_save (&(src->uht), fd, compress);
 		ROE ("UHT_fdsave()");

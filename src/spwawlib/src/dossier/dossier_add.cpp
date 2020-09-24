@@ -288,7 +288,7 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 	*bturn = NULL;
 
 	// Validate dossier type
-	if ((ptr->type != SPWAW_CAMPAIGN_DOSSIER) && (ptr->type != SPWAW_MEGACAM_DOSSIER)) {
+	if (ptr->type == SPWAW_STDALONE_DOSSIER) {
 		RWE (SPWERR_BADDTYPE, "this dossier does not allow adding campaign snapshots");
 	}
 
