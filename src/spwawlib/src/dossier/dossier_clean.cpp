@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -51,8 +51,8 @@ dossier_clean (SPWAW_DOSSIER *ptr)
 		safe_free (ptr->blist);
 	}
 	SPWOOB_LIST_free (&(ptr->oobdata));
-	STRTAB_free ((STRTAB **)&(ptr->stab));
 	UHT_clear (&(ptr->uht));
+	STRTAB_free ((STRTAB **)&(ptr->stab));
 
 	clear_ptr (ptr);
 

@@ -341,7 +341,6 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 	USHORT				pidx;
 	SPWAW_SNAP_OOB_PELRAW		*psrc;
 
-
 	CNULLARG (raw); CNULLARG (ptr); CNULLARG (oob);
 	p = &(ptr->battle);
 
@@ -406,13 +405,18 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->dname	= src->name;
 		switch (gametype) {
 			case SPWAW_GAME_TYPE_SPWAW:
-				dat->uname = STRTAB_add(stab, src->name);
+				dat->uname = src->name;
 				break;
 			default:
-				if (oob->udata[src->OOBrid].name[0] != '\0')
-					dat->uname = STRTAB_add(stab, oob->udata[src->OOBrid].name);
+				char *name = oob->udata[src->OOBrid].name;
+				if (name[0] != '\0')
+					if (STRTAB_getidx (stab, name) == BADSTRIDX) {
+						dat->uname = STRTAB_add(stab, name);
+					} else {
+						dat->uname = STRTAB_getstr(stab,STRTAB_getidx(stab, name));
+					}
 				else
-					dat->uname = STRTAB_add(stab, src->name);
+					dat->uname = src->name;
 				break;
 		}
 
