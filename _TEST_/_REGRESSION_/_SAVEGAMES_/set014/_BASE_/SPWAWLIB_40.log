@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="winSPWW2" (2), dir="_SAVE_", id=40)
-gamefile_open: comment: name="_SAVE_\SpSv040.cmt", fd=5
-gamefile_open: data: name="_SAVE_\SpSv040.dat", fd=6
+game_load_full (sgd = {gametype="winSPWW2", savetype="regular", path="_SAVE_", numeric_id=true, id=40})
+gamefile_file_open: name="_SAVE_\SpSv040.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\SpSv040.dat", description="game data filename", fd=6
 # load_packed: START<SPCTS_SAVE_V100>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=8191 (0x00001fff), flag=0x00000001>
 unpacked section 1: 8191 bytes -> 261000 bytes

@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=28)
-gamefile_open: comment: name="_SAVE_\save028.cmt", fd=5
-gamefile_open: data: name="_SAVE_\save028.dat", fd=6
+game_load_full (sgd = {gametype="SP:WaW", savetype="regular", path="_SAVE_", numeric_id=true, id=28})
+gamefile_file_open: name="_SAVE_\save028.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\save028.dat", description="game data filename", fd=6
 # load_packed: START<SPWAW_SAVE_V101>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=11427 (0x00002ca3), flag=0x00000001>
 unpacked section 1: 11427 bytes -> 206400 bytes
@@ -84,7 +84,7 @@ unpacked section 47: 225 bytes -> 6400 bytes
 ### load_packed: 0x00024d33 BLOCK #51 (0x00000033) <size=2 (0x00000002), flag=0x00000000>
 ### load_packed: 0x00024d41 BLOCK #48 (0x00000030) <size=37 (0x00000025), flag=0x00000001>
 unpacked section 48: 37 bytes -> 80 bytes
-setup_info: fcnt=4, cfcnt=0
+setup_info: fcnt=3, cfcnt=0
 find_formations: player #0
 find_formations: [00000] FORMATION: P<0> rawFID<00000> FID<00000> L<00000> H<00000> O<00001>(       SPWAW 8.3)
 find_formations: [00001] FORMATION: P<0> rawFID<00001> FID<00001> L<00001> H<00000> O<00025>(      Hvy Pz Sec)

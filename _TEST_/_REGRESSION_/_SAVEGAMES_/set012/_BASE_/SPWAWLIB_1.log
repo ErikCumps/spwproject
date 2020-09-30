@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=1)
-gamefile_open: comment: name="_SAVE_\save001.cmt", fd=5
-gamefile_open: data: name="_SAVE_\save001.dat", fd=6
+game_load_full (sgd = {gametype="SP:WaW", savetype="regular", path="_SAVE_", numeric_id=true, id=1})
+gamefile_file_open: name="_SAVE_\save001.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\save001.dat", description="game data filename", fd=6
 # load_packed: START<SPWAW_SAVE_V101>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=16291 (0x00003fa3), flag=0x000cfb01>
 unpacked section 1: 16291 bytes -> 206400 bytes
@@ -83,7 +83,7 @@ unpacked section 46: 52 bytes -> 60 bytes
 ### load_packed: 0x0003abdd BLOCK #47 (0x0000002f) <size=389 (0x00000185), flag=0x000cfb01>
 unpacked section 47: 389 bytes -> 6400 bytes
 ### load_packed: 0x0003ad6e BLOCK #51 (0x00000033) <size=2 (0x00000002), flag=0x000cfb00>
-setup_info: fcnt=14, cfcnt=0
+setup_info: fcnt=10, cfcnt=0
 find_formations: player #0
 find_formations: [00000] FORMATION: P<0> rawFID<00100> FID<00000> L<00000> H<00000> O<00001>( TGN's SPWAW 1.0)
 find_formations: [00001] SKIPPED (wrong player ID 1)

@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=81)
-gamefile_open: comment: name="_SAVE_\save081.cmt", fd=5
-gamefile_open: data: name="_SAVE_\save081.dat", fd=6
+game_load_full (sgd = {gametype="SP:WaW", savetype="regular", path="_SAVE_", numeric_id=true, id=81})
+gamefile_file_open: name="_SAVE_\save081.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\save081.dat", description="game data filename", fd=6
 # load_packed: START<SPWAW_SAVE_V101>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=14742 (0x00003996), flag=0x00000001>
 unpacked section 1: 14742 bytes -> 206400 bytes
@@ -84,7 +84,7 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### load_packed: 0x0001c583 BLOCK #51 (0x00000033) <size=2 (0x00000002), flag=0x00000000>
 ### load_packed: 0x0001c591 BLOCK #48 (0x00000030) <size=36 (0x00000024), flag=0x00000001>
 unpacked section 48: 36 bytes -> 80 bytes
-setup_info: fcnt=5, cfcnt=0
+setup_info: fcnt=4, cfcnt=0
 find_formations: player #0
 find_formations: [00000] FORMATION: P<0> rawFID<00000> FID<00000> L<00000> H<00000> O<00001>(       SPWAW 8.3)
 find_formations: [00001] FORMATION: P<0> rawFID<00001> FID<00001> L<00001> H<00000> O<00062>(   Halftrack Sec)

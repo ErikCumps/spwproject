@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=21)
-gamefile_open: comment: name="_SAVE_\save021.cmt", fd=5
-gamefile_open: data: name="_SAVE_\save021.dat", fd=6
+game_load_full (sgd = {gametype="SP:WaW", savetype="regular", path="_SAVE_", numeric_id=true, id=21})
+gamefile_file_open: name="_SAVE_\save021.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\save021.dat", description="game data filename", fd=6
 # load_packed: START<SPWAW_SAVE_V101>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=44347 (0x0000ad3b), flag=0x00000001>
 unpacked section 1: 44347 bytes -> 206400 bytes
@@ -84,7 +84,7 @@ unpacked section 47: 102 bytes -> 6400 bytes
 ### load_packed: 0x0002f5a9 BLOCK #51 (0x00000033) <size=2 (0x00000002), flag=0x00000000>
 ### load_packed: 0x0002f5b7 BLOCK #48 (0x00000030) <size=37 (0x00000025), flag=0x00000001>
 unpacked section 48: 37 bytes -> 80 bytes
-setup_info: fcnt=25, cfcnt=21
+setup_info: fcnt=24, cfcnt=21
 find_formations: player #0
 find_formations: [00000] FORMATION: P<0> rawFID<00000> FID<00000> L<00000> H<00000> O<00001>(    SPWAW ENH-DV)
 find_formations: [00001] FORMATION: P<0> rawFID<00001> FID<00001> L<00001> H<00000> O<00129>(  Special Forces)

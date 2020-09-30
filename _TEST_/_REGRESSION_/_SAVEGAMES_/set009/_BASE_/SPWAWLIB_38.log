@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=38)
-gamefile_open: comment: name="_SAVE_\save038.cmt", fd=5
-gamefile_open: data: name="_SAVE_\save038.dat", fd=6
+game_load_full (sgd = {gametype="SP:WaW", savetype="regular", path="_SAVE_", numeric_id=true, id=38})
+gamefile_file_open: name="_SAVE_\save038.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\save038.dat", description="game data filename", fd=6
 # load_packed: START<SPWAW_SAVE_V101>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=39312 (0x00009990), flag=0x00000001>
 unpacked section 1: 39312 bytes -> 206400 bytes
@@ -21,5 +21,5 @@ unpacked section 7: 1408 bytes -> 48000 bytes
 *** .\src\gamefile\packing.cpp:100 unpack_crlc: Error: failed to write unpacked CRLC data!
 *** .\src\gamefile\packing.cpp:180 unpack: Error: failed to unpack data!
 *** .\src\gamefile\packing.cpp:380 unpack_section: Error: failed to unpack section 8 (480000 bytes)!
-*** .\src\gamefile\game.cpp:37 game_load_full: Error: failed to decompress game data!
-*** .\src\api\api_snapshot.cpp:36 SPWAW_snap_make: Error: game_load_full()!
+*** .\src\gamefile\game.cpp:55 game_load_full: Error: failed to load game data!
+*** .\src\api\api_snapshot.cpp:69 SPWAW_snap_make: Error: game_load_full()!

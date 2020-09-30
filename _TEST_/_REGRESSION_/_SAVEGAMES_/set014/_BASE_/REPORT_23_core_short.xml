@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <save>regular</save>
+    <battle>campaign</battle>
+</type>
+<game>
+    , <!-- contains updated battle statistics -->
+    <metadata>
+        <title>8gliderslost</title>
+    </metadata>
+    <battle>
+        <date>1943/09</date>
+        <turn>
+            <current>13</current>
+            <max>12</max>
+        </turn>
+        <status>score</status>
+        <location>Gabmatzung, New Guinea</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>36</hexes>
+            <meters>1800</meters>
+        </visibility>
+        <player1>
+            <oob>12</oob>
+            <nation>US Army</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>5</oob>
+            <nation>Japan</nation>
+            <mission>delay</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>8</count>
+                <points>80</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>2</count>
+                <points>20</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>11</count>
+                <points>110</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>80</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>4.000</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>1939/09</start>
+            <end>1945/05</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>60</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>0</battle_index>
+        <battle_result>
+            <player1>
+                <score>20</score>
+                <result>decisive defeat</result>
+            </player1>
+            <player2>
+                <score>324</score>
+                <result>decisive victory</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>29</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>8</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>29</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>8</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>12</OOB>
+    <nation>US Army</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>USA HQ</designation>
+        <rank>LtC</rank>
+        <name>Damato</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>83.888</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>1</maximum>
+                <minimum>0</minimum>
+                <average>0.500</average>
+            </losses>
+            <readiness>
+                <maximum>98.718</maximum>
+                <minimum>81.769</minimum>
+                <average>90.244</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>73</maximum>
+                <minimum>63</minimum>
+                <average>69.000</average>
+            </experience>
+            <readiness>
+                <maximum>98.718</maximum>
+                <minimum>0.000</minimum>
+                <average>83.888</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>2</count>
+            <left>2</left>
+        </formations>
+        <units>
+            <count>8</count>
+            <left>7</left>
+        </units>
+    </statistics>
+    <formations count="2">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>US army HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.718</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>USA HQ</designation>
+                    <rank>LtC</rank>
+                    <name>Damato</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.718</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>169</OOB_record_ID>
+            <type>Para Platoon</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>81.769</readiness>
+            <units count="7">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Para Rifle Sqd</designation>
+                    <rank>1Lt</rank>
+                    <name>Stryker</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>96.471</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>Para Rifle Sqd</designation>
+                    <rank>KIA</rank>
+                    <name>Walsh</name>
+                    <status>destroyed</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>1</losses>
+                    <readiness>0.000</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>B2</ID>
+                    <designation>Para Rifle Sqd</designation>
+                    <rank>Cpl</rank>
+                    <name>Sadowski</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>86.582</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>B3</ID>
+                    <designation>Para LMG Sec</designation>
+                    <rank>Cpl</rank>
+                    <name>Hawkins</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.500</readiness>
+                    <headcount>0</headcount>
+                </unit>
+                <unit>
+                    <ID>B4</ID>
+                    <designation>Airborne Sniper</designation>
+                    <rank>Cpl</rank>
+                    <name>Choate</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.701</readiness>
+                    <headcount>1</headcount>
+                </unit>
+                <unit>
+                    <ID>B5</ID>
+                    <designation>Abn Bazooka</designation>
+                    <rank>Cpl</rank>
+                    <name>Hill</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.619</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>B6</ID>
+                    <designation>Airborne Scouts</designation>
+                    <rank>Cpl</rank>
+                    <name>Garcia</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>96.512</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="8">
+        <unit core="true">
+            <ID>A0</ID>
+            <designation>USA HQ</designation>
+            <unit>USA HQ</unit>
+            <leader>Damato</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>US army</OOB>
+            <OOBrid>254</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>1</suppression>
+            <rally>77</rally>
+            <inf_skills>59</inf_skills>
+            <art_skills>44</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.718</readiness>
+            <position>
+                <x>64</x>
+                <y>38</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B0</ID>
+            <designation>Para Rifle Sqd</designation>
+            <unit>Para Rifle Sqd</unit>
+            <leader>Stryker</leader>
+            <rank>1Lt</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>179</OOBrid>
+            <type>paratroop support squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>85</morale>
+            <suppression>3</suppression>
+            <rally>53</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>96.471</readiness>
+            <position>
+                <x>47</x>
+                <y>45</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B1</ID>
+            <designation>Para Rifle Sqd</designation>
+            <unit>Para Rifle Sqd</unit>
+            <leader>Walsh</leader>
+            <rank>KIA</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>165</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>destroyed</status>
+            <alive>dead</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>0</left>
+            </headcount>
+            <damage>27</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>85</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>1</losses>
+            <readiness>0.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B2</ID>
+            <designation>Para Rifle Sqd</designation>
+            <unit>Para Rifle Sqd</unit>
+            <leader>Sadowski</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>166</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>9</left>
+            </headcount>
+            <damage>3</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>3</suppression>
+            <rally>76</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>10</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>86.582</readiness>
+            <position>
+                <x>45</x>
+                <y>46</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B3</ID>
+            <designation>Para LMG Sec</designation>
+            <unit>Para LMG Sec</unit>
+            <leader>Hawkins</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>139</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>0</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>80</morale>
+            <suppression>2</suppression>
+            <rally>48</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>6</art_skills>
+            <arm_skills>33</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.500</readiness>
+            <position>
+                <x>64</x>
+                <y>38</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B4</ID>
+            <designation>Airborne Sniper</designation>
+            <unit>Airborne Sniper</unit>
+            <leader>Choate</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>156</OOBrid>
+            <type>paratroop sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>87</morale>
+            <suppression>2</suppression>
+            <rally>56</rally>
+            <inf_skills>66</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.701</readiness>
+            <position>
+                <x>64</x>
+                <y>38</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B5</ID>
+            <designation>Abn Bazooka</designation>
+            <unit>Abn Bazooka</unit>
+            <leader>Hill</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>157</OOBrid>
+            <type>paratroop AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>84</morale>
+            <suppression>2</suppression>
+            <rally>75</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.619</readiness>
+            <position>
+                <x>64</x>
+                <y>38</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B6</ID>
+            <designation>Airborne Scouts</designation>
+            <unit>Airborne Scouts</unit>
+            <leader>Garcia</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>US army</OOB>
+            <OOBrid>160</OOBrid>
+            <type>paratroop scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>spotted</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>86</morale>
+            <suppression>3</suppression>
+            <rally>75</rally>
+            <inf_skills>66</inf_skills>
+            <art_skills>32</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>96.512</readiness>
+            <position>
+                <x>47</x>
+                <y>45</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>5</OOB>
+    <nation>Japan</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

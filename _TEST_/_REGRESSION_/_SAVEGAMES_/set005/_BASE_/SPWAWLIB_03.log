@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
-game_load_full (gametype="SP:WaW" (1), dir="_SAVE_", id=3)
-gamefile_open: comment: name="_SAVE_\save003.cmt", fd=5
-gamefile_open: data: name="_SAVE_\save003.dat", fd=6
+game_load_full (sgd = {gametype="SP:WaW", savetype="regular", path="_SAVE_", numeric_id=true, id=3})
+gamefile_file_open: name="_SAVE_\save003.cmt", description="game metadata filename", fd=5
+gamefile_file_open: name="_SAVE_\save003.dat", description="game data filename", fd=6
 # load_packed: START<SPWAW_SAVE_V101>
 ### load_packed: 0x00000014 BLOCK #1 (0x00000001) <size=49837 (0x0000c2ad), flag=0x00000001>
 unpacked section 1: 49837 bytes -> 206400 bytes
