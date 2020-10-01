@@ -113,9 +113,10 @@ setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECT
 
 	p = strrchr (file->data.name, '\\');
 	if (p) {
-		*p = '\0';
+		q = p; while (*q == '\\') q--; q++;
+		*q = '\0';
 		_fullpath (info->path, file->data.name, sizeof (info->path) - 1);
-		*p = '\\';
+		*q = '\\';
 		q = p + 1;
 	} else {
 		_fullpath (info->path, ".", sizeof (info->path) - 1);
