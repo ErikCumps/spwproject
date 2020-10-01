@@ -92,10 +92,14 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 			break;
 		case MDLD_TREE_STDALONE:
 		case MDLD_TREE_BATTLE:
-			menu->addAction (GUI_ACTIONS->p.delete_battle);
+			if (d.actionitem->dossier_type != SPWAW_MEGACAM_DOSSIER) {
+				menu->addAction (GUI_ACTIONS->p.delete_battle);
+			}
 			break;
 		case MDLD_TREE_BTURN:
-			menu->addAction (GUI_ACTIONS->p.delete_turn);
+			if (d.actionitem->dossier_type != SPWAW_MEGACAM_DOSSIER) {
+				menu->addAction (GUI_ACTIONS->p.delete_turn);
+			}
 			break;
 		default:
 			DBG_log ("[%s] INVALID DATA TYPE for selection!\n", __FUNCTION__);
@@ -103,24 +107,26 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 	}
 	menu->addSeparator ();
 
-	if (d.actionitem->dossier_type != SPWAW_STDALONE_DOSSIER) {
-		menu->addAction (GUI_ACTIONS->p.game_add_campaign_savegame);
+	if (d.actionitem->dossier_type != SPWAW_MEGACAM_DOSSIER) {
+		if (d.actionitem->dossier_type != SPWAW_STDALONE_DOSSIER) {
+			menu->addAction (GUI_ACTIONS->p.game_add_campaign_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-		menu->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
+			menu->addAction (GUI_ACTIONS->p.game_add_campaign_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
-	} else {
-		menu->addAction (GUI_ACTIONS->p.add_battle_savegame);
+		} else {
+			menu->addAction (GUI_ACTIONS->p.add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-		menu->addAction (GUI_ACTIONS->p.add_battle_snapshot);
+			menu->addAction (GUI_ACTIONS->p.add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
-		menu->addSeparator ();
+			menu->addSeparator ();
 
-		menu->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
+			menu->addAction (GUI_ACTIONS->p.game_add_battle_savegame);
 #if	ALLOW_SNAPSHOTS_LOAD
-		menu->addAction (GUI_ACTIONS->p.game_add_battle_snapshot);
+			menu->addAction (GUI_ACTIONS->p.game_add_battle_snapshot);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
+		}
+		menu->addSeparator ();
 	}
-	menu->addSeparator ();
 
 	menu->addAction (GUI_ACTIONS->p.dossier_edit);
 
