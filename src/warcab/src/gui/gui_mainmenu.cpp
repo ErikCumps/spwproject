@@ -84,6 +84,7 @@ GuiMainMenu::GuiMainMenu (QFont &font)
 
 	d.menu->addMenu (d.help);
 
+#if	EXPERIMENTAL
 	/* Menu status connections */
 	if (!connect (d.app, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
 		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <app> menu status connection");
@@ -95,6 +96,7 @@ GuiMainMenu::GuiMainMenu (QFont &font)
 		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <nav> menu status connection");
 	if (!connect (d.help, SIGNAL (hovered(QAction *)), SLOT (MenuStatus(QAction *))))
 		SET_GUICLS_ERROR (ERR_GUI_MAINMENU_INIT_FAILED, "failed to create <help> menu status connection");
+#endif	/* EXPERIMENTAL */
 
 	SET_GUICLS_NOERR;
 }
@@ -116,11 +118,11 @@ GuiMainMenu::MenuStatus (QAction *action)
 {
 	QString name, msg;
 
-	printf ("[GuiMainMenu::MenuStatus(0x%8.8x)]\n", (unsigned int)action);
+	DBG_log ("[GuiMainMenu::MenuStatus(0x%8.8x)]\n", (unsigned int)action);
 
-#if	!EXPERIMENTAL
+#if	EXPERIMENTAL
 	name = action->text ();
 	msg.sprintf ("Menu id 0x%8.8x = <%s>", (void *)action, qPrintable (name));
 	GUI_WIN->get_status()->message (msg, 1000);
-#endif	/* !EXPERIMENTAL */
+#endif	/* EXPERIMENTAL */
 }
