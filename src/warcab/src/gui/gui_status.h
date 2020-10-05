@@ -21,19 +21,26 @@ public:
 
 	SL_ERROR	error_code;
 
-public slots:
-	void message (const QString &message, int ms);
-	void infodone (void);
+public:
+	void		status	(const QString &status);
+	void		message	(const QString &message, int ms);
+	void		clear	(void);
 
 private:
 	struct s_data {
-		QStatusBar	*status;
+		QStatusBar	*bar;
 		QFrame		*infoFrame;
 		QLabel		*info;
-		QFrame		*selinfFrame;
-		QLabel		*selinf;
-		QTimer		*infotimer;
+		QTimer		*msgtimer;
+
+		QString		*status;
 	} d;
+
+private slots:
+	void	msgdone	(void);
+
+private:
+	void	show_status	(void);
 };
 
 #endif	/* GUI_STATUS_H */
