@@ -1270,3 +1270,65 @@ snapint (SPWAW_SNAPSHOT *ptr)
 
 	return (SPWERR_OK);
 }
+
+SPWAW_ERROR
+snap_finalize_megacam (SPWAW_SNAPSHOT *ptr, SPWAW_SNAPSHOT *snap)
+{
+	SPWAW_ERROR		rc;
+	SPWAW_SNAP_CAMPAIGN_RAW	*sgc = NULL;
+	SPWAW_SNAP_CAMPAIGN_RAW	*dgc = NULL;
+
+	// Validate dossier type
+	if (ptr->savetype != SPWAW_SAVE_TYPE_MEGACAM) {
+		RWE (SPWERR_BADDTYPE, "this snapshot does not allow finalizing megacam battles");
+	}
+
+	sgc = &(snap->raw.game.campaign);
+	dgc = &(ptr->raw.game.campaign);
+
+	// Update raw data (battle status: SPWAW_BTSCORE)
+	dgc->busy		= sgc->busy;
+
+	// Update raw campaign player losses, scores and results
+	dgc->P1BLmen		= sgc->P1BLmen;
+	dgc->P1BLart		= sgc->P1BLart;
+	dgc->P1BLsoft		= sgc->P1BLsoft;
+	dgc->P1BLapc		= sgc->P1BLapc;
+	dgc->P1BLafv		= sgc->P1BLafv;
+	dgc->P1BLgliders	= sgc->P1BLgliders;
+	dgc->P1BLair		= sgc->P1BLair;
+	dgc->P2BLmen		= sgc->P2BLmen;
+	dgc->P2BLart		= sgc->P2BLart;
+	dgc->P2BLsoft		= sgc->P2BLsoft;
+	dgc->P2BLapc		= sgc->P2BLapc;
+	dgc->P2BLafv		= sgc->P2BLafv;
+	dgc->P2BLgliders	= sgc->P2BLgliders;
+	dgc->P2BLair		= sgc->P2BLair;
+
+	dgc->P1TLmen		= sgc->P1TLmen;
+	dgc->P1TLart		= sgc->P1TLart;
+	dgc->P1TLsoft		= sgc->P1TLsoft;
+	dgc->P1TLapc		= sgc->P1TLapc;
+	dgc->P1TLafv		= sgc->P1TLafv;
+	dgc->P1TLgliders	= sgc->P1TLgliders;
+	dgc->P1TLair		= sgc->P1TLair;
+	dgc->P2TLmen		= sgc->P2TLmen;
+	dgc->P2TLart		= sgc->P2TLart;
+	dgc->P2TLsoft		= sgc->P2TLsoft;
+	dgc->P2TLapc		= sgc->P2TLapc;
+	dgc->P2TLafv		= sgc->P2TLafv;
+	dgc->P2TLgliders	= sgc->P2TLgliders;
+	dgc->P2TLair		= sgc->P2TLair;
+
+	dgc->P1score		= sgc->P1score;
+	dgc->P2score		= sgc->P2score;
+
+	dgc->P1result		= sgc->P1result;
+	dgc->P2result		= sgc->P2result;
+
+	// Reinterprete
+	rc = snapint_game_battle (ptr);		ROE ("snapint_game_battle()");
+	rc = snapint_game_campaign (ptr);	ROE ("snapint_game_campaign()");
+
+	return (SPWERR_OK);
+}

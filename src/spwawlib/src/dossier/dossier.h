@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -40,6 +40,9 @@ extern SPWAW_ERROR	dossier_set_battle_props	(SPWAW_BATTLE *battle);
 
 extern SPWAW_ERROR	dossier_update_campaign_props	(SPWAW_DOSSIER *ptr);
 extern SPWAW_ERROR	dossier_update_dossier_stats	(SPWAW_DOSSIER *ptr);
+
+extern SPWAW_ERROR	dossier_finalize_megacam_battle	(SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
+
 
 typedef struct s_BIRURR {
 	SPWAW_BATTLE	*b;

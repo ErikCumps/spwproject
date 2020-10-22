@@ -294,43 +294,50 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 
 	stab = (STRTAB *)ptr->stab;
 
-	newb = false;
-	b = dossier_find_battle (ptr, snap);
-	if (!b) {
-		newb = true;
-		rc = dossier_make_battle (ptr, snap, NULL, &b);
-		ROE ("dossier_make_battle()");
+	// Finalize the megacam battle, if this is a turn #0 megacam savegame
+	if ((ptr->type == SPWAW_MEGACAM_DOSSIER) && (snap->raw.game.battle.turn == 0)) {
+		rc = dossier_finalize_megacam_battle (ptr, snap, bturn);
 	} else {
-		// TODO: detected duplicate insertion: add overwrite flag?
-		t = dossier_find_bturn (b, snap);
-		if (t) RWE (SPWERR_DUPTURN, "detected duplicate turn insertion");
+		newb = false;
+		b = dossier_find_battle (ptr, snap);
+		if (!b) {
+			newb = true;
+			rc = dossier_make_battle (ptr, snap, NULL, &b);
+			ROE ("dossier_make_battle()");
+		} else {
+			// TODO: detected duplicate insertion: add overwrite flag?
+			t = dossier_find_bturn (b, snap);
+			if (t) RWE (SPWERR_DUPTURN, "detected duplicate turn insertion");
+		}
+
+		rc = battle_add_bturn (b, snap, stab, &t);
+		ROE ("battle_add_bturn()");
+
+		rc = dossier_set_battle_props (b);
+		ROE ("dossier_set_battle_props()");
+
+		rc = dossier_update_campaign_props (ptr);
+		ROE ("dossier_update_campaign_props()");
+
+		rc = dossier_update_battle_info (b);
+		ROE ("dossier_update_battle_info()");
+
+		if (newb) {
+			rc = dossier_update_battle_rainfo (b->prev, b);
+			ROE ("dossier_update_battle_rainfo()");
+
+			rc = dossier_update_battle_rainfo (b, b->next);
+			ROE ("dossier_update_battle_rainfo()");
+		}
+
+		/* UHT now also considers in-battle status, which means that adding a turn to an existing battle
+		 * can also result in a different final in-battle status, so a rebuild is always required.
+		 * Maybe this can be optimized later?
+		 */
+		rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
+
+		*bturn = t;
 	}
-
-	rc = battle_add_bturn (b, snap, stab, &t);
-	ROE ("battle_add_bturn()");
-
-	rc = dossier_set_battle_props (b);
-	ROE ("dossier_set_battle_props()");
-
-	rc = dossier_update_campaign_props (ptr);
-	ROE ("dossier_update_campaign_props()");
-
-	rc = dossier_update_battle_info (b);
-	ROE ("dossier_update_battle_info()");
-
-	if (newb) {
-		rc = dossier_update_battle_rainfo (b->prev, b);
-		ROE ("dossier_update_battle_rainfo()");
-
-		rc = dossier_update_battle_rainfo (b, b->next);
-		ROE ("dossier_update_battle_rainfo()");
-	}
-
-	/* UHT now also considers in-battle status, which means that adding a turn to an existing battle
-	 * can also result in a different final in-battle status, so a rebuild is always required.
-	 * Maybe this can be optimized later?
-	 */
-	rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
 
 	rc = dossier_update_dossier_stats (ptr);
 	ROE ("dossier_update_dossier_stats()");
@@ -358,8 +365,6 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 		ptr->tracking.filename = STRTAB_add (stab, filename);
 		ptr->tracking.filedate = info.filedate;
 	}
-
-	*bturn = t;
 
 	return (SPWERR_OK);
 }

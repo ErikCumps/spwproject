@@ -12,6 +12,7 @@
 #include "dossier/dossier_file.h"
 #include "snapshot/index.h"
 #include "snapshot/snapshot.h"
+#include "snapshot/translate.h"
 #include "strtab/strtab.h"
 #include "common/internal.h"
 
@@ -513,4 +514,26 @@ dossier_update_dossier_stats (SPWAW_DOSSIER *ptr)
 	}
 
 	return (SPWERR_OK);
+}
+
+SPWAW_ERROR
+dossier_finalize_megacam_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	SPWAW_BATTLE	*b = NULL;
+	SPWAW_BTURN	*t = NULL;
+
+	// Validate dossier type
+	if (ptr->type != SPWAW_MEGACAM_DOSSIER) {
+		RWE (SPWERR_BADDTYPE, "this dossier does not allow finalizing megacam battles");
+	}
+
+	b = dossier_find_battle (ptr, snap);
+	if (b && b->tlast) {
+		rc = snap_finalize_megacam (b->tlast->snap, snap);
+		if (!HASERROR) t = b->tlast;
+	}
+
+	if (bturn) *bturn = t;
+	return (rc);
 }
