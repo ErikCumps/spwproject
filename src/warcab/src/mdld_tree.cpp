@@ -15,6 +15,8 @@ MDLD_TREE_update_seqnums (MDLD_TREE_ITEM *item)
 
 	if (!item) return;
 
+	item->seqnum.update();
+
 	parent = item->parent;
 	while (parent) {
                 parent->seqnum.update();
