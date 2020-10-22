@@ -9,6 +9,7 @@
 #include "common.h"
 #include "gui/gui_private.h"
 #include "warcab.h"
+#include "tracking.h"
 
 WARCABState	*WARCAB;
 
@@ -61,6 +62,8 @@ WARCABState::WARCABState (SL_APP_INFO *info)
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
+	d.tracking = new WARCABTracking (this);
+
 	/* Reload last dossier? */
 	d.options.load = CFG_autoload_get ();
 
@@ -72,6 +75,8 @@ WARCABState::WARCABState (SL_APP_INFO *info)
 
 WARCABState::~WARCABState ()
 {
+	delete d.tracking;
+
 	close();
 }
 
@@ -327,7 +332,7 @@ WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress
 			SPWAW_snap_free (&s);
 			continue;
 		} else {
-			if (!added) added = t;
+			if (!added && t) added = t;
 		}
 
 		done++;
@@ -337,8 +342,10 @@ WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress
 		set_dirty (true);
 
 		refresh_tree();
-		MDLD_TREE_ITEM *item = item_from_turn (added); DEVASSERT (item != NULL);
-		emit was_added (item);
+		if (added) {
+			MDLD_TREE_ITEM *item = item_from_turn (added); DEVASSERT (item != NULL);
+			emit was_added (item);
+		}
 
 		SL_ERROR rc = refresh_savelists ();
 		if (SL_HAS_ERROR (rc)) {
@@ -404,6 +411,44 @@ WARCABState::add_campaign (SPWAW_SAVELIST *list)
 	rc = process_list (pl, add_to_campaign, d.dossier, gp); SL_ROE(rc);
 
 	RETURN_OK;
+}
+
+SPWAW_ERROR
+WARCABState::basic_campaign_add (SPWAW_SAVEGAME_DESCRIPTOR *sgd)
+{
+	SPWAW_ERROR	rc;
+	SPWAW_SNAPSHOT	*s = NULL;
+	SPWAW_BTURN	*t = NULL;
+
+	if (!sgd) {
+		rc = SPWERR_NULLARG;
+		goto handle_error;
+	}
+
+	rc = SPWAW_snap_make (sgd, &s);
+	if (SPWAW_HAS_ERROR (rc)) {
+		goto handle_error;
+	}
+
+	rc = add_to_campaign (d.dossier, s, &t);
+	if (SPWAW_HAS_ERROR (rc)) {
+		SPWAW_snap_free (&s);
+	} else {
+		set_dirty (true);
+
+		refresh_tree();
+		if (t) {
+			MDLD_TREE_ITEM *item = item_from_turn (t); DEVASSERT (item != NULL);
+			MDLD_TREE_update_seqnums (item);
+			emit was_added (item);
+		}
+
+		SPWAW_savelist_free (&d.gamelist);
+		rc = SPWAW_dossier_savelist (d.dossier, &d.gamelist);
+	}
+
+handle_error:
+	return (rc);
 }
 
 SL_ERROR
@@ -669,6 +714,12 @@ SPWAW_GAME_TYPE
 WARCABState::get_gametype (void)
 {
 	return (d.dossier?d.dossier->gametype:SPWAW_GAME_TYPE_UNKNOWN);
+}
+
+bool
+WARCABState::can_track (void)
+{
+	return (d.tracking->is_ready());
 }
 
 void
@@ -937,6 +988,8 @@ WARCABState::statereport (SL_STDBG_INFO_LEVEL level)
 	}
 
 	SAYSTATE0 ("\n");
+
+	d.tracking->statereport (level);
 }
 
 static void

@@ -31,6 +31,7 @@ HEADERS +=					\
 	mdld_tree.h				\
 	intel_mode.h				\
 	warcab.h				\
+	tracking.h				\
 	dbg/dbg.h				\
 	dbg/dbg_private.h			\
 	util/util.h				\
@@ -109,6 +110,7 @@ HEADERS +=					\
 	gui/gui_private.h			\
 	gui/gui_dlg_about.h			\
 	gui/gui_dlg_add_campaign_savegame.h	\
+	gui/gui_dlg_start_megacam_tracking.h	\
 	gui/gui_dlg_add_battle_savegame.h	\
 	gui/gui_dlg_load_dossier.h		\
 	gui/gui_dossier.h			\
@@ -162,6 +164,7 @@ SOURCES +=					\
 	mdld_tree.cpp				\
 	intel_mode.cpp				\
 	warcab.cpp				\
+	tracking.cpp				\
 	dbg/dbg.cpp				\
 	dbg/dbg_console.cpp			\
 	util/util.cpp				\
@@ -236,6 +239,7 @@ SOURCES +=					\
 	gui/gui_progress.cpp			\
 	gui/gui_dlg_about.cpp			\
 	gui/gui_dlg_add_campaign_savegame.cpp	\
+	gui/gui_dlg_start_megacam_tracking.cpp	\
 	gui/gui_dlg_add_battle_savegame.cpp	\
 	gui/gui_dlg_load_dossier.cpp		\
 	gui/gui_dossier.cpp			\

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - error handling.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -41,6 +41,7 @@ typedef enum e_errorcodes {
 	ERR_APP_INIT_FAILED,
 	ERR_STATE_INIT_FAILED,
 	ERR_GUI_DLG_ADD_CAMPAIGN_SAVEGAME_INIT_FAILED,
+	ERR_GUI_DLG_START_MEGACAM_TRACKING_INIT_FAILED,
 	ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED,
 	ERR_GUI_DLG_LOAD_DOSSIER_INIT_FAILED,
 	ERR_GUI_DLG_NEW_DOSSIER_INIT_FAILED,

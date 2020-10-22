@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - Qt includes.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -72,6 +72,8 @@
 #include <qdesktopwidget.h>
 #include <qsplashscreen.h>
 #include <qdatetime.h>
+#include <qfilesystemwatcher.h>
+#include <qatomic.h>
 
 #endif	/* GUI_QT_H */
 

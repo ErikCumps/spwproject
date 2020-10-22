@@ -14,6 +14,8 @@
 #include "mdld_tree.h"
 #include "gui/gui.h"
 
+class WARCABTracking;
+
 /* application state: options */
 typedef struct s_WARCABOptions {
 	char	*load;
@@ -22,6 +24,8 @@ typedef struct s_WARCABOptions {
 class WARCABState	: public QObject
 {
 	Q_OBJECT
+
+friend class WARCABTracking;
 
 public:
 	WARCABState	(SL_APP_INFO *info);
@@ -56,6 +60,7 @@ public:
 	SPWAW_SNAPLIST	*get_snaplist	(void);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	SPWAW_GAME_TYPE	get_gametype	(void);
+	bool		can_track	(void);
 
 	void		statereport	(SL_STDBG_INFO_LEVEL level);
 
@@ -79,6 +84,7 @@ private:
 		SPWAW_SNAPLIST	*snaplist;
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 		SL_BOOL		dirty;
+		WARCABTracking	*tracking;
 	} d;
 
 private:
@@ -107,6 +113,8 @@ private:
 	} PL_LIST;
 	typedef SPWAW_ERROR (*PL_ADD)(void *, SPWAW_SNAPSHOT *, SPWAW_BTURN **);
 	SL_ERROR	process_list	(PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp);
+
+	SPWAW_ERROR	basic_campaign_add	(SPWAW_SAVEGAME_DESCRIPTOR *sgd);
 };
 
 extern WARCABState	*WARCAB;

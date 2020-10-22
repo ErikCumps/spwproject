@@ -203,7 +203,7 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TY
 	ed = (dt == SPWAW_EMPTY_DOSSIER);
 
 	if (b && (ed || (dt == SPWAW_CAMPAIGN_DOSSIER))) ec = true;
-	if (b && (ed && (gt == SPWAW_GAME_TYPE_SPWAW ))) em = true;
+	if (b && (ed && (gt == SPWAW_GAME_TYPE_SPWAW )) && WARCAB->can_track()) em = true;
 	if (b && (ed || (dt == SPWAW_STDALONE_DOSSIER))) eb = true;
 
 	p.game_add_campaign_savegame->setEnabled (ec);

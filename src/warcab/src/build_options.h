@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - build options.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -20,6 +20,9 @@
 
 /*! Set to 1 to allow attempts to ignore aborts */
 #define	ALLOW_ABORT_IGNORE	0
+
+/*! Set to 1 to enable megacampaign tracking file backups */
+#define	ENABLE_TRACKING_BACKUPS	0
 
 /*! Set to 1 to allow experimental features
  * Warning: this may break the build and/or warcab functionality!

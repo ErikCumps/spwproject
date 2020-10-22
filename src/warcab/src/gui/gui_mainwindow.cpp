@@ -9,6 +9,7 @@
 #include "resource.h"
 #include "gui_mainwindow.h"
 #include "gui_dlg_add_campaign_savegame.h"
+#include "gui_dlg_start_megacam_tracking.h"
 #include "gui_dlg_add_battle_savegame.h"
 #include "gui_dlg_load_dossier.h"
 #include "gui_dlg_new_dossier.h"
@@ -555,7 +556,7 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 	SPWAW_ERROR			arc;
 	SPWAW_SAVELIST_TARGET		target;
 	SPWAW_SAVELIST			*data = NULL;
-	GuiDlgAddCampaignSavegame	*dlg;
+	GuiDlgStartMegaCamTracking	*dlg;
 	int				rc;
 	SL_ERROR			erc;
 	SL_ERROR_REQUEST		erq;
@@ -571,9 +572,7 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	// TODO!
-	//dlg = new GuiDlgStartMegaCamTracking (target, CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist());
-	dlg = new GuiDlgAddCampaignSavegame (target, CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist());
+	dlg = new GuiDlgStartMegaCamTracking (target, CFG_save_path(WARCAB->get_gametype()), NULL);
 	rc = dlg->exec ();
 	dlg->get_data (data);
 	delete dlg;
