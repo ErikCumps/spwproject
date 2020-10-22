@@ -142,7 +142,7 @@ setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECT
 	}
 
 	log_disable();
-	rc = section35_spwaw_detection (formdata, ful1, ful2);
+	rc = section35_spwaw_detection (formdata, ful1, ful2, info->savetype);
 	log_enable();
 	if (SPWAW_HAS_ERROR(rc)) {
 		ERROR1 ("failed to detect formations: %s", SPWAW_errstr(rc));
@@ -150,7 +150,7 @@ setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECT
 	}
 
 	log_disable();
-	rc = section01_spwaw_detection (unitdata, posdata, cfg_oobptr(file->gametype), date, metadata_coreflags(metadata), ful1, ful2);
+	rc = section01_spwaw_detection (unitdata, posdata, cfg_oobptr(file->gametype), date, metadata_coreflags(metadata), ful1, ful2, info->savetype);
 	log_enable();
 	if (SPWAW_HAS_ERROR(rc)) {
 		ERROR1 ("failed to detect units: %s", SPWAW_errstr(rc));

@@ -1062,7 +1062,7 @@ add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRT
 }
 
 static SPWAW_ERROR
-section01_spwaw_detection_core (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, bool campaign, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2)
+section01_spwaw_detection_core (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, bool campaign, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2, SPWAW_SAVE_TYPE savetype)
 {
 	SPWAW_ERROR	rc;
 	SPWAW_UNIT	*udata;
@@ -1082,16 +1082,23 @@ section01_spwaw_detection_core (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SP
 	ROE ("unitcount(OOBp2)");
 
 	// Verify unit detection
-	if ((ful1.ul.cnt == 0) || (ful2.ul.cnt == 0))
-		RWE (SPWERR_BADSAVEDATA, "failed to detect units");
+	if (ful1.ul.cnt == 0) {
+		RWE (SPWERR_BADSAVEDATA, "failed to detect player units");
+	}
+	if (ful2.ul.cnt == 0) {
+		// Mega Campaign "score" savegames do not contain opponent units
+		if (savetype != SPWAW_SAVE_TYPE_MEGACAM) {
+			RWE (SPWERR_BADSAVEDATA, "failed to detect opponent units");
+		}
+	}
 
 	return (SPWERR_OK);
 }
 
 SPWAW_ERROR
-section01_spwaw_detection (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2)
+section01_spwaw_detection (SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2, SPWAW_SAVE_TYPE savetype)
 {
-	return (section01_spwaw_detection_core (usrc, psrc,OOB, date, false, mccf, ful1, ful2));
+	return (section01_spwaw_detection_core (usrc, psrc,OOB, date, false, mccf, ful1, ful2, savetype));
 }
 
 SPWAW_ERROR
@@ -1101,7 +1108,7 @@ section01_spwaw_detection (GAMEDATA *src, SPWAW_SNAPSHOT *dst, MEGACAM_COREFLAGS
 
 	CNULLARG (src); CNULLARG (dst);
 
-	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);	return (section01_spwaw_detection_core (&(GDSPWAW(src)->sec01), &(GDSPWAW(src)->sec17), dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE, mccf, ful1, ful2));
+	SPWAW_set_date (date, dst->raw.game.battle.year + SPWAW_STARTYEAR, dst->raw.game.battle.month);	return (section01_spwaw_detection_core (&(GDSPWAW(src)->sec01), &(GDSPWAW(src)->sec17), dst->oobdat, date, src->type == SPWAW_CAMPAIGN_BATTLE, mccf, ful1, ful2, src->savetype));
 }
 
 SPWAW_ERROR

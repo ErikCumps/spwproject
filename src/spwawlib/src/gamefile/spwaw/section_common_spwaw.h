@@ -16,7 +16,7 @@
 #include "gamefile/fulist.h"
 #include "strtab/strtab.h"
 
-extern SPWAW_ERROR	section01_spwaw_detection	(SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	section01_spwaw_detection	(SPWAW_SECTION01 *usrc, SPWAW_SECTION17 *psrc, SPWOOB *OOB, SPWAW_DATE &date, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2, SPWAW_SAVE_TYPE savetype);
 extern SPWAW_ERROR	section01_spwaw_detection	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, MEGACAM_COREFLAGS *mccf, FULIST &ful1, FULIST &ful2);
 extern SPWAW_ERROR	section01_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
@@ -30,7 +30,7 @@ extern SPWAW_ERROR	section26_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT 
 
 extern SPWAW_ERROR	section34_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 
-extern SPWAW_ERROR	section35_spwaw_detection	(SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2);
+extern SPWAW_ERROR	section35_spwaw_detection	(SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2, SPWAW_SAVE_TYPE savetype);
 extern SPWAW_ERROR	section35_spwaw_detection	(GAMEDATA *src, FULIST &ful1, FULIST &ful2);
 extern SPWAW_ERROR	section35_spwaw_save_snapshot	(GAMEDATA *src, SPWAW_SNAPSHOT *dst, STRTAB *stab, FULIST &ful1, FULIST &ful2);
 

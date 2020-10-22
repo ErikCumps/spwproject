@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - SPWaW game data.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -118,7 +118,7 @@ build_formations_list (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 }
 
 static SPWAW_ERROR
-build_formations (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
+build_formations (SPWAW_FORMATION *src, BYTE player, FLIST &fl, SPWAW_SAVE_TYPE savetype)
 {
 	SPWAW_ERROR	rc;
 
@@ -127,7 +127,12 @@ build_formations (SPWAW_FORMATION *src, BYTE player, FLIST &fl)
 	rc = build_formations_list (src, player, fl);
 	ROE ("build_formations_list()");
 
-	if (fl.cnt == 0) RWE (SPWERR_BADSAVEDATA, "no formations found");
+	if (fl.cnt == 0) {
+		// Mega Campaign "score" savegames do not contain opponent formations
+		if ((player != PLAYER2) || (savetype != SPWAW_SAVE_TYPE_MEGACAM)) {
+			RWE (SPWERR_BADSAVEDATA, "no formations found");
+		}
+	}
 
 	return (SPWERR_OK);
 }
@@ -172,8 +177,6 @@ add_formations (SPWAW_FORMATION *src, SPWAW_SNAP_OOB_FRAW *dst, FLIST &fl, STRTA
 	USHORT		idx;
 	USHORT		rid;
 
-	if (fl.cnt == 0) RWE (SPWERR_FAILED, "unexpected empty formations list");
-
 	dst->raw = safe_nmalloc (SPWAW_SNAP_OOB_FELRAW, fl.cnt); COOM (dst->raw, "SPWAW_SNAP_OOB_FELRAW list");
 	dst->cnt   = fl.cnt;
 
@@ -194,16 +197,16 @@ handle_error:
 }
 
 SPWAW_ERROR
-section35_spwaw_detection (SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2)
+section35_spwaw_detection (SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2, SPWAW_SAVE_TYPE savetype)
 {
 	SPWAW_ERROR	rc;
 
 	CNULLARG (src);
 
-	rc = build_formations (src->u.d.formations, PLAYER1, ful1.fl);
+	rc = build_formations (src->u.d.formations, PLAYER1, ful1.fl, savetype);
 	ROE ("build_formations_list(OOBp1)");
 
-	rc = build_formations (src->u.d.formations, PLAYER2, ful2.fl);
+	rc = build_formations (src->u.d.formations, PLAYER2, ful2.fl, savetype);
 	ROE ("build_formations_list(OOBp2)");
 
 	return (SPWERR_OK);
@@ -212,7 +215,7 @@ section35_spwaw_detection (SPWAW_SECTION35 *src, FULIST &ful1, FULIST &ful2)
 SPWAW_ERROR
 section35_spwaw_detection (GAMEDATA *src, FULIST &ful1, FULIST &ful2)
 {
-	return (section35_spwaw_detection (&(GDSPWAW(src)->sec35), ful1, ful2));
+	return (section35_spwaw_detection (&(GDSPWAW(src)->sec35), ful1, ful2, src->savetype));
 }
 
 static SPWAW_ERROR
