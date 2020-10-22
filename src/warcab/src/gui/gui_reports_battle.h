@@ -37,20 +37,22 @@ public slots:
 
 private:
 	struct s_data {
-		bool		enabled;
-		MDLD_TREE_ITEM	*item;
+		bool			enabled;
+		MDLD_TREE_ITEM		*item;
 
-		QLabel		*disabled_label;
+		QLabel			*disabled_label;
 
-		GuiRptBtlOvr	*overview;
-		GuiRptBtlFrc	*force_core;
-		GuiRptBtlFrc	*force_spt;
-		GuiRptBtlFrc	*force_opp;
+		GuiRptBtlOvr		*overview;
+		GuiRptBtlFrc		*force_core;
+		GuiRptBtlFrc		*force_spt;
+		GuiRptBtlFrc		*force_opp;
 #if	EXPERIMENTAL
-		GuiRptBtlCmp	*compare;
+		GuiRptBtlCmp		*compare;
 #endif	/* EXPERIMENTAL */
 
-		int		last_index;
+		int			last_index;
+
+		UtilMdlTreeReftrack	reftrack;
 	} d;
 
 private:

@@ -121,11 +121,15 @@ GuiRptBtl::set_enabled (bool flag)
 void
 GuiRptBtl::select (MDLD_TREE_ITEM *item)
 {
-	if (d.item == item) return;
+	bool	skip;
 
 	d.item = item;
+
+	skip = !d.reftrack.changed (d.item);
+	if (skip) return;
+
 	enable (d.item != NULL);
-	refresh();
+	refresh(false);
 }
 
 void
