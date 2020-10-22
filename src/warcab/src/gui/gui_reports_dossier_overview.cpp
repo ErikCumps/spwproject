@@ -479,31 +479,44 @@ GuiRptDsrOvr::refresh (bool forced)
 
 		if (p->type != SPWAW_STDALONE_DOSSIER) {
 			if (p->bcnt) {
-				str.printf ("<pre>");
-				str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->gametype, p->props.OOB));
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.men, "men");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.art, "artillery");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.soft, "soft vehicles");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.apc, "armoured personnel carriers");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.afv, "armoured fighting vehicles");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.gliders, "gliders");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P1TL.air, "aircraft");
-				str.printf ("</pre>");
-				d.losses.plr->setText (buf);
-				str.clear();
+				SPWAW_BATTLE	*b = p->blast;
+				SPWAW_SNAPSHOT	*s = NULL;
 
-				str.printf ("<pre>");
-				str.printf ("<h3>Opponent campaign losses:</h3>");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.men, "men");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.art, "artillery");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.soft, "soft vehicles");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.apc, "armoured personnel carriers");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.afv, "armoured fighting vehicles");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.gliders, "gliders");
-				str.printf ("  %6u %s\n", p->blast->tlast->snap->game.campaign.data.P2TL.air, "aircraft");
-				str.printf ("</pre>");
-				d.losses.opp->setText (buf);
-				str.clear();
+				while (b && !s) {
+					s = b->tlast->snap;
+					if (s->game.battle.data.status != SPWAW_BTSCORE) {
+						s = NULL;
+						b = b->prev;
+					}
+				}
+
+				if (s) {
+					str.printf ("<pre>");
+					str.printf ("<h3>%s campaign losses:</h3>", SPWAW_oob_people (p->gametype, p->props.OOB));
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.men,	"men");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.art,	"artillery");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.soft,	"soft vehicles");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.apc,	"armoured personnel carriers");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.afv,	"armoured fighting vehicles");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.gliders,	"gliders");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P1TL.air,	"aircraft");
+					str.printf ("</pre>");
+					d.losses.plr->setText (buf);
+					str.clear();
+
+					str.printf ("<pre>");
+					str.printf ("<h3>Opponent campaign losses:</h3>");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.men,	"men");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.art,	"artillery");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.soft,	"soft vehicles");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.apc,	"armoured personnel carriers");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.afv,	"armoured fighting vehicles");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.gliders,	"gliders");
+					str.printf ("  %6u %s\n", s->game.campaign.data.P2TL.air,	"aircraft");
+					str.printf ("</pre>");
+					d.losses.opp->setText (buf);
+					str.clear();
+				}
 			}
 
 			if (p->bcnt) {
