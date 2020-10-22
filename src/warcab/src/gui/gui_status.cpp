@@ -66,6 +66,7 @@ GuiStatus::message (const QString &message, int ms)
 	if (d.msgtimer->isActive() == TRUE) d.msgtimer->stop();
 	d.info->setText (message);
 	d.info->adjustSize();
+	d.bar->repaint();
 	d.msgtimer->setSingleShot (TRUE);
 	d.msgtimer->start (ms);
 }
@@ -96,4 +97,5 @@ GuiStatus::show_status (void)
 		d.info->setText (*d.status);
 	}
 	d.info->adjustSize();
+	d.bar->repaint();
 }
