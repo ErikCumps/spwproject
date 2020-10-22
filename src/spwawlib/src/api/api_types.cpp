@@ -809,3 +809,18 @@ SPWAW_savegame_descriptor_clear (SPWAW_SAVEGAME_DESCRIPTOR &sgd)
 {
 	return (savegame_descriptor_clear (sgd));
 }
+
+SPWAWLIB_API bool
+SPWAW_savegame_descriptor_equal (SPWAW_SAVEGAME_DESCRIPTOR &a, SPWAW_SAVEGAME_DESCRIPTOR &b)
+{
+	if (a.gametype != b.gametype) return (false);
+	if (a.savetype != b.savetype) return (false);
+	if (strcmp (a.path, b.path) != 0) return (false);
+	if (a.numeric_id != b.numeric_id) return (false);
+	if (a.numeric_id) {
+		if (a.id.number != b.id.number) return (false);
+	} else {
+		if (strcmp (a.id.name, b.id.name) != 0) return (false);
+	}
+	return (true);
+}
