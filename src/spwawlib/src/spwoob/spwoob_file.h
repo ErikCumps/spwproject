@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,7 +12,6 @@
 #include <spwawlib_api.h>
 #include <spwawlib_types.h>
 #include <spwawlib_defines.h>
-#include <ad_hash.h>
 
 #define	SPWOOB_MAGIC	"SPWAWLIB_SPWOOB"
 #define	SPWOOB_MGCLEN	16

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB list handling.
  *
- * Copyright (C) 2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,7 +12,6 @@
 #include <spwawlib_api.h>
 #include <spwawlib_types.h>
 #include <spwawlib_defines.h>
-#include <ad_hash.h>
 
 #define	SPWOOBLIST_MAGIC	"SPWAWLIB_SPWOOBLIST"
 #define	SPWOOBLIST_MGCLEN	20

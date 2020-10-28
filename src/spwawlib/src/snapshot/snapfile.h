@@ -12,7 +12,6 @@
 #include <spwawlib_api.h>
 #include <spwawlib_types.h>
 #include <spwawlib_defines.h>
-#include <ad_hash.h>
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20

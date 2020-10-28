@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling - backwards comaptibility with the V1 SPWOOB.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,7 +12,6 @@
 #include <spwawlib_api.h>
 #include <spwawlib_types.h>
 #include <spwawlib_defines.h>
-#include <ad_hash.h>
 #include "spwoob/spwoob_file.h"
 
 #define	SPWOOB_VERSION_V1	1
