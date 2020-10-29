@@ -2,7 +2,7 @@
 
 # debug_memtrace: an example trace analyzer script.
 #
-# Copyright (C) 2008-2016 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2008-2020 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL v2
 
@@ -18,6 +18,7 @@ my $LOGFILE = "";
 my %CFG = {
 	"sortid" => 1,
 	"csv" => 0,
+	"crash" => 0,
 };
 
 &Init (@ARGV);
@@ -34,11 +35,12 @@ die "No logfile found!\n" if (!$LOGFILE);
 
 sub Usage
 {
-	print "Usage: $0 [-Si | -Sa] [-csv] [-h] [logfile]\n";
+	print "Usage: $0 [-Si | -Sa] [-csv] [-crash] [-h] [logfile]\n";
 	print "Where: -h        print this help info\n";
 	print "       -Si       sort leak report on sequence id\n";
 	print "       -Sa       sort leak report on leak address\n";
 	print "       -csv      generate CSV file with allocation statistics\n";
+	print "       -crash    enable crash mode, to ignore unaccounted delete entries\n";
 	print "       logfile   optional logfile to process\n";
 	print "\n";
 	print "Defaults:\n";
@@ -49,6 +51,9 @@ sub Usage
 	}
 	if ($CFG{csv}) {
 		print "\tgenerate CSV file\n";
+	}
+	if ($CFG{crash}) {
+		print "\tcrash mode enabled\n";
 	}
 	
 	print "\n";
@@ -72,6 +77,10 @@ sub Init
 		}
 		if ($ARGS[$i] eq "-csv") {
 			$CFG{csv} = 1;
+			next;
+		}
+		if ($ARGS[$i] eq "-crash") {
+			$CFG{crash} = 1;
 			next;
 		}
 		if ($LOGFILE) { &Usage; }
@@ -199,7 +208,13 @@ sub Parse
 	close (IN);
 	
 	my $delcnt = $#del+1;
-	if ($delcnt) { die "$delcnt unaccounted delete entries discovered\n"; }
+	if ($delcnt) {
+		if ($CFG{crash}) {
+			print "*** $delcnt unaccounted delete entries discovered\n";
+		} else {
+			die "$delcnt unaccounted delete entries discovered\n";
+		}
+	}
 
 	&Report (\%INFO, \@INFO, $FILE);
 }
