@@ -15,6 +15,7 @@
 typedef struct s_GAMEINFO {
 	SPWAW_GAME_TYPE		gametype;
 	SPWAW_SAVE_TYPE		savetype;
+	char			oobdir[MAX_PATH+1];
 	char			path[MAX_PATH+1];
 	char			file[MAX_PATH+1];
 	FILETIME		date;

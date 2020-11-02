@@ -11,7 +11,7 @@
 
 #include "gamefile/game.h"
 
-extern void		setup_spwaw_info	(GAMEINFO *info, GAMEFILE *file, GAMEDATA *game);
+extern void		setup_spwaw_info	(SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *file, GAMEDATA *game);
 extern bool		game_load_spwaw_info	(SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info);
 
 extern SPWAW_ERROR	load_from_spwaw_game	(GAMEDATA *src, SPWAW_SNAPSHOT *dst);

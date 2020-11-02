@@ -16,15 +16,15 @@ static void
 log_savegame_descriptor (SPWAW_SAVEGAME_DESCRIPTOR *sgd, const char *caller)
 {
 	if (sgd->numeric_id) {
-		log ("%s (sgd = {gametype=\"%s\", savetype=\"%s\", path=\"%s\", numeric_id=true, id=%u})\n",
+		log ("%s (sgd = {gametype=\"%s\", savetype=\"%s\", oobdir=\"%s\", path=\"%s\", numeric_id=true, id=%u})\n",
 			caller,
 			SPWAW_gametype2str(sgd->gametype), SPWAW_savetype2str(sgd->savetype),
-			sgd->path, sgd->id.number);
+			sgd->oobdir, sgd->path, sgd->id.number);
 	} else {
-		log ("%s (sgd = {gametype=\"%s\", savetype=\"%s\", path=\"%s\", numeric_id=false, id=\"%s\"})\n",
+		log ("%s (sgd = {gametype=\"%s\", savetype=\"%s\", oobdir=\"%s\", path=\"%s\", numeric_id=false, id=\"%s\"})\n",
 			caller,
 			SPWAW_gametype2str(sgd->gametype), SPWAW_savetype2str(sgd->savetype),
-			sgd->path, sgd->id.name);
+			sgd->oobdir, sgd->path, sgd->id.name);
 	}
 
 }
@@ -59,10 +59,10 @@ game_load_full (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 	if (data && info) {
 		switch (game.gametype) {
 			case SPWAW_GAME_TYPE_SPWAW:
-				setup_spwaw_info (info, &game, data);
+				setup_spwaw_info (sgd, info, &game, data);
 				break;
 			case SPWAW_GAME_TYPE_WINSPWW2:
-				setup_winspww2_info (info, &game, data);
+				setup_winspww2_info (sgd, info, &game, data);
 				break;
 			case SPWAW_GAME_TYPE_UNKNOWN:
 			default:

@@ -89,7 +89,7 @@ metadata_coreflags (METADATA *metadata)
 }
 
 static void
-setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECTION37 *sec37, SPWAW_SECTION35 *sec35, SPWAW_SECTION01 *sec01, SPWAW_SECTION17 *sec17)
+setup_spwaw_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECTION37 *sec37, SPWAW_SECTION35 *sec35, SPWAW_SECTION01 *sec01, SPWAW_SECTION17 *sec17)
 {
 	SPWAW_SECTION37	*gamedata = sec37;
 	SPWAW_SECTION35	*formdata = sec35;
@@ -108,6 +108,8 @@ setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECT
 
 	info->gametype = file->gametype;
 	info->savetype = file->savetype;
+
+	snprintf (info->oobdir, sizeof (info->oobdir) - 1, "%s", sgd->oobdir);
 
 	section37_spwaw_prepare (gamedata);
 
@@ -150,7 +152,7 @@ setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECT
 	}
 
 	log_disable();
-	rc = section01_spwaw_detection (unitdata, posdata, cfg_oobptr(file->gametype), date, metadata_coreflags(metadata), ful1, ful2, info->savetype);
+	rc = section01_spwaw_detection (unitdata, posdata, cfg_oobptr(info->oobdir), date, metadata_coreflags(metadata), ful1, ful2, info->savetype);
 	log_enable();
 	if (SPWAW_HAS_ERROR(rc)) {
 		ERROR1 ("failed to detect units: %s", SPWAW_errstr(rc));
@@ -179,11 +181,11 @@ setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, METADATA *metadata, SPWAW_SECT
 }
 
 void
-setup_spwaw_info (GAMEINFO *info, GAMEFILE *file, GAMEDATA *game)
+setup_spwaw_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *file, GAMEDATA *game)
 {
-	if (!info || !file || !game) return;
+	if (!sgd || !info || !file || !game) return;
 
-	setup_spwaw_info (info, file, &(game->metadata), &(GDSPWAW(game)->sec37), &(GDSPWAW(game)->sec35), &(GDSPWAW(game)->sec01), &(GDSPWAW(game)->sec17));
+	setup_spwaw_info (sgd, info, file, &(game->metadata), &(GDSPWAW(game)->sec37), &(GDSPWAW(game)->sec35), &(GDSPWAW(game)->sec01), &(GDSPWAW(game)->sec17));
 }
 
 bool
@@ -238,10 +240,13 @@ game_load_spwaw_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 		ERROR0 ("failed to load section #17 game data");
 	}
 
-	setup_spwaw_info (info, &game, &(data->metadata), sec37, sec35, sec01, sec17);
+	setup_spwaw_info (sgd, info, &game, &(data->metadata), sec37, sec35, sec01, sec17);
 
+	if (sec17) safe_free (sec17);
+	if (sec01) safe_free (sec01);
 	if (sec35) safe_free (sec35);
 	if (sec37) safe_free (sec37);
+	gamedata_free (&data);
 	gamefile_close (&game);
 
 	if (!grc) ERROR0 ("failed to load all game info");
