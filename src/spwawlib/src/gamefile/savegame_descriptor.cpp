@@ -25,8 +25,11 @@ savegame_descriptor_init_core (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE g
 		sgd.path = STRTAB_add (stab, (char *)path);
 		if (!sgd.path) FAILGOTO (SPWERR_FAILED, "STRTAB_add(path)", handle_error);
 	} else {
-		sgd.oobdir = safe_strdup ((char *)oobdir);
-		COOMGOTO (sgd.oobdir, "savegame descriptor oobdir", handle_error);
+		/* An oobdir is optional in a savegame descriptor */
+		if (oobdir) {
+			sgd.oobdir = safe_strdup ((char *)oobdir);
+			COOMGOTO (sgd.oobdir, "savegame descriptor oobdir", handle_error);
+		}
 
 		sgd.path = safe_strdup ((char *)path);
 		COOMGOTO (sgd.path, "savegame descriptor path", handle_error);
