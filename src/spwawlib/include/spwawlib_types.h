@@ -399,6 +399,7 @@ extern SPWAWLIB_API SPWAW_SAVE_TYPE	SPWAW_str2savetype	(char * savetype);
 typedef struct s_SPWAW_SAVEGAME_DESCRIPTOR {
 	SPWAW_GAME_TYPE		gametype;
 	SPWAW_SAVE_TYPE		savetype;
+	char			*oobdir;
 	char			*path;
 	bool			numeric_id;
 	union {
@@ -407,8 +408,9 @@ typedef struct s_SPWAW_SAVEGAME_DESCRIPTOR {
 	}			id;
 } SPWAW_SAVEGAME_DESCRIPTOR;
 
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, unsigned int id);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, const char * id);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *oobdir, const char *path, unsigned int id);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *oobdir, const char *path, const char * id);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_savegame_descriptor_init	(SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_SAVEGAME_DESCRIPTOR &src);
 extern SPWAWLIB_API void	SPWAW_savegame_descriptor_clear	(SPWAW_SAVEGAME_DESCRIPTOR &sgd);
 extern SPWAWLIB_API bool	SPWAW_savegame_descriptor_equal	(SPWAW_SAVEGAME_DESCRIPTOR &a, SPWAW_SAVEGAME_DESCRIPTOR &b);
 

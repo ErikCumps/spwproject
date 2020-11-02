@@ -793,15 +793,21 @@ SPWAW_str2savetype (char * savetype)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, unsigned int id)
+SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *oobdir, const char *path, unsigned int id)
 {
-	return (savegame_descriptor_init (sgd, gametype, savetype, path, id));
+	return (savegame_descriptor_init (sgd, gametype, savetype, oobdir, path, id));
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *path, const char * id)
+SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, const char *oobdir, const char *path, const char * id)
 {
-	return (savegame_descriptor_init (sgd, gametype, savetype, path, id));
+	return (savegame_descriptor_init (sgd, gametype, savetype, oobdir, path, id));
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_savegame_descriptor_init (SPWAW_SAVEGAME_DESCRIPTOR &sgd, SPWAW_SAVEGAME_DESCRIPTOR &src)
+{
+	return (savegame_descriptor_init (sgd, src));
 }
 
 SPWAWLIB_API void
@@ -815,6 +821,7 @@ SPWAW_savegame_descriptor_equal (SPWAW_SAVEGAME_DESCRIPTOR &a, SPWAW_SAVEGAME_DE
 {
 	if (a.gametype != b.gametype) return (false);
 	if (a.savetype != b.savetype) return (false);
+	if (strcmp (a.oobdir, b.oobdir) != 0) return (false);
 	if (strcmp (a.path, b.path) != 0) return (false);
 	if (a.numeric_id != b.numeric_id) return (false);
 	if (a.numeric_id) {
