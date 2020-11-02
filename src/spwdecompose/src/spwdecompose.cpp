@@ -90,10 +90,10 @@ main (int argc, char** argv)
 	/* Load savegame data */
 	if ((argv[3][0] >= '0') && (argv[3][0] <= '9')) {
 		savetype = SPWAW_SAVE_TYPE_REGULAR;
-		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[2], atoi(argv[3]));
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, oobcfg[0].oobdir, argv[2], atoi(argv[3]));
 	} else {
 		savetype = (gametype == SPWAW_GAME_TYPE_SPWAW) ? SPWAW_SAVE_TYPE_MEGACAM : SPWAW_SAVE_TYPE_REGULAR;
-		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[2], argv[3]);
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, oobcfg[0].oobdir, argv[2], argv[3]);
 	}
 	if (rc != SPWERR_OK) {
 		error ("failed to prepare savegame descriptor for \"%s:%s\": %s", argv[2], argv[3], SPWAW_errstr (rc));
@@ -114,6 +114,7 @@ main (int argc, char** argv)
 	}
 
 	/* Clean up */
+	SPWAW_savegame_descriptor_clear (sgd);
 	SPWAW_savegame_free (&game);
 	SPWAW_shutdown ();
 

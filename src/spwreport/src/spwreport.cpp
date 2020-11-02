@@ -89,7 +89,7 @@ generate_oob_dump(int argc, char** argv)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_SPWOOB(gametype, &oob)) != SPWERR_OK) {
+	if ((rc = SPWAW_SPWOOB(oobcfg[0].oobdir, &oob)) != SPWERR_OK) {
 		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
 	}
 
@@ -453,10 +453,10 @@ generate_savegame_report(int argc, char** argv)
 
 	if ((argv[5][0] >= '0') && (argv[5][0] <= '9')) {
 		savetype = SPWAW_SAVE_TYPE_REGULAR;
-		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[4], atoi(argv[5]));
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, oobcfg[0].oobdir, argv[4], atoi(argv[5]));
 	} else {
 		savetype = (gametype == SPWAW_GAME_TYPE_SPWAW) ? SPWAW_SAVE_TYPE_MEGACAM : SPWAW_SAVE_TYPE_REGULAR;
-		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, argv[4], argv[5]);
+		rc = SPWAW_savegame_descriptor_init (sgd, gametype, savetype, oobcfg[0].oobdir, argv[4], argv[5]);
 	}
 	if (rc != SPWERR_OK) {
 		error ("failed to prepare savegame descriptor for \"%s:%s\": %s", argv[4], argv[5], SPWAW_errstr (rc));
