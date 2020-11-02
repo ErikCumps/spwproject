@@ -532,6 +532,9 @@ dossier_finalize_megacam_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW
 	if (b && b->tlast) {
 		rc = snap_finalize_megacam (b->tlast->snap, snap);
 		if (!HASERROR) t = b->tlast;
+	} else {
+		/* No battle found, finalization is not possible */
+		rc = SPWERR_MEGACAM_NOT_FINALIZED;
 	}
 
 	if (bturn) *bturn = t;

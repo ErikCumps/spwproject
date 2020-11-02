@@ -271,14 +271,65 @@ dossier_make_battle (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, const char *name,
 	return (SPWERR_OK);
 }
 
+static SPWAW_ERROR
+dossier_add_campaign_battle_turn (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn, STRTAB *stab)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	bool		newb;
+	SPWAW_BATTLE	*b = NULL;
+	SPWAW_BTURN	*t = NULL;
+
+	CNULLARG (stab);
+
+	newb = false;
+	b = dossier_find_battle (ptr, snap);
+	if (!b) {
+		newb = true;
+		rc = dossier_make_battle (ptr, snap, NULL, &b);
+		ROE ("dossier_make_battle()");
+	} else {
+		// TODO: detected duplicate insertion: add overwrite flag?
+		t = dossier_find_bturn (b, snap);
+		if (t) RWE (SPWERR_DUPTURN, "detected duplicate turn insertion");
+	}
+
+	rc = battle_add_bturn (b, snap, stab, &t);
+	ROE ("battle_add_bturn()");
+
+	rc = dossier_set_battle_props (b);
+	ROE ("dossier_set_battle_props()");
+
+	rc = dossier_update_campaign_props (ptr);
+	ROE ("dossier_update_campaign_props()");
+
+	rc = dossier_update_battle_info (b);
+	ROE ("dossier_update_battle_info()");
+
+	if (newb) {
+		rc = dossier_update_battle_rainfo (b->prev, b);
+		ROE ("dossier_update_battle_rainfo()");
+
+		rc = dossier_update_battle_rainfo (b, b->next);
+		ROE ("dossier_update_battle_rainfo()");
+	}
+
+	/* UHT now also considers in-battle status, which means that adding a turn to an existing battle
+	 * can also result in a different final in-battle status, so a rebuild is always required.
+	 * Maybe this can be optimized later?
+	 */
+	rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
+
+	if (bturn) *bturn = t;
+	return (rc);
+}
+
+
 SPWAW_ERROR
 dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
 {
 	SPWAW_ERROR		rc = SPWERR_OK;
-	SPWAW_BATTLE		*b = NULL;
-	SPWAW_BTURN		*t = NULL;
 	STRTAB			*stab = NULL;
-	bool			newb;
+	bool			finalized;
 	SPWAW_SNAPSHOT_INFO	info;
 	char			base[MAX_PATH+1];
 	char			filename[MAX_PATH+1];
@@ -294,49 +345,20 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 
 	stab = (STRTAB *)ptr->stab;
 
-	// Finalize the megacam battle, if this is a turn #0 megacam savegame
+	// If this is a turn #0 megacam savegame, try to finalized the megacam battle
+	finalized = false;
 	if ((ptr->type == SPWAW_MEGACAM_DOSSIER) && (snap->raw.game.battle.turn == 0)) {
 		rc = dossier_finalize_megacam_battle (ptr, snap, bturn);
-	} else {
-		newb = false;
-		b = dossier_find_battle (ptr, snap);
-		if (!b) {
-			newb = true;
-			rc = dossier_make_battle (ptr, snap, NULL, &b);
-			ROE ("dossier_make_battle()");
-		} else {
-			// TODO: detected duplicate insertion: add overwrite flag?
-			t = dossier_find_bturn (b, snap);
-			if (t) RWE (SPWERR_DUPTURN, "detected duplicate turn insertion");
+		if (!HASERROR) {
+			finalized = true;
+		} else if (rc != SPWERR_MEGACAM_NOT_FINALIZED) {
+			ROE ("dossier_finalize_megacam_battle()");
 		}
+	}
 
-		rc = battle_add_bturn (b, snap, stab, &t);
-		ROE ("battle_add_bturn()");
-
-		rc = dossier_set_battle_props (b);
-		ROE ("dossier_set_battle_props()");
-
-		rc = dossier_update_campaign_props (ptr);
-		ROE ("dossier_update_campaign_props()");
-
-		rc = dossier_update_battle_info (b);
-		ROE ("dossier_update_battle_info()");
-
-		if (newb) {
-			rc = dossier_update_battle_rainfo (b->prev, b);
-			ROE ("dossier_update_battle_rainfo()");
-
-			rc = dossier_update_battle_rainfo (b, b->next);
-			ROE ("dossier_update_battle_rainfo()");
-		}
-
-		/* UHT now also considers in-battle status, which means that adding a turn to an existing battle
-		 * can also result in a different final in-battle status, so a rebuild is always required.
-		 * Maybe this can be optimized later?
-		 */
-		rc = UHT_rebuild (&(ptr->uht)); ROE ("UHT_rebuild()");
-
-		*bturn = t;
+	if (!finalized) {
+		rc = dossier_add_campaign_battle_turn (ptr, snap, bturn, stab);
+		ROE ("dossier_add_campaign_battle_turn()");
 	}
 
 	rc = dossier_update_dossier_stats (ptr);
@@ -358,12 +380,17 @@ dossier_add_to_campaign (SPWAW_DOSSIER *ptr, SPWAW_SNAPSHOT *snap, SPWAW_BTURN *
 		}
 
 		/* Update savegame tracking information */
-		rc = savegame_descriptor_init (ptr->tracking.sgd, info.gametype, info.savetype, info.path, base, stab);
+		rc = savegame_descriptor_init (ptr->tracking.sgd, info.gametype, info.savetype, ptr->oobdir, info.path, base, stab);
 		ROE ("SPWAW_savegame_descriptor_init()");
 
 		clear_ptr (filename); snprintf (filename, sizeof (filename) - 1, "%s\\%s", info.path, info.file);
 		ptr->tracking.filename = STRTAB_add (stab, filename);
 		ptr->tracking.filedate = info.filedate;
+	}
+
+	// snapshots that are used to finalize battles must be cleaned up
+	if (finalized) {
+		SPWAW_snap_free (&snap);
 	}
 
 	return (SPWERR_OK);

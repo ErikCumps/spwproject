@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API error codes.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -62,7 +62,8 @@ typedef enum e_SPWAW_ERROR {
 	SPWERR_NOMATCH_MISSION,
 	SPWERR_NOMATCH_UFCNT,
 	SPWERR_DUPTURN,
-	SPWERR_LAST_CODE = SPWERR_DUPTURN
+	SPWERR_MEGACAM_NOT_FINALIZED,
+	SPWERR_LAST_CODE = SPWERR_MEGACAM_NOT_FINALIZED
 } SPWAW_ERROR;
 
 extern SPWAWLIB_API const char *	SPWAW_errstr		(SPWAW_ERROR e);

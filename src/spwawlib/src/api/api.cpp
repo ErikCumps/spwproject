@@ -50,6 +50,7 @@ static const char *errstr[SPWERR_LAST_CODE+1] = {
 	"SPWERR_NOMATCH_MISSION: player or opponent mission type does not match",
 	"SPWERR_NOMATCH_UFCNT: player or opponent unit or formation count does not match",
 	"SPWERR_DUPTURN: duplicate battle turn",
+	"SPWERR_MEGACAM_NOT_FINALIZED: Mega Campaign battle could not be finalized",
 };
 
 SPWAWLIB_API const char *
