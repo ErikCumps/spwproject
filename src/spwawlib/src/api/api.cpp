@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - main API implementation.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -114,14 +114,13 @@ SPWAW_shutdown (void)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_SPWOOB (SPWAW_GAME_TYPE gametype, SPWOOB **oob)
+SPWAW_SPWOOB (const char *oobdir, SPWOOB **oob)
 {
 	CSPWINIT;
-	CNULLARG (oob);
-	*oob = NULL;
+	CNULLARG (oob); CNULLARG (oobdir);
 
-	if (!cfg_oobptr (gametype)) RWE (SPWERR_NOOOBFILES, "no OOB directory configured");
+	*oob = cfg_oobptr (oobdir);
+	if (!*oob) RWE (SPWERR_NOOOBFILES, "no OOB files found");
 
-	*oob = cfg_oobptr (gametype);
 	return (SPWERR_OK);
 }

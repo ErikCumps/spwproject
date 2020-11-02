@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB API.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -164,7 +164,7 @@ typedef struct s_SPWOOB {
 
 
 /*** API ***/
-extern SPWAWLIB_API SPWAW_ERROR		SPWAW_SPWOOB		(SPWAW_GAME_TYPE gametype, SPWOOB **oob);
+extern SPWAWLIB_API SPWAW_ERROR		SPWAW_SPWOOB		(const char *oobdir, SPWOOB **oob);
 
 extern SPWAWLIB_API SPWAW_ERROR		SPWAW_oob_data		(SPWOOB *oob, BYTE id, SPWOOB_DATA **data);
 
