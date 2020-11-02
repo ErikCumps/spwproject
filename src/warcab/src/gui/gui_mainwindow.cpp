@@ -479,6 +479,7 @@ GuiMainWindow::action_dossier_edit (void)
 void
 GuiMainWindow::action_game_add_campaign_savegame (void)
 {
+	SPWAW_DOSSIER			*dossier = NULL;
 	SPWAW_ERROR			arc;
 	SPWAW_SAVELIST_TARGET		target;
 	SPWAW_SAVELIST			*data = NULL;
@@ -489,8 +490,12 @@ GuiMainWindow::action_game_add_campaign_savegame (void)
 
 	if (!WARCAB->is_loaded()) return;
 
-	target.gametype = WARCAB->get_gametype();
-	target.type = SPWAW_CAMPAIGN_DOSSIER;
+	dossier = WARCAB->get_dossier();
+	if (!dossier) return;
+
+	target.gametype	= WARCAB->get_gametype();
+	target.type	= SPWAW_CAMPAIGN_DOSSIER;
+	target.oobdir	= dossier->oobdir;
 
 	arc = SPWAW_savelist_new (&target, &data);
 	if (SPWAW_HAS_ERROR (arc)) {
@@ -559,6 +564,7 @@ GuiMainWindow::action_game_add_campaign_snapshot (void)
 void
 GuiMainWindow::action_game_start_megacam_tracking (void)
 {
+	SPWAW_DOSSIER			*dossier = NULL;
 	SPWAW_ERROR			arc;
 	SPWAW_SAVELIST_TARGET		target;
 	SPWAW_SAVELIST			*data = NULL;
@@ -569,8 +575,12 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 
 	if (!WARCAB->is_loaded()) return;
 
-	target.gametype = WARCAB->get_gametype();
-	target.type = SPWAW_MEGACAM_DOSSIER;
+	dossier = WARCAB->get_dossier();
+	if (!dossier) return;
+
+	target.gametype	= WARCAB->get_gametype();
+	target.type	= SPWAW_MEGACAM_DOSSIER;
+	target.oobdir	= dossier->oobdir;
 
 	arc = SPWAW_savelist_new (&target, &data);
 	if (SPWAW_HAS_ERROR (arc)) {
@@ -598,6 +608,7 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 void
 GuiMainWindow::action_game_add_battle_savegame (void)
 {
+	SPWAW_DOSSIER		*dossier = NULL;
 	SPWAW_ERROR		arc;
 	SPWAW_SAVELIST_TARGET	target;
 	SPWAW_SAVELIST		*list = NULL;
@@ -609,8 +620,12 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 
 	if (!WARCAB->is_loaded()) return;
 
-	target.gametype = WARCAB->get_gametype();
-	target.type = SPWAW_STDALONE_DOSSIER;
+	dossier = WARCAB->get_dossier();
+	if (!dossier) return;
+
+	target.gametype	= WARCAB->get_gametype();
+	target.type	= SPWAW_STDALONE_DOSSIER;
+	target.oobdir	= dossier->oobdir;
 
 	arc = SPWAW_savelist_new (&target, &list);
 	if (SPWAW_HAS_ERROR (arc)) {
@@ -685,6 +700,7 @@ void
 GuiMainWindow::action_add_battle_savegame (void)
 {
 	MDLD_TREE_ITEM		*item = NULL;
+	SPWAW_DOSSIER		*dossier = NULL;
 	SPWAW_ERROR		arc;
 	SPWAW_SAVELIST_TARGET	target;
 	SPWAW_SAVELIST		*list = NULL;
@@ -697,11 +713,15 @@ GuiMainWindow::action_add_battle_savegame (void)
 
 	item = d.dossier->get_actionitem();
 	if (!item) return;
+
 	if (item->type == MDLD_TREE_BTURN) item = MDLD_TREE_raise_to (item, MDLD_TREE_BATTLE);
 	if ((item->type != MDLD_TREE_STDALONE) && (item->type != MDLD_TREE_BATTLE)) return;
 
-	target.gametype = WARCAB->get_gametype();
-	target.type = SPWAW_STDALONE_DOSSIER;
+	dossier = (MDLD_TREE_raise_to (item, MDLD_TREE_DOSSIER))->data.d;
+
+	target.gametype	= WARCAB->get_gametype();
+	target.type	= SPWAW_STDALONE_DOSSIER;
+	target.oobdir	= dossier->oobdir;
 
 	arc = SPWAW_savelist_new (&target, &list);
 	if (SPWAW_HAS_ERROR (arc)) {

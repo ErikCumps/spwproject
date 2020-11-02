@@ -126,7 +126,8 @@ WARCABState::mknew (SPWAW_GAME_TYPE gametype, const char *name, const char *comm
 
 	close();
 
-	arc = SPWAW_dossier_new (gametype, name, comment, &d.dossier);
+	arc = SPWAW_dossier_new (gametype, CFG_oob_path(gametype), name, comment, &d.dossier);
+
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_NEW_FAILED, "SPWAW_dossier_new() failed: %s", SPWAW_errstr (arc));
 	}
@@ -720,6 +721,12 @@ bool
 WARCABState::can_track (void)
 {
 	return (d.tracking->is_ready());
+}
+
+SPWAW_DOSSIER *
+WARCABState::get_dossier (void)
+{
+	return (d.dossier);
 }
 
 void

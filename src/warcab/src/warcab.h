@@ -61,6 +61,7 @@ public:
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	SPWAW_GAME_TYPE	get_gametype	(void);
 	bool		can_track	(void);
+	SPWAW_DOSSIER	*get_dossier	(void);
 
 	void		statereport	(SL_STDBG_INFO_LEVEL level);
 
