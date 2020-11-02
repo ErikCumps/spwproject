@@ -570,7 +570,7 @@ snaploadinfo (int fd, SPWAW_SNAPSHOT_INFO *info)
 	ERRORGOTO ("SPWAW_date2str(info->tdate.date)", handle_error);
 
 	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->tdate.turn);
-	free (date);
+	safe_free (date);
 
 	snprintf (info->path, sizeof (info->path) - 1, "%s", STRTAB_getstr (stab, shdr.path));
 	snprintf (info->file, sizeof (info->file) - 1, "%s", STRTAB_getstr (stab, shdr.file));

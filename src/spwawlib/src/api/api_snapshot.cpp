@@ -118,6 +118,7 @@ SPWAW_snap_info (SPWAW_SNAPSHOT **snap, SPWAW_SNAPSHOT_INFO *info)
 
 	SPWAW_date2str (&(info->tdate.date), &date);
 	snprintf (info->stamp, sizeof (info->stamp) - 1, "%s, turn %u", date, info->tdate.turn);
+	safe_free (date);
 
 	info->location;
 	snprintf (info->location, sizeof (info->location) - 1, "%s", (*snap)->raw.game.battle.location);

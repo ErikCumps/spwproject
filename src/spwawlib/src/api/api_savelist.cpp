@@ -157,7 +157,10 @@ handle_file (SPWAW_SAVELIST_TARGET &target, SPWAW_SAVE_TYPE savetype, const char
 
 skip_file:
 handle_error:
-	if (ptr) free (ptr);
+	if (ptr) {
+		SPWAW_savegame_descriptor_clear (ptr->sgd);
+		safe_free (ptr);
+	}
 	return (false);
 }
 
@@ -252,10 +255,15 @@ SPWAW_savelist_free (SPWAW_SAVELIST **list)
 	l = *list; *list = NULL;
 	if (l) {
 		if (l->list) {
-			for (unsigned int i=0; i<l->cnt; i++) if (l->list[i]) free (l->list[i]);
-			free (l->list);
+			for (unsigned int i=0; i<l->cnt; i++) {
+				if (l->list[i]) {
+					SPWAW_savegame_descriptor_clear (l->list[i]->sgd);
+					safe_free (l->list[i]);
+				}
+			}
+			safe_free (l->list);
 		}
-		free (l);
+		safe_free (l);
 	}
 
 	return (SPWERR_OK);
@@ -275,7 +283,7 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node)
 
 		if (list->list) {
 			memcpy (p, list->list, list->cnt * sizeof (SPWAW_SAVELIST_NODE *));
-			free (list->list);
+			safe_free (list->list);
 		}
 		list->list = p;
 	}
@@ -289,8 +297,6 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 {
 	SPWAW_ERROR		rc;
-	SPWAW_SAVELIST_NODE	**p;
-	unsigned long		idx;
 
 	CSPWINIT;
 	CNULLARG (list); CNULLARG (snap);
@@ -313,20 +319,7 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 	node->info.gametype = snap->gametype;
 	node->info.savetype = snap->savetype;
 
-	if (list->cnt >= list->len) {
-		list->len += LISTINC;
-		p = safe_nmalloc (SPWAW_SAVELIST_NODE *, list->len); COOM (p, "SPWAW_SAVELIST_NODE list");
-
-		if (list->list) {
-			memcpy (p, list->list, list->cnt * sizeof (SPWAW_SAVELIST_NODE *));
-			free (list->list);
-		}
-		list->list = p;
-	}
-	idx = list->cnt++;
-	list->list[idx] = node;
-
-	return (SPWERR_OK);
+	return (SPWAW_savelist_add (list, node));
 }
 
 SPWAWLIB_API SPWAW_ERROR
@@ -355,7 +348,10 @@ SPWAW_savelist_clear (SPWAW_SAVELIST *list)
 	CSPWINIT;
 	CNULLARG (list);
 
-	for (i=0; i<list->cnt; i++) if (list->list[i]) { free (list->list[i]); list->list[i] = NULL; }
+	for (i=0; i<list->cnt; i++) if (list->list[i]) {
+		SPWAW_savegame_descriptor_clear (list->list[i]->sgd);
+		safe_free (list->list[i]);
+	}
 	list->cnt = 0;
 
 	return (SPWERR_OK);

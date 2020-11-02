@@ -369,13 +369,15 @@ GuiMainWindow::action_dossier_open (void)
 	dlg->data_get (data);
 	delete (dlg);
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->load (data);
-		SPWAW_dosslist_free (&data);
+	}
 
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to open dossier.");
-		}
+	SPWAW_dosslist_free (&data);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to open dossier.");
 	}
 }
 
@@ -501,13 +503,15 @@ GuiMainWindow::action_game_add_campaign_savegame (void)
 	dlg->get_data (data);
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_campaign (data);
-		SPWAW_savelist_free (&data);
+	}
 
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
-		}
+	SPWAW_savelist_free (&data);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
 	}
 }
 
@@ -539,13 +543,15 @@ GuiMainWindow::action_game_add_campaign_snapshot (void)
 	dlg->get_data (data);
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_campaign (data);
-		SPWAW_snaplist_free (&data);
+	}
 
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign snapshot(s)!");
-		}
+	SPWAW_snaplist_free (&data);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign snapshot(s)!");
 	}
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
@@ -577,13 +583,15 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 	dlg->get_data (data);
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_campaign (data);
-		SPWAW_savelist_free (&data);
+	}
 
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
-		}
+	SPWAW_savelist_free (&data);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
 	}
 }
 
@@ -595,7 +603,7 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 	SPWAW_SAVELIST		*list = NULL;
 	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
-	char			*name;
+	char			*name = NULL;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
 
@@ -616,14 +624,16 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 	}
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_stdalone (name, list);
-		SPWAW_savelist_free (&list);
-		SL_SAFE_FREE (name);
+	}
 
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from savegame(s)!");
-		}
+	SPWAW_savelist_free (&list);
+	SL_SAFE_FREE (name);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from savegame(s)!");
 	}
 }
 
@@ -636,7 +646,7 @@ GuiMainWindow::action_game_add_battle_snapshot (void)
 	SPWAW_SNAPLIST		*list = NULL;
 	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
-	char			*name;
+	char			*name = NULL;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
 
@@ -657,16 +667,17 @@ GuiMainWindow::action_game_add_battle_snapshot (void)
 	}
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_stdalone (name, list);
-		SPWAW_snaplist_free (&list);
-		SL_SAFE_FREE (name);
-
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from snapshot(s)!");
-		}
 	}
 
+	SPWAW_snaplist_free (&list);
+	SL_SAFE_FREE (name);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from snapshot(s)!");
+	}
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
@@ -703,13 +714,15 @@ GuiMainWindow::action_add_battle_savegame (void)
 	dlg->get_data (list);
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_stdalone (item->data.b, list);
-		SPWAW_savelist_free (&list);
+	}
 
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add savegame(s) to standalone savegame.");
-		}
+	SPWAW_savelist_free (&list);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add savegame(s) to standalone savegame.");
 	}
 }
 
@@ -746,15 +759,16 @@ GuiMainWindow::action_add_battle_snapshot (void)
 	dlg->get_data (list);
 	delete dlg;
 
+	erc = SL_ERR_NO_ERROR;
 	if (rc) {
 		erc = WARCAB->add_stdalone (item->data.b, list);
-		SPWAW_snaplist_free (&list);
-
-		if (SL_HAS_ERROR (erc)) {
-			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add snapshot(s) to standalone snapshot.");
-		}
 	}
 
+	SPWAW_snaplist_free (&list);
+
+	if (SL_HAS_ERROR (erc)) {
+		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add snapshot(s) to standalone snapshot.");
+	}
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
