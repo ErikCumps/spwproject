@@ -42,6 +42,7 @@ typedef struct s_SPWAW_SAVELIST_NODE {
 typedef struct s_SPWAW_SAVELIST_TARGET {
 	SPWAW_GAME_TYPE			gametype;			/*!< game type				*/
 	SPWAW_DOSSIER_TYPE		type;				/*!< game dossier type			*/
+	char				*oobdir;			/*!< game OOB directory			*/
 } SPWAW_SAVELIST_TARGET;
 
 /* SPWAW savegame list */

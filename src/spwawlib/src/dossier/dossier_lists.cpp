@@ -21,8 +21,9 @@ dossier_savelist (SPWAW_DOSSIER *dossier, SPWAW_SAVELIST **list)
 
 	CNULLARG (dossier); CNULLARG (list);
 
-	target.gametype = dossier->gametype;
-	target.type = dossier->type;
+	target.gametype	= dossier->gametype;
+	target.type	= dossier->type;
+	target.oobdir	= dossier->oobdir;
 
 	rc = SPWAW_savelist_new (&target, list); ROE ("SPWAW_savelist_new()");
 

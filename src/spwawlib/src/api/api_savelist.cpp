@@ -101,13 +101,13 @@ handle_file (SPWAW_SAVELIST_TARGET &target, SPWAW_SAVE_TYPE savetype, const char
 		/* skip file if no id detected */
 		if (!id_from_name (target.gametype, f.cFileName, &id)) goto handle_error;
 
-		rc = SPWAW_savegame_descriptor_init (ptr->sgd, target.gametype, savetype, dir, id);
+		rc = SPWAW_savegame_descriptor_init (ptr->sgd, target.gametype, savetype, target.oobdir, dir, id);
 		ERRORGOTO ("SPWAW_savegame_descriptor_init()", handle_error);
 	} else {
 		/* Non-regular save type games have no id */
 		basename_from_name (f.cFileName, base, sizeof (base));
 
-		rc = SPWAW_savegame_descriptor_init (ptr->sgd, target.gametype, savetype, dir, base);
+		rc = SPWAW_savegame_descriptor_init (ptr->sgd, target.gametype, savetype, target.oobdir, dir, base);
 		ERRORGOTO ("SPWAW_savegame_descriptor_init()", handle_error);
 	}
 
@@ -304,7 +304,7 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 	SPWAW_SAVELIST_NODE *node = safe_malloc (SPWAW_SAVELIST_NODE);
 	COOM (node, "SPWAW_SAVELIST_NODE element");
 
-	rc = SPWAW_savegame_descriptor_init (node->sgd, snap->gametype, snap->savetype, snap->src.path, SPWAW_BADLONGIDX);
+	rc = SPWAW_savegame_descriptor_init (node->sgd, snap->gametype, snap->savetype, list->target.oobdir, snap->src.path, SPWAW_BADLONGIDX);
 	ROE ("SPWAW_savegame_descriptor_init()");
 
 	snprintf (node->filename, sizeof (node->filename) - 1, "%s", snap->src.file);
@@ -334,9 +334,20 @@ SPWAW_savelist_addcpy (SPWAW_SAVELIST *list, SPWAW_SAVELIST_NODE *node)
 	p = safe_malloc (SPWAW_SAVELIST_NODE); COOM (p, "SPWAW_SAVELIST_NODE");
 
 	memcpy (p, node, sizeof (*p));
-	rc = SPWAW_savelist_add (list, p);
-	if (rc != SPWERR_OK) free (p);
 
+	rc = SPWAW_savegame_descriptor_init (p->sgd, node->sgd);
+	ERRORGOTO ("SPWAW_savegame_descriptor_init()", handle_error);
+
+	rc = SPWAW_savelist_add (list, p);
+	ERRORGOTO ("SPWAW_savelist_add()", handle_error);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (p) {
+		SPWAW_savegame_descriptor_clear (p->sgd);
+		safe_free (p);
+	}
 	return (rc);
 }
 
