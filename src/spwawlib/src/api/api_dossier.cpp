@@ -14,14 +14,14 @@
 #include "utils/filecheck.h"
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *name, const char *comment, SPWAW_DOSSIER **dossier)
+SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *oobdir, const char *name, const char *comment, SPWAW_DOSSIER **dossier)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_DOSSIER	*ptr = NULL;
 	STRTAB		*stab = NULL;
 
 	CSPWINIT;
-	CNULLARG (name); CNULLARG (comment); CNULLARG (dossier);
+	CNULLARG (oobdir); CNULLARG (name); CNULLARG (comment); CNULLARG (dossier);
 	*dossier = NULL;
 
 	/* Create dossier structure and string table */
@@ -36,8 +36,10 @@ SPWAW_dossier_new (SPWAW_GAME_TYPE gametype, const char *name, const char *comme
 	ptr->name = STRTAB_add (stab, (char *)name);
 	ptr->comment = STRTAB_add (stab, (char *)comment);
 
-	/* Record original OOB dir */
-	ptr->oobdir = STRTAB_add (stab, (char *)cfg_oobdir (ptr->gametype));
+	/* Validate and record OOB dir */
+	rc = cfg_add_oobdir (oobdir, gametype);
+	ERRORGOTO ("cfg_add_oobdir()", handle_error);
+	ptr->oobdir = STRTAB_add (stab, (char *)oobdir);
 
 	*dossier = ptr;
 	return (SPWERR_OK);

@@ -11,7 +11,7 @@
 
 #include <spwawlib_api.h>
 #include <spwawlib_types.h>
-#include <ad_hash.h>
+//#include <ad_hash.h>
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
@@ -38,6 +38,7 @@ typedef struct s_DOS_CMPPROPS {
 typedef struct s_DOS_TRACKING {
 	ULONG		gametype;		/* Tracked savegame game type							*/
 	ULONG		savetype;		/* Tracked savegame save type							*/
+	ULONG		oobdir;			/* Tracked savegame oobdir symbol						*/
 	ULONG		path;			/* Tracked savegame path symbol							*/
 	ULONG		base;			/* Tracked savegame basename symbol						*/
 	ULONG		filename;		/* Tracked savegame absolute filename symbol					*/

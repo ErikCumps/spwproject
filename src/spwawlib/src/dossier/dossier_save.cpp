@@ -186,6 +186,7 @@ dossier_save_tracking (SPWAW_DOSSIER *src, DOS_TRACKING *tracking)
 	if ((src->type == SPWAW_MEGACAM_DOSSIER) && !src->tracking.sgd.numeric_id) {
 		tracking->gametype	= (ULONG)src->tracking.sgd.gametype;
 		tracking->savetype	= (ULONG)src->tracking.sgd.savetype;
+		tracking->oobdir	= STRTAB_getidx (stab, src->tracking.sgd.oobdir);
 		tracking->path		= STRTAB_getidx (stab, src->tracking.sgd.path);
 		tracking->base		= STRTAB_getidx (stab, src->tracking.sgd.id.name);
 		tracking->filename	=  STRTAB_getidx (stab, src->tracking.filename);

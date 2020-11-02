@@ -265,7 +265,7 @@ dossier_load_tracking (DOS_TRACKING *tracking, SPWAW_DOSSIER_TRACKING *dst, STRT
 {
 	CNULLARG (tracking); CNULLARG(dst); CNULLARG (stab);
 
-	savegame_descriptor_init (dst->sgd, tracking->gametype, tracking->savetype, tracking->path, tracking->base, stab);
+	savegame_descriptor_init (dst->sgd, tracking->gametype, tracking->savetype, tracking->oobdir, tracking->path, tracking->base, stab);
 	dst->filename	= STRTAB_getstr (stab, tracking->filename);
 	dst->filedate	= *((FILETIME *)&(tracking->filedate));
 

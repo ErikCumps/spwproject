@@ -149,7 +149,7 @@ struct s_SPWAW_DOSSIER {
 	char			*name;				/* Dossier name					*/
 	char			*comment;			/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
-	char			*oobdir;			/* Original OOB data directory			*/
+	char			*oobdir;			/* OOB data directory				*/
 	SPWAW_SPWOOB_LIST	*oobdata;			/* OOB data list				*/
 	SPWAW_BATTLE		**blist;			/* Battle list					*/
 	USHORT			bcnt;				/* Battle list element count			*/
@@ -176,7 +176,7 @@ typedef struct s_SPWAW_DOSSIER_INFO {
 
 /*** API ***/
 
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(SPWAW_GAME_TYPE gametype, const char *name, const char *comment, SPWAW_DOSSIER **dossier);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(SPWAW_GAME_TYPE gametype, const char *oobdir, const char *name, const char *comment, SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_info		(const char *file, SPWAW_DOSSIER_INFO *info);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress);

@@ -55,6 +55,7 @@ dossier_load_v12_header (int fd, DOS_HEADER *hdr)
 
 	hdr->tracking.gametype	= SPWAW_GAME_TYPE_UNKNOWN;
 	hdr->tracking.savetype	= SPWAW_SAVE_TYPE_UNKNOWN;
+	hdr->tracking.oobdir	= BADSTRIDX;
 	hdr->tracking.path	= BADSTRIDX;
 	hdr->tracking.base	= BADSTRIDX;
 	hdr->tracking.filename	= BADSTRIDX;
