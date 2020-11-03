@@ -20,6 +20,11 @@
 /* Version ID used for saveState() and restoreState() */
 #define	STATE_VERSION	0
 
+/* action_dossier_saveAs confirmation dialog box body message */
+#define	STR_DOSSIER_OVERWRITE			\
+	"This dossier file already exists.\n"	\
+	"Do you want to replace it?\n"
+
 GuiMainWindow::GuiMainWindow (void)
 	: QMainWindow (0, Qt::Window)
 {
@@ -425,18 +430,29 @@ GuiMainWindow::action_dossier_save (void)
 void
 GuiMainWindow::action_dossier_saveAs (void)
 {
+	bool		selected = false;
 	QString		file;
+	QFileInfo	info;
 	SL_ERROR	erc;
 
 	if (!WARCAB->is_loaded()) return;
 
-	file = QFileDialog::getSaveFileName (this, "Save dossier as...", CFG_snap_path(), "Dossier Files (*.warcab)", 0, QFileDialog::DontUseNativeDialog);
-	if (file.isEmpty()) {
-		DBG_log ("[%s] no save filename selected", __FUNCTION__);
-		DBG_log ("[%s] save cancelled!", __FUNCTION__);
-		return;
+	while (!selected) {
+		file = QFileDialog::getSaveFileName (this, "Save dossier as...", CFG_snap_path(), "Dossier Files (*.warcab)", 0, QFileDialog::DontUseNativeDialog|QFileDialog::DontConfirmOverwrite);
+		if (file.isEmpty()) {
+			DBG_log ("[%s] no save filename selected", __FUNCTION__);
+			DBG_log ("[%s] save cancelled!", __FUNCTION__);
+			return;
+		}
+		if (!file.endsWith (".warcab")) file.append (".warcab");
+		selected = true;
+
+		info.setFile (file);
+		if (info.exists()) {
+			DBG_log ("[%s] file exists, confirming overwrite", __FUNCTION__);
+			selected = (GUI_msgbox (MSGBOX_CONFIRM, "Confirm Save As", STR_DOSSIER_OVERWRITE) == QDialog::Accepted);
+		}
 	}
-	if (!file.endsWith (".warcab")) file.append (".warcab");
 
 	erc = WARCAB->saveas ((char *)qPrintable (file));
 	if (SL_HAS_ERROR (erc)) {
