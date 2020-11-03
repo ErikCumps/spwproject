@@ -52,6 +52,7 @@
 #define	STR_SNP_TOOLTIP		"Configure the Warcab saves folder."
 #define	STR_SNP_WHATSTHIS1	"This is the folder where warcab saves dossiers and stratmap images."
 #define	STR_SNP_WHATSTHIS2	"Press this button to browse to the Warcab save folder."
+#define	STR_SNP_BROWSE		"Specify the Warcab saves folder:"
 
 #define	STR_COMPRESS_TOOLTIP		"Configure dossier compression."
 #define	STR_COMPRESS_WHATSTHIS							\
@@ -473,7 +474,7 @@ CfgDlg::snp_browse_clicked (bool /*checked*/)
 	QString	dir;
 
 	dir = QFileDialog::getExistingDirectory (this,
-		"Specify Warcab snapshot directory:",
+		STR_SNP_BROWSE,
 		d.snp_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
 	if (!dir.isNull()) { d.snp_edit->setText (dir); }
