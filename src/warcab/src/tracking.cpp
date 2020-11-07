@@ -153,19 +153,19 @@ WARCABTracking::set_status (STATE state)
 			str.printf (" - %s", d.status_base);
 			GUI_WIN->get_status()->status (buf);
 			break;
-		case LOADING:
-			str.printf ("<font color=%s><b>loading</b></font>", qPrintable(RES_htmlcolor (RID_GM_DLT_NTR)));
+		case ADDING:
+			str.printf ("<font color=%s><b>adding</b></font>", qPrintable(RES_htmlcolor (RID_GM_DLT_NTR)));
 			str.printf (" - %s", d.status_base);
 			GUI_WIN->get_status()->status (buf);
 			break;
-		case LOADED:
-			str.printf ("<font color=%s><b>loaded</b></font>", qPrintable(RES_htmlcolor (RID_GM_DLT_POS)));
+		case ADDED:
+			str.printf ("<font color=%s><b>added</b></font>", qPrintable(RES_htmlcolor (RID_GM_DLT_POS)));
 			str.printf (" - %s", d.status_base);
 			GUI_WIN->get_status()->message (buf, MSGTIME_GOOD);
 			set_status (TRACKING);
 			break;
 		case FAILED:
-			str.printf ("<font color=%s><b>failed to load</b></font>", qPrintable(RES_htmlcolor (RID_GM_DLT_NEG)));
+			str.printf ("<font color=%s><b>failed to add</b></font>", qPrintable(RES_htmlcolor (RID_GM_DLT_NEG)));
 			str.printf (" - %s", d.status_base);
 			GUI_WIN->get_status()->message (buf, MSGTIME_BAD);
 			set_status (TRACKING);
@@ -372,7 +372,7 @@ WARCABTracking::watcher_event (const QString& path)
 	DBG_log ("[%s] loading updated file\n", __FUNCTION__);
 	*d.processed = fi.lastModified();
 
-	set_status (LOADING);
+	set_status (ADDING);
 
 #if	ENABLE_TRACKING_BACKUPS
 	tracking_backup (d.tracking);
@@ -384,7 +384,7 @@ WARCABTracking::watcher_event (const QString& path)
 	switch (arc) {
 		case SPWERR_OK:
 		case SPWERR_DUPTURN:
-			set_status (LOADED);
+			set_status (ADDED);
 			break;
 		default:
 			set_status (FAILED);

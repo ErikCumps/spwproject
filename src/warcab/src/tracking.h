@@ -40,8 +40,8 @@ private:
 	typedef enum e_STATE {
 		INACTIVE = 0,
 		TRACKING,
-		LOADING,
-		LOADED,
+		ADDING,
+		ADDED,
 		FAILED,
 	} STATE;
 
