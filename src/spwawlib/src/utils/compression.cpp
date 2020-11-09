@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - utility code: handling compression with zlib.
  *
- * Copyright (C) 2007-2016 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,7 +28,7 @@ zcompress (char *src, unsigned long slen, char **dst, unsigned long *dlen)
 	CNULLARG (src); CNULLARG (dst); CNULLARG (dlen);
 	*dst = NULL; *dlen = 0;
 
-	if (slen == 0) RWE (SPWERR_FAILED, "unable to compress zero data");
+	if (slen == 0) return (SPWERR_OK);
 
 	clear_ptr (str);
 	str->zalloc = Z_NULL; str->zfree = Z_NULL;
@@ -75,7 +75,7 @@ zexpand (char *src, unsigned long slen, char *dst, unsigned long dlen)
 
 	CNULLARG (src); CNULLARG (dst);
 
-	if (slen == 0) RWE (SPWERR_FAILED, "unable to decompress zero data");
+	if (slen == 0) return (SPWERR_OK);
 	if (dlen == 0) RWE (SPWERR_FAILED, "unable to decompress data to zero-length buffer");
 
 	clear_ptr (str);
