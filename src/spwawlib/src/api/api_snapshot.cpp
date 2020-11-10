@@ -22,7 +22,7 @@ snap_make (GAMEDATA *data, GAMEINFO *info, SPWAW_SNAPSHOT **snap)
 	STRTAB		*stab = NULL;
 
 	/* Create snapshot structure and string table */
-	rc = snapnew (&ptr, cfg_oobptr (info->oobdir), NULL);
+	rc = snapnew (&ptr, cfg_oobptr (info->oobdir, info->gametype), NULL);
 	ERRORGOTO ("snapnew()", handle_error);
 	stab = (STRTAB *)ptr->stab;
 

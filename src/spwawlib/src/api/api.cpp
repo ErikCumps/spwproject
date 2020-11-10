@@ -115,12 +115,12 @@ SPWAW_shutdown (void)
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_SPWOOB (const char *oobdir, SPWOOB **oob)
+SPWAW_SPWOOB (const char *oobdir, SPWAW_GAME_TYPE gametype, SPWOOB **oob)
 {
 	CSPWINIT;
 	CNULLARG (oob); CNULLARG (oobdir);
 
-	*oob = cfg_oobptr (oobdir);
+	*oob = cfg_oobptr (oobdir, gametype);
 	if (!*oob) RWE (SPWERR_NOOOBFILES, "no OOB files found");
 
 	return (SPWERR_OK);

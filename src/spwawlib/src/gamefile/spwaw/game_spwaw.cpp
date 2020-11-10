@@ -152,7 +152,7 @@ setup_spwaw_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *file
 	}
 
 	log_disable();
-	rc = section01_spwaw_detection (unitdata, posdata, cfg_oobptr(info->oobdir), date, metadata_coreflags(metadata), ful1, ful2, info->savetype);
+	rc = section01_spwaw_detection (unitdata, posdata, cfg_oobptr(info->oobdir, info->gametype), date, metadata_coreflags(metadata), ful1, ful2, info->savetype);
 	log_enable();
 	if (SPWAW_HAS_ERROR(rc)) {
 		ERROR1 ("failed to detect units: %s", SPWAW_errstr(rc));

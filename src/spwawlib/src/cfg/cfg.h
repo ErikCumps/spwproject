@@ -33,6 +33,6 @@ extern CFG	cfg;
 extern SPWAW_ERROR	cfg_set		(int cnt, SPWAW_OOBCFG *list, bool withUD);
 extern void		cfg_free	(void);
 extern SPWAW_ERROR	cfg_add_oobdir	(const char *oobdir, SPWAW_GAME_TYPE gametype);
-extern SPWOOB *		cfg_oobptr	(const char *oobdir);
+extern SPWOOB *		cfg_oobptr	(const char *oobdir, SPWAW_GAME_TYPE gametype);
 
 #endif	/* INTERNAL_CONFIG_H */

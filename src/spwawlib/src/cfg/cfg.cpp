@@ -163,18 +163,22 @@ cfg_add_oobdir (const char *oobdir, SPWAW_GAME_TYPE gametype)
 }
 
 extern SPWOOB *
-cfg_oobptr (const char *oobdir)
+cfg_oobptr (const char *oobdir, SPWAW_GAME_TYPE gametype)
 {
-	OOBENTRY	*oobentry;
+	SPWAW_ERROR	rc;
 	char		path[MAX_PATH+1];
+	OOBENTRY	*entry;
 
 	if (!oobdir) return (NULL);
 
 	memset (path, 0, sizeof (path));
 	_fullpath (path, oobdir, sizeof (path)-1);
 
-	oobentry = lookup_oobentry (path);
-	if (!oobentry) return (NULL);
+	rc = oobentry ((char *)oobdir, gametype);
+	if (HASERROR) return (NULL);
 
-	return (oobentry->oobptr);
+	entry = lookup_oobentry (path);
+	if (!entry) return (NULL);
+
+	return (entry->oobptr);
 }

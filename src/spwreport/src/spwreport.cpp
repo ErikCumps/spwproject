@@ -89,7 +89,7 @@ generate_oob_dump(int argc, char** argv)
 		error ("failed to initialize spwawlib: %s", SPWAW_errstr (rc));
 	}
 
-	if ((rc = SPWAW_SPWOOB(oobcfg[0].oobdir, &oob)) != SPWERR_OK) {
+	if ((rc = SPWAW_SPWOOB(oobcfg[0].oobdir, oobcfg[0].gametype, &oob)) != SPWERR_OK) {
 		error ("failed to obtain OOB data: %s", SPWAW_errstr (rc));
 	}
 
