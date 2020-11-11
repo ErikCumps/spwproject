@@ -17,7 +17,7 @@ class GuiDlgStartMegaCamTracking	: public QDialog
 	Q_OBJECT
 
 public:
-	GuiDlgStartMegaCamTracking	(SPWAW_SAVELIST_TARGET &target, char *path, SPWAW_SAVELIST *ignore);
+	GuiDlgStartMegaCamTracking	(SPWAW_SAVELIST_TARGET &target, const char *path, SPWAW_SAVELIST *ignore);
 	~GuiDlgStartMegaCamTracking	(void);
 
 	SL_ERROR	error_code;

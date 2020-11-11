@@ -292,11 +292,13 @@ typedef QMap<QString, QString>			FAILMAP;
 typedef QMap<QString, QString>::const_iterator	FAILMAP_it;
 
 SL_ERROR
-WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp)
+WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp, bool &added)
 {
 	unsigned long	cnt, i, done;
-	SPWAW_BTURN	*added = NULL;
+	SPWAW_BTURN	*last_added = NULL;
 	FAILMAP		failures;
+
+	added = false;
 
 	SL_CWENULLARG (context);
 
@@ -333,18 +335,20 @@ WARCABState::process_list (PL_LIST &list, PL_ADD add, void *context, GuiProgress
 			SPWAW_snap_free (&s);
 			continue;
 		} else {
-			if (!added && t) added = t;
+			if (!last_added && t) last_added = t;
 		}
 
 		done++;
 	}
 
 	if (done) {
+		added = true;
+
 		set_dirty (true);
 
 		refresh_tree();
-		if (added) {
-			MDLD_TREE_ITEM *item = item_from_turn (added); DEVASSERT (item != NULL);
+		if (last_added) {
+			MDLD_TREE_ITEM *item = item_from_turn (last_added); DEVASSERT (item != NULL);
 			emit was_added (item);
 		}
 
@@ -394,10 +398,12 @@ add_to_standalone (void *target, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
 }
 
 SL_ERROR
-WARCABState::add_campaign (SPWAW_SAVELIST *list)
+WARCABState::add_campaign (SPWAW_SAVELIST *list, bool &added)
 {
 	SL_ERROR	rc;
 	PL_LIST		pl;
+
+	added = false;
 
 	if (!list) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL savelist argument");
@@ -409,7 +415,7 @@ WARCABState::add_campaign (SPWAW_SAVELIST *list)
 	pl.list.save = list;
 	pl.savelist = true;
 	pl.gametype = d.dossier->gametype;
-	rc = process_list (pl, add_to_campaign, d.dossier, gp); SL_ROE(rc);
+	rc = process_list (pl, add_to_campaign, d.dossier, gp, added); SL_ROE(rc);
 
 	RETURN_OK;
 }
@@ -453,13 +459,15 @@ handle_error:
 }
 
 SL_ERROR
-WARCABState::add_stdalone (char *name, SPWAW_SAVELIST *list)
+WARCABState::add_stdalone (char *name, SPWAW_SAVELIST *list, bool &added)
 {
 	SL_ERROR	rc;
 	SPWAW_ERROR	arc;
 	SPWAW_SNAPSHOT	*s;
 	SPWAW_BATTLE	*b;
 	PL_LIST		pl;
+
+	added = false;
 
 	if (!list) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL savelist argument");
@@ -484,16 +492,18 @@ WARCABState::add_stdalone (char *name, SPWAW_SAVELIST *list)
 	pl.list.save = list;
 	pl.savelist = true;
 	pl.gametype = b->dossier->gametype;
-	rc = process_list (pl, add_to_standalone, b, gp); SL_ROE(rc);
+	rc = process_list (pl, add_to_standalone, b, gp, added); SL_ROE(rc);
 
 	RETURN_OK;
 }
 
 SL_ERROR
-WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SAVELIST *list)
+WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SAVELIST *list, bool &added)
 {
 	SL_ERROR	rc;
 	PL_LIST		pl;
+
+	added = false;
 
 	if (!battle) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL battle argument");
@@ -508,17 +518,19 @@ WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SAVELIST *list)
 	pl.list.save = list;
 	pl.savelist = true;
 	pl.gametype = battle->dossier->gametype;
-	rc = process_list (pl, add_to_standalone, battle, gp); SL_ROE(rc);
+	rc = process_list (pl, add_to_standalone, battle, gp, added); SL_ROE(rc);
 
 	RETURN_OK;
 }
 
 #if	ALLOW_SNAPSHOTS_LOAD
 SL_ERROR
-WARCABState::add_campaign (SPWAW_SNAPLIST *list)
+WARCABState::add_campaign (SPWAW_SNAPLIST *list, bool &added)
 {
 	SL_ERROR	rc;
 	PL_LIST		pl;
+
+	added = false;
 
 	if (!list) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL snaplist argument");
@@ -530,19 +542,21 @@ WARCABState::add_campaign (SPWAW_SNAPLIST *list)
 	pl.list.snap = list;
 	pl.savelist = false;
 	pl.gametype = d.dossier->gametype;
-	rc = process_list (pl, add_to_campaign, d.dossier, gp); SL_ROE(rc);
+	rc = process_list (pl, add_to_campaign, d.dossier, gp, added); SL_ROE(rc);
 
 	RETURN_OK;
 }
 
 SL_ERROR
-WARCABState::add_stdalone (char *name, SPWAW_SNAPLIST *list)
+WARCABState::add_stdalone (char *name, SPWAW_SNAPLIST *list, bool &added)
 {
 	SL_ERROR	rc;
 	SPWAW_ERROR	arc;
 	SPWAW_SNAPSHOT	*s;
 	SPWAW_BATTLE	*b;
 	PL_LIST		pl;
+
+	added = false;
 
 	if (!list) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL snaplist argument");
@@ -567,16 +581,18 @@ WARCABState::add_stdalone (char *name, SPWAW_SNAPLIST *list)
 	pl.list.snap = list;
 	pl.savelist = false;
 	pl.gametype = b->dossier->gametype;
-	rc = process_list (pl, add_to_standalone, b, gp); SL_ROE(rc);
+	rc = process_list (pl, add_to_standalone, b, gp, added); SL_ROE(rc);
 
 	RETURN_OK;
 }
 
 SL_ERROR
-WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list)
+WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list, bool &added)
 {
 	SL_ERROR	rc;
 	PL_LIST		pl;
+
+	added = false;
 
 	if (!battle) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_ADD_SAVE_FAILED, "NULL battle argument");
@@ -591,7 +607,7 @@ WARCABState::add_stdalone (SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list)
 	pl.list.snap = list;
 	pl.savelist = false;
 	pl.gametype = battle->dossier->gametype;
-	rc = process_list (pl, add_to_standalone, battle, gp); SL_ROE(rc);
+	rc = process_list (pl, add_to_standalone, battle, gp, added); SL_ROE(rc);
 
 	RETURN_OK;
 }
@@ -727,6 +743,41 @@ SPWAW_DOSSIER *
 WARCABState::get_dossier (void)
 {
 	return (d.dossier);
+}
+
+QString &
+WARCABState::get_savedir (SPWAW_DOSSIER_TYPE type)
+{
+	o.savedir.clear();
+
+	if (!d.dossier) {
+		// No dossier - nothing to add savegames to
+	} else if (d.dossier->savedir) {
+		// Dossier with a savedir -  use this
+		o.savedir = d.dossier->savedir;
+	} else if (d.dossier->bcnt != 0) {
+		// (old) Non-empty dossiers without a savedir - try to determine savedir from oobdir
+		o.savedir = d.dossier->oobdir;
+		if (!CFG_savedir_from_oobdir (o.savedir, get_gametype(), type) || !QFileInfo(o.savedir).exists()) {
+                        o.savedir.clear();
+		}
+	} else {
+		// Empty dossier without a savedir - provide the correct savedir
+		o.savedir = CFG_save_path (get_gametype(), type);
+	}
+
+	return (o.savedir);
+}
+
+void
+WARCABState::set_savedir (void)
+{
+	if (!d.dossier || o.savedir.isEmpty()) return;
+
+	// Skip setting the savedir if it is already set
+	if (d.dossier->savedir && (o.savedir == d.dossier->savedir)) return;
+
+	SPWAW_dossier_set_savedir (d.dossier, qPrintable(o.savedir));
 }
 
 void

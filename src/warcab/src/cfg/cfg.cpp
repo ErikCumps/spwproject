@@ -68,6 +68,28 @@ typedef struct s_CFGDATA {
 		}					\
 	} while (0);
 
+/* gamedir/oobdir/savedir conversion strings */
+
+/*! SP:WaW relative OOB directory */
+#define	GOSC_SPWAW_OOB		""
+
+/*! SP:WaW relative save directory */
+#define	GOSC_SPWAW_SAVE		"\\SAVE"
+
+/*! SP:WaW relative Mega Campaign save directory */
+#define	GOSC_SPWAW_MEGACAM	"\\MegaCam\\save"
+
+/*! winSPWW2 relative OOB directory */
+#define	GOSC_WINSPWW2_OOB	"\\Game Data\\OOBs"
+
+/*! winSPWW2 relative save directory */
+#define	GOSC_WINSPWW2_SAVE	"\\Saved Games"
+
+/*! Warcab relative test OOB directory */
+#define	GOSC_TEST_OOB		"\\_OOB_"
+
+/*! Warcab relative test save directory */
+#define	GOSC_TEST_SAVE		"\\_SAVE_"
 
 /* --- private variables --- */
 
@@ -80,7 +102,7 @@ static SL_BOOL			initialized = SL_false;
 /*! Supported game types	*/
 static QList<CfgGameType>	gametypes;
 
-/*! QT settings object */
+/*! QT settings objects */
 static QSettings		*storage_local = NULL;
 static QSettings		*storage_global = NULL;
 
@@ -530,7 +552,7 @@ CFG_SET_oob_path (SPWAW_GAME_TYPE gametype, char *str)
 }
 
 char *
-CFG_save_path (SPWAW_GAME_TYPE gametype)
+CFG_save_path (SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE /*type*/)
 {
 	if (!initialized) return (NULL);
 
@@ -750,7 +772,7 @@ CFG_DLG (bool isfirstrun)
 		SPWAW_GAME_TYPE_SPWAW,
 		SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW),
 		CFG_oob_path (SPWAW_GAME_TYPE_SPWAW),
-		CFG_save_path (SPWAW_GAME_TYPE_SPWAW)
+		CFG_save_path (SPWAW_GAME_TYPE_SPWAW, SPWAW_CAMPAIGN_DOSSIER)
 	);
 	data.add (&spwaw);
 
@@ -758,7 +780,7 @@ CFG_DLG (bool isfirstrun)
 		SPWAW_GAME_TYPE_WINSPWW2,
 		SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2),
 		CFG_oob_path (SPWAW_GAME_TYPE_WINSPWW2),
-		CFG_save_path (SPWAW_GAME_TYPE_WINSPWW2)
+		CFG_save_path (SPWAW_GAME_TYPE_WINSPWW2, SPWAW_CAMPAIGN_DOSSIER)
 	);
 	data.add (&winspww2);
 
@@ -791,6 +813,52 @@ QList<CfgGameType>
 CFG_gametypes (void)
 {
 	return (gametypes);
+}
+
+static bool
+savedir_from_oobdir (QString &dir, const char *oobdir, const char *savedir)
+{
+	int	idx;
+
+	idx = dir.lastIndexOf (oobdir, -1, Qt::CaseInsensitive);
+	if (idx != -1) {
+		if (oobdir[0] != '\0') dir.truncate (idx);
+		dir.append (savedir);
+		return (true);
+	}
+	return (false);
+}
+
+bool
+CFG_savedir_from_oobdir (QString &dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type)
+{
+	bool	ok;
+
+	if (dir.isEmpty()) return (false);
+
+	ok = savedir_from_oobdir (dir, GOSC_TEST_OOB, GOSC_TEST_SAVE);
+	if (ok) return (true);
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			switch (type) {
+				case SPWAW_MEGACAM_DOSSIER:
+					ok = savedir_from_oobdir (dir, GOSC_SPWAW_OOB, GOSC_SPWAW_MEGACAM);
+					break;
+				default:
+					ok = savedir_from_oobdir (dir, GOSC_SPWAW_OOB, GOSC_SPWAW_SAVE);
+					break;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			ok = savedir_from_oobdir (dir, GOSC_WINSPWW2_OOB, GOSC_WINSPWW2_SAVE);
+			break;
+		default:
+			ok = false;
+			break;
+	}
+
+	return (ok);
 }
 
 static void

@@ -21,9 +21,30 @@
 #define	STATE_VERSION	0
 
 /* action_dossier_saveAs confirmation dialog box body message */
-#define	STR_DOSSIER_OVERWRITE			\
-	"This dossier file already exists.\n"	\
+#define	STR_DOSSIER_OVERWRITE				\
+	"This dossier file already exists.\n"		\
 	"Do you want to replace it?\n"
+
+/* action_game_add_campaign_savegame no-savedir dialog box title */
+#define	STR_AGACS_NOSAVEDIR_TITLE			\
+	"Unable to add savegames to this campaign"
+
+/* action_game_start_megacam_tracking no-savedir dialog box title */
+#define	STR_AGSMT_NOSAVEDIR_TITLE			\
+	"Unable to start Mega Campaign tracking"
+
+/* action_game_add_battle_savegame no-savedir dialog box title */
+#define	STR_AGABS_NOSAVEDIR_TITLE			\
+	"Unable to add a standalone battle"
+
+/* action_game_add_battle_savegame no-savedir dialog box title */
+#define	STR_AABS_NOSAVEDIR_TITLE			\
+	"Unable to add savegames to this battle"
+
+/* ... no-savedir dialog box body message */
+#define	STR_NOSAVEDIR_BODY							\
+	"The original savedir of this dossier is not recorded.\n"		\
+	"Because of this, it is not possible to present a list of savegames.\n"	\
 
 GuiMainWindow::GuiMainWindow (void)
 	: QMainWindow (0, Qt::Window)
@@ -496,11 +517,13 @@ void
 GuiMainWindow::action_game_add_campaign_savegame (void)
 {
 	SPWAW_DOSSIER			*dossier = NULL;
+	QString				savedir;
 	SPWAW_ERROR			arc;
 	SPWAW_SAVELIST_TARGET		target;
 	SPWAW_SAVELIST			*data = NULL;
 	GuiDlgAddCampaignSavegame	*dlg;
 	int				rc;
+	bool				added = false;
 	SL_ERROR			erc;
 	SL_ERROR_REQUEST		erq;
 
@@ -508,6 +531,12 @@ GuiMainWindow::action_game_add_campaign_savegame (void)
 
 	dossier = WARCAB->get_dossier();
 	if (!dossier) return;
+
+	savedir = WARCAB->get_savedir(SPWAW_CAMPAIGN_DOSSIER);
+	if (savedir.isEmpty()) {
+		GUI_msgbox (MSGBOX_INFO, STR_AGACS_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		return;
+	}
 
 	target.gametype	= WARCAB->get_gametype();
 	target.type	= SPWAW_CAMPAIGN_DOSSIER;
@@ -519,20 +548,24 @@ GuiMainWindow::action_game_add_campaign_savegame (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddCampaignSavegame (target, CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist());
+	dlg = new GuiDlgAddCampaignSavegame (target, qPrintable(savedir), WARCAB->get_gamelist());
 	rc = dlg->exec ();
 	dlg->get_data (data);
 	delete dlg;
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_campaign (data);
+		erc = WARCAB->add_campaign (data, added);
 	}
 
 	SPWAW_savelist_free (&data);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
+		} else {
+			WARCAB->set_savedir();
+		}
 	}
 }
 
@@ -545,6 +578,7 @@ GuiMainWindow::action_game_add_campaign_snapshot (void)
 	SPWAW_SNAPLIST			*data = NULL;
 	GuiDlgAddCampaignSavegame	*dlg;
 	int				rc;
+	bool				added = false;
 	SL_ERROR			erc;
 	SL_ERROR_REQUEST		erq;
 
@@ -566,13 +600,15 @@ GuiMainWindow::action_game_add_campaign_snapshot (void)
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_campaign (data);
+		erc = WARCAB->add_campaign (data, added);
 	}
 
 	SPWAW_snaplist_free (&data);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign snapshot(s)!");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign snapshot(s)!");
+		}
 	}
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
@@ -581,11 +617,13 @@ void
 GuiMainWindow::action_game_start_megacam_tracking (void)
 {
 	SPWAW_DOSSIER			*dossier = NULL;
+	QString				savedir;
 	SPWAW_ERROR			arc;
 	SPWAW_SAVELIST_TARGET		target;
 	SPWAW_SAVELIST			*data = NULL;
 	GuiDlgStartMegaCamTracking	*dlg;
 	int				rc;
+	bool				added = false;
 	SL_ERROR			erc;
 	SL_ERROR_REQUEST		erq;
 
@@ -593,6 +631,12 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 
 	dossier = WARCAB->get_dossier();
 	if (!dossier) return;
+
+	savedir = WARCAB->get_savedir(SPWAW_MEGACAM_DOSSIER);
+	if (savedir.isEmpty()) {
+		GUI_msgbox (MSGBOX_INFO, STR_AGSMT_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		return;
+	}
 
 	target.gametype	= WARCAB->get_gametype();
 	target.type	= SPWAW_MEGACAM_DOSSIER;
@@ -604,20 +648,24 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgStartMegaCamTracking (target, CFG_save_path(WARCAB->get_gametype()), NULL);
+	dlg = new GuiDlgStartMegaCamTracking (target, qPrintable(savedir), NULL);
 	rc = dlg->exec ();
 	dlg->get_data (data);
 	delete dlg;
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_campaign (data);
+		erc = WARCAB->add_campaign (data, added);
 	}
 
 	SPWAW_savelist_free (&data);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add campaign savegame(s)!");
+		} else {
+			WARCAB->set_savedir();
+		}
 	}
 }
 
@@ -625,11 +673,13 @@ void
 GuiMainWindow::action_game_add_battle_savegame (void)
 {
 	SPWAW_DOSSIER		*dossier = NULL;
+	QString			savedir;
 	SPWAW_ERROR		arc;
 	SPWAW_SAVELIST_TARGET	target;
 	SPWAW_SAVELIST		*list = NULL;
 	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
+	bool			added = false;
 	char			*name = NULL;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
@@ -638,6 +688,12 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 
 	dossier = WARCAB->get_dossier();
 	if (!dossier) return;
+
+	savedir = WARCAB->get_savedir(SPWAW_STDALONE_DOSSIER);
+	if (savedir.isEmpty()) {
+		GUI_msgbox (MSGBOX_INFO, STR_AGABS_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		return;
+	}
 
 	target.gametype	= WARCAB->get_gametype();
 	target.type	= SPWAW_STDALONE_DOSSIER;
@@ -649,7 +705,7 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddBattleSavegame (target, CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist());
+	dlg = new GuiDlgAddBattleSavegame (target, qPrintable(savedir), WARCAB->get_gamelist());
 	if (rc = dlg->exec ()) {
 		name = dlg->get_data (list);
 	}
@@ -657,14 +713,18 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_stdalone (name, list);
+		erc = WARCAB->add_stdalone (name, list, added);
 	}
 
 	SPWAW_savelist_free (&list);
 	SL_SAFE_FREE (name);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from savegame(s)!");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from savegame(s)!");
+		} else {
+			WARCAB->set_savedir();
+		}
 	}
 }
 
@@ -677,6 +737,7 @@ GuiMainWindow::action_game_add_battle_snapshot (void)
 	SPWAW_SNAPLIST		*list = NULL;
 	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
+	bool			added = false;
 	char			*name = NULL;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
@@ -700,14 +761,16 @@ GuiMainWindow::action_game_add_battle_snapshot (void)
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_stdalone (name, list);
+		erc = WARCAB->add_stdalone (name, list, added);
 	}
 
 	SPWAW_snaplist_free (&list);
 	SL_SAFE_FREE (name);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from snapshot(s)!");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add standalone battle from snapshot(s)!");
+		}
 	}
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
@@ -717,11 +780,13 @@ GuiMainWindow::action_add_battle_savegame (void)
 {
 	MDLD_TREE_ITEM		*item = NULL;
 	SPWAW_DOSSIER		*dossier = NULL;
+	QString			savedir;
 	SPWAW_ERROR		arc;
 	SPWAW_SAVELIST_TARGET	target;
 	SPWAW_SAVELIST		*list = NULL;
 	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
+	bool			added = false;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
 
@@ -735,6 +800,12 @@ GuiMainWindow::action_add_battle_savegame (void)
 
 	dossier = (MDLD_TREE_raise_to (item, MDLD_TREE_DOSSIER))->data.d;
 
+	savedir = WARCAB->get_savedir(SPWAW_STDALONE_DOSSIER);
+	if (savedir.isEmpty()) {
+		GUI_msgbox (MSGBOX_INFO, STR_AABS_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		return;
+	}
+
 	target.gametype	= WARCAB->get_gametype();
 	target.type	= SPWAW_STDALONE_DOSSIER;
 	target.oobdir	= dossier->oobdir;
@@ -745,20 +816,24 @@ GuiMainWindow::action_add_battle_savegame (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_savelist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgAddBattleSavegame (target, CFG_save_path(WARCAB->get_gametype()), WARCAB->get_gamelist(), item->data.b->name);
+	dlg = new GuiDlgAddBattleSavegame (target, qPrintable(savedir), WARCAB->get_gamelist(), item->data.b->name);
 	rc = dlg->exec ();
 	dlg->get_data (list);
 	delete dlg;
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_stdalone (item->data.b, list);
+		erc = WARCAB->add_stdalone (item->data.b, list, added);
 	}
 
 	SPWAW_savelist_free (&list);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add savegame(s) to standalone savegame.");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add savegame(s) to standalone savegame.");
+		} else {
+			WARCAB->set_savedir();
+		}
 	}
 }
 
@@ -772,6 +847,7 @@ GuiMainWindow::action_add_battle_snapshot (void)
 	SPWAW_SNAPLIST		*list = NULL;
 	GuiDlgAddBattleSavegame	*dlg;
 	int			rc;
+	bool			added = false;
 	SL_ERROR		erc;
 	SL_ERROR_REQUEST	erq;
 
@@ -797,13 +873,15 @@ GuiMainWindow::action_add_battle_snapshot (void)
 
 	erc = SL_ERR_NO_ERROR;
 	if (rc) {
-		erc = WARCAB->add_stdalone (item->data.b, list);
+		erc = WARCAB->add_stdalone (item->data.b, list, added);
 	}
 
 	SPWAW_snaplist_free (&list);
 
-	if (SL_HAS_ERROR (erc)) {
-		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add snapshot(s) to standalone snapshot.");
+	if (added) {
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to add snapshot(s) to standalone snapshot.");
+		}
 	}
 }
 #endif	/* ALLOW_SNAPSHOTS_LOAD */

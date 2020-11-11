@@ -24,7 +24,7 @@ extern char *		CFG_app_path		(void);
 extern char *		CFG_usr_path		(void);
 extern SPWAW_GAME_TYPE	CFG_default_gametype	(void);
 extern char *		CFG_oob_path		(SPWAW_GAME_TYPE gametype);
-extern char *		CFG_save_path		(SPWAW_GAME_TYPE gametype);
+extern char *		CFG_save_path		(SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type);
 extern char *		CFG_snap_path		(void);
 extern bool		CFG_compress		(void);
 
@@ -52,6 +52,8 @@ public:
 };
 
 extern QList<CfgGameType>	CFG_gametypes	(void);
+
+extern	bool		CFG_savedir_from_oobdir	(QString &dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type);
 
 #endif	/* CFG_COMMON_H */
 

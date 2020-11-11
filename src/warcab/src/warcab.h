@@ -38,13 +38,13 @@ public:
 	SL_ERROR	save		(void);
 	SL_ERROR	saveas		(char *file);
 	SL_ERROR	close		(void);
-	SL_ERROR	add_campaign	(SPWAW_SAVELIST *list);
-	SL_ERROR	add_stdalone	(char *name, SPWAW_SAVELIST *list);
-	SL_ERROR	add_stdalone	(SPWAW_BATTLE *battle, SPWAW_SAVELIST *list);
+	SL_ERROR	add_campaign	(SPWAW_SAVELIST *list, bool &added);
+	SL_ERROR	add_stdalone	(char *name, SPWAW_SAVELIST *list, bool &added);
+	SL_ERROR	add_stdalone	(SPWAW_BATTLE *battle, SPWAW_SAVELIST *list, bool &added);
 #if	ALLOW_SNAPSHOTS_LOAD
-	SL_ERROR	add_campaign	(SPWAW_SNAPLIST *list);
-	SL_ERROR	add_stdalone	(char *name, SPWAW_SNAPLIST *list);
-	SL_ERROR	add_stdalone	(SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list);
+	SL_ERROR	add_campaign	(SPWAW_SNAPLIST *list, bool &added);
+	SL_ERROR	add_stdalone	(char *name, SPWAW_SNAPLIST *list, bool &added);
+	SL_ERROR	add_stdalone	(SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list, bool &added);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	SL_ERROR	del		(MDLD_TREE_ITEM *item);
 	SL_ERROR	edit		(char *name, char *comment);
@@ -62,6 +62,8 @@ public:
 	SPWAW_GAME_TYPE	get_gametype	(void);
 	bool		can_track	(void);
 	SPWAW_DOSSIER	*get_dossier	(void);
+	QString &	get_savedir	(SPWAW_DOSSIER_TYPE type);
+	void		set_savedir	(void);
 
 	void		statereport	(SL_STDBG_INFO_LEVEL level);
 
@@ -87,6 +89,9 @@ private:
 		SL_BOOL		dirty;
 		WARCABTracking	*tracking;
 	} d;
+	struct s_objects {
+		QString		savedir;
+	} o;
 
 private:
 	void		set_dirty		(bool flag);
@@ -113,7 +118,7 @@ private:
 		SPWAW_GAME_TYPE	gametype;
 	} PL_LIST;
 	typedef SPWAW_ERROR (*PL_ADD)(void *, SPWAW_SNAPSHOT *, SPWAW_BTURN **);
-	SL_ERROR	process_list	(PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp);
+	SL_ERROR	process_list	(PL_LIST &list, PL_ADD add, void *context, GuiProgress &gp, bool &added);
 
 	SPWAW_ERROR	basic_campaign_add	(SPWAW_SAVEGAME_DESCRIPTOR *sgd);
 };

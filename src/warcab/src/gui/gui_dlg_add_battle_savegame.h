@@ -21,9 +21,9 @@ class GuiDlgAddBattleSavegame	: public QDialog
 	Q_OBJECT
 
 public:
-	GuiDlgAddBattleSavegame		(SPWAW_SAVELIST_TARGET &target, char *path, SPWAW_SAVELIST *ignore, char *name = NULL);
+	GuiDlgAddBattleSavegame		(SPWAW_SAVELIST_TARGET &target, const char *path, SPWAW_SAVELIST *ignore, char *name = NULL);
 #if	ALLOW_SNAPSHOTS_LOAD
-	GuiDlgAddBattleSavegame		(SPWAW_SNAPLIST_TARGET &target, char *path, SPWAW_SNAPLIST *ignore, char *name = NULL);
+	GuiDlgAddBattleSavegame		(SPWAW_SNAPLIST_TARGET &target, const char *path, SPWAW_SNAPLIST *ignore, char *name = NULL);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	~GuiDlgAddBattleSavegame	(void);
 

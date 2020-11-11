@@ -94,7 +94,7 @@ GuiDlgAddCampaignSavegame::constructor_core (QString &type, QString &items)
 	SET_GUICLS_NOERR;
 }
 
-GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SAVELIST_TARGET &target, char *path, SPWAW_SAVELIST *ignore)
+GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SAVELIST_TARGET &target, const char *path, SPWAW_SAVELIST *ignore)
 	: QDialog (0, Qt::Dialog)
 {
 	SPWAW_ERROR		rc;
@@ -110,7 +110,7 @@ GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SAVELIST_TARGET &tar
 		SET_GUICLS_ERROR (ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "failed to create new savegame list");
 
 	/* Create data model */
-	GUINEW (d.savemodel, ModelSaveList (target, path, ignore), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "savelist data model");
+	GUINEW (d.savemodel, ModelSaveList (target, (char *)path, ignore), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "savelist data model");
 
 	/* Connect data model with tree view */
 	d.view->setModel (d.savemodel);
@@ -128,7 +128,7 @@ GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SAVELIST_TARGET &tar
 }
 
 #if	ALLOW_SNAPSHOTS_LOAD
-GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SNAPLIST_TARGET &target, char *path, SPWAW_SNAPLIST *ignore)
+GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SNAPLIST_TARGET &target, const char *path, SPWAW_SNAPLIST *ignore)
 	: QDialog (0, Qt::Dialog)
 {
 	SPWAW_ERROR	rc;
@@ -144,7 +144,7 @@ GuiDlgAddCampaignSavegame::GuiDlgAddCampaignSavegame (SPWAW_SNAPLIST_TARGET &tar
 		SET_GUICLS_ERROR (ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "failed to create new snapshot list");
 
 	/* Create data model */
-	GUINEW (d.snapmodel, ModelSnapList (target, path, ignore), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "snaplist data model");
+	GUINEW (d.snapmodel, ModelSnapList (target, (char *)path, ignore), ERR_GUI_DLG_ADD_BATTLE_SAVEGAME_INIT_FAILED, "snaplist data model");
 
 	/* Connect data model with tree view */
 	d.view->setModel (d.snapmodel);
