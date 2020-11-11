@@ -42,9 +42,9 @@
 	"Unable to add savegames to this battle"
 
 /* ... no-savedir dialog box body message */
-#define	STR_NOSAVEDIR_BODY							\
-	"The original savedir of this dossier is not recorded.\n"		\
-	"Because of this, it is not possible to present a list of savegames.\n"	\
+#define	STR_NOSAVEDIR_BODY								\
+	"The original savedir of this dossier is either not recorded or not found.\n"	\
+	"Because of this, it is not possible to present a list of savegames.\n"		\
 
 GuiMainWindow::GuiMainWindow (void)
 	: QMainWindow (0, Qt::Window)

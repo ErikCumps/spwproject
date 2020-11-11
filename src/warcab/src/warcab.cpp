@@ -756,9 +756,12 @@ WARCABState::get_savedir (SPWAW_DOSSIER_TYPE type)
 		// Dossier with a savedir -  use this
 		o.savedir = d.dossier->savedir;
 	} else if (d.dossier->bcnt != 0) {
-		// (old) Non-empty dossiers without a savedir - try to determine savedir from oobdir
+		// (old) Non-empty dossiers without a savedir - try to determine savedir from oobdir, if it exists
 		o.savedir = d.dossier->oobdir;
-		if (!CFG_savedir_from_oobdir (o.savedir, get_gametype(), type) || !QFileInfo(o.savedir).exists()) {
+		if (	!QFileInfo(d.dossier->oobdir).exists()				||
+			!CFG_savedir_from_oobdir (o.savedir, get_gametype(), type)	||
+			!QFileInfo(o.savedir).exists()					)
+		{
                         o.savedir.clear();
 		}
 	} else {
