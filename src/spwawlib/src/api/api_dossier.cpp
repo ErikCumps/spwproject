@@ -205,6 +205,22 @@ SPWAW_dossier_edit (SPWAW_DOSSIER *dossier, const char *name, const char *commen
 }
 
 SPWAWLIB_API SPWAW_ERROR
+SPWAW_dossier_set_savedir (SPWAW_DOSSIER *dossier, const char *savedir)
+{
+	STRTAB	*stab = NULL;
+
+	CSPWINIT;
+	CNULLARG (dossier);
+
+	stab = (STRTAB *)dossier->stab;
+
+	STRTAB_del (stab, dossier->savedir);
+	dossier->savedir = STRTAB_add (stab, (char *)savedir);
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
 SPWAW_dossier_add_campaign_snap (SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;

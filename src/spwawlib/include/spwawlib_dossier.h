@@ -149,6 +149,7 @@ struct s_SPWAW_DOSSIER {
 	char			*name;				/* Dossier name					*/
 	char			*comment;			/* Dossier comment				*/
 	SPWAW_DOSSIER_TYPE	type;				/* Dossier type					*/
+	char			*savedir;			/* Savegames directory				*/ 
 	char			*oobdir;			/* OOB data directory				*/
 	SPWAW_SPWOOB_LIST	*oobdata;			/* OOB data list				*/
 	SPWAW_BATTLE		**blist;			/* Battle list					*/
@@ -182,6 +183,7 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOS
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_free		(SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_edit		(SPWAW_DOSSIER *dossier, const char *name, const char *comment);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_set_savedir	(SPWAW_DOSSIER *dossier, const char *savedir);
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_campaign_snap	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, SPWAW_BTURN **bturn);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_add_battle	(SPWAW_DOSSIER *dossier, SPWAW_SNAPSHOT *snap, const char *name, SPWAW_BATTLE **battle);

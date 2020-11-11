@@ -11,7 +11,6 @@
 
 #include <spwawlib_api.h>
 #include <spwawlib_types.h>
-//#include <ad_hash.h>
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
@@ -48,7 +47,8 @@ typedef struct s_DOS_TRACKING {
 typedef struct s_DOS_HEADER {
 	ULONG		name;			/* Dossier name	symbol								*/
 	ULONG		comment;		/* Dossier comment symbol							*/
-	ULONG		oobdir;			/* Original OOB data directory symbol						*/
+	ULONG		savedir;		/* savegames directory symbol							*/
+	ULONG		oobdir;			/* OOB data directory symbol							*/
 	ULONG		oobdata;		/* Dossier OOB data list offset, relative to start of header			*/
 	USHORT		bcnt;			/* Battle list count								*/
 	ULONG		blist;			/* Battle list offset, relative to start of header				*/

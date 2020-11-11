@@ -26,6 +26,7 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 		FAILGOTO (SPWERR_FRFAILED, "bread(dossier hdr v11)", handle_error);
 
 	/* A V11 dossier header:
+	 * + lacks the savedir
 	 * + lacks the dossier game type
 	 * + lacks the campaign properties
 	 * + lacks the UHT data
@@ -36,15 +37,16 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 	 * V11 dossiers only support the SPWAW_SAVE_TYPE_REGULAR save type.
 	 * V11 dossiers do not support savegame tracking.
 	 */
-	hdr->name	= hdr_v11->name;
-	hdr->comment	= hdr_v11->comment;
-	hdr->oobdir	= hdr_v11->oobdir;
-	hdr->oobdata	= hdr_v11->oobdata;
-	hdr->bcnt	= hdr_v11->bcnt;
-	hdr->blist	= hdr_v11->blist;
-	hdr->stab	= hdr_v11->stab;
-	hdr->type	= hdr_v11->type;
-	hdr->gametype	= SPWAW_GAME_TYPE_SPWAW;
+	hdr->name		= hdr_v11->name;
+	hdr->comment		= hdr_v11->comment;
+	hdr->savedir		= BADSTRIDX;
+	hdr->oobdir		= hdr_v11->oobdir;
+	hdr->oobdata		= hdr_v11->oobdata;
+	hdr->bcnt		= hdr_v11->bcnt;
+	hdr->blist		= hdr_v11->blist;
+	hdr->stab		= hdr_v11->stab;
+	hdr->type		= hdr_v11->type;
+	hdr->gametype		= SPWAW_GAME_TYPE_SPWAW;
 
 	hdr->props.OOB		= (BYTE)(hdr_v11->OOB & 0xFF);
 	hdr->props.start	= SPWAW_TIMESTAMP_EMPTY;
@@ -55,7 +57,7 @@ dossier_load_v11_header (int fd, DOS_HEADER *hdr)
 	hdr->props.cfcnt	= hdr_v11->fcnt;
 	hdr->props.cucnt	= hdr_v11->ucnt;
 
-	hdr->uht	= 0;
+	hdr->uht		= 0;
 
 	hdr->tracking.gametype	= SPWAW_GAME_TYPE_UNKNOWN;
 	hdr->tracking.savetype	= SPWAW_SAVE_TYPE_UNKNOWN;

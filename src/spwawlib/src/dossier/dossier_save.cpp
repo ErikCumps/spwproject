@@ -223,6 +223,11 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 
 	hdr.name = STRTAB_getidx (stab, src->name);
 	hdr.comment = STRTAB_getidx (stab, src->comment);
+	if (src->savedir) {
+		hdr.savedir = STRTAB_getidx (stab, src->savedir);
+	} else {
+		hdr.savedir = BADSTRIDX;
+	}
 	hdr.oobdir = STRTAB_getidx (stab, src->oobdir);
 	hdr.type = src->type;
 	hdr.gametype = src->gametype;

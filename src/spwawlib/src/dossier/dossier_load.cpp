@@ -409,11 +409,16 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	rc = STRTAB_fdload (stab, fd);
 	ERRORGOTO ("STRTAB_fdload()", handle_error);
 
-	dst->gametype = (SPWAW_GAME_TYPE)hdr.gametype;
 	dst->name = STRTAB_getstr (stab, hdr.name);
 	dst->comment = STRTAB_getstr (stab, hdr.comment);
-	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
+	if (hdr.savedir != BADSTRIDX) {
+		dst->savedir = STRTAB_getstr (stab, hdr.savedir);
+	} else {
+		dst->savedir = NULL;
+	}
 	dst->oobdir = STRTAB_getstr (stab, hdr.oobdir);
+	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
+	dst->gametype = (SPWAW_GAME_TYPE)hdr.gametype;
 
 	bseekset (fd, pos + hdr.blist);
 	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);

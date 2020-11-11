@@ -26,21 +26,23 @@ dossier_load_v12_header (int fd, DOS_HEADER *hdr)
 		FAILGOTO (SPWERR_FRFAILED, "bread(dossier hdr v12)", handle_error);
 
 	/* A V12 dossier header:
+	 * + lacks the savedir
 	 * + lacks the initial and current core force campaign properties
 	 * + lacks the UHT data
 	 * + lacks the savegame tracking info
 	 *
 	 * V12 dossiers do not support savegame tracking.
 	 */
-	hdr->name	= hdr_v12->name;
-	hdr->comment	= hdr_v12->comment;
-	hdr->oobdir	= hdr_v12->oobdir;
-	hdr->oobdata	= hdr_v12->oobdata;
-	hdr->bcnt	= hdr_v12->bcnt;
-	hdr->blist	= hdr_v12->blist;
-	hdr->stab	= hdr_v12->stab;
-	hdr->type	= hdr_v12->type;
-	hdr->gametype	= hdr_v12->gametype;
+	hdr->name		= hdr_v12->name;
+	hdr->comment		= hdr_v12->comment;
+	hdr->savedir		= BADSTRIDX;
+	hdr->oobdir		= hdr_v12->oobdir;
+	hdr->oobdata		= hdr_v12->oobdata;
+	hdr->bcnt		= hdr_v12->bcnt;
+	hdr->blist		= hdr_v12->blist;
+	hdr->stab		= hdr_v12->stab;
+	hdr->type		= hdr_v12->type;
+	hdr->gametype		= hdr_v12->gametype;
 	
 	hdr->props.OOB		= hdr_v12->props.OOB;
 	hdr->props.start	= hdr_v12->props.start;
@@ -51,7 +53,7 @@ dossier_load_v12_header (int fd, DOS_HEADER *hdr)
 	hdr->props.cfcnt	= hdr->props.ifcnt;
 	hdr->props.cucnt	= hdr->props.iucnt;
 
-	hdr->uht	= 0;
+	hdr->uht		= 0;
 
 	hdr->tracking.gametype	= SPWAW_GAME_TYPE_UNKNOWN;
 	hdr->tracking.savetype	= SPWAW_SAVE_TYPE_UNKNOWN;

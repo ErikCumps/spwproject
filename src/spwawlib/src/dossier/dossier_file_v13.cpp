@@ -25,11 +25,33 @@ dossier_load_v13_header (int fd, DOS_HEADER *hdr)
 	if (!bread (fd, (char *)hdr_v13, sizeof (DOS_HEADER_V13), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(dossier hdr V13)", handle_error);
 
-	/* A V13 dossier header only lacks the savegame tracking info at the end.
+	/* A V13 dossier header:
+	 * + lacks the savedir
+	 * + lacks the savegame tracking info
 	 *
 	 * V13 dossiers do not support savegame tracking.
 	 */
-	memcpy (hdr, hdr_v13, sizeof (DOS_HEADER_V13));
+	hdr->name		= hdr_v13->name;
+	hdr->comment		= hdr_v13->comment;
+	hdr->savedir		= BADSTRIDX;
+	hdr->oobdir		= hdr_v13->oobdir;
+	hdr->oobdata		= hdr_v13->oobdata;
+	hdr->bcnt		= hdr_v13->bcnt;
+	hdr->blist		= hdr_v13->blist;
+	hdr->stab		= hdr_v13->stab;
+	hdr->type		= hdr_v13->type;
+	hdr->gametype		= hdr_v13->gametype;
+
+	hdr->props.OOB		= hdr_v13->props.OOB;
+	hdr->props.start	= hdr_v13->props.start;
+	hdr->props.end		= hdr_v13->props.end;
+	hdr->props.maxbtlcnt	= hdr_v13->props.maxbtlcnt;
+	hdr->props.ifcnt	= hdr_v13->props.ifcnt;
+	hdr->props.iucnt	= hdr_v13->props.iucnt;
+	hdr->props.cfcnt	= hdr_v13->props.cfcnt;
+	hdr->props.cucnt	= hdr_v13->props.cucnt;
+
+	hdr->uht		= hdr_v13->uht;
 
 	hdr->tracking.gametype	= SPWAW_GAME_TYPE_UNKNOWN;
 	hdr->tracking.savetype	= SPWAW_SAVE_TYPE_UNKNOWN;

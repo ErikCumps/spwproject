@@ -201,28 +201,25 @@ SPWAWLIB_API SPWAW_ERROR
 SPWAW_savelist (SPWAW_SAVELIST_TARGET *target, const char *dir, SPWAW_SAVELIST *ignore, SPWAW_SAVELIST **list)
 {
 	SPWAW_ERROR	rc;
-	SPWAW_SAVE_TYPE	types[2];
+	SPWAW_SAVE_TYPE	type;
 
 	CSPWINIT;
 	CNULLARG (target); CNULLARG (dir); CNULLARG (list);
 
 	rc = SPWAW_savelist_new (target, list); ROE ("SPWAW_savelist_new()");
 
-	memset (types, 0, sizeof (types));
+	type = SPWAW_SAVE_TYPE_UNKNOWN;
 	switch (target->type) {
 		case SPWAW_CAMPAIGN_DOSSIER:
 		case SPWAW_STDALONE_DOSSIER:
-			types[0] = SPWAW_SAVE_TYPE_REGULAR;
-			types[1] = SPWAW_SAVE_TYPE_MEGACAM;
+			type = SPWAW_SAVE_TYPE_REGULAR;
 			break;
 		case SPWAW_MEGACAM_DOSSIER:
-			types[0] = SPWAW_SAVE_TYPE_MEGACAM;
+			type = SPWAW_SAVE_TYPE_MEGACAM;
 			break;
 	}
 
-	for (int i=0; i<ARRAYCOUNT(types); i++) {
-		list_files (types[i], dir, ignore, *list);
-	}
+	list_files (type, dir, ignore, *list);
 
 	return (SPWERR_OK);
 }
