@@ -110,7 +110,7 @@ private:
 
 private:
 	typedef struct {
-		union {
+		union u_list {
 			SPWAW_SAVELIST *save;
 			SPWAW_SNAPLIST *snap;
 		} list;

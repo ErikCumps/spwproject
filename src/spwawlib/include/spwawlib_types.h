@@ -402,7 +402,7 @@ typedef struct s_SPWAW_SAVEGAME_DESCRIPTOR {
 	char			*oobdir;
 	char			*path;
 	bool			numeric_id;
-	union {
+	union u_id {
 		unsigned int	number;
 		char		*name;
 	}			id;
