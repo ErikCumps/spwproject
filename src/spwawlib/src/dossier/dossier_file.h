@@ -14,7 +14,7 @@
 
 #define	DOSS_MAGIC	"SPWAWLIB_DOSSIER"
 #define	DOSS_MGCLEN	16
-#define	DOSS_VERSION	14
+#define	DOSS_VERSION	15
 
 #pragma pack(push, r1, 1)
 
