@@ -14,6 +14,7 @@
 #include "dossier/dossier_file_v11.h"
 #include "dossier/dossier_file_v12.h"
 #include "dossier/dossier_file_v13.h"
+#include "dossier/dossier_file_v14.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "gamefile/savegame_descriptor.h"
@@ -308,6 +309,9 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 	} else if (mvhdr.version == DOSS_VERSION_V13) {
 		rc = dossier_load_v13_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v13_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V14) {
+		rc = dossier_load_v14_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v14_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
@@ -384,6 +388,9 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	} else if (mvhdr.version == DOSS_VERSION_V13) {
 		rc = dossier_load_v13_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v13_header(dossier hdr)", handle_error);
+	} else if (mvhdr.version == DOSS_VERSION_V14) {
+		rc = dossier_load_v14_header (fd, &hdr);
+		ERRORGOTO ("dossier_load_v14_header(dossier hdr)", handle_error);
 	} else {
 		if (!bread (fd, (char *)&hdr, sizeof (hdr), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(hdr)", handle_error);
