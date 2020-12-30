@@ -184,10 +184,13 @@ GuiActions::~GuiActions (void)
 void
 GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TYPE gt)
 {
+	bool	wr = false;
 	bool	ed = false;
 	bool	ec = false;
 	bool	em = false;
 	bool	eb = false;
+
+	wr = !(WARCAB->is_readonly());
 
 	p.app_exit->setEnabled (true);
 	p.app_prefs->setEnabled (true);
@@ -196,15 +199,15 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TY
 	p.app_intel_none->setEnabled (true);
 
 	p.dossier_close->setEnabled (b);
-	p.dossier_save->setEnabled (b);
-	p.dossier_saveAs->setEnabled (b);
-	p.dossier_edit->setEnabled (b);
+	p.dossier_save->setEnabled (wr && b);
+	p.dossier_saveAs->setEnabled (wr && b);
+	p.dossier_edit->setEnabled (wr && b);
 
 	ed = (dt == SPWAW_EMPTY_DOSSIER);
 
-	if (b && (ed || (dt == SPWAW_CAMPAIGN_DOSSIER))) ec = true;
-	if (b && (ed && (gt == SPWAW_GAME_TYPE_SPWAW )) && WARCAB->can_track()) em = true;
-	if (b && (ed || (dt == SPWAW_STDALONE_DOSSIER))) eb = true;
+	if (wr && b && (ed || (dt == SPWAW_CAMPAIGN_DOSSIER))) ec = true;
+	if (wr && b && (ed && (gt == SPWAW_GAME_TYPE_SPWAW )) && WARCAB->can_track()) em = true;
+	if (wr && b && (ed || (dt == SPWAW_STDALONE_DOSSIER))) eb = true;
 
 	p.game_add_campaign_savegame->setEnabled (ec);
 	p.game_start_megacam_tracking->setEnabled (em);
@@ -215,13 +218,13 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TY
 	p.game_add_battle_snapshot->setEnabled (eb);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 
-	p.add_battle_savegame->setEnabled (b && dt == SPWAW_STDALONE_DOSSIER);
+	p.add_battle_savegame->setEnabled (wr && b && dt == SPWAW_STDALONE_DOSSIER);
 #if	ALLOW_SNAPSHOTS_LOAD
-	p.add_battle_snapshot->setEnabled (b && dt == SPWAW_STDALONE_DOSSIER);
+	p.add_battle_snapshot->setEnabled (wr && b && dt == SPWAW_STDALONE_DOSSIER);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
-	p.delete_turn->setEnabled (b);
-	p.delete_battle->setEnabled (b);
-	p.delete_dossier->setEnabled (b);
+	p.delete_turn->setEnabled (wr && b);
+	p.delete_battle->setEnabled (wr && b);
+	p.delete_dossier->setEnabled (wr && b);
 
 	p.nav_raise->setEnabled (b);
 	p.nav_first->setEnabled (b);

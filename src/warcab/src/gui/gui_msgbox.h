@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - simple message dialog box.
  *
- * Copyright (C) 2017-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2017-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -46,6 +46,7 @@ private slots:
 };
 
 extern int	GUI_msgbox	(MSGBOX_TYPE type, char *title, char *msg);
+extern int	GUI_msgbox	(MSGBOX_TYPE type, char *title, QString &msg);
 
 #endif	/* GUI_MSGBOX_H */
 

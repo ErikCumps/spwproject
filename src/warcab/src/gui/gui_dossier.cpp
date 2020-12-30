@@ -255,7 +255,7 @@ GuiDossier::was_loaded (MDLD_TREE_ITEM *tree)
 	if (!tree) return;
 	report_GMD (tree);
 
-	d.model->load (tree);
+	d.model->load (tree, WARCAB->is_readonly());
 	refresh();
 	setCurrentIndex (d.model->root_index());
 

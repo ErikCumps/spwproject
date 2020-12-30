@@ -22,10 +22,7 @@ extern bool		CFG_oobcfg		(SPWAW_OOBCFG **list, int *cnt);
 extern char *		CFG_cwd_path		(void);
 extern char *		CFG_app_path		(void);
 extern char *		CFG_usr_path		(void);
-extern SPWAW_GAME_TYPE	CFG_default_gametype	(void);
-extern char *		CFG_oob_path		(SPWAW_GAME_TYPE gametype);
-extern char *		CFG_save_path		(SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type);
-extern char *		CFG_snap_path		(void);
+extern char *		CFG_snp_path		(void);
 extern bool		CFG_compress		(void);
 
 extern char *		CFG_autoload_get	(void);
@@ -41,19 +38,42 @@ extern void		CFG_gui_state_set	(GUI_STATE &state);
 
 extern bool		CFG_DLG			(bool isfirstrun);
 
-class CfgGameType
+typedef	int		GameCfgIdx;
+
+#define	GAMECFG_IDX_NOT_SET	-1
+
+extern QString		CFG_gamename		(GameCfgIdx idx);
+extern SPWAW_GAME_TYPE	CFG_gametype		(GameCfgIdx idx);
+extern QString		CFG_gamepath		(GameCfgIdx idx);
+
+class GameCfg
 {
 public:
-	CfgGameType (SPWAW_GAME_TYPE type, const char *name)	: type(type), name(name) {}
-	CfgGameType (SPWAW_GAME_TYPE type, QString name)	: type(type), name(name) {}
+	GameCfg (QString name, SPWAW_GAME_TYPE type, QString path)	: name(name), type(type), path(path) {}
 
-	SPWAW_GAME_TYPE		type;
 	QString			name;
+	SPWAW_GAME_TYPE		type;
+	QString			path;
 };
 
-extern QList<CfgGameType>	CFG_gametypes	(void);
+typedef	QList<GameCfg>	GameCfgList;
 
-extern	bool		CFG_savedir_from_oobdir	(QString &dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type);
+extern GameCfgList	CFG_gamecfg_list	(int &def_gamecfg);
+
+extern	bool		CFG_valid_gamepath	(char *dir, SPWAW_GAME_TYPE gametype, bool &path_exists);
+
+/* This returns a gamedir from an oobdir, even when the actual oobdir doesn't exist */
+extern	QString		CFG_game_from_oob	(char *dir, SPWAW_GAME_TYPE gametype);
+
+/* This only returns an oobdir from a gamedir if the gamedir exists */
+extern	QString		CFG_oob_from_game	(char *dir, SPWAW_GAME_TYPE gametype);
+
+/* This only returns a savedir from a gamedir if the gamedir exists */
+extern	QString		CFG_save_from_game	(char *dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type);
+
+/* This only returns a savedir from an oobdir if the oobidr exists */
+extern	QString		CFG_save_from_oob	(char *dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type);
+
 
 #endif	/* CFG_COMMON_H */
 

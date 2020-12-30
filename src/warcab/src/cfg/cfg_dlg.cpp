@@ -9,11 +9,10 @@
 #include "resource.h"
 #include "../common.h"
 #include "res/res.h"
-#include "smap/smap_renderdata.h"
 #include "cfg_dlg.h"
 
 #define	BOX_WIDTH	600
-#define	BOX_HEIGHT	450
+#define	BOX_HEIGHT	600
 #define	BOX_MARGIN	 10
 
 #define	STR_LOCPRF_TOOLTIP	"Store preferences locally."
@@ -30,24 +29,6 @@
 	"\n"									\
 	"If this is not desired, please select <Cancel> to revert\n"		\
 	"to storing the preferences locally...\n"
-
-#define	STR_DGT_NAME		"Default game type:"
-#define	STR_DGT_TOOLTIP		"Configure the default game type."
-#define	STR_DGT_WHATSTHIS	"This sets the default game type for new dossiers."
-
-#define	STR_BOX_NAME		"%1 game support"
-
-#define	STR_OOB_NAME		"OOB files:"
-#define	STR_OOB_TOOLTIP		"Configure the folder containing the %1 OOB files."
-#define	STR_OOB_WHATSTHIS1	"This should be the folder containing the %1 OOB files."
-#define	STR_OOB_WHATSTHIS2	"Press this button to browse to the folder contaning the %1 OOB files."
-#define	STR_OOB_BROWSE		"Specify the %1 OOB folder:"
-
-#define	STR_SVE_NAME		"savegames:"
-#define	STR_SVE_TOOLTIP		"Configure the folder containg the %1 savegames."
-#define	STR_SVE_WHATSTHIS1	"This should be the folder containing the %1 savegames."
-#define	STR_SVE_WHATSTHIS2	"Press this button to browse to the folder contaning the %1 savegames."
-#define	STR_SVE_BROWSE		"Specify the %1 savegames folder:"
 
 #define	STR_SNP_TOOLTIP		"Configure the Warcab saves folder."
 #define	STR_SNP_WHATSTHIS1	"This is the folder where warcab saves dossiers and stratmap images."
@@ -86,11 +67,107 @@
 	"historic German Flag from WWII for personal reasons or to\n"		\
 	"satisfy the requirements of German Law."
 
+#define	STR_DG_NAME		"Default game config:"
+#define	STR_DG_TOOLTIP		"Configure the default game config."
+#define	STR_DG_WHATSTHIS	"This sets the default game config for new dossiers."
+
+#define	STR_GAMENAME_NAME	"Name:"
+#define	STR_GAMENAME_TOOLTIP	"Configure a name for this game config."
+#define	STR_GAMENAME_WHATSTHIS	"This should be a unique name to identify this game config."
+
+#define	STR_GAMETYPE_NAME	"Type:"
+#define	STR_GAMETYPE_TOOLTIP	"Configure the game type of this game config."
+#define	STR_GAMETYPE_WHATSTHIS	"This sets the game type of this game config."
+
+#define	STR_GAMEPATH_NAME	"Path:"
+#define	STR_GAMEPATH_TOOLTIP	"Configure the game folder of this game config."
+#define	STR_GAMEPATH_WHATSTHIS1	"This sets the installation folder of the game of this game config."
+#define	STR_GAMEPATH_WHATSTHIS2	"Press this button to browse to an installation folder of a supported game."
+#define	STR_GAMEPATH_BROWSE	"Specify the installation folder of a supported game:"
+
+#define	STR_GAME_PARTIAL							\
+	"This game configuration is highlighted in red,\n"			\
+	"because not all of its fields are filled in."
+
+#define	STR_GAME_INVALID							\
+	"This game configuration is highlighted in red,\n"			\
+	"because the folder does not contain a game of\n"			\
+	"the selected game type."
+
+CfgDlgDataGame::CfgDlgDataGame (void)
+{
+	active = false;
+	type = SPWAW_GAME_TYPE_UNKNOWN;
+}
+
+CfgDlgGuiGame::CfgDlgGuiGame (void)
+{
+	memset (&d, 0, sizeof (d));
+	d.status = EMPTY;
+}
+
+void
+CfgDlgGuiGame::update_status (void)
+{
+	QString		name;
+	SPWAW_GAME_TYPE	type;
+	QString		path;
+	bool		complete, b;
+
+	name = d.name_edit->text().replace('/', '\\');
+	type =(SPWAW_GAME_TYPE)d.type_select->currentIndex();
+	path = d.path_edit->text().replace('/', '\\');
+
+	if (name.isEmpty() && (type == SPWAW_GAME_TYPE_UNKNOWN) && path.isEmpty()) {
+		d.status = EMPTY;
+		d.box->setPalette(d.def_status);
+		d.box->setToolTip ("");
+		d.box->setWhatsThis ("");
+		return;
+	}
+
+	complete = (!name.isEmpty() && (type != SPWAW_GAME_TYPE_UNKNOWN) && !path.isEmpty());
+	if (!complete) {
+		d.status = PARTIAL;
+		d.box->setPalette(d.red_status);
+		d.box->setToolTip (STR_GAME_PARTIAL);
+		d.box->setWhatsThis (STR_GAME_PARTIAL);
+		return;
+	}
+
+	if (CFG_valid_gamepath ((char *)qPrintable(path), type, b)) {
+		d.status = CORRECT;
+		d.box->setPalette(d.def_status);
+		d.box->setToolTip ("");
+		d.box->setWhatsThis ("");
+	} else {
+		d.status = COMPLETE;
+		d.box->setPalette(d.red_status);
+		d.box->setToolTip (STR_GAME_INVALID);
+		d.box->setWhatsThis (STR_GAME_INVALID);
+	}
+}
+
+CfgDlgData::CfgDlgData (void)
+{
+	isfirstrun	= false;
+	locprf		= DEFAULT_LOCALCFG;
+	snp.clear();
+	compress	= DEFAULT_COMPRESSION;
+	autoload	= DEFAULT_AUTOLOAD;
+	fhistory	= DEFAULT_FULL_HISTORY;
+	imode		= DEFAULT_INTEL_MODE;
+	hcftype		= DEFAULT_HCFTYPE;
+	gecross		= DEFAULT_GERMAN_CROSS;
+	def_game	= DEFAULT_GAME;
+}
+
 CfgDlg::CfgDlg (CfgDlgData *data)
 	: QDialog (0, Qt::Dialog)
 {
 	int	but_height = 0;
 	int	row = 0;
+	QWidget	*tcw = NULL;
 
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
@@ -136,17 +213,7 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->setContentsMargins(0, 0, 0, 0);
 
 	/* Create "locprf" config ui */
-	d.locprf_label = new QLabel (d.body);
-	d.locprf_label->setText ("Store preferences locally:");
-	d.locprf_label->setToolTip (STR_LOCPRF_TOOLTIP);
-
-	d.locprf_edit = new QCheckBox (d.body);
-	d.locprf_edit->setToolTip (STR_LOCPRF_TOOLTIP);
-	d.locprf_edit->setWhatsThis (STR_LOCPRF_WHATSTHIS);
-
-	d.layout->addWidget (d.locprf_label,	row, 0, 1, 1);
-	d.layout->addWidget (d.locprf_edit,	row, 1, 1, 1);
-	row++;
+	create_locprf (row, tcw);
 
 	/* Add spacer */
 	d.layout->setRowStretch (row, 1);
@@ -159,6 +226,87 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	row++;
 
 	/* Create "snap" config ui */
+	create_snp (row, tcw);
+
+	/* Create "compress" config ui */
+	create_compress (row, tcw);
+
+	/* Create "autoload" config ui */
+	create_autoload (row, tcw);
+
+	/* Create "fhistory" config ui */
+	create_fhistory (row, tcw);
+
+	/* Create "imode" config ui */
+	create_imode (row, tcw);
+
+	/* Create "hcftype" config ui */
+	create_hcftype (row, tcw);
+
+	/* Create "gecross" config ui */
+	create_gecross (row, tcw);
+
+	/* Add spacer */
+	d.layout->setRowStretch (row, 1);
+	row++;
+
+	/* Create and add separator2 */
+	d.separator2 = new QFrame (this);
+	d.separator2->setFrameStyle (QFrame::HLine);
+	d.layout->addWidget (d.separator2,	row, 0, 1, 3);
+	row++;
+
+	/* Create "default game" config ui */
+	create_defg (row, tcw);
+
+	/* Create "game" config ui */
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		create_gui_game (row, i, tcw);
+	}
+
+	/* Add spacer */
+	d.layout->setRowStretch (row, 1);
+	row++;
+
+	/* Finish dialog tab order */
+	setTabOrder (tcw, d.buttons);
+
+	/* Finish connecting signals and slots */
+	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));
+	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
+}
+
+CfgDlg::~CfgDlg (void)
+{
+	// QT deletes child widgets
+	delete d.dlgf;
+	delete d.dlgfm;
+}
+
+void
+CfgDlg::create_locprf (int &row, QWidget* &tcw)
+{
+	d.locprf_label = new QLabel (d.body);
+	d.locprf_label->setText ("Store preferences locally:");
+	d.locprf_label->setToolTip (STR_LOCPRF_TOOLTIP);
+
+	d.locprf_edit = new QCheckBox (d.body);
+	d.locprf_edit->setToolTip (STR_LOCPRF_TOOLTIP);
+	d.locprf_edit->setWhatsThis (STR_LOCPRF_WHATSTHIS);
+
+	d.layout->addWidget (d.locprf_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.locprf_edit,	row, 1, 1, 1);
+	row++;
+
+	if (tcw) setTabOrder (tcw, d.locprf_edit);
+	tcw = d.locprf_edit;
+
+	connect (d.locprf_edit, SIGNAL(clicked(bool)), this, SLOT(locprf_edit_clicked(bool)));
+}
+
+void
+CfgDlg::create_snp (int &row, QWidget* &tcw)
+{
 	d.snp_label = new QLabel (d.body);
 	d.snp_label->setText ("Warcab saves folder:");
 	d.snp_label->setToolTip (STR_SNP_TOOLTIP);
@@ -179,7 +327,16 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.snp_browse,	row, 2, 1, 1);
 	row++;
 
-	/* Create "compress" config ui */
+	if (tcw) setTabOrder (tcw, d.snp_edit);
+	setTabOrder (d.snp_edit, d.snp_browse);
+	tcw = d.snp_browse;
+
+	connect (d.snp_browse, SIGNAL(clicked(bool)), this, SLOT(snp_browse_clicked(bool)));
+}
+
+void
+CfgDlg::create_compress (int &row, QWidget* &tcw)
+{
 	d.compress_label = new QLabel (d.body);
 	d.compress_label->setText ("Dossier compression:");
 	d.compress_label->setToolTip (STR_COMPRESS_TOOLTIP);
@@ -192,7 +349,13 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.compress_edit,	row, 1, 1, 1);
 	row++;
 
-	/* Create "autoload" config ui */
+	if (tcw) setTabOrder (tcw, d.compress_edit);
+	tcw = d.compress_edit;
+}
+
+void
+CfgDlg::create_autoload (int &row, QWidget* &tcw)
+{
 	d.autoload_label = new QLabel (d.body);
 	d.autoload_label->setText ("Dossier autoload:");
 	d.autoload_label->setToolTip (STR_AUTOLOAD_TOOLTIP);
@@ -205,7 +368,13 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.autoload_edit,	row, 1, 1, 1);
 	row++;
 
-	/* Create "fhistory" config ui */
+	if (tcw) setTabOrder (tcw, d.autoload_edit);
+	tcw = d.autoload_edit;
+}
+
+void
+CfgDlg::create_fhistory (int &row, QWidget* &tcw)
+{
 	d.fhistory_label = new QLabel (d.body);
 	d.fhistory_label->setText ("Full campaign history:");
 	d.fhistory_label->setToolTip (STR_FULL_HISTORY_TOOLTIP);
@@ -218,14 +387,20 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.fhistory_edit,	row, 1, 1, 1);
 	row++;
 
-	/* Create "imode" config ui */
+	if (tcw) setTabOrder (tcw, d.fhistory_edit);
+	tcw = d.fhistory_edit;
+}
+
+void
+CfgDlg::create_imode (int &row, QWidget* &tcw)
+{
 	d.imode_label = new QLabel (d.body);
 	d.imode_label->setText (STR_IMODE_NAME);
 	d.imode_label->setToolTip (STR_IMODE_TOOLTIP);
 
 	d.imode_edit = new QComboBox (d.body);
 	for (int i=0; i<INTEL_MODE_CNT; i++) {
-		d.imode_edit->addItem (QString (intelmode2str((INTEL_MODE)i)));
+		d.imode_edit->addItem (intelmode2str((INTEL_MODE)i));
 	}
 	d.imode_edit->setEditable (false);
 	d.imode_edit->setToolTip (STR_IMODE_TOOLTIP);
@@ -235,14 +410,20 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.imode_edit,	row, 1, 1, 1);
 	row++;
 
-	/* Create "hcftype" config ui */
+	if (tcw) setTabOrder (tcw, d.imode_edit);
+	tcw = d.imode_edit;
+}
+
+void
+CfgDlg::create_hcftype (int &row, QWidget* &tcw)
+{
 	d.hcftype_label = new QLabel (d.body);
 	d.hcftype_label->setText (STR_HCFTYPE_NAME);
 	d.hcftype_label->setToolTip (STR_HCFTYPE_TOOLTIP);
 
 	d.hcftype_edit = new QComboBox (d.body);
 	for (int i=0; i<SMAP_HPMC_TYPE_CNT; i++) {
-		d.hcftype_edit->addItem (QString (SMAP_hpmctype2str((SMAP_HPMC_TYPE)i)));
+		d.hcftype_edit->addItem (SMAP_hpmctype2str((SMAP_HPMC_TYPE)i));
 	}
 	d.hcftype_edit->setEditable (false);
 	d.hcftype_edit->setToolTip (STR_HCFTYPE_TOOLTIP);
@@ -252,7 +433,13 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.hcftype_edit,	row, 1, 1, 1);
 	row++;
 
-	/* Create "gecross" config ui */
+	if (tcw) setTabOrder (tcw, d.hcftype_edit);
+	tcw = d.hcftype_edit;
+}
+
+void
+CfgDlg::create_gecross (int &row, QWidget* &tcw)
+{
 	d.gecross_label = new QLabel (d.body);
 	d.gecross_label->setText ("German Cross flag:");
 	d.gecross_label->setToolTip (STR_GERMAN_CROSS_TOOLTIP);
@@ -265,127 +452,158 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.gecross_edit,	row, 1, 1, 1);
 	row++;
 
-	/* Add spacer */
-	d.layout->setRowStretch (row, 1);
-	row++;
-
-	/* Create and add separator2 */
-	d.separator2 = new QFrame (this);
-	d.separator2->setFrameStyle (QFrame::HLine);
-	d.layout->addWidget (d.separator2,	row, 0, 1, 3);
-	row++;
-
-	/* Create "default game type" config ui */
-	d.dgt_label = new QLabel (d.body);
-	d.dgt_label->setText (STR_DGT_NAME);
-	d.dgt_label->setToolTip (STR_DGT_TOOLTIP);
-
-	d.dgt_select = new QComboBox (d.body);
-	d.dgt_select->setEditable (false);
-	d.dgt_select->setToolTip (STR_DGT_TOOLTIP);
-	d.dgt_select->setWhatsThis (STR_DGT_WHATSTHIS);
-
-	for (int i=0; i<d.dlg_data->types.size(); i++) {
-		d.dgt_select->addItem (d.dlg_data->types[i].name, (uint)d.dlg_data->types[i].type);
-	}
-
-	d.layout->addWidget (d.dgt_label,	row, 0, 1, 1);
-	d.layout->addWidget (d.dgt_select,	row, 1, 1, 1);
-	row++;
-
-	/* Create game type specific config ui */
-	d.games_gui = new QVector<CfgDlgGuiGame> (d.dlg_data->games.size());
-	for (int i=0; i<d.dlg_data->games.size(); i++) {
-		(*d.games_gui)[i].box = new QGroupBox (QString(STR_BOX_NAME).arg(d.dlg_data->games[i]->name), d.body);
-		d.layout->addWidget ((*d.games_gui)[i].box,	row, 0, 1, 3);
-		row++;
-
-		(*d.games_gui)[i].layout = new QGridLayout((*d.games_gui)[i].box);
-
-		(*d.games_gui)[i].oob_label = new QLabel ((*d.games_gui)[i].box);
-		(*d.games_gui)[i].oob_label->setText (QString(STR_OOB_NAME));
-		(*d.games_gui)[i].oob_label->setToolTip (QString(STR_OOB_TOOLTIP).arg(d.dlg_data->games[i]->name));
-
-		(*d.games_gui)[i].oob_edit = new QLineEdit ((*d.games_gui)[i].box);
-		(*d.games_gui)[i].oob_label->setBuddy ((*d.games_gui)[i].oob_edit);
-		(*d.games_gui)[i].oob_edit->setToolTip (QString(STR_OOB_TOOLTIP).arg(d.dlg_data->games[i]->name));
-		(*d.games_gui)[i].oob_edit->setWhatsThis (QString(STR_OOB_WHATSTHIS1).arg(d.dlg_data->games[i]->name));
-
-		(*d.games_gui)[i].oob_browse = new QPushButton ((*d.games_gui)[i].box);
-		(*d.games_gui)[i].oob_browse->setText ("...");
-		(*d.games_gui)[i].oob_browse->setMaximumSize(QSize(d.bbw, d.bbh));
-		(*d.games_gui)[i].oob_browse->setToolTip (QString(STR_OOB_TOOLTIP).arg(d.dlg_data->games[i]->name));
-		(*d.games_gui)[i].oob_browse->setWhatsThis (QString(STR_OOB_WHATSTHIS2).arg(d.dlg_data->games[i]->name));
-		(*d.games_gui)[i].oob_browse->setProperty ("index", i);
-
-		(*d.games_gui)[i].layout->addWidget ((*d.games_gui)[i].oob_label,	0, 0, 1, 1);
-		(*d.games_gui)[i].layout->addWidget ((*d.games_gui)[i].oob_edit,	0, 1, 1, 1);
-		(*d.games_gui)[i].layout->addWidget ((*d.games_gui)[i].oob_browse,	0, 2, 1, 1);
-
-		(*d.games_gui)[i].sve_label = new QLabel ((*d.games_gui)[i].box);
-		(*d.games_gui)[i].sve_label->setText (QString(STR_SVE_NAME));
-		(*d.games_gui)[i].sve_label->setToolTip (QString(STR_SVE_TOOLTIP).arg(d.dlg_data->games[i]->name));
-
-		(*d.games_gui)[i].sve_edit = new QLineEdit ((*d.games_gui)[i].box);
-		(*d.games_gui)[i].sve_label->setBuddy ((*d.games_gui)[i].sve_edit);
-		(*d.games_gui)[i].sve_edit->setToolTip (QString(STR_SVE_TOOLTIP).arg(d.dlg_data->games[i]->name));
-		(*d.games_gui)[i].sve_edit->setWhatsThis (QString(STR_SVE_WHATSTHIS1).arg(d.dlg_data->games[i]->name));
-
-		(*d.games_gui)[i].sve_browse = new QPushButton ((*d.games_gui)[i].box);
-		(*d.games_gui)[i].sve_browse->setText ("...");
-		(*d.games_gui)[i].sve_browse->setMaximumSize(QSize(d.bbw, d.bbh));
-		(*d.games_gui)[i].sve_browse->setToolTip (QString(STR_SVE_TOOLTIP).arg(d.dlg_data->games[i]->name));
-		(*d.games_gui)[i].sve_browse->setWhatsThis (QString(STR_SVE_WHATSTHIS2).arg(d.dlg_data->games[i]->name));
-		(*d.games_gui)[i].sve_browse->setProperty ("index", i);
-
-		(*d.games_gui)[i].layout->addWidget ((*d.games_gui)[i].sve_label,	1, 0, 1, 1);
-		(*d.games_gui)[i].layout->addWidget ((*d.games_gui)[i].sve_edit,	1, 1, 1, 1);
-		(*d.games_gui)[i].layout->addWidget ((*d.games_gui)[i].sve_browse,	1, 2, 1, 1);
-	}
-
-	d.layout->setRowStretch (row, 1);
-	row++;
-
-	/* Fix dialog tab order */
-	setTabOrder (d.locprf_edit, d.snp_edit);
-	setTabOrder (d.snp_edit, d.snp_browse);
-	setTabOrder (d.snp_browse, d.compress_edit);
-	setTabOrder (d.compress_edit, d.autoload_edit);
-	setTabOrder (d.autoload_edit, d.fhistory_edit);
-	setTabOrder (d.fhistory_edit, d.imode_edit);
-	setTabOrder (d.imode_edit, d.hcftype_edit);
-	setTabOrder (d.hcftype_edit, d.gecross_edit);
-	setTabOrder (d.gecross_edit, d.dgt_select);
-	setTabOrder (d.dgt_select, (*d.games_gui)[0].oob_edit);
-	for (int i=0; i<(*d.games_gui).size(); i++) {
-		if (i>0) setTabOrder ((*d.games_gui)[i-1].sve_browse, (*d.games_gui)[i].oob_edit);
-		setTabOrder ((*d.games_gui)[i].oob_edit, (*d.games_gui)[i].oob_browse);
-		setTabOrder ((*d.games_gui)[i].oob_browse, (*d.games_gui)[i].sve_edit);
-		setTabOrder ((*d.games_gui)[i].sve_edit, (*d.games_gui)[i].sve_browse);
-	}
-	setTabOrder ((*d.games_gui)[(*d.games_gui).size()-1].sve_browse, d.buttons);
-
-	/* Finally connect signals and slots */
-	connect (d.buttons, SIGNAL(accepted()), this, SLOT(accept()));
-	connect (d.buttons, SIGNAL(rejected()), this, SLOT(reject()));
-	connect (d.locprf_edit, SIGNAL(clicked(bool)), this, SLOT(locprf_edit_clicked(bool)));
-	connect (d.snp_browse, SIGNAL(clicked(bool)), this, SLOT(snp_browse_clicked(bool)));
-	for (int i=0; i<d.dlg_data->games.size(); i++) {
-		connect ((*d.games_gui)[i].oob_browse, SIGNAL(clicked(bool)), this, SLOT(oob_browse_clicked(bool)));
-		connect ((*d.games_gui)[i].sve_browse, SIGNAL(clicked(bool)), this, SLOT(sve_browse_clicked(bool)));
-	}
-}
-
-CfgDlg::~CfgDlg (void)
-{
-	// QT deletes child widgets
-	delete d.games_gui;
-	delete d.dlgf;
-	delete d.dlgfm;
+	if (tcw) setTabOrder (tcw, d.gecross_edit);
+	tcw = d.gecross_edit;
 }
 
 void
-CfgDlg::prepare(void)
+CfgDlg::create_defg (int &row, QWidget* &tcw)
+{
+	d.defg_label = new QLabel (d.body);
+	d.defg_label->setText (STR_DG_NAME);
+	d.defg_label->setToolTip (STR_DG_TOOLTIP);
+
+	d.defg_select = new QComboBox (d.body);
+	d.defg_select->setEditable (false);
+	d.defg_select->setToolTip (STR_DG_TOOLTIP);
+	d.defg_select->setWhatsThis (STR_DG_WHATSTHIS);
+
+	d.layout->addWidget (d.defg_label,	row, 0, 1, 1);
+	d.layout->addWidget (d.defg_select,	row, 1, 1, 1);
+	row++;
+
+	if (tcw) setTabOrder (tcw, d.defg_select);
+	tcw = d.defg_select;
+}
+
+
+void
+CfgDlg::create_gui_game (int &row, int idx, QWidget* &tcw)
+{
+	CfgDlgGuiGame *gg = &(o.gui_games[idx]);
+
+	gg->d.box = new QGroupBox (d.body);
+	gg->d.box->setAutoFillBackground (true);
+	d.layout->addWidget (gg->d.box, row, 0, 1, 3);
+	row++;
+
+	gg->d.def_status = gg->d.box->palette().color(QPalette::Window);
+	gg->d.red_status = *RES_color(RID_RGB_RED);
+
+	gg->d.name_label = new QLabel (gg->d.box);
+	gg->d.name_label->setText (QString(STR_GAMENAME_NAME));
+	gg->d.name_label->setToolTip (QString(STR_GAMENAME_TOOLTIP));
+
+	gg->d.name_edit = new QLineEdit (gg->d.box);
+	gg->d.name_label->setBuddy (gg->d.name_edit);
+	gg->d.name_edit->setToolTip (QString(STR_GAMENAME_TOOLTIP));
+	gg->d.name_edit->setWhatsThis (QString(STR_GAMENAME_WHATSTHIS));
+	gg->d.name_edit->setProperty ("index", idx);
+
+	gg->d.type_label = new QLabel (gg->d.box);
+	gg->d.type_label->setText (STR_GAMETYPE_NAME);
+	gg->d.type_label->setToolTip (STR_GAMETYPE_TOOLTIP);
+
+	gg->d.type_select = new QComboBox (gg->d.box);
+	gg->d.type_select->setEditable (false);
+	gg->d.type_select->setToolTip (STR_GAMETYPE_TOOLTIP);
+	gg->d.type_select->setWhatsThis (STR_GAMETYPE_WHATSTHIS);
+	for (int t=0; t<SPWAW_GAME_TYPE_CNT; t++) {
+		if (t == SPWAW_GAME_TYPE_UNKNOWN) {
+			gg->d.type_select->addItem ("");
+		} else {
+			gg->d.type_select->addItem (QString(SPWAW_gametype2str((SPWAW_GAME_TYPE)t)));
+		}
+	}
+	gg->d.type_select->setProperty ("index", idx);
+
+	gg->d.path_label = new QLabel (gg->d.box);
+	gg->d.path_label->setText (QString(STR_GAMEPATH_NAME));
+	gg->d.path_label->setToolTip (QString(STR_GAMEPATH_TOOLTIP));
+
+	gg->d.path_edit = new QLineEdit (gg->d.box);
+	gg->d.path_label->setBuddy (gg->d.path_edit);
+	gg->d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP));
+	gg->d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1));
+	gg->d.path_edit->setProperty ("index", idx);
+
+	gg->d.path_browse = new QPushButton (gg->d.box);
+	gg->d.path_browse->setText ("...");
+	gg->d.path_browse->setMaximumSize(QSize(d.bbw, d.bbh));
+	gg->d.path_browse->setToolTip (QString(STR_GAMEPATH_TOOLTIP));
+	gg->d.path_browse->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS2));
+	gg->d.path_browse->setProperty ("index", idx);
+
+	gg->d.layout = new QGridLayout(gg->d.box);
+
+	gg->d.layout->addWidget (gg->d.name_label,	0, 0, 1, 1);
+	gg->d.layout->addWidget (gg->d.name_edit,	0, 1, 1, 1);
+	gg->d.layout->addWidget (gg->d.type_label,	0, 2, 1, 1);
+	gg->d.layout->addWidget (gg->d.type_select,	0, 3, 1, 3);
+
+	gg->d.layout->addWidget (gg->d.path_label,	1, 0, 1, 1);
+	gg->d.layout->addWidget (gg->d.path_edit,	1, 1, 1, 4);
+	gg->d.layout->addWidget (gg->d.path_browse,	1, 5, 1, 1);
+
+	if (tcw) setTabOrder (tcw, gg->d.name_edit);
+	setTabOrder (gg->d.name_edit, gg->d.type_select);
+	setTabOrder (gg->d.type_select, gg->d.path_edit);
+	setTabOrder (gg->d.path_edit, gg->d.path_browse);
+	tcw = gg->d.path_browse;
+
+	connect (gg->d.name_edit, SIGNAL(textEdited(const QString &)), this, SLOT(game_name_edited(const QString &)));
+	connect (gg->d.type_select, SIGNAL(currentIndexChanged (int)), this, SLOT(game_type_selected(int)));
+	connect (gg->d.path_edit, SIGNAL(textEdited(const QString &)), this, SLOT(game_path_edited(const QString &)));
+	connect (gg->d.path_browse, SIGNAL(clicked(bool)), this, SLOT(game_path_browse_clicked(bool)));
+}
+
+int
+CfgDlg::current_defg (void)
+{
+	return (d.defg_select->itemData (d.defg_select->currentIndex()).toInt());
+}
+
+void
+CfgDlg::select_defg (int idx)
+{
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		if (d.defg_select->itemData(i).toInt() == idx) {
+			d.defg_select->setCurrentIndex (i);
+			break;
+		}
+	}
+}
+
+void
+CfgDlg::update_defg_gui (void)
+{
+	int	idx;
+	QString	name;
+
+	idx = current_defg();
+
+	d.defg_select->clear();
+	d.defg_select->addItem ("none", -1);
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		name = o.gui_games[i].d.name_edit->text();
+		if (name.isEmpty()) continue;
+		d.defg_select->addItem (name, i);
+	}
+	select_defg (idx);
+}
+
+void
+CfgDlg::load_data_game (CfgDlgDataGame &data, CfgDlgGuiGame &game)
+{
+	game.d.name_edit->setText (data.name);
+	game.d.type_select->setCurrentIndex (data.type);
+	game.d.path_edit->setText (data.path);
+
+	game.update_status();
+}
+
+void
+CfgDlg::load_data (void)
 {
 	if (!d.dlg_data) return;
 
@@ -403,20 +621,24 @@ CfgDlg::prepare(void)
 	d.hcftype_edit->setCurrentIndex (d.dlg_data->hcftype);
 	d.gecross_edit->setCheckState (d.dlg_data->gecross ? Qt::Checked : Qt::Unchecked);
 
-	for (int i=0; i<d.dlg_data->types.size(); i++) {
-		if (d.dlg_data->types[i].type == d.dlg_data->def_game) {
-			d.dgt_select->setCurrentIndex (i);
-			break;
-		}
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		load_data_game (d.dlg_data->games[i], o.gui_games[i]);
 	}
-	for (int i=0; i<d.dlg_data->games.size(); i++) {
-		(*d.games_gui)[i].oob_edit->setText (d.dlg_data->games[i]->oob);
-		(*d.games_gui)[i].sve_edit->setText (d.dlg_data->games[i]->sve);
-	}
+	update_defg_gui ();
+	select_defg (d.dlg_data->def_game);
 }
 
 void
-CfgDlg::update (void)
+CfgDlg::save_data_game (CfgDlgGuiGame &game, CfgDlgDataGame &data)
+{
+	data.active = (game.d.status == CfgDlgGuiGame::CORRECT);
+	data.name = game.d.name_edit->text().replace('/', '\\');
+	data.type = (SPWAW_GAME_TYPE)game.d.type_select->currentIndex();
+	data.path = game.d.path_edit->text().replace('/', '\\');
+}
+
+void
+CfgDlg::save_data (void)
 {
 	if (!d.dlg_data) return;
 
@@ -429,10 +651,9 @@ CfgDlg::update (void)
 	d.dlg_data->hcftype = d.hcftype_edit->currentIndex();
 	d.dlg_data->gecross = (d.gecross_edit->checkState() == Qt::Checked) ? true : false;
 
-	d.dlg_data->def_game = (SPWAW_GAME_TYPE)(d.dgt_select->itemData (d.dgt_select->currentIndex()).toUInt());
-	for (int i=0; i<d.dlg_data->games.size(); i++) {
-		d.dlg_data->games[i]->oob = (*d.games_gui)[i].oob_edit->text().replace('/', '\\');
-		d.dlg_data->games[i]->sve = (*d.games_gui)[i].sve_edit->text().replace('/', '\\');
+	d.dlg_data->def_game = current_defg();
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		save_data_game (o.gui_games[i], d.dlg_data->games[i]);
 	}
 }
 
@@ -441,9 +662,9 @@ CfgDlg::exec (void)
 {
 	int	rc;
 
-	prepare();
+	load_data();
 	rc = QDialog::exec();
-	update();
+	if (rc == QDialog::Accepted) save_data();
 
 	return (rc);
 }
@@ -480,39 +701,57 @@ CfgDlg::snp_browse_clicked (bool /*checked*/)
 	if (!dir.isNull()) { d.snp_edit->setText (dir); }
 }
 
-void
-CfgDlg::oob_browse_clicked (bool /*checked*/)
+CfgDlgGuiGame *
+CfgDlg::signal_sender_gui_game (void)
 {
 	QObject *from = sender();
-	if (!from) return;
-	int	idx = from->property ("index").toInt();
+	if (!from) return (NULL);
 
-	QString	dir;
+	int ggidx = from->property ("index").toInt();
+	if ((ggidx < 0) || (ggidx > GAMECFG_CNT)) return (NULL);
 
-	dir = QFileDialog::getExistingDirectory (this,
-		QString(STR_OOB_BROWSE).arg(d.dlg_data->games[idx]->name),
-		(*d.games_gui)[idx].oob_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
-
-	if (!dir.isNull()) { (*d.games_gui)[idx].oob_edit->setText (dir); }
+	return (&(o.gui_games[ggidx]));
 }
 
 void
-CfgDlg::sve_browse_clicked (bool /*checked*/)
+CfgDlg::game_name_edited (const QString &/*text*/)
 {
-	QObject *from = sender();
-	if (!from) return;
-	int	idx = from->property ("index").toInt();
+	CfgDlgGuiGame *gg = signal_sender_gui_game();
+	if (!gg) return;
 
-	QString	start, dir;
+	update_defg_gui();
+	gg->update_status();
+}
 
-	// If the OOB directory was already set, but the save directory not yet:
-	// use the OOB directory as starting point for the save directoy browse.
-	start = (*d.games_gui)[idx].sve_edit->text();
-	if (start.isEmpty()) start = (*d.games_gui)[idx].oob_edit->text();
+void
+CfgDlg::game_type_selected (int /*index*/)
+{
+	CfgDlgGuiGame *gg = signal_sender_gui_game();
+	if (!gg) return;
 
-	dir = QFileDialog::getExistingDirectory (this,
-		QString(STR_SVE_BROWSE).arg(d.dlg_data->games[idx]->name),
-		start, QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
+	gg->update_status();
+}
 
-	if (!dir.isNull()) { (*d.games_gui)[idx].sve_edit->setText (dir); }
+void
+CfgDlg::game_path_edited (const QString &/*text*/)
+{
+	CfgDlgGuiGame *gg = signal_sender_gui_game();
+	if (!gg) return;
+
+	gg->update_status();
+}
+
+void
+CfgDlg::game_path_browse_clicked (bool /*checked*/)
+{
+	CfgDlgGuiGame *gg = signal_sender_gui_game();
+	if (!gg) return;
+
+	QString	dir = QFileDialog::getExistingDirectory (this,
+			QString(STR_GAMEPATH_BROWSE),
+			gg->d.path_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
+
+	if (!dir.isNull()) { gg->d.path_edit->setText (dir); }
+
+	gg->update_status();
 }

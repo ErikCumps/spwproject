@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - simple message dialog box.
  *
- * Copyright (C) 2017-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2017-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -143,4 +143,10 @@ GUI_msgbox (MSGBOX_TYPE type, char *title, char *msg)
 	box = new GuiMsgbox (type, title, msg);
 	rc = box->exec (); delete (box);
 	return (rc);
+}
+
+int
+GUI_msgbox (MSGBOX_TYPE type, char *title, QString &msg)
+{
+	return (GUI_msgbox (type, title, (char *)qPrintable(msg)));
 }

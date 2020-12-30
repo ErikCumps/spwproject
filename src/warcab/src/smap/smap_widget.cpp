@@ -1192,7 +1192,7 @@ smap_save_image (QPixmap &pixmap, char *basename, const char *ext)
 
 	/* Save the pixmap in the snapshots directory */
 	filename.sprintf ("%s.%s", basename, ext);
-	pathname.sprintf ("%s/%s", CFG_snap_path(), qPrintable(filename));
+	pathname.sprintf ("%s/%s", CFG_snp_path(), qPrintable(filename));
 
 	if (!pixmap.save (pathname, ext)) filename.clear();
 	return (filename);

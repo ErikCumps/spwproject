@@ -49,6 +49,7 @@ ModelDossier::update_header (void)
 				header[0] = gametype + " battle dossier";
 				break;
 		}
+		if (d.readonly) header[0] = header[0].toString() + "\n(read-only mode)";
 	} else {
 		header[0] = "Empty dossier";
 	}
@@ -400,9 +401,10 @@ ModelDossier::clear (void)
 }
 
 void
-ModelDossier::load (MDLD_TREE_ITEM *tree)
+ModelDossier::load (MDLD_TREE_ITEM *tree, bool readonly)
 {
 	d.tree = tree;
+	d.readonly = readonly;
 	update_header();
 	reset();
 }

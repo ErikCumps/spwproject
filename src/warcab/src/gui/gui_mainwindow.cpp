@@ -25,6 +25,33 @@
 	"This dossier file already exists.\n"		\
 	"Do you want to replace it?\n"
 
+/* action_game_add_campaign_savegame read-only dialog box title */
+#define	STR_READONLY_TITLE				\
+	"Read-only dossier"
+
+/* loading ... read-only dialog box body message */
+#define	STR_READONLY_BODY							\
+	"<b>This dossier is opened in read-only mode.</b><br><br>"		\
+	"Reason: %1<br>"							\
+
+/* editing ... read-only dialog box body message */
+#define	STR_READONLY_EDIT_BODY							\
+	"<b>This dossier was opened in read-only mode.</b><br><br>"		\
+	"Reason: %1<br><br>"							\
+	"Because of this, it is not possible to edit it.<br>"			\
+
+/* adding ... read-only dialog box body message */
+#define	STR_READONLY_ADD_BODY							\
+	"<b>This dossier was opened in read-only mode.</b><br><br>"		\
+	"Reason: %1<br><br>"							\
+	"Because of this, it is not possible to add savegames.<br>"		\
+
+/* deleting ... read-only dialog box body message */
+#define	STR_READONLY_DEL_BODY							\
+	"<b>This dossier was opened in read-only mode.</b><br><br>"		\
+	"Reason: %1<br><br>"							\
+	"Because of this, it is not possible to delete turns or battles.<br>"	\
+
 /* action_game_add_campaign_savegame no-savedir dialog box title */
 #define	STR_AGACS_NOSAVEDIR_TITLE			\
 	"Unable to add savegames to this campaign"
@@ -43,8 +70,9 @@
 
 /* ... no-savedir dialog box body message */
 #define	STR_NOSAVEDIR_BODY								\
-	"The original savedir of this dossier is either not recorded or not found.\n"	\
-	"Because of this, it is not possible to present a list of savegames.\n"		\
+	"<b>The original game folder for this dossier is not found:</b><br>"		\
+	"%1<br><br>"									\
+	"Because of this, it is not possible to present a list of savegames.<br>"	\
 
 GuiMainWindow::GuiMainWindow (void)
 	: QMainWindow (0, Qt::Window)
@@ -350,19 +378,23 @@ void
 GuiMainWindow::action_dossier_new (void)
 {
 	GuiDlgNewDossier	*dlg = NULL;
+	GameCfgList		gamecfgs;
+	int			def_gamecfg;
 	int			rc;
 	SPWAW_GAME_TYPE		gt;
-	QString			dn, dc;
+	QString			gp, dn, dc;
 	SL_ERROR		erc;
 
 	action_dossier_close();
 
-	dlg = new GuiDlgNewDossier(CFG_gametypes(), CFG_default_gametype());
+	gamecfgs = CFG_gamecfg_list (def_gamecfg);
+	dlg = new GuiDlgNewDossier(gamecfgs, def_gamecfg);
+
 	rc = dlg->exec ();
 	if (rc == QDialog::Accepted) {
-		dlg->data_get (gt, dn, dc);
+		dlg->data_get (gt, gp, dn, dc);
 
-		erc = WARCAB->mknew (gt, qPrintable(dn), qPrintable(dc));
+		erc = WARCAB->mknew (gt, qPrintable(gp), qPrintable(dn), qPrintable(dc));
 
 		if (SL_HAS_ERROR (erc)) {
 			SL_ERROR_HANDLE (SL_ERR_FATAL_SOFTERR, "Failed to create new dossier!");
@@ -390,7 +422,7 @@ GuiMainWindow::action_dossier_open (void)
 			ERR_GUI_ACTION_ERROR, "SPWAW_dosslist_new() failed: %s", SPWAW_errstr (arc), erq);
 	}
 
-	dlg = new GuiDlgLoadDossier (CFG_snap_path(), NULL);
+	dlg = new GuiDlgLoadDossier (CFG_snp_path(), NULL);
 	rc = dlg->exec ();
 	dlg->data_get (data);
 	delete (dlg);
@@ -404,6 +436,12 @@ GuiMainWindow::action_dossier_open (void)
 
 	if (SL_HAS_ERROR (erc)) {
 		SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to open dossier.");
+	}
+
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
 	}
 }
 
@@ -459,7 +497,7 @@ GuiMainWindow::action_dossier_saveAs (void)
 	if (!WARCAB->is_loaded()) return;
 
 	while (!selected) {
-		file = QFileDialog::getSaveFileName (this, "Save dossier as...", CFG_snap_path(), "Dossier Files (*.warcab)", 0, QFileDialog::DontUseNativeDialog|QFileDialog::DontConfirmOverwrite);
+		file = QFileDialog::getSaveFileName (this, "Save dossier as...", CFG_snp_path(), "Dossier Files (*.warcab)", 0, QFileDialog::DontUseNativeDialog|QFileDialog::DontConfirmOverwrite);
 		if (file.isEmpty()) {
 			DBG_log ("[%s] no save filename selected", __FUNCTION__);
 			DBG_log ("[%s] save cancelled!", __FUNCTION__);
@@ -491,6 +529,12 @@ GuiMainWindow::action_dossier_edit (void)
 	bool			keep;
 
 	if (!WARCAB->is_loaded()) return (false);
+
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_EDIT_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return (false);
+	}
 
 	dlg = new GuiDlgEditDossier(WARCAB->get_gametype());
 	dlg->data_set (WARCAB->get_name(), WARCAB->get_comment());
@@ -529,16 +573,24 @@ GuiMainWindow::action_game_add_campaign_savegame (void)
 
 	if (!WARCAB->is_loaded()) return;
 
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
 	dossier = WARCAB->get_dossier();
 	if (!dossier) return;
 
 	savedir = WARCAB->get_savedir(SPWAW_CAMPAIGN_DOSSIER);
+	savedir.clear();
 	if (savedir.isEmpty()) {
-		GUI_msgbox (MSGBOX_INFO, STR_AGACS_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		QString body(STR_NOSAVEDIR_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_AGACS_NOSAVEDIR_TITLE, body.arg(WARCAB->get_gamepath()));
 		return;
 	}
 
-	target.gametype	= WARCAB->get_gametype();
+	target.gametype	= dossier->gametype;
 	target.type	= SPWAW_CAMPAIGN_DOSSIER;
 	target.oobdir	= dossier->oobdir;
 
@@ -583,6 +635,12 @@ GuiMainWindow::action_game_add_campaign_snapshot (void)
 	SL_ERROR_REQUEST		erq;
 
 	if (!WARCAB->is_loaded()) return;
+
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
 
 	target.gametype = WARCAB->get_gametype();
 	target.type = SPWAW_CAMPAIGN_DOSSIER;
@@ -629,16 +687,23 @@ GuiMainWindow::action_game_start_megacam_tracking (void)
 
 	if (!WARCAB->is_loaded()) return;
 
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
 	dossier = WARCAB->get_dossier();
 	if (!dossier) return;
 
 	savedir = WARCAB->get_savedir(SPWAW_MEGACAM_DOSSIER);
 	if (savedir.isEmpty()) {
-		GUI_msgbox (MSGBOX_INFO, STR_AGSMT_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		QString body(STR_NOSAVEDIR_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_AGSMT_NOSAVEDIR_TITLE, body.arg(WARCAB->get_gamepath()));
 		return;
 	}
 
-	target.gametype	= WARCAB->get_gametype();
+	target.gametype	= dossier->gametype;
 	target.type	= SPWAW_MEGACAM_DOSSIER;
 	target.oobdir	= dossier->oobdir;
 
@@ -686,16 +751,23 @@ GuiMainWindow::action_game_add_battle_savegame (void)
 
 	if (!WARCAB->is_loaded()) return;
 
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
 	dossier = WARCAB->get_dossier();
 	if (!dossier) return;
 
 	savedir = WARCAB->get_savedir(SPWAW_STDALONE_DOSSIER);
 	if (savedir.isEmpty()) {
-		GUI_msgbox (MSGBOX_INFO, STR_AGABS_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		QString body(STR_NOSAVEDIR_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_AGABS_NOSAVEDIR_TITLE, body.arg(WARCAB->get_gamepath()));
 		return;
 	}
 
-	target.gametype	= WARCAB->get_gametype();
+	target.gametype	= dossier->gametype;
 	target.type	= SPWAW_STDALONE_DOSSIER;
 	target.oobdir	= dossier->oobdir;
 
@@ -743,6 +815,12 @@ GuiMainWindow::action_game_add_battle_snapshot (void)
 	SL_ERROR_REQUEST	erq;
 
 	if (!WARCAB->is_loaded()) return;
+
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
 
 	target.gametype = WARCAB->get_gametype();
 	target.type = SPWAW_STDALONE_DOSSIER;
@@ -792,6 +870,12 @@ GuiMainWindow::action_add_battle_savegame (void)
 
 	if (!WARCAB->is_loaded()) return;
 
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
 	item = d.dossier->get_actionitem();
 	if (!item) return;
 
@@ -802,11 +886,12 @@ GuiMainWindow::action_add_battle_savegame (void)
 
 	savedir = WARCAB->get_savedir(SPWAW_STDALONE_DOSSIER);
 	if (savedir.isEmpty()) {
-		GUI_msgbox (MSGBOX_INFO, STR_AABS_NOSAVEDIR_TITLE, STR_NOSAVEDIR_BODY);
+		QString body(STR_NOSAVEDIR_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_AABS_NOSAVEDIR_TITLE, body.arg(WARCAB->get_gamepath()));
 		return;
 	}
 
-	target.gametype	= WARCAB->get_gametype();
+	target.gametype	= dossier->gametype;
 	target.type	= SPWAW_STDALONE_DOSSIER;
 	target.oobdir	= dossier->oobdir;
 
@@ -853,6 +938,12 @@ GuiMainWindow::action_add_battle_snapshot (void)
 
 	if (!WARCAB->is_loaded()) return;
 
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_ADD_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
 	item = d.dossier->get_actionitem();
 	if (!item) return;
 	if ((item->type != MDLD_TREE_STDALONE) && (item->type != MDLD_TREE_BATTLE)) return;
@@ -891,6 +982,12 @@ GuiMainWindow::action_delete_turn (void)
 {
 	if (!WARCAB->is_loaded()) return;
 
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_DEL_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
 	d.dossier->delete_item ();
 }
 
@@ -898,6 +995,12 @@ void
 GuiMainWindow::action_delete_battle (void)
 {
 	if (!WARCAB->is_loaded()) return;
+
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_DEL_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
 
 	d.dossier->delete_item ();
 }

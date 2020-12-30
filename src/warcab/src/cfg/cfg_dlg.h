@@ -10,68 +10,74 @@
 #define	CFG_DLG_H	1
 
 #include "intel_mode.h"
+#include "smap/smap_renderdata.h"
 
-class CfgGuiGameType
+/*! Max number of supported game configurations */
+#define	GAMECFG_CNT	4
+
+class CfgDlgDataGame
 {
 public:
-	CfgGuiGameType (SPWAW_GAME_TYPE type, const char *name)	: type(type), name(name) {}
-	CfgGuiGameType (SPWAW_GAME_TYPE type, QString name)	: type(type), name(name) {}
+	CfgDlgDataGame	(void);
 
-	SPWAW_GAME_TYPE		type;
-	QString			name;
-};
-
-class CfgDlgGame
-{
 public:
-	CfgDlgGame(SPWAW_GAME_TYPE type, const char *name, char *oob, char *sve) :
-		type(type), name(name), oob(oob), sve(sve) {}
-
-	SPWAW_GAME_TYPE		type;
-	QString			name;
-	QString			oob;
-	QString			sve;
+	bool		active;
+	QString		name;
+	SPWAW_GAME_TYPE	type;
+	QString		path;
 };
 
 class CfgDlgData
 {
 public:
-	CfgDlgData(bool isfirstrun, bool locprf, SPWAW_GAME_TYPE type, char *snp, bool compress, bool autoload, bool fhistory, int imode, int hcftype, bool gecross) :
-		isfirstrun(isfirstrun), locprf(locprf), def_game(type), snp(snp), compress(compress), autoload(autoload), fhistory(fhistory), imode(imode), hcftype(hcftype), gecross(gecross)
-	{
-		types.append(CfgGuiGameType(SPWAW_GAME_TYPE_UNKNOWN, "none"));
-	}
+	CfgDlgData	(void);
 
-	void add (CfgDlgGame *game)
-	{
-		games.append(game);
-		types.append(CfgGuiGameType(game->type, game->name));
-	}
-
-	bool			isfirstrun;
-	bool			locprf;
-	SPWAW_GAME_TYPE		def_game;
-	QList<CfgGuiGameType>	types;
-	QList<CfgDlgGame*>	games;
-	QString			snp;
-	bool			compress;
-	bool			autoload;
-	bool			fhistory;
-	int			imode;
-	int			hcftype;
-	bool			gecross;
+public:
+	bool		isfirstrun;
+	bool		locprf;
+	QString		snp;
+	bool		compress;
+	bool		autoload;
+	bool		fhistory;
+	int		imode;
+	int		hcftype;
+	bool		gecross;
+	int		def_game;
+	CfgDlgDataGame	games[GAMECFG_CNT];
 };
 
-typedef struct s_CfgDlgGuiGame {
-	QGroupBox		*box;
-	QGridLayout		*layout;
-	QLabel			*oob_label;
-	QLineEdit		*oob_edit;
-	QPushButton		*oob_browse;
-	QLabel			*sve_label;
-	QLineEdit		*sve_edit;
-	QPushButton		*sve_browse;
-} CfgDlgGuiGame;
+class CfgDlgGuiGame
+{
+public:
+	typedef enum e_STATUS {
+		EMPTY = 0,
+		PARTIAL,
+		COMPLETE,
+		CORRECT
+	} STATUS;
+
+public:
+	CfgDlgGuiGame	(void);
+
+public:
+	void	update_status	(void);
+
+public:
+	struct s_data {
+		STATUS		status;
+		QGroupBox	*box;
+		QColor		def_status;
+		QColor		red_status;
+		QGridLayout	*layout;
+		QLabel		*name_label;
+		QLineEdit	*name_edit;
+		QLabel		*type_label;
+		QComboBox	*type_select;
+		QLabel		*path_label;
+		QLineEdit	*path_edit;
+		QPushButton	*path_browse;
+	} d;
+};
 
 class CfgDlg	: public QDialog
 {
@@ -110,26 +116,54 @@ private:
 		QLabel			*gecross_label;
 		QCheckBox		*gecross_edit;
 		QFrame			*separator2;
-		QLabel			*dgt_label;
-		QComboBox		*dgt_select;
-		QVector<CfgDlgGuiGame>	*games_gui;
+		QLabel			*defg_label;
+		QComboBox		*defg_select;
 
 		int			bbw;
 		int			bbh;
 	} d;
+	struct s_objects {
+		CfgDlgGuiGame		gui_games[GAMECFG_CNT];
+	} o;
 
-public:
-	void	prepare		(void);
-	void	update		(void);
+private:
+	void	create_locprf		(int &row, QWidget* &tcw);
+	void	create_snp		(int &row, QWidget* &tcw);
+	void	create_compress		(int &row, QWidget* &tcw);
+	void	create_autoload		(int &row, QWidget* &tcw);
+	void	create_fhistory		(int &row, QWidget* &tcw);
+	void	create_imode		(int &row, QWidget* &tcw);
+	void	create_hcftype		(int &row, QWidget* &tcw);
+	void	create_gecross		(int &row, QWidget* &tcw);
+	void	create_defg		(int &row, QWidget* &tcw);
+	void	create_gui_game		(int &row, int idx, QWidget* &tcw);
+
+private:
+	int	current_defg		(void);
+	void	select_defg		(int idx);
+	void	update_defg_gui		(void);
+
+private:
+	void	load_data_game		(CfgDlgDataGame &data, CfgDlgGuiGame &game);
+	void	load_data		(void);
+
+private:
+	void	save_data_game		(CfgDlgGuiGame &game, CfgDlgDataGame &data);
+	void	save_data		(void);
+
+private:
+	CfgDlgGuiGame	*signal_sender_gui_game	(void);
 
 public slots:
-	int	exec		(void);
+	int	exec			(void);
 
 private slots:
 	void	locprf_edit_clicked	(bool checked);
 	void	snp_browse_clicked	(bool checked);
-	void	oob_browse_clicked	(bool checked);
-	void	sve_browse_clicked	(bool checked);
+	void	game_name_edited	(const QString &text);
+	void	game_type_selected	(int index);
+	void	game_path_edited	(const QString &text);
+	void	game_path_browse_clicked(bool checked);
 };
 
 #endif	/* CFG_DLG_H */

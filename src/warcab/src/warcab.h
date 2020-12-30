@@ -13,6 +13,7 @@
 
 #include "mdld_tree.h"
 #include "gui/gui.h"
+#include "cfg/cfg.h"
 
 class WARCABTracking;
 
@@ -33,7 +34,7 @@ public:
 
 public:
 	SL_ERROR	init		(void);
-	SL_ERROR	mknew		(SPWAW_GAME_TYPE gametype, const char *name, const char *comment);
+	SL_ERROR	mknew		(SPWAW_GAME_TYPE gametype, const char *gamepath, const char *name, const char *comment);
 	SL_ERROR	load		(SPWAW_DOSSLIST *list);
 	SL_ERROR	save		(void);
 	SL_ERROR	saveas		(char *file);
@@ -51,8 +52,11 @@ public:
 
 	bool		needs_postedinit(void);
 	bool		is_loaded	(void);
+	bool		is_readonly	(void);
 	bool		is_dirty	(void);
+	QString &	get_roreason	(void);
 	char		*get_filename	(void);
+	char		*get_gamepath	(void);
 	char		*get_name	(void);
 	char		*get_comment	(void);
 	SPWAW_SAVELIST	*get_gamelist	(void);
@@ -81,6 +85,8 @@ private:
 		WARCABOptions	options;
 		char		filename[MAX_PATH+1];
 		SPWAW_DOSSIER	*dossier;
+		char		*gamepath;
+		SL_BOOL		readonly;
 		MDLD_TREE_ITEM	*tree;
 		SPWAW_SAVELIST	*gamelist;
 #if	ALLOW_SNAPSHOTS_LOAD
@@ -90,18 +96,21 @@ private:
 		WARCABTracking	*tracking;
 	} d;
 	struct s_objects {
+		QString		roreason;
 		QString		savedir;
 	} o;
 
 private:
+	void		set_writeable		(void);
+	void		set_readonly		(char *gamepath, SPWAW_GAME_TYPE gametype, bool path_exists);
 	void		set_dirty		(bool flag);
+	void		clear_gamepath		(void);
+	void		set_gamepath		(const char *gamepath);
 	void		set_name		(char *name);
 	SL_ERROR	refresh_savelists	(void);
 	void		setup_tree		(void);
-	//void		setup_tree_data		(MDLD_TREE_ITEM *tree, bool campaign);
 	void		setup_tree_data		(MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type, SPWAW_GAME_TYPE gametype);
 	void		refresh_tree		(void);
-	//void		refresh_tree_data	(MDLD_TREE_ITEM *tree, bool campaign);
 	void		refresh_tree_data	(MDLD_TREE_ITEM *tree, SPWAW_DOSSIER_TYPE type);
 	void		free_tree		(void);
 	void		free_tree_children	(MDLD_TREE_ITEM *tree);

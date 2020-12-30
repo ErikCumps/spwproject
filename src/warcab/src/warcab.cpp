@@ -18,6 +18,19 @@ WARCABState	*WARCAB;
 static void	statereport	(SL_STDBG_INFO_LEVEL level);
 
 
+
+/* --- private macros --- */
+/* action_game_add_campaign_savegame read-only dialog box title */
+#define	STR_READONLY_TITLE				\
+	"Read-only dossier"
+
+/* loading ... read-only dialog box body message */
+#define	STR_READONLY_BODY							\
+	"<b>This dossier is opened in read-only mode.</b><br><br>"		\
+	"Reason: %1<br>"							\
+
+
+
 /* --- private variables --- */
 
 /*! Module name */
@@ -25,6 +38,7 @@ static const char	*MODULE = "WARCAB";
 
 /*! Initialization status flag */
 static SL_BOOL		initialized = SL_false;
+
 
 
 /* --- code --- */
@@ -88,6 +102,8 @@ WARCABState::init (void)
 	SPWAW_DOSSLIST_NODE	node;
 	SL_ERROR		rc = SL_ERR_NO_ERROR;
 
+	clear_gamepath();
+
 	if (d.options.load) {
 		arc = SPWAW_dosslist_new (&list);
 		if (SPWAW_HAS_ERROR (arc)) {
@@ -113,20 +129,31 @@ WARCABState::init (void)
 		}
 
 		SL_ROE (rc);
+
+		if (is_readonly()) {
+			QString	body(STR_READONLY_BODY);
+			GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		}
 	}
 
 	RETURN_OK;
 }
 
 SL_ERROR
-WARCABState::mknew (SPWAW_GAME_TYPE gametype, const char *name, const char *comment)
+WARCABState::mknew (SPWAW_GAME_TYPE gametype, const char *gamepath, const char *name, const char *comment)
 {
+	QString		oobdir;
 	SPWAW_ERROR	arc;
 	SL_ERROR	rc;
 
 	close();
 
-	arc = SPWAW_dossier_new (gametype, CFG_oob_path(gametype), name, comment, &d.dossier);
+	oobdir = CFG_oob_from_game((char *)gamepath, gametype);
+	if (oobdir.isEmpty()) {
+		// FIXME: warning dialog box and exit!
+	}
+
+	arc = SPWAW_dossier_new (gametype, qPrintable(oobdir), name, comment, &d.dossier);
 
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_NEW_FAILED, "SPWAW_dossier_new() failed: %s", SPWAW_errstr (arc));
@@ -138,18 +165,23 @@ WARCABState::mknew (SPWAW_GAME_TYPE gametype, const char *name, const char *comm
 	}
 
 	set_dirty (true);
+	set_gamepath (gamepath);
+	set_writeable();
 	set_name (d.dossier->name);
-	setup_tree ();
+	setup_tree();
 	emit was_loaded (d.tree);
 
 	RETURN_OK;
 }
+
 
 SL_ERROR
 WARCABState::load (SPWAW_DOSSLIST *list)
 {
 	SPWAW_ERROR	arc;
 	SL_ERROR	rc;
+	//QString		gamedir;
+	bool		gpe;
 	GuiProgress	gp ("Loading dossier...", 0);
 
 	if (!list || !list->cnt) return (SPWERR_NULLARG);
@@ -189,8 +221,14 @@ WARCABState::load (SPWAW_DOSSLIST *list)
 	gp.inc();
 
 	set_dirty (false);
+	set_gamepath (qPrintable(CFG_game_from_oob(d.dossier->oobdir, d.dossier->gametype)));
+	if (CFG_valid_gamepath (d.gamepath, d.dossier->gametype, gpe)) {
+		set_writeable();
+	} else {
+		set_readonly (d.gamepath, d.dossier->gametype, gpe);
+	}
 	set_name (d.dossier->name);
-	setup_tree ();
+	setup_tree();
 	GUI_FIXME;
 	emit was_loaded (d.tree);
 	GUI_FIXME;
@@ -274,6 +312,8 @@ WARCABState::close (void)
 
 	memset (d.filename, 0, sizeof (d.filename));
 	set_dirty (false);
+	set_writeable();
+	clear_gamepath();
 	set_name (NULL);
 	free_tree();
 
@@ -660,6 +700,7 @@ WARCABState::edit (char *name, char *comment)
 	SPWAW_ERROR	arc;
 
 	if (!is_loaded()) RETURN_OK;
+	if (is_readonly()) RETURN_OK;
 
 	arc = SPWAW_dossier_edit (d.dossier, name, comment);
 	if (SPWAW_HAS_ERROR (arc)) {
@@ -687,9 +728,21 @@ WARCABState::is_loaded (void)
 }
 
 bool
+WARCABState::is_readonly (void)
+{
+	return (d.readonly);
+}
+
+bool
 WARCABState::is_dirty (void)
 {
 	return (d.dossier && d.dirty);
+}
+
+QString &
+WARCABState::get_roreason (void)
+{
+	return (o.roreason);
 }
 
 char *
@@ -697,6 +750,13 @@ WARCABState::get_filename (void)
 {
 	if (!strlen(d.filename)) return (NULL);
 	return (d.filename);
+}
+
+char *
+WARCABState::get_gamepath (void)
+{
+	if (!d.dossier) return (NULL);
+	return (d.gamepath);
 }
 
 char *
@@ -752,21 +812,15 @@ WARCABState::get_savedir (SPWAW_DOSSIER_TYPE type)
 
 	if (!d.dossier) {
 		// No dossier - nothing to add savegames to
+	} else if (is_readonly()) {
+		// Readonly dossier - can not add savegames to it
 	} else if (d.dossier->savedir) {
-		// Dossier with a savedir -  use this
-		o.savedir = d.dossier->savedir;
-	} else if (d.dossier->bcnt != 0) {
-		// (old) Non-empty dossiers without a savedir - try to determine savedir from oobdir, if it exists
-		o.savedir = d.dossier->oobdir;
-		if (	!QFileInfo(d.dossier->oobdir).exists()				||
-			!CFG_savedir_from_oobdir (o.savedir, get_gametype(), type)	||
-			!QFileInfo(o.savedir).exists()					)
-		{
-                        o.savedir.clear();
-		}
+		// Dossier with a savedir -  use this, if it exists
+		if (QDir(d.dossier->savedir).exists()) o.savedir = d.dossier->savedir;
 	} else {
-		// Empty dossier without a savedir - provide the correct savedir
-		o.savedir = CFG_save_path (get_gametype(), type);
+		// An (old) non-empty or a (new) empty dossier, without a savedir
+		// Try to provide the correct savedir
+		o.savedir = CFG_save_from_game (d.gamepath, d.dossier->gametype, type);
 	}
 
 	return (o.savedir);
@@ -784,11 +838,46 @@ WARCABState::set_savedir (void)
 }
 
 void
+WARCABState::set_writeable (void)
+{
+	d.readonly = SL_false;
+	o.roreason.clear();
+	// TODO: add signal?
+}
+
+void
+WARCABState::set_readonly (char *gamepath, SPWAW_GAME_TYPE gametype, bool path_exists)
+{
+	d.readonly = SL_true;
+	if (!gamepath || gamepath[0] == '\0') {
+		o.roreason = QString("game folder not detected.\n");
+	} else if (path_exists) {
+		o.roreason = QString("not a valid %1 game folder.\n%2").arg(SPWAW_gametype2str(gametype), gamepath);
+	} else {
+		o.roreason = QString("game folder does not exist.\n%1").arg(gamepath);
+	}
+	// TODO: add signal?
+}
+
+void
 WARCABState::set_dirty (bool flag)
 {
 	d.dirty = flag ? SL_true: SL_false;
 	// TODO: replace by signal
 	if (GUI_WIN) GUI_WIN->setWindowModified (flag);
+}
+
+void
+WARCABState::clear_gamepath (void)
+{
+	if (d.gamepath) SL_SAFE_FREE (d.gamepath);
+}
+
+void
+WARCABState::set_gamepath (const char *gamepath)
+{
+	clear_gamepath();
+	SL_SAFE_STRDUP (d.gamepath, (char *)gamepath);
 }
 
 void
@@ -1029,18 +1118,22 @@ WARCABState::statereport (SL_STDBG_INFO_LEVEL level)
 
 	/* basic information */
 	if (level >= SL_STDBG_LEVEL_BAS) {
-		SAYSTATE1 ("\toptions: load       = %s\n", d.options.load ? d.options.load : "none");
-		SAYSTATE1 ("\tdossier: dossier    = %s\n", d.dossier ? "loaded" : "none");
-		SAYSTATE1 ("\tdossier: filename   = \"%s\"\n", d.filename);
-		SAYSTATE1 ("\tdossier: dirty flag = %s\n", SL_BOOL_tostr (d.dirty));
+		SAYSTATE1 ("\toptions: load            = %s\n", d.options.load ? d.options.load : "none");
+		SAYSTATE1 ("\tdossier: dossier         = %s\n", d.dossier ? "loaded" : "none");
+		SAYSTATE1 ("\tdossier: filename        = \"%s\"\n", d.filename);
+		SAYSTATE1 ("\tdossier: game path       = \"%s\"\n", d.gamepath);
+		SAYSTATE1 ("\tdossier: readonly flag   = %s\n", SL_BOOL_tostr (d.readonly));
+		SAYSTATE1 ("\tdossier: readonly reason = \"%s\"\n", qPrintable(o.roreason));
+		SAYSTATE1 ("\tdossier: savedir         = \"%s\"\n", qPrintable(o.savedir));
+		SAYSTATE1 ("\tdossier: dirty flag      = %s\n", SL_BOOL_tostr (d.dirty));
 	}
 
 	/* extended information */
 	if (level >= SL_STDBG_LEVEL_EXT) {
-		SAYSTATE1 ("\tdossier: dossier data  = 0x%8.8x\n", d.dossier);
-		SAYSTATE2 ("\tdossier: savegame list = 0x%8.8x, %lu entries\n", d.gamelist, d.gamelist ? d.gamelist->cnt : 0);
+		SAYSTATE1 ("\tdossier: dossier data    = 0x%8.8x\n", d.dossier);
+		SAYSTATE2 ("\tdossier: savegame list   = 0x%8.8x, %lu entries\n", d.gamelist, d.gamelist ? d.gamelist->cnt : 0);
 #if	ALLOW_SNAPSHOTS_LOAD
-		SAYSTATE2 ("\tdossier: snapshot list = 0x%8.8x, %lu entries\n", d.snaplist, d.snaplist ? d.snaplist->cnt : 0);
+		SAYSTATE2 ("\tdossier: snapshot list   = 0x%8.8x, %lu entries\n", d.snaplist, d.snaplist ? d.snaplist->cnt : 0);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
 	}
 

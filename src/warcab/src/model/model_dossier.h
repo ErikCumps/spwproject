@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,7 +36,7 @@ public:
 public:
 	QModelIndex	root_index	(void);
 	void		clear		(void);
-	void		load		(MDLD_TREE_ITEM *tree);
+	void		load		(MDLD_TREE_ITEM *tree, bool readonly);
 	void		refresh		(void);
 	void		set_selected	(MDLD_TREE_ITEM *item);
 	void		set_cmpcurr	(MDLD_TREE_ITEM *item);
@@ -47,6 +47,7 @@ private:
 	struct s_data {
 		unsigned long		col_cnt;
 		MDLD_TREE_ITEM		*tree;
+		bool			readonly;
 		MDLD_TREE_ITEM		*selected;
 		MDLD_TREE_ITEM		*cmpcurr;
 		MDLD_TREE_ITEM		*cmpbase;

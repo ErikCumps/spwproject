@@ -19,13 +19,13 @@ static void	statereport	(SL_STDBG_INFO_LEVEL level);
 
 /* --- private types  --- */
 
-/*! Game type configuration data structure */
-typedef struct s_CFGGAMEDATA {
-	SPWAW_GAME_TYPE	type;			/*!< Game type				*/
-	const char	*name;			/*!< Game type name			*/
-	char		*oob_path;		/*!< OOB path				*/
-	char		*sve_path;		/*!< savegames path			*/
-} CFGGAMEDATA;
+/*! Game configuration data structure */
+typedef struct s_GAMECFG {
+	bool		active;			/*!< Config activation flag			*/
+	QString		name;			/*!< Game name					*/
+	SPWAW_GAME_TYPE	type;			/*!< Game type					*/
+	QString		path;			/*!< Game path					*/
+} GAMECFG;
 
 /*! Configuration data structure */
 typedef struct s_CFGDATA {
@@ -34,9 +34,6 @@ typedef struct s_CFGDATA {
 	char		*app_path;		/*!< Application path			*/
 	char		*usr_path;		/*!< User data storage path		*/
 	bool		local;			/*!< Local configuration flag		*/
-	SPWAW_GAME_TYPE	def_gametype;		/*!< Default game type			*/
-	CFGGAMEDATA	cfg_spwaw;		/*!< SP:WaW specific configuration	*/
-	CFGGAMEDATA	cfg_winspww2;		/*!< winSPWW2 specific configuration	*/
 	char		*snp_path;		/*!< Snapshots path			*/
 	bool		compress;		/*!< Dossier compression flag		*/
 	bool		autoload;		/*!< Dossier autoload flag		*/
@@ -46,6 +43,7 @@ typedef struct s_CFGDATA {
 	int		hcftype;		/*!< Default height colorfield type	*/
 	bool		german_cross;		/*!< German Cross flag			*/
 	GUI_STATE	gui_state;		/*!< GUI state				*/
+	GameCfgIdx	def_gamecfg_idx;	/*!< Default game config index		*/
 } CFGDATA;
 
 
@@ -53,20 +51,16 @@ typedef struct s_CFGDATA {
 /* --- private macros  --- */
 
 /*! Configuration version */
-#define	CFG_REVISION	7
+#define	CFG_REVISION		8
 
-/* Convenience macro */
-#define	ARRAYCOUNT(a_)	(sizeof(a_)/sizeof(a_[0]))
+/*! Configuration version with legacy GameCfg */
+#define	CFG_LEGACY_GAMECFG	7
 
-/* Strip trailing backslash from path */
-#define STRIPPATHSEP(p_)				\
-	do {						\
-		size_t l = strlen(p_);			\
-		if (l > 0) {				\
-			char *p = &(p_[l-1]);		\
-			if (*p == '\\') *p = '\0';	\
-		}					\
-	} while (0);
+/*! GameCFgIdx for legacy SP:WaW game config */
+#define	GAMECFG_LEGACY_SPWAW	0
+
+/*! GameCFgIdx for legacy winSPWW2 game config */
+#define	GAMECFG_LEGACY_WINSPWW2	1
 
 /* gamedir/oobdir/savedir conversion strings */
 
@@ -74,22 +68,24 @@ typedef struct s_CFGDATA {
 #define	GOSC_SPWAW_OOB		""
 
 /*! SP:WaW relative save directory */
-#define	GOSC_SPWAW_SAVE		"\\SAVE"
+#define	GOSC_SPWAW_SAVE		"SAVE"
 
 /*! SP:WaW relative Mega Campaign save directory */
-#define	GOSC_SPWAW_MEGACAM	"\\MegaCam\\save"
+#define	GOSC_SPWAW_MEGACAM	"MegaCam\\save"
 
 /*! winSPWW2 relative OOB directory */
-#define	GOSC_WINSPWW2_OOB	"\\Game Data\\OOBs"
+#define	GOSC_WINSPWW2_OOB	"Game Data\\OOBs"
 
 /*! winSPWW2 relative save directory */
-#define	GOSC_WINSPWW2_SAVE	"\\Saved Games"
+#define	GOSC_WINSPWW2_SAVE	"Saved Games"
 
 /*! Warcab relative test OOB directory */
-#define	GOSC_TEST_OOB		"\\_OOB_"
+#define	GOSC_TEST_OOB		"_OOB_"
 
 /*! Warcab relative test save directory */
-#define	GOSC_TEST_SAVE		"\\_SAVE_"
+#define	GOSC_TEST_SAVE		"_SAVE_"
+
+
 
 /* --- private variables --- */
 
@@ -99,29 +95,344 @@ static const char		*MODULE = "CFG";
 /*! Initialization status flag */
 static SL_BOOL			initialized = SL_false;
 
-/*! Supported game types	*/
-static QList<CfgGameType>	gametypes;
-
 /*! QT settings objects */
 static QSettings		*storage_local = NULL;
 static QSettings		*storage_global = NULL;
 
 /*! Configuration */
 static CFGDATA			cfg;
-static SPWAW_OOBCFG		oobcfg[2];
+static GAMECFG			gamecfg[GAMECFG_CNT];
+static SPWAW_OOBCFG		oobcfg[GAMECFG_CNT];
+static int			oobcfg_cnt;
 
 
 
 /* --- code --- */
 
-static void
-config_update_oobcfg (void)
+static bool
+gamedir_from_oobdir_core (QString &dir, const char *oobdir)
 {
-	oobcfg[0].gametype = SPWAW_GAME_TYPE_SPWAW;
-	oobcfg[0].oobdir   = cfg.cfg_spwaw.oob_path;
+	int	idx;
 
-	oobcfg[1].gametype = SPWAW_GAME_TYPE_WINSPWW2;
-	oobcfg[1].oobdir   = cfg.cfg_winspww2.oob_path;
+	idx = dir.lastIndexOf (oobdir, -1, Qt::CaseInsensitive);
+	if (idx != -1) {
+		if (oobdir[0] != '\0') dir.truncate(idx-1);
+		return (true);
+	}
+	return (false);
+}
+
+static bool
+gamedir_from_oobdir (QString &oobdir, SPWAW_GAME_TYPE gametype, QString &gamedir)
+{
+	bool	ok;
+
+	gamedir.clear();
+	if (oobdir.isEmpty()) return (false);
+
+	gamedir = oobdir;
+
+	if (gamedir_from_oobdir_core (gamedir, GOSC_TEST_OOB)) return (true);
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			ok = gamedir_from_oobdir_core (gamedir, GOSC_SPWAW_OOB);
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			ok = gamedir_from_oobdir_core (gamedir, GOSC_WINSPWW2_OOB);
+			break;
+	}
+	if (!ok) gamedir.clear();
+
+	return (ok);
+}
+
+static bool
+gamedir_from_savedir_core (QString &dir, const char *savedir)
+{
+	int	idx;
+
+	idx = dir.lastIndexOf (savedir, -1, Qt::CaseInsensitive);
+	if (idx != -1) {
+		if (savedir[0] != '\0') dir.truncate(idx-1);
+		return (true);
+	}
+	return (false);
+}
+
+static bool
+gamedir_from_savedir (QString &savedir, SPWAW_GAME_TYPE gametype, QString &gamedir)
+{
+	bool	ok;
+
+	gamedir.clear();
+	if (savedir.isEmpty()) return (false);
+
+	gamedir = savedir;
+
+	if (gamedir_from_savedir_core (gamedir, GOSC_TEST_SAVE)) return (true);
+
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			ok = gamedir_from_savedir_core (gamedir, GOSC_SPWAW_SAVE);
+			if (!ok) {
+				ok = gamedir_from_savedir_core (gamedir, GOSC_SPWAW_MEGACAM);
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			ok = gamedir_from_savedir_core (gamedir, GOSC_WINSPWW2_SAVE);
+			break;
+	}
+	if (!ok) gamedir.clear();
+
+	return (ok);
+}
+
+static bool
+validate_gamedir (QString gamedir, SPWAW_GAME_TYPE gametype)
+{
+	QDir	path, gdpo, gdps1, gdps2;
+	bool	ok;
+
+	if (gamedir.isEmpty()) return (false);
+
+	path = gamedir;
+	if (!path.exists()) return (false);
+
+	gdpo = gdps1 = path;
+	if (gdpo.cd(GOSC_TEST_OOB) && gdps1.cd(GOSC_TEST_SAVE)) return (true);
+
+	ok = false;
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+			gdpo = gdps1 = gdps2 = path;
+			if (gdpo.cd(GOSC_SPWAW_OOB) && gdps1.cd(GOSC_SPWAW_SAVE) && gdps2.cd(GOSC_SPWAW_MEGACAM)) {
+				ok = true;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			gdpo = gdps1 = path;
+			if (gdpo.cd(GOSC_WINSPWW2_OOB) && gdps1.cd(GOSC_WINSPWW2_SAVE)) {
+				ok = true;
+			}
+			break;
+		default:
+			break;
+	}
+	return (ok);
+}
+
+
+static bool
+oobdir_from_gamedir (QString &gamedir, SPWAW_GAME_TYPE gametype, QString &oobdir)
+{
+	QDir	path, sdp;
+	bool	ok;
+
+	oobdir.clear();
+	if (gamedir.isEmpty()) return (false);
+
+	path = gamedir;
+
+	if (!path.exists()) return (false);
+
+	sdp = path;
+	if (sdp.cd(GOSC_TEST_OOB)) {
+		oobdir = sdp.absolutePath();
+		return (true);
+	}
+
+	sdp = path; ok = false;
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			if (sdp.cd(GOSC_SPWAW_OOB)) {
+				oobdir = path.absolutePath() + QDir::separator() + GOSC_SPWAW_OOB;
+				ok = true;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			if (sdp.cd(GOSC_WINSPWW2_OOB)) {
+				oobdir = path.absolutePath() + QDir::separator() + GOSC_WINSPWW2_OOB;
+				ok = true;
+			}
+			break;
+	}
+	return (ok);
+}
+
+static bool
+savedir_from_gamedir (QString &gamedir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type, QString &savedir)
+{
+	QDir	path, sdp;
+	bool	ok;
+
+	savedir.clear();
+	if (gamedir.isEmpty()) return (false);
+
+	path = gamedir;
+
+	if (!path.exists()) return (false);
+
+	sdp = path;
+	if (sdp.cd(GOSC_TEST_SAVE)) {
+		savedir = sdp.absolutePath();
+		return (true);
+	}
+
+	sdp = path; ok = false;
+	switch (gametype) {
+		case SPWAW_GAME_TYPE_SPWAW:
+		default:
+			switch (type) {
+				case SPWAW_MEGACAM_DOSSIER:
+					if (sdp.cd(GOSC_SPWAW_MEGACAM)) {
+						savedir = path.absolutePath() + QDir::separator() + GOSC_SPWAW_MEGACAM;
+						ok = true;
+					}
+					break;
+				default:
+					if (sdp.cd(GOSC_SPWAW_SAVE)) {
+						savedir = path.absolutePath() + QDir::separator() + GOSC_SPWAW_SAVE;
+						ok = true;
+					}
+					break;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPWW2:
+			if (sdp.cd(GOSC_WINSPWW2_SAVE)) {
+				savedir = path.absolutePath() + QDir::separator() + GOSC_WINSPWW2_SAVE;
+				ok = true;
+			}
+			break;
+	}
+	return (ok);
+}
+
+
+static bool
+savedir_from_oobdir (QString &oobdir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type, QString &savedir)
+{
+	QString	gamedir;
+
+	savedir.clear();
+	if (oobdir.isEmpty()) return (false);
+
+	if (!gamedir_from_oobdir (oobdir, gametype, gamedir)) return (false);
+
+	return (savedir_from_gamedir(gamedir, gametype, type, savedir));
+}
+
+static void
+GAMECFG_init (void)
+{
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		gamecfg[i].active = false;
+		gamecfg[i].name.clear();
+		gamecfg[i].type = SPWAW_GAME_TYPE_UNKNOWN;
+		gamecfg[i].path.clear();
+	}
+}
+
+static void
+GAMECFG_shutdown (void)
+{
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		if (!gamecfg[i].active) continue;
+		gamecfg[i].name.clear();
+		gamecfg[i].type = SPWAW_GAME_TYPE_UNKNOWN;
+		gamecfg[i].path.clear();
+	}
+}
+
+static void
+GAMECFG_statereport (SL_STDBG_INFO_LEVEL level)
+{
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		/* basic information */
+		if (level >= SL_STDBG_LEVEL_BAS) {
+			SAYSTATE1 ("\tgamecfg slot #%d:\n", i);
+			SAYSTATE1 ("\t\tactive    = %s\n", gamecfg[i].active?"yes":"no");
+			SAYSTATE1 ("\t\tgame name = \"%s\"\n", gamecfg[i].name);
+			SAYSTATE1 ("\t\tgame type = %s\n", SPWAW_gametype2str (gamecfg[i].type));
+			SAYSTATE1 ("\t\tgame path = \"%s\"\n", qPrintable(gamecfg[i].path));
+		}
+
+		/* extended information */
+		if (level >= SL_STDBG_LEVEL_EXT) {
+		}
+
+		/* deep probe */
+		if (level >= SL_STDBG_LEVEL_DEEP) {
+		}
+
+		SAYSTATE0 ("\n");
+	}
+}
+
+static int
+GAMECFG_active_count (void)
+{
+	int	cnt = 0;
+
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		if (gamecfg[i].active) cnt++;
+	}
+	return (cnt);
+}
+
+static GameCfgList
+GAMECFG_active_list (int &def_gamecfg)
+{
+	GameCfgList	list;
+
+	def_gamecfg = GAMECFG_IDX_NOT_SET;
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		if (gamecfg[i].active) {
+			list.append(GameCfg(gamecfg[i].name, gamecfg[i].type, gamecfg[i].path));
+			if (i == cfg.def_gamecfg_idx) def_gamecfg = list.size()-1;
+		}
+	}
+	return (list);
+}
+
+static void
+OOBCFG_init (void)
+{
+	memset (oobcfg, 0, sizeof (oobcfg));
+	oobcfg_cnt = 0;
+}
+
+static void
+OOBCFG_clear (void)
+{
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		if (oobcfg[i].oobdir) SL_SAFE_FREE (oobcfg[i].oobdir);
+	}
+	OOBCFG_init();
+}
+
+static void
+OOBCFG_update (void)
+{
+	int	idx;
+	QString	oobdir;
+
+	OOBCFG_clear();
+
+	idx = 0;
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		if (!gamecfg[i].active) continue;
+		if (!oobdir_from_gamedir (gamecfg[i].path, gamecfg[i].type, oobdir)) continue;
+
+		oobcfg[idx].gametype = gamecfg[i].type;
+		SL_SAFE_STRDUP (oobcfg[idx].oobdir, qPrintable(oobdir));
+
+		idx++;
+	}
+	oobcfg_cnt = idx;
 }
 
 static void
@@ -147,6 +458,105 @@ save_config_local_flag (void)
 }
 
 static void
+config_load_game_spwaw (QSettings *storage, GAMECFG &cfg)
+{
+	QVariant	data;
+	QString		gamedir;
+
+	cfg.type = SPWAW_GAME_TYPE_SPWAW;
+	cfg.name = QString ("My %1 game").arg(SPWAW_gametype2str (cfg.type));
+
+	data = storage->value ("OobPathSPWAW");
+	if (!gamedir_from_oobdir (data.toString(), cfg.type, cfg.path)) return;
+
+	cfg.active = validate_gamedir (cfg.path, cfg.type);
+}
+
+static void
+config_load_game_winspww2 (QSettings *storage, GAMECFG &cfg)
+{
+	QVariant	data;
+
+	cfg.type = SPWAW_GAME_TYPE_WINSPWW2;
+	cfg.name = QString ("My %1 game").arg(SPWAW_gametype2str (cfg.type));
+
+	data = storage->value ("OobPathWINSPWW2");
+	if (!gamedir_from_oobdir (data.toString(), cfg.type, cfg.path)) return;
+
+	cfg.active = validate_gamedir (cfg.path, cfg.type);
+}
+
+static void
+config_load_gamecfg_legacy (QSettings *storage)
+{
+	QVariant	data;
+
+	data = storage->value ("DefGameType");
+	if (data.isNull ()) {
+		cfg.def_gamecfg_idx = GAMECFG_IDX_NOT_SET;
+	} else {
+		switch ((SPWAW_GAME_TYPE)data.toInt()) {
+			case SPWAW_GAME_TYPE_SPWAW:
+				cfg.def_gamecfg_idx = GAMECFG_LEGACY_SPWAW;
+				break;
+			case SPWAW_GAME_TYPE_WINSPWW2:
+				cfg.def_gamecfg_idx = GAMECFG_LEGACY_WINSPWW2;
+				break;
+			default:
+				cfg.def_gamecfg_idx = GAMECFG_IDX_NOT_SET;
+				break;
+		}
+	}
+
+	config_load_game_spwaw (storage, gamecfg[GAMECFG_LEGACY_SPWAW]);
+	config_load_game_winspww2 (storage, gamecfg[GAMECFG_LEGACY_WINSPWW2]);
+}
+
+static void
+config_load_game (QSettings *storage, GameCfgIdx idx, GAMECFG &cfg)
+{
+	QVariant	datan, datat, datap;
+
+	cfg.active = false;
+	cfg.name.clear();
+	cfg.type = SPWAW_GAME_TYPE_UNKNOWN;
+	cfg.path.clear();
+
+	if ((idx < 0) || (idx > GAMECFG_CNT)) return;
+
+	datan = storage->value (QString("%1_Name").arg(idx));
+	datat = storage->value (QString("%1_Type").arg(idx));
+	datap = storage->value (QString("%1_Path").arg(idx));
+
+	if (datan.isNull() || datat.isNull() || datap.isNull()) return;
+
+	cfg.name = datan.toString();
+	cfg.type = (SPWAW_GAME_TYPE)datat.toInt();
+	cfg.path = datap.toString();
+
+	cfg.active = validate_gamedir (cfg.path, cfg.type);
+}
+
+static void
+config_load_gamecfg (QSettings *storage)
+{
+	QVariant	data;
+
+	storage->beginGroup("GameCfg");
+
+	data = storage->value ("Default");
+	if (data.isNull ()) {
+		cfg.def_gamecfg_idx = GAMECFG_IDX_NOT_SET;
+	} else {
+		cfg.def_gamecfg_idx = data.toInt();
+	}
+
+	for (int i=0; i<GAMECFG_CNT; i++) config_load_game (storage, i, gamecfg[i]);
+
+	storage->endGroup();
+}
+
+static void
 config_load (QSettings *storage)
 {
 	QVariant	data;
@@ -157,33 +567,6 @@ config_load (QSettings *storage)
 		cfg.revision = DEFAULT_REVISION;
 	} else {
 		cfg.revision = data.toInt();
-	}
-
-	data = storage->value ("DefGameType");
-	if (data.isNull ()) {
-		cfg.def_gametype = DEFAULT_GAMETYPE;
-	} else {
-		cfg.def_gametype = (SPWAW_GAME_TYPE)data.toInt();
-	}
-
-	data = storage->value ("OobPathSPWAW");
-	if (!data.isNull ()) {
-		SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, qPrintable(data.toString()));
-	}
-
-	data = storage->value ("SavesPathSPWAW");
-	if (!data.isNull ()) {
-		SL_SAFE_STRDUP (cfg.cfg_spwaw.sve_path, qPrintable(data.toString()));
-	}
-
-	data = storage->value ("OobPathWINSPWW2");
-	if (!data.isNull ()) {
-		SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, qPrintable(data.toString()));
-	}
-
-	data = storage->value ("SavesPathWINSPWW2");
-	if (!data.isNull ()) {
-		SL_SAFE_STRDUP (cfg.cfg_winspww2.sve_path, qPrintable(data.toString()));
 	}
 
 	data = storage->value ("SnapshotsPath");
@@ -243,6 +626,12 @@ config_load (QSettings *storage)
 		cfg.german_cross = data.toBool();
 	}
 
+	if (cfg.revision <= CFG_LEGACY_GAMECFG) {
+		config_load_gamecfg_legacy (storage);
+	} else {
+		config_load_gamecfg (storage);
+	}
+
 	storage->beginGroup("GUI");
 
 	data = storage->value ("State");
@@ -290,27 +679,49 @@ config_load (QSettings *storage)
 }
 
 static void
+config_save_game (QSettings *storage, GameCfgIdx idx, GAMECFG &cfg)
+{
+	QVariant	datan, datat, datap;
+
+	if ((idx < 0) || (idx > GAMECFG_CNT)) return;
+
+	datan.setValue (cfg.name);
+	datat.setValue ((int)cfg.type);
+	datap.setValue (cfg.path);
+
+	storage->setValue (QString("%1_Name").arg(idx), datan);
+	storage->setValue (QString("%1_Type").arg(idx), datat);
+	storage->setValue (QString("%1_Path").arg(idx), datap);
+}
+
+static void
+config_save_gamecfg (QSettings *storage)
+{
+	QVariant	data;
+
+	storage->beginGroup("GameCfg");
+
+	data.setValue ((int)cfg.def_gamecfg_idx);
+	storage->setValue ("Default", data);
+
+	data.setValue (GAMECFG_CNT);
+	storage->setValue ("Count", data);
+
+	for (int i=0; i<GAMECFG_CNT; i++) config_save_game (storage, i, gamecfg[i]);
+
+	storage->endGroup();
+}
+
+
+static void
 config_save (QSettings *storage)
 {
 	QVariant	data;
 
+	storage->clear();
+
 	data.setValue (CFG_REVISION);
 	storage->setValue ("CfgRevision", data);
-
-	data.setValue ((int)cfg.def_gametype);
-	storage->setValue ("DefGameType", data);
-
-	data.setValue (QString (cfg.cfg_spwaw.oob_path));
-	storage->setValue ("OobPathSPWAW", data);
-
-	data.setValue (QString (cfg.cfg_spwaw.sve_path));
-	storage->setValue ("SavesPathSPWAW", data);
-
-	data.setValue (QString (cfg.cfg_winspww2.oob_path));
-	storage->setValue ("OobPathWINSPWW2", data);
-
-	data.setValue (QString (cfg.cfg_winspww2.sve_path));
-	storage->setValue ("SavesPathWINSPWW2", data);
 
 	data.setValue (QString (cfg.snp_path));
 	storage->setValue ("SnapshotsPath", data);
@@ -335,6 +746,8 @@ config_save (QSettings *storage)
 
 	data.setValue (cfg.german_cross);
 	storage->setValue ("GermanCross", data);
+
+	config_save_gamecfg (storage);
 
 	storage->beginGroup("GUI");
 
@@ -364,9 +777,6 @@ CFG_init (void)
 	if (initialized) RETURN_OK;
 	SL_STDBG_add (statereport, MODULE);
 
-	gametypes.append(CfgGameType(SPWAW_GAME_TYPE_SPWAW, SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW)));
-	gametypes.append(CfgGameType(SPWAW_GAME_TYPE_WINSPWW2, SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2)));
-
 	storage_local = new QSettings ("warcab.ini", QSettings::IniFormat);
 	if (!storage_local)
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage_local object");
@@ -376,6 +786,8 @@ CFG_init (void)
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_NOPERSIST, "failed to create QSettings storage_global object");
 
 	memset (&cfg, 0, sizeof (cfg));
+	GAMECFG_init();
+	OOBCFG_init();
 
 	if (!(cfg.cwd_path = SL_APP_cwd ()))
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_PATH_NOCWD, "SL_APP_cwd() call failed");
@@ -386,23 +798,34 @@ CFG_init (void)
 	if (!(cfg.usr_path = SL_APP_data_path ()))
 		RETURN_ERR_FUNCTION_EX0 (ERR_CFG_PATH_NOUSR, "SL_APP_data_path() call failed");
 
-	cfg.cfg_spwaw.type = SPWAW_GAME_TYPE_SPWAW;
-	cfg.cfg_spwaw.name = SPWAW_gametype2str (cfg.cfg_spwaw.type);
-
-	cfg.cfg_winspww2.type = SPWAW_GAME_TYPE_WINSPWW2;
-	cfg.cfg_winspww2.name = SPWAW_gametype2str (cfg.cfg_winspww2.type);
-
 	load_config_local_flag ();
 	if (cfg.local) {
 		config_load (storage_local);
 	} else {
 		config_load (storage_global);
 	}
-	config_update_oobcfg ();
+	OOBCFG_update();
 
 	initialized = SL_true;
 
 	RETURN_OK;
+}
+
+void
+CFG_save (void)
+{
+	if (!initialized) return;
+
+	if (cfg.local) {
+		config_save (storage_local);
+		// Don't modify the global config, it could be used by other instances
+	} else {
+		storage_local->clear();
+		config_save (storage_global);
+	}
+	save_config_local_flag ();
+	storage_local->sync();
+	storage_global->sync();
 }
 
 void
@@ -411,12 +834,7 @@ CFG_shutdown (void)
 	if (!initialized) return;
 	SL_STDBG_delete (statereport);
 
-	if (cfg.local) {
-		config_save (storage_local);
-	} else {
-		config_save (storage_global);
-	}
-	save_config_local_flag ();
+	CFG_save();
 
 	delete storage_global;
 	delete storage_local;
@@ -426,10 +844,8 @@ CFG_shutdown (void)
 	if (cfg.gui_state.state_panes)	delete cfg.gui_state.state_panes;
 	if (cfg.gui_state.state_main)	delete cfg.gui_state.state_main;
 
-	if (cfg.cfg_spwaw.oob_path) SL_SAFE_FREE (cfg.cfg_spwaw.oob_path);
-	if (cfg.cfg_spwaw.sve_path) SL_SAFE_FREE (cfg.cfg_spwaw.sve_path);
-	if (cfg.cfg_winspww2.oob_path) SL_SAFE_FREE (cfg.cfg_winspww2.oob_path);
-	if (cfg.cfg_winspww2.sve_path) SL_SAFE_FREE (cfg.cfg_winspww2.sve_path);
+	GAMECFG_shutdown();
+
 	if (cfg.snp_path) SL_SAFE_FREE (cfg.snp_path);
 	if (cfg.lastdoss) SL_SAFE_FREE (cfg.lastdoss);
 
@@ -449,18 +865,9 @@ CFG_needsreview (bool &isfirstrun)
 bool
 CFG_iscomplete (void)
 {
-	bool	b_spwaw = true;
-	bool	b_winspww2 = true;
+	if (cfg.def_gamecfg_idx == GAMECFG_IDX_NOT_SET) return (false);
 
-	if (cfg.def_gametype == SPWAW_GAME_TYPE_UNKNOWN) return (false);
-
-	if (!cfg.cfg_spwaw.oob_path || !strlen (cfg.cfg_spwaw.oob_path)) b_spwaw = false;
-	if (!cfg.cfg_spwaw.sve_path || !strlen (cfg.cfg_spwaw.sve_path)) b_spwaw = false;
-
-	if (!cfg.cfg_winspww2.oob_path || !strlen (cfg.cfg_winspww2.oob_path)) b_winspww2 = false;
-	if (!cfg.cfg_winspww2.sve_path || !strlen (cfg.cfg_winspww2.sve_path)) b_winspww2 = false;
-
-	return (b_spwaw || b_winspww2);
+	return (GAMECFG_active_count() != 0);
 }
 
 bool
@@ -469,7 +876,7 @@ CFG_oobcfg (SPWAW_OOBCFG **list, int *cnt)
 	if (!list || !cnt) return (false);
 
 	*list = oobcfg;
-	*cnt = ARRAYCOUNT(oobcfg);
+	*cnt = oobcfg_cnt;
 
 	return (true);
 }
@@ -492,125 +899,24 @@ CFG_usr_path (void)
 	return (initialized ? cfg.usr_path : NULL);
 }
 
-SPWAW_GAME_TYPE
-CFG_default_gametype (void)
-{
-	return (initialized ? cfg.def_gametype : DEFAULT_GAMETYPE);
-}
-
-static void
-CFG_SET_default_gametype (SPWAW_GAME_TYPE gametype)
-{
-	if (!initialized) return;
-
-	cfg.def_gametype = gametype;
-}
-
 char *
-CFG_oob_path (SPWAW_GAME_TYPE gametype)
-{
-	if (!initialized) return (NULL);
-
-	switch (gametype) {
-		case SPWAW_GAME_TYPE_SPWAW:
-			return (cfg.cfg_spwaw.oob_path);
-			break;
-		case SPWAW_GAME_TYPE_WINSPWW2:
-			return (cfg.cfg_winspww2.oob_path);
-			break;
-		default:
-			return (NULL);
-			break;
-	}
-}
-
-static void
-CFG_SET_oob_path (SPWAW_GAME_TYPE gametype, char *str)
-{
-	if (!initialized || !str) return;
-
-	switch (gametype) {
-		case SPWAW_GAME_TYPE_SPWAW:
-			if (cfg.cfg_spwaw.oob_path) SL_SAFE_FREE (cfg.cfg_spwaw.oob_path);
-			if (strlen(str)) {
-				SL_SAFE_STRDUP (cfg.cfg_spwaw.oob_path, str);
-				DEVASSERT (cfg.cfg_spwaw.oob_path != NULL);
-				STRIPPATHSEP (cfg.cfg_spwaw.oob_path);
-			}
-			break;
-		case SPWAW_GAME_TYPE_WINSPWW2:
-			if (cfg.cfg_winspww2.oob_path) SL_SAFE_FREE (cfg.cfg_winspww2.oob_path);
-			if (strlen(str)) {
-				SL_SAFE_STRDUP (cfg.cfg_winspww2.oob_path, str);
-				DEVASSERT (cfg.cfg_winspww2.oob_path != NULL);
-				STRIPPATHSEP (cfg.cfg_winspww2.oob_path);
-			}
-			break;
-		default:
-			break;
-	}
-}
-
-char *
-CFG_save_path (SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE /*type*/)
-{
-	if (!initialized) return (NULL);
-
-	switch (gametype) {
-		case SPWAW_GAME_TYPE_SPWAW:
-			return (cfg.cfg_spwaw.sve_path);
-			break;
-		case SPWAW_GAME_TYPE_WINSPWW2:
-			return (cfg.cfg_winspww2.sve_path);
-			break;
-		default:
-			return (NULL);
-			break;
-	}
-}
-
-static void
-CFG_SET_sve_path (SPWAW_GAME_TYPE gametype, char *str)
-{
-	if (!initialized || !str) return;
-
-	switch (gametype) {
-		case SPWAW_GAME_TYPE_SPWAW:
-			if (cfg.cfg_spwaw.sve_path) SL_SAFE_FREE (cfg.cfg_spwaw.sve_path);
-			SL_SAFE_STRDUP (cfg.cfg_spwaw.sve_path, str);
-			DEVASSERT (cfg.cfg_spwaw.sve_path != NULL);
-			STRIPPATHSEP (cfg.cfg_spwaw.sve_path);
-			break;
-		case SPWAW_GAME_TYPE_WINSPWW2:
-			if (cfg.cfg_winspww2.sve_path) SL_SAFE_FREE (cfg.cfg_winspww2.sve_path);
-			SL_SAFE_STRDUP (cfg.cfg_winspww2.sve_path, str);
-			DEVASSERT (cfg.cfg_winspww2.sve_path != NULL);
-			STRIPPATHSEP (cfg.cfg_winspww2.sve_path);
-			break;
-		default:
-			break;
-	}
-
-}
-
-char *
-CFG_snap_path (void)
+CFG_snp_path (void)
 {
 	return (initialized ? cfg.snp_path : NULL);
 }
 
 static void
-CFG_SET_snp_path (char *str)
+CFG_snp_path_set (char *path)
 {
-	if (!initialized || !str) return;
+	SL_SAFE_FREE (cfg.snp_path);
 
-	if (cfg.snp_path) SL_SAFE_FREE (cfg.snp_path);
-	SL_SAFE_STRDUP (cfg.snp_path, str);
-	DEVASSERT (cfg.snp_path != NULL);
-	STRIPPATHSEP (cfg.snp_path);
+	if (path && strlen(path)) {
+		SL_SAFE_STRDUP (cfg.snp_path, qPrintable(QDir(path).absolutePath()));
+		DEVASSERT (cfg.snp_path != NULL);
 
-	// Try to make sure the directory exists, but ignore any errors for now
-	QDir::root().mkpath(cfg.snp_path);
+		// Try to make sure the directory exists, but ignore any errors for now
+		QDir::root().mkpath(cfg.snp_path);
+	}
 }
 
 bool
@@ -619,26 +925,10 @@ CFG_compress (void)
 	return (initialized ? cfg.compress : DEFAULT_COMPRESSION);
 }
 
-static void
-CFG_SET_compress (bool b)
-{
-	if (!initialized) return;
-
-	cfg.compress = b;
-}
-
 static bool
 CFG_autoload (void)
 {
 	return (initialized ? cfg.autoload : DEFAULT_AUTOLOAD);
-}
-
-static void
-CFG_SET_autoload (bool b)
-{
-	if (!initialized) return;
-
-	cfg.autoload = b;
 }
 
 char *
@@ -654,7 +944,10 @@ CFG_autoload_set (char *file)
 	if (!cfg.autoload) return;
 
 	SL_SAFE_FREE (cfg.lastdoss);
-	if (file && strlen (file)) SL_SAFE_STRDUP (cfg.lastdoss, file);
+
+	if (file && strlen (file)) {
+		SL_SAFE_STRDUP (cfg.lastdoss, file);
+	}
 }
 
 bool
@@ -663,26 +956,10 @@ CFG_full_history (void)
 	return (initialized ? cfg.fhistory : DEFAULT_FULL_HISTORY);
 }
 
-static void
-CFG_SET_full_history (bool b)
-{
-	if (!initialized) return;
-
-	cfg.fhistory = b;
-}
-
 INTEL_MODE
 CFG_intel_mode (void)
 {
 	return (initialized ? cfg.intel_mode : DEFAULT_INTEL_MODE);
-}
-
-static void
-CFG_SET_intel_mode (INTEL_MODE mode)
-{
-	if (!initialized) return;
-
-	cfg.intel_mode = mode;
 }
 
 int
@@ -691,26 +968,10 @@ CFG_hcftype (void)
 	return (initialized ? cfg.hcftype : DEFAULT_HCFTYPE);
 }
 
-static void
-CFG_SET_hcftype (int i)
-{
-	if (!initialized) return;
-
-	cfg.hcftype = i;
-}
-
 bool
 CFG_german_cross (void)
 {
 	return (initialized ? cfg.german_cross : DEFAULT_GERMAN_CROSS);
-}
-
-static void
-CFG_SET_german_cross (bool b)
-{
-	if (!initialized) return;
-
-	cfg.german_cross = b;
 }
 
 GUI_STATE *
@@ -743,6 +1004,81 @@ CFG_gui_state_set (GUI_STATE &state)
 	}
 }
 
+QString
+CFG_gamename (GameCfgIdx idx)
+{
+	QString	unconfigured("UNCONFIGURED GAME");
+
+	if (!initialized) return (unconfigured);
+	if ((idx < 0) || (idx > GAMECFG_CNT)) return (unconfigured);
+	if (!gamecfg[idx].active) return (unconfigured);
+
+	return (gamecfg[idx].name);
+}
+
+SPWAW_GAME_TYPE
+CFG_gametype (GameCfgIdx idx)
+{
+	if (!initialized) return (SPWAW_GAME_TYPE_UNKNOWN);
+	if ((idx < 0) || (idx > GAMECFG_CNT)) return (SPWAW_GAME_TYPE_UNKNOWN);
+	if (!gamecfg[idx].active) return (SPWAW_GAME_TYPE_UNKNOWN);
+
+	return (gamecfg[idx].type);
+}
+
+QString
+CFG_gamepath (GameCfgIdx idx)
+{
+	QString	unconfigured("UNCONFIGURED GAME");
+
+	if (!initialized) return (unconfigured);
+	if ((idx < 0) || (idx > GAMECFG_CNT)) return (unconfigured);
+	if (!gamecfg[idx].active) return (unconfigured);
+
+	return (gamecfg[idx].path);
+}
+
+static void
+CFG_DLG_data_prepare (CfgDlgData &data, bool isfirstrun)
+{
+	data.isfirstrun	= isfirstrun;
+	data.locprf	= cfg.local;
+	data.snp	= cfg.snp_path;
+	data.compress	= cfg.compress;
+	data.autoload	= cfg.autoload;
+	data.fhistory	= cfg.fhistory;
+	data.imode	= intelmode2raw(cfg.intel_mode);
+	data.hcftype	= cfg.hcftype;
+	data.gecross	= cfg.german_cross;
+	data.def_game	= cfg.def_gamecfg_idx;
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		data.games[i].active = gamecfg[i].active;
+		data.games[i].name   = gamecfg[i].name;
+		data.games[i].type   = gamecfg[i].type;
+		data.games[i].path   = gamecfg[i].path;
+	}
+}
+
+static void
+CFG_DLG_data_apply (CfgDlgData &data)
+{
+	cfg.local		= data.locprf;
+	CFG_snp_path_set ((char *)qPrintable (data.snp));
+	cfg.compress		= data.compress;
+	cfg.autoload		= data.autoload;
+	cfg.fhistory		= data.fhistory;
+	cfg.intel_mode		= raw2intelmode(data.imode);
+	cfg.hcftype		= data.hcftype;
+	cfg.german_cross	= data.gecross;
+	cfg.def_gamecfg_idx	=data.def_game;
+	for (int i=0; i<GAMECFG_CNT; i++) {
+		gamecfg[i].active = data.games[i].active;
+		gamecfg[i].name	  = data.games[i].name;
+		gamecfg[i].type	  = data.games[i].type;
+		gamecfg[i].path	  = data.games[i].path;
+	}
+}
+
 bool
 CFG_DLG (bool isfirstrun)
 {
@@ -755,53 +1091,17 @@ CFG_DLG (bool isfirstrun)
 		config_load (storage_global);
 	}
 
-	CfgDlgData	data (
-		isfirstrun,
-		cfg.local,
-		CFG_default_gametype (),
-		CFG_snap_path (),
-		CFG_compress (),
-		CFG_autoload (),
-		CFG_full_history (),
-		intelmode2raw(CFG_intel_mode ()),
-		CFG_hcftype (),
-		CFG_german_cross ()
-	);
+	CfgDlgData data;
 
-	CfgDlgGame	spwaw (
-		SPWAW_GAME_TYPE_SPWAW,
-		SPWAW_gametype2str (SPWAW_GAME_TYPE_SPWAW),
-		CFG_oob_path (SPWAW_GAME_TYPE_SPWAW),
-		CFG_save_path (SPWAW_GAME_TYPE_SPWAW, SPWAW_CAMPAIGN_DOSSIER)
-	);
-	data.add (&spwaw);
-
-	CfgDlgGame	winspww2 (
-		SPWAW_GAME_TYPE_WINSPWW2,
-		SPWAW_gametype2str (SPWAW_GAME_TYPE_WINSPWW2),
-		CFG_oob_path (SPWAW_GAME_TYPE_WINSPWW2),
-		CFG_save_path (SPWAW_GAME_TYPE_WINSPWW2, SPWAW_CAMPAIGN_DOSSIER)
-	);
-	data.add (&winspww2);
+	CFG_DLG_data_prepare (data, isfirstrun);
 
 	dlg = new CfgDlg (&data);
 	rc = dlg->exec ();
 
 	if (rc == QDialog::Accepted) {
-		cfg.local = data.locprf;
-		CFG_SET_default_gametype (data.def_game);
-		CFG_SET_oob_path (SPWAW_GAME_TYPE_SPWAW,    (char *)qPrintable (spwaw.oob));
-		CFG_SET_sve_path (SPWAW_GAME_TYPE_SPWAW,    (char *)qPrintable (spwaw.sve));
-		CFG_SET_oob_path (SPWAW_GAME_TYPE_WINSPWW2, (char *)qPrintable (winspww2.oob));
-		CFG_SET_sve_path (SPWAW_GAME_TYPE_WINSPWW2, (char *)qPrintable (winspww2.sve));
-		CFG_SET_snp_path ((char *)qPrintable (data.snp));
-		CFG_SET_compress (data.compress);
-		CFG_SET_autoload (data.autoload);
-		CFG_SET_full_history (data.fhistory);
-		CFG_SET_intel_mode (raw2intelmode(data.imode));
-		CFG_SET_hcftype (data.hcftype);
-		CFG_SET_german_cross (data.gecross);
-		config_update_oobcfg ();
+		CFG_DLG_data_apply (data);
+		OOBCFG_update();
+		CFG_save();
 	}
 
 	delete dlg;
@@ -809,56 +1109,65 @@ CFG_DLG (bool isfirstrun)
 	return (rc == QDialog::Accepted);
 }
 
-QList<CfgGameType>
-CFG_gametypes (void)
+GameCfgList
+CFG_gamecfg_list (int &def_gamecfg)
 {
-	return (gametypes);
-}
-
-static bool
-savedir_from_oobdir (QString &dir, const char *oobdir, const char *savedir)
-{
-	int	idx;
-
-	idx = dir.lastIndexOf (oobdir, -1, Qt::CaseInsensitive);
-	if (idx != -1) {
-		if (oobdir[0] != '\0') dir.truncate (idx);
-		dir.append (savedir);
-		return (true);
-	}
-	return (false);
+	return (GAMECFG_active_list(def_gamecfg));
 }
 
 bool
-CFG_savedir_from_oobdir (QString &dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type)
+CFG_valid_gamepath (char *dir, SPWAW_GAME_TYPE gametype, bool &path_exists)
 {
-	bool	ok;
+	path_exists = false;
+	if (!dir) return (false);
+	if (!QDir(dir).exists()) return (false);
+	path_exists = true;
 
-	if (dir.isEmpty()) return (false);
+	return (validate_gamedir (dir, gametype));
+}
 
-	ok = savedir_from_oobdir (dir, GOSC_TEST_OOB, GOSC_TEST_SAVE);
-	if (ok) return (true);
+/* This returns a gamedir from an oobdir, even when the actual oobdir doesn't exist */
+QString
+CFG_game_from_oob (char *dir, SPWAW_GAME_TYPE gametype)
+{
+	QString	oobdir, gamedir;
 
-	switch (gametype) {
-		case SPWAW_GAME_TYPE_SPWAW:
-			switch (type) {
-				case SPWAW_MEGACAM_DOSSIER:
-					ok = savedir_from_oobdir (dir, GOSC_SPWAW_OOB, GOSC_SPWAW_MEGACAM);
-					break;
-				default:
-					ok = savedir_from_oobdir (dir, GOSC_SPWAW_OOB, GOSC_SPWAW_SAVE);
-					break;
-			}
-			break;
-		case SPWAW_GAME_TYPE_WINSPWW2:
-			ok = savedir_from_oobdir (dir, GOSC_WINSPWW2_OOB, GOSC_WINSPWW2_SAVE);
-			break;
-		default:
-			ok = false;
-			break;
-	}
+	oobdir = dir;
+	gamedir_from_oobdir (oobdir, gametype, gamedir);
+	return (gamedir);
+}
 
-	return (ok);
+/* This only returns an oobdir from a gamedir if the gamedir exists */
+QString
+CFG_oob_from_game (char *dir, SPWAW_GAME_TYPE gametype)
+{
+	QString	gamedir, oobdir;
+
+	gamedir = dir;
+	oobdir_from_gamedir (gamedir, gametype, oobdir);
+	return (oobdir);
+}
+
+/* This only returns a savedir from a gamedir if the gamedir exists */
+QString
+CFG_save_from_game (char *dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type)
+{
+	QString	gamedir, savedir;
+
+	gamedir = dir;
+	savedir_from_gamedir (gamedir, gametype, type, savedir);
+	return (savedir);
+}
+
+/* This only returns a savedir from an oobdir if the oobidr exists */
+QString
+CFG_save_from_oob (char *dir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_TYPE type)
+{
+	QString	oobdir, savedir;
+
+	oobdir = dir;
+	savedir_from_oobdir (oobdir, gametype, type, savedir);
+	return (savedir);
 }
 
 static void
@@ -873,36 +1182,32 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tapp path            = %s\n", cfg.app_path);
 		SAYSTATE1 ("\tuser data path      = %s\n", cfg.usr_path);
 		SAYSTATE1 ("\tuse local config    = %s\n", cfg.local?"yes":"no");
-		SAYSTATE1 ("\tdefault game type   = %s\n", SPWAW_gametype2str(cfg.def_gametype));
-		SAYSTATE2 ("\tOOB path %-8s   = %s\n", cfg.cfg_spwaw.name, cfg.cfg_spwaw.oob_path);
-		SAYSTATE2 ("\tsaves path %-8s = %s\n", cfg.cfg_spwaw.name, cfg.cfg_spwaw.sve_path);
-		SAYSTATE2 ("\tOOB path %-8s   = %s\n", cfg.cfg_winspww2.name, cfg.cfg_winspww2.oob_path);
-		SAYSTATE2 ("\tsaves path %-8s = %s\n", cfg.cfg_winspww2.name, cfg.cfg_winspww2.sve_path);
 		SAYSTATE1 ("\tsnapshots path      = %s\n", cfg.snp_path);
 		SAYSTATE1 ("\tcompression         = %s\n", cfg.compress?"enabled":"disabled");
 		SAYSTATE1 ("\tautoload            = %s\n", cfg.autoload?"enabled":"disabled");
 		SAYSTATE1 ("\tlast dossier        = %s\n", cfg.lastdoss);
 		SAYSTATE1 ("\tfull history        = %s\n", cfg.fhistory?"enabled":"disabled");
 		SAYSTATE1 ("\tdefault intel mode  = %s\n", intelmode2str (cfg.intel_mode));
-		SAYSTATE1 ("\tdefault hcf type    = %d\n", cfg.hcftype);
+		SAYSTATE1 ("\tdefault hcf type    = %s\n", SMAP_hpmctype2str ((SMAP_HPMC_TYPE)cfg.hcftype));
 		SAYSTATE1 ("\tGerman Cross        = %s\n", cfg.german_cross?"enabled":"disabled");
 		SAYSTATE1 ("\tGUI state           = %u\n", cfg.gui_state.state);
 		SAYSTATE2 ("\tGUI size            = (%d, %d)\n", cfg.gui_state.size->width(), cfg.gui_state.size->height());
 		SAYSTATE2 ("\tGUI position        = (%d, %d)\n", cfg.gui_state.pos->x(), cfg.gui_state.pos->y());
 		if (cfg.gui_state.state_panes->isEmpty()) {
-			SAYSTATE1 ("\tGUI main panes  = %s\n", "empty");
+			SAYSTATE1 ("\tGUI main panes      = %s\n", "empty");
 		} else if (cfg.gui_state.state_panes->isNull()) {
-			SAYSTATE1 ("\tGUI main panes  = %s\n", "NULL");
+			SAYSTATE1 ("\tGUI main panes      = %s\n", "NULL");
 		} else {
-			SAYSTATE1 ("\tGUI main panes  = %d bytes\n", cfg.gui_state.state_panes->size());
+			SAYSTATE1 ("\tGUI main panes      = %d bytes\n", cfg.gui_state.state_panes->size());
 		}
 		if (cfg.gui_state.state_main->isEmpty()) {
-			SAYSTATE1 ("\tGUI main window = %s\n", "empty");
+			SAYSTATE1 ("\tGUI main window     = %s\n", "empty");
 		} else if (cfg.gui_state.state_main->isNull()) {
-			SAYSTATE1 ("\tGUI main window = %s\n", "NULL");
+			SAYSTATE1 ("\tGUI main window     = %s\n", "NULL");
 		} else {
-			SAYSTATE1 ("\tGUI main window = %d bytes\n", cfg.gui_state.state_main->size());
+			SAYSTATE1 ("\tGUI main window     = %d bytes\n", cfg.gui_state.state_main->size());
 		}
+		SAYSTATE1 ("\tdefault gamecfg idx = %d\n", cfg.def_gamecfg_idx);
 	}
 
 	/* extended information */
@@ -912,6 +1217,7 @@ statereport (SL_STDBG_INFO_LEVEL level)
 		SAYSTATE1 ("\tGUI size obj        = 0x%8.8x\n", cfg.gui_state.size);
 		SAYSTATE1 ("\tGUI main panes obj  = 0x%8.8x\n", cfg.gui_state.state_panes);
 		SAYSTATE1 ("\tGUI main window obj = 0x%8.8x\n", cfg.gui_state.state_main);
+		SAYSTATE0 ("\n");
 		SAYSTATE1 ("\tOOBCFG[0] type      = %s\n", SPWAW_gametype2str(oobcfg[0].gametype));
 		SAYSTATE1 ("\tOOBCFG[0] oobdir    = %s\n", oobcfg[0].oobdir);
 		SAYSTATE1 ("\tOOBCFG[1] type      = %s\n", SPWAW_gametype2str(oobcfg[1].gametype));
@@ -923,4 +1229,6 @@ statereport (SL_STDBG_INFO_LEVEL level)
 	}
 
 	SAYSTATE0 ("\n");
+
+	GAMECFG_statereport (level);
 }
