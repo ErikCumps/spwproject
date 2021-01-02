@@ -845,6 +845,7 @@ CFG_shutdown (void)
 	if (cfg.gui_state.state_main)	delete cfg.gui_state.state_main;
 
 	GAMECFG_shutdown();
+	OOBCFG_clear();
 
 	if (cfg.snp_path) SL_SAFE_FREE (cfg.snp_path);
 	if (cfg.lastdoss) SL_SAFE_FREE (cfg.lastdoss);
