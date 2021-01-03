@@ -1,11 +1,54 @@
-Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.0.
+Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.2.
 
-Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
 
 License: GPL V2.
 
 ChangeLog
 ---------
+
+2021-01-3, version 0.8.2
+
+    * New feature - SP:WaW Mega Campaign support
+    It is now possible to track Mega Campaign savegames. Adding a Mega
+    Campaign savegame to a new, empty, dossier will allow War Cabinet to
+    track this file and the savegame will be automatically added to the
+    dossier whenever it changes.
+        + Note: for this tracking to be effective, War Cabinet needs to be
+	  running in the background while playing the Mega Campaign
+        + Note: due to the nature of Mega Campaign gameplay, War Cabinet
+	  does not allow battle and/or turn deletions from a Mega Campaign
+	  dossier.
+
+    * New feature - read-only mode
+    War Cabinet tracks the original savegame folder used with a dossier.
+    When a dossier is loaded for which the original savegame folder can no
+    longer be found, the dossier will be opened in read-only mode and it
+    will not be possible to make any additions or deletions to it.
+
+    * Improvement - simplified game configuration
+    The game configuration in the preferences has been simplified. Only the
+    game folder must be configured, it is no longer necessary to configure
+    both the OOB and the savegames folders separately.
+
+    * Improvement - improved game configuration
+    The game configuration in the preferences has been improved. War Cabinet
+    now supports up to four different game configurations, each consisting
+    of a game type and a game folder. The configurations also have a name
+    for easier reference in the New dossier dialog box. Previously, War
+    Cabinet only supported a single game configuration for an SP:WaW game
+    and a single game configuration for a winSPWW2 game.
+
+    * Improvement - require dossier file overwrite confirmation
+    If you use the same name as an existing dossier file while saving a
+    dossier, you will be prompted to confirm overwriting the existing
+    dossier.
+
+    * Fix - incorrect winSPWW2 battle losses reporting
+    The campaign and battle losses recorded in the winSPWW2 savegame were
+    incorrectly decoded.
+
+    * Fix - fixed some crashes and memory corruptions/leaks
 
 2020-07-20, version 0.8.1
 
