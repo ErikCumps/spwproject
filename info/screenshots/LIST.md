@@ -1,6 +1,21 @@
 # Screenshots
 _Various screenshots, sorted from newer to older..._
 
+* **preferences_20210103:**
+![preferences_20210103](preferences_20210103.png?raw=true "preferences_20210103")
+
+* **preferences_incomplete_or_incorrect_20210103:**
+![preferences_incomplete_or_incorrect_20210103](preferences_incomplete_or_incorrect_20210103.png?raw=true "preferences_incomplete_or_incorrect_20210103")
+
+* **dialog_start_megacampaign_savegame_tracking_20210103:**
+![dialog_start_megacampaign_savegame_tracking_20210103](dialog_start_megacampaign_savegame_tracking_20210103.png?raw=true "dialog_start_megacampaign_savegame_tracking_20210103")
+
+* **dialog_new_dossier_20210103:**
+![dialog_new_dossier_20210103](dialog_new_dossier_20210103.png?raw=true "dialog_new_dossier_20210103")
+
+* **dialog_load_dossier_20210103:**
+![dialog_load_dossier_20210103](dialog_load_dossier_20210103.png?raw=true "dialog_load_dossier_20210103")
+
 * **battle_mmas_kills_armor_20200620:**
 ![battle_mmas_kills_armor_20200620](battle_mmas_kills_armor_20200620.png?raw=true "battle_mmas_kills_armor_20200620")
 
@@ -24,9 +39,6 @@ _Various screenshots, sorted from newer to older..._
 
 * **context_menu_standalone_battle_20200620:**
 ![context_menu_standalone_battle_20200620](context_menu_standalone_battle_20200620.png?raw=true "context_menu_standalone_battle_20200620")
-
-* **dialog_load_dossier_20200620:**
-![dialog_load_dossier_20200620](dialog_load_dossier_20200620.png?raw=true "dialog_load_dossier_20200620")
 
 * **dossier_mmas_kills_20200620:**
 ![dossier_mmas_kills_20200620](dossier_mmas_kills_20200620.png?raw=true "dossier_mmas_kills_20200620")
@@ -54,9 +66,6 @@ _Various screenshots, sorted from newer to older..._
 
 * **plot_campaign_losses_20200620:**
 ![plot_campaign_losses_20200620](plot_campaign_losses_20200620.png?raw=true "plot_campaign_losses_20200620")
-
-* **preferences_20200620:**
-![preferences_20200620](preferences_20200620.png?raw=true "preferences_20200620")
 
 * **standalone_dossier_overview_20200620:**
 ![standalone_dossier_overview_20200620](standalone_dossier_overview_20200620.png?raw=true "standalone_dossier_overview_20200620")
