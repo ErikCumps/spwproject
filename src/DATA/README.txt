@@ -1,4 +1,4 @@
-Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.2.
+Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.3.
 
 Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
 
