@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration handling.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -866,8 +866,6 @@ CFG_needsreview (bool &isfirstrun)
 bool
 CFG_iscomplete (void)
 {
-	if (cfg.def_gamecfg_idx == GAMECFG_IDX_NOT_SET) return (false);
-
 	return (GAMECFG_active_count() != 0);
 }
 
