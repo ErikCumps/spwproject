@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main window.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -583,7 +583,6 @@ GuiMainWindow::action_game_add_campaign_savegame (void)
 	if (!dossier) return;
 
 	savedir = WARCAB->get_savedir(SPWAW_CAMPAIGN_DOSSIER);
-	savedir.clear();
 	if (savedir.isEmpty()) {
 		QString body(STR_NOSAVEDIR_BODY);
 		GUI_msgbox (MSGBOX_WARNING, STR_AGACS_NOSAVEDIR_TITLE, body.arg(WARCAB->get_gamepath()));
