@@ -319,6 +319,11 @@ GuiMainWindow::action_app_prefs (void)
 
 	if (CFG_DLG (false)) {
 		while (1) {
+			if (!CFG_iscomplete(true)) {
+				CFG_DLG (false);
+				continue;
+			}
+
 			SPWAW_OOBCFG	*oobcfg_ptr = NULL;
 			int		oobcfg_cnt = 0;
 			CFG_oobcfg (&oobcfg_ptr, &oobcfg_cnt);

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration dialog.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -66,17 +66,25 @@ public:
 	struct s_data {
 		STATUS		status;
 		QGroupBox	*box;
-		QColor		def_status;
-		QColor		red_status;
 		QGridLayout	*layout;
 		QLabel		*name_label;
 		QLineEdit	*name_edit;
+		QColor		name_def_status;
+		QColor		name_hlt_status;
 		QLabel		*type_label;
 		QComboBox	*type_select;
+		QColor		type_def_status;
+		QColor		type_hlt_status;
 		QLabel		*path_label;
 		QLineEdit	*path_edit;
+		QColor		path_def_status;
+		QColor		path_hlt_status;
 		QPushButton	*path_browse;
 	} d;
+
+private:
+	void	unhighlight	(void);
+	void	highlight	(bool needs_name, bool needs_type, bool needs_path, bool path_not_found, bool invalid_path);
 };
 
 class CfgDlg	: public QDialog

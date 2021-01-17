@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration handling.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@ extern SL_ERROR		CFG_init		(void);
 extern void		CFG_shutdown		(void);
 
 extern bool		CFG_needsreview		(bool &isfirstrun);
-extern bool		CFG_iscomplete		(void);
+extern bool		CFG_iscomplete		(bool msgbox);
 extern bool		CFG_oobcfg		(SPWAW_OOBCFG **list, int *cnt);
 
 extern char *		CFG_cwd_path		(void);

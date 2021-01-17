@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application initialization.
  *
- * Copyright (C) 2005-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -96,16 +96,7 @@ init_app (SL_APP_INFO *info)
 
 	DBG_log ("verifying configuration completeness\n");
 	while (1) {
-		if (CFG_iscomplete()) break;
-
-		HANDLE_ERR_FUNCTION_EX (SL_ERR_FATAL_SOFTERR,
-			"The application preferences are incomplete!\n"
-			"Select <retry> to review the application preferences and try again.\n",
-			ERR_CFG_INCOMPLETE,
-			NULL, NULL, req);
-		if (req != SL_ERR_REQUEST_RETRY) {
-			SL_DIE (SL_EXIT_FATAL_ERROR, "This application preferences completeness error could not be ignored!");
-		}
+		if (CFG_iscomplete(true)) break;
 		CFG_DLG(false);
 	}
 

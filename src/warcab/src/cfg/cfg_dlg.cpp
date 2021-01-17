@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - configuration dialog.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,16 +12,17 @@
 #include "cfg_dlg.h"
 
 #define	BOX_WIDTH	600
-#define	BOX_HEIGHT	600
+#define	BOX_HEIGHT	630
 #define	BOX_MARGIN	 10
 
-#define	STR_LOCPRF_TOOLTIP	"Store preferences locally."
-#define	STR_LOCPRF_WHATSTHIS							\
+#define	STR_LOCPRF_NAME			"Store preferences locally:"
+#define	STR_LOCPRF_TOOLTIP							\
 	"Select this to store the preferences locally in a \"warcab.ini\"\n"	\
 	"file, allowing installations to have their own preferences.\n"		\
 	"\n"									\
 	"Disable this to store the preferences globally in the registry,\n"	\
-	"so that they can be shared between different installations.\n"
+	"so that they can be shared between different installations."
+#define	STR_LOCPRF_WHATSTHIS		STR_LOCPRF_TOOLTIP
 #define	STR_LOCPRF_OVERWRITE							\
 	"Unchecking the \"Store preferences locally\" checkbox will\n"		\
 	"cause any existing global preferences to be overwritten\n"		\
@@ -30,69 +31,111 @@
 	"If this is not desired, please select <Cancel> to revert\n"		\
 	"to storing the preferences locally...\n"
 
-#define	STR_SNP_TOOLTIP		"Configure the Warcab saves folder."
-#define	STR_SNP_WHATSTHIS1	"This is the folder where warcab saves dossiers and stratmap images."
-#define	STR_SNP_WHATSTHIS2	"Press this button to browse to the Warcab save folder."
-#define	STR_SNP_BROWSE		"Specify the Warcab saves folder:"
+#define	STR_SNP_NAME			"Dossier saves folder:"
+#define	STR_SNP_TOOLTIP								\
+	"Specify the folder where dossiers and stratmap images should be saved."
+#define	STR_SNP_WHATSTHIS1		STR_SNP_TOOLTIP
+#define	STR_SNP_WHATSTHIS2		STR_SNP_TOOLTIP
+#define	STR_SNP_BROWSE			"Specify the dossier saves folder:"
 
-#define	STR_COMPRESS_TOOLTIP		"Configure dossier compression."
-#define	STR_COMPRESS_WHATSTHIS							\
-	"Select this to enable compression when saving files.\n"		\
-	"Disable this if you would like easier file inspection\n"		\
-	"of *.warcab files."
+#define	STR_COMPRESS_NAME		"Dossier compression:"
+#define	STR_COMPRESS_TOOLTIP							\
+	"Select this to enable compression when saving dossier files.\n"	\
+	"\n"									\
+	"Disable this to allow easier file inspection of *.warcab files."
+#define	STR_COMPRESS_WHATSTHIS		STR_COMPRESS_TOOLTIP
 
-#define	STR_AUTOLOAD_TOOLTIP		"Configure reloading last dossier at startup."
-#define	STR_AUTOLOAD_WHATSTHIS							\
-	"Select this to automatically reload the last open dossier at\n"	\
-	"startup. Disable this if you would like to start Warcab with\n"	\
-	"no open dossier."
+#define	STR_AUTOLOAD_NAME		"Dossier autoload:"
+#define	STR_AUTOLOAD_TOOLTIP							\
+	"Select this to load the last opened dossier at startup.\n"		\
+	"\n"									\
+	"Disable this to start without reloading the last dossier."
+#define	STR_AUTOLOAD_WHATSTHIS		STR_AUTOLOAD_TOOLTIP
 
-#define	STR_FULL_HISTORY_TOOLTIP	"Configure campaign history mode."
-#define	STR_FULL_HISTORY_WHATSTHIS						\
+#define	STR_FULL_HISTORY_NAME		"Full campaign history:"
+#define	STR_FULL_HISTORY_TOOLTIP						\
 	"Select this to enable full campaign history, which also shows\n"	\
 	"data for decommissioned units on the following Dossier tabs:\n"	\
-	"Overview, Status, Progress, Kills, Losses, Roster and History."
+	"Overview, Status, Progress, Kills, Losses, Roster and History.\n"	\
+	"\n"									\
+	"Disable this to hide this data for decommisioned units."
+#define	STR_FULL_HISTORY_WHATSTHIS	STR_FULL_HISTORY_TOOLTIP
 
 #define	STR_IMODE_NAME			"Default intel mode:"
-#define	STR_IMODE_TOOLTIP		"Configure the default intel mode."
-#define	STR_IMODE_WHATSTHIS		"This sets the default intel mode."
+#define	STR_IMODE_TOOLTIP		"Choose the default intel mode."
+#define	STR_IMODE_WHATSTHIS		STR_IMODE_TOOLTIP
 
-#define	STR_HCFTYPE_NAME		"Default strategic map height colorfield type:"
-#define	STR_HCFTYPE_TOOLTIP		"Configure the default strategic map height colorfield type."
-#define	STR_HCFTYPE_WHATSTHIS		"This sets the default height colorfield type for the strategic map."
+#define	STR_HCFTYPE_NAME		"Default strategic map colorfield:"
+#define	STR_HCFTYPE_TOOLTIP		"Choose the default strategic map height colorfield type."
+#define	STR_HCFTYPE_WHATSTHIS		STR_HCFTYPE_TOOLTIP
 
-#define	STR_GERMAN_CROSS_TOOLTIP	"Configure German Cross flag."
-#define	STR_GERMAN_CROSS_WHATSTHIS						\
+#define	STR_GERMAN_CROSS_NAME		"German Cross flag:"
+#define	STR_GERMAN_CROSS_TOOLTIP						\
 	"Select this if you do not want War Cabinet to display the\n"		\
 	"historic German Flag from WWII for personal reasons or to\n"		\
-	"satisfy the requirements of German Law."
+	"satisfy the requirements of German Law.\n"				\
+	"\n"									\
+	"Disable this to display the historic German Flag from WWII."
+#define	STR_GERMAN_CROSS_WHATSTHIS	STR_GERMAN_CROSS_TOOLTIP
 
-#define	STR_DG_NAME		"Default game config:"
-#define	STR_DG_TOOLTIP		"Configure the default game config."
-#define	STR_DG_WHATSTHIS	"This sets the default game config for new dossiers."
+#define	STR_DG_NAME			"Default game config:"
+#define	STR_DG_TOOLTIP			"Choose the default game config for new dossiers."
+#define	STR_DG_WHATSTHIS		STR_DG_TOOLTIP
 
-#define	STR_GAMENAME_NAME	"Name:"
-#define	STR_GAMENAME_TOOLTIP	"Configure a name for this game config."
-#define	STR_GAMENAME_WHATSTHIS	"This should be a unique name to identify this game config."
+#define	STR_GAMECFG_NAME		"Game config #%1"
 
-#define	STR_GAMETYPE_NAME	"Type:"
-#define	STR_GAMETYPE_TOOLTIP	"Configure the game type of this game config."
-#define	STR_GAMETYPE_WHATSTHIS	"This sets the game type of this game config."
+#define	STR_GAMENAME_NAME		"Name:"
+#define	STR_GAMENAME_TOOLTIP		"Specify a (preferaby unique) name."
+#define	STR_GAMENAME_WHATSTHIS		STR_GAMENAME_TOOLTIP
 
-#define	STR_GAMEPATH_NAME	"Path:"
-#define	STR_GAMEPATH_TOOLTIP	"Configure the game folder of this game config."
-#define	STR_GAMEPATH_WHATSTHIS1	"This sets the installation folder of the game of this game config."
-#define	STR_GAMEPATH_WHATSTHIS2	"Press this button to browse to an installation folder of a supported game."
-#define	STR_GAMEPATH_BROWSE	"Specify the installation folder of a supported game:"
+#define	STR_GAMETYPE_NAME		"Type:"
+#define	STR_GAMETYPE_TOOLTIP		"Specify the game type."
+#define	STR_GAMETYPE_WHATSTHIS		STR_GAMETYPE_TOOLTIP
 
-#define	STR_GAME_PARTIAL							\
-	"This game configuration is highlighted in red,\n"			\
-	"because not all of its fields are filled in."
+#define	STR_GAMEPATH_NAME		"Installation:"
+#define	STR_GAMEPATH_TOOLTIP							\
+	"Specify the installation folder of a supported game.\n"		\
+	"\n"									\
+	"Some examples:\n"							\
+	"    \"E:\\games\\war\\SPWaW\\\"\n"					\
+	"    \"E:\\games\\war\\winSPWW2\\\""
+#define	STR_GAMEPATH_WHATSTHIS1		STR_GAMEPATH_TOOLTIP
+#define	STR_GAMEPATH_WHATSTHIS2		STR_GAMEPATH_TOOLTIP
+#define	STR_GAMEPATH_BROWSE		"Specify the installation folder of a supported game:"
 
-#define	STR_GAME_INVALID							\
-	"This game configuration is highlighted in red,\n"			\
-	"because the folder does not contain a game of\n"			\
-	"the selected game type."
+#define	STR_GAME_HLT_MISSING_NAME						\
+	"\n\n"									\
+	"This field is highlighted in red, because it is\n"			\
+	"still empty, but some other fields for this\n"				\
+	"game config are already filled in."
+
+#define	STR_GAME_HLT_MISSING_TYPE						\
+	"\n\n"									\
+	"This combo box is highlighted in red, because\n"			\
+	"no choice is made, but some fields for this\n"				\
+	"game config are already filled in."
+
+#define	STR_GAME_HLT_MISSING_PATH						\
+	"\n\n"									\
+	"This field is highlighted in red, because it is still\n"		\
+	"empty, but some other fields for this game config\n"			\
+	"are already filled in."
+
+#define	STR_GAME_HLT_NOTFOUND							\
+	"\n\n"									\
+	"This field is highlighted in red, because this folder\n"		\
+	"can not be found."
+
+#define	STR_GAME_HLT_INVALID_PATH						\
+	"\n\n"									\
+	"This field is highlighted in red, because this folder\n"		\
+	"does not contain a game of the specified game type."
+
+#define	STR_GAME_HLT_INVALID_TYPE						\
+	"\n\n"									\
+	"This combo box is highlighted in red, because the\n"			\
+	"specified installation folder does not contain a game\n"		\
+	"of this game type."
 
 CfgDlgDataGame::CfgDlgDataGame (void)
 {
@@ -106,13 +149,89 @@ CfgDlgGuiGame::CfgDlgGuiGame (void)
 	d.status = EMPTY;
 }
 
+static inline void
+set_color (QWidget *w, QColor c, QPalette::ColorRole r)
+{
+	if (!w) return;
+
+	QPalette p = w->palette();
+	p.setColor(r, c);
+	w->setPalette(p);
+}
+
+void
+CfgDlgGuiGame::unhighlight (void)
+{
+	QColor	color;
+
+	color = d.name_def_status;
+	set_color (d.name_edit, color, QPalette::Base);
+	d.name_edit->setToolTip (QString(STR_GAMENAME_TOOLTIP));
+	d.name_edit->setWhatsThis (QString(STR_GAMENAME_WHATSTHIS));
+
+	color = d.type_def_status;
+	set_color (d.type_select, color, QPalette::Text);
+	d.type_select->setToolTip (QString(STR_GAMETYPE_TOOLTIP));
+	d.type_select->setWhatsThis (QString(STR_GAMETYPE_WHATSTHIS));
+
+	color = d.path_def_status;
+	set_color (d.path_edit, color, QPalette::Base);
+	d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP));
+	d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1));
+}
+
+void
+CfgDlgGuiGame::highlight (bool needs_name, bool needs_type, bool needs_path, bool path_not_found, bool invalid_path)
+{
+	QColor	color;
+
+	color = needs_name ? d.name_hlt_status : d.name_def_status;
+	set_color (d.name_edit, color, QPalette::Base);
+	if (needs_name) {
+		d.name_edit->setToolTip (QString(STR_GAMENAME_TOOLTIP STR_GAME_HLT_MISSING_NAME));
+		d.name_edit->setWhatsThis (QString(STR_GAMENAME_WHATSTHIS STR_GAME_HLT_MISSING_NAME));
+	} else {
+		d.name_edit->setToolTip (QString(STR_GAMENAME_TOOLTIP));
+		d.name_edit->setWhatsThis (QString(STR_GAMENAME_WHATSTHIS));
+	}
+
+	color = (needs_type || invalid_path) ? d.type_hlt_status : d.type_def_status;
+	set_color (d.type_select, color, QPalette::Text);
+	if (needs_type) {
+		d.type_select->setToolTip (QString(STR_GAMETYPE_TOOLTIP STR_GAME_HLT_MISSING_TYPE));
+		d.type_select->setWhatsThis (QString(STR_GAMETYPE_WHATSTHIS STR_GAME_HLT_MISSING_TYPE));
+	} else if (invalid_path) {
+		d.type_select->setToolTip (QString(STR_GAMETYPE_TOOLTIP STR_GAME_HLT_INVALID_TYPE));
+		d.type_select->setWhatsThis (QString(STR_GAMETYPE_WHATSTHIS STR_GAME_HLT_INVALID_TYPE));
+	} else {
+		d.type_select->setToolTip (QString(STR_GAMETYPE_TOOLTIP));
+		d.type_select->setWhatsThis (QString(STR_GAMETYPE_WHATSTHIS));
+	}
+
+	color = (needs_path || path_not_found || invalid_path) ? d.path_hlt_status : d.path_def_status;
+	set_color (d.path_edit, color, QPalette::Base);
+	if (needs_path) {
+		d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP STR_GAME_HLT_MISSING_PATH));
+		d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1 STR_GAME_HLT_MISSING_PATH));
+	} else if (path_not_found) {
+		d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP STR_GAME_HLT_NOTFOUND));
+		d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1 STR_GAME_HLT_NOTFOUND));
+	} else if (invalid_path) {
+		d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP STR_GAME_HLT_INVALID_PATH));
+		d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1 STR_GAME_HLT_INVALID_PATH));
+	} else {
+		d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP));
+		d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1));
+	}
+}
+
 void
 CfgDlgGuiGame::update_status (void)
 {
 	QString		name;
 	SPWAW_GAME_TYPE	type;
 	QString		path;
-	bool		complete, b;
+	bool		complete, path_exists, valid;
 
 	name = d.name_edit->text().replace('/', '\\');
 	type =(SPWAW_GAME_TYPE)d.type_select->currentIndex();
@@ -120,31 +239,22 @@ CfgDlgGuiGame::update_status (void)
 
 	if (name.isEmpty() && (type == SPWAW_GAME_TYPE_UNKNOWN) && path.isEmpty()) {
 		d.status = EMPTY;
-		d.box->setPalette(d.def_status);
-		d.box->setToolTip ("");
-		d.box->setWhatsThis ("");
+		unhighlight ();
 		return;
 	}
 
 	complete = (!name.isEmpty() && (type != SPWAW_GAME_TYPE_UNKNOWN) && !path.isEmpty());
+	valid = CFG_valid_gamepath ((char *)qPrintable(path), type, path_exists);
+
 	if (!complete) {
 		d.status = PARTIAL;
-		d.box->setPalette(d.red_status);
-		d.box->setToolTip (STR_GAME_PARTIAL);
-		d.box->setWhatsThis (STR_GAME_PARTIAL);
-		return;
-	}
-
-	if (CFG_valid_gamepath ((char *)qPrintable(path), type, b)) {
-		d.status = CORRECT;
-		d.box->setPalette(d.def_status);
-		d.box->setToolTip ("");
-		d.box->setWhatsThis ("");
-	} else {
+		highlight (name.isEmpty(), type == SPWAW_GAME_TYPE_UNKNOWN, path.isEmpty(), !path_exists, !valid);
+	} else if (!valid) {
 		d.status = COMPLETE;
-		d.box->setPalette(d.red_status);
-		d.box->setToolTip (STR_GAME_INVALID);
-		d.box->setWhatsThis (STR_GAME_INVALID);
+		highlight (false, false, false, !path_exists, true);
+	} else {
+		d.status = CORRECT;
+		highlight (false, false, false, false, false);
 	}
 }
 
@@ -265,7 +375,7 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	}
 
 	/* Add spacer */
-	d.layout->setRowStretch (row, 1);
+	d.layout->setRowStretch (row, 2);
 	row++;
 
 	/* Finish dialog tab order */
@@ -287,7 +397,7 @@ void
 CfgDlg::create_locprf (int &row, QWidget* &tcw)
 {
 	d.locprf_label = new QLabel (d.body);
-	d.locprf_label->setText ("Store preferences locally:");
+	d.locprf_label->setText (STR_LOCPRF_NAME);
 	d.locprf_label->setToolTip (STR_LOCPRF_TOOLTIP);
 
 	d.locprf_edit = new QCheckBox (d.body);
@@ -308,7 +418,7 @@ void
 CfgDlg::create_snp (int &row, QWidget* &tcw)
 {
 	d.snp_label = new QLabel (d.body);
-	d.snp_label->setText ("Warcab saves folder:");
+	d.snp_label->setText (STR_SNP_NAME);
 	d.snp_label->setToolTip (STR_SNP_TOOLTIP);
 
 	d.snp_edit = new QLineEdit (d.body);
@@ -338,7 +448,7 @@ void
 CfgDlg::create_compress (int &row, QWidget* &tcw)
 {
 	d.compress_label = new QLabel (d.body);
-	d.compress_label->setText ("Dossier compression:");
+	d.compress_label->setText (STR_COMPRESS_NAME);
 	d.compress_label->setToolTip (STR_COMPRESS_TOOLTIP);
 
 	d.compress_edit = new QCheckBox (d.body);
@@ -357,7 +467,7 @@ void
 CfgDlg::create_autoload (int &row, QWidget* &tcw)
 {
 	d.autoload_label = new QLabel (d.body);
-	d.autoload_label->setText ("Dossier autoload:");
+	d.autoload_label->setText (STR_AUTOLOAD_NAME);
 	d.autoload_label->setToolTip (STR_AUTOLOAD_TOOLTIP);
 
 	d.autoload_edit = new QCheckBox (d.body);
@@ -376,7 +486,7 @@ void
 CfgDlg::create_fhistory (int &row, QWidget* &tcw)
 {
 	d.fhistory_label = new QLabel (d.body);
-	d.fhistory_label->setText ("Full campaign history:");
+	d.fhistory_label->setText (STR_FULL_HISTORY_NAME);
 	d.fhistory_label->setToolTip (STR_FULL_HISTORY_TOOLTIP);
 
 	d.fhistory_edit = new QCheckBox (d.body);
@@ -441,7 +551,7 @@ void
 CfgDlg::create_gecross (int &row, QWidget* &tcw)
 {
 	d.gecross_label = new QLabel (d.body);
-	d.gecross_label->setText ("German Cross flag:");
+	d.gecross_label->setText (STR_GERMAN_CROSS_NAME);
 	d.gecross_label->setToolTip (STR_GERMAN_CROSS_TOOLTIP);
 
 	d.gecross_edit = new QCheckBox (d.body);
@@ -483,12 +593,9 @@ CfgDlg::create_gui_game (int &row, int idx, QWidget* &tcw)
 	CfgDlgGuiGame *gg = &(o.gui_games[idx]);
 
 	gg->d.box = new QGroupBox (d.body);
-	gg->d.box->setAutoFillBackground (true);
+	gg->d.box->setTitle (QString(STR_GAMECFG_NAME).arg(idx+1));
 	d.layout->addWidget (gg->d.box, row, 0, 1, 3);
 	row++;
-
-	gg->d.def_status = gg->d.box->palette().color(QPalette::Window);
-	gg->d.red_status = *RES_color(RID_RGB_RED);
 
 	gg->d.name_label = new QLabel (gg->d.box);
 	gg->d.name_label->setText (QString(STR_GAMENAME_NAME));
@@ -499,6 +606,10 @@ CfgDlg::create_gui_game (int &row, int idx, QWidget* &tcw)
 	gg->d.name_edit->setToolTip (QString(STR_GAMENAME_TOOLTIP));
 	gg->d.name_edit->setWhatsThis (QString(STR_GAMENAME_WHATSTHIS));
 	gg->d.name_edit->setProperty ("index", idx);
+	gg->d.name_edit->setAutoFillBackground (true);
+
+	gg->d.name_def_status = gg->d.name_edit->palette().color(QPalette::Base);
+	gg->d.name_hlt_status = *RES_color(RID_RGB_RED);
 
 	gg->d.type_label = new QLabel (gg->d.box);
 	gg->d.type_label->setText (STR_GAMETYPE_NAME);
@@ -510,12 +621,16 @@ CfgDlg::create_gui_game (int &row, int idx, QWidget* &tcw)
 	gg->d.type_select->setWhatsThis (STR_GAMETYPE_WHATSTHIS);
 	for (int t=0; t<SPWAW_GAME_TYPE_CNT; t++) {
 		if (t == SPWAW_GAME_TYPE_UNKNOWN) {
-			gg->d.type_select->addItem ("");
+			gg->d.type_select->addItem ("-- please choose --");
 		} else {
 			gg->d.type_select->addItem (QString(SPWAW_gametype2str((SPWAW_GAME_TYPE)t)));
 		}
 	}
 	gg->d.type_select->setProperty ("index", idx);
+
+	gg->d.type_def_status = gg->d.type_select->palette().color(QPalette::Text);
+	gg->d.type_hlt_status = *RES_color(RID_RGB_DRKRED);
+
 
 	gg->d.path_label = new QLabel (gg->d.box);
 	gg->d.path_label->setText (QString(STR_GAMEPATH_NAME));
@@ -526,6 +641,10 @@ CfgDlg::create_gui_game (int &row, int idx, QWidget* &tcw)
 	gg->d.path_edit->setToolTip (QString(STR_GAMEPATH_TOOLTIP));
 	gg->d.path_edit->setWhatsThis (QString(STR_GAMEPATH_WHATSTHIS1));
 	gg->d.path_edit->setProperty ("index", idx);
+	gg->d.path_edit->setAutoFillBackground (true);
+
+	gg->d.path_def_status = gg->d.path_edit->palette().color(QPalette::Base);
+	gg->d.path_hlt_status = *RES_color(RID_RGB_RED);
 
 	gg->d.path_browse = new QPushButton (gg->d.box);
 	gg->d.path_browse->setText ("...");

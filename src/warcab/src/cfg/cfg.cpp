@@ -863,10 +863,25 @@ CFG_needsreview (bool &isfirstrun)
 	return (b);
 }
 
+#define	STR_INCOMPLETE_TITLE	"Incomplete application preferences!"
+
+#define	STR_INCOMPLETE_BODY						\
+	"The application preferences are incomplete: at least<br>"	\
+	"one game configuration should be correctly filled in<br>"	\
+	"with no fields highlighted in red.<br>"			\
+	"<br>"								\
+	"Please review the application preferences."
+
 bool
-CFG_iscomplete (void)
+CFG_iscomplete (bool msgbox)
 {
-	return (GAMECFG_active_count() != 0);
+	bool	b = GAMECFG_active_count() != 0;
+
+	if (!b && msgbox) {
+		GUI_msgbox (MSGBOX_WARNING, STR_INCOMPLETE_TITLE, STR_INCOMPLETE_BODY);
+	}
+
+	return (b);
 }
 
 bool
