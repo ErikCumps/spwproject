@@ -461,12 +461,12 @@ static void
 config_load_game_spwaw (QSettings *storage, GAMECFG &cfg)
 {
 	QVariant	data;
-	QString		gamedir;
+
+	data = storage->value ("OobPathSPWAW");
+	if (data.isNull()) return;
 
 	cfg.type = SPWAW_GAME_TYPE_SPWAW;
 	cfg.name = QString ("My %1 game").arg(SPWAW_gametype2str (cfg.type));
-
-	data = storage->value ("OobPathSPWAW");
 	if (!gamedir_from_oobdir (data.toString(), cfg.type, cfg.path)) return;
 
 	cfg.active = validate_gamedir (cfg.path, cfg.type);
@@ -477,10 +477,11 @@ config_load_game_winspww2 (QSettings *storage, GAMECFG &cfg)
 {
 	QVariant	data;
 
+	data = storage->value ("OobPathWINSPWW2");
+	if (data.isNull()) return;
+
 	cfg.type = SPWAW_GAME_TYPE_WINSPWW2;
 	cfg.name = QString ("My %1 game").arg(SPWAW_gametype2str (cfg.type));
-
-	data = storage->value ("OobPathWINSPWW2");
 	if (!gamedir_from_oobdir (data.toString(), cfg.type, cfg.path)) return;
 
 	cfg.active = validate_gamedir (cfg.path, cfg.type);
