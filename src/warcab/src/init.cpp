@@ -92,12 +92,11 @@ init_app (SL_APP_INFO *info)
 				QMessageBox::Ok, QMessageBox::Ok);
 		}
 		CFG_DLG(initial);
-	}
-
-	DBG_log ("verifying configuration completeness\n");
-	while (1) {
-		if (CFG_iscomplete(true)) break;
-		CFG_DLG(false);
+	} else {
+		DBG_log ("verifying configuration completeness\n");
+		if (!CFG_iscomplete(true)) {
+			CFG_DLG(false);
+		}
 	}
 
 	DBG_log ("initializing SPWAW library\n");

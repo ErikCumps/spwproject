@@ -865,13 +865,17 @@ CFG_needsreview (bool &isfirstrun)
 }
 
 #define	STR_INCOMPLETE_TITLE	"Incomplete application preferences!"
-
-#define	STR_INCOMPLETE_BODY						\
-	"The application preferences are incomplete: at least<br>"	\
-	"one game configuration should be correctly filled in<br>"	\
-	"with no fields highlighted in red.<br>"			\
-	"<br>"								\
-	"Please review the application preferences."
+#define	STR_INCOMPLETE_BODY							\
+	"The application preferences are incomplete.<br>"			\
+	"<br>"									\
+	"In order to be able to create new dossiers, at least one<br>"		\
+	"game configuration slot should be filled in correctly (with<br>"	\
+	"no fields highlighted in red).<br>"					\
+	"<br>"									\
+	"Press &lt;Review&gt; to review the applicaton preferences, or<br>"	\
+	"&lt;Continue&gt; to continue without creating a new dossier.<br>"
+#define	STR_INCOMPLETE_OK	"&Review"
+#define	STR_INCOMPLETE_CANCEL	"&Continue"
 
 bool
 CFG_iscomplete (bool msgbox)
@@ -879,7 +883,12 @@ CFG_iscomplete (bool msgbox)
 	bool	b = GAMECFG_active_count() != 0;
 
 	if (!b && msgbox) {
-		GUI_msgbox (MSGBOX_WARNING, STR_INCOMPLETE_TITLE, STR_INCOMPLETE_BODY);
+		int rc = GUI_msgbox (MSGBOX_CONFIRM,
+			STR_INCOMPLETE_TITLE,
+			STR_INCOMPLETE_BODY,
+			STR_INCOMPLETE_OK,
+			STR_INCOMPLETE_CANCEL);
+		b = (rc != QDialog::Accepted);
 	}
 
 	return (b);
@@ -1117,6 +1126,7 @@ CFG_DLG (bool isfirstrun)
 		CFG_DLG_data_apply (data);
 		OOBCFG_update();
 		CFG_save();
+		if (!CFG_iscomplete(true)) CFG_DLG(false);
 	}
 
 	delete dlg;
