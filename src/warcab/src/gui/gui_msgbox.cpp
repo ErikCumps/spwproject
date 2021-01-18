@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - simple message dialog box.
  *
- * Copyright (C) 2017-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2017-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,7 +16,7 @@
 #include <builtin/windows_icon_warning.xpm>
 #include <builtin/windows_icon_critical.xpm>
 
-GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg)
+GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg, char *ok, char *cancel)
 	: QDialog (0, Qt::Dialog)
 {
 	/* Initialize */
@@ -83,12 +83,20 @@ GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg)
 
 	/* Create and add buttons */
 	d.but_ok = new QPushButton (d.dlg_buttons);
-	d.but_ok->setText ("&Ok");
+	if (ok) {
+		d.but_ok->setText (ok);
+	} else {
+		d.but_ok->setText ("&Ok");
+	}
 	d.but_ok->setDefault (true);
 
 	/* Create and add buttons */
 	d.but_cancel = new QPushButton (d.dlg_buttons);
-	d.but_cancel->setText ("&Cancel");
+	if (cancel) {
+		d.but_cancel->setText (cancel);
+	} else {
+		d.but_cancel->setText ("&Cancel");
+	}
 	d.but_cancel->setDefault (true);
 
 	/* Add buttons to button box */
@@ -97,7 +105,11 @@ GuiMsgbox::GuiMsgbox (MSGBOX_TYPE type, char *title, char *msg)
 		case MSGBOX_WARNING:
 		case MSGBOX_INFO:
 			d.dlg_buttons->addButton (d.but_ok, QDialogButtonBox::AcceptRole);
-			d.but_cancel->hide();
+			if (cancel) {
+				d.dlg_buttons->addButton (d.but_cancel, QDialogButtonBox::RejectRole);
+			} else {
+				d.but_cancel->hide();
+			}
 			break;
 		case MSGBOX_CONFIRM:
 			d.dlg_buttons->addButton (d.but_ok, QDialogButtonBox::AcceptRole);
@@ -134,13 +146,13 @@ GuiMsgbox::clicked_cancel (bool)
 
 
 int
-GUI_msgbox (MSGBOX_TYPE type, char *title, char *msg)
+GUI_msgbox (MSGBOX_TYPE type, char *title, char *msg, char *ok, char *cancel)
 {
 	GuiMsgbox	*box;
 	int		rc;
 
 	// TODO: handle out of memory case?
-	box = new GuiMsgbox (type, title, msg);
+	box = new GuiMsgbox (type, title, msg, ok, cancel);
 	rc = box->exec (); delete (box);
 	return (rc);
 }
