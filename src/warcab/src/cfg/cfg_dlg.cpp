@@ -831,7 +831,7 @@ CfgDlg::snp_browse_clicked (bool /*checked*/)
 		STR_SNP_BROWSE,
 		d.snp_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
-	if (!dir.isNull()) { d.snp_edit->setText (dir); }
+	if (!dir.isNull()) { d.snp_edit->setText (dir.replace('/', '\\')); }
 }
 
 CfgDlgGuiGame *
@@ -884,7 +884,7 @@ CfgDlg::game_path_browse_clicked (bool /*checked*/)
 			QString(STR_GAMEPATH_BROWSE),
 			gg->d.path_edit->text(), QFileDialog::ShowDirsOnly|QFileDialog::DontUseNativeDialog);
 
-	if (!dir.isNull()) { gg->d.path_edit->setText (dir); }
+	if (!dir.isNull()) { gg->d.path_edit->setText (dir.replace('/', '\\')); }
 
 	gg->update_status();
 }
