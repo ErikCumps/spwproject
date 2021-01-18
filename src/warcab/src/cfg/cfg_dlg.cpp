@@ -12,7 +12,7 @@
 #include "cfg_dlg.h"
 
 #define	BOX_WIDTH	600
-#define	BOX_HEIGHT	630
+#define	BOX_HEIGHT	660
 #define	BOX_MARGIN	 10
 
 #define	STR_LOCPRF_NAME			"Store preferences locally:"
@@ -78,9 +78,11 @@
 	"Disable this to display the historic German Flag from WWII."
 #define	STR_GERMAN_CROSS_WHATSTHIS	STR_GERMAN_CROSS_TOOLTIP
 
-#define	STR_DG_NAME			"Default game config:"
-#define	STR_DG_TOOLTIP			"Choose the default game config for new dossiers."
+#define	STR_DG_NAME			"Preferred game config:"
+#define	STR_DG_TOOLTIP			"Choose the preferred game config for new dossiers."
 #define	STR_DG_WHATSTHIS		STR_DG_TOOLTIP
+
+#define	STR_GG_INFO_NAME		"At least one game configuration slot should be filled in correctly: <i>(with no fields highlighted in red)</i>"
 
 #define	STR_GAMECFG_NAME		"Game config #%1"
 
@@ -366,13 +368,16 @@ CfgDlg::CfgDlg (CfgDlgData *data)
 	d.layout->addWidget (d.separator2,	row, 0, 1, 3);
 	row++;
 
-	/* Create "default game" config ui */
-	create_defg (row, tcw);
+	/* Create game config info ui */
+	create_gg_info (row, tcw);
 
 	/* Create "game" config ui */
 	for (int i=0; i<GAMECFG_CNT; i++) {
 		create_gui_game (row, i, tcw);
 	}
+
+	/* Create "default game" config ui */
+	create_defg (row, tcw);
 
 	/* Add spacer */
 	d.layout->setRowStretch (row, 2);
@@ -586,6 +591,15 @@ CfgDlg::create_defg (int &row, QWidget* &tcw)
 	tcw = d.defg_select;
 }
 
+void
+CfgDlg::create_gg_info (int &row, QWidget* &/*tcw*/)
+{
+	d.gg_info_label = new QLabel (d.body);
+	d.gg_info_label->setText (STR_GG_INFO_NAME);
+
+	d.layout->addWidget (d.gg_info_label,	row, 0, 1, 2);
+	row++;
+}
 
 void
 CfgDlg::create_gui_game (int &row, int idx, QWidget* &tcw)

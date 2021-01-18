@@ -126,6 +126,7 @@ private:
 		QFrame			*separator2;
 		QLabel			*defg_label;
 		QComboBox		*defg_select;
+		QLabel			*gg_info_label;
 
 		int			bbw;
 		int			bbh;
@@ -144,6 +145,7 @@ private:
 	void	create_hcftype		(int &row, QWidget* &tcw);
 	void	create_gecross		(int &row, QWidget* &tcw);
 	void	create_defg		(int &row, QWidget* &tcw);
+	void	create_gg_info		(int &row, QWidget* &tcw);
 	void	create_gui_game		(int &row, int idx, QWidget* &tcw);
 
 private:
