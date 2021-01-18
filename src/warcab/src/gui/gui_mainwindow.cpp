@@ -20,6 +20,22 @@
 /* Version ID used for saveState() and restoreState() */
 #define	STATE_VERSION	0
 
+/* action_dossier_new incomplete preferences dialog box */
+#define	STR_INCOMPLETE_TITLE	"Incomplete application preferences"
+#define	STR_INCOMPLETE_BODY							\
+	"It is not possible at this moment to create a new dossier,<br>"	\
+	"because the application preferences are incomplete.<br>"		\
+	"<br>"									\
+	"In order to be able to create new dossiers, at least one<br>"		\
+	"game configuration slot should be filled in correctly (with<br>"	\
+	"no fields highlighted in red).<br>"					\
+	"<br>"									\
+	"Press &lt;Review&gt; to review the applicaton preferences, or<br>"	\
+	"&lt;Continue&gt; to continue without creating a new dossier.<br>"
+#define	STR_INCOMPLETE_OK	"&Review"
+#define	STR_INCOMPLETE_CANCEL	"&Continue"
+
+
 /* action_dossier_saveAs confirmation dialog box body message */
 #define	STR_DOSSIER_OVERWRITE				\
 	"This dossier file already exists.\n"		\
@@ -319,11 +335,6 @@ GuiMainWindow::action_app_prefs (void)
 
 	if (CFG_DLG (false)) {
 		while (1) {
-			if (!CFG_iscomplete(true)) {
-				CFG_DLG (false);
-				continue;
-			}
-
 			SPWAW_OOBCFG	*oobcfg_ptr = NULL;
 			int		oobcfg_cnt = 0;
 			CFG_oobcfg (&oobcfg_ptr, &oobcfg_cnt);
@@ -391,6 +402,16 @@ GuiMainWindow::action_dossier_new (void)
 	SL_ERROR		erc;
 
 	action_dossier_close();
+
+	while (!CFG_iscomplete(false)) {
+		int rc = GUI_msgbox (MSGBOX_CONFIRM,
+				STR_INCOMPLETE_TITLE,
+				STR_INCOMPLETE_BODY,
+				STR_INCOMPLETE_OK,
+				STR_INCOMPLETE_CANCEL);
+		if (rc != QDialog::Accepted) return;
+		CFG_DLG(false);
+	}
 
 	gamecfgs = CFG_gamecfg_list (def_gamecfg);
 	dlg = new GuiDlgNewDossier(gamecfgs, def_gamecfg);
