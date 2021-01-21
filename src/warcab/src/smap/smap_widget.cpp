@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - widget.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -523,6 +523,8 @@ SmapWidget::load_info_full (SPWAW_BTURN *turn)
 			info->b_info[info->b_cnt].KIA		= kia;
 			info->b_cnt++;
 		}
+		/* Clean up if no units found */
+		if (!info->b_cnt) { delete[] info->b_info; info->b_info = NULL; }
 	}
 
 	udata = &turn->snap->OOBp2.battle.units;
@@ -549,6 +551,8 @@ SmapWidget::load_info_full (SPWAW_BTURN *turn)
 			info->r_info[info->r_cnt].KIA		= kia;
 			info->r_cnt++;
 		}
+		/* Clean up if no units found */
+		if (!info->r_cnt) { delete[] info->r_info; info->r_info = NULL; }
 	}
 
 	calc_bridgecon(d.info_full);
@@ -679,6 +683,8 @@ SmapWidget::load_info_lmtd (SPWAW_BTURN *turn)
 			info->b_info[info->b_cnt].KIA		= kia;
 			info->b_cnt++;
 		}
+		/* Clean up if no units found */
+		if (!info->b_cnt) { delete[] info->b_info; info->b_info = NULL; }
 	}
 
 	udata = &turn->snap->OOBp2.battle.units;
@@ -707,7 +713,7 @@ SmapWidget::load_info_lmtd (SPWAW_BTURN *turn)
 			info->r_cnt++;
 		}
 		/* Clean up if no units found */
-		if (!info->r_cnt) delete[] info->r_info;
+		if (!info->r_cnt) { delete[] info->r_info; info->r_info = NULL; }
 	}
 }
 
@@ -767,6 +773,8 @@ SmapWidget::load_info_none (SPWAW_BTURN *turn)
 			info->b_info[info->b_cnt].KIA		= kia;
 			info->b_cnt++;
 		}
+		/* Clean up if no units found */
+		if (!info->b_cnt) { delete[] info->b_info; info->b_info = NULL; }
 	}
 
 	udata = &turn->snap->OOBp2.battle.units;
@@ -795,7 +803,7 @@ SmapWidget::load_info_none (SPWAW_BTURN *turn)
 			info->r_cnt++;
 		}
 		/* Clean up if no units found */
-		if (!info->r_cnt) delete[] info->r_info;
+		if (!info->r_cnt) { delete[] info->r_info; info->r_info = NULL; }
 	}
 }
 
