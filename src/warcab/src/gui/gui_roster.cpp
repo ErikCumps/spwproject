@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - unit roster widget.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -213,7 +213,7 @@ GuiRoster::set_parent (GuiRptTrn *parent, bool player, bool core)
 	d.pflag	 = player;
 	d.cflag	 = core;
 
-	d.prevcmp->setText ("Last turn only?");
+	d.prevcmp->setText ("Compare with previous turn?");
 	d.prevcmp->setHidden (false);
 
 	d.hl_array = hilite_battle;
