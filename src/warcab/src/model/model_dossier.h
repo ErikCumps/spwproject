@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -37,10 +37,13 @@ public:
 	QModelIndex	root_index	(void);
 	void		clear		(void);
 	void		load		(MDLD_TREE_ITEM *tree, bool readonly);
-	void		refresh		(void);
 	void		set_selected	(MDLD_TREE_ITEM *item);
 	void		set_cmpcurr	(MDLD_TREE_ITEM *item);
 	void		set_cmpbase	(MDLD_TREE_ITEM *item);
+
+signals:
+	void		cmpcurr_changed	(const QModelIndex &current, const QModelIndex &previous);
+	void		cmpbase_changed	(const QModelIndex &current, const QModelIndex &previous);
 
 private:
 	QList<QVariant>		header;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - dossier.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -284,6 +284,8 @@ ModelDossier::index (MDLD_TREE_ITEM *item) const
 {
 	int	row = 0;
 
+	if (!item) return (QModelIndex());
+
 	if (item->parent) {
 		row = item->parent->children.indexOf (item);
 	} else {
@@ -410,16 +412,6 @@ ModelDossier::load (MDLD_TREE_ITEM *tree, bool readonly)
 }
 
 void
-ModelDossier::refresh (void)
-{
-	DBG_TRACE_FENTER;
-
-	reset();
-
-	DBG_TRACE_FLEAVE;
-}
-
-void
 ModelDossier::set_selected (MDLD_TREE_ITEM *item)
 {
 	d.selected = item;
@@ -428,11 +420,17 @@ ModelDossier::set_selected (MDLD_TREE_ITEM *item)
 void
 ModelDossier::set_cmpcurr (MDLD_TREE_ITEM *item)
 {
+	MDLD_TREE_ITEM	*old = d.cmpcurr;
+
 	d.cmpcurr = item;
+	emit cmpcurr_changed (index(item), index(old));
 }
 
 void
 ModelDossier::set_cmpbase (MDLD_TREE_ITEM *item)
 {
+	MDLD_TREE_ITEM	*old = d.cmpbase;
+
 	d.cmpbase = item;
+	emit cmpbase_changed (index(item), index(old));
 }
