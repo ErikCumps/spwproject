@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier treeview.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -48,19 +48,23 @@ GuiDossier::GuiDossier (QWidget *P)
 	//header()->setVisible (false);
 
 	if (!connect (WARCAB, SIGNAL (was_loaded(MDLD_TREE_ITEM *)), SLOT (was_loaded(MDLD_TREE_ITEM *))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:was_loaded> to <has_loaded>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_loaded> to <has_loaded>");
 	if (!connect (WARCAB, SIGNAL (will_close(void)), SLOT (will_close(void))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:will_close> to <will_close>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:will_close> to <will_close>");
 	if (!connect (WARCAB, SIGNAL (was_closed(void)), SLOT (was_closed(void))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:was_closed> to <was_closed>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_closed> to <was_closed>");
 	if (!connect (WARCAB, SIGNAL (was_added(MDLD_TREE_ITEM *)), SLOT (was_added(MDLD_TREE_ITEM *))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:was_added> to <was_added>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_added> to <was_added>");
 	if (!connect (WARCAB, SIGNAL (will_delete(MDLD_TREE_ITEM *)), SLOT (will_delete(MDLD_TREE_ITEM *))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:will_delete> to <will_delete>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:will_delete> to <will_delete>");
 	if (!connect (WARCAB, SIGNAL (was_deleted(MDLD_TREE_ITEM *)), SLOT (was_deleted(MDLD_TREE_ITEM *))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:was_deleted> to <was_deleted>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_deleted> to <was_deleted>");
 	if (!connect (WARCAB, SIGNAL (was_edited(void)), SLOT (was_edited(void))))
-		SET_GUICLS_ERROR (ERR_GUI_MAINWINDOW_INIT_FAILED, "failed to connect <WARCAB:was_edited> to <was_edited>");
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_edited> to <was_edited>");
+	if (!connect (d.model, SIGNAL (cmpcurr_changed(const QModelIndex&, const QModelIndex&)), SLOT (cmpcurr_changed(const QModelIndex&, const QModelIndex&))))
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <model:cmpcurr_changed> to <cmpcurr_changed>");
+	if (!connect (d.model, SIGNAL (cmpbase_changed(const QModelIndex&, const QModelIndex&)), SLOT (cmpbase_changed(const QModelIndex&, const QModelIndex&))))
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <model:cmpbase_changed> to <cmpbase_changed>");
 
 	SET_GUICLS_NOERR;
 }
@@ -152,22 +156,23 @@ GuiDossier::get_actionitem (void)
 void
 GuiDossier::refresh (void)
 {
-	//MDLD_TREE_ITEM	*item;
+	QList<QModelIndex>	expanded;
+	QModelIndex		idx;
 
 	DBG_TRACE_FENTER;
 
-	expandAll();
+	for (int i=0; i<d.model->rowCount(d.model->root_index()); i++) {
+		idx = d.model->index (i, 0, d.model->root_index());
+		if (isExpanded(idx)) expanded.append(idx);
+		DBG_log ("[%s] #%02.2d 0x%8.8x isExpanded=%s\n", __FUNCTION__, i, idx.internalPointer(), isExpanded(idx) ? "yes":"no");
+	}
 
-	// TODO: this code expands the currently selected item,
-	// but it does not expand all previously expanded items!
-	//item = selected ();
-	//if (item) {
-	//	while (item->type != MDLD_TREE_DOSSIER) {
-	//		expand (d.model->index(item));
-	//		item = item->parent;
-	//	}
-	//	expand (d.model->index(item));
-	//}
+	reset ();
+
+	for (int i=0; i<expanded.size(); i++) {
+		DBG_log ("[%s] #%02.2d 0x%8.8x\n", __FUNCTION__, i, d.model->item(expanded[i]));
+		if (d.model->item(expanded[i])) expand(expanded[i]);
+	}
 
 	DBG_TRACE_FLEAVE;
 }
@@ -256,8 +261,9 @@ GuiDossier::was_loaded (MDLD_TREE_ITEM *tree)
 	report_GMD (tree);
 
 	d.model->load (tree, WARCAB->is_readonly());
-	refresh();
+	reset();
 	setCurrentIndex (d.model->root_index());
+	expandToDepth(0);
 
 	GUI_ACTIONS->enable_dossier_actions (true, tree->dossier_type, tree->game_type);
 }
@@ -277,7 +283,7 @@ GuiDossier::was_closed (void)
 	DBG_log ("[%s]\n", __FUNCTION__);
 
 	d.model->clear();
-	refresh();
+	reset();
 }
 
 void
@@ -288,7 +294,6 @@ GuiDossier::was_added (MDLD_TREE_ITEM *item)
 	if (!item) return;
 	report_GMD (item);
 
-	d.model->refresh();
 	refresh();
 	setCurrentItem (item);
 
@@ -313,9 +318,7 @@ GuiDossier::was_deleted (MDLD_TREE_ITEM *next)
 {
 	DBG_log ("[%s]\n", __FUNCTION__);
 
-	d.model->refresh();
 	refresh();
-
 	setCurrentItem (next);
 }
 
@@ -472,16 +475,39 @@ GuiDossier::currentChanged (const QModelIndex &current, const QModelIndex &previ
 }
 
 void
+GuiDossier::cmpcurr_changed (const QModelIndex &current, const QModelIndex &previous)
+{
+	DBG_TRACE_FENTER;
+
+	update (previous);
+	update (current);
+
+	DBG_TRACE_FLEAVE;
+}
+
+void
+GuiDossier::cmpbase_changed (const QModelIndex &current, const QModelIndex &previous)
+{
+	DBG_TRACE_FENTER;
+
+	update (previous);
+	update (current);
+
+	DBG_TRACE_FLEAVE;
+}
+
+void
 GuiDossier::set_cmpcurr (MDLD_TREE_ITEM *item)
 {
+	if (!item) return;
+
 	d.model->set_cmpcurr (item);
-	refresh();
 }
 
 void
 GuiDossier::set_cmpbase (MDLD_TREE_ITEM *item)
 {
-	d.model->set_cmpbase (item);
-	refresh();
-}
+	if (!item) return;
 
+	d.model->set_cmpbase (item);
+}

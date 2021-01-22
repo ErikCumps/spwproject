@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier treeview.
  *
- * Copyright (C) 2005-2018 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -46,6 +46,9 @@ public slots:
 	void	select_child_item	(void);
 
 	virtual void	currentChanged	(const QModelIndex &current, const QModelIndex &previous);
+
+	void		cmpcurr_changed	(const QModelIndex &current, const QModelIndex &previous);
+	void		cmpbase_changed	(const QModelIndex &current, const QModelIndex &previous);
 
 	void	set_cmpcurr	(MDLD_TREE_ITEM *item);
 	void	set_cmpbase	(MDLD_TREE_ITEM *item);
