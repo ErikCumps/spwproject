@@ -56,6 +56,7 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 	if (ptr->bcnt == 0) {
 		safe_free (ptr->blist);
 		ptr->blen = 0;
+		ptr->bfirst = ptr->blast = NULL;
 	} else {
 		ptr->bfirst = ptr->blist[0];
 		ptr->blast  = ptr->blist[ptr->bcnt-1];
@@ -106,6 +107,7 @@ battle_del_battle_turn (SPWAW_BATTLE *ptr, SPWAW_BTURN *bturn, STRTAB *stab)
 	// TODO: investigate usefulnes of auto-cleanup
 	if (ptr->tcnt == 0) {
 		free (ptr->tlist); ptr->tlist = NULL;
+		ptr->tfirst = ptr->tlast = NULL;
 	} else {
 		ptr->tfirst = ptr->tlist[0];
 		ptr->tlast  = ptr->tlist[ptr->tcnt-1];
