@@ -1,12 +1,104 @@
 /** \file
  * The SPWaW Library - SPWOOB type codes.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include <spwawlib_spwoob_types.h>
+
+
+
+/*! SPWOOB weapon class */
+static const char *SPWOOB_WCLASS_names[SPWOOB_WCLASS_LIMIT+1] = {
+	"unknown weapon",                            		/*!< SPWOOB_WCLASS_UNKNOWN        */
+	"primary infantry weapon",                   		/*!< SPWOOB_WCLASS_INF_PRM        */
+	"secondary infantry weapon",                 		/*!< SPWOOB_WCLASS_INF_SEC        */
+	"team weapon",                               		/*!< SPWOOB_WCLASS_TEAM           */
+	"anti-air weapon",                           		/*!< SPWOOB_WCLASS_AA             */
+	"light gun",                                 		/*!< SPWOOB_WCLASS_SML_GUN        */
+	"medium gun",                                		/*!< SPWOOB_WCLASS_MDM_GUN        */
+	"large gun",                                 		/*!< SPWOOB_WCLASS_LRG_GUN        */
+	"infantry flamethrower",                     		/*!< SPWOOB_WCLASS_FLAME_INF      */
+	"vehicle flamethrower",                      		/*!< SPWOOB_WCLASS_FLAME_VHC      */
+	"naval artillery",                           		/*!< SPWOOB_WCLASS_NAVAL          */
+	"aircraft weapon",                           		/*!< SPWOOB_WCLASS_AIRCRAFT       */
+	"surface-to-air missile",                    		/*!< SPWOOB_WCLASS_SAM            */
+	"anti-tank guided missile",                  		/*!< SPWOOB_WCLASS_ATGM           */
+	"large cluster bomb",                        		/*!< SPWOOB_WCLASS_LRG_CLSTR      */
+	"small cluster bomb",                        		/*!< SPWOOB_WCLASS_SML_CLSTR      */
+	"anti-radiation missile",                    		/*!< SPWOOB_WCLASS_ARM            */
+	"anti-submarine missile",                    		/*!< SPWOOB_WCLASS_ASB            */
+	"napalm",                                    		/*!< SPWOOB_WCLASS_NAPALM         */
+	"auto cannon",                               		/*!< SPWOOB_WCLASS_AUTO_CANNON    */
+	"explosives",                                		/*!< SPWOOB_WCLASS_EXPLOSIVES     */
+	"air-to-surface missile",                    		/*!< SPWOOB_WCLASS_ASM            */
+	"top-attack ATGM",                           		/*!< SPWOOB_WCLASS_ATGM_TA        */
+	"multi-charge ATGM",                         		/*!< SPWOOB_WCLASS_ATGM_MC        */
+	"multi-charge HEAT",                         		/*!< SPWOOB_WCLASS_HEAT_MC        */
+	"top-attack HEAT",                           		/*!< SPWOOB_WCLASS_HEAT_TA        */
+	"top-attack inertial-guidance HEAT",         		/*!< SPWOOB_WCLASS_HEAT_TAIG      */
+	"high-explosive squash head gun",            		/*!< SPWOOB_WCLASS_HESH_GUN       */
+	"non-line-of-sight ATGM",                    		/*!< SPWOOB_WCLASS_ATGM_NLOS      */
+};
+
+/*! SPWOOB weapon class lookup function
+ *
+ * \param e	SPWOOB weapon class
+ * \return	Pointer to const string with SPWOOB weapon class name
+ */
+const char *
+SPWOOB_WCLASS_lookup (SPWOOB_WCLASS e)
+{
+	return (SPWOOB_WCLASS_names[e]);
+}
+
+
+
+/*! SPWOOB weapon class: code strings */
+static const char *SPWOOB_WCLASS_codes[SPWOOB_WCLASS_LIMIT+1] = {
+	"UNKNOWN",                                   		/*!< SPWOOB_WCLASS_UNKNOWN        */
+	"INF_PRM",                                   		/*!< SPWOOB_WCLASS_INF_PRM        */
+	"INF_SEC",                                   		/*!< SPWOOB_WCLASS_INF_SEC        */
+	"TEAM",                                      		/*!< SPWOOB_WCLASS_TEAM           */
+	"AA",                                        		/*!< SPWOOB_WCLASS_AA             */
+	"SML_GUN",                                   		/*!< SPWOOB_WCLASS_SML_GUN        */
+	"MDM_GUN",                                   		/*!< SPWOOB_WCLASS_MDM_GUN        */
+	"LRG_GUN",                                   		/*!< SPWOOB_WCLASS_LRG_GUN        */
+	"FLAME_INF",                                 		/*!< SPWOOB_WCLASS_FLAME_INF      */
+	"FLAME_VHC",                                 		/*!< SPWOOB_WCLASS_FLAME_VHC      */
+	"NAVAL",                                     		/*!< SPWOOB_WCLASS_NAVAL          */
+	"AIRCRAFT",                                  		/*!< SPWOOB_WCLASS_AIRCRAFT       */
+	"SAM",                                       		/*!< SPWOOB_WCLASS_SAM            */
+	"ATGM",                                      		/*!< SPWOOB_WCLASS_ATGM           */
+	"LRG_CLSTR",                                 		/*!< SPWOOB_WCLASS_LRG_CLSTR      */
+	"SML_CLSTR",                                 		/*!< SPWOOB_WCLASS_SML_CLSTR      */
+	"ARM",                                       		/*!< SPWOOB_WCLASS_ARM            */
+	"ASM",                                       		/*!< SPWOOB_WCLASS_ASB            */
+	"NAPALM",                                    		/*!< SPWOOB_WCLASS_NAPALM         */
+	"AUTO_CANNON",                               		/*!< SPWOOB_WCLASS_AUTO_CANNON    */
+	"EXPLOSIVES",                                		/*!< SPWOOB_WCLASS_EXPLOSIVES     */
+	"ASM",                                       		/*!< SPWOOB_WCLASS_ASM            */
+	"ATGM_TA",                                   		/*!< SPWOOB_WCLASS_ATGM_TA        */
+	"ATGM_MC",                                   		/*!< SPWOOB_WCLASS_ATGM_MC        */
+	"HEAT_MC",                                   		/*!< SPWOOB_WCLASS_HEAT_MC        */
+	"HEAT_TA",                                   		/*!< SPWOOB_WCLASS_HEAT_TA        */
+	"HEAT_TAIG",                                 		/*!< SPWOOB_WCLASS_HEAT_TAIG      */
+	"HESH_GUN",                                  		/*!< SPWOOB_WCLASS_HESH_GUN       */
+	"ATGM_NLOS",                                 		/*!< SPWOOB_WCLASS_ATGM_NLOS      */
+};
+
+/*! SPWOOB weapon class code lookup function
+ *
+ * \param e	SPWOOB weapon class
+ * \return	pointer to const string with SPWOOB weapon class code
+ */
+const char *
+SPWOOB_WCLASS_lookup_code (SPWOOB_WCLASS e)
+{
+	return (SPWOOB_WCLASS_codes[e]);
+}
 
 
 
@@ -70,121 +162,6 @@ const char *
 SPWOOB_UCLASS_lookup_code (SPWOOB_UCLASS e)
 {
 	return (SPWOOB_UCLASS_codes[e]);
-}
-
-
-
-/*! SPWOOB weapon class */
-static const char *SPWOOB_WCLASS_names[SPWOOB_WCLASS_LIMIT+1] = {
-	"unknown weapon",                            		/*!< SPWOOB_WCLASS_UNKNOWN        */
-	"primary infantry weapon",                   		/*!< SPWOOB_WCLASS_INF_PRM        */
-	"secondary infantry weapon",                 		/*!< SPWOOB_WCLASS_INF_SEC        */
-	"team weapon",                               		/*!< SPWOOB_WCLASS_TEAM           */
-	"anti-air weapon",                           		/*!< SPWOOB_WCLASS_AA             */
-	"light gun",                                 		/*!< SPWOOB_WCLASS_SML_GUN        */
-	"medium gun",                                		/*!< SPWOOB_WCLASS_MDM_GUN        */
-	"large gun",                                 		/*!< SPWOOB_WCLASS_LRG_GUN        */
-	"infantry flamethrower",                     		/*!< SPWOOB_WCLASS_FLAME_INF      */
-	"vehicle flamethrower",                      		/*!< SPWOOB_WCLASS_FLAME_VHC      */
-	"naval artillery",                           		/*!< SPWOOB_WCLASS_NAVAL          */
-	"aircraft weapon",                           		/*!< SPWOOB_WCLASS_AIRCRAFT       */
-	"surface-to-air missile",                    		/*!< SPWOOB_WCLASS_SAM            */
-	"anti-tank missile",                         		/*!< SPWOOB_WCLASS_AT             */
-	"large cluster bomb",                        		/*!< SPWOOB_WCLASS_LRG_CLSTR      */
-	"small cluster bomb",                        		/*!< SPWOOB_WCLASS_SML_CLSTR      */
-	"ARM",                                       		/*!< SPWOOB_WCLASS_ARM            */
-	"ASM",                                       		/*!< SPWOOB_WCLASS_ASM            */
-	"napalm",                                    		/*!< SPWOOB_WCLASS_NAPALM         */
-	"auto cannon",                               		/*!< SPWOOB_WCLASS_AUTO_CANNON    */
-	"*unknown value*"                            		/*!< SPWOOB_WCLASS__NONE          */
-};
-
-/*! SPWOOB weapon class lookup function
- *
- * \param e	SPWOOB weapon class
- * \return	pointer to const string with SPWOOB weapon class name
- */
-const char *
-SPWOOB_WCLASS_lookup (SPWOOB_WCLASS e) {
-	return (SPWOOB_WCLASS_names[e]);
-}
-
-/*! SPWOOB weapon class translation function
- *
- * \param r	raw SPWOOB weapon class value
- * \return	SPWOOB weapon class
- */
-SPWOOB_WCLASS
-SPWOOB_WCLASS_xlt (BYTE r)
-{
-	SPWOOB_WCLASS	e;
-
-	switch (r) {
-		case 0:
-			e = SPWOOB_WCLASS_UNKNOWN;
-			break;
-		case 1:
-			e = SPWOOB_WCLASS_INF_PRM;
-			break;
-		case 2:
-			e = SPWOOB_WCLASS_INF_SEC;
-			break;
-		case 3:
-			e = SPWOOB_WCLASS_TEAM;
-			break;
-		case 4:
-			e = SPWOOB_WCLASS_AA;
-			break;
-		case 5:
-			e = SPWOOB_WCLASS_SML_GUN;
-			break;
-		case 6:
-			e = SPWOOB_WCLASS_MDM_GUN;
-			break;
-		case 7:
-			e = SPWOOB_WCLASS_LRG_GUN;
-			break;
-		case 8:
-			e = SPWOOB_WCLASS_FLAME_INF;
-			break;
-		case 9:
-			e = SPWOOB_WCLASS_FLAME_VHC;
-			break;
-		case 10:
-			e = SPWOOB_WCLASS_NAVAL;
-			break;
-		case 11:
-			e = SPWOOB_WCLASS_AIRCRAFT;
-			break;
-		case 12:
-			e = SPWOOB_WCLASS_SAM;
-			break;
-		case 13:
-			e = SPWOOB_WCLASS_AT;
-			break;
-		case 14:
-			e = SPWOOB_WCLASS_LRG_CLSTR;
-			break;
-		case 15:
-			e = SPWOOB_WCLASS_SML_CLSTR;
-			break;
-		case 16:
-			e = SPWOOB_WCLASS_ARM;
-			break;
-		case 17:
-			e = SPWOOB_WCLASS_ASM;
-			break;
-		case 18:
-			e = SPWOOB_WCLASS_NAPALM;
-			break;
-		case 19:
-			e = SPWOOB_WCLASS_AUTO_CANNON;
-			break;
-		default:
-			e = SPWOOB_WCLASS_UNKNOWN;
-			break;
-	}
-	return (e);
 }
 
 
@@ -407,12 +384,14 @@ SPWOOB_FPSCR_xlt (BYTE r)
 
 /*! SPWOOB movement class */
 static const char *SPWOOB_MOVCL_names[SPWOOB_MOVCL_LIMIT+1] = {
-	"default",                                   		/*!< SPWOOB_MOVCL_DEF    */
-	"wheel",                                     		/*!< SPWOOB_MOVCL_WHL    */
-	"wheel (AT)",                                		/*!< SPWOOB_MOVCL_WAT    */
-	"track",                                     		/*!< SPWOOB_MOVCL_TRK    */
-	"ship",                                      		/*!< SPWOOB_MOVCL_NAV    */
-	"*unknown value*"                            		/*!< SPWOOB_MOVCL__NONE  */
+	"default",                                   		/*!< SPWOOB_MOVCL_DEF     */
+	"wheel",                                     		/*!< SPWOOB_MOVCL_WHL     */
+	"wheel (AT)",                                		/*!< SPWOOB_MOVCL_WAT     */
+	"track",                                     		/*!< SPWOOB_MOVCL_TRK     */
+	"boat",                                      		/*!< SPWOOB_MOVCL_BOAT    */
+	"ship",                                      		/*!< SPWOOB_MOVCL_SHIP    */
+	"snowmobile",                                		/*!< SPWOOB_MOVCL_SNOW    */
+	"*unknown value*"                            		/*!< SPWOOB_MOVCL__NONE   */
 };
 
 /*! SPWOOB movement class lookup function
@@ -448,8 +427,14 @@ SPWOOB_MOVCL_xlt (BYTE r)
 		case 4:
 			e = SPWOOB_MOVCL_TRK;
 			break;
+		case 5:
+			e = SPWOOB_MOVCL_BOAT;
+			break;
 		case 7:
-			e = SPWOOB_MOVCL_NAV;
+			e = SPWOOB_MOVCL_SHIP;
+			break;
+		case 8:
+			e = SPWOOB_MOVCL_SNOW;
 			break;
 		default:
 			e = SPWOOB_MOVCL_DEF;
@@ -474,9 +459,11 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"MG team",                                   		/*!< SPWOOB_UTYPE_MG_TEAM          */
 	"LMG section",                               		/*!< SPWOOB_UTYPE_LMG_SEC          */
 	"heavy MG squad",                            		/*!< SPWOOB_UTYPE_HV_MG            */
+	"heavy MG section",                          		/*!< SPWOOB_UTYPE_HV_MG_SEC        */
 	"special forces",                            		/*!< SPWOOB_UTYPE_SPECOP           */
 	"engineers",                                 		/*!< SPWOOB_UTYPE_ENG              */
 	"engineer support squad",                    		/*!< SPWOOB_UTYPE_ENG_SPT          */
+	"pioneers",                                  		/*!< SPWOOB_UTYPE_PIONEER          */
 	"elite infantry",                            		/*!< SPWOOB_UTYPE_ELITE            */
 	"airborne infantry",                         		/*!< SPWOOB_UTYPE_AIR_INF          */
 	"lancers",                                   		/*!< SPWOOB_UTYPE_LNCR             */
@@ -485,7 +472,13 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"second line infantry",                      		/*!< SPWOOB_UTYPE_SL_INF           */
 	"second line support squad",                 		/*!< SPWOOB_UTYPE_SL_SPT           */
 	"irregulars",                                		/*!< SPWOOB_UTYPE_IRR_INF          */
-	"guerilla forces",                           		/*!< SPWOOB_UTYPE_GUERILLA         */
+	"guerrilla forces",                          		/*!< SPWOOB_UTYPE_GRRLL            */
+	"guerrilla infantry",                        		/*!< SPWOOB_UTYPE_GRRLL_INF        */
+	"guerrilla light infantry",                  		/*!< SPWOOB_UTYPE_LT_GRRLL_INF     */
+	"guerrilla heavy wpns squad",                		/*!< SPWOOB_UTYPE_HV_GRRLL_INF     */
+	"guerrilla support squad",                   		/*!< SPWOOB_UTYPE_GRRLL_SPT        */
+	"guerrilla sniper",                          		/*!< SPWOOB_UTYPE_GRRLL_SNIPER     */
+	"guerrilla rocket squad",                    		/*!< SPWOOB_UTYPE_GRRLL_RKT        */
 	"native troops",                             		/*!< SPWOOB_UTYPE_NAT_INF          */
 	"police",                                    		/*!< SPWOOB_UTYPE_POLICE           */
 	"armored infantry",                          		/*!< SPWOOB_UTYPE_ARM_INF          */
@@ -549,6 +542,7 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"Rangers heavy wpns squad",                  		/*!< SPWOOB_UTYPE_HV_RNGR          */
 	"Ranger support squad",                      		/*!< SPWOOB_UTYPE_RNGR_SPT         */
 	"Ranger engineers",                          		/*!< SPWOOB_UTYPE_RNGR_ENG         */
+	"Ranger pioneers",                           		/*!< SPWOOB_UTYPE_RNGR_PIONEER     */
 	"Ranger sniper",                             		/*!< SPWOOB_UTYPE_RNGR_SNIPER      */
 	"ski troops",                                		/*!< SPWOOB_UTYPE_SKI              */
 	"light ski infantry",                        		/*!< SPWOOB_UTYPE_LT_SKI           */
@@ -561,6 +555,16 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"Waffen SS rifle squad",                     		/*!< SPWOOB_UTYPE_WSS_RFL          */
 	"Waffen SS SMG squad",                       		/*!< SPWOOB_UTYPE_WSS_SMG          */
 	"Waffen SS engineers",                       		/*!< SPWOOB_UTYPE_WSS_ENG          */
+	"mercenaries",                               		/*!< SPWOOB_UTYPE_MERC             */
+	"airmobile section",                         		/*!< SPWOOB_UTYPE_AIRMBL           */
+	"airmobile heavy wpns squad",                		/*!< SPWOOB_UTYPE_HV_AIRMBL        */
+	"airmobile rifle squad",                     		/*!< SPWOOB_UTYPE_RFL_AIRMBL       */
+	"airmobile support section",                 		/*!< SPWOOB_UTYPE_AIRMBL_SPT       */
+	"airmobile engineers",                       		/*!< SPWOOB_UTYPE_AIRMBL_ENG       */
+	"COIN infantry",                             		/*!< SPWOOB_UTYPE_COIN_INF         */
+	"COIN light infantry",                       		/*!< SPWOOB_UTYPE_COIN_LT_INF      */
+	"COIN heavy wpns squad",                     		/*!< SPWOOB_UTYPE_COIN_HV_INF      */
+	"COIN support squad",                        		/*!< SPWOOB_UTYPE_COIN_SPT         */
 	"cavalry",                                   		/*!< SPWOOB_UTYPE_CAV              */
 	"medium cavalry",                            		/*!< SPWOOB_UTYPE_MD_CAV           */
 	"light cavalry tank",                        		/*!< SPWOOB_UTYPE_LT_CAV_TNK       */
@@ -574,10 +578,12 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"tank",                                      		/*!< SPWOOB_UTYPE_TNK              */
 	"CS tank",                                   		/*!< SPWOOB_UTYPE_CS_TNK           */
 	"main battle tank",                          		/*!< SPWOOB_UTYPE_MB_TNK           */
+	"CS main battle tank",                       		/*!< SPWOOB_UTYPE_CS_MB_TNK        */
 	"light tank",                                		/*!< SPWOOB_UTYPE_LT_TNK           */
 	"medium tank",                               		/*!< SPWOOB_UTYPE_MD_TNK           */
 	"heavy tank",                                		/*!< SPWOOB_UTYPE_HV_TNK           */
 	"very heavy tank",                           		/*!< SPWOOB_UTYPE_VHV_TNK          */
+	"obsolete heavy tank",                       		/*!< SPWOOB_UTYPE_OHV_TNK          */
 	"cruiser tank",                              		/*!< SPWOOB_UTYPE_CR_TNK           */
 	"heavy cruiser tank",                        		/*!< SPWOOB_UTYPE_HV_CR_TNK        */
 	"CS cruiser tank",                           		/*!< SPWOOB_UTYPE_CS_CR_TNK        */
@@ -597,7 +603,11 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"colonial tank",                             		/*!< SPWOOB_UTYPE_COL_TNK          */
 	"lend-lease tank",                           		/*!< SPWOOB_UTYPE_LL_TNK           */
 	"prototype tank",                            		/*!< SPWOOB_UTYPE_PROTO_TNK        */
+	"reserve tank",                              		/*!< SPWOOB_UTYPE_RSRV_TNK         */
 	"APC",                                       		/*!< SPWOOB_UTYPE_APC              */
+	"light APC",                                 		/*!< SPWOOB_UTYPE_LT_APC           */
+	"light support APC",                         		/*!< SPWOOB_UTYPE_LT_SPT_APC       */
+	"heavy APC",                                 		/*!< SPWOOB_UTYPE_HV_APC           */
 	"wheeled APC",                               		/*!< SPWOOB_UTYPE_WH_APC           */
 	"wheeled gun APC",                           		/*!< SPWOOB_UTYPE_WH_APC_GUN       */
 	"halftrack",                                 		/*!< SPWOOB_UTYPE_HT               */
@@ -608,6 +618,14 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"tracked gun APC",                           		/*!< SPWOOB_UTYPE_TR_APC_GUN       */
 	"colonial APC",                              		/*!< SPWOOB_UTYPE_COL_APC          */
 	"improvised apc",                            		/*!< SPWOOB_UTYPE_IMP_APC          */
+	"rocket APC",                                		/*!< SPWOOB_UTYPE_RKT_APC          */
+	"airborne APC",                              		/*!< SPWOOB_UTYPE_AIR_APC          */
+	"airborn support APC",                       		/*!< SPWOOB_UTYPE_AIR_SPT_APC      */
+	"MRV APC",                                   		/*!< SPWOOB_UTYPE_MRV_APC          */
+	"light MRV APC",                             		/*!< SPWOOB_UTYPE_LT_MRV_APC       */
+	"heavy MRV APC",                             		/*!< SPWOOB_UTYPE_HV_MRV_APC       */
+	"MRV IFV",                                   		/*!< SPWOOB_UTYPE_MRV_IFV          */
+	"light MRV IFV",                             		/*!< SPWOOB_UTYPE_LT_MRV_IFV       */
 	"mortar",                                    		/*!< SPWOOB_UTYPE_MORT             */
 	"SP mortar",                                 		/*!< SPWOOB_UTYPE_SP_MORT          */
 	"light mortar",                              		/*!< SPWOOB_UTYPE_LT_MORT          */
@@ -629,13 +647,18 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"infantry howitzer",                         		/*!< SPWOOB_UTYPE_INF_HWTZR        */
 	"airborne field howitzer",                   		/*!< SPWOOB_UTYPE_AIR_FLD_HWTZR    */
 	"pack howitzer",                             		/*!< SPWOOB_UTYPE_PACK_HWTZR       */
+	"SP howitzer",                               		/*!< SPWOOB_UTYPE_SP_HWTZR         */
 	"SP artillery",                              		/*!< SPWOOB_UTYPE_SP_ART           */
 	"rocket launcher",                           		/*!< SPWOOB_UTYPE_RKT              */
 	"SP rocket launcher",                        		/*!< SPWOOB_UTYPE_SP_RKT           */
+	"automatic grenade launcher",                		/*!< SPWOOB_UTYPE_AGL              */
 	"offboard artillery",                        		/*!< SPWOOB_UTYPE_OB_ART           */
-	"offboard light artillery",                  		/*!< SPWOOB_UTYPE_LT_OB_ART        */
+	"light offboard artillery",                  		/*!< SPWOOB_UTYPE_LT_OB_ART        */
+	"medium offboard artillery",                 		/*!< SPWOOB_UTYPE_MD_OB_ART        */
 	"heavy offboard artillery",                  		/*!< SPWOOB_UTYPE_HV_OB_ART        */
 	"offboard rocket launcher",                  		/*!< SPWOOB_UTYPE_OB_RKT           */
+	"offboard minelet artillery",                		/*!< SPWOOB_UTYPE_OB_ML_ART        */
+	"offboard minelet rocket launcher",          		/*!< SPWOOB_UTYPE_OB_ML_RKT        */
 	"AT gun",                                    		/*!< SPWOOB_UTYPE_AT               */
 	"light AT gun",                              		/*!< SPWOOB_UTYPE_LT_AT            */
 	"heavy AT gun",                              		/*!< SPWOOB_UTYPE_HV_AT            */
@@ -645,16 +668,27 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"turreted tank destroyer",                   		/*!< SPWOOB_UTYPE_TTD              */
 	"heavy tank destroyer",                      		/*!< SPWOOB_UTYPE_HV_TD            */
 	"AT infantry",                               		/*!< SPWOOB_UTYPE_INF_AT           */
-	"commando AT infantry",                      		/*!< SPWOOB_UTYPE_CMD_INF_AT       */
+	"commando AT infantry",                      		/*!< SPWOOB_UTYPE_CMD_AT           */
 	"marines AT gun",                            		/*!< SPWOOB_UTYPE_MRNS_AT          */
-	"paratroop AT infantry",                     		/*!< SPWOOB_UTYPE_PARA_INF_AT      */
-	"ski AT infantry",                           		/*!< SPWOOB_UTYPE_SKI_INF_AT       */
+	"paratroop AT infantry",                     		/*!< SPWOOB_UTYPE_PARA_AT          */
+	"ski AT infantry",                           		/*!< SPWOOB_UTYPE_SKI_AT           */
+	"ATGM launcher",                             		/*!< SPWOOB_UTYPE_ATGM             */
+	"SP ATGM launcher",                          		/*!< SPWOOB_UTYPE_SP_ATGM          */
+	"light SP ATGM launcher",                    		/*!< SPWOOB_UTYPE_LT_SP_ATGM       */
+	"wheeled ATGM launcher",                     		/*!< SPWOOB_UTYPE_WH_ATGM          */
+	"ATGM infantry",                             		/*!< SPWOOB_UTYPE_INF_ATGM         */
+	"heavy ATGM infantry",                       		/*!< SPWOOB_UTYPE_INF_HV_ATGM      */
+	"paratroop ATGM infantry",                   		/*!< SPWOOB_UTYPE_PARA_ATGM        */
+	"paratroop heavy ATGM infantry",             		/*!< SPWOOB_UTYPE_PARA_HV_ATGM     */
 	"AA gun",                                    		/*!< SPWOOB_UTYPE_FLAK             */
 	"heavy AA gun",                              		/*!< SPWOOB_UTYPE_HV_FLAK          */
 	"SP AA gun",                                 		/*!< SPWOOB_UTYPE_SP_FLAK          */
 	"light SP AA gun",                           		/*!< SPWOOB_UTYPE_LT_SP_FLAK       */
 	"AA gun truck",                              		/*!< SPWOOB_UTYPE_WH_FLAK          */
 	"AA MG infantry",                            		/*!< SPWOOB_UTYPE_INF_FLAK         */
+	"area SAM",                                  		/*!< SPWOOB_UTYPE_AREA_SAM         */
+	"SP SAM",                                    		/*!< SPWOOB_UTYPE_SP_SAM           */
+	"SAM infantry",                              		/*!< SPWOOB_UTYPE_INF_SAM          */
 	"amphibian unit",                            		/*!< SPWOOB_UTYPE_AMPHIB           */
 	"light amphibian unit",                      		/*!< SPWOOB_UTYPE_LT_AMPHIB        */
 	"heavy amphibian unit",                      		/*!< SPWOOB_UTYPE_HV_AMPHIB        */
@@ -679,6 +713,7 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"scout halftrack",                           		/*!< SPWOOB_UTYPE_HT_SCOUT         */
 	"scout APC",                                 		/*!< SPWOOB_UTYPE_APC_SCOUT        */
 	"scout tank",                                		/*!< SPWOOB_UTYPE_TNK_SCOUT        */
+	"guerrilla scout",                           		/*!< SPWOOB_UTYPE_GRRLL_SCOUT      */
 	"cavalry scout",                             		/*!< SPWOOB_UTYPE_CAV_SCOUT        */
 	"commando scout",                            		/*!< SPWOOB_UTYPE_CMD_SCOUT        */
 	"colonial scout",                            		/*!< SPWOOB_UTYPE_COL_SCOUT        */
@@ -691,6 +726,7 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"partisan scout",                            		/*!< SPWOOB_UTYPE_PRTS_SCOUT       */
 	"Ranger scout",                              		/*!< SPWOOB_UTYPE_RNGR_SCOUT       */
 	"ski scout",                                 		/*!< SPWOOB_UTYPE_SKI_SCOUT        */
+	"COIN scout",                                		/*!< SPWOOB_UTYPE_COIN_SCOUT       */
 	"bicycle squad",                             		/*!< SPWOOB_UTYPE_BCYCLE           */
 	"bicycle heavy wpns squad",                  		/*!< SPWOOB_UTYPE_HV_BCYCLE        */
 	"motorcycle",                                		/*!< SPWOOB_UTYPE_MCYCLE           */
@@ -699,6 +735,8 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"light armored car",                         		/*!< SPWOOB_UTYPE_LT_ARM_CAR       */
 	"heavy armored car",                         		/*!< SPWOOB_UTYPE_HV_ARM_CAR       */
 	"patrol",                                    		/*!< SPWOOB_UTYPE_PATROL           */
+	"infantry RR team",                          		/*!< SPWOOB_UTYPE_INF_RR           */
+	"paratroop RR team",                         		/*!< SPWOOB_UTYPE_PARA_RR          */
 	"force HQ",                                  		/*!< SPWOOB_UTYPE_HQ               */
 	"platoon HQ",                                		/*!< SPWOOB_UTYPE_PLT_HQ           */
 	"command tank",                              		/*!< SPWOOB_UTYPE_CC_TNK           */
@@ -718,10 +756,18 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"fighter-bomber",                            		/*!< SPWOOB_UTYPE_AIRF             */
 	"level bomber",                              		/*!< SPWOOB_UTYPE_AIRB             */
 	"helicopter",                                		/*!< SPWOOB_UTYPE_HELI             */
+	"light helicopter",                          		/*!< SPWOOB_UTYPE_LT_HELI          */
+	"heavy helicopter",                          		/*!< SPWOOB_UTYPE_HV_HELI          */
 	"attack helicopter",                         		/*!< SPWOOB_UTYPE_AHELI            */
+	"light attack helicopter",                   		/*!< SPWOOB_UTYPE_LT_AHELI         */
 	"ground attack",                             		/*!< SPWOOB_UTYPE_GA               */
 	"glider",                                    		/*!< SPWOOB_UTYPE_GLIDER           */
 	"heavy glider",                              		/*!< SPWOOB_UTYPE_HV_GLIDER        */
+	"SEAD aircraft",                             		/*!< SPWOOB_UTYPE_SEAD             */
+	"gunship",                                   		/*!< SPWOOB_UTYPE_GUNSHIP          */
+	"COIN fighter",                              		/*!< SPWOOB_UTYPE_COIN_F           */
+	"COIN bomber",                               		/*!< SPWOOB_UTYPE_COIN_B           */
+	"COIN helicopter",                           		/*!< SPWOOB_UTYPE_COIN_HELI        */
 	"landing barge",                             		/*!< SPWOOB_UTYPE_BARGE            */
 	"barge carrier",                             		/*!< SPWOOB_UTYPE_BARGECARR        */
 	"landing craft gunboat",                     		/*!< SPWOOB_UTYPE_LCG              */
@@ -732,6 +778,7 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"torpedo boat",                              		/*!< SPWOOB_UTYPE_TBOAT            */
 	"ship",                                      		/*!< SPWOOB_UTYPE_SHIP             */
 	"naval bombardment",                         		/*!< SPWOOB_UTYPE_NAVBOMB          */
+	"hovercraft",                                		/*!< SPWOOB_UTYPE_HVRCRFT          */
 	"fort",                                      		/*!< SPWOOB_UTYPE_FORT             */
 	"gun emplacement",                           		/*!< SPWOOB_UTYPE_EMP_FORT         */
 	"naval fortification",                       		/*!< SPWOOB_UTYPE_NAV_FORT         */
@@ -744,6 +791,7 @@ static const char *SPWOOB_UTYPE_names[SPWOOB_UTYPE_LIMIT+1] = {
 	"cave",                                      		/*!< SPWOOB_UTYPE_CAVE             */
 	"explosive",                                 		/*!< SPWOOB_UTYPE_EXPLOSIVE        */
 	"reserved",                                  		/*!< SPWOOB_UTYPE_RESERVED         */
+	"NO UNIT",                                   		/*!< SPWOOB_UTYPE_NOUNIT           */
 	"unknown unit type",                         		/*!< SPWOOB_UTYPE_UNKNOWN          */
 	"*unknown value*"                            		/*!< SPWOOB_UTYPE__NONE            */
 };
@@ -781,9 +829,11 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_MG_TEAM:
 		case SPWOOB_UTYPE_LMG_SEC:
 		case SPWOOB_UTYPE_HV_MG:
+		case SPWOOB_UTYPE_HV_MG_SEC:
 		case SPWOOB_UTYPE_SPECOP:
 		case SPWOOB_UTYPE_ENG:
 		case SPWOOB_UTYPE_ENG_SPT:
+		case SPWOOB_UTYPE_PIONEER:
 		case SPWOOB_UTYPE_ELITE:
 		case SPWOOB_UTYPE_AIR_INF:
 		case SPWOOB_UTYPE_LNCR:
@@ -792,7 +842,13 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_SL_INF:
 		case SPWOOB_UTYPE_SL_SPT:
 		case SPWOOB_UTYPE_IRR_INF:
-		case SPWOOB_UTYPE_GUERILLA:
+		case SPWOOB_UTYPE_GRRLL:
+		case SPWOOB_UTYPE_GRRLL_INF:
+		case SPWOOB_UTYPE_LT_GRRLL_INF:
+		case SPWOOB_UTYPE_HV_GRRLL_INF:
+		case SPWOOB_UTYPE_GRRLL_SPT:
+		case SPWOOB_UTYPE_GRRLL_SNIPER:
+		case SPWOOB_UTYPE_GRRLL_RKT:
 		case SPWOOB_UTYPE_NAT_INF:
 		case SPWOOB_UTYPE_POLICE:
 		case SPWOOB_UTYPE_ARM_INF:
@@ -856,6 +912,7 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_HV_RNGR:
 		case SPWOOB_UTYPE_RNGR_SPT:
 		case SPWOOB_UTYPE_RNGR_ENG:
+		case SPWOOB_UTYPE_RNGR_PIONEER:
 		case SPWOOB_UTYPE_RNGR_SNIPER:
 		case SPWOOB_UTYPE_SKI:
 		case SPWOOB_UTYPE_LT_SKI:
@@ -868,6 +925,16 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_WSS_RFL:
 		case SPWOOB_UTYPE_WSS_SMG:
 		case SPWOOB_UTYPE_WSS_ENG:
+		case SPWOOB_UTYPE_MERC:
+		case SPWOOB_UTYPE_AIRMBL:
+		case SPWOOB_UTYPE_HV_AIRMBL:
+		case SPWOOB_UTYPE_RFL_AIRMBL:
+		case SPWOOB_UTYPE_AIRMBL_SPT:
+		case SPWOOB_UTYPE_AIRMBL_ENG:
+		case SPWOOB_UTYPE_COIN_INF:
+		case SPWOOB_UTYPE_COIN_LT_INF:
+		case SPWOOB_UTYPE_COIN_HV_INF:
+		case SPWOOB_UTYPE_COIN_SPT:
 			c = SPWOOB_UCLASS_INF;
 			break;
 		case SPWOOB_UTYPE_CAV:
@@ -885,10 +952,12 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_TNK:
 		case SPWOOB_UTYPE_CS_TNK:
 		case SPWOOB_UTYPE_MB_TNK:
+		case SPWOOB_UTYPE_CS_MB_TNK:
 		case SPWOOB_UTYPE_LT_TNK:
 		case SPWOOB_UTYPE_MD_TNK:
 		case SPWOOB_UTYPE_HV_TNK:
 		case SPWOOB_UTYPE_VHV_TNK:
+		case SPWOOB_UTYPE_OHV_TNK:
 		case SPWOOB_UTYPE_CR_TNK:
 		case SPWOOB_UTYPE_HV_CR_TNK:
 		case SPWOOB_UTYPE_CS_CR_TNK:
@@ -908,9 +977,13 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_COL_TNK:
 		case SPWOOB_UTYPE_LL_TNK:
 		case SPWOOB_UTYPE_PROTO_TNK:
+		case SPWOOB_UTYPE_RSRV_TNK:
 			c = SPWOOB_UCLASS_ARM;
 			break;
 		case SPWOOB_UTYPE_APC:
+		case SPWOOB_UTYPE_LT_APC:
+		case SPWOOB_UTYPE_LT_SPT_APC:
+		case SPWOOB_UTYPE_HV_APC:
 		case SPWOOB_UTYPE_WH_APC:
 		case SPWOOB_UTYPE_WH_APC_GUN:
 		case SPWOOB_UTYPE_HT:
@@ -921,6 +994,14 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_TR_APC_GUN:
 		case SPWOOB_UTYPE_COL_APC:
 		case SPWOOB_UTYPE_IMP_APC:
+		case SPWOOB_UTYPE_RKT_APC:
+		case SPWOOB_UTYPE_AIR_APC:
+		case SPWOOB_UTYPE_AIR_SPT_APC:
+		case SPWOOB_UTYPE_MRV_APC:
+		case SPWOOB_UTYPE_LT_MRV_APC:
+		case SPWOOB_UTYPE_HV_MRV_APC:
+		case SPWOOB_UTYPE_MRV_IFV:
+		case SPWOOB_UTYPE_LT_MRV_IFV:
 			c = SPWOOB_UCLASS_APC;
 			break;
 		case SPWOOB_UTYPE_MORT:
@@ -944,13 +1025,18 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_INF_HWTZR:
 		case SPWOOB_UTYPE_AIR_FLD_HWTZR:
 		case SPWOOB_UTYPE_PACK_HWTZR:
+		case SPWOOB_UTYPE_SP_HWTZR:
 		case SPWOOB_UTYPE_SP_ART:
 		case SPWOOB_UTYPE_RKT:
 		case SPWOOB_UTYPE_SP_RKT:
+		case SPWOOB_UTYPE_AGL:
 		case SPWOOB_UTYPE_OB_ART:
 		case SPWOOB_UTYPE_LT_OB_ART:
+		case SPWOOB_UTYPE_MD_OB_ART:
 		case SPWOOB_UTYPE_HV_OB_ART:
 		case SPWOOB_UTYPE_OB_RKT:
+		case SPWOOB_UTYPE_OB_ML_ART:
+		case SPWOOB_UTYPE_OB_ML_RKT:
 			c = SPWOOB_UCLASS_ART;
 			break;
 		case SPWOOB_UTYPE_AT:
@@ -962,10 +1048,18 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_TTD:
 		case SPWOOB_UTYPE_HV_TD:
 		case SPWOOB_UTYPE_INF_AT:
-		case SPWOOB_UTYPE_CMD_INF_AT:
+		case SPWOOB_UTYPE_CMD_AT:
 		case SPWOOB_UTYPE_MRNS_AT:
-		case SPWOOB_UTYPE_PARA_INF_AT:
-		case SPWOOB_UTYPE_SKI_INF_AT:
+		case SPWOOB_UTYPE_PARA_AT:
+		case SPWOOB_UTYPE_SKI_AT:
+		case SPWOOB_UTYPE_ATGM:
+		case SPWOOB_UTYPE_SP_ATGM:
+		case SPWOOB_UTYPE_LT_SP_ATGM:
+		case SPWOOB_UTYPE_WH_ATGM:
+		case SPWOOB_UTYPE_INF_ATGM:
+		case SPWOOB_UTYPE_INF_HV_ATGM:
+		case SPWOOB_UTYPE_PARA_ATGM:
+		case SPWOOB_UTYPE_PARA_HV_ATGM:
 			c = SPWOOB_UCLASS_AT;
 			break;
 		case SPWOOB_UTYPE_FLAK:
@@ -974,6 +1068,9 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_LT_SP_FLAK:
 		case SPWOOB_UTYPE_WH_FLAK:
 		case SPWOOB_UTYPE_INF_FLAK:
+		case SPWOOB_UTYPE_AREA_SAM:
+		case SPWOOB_UTYPE_SP_SAM:
+		case SPWOOB_UTYPE_INF_SAM:
 			c = SPWOOB_UCLASS_AA;
 			break;
 		case SPWOOB_UTYPE_AMPHIB:
@@ -1002,6 +1099,7 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_HT_SCOUT:
 		case SPWOOB_UTYPE_APC_SCOUT:
 		case SPWOOB_UTYPE_TNK_SCOUT:
+		case SPWOOB_UTYPE_GRRLL_SCOUT:
 		case SPWOOB_UTYPE_CAV_SCOUT:
 		case SPWOOB_UTYPE_CMD_SCOUT:
 		case SPWOOB_UTYPE_COL_SCOUT:
@@ -1014,6 +1112,7 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_PRTS_SCOUT:
 		case SPWOOB_UTYPE_RNGR_SCOUT:
 		case SPWOOB_UTYPE_SKI_SCOUT:
+		case SPWOOB_UTYPE_COIN_SCOUT:
 		case SPWOOB_UTYPE_BCYCLE:
 		case SPWOOB_UTYPE_HV_BCYCLE:
 		case SPWOOB_UTYPE_MCYCLE:
@@ -1022,6 +1121,8 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_LT_ARM_CAR:
 		case SPWOOB_UTYPE_HV_ARM_CAR:
 		case SPWOOB_UTYPE_PATROL:
+		case SPWOOB_UTYPE_INF_RR:
+		case SPWOOB_UTYPE_PARA_RR:
 			c = SPWOOB_UCLASS_REC;
 			break;
 		case SPWOOB_UTYPE_HQ:
@@ -1047,10 +1148,18 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_AIRF:
 		case SPWOOB_UTYPE_AIRB:
 		case SPWOOB_UTYPE_HELI:
+		case SPWOOB_UTYPE_LT_HELI:
+		case SPWOOB_UTYPE_HV_HELI:
 		case SPWOOB_UTYPE_AHELI:
+		case SPWOOB_UTYPE_LT_AHELI:
 		case SPWOOB_UTYPE_GA:
 		case SPWOOB_UTYPE_GLIDER:
 		case SPWOOB_UTYPE_HV_GLIDER:
+		case SPWOOB_UTYPE_SEAD:
+		case SPWOOB_UTYPE_GUNSHIP:
+		case SPWOOB_UTYPE_COIN_F:
+		case SPWOOB_UTYPE_COIN_B:
+		case SPWOOB_UTYPE_COIN_HELI:
 			c = SPWOOB_UCLASS_AIR;
 			break;
 		case SPWOOB_UTYPE_BARGE:
@@ -1063,6 +1172,7 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_TBOAT:
 		case SPWOOB_UTYPE_SHIP:
 		case SPWOOB_UTYPE_NAVBOMB:
+		case SPWOOB_UTYPE_HVRCRFT:
 			c = SPWOOB_UCLASS_NVY;
 			break;
 		case SPWOOB_UTYPE_FORT:
@@ -1079,6 +1189,7 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 		case SPWOOB_UTYPE_CAVE:
 		case SPWOOB_UTYPE_EXPLOSIVE:
 		case SPWOOB_UTYPE_RESERVED:
+		case SPWOOB_UTYPE_NOUNIT:
 		case SPWOOB_UTYPE_UNKNOWN:
 			c = SPWOOB_UCLASS_OTH;
 			break;
@@ -1087,6 +1198,258 @@ SPWOOB_UTYPE_classify (SPWOOB_UTYPE e)
 			break;
 	}
 	return (c);
+}
+
+
+
+/*! raw SPWAW OOB weapon class translation function
+ *
+ * \param r	raw SPWAW OOB weapon class value
+ * \return	SPWOOB_WCLASS enum
+ */
+SPWOOB_WCLASS
+SPWOOB_SPWAW_WCLASS_xlt (BYTE r)
+{
+	SPWOOB_WCLASS	e;
+
+	switch (r) {
+		case 0:
+			e = SPWOOB_WCLASS_UNKNOWN;
+			break;
+		case 1:
+			e = SPWOOB_WCLASS_INF_PRM;
+			break;
+		case 2:
+			e = SPWOOB_WCLASS_INF_SEC;
+			break;
+		case 3:
+			e = SPWOOB_WCLASS_TEAM;
+			break;
+		case 4:
+			e = SPWOOB_WCLASS_AA;
+			break;
+		case 5:
+			e = SPWOOB_WCLASS_SML_GUN;
+			break;
+		case 6:
+			e = SPWOOB_WCLASS_MDM_GUN;
+			break;
+		case 7:
+			e = SPWOOB_WCLASS_LRG_GUN;
+			break;
+		case 8:
+			e = SPWOOB_WCLASS_FLAME_INF;
+			break;
+		case 9:
+			e = SPWOOB_WCLASS_FLAME_VHC;
+			break;
+		case 10:
+			e = SPWOOB_WCLASS_NAVAL;
+			break;
+		case 11:
+			e = SPWOOB_WCLASS_AIRCRAFT;
+			break;
+		case 12:
+			e = SPWOOB_WCLASS_SAM;
+			break;
+		case 13:
+			e = SPWOOB_WCLASS_ATGM;
+			break;
+		case 14:
+			e = SPWOOB_WCLASS_LRG_CLSTR;
+			break;
+		case 15:
+			e = SPWOOB_WCLASS_SML_CLSTR;
+			break;
+		case 16:
+			e = SPWOOB_WCLASS_ARM;
+			break;
+		case 17:
+			e = SPWOOB_WCLASS_ASB;
+			break;
+		case 18:
+			e = SPWOOB_WCLASS_NAPALM;
+			break;
+		default:
+			e = SPWOOB_WCLASS_UNKNOWN;
+			break;
+	}
+	return (e);
+}
+
+
+
+/*! raw winSPWW2 OOB weapon class translation function
+ *
+ * \param r	raw winSPWW2 OOB weapon class value
+ * \return	SPWOOB_WCLASS enum
+ */
+SPWOOB_WCLASS
+SPWOOB_WINSPWW2_WCLASS_xlt (BYTE r)
+{
+	SPWOOB_WCLASS	e;
+
+	switch (r) {
+		case 0:
+			e = SPWOOB_WCLASS_UNKNOWN;
+			break;
+		case 1:
+			e = SPWOOB_WCLASS_INF_PRM;
+			break;
+		case 2:
+			e = SPWOOB_WCLASS_INF_SEC;
+			break;
+		case 3:
+			e = SPWOOB_WCLASS_TEAM;
+			break;
+		case 4:
+			e = SPWOOB_WCLASS_AA;
+			break;
+		case 5:
+			e = SPWOOB_WCLASS_SML_GUN;
+			break;
+		case 6:
+			e = SPWOOB_WCLASS_MDM_GUN;
+			break;
+		case 7:
+			e = SPWOOB_WCLASS_LRG_GUN;
+			break;
+		case 8:
+			e = SPWOOB_WCLASS_FLAME_INF;
+			break;
+		case 9:
+			e = SPWOOB_WCLASS_FLAME_VHC;
+			break;
+		case 10:
+			e = SPWOOB_WCLASS_NAVAL;
+			break;
+		case 11:
+			e = SPWOOB_WCLASS_AIRCRAFT;
+			break;
+		case 13:
+			e = SPWOOB_WCLASS_ATGM;
+			break;
+		case 14:
+			e = SPWOOB_WCLASS_LRG_CLSTR;
+			break;
+		case 18:
+			e = SPWOOB_WCLASS_NAPALM;
+			break;
+		case 19:
+			e = SPWOOB_WCLASS_AUTO_CANNON;
+			break;
+		case 20:
+			e = SPWOOB_WCLASS_EXPLOSIVES;
+			break;
+		default:
+			e = SPWOOB_WCLASS_UNKNOWN;
+			break;
+	}
+	return (e);
+}
+
+
+
+/*! raw winSPMBT OOB weapon class translation function
+ *
+ * \param r	raw winSPMBT OOB weapon class value
+ * \return	SPWOOB_WCLASS enum
+ */
+SPWOOB_WCLASS
+SPWOOB_WINSPMBT_WCLASS_xlt (BYTE r)
+{
+	SPWOOB_WCLASS	e;
+
+	switch (r) {
+		case 0:
+			e = SPWOOB_WCLASS_UNKNOWN;
+			break;
+		case 1:
+			e = SPWOOB_WCLASS_INF_PRM;
+			break;
+		case 2:
+			e = SPWOOB_WCLASS_INF_SEC;
+			break;
+		case 3:
+			e = SPWOOB_WCLASS_TEAM;
+			break;
+		case 4:
+			e = SPWOOB_WCLASS_AA;
+			break;
+		case 5:
+			e = SPWOOB_WCLASS_SML_GUN;
+			break;
+		case 6:
+			e = SPWOOB_WCLASS_MDM_GUN;
+			break;
+		case 7:
+			e = SPWOOB_WCLASS_LRG_GUN;
+			break;
+		case 8:
+			e = SPWOOB_WCLASS_FLAME_INF;
+			break;
+		case 9:
+			e = SPWOOB_WCLASS_FLAME_VHC;
+			break;
+		case 10:
+			e = SPWOOB_WCLASS_NAVAL;
+			break;
+		case 11:
+			e = SPWOOB_WCLASS_AIRCRAFT;
+			break;
+		case 12:
+			e = SPWOOB_WCLASS_SAM;
+			break;
+		case 13:
+			e = SPWOOB_WCLASS_ATGM;
+			break;
+		case 14:
+			e = SPWOOB_WCLASS_LRG_CLSTR;
+			break;
+		case 15:
+			e = SPWOOB_WCLASS_SML_CLSTR;
+			break;
+		case 16:
+			e = SPWOOB_WCLASS_ARM;
+			break;
+		case 17:
+			e = SPWOOB_WCLASS_ASM;
+			break;
+		case 18:
+			e = SPWOOB_WCLASS_NAPALM;
+			break;
+		case 19:
+			e = SPWOOB_WCLASS_AUTO_CANNON;
+			break;
+		case 20:
+			e = SPWOOB_WCLASS_ATGM_TA;
+			break;
+		case 21:
+			e = SPWOOB_WCLASS_ATGM_MC;
+			break;
+		case 22:
+			e = SPWOOB_WCLASS_HEAT_MC;
+			break;
+		case 23:
+			e = SPWOOB_WCLASS_HEAT_TA;
+			break;
+		case 24:
+			e = SPWOOB_WCLASS_HEAT_TAIG;
+			break;
+		case 25:
+			e = SPWOOB_WCLASS_EXPLOSIVES;
+			break;
+		case 26:
+			e = SPWOOB_WCLASS_HESH_GUN;
+			break;
+		case 27:
+			e = SPWOOB_WCLASS_ATGM_NLOS;
+			break;
+		default:
+			e = SPWOOB_WCLASS_UNKNOWN;
+			break;
+	}
+	return (e);
 }
 
 
@@ -1316,7 +1679,7 @@ SPWOOB_SPWAW_UTYPE_xlt (BYTE r)
 			e = SPWOOB_UTYPE_SPECOP;
 			break;
 		case 71:
-			e = SPWOOB_UTYPE_GUERILLA;
+			e = SPWOOB_UTYPE_GRRLL;
 			break;
 		case 72:
 			e = SPWOOB_UTYPE_AIR_INF;
@@ -1888,7 +2251,7 @@ SPWOOB_WINSPWW2_UTYPE_xlt (BYTE r)
 			e = SPWOOB_UTYPE_PARA_ENG;
 			break;
 		case 142:
-			e = SPWOOB_UTYPE_PARA_INF_AT;
+			e = SPWOOB_UTYPE_PARA_AT;
 			break;
 		case 143:
 			e = SPWOOB_UTYPE_PARA_SNIPER;
@@ -1900,7 +2263,7 @@ SPWOOB_WINSPWW2_UTYPE_xlt (BYTE r)
 			e = SPWOOB_UTYPE_CMD_ENG;
 			break;
 		case 146:
-			e = SPWOOB_UTYPE_CMD_INF_AT;
+			e = SPWOOB_UTYPE_CMD_AT;
 			break;
 		case 147:
 			e = SPWOOB_UTYPE_CMD_SNIPER;
@@ -1957,7 +2320,7 @@ SPWOOB_WINSPWW2_UTYPE_xlt (BYTE r)
 			e = SPWOOB_UTYPE_SKI_SNIPER;
 			break;
 		case 165:
-			e = SPWOOB_UTYPE_SKI_INF_AT;
+			e = SPWOOB_UTYPE_SKI_AT;
 			break;
 		case 166:
 			e = SPWOOB_UTYPE_SKI_ENG;
@@ -2228,6 +2591,794 @@ SPWOOB_WINSPWW2_UTYPE_xlt (BYTE r)
 			break;
 		case 255:
 			e = SPWOOB_UTYPE_HV_GLIDER;
+			break;
+		default:
+			e = SPWOOB_UTYPE_UNKNOWN;
+			break;
+	}
+	return (e);
+}
+
+
+
+/*! raw winSPMBT OOB unit type translation function
+ *
+ * \param r	raw winSPMBT OOB unit type value
+ * \return	SPWOOB_UTYPE enum
+ */
+SPWOOB_UTYPE
+SPWOOB_WINSPMBT_UTYPE_xlt (BYTE r)
+{
+	SPWOOB_UTYPE	e;
+
+	switch (r) {
+		case 0:
+			e = SPWOOB_UTYPE_FORT;
+			break;
+		case 1:
+			e = SPWOOB_UTYPE_INF;
+			break;
+		case 2:
+			e = SPWOOB_UTYPE_INF_AT;
+			break;
+		case 3:
+			e = SPWOOB_UTYPE_CAV;
+			break;
+		case 4:
+			e = SPWOOB_UTYPE_MG;
+			break;
+		case 5:
+			e = SPWOOB_UTYPE_MORT;
+			break;
+		case 6:
+			e = SPWOOB_UTYPE_AT;
+			break;
+		case 7:
+			e = SPWOOB_UTYPE_AGL;
+			break;
+		case 8:
+			e = SPWOOB_UTYPE_FLAK;
+			break;
+		case 9:
+			e = SPWOOB_UTYPE_FLD_GUN;
+			break;
+		case 10:
+			e = SPWOOB_UTYPE_OB_ART;
+			break;
+		case 11:
+			e = SPWOOB_UTYPE_ARM_CAR;
+			break;
+		case 12:
+			e = SPWOOB_UTYPE_LT_TNK;
+			break;
+		case 13:
+			e = SPWOOB_UTYPE_MD_TNK;
+			break;
+		case 14:
+			e = SPWOOB_UTYPE_HV_TNK;
+			break;
+		case 15:
+			e = SPWOOB_UTYPE_CS_TNK;
+			break;
+		case 16:
+			e = SPWOOB_UTYPE_AREA_SAM;
+			break;
+		case 17:
+			e = SPWOOB_UTYPE_FLM_TNK;
+			break;
+		case 18:
+			e = SPWOOB_UTYPE_ASSAULT;
+			break;
+		case 19:
+			e = SPWOOB_UTYPE_SP_ATGM;
+			break;
+		case 20:
+			e = SPWOOB_UTYPE_ENG;
+			break;
+		case 21:
+			e = SPWOOB_UTYPE_SP_ART;
+			break;
+		case 22:
+			e = SPWOOB_UTYPE_SP_FLAK;
+			break;
+		case 23:
+			e = SPWOOB_UTYPE_WH_APC;
+			break;
+		case 24:
+			e = SPWOOB_UTYPE_HT;
+			break;
+		case 25:
+			e = SPWOOB_UTYPE_TR_APC;
+			break;
+		case 26:
+			e = SPWOOB_UTYPE_UTIL;
+			break;
+		case 27:
+			e = SPWOOB_UTYPE_MD_TRK;
+			break;
+		case 28:
+			e = SPWOOB_UTYPE_HV_TRK;
+			break;
+		case 29:
+			e = SPWOOB_UTYPE_INF_SAM;
+			break;
+		case 30:
+			e = SPWOOB_UTYPE_SP_SAM;
+			break;
+		case 31:
+			e = SPWOOB_UTYPE_OB_RKT;
+			break;
+		case 32:
+			e = SPWOOB_UTYPE_VEH_SCOUT;
+			break;
+		case 33:
+			e = SPWOOB_UTYPE_LT_AMPHIB;
+			break;
+		case 34:
+			e = SPWOOB_UTYPE_HV_AMPHIB;
+			break;
+		case 35:
+			e = SPWOOB_UTYPE_AMPHIB_TNK;
+			break;
+		case 36:
+			e = SPWOOB_UTYPE_MINECLR_TNK;
+			break;
+		case 37:
+			e = SPWOOB_UTYPE_ENG_TNK;
+			break;
+		case 38:
+			e = SPWOOB_UTYPE_SP_MORT;
+			break;
+		case 39:
+			e = SPWOOB_UTYPE_SP_GUN;
+			break;
+		case 40:
+			e = SPWOOB_UTYPE_HV_INF;
+			break;
+		case 41:
+			e = SPWOOB_UTYPE_BARGE;
+			break;
+		case 42:
+			e = SPWOOB_UTYPE_ABOAT;
+			break;
+		case 43:
+			e = SPWOOB_UTYPE_LCS;
+			break;
+		case 44:
+			e = SPWOOB_UTYPE_AIRF;
+			break;
+		case 45:
+			e = SPWOOB_UTYPE_SNIPER;
+			break;
+		case 46:
+			e = SPWOOB_UTYPE_LCG;
+			break;
+		case 47:
+			e = SPWOOB_UTYPE_GLIDER;
+			break;
+		case 48:
+			e = SPWOOB_UTYPE_BARGECARR;
+			break;
+		case 49:
+			e = SPWOOB_UTYPE_MCYCLE;
+			break;
+		case 50:
+			e = SPWOOB_UTYPE_AIR_FO;
+			break;
+		case 51:
+			e = SPWOOB_UTYPE_LT_INF;
+			break;
+		case 52:
+			e = SPWOOB_UTYPE_WH_ATGM;
+			break;
+		case 53:
+			e = SPWOOB_UTYPE_HELI;
+			break;
+		case 54:
+			e = SPWOOB_UTYPE_CREW;
+			break;
+		case 55:
+			e = SPWOOB_UTYPE_HQ;
+			break;
+		case 56:
+			e = SPWOOB_UTYPE_AMMOCARR;
+			break;
+		case 57:
+			e = SPWOOB_UTYPE_VEH_FO;
+			break;
+		case 58:
+			e = SPWOOB_UTYPE_SCOUT;
+			break;
+		case 59:
+			e = SPWOOB_UTYPE_MB_TNK;
+			break;
+		case 60:
+			e = SPWOOB_UTYPE_PARA_AIR;
+			break;
+		case 61:
+			e = SPWOOB_UTYPE_CRG_AIR;
+			break;
+		case 62:
+			e = SPWOOB_UTYPE_AIRB;
+			break;
+		case 63:
+			e = SPWOOB_UTYPE_FO;
+			break;
+		case 64:
+			e = SPWOOB_UTYPE_MD_INF;
+			break;
+		case 65:
+			e = SPWOOB_UTYPE_LMG_SEC;
+			break;
+		case 66:
+			e = SPWOOB_UTYPE_SMG_SEC;
+			break;
+		case 67:
+			e = SPWOOB_UTYPE_RFL_SEC;
+			break;
+		case 68:
+			e = SPWOOB_UTYPE_RFL_INF;
+			break;
+		case 69:
+			e = SPWOOB_UTYPE_ARM_INF;
+			break;
+		case 70:
+			e = SPWOOB_UTYPE_HV_ARM_INF;
+			break;
+		case 71:
+			e = SPWOOB_UTYPE_MD_ARM_INF;
+			break;
+		case 72:
+			e = SPWOOB_UTYPE_LT_ARM_INF;
+			break;
+		case 73:
+			e = SPWOOB_UTYPE_ARM_SPT;
+			break;
+		case 74:
+			e = SPWOOB_UTYPE_ARM_SMG;
+			break;
+		case 75:
+			e = SPWOOB_UTYPE_IRR_INF;
+			break;
+		case 76:
+			e = SPWOOB_UTYPE_PRTS;
+			break;
+		case 77:
+			e = SPWOOB_UTYPE_PRTS_SPT;
+			break;
+		case 78:
+			e = SPWOOB_UTYPE_PRTS_BAND;
+			break;
+		case 79:
+			e = SPWOOB_UTYPE_NAT_INF;
+			break;
+		case 80:
+			e = SPWOOB_UTYPE_PRTS_SCOUT;
+			break;
+		case 81:
+			e = SPWOOB_UTYPE_APC_SCOUT;
+			break;
+		case 82:
+			e = SPWOOB_UTYPE_PATROL;
+			break;
+		case 83:
+			e = SPWOOB_UTYPE_CMD;
+			break;
+		case 84:
+			e = SPWOOB_UTYPE_CMD_SPT;
+			break;
+		case 85:
+			e = SPWOOB_UTYPE_LT_CMD;
+			break;
+		case 86:
+			e = SPWOOB_UTYPE_MD_CMD;
+			break;
+		case 87:
+			e = SPWOOB_UTYPE_HV_CMD;
+			break;
+		case 88:
+			e = SPWOOB_UTYPE_CMD_SCOUT;
+			break;
+		case 89:
+			e = SPWOOB_UTYPE_GRDS_INF;
+			break;
+		case 90:
+			e = SPWOOB_UTYPE_GRDS_SMG;
+			break;
+		case 91:
+			e = SPWOOB_UTYPE_LT_GRDS;
+			break;
+		case 92:
+			e = SPWOOB_UTYPE_MD_GRDS;
+			break;
+		case 93:
+			e = SPWOOB_UTYPE_HV_GRDS;
+			break;
+		case 94:
+			e = SPWOOB_UTYPE_GRDS_SCOUT;
+			break;
+		case 95:
+			e = SPWOOB_UTYPE_GRDS_SPT;
+			break;
+		case 96:
+			e = SPWOOB_UTYPE_PARA;
+			break;
+		case 97:
+			e = SPWOOB_UTYPE_PARA_SPT;
+			break;
+		case 98:
+			e = SPWOOB_UTYPE_PARA_LT_INF;
+			break;
+		case 99:
+			e = SPWOOB_UTYPE_PARA_MD_INF;
+			break;
+		case 100:
+			e = SPWOOB_UTYPE_PARA_SMG;
+			break;
+		case 101:
+			e = SPWOOB_UTYPE_PARA_SCOUT;
+			break;
+		case 102:
+			e = SPWOOB_UTYPE_RSRV_TNK;
+			break;
+		case 103:
+			e = SPWOOB_UTYPE_MD_TNK;
+			break;
+		case 104:
+			e = SPWOOB_UTYPE_CS_MB_TNK;
+			break;
+		case 105:
+			e = SPWOOB_UTYPE_INF_TNK;
+			break;
+		case 106:
+			e = SPWOOB_UTYPE_CS_INF_TNK;
+			break;
+		case 107:
+			e = SPWOOB_UTYPE_OHV_TNK;
+			break;
+		case 108:
+			e = SPWOOB_UTYPE_HV_ARM_CAR;
+			break;
+		case 109:
+			e = SPWOOB_UTYPE_WAGON;
+			break;
+		case 110:
+			e = SPWOOB_UTYPE_MRNS;
+			break;
+		case 111:
+			e = SPWOOB_UTYPE_RNGR;
+			break;
+		case 112:
+			e = SPWOOB_UTYPE_MRNS_LT_INF;
+			break;
+		case 113:
+			e = SPWOOB_UTYPE_MRNS_SPT;
+			break;
+		case 114:
+			e = SPWOOB_UTYPE_RNGR_SPT;
+			break;
+		case 115:
+			e = SPWOOB_UTYPE_AIRMBL;
+			break;
+		case 116:
+			e = SPWOOB_UTYPE_AIRMBL_SPT;
+			break;
+		case 117:
+			e = SPWOOB_UTYPE_LGN;
+			break;
+		case 118:
+			e = SPWOOB_UTYPE_LGN_SMG;
+			break;
+		case 119:
+			e = SPWOOB_UTYPE_LGN_SPT;
+			break;
+		case 120:
+			e = SPWOOB_UTYPE_HV_APC;
+			break;
+		case 121:
+			e = SPWOOB_UTYPE_LT_APC;
+			break;
+		case 122:
+			e = SPWOOB_UTYPE_LT_SPT_APC;
+			break;
+		case 123:
+			e = SPWOOB_UTYPE_AIR_APC;
+			break;
+		case 124:
+			e = SPWOOB_UTYPE_AIR_SPT_APC;
+			break;
+		case 125:
+			e = SPWOOB_UTYPE_HT_APC_GUN;
+			break;
+		case 126:
+			e = SPWOOB_UTYPE_WH_APC_GUN;
+			break;
+		case 127:
+			e = SPWOOB_UTYPE_TR_APC_GUN;
+			break;
+		case 128:
+			e = SPWOOB_UTYPE_LT_SP_FLAK;
+			break;
+		case 129:
+			e = SPWOOB_UTYPE_LT_SP_ATGM;
+			break;
+		case 130:
+			e = SPWOOB_UTYPE_SP_HWTZR;
+			break;
+		case 131:
+			e = SPWOOB_UTYPE_CAV_TNK;
+			break;
+		case 132:
+			e = SPWOOB_UTYPE_LT_CAV_TNK;
+			break;
+		case 133:
+			e = SPWOOB_UTYPE_LT_SP_MORT;
+			break;
+		case 134:
+			e = SPWOOB_UTYPE_EXPLOSIVE;
+			break;
+		case 135:
+			e = SPWOOB_UTYPE_MB_TNK;
+			break;
+		case 136:
+			e = SPWOOB_UTYPE_IMP_APC;
+			break;
+		case 137:
+			e = SPWOOB_UTYPE_SP_RKT;
+			break;
+		case 138:
+			e = SPWOOB_UTYPE_HETS;
+			break;
+		case 139:
+			e = SPWOOB_UTYPE_SP_GUN;
+			break;
+		case 140:
+			e = SPWOOB_UTYPE_PIONEER;
+			break;
+		case 141:
+			e = SPWOOB_UTYPE_PARA_ENG;
+			break;
+		case 142:
+			e = SPWOOB_UTYPE_PARA_AT;
+			break;
+		case 143:
+			e = SPWOOB_UTYPE_PARA_SNIPER;
+			break;
+		case 144:
+			e = SPWOOB_UTYPE_PARA_MG;
+			break;
+		case 145:
+			e = SPWOOB_UTYPE_CMD_ENG;
+			break;
+		case 146:
+			e = SPWOOB_UTYPE_CMD_AT;
+			break;
+		case 147:
+			e = SPWOOB_UTYPE_CMD_SNIPER;
+			break;
+		case 148:
+			e = SPWOOB_UTYPE_MOT_INF;
+			break;
+		case 149:
+			e = SPWOOB_UTYPE_PARA_MG;
+			break;
+		case 150:
+			e = SPWOOB_UTYPE_CAV_SCOUT;
+			break;
+		case 151:
+			e = SPWOOB_UTYPE_RKT;
+			break;
+		case 152:
+			e = SPWOOB_UTYPE_HV_MORT;
+			break;
+		case 153:
+			e = SPWOOB_UTYPE_LT_MORT;
+			break;
+		case 154:
+			e = SPWOOB_UTYPE_INF_HWTZR;
+			break;
+		case 155:
+			e = SPWOOB_UTYPE_MD_OB_ART;
+			break;
+		case 156:
+			e = SPWOOB_UTYPE_HV_OB_ART;
+			break;
+		case 157:
+			e = SPWOOB_UTYPE_LT_AT;
+			break;
+		case 158:
+			e = SPWOOB_UTYPE_HV_AT;
+			break;
+		case 159:
+			e = SPWOOB_UTYPE_CAPT_TNK;
+			break;
+		case 160:
+			e = SPWOOB_UTYPE_SL_INF;
+			break;
+		case 161:
+			e = SPWOOB_UTYPE_SL_SPT;
+			break;
+		case 162:
+			e = SPWOOB_UTYPE_SKI;
+			break;
+		case 163:
+			e = SPWOOB_UTYPE_HV_SKI;
+			break;
+		case 164:
+			e = SPWOOB_UTYPE_SKI_SNIPER;
+			break;
+		case 165:
+			e = SPWOOB_UTYPE_SKI_AT;
+			break;
+		case 166:
+			e = SPWOOB_UTYPE_SKI_ENG;
+			break;
+		case 167:
+			e = SPWOOB_UTYPE_SNOW;
+			break;
+		case 168:
+			e = SPWOOB_UTYPE_SKI_SCOUT;
+			break;
+		case 169:
+			e = SPWOOB_UTYPE_SKI_SMG;
+			break;
+		case 170:
+			e = SPWOOB_UTYPE_GRDS_ENG;
+			break;
+		case 171:
+			e = SPWOOB_UTYPE_MRNS_ENG;
+			break;
+		case 172:
+			e = SPWOOB_UTYPE_BCYCLE;
+			break;
+		case 173:
+			e = SPWOOB_UTYPE_PARA_MORT;
+			break;
+		case 174:
+			e = SPWOOB_UTYPE_AIRMBL_ENG;
+			break;
+		case 175:
+			e = SPWOOB_UTYPE_LT_AIR_TNK;
+			break;
+		case 176:
+			e = SPWOOB_UTYPE_HV_MG;
+			break;
+		case 177:
+			e = SPWOOB_UTYPE_HV_MG_SEC;
+			break;
+		case 178:
+			e = SPWOOB_UTYPE_POLICE;
+			break;
+		case 179:
+			e = SPWOOB_UTYPE_HV_BCYCLE;
+			break;
+		case 180:
+			e = SPWOOB_UTYPE_ART_PRMV;
+			break;
+		case 181:
+			e = SPWOOB_UTYPE_WH_FLAK;
+			break;
+		case 182:
+			e = SPWOOB_UTYPE_PACK;
+			break;
+		case 183:
+			e = SPWOOB_UTYPE_LT_TRK;
+			break;
+		case 184:
+			e = SPWOOB_UTYPE_AIR_FLD_HWTZR;
+			break;
+		case 185:
+			e = SPWOOB_UTYPE_HV_AIRMBL;
+			break;
+		case 186:
+			e = SPWOOB_UTYPE_RFL_AIRMBL;
+			break;
+		case 187:
+			e = SPWOOB_UTYPE_MCYCLE;
+			break;
+		case 188:
+			e = SPWOOB_UTYPE_HV_MCYCLE;
+			break;
+		case 189:
+			e = SPWOOB_UTYPE_MLT;
+			break;
+		case 190:
+			e = SPWOOB_UTYPE_LT_MLT;
+			break;
+		case 191:
+			e = SPWOOB_UTYPE_HV_MLT;
+			break;
+		case 192:
+			e = SPWOOB_UTYPE_MLT_SPT;
+			break;
+		case 193:
+			e = SPWOOB_UTYPE_MG;
+			break;
+		case 194:
+			e = SPWOOB_UTYPE_MG_SEC;
+			break;
+		case 195:
+			e = SPWOOB_UTYPE_ENG_SPT;
+			break;
+		case 196:
+			e = SPWOOB_UTYPE_PACK_HWTZR;
+			break;
+		case 197:
+			e = SPWOOB_UTYPE_RBOAT;
+			break;
+		case 198:
+			e = SPWOOB_UTYPE_TBOAT;
+			break;
+		case 199:
+			e = SPWOOB_UTYPE_PBOAT;
+			break;
+		case 200:
+			e = SPWOOB_UTYPE_SA_MORT;
+			break;
+		case 201:
+			e = SPWOOB_UTYPE_SB_MORT;
+			break;
+		case 202:
+			e = SPWOOB_UTYPE_SC_MORT;
+			break;
+		case 203:
+			e = SPWOOB_UTYPE_AHELI;
+			break;
+		case 204:
+			e = SPWOOB_UTYPE_LT_HELI;
+			break;
+		case 205:
+			e = SPWOOB_UTYPE_HV_HELI;
+			break;
+		case 206:
+			e = SPWOOB_UTYPE_INF_ATGM;
+			break;
+		case 207:
+			e = SPWOOB_UTYPE_PARA_ATGM;
+			break;
+		case 208:
+			e = SPWOOB_UTYPE_INF_RR;
+			break;
+		case 209:
+			e = SPWOOB_UTYPE_PARA_RR;
+			break;
+		case 210:
+			e = SPWOOB_UTYPE_OB_ML_RKT;
+			break;
+		case 211:
+			e = SPWOOB_UTYPE_OB_ML_ART;
+			break;
+		case 212:
+			e = SPWOOB_UTYPE_INF_HV_ATGM;
+			break;
+		case 213:
+			e = SPWOOB_UTYPE_PARA_HV_ATGM;
+			break;
+		case 214:
+			e = SPWOOB_UTYPE_SEAD;
+			break;
+		case 215:
+			e = SPWOOB_UTYPE_GUNSHIP;
+			break;
+		case 216:
+			e = SPWOOB_UTYPE_NOUNIT;
+			break;
+		case 217:
+			e = SPWOOB_UTYPE_MRV_APC;
+			break;
+		case 218:
+			e = SPWOOB_UTYPE_MERC;
+			break;
+		case 219:
+			e = SPWOOB_UTYPE_LT_MRV_APC;
+			break;
+		case 220:
+			e = SPWOOB_UTYPE_HV_MRV_APC;
+			break;
+		case 221:
+			e = SPWOOB_UTYPE_LT_AHELI;
+			break;
+		case 222:
+			e = SPWOOB_UTYPE_COIN_HELI;
+			break;
+		case 223:
+			e = SPWOOB_UTYPE_COIN_F;
+			break;
+		case 224:
+			e = SPWOOB_UTYPE_COIN_INF;
+			break;
+		case 225:
+			e = SPWOOB_UTYPE_COIN_LT_INF;
+			break;
+		case 226:
+			e = SPWOOB_UTYPE_COIN_HV_INF;
+			break;
+		case 227:
+			e = SPWOOB_UTYPE_COIN_SPT;
+			break;
+		case 228:
+			e = SPWOOB_UTYPE_COIN_SCOUT;
+			break;
+		case 229:
+			e = SPWOOB_UTYPE_PARA_FO;
+			break;
+		case 230:
+			e = SPWOOB_UTYPE_GRRLL_INF;
+			break;
+		case 231:
+			e = SPWOOB_UTYPE_LT_GRRLL_INF;
+			break;
+		case 232:
+			e = SPWOOB_UTYPE_HV_GRRLL_INF;
+			break;
+		case 233:
+			e = SPWOOB_UTYPE_GRRLL_SPT;
+			break;
+		case 234:
+			e = SPWOOB_UTYPE_GRRLL_SCOUT;
+			break;
+		case 235:
+			e = SPWOOB_UTYPE_GRRLL_SNIPER;
+			break;
+		case 236:
+			e = SPWOOB_UTYPE_GRRLL_RKT;
+			break;
+		case 237:
+			e = SPWOOB_UTYPE_MRV_IFV;
+			break;
+		case 238:
+			e = SPWOOB_UTYPE_LT_MRV_IFV;
+			break;
+		case 239:
+			e = SPWOOB_UTYPE_HVRCRFT;
+			break;
+		case 240:
+			e = SPWOOB_UTYPE_MRNS_HV_INF;
+			break;
+		case 241:
+			e = SPWOOB_UTYPE_MRNS_SCOUT;
+			break;
+		case 242:
+			e = SPWOOB_UTYPE_MRNS_SNIPER;
+			break;
+		case 243:
+			e = SPWOOB_UTYPE_MRNS_FO;
+			break;
+		case 244:
+			e = SPWOOB_UTYPE_MRNS_AT;
+			break;
+		case 245:
+			e = SPWOOB_UTYPE_RKT_APC;
+			break;
+		case 246:
+			e = SPWOOB_UTYPE_LT_RNGR;
+			break;
+		case 247:
+			e = SPWOOB_UTYPE_HV_RNGR;
+			break;
+		case 248:
+			e = SPWOOB_UTYPE_RNGR_SCOUT;
+			break;
+		case 249:
+			e = SPWOOB_UTYPE_RNGR_SNIPER;
+			break;
+		case 250:
+			e = SPWOOB_UTYPE_RNGR_PIONEER;
+			break;
+		case 251:
+			e = SPWOOB_UTYPE_APC;
+			break;
+		case 252:
+			e = SPWOOB_UTYPE_FLD_GUN;
+			break;
+		case 253:
+			e = SPWOOB_UTYPE_COIN_B;
+			break;
+		case 254:
+			e = SPWOOB_UTYPE_MG_TEAM;
+			break;
+		case 255:
+			e = SPWOOB_UTYPE_SD_MORT;
 			break;
 		default:
 			e = SPWOOB_UTYPE_UNKNOWN;

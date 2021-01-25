@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWOOB type codes.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -23,6 +23,57 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif	/* __cplusplus */
+
+
+
+/*! SPWOOB weapon class */
+typedef enum e_SPWOOB_WCLASS {
+	SPWOOB_WCLASS_START = 0,                     		/*!< \internal start code                 */
+	SPWOOB_WCLASS_UNKNOWN = 0,                   		/*!< unknown weapon                       */
+	SPWOOB_WCLASS_INF_PRM,                       		/*!< primary infantry weapon              */
+	SPWOOB_WCLASS_INF_SEC,                       		/*!< secondary infantry weapon            */
+	SPWOOB_WCLASS_TEAM,                          		/*!< team weapon                          */
+	SPWOOB_WCLASS_AA,                            		/*!< anti-air weapon                      */
+	SPWOOB_WCLASS_SML_GUN,                       		/*!< light gun                            */
+	SPWOOB_WCLASS_MDM_GUN,                       		/*!< medium gun                           */
+	SPWOOB_WCLASS_LRG_GUN,                       		/*!< large gun                            */
+	SPWOOB_WCLASS_FLAME_INF,                     		/*!< infantry flamethrower                */
+	SPWOOB_WCLASS_FLAME_VHC,                     		/*!< vehicle flamethrower                 */
+	SPWOOB_WCLASS_NAVAL,                         		/*!< naval artillery                      */
+	SPWOOB_WCLASS_AIRCRAFT,                      		/*!< aircraft weapon                      */
+	SPWOOB_WCLASS_SAM,                           		/*!< surface-to-air missile               */
+	SPWOOB_WCLASS_ATGM,                          		/*!< anti-tank guided missile             */
+	SPWOOB_WCLASS_LRG_CLSTR,                     		/*!< large cluster bomb                   */
+	SPWOOB_WCLASS_SML_CLSTR,                     		/*!< small cluster bomb                   */
+	SPWOOB_WCLASS_ARM,                           		/*!< anti-radiation missile               */
+	SPWOOB_WCLASS_ASB,                           		/*!< anti-submarine missile               */
+	SPWOOB_WCLASS_NAPALM,                        		/*!< napalm                               */
+	SPWOOB_WCLASS_AUTO_CANNON,                   		/*!< auto cannon                          */
+	SPWOOB_WCLASS_EXPLOSIVES,                    		/*!< explosives                           */
+	SPWOOB_WCLASS_ASM,                           		/*!< air-to-surface missile               */
+	SPWOOB_WCLASS_ATGM_TA,                       		/*!< top-attack ATGM                      */
+	SPWOOB_WCLASS_ATGM_MC,                       		/*!< multi-charge ATGM                    */
+	SPWOOB_WCLASS_HEAT_MC,                       		/*!< multi-charge HEAT                    */
+	SPWOOB_WCLASS_HEAT_TA,                       		/*!< top-attack HEAT                      */
+	SPWOOB_WCLASS_HEAT_TAIG,                     		/*!< top-attack inertial-guidance HEAT    */
+	SPWOOB_WCLASS_HESH_GUN,                      		/*!< high-explosive squash head gun       */
+	SPWOOB_WCLASS_ATGM_NLOS,                     		/*!< non-line-of-sight ATGM               */
+	SPWOOB_WCLASS_LIMIT = SPWOOB_WCLASS_ATGM_NLOS		/*!< \internal final code                 */
+} SPWOOB_WCLASS;
+#define	SPWOOB_WCLASS_CNT	(SPWOOB_WCLASS_LIMIT - SPWOOB_WCLASS_START + 1)
+
+/*! SPWOOB weapon class lookup function
+ *
+ * \param e	SPWOOB weapon class
+ * \return	Pointer to const string with SPWOOB weapon class name
+ */
+extern const char *SPWOOB_WCLASS_lookup (SPWOOB_WCLASS e);
+/*! SPWOOB weapon class code lookup function
+ *
+ * \param e	SPWOOB weapon class
+ * \return	Pointer to const string with SPWOOB weapon class code
+ */
+extern const char *SPWOOB_WCLASS_lookup_code (SPWOOB_WCLASS e);
 
 
 
@@ -60,50 +111,6 @@ extern const char *SPWOOB_UCLASS_lookup (SPWOOB_UCLASS e);
  * \return	Pointer to const string with SPWOOB unit class code
  */
 extern const char *SPWOOB_UCLASS_lookup_code (SPWOOB_UCLASS e);
-
-
-
-/*! SPWOOB weapon class */
-typedef enum e_SPWOOB_WCLASS {
-	SPWOOB_WCLASS_START = 0,                     		/*!< \internal start code         */
-	SPWOOB_WCLASS_UNKNOWN = 0,                   		/*!< unknown weapon               */
-	SPWOOB_WCLASS_INF_PRM,                       		/*!< primary infantry weapon      */
-	SPWOOB_WCLASS_INF_SEC,                       		/*!< secondary infantry weapon    */
-	SPWOOB_WCLASS_TEAM,                          		/*!< team weapon                  */
-	SPWOOB_WCLASS_AA,                            		/*!< anti-air weapon              */
-	SPWOOB_WCLASS_SML_GUN,                       		/*!< light gun                    */
-	SPWOOB_WCLASS_MDM_GUN,                       		/*!< medium gun                   */
-	SPWOOB_WCLASS_LRG_GUN,                       		/*!< large gun                    */
-	SPWOOB_WCLASS_FLAME_INF,                     		/*!< infantry flamethrower        */
-	SPWOOB_WCLASS_FLAME_VHC,                     		/*!< vehicle flamethrower         */
-	SPWOOB_WCLASS_NAVAL,                         		/*!< naval artillery              */
-	SPWOOB_WCLASS_AIRCRAFT,                      		/*!< aircraft weapon              */
-	SPWOOB_WCLASS_SAM,                           		/*!< surface-to-air missile       */
-	SPWOOB_WCLASS_AT,                            		/*!< anti-tank missile            */
-	SPWOOB_WCLASS_LRG_CLSTR,                     		/*!< large cluster bomb           */
-	SPWOOB_WCLASS_SML_CLSTR,                     		/*!< small cluster bomb           */
-	SPWOOB_WCLASS_ARM,                           		/*!< ARM                          */
-	SPWOOB_WCLASS_ASM,                           		/*!< ASM                          */
-	SPWOOB_WCLASS_NAPALM,                        		/*!< napalm                       */
-	SPWOOB_WCLASS_AUTO_CANNON,                   		/*!< auto cannon                  */
-	SPWOOB_WCLASS__NONE,                         		/*!< \internal default code       */
-	SPWOOB_WCLASS_LIMIT = SPWOOB_WCLASS__NONE    		/*!< \internal final code         */
-} SPWOOB_WCLASS;
-#define	SPWOOB_WCLASS_CNT	(SPWOOB_WCLASS_LIMIT - SPWOOB_WCLASS_START + 1)
-
-/*! SPWOOB weapon class lookup function
- *
- * \param e	SPWOOB weapon class
- * \return	pointer to const string with SPWOOB weapon class name
- */
-extern const char *SPWOOB_WCLASS_lookup (SPWOOB_WCLASS e);
-
-/*! SPWOOB weapon class translation function
- *
- * \param r	raw SPWOOB weapon class value
- * \return	SPWOOB weapon class
- */
-extern SPWOOB_WCLASS SPWOOB_WCLASS_xlt (BYTE r);
 
 
 
@@ -215,7 +222,9 @@ typedef enum e_SPWOOB_MOVCL {
 	SPWOOB_MOVCL_WHL,                            		/*!< wheel                */
 	SPWOOB_MOVCL_WAT,                            		/*!< wheel (AT)           */
 	SPWOOB_MOVCL_TRK,                            		/*!< track                */
-	SPWOOB_MOVCL_NAV,                            		/*!< ship                 */
+	SPWOOB_MOVCL_BOAT,                           		/*!< boat                 */
+	SPWOOB_MOVCL_SHIP,                           		/*!< ship                 */
+	SPWOOB_MOVCL_SNOW,                           		/*!< snowmobile           */
 	SPWOOB_MOVCL__NONE,                          		/*!< \internal default code */
 	SPWOOB_MOVCL_LIMIT = SPWOOB_MOVCL__NONE      		/*!< \internal final code */
 } SPWOOB_MOVCL;
@@ -252,9 +261,11 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_MG_TEAM,                        		/*!< MG team                             */
 	SPWOOB_UTYPE_LMG_SEC,                        		/*!< LMG section                         */
 	SPWOOB_UTYPE_HV_MG,                          		/*!< heavy MG squad                      */
+	SPWOOB_UTYPE_HV_MG_SEC,                      		/*!< heavy MG section                    */
 	SPWOOB_UTYPE_SPECOP,                         		/*!< special forces                      */
 	SPWOOB_UTYPE_ENG,                            		/*!< engineers                           */
 	SPWOOB_UTYPE_ENG_SPT,                        		/*!< engineer support squad              */
+	SPWOOB_UTYPE_PIONEER,                        		/*!< pioneers                            */
 	SPWOOB_UTYPE_ELITE,                          		/*!< elite infantry                      */
 	SPWOOB_UTYPE_AIR_INF,                        		/*!< airborne infantry                   */
 	SPWOOB_UTYPE_LNCR,                           		/*!< lancers                             */
@@ -263,7 +274,13 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_SL_INF,                         		/*!< second line infantry                */
 	SPWOOB_UTYPE_SL_SPT,                         		/*!< second line support squad           */
 	SPWOOB_UTYPE_IRR_INF,                        		/*!< irregulars                          */
-	SPWOOB_UTYPE_GUERILLA,                       		/*!< guerilla forces                     */
+	SPWOOB_UTYPE_GRRLL,                          		/*!< guerrilla forces                    */
+	SPWOOB_UTYPE_GRRLL_INF,                      		/*!< guerrilla infantry                  */
+	SPWOOB_UTYPE_LT_GRRLL_INF,                   		/*!< guerrilla light infantry            */
+	SPWOOB_UTYPE_HV_GRRLL_INF,                   		/*!< guerrilla heavy wpns squad          */
+	SPWOOB_UTYPE_GRRLL_SPT,                      		/*!< guerrilla support squad             */
+	SPWOOB_UTYPE_GRRLL_SNIPER,                   		/*!< guerrilla sniper                    */
+	SPWOOB_UTYPE_GRRLL_RKT,                      		/*!< guerrilla rocket squad              */
 	SPWOOB_UTYPE_NAT_INF,                        		/*!< native troops                       */
 	SPWOOB_UTYPE_POLICE,                         		/*!< police                              */
 	SPWOOB_UTYPE_ARM_INF,                        		/*!< armored infantry                    */
@@ -327,6 +344,7 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_HV_RNGR,                        		/*!< Rangers heavy wpns squad            */
 	SPWOOB_UTYPE_RNGR_SPT,                       		/*!< Ranger support squad                */
 	SPWOOB_UTYPE_RNGR_ENG,                       		/*!< Ranger engineers                    */
+	SPWOOB_UTYPE_RNGR_PIONEER,                   		/*!< Ranger pioneers                     */
 	SPWOOB_UTYPE_RNGR_SNIPER,                    		/*!< Ranger sniper                       */
 	SPWOOB_UTYPE_SKI,                            		/*!< ski troops                          */
 	SPWOOB_UTYPE_LT_SKI,                         		/*!< light ski infantry                  */
@@ -339,6 +357,16 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_WSS_RFL,                        		/*!< Waffen SS rifle squad               */
 	SPWOOB_UTYPE_WSS_SMG,                        		/*!< Waffen SS SMG squad                 */
 	SPWOOB_UTYPE_WSS_ENG,                        		/*!< Waffen SS engineers                 */
+	SPWOOB_UTYPE_MERC,                           		/*!< mercenaries                         */
+	SPWOOB_UTYPE_AIRMBL,                         		/*!< airmobile section                   */
+	SPWOOB_UTYPE_HV_AIRMBL,                      		/*!< airmobile heavy wpns squad          */
+	SPWOOB_UTYPE_RFL_AIRMBL,                     		/*!< airmobile rifle squad               */
+	SPWOOB_UTYPE_AIRMBL_SPT,                     		/*!< airmobile support section           */
+	SPWOOB_UTYPE_AIRMBL_ENG,                     		/*!< airmobile engineers                 */
+	SPWOOB_UTYPE_COIN_INF,                       		/*!< COIN infantry                       */
+	SPWOOB_UTYPE_COIN_LT_INF,                    		/*!< COIN light infantry                 */
+	SPWOOB_UTYPE_COIN_HV_INF,                    		/*!< COIN heavy wpns squad               */
+	SPWOOB_UTYPE_COIN_SPT,                       		/*!< COIN support squad                  */
 	SPWOOB_UTYPE_CAV,                            		/*!< cavalry                             */
 	SPWOOB_UTYPE_MD_CAV,                         		/*!< medium cavalry                      */
 	SPWOOB_UTYPE_LT_CAV_TNK,                     		/*!< light cavalry tank                  */
@@ -352,10 +380,12 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_TNK,                            		/*!< tank                                */
 	SPWOOB_UTYPE_CS_TNK,                         		/*!< CS tank                             */
 	SPWOOB_UTYPE_MB_TNK,                         		/*!< main battle tank                    */
+	SPWOOB_UTYPE_CS_MB_TNK,                      		/*!< CS main battle tank                 */
 	SPWOOB_UTYPE_LT_TNK,                         		/*!< light tank                          */
 	SPWOOB_UTYPE_MD_TNK,                         		/*!< medium tank                         */
 	SPWOOB_UTYPE_HV_TNK,                         		/*!< heavy tank                          */
 	SPWOOB_UTYPE_VHV_TNK,                        		/*!< very heavy tank                     */
+	SPWOOB_UTYPE_OHV_TNK,                        		/*!< obsolete heavy tank                 */
 	SPWOOB_UTYPE_CR_TNK,                         		/*!< cruiser tank                        */
 	SPWOOB_UTYPE_HV_CR_TNK,                      		/*!< heavy cruiser tank                  */
 	SPWOOB_UTYPE_CS_CR_TNK,                      		/*!< CS cruiser tank                     */
@@ -375,7 +405,11 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_COL_TNK,                        		/*!< colonial tank                       */
 	SPWOOB_UTYPE_LL_TNK,                         		/*!< lend-lease tank                     */
 	SPWOOB_UTYPE_PROTO_TNK,                      		/*!< prototype tank                      */
+	SPWOOB_UTYPE_RSRV_TNK,                       		/*!< reserve tank                        */
 	SPWOOB_UTYPE_APC,                            		/*!< APC                                 */
+	SPWOOB_UTYPE_LT_APC,                         		/*!< light APC                           */
+	SPWOOB_UTYPE_LT_SPT_APC,                     		/*!< light support APC                   */
+	SPWOOB_UTYPE_HV_APC,                         		/*!< heavy APC                           */
 	SPWOOB_UTYPE_WH_APC,                         		/*!< wheeled APC                         */
 	SPWOOB_UTYPE_WH_APC_GUN,                     		/*!< wheeled gun APC                     */
 	SPWOOB_UTYPE_HT,                             		/*!< halftrack                           */
@@ -386,6 +420,14 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_TR_APC_GUN,                     		/*!< tracked gun APC                     */
 	SPWOOB_UTYPE_COL_APC,                        		/*!< colonial APC                        */
 	SPWOOB_UTYPE_IMP_APC,                        		/*!< improvised apc                      */
+	SPWOOB_UTYPE_RKT_APC,                        		/*!< rocket APC                          */
+	SPWOOB_UTYPE_AIR_APC,                        		/*!< airborne APC                        */
+	SPWOOB_UTYPE_AIR_SPT_APC,                    		/*!< airborn support APC                 */
+	SPWOOB_UTYPE_MRV_APC,                        		/*!< MRV APC                             */
+	SPWOOB_UTYPE_LT_MRV_APC,                     		/*!< light MRV APC                       */
+	SPWOOB_UTYPE_HV_MRV_APC,                     		/*!< heavy MRV APC                       */
+	SPWOOB_UTYPE_MRV_IFV,                        		/*!< MRV IFV                             */
+	SPWOOB_UTYPE_LT_MRV_IFV,                     		/*!< light MRV IFV                       */
 	SPWOOB_UTYPE_MORT,                           		/*!< mortar                              */
 	SPWOOB_UTYPE_SP_MORT,                        		/*!< SP mortar                           */
 	SPWOOB_UTYPE_LT_MORT,                        		/*!< light mortar                        */
@@ -407,13 +449,18 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_INF_HWTZR,                      		/*!< infantry howitzer                   */
 	SPWOOB_UTYPE_AIR_FLD_HWTZR,                  		/*!< airborne field howitzer             */
 	SPWOOB_UTYPE_PACK_HWTZR,                     		/*!< pack howitzer                       */
+	SPWOOB_UTYPE_SP_HWTZR,                       		/*!< SP howitzer                         */
 	SPWOOB_UTYPE_SP_ART,                         		/*!< SP artillery                        */
 	SPWOOB_UTYPE_RKT,                            		/*!< rocket launcher                     */
 	SPWOOB_UTYPE_SP_RKT,                         		/*!< SP rocket launcher                  */
+	SPWOOB_UTYPE_AGL,                            		/*!< automatic grenade launcher          */
 	SPWOOB_UTYPE_OB_ART,                         		/*!< offboard artillery                  */
-	SPWOOB_UTYPE_LT_OB_ART,                      		/*!< offboard light artillery            */
+	SPWOOB_UTYPE_LT_OB_ART,                      		/*!< light offboard artillery            */
+	SPWOOB_UTYPE_MD_OB_ART,                      		/*!< medium offboard artillery           */
 	SPWOOB_UTYPE_HV_OB_ART,                      		/*!< heavy offboard artillery            */
 	SPWOOB_UTYPE_OB_RKT,                         		/*!< offboard rocket launcher            */
+	SPWOOB_UTYPE_OB_ML_ART,                      		/*!< offboard minelet artillery          */
+	SPWOOB_UTYPE_OB_ML_RKT,                      		/*!< offboard minelet rocket launcher    */
 	SPWOOB_UTYPE_AT,                             		/*!< AT gun                              */
 	SPWOOB_UTYPE_LT_AT,                          		/*!< light AT gun                        */
 	SPWOOB_UTYPE_HV_AT,                          		/*!< heavy AT gun                        */
@@ -423,16 +470,27 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_TTD,                            		/*!< turreted tank destroyer             */
 	SPWOOB_UTYPE_HV_TD,                          		/*!< heavy tank destroyer                */
 	SPWOOB_UTYPE_INF_AT,                         		/*!< AT infantry                         */
-	SPWOOB_UTYPE_CMD_INF_AT,                     		/*!< commando AT infantry                */
+	SPWOOB_UTYPE_CMD_AT,                         		/*!< commando AT infantry                */
 	SPWOOB_UTYPE_MRNS_AT,                        		/*!< marines AT gun                      */
-	SPWOOB_UTYPE_PARA_INF_AT,                    		/*!< paratroop AT infantry               */
-	SPWOOB_UTYPE_SKI_INF_AT,                     		/*!< ski AT infantry                     */
+	SPWOOB_UTYPE_PARA_AT,                        		/*!< paratroop AT infantry               */
+	SPWOOB_UTYPE_SKI_AT,                         		/*!< ski AT infantry                     */
+	SPWOOB_UTYPE_ATGM,                           		/*!< ATGM launcher                       */
+	SPWOOB_UTYPE_SP_ATGM,                        		/*!< SP ATGM launcher                    */
+	SPWOOB_UTYPE_LT_SP_ATGM,                     		/*!< light SP ATGM launcher              */
+	SPWOOB_UTYPE_WH_ATGM,                        		/*!< wheeled ATGM launcher               */
+	SPWOOB_UTYPE_INF_ATGM,                       		/*!< ATGM infantry                       */
+	SPWOOB_UTYPE_INF_HV_ATGM,                    		/*!< heavy ATGM infantry                 */
+	SPWOOB_UTYPE_PARA_ATGM,                      		/*!< paratroop ATGM infantry             */
+	SPWOOB_UTYPE_PARA_HV_ATGM,                   		/*!< paratroop heavy ATGM infantry       */
 	SPWOOB_UTYPE_FLAK,                           		/*!< AA gun                              */
 	SPWOOB_UTYPE_HV_FLAK,                        		/*!< heavy AA gun                        */
 	SPWOOB_UTYPE_SP_FLAK,                        		/*!< SP AA gun                           */
 	SPWOOB_UTYPE_LT_SP_FLAK,                     		/*!< light SP AA gun                     */
 	SPWOOB_UTYPE_WH_FLAK,                        		/*!< AA gun truck                        */
 	SPWOOB_UTYPE_INF_FLAK,                       		/*!< AA MG infantry                      */
+	SPWOOB_UTYPE_AREA_SAM,                       		/*!< area SAM                            */
+	SPWOOB_UTYPE_SP_SAM,                         		/*!< SP SAM                              */
+	SPWOOB_UTYPE_INF_SAM,                        		/*!< SAM infantry                        */
 	SPWOOB_UTYPE_AMPHIB,                         		/*!< amphibian unit                      */
 	SPWOOB_UTYPE_LT_AMPHIB,                      		/*!< light amphibian unit                */
 	SPWOOB_UTYPE_HV_AMPHIB,                      		/*!< heavy amphibian unit                */
@@ -457,6 +515,7 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_HT_SCOUT,                       		/*!< scout halftrack                     */
 	SPWOOB_UTYPE_APC_SCOUT,                      		/*!< scout APC                           */
 	SPWOOB_UTYPE_TNK_SCOUT,                      		/*!< scout tank                          */
+	SPWOOB_UTYPE_GRRLL_SCOUT,                    		/*!< guerrilla scout                     */
 	SPWOOB_UTYPE_CAV_SCOUT,                      		/*!< cavalry scout                       */
 	SPWOOB_UTYPE_CMD_SCOUT,                      		/*!< commando scout                      */
 	SPWOOB_UTYPE_COL_SCOUT,                      		/*!< colonial scout                      */
@@ -469,6 +528,7 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_PRTS_SCOUT,                     		/*!< partisan scout                      */
 	SPWOOB_UTYPE_RNGR_SCOUT,                     		/*!< Ranger scout                        */
 	SPWOOB_UTYPE_SKI_SCOUT,                      		/*!< ski scout                           */
+	SPWOOB_UTYPE_COIN_SCOUT,                     		/*!< COIN scout                          */
 	SPWOOB_UTYPE_BCYCLE,                         		/*!< bicycle squad                       */
 	SPWOOB_UTYPE_HV_BCYCLE,                      		/*!< bicycle heavy wpns squad            */
 	SPWOOB_UTYPE_MCYCLE,                         		/*!< motorcycle                          */
@@ -477,6 +537,8 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_LT_ARM_CAR,                     		/*!< light armored car                   */
 	SPWOOB_UTYPE_HV_ARM_CAR,                     		/*!< heavy armored car                   */
 	SPWOOB_UTYPE_PATROL,                         		/*!< patrol                              */
+	SPWOOB_UTYPE_INF_RR,                         		/*!< infantry RR team                    */
+	SPWOOB_UTYPE_PARA_RR,                        		/*!< paratroop RR team                   */
 	SPWOOB_UTYPE_HQ,                             		/*!< force HQ                            */
 	SPWOOB_UTYPE_PLT_HQ,                         		/*!< platoon HQ                          */
 	SPWOOB_UTYPE_CC_TNK,                         		/*!< command tank                        */
@@ -496,10 +558,18 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_AIRF,                           		/*!< fighter-bomber                      */
 	SPWOOB_UTYPE_AIRB,                           		/*!< level bomber                        */
 	SPWOOB_UTYPE_HELI,                           		/*!< helicopter                          */
+	SPWOOB_UTYPE_LT_HELI,                        		/*!< light helicopter                    */
+	SPWOOB_UTYPE_HV_HELI,                        		/*!< heavy helicopter                    */
 	SPWOOB_UTYPE_AHELI,                          		/*!< attack helicopter                   */
+	SPWOOB_UTYPE_LT_AHELI,                       		/*!< light attack helicopter             */
 	SPWOOB_UTYPE_GA,                             		/*!< ground attack                       */
 	SPWOOB_UTYPE_GLIDER,                         		/*!< glider                              */
 	SPWOOB_UTYPE_HV_GLIDER,                      		/*!< heavy glider                        */
+	SPWOOB_UTYPE_SEAD,                           		/*!< SEAD aircraft                       */
+	SPWOOB_UTYPE_GUNSHIP,                        		/*!< gunship                             */
+	SPWOOB_UTYPE_COIN_F,                         		/*!< COIN fighter                        */
+	SPWOOB_UTYPE_COIN_B,                         		/*!< COIN bomber                         */
+	SPWOOB_UTYPE_COIN_HELI,                      		/*!< COIN helicopter                     */
 	SPWOOB_UTYPE_BARGE,                          		/*!< landing barge                       */
 	SPWOOB_UTYPE_BARGECARR,                      		/*!< barge carrier                       */
 	SPWOOB_UTYPE_LCG,                            		/*!< landing craft gunboat               */
@@ -510,6 +580,7 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_TBOAT,                          		/*!< torpedo boat                        */
 	SPWOOB_UTYPE_SHIP,                           		/*!< ship                                */
 	SPWOOB_UTYPE_NAVBOMB,                        		/*!< naval bombardment                   */
+	SPWOOB_UTYPE_HVRCRFT,                        		/*!< hovercraft                          */
 	SPWOOB_UTYPE_FORT,                           		/*!< fort                                */
 	SPWOOB_UTYPE_EMP_FORT,                       		/*!< gun emplacement                     */
 	SPWOOB_UTYPE_NAV_FORT,                       		/*!< naval fortification                 */
@@ -522,6 +593,7 @@ typedef enum e_SPWOOB_UTYPE {
 	SPWOOB_UTYPE_CAVE,                           		/*!< cave                                */
 	SPWOOB_UTYPE_EXPLOSIVE,                      		/*!< explosive                           */
 	SPWOOB_UTYPE_RESERVED,                       		/*!< reserved                            */
+	SPWOOB_UTYPE_NOUNIT,                         		/*!< NO UNIT                             */
 	SPWOOB_UTYPE_UNKNOWN,                        		/*!< unknown unit type                   */
 	SPWOOB_UTYPE__NONE,                          		/*!< \internal default code              */
 	SPWOOB_UTYPE_LIMIT = SPWOOB_UTYPE__NONE      		/*!< \internal final code                */
@@ -544,6 +616,33 @@ extern SPWOOB_UCLASS SPWOOB_UTYPE_classify (SPWOOB_UTYPE e);
 
 
 
+/*! raw SPWAW OOB weapon class translation function
+ *
+ * \param r	raw SPWAW OOB weapon class value
+ * \return	SPWOOB_WCLASS enum
+ */
+extern SPWOOB_WCLASS SPWOOB_SPWAW_WCLASS_xlt (BYTE r);
+
+
+
+/*! raw winSPWW2 OOB weapon class translation function
+ *
+ * \param r	raw winSPWW2 OOB weapon class value
+ * \return	SPWOOB_WCLASS enum
+ */
+extern SPWOOB_WCLASS SPWOOB_WINSPWW2_WCLASS_xlt (BYTE r);
+
+
+
+/*! raw winSPMBT OOB weapon class translation function
+ *
+ * \param r	raw winSPMBT OOB weapon class value
+ * \return	SPWOOB_WCLASS enum
+ */
+extern SPWOOB_WCLASS SPWOOB_WINSPMBT_WCLASS_xlt (BYTE r);
+
+
+
 /*! raw SPWAW OOB unit type translation function
  *
  * \param r	raw SPWAW OOB unit type value
@@ -559,6 +658,15 @@ extern SPWOOB_UTYPE SPWOOB_SPWAW_UTYPE_xlt (BYTE r);
  * \return	SPWOOB_UTYPE enum
  */
 extern SPWOOB_UTYPE SPWOOB_WINSPWW2_UTYPE_xlt (BYTE r);
+
+
+
+/*! raw winSPMBT OOB unit type translation function
+ *
+ * \param r	raw winSPMBT OOB unit type value
+ * \return	SPWOOB_UTYPE enum
+ */
+extern SPWOOB_UTYPE SPWOOB_WINSPMBT_UTYPE_xlt (BYTE r);
 
 
 
