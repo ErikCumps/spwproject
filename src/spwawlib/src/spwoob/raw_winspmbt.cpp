@@ -1,27 +1,27 @@
 /** \file
- * The SPWaW Library - SPWaW OOB handling - raw winSPWW2 data handling.
+ * The SPWaW Library - SPWaW OOB handling - raw winSPMBT data handling.
  *
- * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
 #include "stdafx.h"
 #include <spwawlib_spwoob_types.h>
-#include "spwoob/raw_winspww2.h"
+#include "spwoob/raw_winspmbt.h"
 #include "spwoob/raw.h"
 #include "common/internal.h"
 #include "utils/compression.h"
 
 static BYTE
-winspww2_name2id (const char *name)
+winspmbt_name2id (const char *name)
 {
 	char	local[16];
 	int	id;
 	int	rc;
 
 	if (strlen (name) > 11) return (SPWOOB_BADOOBID);
-	if (strnicmp (name, "spob", 4) != 0) return (SPWOOB_BADOOBID);
+	if (strnicmp (name, "obat", 4) != 0) return (SPWOOB_BADOOBID);
 
 	memset (local, 0, sizeof (local));
 	snprintf (local, sizeof (local) - 1, "%s", name);
@@ -31,7 +31,7 @@ winspww2_name2id (const char *name)
 	local[2] = (char)tolower (local[2]);
 	local[3] = (char)tolower (local[3]);
 
-	rc = sscanf (local, "spob%d", &id);
+	rc = sscanf (local, "obat%d", &id);
 	if (rc <= 0) id = SPWOOB_BADOOBID;
 	if ((id < 0) || (id > 255)) id = SPWOOB_BADOOBID;
 
@@ -39,10 +39,10 @@ winspww2_name2id (const char *name)
 }
 
 SPWAW_ERROR
-spwoob_load_raw_winspww2_data (SPWOOB_DATA *dst)
+spwoob_load_raw_winspmbt_data (SPWOOB_DATA *dst)
 {
 	SPWAW_ERROR	rc;
-	RAWOOB_WINSPWW2	*raw;
+	RAWOOB_WINSPMBT	*raw;
 	int		i, j;
 
 	CNULLARG (dst); CNULLARG (dst->rdata);
@@ -71,12 +71,12 @@ spwoob_load_raw_winspww2_data (SPWOOB_DATA *dst)
 
 	dst->efstart = SPWOOB_EFSTART;
 
-	raw = (RAWOOB_WINSPWW2 *)dst->rdata;
+	raw = (RAWOOB_WINSPMBT *)dst->rdata;
 
 	for (i=0; i<SPWOOB_WCNT; i++) {
 		if (raw->w.name[i].data[0] != '\0') {
 			azstrcpy (raw->w.name[i].data, dst->wdata[i].name);
-			dst->wdata[i].wclass		= SPWOOB_WINSPWW2_WCLASS_xlt (raw->w.wclass[i]);
+			dst->wdata[i].wclass		= SPWOOB_WINSPMBT_WCLASS_xlt (raw->w.wclass[i]);
 			dst->wdata[i].size		= raw->w.size[i];
 			dst->wdata[i].warhead		= raw->w.warhead[i];
 			dst->wdata[i].kill_HE		= raw->w.kill[i].HE;
@@ -96,7 +96,7 @@ spwoob_load_raw_winspww2_data (SPWOOB_DATA *dst)
 		if (raw->u.name[i].data[0] != '\0') {
 			azstrcpy (raw->u.name[i].data, dst->udata[i].name);
 			dst->udata[i].nation		= raw->u.nation[i];
-			dst->udata[i].type		= SPWOOB_WINSPWW2_UTYPE_xlt (raw->u.uclass[i]);
+			dst->udata[i].type		= SPWOOB_WINSPMBT_UTYPE_xlt (raw->u.uclass[i]);
 			dst->udata[i].uclass		= SPWOOB_UTYPE_classify (dst->udata[i].type);
 			dst->udata[i].mclass		= SPWOOB_MOVCL_xlt (raw->u.movcl[i]);
 			dst->udata[i].start_yr		= raw->u.start_yr[i] + SPWAW_STARTYEAR;
@@ -195,15 +195,15 @@ handle_error:
 }
 
 SPWAW_ERROR
-spwoob_load_raw_winspww2_files (SPWOOB *oob)
+spwoob_load_raw_winspmbt_files (SPWOOB *oob)
 {
-	return (spwoob_load_raw_files_core (oob, "*.obf", winspww2_name2id, sizeof (RAWOOB_WINSPWW2), spwoob_load_raw_winspww2_data));
+	return (spwoob_load_raw_files_core (oob, "*.obf", winspmbt_name2id, sizeof (RAWOOB_WINSPMBT), spwoob_load_raw_winspmbt_data));
 }
 
 void
-spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
+spwoob_dump_raw_winspmbt_data (void *rdata, BYTE id, char *base)
 {
-	RAWOOB_WINSPWW2	*raw = (RAWOOB_WINSPWW2 *)rdata;
+	RAWOOB_WINSPMBT	*raw = (RAWOOB_WINSPMBT *)rdata;
 	char		name[MAX_PATH+1];
 	FILE		*file;
 	int		i;
@@ -212,25 +212,25 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 	if (!raw || !base) return;
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_winspww2_%s_%02u_layout.txt", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_winspmbt_%s_%02u_layout.txt", base, id);
 	file = fopen (name, "w");
 	if (file) {
-		fprintf (file, "RAWOOB_WINSPWW2: size=0x%8.8x (%u)\n", sizeof(*raw), sizeof(*raw));
-		fprintf (file, "RAWOOB_WINSPWW2-cmt       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,cmt), sizeof(raw->cmt), sizeof(raw->cmt));
-		fprintf (file, "RAWOOB_WINSPWW2-  w       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,w), sizeof(raw->w), sizeof(raw->w));
-		fprintf (file, "RAWOOB_WINSPWW2-  w-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,w.name), sizeof(raw->w.name), sizeof(raw->w.name));
-		fprintf (file, "RAWOOB_WINSPWW2-  w-wclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,w.wclass), sizeof(raw->w.wclass), sizeof(raw->w.wclass));
-		fprintf (file, "RAWOOB_WINSPWW2-  u       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,u), sizeof(raw->u), sizeof(raw->u));
-		fprintf (file, "RAWOOB_WINSPWW2-  u-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,u.name), sizeof(raw->u.name), sizeof(raw->u.name));
-		fprintf (file, "RAWOOB_WINSPWW2-  u-uclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,u.uclass), sizeof(raw->u.uclass), sizeof(raw->u.uclass));
-		fprintf (file, "RAWOOB_WINSPWW2-  f       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,f), sizeof(raw->f), sizeof(raw->f));
-		fprintf (file, "RAWOOB_WINSPWW2-  f-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,f.name), sizeof(raw->f.name), sizeof(raw->f.name));
-		fprintf (file, "RAWOOB_WINSPWW2-  f-nation: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPWW2,f.nation), sizeof(raw->f.nation), sizeof(raw->f.nation));
+		fprintf (file, "RAWOOB_WINSPMBT: size=0x%8.8x (%u)\n", sizeof(*raw), sizeof(*raw));
+		fprintf (file, "RAWOOB_WINSPMBT-cmt       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,cmt), sizeof(raw->cmt), sizeof(raw->cmt));
+		fprintf (file, "RAWOOB_WINSPMBT-  w       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,w), sizeof(raw->w), sizeof(raw->w));
+		fprintf (file, "RAWOOB_WINSPMBT-  w-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,w.name), sizeof(raw->w.name), sizeof(raw->w.name));
+		fprintf (file, "RAWOOB_WINSPMBT-  w-wclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,w.wclass), sizeof(raw->w.wclass), sizeof(raw->w.wclass));
+		fprintf (file, "RAWOOB_WINSPMBT-  u       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,u), sizeof(raw->u), sizeof(raw->u));
+		fprintf (file, "RAWOOB_WINSPMBT-  u-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,u.name), sizeof(raw->u.name), sizeof(raw->u.name));
+		fprintf (file, "RAWOOB_WINSPMBT-  u-uclass: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,u.uclass), sizeof(raw->u.uclass), sizeof(raw->u.uclass));
+		fprintf (file, "RAWOOB_WINSPMBT-  f       : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,f), sizeof(raw->f), sizeof(raw->f));
+		fprintf (file, "RAWOOB_WINSPMBT-  f-name  : 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,f.name), sizeof(raw->f.name), sizeof(raw->f.name));
+		fprintf (file, "RAWOOB_WINSPMBT-  f-nation: 0x%8.8x - size=0x%8.8x (%u)\n", offsetof(RAWOOB_WINSPMBT,f.nation), sizeof(raw->f.nation), sizeof(raw->f.nation));
 		fclose (file);
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_winspww2_%s_%02u_cmt.dat", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_winspmbt_%s_%02u_cmt.dat", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fwrite (&(raw->cmt), sizeof(raw->cmt), 1, file);
@@ -238,7 +238,7 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_winspww2_%s_%02u_w.csv", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_winspmbt_%s_%02u_w.csv", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
@@ -272,7 +272,7 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_winspww2_%s_%02u_u.csv", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_winspmbt_%s_%02u_u.csv", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,
@@ -291,7 +291,7 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 			"lbm,irvis,fc,"
 			"wpn1_APCRammo,wpn1_HEATammo,"
 			"rof,stab,rf,"
-			"B73,"
+			"ewa,"
 			"load_cap,survive,load_cost,"
 			"icon,"
 			"swim,movcl,smkdev,"
@@ -354,7 +354,7 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 				raw->u.lbm[i], raw->u.irvis[i], raw->u.fc[i],
 				raw->u.wpn1_APCRammo[i], raw->u.wpn1_HEATammo[i],
 				raw->u.rof[i], raw->u.stab[i], raw->u.rf[i],
-				raw->u.__data73[i],
+				raw->u.ewa[i],
 				raw->u.load_cap[i], raw->u.survive[i], raw->u.load_cost[i],
 				raw->u.icon[i],
 				raw->u.swim[i], raw->u.movcl[i], raw->u.smkdev[i],
@@ -394,7 +394,7 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 	}
 
 	memset (name, 0, sizeof (name));
-	snprintf (name, sizeof (name) - 1, "raw_winspww2_%s_%02u_f.csv", base, id);
+	snprintf (name, sizeof (name) - 1, "raw_winspmbt_%s_%02u_f.csv", base, id);
 	file = fopen (name, "w");
 	if (file) {
 		fprintf (file,

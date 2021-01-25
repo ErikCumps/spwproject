@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling - raw SPWaW data handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -75,7 +75,7 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 	for (i=0; i<dst->wcnt; i++) {
 		if (raw->w.name[i].data[0] != '\0') {
 			azstrcpy (raw->w.name[i].data, dst->wdata[i].name);
-			dst->wdata[i].wclass		= SPWOOB_WCLASS_xlt (raw->w.wclass[i]);
+			dst->wdata[i].wclass		= SPWOOB_SPWAW_WCLASS_xlt (raw->w.wclass[i]);
 			dst->wdata[i].size		= raw->w.size[i];
 			dst->wdata[i].warhead		= raw->w.warhead[i];
 			dst->wdata[i].kill_HE		= raw->w.kill[i];
@@ -244,7 +244,7 @@ spwoob_dump_raw_spwaw_data (void *rdata, BYTE id, char *base)
 				"%d,%s,"
 				"%u,%u,%u,"
 				"%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,%u"
+				"%u,%u,%u,%u,%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,%u,%u"
 				"\n",
 				i, azsname,

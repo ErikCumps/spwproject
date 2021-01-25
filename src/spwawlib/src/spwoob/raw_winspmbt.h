@@ -1,15 +1,15 @@
 /** \file
- * The SPWaW Library - SPWaW OOB handling - raw winSPWW2 data handling.
+ * The SPWaW Library - SPWaW OOB handling - raw winSPMBT data handling.
  *
- * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
 
-#ifndef	RAW_WINSPWW2_H
-#define	RAW_WINSPWW2_H	1
+#ifndef	RAW_WINSPMBT_H
+#define	RAW_WINSPMBT_H	1
 
-#include "spwoob/raw_winspww2_api.h"
+#include "spwoob/raw_winspmbt_api.h"
 
 #define	SPWOOB_WCNT	250
 #define	SPWOOB_UCNT	1000
@@ -29,7 +29,7 @@ typedef struct s_OOBCMT {
 	char	data[OOBAZSCMT];
 } OOBCMT;
 
-typedef struct s_RAWOOB_WINSPWW2 {
+typedef struct s_RAWOOB_WINSPMBT {
 	OOBCMT	cmt;
         struct s_w {
 		OOBNAME	name		[SPWOOB_WCNT];
@@ -128,7 +128,7 @@ typedef struct s_RAWOOB_WINSPWW2 {
 		BYTE	rof		[SPWOOB_UCNT];
 		BYTE	stab		[SPWOOB_UCNT];
 		BYTE	rf		[SPWOOB_UCNT];
-		BYTE	__data73	[SPWOOB_UCNT];
+		BYTE	ewa		[SPWOOB_UCNT];	// TODO: consider adding to SPWOOB_DATA ?
 		BYTE	load_cap	[SPWOOB_UCNT];
 		BYTE	survive		[SPWOOB_UCNT];
 		BYTE	load_cost	[SPWOOB_UCNT];
@@ -206,8 +206,8 @@ typedef struct s_RAWOOB_WINSPWW2 {
 		BYTE	__data58	[SPWOOB_FCNT];
 		BYTE	__data59	[SPWOOB_FCNT];
 	} f;
-} RAWOOB_WINSPWW2;
+} RAWOOB_WINSPMBT;
 
 #pragma pack(pop, r1)
 
-#endif	/* RAW_WINSPWW2_H */
+#endif	/* RAW_WINSPMBT_H */
