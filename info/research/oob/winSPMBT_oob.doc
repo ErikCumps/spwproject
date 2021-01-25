@@ -1,4 +1,4 @@
-WINSPWW2 OOB file format:
+WINSPMBT OOB file format:
 =========================
 
 Overview:
@@ -41,7 +41,7 @@ column	offset	size	type	description
  0	0x0000	15	ASCIIZ	Name
  1	0x000F	1	INT1	Class type
  2	0x0010	1	INT1	Size
- 3	0x0011	1	INT1	Weapon sound?
+ 3	0x0011	1	INT1	Weapon sound
  4	0x0012	1	INT1	Warhead size
  5	0x0013	2	STRUCT	HE/AP penetration
  6	0x0015	2	STRUCT	HE/AP Kill factor
@@ -76,15 +76,22 @@ column	offset	size	type	description
 	9	Vehicle Flamethrower (FLAME_VHC)
 	10	Naval Artillery (NAVAL)
 	11	Aircraft Weapon (AIRCRAFT)
-	12	-UNUSED-
+	12	Surface-to-Air Missile (SAM)
 	13	Anti-Tank Guided Missile (ATGM)
 	14	Large Cluster Bomb (LRG_CLSTR)
-	15	-UNUSED-
-	16	-UNUSED-
-	17	-UNUSED-
+	15	Small Cluster Bomb (SML_CLSTR)
+	16	Anti-Radiation Missile (ARM)
+	17	Air-to-Surface Missile (ASM)
 	18	Napalm (NAPALM)
 	19	Auto Cannon (AUTO_CANNON)
-	20	Explosives
+	20	Top-Attack ATGM (ATGM_TA)
+	21	multi-Charge ATGM (ATGM_MC)
+	22	Multi-Charge HEAT (HEAT_MC)
+	23	Top-Attack HEAT (HEAT_TA)
+	24	Top-Attack Inertial-Guidance HEAT (HEAT_TAIG)
+	25	Explosives (EXPLOSIVES)
+	26	High-Explosive Squash Head Gun (HESH_GUN)
+	27	Non-Line-Of-Sight ATGM (ATGM_NLOS)
 
 [STRUCT:HE/AP penetration]
 	INT1[2]		Penetration	(HE/AP)
@@ -141,7 +148,7 @@ column	offset	size	type	description
 32	0x0046	1	INT1	Rate of fire
 33	0x0047	1	INT1	Gun stabilizer capability
 34	0x0048	1	INT1	Range finder value
-35	0x0049	1	???	???
+35	0x0049	1	INT1	Electronic warfare capability
 36	0x004A	1	INT1	Carrying capacity
 37	0x004B	1	INT1	Survivability
 38	0x004C	1	INT1	Relative weight
