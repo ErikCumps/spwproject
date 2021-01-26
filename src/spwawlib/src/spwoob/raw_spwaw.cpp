@@ -111,6 +111,7 @@ spwoob_load_raw_spwaw_data (SPWOOB_DATA *dst)
 			dst->udata[i].irvis		= raw->u.irvis[i];
 			dst->udata[i].fc		= raw->u.fc[i];
 			dst->udata[i].rf		= raw->u.rf[i];
+			dst->udata[i].ew		= 0;
 			dst->udata[i].stab		= raw->u.stab[i];
 			dst->udata[i].rof		= raw->u.rof[i];
 			dst->udata[i].load_cap		= raw->u.load_cap[i];

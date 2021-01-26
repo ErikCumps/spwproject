@@ -128,7 +128,7 @@ typedef struct s_RAWOOB_WINSPMBT {
 		BYTE	rof		[SPWOOB_UCNT];
 		BYTE	stab		[SPWOOB_UCNT];
 		BYTE	rf		[SPWOOB_UCNT];
-		BYTE	ewa		[SPWOOB_UCNT];	// TODO: consider adding to SPWOOB_DATA ?
+		BYTE	ew		[SPWOOB_UCNT];
 		BYTE	load_cap	[SPWOOB_UCNT];
 		BYTE	survive		[SPWOOB_UCNT];
 		BYTE	load_cost	[SPWOOB_UCNT];

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB API.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -66,6 +66,7 @@ typedef struct s_SPWOOB_UDATA {
 	BYTE		irvis;
 	BYTE		fc;
 	BYTE		rf;
+	BYTE		ew;
 	BYTE		stab;
 	BYTE		rof;
 	BYTE		load_cap;

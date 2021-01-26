@@ -112,6 +112,7 @@ spwoob_load_raw_winspmbt_data (SPWOOB_DATA *dst)
 			dst->udata[i].irvis		= raw->u.irvis[i];
 			dst->udata[i].fc		= raw->u.fc[i];
 			dst->udata[i].rf		= raw->u.rf[i];
+			dst->udata[i].ew		= raw->u.ew[i];
 			dst->udata[i].stab		= raw->u.stab[i];
 			dst->udata[i].rof		= raw->u.rof[i];
 			dst->udata[i].load_cap		= raw->u.load_cap[i];
@@ -291,7 +292,7 @@ spwoob_dump_raw_winspmbt_data (void *rdata, BYTE id, char *base)
 			"lbm,irvis,fc,"
 			"wpn1_APCRammo,wpn1_HEATammo,"
 			"rof,stab,rf,"
-			"ewa,"
+			"ew,"
 			"load_cap,survive,load_cost,"
 			"icon,"
 			"swim,movcl,smkdev,"
@@ -354,7 +355,7 @@ spwoob_dump_raw_winspmbt_data (void *rdata, BYTE id, char *base)
 				raw->u.lbm[i], raw->u.irvis[i], raw->u.fc[i],
 				raw->u.wpn1_APCRammo[i], raw->u.wpn1_HEATammo[i],
 				raw->u.rof[i], raw->u.stab[i], raw->u.rf[i],
-				raw->u.ewa[i],
+				raw->u.ew[i],
 				raw->u.load_cap[i], raw->u.survive[i], raw->u.load_cost[i],
 				raw->u.icon[i],
 				raw->u.swim[i], raw->u.movcl[i], raw->u.smkdev[i],

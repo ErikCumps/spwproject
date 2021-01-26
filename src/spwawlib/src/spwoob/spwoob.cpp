@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -244,7 +244,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 				"%d,%s,"
 				"%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,"
+				"%u,%u,%u,%u,%u,%u,%u,"
 				"%u,%u,"
 				"%u,%u,"
 				"%u,%u,%u,%u,%u,"
@@ -269,7 +269,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 				up->mclass,SPWOOB_MOVCL_lookup(up->mclass),
 				up->start_yr,up->start_mo,up->end_yr,up->end_mo,
 				up->size,up->crew,up->survive,up->cost,up->speed,
-				up->radio,up->irvis,up->fc,up->rf,up->stab,up->rof,
+				up->radio,up->irvis,up->fc,up->rf,up->ew,up->stab,up->rof,
 				up->load_cap,up->load_cost,
 				up->swim,up->smkdev,
 				up->wpn1,up->wpn1_HEammo,up->wpn1_APammo,up->wpn1_HEATammo,up->wpn1_APCRammo,
