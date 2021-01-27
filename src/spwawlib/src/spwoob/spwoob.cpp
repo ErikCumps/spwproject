@@ -160,7 +160,7 @@ spwoob_data (SPWOOB *oob, BYTE id)
 }
 
 static void
-spwoob_dump_data (SPWOOB_DATA *data, char *base)
+spwoob_dump_data (SPWOOB_DATA *data, char *base, SPWAW_GAME_TYPE gametype)
 {
 	char	name[MAX_PATH+1];
 	FILE	*file;
@@ -213,7 +213,7 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 			"mclass,mclass,"
 			"start_yr,start_mo,end_yr,end_mo,"
 			"size,crew,survive,cost,speed,"
-			"radio,irvis,fc,rf,stab,rof,"
+			"radio,irvis,fc,rf,ew,stab,rof,"
 			"load_cap,load_cost,"
 			"swim,smkdev,"
 			"wpn1,wpn1_HEammo,wpn1_APammo,wpn1_HEATammo,wpn1_APCRammo,"
@@ -233,10 +233,21 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 			"text,"
 			"icon,icon_desert,icon_winter\n");
 
+		char ewbuf[64];
+		memset (ewbuf, 0, sizeof(ewbuf));
+		snprintf (ewbuf, sizeof(ewbuf)-1, "n/a");
+
 		for (i=0; i<data->ucnt; i++) {
 			if (!data->udata[i].valid) continue;
 
 			SPWOOB_UDATA *up = &(data->udata[i]);
+			switch (gametype) {
+				case SPWAW_GAME_TYPE_WINSPMBT:
+					snprintf (ewbuf, sizeof(ewbuf)-1, "%u", up->ew);
+				default:
+					break;
+			}
+
 			fprintf (file,
 				"%d,%u,%s,"
 				"%d,%s,"
@@ -244,7 +255,9 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 				"%d,%s,"
 				"%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,"
-				"%u,%u,%u,%u,%u,%u,%u,"
+				"%u,%u,%u,%u,"
+				"%s,"
+				"%u,%u,"
 				"%u,%u,"
 				"%u,%u,"
 				"%u,%u,%u,%u,%u,"
@@ -269,7 +282,9 @@ spwoob_dump_data (SPWOOB_DATA *data, char *base)
 				up->mclass,SPWOOB_MOVCL_lookup(up->mclass),
 				up->start_yr,up->start_mo,up->end_yr,up->end_mo,
 				up->size,up->crew,up->survive,up->cost,up->speed,
-				up->radio,up->irvis,up->fc,up->rf,up->ew,up->stab,up->rof,
+				up->radio,up->irvis,up->fc,up->rf,
+				ewbuf,
+				up->stab,up->rof,
 				up->load_cap,up->load_cost,
 				up->swim,up->smkdev,
 				up->wpn1,up->wpn1_HEammo,up->wpn1_APammo,up->wpn1_HEATammo,up->wpn1_APCRammo,
@@ -342,7 +357,7 @@ spwoob_dump (SPWOOB *oob, char *base, bool raw)
 
 	for (i=0; i<SPWOOB_DCNT; i++) {
 		if (oob->data[i]) {
-			spwoob_dump_data (oob->data[i], base);
+			spwoob_dump_data (oob->data[i], base, oob->gametype);
 			if (raw) spwoob_dump_raw_data (oob->gametype, oob->data[i]->rdata, oob->data[i]->id, base);
 		}
 	}
