@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - game data handling - section map.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #include "gamefile/gamedata_secmap.h"
 #include "gamefile/spwaw/gamedata_spwaw.h"
 #include "gamefile/winspww2/gamedata_winspww2.h"
+#include "gamefile/winspmbt/gamedata_winspmbt.h"
 #include "common/internal.h"
 
 SECMAP *
@@ -21,6 +22,9 @@ gamedata_SECMAP (SPWAW_GAME_TYPE gametype)
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (gamedata_winspww2_SECMAP());
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (gamedata_winspmbt_SECMAP());
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:

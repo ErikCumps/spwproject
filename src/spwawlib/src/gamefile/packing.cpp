@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile block compression handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,16 +10,17 @@
 #include "gamefile/packing.h"
 #include "gamefile/spwaw/packing_spwaw.h"
 #include "gamefile/winspww2/packing_winspww2.h"
+#include "gamefile/winspmbt/packing_winspmbt.h"
 #include "fileio/fileio.h"
 #include "common/internal.h"
 
-/* This is the SP:WaW/winSPWW2 savegame file format:
+/* This is the SP:WaW/winSPWW2/winSPMBT savegame file format:
  *
  * A savegame is a contiguous set of several data blocks.
  *
  * The first data block is the game info section.
  * This is a fixed-size data block containing the savegame marker.
- * (which is currently "SPWAW_SAVE_V101"/"SPCTS_SAVE_V100" for SP:WaW/winSPWW2)
+ * (which is currently "SPWAW_SAVE_V101"/"SPCTS_SAVE_V100" for SP:WaW/winSPWW2-winSPMBT)
  *
  * The other data blocks contain the savegame section data.
  *
@@ -38,7 +39,7 @@
  * The actual size of the section data will be larger than the size of the section data in the file.
  */
 
-/* This is the SP:WaW/winSPWW2 section data compression format:
+/* This is the SP:WaW/winSPWW2/winSPMBT section data compression format:
  *
  * Compressed section data is a contiguous set of run-length coded data blocks.
  *
@@ -343,6 +344,9 @@ load_block (SPWAW_GAME_TYPE gametype, int fd, BLOCKHEAD &block)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (load_winspww2_block(fd, block));
 			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (load_winspmbt_block(fd, block));
+			break;
 		default:
 			ERROR1 ("unknown gametype %d", gametype);
 			break;
@@ -360,6 +364,9 @@ save_block (SPWAW_GAME_TYPE gametype, int fd, BLOCKHEAD &block)
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (save_winspww2_block(fd, block));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (save_winspmbt_block(fd, block));
 			break;
 		default:
 			ERROR1 ("unknown gametype %d", gametype);

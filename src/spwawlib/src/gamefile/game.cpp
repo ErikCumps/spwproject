@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,6 +10,7 @@
 #include "gamefile/game.h"
 #include "gamefile/spwaw/game_spwaw.h"
 #include "gamefile/winspww2/game_winspww2.h"
+#include "gamefile/winspmbt/game_winspmbt.h"
 #include "common/internal.h"
 
 static void
@@ -64,6 +65,9 @@ game_load_full (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 			case SPWAW_GAME_TYPE_WINSPWW2:
 				setup_winspww2_info (sgd, info, &game, data);
 				break;
+			case SPWAW_GAME_TYPE_WINSPMBT:
+				setup_winspmbt_info (sgd, info, &game, data);
+				break;
 			case SPWAW_GAME_TYPE_UNKNOWN:
 			default:
 				ERROR0 ("unsupported game type");
@@ -90,6 +94,9 @@ game_load_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info)
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (game_load_winspww2_info(sgd, info));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (game_load_winspmbt_info(sgd, info));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:

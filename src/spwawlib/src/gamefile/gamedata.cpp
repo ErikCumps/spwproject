@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - game data handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,6 +12,8 @@
 #include "gamefile/spwaw/gamedata_spwaw.h"
 #include "gamefile/winspww2/metadata_winspww2.h"
 #include "gamefile/winspww2/gamedata_winspww2.h" 
+#include "gamefile/winspmbt/gamedata_winspmbt.h"
+#include "gamefile/winspmbt/metadata_winspmbt.h"
 #include "gamefile/packing.h"
 #include "common/internal.h"
 
@@ -29,6 +31,11 @@ gamedata_new_data (GAMEDATA *game)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			gamedata_winspww2_new_metadata (game);
 			game->data = gamedata_winspww2_new_data();
+			return (true);
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			gamedata_winspmbt_new_metadata (game);
+			game->data = gamedata_winspmbt_new_data();
 			return (true);
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
@@ -52,6 +59,10 @@ gamedata_free_data (GAMEDATA *game)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			gamedata_winspww2_free_metadata (&(game->metadata));
 			gamedata_winspww2_free_data(&(game->data));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			gamedata_winspmbt_free_metadata (&(game->metadata));
+			gamedata_winspmbt_free_data(&(game->data));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
@@ -126,6 +137,9 @@ gamedata_load_metadata (GAMEFILE *file, GAMEDATA *dst)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (gamedata_winspww2_load_metadata (file, &(dst->metadata)));
 			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (gamedata_winspmbt_load_metadata (file, &(dst->metadata)));
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			ERROR0 ("unsupported game type");
@@ -157,6 +171,9 @@ gamedata_save_metadata (GAMEDATA *src, GAMEFILE *file)
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (gamedata_winspww2_save_metadata (&(src->metadata), file));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (gamedata_winspmbt_save_metadata (&(src->metadata), file));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:

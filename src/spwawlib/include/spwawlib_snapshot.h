@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -198,6 +198,8 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			fc;				/* Unit firecontrol rating				*/
 	BYTE			iv;				/* Unit infrared vision rating				*/
 	BYTE			swim;				/* Unit swim capability					*/
+	// FIXME: needs further working out!
+	BYTE			ew;				/* Unit Electronic Warfare rating			*/
 	BYTE			men;				/* Unit manpower					*/
 	BYTE			men_ori;			/* Unit original manpower				*/
 	BYTE			speed;				/* Unit speed						*/
