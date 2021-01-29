@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -10,7 +10,7 @@
 #include "utils.h"
 
 static void
-report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
+report_game (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_GAME *ptr)
 {
 	if (!ptr) return;
 
@@ -50,7 +50,7 @@ report_game (FILE *rf, SPWAW_SNAP_GAME *ptr)
 }
 
 static void
-report_oob (FILE *rf, SPWAW_SNAP_OOB *ptr, bool core)
+report_oob (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_OOB *ptr, bool core)
 {
 	SPWAW_SNAP_OOB_FORCE	*p;
 	DWORD			i, j;
@@ -162,9 +162,9 @@ narrative_report (SPWAW_SNAPSHOT *ptr, FILE *rf, bool core)
 	fprintf (rf, "Battle type: %s\n", SPWAW_battletype2str (ptr->type));
 	fprintf (rf, "\n");
 
-	report_game	(rf, &(ptr->game));		fprintf (rf, "\n\n");
-	report_oob	(rf, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");
-	report_oob	(rf, &(ptr->OOBp2), core);	fprintf (rf, "\n\n");
+	report_game	(rf, ptr, &(ptr->game));	fprintf (rf, "\n\n");
+	report_oob	(rf, ptr, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");
+	report_oob	(rf, ptr, &(ptr->OOBp2), core);	fprintf (rf, "\n\n");
 
 	return;
 }

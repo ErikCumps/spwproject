@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -11,7 +11,7 @@
 #include "utils.h"
 
 static void
-report_metadata (Xml &xml, SPWAW_SNAP_META *ptr)
+report_metadata (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_META *ptr)
 {
 	XmlScope scope (xml, "metadata");
 
@@ -19,7 +19,7 @@ report_metadata (Xml &xml, SPWAW_SNAP_META *ptr)
 }
 
 static void
-report_battle (Xml &xml, SPWAW_SNAP_BATTLE *ptr)
+report_battle (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_BATTLE *ptr)
 {
 	if (!ptr) return;
 
@@ -97,7 +97,7 @@ report_battle (Xml &xml, SPWAW_SNAP_BATTLE *ptr)
 }
 
 static void
-report_campaign (Xml &xml, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
+report_campaign (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
 {
 	if (!ptr) return;
 
@@ -191,7 +191,7 @@ report_campaign (Xml &xml, SPWAW_SNAP_CAMPAIGN *ptr, SPWAW_SNAP_GAME *game)
 }
 
 static void
-report_map (Xml &xml, SPWAW_SNAP_MAP *ptr)
+report_map (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_MAP *ptr)
 {
 	if (!ptr) return;
 
@@ -213,7 +213,7 @@ report_map (Xml &xml, SPWAW_SNAP_MAP *ptr)
 }
 
 static void
-report_game (Xml &xml, SPWAW_SNAP_GAME *ptr)
+report_game (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_GAME *ptr)
 {
 	if (!ptr) return;
 
@@ -230,14 +230,14 @@ report_game (Xml &xml, SPWAW_SNAP_GAME *ptr)
 			break;
 	}
 
-	report_metadata	(xml, &(ptr->meta));
-	report_battle	(xml, &(ptr->battle));
-	report_map	(xml, &(ptr->map));
-	report_campaign	(xml, &(ptr->campaign), ptr);
+	report_metadata	(xml, sp, &(ptr->meta));
+	report_battle	(xml, sp, &(ptr->battle));
+	report_map	(xml, sp, &(ptr->map));
+	report_campaign	(xml, sp, &(ptr->campaign), ptr);
 }
 
 static void
-report_mmas (Xml &xml, char *label, SPWAW_IMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bool unit)
+report_mmas (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, char *label, SPWAW_IMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bool unit)
 {
 	char			smax[256];
 	char			smin[256];
@@ -286,7 +286,7 @@ report_mmas (Xml &xml, char *label, SPWAW_IMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, 
 }
 
 static void
-report_mmas (Xml &xml, char *label, SPWAW_FMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bool unit)
+report_mmas (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, char *label, SPWAW_FMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, bool unit)
 {
 	char			smax[256];
 	char			smin[256];
@@ -335,7 +335,7 @@ report_mmas (Xml &xml, char *label, SPWAW_FMMAS *ptr, SPWAW_SNAP_OOB_FORCE *fp, 
 }
 
 static void
-report_formations (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_formations (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_FORCE *f)
 {
 	SPWAW_SNAP_OOB_F	*ptr;
 	DWORD			i, j;
@@ -393,9 +393,9 @@ report_formations (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 			xml.item ("kills", fp->attr.gen.kills);
 			xml.item ("losses", fp->attr.gen.losses);
 			xml.item ("readiness", fp->attr.gen.ready * 100.0);
-			report_mmas (xml, "kills",	&(fp->attr.mmas_kills), f, true);
-			report_mmas (xml, "experience",	&(fp->attr.mmas_exp), f, true);
-			report_mmas (xml, "readiness",	&(fp->attr.mmas_ready), f, true);
+			report_mmas (xml, sp, "kills",		&(fp->attr.mmas_kills), f, true);
+			report_mmas (xml, sp, "experience",	&(fp->attr.mmas_exp), f, true);
+			report_mmas (xml, sp, "readiness",	&(fp->attr.mmas_ready), f, true);
 		}
 
 		{
@@ -438,7 +438,7 @@ report_formations (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 }
 
 static void
-report_units (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_units (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_FORCE *f)
 {
 	SPWAW_SNAP_OOB_U	*ptr;
 	DWORD			i;
@@ -596,6 +596,9 @@ report_units (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 		xml.item ("fire_control", p->data.fc);
 		xml.item ("infrared", p->data.iv);
 		xml.item ("swim", p->data.swim);
+		if (sp->gametype == SPWAW_GAME_TYPE_WINSPMBT) {
+			xml.item ("ew", p->data.ew);
+		}
 		xml.item ("cost", p->data.cost);
 		xml.item ("type_group", p->data.UTGidx);
 		{
@@ -614,7 +617,7 @@ report_units (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 }
 
 static void
-report_crews (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_crews (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_FORCE *f)
 {
 	SPWAW_SNAP_OOB_U	*ptr;
 	DWORD			i;
@@ -770,6 +773,9 @@ report_crews (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 		xml.item ("fire_control", p->data.fc);
 		xml.item ("infrared", p->data.iv);
 		xml.item ("swim", p->data.swim);
+		if (sp->gametype == SPWAW_GAME_TYPE_WINSPMBT) {
+			xml.item ("ew", p->data.ew);
+		}
 		xml.item ("cost", p->data.cost);
 		xml.item ("type_group", p->data.UTGidx);
 		{
@@ -783,7 +789,7 @@ report_crews (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 }
 
 static void
-report_attrs (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_attrs (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_FORCE *f)
 {
 	SPWAW_SNAP_OOB_GATTR	*p;
 
@@ -800,20 +806,20 @@ report_attrs (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 	}
 	{
 		XmlScope scope(xml, "formation_attributes");
-		report_mmas (xml, "kills",	&(p->mmas_fkills), f, false);
-		report_mmas (xml, "losses",	&(p->mmas_flosses), f, false);
-		report_mmas (xml, "readiness",	&(p->mmas_fready), f, false);
+		report_mmas (xml, sp, "kills",		&(p->mmas_fkills), f, false);
+		report_mmas (xml, sp, "losses",		&(p->mmas_flosses), f, false);
+		report_mmas (xml, sp, "readiness",	&(p->mmas_fready), f, false);
 	}
 	{
 		XmlScope scope(xml, "unit_attributes");
-		report_mmas (xml, "kills",	&(p->mmas_ukills.all), f, true);
-		report_mmas (xml, "experience",	&(p->mmas_uexp.all), f, true);
-		report_mmas (xml, "readiness",	&(p->mmas_uready.all), f, true);
+		report_mmas (xml, sp, "kills",		&(p->mmas_ukills.all), f, true);
+		report_mmas (xml, sp, "experience",	&(p->mmas_uexp.all), f, true);
+		report_mmas (xml, sp, "readiness",	&(p->mmas_uready.all), f, true);
 	}
 }
 
 static void
-report_unit_stats (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_unit_stats (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_OOB_FORCE *f)
 {
 	SPWAW_SNAP_OOB_USTATS	*p;
 
@@ -827,7 +833,7 @@ report_unit_stats (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 }
 
 static void
-report_formation_stats (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_formation_stats (Xml &xml, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_OOB_FORCE *f)
 {
 	SPWAW_SNAP_OOB_FSTATS	*p;
 
@@ -841,17 +847,17 @@ report_formation_stats (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
 }
 
 static void
-report_stats (Xml &xml, SPWAW_SNAP_OOB_FORCE *f)
+report_stats (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_FORCE *f)
 {
 	if (!f) return;
 
 	XmlScope scope(xml, "statistics");
-	report_formation_stats	(xml, f);
-	report_unit_stats	(xml, f);
+	report_formation_stats	(xml, sp, f);
+	report_unit_stats	(xml, sp, f);
 }
 
 static void
-report_oob (Xml &xml, SPWAW_SNAP_OOB *ptr, bool core)
+report_oob (Xml &xml, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB *ptr, bool core)
 {
 	SPWAW_SNAP_OOB_FORCE	*p;
 
@@ -879,11 +885,11 @@ report_oob (Xml &xml, SPWAW_SNAP_OOB *ptr, bool core)
 		xml.item ("name", p->leader->data.lname);
 	}
 
-	report_attrs		(xml, p);
-	report_stats		(xml, p);
-	report_formations	(xml, p);
-	report_units		(xml, p);
-	report_crews		(xml, p);
+	report_attrs		(xml, sp, p);
+	report_stats		(xml, sp, p);
+	report_formations	(xml, sp, p);
+	report_units		(xml, sp, p);
+	report_crews		(xml, sp, p);
 }
 
 void
@@ -900,9 +906,9 @@ xml_report (SPWAW_SNAPSHOT *ptr, FILE *rf, bool core)
 		xml.item ("battle", SPWAW_battletype2str (ptr->type));
 	}
 
-	report_game	(xml, &(ptr->game));
-	report_oob	(xml, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");
-	report_oob	(xml, &(ptr->OOBp2), core);	fprintf (rf, "\n\n");
+	report_game	(xml, ptr, &(ptr->game));
+	report_oob	(xml, ptr, &(ptr->OOBp1), core);	fprintf (rf, "\n\n");
+	report_oob	(xml, ptr, &(ptr->OOBp2), core);	fprintf (rf, "\n\n");
 
 	return;
 }
