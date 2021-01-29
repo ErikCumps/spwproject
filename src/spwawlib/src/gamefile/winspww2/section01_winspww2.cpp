@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - winSPWW2 game data.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -982,6 +982,8 @@ add_unit (WINSPWW2_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, S
 	ptr->fc		= src->firec;
 	ptr->iv		= src->irvision;
 	ptr->swim	= src->swim;
+	// winSPWW2 does not record electronic warfare rating
+	ptr->ew		= 0;
 	ptr->men	= src->men;
 	// winSPWW2 does not record original crew count, get it from the OOB?
 	ptr->men_ori	= OOBdata->udata[ptr->OOBrid].crew;

@@ -1011,7 +1011,6 @@ add_unit (WINSPMBT_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, S
 		UD_ADD (UD, src, __data04);
 		UD_ADD (UD, src, __data05);
 		UD_ADD (UD, src, __data06);
-		UD_ADD (UD, src, __data07);
 		UD_ADD (UD, src, __data08);
 		UD_ADD (UD, src, __data09);
 		UD_ADD (UD, src, __data10);

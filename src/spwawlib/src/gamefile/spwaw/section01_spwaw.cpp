@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - SP:WaW game data.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -1008,6 +1008,8 @@ add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRT
 	ptr->fc		= src->firec;
 	ptr->iv		= src->irvision;
 	ptr->swim	= src->swim;
+	// SP:WaW does not record electronic warfare rating
+	ptr->ew		= 0;
 	ptr->men	= src->men;
 	ptr->men_ori	= src->ori_men;
 	ptr->speed	= src->speed;

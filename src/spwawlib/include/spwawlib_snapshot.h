@@ -173,7 +173,7 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			OOB;				/* Unit OOB ID						*/
 	USHORT			OOBrid;				/* Unit OOB record ID					*/
 	BYTE			size;				/* Unit size						*/
-	BYTE			cost;				/* Unit cost						*/
+	USHORT			cost;				/* Unit cost						*/
 	BYTE			survive;			/* Unit survivability					*/
 	USHORT			leader;				/* Detected unit leader record ID			*/
 	BYTE			exp;				/* Unit experience					*/
@@ -198,7 +198,6 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			fc;				/* Unit firecontrol rating				*/
 	BYTE			iv;				/* Unit infrared vision rating				*/
 	BYTE			swim;				/* Unit swim capability					*/
-	// FIXME: needs further working out!
 	BYTE			ew;				/* Unit Electronic Warfare rating			*/
 	BYTE			men;				/* Unit manpower					*/
 	BYTE			men_ori;			/* Unit original manpower				*/
@@ -630,6 +629,7 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	int			fc;
 	int			iv;
 	int			swim;
+	int			ew;				/* Unit Electronic Warfare rating			*/
 	int			UTGidx;
 	SPWOOB_UTYPE		utype;
 	SPWOOB_UCLASS		uclass;

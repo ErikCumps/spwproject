@@ -82,8 +82,7 @@ typedef struct s_WINSPMBT_UNIT {
 	USHORT			SPECIAL1;
 	char			__data06[2];
 	BYTE			firec;			/* Unit fire control				*/
-	BYTE			cost;			/* Unit cost					*/
-	char			__data07[1];
+	USHORT			cost;			/* Unit cost					*/
 	USHORT			leader;			/* Unit leader number (0xFFFF if abandoned)	*/
 	char			__data08[5];
 	BYTE			contact;		/* Unit contact status				*/

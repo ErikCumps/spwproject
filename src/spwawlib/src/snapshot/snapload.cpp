@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,6 +15,7 @@
 #include "snapshot/snapfile_v10.h"
 #include "snapshot/snapfile_v11.h"
 #include "snapshot/snapfile_v12.h"
+#include "snapshot/snapfile_v13.h"
 #include "snapshot/index.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -230,7 +231,7 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 	getOU (range); getOU (stance_x); getOU (stance_y);
 	getOU (loader); getOU (load_cap); getOU (load_cost);
 	getOU (contact); getOU (rof); getOU (tgt); getOU (rf); getOU (fc); getOU (iv);
-	getOU (swim); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
+	getOU (swim); getOU (ew); getOU (men); getOU (men_ori); getOU (speed); getOU (moves);
 	getOU (damage); getOU (movdir); getOU (shtdir); getOU (target); getOU (UTGidx);
 //	getOU (SPECIAL_OU); getOU (SPECIAL[0]); getOU (SPECIAL[1]);
 //	getOU (SPECIAL[2]); getOU (SPECIAL[3]); getOU (SPECIAL[4]);
@@ -243,11 +244,13 @@ load_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULO
 	SNAP_OOB_UEL	u;
 
 	for (i=0; i<cnt; i++) {
-		/* We are now backwards compatible with versions 11 and 10 */
-		if (version == SNAP_VERSION_V10) {
+		/* We are now backwards compatible with versions 13, 12, 11 and 10 */
+		if (version <= SNAP_VERSION_V10) {
 			snapshot_load_v10_oob_uel (sbr, &u);
 		} else if (version == SNAP_VERSION_V11) {
 			snapshot_load_v11_oob_uel (sbr, &u);
+		} else if (version <= SNAP_VERSION_V13) {
+			snapshot_load_v13_oob_uel (sbr, &u);
 		} else {
 			if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
 				RWE (SPWERR_FRFAILED, "sbread(unit data)");
@@ -509,7 +512,7 @@ snaploadhdrs (int fd, SNAP_HEADER *mhdr, SNAP_SOURCE *shdr, SNAP_INFO *ihdr, SNA
 
 	bseekset (fd, mhdr->info + p0);
 	/* We are now backwards compatible with versions 11 and 10 */
-	if (mhdr->version == SNAP_VERSION_V10) {
+	if (mhdr->version <= SNAP_VERSION_V10) {
 		rc = snapshot_load_v10_info_header (fd, ihdr);
 		ROE ("snapshot_load_v10_info_header(snapshot info hdr)");
 	} else if (mhdr->version == SNAP_VERSION_V11) {
