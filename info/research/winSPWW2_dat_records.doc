@@ -122,8 +122,7 @@ offset	size	type	description
 0x0080	1	UINT1	Night vision
 0x0081	4	???	???
 0x0085	1	UINT1	Fire control
-0x0086	1	UINT1	Cost
-0x0087	1	???	???
+0x0086	2	UINT2	Cost
 0x0088	2	UINT2	Leader record ID (0xFFFF if no leader == abandoned)
 0x008A	5	???	???
 0x008F	1	UINT1	Contact status
