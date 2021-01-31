@@ -1011,7 +1011,8 @@ add_unit (SPWAW_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, STRT
 	// SP:WaW does not record electronic warfare rating
 	ptr->ew		= 0;
 	ptr->men	= src->men;
-	ptr->men_ori	= src->ori_men;
+	// SP:WaW does not record the original crew count, get it from the OOB.
+	ptr->men_ori	= OOBdata->udata[ptr->OOBrid].crew;
 	ptr->speed	= src->speed;
 	ptr->moves	= src->moves;
 	ptr->damage	= src->damage;

@@ -985,7 +985,7 @@ add_unit (WINSPWW2_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, S
 	// winSPWW2 does not record electronic warfare rating
 	ptr->ew		= 0;
 	ptr->men	= src->men;
-	// winSPWW2 does not record original crew count, get it from the OOB?
+	// winSPWW2 does not record the original crew count, get it from the OOB.
 	ptr->men_ori	= OOBdata->udata[ptr->OOBrid].crew;
 	ptr->speed	= src->speed;
 	// winSPWW2 does not seem to record remaining moves.

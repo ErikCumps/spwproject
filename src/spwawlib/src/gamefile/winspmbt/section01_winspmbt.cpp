@@ -984,7 +984,7 @@ add_unit (WINSPMBT_UNIT *src, UEL *p, SPWAW_SNAP_OOB_UELRAW *dst, USHORT *idx, S
 	ptr->swim	= src->swim;
 	ptr->ew		= src->ew;
 	ptr->men	= src->men;
-	// winSPMBT does not record original crew count, get it from the OOB?
+	// winSPMBT does not record the original crew count, get it from the OOB.
 	ptr->men_ori	= OOBdata->udata[ptr->OOBrid].crew;
 	ptr->speed	= src->speed;
 	// winSPMBT does not seem to record remaining moves.
