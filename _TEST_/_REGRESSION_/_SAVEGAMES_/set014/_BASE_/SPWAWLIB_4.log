@@ -1812,32 +1812,48 @@ find_formation_oobrids: FORMATION: P<1> ID<00000> L<00006> H<00006> O<00001> (  
 find_formation_oobrids: FORMATION: P<1> ID<00001> L<00007> H<00006> O<00006> (         Cie Inf) OOBrid=00006
 find_formation_oobrids: FORMATION: P<1> ID<00002> L<00009> H<00007> O<00000> (         Sec Inf) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00002>, T<         Sec Inf>, D<1940/05>
-    OOB #00036 <         Sec Inf> from=1930/01 to=1940/12 - MATCH: name and date
-    OOB #00269 <         Sec Inf> from=1943/05 to=1946/12 - MATCH: name only
-    OOB #00350 <         Sec Inf> from=1940/08 to=1943/12 - MATCH: name only
-  <<< rv=36
-OOBrid=00036
+  NO MATCH FOUND!
+  <<< rv=0
+  >>> SEARCH OOBRID - EXTENSIVE: F<00002>, T<         Sec Inf>, D<1940/05>
+  U<00009> F<00002,000> O<00037> UT<001> <         Gpe Inf>
+  U<00010> F<00002,001> O<00036> UT<002> <         Gpe Inf>
+  U<00011> F<00002,002> O<00036> UT<002> <         Gpe Inf>
+  U<00012> F<00002,003> O<00036> UT<002> <         Gpe Inf>
+  <<< rv=0
+OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00003> L<00013> H<00007> O<00000> (         Sec Inf) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00003>, T<         Sec Inf>, D<1940/05>
-    OOB #00036 <         Sec Inf> from=1930/01 to=1940/12 - MATCH: name and date
-    OOB #00269 <         Sec Inf> from=1943/05 to=1946/12 - MATCH: name only
-    OOB #00350 <         Sec Inf> from=1940/08 to=1943/12 - MATCH: name only
-  <<< rv=36
-OOBrid=00036
+  NO MATCH FOUND!
+  <<< rv=0
+  >>> SEARCH OOBRID - EXTENSIVE: F<00003>, T<         Sec Inf>, D<1940/05>
+  U<00013> F<00003,000> O<00037> UT<001> <         Gpe Inf>
+  U<00014> F<00003,001> O<00036> UT<002> <         Gpe Inf>
+  U<00015> F<00003,002> O<00036> UT<002> <         Gpe Inf>
+  U<00016> F<00003,003> O<00036> UT<002> <         Gpe Inf>
+  <<< rv=0
+OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00004> L<00017> H<00007> O<00000> (         Sec Inf) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00004>, T<         Sec Inf>, D<1940/05>
-    OOB #00036 <         Sec Inf> from=1930/01 to=1940/12 - MATCH: name and date
-    OOB #00269 <         Sec Inf> from=1943/05 to=1946/12 - MATCH: name only
-    OOB #00350 <         Sec Inf> from=1940/08 to=1943/12 - MATCH: name only
-  <<< rv=36
-OOBrid=00036
+  NO MATCH FOUND!
+  <<< rv=0
+  >>> SEARCH OOBRID - EXTENSIVE: F<00004>, T<         Sec Inf>, D<1940/05>
+  U<00017> F<00004,000> O<00037> UT<001> <         Gpe Inf>
+  U<00018> F<00004,001> O<00036> UT<002> <         Gpe Inf>
+  U<00019> F<00004,002> O<00036> UT<002> <         Gpe Inf>
+  U<00020> F<00004,003> O<00036> UT<002> <         Gpe Inf>
+  <<< rv=0
+OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00005> L<00021> H<00007> O<00000> (         Sec Inf) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00005>, T<         Sec Inf>, D<1940/05>
-    OOB #00036 <         Sec Inf> from=1930/01 to=1940/12 - MATCH: name and date
-    OOB #00269 <         Sec Inf> from=1943/05 to=1946/12 - MATCH: name only
-    OOB #00350 <         Sec Inf> from=1940/08 to=1943/12 - MATCH: name only
-  <<< rv=36
-OOBrid=00036
+  NO MATCH FOUND!
+  <<< rv=0
+  >>> SEARCH OOBRID - EXTENSIVE: F<00005>, T<         Sec Inf>, D<1940/05>
+  U<00021> F<00005,000> O<00037> UT<001> <         Gpe Inf>
+  U<00022> F<00005,001> O<00036> UT<002> <         Gpe Inf>
+  U<00023> F<00005,002> O<00036> UT<002> <         Gpe Inf>
+  U<00024> F<00005,003> O<00036> UT<002> <         Gpe Inf>
+  <<< rv=0
+OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00006> L<00025> H<00006> O<00019> (  Gpe Mitrai DCA) OOBrid=00019
 find_formation_oobrids: FORMATION: P<1> ID<00027> L<65535> H<00035> O<00095> (      AT-Gun Bty) DROPPED: no units recorded for formation
 verify_candidate_units: [00006] UNIT: F<00000,000> LO<65535> (  Poste Commande) ACCEPTED - LEADER
@@ -1863,10 +1879,10 @@ verify_candidate_units: [00025] UNIT: F<00006,000> LO<65535> (     13.2mm AAMG) 
 verify_candidate_units: [00026] UNIT: F<00006,001> LO<65535> (     13.2mm AAMG) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00006> H<00006> O<00001> (  Poste Commande) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00001> L<00007> H<00006> O<00006> (         Cie Inf) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00002> L<00009> H<00007> O<00036> (         Sec Inf) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00003> L<00013> H<00007> O<00036> (         Sec Inf) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00004> L<00017> H<00007> O<00036> (         Sec Inf) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00005> L<00021> H<00007> O<00036> (         Sec Inf) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00002> L<00009> H<00007> O<00000> (         Sec Inf) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00003> L<00013> H<00007> O<00000> (         Sec Inf) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00004> L<00017> H<00007> O<00000> (         Sec Inf) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00005> L<00021> H<00007> O<00000> (         Sec Inf) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00006> L<00025> H<00006> O<00019> (  Gpe Mitrai DCA) ACCEPTED
 unitcount: ul.cnt=21
 FLIST: { { s.nidx=8 }, cnt=7 }
@@ -1875,22 +1891,22 @@ FLIST: { { s.nidx=8 }, cnt=7 }
     [00003] (         Cie Inf) P<001> L<00007> H<00006> status=000 units=002 OOB 006: [00006] FID<00001> RAW<00001>
         [000] ptr[00007]
         [001] ptr[00008]
-    [00004] (         Sec Inf) P<001> L<00009> H<00007> status=000 units=004 OOB 006: [00036] FID<00002> RAW<00002>
+    [00004] (         Sec Inf) P<001> L<00009> H<00007> status=000 units=004 OOB 006: [00000] FID<00002> RAW<00002>
         [000] ptr[00009]
         [001] ptr[00010]
         [002] ptr[00011]
         [003] ptr[00012]
-    [00005] (         Sec Inf) P<001> L<00013> H<00007> status=000 units=004 OOB 006: [00036] FID<00003> RAW<00003>
+    [00005] (         Sec Inf) P<001> L<00013> H<00007> status=000 units=004 OOB 006: [00000] FID<00003> RAW<00003>
         [000] ptr[00013]
         [001] ptr[00014]
         [002] ptr[00015]
         [003] ptr[00016]
-    [00006] (         Sec Inf) P<001> L<00017> H<00007> status=000 units=004 OOB 006: [00036] FID<00004> RAW<00004>
+    [00006] (         Sec Inf) P<001> L<00017> H<00007> status=000 units=004 OOB 006: [00000] FID<00004> RAW<00004>
         [000] ptr[00017]
         [001] ptr[00018]
         [002] ptr[00019]
         [003] ptr[00020]
-    [00007] (         Sec Inf) P<001> L<00021> H<00007> status=000 units=004 OOB 006: [00036] FID<00005> RAW<00005>
+    [00007] (         Sec Inf) P<001> L<00021> H<00007> status=000 units=004 OOB 006: [00000] FID<00005> RAW<00005>
         [000] ptr[00021]
         [001] ptr[00022]
         [002] ptr[00023]

@@ -4664,19 +4664,22 @@ OOBrid=00300
 find_formation_oobrids: FORMATION: P<1> ID<00032> L<00367> H<00282> O<00389> (   Light Tank Co) OOBrid=00389
 find_formation_oobrids: FORMATION: P<1> ID<00033> L<00372> H<00367> O<00000> (   Light Tank Pl) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00033>, T<   Light Tank Pl>, D<1939/09>
-    OOB #00372 <   Light Tank Pl> from=1939/11 to=1940/12 - MATCH: name only
-  <<< rv=372
-OOBrid=00372
+    OOB #00183 <   Light Tank Pl> from=1942/09 to=1946/12 - MATCH: name only
+    OOB #00388 <   Light Tank Pl> from=1938/07 to=1939/12 - MATCH: name and date
+  <<< rv=388
+OOBrid=00388
 find_formation_oobrids: FORMATION: P<1> ID<00034> L<00376> H<00367> O<00000> (   Light Tank Pl) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00034>, T<   Light Tank Pl>, D<1939/09>
-    OOB #00372 <   Light Tank Pl> from=1939/11 to=1940/12 - MATCH: name only
-  <<< rv=372
-OOBrid=00372
+    OOB #00183 <   Light Tank Pl> from=1942/09 to=1946/12 - MATCH: name only
+    OOB #00388 <   Light Tank Pl> from=1938/07 to=1939/12 - MATCH: name and date
+  <<< rv=388
+OOBrid=00388
 find_formation_oobrids: FORMATION: P<1> ID<00035> L<00382> H<00367> O<00000> (   Light Tank Pl) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00035>, T<   Light Tank Pl>, D<1939/09>
-    OOB #00372 <   Light Tank Pl> from=1939/11 to=1940/12 - MATCH: name only
-  <<< rv=372
-OOBrid=00372
+    OOB #00183 <   Light Tank Pl> from=1942/09 to=1946/12 - MATCH: name only
+    OOB #00388 <   Light Tank Pl> from=1938/07 to=1939/12 - MATCH: name and date
+  <<< rv=388
+OOBrid=00388
 find_formation_oobrids: FORMATION: P<1> ID<00036> L<00383> H<00282> O<00366> (   Light Battery) OOBrid=00366
 find_formation_oobrids: FORMATION: P<1> ID<00037> L<00384> H<00282> O<00042> (          Sniper) OOBrid=00042
 find_formation_oobrids: FORMATION: P<1> ID<00038> L<00385> H<00282> O<00049> (          Scouts) OOBrid=00049
@@ -4707,19 +4710,16 @@ find_formation_oobrids: FORMATION: P<1> ID<00044> L<00403> H<00282> O<00326> (  
 find_formation_oobrids: FORMATION: P<1> ID<00045> L<00404> H<00282> O<00381> (     Inf Tank Co) OOBrid=00381
 find_formation_oobrids: FORMATION: P<1> ID<00046> L<00596> H<00404> O<00000> (     Inf Tank Pl) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00046>, T<     Inf Tank Pl>, D<1939/09>
-    OOB #00374 <     Inf Tank Pl> from=1939/11 to=1940/12 - MATCH: name only
     OOB #00380 <     Inf Tank Pl> from=1930/01 to=1939/12 - MATCH: name and date
   <<< rv=380
 OOBrid=00380
 find_formation_oobrids: FORMATION: P<1> ID<00047> L<00410> H<00404> O<00000> (     Inf Tank Pl) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00047>, T<     Inf Tank Pl>, D<1939/09>
-    OOB #00374 <     Inf Tank Pl> from=1939/11 to=1940/12 - MATCH: name only
     OOB #00380 <     Inf Tank Pl> from=1930/01 to=1939/12 - MATCH: name and date
   <<< rv=380
 OOBrid=00380
 find_formation_oobrids: FORMATION: P<1> ID<00048> L<00415> H<00404> O<00000> (     Inf Tank Pl) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00048>, T<     Inf Tank Pl>, D<1939/09>
-    OOB #00374 <     Inf Tank Pl> from=1939/11 to=1940/12 - MATCH: name only
     OOB #00380 <     Inf Tank Pl> from=1930/01 to=1939/12 - MATCH: name and date
   <<< rv=380
 OOBrid=00380
@@ -4945,7 +4945,7 @@ verify_candidate_units: [00298] UNIT: F<00006,000> LO<65535> (     Rifle Squad) 
 verify_candidate_units: [00299] UNIT: F<00006,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00300] UNIT: F<00006,002> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00301] UNIT: F<00007,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00302] UNIT: F<00007,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00302] UNIT: F<00007,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00303] UNIT: F<00008,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00304] UNIT: F<00008,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00305] UNIT: F<00008,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -4989,7 +4989,7 @@ verify_candidate_units: [00342] UNIT: F<00023,002> LO<65535> (     Cavalry Sec) 
 verify_candidate_units: [00343] UNIT: F<00023,003> LO<65535> (  Cavalry Scouts) ACCEPTED
 verify_candidate_units: [00344] UNIT: F<00023,004> LO<65535> (     Cavalry Sec) ACCEPTED - LEADER
 verify_candidate_units: [00345] UNIT: F<00024,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00346] UNIT: F<00024,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00346] UNIT: F<00024,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00347] UNIT: F<00025,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00348] UNIT: F<00025,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00349] UNIT: F<00025,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5014,24 +5014,24 @@ verify_candidate_units: [00367] UNIT: F<00032,000> LO<65535> (             7TP) 
 verify_candidate_units: [00368] UNIT: F<00033,000> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00369] UNIT: F<00033,001> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00370] UNIT: F<00033,002> LO<65535> (             7TP) ACCEPTED
-verify_candidate_units: [00371] UNIT: F<00033,003> LO<65535> (             7TP) ACCEPTED - AUTO SPAU (uel->d.FSID (3) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00371] UNIT: F<00033,003> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00372] UNIT: F<00033,004> LO<65535> (             7TP) ACCEPTED - LEADER
 verify_candidate_units: [00373] UNIT: F<00034,000> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00374] UNIT: F<00034,001> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00375] UNIT: F<00034,002> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00376] UNIT: F<00034,003> LO<65535> (             7TP) ACCEPTED - LEADER
-verify_candidate_units: [00377] UNIT: F<00034,004> LO<65535> (             7TP) ACCEPTED - AUTO SPAU (uel->d.FSID (4) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00377] UNIT: F<00034,004> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00378] UNIT: F<00035,000> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00379] UNIT: F<00035,001> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00380] UNIT: F<00035,002> LO<65535> (             7TP) ACCEPTED
-verify_candidate_units: [00381] UNIT: F<00035,003> LO<65535> (             7TP) ACCEPTED - AUTO SPAU (uel->d.FSID (3) >= (3) fel->d.unit_cnt
+verify_candidate_units: [00381] UNIT: F<00035,003> LO<65535> (             7TP) ACCEPTED
 verify_candidate_units: [00382] UNIT: F<00035,004> LO<65535> (             7TP) ACCEPTED - LEADER
 verify_candidate_units: [00383] UNIT: F<00036,000> LO<65535> (    100mm FH Bty) ACCEPTED - LEADER
 verify_candidate_units: [00384] UNIT: F<00037,000> LO<65535> (          Sniper) ACCEPTED - LEADER
 verify_candidate_units: [00385] UNIT: F<00038,000> LO<65535> (          Patrol) ACCEPTED - LEADER
 verify_candidate_units: [00386] UNIT: F<00038,001> LO<65535> (          Patrol) ACCEPTED
 verify_candidate_units: [00387] UNIT: F<00039,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00388] UNIT: F<00039,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00388] UNIT: F<00039,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00389] UNIT: F<00040,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00390] UNIT: F<00040,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00391] UNIT: F<00040,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5087,7 +5087,7 @@ verify_candidate_units: [00440] UNIT: F<00056,002> LO<65535> (     Cavalry Sec) 
 verify_candidate_units: [00441] UNIT: F<00056,003> LO<65535> (  Cavalry Scouts) ACCEPTED
 verify_candidate_units: [00442] UNIT: F<00056,004> LO<65535> (     Cavalry Sec) ACCEPTED - LEADER
 verify_candidate_units: [00443] UNIT: F<00057,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00444] UNIT: F<00057,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00444] UNIT: F<00057,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00445] UNIT: F<00058,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00446] UNIT: F<00058,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00447] UNIT: F<00058,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5110,7 +5110,7 @@ verify_candidate_units: [00463] UNIT: F<00064,000> LO<65535> (        Marksman) 
 verify_candidate_units: [00464] UNIT: F<00065,000> LO<65535> (          Patrol) ACCEPTED
 verify_candidate_units: [00465] UNIT: F<00065,001> LO<65535> (          Patrol) ACCEPTED - LEADER
 verify_candidate_units: [00466] UNIT: F<00066,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00467] UNIT: F<00066,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00467] UNIT: F<00066,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00468] UNIT: F<00067,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00469] UNIT: F<00067,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00470] UNIT: F<00067,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5139,7 +5139,7 @@ verify_candidate_units: [00492] UNIT: F<00076,002> LO<65535> (     Cavalry Sec) 
 verify_candidate_units: [00493] UNIT: F<00076,003> LO<65535> (  Cavalry Scouts) ACCEPTED
 verify_candidate_units: [00494] UNIT: F<00076,004> LO<65535> (     Cavalry Sec) ACCEPTED
 verify_candidate_units: [00495] UNIT: F<00077,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00496] UNIT: F<00077,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00496] UNIT: F<00077,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00497] UNIT: F<00078,000> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00498] UNIT: F<00078,001> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00499] UNIT: F<00078,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5159,7 +5159,7 @@ verify_candidate_units: [00512] UNIT: F<00083,000> LO<65535> (        Marksman) 
 verify_candidate_units: [00513] UNIT: F<00084,000> LO<65535> (          Patrol) ACCEPTED
 verify_candidate_units: [00514] UNIT: F<00084,001> LO<65535> (          Patrol) ACCEPTED - LEADER
 verify_candidate_units: [00515] UNIT: F<00085,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00516] UNIT: F<00085,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00516] UNIT: F<00085,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00517] UNIT: F<00086,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00518] UNIT: F<00086,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00519] UNIT: F<00086,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5187,7 +5187,7 @@ verify_candidate_units: [00540] UNIT: F<00094,002> LO<65535> (     Cavalry Sec) 
 verify_candidate_units: [00541] UNIT: F<00094,003> LO<65535> (  Cavalry Scouts) ACCEPTED
 verify_candidate_units: [00542] UNIT: F<00094,004> LO<65535> (     Cavalry Sec) ACCEPTED - LEADER
 verify_candidate_units: [00543] UNIT: F<00095,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00544] UNIT: F<00095,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00544] UNIT: F<00095,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00545] UNIT: F<00096,000> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00546] UNIT: F<00096,001> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00547] UNIT: F<00096,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5206,7 +5206,7 @@ verify_candidate_units: [00559] UNIT: F<00100,000> LO<65535> (        Marksman) 
 verify_candidate_units: [00560] UNIT: F<00101,000> LO<65535> (          Patrol) ACCEPTED
 verify_candidate_units: [00561] UNIT: F<00101,001> LO<65535> (          Patrol) ACCEPTED - LEADER
 verify_candidate_units: [00562] UNIT: F<00102,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
-verify_candidate_units: [00563] UNIT: F<00102,001> LO<65535> (      GL Section) ACCEPTED - AUTO SPAU (uel->d.FSID (1) >= (1) fel->d.unit_cnt
+verify_candidate_units: [00563] UNIT: F<00102,001> LO<65535> (      GL Section) ACCEPTED
 verify_candidate_units: [00564] UNIT: F<00103,000> LO<65535> (     Rifle Squad) ACCEPTED - LEADER
 verify_candidate_units: [00565] UNIT: F<00103,001> LO<65535> (     Rifle Squad) ACCEPTED
 verify_candidate_units: [00566] UNIT: F<00103,002> LO<65535> (     Rifle Squad) ACCEPTED
@@ -5271,9 +5271,9 @@ verify_candidate_formations: FORMATION: P<1> ID<00029> L<00359> H<00356> O<00300
 verify_candidate_formations: FORMATION: P<1> ID<00030> L<00363> H<00356> O<00300> (   Rifle Platoon) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00031> L<00364> H<00356> O<00300> (   Rifle Platoon) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00032> L<00367> H<00282> O<00389> (   Light Tank Co) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00033> L<00372> H<00367> O<00372> (   Light Tank Pl) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00034> L<00376> H<00367> O<00372> (   Light Tank Pl) ACCEPTED
-verify_candidate_formations: FORMATION: P<1> ID<00035> L<00382> H<00367> O<00372> (   Light Tank Pl) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00033> L<00372> H<00367> O<00388> (   Light Tank Pl) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00034> L<00376> H<00367> O<00388> (   Light Tank Pl) ACCEPTED
+verify_candidate_formations: FORMATION: P<1> ID<00035> L<00382> H<00367> O<00388> (   Light Tank Pl) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00036> L<00383> H<00282> O<00366> (   Light Battery) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00037> L<00384> H<00282> O<00042> (          Sniper) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00038> L<00385> H<00282> O<00049> (          Scouts) ACCEPTED
@@ -5364,8 +5364,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [000] ptr[00287]
         [001] ptr[00288]
         [002] ptr[00289]
-    [00090] (   Rifle Company) P<001> L<00291> H<00282> status=002 units=001 OOB 002: [00301] FID<00003> RAW<00003>
+    [00090] (   Rifle Company) P<001> L<00291> H<00282> status=002 units=002 OOB 002: [00301] FID<00003> RAW<00003>
         [000] ptr[00290]
+        [001] ptr[00291]
     [00091] (   Rifle Platoon) P<001> L<00292> H<00290> status=002 units=003 OOB 002: [00300] FID<00004> RAW<00004>
         [000] ptr[00292]
         [001] ptr[00293]
@@ -5378,8 +5379,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [000] ptr[00298]
         [001] ptr[00299]
         [002] ptr[00300]
-    [00094] (   Rifle Company) P<001> L<00301> H<00282> status=002 units=001 OOB 002: [00301] FID<00007> RAW<00007>
+    [00094] (   Rifle Company) P<001> L<00301> H<00282> status=002 units=002 OOB 002: [00301] FID<00007> RAW<00007>
         [000] ptr[00301]
+        [001] ptr[00302]
     [00095] (   Rifle Platoon) P<001> L<00303> H<00301> status=002 units=003 OOB 002: [00300] FID<00008> RAW<00008>
         [000] ptr[00303]
         [001] ptr[00304]
@@ -5438,8 +5440,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [002] ptr[00342]
         [003] ptr[00343]
         [004] ptr[00344]
-    [00111] (   Rifle Company) P<001> L<00345> H<00282> status=002 units=001 OOB 002: [00301] FID<00024> RAW<00024>
+    [00111] (   Rifle Company) P<001> L<00345> H<00282> status=002 units=002 OOB 002: [00301] FID<00024> RAW<00024>
         [000] ptr[00345]
+        [001] ptr[00346]
     [00112] (   Rifle Platoon) P<001> L<00347> H<00345> status=002 units=003 OOB 002: [00300] FID<00025> RAW<00025>
         [000] ptr[00347]
         [001] ptr[00348]
@@ -5452,8 +5455,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [000] ptr[00353]
         [001] ptr[00354]
         [002] ptr[00355]
-    [00115] (   Rifle Company) P<001> L<00357> H<00282> status=002 units=001 OOB 002: [00301] FID<00028> RAW<00028>
+    [00115] (   Rifle Company) P<001> L<00357> H<00282> status=002 units=002 OOB 002: [00301] FID<00028> RAW<00028>
         [000] ptr[00356]
+        [001] ptr[00357]
     [00116] (   Rifle Platoon) P<001> L<00359> H<00356> status=002 units=003 OOB 002: [00300] FID<00029> RAW<00029>
         [000] ptr[00358]
         [001] ptr[00359]
@@ -5468,18 +5472,24 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [002] ptr[00366]
     [00119] (   Light Tank Co) P<001> L<00367> H<00282> status=002 units=001 OOB 002: [00389] FID<00032> RAW<00032>
         [000] ptr[00367]
-    [00120] (   Light Tank Pl) P<001> L<00372> H<00367> status=002 units=003 OOB 002: [00372] FID<00033> RAW<00033>
+    [00120] (   Light Tank Pl) P<001> L<00372> H<00367> status=002 units=005 OOB 002: [00388] FID<00033> RAW<00033>
         [000] ptr[00368]
         [001] ptr[00369]
         [002] ptr[00370]
-    [00121] (   Light Tank Pl) P<001> L<00376> H<00367> status=002 units=003 OOB 002: [00372] FID<00034> RAW<00034>
+        [003] ptr[00371]
+        [004] ptr[00372]
+    [00121] (   Light Tank Pl) P<001> L<00376> H<00367> status=002 units=005 OOB 002: [00388] FID<00034> RAW<00034>
         [000] ptr[00373]
         [001] ptr[00374]
         [002] ptr[00375]
-    [00122] (   Light Tank Pl) P<001> L<00382> H<00367> status=002 units=003 OOB 002: [00372] FID<00035> RAW<00035>
+        [003] ptr[00376]
+        [004] ptr[00377]
+    [00122] (   Light Tank Pl) P<001> L<00382> H<00367> status=002 units=005 OOB 002: [00388] FID<00035> RAW<00035>
         [000] ptr[00378]
         [001] ptr[00379]
         [002] ptr[00380]
+        [003] ptr[00381]
+        [004] ptr[00382]
     [00123] (   Light Battery) P<001> L<00383> H<00282> status=002 units=001 OOB 002: [00366] FID<00036> RAW<00036>
         [000] ptr[00383]
     [00124] (          Sniper) P<001> L<00384> H<00282> status=002 units=001 OOB 002: [00042] FID<00037> RAW<00037>
@@ -5487,8 +5497,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
     [00125] (          Scouts) P<001> L<00385> H<00282> status=002 units=002 OOB 002: [00049] FID<00038> RAW<00038>
         [000] ptr[00385]
         [001] ptr[00386]
-    [00126] (   Rifle Company) P<001> L<00387> H<00282> status=002 units=001 OOB 002: [00301] FID<00039> RAW<00039>
+    [00126] (   Rifle Company) P<001> L<00387> H<00282> status=002 units=002 OOB 002: [00301] FID<00039> RAW<00039>
         [000] ptr[00387]
+        [001] ptr[00388]
     [00127] (   Rifle Platoon) P<001> L<00389> H<00387> status=002 units=003 OOB 002: [00300] FID<00040> RAW<00040>
         [000] ptr[00389]
         [001] ptr[00390]
@@ -5560,8 +5571,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [002] ptr[00440]
         [003] ptr[00441]
         [004] ptr[00442]
-    [00144] (   Rifle Company) P<001> L<00443> H<00282> status=002 units=001 OOB 002: [00301] FID<00057> RAW<00057>
+    [00144] (   Rifle Company) P<001> L<00443> H<00282> status=002 units=002 OOB 002: [00301] FID<00057> RAW<00057>
         [000] ptr[00443]
+        [001] ptr[00444]
     [00145] (   Rifle Platoon) P<001> L<00445> H<00443> status=002 units=003 OOB 002: [00300] FID<00058> RAW<00058>
         [000] ptr[00445]
         [001] ptr[00446]
@@ -5591,8 +5603,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
     [00152] (          Scouts) P<001> L<00465> H<00282> status=002 units=002 OOB 002: [00049] FID<00065> RAW<00065>
         [000] ptr[00464]
         [001] ptr[00465]
-    [00153] (   Rifle Company) P<001> L<00466> H<00282> status=002 units=001 OOB 002: [00301] FID<00066> RAW<00066>
+    [00153] (   Rifle Company) P<001> L<00466> H<00282> status=002 units=002 OOB 002: [00301] FID<00066> RAW<00066>
         [000] ptr[00466]
+        [001] ptr[00467]
     [00154] (   Rifle Platoon) P<001> L<00468> H<00466> status=002 units=003 OOB 002: [00300] FID<00067> RAW<00067>
         [000] ptr[00468]
         [001] ptr[00469]
@@ -5630,8 +5643,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [002] ptr[00492]
         [003] ptr[00493]
         [004] ptr[00494]
-    [00164] (   Rifle Company) P<001> L<00495> H<00282> status=002 units=001 OOB 002: [00301] FID<00077> RAW<00077>
+    [00164] (   Rifle Company) P<001> L<00495> H<00282> status=002 units=002 OOB 002: [00301] FID<00077> RAW<00077>
         [000] ptr[00495]
+        [001] ptr[00496]
     [00165] (   Rifle Platoon) P<001> L<00498> H<00495> status=002 units=003 OOB 002: [00300] FID<00078> RAW<00078>
         [000] ptr[00497]
         [001] ptr[00498]
@@ -5657,8 +5671,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
     [00171] (          Scouts) P<001> L<00514> H<00282> status=002 units=002 OOB 002: [00049] FID<00084> RAW<00084>
         [000] ptr[00513]
         [001] ptr[00514]
-    [00172] (   Rifle Company) P<001> L<00515> H<00282> status=002 units=001 OOB 002: [00301] FID<00085> RAW<00085>
+    [00172] (   Rifle Company) P<001> L<00515> H<00282> status=002 units=002 OOB 002: [00301] FID<00085> RAW<00085>
         [000] ptr[00515]
+        [001] ptr[00516]
     [00173] (   Rifle Platoon) P<001> L<00517> H<00515> status=002 units=003 OOB 002: [00300] FID<00086> RAW<00086>
         [000] ptr[00517]
         [001] ptr[00518]
@@ -5694,8 +5709,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
         [002] ptr[00540]
         [003] ptr[00541]
         [004] ptr[00542]
-    [00182] (   Rifle Company) P<001> L<00543> H<00282> status=002 units=001 OOB 002: [00301] FID<00095> RAW<00095>
+    [00182] (   Rifle Company) P<001> L<00543> H<00282> status=002 units=002 OOB 002: [00301] FID<00095> RAW<00095>
         [000] ptr[00543]
+        [001] ptr[00544]
     [00183] (   Rifle Platoon) P<001> L<00546> H<00543> status=002 units=003 OOB 002: [00300] FID<00096> RAW<00096>
         [000] ptr[00545]
         [001] ptr[00546]
@@ -5719,8 +5735,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
     [00188] (          Scouts) P<001> L<00561> H<00282> status=002 units=002 OOB 002: [00049] FID<00101> RAW<00101>
         [000] ptr[00560]
         [001] ptr[00561]
-    [00189] (   Rifle Company) P<001> L<00562> H<00282> status=002 units=001 OOB 002: [00301] FID<00102> RAW<00102>
+    [00189] (   Rifle Company) P<001> L<00562> H<00282> status=002 units=002 OOB 002: [00301] FID<00102> RAW<00102>
         [000] ptr[00562]
+        [001] ptr[00563]
     [00190] (   Rifle Platoon) P<001> L<00564> H<00562> status=002 units=003 OOB 002: [00300] FID<00103> RAW<00103>
         [000] ptr[00564]
         [001] ptr[00565]
@@ -5736,8 +5753,9 @@ FLIST: { { s.nidx=113 }, cnt=113 }
     [00193] (  Light Tank Sec) P<001> L<00574> H<00282> status=002 units=002 OOB 002: [00383] FID<00106> RAW<00106>
         [000] ptr[00573]
         [001] ptr[00574]
-    [00194] (   Rifle Company) P<001> L<00576> H<00282> status=002 units=001 OOB 002: [00301] FID<00107> RAW<00107>
+    [00194] (   Rifle Company) P<001> L<00576> H<00282> status=002 units=002 OOB 002: [00301] FID<00107> RAW<00107>
         [000] ptr[00575]
+        [001] ptr[00576]
     [00195] (   Rifle Platoon) P<001> L<00577> H<00575> status=002 units=003 OOB 002: [00300] FID<00108> RAW<00108>
         [000] ptr[00577]
         [001] ptr[00578]
@@ -5779,7 +5797,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00299] (     Rifle Squad) UNIT leader=[00299] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00093]<00006,001> ptr[00093] link crew=nil[65535], parent=nil[65535]
     [00300] (     Rifle Squad) UNIT leader=[00300] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00093]<00006,002> ptr[00093] link crew=nil[65535], parent=nil[65535]
     [00301] (     Rifle Squad) UNIT leader=[00301] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00094]<00007,000> ptr[00094] link crew=nil[65535], parent=nil[65535]
-    [00302] (      GL Section) SPAU leader=[00302] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00094]<00007,001> ptr[00094] link crew=nil[65535], parent=nil[65535]
+    [00302] (      GL Section) UNIT leader=[00302] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00094]<00007,001> ptr[00094] link crew=nil[65535], parent=nil[65535]
     [00303] (     Rifle Squad) UNIT leader=[00303] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00300] F[00095]<00008,000> ptr[00095] link crew=nil[65535], parent=nil[65535]
     [00304] (     Rifle Squad) UNIT leader=[00304] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00095]<00008,001> ptr[00095] link crew=nil[65535], parent=nil[65535]
     [00305] (     Rifle Squad) UNIT leader=[00305] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00095]<00008,002> ptr[00095] link crew=nil[65535], parent=nil[65535]
@@ -5823,7 +5841,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00343] (  Cavalry Scouts) UNIT leader=[00343] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00315] F[00110]<00023,003> ptr[00110] link crew=nil[65535], parent=nil[65535]
     [00344] (     Cavalry Sec) UNIT leader=[00344] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00317] F[00110]<00023,004> ptr[00110] link crew=nil[65535], parent=nil[65535]
     [00345] (     Rifle Squad) UNIT leader=[00345] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00111]<00024,000> ptr[00111] link crew=nil[65535], parent=nil[65535]
-    [00346] (      GL Section) SPAU leader=[00346] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00111]<00024,001> ptr[00111] link crew=nil[65535], parent=nil[65535]
+    [00346] (      GL Section) UNIT leader=[00346] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00111]<00024,001> ptr[00111] link crew=nil[65535], parent=nil[65535]
     [00347] (     Rifle Squad) UNIT leader=[00347] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00301] F[00112]<00025,000> ptr[00112] link crew=nil[65535], parent=nil[65535]
     [00348] (     Rifle Squad) UNIT leader=[00348] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00112]<00025,001> ptr[00112] link crew=nil[65535], parent=nil[65535]
     [00349] (     Rifle Squad) UNIT leader=[00349] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00112]<00025,002> ptr[00112] link crew=nil[65535], parent=nil[65535]
@@ -5848,24 +5866,24 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00368] (             7TP) UNIT leader=[00368] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00120]<00033,000> ptr[00120] link crew=nil[65535], parent=nil[65535]
     [00369] (             7TP) UNIT leader=[00369] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00120]<00033,001> ptr[00120] link crew=nil[65535], parent=nil[65535]
     [00370] (             7TP) UNIT leader=[00370] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00120]<00033,002> ptr[00120] link crew=nil[65535], parent=nil[65535]
-    [00371] (             7TP) SPAU leader=[00371] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00120]<00033,003> ptr[00120] link crew=nil[65535], parent=nil[65535]
+    [00371] (             7TP) UNIT leader=[00371] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00120]<00033,003> ptr[00120] link crew=nil[65535], parent=nil[65535]
     [00372] (             7TP) UNIT leader=[00372] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00120]<00033,004> ptr[00120] link crew=nil[65535], parent=nil[65535]
     [00373] (             7TP) UNIT leader=[00373] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00121]<00034,000> ptr[00121] link crew=nil[65535], parent=nil[65535]
     [00374] (             7TP) UNIT leader=[00374] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00121]<00034,001> ptr[00121] link crew=nil[65535], parent=nil[65535]
     [00375] (             7TP) UNIT leader=[00375] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00121]<00034,002> ptr[00121] link crew=nil[65535], parent=nil[65535]
     [00376] (             7TP) UNIT leader=[00376] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00121]<00034,003> ptr[00121] link crew=nil[65535], parent=nil[65535]
-    [00377] (             7TP) SPAU leader=[00377] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00121]<00034,004> ptr[00121] link crew=nil[65535], parent=nil[65535]
+    [00377] (             7TP) UNIT leader=[00377] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00121]<00034,004> ptr[00121] link crew=nil[65535], parent=nil[65535]
     [00378] (             7TP) UNIT leader=[00378] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00122]<00035,000> ptr[00122] link crew=nil[65535], parent=nil[65535]
     [00379] (             7TP) UNIT leader=[00379] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00122]<00035,001> ptr[00122] link crew=nil[65535], parent=nil[65535]
     [00380] (             7TP) UNIT leader=[00380] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00122]<00035,002> ptr[00122] link crew=nil[65535], parent=nil[65535]
-    [00381] (             7TP) SPAU leader=[00381] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00122]<00035,003> ptr[00122] link crew=nil[65535], parent=nil[65535]
+    [00381] (             7TP) UNIT leader=[00381] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00122]<00035,003> ptr[00122] link crew=nil[65535], parent=nil[65535]
     [00382] (             7TP) UNIT leader=[00382] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00459] F[00122]<00035,004> ptr[00122] link crew=nil[65535], parent=nil[65535]
     [00383] (    100mm FH Bty) UNIT leader=[00383] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00332] F[00123]<00036,000> ptr[00123] link crew=nil[65535], parent=nil[65535]
     [00384] (          Sniper) UNIT leader=[00384] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00309] F[00124]<00037,000> ptr[00124] link crew=nil[65535], parent=nil[65535]
     [00385] (          Patrol) UNIT leader=[00385] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00125]<00038,000> ptr[00125] link crew=nil[65535], parent=nil[65535]
     [00386] (          Patrol) UNIT leader=[00386] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00125]<00038,001> ptr[00125] link crew=nil[65535], parent=nil[65535]
     [00387] (     Rifle Squad) UNIT leader=[00387] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00126]<00039,000> ptr[00126] link crew=nil[65535], parent=nil[65535]
-    [00388] (      GL Section) SPAU leader=[00388] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00272] F[00126]<00039,001> ptr[00126] link crew=nil[65535], parent=nil[65535]
+    [00388] (      GL Section) UNIT leader=[00388] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00272] F[00126]<00039,001> ptr[00126] link crew=nil[65535], parent=nil[65535]
     [00389] (     Rifle Squad) UNIT leader=[00389] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00301] F[00127]<00040,000> ptr[00127] link crew=nil[65535], parent=nil[65535]
     [00390] (     Rifle Squad) UNIT leader=[00390] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00127]<00040,001> ptr[00127] link crew=nil[65535], parent=nil[65535]
     [00391] (     Rifle Squad) UNIT leader=[00391] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00127]<00040,002> ptr[00127] link crew=nil[65535], parent=nil[65535]
@@ -5921,7 +5939,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00441] (  Cavalry Scouts) UNIT leader=[00441] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00315] F[00143]<00056,003> ptr[00143] link crew=nil[65535], parent=nil[65535]
     [00442] (     Cavalry Sec) UNIT leader=[00442] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00317] F[00143]<00056,004> ptr[00143] link crew=nil[65535], parent=nil[65535]
     [00443] (     Rifle Squad) UNIT leader=[00443] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00305] F[00144]<00057,000> ptr[00144] link crew=nil[65535], parent=nil[65535]
-    [00444] (      GL Section) SPAU leader=[00444] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00144]<00057,001> ptr[00144] link crew=nil[65535], parent=nil[65535]
+    [00444] (      GL Section) UNIT leader=[00444] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00144]<00057,001> ptr[00144] link crew=nil[65535], parent=nil[65535]
     [00445] (     Rifle Squad) UNIT leader=[00445] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00300] F[00145]<00058,000> ptr[00145] link crew=nil[65535], parent=nil[65535]
     [00446] (     Rifle Squad) UNIT leader=[00446] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00145]<00058,001> ptr[00145] link crew=nil[65535], parent=nil[65535]
     [00447] (     Rifle Squad) UNIT leader=[00447] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00145]<00058,002> ptr[00145] link crew=nil[65535], parent=nil[65535]
@@ -5944,7 +5962,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00464] (          Patrol) UNIT leader=[00464] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00152]<00065,000> ptr[00152] link crew=nil[65535], parent=nil[65535]
     [00465] (          Patrol) UNIT leader=[00465] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00152]<00065,001> ptr[00152] link crew=nil[65535], parent=nil[65535]
     [00466] (     Rifle Squad) UNIT leader=[00466] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00153]<00066,000> ptr[00153] link crew=nil[65535], parent=nil[65535]
-    [00467] (      GL Section) SPAU leader=[00467] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00153]<00066,001> ptr[00153] link crew=nil[65535], parent=nil[65535]
+    [00467] (      GL Section) UNIT leader=[00467] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00153]<00066,001> ptr[00153] link crew=nil[65535], parent=nil[65535]
     [00468] (     Rifle Squad) UNIT leader=[00468] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00300] F[00154]<00067,000> ptr[00154] link crew=nil[65535], parent=nil[65535]
     [00469] (     Rifle Squad) UNIT leader=[00469] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00154]<00067,001> ptr[00154] link crew=nil[65535], parent=nil[65535]
     [00470] (     Rifle Squad) UNIT leader=[00470] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00154]<00067,002> ptr[00154] link crew=nil[65535], parent=nil[65535]
@@ -5973,7 +5991,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00493] (  Cavalry Scouts) UNIT leader=[00493] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00315] F[00163]<00076,003> ptr[00163] link crew=nil[65535], parent=nil[65535]
     [00494] (     Cavalry Sec) UNIT leader=[00494] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00317] F[00163]<00076,004> ptr[00163] link crew=nil[65535], parent=nil[65535]
     [00495] (     Rifle Squad) UNIT leader=[00495] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00164]<00077,000> ptr[00164] link crew=nil[65535], parent=nil[65535]
-    [00496] (      GL Section) SPAU leader=[00496] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00164]<00077,001> ptr[00164] link crew=nil[65535], parent=nil[65535]
+    [00496] (      GL Section) UNIT leader=[00496] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00164]<00077,001> ptr[00164] link crew=nil[65535], parent=nil[65535]
     [00497] (     Rifle Squad) UNIT leader=[00497] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00301] F[00165]<00078,000> ptr[00165] link crew=nil[65535], parent=nil[65535]
     [00498] (     Rifle Squad) UNIT leader=[00498] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00165]<00078,001> ptr[00165] link crew=nil[65535], parent=nil[65535]
     [00499] (     Rifle Squad) UNIT leader=[00499] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00165]<00078,002> ptr[00165] link crew=nil[65535], parent=nil[65535]
@@ -5993,7 +6011,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00513] (          Patrol) UNIT leader=[00513] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00171]<00084,000> ptr[00171] link crew=nil[65535], parent=nil[65535]
     [00514] (          Patrol) UNIT leader=[00514] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00171]<00084,001> ptr[00171] link crew=nil[65535], parent=nil[65535]
     [00515] (     Rifle Squad) UNIT leader=[00515] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00172]<00085,000> ptr[00172] link crew=nil[65535], parent=nil[65535]
-    [00516] (      GL Section) SPAU leader=[00516] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00172]<00085,001> ptr[00172] link crew=nil[65535], parent=nil[65535]
+    [00516] (      GL Section) UNIT leader=[00516] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00172]<00085,001> ptr[00172] link crew=nil[65535], parent=nil[65535]
     [00517] (     Rifle Squad) UNIT leader=[00517] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00300] F[00173]<00086,000> ptr[00173] link crew=nil[65535], parent=nil[65535]
     [00518] (     Rifle Squad) UNIT leader=[00518] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00173]<00086,001> ptr[00173] link crew=nil[65535], parent=nil[65535]
     [00519] (     Rifle Squad) UNIT leader=[00519] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00173]<00086,002> ptr[00173] link crew=nil[65535], parent=nil[65535]
@@ -6021,7 +6039,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00541] (  Cavalry Scouts) UNIT leader=[00541] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00315] F[00181]<00094,003> ptr[00181] link crew=nil[65535], parent=nil[65535]
     [00542] (     Cavalry Sec) UNIT leader=[00542] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00317] F[00181]<00094,004> ptr[00181] link crew=nil[65535], parent=nil[65535]
     [00543] (     Rifle Squad) UNIT leader=[00543] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00305] F[00182]<00095,000> ptr[00182] link crew=nil[65535], parent=nil[65535]
-    [00544] (      GL Section) SPAU leader=[00544] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00182]<00095,001> ptr[00182] link crew=nil[65535], parent=nil[65535]
+    [00544] (      GL Section) UNIT leader=[00544] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00182]<00095,001> ptr[00182] link crew=nil[65535], parent=nil[65535]
     [00545] (     Rifle Squad) UNIT leader=[00545] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00300] F[00183]<00096,000> ptr[00183] link crew=nil[65535], parent=nil[65535]
     [00546] (     Rifle Squad) UNIT leader=[00546] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00183]<00096,001> ptr[00183] link crew=nil[65535], parent=nil[65535]
     [00547] (     Rifle Squad) UNIT leader=[00547] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00183]<00096,002> ptr[00183] link crew=nil[65535], parent=nil[65535]
@@ -6040,7 +6058,7 @@ ULIST: { { s.nidx=313 }, cnt=313 }
     [00560] (          Patrol) UNIT leader=[00560] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00188]<00101,000> ptr[00188] link crew=nil[65535], parent=nil[65535]
     [00561] (          Patrol) UNIT leader=[00561] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00313] F[00188]<00101,001> ptr[00188] link crew=nil[65535], parent=nil[65535]
     [00562] (     Rifle Squad) UNIT leader=[00562] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00286] F[00189]<00102,000> ptr[00189] link crew=nil[65535], parent=nil[65535]
-    [00563] (      GL Section) SPAU leader=[00563] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00189]<00102,001> ptr[00189] link crew=nil[65535], parent=nil[65535]
+    [00563] (      GL Section) UNIT leader=[00563] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00271] F[00189]<00102,001> ptr[00189] link crew=nil[65535], parent=nil[65535]
     [00564] (     Rifle Squad) UNIT leader=[00564] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00301] F[00190]<00103,000> ptr[00190] link crew=nil[65535], parent=nil[65535]
     [00565] (     Rifle Squad) UNIT leader=[00565] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00190]<00103,001> ptr[00190] link crew=nil[65535], parent=nil[65535]
     [00566] (     Rifle Squad) UNIT leader=[00566] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 002: [00285] F[00190]<00103,002> ptr[00190] link crew=nil[65535], parent=nil[65535]
@@ -6377,7 +6395,7 @@ add_unit: idx=16, RID=298, type=UNIT
 add_unit: idx=17, RID=299, type=UNIT
 add_unit: idx=18, RID=300, type=UNIT
 add_unit: idx=19, RID=301, type=UNIT
-add_unit: idx=20, RID=302, type=SPAU
+add_unit: idx=20, RID=302, type=UNIT
 add_unit: idx=21, RID=303, type=UNIT
 add_unit: idx=22, RID=304, type=UNIT
 add_unit: idx=23, RID=305, type=UNIT
@@ -6421,7 +6439,7 @@ add_unit: idx=60, RID=342, type=UNIT
 add_unit: idx=61, RID=343, type=UNIT
 add_unit: idx=62, RID=344, type=UNIT
 add_unit: idx=63, RID=345, type=UNIT
-add_unit: idx=64, RID=346, type=SPAU
+add_unit: idx=64, RID=346, type=UNIT
 add_unit: idx=65, RID=347, type=UNIT
 add_unit: idx=66, RID=348, type=UNIT
 add_unit: idx=67, RID=349, type=UNIT
@@ -6446,24 +6464,24 @@ add_unit: idx=85, RID=367, type=UNIT
 add_unit: idx=86, RID=368, type=UNIT
 add_unit: idx=87, RID=369, type=UNIT
 add_unit: idx=88, RID=370, type=UNIT
-add_unit: idx=89, RID=371, type=SPAU
+add_unit: idx=89, RID=371, type=UNIT
 add_unit: idx=90, RID=372, type=UNIT
 add_unit: idx=91, RID=373, type=UNIT
 add_unit: idx=92, RID=374, type=UNIT
 add_unit: idx=93, RID=375, type=UNIT
 add_unit: idx=94, RID=376, type=UNIT
-add_unit: idx=95, RID=377, type=SPAU
+add_unit: idx=95, RID=377, type=UNIT
 add_unit: idx=96, RID=378, type=UNIT
 add_unit: idx=97, RID=379, type=UNIT
 add_unit: idx=98, RID=380, type=UNIT
-add_unit: idx=99, RID=381, type=SPAU
+add_unit: idx=99, RID=381, type=UNIT
 add_unit: idx=100, RID=382, type=UNIT
 add_unit: idx=101, RID=383, type=UNIT
 add_unit: idx=102, RID=384, type=UNIT
 add_unit: idx=103, RID=385, type=UNIT
 add_unit: idx=104, RID=386, type=UNIT
 add_unit: idx=105, RID=387, type=UNIT
-add_unit: idx=106, RID=388, type=SPAU
+add_unit: idx=106, RID=388, type=UNIT
 add_unit: idx=107, RID=389, type=UNIT
 add_unit: idx=108, RID=390, type=UNIT
 add_unit: idx=109, RID=391, type=UNIT
@@ -6519,7 +6537,7 @@ add_unit: idx=158, RID=440, type=UNIT
 add_unit: idx=159, RID=441, type=UNIT
 add_unit: idx=160, RID=442, type=UNIT
 add_unit: idx=161, RID=443, type=UNIT
-add_unit: idx=162, RID=444, type=SPAU
+add_unit: idx=162, RID=444, type=UNIT
 add_unit: idx=163, RID=445, type=UNIT
 add_unit: idx=164, RID=446, type=UNIT
 add_unit: idx=165, RID=447, type=UNIT
@@ -6542,7 +6560,7 @@ add_unit: idx=181, RID=463, type=UNIT
 add_unit: idx=182, RID=464, type=UNIT
 add_unit: idx=183, RID=465, type=UNIT
 add_unit: idx=184, RID=466, type=UNIT
-add_unit: idx=185, RID=467, type=SPAU
+add_unit: idx=185, RID=467, type=UNIT
 add_unit: idx=186, RID=468, type=UNIT
 add_unit: idx=187, RID=469, type=UNIT
 add_unit: idx=188, RID=470, type=UNIT
@@ -6571,7 +6589,7 @@ add_unit: idx=210, RID=492, type=UNIT
 add_unit: idx=211, RID=493, type=UNIT
 add_unit: idx=212, RID=494, type=UNIT
 add_unit: idx=213, RID=495, type=UNIT
-add_unit: idx=214, RID=496, type=SPAU
+add_unit: idx=214, RID=496, type=UNIT
 add_unit: idx=215, RID=497, type=UNIT
 add_unit: idx=216, RID=498, type=UNIT
 add_unit: idx=217, RID=499, type=UNIT
@@ -6591,7 +6609,7 @@ add_unit: idx=230, RID=512, type=UNIT
 add_unit: idx=231, RID=513, type=UNIT
 add_unit: idx=232, RID=514, type=UNIT
 add_unit: idx=233, RID=515, type=UNIT
-add_unit: idx=234, RID=516, type=SPAU
+add_unit: idx=234, RID=516, type=UNIT
 add_unit: idx=235, RID=517, type=UNIT
 add_unit: idx=236, RID=518, type=UNIT
 add_unit: idx=237, RID=519, type=UNIT
@@ -6619,7 +6637,7 @@ add_unit: idx=258, RID=540, type=UNIT
 add_unit: idx=259, RID=541, type=UNIT
 add_unit: idx=260, RID=542, type=UNIT
 add_unit: idx=261, RID=543, type=UNIT
-add_unit: idx=262, RID=544, type=SPAU
+add_unit: idx=262, RID=544, type=UNIT
 add_unit: idx=263, RID=545, type=UNIT
 add_unit: idx=264, RID=546, type=UNIT
 add_unit: idx=265, RID=547, type=UNIT
@@ -6638,7 +6656,7 @@ add_unit: idx=277, RID=559, type=UNIT
 add_unit: idx=278, RID=560, type=UNIT
 add_unit: idx=279, RID=561, type=UNIT
 add_unit: idx=280, RID=562, type=UNIT
-add_unit: idx=281, RID=563, type=SPAU
+add_unit: idx=281, RID=563, type=UNIT
 add_unit: idx=282, RID=564, type=UNIT
 add_unit: idx=283, RID=565, type=UNIT
 add_unit: idx=284, RID=566, type=UNIT
