@@ -36,5 +36,8 @@
 /* Set to 1 to enable debug dumping of unit history tracking */
 #define	UHTDBGDUMP	0
 
+/* Set to 1 to enable historically accurate nations */
+#define	HISTACCNATIONS	0
+
 #endif	/* BUILD_OPTIONS_H */
 
