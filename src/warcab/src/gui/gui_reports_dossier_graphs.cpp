@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - dossier report - graphs.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -192,6 +192,7 @@ GuiRptDsrPlt::refresh (bool forced)
 
 	switch (ptr->gametype) {
 		case SPWAW_GAME_TYPE_WINSPWW2:
+		case SPWAW_GAME_TYPE_WINSPMBT:
 			d.axis_timeline->setCheckState (Qt::Unchecked);
 			d.axis_timeline->setHidden (true);
 			break;

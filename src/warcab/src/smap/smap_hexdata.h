@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - data definitions.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -60,7 +60,8 @@ typedef enum e_SMAP_HH {
 	SMAP_HH_150,		/*!< Height is 150 meters or higher			*/
 	SMAP_HH_START = SMAP_HH_NEG,		/*!< \internal */
 	SMAP_HH_LAST_SPWAW = SMAP_HH_035,	/*!< \internal - maximum height for SP:WaW	*/
-	SMAP_HH_LAST_WINSPWW2 = SMAP_HH_150	/*!< \internal - maximum height for winSPWW2	*/
+	SMAP_HH_LAST_WINSPWW2 = SMAP_HH_150,	/*!< \internal - maximum height for winSPWW2	*/
+	SMAP_HH_LAST_WINSPMBT = SMAP_HH_150	/*!< \internal - maximum height for winSPMBT	*/
 } SMAP_HH;
 
 /*! Strategic Map: total number of Hex Height Types for SP:WaW */
@@ -68,6 +69,9 @@ typedef enum e_SMAP_HH {
 
 /*! Strategic Map: total number of Hex Height Types for winSPWW2 */
 #define	SMAP_HH_CNT_WINSPWW2	(SMAP_HH_LAST_WINSPWW2-SMAP_HH_START+1)
+
+/*! Strategic Map: total number of Hex Height Types for winSPMBT */
+#define	SMAP_HH_CNT_WINSPMBT	(SMAP_HH_LAST_WINSPMBT-SMAP_HH_START+1)
 
 /*! Strategic Map: return max height type for specified game type */
 static inline SMAP_HH
@@ -79,6 +83,8 @@ SMAP_gametype2maxheight (SPWAW_GAME_TYPE gametype)
 			return (SMAP_HH_LAST_SPWAW);
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (SMAP_HH_LAST_WINSPWW2);
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (SMAP_HH_LAST_WINSPMBT);
 	}
 
 	/* We shouldn't get here */

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - render data - height colorfield pixmap collection.
  *
- * Copyright (C) 2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2020-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -32,10 +32,10 @@ typedef struct s_CFDEF_ITEM {
 
 
 
-/*******************************/
-/***   SP:WaW color fields   ***/
-/*******************************/
-static COLOR spwaw_grey_colors[] = {
+/***************************************************/
+/***   color fields for heights up to 35 meter   ***/
+/***************************************************/
+static COLOR h35_grey_colors[] = {
 	{  32,  32,  32 },
 	{  48,  48,  48 },
 	{  73,  73,  73 },
@@ -46,9 +46,9 @@ static COLOR spwaw_grey_colors[] = {
 	{ 198, 198, 198 },
 	{ 224, 224, 224 },
 };
-static COLORFIELDS spwaw_grey = { ARRAYCOUNT(spwaw_grey_colors), spwaw_grey_colors, 100, 100 };
+static COLORFIELDS h35_grey = { ARRAYCOUNT(h35_grey_colors), h35_grey_colors, 100, 100 };
 
-static COLOR spwaw_topo_colors[] = {
+static COLOR h35_topo_colors[] = {
 	{  34,153,113 },
 	{  22,186, 55 },
 	{  59,222,  4 },
@@ -60,9 +60,9 @@ static COLOR spwaw_topo_colors[] = {
 	{ 194, 91,  8 },
 	{ 168, 56,  0 },
 };
-static COLORFIELDS spwaw_topo = { ARRAYCOUNT(spwaw_topo_colors), spwaw_topo_colors, 25, 66 };
+static COLORFIELDS h35_topo = { ARRAYCOUNT(h35_topo_colors), h35_topo_colors, 25, 66 };
 
-static COLOR spwaw_normal_colors[] = {
+static COLOR h35_normal_colors[] = {
 	{ 112,153, 89 },
 	{ 163,199,125 },
 	{ 214,237,154 },
@@ -74,9 +74,9 @@ static COLOR spwaw_normal_colors[] = {
 	{ 250,241,227 },
 	{ 252,252,252 },
 };
-static COLORFIELDS spwaw_normal = { ARRAYCOUNT(spwaw_normal_colors), spwaw_normal_colors, 50, 66 };
+static COLORFIELDS h35_normal = { ARRAYCOUNT(h35_normal_colors), h35_normal_colors, 50, 66 };
 
-static COLOR spwaw_jungle_colors[] = {
+static COLOR h35_jungle_colors[] = {
 	{   0, 79,  0 },
 	{   3, 99,  0 },
 	{  24,122,  0 },
@@ -88,9 +88,9 @@ static COLOR spwaw_jungle_colors[] = {
 	{ 156,156,156 },
 	{ 252,252,252 },
 };
-static COLORFIELDS spwaw_jungle = { ARRAYCOUNT(spwaw_jungle_colors), spwaw_jungle_colors, 25, 66 };
+static COLORFIELDS h35_jungle = { ARRAYCOUNT(h35_jungle_colors), h35_jungle_colors, 25, 66 };
 
-static COLOR spwaw_desert_colors[] = {
+static COLOR h35_desert_colors[] = {
 	{  79, 79, 79 },
 	{  97, 86, 81 },
 	{ 117, 91, 79 },
@@ -102,23 +102,23 @@ static COLOR spwaw_desert_colors[] = {
 	{ 240,198,120 },
 	{ 255,210,128 },
 };
-static COLORFIELDS spwaw_desert = { ARRAYCOUNT(spwaw_desert_colors), spwaw_desert_colors, 50, 100 };
+static COLORFIELDS h35_desert = { ARRAYCOUNT(h35_desert_colors), h35_desert_colors, 50, 100 };
 
-static CFDEF_ITEM spwaw_cfdef_items[] = {
-	{ SMAP_HPMC_ID_GREY,	&spwaw_grey	},
-	{ SMAP_HPMC_ID_TOPO,	&spwaw_topo	},
-	{ SMAP_HPMC_ID_NORMAL,	&spwaw_normal	},
-	{ SMAP_HPMC_ID_JUNGLE,	&spwaw_jungle	},
-	{ SMAP_HPMC_ID_DESERT,	&spwaw_desert	},
+static CFDEF_ITEM h35_cfdef_items[] = {
+	{ SMAP_HPMC_ID_GREY,	&h35_grey	},
+	{ SMAP_HPMC_ID_TOPO,	&h35_topo	},
+	{ SMAP_HPMC_ID_NORMAL,	&h35_normal	},
+	{ SMAP_HPMC_ID_JUNGLE,	&h35_jungle	},
+	{ SMAP_HPMC_ID_DESERT,	&h35_desert	},
 	{ SMAP_HPMC_UNKNOWN,	NULL		},
 };
 
 
 
-/*******************************/
-/***   winSPWW2 color fields   ***/
-/*******************************/
-static COLOR winspww2_grey_colors[] = {
+/****************************************************/
+/***   color fields for heights up to 150 meter   ***/
+/****************************************************/
+static COLOR h150_grey_colors[] = {
 	 {  32,  32,  32 },
 	 {  48,  48,  48 },
 	 {  54,  54,  54 },
@@ -152,9 +152,9 @@ static COLOR winspww2_grey_colors[] = {
 	 { 222, 222, 222 },
 	 { 228, 228, 228 },
 };
-static COLORFIELDS winspww2_grey = { ARRAYCOUNT(winspww2_grey_colors), winspww2_grey_colors, 100, 100 };
+static COLORFIELDS h150_grey = { ARRAYCOUNT(h150_grey_colors), h150_grey_colors, 100, 100 };
 
-static COLOR winspww2_topo_colors[] = {
+static COLOR h150_topo_colors[] = {
 	{  34,153,113 },
 	{  32,161,101 },
 	{  29,171, 86 },
@@ -188,9 +188,9 @@ static COLOR winspww2_topo_colors[] = {
 	{ 176, 67,  4 },
 	{ 168, 56,  0 },
 };
-static COLORFIELDS winspww2_topo = { ARRAYCOUNT(winspww2_topo_colors), winspww2_topo_colors, 25, 66 };
+static COLORFIELDS h150_topo = { ARRAYCOUNT(h150_topo_colors), h150_topo_colors, 25, 66 };
 
-static COLOR winspww2_normal_colors[] = {
+static COLOR h150_normal_colors[] = {
 	{ 112,153, 89 },
 	{ 127,166, 99 },
 	{ 140,179,109 },
@@ -224,9 +224,9 @@ static COLOR winspww2_normal_colors[] = {
 	{ 252,250,245 },
 	{ 252,252,252 },
 };
-static COLORFIELDS winspww2_normal = { ARRAYCOUNT(winspww2_normal_colors), winspww2_normal_colors, 50, 66 };
+static COLORFIELDS h150_normal = { ARRAYCOUNT(h150_normal_colors), h150_normal_colors, 50, 66 };
 
-static COLOR winspww2_jungle_colors[] = {
+static COLOR h150_jungle_colors[] = {
 	{   0, 79,  0 },
 	{   0, 84,  0 },
 	{   0, 92,  0 },
@@ -260,9 +260,9 @@ static COLOR winspww2_jungle_colors[] = {
 	{ 219,219,219 },
 	{ 252,252,252 },
 };
-static COLORFIELDS winspww2_jungle = { ARRAYCOUNT(winspww2_jungle_colors), winspww2_jungle_colors, 25, 66 };
+static COLORFIELDS h150_jungle = { ARRAYCOUNT(h150_jungle_colors), h150_jungle_colors, 25, 66 };
 
-static COLOR winspww2_desert_colors[] = {
+static COLOR h150_desert_colors[] = {
 	{  79, 79, 79 },
 	{  84, 82, 81 },
 	{  89, 84, 81 },
@@ -296,14 +296,14 @@ static COLOR winspww2_desert_colors[] = {
 	{ 247,204,124 },
 	{ 255,210,128 },
 };
-static COLORFIELDS winspww2_desert = { ARRAYCOUNT(winspww2_desert_colors), winspww2_desert_colors, 50, 100 };
+static COLORFIELDS h150_desert = { ARRAYCOUNT(h150_desert_colors), h150_desert_colors, 50, 100 };
 
-static CFDEF_ITEM winspww2_cfdef_items[] = {
-	{ SMAP_HPMC_ID_GREY,	&winspww2_grey		},
-	{ SMAP_HPMC_ID_TOPO,	&winspww2_topo		},
-	{ SMAP_HPMC_ID_NORMAL,	&winspww2_normal	},
-	{ SMAP_HPMC_ID_JUNGLE,	&winspww2_jungle	},
-	{ SMAP_HPMC_ID_DESERT,	&winspww2_desert	},
+static CFDEF_ITEM h150_cfdef_items[] = {
+	{ SMAP_HPMC_ID_GREY,	&h150_grey		},
+	{ SMAP_HPMC_ID_TOPO,	&h150_topo		},
+	{ SMAP_HPMC_ID_NORMAL,	&h150_normal	},
+	{ SMAP_HPMC_ID_JUNGLE,	&h150_jungle	},
+	{ SMAP_HPMC_ID_DESERT,	&h150_desert	},
 	{ SMAP_HPMC_UNKNOWN,	NULL			},
 };
 
@@ -392,10 +392,13 @@ SMAP_RENDERDATA_HPMC_create (SMAP_RENDERDATA_PMC &pmc, SMAP_RENDERDATA_HPMC &hpm
 	switch (gametype) {
 		case SPWAW_GAME_TYPE_SPWAW:
 		default:
-			return (SMAP_RENDERDATA_HPMC_create_core (pmc, hpmc, SMAP_HH_LAST_SPWAW, spwaw_cfdef_items, id));
+			return (SMAP_RENDERDATA_HPMC_create_core (pmc, hpmc, SMAP_HH_LAST_SPWAW, h35_cfdef_items, id));
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
-			return (SMAP_RENDERDATA_HPMC_create_core (pmc, hpmc, SMAP_HH_LAST_WINSPWW2, winspww2_cfdef_items, id));
+			return (SMAP_RENDERDATA_HPMC_create_core (pmc, hpmc, SMAP_HH_LAST_WINSPWW2, h150_cfdef_items, id));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (SMAP_RENDERDATA_HPMC_create_core (pmc, hpmc, SMAP_HH_LAST_WINSPMBT, h150_cfdef_items, id));
 			break;
 	}
 }

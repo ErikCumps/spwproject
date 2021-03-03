@@ -113,7 +113,12 @@ ModelDossier::data_dossier (int role, MDLD_TREE_ITEM *p) const
 			break;
 		case Qt::DecorationRole:
 			if (p->dossier_type != SPWAW_STDALONE_DOSSIER) {
-				v = QVariant (QIcon (*RES_flag (p->data.d->gametype, p->data.d->props.OOB)));
+				if (p->data.d->bfirst) {
+					const char *flagid = SPWAW_oob_flagid (p->data.d->bfirst->oobdat, p->data.d->bfirst->OOB_p1,p->data.d->bfirst->bdate.date.year, p->data.d->bfirst->bdate.date.month);
+					v = QVariant (QIcon (*RES_flagbyid (flagid)));
+				} else {
+					v = QVariant (QIcon (*RES_flag (p->data.d->gametype, p->data.d->props.OOB)));
+				}
 			}
 			break;
 		case Qt::ForegroundRole:

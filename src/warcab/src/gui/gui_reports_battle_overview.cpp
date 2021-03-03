@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -359,8 +359,10 @@ GuiRptBtlOvr::refresh (bool forced)
 	MDLD_TREE_ITEM		*item;
 	bool			skip_data;
 	SPWAW_BATTLE		*p = NULL;
-	char			date[32], buf[65536];
+	char			date[32], buf[65536], ptmp[32], otmp[32];
 	UtilStrbuf		str(buf, sizeof (buf), true, true);
+	UtilStrbuf		pstr(ptmp, sizeof (ptmp), true, true);
+	UtilStrbuf		ostr(otmp, sizeof (otmp), true, true);
 	SPWAW_PERIOD		span;
 
 	DBG_TRACE_FENTER;
@@ -471,10 +473,13 @@ GuiRptBtlOvr::refresh (bool forced)
 				} else {
 					str.printf ("<h3>Unfortunately, the battle result is not available.</h3>");
 				}
-				str.printf ("\t%s score:\t%u\n",
-					p->snap->game.battle.strings.people_p1, p->tlast->snap->game.campaign.data.P1score);
-				str.printf ("\t%s score:\t%u\n",
-					p->snap->game.battle.strings.people_p2, p->tlast->snap->game.campaign.data.P2score);
+				pstr.printf ("%s score:", p->snap->game.battle.strings.people_p1);
+				ostr.printf ("%s score:", p->snap->game.battle.strings.people_p2);
+				str.printf ("\t%-30s%4u\n",
+					pstr.data(), p->tlast->snap->game.campaign.data.P1score);
+				str.printf ("\t%-30s%4u\n",
+					ostr.data(), p->tlast->snap->game.campaign.data.P2score);
+				pstr.clear(); ostr.clear();
 				break;
 			case SPWAW_BTBUSY:
 			default:
@@ -543,24 +548,29 @@ GuiRptBtlOvr::refresh (bool forced)
 
 		str.printf ("<pre>");
 		str.printf ("<h3>Victory hex occupation:</h3>");
-		str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-			p->snap->game.battle.strings.people_p1,
+		pstr.printf ("%s force:", p->snap->game.battle.strings.people_p1);
+		ostr.printf ("%s force:", p->snap->game.battle.strings.people_p2);
+		str.printf ("\t%-30s%4u occupied (worth %u points)\n",
+			pstr.data(),
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].count,
 			p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP1].value);
+
 		switch (d.Vintel_mode) {
 			case INTEL_MODE_FULL:
 			case INTEL_MODE_LMTD:
 			default:
-				str.printf ("\t%s force:\t%2u occupied (worth %u points)\n",
-					p->snap->game.battle.strings.people_p2,
+				str.printf ("\t%-30s%4u occupied (worth %u points)\n",
+					ostr.data(),
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count,
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value);
-				str.printf ("\tNeutral:\t\t%2u unoccupied (worth %u points)\n",
+				str.printf ("\t%-30s%4u unoccupied (worth %u points)\n",
+					"Neutral:",
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].count,
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].value);
 				break;
 			case INTEL_MODE_NONE:
-				str.printf ("\tOther:\t\t%2u contested (worth %u points)\n",
+				str.printf ("\t%-30s%4u contested (worth %u points)\n",
+					"Other:",
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].count +
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHN].count,
 					p->tlast->snap->game.battle.stats.vhex_stats[SPWAW_VHP2].value +
@@ -568,6 +578,7 @@ GuiRptBtlOvr::refresh (bool forced)
 
 				break;
 		}
+		pstr.clear(); ostr.clear();
 		str.printf ("</pre>");
 
 		d.overview->setText (buf);

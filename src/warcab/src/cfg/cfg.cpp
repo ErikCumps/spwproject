@@ -79,6 +79,12 @@ typedef struct s_CFGDATA {
 /*! winSPWW2 relative save directory */
 #define	GOSC_WINSPWW2_SAVE	"Saved Games"
 
+/*! winSPMBT relative OOB directory */
+#define	GOSC_WINSPMBT_OOB	"Game Data\\OOBs"
+
+/*! winSPMBT relative save directory */
+#define	GOSC_WINSPMBT_SAVE	"Saved Games"
+
 /*! Warcab relative test OOB directory */
 #define	GOSC_TEST_OOB		"_OOB_"
 
@@ -142,6 +148,9 @@ gamedir_from_oobdir (QString &oobdir, SPWAW_GAME_TYPE gametype, QString &gamedir
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			ok = gamedir_from_oobdir_core (gamedir, GOSC_WINSPWW2_OOB);
 			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			ok = gamedir_from_oobdir_core (gamedir, GOSC_WINSPMBT_OOB);
+			break;
 	}
 	if (!ok) gamedir.clear();
 
@@ -184,6 +193,9 @@ gamedir_from_savedir (QString &savedir, SPWAW_GAME_TYPE gametype, QString &gamed
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			ok = gamedir_from_savedir_core (gamedir, GOSC_WINSPWW2_SAVE);
 			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			ok = gamedir_from_savedir_core (gamedir, GOSC_WINSPMBT_SAVE);
+			break;
 	}
 	if (!ok) gamedir.clear();
 
@@ -215,6 +227,12 @@ validate_gamedir (QString gamedir, SPWAW_GAME_TYPE gametype)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			gdpo = gdps1 = path;
 			if (gdpo.cd(GOSC_WINSPWW2_OOB) && gdps1.cd(GOSC_WINSPWW2_SAVE)) {
+				ok = true;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			gdpo = gdps1 = path;
+			if (gdpo.cd(GOSC_WINSPMBT_OOB) && gdps1.cd(GOSC_WINSPMBT_SAVE)) {
 				ok = true;
 			}
 			break;
@@ -256,6 +274,12 @@ oobdir_from_gamedir (QString &gamedir, SPWAW_GAME_TYPE gametype, QString &oobdir
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			if (sdp.cd(GOSC_WINSPWW2_OOB)) {
 				oobdir = path.absolutePath() + QDir::separator() + GOSC_WINSPWW2_OOB;
+				ok = true;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			if (sdp.cd(GOSC_WINSPMBT_OOB)) {
+				oobdir = path.absolutePath() + QDir::separator() + GOSC_WINSPMBT_OOB;
 				ok = true;
 			}
 			break;
@@ -304,6 +328,12 @@ savedir_from_gamedir (QString &gamedir, SPWAW_GAME_TYPE gametype, SPWAW_DOSSIER_
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			if (sdp.cd(GOSC_WINSPWW2_SAVE)) {
 				savedir = path.absolutePath() + QDir::separator() + GOSC_WINSPWW2_SAVE;
+				ok = true;
+			}
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			if (sdp.cd(GOSC_WINSPMBT_SAVE)) {
+				savedir = path.absolutePath() + QDir::separator() + GOSC_WINSPMBT_SAVE;
 				ok = true;
 			}
 			break;
