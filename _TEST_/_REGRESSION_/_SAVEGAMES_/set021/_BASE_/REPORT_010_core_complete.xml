@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPMBT</game>
+    <save>regular</save>
+    <battle>standalone</battle>
+</type>
+<game>
+    <metadata>
+        <title>T1, Rho vs Moz, 1/1978 </title>
+    </metadata>
+    <battle>
+        <date>1978/01</date>
+        <turn>
+            <current>1</current>
+            <max>20</max>
+        </turn>
+        <status>
+            <value>1</value>
+            <description>in progress</description>
+        </status>
+        <location>Northern Rhodesia</location>
+        <terrain>
+            <value>0</value>
+            <description>desert</description>
+        </terrain>
+        <weather>
+            <value>0</value>
+            <description>clear</description>
+        </weather>
+        <visibility>
+            <hexes>50</hexes>
+            <meters>2500</meters>
+        </visibility>
+        <player1>
+            <oob>86</oob>
+            <forces>Rhodesian</forces>
+            <mission>
+                <value>0</value>
+                <description>assault</description>
+            </mission>
+        </player1>
+        <player2>
+            <oob>81</oob>
+            <forces>Mozambican</forces>
+            <mission>
+                <value>3</value>
+                <description>defence</description>
+            </mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>14</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>7</count>
+                <points>950</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>100</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>5.000</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>(empty date)</start>
+            <end>(empty date)</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>0</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>65535</battle_index>
+        <battle_result>
+            <player1>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player1>
+            <player2>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>86</OOB>
+    <nation>Rhodesia</nation>
+    <people>Rhodesian</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>81</OOB>
+    <nation>Mozambique</nation>
+    <people>Mozambican</people>
+    , <!-- no force present in OOB -->
+</OOB>
+
+

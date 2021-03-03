@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPMBT</game>
+    <save>regular</save>
+    <battle>campaign</battle>
+</type>
+<game>
+    <metadata>
+        <title>T1, Afg vs Uni, 1/1998 </title>
+    </metadata>
+    <battle>
+        <date>1998/01</date>
+        <turn>
+            <current>1</current>
+            <max>23</max>
+        </turn>
+        <status>in progress</status>
+        <location>Afghanistan</location>
+        <terrain>desert</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>59</hexes>
+            <meters>2950</meters>
+        </visibility>
+        <player1>
+            <oob>26</oob>
+            <nation>Emirate of Afghanistan</nation>
+            <mission>advance</mission>
+        </player1>
+        <player2>
+            <oob>80</oob>
+            <nation>United Nations</nation>
+            <mission>advance</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>8</count>
+                <points>870</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>7</count>
+                <points>965</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>6</count>
+                <points>875</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>100</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>5.000</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>1998/01</start>
+            <end>1998/12</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>10</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>0</battle_index>
+        <battle_result>
+            <player1>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player1>
+            <player2>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>26</OOB>
+    <nation>Emirate of Afghanistan</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Headquarters</designation>
+        <rank>LtC</rank>
+        <name>Hafiz</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>76</maximum>
+                <minimum>64</minimum>
+                <average>68.600</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>3</count>
+            <left>3</left>
+        </formations>
+        <units>
+            <count>10</count>
+            <left>10</left>
+        </units>
+    </statistics>
+    <formations count="3">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Taliban HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Headquarters</designation>
+                    <rank>LtC</rank>
+                    <name>Hafiz</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>45</OOB_record_ID>
+            <type>Truck Inf Pl</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="6">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Infantry Sec</designation>
+                    <rank>2Lt</rank>
+                    <name>Yusuf</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>Infantry Sec</designation>
+                    <rank>Cpl</rank>
+                    <name>Rab</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>B2</ID>
+                    <designation>Infantry Sec</designation>
+                    <rank>Cpl</rank>
+                    <name>Ahmad</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>B3</ID>
+                    <designation>Truck</designation>
+                    <rank>Cpl</rank>
+                    <name>Jaffar</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>B4</ID>
+                    <designation>Truck</designation>
+                    <rank>Cpl</rank>
+                    <name>Kamran</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>B5</ID>
+                    <designation>Truck</designation>
+                    <rank>Cpl</rank>
+                    <name>Shah</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>265</OOB_record_ID>
+            <type>Scout Car Pl</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>BTR-40</designation>
+                    <rank>Sgt</rank>
+                    <name>Warsi</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>BTR-40</designation>
+                    <rank>Sgt</rank>
+                    <name>Imtiaz</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>C2</ID>
+                    <designation>BTR-40</designation>
+                    <rank>Cpl</rank>
+                    <name>Farhina</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="10">
+        <unit core="true">
+            <ID>A0</ID>
+            <designation>Headquarters</designation>
+            <unit>Headquarters</unit>
+            <leader>Hafiz</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>65</morale>
+            <suppression>0</suppression>
+            <rally>57</rally>
+            <inf_skills>62</inf_skills>
+            <art_skills>55</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>8</x>
+                <y>40</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B0</ID>
+            <designation>Infantry Sec</designation>
+            <unit>Infantry Sec</unit>
+            <leader>Yusuf</leader>
+            <rank>2Lt</rank>
+            <formation>B</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>332</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="yes">
+                <loader>B3</loader>
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>63</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>59</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>19</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>20</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B1</ID>
+            <designation>Infantry Sec</designation>
+            <unit>Infantry Sec</unit>
+            <leader>Rab</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>332</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="yes">
+                <loader>B3</loader>
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>0</suppression>
+            <rally>58</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>20</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B2</ID>
+            <designation>Infantry Sec</designation>
+            <unit>Infantry Sec</unit>
+            <leader>Ahmad</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>332</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="yes">
+                <loader>B4</loader>
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>0</suppression>
+            <rally>63</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>24</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B3</ID>
+            <designation>Truck</designation>
+            <unit>Truck</unit>
+            <leader>Jaffar</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>40</OOBrid>
+            <type>medium truck</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>70</morale>
+            <suppression>0</suppression>
+            <rally>48</rally>
+            <inf_skills>18</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>75</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>20</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B4</ID>
+            <designation>Truck</designation>
+            <unit>Truck</unit>
+            <leader>Kamran</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>40</OOBrid>
+            <type>medium truck</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>68</rally>
+            <inf_skills>16</inf_skills>
+            <art_skills>14</art_skills>
+            <arm_skills>79</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>24</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B5</ID>
+            <designation>Truck</designation>
+            <unit>Truck</unit>
+            <leader>Shah</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>40</OOBrid>
+            <type>medium truck</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>77</morale>
+            <suppression>0</suppression>
+            <rally>70</rally>
+            <inf_skills>19</inf_skills>
+            <art_skills>11</art_skills>
+            <arm_skills>56</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>20</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C0</ID>
+            <designation>BTR-40</designation>
+            <unit>BTR-40</unit>
+            <leader>Warsi</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>294</OOBrid>
+            <type>scout vehicle</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>0</suppression>
+            <rally>72</rally>
+            <inf_skills>18</inf_skills>
+            <art_skills>32</art_skills>
+            <arm_skills>62</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>28</x>
+                <y>75</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C1</ID>
+            <designation>BTR-40</designation>
+            <unit>BTR-40</unit>
+            <leader>Imtiaz</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>294</OOBrid>
+            <type>scout vehicle</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>71</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>17</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>65</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>27</x>
+                <y>75</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C2</ID>
+            <designation>BTR-40</designation>
+            <unit>BTR-40</unit>
+            <leader>Farhina</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Taliban</OOB>
+            <OOBrid>294</OOBrid>
+            <type>scout vehicle</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>65</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>29</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>71</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>25</x>
+                <y>74</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>80</OOB>
+    <nation>United Nations</nation>
+    , <!-- no force present in OOB -->
+</OOB>
+
+
