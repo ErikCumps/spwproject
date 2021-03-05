@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -376,8 +376,9 @@ typedef enum e_SPWAW_GAME_TYPE {
 	SPWAW_GAME_TYPE_UNKNOWN = 0,	/* Unknown game type		*/
 	SPWAW_GAME_TYPE_SPWAW,		/* The SP:WaW game		*/
 	SPWAW_GAME_TYPE_WINSPWW2,	/* The winSPWW2 game		*/
+	SPWAW_GAME_TYPE_WINSPMBT,	/* The winSPMBT game		*/
 	SPWAW_GAME_TYPE_STARTCODE = SPWAW_GAME_TYPE_UNKNOWN,
-	SPWAW_GAME_TYPE_LASTCODE = SPWAW_GAME_TYPE_WINSPWW2
+	SPWAW_GAME_TYPE_LASTCODE = SPWAW_GAME_TYPE_WINSPMBT
 } SPWAW_GAME_TYPE;
 
 #define	SPWAW_GAME_TYPE_CNT	(SPWAW_GAME_TYPE_LASTCODE - SPWAW_GAME_TYPE_STARTCODE + 1)

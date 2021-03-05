@@ -1523,9 +1523,9 @@ find_formation_oobrids: FORMATION: P<1> ID<00006> L<00055> H<00054> O<00000> (  
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<00006>, T<     Med Tank Pl>, D<1943/08>
-  U<00055> F<00006,000> O<00285> UT<113> <   T-34/76 M1942>
-  U<00056> F<00006,001> O<00285> UT<113> <   T-34/76 M1942>
-  U<00057> F<00006,002> O<00285> UT<113> <   T-34/76 M1942>
+  U<00055> F<00006,000> O<00285> UT<133> <   T-34/76 M1942>
+  U<00056> F<00006,001> O<00285> UT<133> <   T-34/76 M1942>
+  U<00057> F<00006,002> O<00285> UT<133> <   T-34/76 M1942>
   <<< rv=0
 OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00007> L<00058> H<00054> O<00000> (     Med Tank Pl) NOT FOUND
@@ -1533,9 +1533,9 @@ find_formation_oobrids: FORMATION: P<1> ID<00007> L<00058> H<00054> O<00000> (  
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<00007>, T<     Med Tank Pl>, D<1943/08>
-  U<00058> F<00007,000> O<00013> UT<113> <   T-34/76 M1943>
-  U<00059> F<00007,001> O<00013> UT<113> <   T-34/76 M1943>
-  U<00060> F<00007,002> O<00013> UT<113> <   T-34/76 M1943>
+  U<00058> F<00007,000> O<00013> UT<133> <   T-34/76 M1943>
+  U<00059> F<00007,001> O<00013> UT<133> <   T-34/76 M1943>
+  U<00060> F<00007,002> O<00013> UT<133> <   T-34/76 M1943>
   <<< rv=0
 OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00009> L<00062> H<00035> O<00075> (  Assault Gun Co) OOBrid=00075
@@ -1558,9 +1558,9 @@ find_formation_oobrids: FORMATION: P<1> ID<00008> L<00061> H<00054> O<00000> (  
   NO MATCH FOUND!
   <<< rv=0
   >>> SEARCH OOBRID - EXTENSIVE: F<00008>, T<     Med Tank Pl>, D<1943/08>
-  U<00061> F<00008,000> O<00068> UT<182> <   PTRD ATR Team>
-  U<00088> F<00008,001> O<00068> UT<182> <   PTRD ATR Team>
-  U<00089> F<00008,002> O<00068> UT<182> <   PTRD ATR Team>
+  U<00061> F<00008,000> O<00068> UT<220> <   PTRD ATR Team>
+  U<00088> F<00008,001> O<00068> UT<220> <   PTRD ATR Team>
+  U<00089> F<00008,002> O<00068> UT<220> <   PTRD ATR Team>
   <<< rv=0
 OOBrid=00000
 find_formation_oobrids: FORMATION: P<1> ID<00017> L<00092> H<00035> O<00115> (    Conscript Co) OOBrid=00115
@@ -1652,10 +1652,10 @@ verify_candidate_units: [00115] UNIT: F<00030,000> LO<65535> ( 82mm Mortar Sec) 
 verify_candidate_units: [00116] UNIT: F<00030,001> LO<65535> ( 82mm Mortar Sec) ACCEPTED
 verify_candidate_units: [00124] UNIT: F<00028,000> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED - LEADER
 verify_candidate_units: [00125] UNIT: F<00028,001> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED
-verify_candidate_units: [00126] UNIT: F<00028,002> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED
-verify_candidate_units: [00127] UNIT: F<00028,003> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED
-verify_candidate_units: [00128] UNIT: F<00028,004> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED
-verify_candidate_units: [00129] UNIT: F<00028,005> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED
+verify_candidate_units: [00126] UNIT: F<00028,002> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED - AUTO SPAU (uel->d.FSID (2) >= (2) fel->d.unit_cnt
+verify_candidate_units: [00127] UNIT: F<00028,003> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED - AUTO SPAU (uel->d.FSID (3) >= (2) fel->d.unit_cnt
+verify_candidate_units: [00128] UNIT: F<00028,004> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED - AUTO SPAU (uel->d.FSID (4) >= (2) fel->d.unit_cnt
+verify_candidate_units: [00129] UNIT: F<00028,005> LO<65535> ( 45mm L66 AT-Gun) ACCEPTED - AUTO SPAU (uel->d.FSID (5) >= (2) fel->d.unit_cnt
 verify_candidate_units: [00130] UNIT: F<00029,000> LO<65535> (           La-5N) ACCEPTED - LEADER
 verify_candidate_units: [00131] UNIT: F<00029,001> LO<65535> (           La-5N) ACCEPTED
 verify_candidate_formations: FORMATION: P<1> ID<00000> L<00035> H<00035> O<00001> (         USSR HQ) ACCEPTED
@@ -1780,13 +1780,9 @@ FLIST: { { s.nidx=28 }, cnt=27 }
     [00038] (  Mortar Platoon) P<001> L<00113> H<00035> status=000 units=002 OOB 011: [00031] FID<00026> RAW<00026>
         [000] ptr[00113]
         [001] ptr[00114]
-    [00040] (      AT-Gun Bty) P<001> L<00124> H<00035> status=000 units=006 OOB 011: [00095] FID<00028> RAW<00028>
+    [00040] (      AT-Gun Bty) P<001> L<00124> H<00035> status=000 units=002 OOB 011: [00095] FID<00028> RAW<00028>
         [000] ptr[00124]
         [001] ptr[00125]
-        [002] ptr[00126]
-        [003] ptr[00127]
-        [004] ptr[00128]
-        [005] ptr[00129]
     [00041] (  Strike Element) P<001> L<00130> H<00035> status=000 units=002 OOB 011: [00046] FID<00029> RAW<00029>
         [000] ptr[00130]
         [001] ptr[00131]
@@ -1867,10 +1863,10 @@ ULIST: { { s.nidx=79 }, cnt=79 }
     [00116] ( 82mm Mortar Sec) UNIT leader=[00116] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00435] F[00044]<00030,001> ptr[00044] link crew=nil[65535], parent=nil[65535]
     [00124] ( 45mm L66 AT-Gun) UNIT leader=[00124] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,000> ptr[00040] link crew=nil[65535], parent=nil[65535]
     [00125] ( 45mm L66 AT-Gun) UNIT leader=[00125] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,001> ptr[00040] link crew=nil[65535], parent=nil[65535]
-    [00126] ( 45mm L66 AT-Gun) UNIT leader=[00126] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,002> ptr[00040] link crew=nil[65535], parent=nil[65535]
-    [00127] ( 45mm L66 AT-Gun) UNIT leader=[00127] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,003> ptr[00040] link crew=nil[65535], parent=nil[65535]
-    [00128] ( 45mm L66 AT-Gun) UNIT leader=[00128] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,004> ptr[00040] link crew=nil[65535], parent=nil[65535]
-    [00129] ( 45mm L66 AT-Gun) UNIT leader=[00129] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,005> ptr[00040] link crew=nil[65535], parent=nil[65535]
+    [00126] ( 45mm L66 AT-Gun) SPAU leader=[00126] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,002> ptr[00040] link crew=nil[65535], parent=nil[65535]
+    [00127] ( 45mm L66 AT-Gun) SPAU leader=[00127] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,003> ptr[00040] link crew=nil[65535], parent=nil[65535]
+    [00128] ( 45mm L66 AT-Gun) SPAU leader=[00128] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,004> ptr[00040] link crew=nil[65535], parent=nil[65535]
+    [00129] ( 45mm L66 AT-Gun) SPAU leader=[00129] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00048] F[00040]<00028,005> ptr[00040] link crew=nil[65535], parent=nil[65535]
     [00130] (           La-5N) UNIT leader=[00130] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00419] F[00041]<00029,000> ptr[00041] link crew=nil[65535], parent=nil[65535]
     [00131] (           La-5N) UNIT leader=[00131] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00419] F[00041]<00029,001> ptr[00041] link crew=nil[65535], parent=nil[65535]
 add_unit: idx=0, RID=0, type=UNIT
@@ -1988,9 +1984,9 @@ add_unit: idx=69, RID=115, type=UNIT
 add_unit: idx=70, RID=116, type=UNIT
 add_unit: idx=71, RID=124, type=UNIT
 add_unit: idx=72, RID=125, type=UNIT
-add_unit: idx=73, RID=126, type=UNIT
-add_unit: idx=74, RID=127, type=UNIT
-add_unit: idx=75, RID=128, type=UNIT
-add_unit: idx=76, RID=129, type=UNIT
+add_unit: idx=73, RID=126, type=SPAU
+add_unit: idx=74, RID=127, type=SPAU
+add_unit: idx=75, RID=128, type=SPAU
+add_unit: idx=76, RID=129, type=SPAU
 add_unit: idx=77, RID=130, type=UNIT
 add_unit: idx=78, RID=131, type=UNIT

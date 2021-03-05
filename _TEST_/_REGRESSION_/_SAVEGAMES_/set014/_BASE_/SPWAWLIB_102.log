@@ -1472,7 +1472,7 @@ find_formation_oobrids: FORMATION: P<0> ID<00013> L<00055> H<00021> O<00104> (  
 find_formation_oobrids: FORMATION: P<0> ID<00014> L<00056> H<00045> O<00186> (  Panzer Kp (le)) OOBrid=00186
 find_formation_oobrids: FORMATION: P<0> ID<00015> L<00058> H<00056> O<00000> ( PanzerZug(le)/5) NOT FOUND
   >>> SEARCH OOBRID - BY NAME: F<00015>, T< PanzerZug(le)/5>, D<1941/06>
-    OOB #00043 < PanzerZug(le)/5> from=1934/08 to=1944/12 - MATCH: name and date
+    OOB #00043 < PanzerZug(le)/5> from=1934/11 to=1944/12 - MATCH: name and date
   <<< rv=43
 OOBrid=00043
 find_formation_oobrids: FORMATION: P<0> ID<00016> L<00063> H<00056> O<00000> (    Panzer Zug/5) NOT FOUND
@@ -2190,24 +2190,20 @@ FLIST: { { s.nidx=29 }, cnt=29 }
     [00047] ( Lt Tank Section) P<001> L<00135> H<00092> status=000 units=002 OOB 011: [00333] FID<00023> RAW<00023>
         [000] ptr[00134]
         [001] ptr[00135]
-    [00048] ( Inf Gun Platoon) P<001> L<00137> H<00092> status=000 units=003 OOB 011: [00036] FID<00024> RAW<00024>
+    [00048] ( Inf Gun Platoon) P<001> L<00137> H<00092> status=000 units=002 OOB 011: [00036] FID<00024> RAW<00024>
         [000] ptr[00136]
         [001] ptr[00137]
-    --- [002] nil[65535]
-    [00049] ( AA  Gun Platoon) P<001> L<00138> H<00092> status=000 units=003 OOB 011: [00019] FID<00025> RAW<00025>
+    [00049] ( AA  Gun Platoon) P<001> L<00138> H<00092> status=000 units=002 OOB 011: [00019] FID<00025> RAW<00025>
         [000] ptr[00138]
         [001] ptr[00139]
-    --- [002] nil[65535]
     [00050] (  Medium Tank Pl) P<001> L<00140> H<00092> status=000 units=003 OOB 011: [00103] FID<00026> RAW<00026>
         [000] ptr[00140]
         [001] ptr[00141]
         [002] ptr[00142]
-    [00051] (          AT-Gun) P<001> L<00143> H<00092> status=000 units=002 OOB 011: [00128] FID<00027> RAW<00027>
+    [00051] (          AT-Gun) P<001> L<00143> H<00092> status=000 units=001 OOB 011: [00128] FID<00027> RAW<00027>
         [000] ptr[00143]
-    --- [001] nil[65535]
-    [00052] (          AT-Gun) P<001> L<00144> H<00092> status=000 units=002 OOB 011: [00128] FID<00028> RAW<00028>
+    [00052] (          AT-Gun) P<001> L<00144> H<00092> status=000 units=001 OOB 011: [00128] FID<00028> RAW<00028>
         [000] ptr[00144]
-    --- [001] nil[65535]
 ULIST: { { s.nidx=54 }, cnt=54 }
     [00092] (       Soviet HQ) UNIT leader=[00092] abandoned=0 loader<65535> vrf=N vrfneed=N  OOB 011: [00244] F[00024]<00000,000> ptr[00024] link crew=nil[65535], parent=nil[65535]
     [00093] (          Bunker) UNIT leader=[00093] abandoned=1 loader<65535> vrf=N vrfneed=N  OOB 011: [00389] F[00025]<00001,000> ptr[00025] link crew=nil[65535], parent=nil[65535]

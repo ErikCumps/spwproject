@@ -48,7 +48,7 @@ Crews     : 0
 
 Total kills        : 10
 Total losses       : 0
-Total readiness    : 100.00 %
+Total readiness    :  98.00 %
 Unit experience    : max:  88 ([ 48] J7: SdKfz 250/9 (Sgt Becker))
 Unit experience    : min:  64 ([ 21] D8: Opel Blitz (Sgt Amos))
 Unit experience    : avg:  75.88
@@ -56,10 +56,10 @@ Unit experience    : spr: 24
 Unit experience    : tot: 4553
 Unit experience    : cnt: 60
 Unit readiness     : max: 100.00 ([  0] A0: OC/KG Vebber (Cpt Vebber))
-Unit readiness     : min: 100.00 ([  0] A0: OC/KG Vebber (Cpt Vebber))
-Unit readiness     : avg: 100.00
-Unit readiness     : spr:   0.00
-Unit readiness     : tot: 6000.00
+Unit readiness     : min:  80.00 ([ 13] D0: GE Rifle Sqd (2Lt Zahn))
+Unit readiness     : avg:  98.00
+Unit readiness     : spr:  20.00
+Unit readiness     : tot: 5880.00
 Unit readiness     : cnt: 60
 Unit kills         : max:   4 ([ 26] E3: GE Rifle Sqd (Sgt Prado))
 Unit kills         : min:   0 ([  0] A0: OC/KG Vebber (Cpt Vebber))
@@ -68,10 +68,10 @@ Unit kills         : spr: 4
 Unit kills         : tot: 10
 Unit kills         : cnt: 60
 Formation readiness: max: 100.00 ([  0] A: elite recon force HQ)
-Formation readiness: min: 100.00 ([  0] A: elite recon force HQ)
-Formation readiness: avg: 100.00
-Formation readiness: spr:   0.00
-Formation readiness: tot: 1600.00
+Formation readiness: min:  95.00 ([  1] B: recon company)
+Formation readiness: avg:  99.00
+Formation readiness: spr:   5.00
+Formation readiness: tot: 1584.00
 Formation readiness: cnt: 16
 Formation kills    : max:   4 ([  3] D: average platoon)
 Formation kills    : min:   0 ([  0] A: elite recon force HQ)
@@ -104,7 +104,7 @@ B : core recon company (PzG Mot Co)
 	higher cmd: A0 OC/KG Vebber (Cpt Vebber)
 	kills     : 0
 	losses    : 0
-	readiness : 100.00 %
+	readiness :  95.00 %
 	unit count: 2 (2 core, 0 support, 0 regular)
 	unit list :
 		B0 GE Rifle Sqd (core)
@@ -115,7 +115,7 @@ C : core average platoon (PzG Mot Plt)
 	higher cmd: B0 GE Rifle Sqd (1Lt Wirth)
 	kills     : 2
 	losses    : 0
-	readiness : 100.00 %
+	readiness :  98.00 %
 	unit count: 10 (10 core, 0 support, 0 regular)
 	unit list :
 		C0 GE Rifle Sqd (core)
@@ -134,7 +134,7 @@ D : core average platoon (PzG Mot Plt)
 	higher cmd: B0 GE Rifle Sqd (1Lt Wirth)
 	kills     : 4
 	losses    : 0
-	readiness : 100.00 %
+	readiness :  95.00 %
 	unit count: 10 (10 core, 0 support, 0 regular)
 	unit list :
 		D0 GE Rifle Sqd (core)
@@ -153,7 +153,7 @@ E : core average platoon (PzG Mot Plt)
 	higher cmd: B0 GE Rifle Sqd (1Lt Wirth)
 	kills     : 4
 	losses    : 0
-	readiness : 100.00 %
+	readiness :  96.00 %
 	unit count: 10 (10 core, 0 support, 0 regular)
 	unit list :
 		E0 GE Rifle Sqd (core)
@@ -298,11 +298,11 @@ Short units report:
 -------------------
 
 c #    A0  : OC/KG Vebber     (Cpt Vebber          ) OC/KG Vebber     RID 00000 UTG 000 EXP 080 MOR 088 SUP 000 RAL 073 INF 088 ART 043 ARM 044 KILL 000 LOSS 000 MEN 006 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c #    B0  : GE Rifle Sqd     (1Lt Wirth           ) GE Rifle Sqd     RID 00001 UTG 001 EXP 072 MOR 076 SUP 000 RAL 072 INF 074 ART 042 ARM 042 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+c #    B0  : GE Rifle Sqd     (1Lt Wirth           ) GE Rifle Sqd     RID 00001 UTG 001 EXP 072 MOR 076 SUP 000 RAL 072 INF 074 ART 042 ARM 042 KILL 000 LOSS 000 MEN 010 KIA 001 DMG 000 RDY  90.00 POS (  none  )
 c #    B1  : Opel Blitz       (Sgt Schwanebeck     ) Opel Blitz       RID 00002 UTG 002 EXP 078 MOR 070 SUP 000 RAL 081 INF 039 ART 043 ARM 075 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    C0  : GE Rifle Sqd     (2Lt Bauman          ) GE Rifle Sqd     RID 00003 UTG 001 EXP 071 MOR 068 SUP 000 RAL 067 INF 080 ART 045 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c #    C1  : GE Rifle Sqd     (Sgt "Schnurrbart"   ) GE Rifle Sqd     RID 00004 UTG 001 EXP 076 MOR 073 SUP 000 RAL 075 INF 080 ART 049 ARM 041 KILL 001 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c #    C2  : GE Rifle Sqd     (Sgt MullerBuchbauma ) GE Rifle Sqd     RID 00005 UTG 001 EXP 075 MOR 068 SUP 000 RAL 076 INF 082 ART 043 ARM 048 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+c #    C1  : GE Rifle Sqd     (Sgt "Schnurrbart"   ) GE Rifle Sqd     RID 00004 UTG 001 EXP 076 MOR 073 SUP 000 RAL 075 INF 080 ART 049 ARM 041 KILL 001 LOSS 000 MEN 010 KIA 001 DMG 000 RDY  90.00 POS (  none  )
+c #    C2  : GE Rifle Sqd     (Sgt MullerBuchbauma ) GE Rifle Sqd     RID 00005 UTG 001 EXP 075 MOR 068 SUP 000 RAL 076 INF 082 ART 043 ARM 048 KILL 000 LOSS 000 MEN 010 KIA 001 DMG 000 RDY  90.00 POS (  none  )
 c #    C3  : GE Rifle Sqd     (Sgt Averitz         ) GE Rifle Sqd     RID 00006 UTG 001 EXP 079 MOR 061 SUP 000 RAL 075 INF 085 ART 043 ARM 039 KILL 001 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    C4  : GE MG34 MMG      (Sgt Steiner         ) GE MG34 MMG      RID 00007 UTG 003 EXP 077 MOR 071 SUP 000 RAL 066 INF 072 ART 049 ARM 043 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    C5  : Opel Blitz       (Sgt Maag            ) Opel Blitz       RID 00008 UTG 002 EXP 068 MOR 079 SUP 000 RAL 073 INF 042 ART 047 ARM 083 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
@@ -310,19 +310,19 @@ c #    C6  : Opel Blitz       (Sgt Rocca           ) Opel Blitz       RID 00009 
 c #    C7  : Opel Blitz       (Sgt Wilderz         ) Opel Blitz       RID 00010 UTG 002 EXP 067 MOR 083 SUP 000 RAL 068 INF 048 ART 041 ARM 077 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    C8  : Opel Blitz       (Sgt Collinz         ) Opel Blitz       RID 00011 UTG 002 EXP 077 MOR 063 SUP 000 RAL 076 INF 036 ART 041 ARM 082 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    C9  : Opel Blitz       (Sgt Boain           ) Opel Blitz       RID 00012 UTG 002 EXP 078 MOR 074 SUP 000 RAL 069 INF 046 ART 043 ARM 084 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c      D0  : GE Rifle Sqd     (2Lt Zahn            ) GE Rifle Sqd     RID 00013 UTG 001 EXP 087 MOR 074 SUP 000 RAL 074 INF 075 ART 046 ARM 044 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c #    D1  : GE Rifle Sqd     (Sgt Stemberger      ) GE Rifle Sqd     RID 00014 UTG 001 EXP 072 MOR 080 SUP 000 RAL 083 INF 080 ART 047 ARM 045 KILL 000 LOSS 000 MEN 009 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+c      D0  : GE Rifle Sqd     (2Lt Zahn            ) GE Rifle Sqd     RID 00013 UTG 001 EXP 087 MOR 074 SUP 000 RAL 074 INF 075 ART 046 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 000 RDY  80.00 POS (  none  )
+c #    D1  : GE Rifle Sqd     (Sgt Stemberger      ) GE Rifle Sqd     RID 00014 UTG 001 EXP 072 MOR 080 SUP 000 RAL 083 INF 080 ART 047 ARM 045 KILL 000 LOSS 000 MEN 010 KIA 001 DMG 000 RDY  90.00 POS (  none  )
 c      D2  : GE Rifle Sqd     (Sgt Kukko           ) GE Rifle Sqd     RID 00015 UTG 001 EXP 084 MOR 066 SUP 000 RAL 080 INF 083 ART 042 ARM 046 KILL 003 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c      D3  : GE Rifle Sqd     (Sgt Weber           ) GE Rifle Sqd     RID 00016 UTG 001 EXP 081 MOR 051 SUP 000 RAL 072 INF 079 ART 040 ARM 044 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+c      D3  : GE Rifle Sqd     (Sgt Weber           ) GE Rifle Sqd     RID 00016 UTG 001 EXP 081 MOR 051 SUP 000 RAL 072 INF 079 ART 040 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 000 RDY  80.00 POS (  none  )
 c #    D4  : GE MG34 MMG      (Sgt Bieliecke       ) GE MG34 MMG      RID 00017 UTG 003 EXP 074 MOR 075 SUP 000 RAL 069 INF 077 ART 045 ARM 049 KILL 001 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    D5  : Opel Blitz       (Sgt Wallast         ) Opel Blitz       RID 00018 UTG 002 EXP 074 MOR 072 SUP 000 RAL 069 INF 040 ART 047 ARM 085 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    D6  : Opel Blitz       (Sgt Doom            ) Opel Blitz       RID 00019 UTG 002 EXP 083 MOR 076 SUP 000 RAL 077 INF 050 ART 050 ARM 081 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    D7  : Opel Blitz       (Sgt Stalkeritz      ) Opel Blitz       RID 00020 UTG 002 EXP 075 MOR 067 SUP 000 RAL 074 INF 039 ART 040 ARM 073 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    D8  : Opel Blitz       (Sgt Amos            ) Opel Blitz       RID 00021 UTG 002 EXP 064 MOR 067 SUP 000 RAL 079 INF 046 ART 048 ARM 088 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    D9  : Opel Blitz       (Sgt Kronz           ) Opel Blitz       RID 00022 UTG 002 EXP 078 MOR 077 SUP 000 RAL 072 INF 033 ART 043 ARM 075 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c      E0  : GE Rifle Sqd     (2Lt Lehtinen        ) GE Rifle Sqd     RID 00023 UTG 001 EXP 073 MOR 051 SUP 000 RAL 072 INF 082 ART 043 ARM 044 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+c      E0  : GE Rifle Sqd     (2Lt Lehtinen        ) GE Rifle Sqd     RID 00023 UTG 001 EXP 073 MOR 051 SUP 000 RAL 072 INF 082 ART 043 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 000 RDY  80.00 POS (  none  )
 c      E1  : GE Rifle Sqd     (Sgt Ostendorff      ) GE Rifle Sqd     RID 00024 UTG 001 EXP 074 MOR 057 SUP 000 RAL 082 INF 084 ART 043 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS (  none  )
-c #    E2  : GE Rifle Sqd     (Sgt Hummel          ) GE Rifle Sqd     RID 00025 UTG 001 EXP 071 MOR 072 SUP 000 RAL 077 INF 079 ART 043 ARM 044 KILL 000 LOSS 000 MEN 008 KIA 000 DMG 000 RDY 100.00 POS (  none  )
+c #    E2  : GE Rifle Sqd     (Sgt Hummel          ) GE Rifle Sqd     RID 00025 UTG 001 EXP 071 MOR 072 SUP 000 RAL 077 INF 079 ART 043 ARM 044 KILL 000 LOSS 000 MEN 010 KIA 002 DMG 000 RDY  80.00 POS (  none  )
 c #    E3  : GE Rifle Sqd     (Sgt Prado           ) GE Rifle Sqd     RID 00026 UTG 001 EXP 081 MOR 071 SUP 000 RAL 082 INF 085 ART 039 ARM 041 KILL 004 LOSS 000 MEN 010 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    E4  : GE MG34 MMG      (Sgt Kruger          ) GE MG34 MMG      RID 00027 UTG 003 EXP 076 MOR 066 SUP 000 RAL 067 INF 078 ART 045 ARM 047 KILL 000 LOSS 000 MEN 004 KIA 000 DMG 000 RDY 100.00 POS (  none  )
 c #    E5  : Opel Blitz       (Sgt Kern            ) Opel Blitz       RID 00028 UTG 002 EXP 079 MOR 081 SUP 000 RAL 077 INF 044 ART 041 ARM 081 KILL 000 LOSS 000 MEN 002 KIA 000 DMG 000 RDY 100.00 POS (  none  )

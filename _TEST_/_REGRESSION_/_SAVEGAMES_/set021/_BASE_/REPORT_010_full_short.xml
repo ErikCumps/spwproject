@@ -1,0 +1,3835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPMBT</game>
+    <save>regular</save>
+    <battle>standalone</battle>
+</type>
+<game>
+    <metadata>
+        <title>T1, Rho vs Moz, 1/1978 </title>
+    </metadata>
+    <battle>
+        <date>1978/01</date>
+        <turn>
+            <current>1</current>
+            <max>20</max>
+        </turn>
+        <status>in progress</status>
+        <location>Northern Rhodesia</location>
+        <terrain>desert</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>50</hexes>
+            <meters>2500</meters>
+        </visibility>
+        <player1>
+            <oob>86</oob>
+            <nation>Rhodesia</nation>
+            <mission>assault</mission>
+        </player1>
+        <player2>
+            <oob>81</oob>
+            <nation>Mozambique</nation>
+            <mission>defence</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>14</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>7</count>
+                <points>950</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>100</width>
+                <height>80</height>
+            </hexes>
+            <kilometers>
+                <width>5.000</width>
+                <height>4.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>(empty date)</start>
+            <end>(empty date)</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>0</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>65535</battle_index>
+        <battle_result>
+            <player1>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player1>
+            <player2>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>86</OOB>
+    <nation>Rhodesia</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Headquarters</designation>
+        <rank>LtC</rank>
+        <name>Gombeni</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.810</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>66.667</minimum>
+                <average>97.436</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>96</maximum>
+                <minimum>69</minimum>
+                <average>86.036</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>66.667</minimum>
+                <average>98.810</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>13</count>
+            <left>13</left>
+        </formations>
+        <units>
+            <count>28</count>
+            <left>28</left>
+        </units>
+    </statistics>
+    <formations count="13">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Rhodesian HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>66.667</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Headquarters</designation>
+                    <rank>LtC</rank>
+                    <name>Gombeni</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>66.667</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>214</OOB_record_ID>
+            <type>FF Para Co [A]</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Para Group</designation>
+                    <rank>Cpt</rank>
+                    <name>McEwen</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>B0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>0</OOB_record_ID>
+            <type>FF Para Pl [A]</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>Para Section</designation>
+                    <rank>1Lt</rank>
+                    <name>Kotze</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>Para Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Kok</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>C2</ID>
+                    <designation>Para Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Krause</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>B0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>0</OOB_record_ID>
+            <type>FF Para Pl [A]</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>Para Section</designation>
+                    <rank>1Lt</rank>
+                    <name>Warren</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>Para Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Stiff</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>D2</ID>
+                    <designation>Para Section</designation>
+                    <rank>Cpl</rank>
+                    <name>Murray</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>E</name>
+            <leader>E0</leader>
+            <higher_command>B0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>0</OOB_record_ID>
+            <type>FFPara Supt [A]</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="6">
+                <unit>
+                    <ID>E0</ID>
+                    <designation>Para Scouts</designation>
+                    <rank>2Lt</rank>
+                    <name>Gilmour</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>E1</ID>
+                    <designation>Para Mortar</designation>
+                    <rank>Cpl</rank>
+                    <name>Goodwin</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>E2</ID>
+                    <designation>Para LMG Group</designation>
+                    <rank>Cpl</rank>
+                    <name>Downey</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>E3</ID>
+                    <designation>Para LMG Group</designation>
+                    <rank>Cpl</rank>
+                    <name>Gailey</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>E4</ID>
+                    <designation>Para LMG Group</designation>
+                    <rank>Cpl</rank>
+                    <name>Stevenson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>E5</ID>
+                    <designation>Para HMG</designation>
+                    <rank>Cpl</rank>
+                    <name>Gailey</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>F</name>
+            <leader>F0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>78</OOB_record_ID>
+            <type>Sniper</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>F0</ID>
+                    <designation>Sniper</designation>
+                    <rank>Sgt</rank>
+                    <name>Wiggill</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>1</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>G</name>
+            <leader>G0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>78</OOB_record_ID>
+            <type>Sniper</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>G0</ID>
+                    <designation>Sniper</designation>
+                    <rank>Sgt</rank>
+                    <name>Crandall</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>1</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>H</name>
+            <leader>H0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>86</OOB_record_ID>
+            <type>G-Car Grp P [H]</type>
+            <organizational_type>combat group</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="4">
+                <unit>
+                    <ID>H0</ID>
+                    <designation>Para Scouts</designation>
+                    <rank>1Lt</rank>
+                    <name>Wentzell</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>H1</ID>
+                    <designation>Para Scouts</designation>
+                    <rank>Cpl</rank>
+                    <name>Mann</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>H2</ID>
+                    <designation>Para Scouts</designation>
+                    <rank>Cpl</rank>
+                    <name>Jamison</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>H3</ID>
+                    <designation>Para Scouts</designation>
+                    <rank>Cpl</rank>
+                    <name>Thompson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>I</name>
+            <leader>I0</leader>
+            <higher_command>H0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>43</OOB_record_ID>
+            <type>4 G-Cars</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="4">
+                <unit>
+                    <ID>I0</ID>
+                    <designation>Alouette III-G</designation>
+                    <rank>Sgt</rank>
+                    <name>Keyworth</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>I1</ID>
+                    <designation>Alouette III-G</designation>
+                    <rank>2Lt</rank>
+                    <name>Galbraith</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>I2</ID>
+                    <designation>Alouette III-G</designation>
+                    <rank>2Lt</rank>
+                    <name>Culpin</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>I3</ID>
+                    <designation>Alouette III-G</designation>
+                    <rank>2Lt</rank>
+                    <name>Hackett</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>J</name>
+            <leader>J0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>66</OOB_record_ID>
+            <type>Spotter Plane</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>J0</ID>
+                    <designation>Cessna</designation>
+                    <rank>Sgt</rank>
+                    <name>Ainsworth</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>K</name>
+            <leader>K0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>75</OOB_record_ID>
+            <type>Air Transport</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>K0</ID>
+                    <designation>Para Dak</designation>
+                    <rank>Sgt</rank>
+                    <name>Farley</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>L</name>
+            <leader>L0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>75</OOB_record_ID>
+            <type>Air Transport</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>L0</ID>
+                    <designation>Para Dak</designation>
+                    <rank>Sgt</rank>
+                    <name>Gilchrist</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>M</name>
+            <leader>M0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>support</core_status>
+            <status>average</status>
+            <OOB_record_ID>75</OOB_record_ID>
+            <type>Air Transport</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>M0</ID>
+                    <designation>Para Dak</designation>
+                    <rank>Sgt</rank>
+                    <name>Connelly</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="28">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>Headquarters</designation>
+            <unit>Headquarters</unit>
+            <leader>Gombeni</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>75</morale>
+            <suppression>0</suppression>
+            <rally>84</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>65</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>66.667</readiness>
+            <position>
+                <x>1</x>
+                <y>1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Para Group</designation>
+            <unit>Para Group</unit>
+            <leader>McEwen</leader>
+            <rank>Cpt</rank>
+            <formation>B</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>90</OOBrid>
+            <type>paratroop light infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>85</experience>
+            <experience_class>veteran</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>82</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>2</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C0</ID>
+            <designation>Para Section</designation>
+            <unit>Para Section</unit>
+            <leader>Kotze</leader>
+            <rank>1Lt</rank>
+            <formation>C</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>96</OOBrid>
+            <type>paratroop</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>89</experience>
+            <experience_class>veteran</experience_class>
+            <morale>86</morale>
+            <suppression>0</suppression>
+            <rally>84</rally>
+            <inf_skills>78</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>3</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C1</ID>
+            <designation>Para Section</designation>
+            <unit>Para Section</unit>
+            <leader>Kok</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>96</OOBrid>
+            <type>paratroop</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>85</experience>
+            <experience_class>veteran</experience_class>
+            <morale>95</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>84</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>4</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C2</ID>
+            <designation>Para Section</designation>
+            <unit>Para Section</unit>
+            <leader>Krause</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>96</OOBrid>
+            <type>paratroop</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>87</experience>
+            <experience_class>veteran</experience_class>
+            <morale>86</morale>
+            <suppression>0</suppression>
+            <rally>57</rally>
+            <inf_skills>79</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>5</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D0</ID>
+            <designation>Para Section</designation>
+            <unit>Para Section</unit>
+            <leader>Warren</leader>
+            <rank>1Lt</rank>
+            <formation>D</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>96</OOBrid>
+            <type>paratroop</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>90</experience>
+            <experience_class>veteran</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>83</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>33</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D1</ID>
+            <designation>Para Section</designation>
+            <unit>Para Section</unit>
+            <leader>Stiff</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>96</OOBrid>
+            <type>paratroop</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>95</experience>
+            <experience_class>veteran</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>52</rally>
+            <inf_skills>86</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D2</ID>
+            <designation>Para Section</designation>
+            <unit>Para Section</unit>
+            <leader>Murray</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>96</OOBrid>
+            <type>paratroop</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>93</experience>
+            <experience_class>veteran</experience_class>
+            <morale>84</morale>
+            <suppression>0</suppression>
+            <rally>77</rally>
+            <inf_skills>89</inf_skills>
+            <art_skills>31</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>8</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E0</ID>
+            <designation>Para Scouts</designation>
+            <unit>Para Scouts</unit>
+            <leader>Gilmour</leader>
+            <rank>2Lt</rank>
+            <formation>E</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>94</OOBrid>
+            <type>paratroop scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>83</experience>
+            <experience_class>veteran</experience_class>
+            <morale>94</morale>
+            <suppression>0</suppression>
+            <rally>86</rally>
+            <inf_skills>79</inf_skills>
+            <art_skills>30</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>9</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E1</ID>
+            <designation>Para Mortar</designation>
+            <unit>Para Mortar</unit>
+            <leader>Goodwin</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>98</OOBrid>
+            <type>paratroop mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>92</experience>
+            <experience_class>veteran</experience_class>
+            <morale>95</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>79</inf_skills>
+            <art_skills>25</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>10</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E2</ID>
+            <designation>Para LMG Group</designation>
+            <unit>Para LMG Group</unit>
+            <leader>Downey</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>97</OOBrid>
+            <type>paratroop medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>84</experience>
+            <experience_class>veteran</experience_class>
+            <morale>95</morale>
+            <suppression>0</suppression>
+            <rally>61</rally>
+            <inf_skills>86</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>11</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E3</ID>
+            <designation>Para LMG Group</designation>
+            <unit>Para LMG Group</unit>
+            <leader>Gailey</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>97</OOBrid>
+            <type>paratroop medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>90</experience>
+            <experience_class>veteran</experience_class>
+            <morale>84</morale>
+            <suppression>0</suppression>
+            <rally>78</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>12</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E4</ID>
+            <designation>Para LMG Group</designation>
+            <unit>Para LMG Group</unit>
+            <leader>Stevenson</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>97</OOBrid>
+            <type>paratroop medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>93</experience>
+            <experience_class>veteran</experience_class>
+            <morale>91</morale>
+            <suppression>0</suppression>
+            <rally>75</rally>
+            <inf_skills>85</inf_skills>
+            <art_skills>34</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>13</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E5</ID>
+            <designation>Para HMG</designation>
+            <unit>Para HMG</unit>
+            <leader>Gailey</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>99</OOBrid>
+            <type>paratroop MG squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>96</experience>
+            <experience_class>veteran</experience_class>
+            <morale>85</morale>
+            <suppression>0</suppression>
+            <rally>59</rally>
+            <inf_skills>85</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>14</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F0</ID>
+            <designation>Sniper</designation>
+            <unit>Sniper</unit>
+            <leader>Wiggill</leader>
+            <rank>Sgt</rank>
+            <formation>F</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>122</OOBrid>
+            <type>sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>78</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>0</suppression>
+            <rally>64</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>15</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G0</ID>
+            <designation>Sniper</designation>
+            <unit>Sniper</unit>
+            <leader>Crandall</leader>
+            <rank>Sgt</rank>
+            <formation>G</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>122</OOBrid>
+            <type>sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>77</experience>
+            <experience_class>average</experience_class>
+            <morale>88</morale>
+            <suppression>0</suppression>
+            <rally>75</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>16</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H0</ID>
+            <designation>Para Scouts</designation>
+            <unit>Para Scouts</unit>
+            <leader>Wentzell</leader>
+            <rank>1Lt</rank>
+            <formation>H</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>94</OOBrid>
+            <type>paratroop scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>91</experience>
+            <experience_class>veteran</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>72</rally>
+            <inf_skills>76</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H1</ID>
+            <designation>Para Scouts</designation>
+            <unit>Para Scouts</unit>
+            <leader>Mann</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>94</OOBrid>
+            <type>paratroop scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>90</experience>
+            <experience_class>veteran</experience_class>
+            <morale>88</morale>
+            <suppression>0</suppression>
+            <rally>52</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>32</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>18</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H2</ID>
+            <designation>Para Scouts</designation>
+            <unit>Para Scouts</unit>
+            <leader>Jamison</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>94</OOBrid>
+            <type>paratroop scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>93</experience>
+            <experience_class>veteran</experience_class>
+            <morale>95</morale>
+            <suppression>0</suppression>
+            <rally>65</rally>
+            <inf_skills>86</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>19</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H3</ID>
+            <designation>Para Scouts</designation>
+            <unit>Para Scouts</unit>
+            <leader>Thompson</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>94</OOBrid>
+            <type>paratroop scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>88</experience>
+            <experience_class>veteran</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>46</rally>
+            <inf_skills>79</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>20</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I0</ID>
+            <designation>Alouette III-G</designation>
+            <unit>Alouette III-G</unit>
+            <leader>Keyworth</leader>
+            <rank>Sgt</rank>
+            <formation>I</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>78</OOBrid>
+            <type>COIN helicopter</type>
+            <class>air force</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>84</experience>
+            <experience_class>veteran</experience_class>
+            <morale>91</morale>
+            <suppression>0</suppression>
+            <rally>71</rally>
+            <inf_skills>32</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>76</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>21</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I1</ID>
+            <designation>Alouette III-G</designation>
+            <unit>Alouette III-G</unit>
+            <leader>Galbraith</leader>
+            <rank>2Lt</rank>
+            <formation>I</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>78</OOBrid>
+            <type>COIN helicopter</type>
+            <class>air force</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>86</experience>
+            <experience_class>veteran</experience_class>
+            <morale>86</morale>
+            <suppression>0</suppression>
+            <rally>61</rally>
+            <inf_skills>19</inf_skills>
+            <art_skills>33</art_skills>
+            <arm_skills>74</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>22</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I2</ID>
+            <designation>Alouette III-G</designation>
+            <unit>Alouette III-G</unit>
+            <leader>Culpin</leader>
+            <rank>2Lt</rank>
+            <formation>I</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>78</OOBrid>
+            <type>COIN helicopter</type>
+            <class>air force</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>89</experience>
+            <experience_class>veteran</experience_class>
+            <morale>95</morale>
+            <suppression>0</suppression>
+            <rally>58</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>89</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>23</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I3</ID>
+            <designation>Alouette III-G</designation>
+            <unit>Alouette III-G</unit>
+            <leader>Hackett</leader>
+            <rank>2Lt</rank>
+            <formation>I</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>78</OOBrid>
+            <type>COIN helicopter</type>
+            <class>air force</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>93</experience>
+            <experience_class>veteran</experience_class>
+            <morale>83</morale>
+            <suppression>0</suppression>
+            <rally>78</rally>
+            <inf_skills>11</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>71</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J0</ID>
+            <designation>Cessna</designation>
+            <unit>Cessna</unit>
+            <leader>Ainsworth</leader>
+            <rank>Sgt</rank>
+            <formation>J</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>84</OOBrid>
+            <type>FO aircraft</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>82</experience>
+            <experience_class>veteran</experience_class>
+            <morale>81</morale>
+            <suppression>0</suppression>
+            <rally>72</rally>
+            <inf_skills>25</inf_skills>
+            <art_skills>93</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K0</ID>
+            <designation>Para Dak</designation>
+            <unit>Para Dak</unit>
+            <leader>Farley</leader>
+            <rank>Sgt</rank>
+            <formation>K</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>81</OOBrid>
+            <type>paratroop transport</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>85</morale>
+            <suppression>0</suppression>
+            <rally>44</rally>
+            <inf_skills>30</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>70</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L0</ID>
+            <designation>Para Dak</designation>
+            <unit>Para Dak</unit>
+            <leader>Gilchrist</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>81</OOBrid>
+            <type>paratroop transport</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>84</morale>
+            <suppression>0</suppression>
+            <rally>73</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>80</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M0</ID>
+            <designation>Para Dak</designation>
+            <unit>Para Dak</unit>
+            <leader>Connelly</leader>
+            <rank>Sgt</rank>
+            <formation>M</formation>
+            <OOB>Rhodesian</OOB>
+            <OOBrid>81</OOBrid>
+            <type>paratroop transport</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>84</morale>
+            <suppression>0</suppression>
+            <rally>89</rally>
+            <inf_skills>31</inf_skills>
+            <art_skills>12</art_skills>
+            <arm_skills>79</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>-1</x>
+                <y>-1</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>81</OOB>
+    <nation>Mozambique</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Headquarters</designation>
+        <rank>LtC</rank>
+        <name>Simao</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>66</maximum>
+                <minimum>47</minimum>
+                <average>55.433</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>12</count>
+            <left>12</left>
+        </formations>
+        <units>
+            <count>30</count>
+            <left>30</left>
+        </units>
+    </statistics>
+    <formations count="12">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Mozambican HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Headquarters</designation>
+                    <rank>LtC</rank>
+                    <name>Simao</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Simovic</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Karadjevo</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>B2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Karadzic</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Gromadin</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Gisevius</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>C2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Cistowes</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Benedek</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Tirana</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>D2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Tolly</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>E</name>
+            <leader>E2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>E0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Zara</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>E1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Izetbegovic</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>E2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Racitz</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>F</name>
+            <leader>F2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>F0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Briza</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>F1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Urahk</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>F2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Bjelina</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>G</name>
+            <leader>G2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>G0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Fadeev</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>G1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Nedelist</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>G2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Vauhnik</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>H</name>
+            <leader>H2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>H0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Ante</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>H1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Broz</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>H2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Beliaev</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>I</name>
+            <leader>I2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>I0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Resta</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>I1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Acimovic</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>I2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Grazni</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>J</name>
+            <leader>J2</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>386</OOB_record_ID>
+            <type>Insurgent Group</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>J0</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Sgt</rank>
+                    <name>Aleksa</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>J1</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Vardar</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+                <unit>
+                    <ID>J2</ID>
+                    <designation>Insurgent Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Alija</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>9</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>K</name>
+            <leader>K0</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>79</OOB_record_ID>
+            <type>Machinegun</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>K0</ID>
+                    <designation>7.62mm PKMS MMG</designation>
+                    <rank>Sgt</rank>
+                    <name>Peganac</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>L</name>
+            <leader>L0</leader>
+            <higher_command>B1</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>79</OOB_record_ID>
+            <type>Machinegun</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>L0</ID>
+                    <designation>7.62mm PKMS MMG</designation>
+                    <rank>Sgt</rank>
+                    <name>Mihailovic</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="30">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>Headquarters</designation>
+            <unit>Headquarters</unit>
+            <leader>Simao</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>244</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>62</morale>
+            <suppression>0</suppression>
+            <rally>73</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>84</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Simovic</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>56</experience>
+            <experience_class>average</experience_class>
+            <morale>91</morale>
+            <suppression>0</suppression>
+            <rally>65</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>64</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Karadjevo</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>55</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>0</suppression>
+            <rally>68</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>62</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Karadzic</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>55</experience>
+            <experience_class>average</experience_class>
+            <morale>80</morale>
+            <suppression>0</suppression>
+            <rally>45</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>25</art_skills>
+            <arm_skills>10</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>62</x>
+                <y>34</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Gromadin</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>54</experience>
+            <experience_class>average</experience_class>
+            <morale>82</morale>
+            <suppression>0</suppression>
+            <rally>50</rally>
+            <inf_skills>54</inf_skills>
+            <art_skills>13</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>60</x>
+                <y>35</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Gisevius</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>47</experience>
+            <experience_class>green</experience_class>
+            <morale>81</morale>
+            <suppression>0</suppression>
+            <rally>59</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>59</x>
+                <y>36</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Cistowes</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>47</experience>
+            <experience_class>green</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>68</rally>
+            <inf_skills>66</inf_skills>
+            <art_skills>30</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>57</x>
+                <y>37</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Benedek</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>56</experience>
+            <experience_class>average</experience_class>
+            <morale>81</morale>
+            <suppression>0</suppression>
+            <rally>72</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>8</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>44</x>
+                <y>34</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Tirana</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>58</experience>
+            <experience_class>average</experience_class>
+            <morale>88</morale>
+            <suppression>0</suppression>
+            <rally>71</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>45</x>
+                <y>36</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Tolly</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>54</experience>
+            <experience_class>average</experience_class>
+            <morale>85</morale>
+            <suppression>0</suppression>
+            <rally>58</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>46</x>
+                <y>35</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Zara</leader>
+            <rank>Sgt</rank>
+            <formation>E</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>54</experience>
+            <experience_class>average</experience_class>
+            <morale>80</morale>
+            <suppression>0</suppression>
+            <rally>60</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>44</x>
+                <y>29</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Izetbegovic</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>51</experience>
+            <experience_class>average</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>59</rally>
+            <inf_skills>59</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>7</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>46</x>
+                <y>29</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Racitz</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>53</experience>
+            <experience_class>average</experience_class>
+            <morale>89</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>74</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>47</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Briza</leader>
+            <rank>Sgt</rank>
+            <formation>F</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>53</experience>
+            <experience_class>average</experience_class>
+            <morale>92</morale>
+            <suppression>0</suppression>
+            <rally>55</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>51</x>
+                <y>57</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Urahk</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>54</experience>
+            <experience_class>average</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>79</inf_skills>
+            <art_skills>7</art_skills>
+            <arm_skills>10</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>52</x>
+                <y>58</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Bjelina</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>56</experience>
+            <experience_class>average</experience_class>
+            <morale>84</morale>
+            <suppression>0</suppression>
+            <rally>74</rally>
+            <inf_skills>57</inf_skills>
+            <art_skills>8</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>53</x>
+                <y>60</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Fadeev</leader>
+            <rank>Sgt</rank>
+            <formation>G</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>52</experience>
+            <experience_class>average</experience_class>
+            <morale>85</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>62</inf_skills>
+            <art_skills>8</art_skills>
+            <arm_skills>7</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>54</x>
+                <y>61</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Nedelist</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>60</experience>
+            <experience_class>average</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>59</rally>
+            <inf_skills>61</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>12</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>55</x>
+                <y>62</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Vauhnik</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>59</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>57</x>
+                <y>62</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Ante</leader>
+            <rank>Sgt</rank>
+            <formation>H</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>59</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>0</suppression>
+            <rally>71</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>72</x>
+                <y>61</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Broz</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>53</experience>
+            <experience_class>average</experience_class>
+            <morale>83</morale>
+            <suppression>0</suppression>
+            <rally>70</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>16</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>74</x>
+                <y>62</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Beliaev</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>52</experience>
+            <experience_class>average</experience_class>
+            <morale>85</morale>
+            <suppression>0</suppression>
+            <rally>60</rally>
+            <inf_skills>65</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>75</x>
+                <y>61</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Resta</leader>
+            <rank>Sgt</rank>
+            <formation>I</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>60</inf_skills>
+            <art_skills>29</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>50</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Acimovic</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>56</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>51</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Grazni</leader>
+            <rank>Cpl</rank>
+            <formation>I</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>87</morale>
+            <suppression>0</suppression>
+            <rally>53</rally>
+            <inf_skills>61</inf_skills>
+            <art_skills>12</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>50</x>
+                <y>34</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J0</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Aleksa</leader>
+            <rank>Sgt</rank>
+            <formation>J</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>47</experience>
+            <experience_class>green</experience_class>
+            <morale>82</morale>
+            <suppression>0</suppression>
+            <rally>65</rally>
+            <inf_skills>59</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>88</x>
+                <y>22</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J1</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Vardar</leader>
+            <rank>Cpl</rank>
+            <formation>J</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>53</experience>
+            <experience_class>average</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>13</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>90</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J2</ID>
+            <designation>Insurgent Squad</designation>
+            <unit>Insurgent Squad</unit>
+            <leader>Alija</leader>
+            <rank>Cpl</rank>
+            <formation>J</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>293</OOBrid>
+            <type>infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>9</count>
+                <left>9</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>88</morale>
+            <suppression>0</suppression>
+            <rally>67</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>32</art_skills>
+            <arm_skills>19</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>90</x>
+                <y>25</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K0</ID>
+            <designation>7.62mm PKMS MMG</designation>
+            <unit>Fortified House</unit>
+            <leader>Peganac</leader>
+            <rank>Sgt</rank>
+            <formation>K</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>146</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>0</suppression>
+            <rally>72</rally>
+            <inf_skills>62</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>78</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L0</ID>
+            <designation>7.62mm PKMS MMG</designation>
+            <unit>Fortified House</unit>
+            <leader>Mihailovic</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Mozambican</OOB>
+            <OOBrid>146</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>61</rally>
+            <inf_skills>55</inf_skills>
+            <art_skills>19</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>78</x>
+                <y>29</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+

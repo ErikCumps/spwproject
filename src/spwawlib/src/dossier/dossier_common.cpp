@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -326,8 +326,10 @@ match_score (SPWAW_BATTLE *src, USHORT si, SPWAW_BATTLE *dst, USHORT di, bool &l
 			score += 10;
 			RASCORETRACE1 ("   \\+-- FID match! score: %d\n", score);
 		}
-		/* special rule for winSPWW2 games */
-		if (src->dossier->gametype == SPWAW_GAME_TYPE_WINSPWW2) {
+		/* special rule for winSPWW2 and winSPMBT games */
+		if (	(src->dossier->gametype == SPWAW_GAME_TYPE_WINSPWW2)	||
+			(src->dossier->gametype == SPWAW_GAME_TYPE_WINSPMBT)	)
+		{
 			if (sup->snap->data.FSID == 0) {
 				if (string_match (sup->snap->strings.uid, dup->snap->strings.uid)) {
 					score += 10;

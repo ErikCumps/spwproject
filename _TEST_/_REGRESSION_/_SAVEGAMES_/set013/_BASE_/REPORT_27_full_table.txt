@@ -99,13 +99,13 @@ Crews     : 3
 
                 item kills losses readiness
                 ---- ----- ------ ---------
-               Total     0     10  63.60 %
+               Total     0     10  58.10 %
       Formations max     0      2 100.00 %
       Formations min     0      0   0.00 %
-      Formations avg  0.00   0.77  56.78 %
+      Formations avg  0.00   0.77  51.06 %
            Units max     0      - 100.00 %
            Units min     0      -   0.00 %
-           Units avg  0.00      -  63.60 %
+           Units avg  0.00      -  58.10 %
 
 Table formations report:
 ------------------------
@@ -157,13 +157,13 @@ J0  :     destroyed                        Ammo Carrier     Kondrashov       *  
 K   : reg average                          platoon          K0               A0       0      0 100.00 %   1
 K0  :     ready                            Ammo Carrier     Kuropatkin       *        0      0 100.00 %   2
 
-L   : reg average                          platoon          L0               A0       0      0  98.67 %   2
-L0  :     ready                            Fuel Bowser      Shevchenko       *        0      0  97.33 %   1
-L1  :     ready                            Fuel Bowser      Sidorov                   0      0 100.00 %   1
+L   : reg average                          platoon          L0               A0       0      0  49.33 %   2
+L0  :     ready                            Fuel Bowser      Shevchenko       *        0      0  48.67 %   2
+L1  :     ready                            Fuel Bowser      Sidorov                   0      0  50.00 %   2
 
-M   : reg average                          platoon          M0               A0       0      1  50.00 %   2
-M0  :     ready                            Fuel Bowser      Antonov          *        0      0 100.00 %   1
-M1  :     destroyed                        Fuel Bowser      Lavrenev                  0      1   0.00 %   1
+M   : reg average                          platoon          M0               A0       0      1  25.00 %   2
+M0  :     ready                            Fuel Bowser      Antonov          *        0      0  50.00 %   2
+M1  :     destroyed                        Fuel Bowser      Lavrenev                  0      1   0.00 %   2
 
 
 Table units report:
@@ -194,18 +194,18 @@ Table units report:
 + -   I1   BA-64            KIA  Gladkov          BA-64              420   9  67  65   4  68  29  39  63    0    1   2   2  22   0.00 % (  none  )
 + -   J0   Ammo Carrier     KIA  Kondrashov       Ammo Carrier       421  10  67  73  20  68  39  39  71    0    1   2   2  75   0.00 % (  none  )
  #    K0   Ammo Carrier     1Lt  Kuropatkin       Ammo Carrier       422  10  80  75   0  69  26  29  56    0    0   2   0   0 100.00 % (  none  )
- #    L0   Fuel Bowser      1Lt  Shevchenko       Fuel Bowser        423  11  73  75   2  63  33  26  61    0    0   1   0   0  97.33 % ( 12,   7)
- #    L1   Fuel Bowser      Sgt  Sidorov          Fuel Bowser        424  11  71  78   0  64  43  32  63    0    0   1   0   0 100.00 % ( 13,   3)
- #    M0   Fuel Bowser      1Lt  Antonov          Fuel Bowser        425  11  66  66   0  62  34  26  59    0    0   1   0   0 100.00 % ( 16,   8)
-+ -   M1   Fuel Bowser      KIA  Lavrenev         Fuel Bowser        426  11  67  79  11  66  43  31  62    0    1   1   1  50   0.00 % (  none  )
+ #    L0   Fuel Bowser      1Lt  Shevchenko       Fuel Bowser        423  11  73  75   2  63  33  26  61    0    0   2   1   0  48.67 % ( 12,   7)
+ #    L1   Fuel Bowser      Sgt  Sidorov          Fuel Bowser        424  11  71  78   0  64  43  32  63    0    0   2   1   0  50.00 % ( 13,   3)
+ #    M0   Fuel Bowser      1Lt  Antonov          Fuel Bowser        425  11  66  66   0  62  34  26  59    0    0   2   1   0  50.00 % ( 16,   8)
++ -   M1   Fuel Bowser      KIA  Lavrenev         Fuel Bowser        426  11  67  79  11  66  43  31  62    0    1   2   2  50   0.00 % (  none  )
 
 Table crews report:
 -------------------
 
 +SDAL #    Designation      Rank Leader           unit               RID UTG EXP MOR SUP RAL INF ART ARM Kill Men KIA Dmg    Ready   Position
 ----- ---- -----------      ---- ------           ----               --- --- --- --- --- --- --- --- --- ---- --- --- ---    ----- ----------
-   A  C50  Crewmen          Cpt  Zoshchenko       Crewmen            429  12  74  74   4  63  42  33  61    0   4   2   0   0.00 % ( 13,  15)
-   A  E52  Crewmen          Sgt  Vasiliev         Crewmen            430  12  73  74   8  55  34  41  56    0   4   2   0   0.00 % ( 15,  15)
+   A  C50  Crewmen          Cpt  Zoshchenko       Crewmen            429  12  74  74   4  63  42  33  61    0   5   3   0   0.00 % ( 13,  15)
+   A  E52  Crewmen          Sgt  Vasiliev         Crewmen            430  12  73  74   8  55  34  41  56    0   5   3   0   0.00 % ( 15,  15)
  #-AL H51  Crewmen          Sgt  Zhdanov          Crewmen            427  12  68  71   0  53  35  27  55    0   5   4   1   0.00 % (  9,  21)
 
 

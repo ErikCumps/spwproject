@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling - raw winSPWW2 data handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -35,7 +35,7 @@ typedef struct s_RAWOOB_WINSPWW2 {
 		OOBNAME	name		[SPWOOB_WCNT];
 		BYTE	wclass		[SPWOOB_WCNT];
 		BYTE	size		[SPWOOB_WCNT];
-		BYTE	__data17	[SPWOOB_WCNT];
+		BYTE	sound		[SPWOOB_WCNT];
 		BYTE	warhead		[SPWOOB_WCNT];
 		struct s_pen {
 			BYTE	HE;

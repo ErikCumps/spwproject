@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling - raw data handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -13,6 +13,7 @@
 #include "spwoob/raw.h"
 #include "spwoob/raw_spwaw_api.h"
 #include "spwoob/raw_winspww2_api.h"
+#include "spwoob/raw_winspmbt_api.h"
 
 SPWAW_ERROR
 spwoob_load_raw_files (SPWOOB *oob)
@@ -23,6 +24,9 @@ spwoob_load_raw_files (SPWOOB *oob)
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (spwoob_load_raw_winspww2_files (oob));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (spwoob_load_raw_winspmbt_files (oob));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
@@ -41,6 +45,9 @@ spwoob_load_raw_data (SPWOOB_DATA *dst)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (spwoob_load_raw_winspww2_data (dst));
 			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (spwoob_load_raw_winspmbt_data (dst));
+			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:
 			RWE (SPWERR_FAILED, "unsupported game type");
@@ -57,6 +64,9 @@ spwoob_dump_raw_data (SPWAW_GAME_TYPE gametype, void *rdata, BYTE id, char *base
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			spwoob_dump_raw_winspww2_data (rdata, id, base);
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			spwoob_dump_raw_winspmbt_data (rdata, id, base);
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:

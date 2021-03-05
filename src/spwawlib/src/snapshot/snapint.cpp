@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -454,6 +454,7 @@ snapint_oob_units_stage1 (SPWAW_SNAP_OOB_RAW *raw, SPWAW_SNAP_OOB *ptr, SPWOOB_D
 		dat->fc		= src->fc;
 		dat->iv		= src->iv;
 		dat->swim	= src->swim;
+		dat->ew		= src->ew;
 		dat->UTGidx	= src->UTGidx;
 		dat->OOBrid	= src->OOBrid;
 		dat->utype	= oob->udata[dat->OOBrid].type;

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - API types implementation.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -737,6 +737,9 @@ SPWAW_gametype2str (SPWAW_GAME_TYPE gametype)
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			p = "winSPWW2";
 			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			p = "winSPMBT";
+			break;
 		default:
 			p = "???";
 			break;
@@ -753,6 +756,8 @@ SPWAW_str2gametype (char * gametype)
 		return (SPWAW_GAME_TYPE_SPWAW);
 	} else if (STREQ (gametype, "winSPWW2")) {
 		return (SPWAW_GAME_TYPE_WINSPWW2);
+	} else if (STREQ (gametype, "winSPMBT")) {
+		return (SPWAW_GAME_TYPE_WINSPMBT);
 	} else {
 		return (SPWAW_GAME_TYPE_UNKNOWN);
 	}

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - winSPWW2 gamefile handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -82,8 +82,7 @@ typedef struct s_WINSPWW2_UNIT {
 	USHORT			SPECIAL1;
 	char			__data06[2];
 	BYTE			firec;			/* Unit fire control				*/
-	BYTE			cost;			/* Unit cost					*/
-	char			__data07[1];
+	USHORT			cost;			/* Unit cost					*/
 	USHORT			leader;			/* Unit leader number (0xFFFF if abandoned)	*/
 	char			__data08[5];
 	BYTE			contact;		/* Unit contact status				*/

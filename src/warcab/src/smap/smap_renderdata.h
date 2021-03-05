@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - render data.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -20,20 +20,20 @@ typedef struct s_SMAP_RENDERDATA {
 	int			height;		/*!< hex height, in pixels					*/
 	int			side;		/*!< hex side, in pixels					*/
 	SMAP_RENDERDATA_PMC	pmc;		/*!< Pixmap container						*/
-	struct s_hpmc_spwaw {			/*!< height colorfield pixmap collections for SP:WaW		*/
-		SMAP_RENDERDATA_HPMC	grey;		/*!< regular grey colorfield for SP:WaW			*/
-		SMAP_RENDERDATA_HPMC	topo;		/*!< topographic colorfield for SP:WaW			*/
-		SMAP_RENDERDATA_HPMC	tnor;		/*!< normal terrain colorfield for SP:WaW		*/
-		SMAP_RENDERDATA_HPMC	tjun;		/*!< jungle terrain colorfield for SP:WaW		*/
-		SMAP_RENDERDATA_HPMC	tdes;		/*!< desert terrain colorfield for SP:WaW		*/
-	}			hpmc_spwaw;
-	struct s_hpmc_winspww2 {		/*!< height colorfield pixmap collections for winSPWW2		*/
-		SMAP_RENDERDATA_HPMC	grey;		/*!< regular grey colorfield for winSPWW2		*/
-		SMAP_RENDERDATA_HPMC	topo;		/*!< topographic colorfield for winSPWW2		*/
-		SMAP_RENDERDATA_HPMC	tnor;		/*!< normal terrain colorfield for winSPWW2		*/
-		SMAP_RENDERDATA_HPMC	tjun;		/*!< jungle terrain colorfield for winSPWW2		*/
-		SMAP_RENDERDATA_HPMC	tdes;		/*!< desert terrain colorfield for winSPWW2		*/
-	}			hpmc_winspww2;
+	struct s_hpmc_h35 {			/*!< height colorfield pixmap collections for max 35 meter	*/
+		SMAP_RENDERDATA_HPMC	grey;		/*!< regular grey colorfield				*/
+		SMAP_RENDERDATA_HPMC	topo;		/*!< topographic colorfield				*/
+		SMAP_RENDERDATA_HPMC	tnor;		/*!< normal terrain colorfield				*/
+		SMAP_RENDERDATA_HPMC	tjun;		/*!< jungle terrain colorfield				*/
+		SMAP_RENDERDATA_HPMC	tdes;		/*!< desert terrain colorfield				*/
+	}			hpmc_h35;
+	struct s_hpmc_h150 {			/*!< height colorfield pixmap collections for max 150 meter	*/
+		SMAP_RENDERDATA_HPMC	grey;		/*!< regular grey colorfield				*/
+		SMAP_RENDERDATA_HPMC	topo;		/*!< topographic colorfield				*/
+		SMAP_RENDERDATA_HPMC	tnor;		/*!< normal terrain colorfield				*/
+		SMAP_RENDERDATA_HPMC	tjun;		/*!< jungle terrain colorfield				*/
+		SMAP_RENDERDATA_HPMC	tdes;		/*!< desert terrain colorfield				*/
+	}			hpmc_h150;
 } SMAP_RENDERDATA;
 
 /*! Height colorfield selector type */

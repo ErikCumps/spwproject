@@ -81,8 +81,8 @@ C   : cor average                          section          C0               A0 
 C0  :     ready                            3in Mortar Sec   Vincent          *        0      0 100.00 %   8
 
 D   : cor average                          section          D0               A0       0      0 100.00 %   2
-D0  :     ready                            37mm AT-Gun      Hazzard          *        0      0 100.00 %   0
-D1  :     ready                            37mm AT-Gun      Thompson                  0      0 100.00 %   0
+D0  :     ready                            37mm AT-Gun      Hazzard          *        0      0 100.00 %   5
+D1  :     ready                            37mm AT-Gun      Thompson                  0      0 100.00 %   5
 
 E   : cor average                          section          E0               A0       0      1  24.63 %   2
 E0  :     ready                            Bren AAMG        Saundby          *        0      0  49.26 %   4
@@ -140,8 +140,8 @@ Table units report:
  #    A0   British HQ       LtC  Gilchrist        British HQ           0   0  72  78   0  72  71  38  22    0    0   6   0   0 100.00 % (  5,  26)
  #    B0   FOO Team         1Lt  Chadwick         FOO Team             1   1  69  76   0  66  19  76  16    0    0   2   0   0 100.00 % (  4,  24)
  #    C0   3in Mortar Sec   Sgt  Vincent          3in Mortar Sec       2   2  73  78   0  75  15  71  26    0    0   8   0   0 100.00 % (  9,  29)
- #    D0   37mm AT-Gun      Sgt  Hazzard          37mm AT-Gun          3   3  74  74   0  53  24  60  13    0    0   0   0   0 100.00 % ( 28,  13)
- #    D1   37mm AT-Gun      Sgt  Thompson         37mm AT-Gun          4   3  65  78   0  66  22  75  20    0    0   0   0   0 100.00 % ( 30,  14)
+ #    D0   37mm AT-Gun      Sgt  Hazzard          37mm AT-Gun          3   3  74  74   0  53  24  60  13    0    0   5   0   0 100.00 % ( 28,  13)
+ #    D1   37mm AT-Gun      Sgt  Thompson         37mm AT-Gun          4   3  65  78   0  66  22  75  20    0    0   5   0   0 100.00 % ( 30,  14)
  #-   E0   Bren AAMG        Sgt  Saundby          Bren AAMG            5   4  62  68   1  55  17  70  34    0    0   4   2   2  49.26 % ( 18,  17)
 + -   E1   Bren AAMG        KIA  Kimbrough        Bren AAMG            6   4  70  75  45  60  24  73  11    0    1   4   4   9   0.00 % (  none  )
  #    F0   Rifle Section    Cpt  Addington        Rifle Section        7   5  70  67   1  62  73  13  27    0    0  10   0   0  98.51 % ( 37,  27)
@@ -258,9 +258,9 @@ L1  :     pinned                           Rifle Squad      Wada                
 L2  :     pinned                           81mm Tp 97 Mtrs  Aoki                      0      0  60.49 %   8
 
 M   : sup average                          platoon          M0               A0       0      0  99.37 %   3
-M0  :     ready                            Ki-51            Sakamoto         *        0      0 100.00 %   0
-M1  :     ready                            Ki-51            Fujita                    0      0 100.00 %   0
-M2  :     ready                            Ki-51            Tamura                    0      0  98.11 %   0
+M0  :     ready                            Ki-51            Sakamoto         *        0      0 100.00 %   2
+M1  :     ready                            Ki-51            Fujita                    0      0 100.00 %   2
+M2  :     ready                            Ki-51            Tamura                    0      0  98.11 %   2
 
 N   : sup average                          platoon          N0               A0       0      0  46.84 %   2
 N0  :     abandoned                        81mm Tp 97 Mtrs  Yokoyama         *        0      0   0.00 %   8
@@ -277,8 +277,8 @@ P2  :     ready                            Rifle Squad      Matsuo              
 P3  :     pinned                           Support Squad    Murakami                  0      0  25.28 %  12
 
 Q   : sup average                          platoon          Q0               A0       1      0 100.00 %   2
-Q0  :     ready                            Ki-43-I Hei      Hara             *        0      0 100.00 %   0
-Q1  :     ready                            Ki-43-I Hei      Morita                    1      0 100.00 %   0
+Q0  :     ready                            Ki-43-I Hei      Hara             *        0      0 100.00 %   1
+Q1  :     ready                            Ki-43-I Hei      Morita                    1      0 100.00 %   1
 
 
 Table units report:
@@ -303,9 +303,9 @@ Table units report:
   -   F1   Rifle Squad      Cpl  Fujiwara         Rifle Squad         46  18  75  73   4  54  70  18  25    0    0  12   2   2  78.77 % ( 32,  32)
  #-   F2   Rifle Squad      Cpl  Sugawara         Rifle Squad         47  18  72  72  10  77  72  15  32    1    0  12   7   7  25.12 % ( 32,  36)
  #-   F3   Support Squad    Cpl  Hasegawa         Support Squad       48  19  78  67  10  69  72  20  30    0    0  12   7   7  24.81 % ( 30,  39)
- #    G0   Type 92 MMGs     Sgt  Nishimura        Type 92 HMGs        49  20  76  75   3  73  75  19  20    0    0   8   0   0  96.00 % ( 36,  31)
+ #    G0   Type 92 MMGs     Sgt  Nishimura        Type 92 MMGs        49  20  76  75   3  73  75  19  20    0    0   8   0   0  96.00 % ( 36,  31)
   -   G1   Rifle Squad      Cpl  Matsumoto        Rifle Squad         50  17  77  68  51  69  79  22  19    0    0   7   5   5   1.43 % ( 40,  28)
- # A  G2   81mm Tp 97 Mtrs  Sgt  Ueno             81mm Tp 97 Mors     51  21  79  70  32  66  11  64  33    0    0   8   8   0   0.00 % ( 54,  32)
+ # A  G2   81mm Tp 97 Mtrs  Sgt  Ueno             81mm Tp 97 Mtrs     51  21  79  70  32  66  11  64  33    0    0   8   8   0   0.00 % ( 54,  32)
  #-   H0   Rifle Squad      Cpt  Fukuda           Rifle Squad         52  16  78  76  10  76  72  17  26    0    0  10   6   6  24.32 % ( 31,  43)
  #    H1   Rifle Squad      Cpl  Nakajima         Rifle Squad         53  17  67  71   1  64  78  27   9    0    0   7   0   0  98.59 % ( 32,  33)
  #-   I0   Rifle Squad      2Lt  Kobayashi        Rifle Squad         54  18  73  83   1  54  67  27  20    0    0  12   4   4  65.86 % ( 31,  36)
@@ -320,22 +320,22 @@ Table units report:
 + -   K1   Rifle Squad      KIA  Ogawa            Rifle Squad         63  18  71  68  41  45  81  15  21    0    1  12  12  21   0.00 % (  none  )
  #-   K2   Rifle Squad      Cpl  Inoue            Rifle Squad         64  18  77  83  43  51  74  36  29    0    0  12   8   8   3.21 % ( 50,  21)
   -   K3   Support Squad    Cpl  Okamato          Support Squad       65  19  75  74  59  62  77  16  27    0    0  12   8   8   1.35 % ( 42,  27)
- #    L0   Type 3 MMGs      Sgt  Maeda            Type 3 HMGs         66  22  83  75   0  63  70  21  26    0    0   8   0   0 100.00 % ( 35,  34)
+ #    L0   Type 3 MMGs      Sgt  Maeda            Type 3 MMGs         66  22  83  75   0  63  70  21  26    0    0   8   0   0 100.00 % ( 35,  34)
   -   L1   Rifle Squad      Cpl  Wada             Rifle Squad         67  17  75  76  17  57  67  17  25    0    0   7   3   3  31.05 % ( 33,  30)
-      L2   81mm Tp 97 Mtrs  Sgt  Aoki             81mm Tp 97 Mors     68  21  80  81  11  63  32  64  27    0    0   8   0   0  60.49 % ( 52,  44)
-      M0   Ki-51            1Lt  Sakamoto         Ki-51               69  23  84  78   0  60  24  22  66    0    0   0   0   0 100.00 % (  none  )
-      M1   Ki-51            2Lt  Fujita           Ki-51               70  23  72  81   0  50  23  33  69    0    0   0   0   0 100.00 % (  none  )
-  -   M2   Ki-51            2Lt  Tamura           Ki-51               71  23  78  82   0  77  16  21  85    0    0   0   0   1  98.11 % (  none  )
-   A  N0   81mm Tp 97 Mtrs  2Lt  Yokoyama         81mm Tp 97 Mors     72  21  83  69  92  63  18  78  17    0    0   8   8   0   0.00 % ( 54,  26)
- #    N1   81mm Tp 97 Mtrs  Sgt  Yamada           81mm Tp 97 Mors     73  21  77  79   5  69  13  75  25    0    0   8   0   0  93.67 % ( 50,  25)
+      L2   81mm Tp 97 Mtrs  Sgt  Aoki             81mm Tp 97 Mtrs     68  21  80  81  11  63  32  64  27    0    0   8   0   0  60.49 % ( 52,  44)
+      M0   Ki-51            1Lt  Sakamoto         Ki-51               69  23  84  78   0  60  24  22  66    0    0   2   0   0 100.00 % (  none  )
+      M1   Ki-51            2Lt  Fujita           Ki-51               70  23  72  81   0  50  23  33  69    0    0   2   0   0 100.00 % (  none  )
+  -   M2   Ki-51            2Lt  Tamura           Ki-51               71  23  78  82   0  77  16  21  85    0    0   2   0   1  98.11 % (  none  )
+   A  N0   81mm Tp 97 Mtrs  2Lt  Yokoyama         81mm Tp 97 Mtrs     72  21  83  69  92  63  18  78  17    0    0   8   8   0   0.00 % ( 54,  26)
+ #    N1   81mm Tp 97 Mtrs  Sgt  Yamada           81mm Tp 97 Mtrs     73  21  77  79   5  69  13  75  25    0    0   8   0   0  93.67 % ( 50,  25)
  #    O0   75mm Platoon     1Lt  Taniguchi        75mm Platoon        74  24  73  77   0  63  31  81  20    0    0  16   0   0 100.00 % (  none  )
  #    O1   75mm Platoon     2Lt  Kinoshita        75mm Platoon        75  24  79  75   1  79  21  71  24    0    0  16   0   0  98.67 % (  none  )
  #-   P0   Rifle Squad      1Lt  Sakurai          Rifle Squad         76  25  77  74   1  63  87  20  26    0    0  12   6   6  49.32 % ( 34,  36)
   -   P1   Rifle Squad      Cpl  Uchida           Rifle Squad         77  25  73  73  35  67  73  30  26    0    0  12   8   8   8.68 % ( 32,  31)
  #-   P2   Rifle Squad      Cpl  Matsuo           Rifle Squad         78  25  77  77   1  57  73  16  20    0    0  12   4   4  65.80 % ( 32,  31)
  #-   P3   Support Squad    Cpl  Murakami         Support Squad       79  19  80  75  10  73  77  14  27    0    0  12   7   7  25.28 % ( 32,  44)
-      Q0   Ki-43-I Hei      1Lt  Hara             Ki-43-I Hei         80  26  82  76   0  50  33  15  69    0    0   0   0   0 100.00 % (  none  )
-      Q1   Ki-43-I Hei      2Lt  Morita           Ki-43-I Hei         81  26  72  69   0  49  32  26  87    1    0   0   0   0 100.00 % (  none  )
+      Q0   Ki-43-I Hei      1Lt  Hara             Ki-43-I Hei         80  26  82  76   0  50  33  15  69    0    0   1   0   0 100.00 % (  none  )
+      Q1   Ki-43-I Hei      2Lt  Morita           Ki-43-I Hei         81  26  72  69   0  49  32  26  87    1    0   1   0   0 100.00 % (  none  )
 
 Table crews report:
 -------------------

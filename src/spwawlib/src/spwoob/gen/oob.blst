@@ -13,28 +13,109 @@
 
 [title title.txt] SPWOOB codes
 
-[rawenum SPWOOB_WCLASS:BYTE] SPWOOB weapon class
+[enum SPWOOB_WCLASS] SPWOOB weapon class
+UNKNOWN		"unknown weapon"			"UNKNOWN"
+INF_PRM		"primary infantry weapon"		"INF_PRM"
+INF_SEC		"secondary infantry weapon"		"INF_SEC"
+TEAM		"team weapon"				"TEAM"
+AA		"anti-air weapon"			"AA"
+SML_GUN		"light gun"				"SML_GUN"
+MDM_GUN		"medium gun"				"MDM_GUN"
+LRG_GUN		"large gun"				"LRG_GUN"
+FLAME_INF	"infantry flamethrower"			"FLAME_INF"
+FLAME_VHC	"vehicle flamethrower"			"FLAME_VHC"
+NAVAL		"naval artillery"			"NAVAL"
+AIRCRAFT	"aircraft weapon"			"AIRCRAFT"
+SAM		"surface-to-air missile"		"SAM"
+ATGM		"anti-tank guided missile"		"ATGM"
+LRG_CLSTR	"large cluster bomb"			"LRG_CLSTR"
+SML_CLSTR	"small cluster bomb"			"SML_CLSTR"
+ARM		"anti-radiation missile"		"ARM"
+ASB		"anti-submarine missile"		"ASM"
+NAPALM		"napalm"				"NAPALM"
+AUTO_CANNON	"auto cannon"				"AUTO_CANNON"
+EXPLOSIVES	"explosives"				"EXPLOSIVES"
+ASM		"air-to-surface missile"		"ASM"
+ATGM_TA		"top-attack ATGM"			"ATGM_TA"
+ATGM_MC		"multi-charge ATGM"			"ATGM_MC"
+HEAT_MC		"multi-charge HEAT"			"HEAT_MC"
+HEAT_TA		"top-attack HEAT"			"HEAT_TA"
+HEAT_TAIG	"top-attack inertial-guidance HEAT"	"HEAT_TAIG"
+HESH_GUN	"high-explosive squash head gun"	"HESH_GUN"
+ATGM_NLOS	"non-line-of-sight ATGM"		"ATGM_NLOS"
+
+[raweref SPWOOB_SPWAW_WCLASS:BYTE:SPWOOB_WCLASS] SPWAW OOB weapon class
 @default:UNKNOWN
-0	UNKNOWN		"unknown weapon"
-1	INF_PRM		"primary infantry weapon"
-2	INF_SEC		"secondary infantry weapon"
-3	TEAM		"team weapon"
-4	AA		"anti-air weapon"
-5	SML_GUN		"light gun"
-6	MDM_GUN		"medium gun"
-7	LRG_GUN		"large gun"
-8	FLAME_INF	"infantry flamethrower"
-9	FLAME_VHC	"vehicle flamethrower"
-10	NAVAL		"naval artillery"
-11	AIRCRAFT	"aircraft weapon"
-12	SAM		"surface-to-air missile"
-13	AT		"anti-tank missile"
-14	LRG_CLSTR	"large cluster bomb"
-15	SML_CLSTR	"small cluster bomb"
-16	ARM		"ARM"
-17	ASM		"ASM"
-18	NAPALM		"napalm"
-19	AUTO_CANNON	"auto cannon"
+0	UNKNOWN
+1	INF_PRM
+2	INF_SEC
+3	TEAM
+4	AA
+5	SML_GUN
+6	MDM_GUN
+7	LRG_GUN
+8	FLAME_INF
+9	FLAME_VHC
+10	NAVAL
+11	AIRCRAFT
+12	SAM
+13	ATGM
+14	LRG_CLSTR
+15	SML_CLSTR
+16	ARM
+17	ASB
+18	NAPALM
+
+[raweref SPWOOB_WINSPWW2_WCLASS:BYTE:SPWOOB_WCLASS] winSPWW2 OOB weapon class
+@default:UNKNOWN
+0	UNKNOWN
+1	INF_PRM
+2	INF_SEC
+3	TEAM
+4	AA
+5	SML_GUN
+6	MDM_GUN
+7	LRG_GUN
+8	FLAME_INF
+9	FLAME_VHC
+10	NAVAL
+11	AIRCRAFT
+13	ATGM
+14	LRG_CLSTR
+18	NAPALM
+19	AUTO_CANNON
+20	EXPLOSIVES
+
+[raweref SPWOOB_WINSPMBT_WCLASS:BYTE:SPWOOB_WCLASS] winSPMBT OOB weapon class
+@default:UNKNOWN
+0	UNKNOWN
+1	INF_PRM
+2	INF_SEC
+3	TEAM
+4	AA
+5	SML_GUN
+6	MDM_GUN
+7	LRG_GUN
+8	FLAME_INF
+9	FLAME_VHC
+10	NAVAL
+11	AIRCRAFT
+12	SAM
+13	ATGM
+14	LRG_CLSTR
+15	SML_CLSTR
+16	ARM
+17	ASM
+18	NAPALM
+19	AUTO_CANNON
+20	ATGM_TA
+21	ATGM_MC
+22	HEAT_MC
+23	HEAT_TA
+24	HEAT_TAIG
+25	EXPLOSIVES
+26	HESH_GUN
+27	ATGM_NLOS
 
 [enum SPWOOB_UCLASS] SPWOOB unit class
 INF	"infantry"	"INF"
@@ -69,9 +150,11 @@ MG_SEC		"MG section"
 MG_TEAM		"MG team"
 LMG_SEC		"LMG section"
 HV_MG		"heavy MG squad"
+HV_MG_SEC	"heavy MG section"
 SPECOP		"special forces"
 ENG		"engineers"
 ENG_SPT		"engineer support squad"
+PIONEER		"pioneers"
 ELITE		"elite infantry"
 AIR_INF		"airborne infantry"
 LNCR		"lancers"
@@ -80,7 +163,13 @@ CONSCR		"conscripts"
 SL_INF		"second line infantry"
 SL_SPT		"second line support squad"
 IRR_INF		"irregulars"
-GUERILLA	"guerilla forces"
+GRRLL		"guerrilla forces"
+GRRLL_INF	"guerrilla infantry"
+LT_GRRLL_INF	"guerrilla light infantry"
+HV_GRRLL_INF	"guerrilla heavy wpns squad"
+GRRLL_SPT	"guerrilla support squad"
+GRRLL_SNIPER	"guerrilla sniper"
+GRRLL_RKT	"guerrilla rocket squad"
 NAT_INF		"native troops"
 POLICE		"police"
 ARM_INF		"armored infantry"
@@ -144,6 +233,7 @@ LT_RNGR		"light Rangers squad"
 HV_RNGR		"Rangers heavy wpns squad"
 RNGR_SPT	"Ranger support squad"
 RNGR_ENG	"Ranger engineers"
+RNGR_PIONEER	"Ranger pioneers"
 RNGR_SNIPER	"Ranger sniper"
 SKI		"ski troops"
 LT_SKI		"light ski infantry"
@@ -156,6 +246,16 @@ WSS_HV_INF	"Waffen SS heavy wpns squad"
 WSS_RFL		"Waffen SS rifle squad"
 WSS_SMG		"Waffen SS SMG squad"
 WSS_ENG		"Waffen SS engineers"
+MERC		"mercenaries"
+AIRMBL		"airmobile section"
+HV_AIRMBL	"airmobile heavy wpns squad"
+RFL_AIRMBL	"airmobile rifle squad"
+AIRMBL_SPT	"airmobile support section"
+AIRMBL_ENG	"airmobile engineers"
+COIN_INF	"COIN infantry"
+COIN_LT_INF	"COIN light infantry"
+COIN_HV_INF	"COIN heavy wpns squad"
+COIN_SPT	"COIN support squad"
 
 @class:CAV	### cavalry ###
 CAV		"cavalry"
@@ -173,10 +273,12 @@ CS_TNY_TNK	"CS tankette"
 TNK		"tank"
 CS_TNK		"CS tank"
 MB_TNK		"main battle tank"
+CS_MB_TNK	"CS main battle tank"
 LT_TNK		"light tank"
 MD_TNK		"medium tank"
 HV_TNK		"heavy tank"
 VHV_TNK		"very heavy tank"
+OHV_TNK		"obsolete heavy tank"
 CR_TNK		"cruiser tank"
 HV_CR_TNK	"heavy cruiser tank"
 CS_CR_TNK	"CS cruiser tank"
@@ -196,9 +298,13 @@ CAPT_TNK	"captured tank"
 COL_TNK		"colonial tank"
 LL_TNK		"lend-lease tank"
 PROTO_TNK	"prototype tank"
+RSRV_TNK	"reserve tank"
 
 @class:APC	### APC ###
 APC		"APC"
+LT_APC		"light APC"
+LT_SPT_APC	"light support APC"
+HV_APC		"heavy APC"
 WH_APC		"wheeled APC"
 WH_APC_GUN	"wheeled gun APC"
 HT		"halftrack"
@@ -209,6 +315,14 @@ HV_TR_APC	"heavy tracked APC"
 TR_APC_GUN	"tracked gun APC"
 COL_APC		"colonial APC"
 IMP_APC		"improvised apc"
+RKT_APC		"rocket APC"
+AIR_APC		"airborne APC"
+AIR_SPT_APC	"airborn support APC"
+MRV_APC		"MRV APC"
+LT_MRV_APC	"light MRV APC"
+HV_MRV_APC	"heavy MRV APC"
+MRV_IFV		"MRV IFV"
+LT_MRV_IFV	"light MRV IFV"
 
 @class:ART	### artillery ###
 MORT		"mortar"
@@ -232,13 +346,18 @@ HWTZR		"howitzer"
 INF_HWTZR	"infantry howitzer"
 AIR_FLD_HWTZR	"airborne field howitzer"
 PACK_HWTZR	"pack howitzer"
+SP_HWTZR	"SP howitzer"
 SP_ART		"SP artillery"
 RKT		"rocket launcher"
 SP_RKT		"SP rocket launcher"
+AGL		"automatic grenade launcher"
 OB_ART		"offboard artillery"
-LT_OB_ART	"offboard light artillery"
+LT_OB_ART	"light offboard artillery"
+MD_OB_ART	"medium offboard artillery"
 HV_OB_ART	"heavy offboard artillery"
 OB_RKT		"offboard rocket launcher"
+OB_ML_ART	"offboard minelet artillery"
+OB_ML_RKT	"offboard minelet rocket launcher"
 
 @class:AT	### anti-tank ###
 AT		"AT gun"
@@ -250,10 +369,18 @@ TD		"tank destroyer"
 TTD		"turreted tank destroyer"
 HV_TD		"heavy tank destroyer"
 INF_AT		"AT infantry"
-CMD_INF_AT	"commando AT infantry"
+CMD_AT		"commando AT infantry"
 MRNS_AT		"marines AT gun"
-PARA_INF_AT	"paratroop AT infantry"
-SKI_INF_AT	"ski AT infantry"
+PARA_AT		"paratroop AT infantry"
+SKI_AT		"ski AT infantry"
+ATGM		"ATGM launcher"
+SP_ATGM		"SP ATGM launcher"
+LT_SP_ATGM	"light SP ATGM launcher"
+WH_ATGM		"wheeled ATGM launcher"
+INF_ATGM	"ATGM infantry"
+INF_HV_ATGM	"heavy ATGM infantry"
+PARA_ATGM	"paratroop ATGM infantry"
+PARA_HV_ATGM	"paratroop heavy ATGM infantry"
 
 @class:AA	### anti-air ###
 FLAK		"AA gun"
@@ -262,6 +389,9 @@ SP_FLAK		"SP AA gun"
 LT_SP_FLAK	"light SP AA gun"
 WH_FLAK		"AA gun truck"
 INF_FLAK	"AA MG infantry"
+AREA_SAM	"area SAM"
+SP_SAM		"SP SAM"
+INF_SAM		"SAM infantry"
 
 @class:MAR	### marine unit ###
 AMPHIB		"amphibian unit"
@@ -290,6 +420,7 @@ VEH_SCOUT	"scout vehicle"
 HT_SCOUT	"scout halftrack"
 APC_SCOUT	"scout APC"
 TNK_SCOUT	"scout tank"
+GRRLL_SCOUT	"guerrilla scout"
 CAV_SCOUT	"cavalry scout"
 CMD_SCOUT	"commando scout"
 COL_SCOUT	"colonial scout"
@@ -302,6 +433,7 @@ PARA_SCOUT	"paratroop scout"
 PRTS_SCOUT	"partisan scout"
 RNGR_SCOUT	"Ranger scout"
 SKI_SCOUT	"ski scout"
+COIN_SCOUT	"COIN scout"
 BCYCLE		"bicycle squad"
 HV_BCYCLE	"bicycle heavy wpns squad"
 MCYCLE		"motorcycle"
@@ -310,6 +442,9 @@ ARM_CAR		"armored car"
 LT_ARM_CAR	"light armored car"
 HV_ARM_CAR	"heavy armored car"
 PATROL		"patrol"
+INF_RR		"infantry RR team"
+PARA_RR		"paratroop RR team"
+
 
 @class:CC	### C&C ###
 HQ		"force HQ"
@@ -335,10 +470,18 @@ PACK		"pack animals"
 AIRF		"fighter-bomber"
 AIRB		"level bomber"
 HELI		"helicopter"
+LT_HELI		"light helicopter"
+HV_HELI		"heavy helicopter"
 AHELI		"attack helicopter"
+LT_AHELI	"light attack helicopter"
 GA		"ground attack"
 GLIDER		"glider"
 HV_GLIDER	"heavy glider"
+SEAD		"SEAD aircraft"
+GUNSHIP		"gunship"
+COIN_F		"COIN fighter"
+COIN_B		"COIN bomber"
+COIN_HELI	"COIN helicopter"
 
 @class:NVY	### navy ###
 BARGE		"landing barge"
@@ -351,6 +494,7 @@ RBOAT		"rivercraft"
 TBOAT		"torpedo boat"
 SHIP		"ship"
 NAVBOMB		"naval bombardment"
+HVRCRFT		"hovercraft"
 
 @class:FRT	### fortification ###
 FORT		"fort"
@@ -367,6 +511,7 @@ CREW		"crew"
 CAVE		"cave"
 EXPLOSIVE	"explosive"
 RESERVED	"reserved"
+NOUNIT		"NO UNIT"
 UNKNOWN		"unknown unit type"
 
 [raweref SPWOOB_SPWAW_UTYPE:BYTE:SPWOOB_UTYPE] SPWAW OOB unit type
@@ -442,7 +587,7 @@ UNKNOWN		"unknown unit type"
 68	EMP_FORT
 69	FO
 70	SPECOP
-71	GUERILLA
+71	GRRLL
 72	AIR_INF
 73	ELITE
 74	BCYCLE
@@ -629,11 +774,11 @@ UNKNOWN		"unknown unit type"
 139	SP_GUN
 140	ENG
 141	PARA_ENG
-142	PARA_INF_AT
+142	PARA_AT
 143	PARA_SNIPER
 144	PARA_MG
 145	CMD_ENG
-146	CMD_INF_AT
+146	CMD_AT
 147	CMD_SNIPER
 148	LNCR
 149	CAV_MNT
@@ -652,7 +797,7 @@ UNKNOWN		"unknown unit type"
 162	SKI
 163	HV_SKI
 164	SKI_SNIPER
-165	SKI_INF_AT
+165	SKI_AT
 166	SKI_ENG
 167	SNOW
 168	SKI_SCOUT
@@ -744,6 +889,265 @@ UNKNOWN		"unknown unit type"
 254	BUNKER
 255	HV_GLIDER
 
+[raweref SPWOOB_WINSPMBT_UTYPE:BYTE:SPWOOB_UTYPE] winSPMBT OOB unit type
+@default:UNKNOWN
+0	FORT
+1	INF
+2	INF_AT
+3	CAV
+4	MG
+5	MORT
+6	AT
+7	AGL
+8	FLAK
+9	FLD_GUN
+10	OB_ART
+11	ARM_CAR
+12	LT_TNK
+13	MD_TNK
+14	HV_TNK
+15	CS_TNK
+16	AREA_SAM
+17	FLM_TNK
+18	ASSAULT
+19	SP_ATGM
+20	ENG
+21	SP_ART
+22	SP_FLAK
+23	WH_APC
+24	HT
+25	TR_APC
+26	UTIL
+27	MD_TRK
+28	HV_TRK
+29	INF_SAM
+30	SP_SAM
+31	OB_RKT
+32	VEH_SCOUT
+33	LT_AMPHIB
+34	HV_AMPHIB
+35	AMPHIB_TNK
+36	MINECLR_TNK
+37	ENG_TNK
+38	SP_MORT
+39	SP_GUN
+40	HV_INF
+41	BARGE
+42	ABOAT
+43	LCS
+44	AIRF
+45	SNIPER
+46	LCG
+47	GLIDER
+48	BARGECARR
+49	MCYCLE
+50	AIR_FO
+51	LT_INF
+52	WH_ATGM
+53	HELI
+54	CREW
+55	HQ
+56	AMMOCARR
+57	VEH_FO
+58	SCOUT
+59	MB_TNK
+60	PARA_AIR
+61	CRG_AIR
+62	AIRB
+63	FO
+64	MD_INF
+65	LMG_SEC
+66	SMG_SEC
+67	RFL_SEC
+68	RFL_INF
+69	ARM_INF
+70	HV_ARM_INF
+71	MD_ARM_INF
+72	LT_ARM_INF
+73	ARM_SPT
+74	ARM_SMG
+75	IRR_INF
+76	PRTS
+77	PRTS_SPT
+78	PRTS_BAND
+79	NAT_INF
+80	PRTS_SCOUT
+81	APC_SCOUT
+82	PATROL
+83	CMD
+84	CMD_SPT
+85	LT_CMD
+86	MD_CMD
+87	HV_CMD
+88	CMD_SCOUT
+89	GRDS_INF
+90	GRDS_SMG
+91	LT_GRDS
+92	MD_GRDS
+93	HV_GRDS
+94	GRDS_SCOUT
+95	GRDS_SPT
+96	PARA
+97	PARA_SPT
+98	PARA_LT_INF
+99	PARA_MD_INF
+100	PARA_SMG
+101	PARA_SCOUT
+102	RSRV_TNK
+103	MD_TNK
+104	CS_MB_TNK
+105	INF_TNK
+106	CS_INF_TNK
+107	OHV_TNK
+108	HV_ARM_CAR
+109	WAGON
+110	MRNS
+111	RNGR
+112	MRNS_LT_INF
+113	MRNS_SPT
+114	RNGR_SPT
+115	AIRMBL
+116	AIRMBL_SPT
+117	LGN
+118	LGN_SMG
+119	LGN_SPT
+120	HV_APC
+121	LT_APC
+122	LT_SPT_APC
+123	AIR_APC
+124	AIR_SPT_APC
+125	HT_APC_GUN
+126	WH_APC_GUN
+127	TR_APC_GUN
+128	LT_SP_FLAK
+129	LT_SP_ATGM
+130	SP_HWTZR
+131	CAV_TNK
+132	LT_CAV_TNK
+133	LT_SP_MORT
+134	EXPLOSIVE
+135	MB_TNK
+136	IMP_APC
+137	SP_RKT
+138	HETS
+139	SP_GUN
+140	PIONEER
+141	PARA_ENG
+142	PARA_AT
+143	PARA_SNIPER
+144	PARA_MG
+145	CMD_ENG
+146	CMD_AT
+147	CMD_SNIPER
+148	MOT_INF
+149	PARA_MG
+150	CAV_SCOUT
+151	RKT
+152	HV_MORT
+153	LT_MORT
+154	INF_HWTZR
+155	MD_OB_ART
+156	HV_OB_ART
+157	LT_AT
+158	HV_AT
+159	CAPT_TNK
+160	SL_INF
+161	SL_SPT
+162	SKI
+163	HV_SKI
+164	SKI_SNIPER
+165	SKI_AT
+166	SKI_ENG
+167	SNOW
+168	SKI_SCOUT
+169	SKI_SMG
+170	GRDS_ENG
+171	MRNS_ENG
+172	BCYCLE
+173	PARA_MORT
+174	AIRMBL_ENG
+175	LT_AIR_TNK
+176	HV_MG
+177	HV_MG_SEC
+178	POLICE
+179	HV_BCYCLE
+180	ART_PRMV
+181	WH_FLAK
+182	PACK
+183	LT_TRK
+184	AIR_FLD_HWTZR
+185	HV_AIRMBL
+186	RFL_AIRMBL
+187	MCYCLE
+188	HV_MCYCLE
+189	MLT
+190	LT_MLT
+191	HV_MLT
+192	MLT_SPT
+193	MG
+194	MG_SEC
+195	ENG_SPT
+196	PACK_HWTZR
+197	RBOAT
+198	TBOAT
+199	PBOAT
+200	SA_MORT
+201	SB_MORT
+202	SC_MORT
+203	AHELI
+204	LT_HELI
+205	HV_HELI
+206	INF_ATGM
+207	PARA_ATGM
+208	INF_RR
+209	PARA_RR
+210	OB_ML_RKT
+211	OB_ML_ART
+212	INF_HV_ATGM
+213	PARA_HV_ATGM
+214	SEAD
+215	GUNSHIP
+216	NOUNIT
+217	MRV_APC
+218	MERC
+219	LT_MRV_APC
+220	HV_MRV_APC
+221	LT_AHELI
+222	COIN_HELI
+223	COIN_F
+224	COIN_INF
+225	COIN_LT_INF
+226	COIN_HV_INF
+227	COIN_SPT
+228	COIN_SCOUT
+229	PARA_FO
+230	GRRLL_INF
+231	LT_GRRLL_INF
+232	HV_GRRLL_INF
+233	GRRLL_SPT
+234	GRRLL_SCOUT
+235	GRRLL_SNIPER
+236	GRRLL_RKT
+237	MRV_IFV
+238	LT_MRV_IFV
+239	HVRCRFT
+240	MRNS_HV_INF
+241	MRNS_SCOUT
+242	MRNS_SNIPER
+243	MRNS_FO
+244	MRNS_AT
+245	RKT_APC
+246	LT_RNGR
+247	HV_RNGR
+248	RNGR_SCOUT
+249	RNGR_SNIPER
+250	RNGR_PIONEER
+251	APC
+252	FLD_GUN
+253	COIN_B
+254	MG_TEAM
+255	SD_MORT
+
 ### NOTE: the following does not apply with SPWW2!!!
 [rawenum SPWOOB_FSTAT:BYTE] SPWOOB formation status
 0	D	"average"				"D"
@@ -781,4 +1185,6 @@ UNKNOWN		"unknown unit type"
 2	WHL	"wheel"
 3	WAT	"wheel (AT)"
 4	TRK	"track"
-7	NAV	"ship"
+5	BOAT	"boat"
+7	SHIP	"ship"
+8	SNOW	"snowmobile"

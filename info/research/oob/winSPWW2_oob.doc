@@ -41,7 +41,7 @@ column	offset	size	type	description
  0	0x0000	15	ASCIIZ	Name
  1	0x000F	1	INT1	Class type
  2	0x0010	1	INT1	Size
- 3	0x0011	1	???	???
+ 3	0x0011	1	INT1	Weapon sound?
  4	0x0012	1	INT1	Warhead size
  5	0x0013	2	STRUCT	HE/AP penetration
  6	0x0015	2	STRUCT	HE/AP Kill factor
@@ -65,25 +65,26 @@ column	offset	size	type	description
 
 [INT1:Class type]
 	0	UNKNOWN
-	1	Prime Infantry (INF_PRM)
-	2	Secondary Infantry (INF_SEC)
+	1	Primary Infantry Weapon (INF_PRM)
+	2	Secondary Infantry Weapon (INF_SEC)
 	3	Team Weapon (TEAM)
-	4	Anti-Aircraft Gun (AA)
-	5	Small Gun (SML_GUN)
+	4	Anti-Aircraft Weapon (AA)
+	5	Light Gun (SML_GUN)
 	6	Medium Gun (MDM_GUN)
 	7	Large gun (LRG_GUN)
-	8	Infantry Flame (FLAME_INF)
-	9	Vehicle Flame (FLAME_VHC)
-	10	Naval Gun (NAVAL)
+	8	Infantry Flamethrower (FLAME_INF)
+	9	Vehicle Flamethrower (FLAME_VHC)
+	10	Naval Artillery (NAVAL)
 	11	Aircraft Weapon (AIRCRAFT)
-	12	SAM (SAM)
-	13	Anti-Tank Missile (AT)
-	14	Cluster Bomb (LRG_CLSTR)
-	15	Cluster Minelet (SML_CLSTR)
-	16	Anti-Radar Missile (ARM)
-	17	ASM (ASM)
+	12	-UNUSED-
+	13	Anti-Tank Guided Missile (ATGM)
+	14	Large Cluster Bomb (LRG_CLSTR)
+	15	-UNUSED-
+	16	-UNUSED-
+	17	-UNUSED-
 	18	Napalm (NAPALM)
-	19	Auto Cannon
+	19	Auto Cannon (AUTO_CANNON)
+	20	Explosives
 
 [STRUCT:HE/AP penetration]
 	INT1[2]		Penetration	(HE/AP)
@@ -204,7 +205,9 @@ column	offset	size	type	description
 	2	Wheeled
 	3	Wheeled (AT)
 	4	Tracked
+	5	Boat
 	7	Ship
+	8	Snowmobile
 
 [STRUCT:Weapon sounds]
 	INT1[4]		Sound	(slot#1/slot#2/slot#3/slot#4)
@@ -258,7 +261,7 @@ column	offset	size	type	description
 	2	Artillery
 	3	Infantry
 	4	Miscellaneous
-	5	*AI*
+	5	Air Transport/Troops
 	10	Force HQ
 
 [INT1:Formation type]

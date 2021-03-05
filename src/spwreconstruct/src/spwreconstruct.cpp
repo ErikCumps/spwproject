@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War savegame reconstruction tool.
  *
- * Copyright (C) 2016-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2016-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -25,6 +25,7 @@ usage (char *app)
 	printf ("Supported game types:\n");
 	printf ("    SPWAW       SPWaW\n");
 	printf ("    WINSPWW2    winSPWW2\n");
+	printf ("    WINSPMBT    winSPMBT\n");
 	printf ("\n");
 
 	printf ("The savegame is reconstructed, from separate sections, from the current directory.\n");

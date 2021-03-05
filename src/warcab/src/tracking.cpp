@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - savegame file tracking.
  *
- * Copyright (C) 2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2020-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -275,6 +275,7 @@ gamefile_info (SPWAW_GAME_TYPE gametype, SPWAW_SAVE_TYPE savetype, GAMEFILE_META
 			}
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
+		case SPWAW_GAME_TYPE_WINSPMBT:
 			switch (savetype) {
 				case SPWAW_SAVE_TYPE_REGULAR:
 					meta->base         = "SpSv";

@@ -1,7 +1,7 @@
 /** \file
  * The Steel Panthers World at War report tool.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL V2
  */
@@ -10,7 +10,7 @@
 #include "utils.h"
 
 static void
-report_metadata (FILE *rf, SPWAW_SNAP_META_RAW *ptr)
+report_metadata (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_META_RAW *ptr)
 {
 	if (!ptr) return;
 
@@ -23,7 +23,7 @@ report_metadata (FILE *rf, SPWAW_SNAP_META_RAW *ptr)
 }
 
 static void
-report_battle (FILE *rf, SPWAW_SNAP_BATTLE_RAW *ptr)
+report_battle (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_BATTLE_RAW *ptr)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ report_battle (FILE *rf, SPWAW_SNAP_BATTLE_RAW *ptr)
 }
 
 static void
-report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN_RAW *ptr)
+report_campaign (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_CAMPAIGN_RAW *ptr)
 {
 	if (!ptr) return;
 
@@ -90,7 +90,7 @@ report_campaign (FILE *rf, SPWAW_SNAP_CAMPAIGN_RAW *ptr)
 }
 
 static void
-report_map (FILE *rf, SPWAW_SNAP_MAP_RAW *ptr)
+report_map (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_MAP_RAW *ptr)
 {
 	DWORD	x, y;
 
@@ -123,23 +123,23 @@ report_map (FILE *rf, SPWAW_SNAP_MAP_RAW *ptr)
 }
 
 static void
-report_game (FILE *rf, SPWAW_SNAP_GAME_RAW *ptr)
+report_game (FILE *rf, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_GAME_RAW *ptr)
 {
 	if (!ptr) return;
 
 	smart_title (rf, '=', "RAW game data report:\n");
 
-	report_metadata (rf, &(ptr->meta));
-	report_battle (rf, &(ptr->battle));
-	report_campaign (rf, &(ptr->campaign));
-	report_map (rf, &(ptr->map));
-	UD_block_report (&(ptr->UD), "game", 16, rf);
+	report_metadata	(rf, sp, &(ptr->meta));
+	report_battle	(rf, sp,&(ptr->battle));
+	report_campaign	(rf, sp, &(ptr->campaign));
+	report_map	(rf, sp, &(ptr->map));
+	UD_block_report	(&(ptr->UD), "game", 16, rf);
 
 	fprintf (rf, "\n");
 }
 
 static void
-report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
+report_formations (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_OOB_FRAW *ptr)
 {
 	DWORD	i;
 	char	pf[16];
@@ -185,7 +185,7 @@ report_formations (FILE *rf, SPWAW_SNAP_OOB_FRAW *ptr)
 }
 
 static void
-report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
+report_units (FILE *rf, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_URAW *ptr)
 {
 	DWORD	i, j;
 	char	pf[16];
@@ -235,6 +235,9 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 		fprintf (rf, "{%4lu} fc        : %u\n", i, p->fc);
 		fprintf (rf, "{%4lu} iv        : %u\n", i, p->iv);
 		fprintf (rf, "{%4lu} swim      : %u\n", i, p->swim);
+		if (sp->gametype == SPWAW_GAME_TYPE_WINSPMBT) {
+			fprintf (rf, "{%4lu} ew        : %u\n", i, p->ew);
+		}
 		fprintf (rf, "{%4lu} men       : %u\n", i, p->men);
 		fprintf (rf, "{%4lu} men_ori   : %u\n", i, p->men_ori);
 		fprintf (rf, "{%4lu} speed     : %u\n", i, p->speed);
@@ -265,7 +268,7 @@ report_units (FILE *rf, SPWAW_SNAP_OOB_URAW *ptr)
 }
 
 static void
-report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
+report_leaders (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_OOB_LRAW *ptr)
 {
 	DWORD	i;
 	char	pf[16];
@@ -310,7 +313,7 @@ report_leaders (FILE *rf, SPWAW_SNAP_OOB_LRAW *ptr)
 }
 
 static void
-report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
+report_positions (FILE *rf, SPWAW_SNAPSHOT * /*sp*/, SPWAW_SNAP_OOB_PRAW *ptr)
 {
 	DWORD	i;
 	char	pf[16];
@@ -349,16 +352,16 @@ report_positions (FILE *rf, SPWAW_SNAP_OOB_PRAW *ptr)
 }
 
 static void
-report_oob (FILE *rf, SPWAW_SNAP_OOB_RAW *ptr, int player)
+report_oob (FILE *rf, SPWAW_SNAPSHOT *sp, SPWAW_SNAP_OOB_RAW *ptr, int player)
 {
 	if (!ptr) return;
 
 	smart_title (rf, '=', "RAW player %u OOB report:\n", player);
 
-	report_formations (rf, &(ptr->formations));
-	report_units (rf, &(ptr->units));
-	report_leaders (rf, &(ptr->leaders));
-	report_positions (rf, &(ptr->positions));
+	report_formations (rf, sp, &(ptr->formations));
+	report_units	  (rf, sp, &(ptr->units));
+	report_leaders	  (rf, sp, &(ptr->leaders));
+	report_positions  (rf, sp, &(ptr->positions));
 
 	fprintf (rf, "\n");
 }
@@ -373,9 +376,9 @@ raw_report (SPWAW_SNAPSHOT *ptr, FILE *rf)
 	fprintf (rf, "Battle type: %s\n", SPWAW_battletype2str (ptr->type));
 	fprintf (rf, "\n");
 
-	report_game	(rf, &(ptr->raw.game));
-	report_oob	(rf, &(ptr->raw.OOBp1), 1);
-	report_oob	(rf, &(ptr->raw.OOBp2), 2);
+	report_game	(rf, ptr, &(ptr->raw.game));
+	report_oob	(rf, ptr, &(ptr->raw.OOBp1), 1);
+	report_oob	(rf, ptr, &(ptr->raw.OOBp2), 2);
 
 	return;
 }

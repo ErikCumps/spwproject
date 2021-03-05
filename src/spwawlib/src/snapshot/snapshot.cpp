@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,6 +11,7 @@
 #include "snapshot/snapshot.h"
 #include "gamefile/spwaw/game_spwaw.h"
 #include "gamefile/winspww2/game_winspww2.h"
+#include "gamefile/winspmbt/game_winspmbt.h"
 #include "common/internal.h"
 
 SPWAW_ERROR
@@ -24,6 +25,9 @@ load_from_game (GAMEDATA *src, SPWAW_SNAPSHOT *dst)
 			break;
 		case SPWAW_GAME_TYPE_WINSPWW2:
 			return (load_from_winspww2_game (src, dst));
+			break;
+		case SPWAW_GAME_TYPE_WINSPMBT:
+			return (load_from_winspmbt_game (src, dst));
 			break;
 		case SPWAW_GAME_TYPE_UNKNOWN:
 		default:

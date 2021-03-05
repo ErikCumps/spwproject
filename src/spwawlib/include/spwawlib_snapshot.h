@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot API.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -173,7 +173,7 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			OOB;				/* Unit OOB ID						*/
 	USHORT			OOBrid;				/* Unit OOB record ID					*/
 	BYTE			size;				/* Unit size						*/
-	BYTE			cost;				/* Unit cost						*/
+	USHORT			cost;				/* Unit cost						*/
 	BYTE			survive;			/* Unit survivability					*/
 	USHORT			leader;				/* Detected unit leader record ID			*/
 	BYTE			exp;				/* Unit experience					*/
@@ -198,6 +198,7 @@ typedef struct s_SPWAW_SNAP_OOB_UELRAW {
 	BYTE			fc;				/* Unit firecontrol rating				*/
 	BYTE			iv;				/* Unit infrared vision rating				*/
 	BYTE			swim;				/* Unit swim capability					*/
+	BYTE			ew;				/* Unit Electronic Warfare rating			*/
 	BYTE			men;				/* Unit manpower					*/
 	BYTE			men_ori;			/* Unit original manpower				*/
 	BYTE			speed;				/* Unit speed						*/
@@ -628,6 +629,7 @@ typedef struct s_SPWAW_SNAP_OOB_UEL_DATA {
 	int			fc;
 	int			iv;
 	int			swim;
+	int			ew;				/* Unit Electronic Warfare rating			*/
 	int			UTGidx;
 	SPWOOB_UTYPE		utype;
 	SPWOOB_UCLASS		uclass;

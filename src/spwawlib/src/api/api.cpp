@@ -66,6 +66,7 @@ spwaw_recfg (int cnt, SPWAW_OOBCFG *list, bool withUD)
 		switch (list[i].gametype) {
 			case SPWAW_GAME_TYPE_SPWAW:
 			case SPWAW_GAME_TYPE_WINSPWW2:
+			case SPWAW_GAME_TYPE_WINSPMBT:
 				break;
 			default:
 				RWE (SPWERR_FAILED, "unsupported game type");

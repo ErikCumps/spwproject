@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - winSPWW2 gamefile handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -11,15 +11,15 @@
 
 #include "gamefile/winspww2/defines_winspww2.h"
 
-typedef struct s_MAPHEXNAME {
+typedef struct s_WINSPWW2_MAPHEXNAME {
 	char	name[64];
-} MAPHEXNAME;
+} WINSPWW2_MAPHEXNAME;
 
 typedef struct s_WINSPWW2_SECTION54 {
 	union u_u {
 		char	raw[WINSPWW2_SIZESEC54];
 		struct s_d {
-			MAPHEXNAME	name[100];
+			WINSPWW2_MAPHEXNAME	name[100];
 		} d;
 	} u;
 } WINSPWW2_SECTION54;

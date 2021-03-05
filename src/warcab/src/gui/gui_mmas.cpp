@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - min-max-average-spread widget.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -254,6 +254,7 @@ GuiMMAS::update (bool forced)
 	if (item && d.ptype == MDLD_TREE_DOSSIER) {
 		switch (item->data.d->gametype) {
 			case SPWAW_GAME_TYPE_WINSPWW2:
+			case SPWAW_GAME_TYPE_WINSPMBT:
 				d.timeline->setCheckState (Qt::Unchecked);
 				d.timeline->setHidden (true);
 				break;

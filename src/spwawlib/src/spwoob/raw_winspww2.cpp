@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - SPWaW OOB handling - raw winSPWW2 data handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -76,7 +76,7 @@ spwoob_load_raw_winspww2_data (SPWOOB_DATA *dst)
 	for (i=0; i<SPWOOB_WCNT; i++) {
 		if (raw->w.name[i].data[0] != '\0') {
 			azstrcpy (raw->w.name[i].data, dst->wdata[i].name);
-			dst->wdata[i].wclass		= SPWOOB_WCLASS_xlt (raw->w.wclass[i]);
+			dst->wdata[i].wclass		= SPWOOB_WINSPWW2_WCLASS_xlt (raw->w.wclass[i]);
 			dst->wdata[i].size		= raw->w.size[i];
 			dst->wdata[i].warhead		= raw->w.warhead[i];
 			dst->wdata[i].kill_HE		= raw->w.kill[i].HE;
@@ -112,6 +112,7 @@ spwoob_load_raw_winspww2_data (SPWOOB_DATA *dst)
 			dst->udata[i].irvis		= raw->u.irvis[i];
 			dst->udata[i].fc		= raw->u.fc[i];
 			dst->udata[i].rf		= raw->u.rf[i];
+			dst->udata[i].ew		= 0;
 			dst->udata[i].stab		= raw->u.stab[i];
 			dst->udata[i].rof		= raw->u.rof[i];
 			dst->udata[i].load_cap		= raw->u.load_cap[i];
@@ -243,8 +244,7 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 	if (file) {
 		fprintf (file,
 			"rid,name,"
-			"wclass,size,"
-			"B17,"
+			"wclass,size,sound,"
 			"warhead,pen.HE,pen.AP,kill.HE,kill.AP,accuracy,range_max,range_APCR,pen_APCR,pen_HEAT,"
 			"B28,B29,B30,B31,B32,B33,B34,B35,B36,B37,B38,B39"
 			"\n");
@@ -253,14 +253,12 @@ spwoob_dump_raw_winspww2_data (void *rdata, BYTE id, char *base)
 			azstrcpy (raw->w.name[i].data, azsname);
 			fprintf (file,
 				"%d,%s,"
-				"%u,%u,"
-				"%u,"
+				"%u,%u,%u,"
 				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,"
 				"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u"
 				"\n",
 				i, azsname,
-				raw->w.wclass[i], raw->w.size[i],
-				raw->w.__data17[i],
+				raw->w.wclass[i], raw->w.size[i], raw->w.sound[i],
 				raw->w.warhead[i],
 				raw->w.pen[i].HE, raw->w.pen[i].AP,
 				raw->w.kill[i].HE, raw->w.kill[i].AP,
