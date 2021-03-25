@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -140,6 +140,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 			FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
 	}
 
+	log ("[%s] dst->blen=%u\n", __FUNCTION__, dst->blen);
 	pp = NULL;
 	for (i=0; i<dst->blen; i++) {
 		p = safe_malloc (SPWAW_BATTLE); COOMGOTO (p, "SPWAW_BATTLE", handle_error);
@@ -159,6 +160,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		rc = SPWOOB_LIST_takeref (dst->oobdata, hdrs[i].oobdat, &(p->oobdat));
 		ERRORGOTO ("SPWOOB_LIST_idx2spwoob(battle oob data index)", handle_error);
 
+
 		if (hdrs[i].name != BADSTRIDX) {
 			p->name = STRTAB_getstr (stab, hdrs[i].name);
 		} else {
@@ -176,6 +178,8 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		} else {
 			p->bdate.btlidx = p->tcnt ? p->tlist[0]->snap->game.btlidx : SPWAW_NOBTLIDX;
 		}
+		SPWAW_BDATE (p->bdate, date, true);
+		log ("i=%02u, p->bdate=%s, p->tcnt=%u\n", i, date, p->tcnt);
 
 		rc = dossier_set_battle_props (p);
 		ERRORGOTO ("dossier_set_battle_props()", handle_error);
