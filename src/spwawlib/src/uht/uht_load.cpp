@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -170,9 +170,12 @@ UHT_load_binfo_list (int fd, SPWAW_UHT *dst, UHT_HEADER &hdr)
 		FAILGOTO (SPWERR_FRFAILED, "bread(BINFO list)", handle_error);
 
 	/* Read BINFO data */
+	UHTLOG3 ("[%s] hdr.bcnt=%u, dst->dossier->bcnt=%u\n", __FUNCTION__, hdr.bcnt, dst->dossier->bcnt);
 	for (ULONG i=0; i<hdr.bcnt; i++) {
 		SPWAW_BATTLE_DATE bd; bd.btlidx = ihdrs[i].bdi; SPWAW_stamp2date (&(ihdrs[i].bdd), &(bd.date));
 		SPWAW_BATTLE *b = dossier_find_battle (dst->dossier, &(bd));
+		SPWAW_BDATE (bd, date, true);
+		UHTLOG3 ("i=%02u, bd=%s, b=0x%8.8x\n", i, date, b);
 		if (!b) FAILGOTO (SPWERR_CORRUPT, "dossier_find_battle()", handle_error);
 
 		rc = UHT_battle_info (dst, b, &info); ERRORGOTO ("UHT_battle_info()", handle_error);
@@ -219,5 +222,6 @@ UHT_load (int fd, SPWAW_UHT *dst)
 	return (SPWERR_OK);
 
 handle_error:
-	return (rc);
+	// Something went wrong, so we'll rebuild the UHT to recover
+	return (UHT_rebuild (dst));
 }
