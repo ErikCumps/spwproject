@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - build options.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -23,6 +23,9 @@
 
 /*! Set to 1 to enable megacampaign tracking file backups */
 #define	ENABLE_TRACKING_BACKUPS	0
+
+/*! Set to 1 to disable readonly mode */
+#define	DISABLE_READONLY_MODE	0
 
 /*! Set to 1 to allow experimental features
  * Warning: this may break the build and/or warcab functionality!

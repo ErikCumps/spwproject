@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -857,6 +857,9 @@ WARCABState::set_readonly (char *gamepath, SPWAW_GAME_TYPE gametype, bool path_e
 		o.roreason = QString("game folder does not exist.\n%1").arg(gamepath);
 	}
 	// TODO: add signal?
+#if	DISABLE_READONLY_MODE
+	d.readonly = SL_false;
+#endif	/* DISABLE_READONLY_MODE */
 }
 
 void
