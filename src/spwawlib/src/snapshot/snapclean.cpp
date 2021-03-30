@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,7 +15,7 @@
 static void
 snapclean_raw_game (SPWAW_SNAP_GAME_RAW *ptr)
 {
-	safe_free (ptr->map.data);
+	if (!ptr->map.reference) safe_free (ptr->map.data);
 	if (cfg.withUD) UD_free (&(ptr->UD));
 }
 
@@ -60,7 +60,7 @@ snapclean_raw (SPWAW_SNAP_RAW *ptr)
 static void
 snapclean_game (SPWAW_SNAP_GAME *ptr)
 {
-	safe_free (ptr->map.data);
+	if (!ptr->map.reference) safe_free (ptr->map.data);
 }
 
 static void

@@ -16,6 +16,7 @@
 #include "snapshot/snapfile_v11.h"
 #include "snapshot/snapfile_v12.h"
 #include "snapshot/snapfile_v13.h"
+#include "snapshot/snapfile_v14.h"
 #include "snapshot/index.h"
 #include "strtab/strtab.h"
 #include "fileio/fileio.h"
@@ -72,13 +73,15 @@ load_map_data (SNAP_MAPDATA *src, SPWAW_SNAP_MAP_DRAW *dst)
 static SPWAW_ERROR
 load_map_list (SBR *sbr, ULONG cnt, SPWAW_SNAP_MAP_DRAW *map, ULONG version)
 {
+	SPWAW_ERROR	rc = SPWERR_OK;
 	ULONG		i;
 	SNAP_MAPDATA	d;
 
 	for (i=0; i<cnt; i++) {
 		/* We are now backwards compatible with version 11 and older */
 		if (version <= SNAP_VERSION_V11) {
-			snapshot_load_v11_map_data (sbr, &d);
+			rc = snapshot_load_v11_map_data (sbr, &d);
+			ROE ("snapshot_load_v11_map_data(raw map data)");
 		} else {
 			if (sbread (sbr, (char *)&d, sizeof (d)) != sizeof (d))
 				RWE (SPWERR_FRFAILED, "sbread(raw map data) failed");
@@ -103,33 +106,56 @@ load_map (int fd, SPWAW_SNAP_MAP_RAW *map, ULONG version)
 
 	pos = bseekget (fd);
 
+	/* We are now backwards compatible with version 14 and older */
 	memset (&maphdr, 0, sizeof (maphdr));
-	if (!bread (fd, (char *)&maphdr, sizeof (maphdr), false))
-		FAILGOTO (SPWERR_FRFAILED, "bread(maphdr)", handle_error);
+	if (version <= SNAP_VERSION_V14) {
+		rc = snapshot_load_v14_map_header (fd, &maphdr);
+		ERRORGOTO("snapshot_load_v14_map_header(maphdr)", handle_error);
+	} else {
+		if (!bread (fd, (char *)&maphdr, sizeof (maphdr), false))
+			FAILGOTO (SPWERR_FRFAILED, "bread(maphdr)", handle_error);
+	}
 
-	mapcnt = maphdr.width * maphdr.height;
+	if (!maphdr.reference) {
+		/* the snapshot save contains map data, so load it */
+		mapcnt = maphdr.width * maphdr.height;
 
-	size = maphdr.size;
-	data = safe_smalloc (char, size);
-	COOMGOTO (data, "SNAP_MAPDATA buffer", handle_error);
+		size = maphdr.size;
+		data = safe_smalloc (char, size);
+		COOMGOTO (data, "SNAP_MAPDATA buffer", handle_error);
 
-	cbio.data = data; cbio.size = size; cbio.comp = &(maphdr.comp);
-	if (!cbread (fd, cbio, "raw map data")) FAILGOTO (SPWERR_FRFAILED, "cbread(raw map data) failed", handle_error);
+		cbio.data = data; cbio.size = size; cbio.comp = &(maphdr.comp);
+		if (!cbread (fd, cbio, "raw map data")) FAILGOTO (SPWERR_FRFAILED, "cbread(raw map data) failed", handle_error);
 
-	sbr = sbread_init (data, size);
-	if (!sbr) FAILGOTO (SPWERR_FRFAILED, "sbread_init() failed", handle_error);
+		sbr = sbread_init (data, size);
+		if (!sbr) FAILGOTO (SPWERR_FRFAILED, "sbread_init() failed", handle_error);
 
-	map->width  = maphdr.width;
-	map->height = maphdr.height;
-	map->size = mapcnt * sizeof(SPWAW_SNAP_MAP_DRAW);
-	map->data = safe_nmalloc (SPWAW_SNAP_MAP_DRAW, mapcnt);
-	COOMGOTO (map->data, "SPWAW_SNAP_MAP_DRAW map", handle_error);
+		map->reference	= false;
+		map->width	= maphdr.width;
+		map->height	= maphdr.height;
+		map->size	= mapcnt * sizeof(SPWAW_SNAP_MAP_DRAW);
+		map->data	= safe_nmalloc (SPWAW_SNAP_MAP_DRAW, mapcnt);
+		COOMGOTO (map->data, "SPWAW_SNAP_MAP_DRAW map", handle_error);
 
-	rc = load_map_list (sbr, mapcnt, map->data, version);
-	ERRORGOTO ("load_map_list()", handle_error);
+		rc = load_map_list (sbr, mapcnt, map->data, version);
+		ERRORGOTO ("load_map_list()", handle_error);
 
-	sbread_stop (sbr); sbr = NULL;
-	safe_free (data);
+		sbread_stop (sbr); sbr = NULL;
+		safe_free (data);
+	} else {
+		/* the snapshot save indicates a map data reference */
+		map->reference	= true;
+		map->width	= 0;
+		map->height	= 0;
+		map->size	= 0;
+		map->data	= NULL;
+
+		long skip = maphdr.comp ? maphdr.comp : maphdr.size;
+		if (skip) {
+			log ("skipping unexpected %lu bytes snapshot data after battle map reference\n", skip);
+			bseekmove (fd, skip);
+		}
+	}
 
 	return (SPWERR_OK);
 
@@ -158,13 +184,15 @@ load_oobf (SNAP_OOB_FEL *src, SPWAW_SNAP_OOB_FELRAW *dst, STRTAB *stab)
 static SPWAW_ERROR
 load_oobf_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
+	SPWAW_ERROR	rc = SPWERR_OK;
 	ULONG		i;
 	SNAP_OOB_FEL	f;
 
 	for (i=0; i<cnt; i++) {
 		/* We are now backwards compatible with version 11 and older */
 		if (version <= SNAP_VERSION_V11) {
-			snapshot_load_v11_oob_fel (sbr, &f);
+			rc = snapshot_load_v11_oob_fel (sbr, &f);
+			ROE ("snapshot_load_v11_oob_fel(formation data)");
 		} else {
 			if (sbread (sbr, (char *)&f, sizeof (f)) != sizeof (f))
 				RWE (SPWERR_FRFAILED, "sbread(formation data)");
@@ -240,17 +268,21 @@ load_oobu (SNAP_OOB_UEL *src, SPWAW_SNAP_OOB_UELRAW *dst, STRTAB *stab)
 static SPWAW_ERROR
 load_oobu_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
+	SPWAW_ERROR	rc = SPWERR_OK;
 	ULONG		i;
 	SNAP_OOB_UEL	u;
 
 	for (i=0; i<cnt; i++) {
 		/* We are now backwards compatible with versions 13, 12, 11 and 10 */
 		if (version <= SNAP_VERSION_V10) {
-			snapshot_load_v10_oob_uel (sbr, &u);
+			rc = snapshot_load_v10_oob_uel (sbr, &u);
+			ROE ("snapshot_load_v10_oob_uel(unit data)");
 		} else if (version == SNAP_VERSION_V11) {
-			snapshot_load_v11_oob_uel (sbr, &u);
+			rc = snapshot_load_v11_oob_uel (sbr, &u);
+			ROE ("snapshot_load_v11_oob_uel(unit data)");
 		} else if (version <= SNAP_VERSION_V13) {
-			snapshot_load_v13_oob_uel (sbr, &u);
+			rc = snapshot_load_v13_oob_uel (sbr, &u);
+			ROE ("snapshot_load_v13_oob_uel(unit data)");
 		} else {
 			if (sbread (sbr, (char *)&u, sizeof (u)) != sizeof (u))
 				RWE (SPWERR_FRFAILED, "sbread(unit data)");
@@ -321,13 +353,15 @@ load_oobl (SNAP_OOB_LEL *src, SPWAW_SNAP_OOB_LELRAW *dst, STRTAB *stab)
 static SPWAW_ERROR
 load_oobl_list (SBR *sbr, USHORT cnt, SPWAW_SNAP_OOB_RAW *oob, STRTAB *stab, ULONG version)
 {
+	SPWAW_ERROR	rc = SPWERR_OK;
 	ULONG		i;
 	SNAP_OOB_LEL	l;
 
 	for (i=0; i<cnt; i++) {
 		/* We are now backwards compatible with version 11 and older */
 		if (version <= SNAP_VERSION_V11) {
-			snapshot_load_v11_oob_lel (sbr, &l);
+			rc = snapshot_load_v11_oob_lel (sbr, &l);
+			ROE ("snapshot_load_v11_oob_lel(leader data)");
 		} else {
 			if (sbread (sbr, (char *)&l, sizeof (l)) != sizeof (l))
 				RWE (SPWERR_FRFAILED, "sbread(leader data)");
@@ -638,7 +672,7 @@ snapload (int fd, SPWAW_SNAPSHOT *dst, STRTAB *stabptr)
 	/* We are now backwards compatible with version 11 and older */
 	if (mhdr.version <= SNAP_VERSION_V11) {
 		rc = snapshot_load_v11_snap (fd, &mhdr, &snap);
-		ROE ("snapshot_load_v11_snap(snapshot game data)");
+		ERRORGOTO ("snapshot_load_v11_snap(snapshot game data)", handle_error);
 	} else {
 		cbio.data = (char *)&snap; cbio.size = mhdr.snap.size; cbio.comp = &(mhdr.snap.comp);
 		if (!cbread (fd, cbio, "snapshot game data"))

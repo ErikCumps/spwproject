@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - winSPWW2 game data.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,6 +19,7 @@ setup (SPWAW_SNAP_MAP_RAW *map)
 
 	CNULLARG (map);
 
+	map->reference = false;
 	map->data = NULL;
 
 	cnt = map->width * map->height;

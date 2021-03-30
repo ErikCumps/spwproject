@@ -120,6 +120,7 @@ typedef struct s_SPWAW_SNAP_MAP_DRAW {
 
 /* SPWAW map info: raw data */
 typedef struct s_SPWAW_SNAP_MAP_RAW {
+	bool			reference;			/* Battle map data reference flag			*/
 	DWORD			width;				/* Battle map width					*/
 	DWORD			height;				/* Battle map height					*/
 	SPWAW_SNAP_MAP_DRAW	*data;				/* Battle map data					*/
@@ -418,6 +419,7 @@ typedef struct s_SPWAW_SNAP_MAP_DATA {
 
 /* SPWAW map info */
 typedef struct s_SPWAW_SNAP_MAP {
+	bool			reference;			/* Battle map hex data reference flag			*/
 	int			width;				/* Battle map width					*/
 	int			height;				/* Battle map height					*/
 	SPWAW_SNAP_MAP_DATA	*data;				/* Battle map hex data					*/

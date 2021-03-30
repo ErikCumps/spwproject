@@ -191,6 +191,8 @@ snapint_game_map (SPWAW_SNAPSHOT *ptr)
 	raw = &(ptr->raw.game.map);
 	dst = &(ptr->game.map);
 
+	dst->reference = false;
+
 	dst->width  = raw->width;
 	dst->height = raw->height;
 

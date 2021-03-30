@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - gamefile handling - SPWaW game data.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -20,6 +20,7 @@ setup (SPWAW_SNAP_MAP_RAW *map)
 
 	CNULLARG (map);
 
+	map->reference = false;
 	map->data = NULL;
 
 	cnt = map->width * map->height;

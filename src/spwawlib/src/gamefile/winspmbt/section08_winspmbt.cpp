@@ -19,6 +19,7 @@ setup (SPWAW_SNAP_MAP_RAW *map)
 
 	CNULLARG (map);
 
+	map->reference = false;
 	map->data = NULL;
 
 	cnt = map->width * map->height;

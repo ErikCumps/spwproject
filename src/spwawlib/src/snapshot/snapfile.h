@@ -15,7 +15,7 @@
 
 #define	SNAP_MAGIC	"SPWAWLIB_SNAPSHOT"
 #define	SNAP_MGCLEN	20
-#define	SNAP_VERSION	14
+#define	SNAP_VERSION	15
 #define	SNAP_VHEXCNT	SPWAW_VHEXCNT
 
 #pragma pack(push, r1, 1)
@@ -139,6 +139,7 @@ typedef struct s_SNAP {
 } SNAP;
 
 typedef struct s_SNAP_MAPHDR {
+	BYTE		reference;		/* Battle map data reference flag					*/
 	DWORD		width;			/* Battle map width							*/
 	DWORD		height;			/* Battle map height							*/
 	ULONG		data;			/* Map data offset, relative to start of header				*/

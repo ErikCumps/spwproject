@@ -75,29 +75,41 @@ save_map (int fd, SPWAW_SNAP_MAP_RAW *map, bool compress)
 	ULONG		p0, p1;
 	CBIO		cbio;
 
-	p0 = bseekget (fd);
-	bseekmove (fd, sizeof (maphdr));
-
-	sbw = sbwrite_init (NULL, 0);
-	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
-
-	for (i=0; i<(map->width * map->height); i++) {
-		prep_map_data (&(map->data[i]), &d);
-		if (sbwrite (sbw, (char *)&d, sizeof (d)) != sizeof (d))
-			FAILGOTO (SPWERR_FWFAILED, "sbwrite(raw map data)", handle_error);
-	}
-
-	sbwrite_stop (sbw, &data, &size); sbw = NULL;
-
 	memset (&maphdr, 0, sizeof (maphdr));
-	maphdr.width  = map->width;
-	maphdr.height = map->height;
-	maphdr.data   = bseekget (fd) - p0;
-	maphdr.size   = size;
 
-	cbio.data = data; cbio.size = size; cbio.comp = &(maphdr.comp);
-	if (!cbwrite (fd, cbio, "raw map data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(raw map data) failed", handle_error);
-	safe_free (data);
+	p0 = bseekget (fd);
+	if (!map->reference) {
+		/* the snapshot contains map data, so save it */
+		bseekmove (fd, sizeof (maphdr));
+
+		sbw = sbwrite_init (NULL, 0);
+		if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
+
+		for (i=0; i<(map->width * map->height); i++) {
+			prep_map_data (&(map->data[i]), &d);
+			if (sbwrite (sbw, (char *)&d, sizeof (d)) != sizeof (d))
+				FAILGOTO (SPWERR_FWFAILED, "sbwrite(raw map data)", handle_error);
+		}
+
+		sbwrite_stop (sbw, &data, &size); sbw = NULL;
+
+		maphdr.reference = false;
+		maphdr.width	 = map->width;
+		maphdr.height	 = map->height;
+		maphdr.data	 = bseekget (fd) - p0;
+		maphdr.size	 = size;
+
+		cbio.data = data; cbio.size = size; cbio.comp = &(maphdr.comp);
+		if (!cbwrite (fd, cbio, "raw map data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(raw map data) failed", handle_error);
+		safe_free (data);
+	} else {
+		/* the snapshot contains a map data reference, so mark it as such */
+		maphdr.reference = true;
+		maphdr.width	 = 0;
+		maphdr.height	 = 0;
+		maphdr.data	 = bseekget (fd) - p0;
+		maphdr.size	 = 0;
+	}
 
 	p1 = bseekget (fd); bseekset (fd, p0);
 	if (!bwrite (fd, (char *)&maphdr, sizeof (maphdr))) FAILGOTO (SPWERR_FWFAILED, "bwrite(maphdr) failed", handle_error);
