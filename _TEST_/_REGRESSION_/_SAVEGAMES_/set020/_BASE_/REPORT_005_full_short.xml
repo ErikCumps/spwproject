@@ -1,0 +1,5060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <game>winSPWW2</game>
+    <save>regular</save>
+    <battle>campaign</battle>
+</type>
+<game>
+    <metadata>
+        <title>T1, Ger vs Swe, 7/1943 </title>
+    </metadata>
+    <battle>
+        <date>1943/07</date>
+        <turn>
+            <current>1</current>
+            <max>26</max>
+        </turn>
+        <status>in progress</status>
+        <location>Idre border area</location>
+        <terrain>summer</terrain>
+        <weather>clear</weather>
+        <visibility>
+            <hexes>43</hexes>
+            <meters>2150</meters>
+        </visibility>
+        <player1>
+            <oob>16</oob>
+            <nation>Nazi Germany</nation>
+            <mission>assault</mission>
+        </player1>
+        <player2>
+            <oob>36</oob>
+            <nation>Sweden</nation>
+            <mission>defence</mission>
+        </player2>
+        <victory_hex_stats count="4">
+            <victory_hex_stat>
+                <owner>neutral</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player1</owner>
+                <count>0</count>
+                <points>0</points>
+            </victory_hex_stat>
+            <victory_hex_stat>
+                <owner>player2</owner>
+                <count>21</count>
+                <points>2100</points>
+            </victory_hex_stat>
+        </victory_hex_stats>
+    </battle>
+    <map>
+        <size>
+            <hexes>
+                <width>160</width>
+                <height>60</height>
+            </hexes>
+            <kilometers>
+                <width>8.000</width>
+                <height>3.000</height>
+            </kilometers>
+        </size>
+    </map>
+    <campaign>
+        <flag>1</flag>
+        <dates>
+            <start>(empty date)</start>
+            <end>(empty date)</end>
+        </dates>
+        <battles>
+            <fought>0</fought>
+            <max>0</max>
+        </battles>
+        <results>
+            <decisive_victories>0</decisive_victories>
+            <marginal_victories>0</marginal_victories>
+            <losses>0</losses>
+        </results>
+        <battle_index>65535</battle_index>
+        <battle_result>
+            <player1>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player1>
+            <player2>
+                <score>0</score>
+                <result>drawn battle</result>
+            </player2>
+        </battle_result>
+        <losses>
+            <battle>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </battle>
+            <total>
+                <player1>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player1>
+                <player2>
+                    <men>0</men>
+                    <artillery>0</artillery>
+                    <soft_vehicles>0</soft_vehicles>
+                    <apc>0</apc>
+                    <afv>0</afv>
+                    <aircraft>0</aircraft>
+                    <gliders>0</gliders>
+                </player2>
+            </total>
+        </losses>
+    </campaign>
+</game>
+<OOB player="1">
+    <side>0</side>
+    <OOB>16</OOB>
+    <nation>Nazi Germany</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Kommandeur</designation>
+        <rank>LtC</rank>
+        <name>Striezel</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>80</maximum>
+                <minimum>63</minimum>
+                <average>71.000</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>100.000</minimum>
+                <average>100.000</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>4</count>
+            <left>4</left>
+        </formations>
+        <units>
+            <count>14</count>
+            <left>14</left>
+        </units>
+    </statistics>
+    <formations count="4">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>German HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Kommandeur</designation>
+                    <rank>LtC</rank>
+                    <name>Striezel</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>429</OOB_record_ID>
+            <type>SdKfz 251/1</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>SdKfz 251/1</designation>
+                    <rank>Sgt</rank>
+                    <name>Ehrhardt</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>353</OOB_record_ID>
+            <type>PzGrenZug+(gep)</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="7">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>PzGren SMG Grp</designation>
+                    <rank>1Lt</rank>
+                    <name>Scherrer</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>PzGren Grp</designation>
+                    <rank>Cpl</rank>
+                    <name>Braun</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C2</ID>
+                    <designation>PzGren Grp</designation>
+                    <rank>Cpl</rank>
+                    <name>Rauch</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C3</ID>
+                    <designation>SdKfz 251/1</designation>
+                    <rank>Cpl</rank>
+                    <name>Ostendorff</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>C4</ID>
+                    <designation>SdKfz 251/1</designation>
+                    <rank>Sgt</rank>
+                    <name>Langer</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>C5</ID>
+                    <designation>SdKfz 251/1</designation>
+                    <rank>Cpl</rank>
+                    <name>Hauschildt</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>C6</ID>
+                    <designation>SdKfz 251/10</designation>
+                    <rank>Sgt</rank>
+                    <name>Krogel</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>core</core_status>
+            <status>average</status>
+            <OOB_record_ID>12</OOB_record_ID>
+            <type>Panzer Zug/5</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="5">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>PzKw III J</designation>
+                    <rank>2Lt</rank>
+                    <name>Haeften</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>PzKw III J</designation>
+                    <rank>Cpl</rank>
+                    <name>Zander</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>D2</ID>
+                    <designation>PzKw III J</designation>
+                    <rank>Sgt</rank>
+                    <name>Hoedel</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>D3</ID>
+                    <designation>PzKw III J</designation>
+                    <rank>Cpl</rank>
+                    <name>Petersbach</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>D4</ID>
+                    <designation>PzKw III J</designation>
+                    <rank>Sgt</rank>
+                    <name>Reichmann</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="14">
+        <unit core="true">
+            <ID>A0</ID>
+            <designation>Kommandeur</designation>
+            <unit>Kommandeur</unit>
+            <leader>Striezel</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>German</OOB>
+            <OOBrid>244</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>76</morale>
+            <suppression>0</suppression>
+            <rally>85</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>43</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>1</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>B0</ID>
+            <designation>SdKfz 251/1</designation>
+            <unit>SdKfz 251/1</unit>
+            <leader>Ehrhardt</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>German</OOB>
+            <OOBrid>568</OOBrid>
+            <type>tracked APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>79</morale>
+            <suppression>0</suppression>
+            <rally>44</rally>
+            <inf_skills>15</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>73</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>2</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C0</ID>
+            <designation>PzGren SMG Grp</designation>
+            <unit>PzGren SMG Grp</unit>
+            <leader>Scherrer</leader>
+            <rank>1Lt</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>287</OOBrid>
+            <type>armored heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>74</experience>
+            <experience_class>average</experience_class>
+            <morale>72</morale>
+            <suppression>0</suppression>
+            <rally>68</rally>
+            <inf_skills>75</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>3</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C1</ID>
+            <designation>PzGren Grp</designation>
+            <unit>PzGren Grp</unit>
+            <leader>Braun</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>550</OOBrid>
+            <type>armored infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>80</morale>
+            <suppression>0</suppression>
+            <rally>69</rally>
+            <inf_skills>77</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>34</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>4</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C2</ID>
+            <designation>PzGren Grp</designation>
+            <unit>PzGren Grp</unit>
+            <leader>Rauch</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>550</OOBrid>
+            <type>armored infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>48</rally>
+            <inf_skills>68</inf_skills>
+            <art_skills>31</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>5</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C3</ID>
+            <designation>SdKfz 251/1</designation>
+            <unit>SdKfz 251/1</unit>
+            <leader>Ostendorff</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>568</OOBrid>
+            <type>tracked APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>76</experience>
+            <experience_class>average</experience_class>
+            <morale>80</morale>
+            <suppression>0</suppression>
+            <rally>70</rally>
+            <inf_skills>26</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>76</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C4</ID>
+            <designation>SdKfz 251/1</designation>
+            <unit>SdKfz 251/1</unit>
+            <leader>Langer</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>568</OOBrid>
+            <type>tracked APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>73</morale>
+            <suppression>0</suppression>
+            <rally>80</rally>
+            <inf_skills>27</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>77</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>7</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C5</ID>
+            <designation>SdKfz 251/1</designation>
+            <unit>SdKfz 251/1</unit>
+            <leader>Hauschildt</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>568</OOBrid>
+            <type>tracked APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>80</experience>
+            <experience_class>veteran</experience_class>
+            <morale>76</morale>
+            <suppression>0</suppression>
+            <rally>59</rally>
+            <inf_skills>35</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>76</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>8</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>C6</ID>
+            <designation>SdKfz 251/10</designation>
+            <unit>SdKfz 251/10</unit>
+            <leader>Krogel</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>German</OOB>
+            <OOBrid>827</OOBrid>
+            <type>halftrack gun APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>0</suppression>
+            <rally>61</rally>
+            <inf_skills>26</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>78</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>9</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D0</ID>
+            <designation>PzKw III J</designation>
+            <unit>PzKw III J</unit>
+            <leader>Haeften</leader>
+            <rank>2Lt</rank>
+            <formation>D</formation>
+            <OOB>German</OOB>
+            <OOBrid>850</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>0</suppression>
+            <rally>51</rally>
+            <inf_skills>19</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>78</arm_skills>
+            <smokedevice>1</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>10</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D1</ID>
+            <designation>PzKw III J</designation>
+            <unit>PzKw III J</unit>
+            <leader>Zander</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>German</OOB>
+            <OOBrid>850</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>78</morale>
+            <suppression>0</suppression>
+            <rally>47</rally>
+            <inf_skills>18</inf_skills>
+            <art_skills>12</art_skills>
+            <arm_skills>58</arm_skills>
+            <smokedevice>1</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>11</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D2</ID>
+            <designation>PzKw III J</designation>
+            <unit>PzKw III J</unit>
+            <leader>Hoedel</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>German</OOB>
+            <OOBrid>850</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>77</morale>
+            <suppression>0</suppression>
+            <rally>84</rally>
+            <inf_skills>11</inf_skills>
+            <art_skills>30</art_skills>
+            <arm_skills>74</arm_skills>
+            <smokedevice>1</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>12</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D3</ID>
+            <designation>PzKw III J</designation>
+            <unit>PzKw III J</unit>
+            <leader>Petersbach</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>German</OOB>
+            <OOBrid>850</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>17</inf_skills>
+            <art_skills>13</art_skills>
+            <arm_skills>74</arm_skills>
+            <smokedevice>1</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>13</y>
+            </position>
+        </unit>
+        <unit core="true">
+            <ID>D4</ID>
+            <designation>PzKw III J</designation>
+            <unit>PzKw III J</unit>
+            <leader>Reichmann</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>German</OOB>
+            <OOBrid>850</OOBrid>
+            <type>medium tank</type>
+            <class>armor</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>75</morale>
+            <suppression>0</suppression>
+            <rally>48</rally>
+            <inf_skills>24</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>67</arm_skills>
+            <smokedevice>1</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>1</x>
+                <y>14</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
+<OOB player="2">
+    <side>1</side>
+    <OOB>36</OOB>
+    <nation>Sweden</nation>
+    <leader>
+        <ID>A0</ID>
+        <designation>Swedish HQ</designation>
+        <rank>LtC</rank>
+        <name>Sundstrom</name>
+    </leader>
+    <attributes>
+        <totals>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>99.797</readiness>
+        </totals>
+        <formation_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <losses>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </losses>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>97.778</minimum>
+                <average>99.596</average>
+            </readiness>
+        </formation_attributes>
+        <unit_attributes>
+            <kills>
+                <maximum>0</maximum>
+                <minimum>0</minimum>
+                <average>0.000</average>
+            </kills>
+            <experience>
+                <maximum>100</maximum>
+                <minimum>57</minimum>
+                <average>66.273</average>
+            </experience>
+            <readiness>
+                <maximum>100.000</maximum>
+                <minimum>97.015</minimum>
+                <average>99.797</average>
+            </readiness>
+        </unit_attributes>
+    </attributes>
+    <statistics>
+        <formations>
+            <count>22</count>
+            <left>22</left>
+        </formations>
+        <units>
+            <count>66</count>
+            <left>66</left>
+        </units>
+    </statistics>
+    <formations count="22">
+        <formation core="false">
+            <name>A</name>
+            <leader>A0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>1</OOB_record_ID>
+            <type>Swedish HQ</type>
+            <organizational_type>force HQ</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>A0</ID>
+                    <designation>Swedish HQ</designation>
+                    <rank>LtC</rank>
+                    <name>Sundstrom</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>B</name>
+            <leader>B0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>90</OOB_record_ID>
+            <type>Rifle Co 43</type>
+            <organizational_type>company</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>B0</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpt</rank>
+                    <name>Bengtsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>B1</ID>
+                    <designation>81mm m29 Sec</designation>
+                    <rank>Sgt</rank>
+                    <name>Sundberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>B2</ID>
+                    <designation>8mm m/36 Sec</designation>
+                    <rank>Cpl</rank>
+                    <name>Jonsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>C</name>
+            <leader>C0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>0</OOB_record_ID>
+            <type>Rifle Plt 43</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="7">
+                <unit>
+                    <ID>C0</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>2Lt</rank>
+                    <name>Mansson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C1</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Forsberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C2</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Lundgren</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C3</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Lind</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>C4</ID>
+                    <designation>47mm Grk m/40</designation>
+                    <rank>Sgt</rank>
+                    <name>Fransson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>C5</ID>
+                    <designation>AT-Inf PLd</designation>
+                    <rank>Cpl</rank>
+                    <name>Lundberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>C6</ID>
+                    <designation>Ski SMG Team</designation>
+                    <rank>Cpl</rank>
+                    <name>Moller</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>D</name>
+            <leader>D0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>0</OOB_record_ID>
+            <type>Rifle Plt 43</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="7">
+                <unit>
+                    <ID>D0</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>1Lt</rank>
+                    <name>Eliasson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>D1</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Lundin</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>D2</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Jansson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>D3</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Hakansson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>D4</ID>
+                    <designation>47mm Grk m/40</designation>
+                    <rank>Sgt</rank>
+                    <name>Olsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>D5</ID>
+                    <designation>AT-Inf PLd</designation>
+                    <rank>Cpl</rank>
+                    <name>Ekstrom</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>D6</ID>
+                    <designation>Ski SMG Team</designation>
+                    <rank>Cpl</rank>
+                    <name>Soderlund</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>E</name>
+            <leader>E0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>0</OOB_record_ID>
+            <type>Rifle Plt 43</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="7">
+                <unit>
+                    <ID>E0</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>1Lt</rank>
+                    <name>Lindqvist</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>E1</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Ericson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>E2</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Lindberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>E3</ID>
+                    <designation>Rifle Sqd AT</designation>
+                    <rank>Cpl</rank>
+                    <name>Persson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>E4</ID>
+                    <designation>47mm Grk m/40</designation>
+                    <rank>Sgt</rank>
+                    <name>Lindstrom</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>3</headcount>
+                </unit>
+                <unit>
+                    <ID>E5</ID>
+                    <designation>AT-Inf PLd</designation>
+                    <rank>Cpl</rank>
+                    <name>Nyberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>E6</ID>
+                    <designation>Ski SMG Team</designation>
+                    <rank>Cpl</rank>
+                    <name>Bergstrom</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>F</name>
+            <leader>F0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>100</OOB_record_ID>
+            <type>Home Guard</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="5">
+                <unit>
+                    <ID>F0</ID>
+                    <designation>Home Guard Sqd </designation>
+                    <rank>Sgt</rank>
+                    <name>Ekman</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>F1</ID>
+                    <designation>Home Guard Sqd </designation>
+                    <rank>Cpl</rank>
+                    <name>Henriksson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>F2</ID>
+                    <designation>Home Guard Sqd </designation>
+                    <rank>Cpl</rank>
+                    <name>Samuelsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>F3</ID>
+                    <designation>Home Guard LMG</designation>
+                    <rank>Cpl</rank>
+                    <name>Lindgren</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>F4</ID>
+                    <designation>Home Guard SMG</designation>
+                    <rank>Cpl</rank>
+                    <name>Nordin</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>G</name>
+            <leader>G0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>99</OOB_record_ID>
+            <type>Patrol/Sniper</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>G0</ID>
+                    <designation>Ski Sniper</designation>
+                    <rank>Sgt</rank>
+                    <name>Olofsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>1</headcount>
+                </unit>
+                <unit>
+                    <ID>G1</ID>
+                    <designation>Ski Sniper</designation>
+                    <rank>Cpl</rank>
+                    <name>Oberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>1</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>H</name>
+            <leader>H0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>122</OOB_record_ID>
+            <type>Bike Plt 37</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="4">
+                <unit>
+                    <ID>H0</ID>
+                    <designation>Bicycle Squad</designation>
+                    <rank>1Lt</rank>
+                    <name>Bergman</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H1</ID>
+                    <designation>Bicycle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Andersson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H2</ID>
+                    <designation>Bicycle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Holmberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>H3</ID>
+                    <designation>Bicycle Squad</designation>
+                    <rank>Cpl</rank>
+                    <name>Nystrom</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>I</name>
+            <leader>I0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>187</OOB_record_ID>
+            <type>AA Gun </type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>I0</ID>
+                    <designation>40mm Akan m/36</designation>
+                    <rank>Sgt</rank>
+                    <name>Martinsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>7</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>J</name>
+            <leader>J0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>187</OOB_record_ID>
+            <type>AA Gun </type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>J0</ID>
+                    <designation>40mm Akan m/36</designation>
+                    <rank>Sgt</rank>
+                    <name>Soderberg</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>7</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>K</name>
+            <leader>K0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>73</OOB_record_ID>
+            <type>AT Sec 38</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="4">
+                <unit>
+                    <ID>K0</ID>
+                    <designation>37mm pvkan m/38</designation>
+                    <rank>Sgt</rank>
+                    <name>Axelsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>K1</ID>
+                    <designation>37mm pvkan m/38</designation>
+                    <rank>Sgt</rank>
+                    <name>Lundqvist</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>K2</ID>
+                    <designation>3 Ton Truck</designation>
+                    <rank>Cpl</rank>
+                    <name>Bjorklund</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>K3</ID>
+                    <designation>3 Ton Truck</designation>
+                    <rank>Cpl</rank>
+                    <name>Stromberg</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>L</name>
+            <leader>L0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>200</OOB_record_ID>
+            <type>Gun Bty</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>99.254</readiness>
+            <units count="4">
+                <unit>
+                    <ID>L0</ID>
+                    <designation>75mm FG m/02-33</designation>
+                    <rank>1Lt</rank>
+                    <name>Ek</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.015</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>L1</ID>
+                    <designation>75mm FG m/02-33</designation>
+                    <rank>Sgt</rank>
+                    <name>Holm</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>L2</ID>
+                    <designation>75mm FG m/02-33</designation>
+                    <rank>Sgt</rank>
+                    <name>Johnsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+                <unit>
+                    <ID>L3</ID>
+                    <designation>75mm FG m/02-33</designation>
+                    <rank>Sgt</rank>
+                    <name>Hedlund</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>M</name>
+            <leader>M0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>41</OOB_record_ID>
+            <type>Sapper Plt</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="4">
+                <unit>
+                    <ID>M0</ID>
+                    <designation>Pioneers</designation>
+                    <rank>1Lt</rank>
+                    <name>Mattsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>M1</ID>
+                    <designation>Pioneers</designation>
+                    <rank>Cpl</rank>
+                    <name>Bostrom</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>M2</ID>
+                    <designation>Pioneers</designation>
+                    <rank>Cpl</rank>
+                    <name>Petersson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+                <unit>
+                    <ID>M3</ID>
+                    <designation>Pioneers</designation>
+                    <rank>Cpl</rank>
+                    <name>Larsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>10</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>N</name>
+            <leader>N0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>84</OOB_record_ID>
+            <type>Inf-AT Sec/2</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>N0</ID>
+                    <designation>Demolition Team</designation>
+                    <rank>Sgt</rank>
+                    <name>Berglund</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+                <unit>
+                    <ID>N1</ID>
+                    <designation>Demolition Team</designation>
+                    <rank>Cpl</rank>
+                    <name>Carlsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>O</name>
+            <leader>O0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>21</OOB_record_ID>
+            <type>Arm Car Plt 43</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="3">
+                <unit>
+                    <ID>O0</ID>
+                    <designation>PB m/31 20 mm</designation>
+                    <rank>Sgt</rank>
+                    <name>Arvidsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>6</headcount>
+                </unit>
+                <unit>
+                    <ID>O1</ID>
+                    <designation>Tgb m/42 KP</designation>
+                    <rank>Cpl</rank>
+                    <name>Hermansson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>2</headcount>
+                </unit>
+                <unit>
+                    <ID>O2</ID>
+                    <designation>20mm PvLv m/40</designation>
+                    <rank>Sgt</rank>
+                    <name>Karlsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>P</name>
+            <leader>P0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>163</OOB_record_ID>
+            <type>Bunker</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>P0</ID>
+                    <designation>Bunker</designation>
+                    <rank>1Lt</rank>
+                    <name>Ohlsson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>Q</name>
+            <leader>Q0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>163</OOB_record_ID>
+            <type>Bunker</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.778</readiness>
+            <units count="1">
+                <unit>
+                    <ID>Q0</ID>
+                    <designation>Bunker</designation>
+                    <rank>1Lt</rank>
+                    <name>Lundstrom</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.778</readiness>
+                    <headcount>5</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>R</name>
+            <leader>R0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>163</OOB_record_ID>
+            <type>Bunker</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.917</readiness>
+            <units count="1">
+                <unit>
+                    <ID>R0</ID>
+                    <designation>Bunker</designation>
+                    <rank>2Lt</rank>
+                    <name>Dahlberg</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>97.917</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>S</name>
+            <leader>S0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>163</OOB_record_ID>
+            <type>Bunker</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.000</readiness>
+            <units count="1">
+                <unit>
+                    <ID>S0</ID>
+                    <designation>Shelter Bunker</designation>
+                    <rank>1Lt</rank>
+                    <name>Svensson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.000</readiness>
+                    <headcount>8</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>T</name>
+            <leader>T0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>163</OOB_record_ID>
+            <type>Bunker</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.901</readiness>
+            <units count="1">
+                <unit>
+                    <ID>T0</ID>
+                    <designation>Bunker</designation>
+                    <rank>2Lt</rank>
+                    <name>Sandberg</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.901</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>U</name>
+            <leader>U0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>99</OOB_record_ID>
+            <type>Patrol/Sniper</type>
+            <organizational_type>section</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <units count="2">
+                <unit>
+                    <ID>U0</ID>
+                    <designation>Ski SMG Team</designation>
+                    <rank>Sgt</rank>
+                    <name>Isaksson</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+                <unit>
+                    <ID>U1</ID>
+                    <designation>Ski SMG Team</designation>
+                    <rank>Cpl</rank>
+                    <name>Danielsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>4</headcount>
+                </unit>
+            </units>
+        </formation>
+        <formation core="false">
+            <name>V</name>
+            <leader>V0</leader>
+            <higher_command>A0</higher_command>
+            <core_status>regular</core_status>
+            <status>average</status>
+            <OOB_record_ID>116</OOB_record_ID>
+            <type>Cav Plt 37</type>
+            <organizational_type>platoon</organizational_type>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>99.254</readiness>
+            <units count="4">
+                <unit>
+                    <ID>V0</ID>
+                    <designation>Cavalry Squad</designation>
+                    <rank>1Lt</rank>
+                    <name>Friberg</name>
+                    <status>ready</status>
+                    <formation_leader>yes</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>V1</ID>
+                    <designation>Cavalry Sqd Kg</designation>
+                    <rank>Cpl</rank>
+                    <name>Erlandsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.485</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>V2</ID>
+                    <designation>Cavalry Sqd Kg</designation>
+                    <rank>Cpl</rank>
+                    <name>Gunnarsson</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>100.000</readiness>
+                    <headcount>12</headcount>
+                </unit>
+                <unit>
+                    <ID>V3</ID>
+                    <designation>Cavalry Sqd Kg</designation>
+                    <rank>Cpl</rank>
+                    <name>Berggren</name>
+                    <status>ready</status>
+                    <formation_leader>no</formation_leader>
+                    <kills>0</kills>
+                    <losses>0</losses>
+                    <readiness>98.529</readiness>
+                    <headcount>12</headcount>
+                </unit>
+            </units>
+        </formation>
+    </formations>
+    <units count="66">
+        <unit core="false">
+            <ID>A0</ID>
+            <designation>Swedish HQ</designation>
+            <unit>Swedish HQ</unit>
+            <leader>Sundstrom</leader>
+            <rank>LtC</rank>
+            <formation>A</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>245</OOBrid>
+            <type>force HQ</type>
+            <class>C&C</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>0</suppression>
+            <rally>74</rally>
+            <inf_skills>66</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>25</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>149</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B0</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Bengtsson</leader>
+            <rank>Cpt</rank>
+            <formation>B</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>66</rally>
+            <inf_skills>55</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>86</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B1</ID>
+            <designation>81mm m29 Sec</designation>
+            <unit>81mm m29 Sec</unit>
+            <leader>Sundberg</leader>
+            <rank>Sgt</rank>
+            <formation>B</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>74</OOBrid>
+            <type>mortar</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>52</morale>
+            <suppression>0</suppression>
+            <rally>42</rally>
+            <inf_skills>17</inf_skills>
+            <art_skills>67</art_skills>
+            <arm_skills>27</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>89</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>B2</ID>
+            <designation>8mm m/36 Sec</designation>
+            <unit>8mm m/36 Sec</unit>
+            <leader>Jonsson</leader>
+            <rank>Cpl</rank>
+            <formation>B</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>66</OOBrid>
+            <type>machine gun</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>54</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>84</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C0</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Mansson</leader>
+            <rank>2Lt</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>58</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>72</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>22</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>67</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C1</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Forsberg</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>60</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>64</x>
+                <y>35</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C2</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Lundgren</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>61</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>53</rally>
+            <inf_skills>60</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>66</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C3</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Lind</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>63</morale>
+            <suppression>0</suppression>
+            <rally>48</rally>
+            <inf_skills>57</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>9</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>69</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C4</ID>
+            <designation>47mm Grk m/40</designation>
+            <unit>Lt Mortar Team</unit>
+            <leader>Fransson</leader>
+            <rank>Sgt</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>71</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>58</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>28</inf_skills>
+            <art_skills>68</art_skills>
+            <arm_skills>29</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>66</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C5</ID>
+            <designation>AT-Inf PLd</designation>
+            <unit>AT-Inf PLd</unit>
+            <leader>Lundberg</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>36</OOBrid>
+            <type>ski AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>0</suppression>
+            <rally>53</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>8</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>64</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>C6</ID>
+            <designation>Ski SMG Team</designation>
+            <unit>Ski SMG Team</unit>
+            <leader>Moller</leader>
+            <rank>Cpl</rank>
+            <formation>C</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>151</OOBrid>
+            <type>light ski infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>64</morale>
+            <suppression>0</suppression>
+            <rally>64</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>69</x>
+                <y>18</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D0</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Eliasson</leader>
+            <rank>1Lt</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>60</experience>
+            <experience_class>average</experience_class>
+            <morale>56</morale>
+            <suppression>0</suppression>
+            <rally>59</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>31</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>85</x>
+                <y>19</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D1</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Lundin</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>54</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>17</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>84</x>
+                <y>21</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D2</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Jansson</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>52</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>83</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D3</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Hakansson</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>62</morale>
+            <suppression>0</suppression>
+            <rally>47</rally>
+            <inf_skills>71</inf_skills>
+            <art_skills>7</art_skills>
+            <arm_skills>26</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>83</x>
+                <y>18</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D4</ID>
+            <designation>47mm Grk m/40</designation>
+            <unit>Lt Mortar Team</unit>
+            <leader>Olsson</leader>
+            <rank>Sgt</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>71</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>59</morale>
+            <suppression>0</suppression>
+            <rally>49</rally>
+            <inf_skills>16</inf_skills>
+            <art_skills>64</art_skills>
+            <arm_skills>30</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>85</x>
+                <y>20</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D5</ID>
+            <designation>AT-Inf PLd</designation>
+            <unit>AT-Inf PLd</unit>
+            <leader>Ekstrom</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>36</OOBrid>
+            <type>ski AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>35</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>31</arm_skills>
+            <smokedevice>8</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>85</x>
+                <y>22</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>D6</ID>
+            <designation>Ski SMG Team</designation>
+            <unit>Ski SMG Team</unit>
+            <leader>Soderlund</leader>
+            <rank>Cpl</rank>
+            <formation>D</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>151</OOBrid>
+            <type>light ski infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>34</rally>
+            <inf_skills>65</inf_skills>
+            <art_skills>27</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>83</x>
+                <y>22</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E0</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Lindqvist</leader>
+            <rank>1Lt</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>82</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E1</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Ericson</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>55</morale>
+            <suppression>0</suppression>
+            <rally>44</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>81</x>
+                <y>34</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E2</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Lindberg</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>69</experience>
+            <experience_class>average</experience_class>
+            <morale>62</morale>
+            <suppression>0</suppression>
+            <rally>35</rally>
+            <inf_skills>58</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>29</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>83</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E3</ID>
+            <designation>Rifle Sqd AT</designation>
+            <unit>Rifle Sqd AT</unit>
+            <leader>Persson</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>94</OOBrid>
+            <type>ski heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>59</morale>
+            <suppression>0</suppression>
+            <rally>60</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>83</x>
+                <y>37</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E4</ID>
+            <designation>47mm Grk m/40</designation>
+            <unit>Lt Mortar Team</unit>
+            <leader>Lindstrom</leader>
+            <rank>Sgt</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>71</OOBrid>
+            <type>heavy wpns squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>3</count>
+                <left>3</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>57</rally>
+            <inf_skills>9</inf_skills>
+            <art_skills>70</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>81</x>
+                <y>35</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E5</ID>
+            <designation>AT-Inf PLd</designation>
+            <unit>AT-Inf PLd</unit>
+            <leader>Nyberg</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>36</OOBrid>
+            <type>ski AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>0</suppression>
+            <rally>51</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>8</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>82</x>
+                <y>30</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>E6</ID>
+            <designation>Ski SMG Team</designation>
+            <unit>Ski SMG Team</unit>
+            <leader>Bergstrom</leader>
+            <rank>Cpl</rank>
+            <formation>E</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>151</OOBrid>
+            <type>light ski infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>58</experience>
+            <experience_class>average</experience_class>
+            <morale>55</morale>
+            <suppression>0</suppression>
+            <rally>31</rally>
+            <inf_skills>64</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>81</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F0</ID>
+            <designation>Home Guard Sqd </designation>
+            <unit>Home Guard Sqd</unit>
+            <leader>Ekman</leader>
+            <rank>Sgt</rank>
+            <formation>F</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>155</OOBrid>
+            <type>second line infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>60</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>35</rally>
+            <inf_skills>61</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>149</x>
+                <y>14</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F1</ID>
+            <designation>Home Guard Sqd </designation>
+            <unit>Home Guard Sqd</unit>
+            <leader>Henriksson</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>155</OOBrid>
+            <type>second line infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>60</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>40</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>28</art_skills>
+            <arm_skills>9</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>146</x>
+                <y>11</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F2</ID>
+            <designation>Home Guard Sqd </designation>
+            <unit>Home Guard Sqd</unit>
+            <leader>Samuelsson</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>155</OOBrid>
+            <type>second line infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>65</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>60</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>19</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>150</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F3</ID>
+            <designation>Home Guard LMG</designation>
+            <unit>Home Guard LMG</unit>
+            <leader>Lindgren</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>157</OOBrid>
+            <type>second line support squad</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>58</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>0</suppression>
+            <rally>58</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>31</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>148</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>F4</ID>
+            <designation>Home Guard SMG</designation>
+            <unit>Home Guard SMG</unit>
+            <leader>Nordin</leader>
+            <rank>Cpl</rank>
+            <formation>F</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>158</OOBrid>
+            <type>scout</type>
+            <class>recon</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>65</morale>
+            <suppression>0</suppression>
+            <rally>51</rally>
+            <inf_skills>72</inf_skills>
+            <art_skills>10</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>148</x>
+                <y>20</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G0</ID>
+            <designation>Ski Sniper</designation>
+            <unit>Ski Sniper</unit>
+            <leader>Olofsson</leader>
+            <rank>Sgt</rank>
+            <formation>G</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>148</OOBrid>
+            <type>ski sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>69</morale>
+            <suppression>0</suppression>
+            <rally>51</rally>
+            <inf_skills>73</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>24</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>99</x>
+                <y>19</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>G1</ID>
+            <designation>Ski Sniper</designation>
+            <unit>Ski Sniper</unit>
+            <leader>Oberg</leader>
+            <rank>Cpl</rank>
+            <formation>G</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>148</OOBrid>
+            <type>ski sniper</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>1</count>
+                <left>1</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>62</morale>
+            <suppression>0</suppression>
+            <rally>51</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>98</x>
+                <y>21</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H0</ID>
+            <designation>Bicycle Squad</designation>
+            <unit>Bicycle Squad</unit>
+            <leader>Bergman</leader>
+            <rank>1Lt</rank>
+            <formation>H</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>131</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>0</suppression>
+            <rally>57</rally>
+            <inf_skills>69</inf_skills>
+            <art_skills>31</art_skills>
+            <arm_skills>9</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>131</x>
+                <y>35</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H1</ID>
+            <designation>Bicycle Squad</designation>
+            <unit>Bicycle Squad</unit>
+            <leader>Andersson</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>131</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>68</experience>
+            <experience_class>average</experience_class>
+            <morale>59</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>14</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>128</x>
+                <y>35</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H2</ID>
+            <designation>Bicycle Squad</designation>
+            <unit>Bicycle Squad</unit>
+            <leader>Holmberg</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>131</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>59</experience>
+            <experience_class>average</experience_class>
+            <morale>61</morale>
+            <suppression>0</suppression>
+            <rally>60</rally>
+            <inf_skills>62</inf_skills>
+            <art_skills>14</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>131</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>H3</ID>
+            <designation>Bicycle Squad</designation>
+            <unit>Bicycle Squad</unit>
+            <leader>Nystrom</leader>
+            <rank>Cpl</rank>
+            <formation>H</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>131</OOBrid>
+            <type>medium infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>52</morale>
+            <suppression>0</suppression>
+            <rally>41</rally>
+            <inf_skills>55</inf_skills>
+            <art_skills>11</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>133</x>
+                <y>38</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>I0</ID>
+            <designation>40mm Akan m/36</designation>
+            <unit>40mm Akan m/36</unit>
+            <leader>Martinsson</leader>
+            <rank>Sgt</rank>
+            <formation>I</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>40</OOBrid>
+            <type>AA gun</type>
+            <class>anti-air</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>7</count>
+                <left>7</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>100</experience>
+            <experience_class>elite</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>80</rally>
+            <inf_skills>28</inf_skills>
+            <art_skills>80</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>146</x>
+                <y>13</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>J0</ID>
+            <designation>40mm Akan m/36</designation>
+            <unit>40mm Akan m/36</unit>
+            <leader>Soderberg</leader>
+            <rank>Sgt</rank>
+            <formation>J</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>40</OOBrid>
+            <type>AA gun</type>
+            <class>anti-air</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>7</count>
+                <left>7</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>100</experience>
+            <experience_class>elite</experience_class>
+            <morale>90</morale>
+            <suppression>0</suppression>
+            <rally>80</rally>
+            <inf_skills>29</inf_skills>
+            <art_skills>80</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>154</x>
+                <y>17</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K0</ID>
+            <designation>37mm pvkan m/38</designation>
+            <unit>37mm pvkan m/38</unit>
+            <leader>Axelsson</leader>
+            <rank>Sgt</rank>
+            <formation>K</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>30</OOBrid>
+            <type>AT gun</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>59</experience>
+            <experience_class>average</experience_class>
+            <morale>56</morale>
+            <suppression>0</suppression>
+            <rally>55</rally>
+            <inf_skills>26</inf_skills>
+            <art_skills>55</art_skills>
+            <arm_skills>28</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>84</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K1</ID>
+            <designation>37mm pvkan m/38</designation>
+            <unit>37mm pvkan m/38</unit>
+            <leader>Lundqvist</leader>
+            <rank>Sgt</rank>
+            <formation>K</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>30</OOBrid>
+            <type>AT gun</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>21</inf_skills>
+            <art_skills>69</art_skills>
+            <arm_skills>10</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>87</x>
+                <y>27</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K2</ID>
+            <designation>3 Ton Truck</designation>
+            <unit>3 Ton Truck</unit>
+            <leader>Bjorklund</leader>
+            <rank>Cpl</rank>
+            <formation>K</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>114</OOBrid>
+            <type>medium truck</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>0</suppression>
+            <rally>65</rally>
+            <inf_skills>10</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>58</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>89</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>K3</ID>
+            <designation>3 Ton Truck</designation>
+            <unit>3 Ton Truck</unit>
+            <leader>Stromberg</leader>
+            <rank>Cpl</rank>
+            <formation>K</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>114</OOBrid>
+            <type>medium truck</type>
+            <class>transport</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>57</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>23</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>52</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>88</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L0</ID>
+            <designation>75mm FG m/02-33</designation>
+            <unit>75mm FG m/02-33</unit>
+            <leader>Ek</leader>
+            <rank>1Lt</rank>
+            <formation>L</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>46</OOBrid>
+            <type>howitzer</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>2</suppression>
+            <rally>48</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>59</art_skills>
+            <arm_skills>23</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.015</readiness>
+            <position>
+                <x>156</x>
+                <y>8</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L1</ID>
+            <designation>75mm FG m/02-33</designation>
+            <unit>75mm FG m/02-33</unit>
+            <leader>Holm</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>46</OOBrid>
+            <type>howitzer</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>61</experience>
+            <experience_class>average</experience_class>
+            <morale>65</morale>
+            <suppression>0</suppression>
+            <rally>54</rally>
+            <inf_skills>14</inf_skills>
+            <art_skills>64</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>156</x>
+                <y>6</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L2</ID>
+            <designation>75mm FG m/02-33</designation>
+            <unit>75mm FG m/02-33</unit>
+            <leader>Johnsson</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>46</OOBrid>
+            <type>howitzer</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>64</experience>
+            <experience_class>average</experience_class>
+            <morale>57</morale>
+            <suppression>0</suppression>
+            <rally>51</rally>
+            <inf_skills>10</inf_skills>
+            <art_skills>68</art_skills>
+            <arm_skills>12</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>157</x>
+                <y>9</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>L3</ID>
+            <designation>75mm FG m/02-33</designation>
+            <unit>75mm FG m/02-33</unit>
+            <leader>Hedlund</leader>
+            <rank>Sgt</rank>
+            <formation>L</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>46</OOBrid>
+            <type>howitzer</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>65</experience>
+            <experience_class>average</experience_class>
+            <morale>64</morale>
+            <suppression>0</suppression>
+            <rally>44</rally>
+            <inf_skills>26</inf_skills>
+            <art_skills>68</art_skills>
+            <arm_skills>18</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>154</x>
+                <y>9</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M0</ID>
+            <designation>Pioneers</designation>
+            <unit>Pioneers</unit>
+            <leader>Mattsson</leader>
+            <rank>1Lt</rank>
+            <formation>M</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>88</OOBrid>
+            <type>ski engineers</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>24</art_skills>
+            <arm_skills>31</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>117</x>
+                <y>36</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M1</ID>
+            <designation>Pioneers</designation>
+            <unit>Pioneers</unit>
+            <leader>Bostrom</leader>
+            <rank>Cpl</rank>
+            <formation>M</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>88</OOBrid>
+            <type>ski engineers</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>67</morale>
+            <suppression>0</suppression>
+            <rally>55</rally>
+            <inf_skills>52</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>117</x>
+                <y>38</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M2</ID>
+            <designation>Pioneers</designation>
+            <unit>Pioneers</unit>
+            <leader>Petersson</leader>
+            <rank>Cpl</rank>
+            <formation>M</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>88</OOBrid>
+            <type>ski engineers</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>61</experience>
+            <experience_class>average</experience_class>
+            <morale>74</morale>
+            <suppression>0</suppression>
+            <rally>43</rally>
+            <inf_skills>59</inf_skills>
+            <art_skills>11</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>118</x>
+                <y>26</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>M3</ID>
+            <designation>Pioneers</designation>
+            <unit>Pioneers</unit>
+            <leader>Larsson</leader>
+            <rank>Cpl</rank>
+            <formation>M</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>88</OOBrid>
+            <type>ski engineers</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>10</count>
+                <left>10</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>62</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>18</art_skills>
+            <arm_skills>15</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>118</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>N0</ID>
+            <designation>Demolition Team</designation>
+            <unit>Demolition Team</unit>
+            <leader>Berglund</leader>
+            <rank>Sgt</rank>
+            <formation>N</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>96</OOBrid>
+            <type>ski AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>60</morale>
+            <suppression>0</suppression>
+            <rally>49</rally>
+            <inf_skills>62</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>19</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>151</x>
+                <y>16</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>N1</ID>
+            <designation>Demolition Team</designation>
+            <unit>Demolition Team</unit>
+            <leader>Carlsson</leader>
+            <rank>Cpl</rank>
+            <formation>N</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>96</OOBrid>
+            <type>ski AT infantry</type>
+            <class>anti-tank</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>57</morale>
+            <suppression>0</suppression>
+            <rally>50</rally>
+            <inf_skills>67</inf_skills>
+            <art_skills>23</art_skills>
+            <arm_skills>16</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>149</x>
+                <y>15</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>O0</ID>
+            <designation>PB m/31 20 mm</designation>
+            <unit>PB m/31 20 mm</unit>
+            <leader>Arvidsson</leader>
+            <rank>Sgt</rank>
+            <formation>O</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>22</OOBrid>
+            <type>wheeled gun APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>6</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>67</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>0</suppression>
+            <rally>56</rally>
+            <inf_skills>27</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>78</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>135</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>O1</ID>
+            <designation>Tgb m/42 KP</designation>
+            <unit>Tgb m/42 KP</unit>
+            <leader>Hermansson</leader>
+            <rank>Cpl</rank>
+            <formation>O</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>25</OOBrid>
+            <type>wheeled APC</type>
+            <class>APC</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>2</count>
+                <left>2</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>55</morale>
+            <suppression>0</suppression>
+            <rally>42</rally>
+            <inf_skills>25</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>59</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>133</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>O2</ID>
+            <designation>20mm PvLv m/40</designation>
+            <unit>20mm PvLv m/40</unit>
+            <leader>Karlsson</leader>
+            <rank>Sgt</rank>
+            <formation>O</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>33</OOBrid>
+            <type>infantry support gun</type>
+            <class>artillery</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>6</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>63</experience>
+            <experience_class>average</experience_class>
+            <morale>51</morale>
+            <suppression>0</suppression>
+            <rally>61</rally>
+            <inf_skills>25</inf_skills>
+            <art_skills>65</art_skills>
+            <arm_skills>12</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>131</x>
+                <y>31</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>P0</ID>
+            <designation>Bunker</designation>
+            <unit>Bunker</unit>
+            <leader>Ohlsson</leader>
+            <rank>1Lt</rank>
+            <formation>P</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>191</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>62</experience>
+            <experience_class>average</experience_class>
+            <morale>95</morale>
+            <suppression>0</suppression>
+            <rally>58</rally>
+            <inf_skills>32</inf_skills>
+            <art_skills>17</art_skills>
+            <arm_skills>64</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>69</x>
+                <y>21</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>Q0</ID>
+            <designation>Bunker</designation>
+            <unit>Bunker</unit>
+            <leader>Lundstrom</leader>
+            <rank>1Lt</rank>
+            <formation>Q</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>191</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>5</count>
+                <left>5</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>90</morale>
+            <suppression>2</suppression>
+            <rally>68</rally>
+            <inf_skills>12</inf_skills>
+            <art_skills>15</art_skills>
+            <arm_skills>74</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.778</readiness>
+            <position>
+                <x>65</x>
+                <y>33</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>R0</ID>
+            <designation>Bunker</designation>
+            <unit>Bunker</unit>
+            <leader>Dahlberg</leader>
+            <rank>2Lt</rank>
+            <formation>R</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>189</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>72</experience>
+            <experience_class>average</experience_class>
+            <morale>96</morale>
+            <suppression>2</suppression>
+            <rally>62</rally>
+            <inf_skills>14</inf_skills>
+            <art_skills>26</art_skills>
+            <arm_skills>60</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>97.917</readiness>
+            <position>
+                <x>66</x>
+                <y>24</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>S0</ID>
+            <designation>Shelter Bunker</designation>
+            <unit>Shelter Bunker</unit>
+            <leader>Svensson</leader>
+            <rank>1Lt</rank>
+            <formation>S</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>165</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>8</count>
+                <left>8</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>70</experience>
+            <experience_class>average</experience_class>
+            <morale>100</morale>
+            <suppression>2</suppression>
+            <rally>44</rally>
+            <inf_skills>19</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>61</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.000</readiness>
+            <position>
+                <x>71</x>
+                <y>32</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>T0</ID>
+            <designation>Bunker</designation>
+            <unit>Bunker</unit>
+            <leader>Sandberg</leader>
+            <rank>2Lt</rank>
+            <formation>T</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>192</OOBrid>
+            <type>fort</type>
+            <class>fortification</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>57</experience>
+            <experience_class>average</experience_class>
+            <morale>91</morale>
+            <suppression>1</suppression>
+            <rally>63</rally>
+            <inf_skills>13</inf_skills>
+            <art_skills>7</art_skills>
+            <arm_skills>55</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.901</readiness>
+            <position>
+                <x>66</x>
+                <y>29</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>U0</ID>
+            <designation>Ski SMG Team</designation>
+            <unit>Ski SMG Team</unit>
+            <leader>Isaksson</leader>
+            <rank>Sgt</rank>
+            <formation>U</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>151</OOBrid>
+            <type>light ski infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>73</experience>
+            <experience_class>average</experience_class>
+            <morale>63</morale>
+            <suppression>0</suppression>
+            <rally>47</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>9</art_skills>
+            <arm_skills>9</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>34</x>
+                <y>18</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>U1</ID>
+            <designation>Ski SMG Team</designation>
+            <unit>Ski SMG Team</unit>
+            <leader>Danielsson</leader>
+            <rank>Cpl</rank>
+            <formation>U</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>151</OOBrid>
+            <type>light ski infantry</type>
+            <class>infantry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>positioned</entrenchment>
+            <headcount>
+                <count>4</count>
+                <left>4</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>0</suppression>
+            <rally>40</rally>
+            <inf_skills>63</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>12</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>33</x>
+                <y>16</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>V0</ID>
+            <designation>Cavalry Squad</designation>
+            <unit>Cavalry Squad</unit>
+            <leader>Friberg</leader>
+            <rank>1Lt</rank>
+            <formation>V</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>120</OOBrid>
+            <type>medium cavalry</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>62</morale>
+            <suppression>0</suppression>
+            <rally>38</rally>
+            <inf_skills>54</inf_skills>
+            <art_skills>25</art_skills>
+            <arm_skills>21</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>54</x>
+                <y>28</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>V1</ID>
+            <designation>Cavalry Sqd Kg</designation>
+            <unit>Cavalry Sqd Kg</unit>
+            <leader>Erlandsson</leader>
+            <rank>Cpl</rank>
+            <formation>V</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>121</OOBrid>
+            <type>cavalry</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>66</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>1</suppression>
+            <rally>48</rally>
+            <inf_skills>55</inf_skills>
+            <art_skills>22</art_skills>
+            <arm_skills>11</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.485</readiness>
+            <position>
+                <x>41</x>
+                <y>29</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>V2</ID>
+            <designation>Cavalry Sqd Kg</designation>
+            <unit>Cavalry Sqd Kg</unit>
+            <leader>Gunnarsson</leader>
+            <rank>Cpl</rank>
+            <formation>V</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>121</OOBrid>
+            <type>cavalry</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>71</experience>
+            <experience_class>average</experience_class>
+            <morale>66</morale>
+            <suppression>0</suppression>
+            <rally>42</rally>
+            <inf_skills>62</inf_skills>
+            <art_skills>20</art_skills>
+            <arm_skills>14</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>direct contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>100.000</readiness>
+            <position>
+                <x>53</x>
+                <y>23</y>
+            </position>
+        </unit>
+        <unit core="false">
+            <ID>V3</ID>
+            <designation>Cavalry Sqd Kg</designation>
+            <unit>Cavalry Sqd Kg</unit>
+            <leader>Berggren</leader>
+            <rank>Cpl</rank>
+            <formation>V</formation>
+            <OOB>Swedish</OOB>
+            <OOBrid>121</OOBrid>
+            <type>cavalry</type>
+            <class>cavalry</class>
+            <kills>0</kills>
+            <status>ready</status>
+            <alive>alive</alive>
+            <spotted>hidden</spotted>
+            <entrenchment>in cover</entrenchment>
+            <headcount>
+                <count>12</count>
+                <left>12</left>
+            </headcount>
+            <damage>0</damage>
+            <abandoned status="no">
+            </abandoned>
+            <loaded status="no">
+            </loaded>
+            <experience>75</experience>
+            <experience_class>average</experience_class>
+            <morale>68</morale>
+            <suppression>1</suppression>
+            <rally>38</rally>
+            <inf_skills>70</inf_skills>
+            <art_skills>21</art_skills>
+            <arm_skills>20</arm_skills>
+            <smokedevice>0</smokedevice>
+            <contact>no contact</contact>
+            <kills>0</kills>
+            <losses>0</losses>
+            <readiness>98.529</readiness>
+            <position>
+                <x>48</x>
+                <y>26</y>
+            </position>
+        </unit>
+    </units>
+</OOB>
+
+
