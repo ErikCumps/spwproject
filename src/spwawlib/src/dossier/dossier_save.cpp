@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -73,6 +73,150 @@ handle_error:
 	return (rc);
 }
 
+#define	setBMRD(name)	dst->##name = src->##name
+
+static void
+prep_battle_map_raw_data (SPWAW_SNAP_MAP_DRAW *src, DOS_BMDATA_RAW *dst)
+{
+	memset (dst, 0, sizeof (DOS_BMDATA_RAW));
+
+	setBMRD (height);
+	setBMRD (has_T1); setBMRD (has_T2); setBMRD (has_T3); setBMRD (has_T4);
+	dst->tfs = src->tfs.raw;
+	setBMRD (conn_road1); setBMRD (conn_road2); setBMRD (conn_rail); setBMRD (conn_tram);
+}
+
+static SPWAW_ERROR
+dossier_save_battle_map_raw_data (SPWAW_SNAP_MAP_RAW *src, int fd, long hdrpos, DOS_BHEADER &hdr, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	ULONG		mapcnt;
+	SBW		*sbw = NULL;
+	DOS_BMDATA_RAW	d;
+	char		*data = NULL;
+	long		size;
+	CBIO		cbio;
+
+	hdr.map.raw.data = bseekget(fd) - hdrpos;
+	hdr.map.raw.size = hdr.map.raw.comp = 0;
+
+	if (!src->reference || ((src->width == 0) && (src->height == 0))) {
+		/* There is no data to save */
+		return (SPWERR_OK);
+	}
+
+	mapcnt = src->width * src->height;
+	if (mapcnt == 0) {
+		log ("map width=%lu, map height=%lu\n", src->width, src->height);
+		FAILGOTO (SPWERR_FWFAILED, "invalid battle map dimensions", handle_error);
+	}
+
+	/* prepare data */
+	sbw = sbwrite_init (NULL, 0);
+	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
+
+	for (ULONG i=0; i<mapcnt; i++) {
+		prep_battle_map_raw_data (&(src->data[i]), &d);
+		if (sbwrite (sbw, (char *)&d, sizeof (d)) != sizeof (d))
+			FAILGOTO (SPWERR_FWFAILED, "sbwrite(battle map raw data)", handle_error);
+	}
+
+	sbwrite_stop (sbw, &data, &size); sbw = NULL;
+	hdr.map.raw.size = size;
+
+	/* save data block */
+	cbio.data = data; cbio.size = hdr.map.raw.size; cbio.comp = &(hdr.map.raw.comp);
+	if (!cbwrite (fd, cbio, "battle map raw data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(battle map raw data) failed", handle_error);
+	safe_free (data);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (sbw) sbwrite_stop (sbw);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+#define	setBMD(name)	dst->##name = src->##name
+
+static void
+prep_battle_map_data (SPWAW_SNAP_MAP_DATA *src, DOS_BMDATA_MAP *dst)
+{
+	memset (dst, 0, sizeof (DOS_BMDATA_RAW));
+
+	setBMD (h);
+	setBMD (water); setBMD (bridge); setBMD (road);
+	setBMD (conn_road1); setBMD (conn_road2); setBMD (conn_rail); setBMD (conn_tram);
+}
+
+static SPWAW_ERROR
+dossier_save_battle_map_data (SPWAW_SNAP_MAP *src, int fd, long hdrpos, DOS_BHEADER &hdr, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	ULONG		mapcnt;
+	SBW		*sbw = NULL;
+	DOS_BMDATA_MAP	d;
+	char		*data = NULL;
+	long		size;
+	CBIO		cbio;
+
+	hdr.map.map.data = bseekget(fd) - hdrpos;
+	hdr.map.map.size = hdr.map.map.comp = 0;
+
+	if (!src->reference || ((src->width == 0) && (src->height == 0))) {
+		/* There is no data to save */
+		return (SPWERR_OK);
+	}
+
+	mapcnt = src->width * src->height;
+	if (mapcnt == 0) {
+		log ("map width=%lu, map height=%lu\n", src->width, src->height);
+		FAILGOTO (SPWERR_FWFAILED, "invalid battle map dimensions", handle_error);
+	}
+
+	/* prepare data */
+	sbw = sbwrite_init (NULL, 0);
+	if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
+
+	for (ULONG i=0; i<mapcnt; i++) {
+		prep_battle_map_data (&(src->data[i]), &d);
+		if (sbwrite (sbw, (char *)&d, sizeof (d)) != sizeof (d))
+			FAILGOTO (SPWERR_FWFAILED, "sbwrite(battle map data)", handle_error);
+	}
+
+	sbwrite_stop (sbw, &data, &size); sbw = NULL;
+	hdr.map.map.size = size;
+
+	/* save data block */
+	cbio.data = data; cbio.size = hdr.map.map.size; cbio.comp = &(hdr.map.map.comp);
+	if (!cbwrite (fd, cbio, "battle map data", compress)) FAILGOTO (SPWERR_FWFAILED, "cbwrite(battle map data) failed", handle_error);
+	safe_free (data);
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (sbw) sbwrite_stop (sbw);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+static SPWAW_ERROR
+dossier_save_battle_map (SPWAW_BATTLE *src, int fd, long hdrpos, DOS_BHEADER &hdr, bool compress)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+
+	rc = dossier_save_battle_map_raw_data (&(src->map.raw), fd, hdrpos, hdr, compress);
+	ROE ("dossier_save_battle_map_raw_data()");
+
+	rc = dossier_save_battle_map_data (&(src->map.map), fd, hdrpos, hdr, compress);
+	ROE ("dossier_save_battle_map_data()");
+
+	hdr.map.width  = src->map.map.width;
+	hdr.map.height = src->map.map.height;
+
+	return (SPWERR_OK);
+}
+
 static SPWAW_ERROR
 dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, bool compress)
 {
@@ -136,6 +280,9 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 			if (!cbwrite (fd, cbio, "compressed battle unit ra", compress))
 				FAILGOTO (SPWERR_FWFAILED, "cbwrite(compressed battle unit ra) failed", handle_error);
 		}
+
+		rc = dossier_save_battle_map (p, fd, p0, hdrs[idx], compress);
+		ERRORGOTO ("dossier_save_battle_map()", handle_error);
 
 		idx++;
 	}

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,6 +36,8 @@ dossier_clean_battle (SPWAW_BATTLE *b)
 		safe_free (b->tlist);
 	}
 	if (b->ra) safe_free (b->ra);
+	if (b->map.raw.reference) safe_free (b->map.raw.data);
+	if (b->map.map.reference) safe_free (b->map.map.data);
 	safe_free (b);
 }
 

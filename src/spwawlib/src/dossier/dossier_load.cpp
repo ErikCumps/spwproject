@@ -15,6 +15,7 @@
 #include "dossier/dossier_file_v12.h"
 #include "dossier/dossier_file_v13.h"
 #include "dossier/dossier_file_v14.h"
+#include "dossier/dossier_file_v15.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "gamefile/savegame_descriptor.h"
@@ -105,6 +106,216 @@ link_battle (SPWAW_BATTLE *p, SPWAW_BATTLE *pp)
 	return (p);
 }
 
+#define	getBMRD(name)	dst->##name = src->##name
+
+static void
+load_battle_map_raw_data (DOS_BMDATA_RAW *src, SPWAW_SNAP_MAP_DRAW *dst)
+{
+	memset (dst, 0, sizeof (SPWAW_SNAP_MAP_DRAW));
+
+	getBMRD (height);
+	getBMRD (has_T1); getBMRD (has_T2); getBMRD (has_T3); getBMRD (has_T4);
+	dst->tfs.raw = src->tfs;
+	getBMRD (conn_road1); getBMRD (conn_road2); getBMRD (conn_rail); getBMRD (conn_tram);
+}
+
+static SPWAW_ERROR
+load_battle_map_raw_list (SBR *sbr, ULONG cnt, SPWAW_SNAP_MAP_DRAW *map, ULONG /*version*/)
+{
+	ULONG		i;
+	DOS_BMDATA_RAW	d;
+
+	for (i=0; i<cnt; i++) {
+		if (sbread (sbr, (char *)&d, sizeof (d)) != sizeof (d))
+			RWE (SPWERR_FRFAILED, "sbread(battle map raw data) failed");
+		load_battle_map_raw_data (&d, &(map[i]));
+	}
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+dossier_load_battle_map_raw_data (int fd, long pos, DOS_BHEADER &hdr, SPWAW_SNAP_MAP_RAW *dst, ULONG version)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	ULONG		mapcnt;
+	ULONG		size;
+	char		*data = NULL;
+	CBIO		cbio;
+	SBR		*sbr = NULL;
+
+	if ((hdr.map.width == 0) && (hdr.map.height == 0) && (hdr.map.raw.size == 0)) {
+		/* There is no data to load */
+		return (SPWERR_OK);
+	}
+
+	mapcnt = hdr.map.width * hdr.map.height;
+
+	/* Verify data sizes match */
+	size = mapcnt * sizeof (DOS_BMDATA_RAW);
+	if (hdr.map.raw.size != size) {
+		log ("raw map data size %lu != expected size %lu (width=%lu, height=%lu)\n",
+			hdr.map.raw.size, size, hdr.map.width, hdr.map.height);
+		FAILGOTO (SPWERR_CORRUPT, "battle map raw data size mismatch", handle_error);
+	}
+
+	/* Load data block */
+	data = safe_smalloc (char, size);
+	COOMGOTO (data, "DOS_BMDATA_RAW buffer", handle_error);
+
+	bseekset (fd, pos + hdr.map.raw.data);
+	cbio.data = data; cbio.size = size; cbio.comp = &(hdr.map.raw.comp);
+	if (!cbread (fd, cbio, "battle map raw data")) FAILGOTO (SPWERR_FRFAILED, "cbread(battle map raw data) failed", handle_error);
+
+	sbr = sbread_init (data, size);
+	if (!sbr) FAILGOTO (SPWERR_FRFAILED, "sbread_init() failed", handle_error);
+
+	dst->reference	= true;
+	dst->width	= hdr.map.width;
+	dst->height	= hdr.map.height;
+	dst->size	= mapcnt * sizeof(SPWAW_SNAP_MAP_DRAW);
+	dst->data	= safe_nmalloc (SPWAW_SNAP_MAP_DRAW, mapcnt);
+	COOMGOTO (dst->data, "SPWAW_SNAP_MAP_DRAW map", handle_error);
+
+	rc = load_battle_map_raw_list (sbr, mapcnt, dst->data, version);
+	ERRORGOTO ("load_battle_map_raw_list()", handle_error);
+
+	sbread_stop (sbr); sbr = NULL;
+	safe_free (data);
+	return (SPWERR_OK);
+
+handle_error:
+	if (dst->data) safe_free (dst->data);
+	memset (dst, 0, sizeof (dst));
+	if (sbr) sbread_stop (sbr);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+#define	getBMD(name)	dst->##name = src->##name
+#define	getBMDB(name)	dst->##name = (src->##name != 0)
+
+static void
+load_battle_map_data (DOS_BMDATA_MAP *src, SPWAW_SNAP_MAP_DATA *dst)
+{
+	memset (dst, 0, sizeof (SPWAW_SNAP_MAP_DATA));
+
+	getBMD (h);
+	getBMDB (water); getBMDB (bridge); getBMDB (road);
+	getBMD (conn_road1); getBMD (conn_road2); getBMD (conn_rail); getBMD (conn_tram);
+}
+
+static SPWAW_ERROR
+load_battle_map_list (SBR *sbr, ULONG cnt, SPWAW_SNAP_MAP_DATA *map, ULONG /*version*/)
+{
+	ULONG		i;
+	DOS_BMDATA_MAP	d;
+
+	for (i=0; i<cnt; i++) {
+		if (sbread (sbr, (char *)&d, sizeof (d)) != sizeof (d))
+			RWE (SPWERR_FRFAILED, "sbread(battle map data) failed");
+		load_battle_map_data (&d, &(map[i]));
+	}
+
+	return (SPWERR_OK);
+}
+
+static SPWAW_ERROR
+dossier_load_battle_map_data (int fd, long pos, DOS_BHEADER &hdr, SPWAW_SNAP_MAP *dst, ULONG version)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+	ULONG		mapcnt;
+	ULONG		size;
+	char		*data = NULL;
+	CBIO		cbio;
+	SBR		*sbr = NULL;
+
+	if ((hdr.map.width == 0) && (hdr.map.height == 0) && (hdr.map.map.size == 0)) {
+		/* There is no data to load */
+		return (SPWERR_OK);
+	}
+
+	mapcnt = hdr.map.width * hdr.map.height;
+
+	/* Verify data sizes match */
+	size = mapcnt * sizeof (DOS_BMDATA_MAP);
+	if (hdr.map.map.size != size) {
+		log ("map data size %lu != expected size %lu (width=%lu, height=%lu)\n",
+			hdr.map.map.size, size, hdr.map.width, hdr.map.height);
+		FAILGOTO (SPWERR_CORRUPT, "battle map data size mismatch", handle_error);
+	}
+
+	/* Load data block */
+	data = safe_smalloc (char, size);
+	COOMGOTO (data, "DOS_BMDATA_MAP buffer", handle_error);
+
+	bseekset (fd, pos + hdr.map.map.data);
+	cbio.data = data; cbio.size = size; cbio.comp = &(hdr.map.map.comp);
+	if (!cbread (fd, cbio, "battle map data")) FAILGOTO (SPWERR_FRFAILED, "cbread(battle map data) failed", handle_error);
+
+	sbr = sbread_init (data, size);
+	if (!sbr) FAILGOTO (SPWERR_FRFAILED, "sbread_init() failed", handle_error);
+
+	dst->reference	= true;
+	dst->width	= hdr.map.width;
+	dst->height	= hdr.map.height;
+	dst->data	= safe_nmalloc (SPWAW_SNAP_MAP_DATA, mapcnt);
+	COOMGOTO (dst->data, "SPWAW_SNAP_MAP_DATA map", handle_error);
+
+	rc = load_battle_map_list (sbr, mapcnt, dst->data, version);
+	ERRORGOTO ("load_battle_map_list()", handle_error);
+
+	sbread_stop (sbr); sbr = NULL;
+	safe_free (data);
+	return (SPWERR_OK);
+
+handle_error:
+	if (sbr) sbread_stop (sbr);
+	if (data) safe_free (data);
+	return (rc);
+}
+
+static SPWAW_ERROR
+dossier_load_battle_map (int fd, long pos, DOS_BHEADER &hdr, SPWAW_BATTLE *dst, ULONG version)
+{
+	SPWAW_ERROR	rc = SPWERR_OK;
+
+	memset (&(dst->map.raw), 0, sizeof (dst->map.raw));
+	memset (&(dst->map.map), 0, sizeof (dst->map.map));
+
+	if (version <= DOSS_VERSION_V15) {
+		/* This is an old dossier, there is no battle map to load */
+
+		/* We must create a reference from the battle map of the first turn */
+		snap_mapref_create (dst->tfirst->snap, &(dst->map.raw), &(dst->map.map));
+	} else {
+		/* This is a modern dossier, the battle map can be loaded */
+
+		rc = dossier_load_battle_map_raw_data (fd, pos, hdr, &(dst->map.raw), version);
+		ERRORGOTO ("dossier_load_battle_map_raw_data()", handle_error);
+
+		rc = dossier_load_battle_map_data (fd, pos, hdr, &(dst->map.map), version);
+		ERRORGOTO ("dossier_load_battle_map_data()", handle_error);
+
+		/* We must set a reference for the battle map of the first turn */
+		snap_mapref_set (&(dst->map.raw), &(dst->map.map), dst->tfirst->snap);
+	}
+
+	/* Finally, we must set a reference for the battle map of the other turns */
+	for (USHORT i=1; i<dst->tlen; i++) {
+		snap_mapref_set (&(dst->map.raw), &(dst->map.map), dst->tlist[i]->snap);
+	}
+
+	return (SPWERR_OK);
+
+handle_error:
+	if (dst->map.raw.data) safe_free (dst->map.raw.data);
+	memset (&(dst->map.raw), 0, sizeof (dst->map.raw));
+	if (dst->map.map.data) safe_free (dst->map.map.data);
+	memset (&(dst->map.map), 0, sizeof (dst->map.map));
+	return (rc);
+}
+
 static SPWAW_ERROR
 dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULONG version)
 {
@@ -125,7 +336,7 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	dst->blen = cnt;
 	dst->blist = safe_nmalloc (SPWAW_BATTLE *, cnt); COOMGOTO (dst->blist, "SPWAW_BATTLE* list", handle_error);
 
-	/* We are now backwards compatible with version 10, 11 and 12 */
+	/* We are now backwards compatible with versions 10 through 15 */
 	if (version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_battle_headers (fd, hdrs, cnt);
 		ERRORGOTO ("dossier_load_v10_battle_headers(battle hdrs)", handle_error);
@@ -135,6 +346,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	} else 	if (version == DOSS_VERSION_V12) {
 		rc = dossier_load_v12_battle_headers (fd, hdrs, cnt);
 		ERRORGOTO ("dossier_load_v12_battle_headers(battle hdrs)", handle_error);
+	} else 	if (version <= DOSS_VERSION_V15) {
+		rc = dossier_load_v15_battle_headers (fd, hdrs, cnt);
+		ERRORGOTO ("dossier_load_v15_battle_headers(battle hdrs)", handle_error);
 	} else {
 		if (!bread (fd, (char *)hdrs, cnt * sizeof (DOS_BHEADER), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
@@ -159,7 +373,6 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 
 		rc = SPWOOB_LIST_takeref (dst->oobdata, hdrs[i].oobdat, &(p->oobdat));
 		ERRORGOTO ("SPWOOB_LIST_idx2spwoob(battle oob data index)", handle_error);
-
 
 		if (hdrs[i].name != BADSTRIDX) {
 			p->name = STRTAB_getstr (stab, hdrs[i].name);
@@ -203,6 +416,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 			/* This is an old dossier, the RA must be rebuilt */
 			dossier_update_battle_rainfo (pp, p);
 		}
+
+		rc = dossier_load_battle_map (fd, pos, hdrs[i], p, version);
+		ERRORGOTO ("dossier_load_battle_map()", handle_error);
 
 		dst->blist[dst->bcnt++] = pp = link_battle (p, pp);
 		p = NULL;
@@ -300,7 +516,7 @@ dossier_loadinfo (int fd, SPWAW_DOSSIER_INFO *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with versions 10, 11, 12 and 13 */
+	/* We are now backwards compatible with versions 10 through 14 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);
@@ -379,7 +595,7 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 
 	memset (&hdr, 0, sizeof (hdr));
 
-	/* We are now backwards compatible with versions 10, 11, 12 and 13 */
+	/* We are now backwards compatible with versions 10 through 14 */
 	if (mvhdr.version == DOSS_VERSION_V10) {
 		rc = dossier_load_v10_header (fd, &hdr);
 		ERRORGOTO ("dossier_load_v10_header(dossier hdr)", handle_error);

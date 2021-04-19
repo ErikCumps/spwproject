@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -45,7 +45,10 @@ extern void			snapint_addmmas		(SPWAW_FMMAS *dst, double val, USHORT id);
 extern void			snapint_addmmas_set	(SPWAW_IMMAS_SET *dst, DWORD val, SPWAW_SNAP_OOB_UEL *ptr);
 extern void			snapint_addmmas_set	(SPWAW_FMMAS_SET *dst, double val, SPWAW_SNAP_OOB_UEL *ptr);
 
-extern	SPWAW_ERROR		snap_finalize_megacam	(SPWAW_SNAPSHOT *ptr, SPWAW_SNAPSHOT *snap);
+extern SPWAW_ERROR		snap_finalize_megacam	(SPWAW_SNAPSHOT *ptr, SPWAW_SNAPSHOT *snap);
+
+extern SPWAW_ERROR		snap_mapref_create	(SPWAW_SNAPSHOT *snap, SPWAW_SNAP_MAP_RAW *raw, SPWAW_SNAP_MAP *map);
+extern SPWAW_ERROR		snap_mapref_set		(SPWAW_SNAP_MAP_RAW *raw, SPWAW_SNAP_MAP *map, SPWAW_SNAPSHOT *snap);
 
 
 #endif	/* SNAPSHOT_H */

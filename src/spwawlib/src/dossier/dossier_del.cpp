@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -35,14 +35,6 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 	bb = b->prev;
 	ba = b->next;
 
-	SPWOOB_LIST_del (ptr->oobdata, b->oobdat);
-	STRTAB_del (stab, b->name);
-	STRTAB_del (stab, b->location);
-	STRTAB_del (stab, b->miss_p1);
-	STRTAB_del (stab, b->miss_p2);
-	if (b->ra) safe_free (b->ra);
-	free (b);
-
 	for (i=0; i<ptr->bcnt; i++) {
 		if (ptr->blist[i] != b) continue;
 
@@ -51,6 +43,16 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 		ptr->bcnt--;
 		break;
 	}
+
+	SPWOOB_LIST_del (ptr->oobdata, b->oobdat);
+	STRTAB_del (stab, b->name);
+	STRTAB_del (stab, b->location);
+	STRTAB_del (stab, b->miss_p1);
+	STRTAB_del (stab, b->miss_p2);
+	if (b->ra) safe_free (b->ra);
+	if (b->map.raw.reference) safe_free (b->map.raw.data);
+	if (b->map.map.reference) safe_free (b->map.map.data);
+	safe_free (b);
 
 	// TODO: investigate usefulnes of auto-cleanup
 	if (ptr->bcnt == 0) {

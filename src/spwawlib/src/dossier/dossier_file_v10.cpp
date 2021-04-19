@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling - backwards compatibility with the V10 dossier.
  *
- * Copyright (C) 2018-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2018-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -110,11 +110,13 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 	 * + lacks the battle name symbol (at the end)
 	 * + lacks the campaign battle index (at the end)
 	 * + lacks the battle unit reassignment list element count (at the end)
+	 * + lacks the battle map data (at the end)
 	 *
 	 * V10 dossiers only support a single OOB data, the battle OOB data index must be zero.
 	 * V10 dossiers only support the SPWAW_CAMPAIGN_DOSSIER dossier type which doesn't use battle names.
 	 * V10 dossiers can only specify an SPWAW_NOBTLIDX (a later override to set the correct btlidx is possible).
 	 * For V10 dossiers the RA info is no longer loaded.
+	 * For V10 dossiers there is no separately saved battle map data.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
@@ -126,6 +128,9 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 		hdrs[i].name = BADSTRIDX;
 		hdrs[i].btlidx = SPWAW_NOBTLIDX;
 		hdrs[i].racnt = 0;
+		hdrs[i].map.width = hdrs[i].map.height = 0;
+		hdrs[i].map.raw.data = hdrs[i].map.raw.size = hdrs[i].map.raw.comp = 0;
+		hdrs[i].map.map.data = hdrs[i].map.map.size = hdrs[i].map.map.comp = 0;
 	}
 
 handle_error:

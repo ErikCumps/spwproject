@@ -78,10 +78,9 @@ save_map (int fd, SPWAW_SNAP_MAP_RAW *map, bool compress)
 	memset (&maphdr, 0, sizeof (maphdr));
 
 	p0 = bseekget (fd);
+	bseekmove (fd, sizeof (maphdr));
 	if (!map->reference) {
 		/* the snapshot contains map data, so save it */
-		bseekmove (fd, sizeof (maphdr));
-
 		sbw = sbwrite_init (NULL, 0);
 		if (!sbw) FAILGOTO (SPWERR_FWFAILED, "sbwrite_init() failed", handle_error);
 
@@ -109,6 +108,7 @@ save_map (int fd, SPWAW_SNAP_MAP_RAW *map, bool compress)
 		maphdr.height	 = 0;
 		maphdr.data	 = bseekget (fd) - p0;
 		maphdr.size	 = 0;
+		maphdr.comp	 = 0;
 	}
 
 	p1 = bseekget (fd); bseekset (fd, p0);

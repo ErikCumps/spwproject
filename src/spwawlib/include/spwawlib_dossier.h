@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier API.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -90,6 +90,12 @@ typedef struct s_SPWAW_DOSSIER_BTLPROPS {
 	USHORT			ob_ucnt;			/* Player battle force units count		*/
 } SPWAW_DOSSIER_BTLPROPS;
 
+/* SPWAW dossier: battle map */
+typedef struct s_SPWAW_DOSSIER_BTLMAP {
+	SPWAW_SNAP_MAP_RAW	raw;				/* Battle map raw data				*/
+	SPWAW_SNAP_MAP		map;				/* Battle map hex data				*/
+} SPWAW_DOSSIER_BTLMAP;
+
 /* SPWAW dossier: battle data */
 struct s_SPWAW_BATTLE {
 	char			*name;				/* Optional battle name				*/
@@ -116,6 +122,7 @@ struct s_SPWAW_BATTLE {
 	SPWAW_DOSSIER		*dossier;			/* Pointer to parent dossier data struct	*/
 	SPWAW_DOSSIER_BTLPROPS	props;				/* Battle properties				*/
 	SPWAW_UHT_BINFO		*uhtinfo;			/* Pointer to UHT battle info (if present)	*/
+	SPWAW_DOSSIER_BTLMAP	map;				/* Battle map					*/
 };
 
 /* SPWAW dossier: campaign properties */

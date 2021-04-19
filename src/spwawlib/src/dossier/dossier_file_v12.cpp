@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling - backwards compatibility with the V12 dossier.
  *
- * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -84,14 +84,19 @@ dossier_load_v12_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 
 	/* A V12 battle header:
 	 * + lacks the battle unit reassignment list element count (at the end)
+	 * + lacks the battle map data (at the end)
 	 *
 	 * For V12 dossiers the RA info is no longer loaded.
+	 * For V12 dossiers there is no separately saved battle map data.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
 	for (i=0; i<cnt; i++) {
 		memcpy (&(hdrs[i]), &(hdrs_v12[i]), sizeof (DOS_BHEADER_V12));
 		hdrs[i].racnt = 0;
+		hdrs[i].map.width = hdrs[i].map.height = 0;
+		hdrs[i].map.raw.data = hdrs[i].map.raw.size = hdrs[i].map.raw.comp = 0;
+		hdrs[i].map.map.data = hdrs[i].map.map.size = hdrs[i].map.map.comp = 0;
 	}
 
 handle_error:
