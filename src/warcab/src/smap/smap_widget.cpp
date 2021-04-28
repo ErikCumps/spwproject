@@ -158,12 +158,16 @@ SmapWidget::sizeHint() const
 void
 SmapWidget::load (SPWAW_BTURN *turn, SMAP_HPMC_TYPE type)
 {
-	clear();
-	if (!turn) return;
+	if (!turn) {
+		clear();
+		return;
+	}
 
 	d.comp_cfg.hcf = type;
 
+	SL_SAFE_FREE (d.battle.location);
 	SL_SAFE_STRDUP (d.battle.location, turn->battle->location);
+
 	d.battle.date = turn->tdate;
 	d.battle.gametype = turn->snap->gametype;
 	d.battle.terrain = turn->snap->game.battle.data.terrain;
@@ -429,7 +433,7 @@ SmapWidget::clear_grid_info (GRID_INFO &info)
 		delete[] info.r_info; info.r_info = NULL;
 		info.r_cnt = 0;
 	}
-	info.grid.cleanup();
+	info.grid.erase();
 }
 
 void
@@ -448,11 +452,11 @@ SmapWidget::apply_intelmode (bool paint)
 			break;
 	}
 
-	d.renderlist[ZOOM_1X]->forGrid (MARGIN_X, MARGIN_Y, d.info->grid);
+	d.renderlist[ZOOM_1X]->forGrid (MARGIN_X, MARGIN_Y, d.info->grid, d.info->mapdata);
 	d.renderlist[ZOOM_1X]->selectHCF (d.comp_cfg.hcf, d.battle.gametype, d.battle.terrain);
 	d.renderlist[ZOOM_1X]->render();
 
-	d.renderlist[ZOOM_2X]->forGrid (MARGIN_X, MARGIN_Y, d.info->grid);
+	d.renderlist[ZOOM_2X]->forGrid (MARGIN_X, MARGIN_Y, d.info->grid, d.info->mapdata);
 	d.renderlist[ZOOM_2X]->selectHCF (d.comp_cfg.hcf, d.battle.gametype, d.battle.terrain);
 	d.renderlist[ZOOM_2X]->render();
 
@@ -475,10 +479,12 @@ SmapWidget::load_info_full (SPWAW_BTURN *turn)
 	bool			kia;
 
 	GRID_INFO *info = &d.info_full;
+	clear_grid_info (*info);
 
+	info->mapdata = turn->snap->game.map.data;
 	info->grid.setup (turn->snap->game.map.width, turn->snap->game.map.height);
 
-	hdata = turn->snap->game.map.data;
+	hdata = info->mapdata;
 	for (x=0; x<info->grid.width; x++) {
 		for (y=0; y<info->grid.height; y++) {
 			pos.set(x, y);
@@ -507,8 +513,7 @@ SmapWidget::load_info_full (SPWAW_BTURN *turn)
 			if ((udata->list[i].data.posx < 0) || (udata->list[i].data.posy < 0)) continue;
 			kia = (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY));
 			hex = info->grid.grid2hex (info->b_info[info->b_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
-			hex->addUnit (SMAP_HI_BLUE);
-			if (!kia) hex->all_KIA_blue = false;
+			hex->addUnit (SMAP_HI_BLUE, kia);
 			info->b_info[info->b_cnt].uid		= udata->list[i].strings.uid;
 			info->b_info[info->b_cnt].unit		= udata->list[i].data.dname; // FIXME: designation, actually
 			info->b_info[info->b_cnt].ready		= udata->list[i].attr.gen.ready;
@@ -535,8 +540,7 @@ SmapWidget::load_info_full (SPWAW_BTURN *turn)
 			if ((udata->list[i].data.posx < 0) || (udata->list[i].data.posy < 0)) continue;
 			kia = (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY));
 			hex = info->grid.grid2hex (info->r_info[info->r_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
-			hex->addUnit (SMAP_HI_RED);
-			if (!kia) hex->all_KIA_red = false;
+			hex->addUnit (SMAP_HI_RED, kia);
 			info->r_info[info->r_cnt].uid		= udata->list[i].strings.uid;
 			info->r_info[info->r_cnt].unit		= udata->list[i].data.dname; // FIXME: designation, actually
 			info->r_info[info->r_cnt].ready		= udata->list[i].attr.gen.ready;
@@ -572,7 +576,9 @@ SmapWidget::load_info_lmtd (SPWAW_BTURN *turn)
 	bool			kia;
 
 	GRID_INFO *info = &d.info_lmtd;
+	clear_grid_info (*info);
 
+	info->mapdata = turn->snap->game.map.data;
 	info->grid.setup (d.info_full.grid);
 	info->grid.dotted = true;
 
@@ -667,8 +673,7 @@ SmapWidget::load_info_lmtd (SPWAW_BTURN *turn)
 			if ((udata->list[i].data.posx < 0) || (udata->list[i].data.posy < 0)) continue;
 			kia = (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY));
 			hex = info->grid.grid2hex (info->b_info[info->b_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
-			hex->addUnit (SMAP_HI_BLUE);
-			if (!kia) hex->all_KIA_blue = false;
+			hex->addUnit (SMAP_HI_BLUE, kia);
 			info->b_info[info->b_cnt].uid		= udata->list[i].strings.uid;
 			info->b_info[info->b_cnt].unit		= udata->list[i].data.dname; // FIXME: designation, actually
 			info->b_info[info->b_cnt].ready		= udata->list[i].attr.gen.ready;
@@ -696,8 +701,7 @@ SmapWidget::load_info_lmtd (SPWAW_BTURN *turn)
 			if (udata->list[i].data.alive && (udata->list[i].data.aband != SPWAW_ASTAY) && !udata->list[i].data.spotted) continue;
 			kia = (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY));
 			hex = info->grid.grid2hex (info->r_info[info->r_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
-			hex->addUnit (SMAP_HI_RED);
-			if (!kia) hex->all_KIA_red = false;
+			hex->addUnit (SMAP_HI_RED, kia);
 			info->r_info[info->r_cnt].uid		= udata->list[i].strings.uid;
 			info->r_info[info->r_cnt].unit		= udata->list[i].data.dname; // FIXME: designation, actually
 			info->r_info[info->r_cnt].ready		= udata->list[i].attr.gen.ready;
@@ -729,7 +733,9 @@ SmapWidget::load_info_none (SPWAW_BTURN *turn)
 	bool			kia;
 
 	GRID_INFO *info = &d.info_none;
+	clear_grid_info (*info);
 
+	info->mapdata = turn->snap->game.map.data;
 	info->grid.setup (d.info_full.grid);
 	info->grid.dotted = true;
 
@@ -757,8 +763,7 @@ SmapWidget::load_info_none (SPWAW_BTURN *turn)
 			if ((udata->list[i].data.posx < 0) || (udata->list[i].data.posy < 0)) continue;
 			hex = info->grid.grid2hex (info->b_info[info->b_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
 			kia = (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY));
-			hex->addUnit (SMAP_HI_BLUE);
-			if (!kia) hex->all_KIA_blue = false;
+			hex->addUnit (SMAP_HI_BLUE, kia);
 			info->b_info[info->b_cnt].uid		= udata->list[i].strings.uid;
 			info->b_info[info->b_cnt].unit		= udata->list[i].data.dname; // FIXME: designation, actually
 			info->b_info[info->b_cnt].ready		= udata->list[i].attr.gen.ready;
@@ -786,8 +791,7 @@ SmapWidget::load_info_none (SPWAW_BTURN *turn)
 			if (udata->list[i].data.alive && (udata->list[i].data.aband != SPWAW_ASTAY) && !udata->list[i].data.spotted) continue;
 			kia = (!udata->list[i].data.alive || (udata->list[i].data.aband == SPWAW_ASTAY));
 			hex = info->grid.grid2hex (info->r_info[info->r_cnt].pos.set (udata->list[i].data.posx, udata->list[i].data.posy));
-			hex->addUnit (SMAP_HI_RED);
-			if (!kia) hex->all_KIA_red = false;
+			hex->addUnit (SMAP_HI_RED, kia);
 			info->r_info[info->r_cnt].uid		= udata->list[i].strings.uid;
 			info->r_info[info->r_cnt].unit		= udata->list[i].data.dname; // FIXME: designation, actually
 			info->r_info[info->r_cnt].ready		= udata->list[i].attr.gen.ready;

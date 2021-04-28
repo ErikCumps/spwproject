@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - widget.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -99,11 +99,12 @@ private:
 	} UNIT_INFO;
 
 	typedef struct s_GRID_INFO {
-		SmapHexGrid	grid;
-		int		b_cnt;
-		UNIT_INFO	*b_info;
-		int		r_cnt;
-		UNIT_INFO	*r_info;
+		SmapHexGrid		grid;
+		SPWAW_SNAP_MAP_DATA	*mapdata;
+		int			b_cnt;
+		UNIT_INFO		*b_info;
+		int			r_cnt;
+		UNIT_INFO		*r_info;
 	} GRID_INFO;
 
 	struct s_data {

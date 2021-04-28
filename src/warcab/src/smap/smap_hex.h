@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex object.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -40,7 +40,13 @@ public:
 	void	setVicHex	(SPWAW_VHSTATUS owner, INTEL_MODE mode);
 
 	/*! Increment the unit count for this hex */
-	void	addUnit		(SMAP_HI influence);
+	void	addUnit		(SMAP_HI influence, bool kia);
+
+	/*! Erase the information in this hex */
+	void	erase		(void);
+
+	/*! Clear the unit count for this hex */
+	void	clearUnits	(void);
 
 public:
 	/*! Does this hex contain a bridge? */

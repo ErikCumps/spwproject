@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex grid object.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -29,8 +29,8 @@ public:
 	 */
 	void	setup	(SmapHexGrid &grid);
 
-	/*! Cleanup a grid, releasing allocated memory */
-	void	cleanup	(void);
+	/*! Erase the information in the grid */
+	void	erase	(void);
 
 public:
 	int	width;		/*!< The width of the grid			*/
@@ -135,6 +135,10 @@ public:
 
 private:
 	SmapHex	illegal_hex;	/*!< This default, invalid, SmapHex object is returned when an actual SmapHex can not be found */
+
+private:
+	/*! Cleanup a grid, releasing allocated memory */
+	void	cleanup	(void);
 };
 
 #endif	/* STRATMAP_HEXGRID_H */

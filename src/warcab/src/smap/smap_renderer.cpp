@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - rendering.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,7 +19,7 @@ SmapRenderer::SmapRenderer (SMAP_RENDERDATA &renderdata)
 	d.desc = renderdata.desc;
 
 	d.pm_width = renderdata.width; d.pm_height = renderdata.height;
-	
+
 	d.hex_side = renderdata.side;
 	d.hex_top = ((d.pm_height - 1) - (d.hex_side - 1)) / 2;
 
@@ -54,10 +54,23 @@ SmapRenderer::description (void)
 }
 
 void
-SmapRenderer::forGrid (int marginx, int marginy, SmapHexGrid &smap)
+SmapRenderer::forGrid (int marginx, int marginy, SmapHexGrid &smap, SPWAW_SNAP_MAP_DATA *btlmap)
 {
 	int	ix, iy;
 	int	px, py, rx, ry;
+
+	d.btlmap = btlmap;
+
+	if ((smap.width <= 0) || (smap.height <= 0)) {
+		cleanup();
+		return;
+	}
+
+	/* Don't recreate if the grid dimensions match */
+	if ((d.rgrid.width == smap.width) && (d.rgrid.height == smap.height)) {
+		d.hgrid = &smap;
+		return;
+	}
 
 	cleanup();
 	if ((smap.width <= 0) || (smap.height <= 0)) return;
@@ -116,7 +129,6 @@ SmapRenderer::forGrid (int marginx, int marginy, SmapHexGrid &smap)
 		py = ry + d.vmove_y;
 	}
 
-
 	return;
 
 handle_oom:
@@ -156,113 +168,123 @@ SmapRenderer::render (void)
 	SmapHexPos	pos;
 	QPixmap		*p;
 	int		idx;
+	bool		paint_map = false;
 
 	/* do nothing if there is no SmapHexGrid information */
 	if (!d.hgrid) return;
 
-	/* paint hexes */
-	layer.hmap->fill (Qt::transparent);
-	paint = new QPainter (layer.hmap);
-	paint->setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
-	paint->setBackgroundMode (Qt::TransparentMode);
-	for (iy=0; iy<d.hgrid->height; iy++) {
-		for (ix=0; ix<d.hgrid->width; ix++) {
-			ixy = d.hgrid->grid2idx (pos.set(ix, iy));
-			pmidx = SMAP_hthm2idx (*d.hpmc, d.hgrid->map[ixy].height, grid2hm (ix, iy));
-			
-			paint->drawPixmap (
-				d.rgrid.map[ixy].posx - map.x(),
-				d.rgrid.map[ixy].posy - map.y(),
-				d.hpmc->pixmaps[pmidx]);
-		}
-	}
-	delete paint;
+	paint_map |= GUIVALCHANGED(btlmap);
+	paint_map |= GUIVALCHANGED(hpmc);
 
-	/* paint features */
-	layer.features->fill (Qt::transparent);
-	paint = new QPainter (layer.features);
-	paint->setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
-	paint->setBackgroundMode (Qt::TransparentMode);
+	if (paint_map) {
+		/* paint hexes */
+		layer.hmap->fill (Qt::transparent);
+		paint = new QPainter (layer.hmap);
+		paint->setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
+		paint->setBackgroundMode (Qt::TransparentMode);
+		DBG_log ("[%s] painting hmap=0x%8.8x from hgrid 0x%8.8x, width=%d, height = %d\n",
+			__FUNCTION__, layer.hmap, d.hgrid, d.hgrid->width, d.hgrid->height);
+		for (iy=0; iy<d.hgrid->height; iy++) {
+			for (ix=0; ix<d.hgrid->width; ix++) {
+				ixy = d.hgrid->grid2idx (pos.set(ix, iy));
+				pmidx = SMAP_hthm2idx (*d.hpmc, d.hgrid->map[ixy].height, grid2hm (ix, iy));
 
-	/* paint water first */
-	for (iy=0; iy<d.hgrid->height; iy++) {
-		for (ix=0; ix<d.hgrid->width; ix++) {
-			idx = d.hgrid->grid2idx (pos.set(ix, iy));
-
-			if (d.hgrid->map[idx].water) {
 				paint->drawPixmap (
-					d.rgrid.map[idx].posx - map.x(),
-					d.rgrid.map[idx].posy - map.y(),
-					d.rd->pmc.water[grid2hm (ix, iy)]
-				);
+					d.rgrid.map[ixy].posx - map.x(),
+					d.rgrid.map[ixy].posy - map.y(),
+					d.hpmc->pixmaps[pmidx]);
 			}
 		}
-	}
+		delete paint;
 
-	/* Now paint other features */
-	for (iy=0; iy<d.hgrid->height; iy++) {
-		for (ix=0; ix<d.hgrid->width; ix++) {
-			idx = d.hgrid->grid2idx (pos.set(ix, iy));
+		/* paint features */
+		layer.features->fill (Qt::transparent);
+		paint = new QPainter (layer.features);
+		paint->setRenderHints (QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform, true);
+		paint->setBackgroundMode (Qt::TransparentMode);
 
-			if (d.hgrid->map[idx].bridge) {
-				for (i=0; i<=5; i++) {
-					if (d.hgrid->map[idx].conn_bridge & (1<<i)) {
-						paint->drawPixmap (
-							d.rgrid.map[idx].posx - map.x(),
-							d.rgrid.map[idx].posy - map.y(),
-							d.rd->pmc.bridge[i]
-						);
-					}
-				}
+		DBG_log ("[%s] painting features=0x%8.8x from hgrid 0x%8.8x, width=%d, height = %d\n",
+			__FUNCTION__, layer.features, d.hgrid, d.hgrid->width, d.hgrid->height);
 
-			}
-			if (d.hgrid->map[idx].conn_road2) {
-				for (i=0; i<=5; i++) {
-					if (d.hgrid->map[idx].conn_road2 & (1<<i)) {
-						paint->drawPixmap (
-							d.rgrid.map[idx].posx - map.x(),
-							d.rgrid.map[idx].posy - map.y(),
-							d.rd->pmc.road2[i]
-						);
-					}
-				}
-			}
-			if (d.hgrid->map[idx].conn_road1) {
-				for (i=0; i<=5; i++) {
-					if (d.hgrid->map[idx].conn_road1 & (1<<i)) {
-						paint->drawPixmap (
-							d.rgrid.map[idx].posx - map.x(),
-							d.rgrid.map[idx].posy - map.y(),
-							d.rd->pmc.road1[i]
-						);
-					}
-				}
-			}
-			if (d.hgrid->map[idx].conn_railr) {
-				for (i=0; i<=5; i++) {
-					if (d.hgrid->map[idx].conn_railr & (1<<i)) {
-						paint->drawPixmap (
-							d.rgrid.map[idx].posx - map.x(),
-							d.rgrid.map[idx].posy - map.y(),
-							d.rd->pmc.railr[i]
-						);
-					}
-				}
-			}
-			if (d.hgrid->map[idx].conn_traml) {
-				for (i=0; i<=5; i++) {
-					if (d.hgrid->map[idx].conn_traml & (1<<i)) {
-						paint->drawPixmap (
-							d.rgrid.map[idx].posx - map.x(),
-							d.rgrid.map[idx].posy - map.y(),
-							d.rd->pmc.traml[i]
-						);
-					}
+		/* paint water first */
+		for (iy=0; iy<d.hgrid->height; iy++) {
+			for (ix=0; ix<d.hgrid->width; ix++) {
+				idx = d.hgrid->grid2idx (pos.set(ix, iy));
+
+				if (d.hgrid->map[idx].water) {
+					paint->drawPixmap (
+						d.rgrid.map[idx].posx - map.x(),
+						d.rgrid.map[idx].posy - map.y(),
+						d.rd->pmc.water[grid2hm (ix, iy)]
+					);
 				}
 			}
 		}
+
+		/* Now paint other features */
+		for (iy=0; iy<d.hgrid->height; iy++) {
+			for (ix=0; ix<d.hgrid->width; ix++) {
+				idx = d.hgrid->grid2idx (pos.set(ix, iy));
+
+				if (d.hgrid->map[idx].bridge) {
+					for (i=0; i<=5; i++) {
+						if (d.hgrid->map[idx].conn_bridge & (1<<i)) {
+							paint->drawPixmap (
+								d.rgrid.map[idx].posx - map.x(),
+								d.rgrid.map[idx].posy - map.y(),
+								d.rd->pmc.bridge[i]
+							);
+						}
+					}
+				}
+				if (d.hgrid->map[idx].conn_road2) {
+					for (i=0; i<=5; i++) {
+						if (d.hgrid->map[idx].conn_road2 & (1<<i)) {
+							paint->drawPixmap (
+								d.rgrid.map[idx].posx - map.x(),
+								d.rgrid.map[idx].posy - map.y(),
+								d.rd->pmc.road2[i]
+							);
+						}
+					}
+				}
+				if (d.hgrid->map[idx].conn_road1) {
+					for (i=0; i<=5; i++) {
+						if (d.hgrid->map[idx].conn_road1 & (1<<i)) {
+							paint->drawPixmap (
+								d.rgrid.map[idx].posx - map.x(),
+								d.rgrid.map[idx].posy - map.y(),
+								d.rd->pmc.road1[i]
+							);
+						}
+					}
+				}
+				if (d.hgrid->map[idx].conn_railr) {
+					for (i=0; i<=5; i++) {
+						if (d.hgrid->map[idx].conn_railr & (1<<i)) {
+							paint->drawPixmap (
+								d.rgrid.map[idx].posx - map.x(),
+								d.rgrid.map[idx].posy - map.y(),
+								d.rd->pmc.railr[i]
+							);
+						}
+					}
+				}
+				if (d.hgrid->map[idx].conn_traml) {
+					for (i=0; i<=5; i++) {
+						if (d.hgrid->map[idx].conn_traml & (1<<i)) {
+							paint->drawPixmap (
+								d.rgrid.map[idx].posx - map.x(),
+								d.rgrid.map[idx].posy - map.y(),
+								d.rd->pmc.traml[i]
+							);
+						}
+					}
+				}
+			}
+		}
+		delete paint;
 	}
-	delete paint;
 
 	/* paint victory hexes */
 	layer.vhex->fill (Qt::transparent);

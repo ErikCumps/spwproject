@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex object.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -10,22 +10,7 @@
 
 SmapHex::SmapHex (void)
 {
-	pos.set (-1, -1);
-	height = SMAP_HH_000;
-	actheight = 0;
-	water = false;
-	bridge = false;
-	conn_road1 = conn_road2 = conn_railr = conn_traml = conn_bridge = 0;
-	vic_hex = false;
-	vic_hex_owner = SMAP_HI_NONE;
-	unit_cnt_blue = unit_cnt_red = 0;
-	all_KIA_blue = all_KIA_red = true;
-	influence_blue_cnt = influence_red_cnt = 0;
-	influence_blue = influence_red = 0.0;
-	influence = SMAP_HI_NONE;
-	frontline = 0;
-
-	d.ready = false;
+	erase();
 }
 
 SmapHex::~SmapHex (void)
@@ -97,20 +82,50 @@ SmapHex:: setVicHex (SPWAW_VHSTATUS owner, INTEL_MODE mode)
 }
 
 void
-SmapHex::addUnit (SMAP_HI influence)
+SmapHex::addUnit (SMAP_HI influence, bool kia)
 {
 	if (!d.ready) return;
 
 	switch (influence) {
 		case SMAP_HI_BLUE:
 			unit_cnt_blue++;
+			if (!kia) all_KIA_blue = false;
 			break;
 		case SMAP_HI_RED:
 			unit_cnt_red++;
+			if (!kia) all_KIA_red = false;
 			break;
 		default:
 			break;
 	}
+}
+
+void
+SmapHex::erase (void)
+{
+	pos.set (-1, -1);
+	height = SMAP_HH_000;
+	actheight = 0;
+	water = false;
+	bridge = false;
+	conn_road1 = conn_road2 = conn_railr = conn_traml = conn_bridge = 0;
+	vic_hex = false;
+	vic_hex_owner = SMAP_HI_NONE;
+	unit_cnt_blue = unit_cnt_red = 0;
+	all_KIA_blue = all_KIA_red = true;
+	influence_blue_cnt = influence_red_cnt = 0;
+	influence_blue = influence_red = 0.0;
+	influence = SMAP_HI_NONE;
+	frontline = 0;
+
+	d.ready = false;
+}
+
+void
+SmapHex::clearUnits (void)
+{
+	unit_cnt_blue = unit_cnt_red = 0;
+	all_KIA_blue = all_KIA_red = true;
 }
 
 bool

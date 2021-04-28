@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - rendering.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -9,6 +9,7 @@
 #ifndef	STRATMAP_RENDERER_H
 #define	STRATMAP_RENDERER_H	1
 
+#include "gui/gui_private.h"
 #include "smap_hexgrid.h"
 #include "smap_renderdata.h"
 
@@ -38,7 +39,7 @@ public:
 	const char	*description (void);
 
 	/*! Prepares the renderer for rendering the specified strategic map hex grid */
-	void		forGrid	(int marginx, int marginy, SmapHexGrid &smap);
+	void		forGrid	(int marginx, int marginy, SmapHexGrid &smap, SPWAW_SNAP_MAP_DATA *btlmap);
 
 	/*! Selects an apropriate height colorfield */
 	void		selectHCF (SMAP_HPMC_TYPE type, SPWAW_GAME_TYPE gametype, SPWAW_TERRAIN terrain);
@@ -70,7 +71,7 @@ public:
 		QPixmap *vhex;		/*!< The victory hexes and ownership					*/
 		QPixmap *influence;	/*!< The influence map							*/
 		QPixmap	*grid;		/*!< The hex grid							*/
-		QPixmap *frontline;	/*!< The frtonline(s)							*/
+		QPixmap *frontline;	/*!< The frontline(s)							*/
 		QPixmap	*dots;		/*!< The unit dots							*/
 	} layer;			/*!< The layers of the rendered map					*/
 
@@ -90,10 +91,12 @@ private:
 		int	vmove_y;	/*!< The Y step (in pixels) for moving vertically to a neighbour hex	*/
 
 		SMAP_RENDERDATA		*rd;	/*!< The QPixmap renderdata					*/
-		SMAP_RENDERDATA_HPMC	*hpmc;	/*!< The current height pixmap collection			*/
 
 		SmapHexGrid		*hgrid;	/*!< The strategic map hex grid to render			*/
 		SMAP_RENDERER_GRID	rgrid;	/*!< The hex grid in renderer coordinates			*/
+
+		GUIVALTRACK (SPWAW_SNAP_MAP_DATA *, btlmap);	/*!< The current battle map data		*/
+		GUIVALTRACK(SMAP_RENDERDATA_HPMC *, hpmc);	/*!< The current height pixmap collection	*/
 	} d;
 
 private:

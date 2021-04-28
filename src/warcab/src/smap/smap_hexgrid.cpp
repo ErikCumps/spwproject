@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - strategic map - hex grid object.
  *
- * Copyright (C) 2012-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2012-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -27,30 +27,40 @@ SmapHexGrid::~SmapHexGrid (void)
 void
 SmapHexGrid::setup (int width, int height)
 {
-	cleanup();
-	if ((width <= 0) || (height <= 0)) return;
+	/* Don't recreate if the grid dimensions match */
+	if ((this->width != width) || (this->height != height)) {
+		cleanup();
+		if ((width <= 0) || (height <= 0)) return;
 
-	this->width = width; this->height = height;
-	map = new SmapHex[this->width*this->height];
+		this->width = width; this->height = height;
+		map = new SmapHex[this->width*this->height];
+	}
 }
 
 void
 SmapHexGrid::setup (SmapHexGrid &grid)
 {
-	cleanup();
-	if ((grid.width <= 0) || (grid.height <= 0)) return;
+	/* Don't recreate if the grid dimensions match */
+	if ((this->width != grid.width) || (this->height != grid.height)) {
+		cleanup();
+		if ((grid.width <= 0) || (grid.height <= 0)) return;
 
-	this->width = grid.width; this->height = grid.height;
+		this->width = grid.width; this->height = grid.height;
 
-	unsigned long cnt = this->width*this->height;
-	map = new SmapHex[cnt];
+		map = new SmapHex[this->width*this->height];
+	}
 
-	for (unsigned long i=0; i<cnt; i++) {
+	for (long i=0; i<(this->width*this->height); i++) {
 		map[i] = grid.map[i];
-		map[i].unit_cnt_blue = 0;
-		map[i].all_KIA_blue = true;
-		map[i].unit_cnt_red = 0;
-		map[i].all_KIA_red = true;
+		map[i].clearUnits();
+	}
+}
+
+void
+SmapHexGrid::erase (void)
+{
+	for (long i=0; i<(this->width*this->height); i++) {
+		map[i].erase();
 	}
 }
 
