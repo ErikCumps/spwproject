@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -222,6 +222,14 @@ battle_add_bturn (SPWAW_BATTLE *ptr, SPWAW_SNAPSHOT *snap, STRTAB *stab, SPWAW_B
 
 	bt->battle = ptr;
 	ptr->tlist[ptr->tcnt++] = bt;
+
+	if (ptr->tcnt == 1) {
+		rc = snap_mapref_create (bt->snap, &(ptr->map.raw), &(ptr->map.map));
+		ROE ("snap_mapref_create()");
+	} else {
+		rc = snap_mapref_set (&(ptr->map.raw), &(ptr->map.map), bt->snap);
+		ROE ("snap_mapref_set()");
+	}
 
 	qsort (ptr->tlist, ptr->tcnt, sizeof (SPWAW_BTURN *), sort_battle);
 
