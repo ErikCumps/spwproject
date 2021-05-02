@@ -954,8 +954,12 @@ calc_act_readiness (SPWAW_SNAP_OOB_UEL *ptr)
 	/* calculate damage */
 	rd = (double)(ptr->data.cost - ptr->data.damage) / (double)ptr->data.cost;
 
-	/* calculate headcount */
-	rh = (double)ptr->data.hcnt_left / (double)ptr->data.hcnt;
+	/* calculate headcount, except when there is no headcount (e.g. explosives) */
+	if (ptr->data.hcnt) {
+		rh = (double)ptr->data.hcnt_left / (double)ptr->data.hcnt;
+	} else {
+		rh = 1.0;
+	}
 
 	/* start with damage or headcount, whichever has the greatest effect */
 	r = (rd < rh) ? rd : rh;
