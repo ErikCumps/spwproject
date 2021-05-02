@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - savegame list.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -16,8 +16,8 @@ ModelSaveList::ModelSaveList (SPWAW_SAVELIST_TARGET &target, char *path, SPWAW_S
 	/* Initialize */
 	memset (&d, 0, sizeof (d));
 
-	header << "filename" << "game" << "type" << "battle date" << "battle location" << "comment";
-	d.col_cnt = 6;
+	header << "filename" << "game" << "type" << "battle date" << "battle location" << "battle index" << "comment";
+	d.col_cnt = 7;
 
 	d.target = target;
 
@@ -122,6 +122,7 @@ ModelSaveList::setupModelData (char *path, SPWAW_SAVELIST *ignore)
 				<< SPWAW_battletype2str(p->info.type)
 				<< p->info.stamp
 				<< p->info.location
+				<< p->info.btlidx
 				<< p->info.title;
 		node.node = p;
 
@@ -175,8 +176,8 @@ ModelSaveList::sort_transform (NODE_DATA *ptr, int col, int idx)
 		case 4:
 			out = col4 + col3;
 			break;
-		case 5:
-			out = ptr->data[5].toString() + col3;
+		case 6:
+			out = ptr->data[6].toString() + col3;
 			break;
 		default:
 			out = ptr->data[col].toString();

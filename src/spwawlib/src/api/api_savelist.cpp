@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame list API implementation.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -65,8 +65,10 @@ file_on_list (SPWAW_SAVELIST_TARGET &target, SPWAW_SAVELIST *ignore, SPWAW_SAVEL
 		switch (target.type) {
 			case SPWAW_CAMPAIGN_DOSSIER:
 			case SPWAW_MEGACAM_DOSSIER:
-				// match on battle timestamp
-				if (	strcmp (p->info.stamp, node->info.stamp) == 0
+				// match on battle timestamp, location and battle index
+				if (	(strcmp (p->info.stamp, node->info.stamp) == 0) &&
+					(strcmp (p->info.location, node->info.location) == 0) &&
+					(p->info.btlidx == node->info.btlidx)
 					) matched = true;
 				break;
 			case SPWAW_STDALONE_DOSSIER:
@@ -119,6 +121,7 @@ handle_file (SPWAW_SAVELIST_TARGET &target, SPWAW_SAVE_TYPE savetype, const char
 		ptr->info.type = info.type;
 		ptr->info.gametype = info.gametype;
 		ptr->info.savetype = info.savetype;
+		ptr->info.btlidx = info.btlidx;
 	}
 
 	/* skip file if wrong battle type */
@@ -312,6 +315,7 @@ SPWAW_savelist_add (SPWAW_SAVELIST *list, SPWAW_SNAPSHOT *snap)
 		snap->game.battle.strings.date, snap->game.battle.data.tdate.turn);
 	snprintf (node->info.location, sizeof (node->info.location) - 1, "%s", snap->raw.game.battle.location);
 	snprintf (node->info.title, sizeof (node->info.title) - 1, "%s", snap->raw.game.meta.title);
+	node->info.btlidx = snap->game.btlidx;
 	node->info.type = snap->type;
 	node->info.gametype = snap->gametype;
 	node->info.savetype = snap->savetype;

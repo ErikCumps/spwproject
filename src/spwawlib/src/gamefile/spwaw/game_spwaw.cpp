@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame handling - SPWaW game data.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -141,6 +141,12 @@ setup_spwaw_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *file
 	memcpy (info->location, gamedata->u.d.data.location, sizeof (gamedata->u.d.data.location));
 	if (metadata_title (metadata, title)) {
 		memcpy (info->title, title.ptr, title.size);
+	}
+
+	if (gamedata->u.d.data.battles_max > 0) {
+		info->btlidx = gamedata->u.d.data.battles;
+	} else {
+		info->btlidx = SPWAW_NOBTLIDX;
 	}
 
 	log_disable();

@@ -87,6 +87,12 @@ setup_winspmbt_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *f
 		memcpy (info->title, title.ptr, title.size);
 	}
 
+	if (gamedata->u.d.data.battles_max > 0) {
+		info->btlidx = gamedata->u.d.data.battles;
+	} else {
+		info->btlidx = SPWAW_NOBTLIDX;
+	}
+
 	log_disable();
 	rc = section35_winspmbt_detection (formdata, ful1, ful2);
 	log_enable();

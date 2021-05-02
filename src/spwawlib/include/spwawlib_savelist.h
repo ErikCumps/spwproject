@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame list API.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  *
@@ -22,6 +22,7 @@ typedef struct s_SPWAW_SAVEGAME_INFO {
 	char				stamp[32];			/*!< game turn and date info		*/
 	char				location[SPWAW_AZSLOCATION+1];	/*!< game location			*/
 	char				title[SPWAW_AZSCMTTITLE+1];	/*!< game title				*/
+	USHORT				btlidx;				/*!< campaign battle index (if any)	*/
 	SPWAW_BATTLE_TYPE		type;				/*!< game battle type			*/
 	SPWAW_GAME_TYPE			gametype;			/*!< game type				*/
 	SPWAW_SAVE_TYPE			savetype;			/*!< save type				*/

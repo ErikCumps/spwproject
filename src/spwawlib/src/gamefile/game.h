@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -22,6 +22,7 @@ typedef struct s_GAMEINFO {
 	char			stamp[32];
 	char			location[SPWAW_AZSLOCATION+1];
 	char			title[SPWAW_AZSCMTTITLE+1];
+	USHORT			btlidx;
 	SPWAW_BATTLE_TYPE	type;
 } GAMEINFO;
 

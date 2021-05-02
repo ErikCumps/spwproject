@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - snapshot list API implementation.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -27,12 +27,10 @@ file_on_list (SPWAW_SNAPLIST *ignore, SPWAW_SNAPLIST_NODE *node)
 	for (i=0; i<ignore->cnt; i++) {
 		p = ignore->list[i];
 
-		if (	(strcmp (p->info.stamp, node->info.stamp) == 0) &&
-			(strcmp (p->info.location, node->info.location) == 0)
-		) {
-			if (CompareFileTime (&(p->filedate), &(node->filedate)) >= 0) break;
-			break;
-		}
+		// match on filename and not-newer file
+		if (	(strcmp (p->filepath, node->filepath) == 0) &&
+			(CompareFileTime (&(p->filedate), &(node->filedate)) >= 0)
+			) break;
 
 		p = NULL;
 	}

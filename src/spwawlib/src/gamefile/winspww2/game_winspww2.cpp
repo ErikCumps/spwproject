@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - savegame handling - winSPWW2 game data.
  *
- * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -85,6 +85,12 @@ setup_winspww2_info (SPWAW_SAVEGAME_DESCRIPTOR *sgd, GAMEINFO *info, GAMEFILE *f
 	memcpy (info->location, gamedata->u.d.data.location, sizeof (gamedata->u.d.data.location));
 	if (metadata_title (metadata, title)) {
 		memcpy (info->title, title.ptr, title.size);
+	}
+
+	if (gamedata->u.d.data.battles_max > 0) {
+		info->btlidx = gamedata->u.d.data.battles;
+	} else {
+		info->btlidx = SPWAW_NOBTLIDX;
 	}
 
 	log_disable();
