@@ -28,7 +28,7 @@
 #define	EXP_WINSPMBT_FILTERDUPF	1
 
 /* Set to 1 to filter out big formation list gaps during candidate formation verification */
-#define	EXP_WINSPMBT_FILTERGAPF	1
+#define	EXP_WINSPMBT_FILTERGAPF	0
 
 /* Set to 1 to verify candidate units based on unit validity */
 #define	EXP_WINSPMBT_VALIDITY	1

@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - winSPWW2 build options.
  *
- * Copyright (C) 2019-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -28,7 +28,7 @@
 #define	EXP_WINSPWW2_FILTERDUPF	1
 
 /* Set to 1 to filter out big formation list gaps during candidate formation verification */
-#define	EXP_WINSPWW2_FILTERGAPF	1
+#define	EXP_WINSPWW2_FILTERGAPF	0
 
 /* Set to 1 to verify candidate units based on unit validity */
 #define	EXP_WINSPWW2_VALIDITY	1
