@@ -20,6 +20,7 @@ static void	statereport	(SL_STDBG_INFO_LEVEL level);
 
 
 /* --- private macros --- */
+
 /* action_game_add_campaign_savegame read-only dialog box title */
 #define	STR_READONLY_TITLE				\
 	"Read-only dossier"
@@ -28,6 +29,18 @@ static void	statereport	(SL_STDBG_INFO_LEVEL level);
 #define	STR_READONLY_BODY							\
 	"<b>This dossier is opened in read-only mode.</b><br><br>"		\
 	"Reason: %1<br>"							\
+
+/* Dossier Load/Save action: GuiProgress min */
+#define	DLSA_GP_MIN	0
+
+/* Dossier Load/Save action: GuiProgress basic step size */
+#define	DLSA_GP_BASIC_STEP	10
+
+/* Dossier Load/Save action: GuiProgress spwawlib load/save limit */
+#define	DLSA_GP_SPLS_LIMIT	80
+
+/* Dossier Load/Save action: GuiProgress max */
+#define	DLSA_GP_MAX	100
 
 
 
@@ -174,25 +187,59 @@ WARCABState::mknew (SPWAW_GAME_TYPE gametype, const char *gamepath, const char *
 	RETURN_OK;
 }
 
+static void
+on_start (void *ctx, USHORT battle_cnt)
+{
+	GuiProgressEngine	*gpe = (GuiProgressEngine *)ctx;
+	if (!gpe) return;
+
+	gpe->set_steps (battle_cnt + 2);
+	gpe->step();
+}
+
+static void
+on_bump (void *ctx)
+{
+	GuiProgressEngine	*gpe = (GuiProgressEngine *)ctx;
+	if (!gpe) return;
+
+	gpe->step();
+}
+
+static void
+on_done (void *ctx)
+{
+	GuiProgressEngine	*gpe = (GuiProgressEngine *)ctx;
+	if (!gpe) return;
+
+	gpe->step();
+}
 
 SL_ERROR
 WARCABState::load (SPWAW_DOSSLIST *list)
 {
-	SPWAW_ERROR	arc;
-	SL_ERROR	rc;
-	//QString		gamedir;
-	bool		gpe;
-	GuiProgress	gp ("Loading dossier...", 0);
+	SPWAW_ERROR		arc;
+	SL_ERROR		rc;
+	GuiProgress		gp ("Loading dossier...", 0);
+	GuiProgressEngine	gpe (&gp, DLSA_GP_SPLS_LIMIT);
+	SPWAW_DOSSIER_LOAD_CB	lcb;
+	bool			pe;
 
 	if (!list || !list->cnt) return (SPWERR_NULLARG);
 
 	DBG_log ("[%s] starting progress", __FUNCTION__);
-	gp.setRange (0, 4);
+	gp.setRange (DLSA_GP_MIN, DLSA_GP_MAX);
+	GUI_FIXME;
 
 	close();
-	gp.inc();
+	gp.inc(DLSA_GP_BASIC_STEP);
 
-	arc = SPWAW_dossier_load (list->list[0]->filepath, &d.dossier);
+	lcb.context = &gpe;
+	lcb.on_started = on_start;
+	lcb.on_btlload = on_bump;
+	lcb.on_finished = on_done;
+
+	arc = SPWAW_dossier_load (list->list[0]->filepath, &d.dossier, &lcb);
 	if (SPWAW_HAS_ERROR (arc)) {
 		switch (arc) {
 			case SPWERR_INCOMPATIBLE:
@@ -210,7 +257,6 @@ WARCABState::load (SPWAW_DOSSLIST *list)
 		}
 		RETURN_ERR_FUNCTION_EX1 (rc, "SPWAW_dossier_load() failed: %s", SPWAW_errstr (arc));
 	}
-	gp.inc();
 
 	snprintf (d.filename, sizeof (d.filename) - 1, "%s", list->list[0]->filepath);
 
@@ -218,14 +264,14 @@ WARCABState::load (SPWAW_DOSSLIST *list)
 	if (SL_HAS_ERROR (rc)) {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_LOAD_FAILED, "WARCAB_refresh_savelists() failed");
 	}
-	gp.inc();
+	gp.inc(DLSA_GP_BASIC_STEP);
 
 	set_dirty (false);
 	set_gamepath (qPrintable(CFG_game_from_oob(d.dossier->oobdir, d.dossier->gametype)));
-	if (CFG_valid_gamepath (d.gamepath, d.dossier->gametype, gpe)) {
+	if (CFG_valid_gamepath (d.gamepath, d.dossier->gametype, pe)) {
 		set_writeable();
 	} else {
-		set_readonly (d.gamepath, d.dossier->gametype, gpe);
+		set_readonly (d.gamepath, d.dossier->gametype, pe);
 	}
 	set_name (d.dossier->name);
 	setup_tree();
@@ -243,25 +289,29 @@ WARCABState::load (SPWAW_DOSSLIST *list)
 SL_ERROR
 WARCABState::save (void)
 {
-	SPWAW_ERROR	arc;
-	GuiProgress	gp ("Saving dossier...", 0);
+	SPWAW_ERROR		arc;
+	GuiProgress		gp ("Saving dossier...", 0);
+	GuiProgressEngine	gpe (&gp, DLSA_GP_SPLS_LIMIT);
+	SPWAW_DOSSIER_SAVE_CB	scb;
 
 	if (!is_loaded()) RETURN_OK;
 
-	gp.setRange (0, 1);
+	gp.setRange (DLSA_GP_MIN, DLSA_GP_MAX);
 	GUI_FIXME;
 
 	if (d.filename[0] == '\0') {
 		RETURN_ERR_FUNCTION (ERR_DOSSIER_SAVE_NONAME, "empty filename");
 	}
 
-	arc = SPWAW_dossier_save (&d.dossier, d.filename, CFG_compress());
+	scb.context = &gpe;
+	scb.on_started = on_start;
+	scb.on_btlsave = on_bump;
+	scb.on_finished = on_done;
+
+	arc = SPWAW_dossier_save (&d.dossier, d.filename, CFG_compress(), &scb);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_SAVE_FAILED, "SPWAW_dossier_save() failed: %s", SPWAW_errstr (arc));
 	}
-
-	gp.inc();
-	GUI_FIXME;
 
 	set_dirty (false);
 
@@ -272,8 +322,10 @@ WARCABState::save (void)
 SL_ERROR
 WARCABState::saveas (char *file)
 {
-	SPWAW_ERROR	arc;
-	GuiProgress	gp ("Saving dossier...", 0);
+	SPWAW_ERROR		arc;
+	GuiProgress		gp ("Saving dossier...", 0);
+	GuiProgressEngine	gpe (&gp, DLSA_GP_SPLS_LIMIT);
+	SPWAW_DOSSIER_SAVE_CB	scb;
 
 	if (!file) {
 		RETURN_ERR_FUNCTION_EX0 (ERR_DOSSIER_SAVE_FAILED, "NULL filename argument");
@@ -281,16 +333,18 @@ WARCABState::saveas (char *file)
 
 	if (!is_loaded()) RETURN_OK;
 
-	gp.setRange (0, 1);
+	gp.setRange (DLSA_GP_MIN, DLSA_GP_MAX);
 	GUI_FIXME;
 
-	arc = SPWAW_dossier_save (&d.dossier, file, CFG_compress());
+	scb.context = &gpe;
+	scb.on_started = on_start;
+	scb.on_btlsave = on_bump;
+	scb.on_finished = on_done;
+
+	arc = SPWAW_dossier_save (&d.dossier, file, CFG_compress(), &scb);
 	if (SPWAW_HAS_ERROR (arc)) {
 		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_SAVE_FAILED, "SPWAW_dossier_save() failed: %s", SPWAW_errstr (arc));
 	}
-
-	gp.inc();
-	GUI_FIXME;
 
 	memset (d.filename, 0, sizeof (d.filename));
 	snprintf (d.filename, sizeof (d.filename) - 1, "%s", file);

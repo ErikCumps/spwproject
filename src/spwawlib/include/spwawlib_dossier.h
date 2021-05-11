@@ -182,12 +182,28 @@ typedef struct s_SPWAW_DOSSIER_INFO {
 	SPWAW_DOSSIER_TRACKING	tracking;			/* Savegame tracking info			*/
 } SPWAW_DOSSIER_INFO;
 
+/* SPWAW dossier: dossier loading callbacks */
+typedef struct s_SPWAW_DOSSIER_LOAD_CB {
+	void	*context;					/*!< private context to pass on with callback	*/
+	void    (*on_started)(void *ctx, USHORT battle_cnt);	/*!< called after initial load stage		*/
+	void	(*on_btlload)(void *ctx);			/*!< called after completion of battle load	*/
+	void	(*on_finished)(void *ctx);			/*!< called after final load stage		*/
+} SPWAW_DOSSIER_LOAD_CB;
+
+/* SPWAW dossier: dossier saving callbacks */
+typedef struct s_SPWAW_DOSSIER_SAVE_CB {
+	void	*context;					/*!< private context to pass on with callback	*/
+	void    (*on_started)(void *ctx, USHORT battle_cnt);	/*!< called after initial save stage		*/
+	void	(*on_btlsave)(void *ctx);			/*!< called after completion of battle save	*/
+	void	(*on_finished)(void *ctx);			/*!< called after final save stage		*/
+} SPWAW_DOSSIER_SAVE_CB;
+
 /*** API ***/
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_new		(SPWAW_GAME_TYPE gametype, const char *oobdir, const char *name, const char *comment, SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_info		(const char *file, SPWAW_DOSSIER_INFO *info);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOSSIER **dossier);
-extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_load		(const char *file, SPWAW_DOSSIER **dossier, SPWAW_DOSSIER_LOAD_CB *load_cb = NULL);
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_save		(SPWAW_DOSSIER **dossier, const char *file, bool compress, SPWAW_DOSSIER_SAVE_CB *save_cb = NULL);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_free		(SPWAW_DOSSIER **dossier);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_edit		(SPWAW_DOSSIER *dossier, const char *name, const char *comment);
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_set_savedir	(SPWAW_DOSSIER *dossier, const char *savedir);

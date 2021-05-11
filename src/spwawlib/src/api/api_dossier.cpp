@@ -82,7 +82,7 @@ handle_error:
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_dossier_load (const char *file, SPWAW_DOSSIER **dossier)
+SPWAW_dossier_load (const char *file, SPWAW_DOSSIER **dossier, SPWAW_DOSSIER_LOAD_CB *load_cb)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	SPWAW_DOSSIER	*ptr = NULL;
@@ -105,7 +105,7 @@ SPWAW_dossier_load (const char *file, SPWAW_DOSSIER **dossier)
 	ERRORGOTO ("fcheck_verify()", handle_error);
 
 	/* Load dossier data */
-	rc = dossier_load (fd, ptr);
+	rc = dossier_load (fd, ptr, load_cb);
 	ERRORGOTO ("dossier_load()", handle_error);
 
 	/* Cleanup and return */
@@ -121,7 +121,7 @@ handle_error:
 }
 
 SPWAWLIB_API SPWAW_ERROR
-SPWAW_dossier_save (SPWAW_DOSSIER **dossier, const char *file, bool compress)
+SPWAW_dossier_save (SPWAW_DOSSIER **dossier, const char *file, bool compress, SPWAW_DOSSIER_SAVE_CB *save_cb)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	char		tf[MAX_PATH+1];
@@ -141,7 +141,7 @@ SPWAW_dossier_save (SPWAW_DOSSIER **dossier, const char *file, bool compress)
 	fd = open (tf, O_RDWR|O_BINARY|O_CREAT|O_TRUNC, 0666);
 	if (fd < 0) FAILGOTO (SPWERR_FOFAILED, "dossier .save. file create", handle_error);
 
-	rc = dossier_save (*dossier, fd, compress);
+	rc = dossier_save (*dossier, fd, compress, save_cb);
 	ERRORGOTO ("dossier_save()", handle_error);
 
 	rc = fcheck_make (fd);

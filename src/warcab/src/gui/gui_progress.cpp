@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - progress dialog box.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -86,6 +86,36 @@ GuiProgress::dec (int step)
 }
 
 void
+GuiProgress::set (int pos)
+{
+	int	n;
+
+	if (!d.active) return;
+
+	n = pos;
+	if (n > d.max) n = d.max;
+	if (n < d.min) n = d.min;
+
+	DBG_log ("[%s] %d <= v:%d <= %d\n", __FUNCTION__, d.min, n, d.max);
+
+	GUI_FIXME;
+
+	setValue (d.v = n);
+
+	GUI_FIXME;
+}
+
+int
+GuiProgress::get (void)
+{
+	if (!d.active) {
+		return (d.min);
+	} else {
+		return (d.v);
+	}
+}
+
+void
 GuiProgress::done (void)
 {
 	DBG_log ("[%s] DONE, start\n", __FUNCTION__);
@@ -99,4 +129,42 @@ GuiProgress::done (void)
 	setValue (d.v = d.max);
 
 	GUI_FIXME;
+}
+
+GuiProgressEngine::GuiProgressEngine (GuiProgress *gp, int limit)
+{
+	/* Initialize */
+	memset (&d, 0, sizeof (d));
+
+	d.gp = gp;
+	d.limit = limit;
+}
+
+void
+GuiProgressEngine::set_steps (int steps)
+{
+	if (!d.gp) return;
+	if (!steps) return;
+
+	d.start = d.gp->get();
+	if (d.limit <= d.start) return;
+
+	d.steps = steps;
+	d.step_size = (double)(d.limit - d.start) / d.steps;
+}
+
+void
+GuiProgressEngine::step (void)
+{
+	int	pos;
+
+	if (!d.gp) return;
+	if (!d.steps) return;
+	if (d.limit <= d.start) return;
+
+	d.step++;
+	pos = floor((d.step * d.step_size) + d.start);
+	if (pos > d.limit) pos = d.limit;
+
+	d.gp->set (pos);
 }

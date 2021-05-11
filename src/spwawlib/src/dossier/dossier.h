@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - dossier handling.
  *
- * Copyright (C) 2007-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2007-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -12,9 +12,9 @@
 #include <spwawlib_dossier.h>
 
 extern SPWAW_ERROR	dossier_new			(SPWAW_DOSSIER **dst);
-extern SPWAW_ERROR	dossier_save			(SPWAW_DOSSIER *src, int fd, bool compress);
+extern SPWAW_ERROR	dossier_save			(SPWAW_DOSSIER *src, int fd, bool compress, SPWAW_DOSSIER_SAVE_CB *save_cb);
 extern SPWAW_ERROR	dossier_loadinfo		(int fd, SPWAW_DOSSIER_INFO *dst);
-extern SPWAW_ERROR	dossier_load			(int fd, SPWAW_DOSSIER *dst);
+extern SPWAW_ERROR	dossier_load			(int fd, SPWAW_DOSSIER *dst, SPWAW_DOSSIER_LOAD_CB *load_cb);
 extern SPWAW_ERROR	dossier_clean			(SPWAW_DOSSIER *ptr);
 extern void		dossier_clean_battle		(SPWAW_BATTLE *b);
 extern void		dossier_clean_turn		(SPWAW_BTURN *t);

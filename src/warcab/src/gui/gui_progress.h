@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - progress dialog box.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -22,6 +22,8 @@ public slots:
 public:
 	void	inc	(int step = 1);
 	void	dec	(int step = 1);
+	void	set	(int pos);
+	int	get	(void);
 	void	done	(void);
 
 private:
@@ -30,6 +32,26 @@ private:
 		int	min;
 		int	max;
 		int	v;
+	} d;
+};
+
+class GuiProgressEngine
+{
+public:
+	GuiProgressEngine	(GuiProgress *gp, int limit);
+
+public:
+	void	set_steps	(int steps);
+	void	step	(void);
+
+private:
+	struct s_data {
+		GuiProgress	*gp;
+		int		limit;
+		int		steps;
+		int		start;
+		double		step_size;
+		int		step;
 	} d;
 };
 

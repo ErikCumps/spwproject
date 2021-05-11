@@ -317,7 +317,7 @@ handle_error:
 }
 
 static SPWAW_ERROR
-dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULONG version)
+dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULONG version, SPWAW_DOSSIER_LOAD_CB *load_cb)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
@@ -422,6 +422,8 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 
 		dst->blist[dst->bcnt++] = pp = link_battle (p, pp);
 		p = NULL;
+
+		if (load_cb && load_cb->on_btlload) { load_cb->on_btlload (load_cb->context); }
 	}
 	dst->bfirst = dst->blist[0];
 	dst->blast  = dst->blist[dst->bcnt-1];
@@ -572,7 +574,7 @@ handle_error:
 }
 
 SPWAW_ERROR
-dossier_load (int fd, SPWAW_DOSSIER *dst)
+dossier_load (int fd, SPWAW_DOSSIER *dst, SPWAW_DOSSIER_LOAD_CB *load_cb)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		pos;
@@ -647,8 +649,10 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	dst->type = (SPWAW_DOSSIER_TYPE)hdr.type;
 	dst->gametype = (SPWAW_GAME_TYPE)hdr.gametype;
 
+	if (load_cb && load_cb->on_started) { load_cb->on_started (load_cb->context, hdr.bcnt); }
+
 	bseekset (fd, pos + hdr.blist);
-	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version);
+	rc = dossier_load_battles (fd, dst, hdr.bcnt, stab, mvhdr.version, load_cb);
 	ERRORGOTO ("dossier_load_battles()", handle_error);
 
 	if (dst->type != SPWAW_STDALONE_DOSSIER) {
@@ -673,6 +677,8 @@ dossier_load (int fd, SPWAW_DOSSIER *dst)
 	}
 
 	SPWOOB_LIST_debug_log (dst->oobdata, __FUNCTION__);
+
+	if (load_cb && load_cb->on_finished) { load_cb->on_finished (load_cb->context); }
 
 	return (SPWERR_OK);
 

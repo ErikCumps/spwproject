@@ -218,7 +218,7 @@ dossier_save_battle_map (SPWAW_BATTLE *src, int fd, long hdrpos, DOS_BHEADER &hd
 }
 
 static SPWAW_ERROR
-dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, bool compress)
+dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, bool compress, SPWAW_DOSSIER_SAVE_CB *save_cb)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		p0, p1;
@@ -285,6 +285,8 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		ERRORGOTO ("dossier_save_battle_map()", handle_error);
 
 		idx++;
+
+		if (save_cb && save_cb->on_btlsave) { save_cb->on_btlsave (save_cb->context); }
 	}
 
 	p1 = bseekget (fd); bseekset (fd, p0);
@@ -344,7 +346,7 @@ dossier_save_tracking (SPWAW_DOSSIER *src, DOS_TRACKING *tracking)
 }
 
 SPWAW_ERROR
-dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
+dossier_save (SPWAW_DOSSIER *src, int fd, bool compress, SPWAW_DOSSIER_SAVE_CB *save_cb)
 {
 	SPWAW_ERROR	rc = SPWERR_OK;
 	long		p0, p1;
@@ -388,8 +390,10 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	rc = SPWOOB_LIST_save (src->oobdata, fd, compress);	ROE ("SPWOOB_LIST_save()");
 	SPWOOB_LIST_debug_log (src->oobdata, __FUNCTION__);
 
+	if (save_cb && save_cb->on_started) { save_cb->on_started (save_cb->context, src->bcnt); }
+
 	hdr.blist = bseekget (fd) - p0;
-	rc = dossier_save_battles (src, fd, &(hdr.bcnt), stab, compress);
+	rc = dossier_save_battles (src, fd, &(hdr.bcnt), stab, compress, save_cb);
 	ROE ("dossier_save_battles()");
 
 	hdr.stab = bseekget (fd) - p0;
@@ -410,6 +414,8 @@ dossier_save (SPWAW_DOSSIER *src, int fd, bool compress)
 	if (!bwrite (fd, (char *)&hdr, sizeof (hdr)))
 		RWE (SPWERR_FWFAILED, "bwrite(hdr) failed");
 	bseekset (fd, p1);
+
+	if (save_cb && save_cb->on_finished) { save_cb->on_finished (save_cb->context); }
 
 	return (SPWERR_OK);
 }
