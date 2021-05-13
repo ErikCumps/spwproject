@@ -2,7 +2,7 @@
 
 # debug_memtrace: an example trace analyzer script.
 #
-# Copyright (C) 2008-2020 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2008-2021 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL v2
 
@@ -258,7 +258,7 @@ sub HandleFE
 		$rMINF->[0] -= $p->[2];
 		delete ($r->{data}->{$addr});
 		
-		&StatFree ($rINFO, $src, $id);
+		&StatFree ($rINFO, $p->[3], $id);
 	}
 }
 
@@ -318,7 +318,7 @@ sub HandleDE
 		$rMINF->[0] -= $p->[2];
 		delete ($r->{data}->{$addr});
 
-		&StatFree ($rINFO, $src, $id);
+		&StatFree ($rINFO, $p->[3], $id);
 		
 		$RC = 0;
 	}
@@ -363,7 +363,7 @@ sub StatFree
 	my ($rINFO, $src, $lc) = @_;
 	my ($file, $line, $func, $floc);
 	
-	($file, $line, $func) = $src =~ /^([^:]+):(\d+),\s+(.*)$/;
+	($file, $line, $func) = $src =~ /^([^:]+):(\d+),\s+(.*),\s+\d+\s+bytes.*$/;
 	if (!defined($file) && ($src eq "???")) {
 		($file, $line, $func) = ("???", 0, "???");
 	}
