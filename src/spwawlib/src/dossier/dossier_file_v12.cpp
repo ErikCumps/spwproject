@@ -43,7 +43,7 @@ dossier_load_v12_header (int fd, DOS_HEADER *hdr)
 	hdr->stab		= hdr_v12->stab;
 	hdr->type		= hdr_v12->type;
 	hdr->gametype		= hdr_v12->gametype;
-	
+
 	hdr->props.OOB		= hdr_v12->props.OOB;
 	hdr->props.start	= hdr_v12->props.start;
 	hdr->props.end		= hdr_v12->props.end;
@@ -85,9 +85,11 @@ dossier_load_v12_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 	/* A V12 battle header:
 	 * + lacks the battle unit reassignment list element count (at the end)
 	 * + lacks the battle map data (at the end)
+	 * + lacks the battle location display name (at the end)
 	 *
 	 * For V12 dossiers the RA info is no longer loaded.
 	 * For V12 dossiers there is no separately saved battle map data.
+	 * For V12 dossiers the battle location display name is not stored.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
@@ -97,6 +99,7 @@ dossier_load_v12_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 		hdrs[i].map.width = hdrs[i].map.height = 0;
 		hdrs[i].map.raw.data = hdrs[i].map.raw.size = hdrs[i].map.raw.comp = 0;
 		hdrs[i].map.map.data = hdrs[i].map.map.size = hdrs[i].map.map.comp = 0;
+		hdrs[i].location = BADSTRIDX;
 	}
 
 handle_error:

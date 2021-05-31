@@ -59,8 +59,8 @@ GuiDossier::GuiDossier (QWidget *P)
 		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:will_delete> to <will_delete>");
 	if (!connect (WARCAB, SIGNAL (was_deleted(MDLD_TREE_ITEM *)), SLOT (was_deleted(MDLD_TREE_ITEM *))))
 		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_deleted> to <was_deleted>");
-	if (!connect (WARCAB, SIGNAL (was_edited(void)), SLOT (was_edited(void))))
-		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:was_edited> to <was_edited>");
+	if (!connect (WARCAB, SIGNAL (dossier_edited(void)), SLOT (dossier_edited(void))))
+		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <WARCAB:dossier_edited> to <dossier_edited>");
 	if (!connect (d.model, SIGNAL (cmpcurr_changed(const QModelIndex&, const QModelIndex&)), SLOT (cmpcurr_changed(const QModelIndex&, const QModelIndex&))))
 		SET_GUICLS_ERROR (ERR_GUI_DOSSIER_INIT_FAILED, "failed to connect <model:cmpcurr_changed> to <cmpcurr_changed>");
 	if (!connect (d.model, SIGNAL (cmpbase_changed(const QModelIndex&, const QModelIndex&)), SLOT (cmpbase_changed(const QModelIndex&, const QModelIndex&))))
@@ -95,7 +95,12 @@ GuiDossier::contextMenuEvent (QContextMenuEvent *event)
 			menu->addAction (GUI_ACTIONS->p.delete_dossier);
 			break;
 		case MDLD_TREE_STDALONE:
+			if (d.actionitem->dossier_type != SPWAW_MEGACAM_DOSSIER) {
+				menu->addAction (GUI_ACTIONS->p.delete_battle);
+			}
+			break;
 		case MDLD_TREE_BATTLE:
+			menu->addAction (GUI_ACTIONS->p.edit_battle_location);
 			if (d.actionitem->dossier_type != SPWAW_MEGACAM_DOSSIER) {
 				menu->addAction (GUI_ACTIONS->p.delete_battle);
 			}
@@ -323,7 +328,7 @@ GuiDossier::was_deleted (MDLD_TREE_ITEM *next)
 }
 
 void
-GuiDossier::was_edited (void)
+GuiDossier::dossier_edited (void)
 {
 	if (d.model) {
 		DBG_log ("[%s] requesting report update\n", __FUNCTION__);

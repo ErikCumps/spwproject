@@ -46,6 +46,7 @@ dossier_del_battle (SPWAW_DOSSIER *ptr, SPWAW_BATTLE *b, STRTAB *stab)
 
 	SPWOOB_LIST_del (ptr->oobdata, b->oobdat);
 	STRTAB_del (stab, b->name);
+	STRTAB_del (stab, b->location_data);
 	STRTAB_del (stab, b->location);
 	STRTAB_del (stab, b->miss_p1);
 	STRTAB_del (stab, b->miss_p2);

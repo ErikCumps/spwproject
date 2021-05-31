@@ -66,7 +66,8 @@ dossier_new_battle (SPWAW_BATTLE **ptr, SPWAW_SNAPSHOT *snap, const char *name, 
 	}
 	p->bdate.date	= p->snap->game.battle.data.bdate.date;
 
-	p->location	= STRTAB_add (stab, p->snap->game.battle.data.location);
+	p->location_data= STRTAB_add (stab, p->snap->game.battle.data.location);
+	p->location	= STRTAB_add (stab, p->location_data);
 	p->oobdat	= p->snap->oobdat;
 	p->OOB_p1	= p->snap->game.battle.data.OOB_p1;
 	p->OOB_p2	= p->snap->game.battle.data.OOB_p2;

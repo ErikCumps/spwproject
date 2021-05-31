@@ -102,6 +102,9 @@ GuiRptBtlOvr::GuiRptBtlOvr (QWidget *P)
 	if (!connect (GUI_WIN, SIGNAL (selected_intel_mode(INTEL_MODE)), this, SLOT (intel_mode_set(INTEL_MODE))))
 		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <mainwindow:selected_intel_mode> to <intel_mode_set>");
 
+	if (!connect (WARCAB, SIGNAL (battle_location_edited(MDLD_TREE_ITEM *)), this, SLOT (location_edited(MDLD_TREE_ITEM *))))
+		SET_GUICLS_ERROR (ERR_GUI_REPORTS_INIT_FAILED, "failed to connect <WARCAB:battle_location_edited> to <location_edited>");
+
 	SET_GUICLS_NOERR;
 }
 
@@ -653,4 +656,17 @@ GuiRptBtlOvr::intel_mode_set (INTEL_MODE mode)
 	d.Vintel_mode = mode;
 
 	refresh();
+}
+
+void
+GuiRptBtlOvr::location_edited (MDLD_TREE_ITEM *battle)
+{
+	MDLD_TREE_ITEM	*item;
+
+	if (!battle) return;
+	if (battle->type != MDLD_TREE_BATTLE) return;
+
+	item = (d.parent != NULL) ? d.parent->current() : NULL;
+
+	if (item == battle) refresh (true);
 }

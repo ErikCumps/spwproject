@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - application state handling.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -33,52 +33,54 @@ public:
 	~WARCABState	();
 
 public:
-	SL_ERROR	init		(void);
-	SL_ERROR	mknew		(SPWAW_GAME_TYPE gametype, const char *gamepath, const char *name, const char *comment);
-	SL_ERROR	load		(SPWAW_DOSSLIST *list);
-	SL_ERROR	save		(void);
-	SL_ERROR	saveas		(char *file);
-	SL_ERROR	close		(void);
-	SL_ERROR	add_campaign	(SPWAW_SAVELIST *list, bool &added);
-	SL_ERROR	add_stdalone	(char *name, SPWAW_SAVELIST *list, bool &added);
-	SL_ERROR	add_stdalone	(SPWAW_BATTLE *battle, SPWAW_SAVELIST *list, bool &added);
+	SL_ERROR	init			(void);
+	SL_ERROR	mknew			(SPWAW_GAME_TYPE gametype, const char *gamepath, const char *name, const char *comment);
+	SL_ERROR	load			(SPWAW_DOSSLIST *list);
+	SL_ERROR	save			(void);
+	SL_ERROR	saveas			(char *file);
+	SL_ERROR	close			(void);
+	SL_ERROR	add_campaign		(SPWAW_SAVELIST *list, bool &added);
+	SL_ERROR	add_stdalone		(char *name, SPWAW_SAVELIST *list, bool &added);
+	SL_ERROR	add_stdalone		(SPWAW_BATTLE *battle, SPWAW_SAVELIST *list, bool &added);
 #if	ALLOW_SNAPSHOTS_LOAD
-	SL_ERROR	add_campaign	(SPWAW_SNAPLIST *list, bool &added);
-	SL_ERROR	add_stdalone	(char *name, SPWAW_SNAPLIST *list, bool &added);
-	SL_ERROR	add_stdalone	(SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list, bool &added);
+	SL_ERROR	add_campaign		(SPWAW_SNAPLIST *list, bool &added);
+	SL_ERROR	add_stdalone		(char *name, SPWAW_SNAPLIST *list, bool &added);
+	SL_ERROR	add_stdalone		(SPWAW_BATTLE *battle, SPWAW_SNAPLIST *list, bool &added);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
-	SL_ERROR	del		(MDLD_TREE_ITEM *item);
-	SL_ERROR	edit		(char *name, char *comment);
+	SL_ERROR	del			(MDLD_TREE_ITEM *item);
+	SL_ERROR	edit_dossier		(char *name, char *comment);
+	SL_ERROR	edit_battle_location	(MDLD_TREE_ITEM *item, char *location);
 
-	bool		needs_postedinit(void);
-	bool		is_loaded	(void);
-	bool		is_readonly	(void);
-	bool		is_dirty	(void);
-	QString &	get_roreason	(void);
-	char		*get_filename	(void);
-	char		*get_gamepath	(void);
-	char		*get_name	(void);
-	char		*get_comment	(void);
-	SPWAW_SAVELIST	*get_gamelist	(void);
+	bool		needs_postedinit	(void);
+	bool		is_loaded		(void);
+	bool		is_readonly		(void);
+	bool		is_dirty		(void);
+	QString &	get_roreason		(void);
+	char		*get_filename		(void);
+	char		*get_gamepath		(void);
+	char		*get_name		(void);
+	char		*get_comment		(void);
+	SPWAW_SAVELIST	*get_gamelist		(void);
 #if	ALLOW_SNAPSHOTS_LOAD
-	SPWAW_SNAPLIST	*get_snaplist	(void);
+	SPWAW_SNAPLIST	*get_snaplist		(void);
 #endif	/* ALLOW_SNAPSHOTS_LOAD */
-	SPWAW_GAME_TYPE	get_gametype	(void);
-	bool		can_track	(void);
-	SPWAW_DOSSIER	*get_dossier	(void);
-	QString &	get_savedir	(SPWAW_DOSSIER_TYPE type);
-	void		set_savedir	(void);
+	SPWAW_GAME_TYPE	get_gametype		(void);
+	bool		can_track		(void);
+	SPWAW_DOSSIER	*get_dossier		(void);
+	QString &	get_savedir		(SPWAW_DOSSIER_TYPE type);
+	void		set_savedir		(void);
 
-	void		statereport	(SL_STDBG_INFO_LEVEL level);
+	void		statereport		(SL_STDBG_INFO_LEVEL level);
 
 signals:
-	void		was_loaded	(MDLD_TREE_ITEM *tree);
-	void		will_close	(void);
-	void		was_closed	(void);
-	void		was_added	(MDLD_TREE_ITEM *item);
-	void		will_delete	(MDLD_TREE_ITEM *item);
-	void		was_deleted	(MDLD_TREE_ITEM *next);
-	void		was_edited	(void);
+	void		was_loaded		(MDLD_TREE_ITEM *tree);
+	void		will_close		(void);
+	void		was_closed		(void);
+	void		was_added		(MDLD_TREE_ITEM *item);
+	void		will_delete		(MDLD_TREE_ITEM *item);
+	void		was_deleted		(MDLD_TREE_ITEM *next);
+	void		dossier_edited		(void);
+	void		battle_location_edited	(MDLD_TREE_ITEM *battle);
 
 private:
 	struct s_data {

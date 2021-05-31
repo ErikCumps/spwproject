@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - actions.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -121,6 +121,8 @@ GuiActions::GuiActions (QFont &font)
 	ACTION (delete_battle, "Delete battle", 0, RID_GUI_ICONS_1_Delete, false);
 	ACTION (delete_dossier, "Delete dossier", 0, RID_GUI_ICONS_1_Delete, false);
 
+	ACTION (edit_battle_location, "Edit battle location", 0,0, false);
+
 	/* Navigation actions */
 	ACTION (nav_raise, "Parent record", Qt::CTRL+Qt::SHIFT+Qt::Key_PageUp, RID_GUI_ICON_RAISE, true);
 	ACTION (nav_first, "First record", Qt::CTRL+Qt::Key_Home, RID_GUI_ICON_FIRST, true);
@@ -171,6 +173,8 @@ GuiActions::~GuiActions (void)
 	delete p.delete_turn;
 	delete p.delete_battle;
 	delete p.delete_dossier;
+
+	delete p.edit_battle_location;
 
 	delete p.nav_first;
 	delete p.nav_previous;
@@ -225,6 +229,8 @@ GuiActions::enable_dossier_actions (bool b, SPWAW_DOSSIER_TYPE dt, SPWAW_GAME_TY
 	p.delete_turn->setEnabled (wr && b);
 	p.delete_battle->setEnabled (wr && b);
 	p.delete_dossier->setEnabled (wr && b);
+
+	p.edit_battle_location->setEnabled (wr && b);
 
 	p.nav_raise->setEnabled (b);
 	p.nav_first->setEnabled (b);

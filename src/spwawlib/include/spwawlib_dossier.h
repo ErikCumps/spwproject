@@ -103,7 +103,8 @@ struct s_SPWAW_BATTLE {
 	SPWAW_BATTLE		*next;				/* Pointer to next battle			*/
 	SPWAW_SNAPSHOT		*snap;				/* Battle turn #0 snapshot data			*/
 	SPWAW_BATTLE_DATE	bdate;				/* Battle date					*/
-	char			*location;			/* Battle location				*/
+	char			*location_data;			/* Battle location (original data)		*/
+	char			*location;			/* Battle location (display name)		*/
 	SPWOOB			*oobdat;			/* Battle OOB data				*/
 	BYTE			OOB_p1;				/* Player OOB ID				*/
 	BYTE			OOB_p2;				/* Opponent OOB ID				*/
@@ -219,6 +220,8 @@ extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_savelist		(SPWAW_DOSSIER *dossier,
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_snaplist		(SPWAW_DOSSIER *dossier, SPWAW_SNAPLIST **list);
 
 extern SPWAWLIB_API SPWAW_ERROR	SPWAW_dossier_find_battle	(SPWAW_DOSSIER *dossier, SPWAW_BATTLE_DATE *bdate, SPWAW_BATTLE **battle);
+
+extern SPWAWLIB_API SPWAW_ERROR	SPWAW_battle_set_location	(SPWAW_BATTLE *battle, const char *location);
 
 #endif	/* SPWAW_LIB_DOSSIER_H */
 

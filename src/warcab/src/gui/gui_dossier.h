@@ -34,7 +34,7 @@ public slots:
 	void	was_added		(MDLD_TREE_ITEM *item);
 	void	will_delete		(MDLD_TREE_ITEM *item);
 	void	was_deleted		(MDLD_TREE_ITEM *next);
-	void	was_edited		(void);
+	void	dossier_edited		(void);
 
 	void	delete_item		(void);
 

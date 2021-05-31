@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - main window.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -61,6 +61,8 @@ public slots:
 	void	action_delete_turn			(void);
 	void	action_delete_battle			(void);
 	void	action_delete_dossier			(void);
+
+	void	action_edit_battle_location		(void);
 
 	void	action_nav_raise			(void);
 	void	action_nav_first			(void);

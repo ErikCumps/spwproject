@@ -240,14 +240,15 @@ dossier_save_battles (SPWAW_DOSSIER *src, int fd, USHORT *cnt, STRTAB *stab, boo
 		rc = SPWAW_date2stamp (&(p->bdate.date), &(hdrs[idx].date));
 		ERRORGOTO ("SPWAW_date2stamp(battle hdr date)", handle_error);
 
-		hdrs[idx].location = STRTAB_getidx (stab, p->location);
-		hdrs[idx].OOB_p1   = p->OOB_p1;
-		hdrs[idx].OOB_p2   = p->OOB_p2;
-		hdrs[idx].miss_p1  = STRTAB_getidx (stab, p->miss_p1);
-		hdrs[idx].miss_p2  = STRTAB_getidx (stab, p->miss_p2);
-		hdrs[idx].meeting  = p->meeting;
-		hdrs[idx].btlidx   = p->bdate.btlidx;
-		hdrs[idx].racnt    = p->racnt;
+		hdrs[idx].location_data	= STRTAB_getidx (stab, p->location_data);
+		hdrs[idx].location	= STRTAB_getidx (stab, p->location);
+		hdrs[idx].OOB_p1	= p->OOB_p1;
+		hdrs[idx].OOB_p2	= p->OOB_p2;
+		hdrs[idx].miss_p1	= STRTAB_getidx (stab, p->miss_p1);
+		hdrs[idx].miss_p2	= STRTAB_getidx (stab, p->miss_p2);
+		hdrs[idx].meeting	= p->meeting;
+		hdrs[idx].btlidx	= p->bdate.btlidx;
+		hdrs[idx].racnt		= p->racnt;
 
 		rc = SPWOOB_LIST_spwoob2idx (src->oobdata, p->oobdat, &(hdrs[idx].oobdat));
 		ERRORGOTO ("SPWOOB_LIST_spwoob2idx(battle oob data)", handle_error);

@@ -111,12 +111,14 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 	 * + lacks the campaign battle index (at the end)
 	 * + lacks the battle unit reassignment list element count (at the end)
 	 * + lacks the battle map data (at the end)
+	 * + lacks the battle location display name (at the end)
 	 *
 	 * V10 dossiers only support a single OOB data, the battle OOB data index must be zero.
 	 * V10 dossiers only support the SPWAW_CAMPAIGN_DOSSIER dossier type which doesn't use battle names.
 	 * V10 dossiers can only specify an SPWAW_NOBTLIDX (a later override to set the correct btlidx is possible).
 	 * For V10 dossiers the RA info is no longer loaded.
 	 * For V10 dossiers there is no separately saved battle map data.
+	 * For V10 dossiers the battle location display name is not stored.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
@@ -131,6 +133,7 @@ dossier_load_v10_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 		hdrs[i].map.width = hdrs[i].map.height = 0;
 		hdrs[i].map.raw.data = hdrs[i].map.raw.size = hdrs[i].map.raw.comp = 0;
 		hdrs[i].map.map.data = hdrs[i].map.map.size = hdrs[i].map.map.comp = 0;
+		hdrs[i].location = BADSTRIDX;
 	}
 
 handle_error:

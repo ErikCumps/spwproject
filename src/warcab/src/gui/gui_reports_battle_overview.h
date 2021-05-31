@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - battle report - overview.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -36,6 +36,7 @@ signals:
 
 public slots:
 	void	intel_mode_set	(INTEL_MODE mode);
+	void	location_edited	(MDLD_TREE_ITEM *battle);
 
 private:
 	struct s_data {

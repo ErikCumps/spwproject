@@ -257,7 +257,7 @@ GuiDlgAddBattleSavegame::refresh_ok_button_status (void)
 }
 
 void
-GuiDlgAddBattleSavegame::name_changed (const QString& /*name*/)
+GuiDlgAddBattleSavegame::name_changed (const QString& /*text*/)
 {
 	refresh_ok_button_status();
 }

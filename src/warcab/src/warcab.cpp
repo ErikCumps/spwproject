@@ -749,7 +749,7 @@ WARCABState::del (MDLD_TREE_ITEM *item)
 }
 
 SL_ERROR
-WARCABState::edit (char *name, char *comment)
+WARCABState::edit_dossier (char *name, char *comment)
 {
 	SPWAW_ERROR	arc;
 
@@ -764,7 +764,28 @@ WARCABState::edit (char *name, char *comment)
 	set_dirty (true);
 	set_name (d.dossier->name);
 
-	emit was_edited ();
+	emit dossier_edited ();
+
+	RETURN_OK;
+}
+
+SL_ERROR
+WARCABState::edit_battle_location (MDLD_TREE_ITEM *item, char *location)
+{
+	SPWAW_ERROR	arc;
+
+	if (!is_loaded()) RETURN_OK;
+	if (is_readonly()) RETURN_OK;
+	if (item->type != MDLD_TREE_BATTLE) RETURN_OK;
+
+	arc = SPWAW_battle_set_location (item->data.b, location);
+	if (SPWAW_HAS_ERROR (arc)) {
+		RETURN_ERR_FUNCTION_EX1 (ERR_DOSSIER_EDIT_FAILED, "SPWAW_dossier_edit() failed: %s", SPWAW_errstr (arc));
+	}
+
+	set_dirty (true);
+
+	emit battle_location_edited (item);
 
 	RETURN_OK;
 }

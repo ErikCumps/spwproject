@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -19,7 +19,6 @@ class	GuiMainMenu;
 class	GuiToolbar;
 class	GuiStatus;
 class	GuiDossier;
-class	GuiDlgEditDossier;
 class	GuiOobView;
 class	GuiOob;
 class	GuiRosterView;

@@ -14,6 +14,7 @@
 #include "gui_dlg_load_dossier.h"
 #include "gui_dlg_new_dossier.h"
 #include "gui_dlg_edit_dossier.h"
+#include "gui_dlg_edit_battle_location.h"
 #include "gui_dlg_about.h"
 #include "model/model_sanity.h"
 
@@ -569,7 +570,7 @@ GuiMainWindow::action_dossier_edit (void)
 
 	if (keep) {
 		dlg->data_get (&sn, &sc);
-		erc = WARCAB->edit (sn, sc);
+		erc = WARCAB->edit_dossier (sn, sc);
 		if (sn) free (sn);
 		if (sc) free (sc);
 
@@ -1036,6 +1037,43 @@ GuiMainWindow::action_delete_dossier (void)
 	if (!WARCAB->is_loaded()) return;
 
 	action_dossier_close ();
+}
+
+void
+GuiMainWindow::action_edit_battle_location (void)
+{
+	MDLD_TREE_ITEM			*item = NULL;
+	GuiDlgEditBattleLocation	*dlg;
+	char				*sl = NULL;
+	int				rc;
+	SL_ERROR			erc;
+
+	if (!WARCAB->is_loaded()) return;
+
+	if (WARCAB->is_readonly()) {
+		QString	body(STR_READONLY_EDIT_BODY);
+		GUI_msgbox (MSGBOX_WARNING, STR_READONLY_TITLE, body.arg(WARCAB->get_roreason().replace('\n',"<br>")));
+		return;
+	}
+
+	item = d.dossier->get_actionitem();
+	if (!item) return;
+	if (item->type != MDLD_TREE_BATTLE) return;
+
+	dlg = new GuiDlgEditBattleLocation (item->data.b->location);
+	rc = dlg->exec ();
+
+	if (rc) {
+		dlg->get_data(&sl);
+		erc = WARCAB->edit_battle_location (item, sl);
+
+		if (SL_HAS_ERROR (erc)) {
+			SL_ERROR_HANDLE (SL_ERR_FATAL_WARN, "Failed to edit battle location.");
+		}
+	}
+
+	if (sl) free (sl);
+	delete dlg;
 }
 
 void

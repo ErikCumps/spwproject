@@ -16,6 +16,7 @@
 #include "dossier/dossier_file_v13.h"
 #include "dossier/dossier_file_v14.h"
 #include "dossier/dossier_file_v15.h"
+#include "dossier/dossier_file_v16.h"
 #include "spwoob/spwoob_list.h"
 #include "snapshot/snapshot.h"
 #include "gamefile/savegame_descriptor.h"
@@ -349,6 +350,9 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 	} else 	if (version <= DOSS_VERSION_V15) {
 		rc = dossier_load_v15_battle_headers (fd, hdrs, cnt);
 		ERRORGOTO ("dossier_load_v15_battle_headers(battle hdrs)", handle_error);
+	} else 	if (version <= DOSS_VERSION_V16) {
+		rc = dossier_load_v16_battle_headers (fd, hdrs, cnt);
+		ERRORGOTO ("dossier_load_v16_battle_headers(battle hdrs)", handle_error);
 	} else {
 		if (!bread (fd, (char *)hdrs, cnt * sizeof (DOS_BHEADER), false))
 			FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs)", handle_error);
@@ -364,7 +368,13 @@ dossier_load_battles (int fd, SPWAW_DOSSIER *dst, USHORT cnt, STRTAB *stab, ULON
 		rc = SPWAW_stamp2date (&(hdrs[i].date), &(p->bdate.date));
 		ERRORGOTO ("SPWAW_stamp2date(battle hdr date)", handle_error);
 
-		p->location = STRTAB_getstr (stab, hdrs[i].location);
+		p->location_data = STRTAB_getstr (stab, hdrs[i].location_data);
+		if (hdrs[i].location != BADSTRIDX) {
+			p->location = STRTAB_getstr (stab, hdrs[i].location);
+		} else {
+			p->location = STRTAB_add (stab, p->location_data);
+		}
+
 		p->OOB_p1   = (BYTE)(hdrs[i].OOB_p1 & 0xFF);
 		p->OOB_p2   = (BYTE)(hdrs[i].OOB_p2 & 0xFF);
 		p->miss_p1  = STRTAB_getstr (stab, hdrs[i].miss_p1);

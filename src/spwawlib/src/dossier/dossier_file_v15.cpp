@@ -21,15 +21,17 @@ dossier_load_v15_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 
 	if (!hdrs || !cnt) return (SPWERR_NULLARG);
 
-	hdrs_v15 = safe_nmalloc (DOS_BHEADER_V15, cnt); COOMGOTO (hdrs_v15, "DOS_BHEADER_V12 list", handle_error);
+	hdrs_v15 = safe_nmalloc (DOS_BHEADER_V15, cnt); COOMGOTO (hdrs_v15, "DOS_BHEADER_V15 list", handle_error);
 
 	if (!bread (fd, (char *)hdrs_v15, cnt * sizeof (DOS_BHEADER_V15), false))
 		FAILGOTO (SPWERR_FRFAILED, "bread(battle hdrs v15)", handle_error);
 
 	/* A V15 battle header:
 	 * + lacks the battle map data (at the end)
+	 * + lacks the battle location display name (at the end)
 	 *
 	 * For V15 dossiers there is no separately saved battle map data.
+	 * For V15 dossiers the battle location display name is not stored.
 	 *
 	 * So a quick copy and fix up is all we need :)
 	 */
@@ -38,6 +40,7 @@ dossier_load_v15_battle_headers	(int fd, DOS_BHEADER *hdrs, USHORT cnt)
 		hdrs[i].map.width = hdrs[i].map.height = 0;
 		hdrs[i].map.raw.data = hdrs[i].map.raw.size = hdrs[i].map.raw.comp = 0;
 		hdrs[i].map.map.data = hdrs[i].map.map.size = hdrs[i].map.map.comp = 0;
+		hdrs[i].location = BADSTRIDX;
 	}
 
 handle_error:

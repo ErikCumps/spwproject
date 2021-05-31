@@ -406,8 +406,8 @@ SPWAW_dossier_add_battle_snap (SPWAW_BATTLE *battle, SPWAW_SNAPSHOT *snap, SPWAW
 			}
 		}
 		if (!HASERROR) {
-			if (strcmp(snap->game.battle.data.location, battle->location) != 0) {
-				ERROR2 ("battle location \"%s\" != snapshot location \"%s\"", battle->location, snap->game.battle.data.location);
+			if (strcmp(snap->game.battle.data.location, battle->location_data) != 0) {
+				ERROR2 ("battle location data \"%s\" != snapshot location \"%s\"", battle->location_data, snap->game.battle.data.location);
 				rc = SPWERR_NOMATCH_LOCATION;
 			}
 		}
@@ -522,6 +522,22 @@ SPWAW_dossier_find_battle (SPWAW_DOSSIER *dossier, SPWAW_BATTLE_DATE *bdate, SPW
 	CNULLARG (dossier); CNULLARG (bdate); CNULLARG (battle);
 
 	*battle = dossier_find_battle (dossier, bdate);
+
+	return (SPWERR_OK);
+}
+
+SPWAWLIB_API SPWAW_ERROR
+SPWAW_battle_set_location (SPWAW_BATTLE *battle, const char *location)
+{
+	STRTAB	*stab = NULL;
+
+	CSPWINIT;
+	CNULLARG (battle);
+
+	stab = (STRTAB *)battle->dossier->stab;
+
+	STRTAB_del (stab, battle->location);
+	battle->location = STRTAB_add (stab, (char *)location);
 
 	return (SPWERR_OK);
 }

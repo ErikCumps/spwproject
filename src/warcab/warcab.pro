@@ -1,6 +1,6 @@
 # The SPWaW war cabinet.
 #
-# Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+# Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
 #
 # License: GPL V2.
 
@@ -116,6 +116,7 @@ HEADERS +=					\
 	gui/gui_dossier.h			\
 	gui/gui_dlg_new_dossier.h		\
 	gui/gui_dlg_edit_dossier.h		\
+	gui/gui_dlg_edit_battle_location.h	\
 	gui/gui_oob_view.h			\
 	gui/gui_oob.h				\
 	gui/gui_roster_view.h			\
@@ -245,6 +246,7 @@ SOURCES +=					\
 	gui/gui_dossier.cpp			\
 	gui/gui_dlg_new_dossier.cpp		\
 	gui/gui_dlg_edit_dossier.cpp		\
+	gui/gui_dlg_edit_battle_location.cpp	\
 	gui/gui_oob_view.cpp			\
 	gui/gui_oob.cpp				\
 	gui/gui_roster_view.cpp			\

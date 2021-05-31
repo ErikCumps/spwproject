@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - actions.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -58,6 +58,8 @@ public:
 		QAction		*delete_turn;
 		QAction		*delete_battle;
 		QAction		*delete_dossier;
+
+		QAction		*edit_battle_location;
 
 		QAction		*nav_raise;
 		QAction		*nav_first;
