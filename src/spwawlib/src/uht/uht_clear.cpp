@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW Library - unit history tracking handling.
  *
- * Copyright (C) 2019 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2019-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -15,13 +15,15 @@ UHT_clean (SPWAW_UHT *uht)
 {
 	CNULLARG (uht);
 
+	/* Clean Battle info list */
 	for (unsigned int i=0; i<uht->blist.cnt; i++) {
-		if (!uht->blist.info[i]->list) continue;
-
-		memset (uht->blist.info[i]->list, 0,
-			uht->blist.info[i]->cnt * sizeof (*(uht->blist.info[i]->list)));
+		if (uht->blist.info[i]->list) safe_free (uht->blist.info[i]->list);
+		safe_free (uht->blist.info[i]);
 	}
+	safe_free (uht->blist.info);
+	uht->blist.cnt = uht->blist.len = 0;
 
+	/* Clean UHTE list */
 	for (unsigned int i=0; i<uht->cnt; i++) {
 		if (!uht->list[i]) continue;
 				
@@ -31,6 +33,7 @@ UHT_clean (SPWAW_UHT *uht)
 		safe_free (uht->list[i]);
 	}
 
+	/* Clean UHTE sort map */
 	for (unsigned int i=0; i<uht->cnt; i++) {
 		if (!uht->smap[i]) continue;
 
@@ -51,16 +54,18 @@ UHT_clear (SPWAW_UHT *uht)
 
 	rc = UHT_clean (uht); ROE ("UHT_clean()");
 
-	if (uht->blist.info) {
-		for (unsigned int i=0; i<uht->blist.cnt; i++) {
-			if (uht->blist.info[i]->list) safe_free (uht->blist.info[i]->list);
-			safe_free (uht->blist.info[i]);
-		}
-		safe_free (uht->blist.info);
-		uht->blist.cnt = uht->blist.len = 0;
+	/* Battle info list is already cleared */
+
+	/* Clear UHTE list */
+	if (uht->list) {
+		safe_free (uht->list);
 	}
-	if (uht->list) safe_free (uht->list);
-	if (uht->smap) safe_free (uht->smap);
+
+	/* Clear UHTE sort map */
+	if (uht->smap) {
+		safe_free (uht->smap);
+	}
+
 	uht->cnt = uht->len = 0;
 
 	return (SPWERR_OK);
