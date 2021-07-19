@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - GUI - "add standalone battle savegame" dialog box.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
