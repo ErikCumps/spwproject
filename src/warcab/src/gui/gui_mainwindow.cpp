@@ -1144,6 +1144,7 @@ GuiMainWindow::action_help_about (void)
 	// TODO: check for new allocation failure?
 	dlg = new GuiDlgAbout();
 	dlg->exec ();
+	delete dlg;
 }
 
 bool
