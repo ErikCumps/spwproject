@@ -5,8 +5,8 @@ Overview
 
 The spwreport tool is a multi-purpose spwawlib tool that can be used to:
 
-  * Generate OOB dumps in CSV format for SP:WaW and winSPWW2 OOB data files
-  * Generate reports for SP:WaW and winSPWW2 savegames
+  * Generate OOB dumps in CSV format for SP:WaW, winSPWW2 and winSPMBT OOB data files
+  * Generate reports for SP:WaW, winSPWW2 and winSPMBT savegames
   * Generate reports for spwawlib snapshot files
 
 
@@ -20,21 +20,30 @@ This tool can generate OOB dumps in CSV format (spwoobdump_*.csv files).
          OOB     path to oob dir
          raw     specify "raw" for a raw oob data dump
 
+  Supported game types:
+    SPWAW       SP:WaW
+    WINSPWW2    winSPWW2
+    WINSPMBT    winSPMBT
+
 The OOB files are dumped in CSV format in the current directory.
 
 The currently known data items in the OOB files are documented in the
-"SPWAW_oob.doc" and "winSPWW2_oob.doc" files.
+"SPWAW_oob.doc", "winSPWW2_oob.doc" and "winSPMBT_oob.doc" files.
 
 
 For example:
 
 To dump the SP:WaW OOB data, do:
 
-  C:\path\to\spwreport.exe oobdump c:\path\to\spwaw
+  C:\path\to\spwreport.exe oobdump SPWAW c:\path\to\spwaw
 
 To dump the winSPWW2 OOB data, do:
 
-  C:\path\to\spwreport.exe oobdump "c:\path\to\winspww2\Game Data\OOBs"
+  C:\path\to\spwreport.exe oobdump WINSPWW2 "c:\path\to\winspww2\Game Data\OOBs"
+
+To dump the winSPMBT OOB data, do:
+
+  C:\path\to\spwreport.exe oobdump WINSPMBT "c:\path\to\winspmbt\Game Data\OOBs"
 
 
 
@@ -43,17 +52,20 @@ Generating reports for savegames
 
 This tool can generate multiple types of savegame reports:
 
-  Usage: spwreport.exe savereport GAME OOB DIR INDEX BASE [TYPE]
+  Usage: spwreport savereport GAME OOB DIR INDEX BASE [TYPE]
+      or spwreport savereport GAME OOB DIR NAME  BASE [TYPE]
   Where: GAME    game type
          OOB     path to oob dir
          DIR     path to savegame dir
-         INDEX   index of savegame to generate report for
+         INDEX   numerical index of savegame to generate report for
+         NAME    basename of savegame to generate report for
          BASE    basename for report files
          TYPE    optional type of report to generate (defaults to ALL reports)
-
+           
   Supported game types:
     SPWAW       SP:WaW
     WINSPWW2    winSPWW2
+    WINSPMBT    winSPMBT
 
   Supported report types:
     raw         raw savegame content reports (*_RAW.txt and *_RAWLINK.txt)
@@ -83,10 +95,15 @@ files in the current directory all starting with the "REPORT42_" prefix, do:
 
   C:\path\to\spwreport.exe savereport SPWAW c:\path\to\spwaw c:\path\to\spwaw\SAVE 42 REPORT42_
 
-To generate all types of reports for the winSPWW2 savegame from slot number 84,
-as files in the current directory all starting with the "REPORT84_" prefix, do:
+To generate xml reports for the winSPWW2 savegame from slot number 84, as files
+in the current directory all starting with the "REPORT84_" prefix, do:
 
-  C:\path\to\spwreport.exe savereport SPWAW "c:\path\to\winspww2\Game Data\OOBs" "c:\path\to\winspww2\Saved Games\" 42 REPORT42_
+  C:\path\to\spwreport.exe savereport WINSPWW2 "c:\path\to\winspww2\Game Data\OOBs" "c:\path\to\winspww2\Saved Games\" 84 REPORT84_ xml
+
+To generate table reports for the winSPMBT savegame from slot number 21, as
+files in the current directory all starting with the "REPORT21_" prefix, do:
+
+  C:\path\to\spwreport.exe savereport WINSPMBT "c:\path\to\winspmbt\Game Data\OOBs" "c:\path\to\winspmbt\Saved Games\" 21 REPORT21_ table
 
 
 

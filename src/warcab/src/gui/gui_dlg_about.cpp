@@ -17,8 +17,8 @@
 #define	BKG_HEIGHT	BOX_HEIGHT
 
 #define	ABOUT_MSG												\
-	"Warcab is a tool to record and track battles in SP:WaW and winSPWW2 campaigns, or to record\n"		\
-	"and track turns in standalone battles from scenarios.\n"						\
+	"Warcab is a tool to record and track battles in SP:WaW, winSPWW2 and winSPMBT campaigns, or\n"		\
+	"to record and track turns in standalone battles from scenarios.\n"					\
 	"\n"													\
 	"It is inspired by Campaign Watcher.\n"									\
 	"\n"													\

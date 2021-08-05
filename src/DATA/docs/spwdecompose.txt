@@ -3,27 +3,30 @@ Welcome to spwdecompose.exe, the savegame decomposition tool.
 Overview
 --------
 
-The spwdecompose tool extracts and decompresses all section data of SP:WaW and
-winSPWW2 savegames, allowing easy inspection and modification.
+The spwdecompose tool extracts and decompresses all section data of SP:WaW,
+winSPWW2 and winSPMBT savegames, allowing easy inspection and modification.
 
 The currently known data items in the savegame sections are documented in the
-"SPWAW_records.doc" and "winSPWW2_records.doc" files.
+"SPWAW_records.doc", "winSPWW2_records.doc" and "winSPMBT_records.doc" files.
 
 
 
 Usage
 -----
 
-  Usage: spwdecompose.exe GAME DIR INDEX
+  Usage: spwdecompose GAME DIR INDEX
+      or spwdecompose GAME DIR NAME
   Where: GAME    game type
          DIR     path to savegame dir
-         INDEX   index of savegame to decompose
+         INDEX   numerical index of savegame to decompose
+         NAME    basename of savegame to decompose
 
   Supported game types:
       SPWAW       SPWaW
       WINSPWW2    winSPWW2
+      WINSPMBT    winSPMBT
 
-The savegame is decomposed, in separate sections, in the current directory.
+  The savegame is decomposed, in separate sections, in the current directory.
 
 
 
@@ -39,3 +42,8 @@ To decompose the winSPWW2 savegame from slot number 84, into the current
 directory, do:
 
   c:\path\to\spwdecompose.exe WINSPWW2 "c:\path\to\winspww2\Saved Games" 42
+
+To decompose the winSPMBT savegame from slot number 21, into the current
+directory, do:
+
+  c:\path\to\spwdecompose.exe WINSPMBT "c:\path\to\winspww2\Saved Games" 21
