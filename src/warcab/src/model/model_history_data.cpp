@@ -1,7 +1,7 @@
 /** \file
  * The SPWaW war cabinet - data model handling - unit history.
  *
- * Copyright (C) 2005-2020 Erik Cumps <erik.cumps@gmail.com>
+ * Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
  *
  * License: GPL v2
  */
@@ -245,10 +245,11 @@ ModelHistory::MDLH_data_background (int /*row*/, int /*col*/, MDLH_DATA *data, S
 
 	if (!data || !dlt) return (v);
 
+	if (!data->uir || !data->uir->snap) return (QBrush (*RES_color(RID_RGB_GRAY_75)));
+
 	switch (d.hilite) {
 		case MDLH_HILITE_NONE:
 		default:
-			if (data->uir == NULL) v = QBrush (*RES_color(RID_RGB_GRAY_75));
 			break;
 		case MDLH_HILITE_RANK:
 			v = QBrush (*RES_GUI_color (data->uir->snap->data.rank));
