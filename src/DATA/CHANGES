@@ -1,4 +1,4 @@
-Welcome to the SP:WaW and winSPWW2 war cabinet, release 0.8.3.
+Welcome to the SP:WaW, winSPWW2 and winSPMBT war cabinet, release 0.8.4.
 
 Copyright (C) 2005-2021 Erik Cumps <erik.cumps@gmail.com>
 
@@ -6,6 +6,74 @@ License: GPL V2.
 
 ChangeLog
 ---------
+
+2021-08-22, version 0.8.4
+
+    * New feature - winSPMBT support
+    War Cabinet now has full support for winSPMBT campaigns and battles:
+    + new winSPMBT weapon types and classes
+    + new winSPMBT unit types and classes
+    + new winSPMBT unit movment classes
+    + new winSPMBT EW unit attribute
+    + new winSPMBT nations, flags and history
+
+    * New feature - Added support for editing the battle location
+    It is now possible to edit the location of the battle in the dossier, for
+    example to make the dossier more historically accurate.
+
+    * Improvement - preferences look and feel
+    The preferences dialog box now uses a clearer game config layout and red
+    highlighting feedback, to provide better guidance for the correct filling
+    out of these configuration items. It is also no longer possible to create a
+    new dossier with incomplete or missing game config(s)
+
+    * Improvement - sanitized GuiDossier treeview behavior
+    The GuiDossier TreeView's behavior on the left side of the application
+    window has been sanitized, it is now much less erratic and more in line with
+    what is expected of this kind of GUI interface element.
+
+    * Improvement - reduced memory usage
+    Instead of keeping an individual copy of the battle map for each turn in the
+    dossier, War Cabinet now keeps only a single copy of the battle map for each
+    battle. (after all, the battle map does not change during the course of the
+    battle) For dossiers with many (or all) turns recorded for each battle, this
+    results in a significant reduction of the memory usage by the application,
+    as well as providings a strong reduction of the size of the dossier fiels
+
+    * Improvement - reduced stratmap rendering time
+    By reusing the single battle map for each turn, the stratmap can now avoid
+    re-rendering the battle map when it is not changed (i.e. when rendering a
+    different turn from the same battle)
+
+    * Improvement - Improved savegame list filtering
+    When adding new savegames, the savegame list in the dialog box filters all
+    savegames which have already been added to the dossier, to make it easier to
+    select the new savegames from the list. This filtering was not 100% correct,
+    sometimes causing it to incorrectly hide savegames which were not yet added
+    to the dossier.
+
+    * Improvement - Improved dossier Load/Save/SaveAs progress bars
+    The dossier Load/Save/SaveAs progress bars now also reflect the
+    Loading/Saving of the different battles in the dossier, providing a more
+    gradual progression of the progress bar, instead of a single big jump after
+    a long waiting time.
+
+    * Fix - fixed crash after deletion of last battle or turn
+    Dossier corruption due to forgotten reset of tfirst/tlast when deleting last
+    battle/turn.
+
+    * Fix - fixed dossier corruption after deletion of any battle
+    Dossier corruption due to incomplete UHT cleaning.
+
+    * Fix - Fixed unit readiness calculation for explosives
+    For units without headcount (like explosives) the unit readiness calculation
+    was incorrect.
+
+    * Fix - Fixed incorrect formation detection for winSPWW2 and winSPMBT
+    
+    * Fix - Fixed crash highlighting decommissioned units in the unit history
+
+    * Fix - fixed some memory leaks
 
 2021-01-10, version 0.8.3
 
