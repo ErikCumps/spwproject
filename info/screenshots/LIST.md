@@ -4,6 +4,9 @@ _Various screenshots, sorted from newer to older..._
 * **dialog_edit_battle_location_20210822:**  
 ![dialog_edit_battle_location_20210822](dialog_edit_battle_location_20210822.png?raw=true "dialog_edit_battle_location_20210822")
 
+* **dialog_incomplete_game_config_20210822:**  
+![dialog_incomplete_game_config_20210822](dialog_incomplete_game_config_20210822.png?raw=true "dialog_incomplete_game_config_20210822")
+
 * **preferences_incomplete_or_incorrect_4_20210822:**  
 ![preferences_incomplete_or_incorrect_4_20210822](preferences_incomplete_or_incorrect_4_20210822.png?raw=true "preferences_incomplete_or_incorrect_4_20210822")
 
