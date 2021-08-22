@@ -903,7 +903,8 @@ CFG_needsreview (bool &isfirstrun)
 	"no fields highlighted in red).<br>"					\
 	"<br>"									\
 	"Press &lt;Review&gt; to review the applicaton preferences, or<br>"	\
-	"&lt;Continue&gt; to continue without creating a new dossier.<br>"
+	"&lt;Continue&gt; to continue without the ability to create new<br>"	\
+	"dossiers."
 #define	STR_INCOMPLETE_OK	"&Review"
 #define	STR_INCOMPLETE_CANCEL	"&Continue"
 
